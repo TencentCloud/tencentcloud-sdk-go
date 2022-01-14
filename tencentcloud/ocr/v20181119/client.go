@@ -668,7 +668,11 @@ func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
 //
 // 
 //
-// 另外，本接口还支持复印件、翻拍和PS告警功能。
+// 另外，本接口还支持复印件、翻拍和PS告警功能。同时支持识别交管12123APP发放的电子驾驶证正页。
+//
+// 
+//
+// 电子驾驶证正页：包括证号、姓名、性别、国籍、出生日期、初次领证日期、准驾车型、有效期开始时间、有效期截止时间、档案编号、状态、累积记分。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -707,7 +711,11 @@ func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *D
 //
 // 
 //
-// 另外，本接口还支持复印件、翻拍和PS告警功能。
+// 另外，本接口还支持复印件、翻拍和PS告警功能。同时支持识别交管12123APP发放的电子驾驶证正页。
+//
+// 
+//
+// 电子驾驶证正页：包括证号、姓名、性别、国籍、出生日期、初次领证日期、准驾车型、有效期开始时间、有效期截止时间、档案编号、状态、累积记分。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

@@ -1479,6 +1479,9 @@ type CreateApiRequest struct {
 	// 是否打开Base64编码，只有后端是scf时才会生效。
 	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
 
+	// 事件总线ID。
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
 	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
 
@@ -1553,6 +1556,7 @@ func (r *CreateApiRequest) FromJsonString(s string) error {
 	delete(f, "TargetNamespaceId")
 	delete(f, "UserType")
 	delete(f, "IsBase64Encoded")
+	delete(f, "EventBusId")
 	delete(f, "ServiceScfFunctionType")
 	delete(f, "EIAMAppType")
 	delete(f, "EIAMAuthType")
@@ -5817,6 +5821,24 @@ type ModifyApiRequest struct {
 
 	// Header触发规则，总规则数不能超过10。
 	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
+
+	// 事件总线ID。
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
+	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
+
+	// EIAM应用类型。
+	EIAMAppType *string `json:"EIAMAppType,omitempty" name:"EIAMAppType"`
+
+	// EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
+	EIAMAuthType *string `json:"EIAMAuthType,omitempty" name:"EIAMAuthType"`
+
+	// EIAM应用Token 有效时间，单位为秒，默认为7200秒。
+	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+
+	// EIAM应用ID。
+	TokenTimeout *int64 `json:"TokenTimeout,omitempty" name:"TokenTimeout"`
 }
 
 func (r *ModifyApiRequest) ToJsonString() string {
@@ -5879,6 +5901,12 @@ func (r *ModifyApiRequest) FromJsonString(s string) error {
 	delete(f, "IsBase64Encoded")
 	delete(f, "IsBase64Trigger")
 	delete(f, "Base64EncodedTriggerRules")
+	delete(f, "EventBusId")
+	delete(f, "ServiceScfFunctionType")
+	delete(f, "EIAMAppType")
+	delete(f, "EIAMAuthType")
+	delete(f, "EIAMAppId")
+	delete(f, "TokenTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiRequest has unknown keys!", "")
 	}

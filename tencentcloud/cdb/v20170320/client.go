@@ -96,6 +96,58 @@ func (c *Client) AddTimeWindowWithContext(ctx context.Context, request *AddTimeW
     return
 }
 
+func NewApplyCDBProxyRequest() (request *ApplyCDBProxyRequest) {
+    request = &ApplyCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ApplyCDBProxy")
+    
+    
+    return
+}
+
+func NewApplyCDBProxyResponse() (response *ApplyCDBProxyResponse) {
+    response = &ApplyCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyCDBProxy
+// 针对主实例申请创建数据库代理。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) ApplyCDBProxy(request *ApplyCDBProxyRequest) (response *ApplyCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewApplyCDBProxyRequest()
+    }
+    
+    response = NewApplyCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ApplyCDBProxy
+// 针对主实例申请创建数据库代理。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) ApplyCDBProxyWithContext(ctx context.Context, request *ApplyCDBProxyRequest) (response *ApplyCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewApplyCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -208,6 +260,62 @@ func (c *Client) BalanceRoGroupLoadWithContext(ctx context.Context, request *Bal
     request.SetContext(ctx)
     
     response = NewBalanceRoGroupLoadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCloseCDBProxyRequest() (request *CloseCDBProxyRequest) {
+    request = &CloseCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "CloseCDBProxy")
+    
+    
+    return
+}
+
+func NewCloseCDBProxyResponse() (response *CloseCDBProxyResponse) {
+    response = &CloseCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseCDBProxy
+// 关闭数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) CloseCDBProxy(request *CloseCDBProxyRequest) (response *CloseCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewCloseCDBProxyRequest()
+    }
+    
+    response = NewCloseCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CloseCDBProxy
+// 关闭数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) CloseCDBProxyWithContext(ctx context.Context, request *CloseCDBProxyRequest) (response *CloseCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewCloseCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCloseCDBProxyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2784,6 +2892,62 @@ func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeCDBProxyRequest() (request *DescribeCDBProxyRequest) {
+    request = &DescribeCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCDBProxy")
+    
+    
+    return
+}
+
+func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
+    response = &DescribeCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCDBProxy
+// 查询数据库代理
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCDBProxyRequest()
+    }
+    
+    response = NewDescribeCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCDBProxy
+// 查询数据库代理
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloneListRequest() (request *DescribeCloneListRequest) {
     request = &DescribeCloneListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3974,6 +4138,62 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeLocalBinlogConfigRequest() (request *DescribeLocalBinlogConfigRequest) {
+    request = &DescribeLocalBinlogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeLocalBinlogConfig")
+    
+    
+    return
+}
+
+func NewDescribeLocalBinlogConfigResponse() (response *DescribeLocalBinlogConfigResponse) {
+    response = &DescribeLocalBinlogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLocalBinlogConfig
+// 该接口用于查询实例本地binlog保留策略。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) DescribeLocalBinlogConfig(request *DescribeLocalBinlogConfigRequest) (response *DescribeLocalBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLocalBinlogConfigRequest()
+    }
+    
+    response = NewDescribeLocalBinlogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeLocalBinlogConfig
+// 该接口用于查询实例本地binlog保留策略。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+func (c *Client) DescribeLocalBinlogConfigWithContext(ctx context.Context, request *DescribeLocalBinlogConfigRequest) (response *DescribeLocalBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLocalBinlogConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeLocalBinlogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRequest) {
     request = &DescribeParamTemplateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4134,6 +4354,122 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeProjectSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProxyConnectionPoolConfRequest() (request *DescribeProxyConnectionPoolConfRequest) {
+    request = &DescribeProxyConnectionPoolConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxyConnectionPoolConf")
+    
+    
+    return
+}
+
+func NewDescribeProxyConnectionPoolConfResponse() (response *DescribeProxyConnectionPoolConfResponse) {
+    response = &DescribeProxyConnectionPoolConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxyConnectionPoolConf
+// 获取数据库代理连接池相关规格配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProxyConnectionPoolConf(request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyConnectionPoolConfRequest()
+    }
+    
+    response = NewDescribeProxyConnectionPoolConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxyConnectionPoolConf
+// 获取数据库代理连接池相关规格配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProxyConnectionPoolConfWithContext(ctx context.Context, request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyConnectionPoolConfRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyConnectionPoolConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProxyCustomConfRequest() (request *DescribeProxyCustomConfRequest) {
+    request = &DescribeProxyCustomConfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxyCustomConf")
+    
+    
+    return
+}
+
+func NewDescribeProxyCustomConfResponse() (response *DescribeProxyCustomConfResponse) {
+    response = &DescribeProxyCustomConfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxyCustomConf
+// 查询代理规格配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProxyCustomConf(request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyCustomConfRequest()
+    }
+    
+    response = NewDescribeProxyCustomConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProxyCustomConf
+// 查询代理规格配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
+//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
+//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeProxyCustomConfWithContext(ctx context.Context, request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyCustomConfRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyCustomConfResponse()
     err = c.Send(request, response)
     return
 }
@@ -5904,6 +6240,214 @@ func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context,
     return
 }
 
+func NewModifyCDBProxyRequest() (request *ModifyCDBProxyRequest) {
+    request = &ModifyCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxy")
+    
+    
+    return
+}
+
+func NewModifyCDBProxyResponse() (response *ModifyCDBProxyResponse) {
+    response = &ModifyCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCDBProxy
+// 配置数据库代理读写分离
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxy(request *ModifyCDBProxyRequest) (response *ModifyCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyRequest()
+    }
+    
+    response = NewModifyCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCDBProxy
+// 配置数据库代理读写分离
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyWithContext(ctx context.Context, request *ModifyCDBProxyRequest) (response *ModifyCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCDBProxyConnectionPoolRequest() (request *ModifyCDBProxyConnectionPoolRequest) {
+    request = &ModifyCDBProxyConnectionPoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyConnectionPool")
+    
+    
+    return
+}
+
+func NewModifyCDBProxyConnectionPoolResponse() (response *ModifyCDBProxyConnectionPoolResponse) {
+    response = &ModifyCDBProxyConnectionPoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCDBProxyConnectionPool
+// 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyConnectionPool(request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyConnectionPoolRequest()
+    }
+    
+    response = NewModifyCDBProxyConnectionPoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCDBProxyConnectionPool
+// 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyConnectionPoolWithContext(ctx context.Context, request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyConnectionPoolRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCDBProxyConnectionPoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCDBProxyDescRequest() (request *ModifyCDBProxyDescRequest) {
+    request = &ModifyCDBProxyDescRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyDesc")
+    
+    
+    return
+}
+
+func NewModifyCDBProxyDescResponse() (response *ModifyCDBProxyDescResponse) {
+    response = &ModifyCDBProxyDescResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCDBProxyDesc
+// 修改数据库代理描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyDesc(request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyDescRequest()
+    }
+    
+    response = NewModifyCDBProxyDescResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCDBProxyDesc
+// 修改数据库代理描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyDescWithContext(ctx context.Context, request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyDescRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCDBProxyDescResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCDBProxyVipVPortRequest() (request *ModifyCDBProxyVipVPortRequest) {
+    request = &ModifyCDBProxyVipVPortRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyVipVPort")
+    
+    
+    return
+}
+
+func NewModifyCDBProxyVipVPortResponse() (response *ModifyCDBProxyVipVPortResponse) {
+    response = &ModifyCDBProxyVipVPortResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCDBProxyVipVPort
+// 修改数据库代理VIP或端口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyVipVPort(request *ModifyCDBProxyVipVPortRequest) (response *ModifyCDBProxyVipVPortResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyVipVPortRequest()
+    }
+    
+    response = NewModifyCDBProxyVipVPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCDBProxyVipVPort
+// 修改数据库代理VIP或端口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) ModifyCDBProxyVipVPortWithContext(ctx context.Context, request *ModifyCDBProxyVipVPortRequest) (response *ModifyCDBProxyVipVPortResponse, err error) {
+    if request == nil {
+        request = NewModifyCDBProxyVipVPortRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCDBProxyVipVPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6252,6 +6796,80 @@ func (c *Client) ModifyInstanceTagWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyInstanceTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLocalBinlogConfigRequest() (request *ModifyLocalBinlogConfigRequest) {
+    request = &ModifyLocalBinlogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyLocalBinlogConfig")
+    
+    
+    return
+}
+
+func NewModifyLocalBinlogConfigResponse() (response *ModifyLocalBinlogConfigResponse) {
+    response = &ModifyLocalBinlogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLocalBinlogConfig
+// 该接口用于修改实例本地binlog保留策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLocalBinlogConfigRequest()
+    }
+    
+    response = NewModifyLocalBinlogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLocalBinlogConfig
+// 该接口用于修改实例本地binlog保留策略。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_COSERROR = "InternalError.CosError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+func (c *Client) ModifyLocalBinlogConfigWithContext(ctx context.Context, request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLocalBinlogConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLocalBinlogConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -6738,6 +7356,64 @@ func (c *Client) ReleaseIsolatedDBInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewReloadBalanceProxyNodeRequest() (request *ReloadBalanceProxyNodeRequest) {
+    request = &ReloadBalanceProxyNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ReloadBalanceProxyNode")
+    
+    
+    return
+}
+
+func NewReloadBalanceProxyNodeResponse() (response *ReloadBalanceProxyNodeResponse) {
+    response = &ReloadBalanceProxyNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReloadBalanceProxyNode
+// 重新负载均衡数据库代理
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+func (c *Client) ReloadBalanceProxyNode(request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
+    if request == nil {
+        request = NewReloadBalanceProxyNodeRequest()
+    }
+    
+    response = NewReloadBalanceProxyNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ReloadBalanceProxyNode
+// 重新负载均衡数据库代理
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  OPERATIONDENIED_WRONGSTATUS = "OperationDenied.WrongStatus"
+func (c *Client) ReloadBalanceProxyNodeWithContext(ctx context.Context, request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
+    if request == nil {
+        request = NewReloadBalanceProxyNodeRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewReloadBalanceProxyNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDBInstanceRequest() (request *RenewDBInstanceRequest) {
     request = &RenewDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7160,6 +7836,66 @@ func (c *Client) StopRollbackWithContext(ctx context.Context, request *StopRollb
     return
 }
 
+func NewSwitchCDBProxyRequest() (request *SwitchCDBProxyRequest) {
+    request = &SwitchCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "SwitchCDBProxy")
+    
+    
+    return
+}
+
+func NewSwitchCDBProxyResponse() (response *SwitchCDBProxyResponse) {
+    response = &SwitchCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchCDBProxy
+// 昨晚数据库代理配置变更或则升级版本后手动发起立即切换
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) SwitchCDBProxy(request *SwitchCDBProxyRequest) (response *SwitchCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewSwitchCDBProxyRequest()
+    }
+    
+    response = NewSwitchCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SwitchCDBProxy
+// 昨晚数据库代理配置变更或则升级版本后手动发起立即切换
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  CDBERROR_TASKERROR = "CdbError.TaskError"
+//  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DESERROR = "InternalError.DesError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) SwitchCDBProxyWithContext(ctx context.Context, request *SwitchCDBProxyRequest) (response *SwitchCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewSwitchCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSwitchCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchDBInstanceMasterSlaveRequest() (request *SwitchDBInstanceMasterSlaveRequest) {
     request = &SwitchDBInstanceMasterSlaveRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7326,6 +8062,114 @@ func (c *Client) SwitchForUpgradeWithContext(ctx context.Context, request *Switc
     request.SetContext(ctx)
     
     response = NewSwitchForUpgradeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeCDBProxyRequest() (request *UpgradeCDBProxyRequest) {
+    request = &UpgradeCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "UpgradeCDBProxy")
+    
+    
+    return
+}
+
+func NewUpgradeCDBProxyResponse() (response *UpgradeCDBProxyResponse) {
+    response = &UpgradeCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeCDBProxy
+// 调整数据库代理配置
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpgradeCDBProxy(request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewUpgradeCDBProxyRequest()
+    }
+    
+    response = NewUpgradeCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpgradeCDBProxy
+// 调整数据库代理配置
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpgradeCDBProxyWithContext(ctx context.Context, request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewUpgradeCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpgradeCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeCDBProxyVersionRequest() (request *UpgradeCDBProxyVersionRequest) {
+    request = &UpgradeCDBProxyVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "UpgradeCDBProxyVersion")
+    
+    
+    return
+}
+
+func NewUpgradeCDBProxyVersionResponse() (response *UpgradeCDBProxyVersionResponse) {
+    response = &UpgradeCDBProxyVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeCDBProxyVersion
+// 升级数据库代理版本
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpgradeCDBProxyVersion(request *UpgradeCDBProxyVersionRequest) (response *UpgradeCDBProxyVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeCDBProxyVersionRequest()
+    }
+    
+    response = NewUpgradeCDBProxyVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpgradeCDBProxyVersion
+// 升级数据库代理版本
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) UpgradeCDBProxyVersionWithContext(ctx context.Context, request *UpgradeCDBProxyVersionRequest) (response *UpgradeCDBProxyVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeCDBProxyVersionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpgradeCDBProxyVersionResponse()
     err = c.Send(request, response)
     return
 }

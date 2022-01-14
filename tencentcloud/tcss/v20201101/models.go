@@ -7374,6 +7374,9 @@ type DescribeContainerSecEventSummaryResponse struct {
 		// 未处理文件篡改
 		UnhandledFileCnt *uint64 `json:"UnhandledFileCnt,omitempty" name:"UnhandledFileCnt"`
 
+		// 未处理木马事件
+		UnhandledVirusEventCnt *uint64 `json:"UnhandledVirusEventCnt,omitempty" name:"UnhandledVirusEventCnt"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -9676,6 +9679,7 @@ type DescribeVirusScanSettingResponse struct {
 		ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
 
 		// 一键检测的超时设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9736,6 +9740,7 @@ type DescribeVirusScanTaskStatusResponse struct {
 	// SCAN_FINISH：扫描完成， 
 	// SCAN_TIMEOUT：扫描超时
 	// SCAN_CANCELING: 取消中
+	// SCAN_CANCELED:已取消
 		Status *string `json:"Status,omitempty" name:"Status"`
 
 		// 扫描进度 I
@@ -11620,19 +11625,19 @@ type ModifyVirusScanSettingRequest struct {
 	// 是否开启定期扫描
 	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
 
-	// 检测周期每隔多少天
+	// 检测周期每隔多少天(1|3|7)
 	Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
 
 	// 扫描开始时间
 	BeginScanAt *string `json:"BeginScanAt,omitempty" name:"BeginScanAt"`
 
-	// 扫描全部路径
+	// 扫描全部路径(true:全选,false:自选)
 	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
 	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
 
-	// 超时时长
+	// 超时时长(5~24h)
 	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
 
 	// 扫描范围0容器1主机节点
@@ -11699,7 +11704,7 @@ func (r *ModifyVirusScanSettingResponse) FromJsonString(s string) error {
 type ModifyVirusScanTimeoutSettingRequest struct {
 	*tchttp.BaseRequest
 
-	// 超时时长单位小时
+	// 超时时长单位小时(5~24h)
 	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
 
 	// 设置类型0一键检测，1定时检测
@@ -12996,6 +13001,9 @@ type VirusInfo struct {
 	// BACKUP_FILE_NOT_FOUND:备份文件不存在
 	// CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 	// CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
+	// TIMEOUT: 超时
+	// TOO_MANY: 任务过多
+	// OFFLINE: 离线
 	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
 }
 

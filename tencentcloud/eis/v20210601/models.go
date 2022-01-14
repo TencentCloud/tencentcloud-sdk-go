@@ -370,6 +370,9 @@ type RuntimeDeployedInstanceMC struct {
 
 	// 应用实例部署更新时间
 	UpdatedAt *int64 `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 应用类型：0:NormalApp普通应用 1:TemplateApp模版应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
+	ProjectType *int64 `json:"ProjectType,omitempty" name:"ProjectType"`
 }
 
 type RuntimeMC struct {
@@ -406,4 +409,16 @@ type RuntimeMC struct {
 
 	// 正在运行的应用实例数量
 	RunningInstanceCount *int64 `json:"RunningInstanceCount,omitempty" name:"RunningInstanceCount"`
+
+	// 已使用cpu核数
+	CpuUsed *float64 `json:"CpuUsed,omitempty" name:"CpuUsed"`
+
+	// cpu核数上限
+	CpuLimit *float64 `json:"CpuLimit,omitempty" name:"CpuLimit"`
+
+	// 已使用内存 MB
+	MemoryUsed *float64 `json:"MemoryUsed,omitempty" name:"MemoryUsed"`
+
+	// 内存上限 MB
+	MemoryLimit *float64 `json:"MemoryLimit,omitempty" name:"MemoryLimit"`
 }

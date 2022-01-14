@@ -422,7 +422,7 @@ type Cluster struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyInfo *string `json:"HealthyInfo,omitempty" name:"HealthyInfo"`
 
-	// 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败
+	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 最大命名空间数量

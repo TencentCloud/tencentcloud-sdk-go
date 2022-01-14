@@ -7795,6 +7795,9 @@ type UpdateEKSClusterRequest struct {
 
 	// 标记是否是新的内外网。默认为false
 	ProxyLB *bool `json:"ProxyLB,omitempty" name:"ProxyLB"`
+
+	// 扩展参数。须是map[string]string 的json 格式。
+	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
 }
 
 func (r *UpdateEKSClusterRequest) ToJsonString() string {
@@ -7820,6 +7823,7 @@ func (r *UpdateEKSClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClearDnsServer")
 	delete(f, "NeedDeleteCbs")
 	delete(f, "ProxyLB")
+	delete(f, "ExtraParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEKSClusterRequest has unknown keys!", "")
 	}

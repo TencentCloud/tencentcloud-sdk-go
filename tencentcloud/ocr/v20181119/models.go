@@ -963,6 +963,12 @@ type DriverLicenseOCRResponse struct {
 		// 发证单位
 		IssuingAuthority *string `json:"IssuingAuthority,omitempty" name:"IssuingAuthority"`
 
+		// 状态（仅电子驾驶证支持返回该字段）
+		State *string `json:"State,omitempty" name:"State"`
+
+		// 累积记分（仅电子驾驶证支持返回该字段）
+		CumulativeScore *string `json:"CumulativeScore,omitempty" name:"CumulativeScore"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

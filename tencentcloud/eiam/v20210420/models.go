@@ -1116,7 +1116,7 @@ type DescribeApplicationResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
 
-		// 应用类型，即创建应用时所选择的应用模版类型。
+		// 应用类型，即创建应用时所选择的应用模板类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
 

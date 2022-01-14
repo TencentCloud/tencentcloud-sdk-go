@@ -1746,6 +1746,9 @@ type CreateWxCloudBaseRunServerDBClusterRequest struct {
 
 	// 微信appid
 	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// mysql内核版本，支持5.7,8.0
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
 }
 
 func (r *CreateWxCloudBaseRunServerDBClusterRequest) ToJsonString() string {
@@ -1763,6 +1766,7 @@ func (r *CreateWxCloudBaseRunServerDBClusterRequest) FromJsonString(s string) er
 	delete(f, "AccountPassword")
 	delete(f, "EnvId")
 	delete(f, "WxAppId")
+	delete(f, "DbVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWxCloudBaseRunServerDBClusterRequest has unknown keys!", "")
 	}
