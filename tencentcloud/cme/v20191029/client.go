@@ -331,12 +331,14 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ASPECTRATIO = "InvalidParameterValue.AspectRatio"
 //  INVALIDPARAMETERVALUE_CATEGORY = "InvalidParameterValue.Category"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_SWITCHERPROJECTINPUT = "InvalidParameterValue.SwitcherProjectInput"
 //  INVALIDPARAMETERVALUE_TRACKITEM = "InvalidParameterValue.TrackItem"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
@@ -374,12 +376,14 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ASPECTRATIO = "InvalidParameterValue.AspectRatio"
 //  INVALIDPARAMETERVALUE_CATEGORY = "InvalidParameterValue.Category"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_SWITCHERPROJECTINPUT = "InvalidParameterValue.SwitcherProjectInput"
 //  INVALIDPARAMETERVALUE_TRACKITEM = "InvalidParameterValue.TrackItem"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
@@ -939,6 +943,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  RESOURCENOTFOUND_PLATFORMNOTFOUND = "ResourceNotFound.PlatformNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
@@ -966,6 +971,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+//  RESOURCENOTFOUND_PLATFORMNOTFOUND = "ResourceNotFound.PlatformNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
     if request == nil {
@@ -2393,11 +2399,13 @@ func NewImportMaterialResponse() (response *ImportMaterialResponse) {
 // 将云点播媒资文件导入到多媒体创作引擎媒体资源库。支持导入媒体归属团队或者个人。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
@@ -2423,11 +2431,13 @@ func (c *Client) ImportMaterial(request *ImportMaterialRequest) (response *Impor
 // 将云点播媒资文件导入到多媒体创作引擎媒体资源库。支持导入媒体归属团队或者个人。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
@@ -2471,8 +2481,10 @@ func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) 
 // 将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
@@ -2497,8 +2509,10 @@ func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (res
 // 将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
@@ -2795,6 +2809,7 @@ func NewModifyTeamMemberResponse() (response *ModifyTeamMemberResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
+//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
 //  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
@@ -2816,6 +2831,7 @@ func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *M
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
+//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
 //  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
@@ -2855,6 +2871,7 @@ func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPreset
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
+//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
 //  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
@@ -2876,6 +2893,7 @@ func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetReq
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
+//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
 //  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"

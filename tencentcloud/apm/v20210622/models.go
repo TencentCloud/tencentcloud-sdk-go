@@ -20,6 +20,17 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type APMKVItem struct {
+
+	// Key值定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// Value值定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ApmAgentInfo struct {
 
 	// Agent下载地址
@@ -45,6 +56,28 @@ type ApmAgentInfo struct {
 	// 内网上报地址(Private Link上报地址)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateLinkCollectorURL *string `json:"PrivateLinkCollectorURL,omitempty" name:"PrivateLinkCollectorURL"`
+}
+
+type ApmField struct {
+
+	// 昨日同比指标值，已弃用，不建议使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareVal *string `json:"CompareVal,omitempty" name:"CompareVal"`
+
+	// Compare值结果数组，推荐使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareVals []*APMKVItem `json:"CompareVals,omitempty" name:"CompareVals"`
+
+	// 指标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+
+	// 指标所对应的单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 请求数
+	Key *string `json:"Key,omitempty" name:"Key"`
 }
 
 type ApmInstanceDetail struct {
@@ -134,6 +167,15 @@ type ApmInstanceDetail struct {
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicID *string `json:"LogTopicID,omitempty" name:"LogTopicID"`
+}
+
+type ApmMetricRecord struct {
+
+	// field数组
+	Fields []*ApmField `json:"Fields,omitempty" name:"Fields"`
+
+	// tag数组
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ApmTag struct {
@@ -329,4 +371,119 @@ func (r *DescribeApmInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMetricRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 每页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页起始点
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeMetricRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Metrics")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "Offset")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMetricRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMetricRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+
+	// 过滤方式（=, !=, in）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 过滤维度名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 过滤值，in过滤方式用逗号分割多个值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type OrderBy struct {
+
+	// 需要排序的字段
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 顺序排序/倒序排序
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type QueryMetricItem struct {
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 同比，已弃用，不建议使用
+	Compare *string `json:"Compare,omitempty" name:"Compare"`
+
+	// 同比，支持多种同比方式
+	Compares []*string `json:"Compares,omitempty" name:"Compares"`
 }

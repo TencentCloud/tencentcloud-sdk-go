@@ -23,7 +23,7 @@ import (
 type DescribeRegionsRequest struct {
 	*tchttp.BaseRequest
 
-	// 待查询产品的名称，例如cvm、vpc
+	// 待查询产品的名称，例如cvm
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
@@ -75,7 +75,7 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待查询产品的名称，例如cvm、vpc
+	// 待查询产品的名称，例如cvm
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 

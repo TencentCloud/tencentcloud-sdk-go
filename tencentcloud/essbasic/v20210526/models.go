@@ -735,7 +735,7 @@ type FlowInfo struct {
 	// 签署截止时间戳，超过有效签署时间则该签署流程失败
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
-	// 模版ID
+	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 合同类型：
@@ -828,7 +828,7 @@ type GetDownloadFlowUrlResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 进入合同（流程）下载确认页面链接
+		// 合同（流程）下载地址
 		DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

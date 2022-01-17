@@ -11426,7 +11426,7 @@ type DescribeVulInfoCvssResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Reference *string `json:"Reference,omitempty" name:"Reference"`
 
-		// CVSS信息，wiki:http://tapd.oa.com/Teneyes/markdown_wikis/view/#1010131751011792303
+		// CVSS信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		CVSS *string `json:"CVSS,omitempty" name:"CVSS"`
 

@@ -7854,7 +7854,7 @@ func NewSwitchCDBProxyResponse() (response *SwitchCDBProxyResponse) {
 }
 
 // SwitchCDBProxy
-// 昨晚数据库代理配置变更或则升级版本后手动发起立即切换
+// 数据库代理配置变更或则升级版本后手动发起立即切换
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -7875,7 +7875,7 @@ func (c *Client) SwitchCDBProxy(request *SwitchCDBProxyRequest) (response *Switc
 }
 
 // SwitchCDBProxy
-// 昨晚数据库代理配置变更或则升级版本后手动发起立即切换
+// 数据库代理配置变更或则升级版本后手动发起立即切换
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"

@@ -555,6 +555,15 @@ type CustomMetaInfo struct {
 	MetaDataPass *string `json:"MetaDataPass,omitempty" name:"MetaDataPass"`
 }
 
+type CustomServiceDefine struct {
+
+	// 自定义参数key
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义参数value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type DescribeClusterNodesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1041,6 +1050,21 @@ type Execution struct {
 	Args []*string `json:"Args,omitempty" name:"Args"`
 }
 
+type ExternalService struct {
+
+	// 共用组件类型，EMR/CUSTOM
+	ShareType *string `json:"ShareType,omitempty" name:"ShareType"`
+
+	// 自定义参数集合
+	CustomServiceDefineList []*CustomServiceDefine `json:"CustomServiceDefineList,omitempty" name:"CustomServiceDefineList"`
+
+	// 共用组件名
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 共用组件集群
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type HostVolumeContext struct {
 
 	// Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
@@ -1201,6 +1225,9 @@ type InquiryPriceCreateInstanceRequest struct {
 	// Hadoop-Presto
 	// Hadoop-Hbase
 	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
+
+	// 共用组件信息
+	ExternalService []*ExternalService `json:"ExternalService,omitempty" name:"ExternalService"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -1229,6 +1256,7 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MetaDBInfo")
 	delete(f, "ProductId")
 	delete(f, "SceneName")
+	delete(f, "ExternalService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}

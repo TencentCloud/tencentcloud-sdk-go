@@ -26,6 +26,9 @@ const (
 	// 创建录制任务失败。
 	FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
 
+	// 云点播用户无效。
+	FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+
 	// 直播录制功能暂未对使用腾讯云点播存储的平台开放。
 	FAILEDOPERATION_RECORDNOTSUPPORT = "FailedOperation.RecordNotSupport"
 
@@ -86,6 +89,9 @@ const (
 	// 导出目标不合法。
 	INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 
+	// 原始媒资信息不存在。
+	INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
+
 	// 转推输入流参数非法。
 	INVALIDPARAMETERVALUE_INPUT = "InvalidParameterValue.Input"
 
@@ -109,6 +115,9 @@ const (
 
 	// 名称字段长度超长，限制 30 个中文字符。
 	INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
+
+	// 非团队成员。
+	INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
 
 	// 分页偏移不合法。
 	INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
@@ -154,6 +163,9 @@ const (
 
 	// 输入流参数错误。
 	INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
+
+	// 导播台项目输入信息无效。
+	INVALIDPARAMETERVALUE_SWITCHERPROJECTINPUT = "InvalidParameterValue.SwitcherProjectInput"
 
 	// 任务 Id 无效。
 	INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
@@ -214,6 +226,9 @@ const (
 
 	// 平台不存在。
 	RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+
+	// 平台不存在。
+	RESOURCENOTFOUND_PLATFORMNOTFOUND = "ResourceNotFound.PlatformNotFound"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

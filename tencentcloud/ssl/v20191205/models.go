@@ -1114,6 +1114,9 @@ type DescribeCertificatesRequest struct {
 
 	// 是否筛选可续期证书 1筛选 0不筛选
 	Renew *int64 `json:"Renew,omitempty" name:"Renew"`
+
+	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+	FilterSource *string `json:"FilterSource,omitempty" name:"FilterSource"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -1138,6 +1141,7 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "Deployable")
 	delete(f, "Upload")
 	delete(f, "Renew")
+	delete(f, "FilterSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}

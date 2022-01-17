@@ -3948,6 +3948,55 @@ func (r *ModifyResourceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyRunSyncAssetRequest struct {
+	*tchttp.BaseRequest
+
+	// 0: 互联网防火墙开关，1：vpc 防火墙开关
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *ModifyRunSyncAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRunSyncAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRunSyncAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRunSyncAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0：同步成功，1：资产更新中，2：后台同步调用失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyRunSyncAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRunSyncAssetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifySecurityGroupAllRuleStatusRequest struct {
 	*tchttp.BaseRequest
 

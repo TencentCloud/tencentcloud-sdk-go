@@ -720,6 +720,170 @@ func (c *Client) CreatePacketFilterConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreatePortAclConfigRequest() (request *CreatePortAclConfigRequest) {
+    request = &CreatePortAclConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreatePortAclConfig")
+    
+    
+    return
+}
+
+func NewCreatePortAclConfigResponse() (response *CreatePortAclConfigResponse) {
+    response = &CreatePortAclConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePortAclConfig
+// 添加DDoS防护的端口acl策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePortAclConfig(request *CreatePortAclConfigRequest) (response *CreatePortAclConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePortAclConfigRequest()
+    }
+    
+    response = NewCreatePortAclConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePortAclConfig
+// 添加DDoS防护的端口acl策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePortAclConfigWithContext(ctx context.Context, request *CreatePortAclConfigRequest) (response *CreatePortAclConfigResponse, err error) {
+    if request == nil {
+        request = NewCreatePortAclConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreatePortAclConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePortAclConfigListRequest() (request *CreatePortAclConfigListRequest) {
+    request = &CreatePortAclConfigListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreatePortAclConfigList")
+    
+    
+    return
+}
+
+func NewCreatePortAclConfigListResponse() (response *CreatePortAclConfigListResponse) {
+    response = &CreatePortAclConfigListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePortAclConfigList
+// 批量添加DDoS防护的端口acl策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePortAclConfigList(request *CreatePortAclConfigListRequest) (response *CreatePortAclConfigListResponse, err error) {
+    if request == nil {
+        request = NewCreatePortAclConfigListRequest()
+    }
+    
+    response = NewCreatePortAclConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreatePortAclConfigList
+// 批量添加DDoS防护的端口acl策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePortAclConfigListWithContext(ctx context.Context, request *CreatePortAclConfigListRequest) (response *CreatePortAclConfigListResponse, err error) {
+    if request == nil {
+        request = NewCreatePortAclConfigListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreatePortAclConfigListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProtocolBlockConfigRequest() (request *CreateProtocolBlockConfigRequest) {
     request = &CreateProtocolBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

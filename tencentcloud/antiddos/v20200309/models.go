@@ -20,6 +20,31 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AclConfig struct {
+
+	// 协议类型, 可取值tcp, udp, all
+	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
+
+	// 目的端口起始，可取值范围0~65535
+	DPortStart *uint64 `json:"DPortStart,omitempty" name:"DPortStart"`
+
+	// 目的端口结束，可取值范围0~65535
+	DPortEnd *uint64 `json:"DPortEnd,omitempty" name:"DPortEnd"`
+
+	// 来源端口起始，可取值范围0~65535
+	SPortStart *uint64 `json:"SPortStart,omitempty" name:"SPortStart"`
+
+	// 来源端口结束，可取值范围0~65535
+	SPortEnd *uint64 `json:"SPortEnd,omitempty" name:"SPortEnd"`
+
+	// 动作，可取值：drop， transmit， forward
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 策略优先级，数字越小，级别越高，该规则越靠前匹配，取值1-1000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+}
+
 type AssociateDDoSEipAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -912,6 +937,106 @@ func (r *CreatePacketFilterConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePacketFilterConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePortAclConfigListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID列表
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 端口acl策略
+	AclConfig *AclConfig `json:"AclConfig,omitempty" name:"AclConfig"`
+}
+
+func (r *CreatePortAclConfigListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortAclConfigListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIdList")
+	delete(f, "AclConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePortAclConfigListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePortAclConfigListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePortAclConfigListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortAclConfigListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePortAclConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 端口acl策略
+	AclConfig *AclConfig `json:"AclConfig,omitempty" name:"AclConfig"`
+}
+
+func (r *CreatePortAclConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortAclConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AclConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePortAclConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePortAclConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePortAclConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePortAclConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

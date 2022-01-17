@@ -62,7 +62,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 }
 
 // DescribeRegions
-// 本接口(DescribeRegions)用于查询各个产品支持地域信息，当前只支持cvm。
+// 本接口(DescribeRegions)用于查询各个产品支持地域信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -78,7 +78,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 }
 
 // DescribeRegions
-// 本接口(DescribeRegions)用于查询各个产品支持地域信息，当前只支持cvm。
+// 本接口(DescribeRegions)用于查询各个产品支持地域信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -112,7 +112,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 }
 
 // DescribeZones
-// 本接口(DescribeZones)用于查询产品可用区信息，当前只支持cvm。
+// 本接口(DescribeZones)用于查询产品可用区信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -127,7 +127,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 }
 
 // DescribeZones
-// 本接口(DescribeZones)用于查询产品可用区信息，当前只支持cvm。
+// 本接口(DescribeZones)用于查询产品可用区信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -1122,7 +1122,7 @@ func NewDescribeAddrTemplateListResponse() (response *DescribeAddrTemplateListRe
 }
 
 // DescribeAddrTemplateList
-// 获取地址模版列表
+// 获取地址模板列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1138,7 +1138,7 @@ func (c *Client) DescribeAddrTemplateList(request *DescribeAddrTemplateListReque
 }
 
 // DescribeAddrTemplateList
-// 获取地址模版列表
+// 获取地址模板列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3824,6 +3824,60 @@ func (c *Client) ModifyResourceGroupWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyResourceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRunSyncAssetRequest() (request *ModifyRunSyncAssetRequest) {
+    request = &ModifyRunSyncAssetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyRunSyncAsset")
+    
+    
+    return
+}
+
+func NewModifyRunSyncAssetResponse() (response *ModifyRunSyncAssetResponse) {
+    response = &ModifyRunSyncAssetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRunSyncAsset
+// 同步资产-互联网&VPC（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyRunSyncAsset(request *ModifyRunSyncAssetRequest) (response *ModifyRunSyncAssetResponse, err error) {
+    if request == nil {
+        request = NewModifyRunSyncAssetRequest()
+    }
+    
+    response = NewModifyRunSyncAssetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyRunSyncAsset
+// 同步资产-互联网&VPC（新）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyRunSyncAssetWithContext(ctx context.Context, request *ModifyRunSyncAssetRequest) (response *ModifyRunSyncAssetResponse, err error) {
+    if request == nil {
+        request = NewModifyRunSyncAssetRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyRunSyncAssetResponse()
     err = c.Send(request, response)
     return
 }

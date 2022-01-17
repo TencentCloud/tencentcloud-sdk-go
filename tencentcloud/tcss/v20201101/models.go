@@ -13004,6 +13004,8 @@ type VirusInfo struct {
 	// TIMEOUT: 超时
 	// TOO_MANY: 任务过多
 	// OFFLINE: 离线
+	// INTERNAL: 服务内部错误
+	// VALIDATION: 参数非法
 	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
 }
 

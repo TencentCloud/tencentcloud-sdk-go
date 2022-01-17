@@ -3460,6 +3460,14 @@ type DescribeCDBProxyResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ConnectionPoolInfo *ConnectionPoolInfo `json:"ConnectionPoolInfo,omitempty" name:"ConnectionPoolInfo"`
 
+		// 代理数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 代理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProxyGroup []*ProxyGroup `json:"ProxyGroup,omitempty" name:"ProxyGroup"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -8357,6 +8365,29 @@ type PoolConf struct {
 	// 最小可保持连接阈值：单位（秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinPoolConnectionTimeOut *int64 `json:"MinPoolConnectionTimeOut,omitempty" name:"MinPoolConnectionTimeOut"`
+}
+
+type ProxyGroup struct {
+
+	// 代理基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseGroup *BaseGroupInfo `json:"BaseGroup,omitempty" name:"BaseGroup"`
+
+	// 代理地址信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address []*Address `json:"Address,omitempty" name:"Address"`
+
+	// 代理连接池信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionPoolInfo *ConnectionPoolInfo `json:"ConnectionPoolInfo,omitempty" name:"ConnectionPoolInfo"`
+
+	// 代理节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyNode []*ProxyNodeInfo `json:"ProxyNode,omitempty" name:"ProxyNode"`
+
+	// 代理路由信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RWInstInfo *RWInfo `json:"RWInstInfo,omitempty" name:"RWInstInfo"`
 }
 
 type ProxyNodeInfo struct {

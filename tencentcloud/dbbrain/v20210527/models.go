@@ -1275,7 +1275,7 @@ type DescribeMailProfileResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProfileList []*UserProfile `json:"ProfileList,omitempty" name:"ProfileList"`
 
-		// 邮件模版总数。
+		// 邮件配置总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 

@@ -581,8 +581,11 @@ type DescribeRoomInfoRequest struct {
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 房间号列表，最大不能超过10个
+	// 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
 	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds"`
+
+	// 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	StrRoomIds []*string `json:"StrRoomIds,omitempty" name:"StrRoomIds"`
 }
 
 func (r *DescribeRoomInfoRequest) ToJsonString() string {
@@ -599,6 +602,7 @@ func (r *DescribeRoomInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "RoomIds")
+	delete(f, "StrRoomIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomInfoRequest has unknown keys!", "")
 	}
@@ -971,6 +975,10 @@ type RoomUser struct {
 	// 房间里用户uin列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
+
+	// 字符串房间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
 }
 
 type ScanDetail struct {

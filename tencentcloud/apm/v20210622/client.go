@@ -199,3 +199,57 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeMetricRecordsRequest() (request *DescribeMetricRecordsRequest) {
+    request = &DescribeMetricRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeMetricRecords")
+    
+    
+    return
+}
+
+func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse) {
+    response = &DescribeMetricRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMetricRecords
+// 拉取通用指标列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricRecordsRequest()
+    }
+    
+    response = NewDescribeMetricRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeMetricRecords
+// 拉取通用指标列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+func (c *Client) DescribeMetricRecordsWithContext(ctx context.Context, request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMetricRecordsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeMetricRecordsResponse()
+    err = c.Send(request, response)
+    return
+}

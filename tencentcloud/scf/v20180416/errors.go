@@ -365,6 +365,12 @@ const (
 	// 规则不正确，Namespace为英文字母、数字、-_ 符号组成，长度30。
 	INVALIDPARAMETERVALUE_NAMESPACEINVALID = "InvalidParameterValue.NamespaceInvalid"
 
+	// NodeSpec 参数传入错误。
+	INVALIDPARAMETERVALUE_NODESPEC = "InvalidParameterValue.NodeSpec"
+
+	// NodeType 参数传入错误。
+	INVALIDPARAMETERVALUE_NODETYPE = "InvalidParameterValue.NodeType"
+
 	// 偏移量不合法。
 	INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 

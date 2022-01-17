@@ -2911,7 +2911,7 @@ type KeyRegexInfo struct {
 
 type KeyValueInfo struct {
 
-	// 需要配置键值或者元字段索引的字段
+	// 需要配置键值或者元字段索引的字段，元字段Key无需额外添加`__TAG__.`前缀，与上传日志时对应的字段Key一致即可，腾讯云控制台展示时将自动添加`__TAG__.`前缀
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 字段的索引描述信息
@@ -3428,7 +3428,7 @@ type ModifyIndexRequest struct {
 	// 默认不生效
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
-	// 索引规则，Rule和Effective两个必须有一个参数存在
+	// 索引规则
 	Rule *RuleInfo `json:"Rule,omitempty" name:"Rule"`
 }
 
@@ -3897,7 +3897,7 @@ type RuleTagInfo struct {
 	// 是否大小写敏感
 	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
 
-	// 标签索引配置中的字段信息
+	// 元字段索引配置中的字段信息
 	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
 }
 

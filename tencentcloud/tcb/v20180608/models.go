@@ -5337,6 +5337,10 @@ type EnvInfo struct {
 	// 自定义日志服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitempty" name:"CustomLogServices"`
+
+	// 环境类型：baas, run, hoting, weda
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 }
 
 type EstablishCloudBaseRunServerRequest struct {

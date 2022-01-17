@@ -1,3 +1,180 @@
+# Release v1.0.331
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 18 次发布
+
+发布时间：2022-01-17 08:02:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePortAclConfig](https://cloud.tencent.com/document/api/1021/68253)
+* [CreatePortAclConfigList](https://cloud.tencent.com/document/api/1021/68252)
+
+新增数据结构：
+
+* [AclConfig](https://cloud.tencent.com/document/api/1021/57582#AclConfig)
+
+
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 5 次发布
+
+发布时间：2022-01-17 08:02:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+新增数据结构：
+
+* [APMKVItem](https://cloud.tencent.com/document/api/1463/64927#APMKVItem)
+* [ApmField](https://cloud.tencent.com/document/api/1463/64927#ApmField)
+* [ApmMetricRecord](https://cloud.tencent.com/document/api/1463/64927#ApmMetricRecord)
+* [Filter](https://cloud.tencent.com/document/api/1463/64927#Filter)
+* [OrderBy](https://cloud.tencent.com/document/api/1463/64927#OrderBy)
+* [QueryMetricItem](https://cloud.tencent.com/document/api/1463/64927#QueryMetricItem)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 81 次发布
+
+发布时间：2022-01-17 08:04:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCDBProxy](https://cloud.tencent.com/document/api/236/68170)
+
+	* 新增出参：Count, ProxyGroup
+
+
+新增数据结构：
+
+* [ProxyGroup](https://cloud.tencent.com/document/api/236/15878#ProxyGroup)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 16 次发布
+
+发布时间：2022-01-17 08:04:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyRunSyncAsset](https://cloud.tencent.com/document/api/1132/68255)
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 26 次发布
+
+发布时间：2022-01-17 08:08:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
+
+	* 新增入参：ExternalService
+
+
+新增数据结构：
+
+* [CustomServiceDefine](https://cloud.tencent.com/document/api/589/33981#CustomServiceDefine)
+* [ExternalService](https://cloud.tencent.com/document/api/589/33981#ExternalService)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 17 次发布
+
+发布时间：2022-01-17 08:08:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoomInfo](https://cloud.tencent.com/document/api/607/54789)
+
+	* 新增入参：StrRoomIds
+
+	* <font color="#dd0000">**修改入参**：</font>RoomIds
+
+
+修改数据结构：
+
+* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
+
+	* 新增成员：StrRoomId
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 10 次发布
+
+发布时间：2022-01-17 08:12:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+
+	* 新增入参：FilterSource
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 80 次发布
+
+发布时间：2022-01-17 08:12:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：EnvType
+
+
+
+
 # Release v1.0.330
 
 ## API网关(apigateway) 版本：2018-08-08
