@@ -5727,6 +5727,7 @@ func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
 // 获取索引列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
     if request == nil {
@@ -5742,6 +5743,7 @@ func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response 
 // 获取索引列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
     if request == nil {
@@ -11485,6 +11487,7 @@ func NewOpenProVersionResponse() (response *OpenProVersionResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenProVersionResponse, err error) {
     if request == nil {
@@ -11510,6 +11513,7 @@ func (c *Client) OpenProVersion(request *OpenProVersionRequest) (response *OpenP
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) OpenProVersionWithContext(ctx context.Context, request *OpenProVersionRequest) (response *OpenProVersionResponse, err error) {
     if request == nil {

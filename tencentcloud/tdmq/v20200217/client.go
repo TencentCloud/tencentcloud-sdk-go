@@ -697,6 +697,7 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
@@ -714,6 +715,7 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
@@ -1887,6 +1889,7 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
     if request == nil {
@@ -1912,6 +1915,7 @@ func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (respons
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
     if request == nil {
@@ -1950,6 +1954,7 @@ func NewDeleteRocketMQClusterResponse() (response *DeleteRocketMQClusterResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (response *DeleteRocketMQClusterResponse, err error) {
     if request == nil {
         request = NewDeleteRocketMQClusterRequest()
@@ -1969,6 +1974,7 @@ func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteRocketMQClusterWithContext(ctx context.Context, request *DeleteRocketMQClusterRequest) (response *DeleteRocketMQClusterResponse, err error) {
     if request == nil {
         request = NewDeleteRocketMQClusterRequest()
@@ -2005,6 +2011,7 @@ func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
     if request == nil {
@@ -2024,6 +2031,7 @@ func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRocketMQGroupWithContext(ctx context.Context, request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
     if request == nil {
@@ -2173,6 +2181,7 @@ func NewDeleteRolesResponse() (response *DeleteRolesResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteRoles(request *DeleteRolesRequest) (response *DeleteRolesResponse, err error) {
     if request == nil {
@@ -2194,6 +2203,7 @@ func (c *Client) DeleteRoles(request *DeleteRolesRequest) (response *DeleteRoles
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteRolesWithContext(ctx context.Context, request *DeleteRolesRequest) (response *DeleteRolesResponse, err error) {
     if request == nil {
@@ -3722,6 +3732,7 @@ func NewDescribeRocketMQClusterResponse() (response *DescribeRocketMQClusterResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
@@ -3740,6 +3751,7 @@ func (c *Client) DescribeRocketMQCluster(request *DescribeRocketMQClusterRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"

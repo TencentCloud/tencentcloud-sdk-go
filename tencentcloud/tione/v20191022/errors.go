@@ -86,6 +86,9 @@ const (
 	// MPI分布式任务参数ti_mpi_num_of_processes_per_host不能超过GPU卡数。
 	INVALIDPARAMETERVALUE_MPIPROCESSESPERHOSTTOOMUCH = "InvalidParameterValue.MpiProcessesPerHostTooMuch"
 
+	// 存储库地址无效。
+	INVALIDPARAMETERVALUE_REPOSITORYURLINVALID = "InvalidParameterValue.RepositoryUrlInvalid"
+
 	// 子网不存在。
 	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 

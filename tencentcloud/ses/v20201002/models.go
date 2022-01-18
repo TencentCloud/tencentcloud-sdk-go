@@ -63,6 +63,9 @@ type BatchSendEmailRequest struct {
 
 	// 定时发送任务的必要参数
 	TimedParam *TimedEmailParam `json:"TimedParam,omitempty" name:"TimedParam"`
+
+	// 退订选项 1: 加入退订链接 0: 不加入退订链接
+	Unsubscribe *string `json:"Unsubscribe,omitempty" name:"Unsubscribe"`
 }
 
 func (r *BatchSendEmailRequest) ToJsonString() string {
@@ -87,6 +90,7 @@ func (r *BatchSendEmailRequest) FromJsonString(s string) error {
 	delete(f, "Attachments")
 	delete(f, "CycleParam")
 	delete(f, "TimedParam")
+	delete(f, "Unsubscribe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSendEmailRequest has unknown keys!", "")
 	}
@@ -277,6 +281,109 @@ func (r *CreateEmailTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEmailTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReceiverDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 邮箱
+	Emails []*string `json:"Emails,omitempty" name:"Emails"`
+}
+
+func (r *CreateReceiverDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReceiverId")
+	delete(f, "Emails")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReceiverDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReceiverDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateReceiverDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReceiverRequest struct {
+	*tchttp.BaseRequest
+
+	// 收件人列表名称
+	ReceiversName *string `json:"ReceiversName,omitempty" name:"ReceiversName"`
+
+	// 收件人列表描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+func (r *CreateReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReceiversName")
+	delete(f, "Desc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 收件人列表id，后续根据收件人列表id上传收件人地址
+		ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -969,6 +1076,161 @@ func (r *ListEmailTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListReceiversRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，整型，不超过100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 列表名称的关键字，模糊查询
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+}
+
+func (r *ListReceiversRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiversRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "KeyWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListReceiversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListReceiversResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据记录
+		Data []*ReceiverData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListReceiversResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiversResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSendTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，整型，从0开始，0代表跳过0行
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *ListSendTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSendTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "ReceiverId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSendTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSendTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 数据记录
+		Data []*SendTaskData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListSendTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSendTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReceiverData struct {
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 收件人列表名称
+	ReceiversName *string `json:"ReceiversName,omitempty" name:"ReceiversName"`
+
+	// 收件人地址总数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 收件人列表描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 列表状态(1 待上传 2 上传中 3 上传完成)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiversStatus *uint64 `json:"ReceiversStatus,omitempty" name:"ReceiversStatus"`
+
+	// 创建时间,如:2021-09-28 16:40:35
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type SendEmailRequest struct {
 	*tchttp.BaseRequest
 
@@ -995,7 +1257,7 @@ type SendEmailRequest struct {
 	// 需要发送附件时，填写附件相关参数。
 	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
 
-	// 是否加入退订链接
+	// 退订选项 1: 加入退订链接 0: 不加入退订链接
 	Unsubscribe *string `json:"Unsubscribe,omitempty" name:"Unsubscribe"`
 }
 
@@ -1112,6 +1374,61 @@ type SendEmailStatus struct {
 
 	// 用户是否举报该发送者
 	UserComplainted *bool `json:"UserComplainted,omitempty" name:"UserComplainted"`
+}
+
+type SendTaskData struct {
+
+	// 任务id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 发信地址
+	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
+
+	// 收件人列表Id
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
+	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 任务类型 1 即时 2 定时 3 周期
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务请求发信数量
+	RequestCount *uint64 `json:"RequestCount,omitempty" name:"RequestCount"`
+
+	// 已经发送数量
+	SendCount *uint64 `json:"SendCount,omitempty" name:"SendCount"`
+
+	// 缓存数量
+	CacheCount *uint64 `json:"CacheCount,omitempty" name:"CacheCount"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 邮件主题
+	Subject *string `json:"Subject,omitempty" name:"Subject"`
+
+	// 模板和模板数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 周期任务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleParam *CycleEmailParam `json:"CycleParam,omitempty" name:"CycleParam"`
+
+	// 定时任务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimedParam *TimedEmailParam `json:"TimedParam,omitempty" name:"TimedParam"`
+
+	// 任务异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 收件人列表名称
+	ReceiversName *string `json:"ReceiversName,omitempty" name:"ReceiversName"`
 }
 
 type Simple struct {

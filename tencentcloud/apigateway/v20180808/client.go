@@ -2128,6 +2128,7 @@ func NewDescribeApiAppBindApisStatusResponse() (response *DescribeApiAppBindApis
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
     if request == nil {
         request = NewDescribeApiAppBindApisStatusRequest()
@@ -2143,6 +2144,7 @@ func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisSta
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeApiAppBindApisStatusWithContext(ctx context.Context, request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
     if request == nil {
         request = NewDescribeApiAppBindApisStatusRequest()
@@ -4473,6 +4475,7 @@ func NewModifyExclusiveInstanceResponse() (response *ModifyExclusiveInstanceResp
 //  FAILEDOPERATION_APIBINDENVIRONMEN = "FailedOperation.ApiBindEnvironmen"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDREQUESTPARAMETERS = "InvalidParameterValue.InvalidRequestParameters"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4499,6 +4502,7 @@ func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest
 //  FAILEDOPERATION_APIBINDENVIRONMEN = "FailedOperation.ApiBindEnvironmen"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDREQUESTPARAMETERS = "InvalidParameterValue.InvalidRequestParameters"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4610,6 +4614,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  MISSINGPARAMETER_BACKENDSPECIFICPARAM = "MissingParameter.BackendSpecificParam"
+//  MISSINGPARAMETER_PLUGINCONFIG = "MissingParameter.PluginConfig"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
@@ -4650,6 +4655,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  MISSINGPARAMETER_BACKENDSPECIFICPARAM = "MissingParameter.BackendSpecificParam"
+//  MISSINGPARAMETER_PLUGINCONFIG = "MissingParameter.PluginConfig"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
@@ -5107,14 +5113,7 @@ func NewUnBindIPStrategyResponse() (response *UnBindIPStrategyResponse) {
 // 本接口（UnBindIPStrategy）用于服务解绑IP策略。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
-//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
-//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
-//  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
 func (c *Client) UnBindIPStrategy(request *UnBindIPStrategyRequest) (response *UnBindIPStrategyResponse, err error) {
     if request == nil {
         request = NewUnBindIPStrategyRequest()
@@ -5129,14 +5128,7 @@ func (c *Client) UnBindIPStrategy(request *UnBindIPStrategyRequest) (response *U
 // 本接口（UnBindIPStrategy）用于服务解绑IP策略。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
-//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
-//  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
-//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
-//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
-//  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
 func (c *Client) UnBindIPStrategyWithContext(ctx context.Context, request *UnBindIPStrategyRequest) (response *UnBindIPStrategyResponse, err error) {
     if request == nil {
         request = NewUnBindIPStrategyRequest()

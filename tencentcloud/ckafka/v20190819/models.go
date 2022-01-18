@@ -1900,17 +1900,20 @@ type DescribeInstancesDetailRequest struct {
 	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
-	// 偏移量，不填默认为0
+	// 偏移量，不填默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认10，最大值20
+	// 返回数量，不填则默认10，最大值20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 匹配标签key值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 过滤器
+	// 过滤器。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 按照实例ID过滤
+	InstanceIds *string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstancesDetailRequest) ToJsonString() string {
@@ -1932,6 +1935,7 @@ func (r *DescribeInstancesDetailRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "TagKey")
 	delete(f, "Filters")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesDetailRequest has unknown keys!", "")
 	}
@@ -1981,6 +1985,9 @@ type DescribeInstancesRequest struct {
 
 	// 已废弃。匹配标签key值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 私有网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -2001,6 +2008,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TagKey")
+	delete(f, "VpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -2967,6 +2975,18 @@ type InstanceDetail struct {
 	// 计划升级配置时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebalanceTime *string `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
+
+	// 实例当前partition数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionNumber *uint64 `json:"PartitionNumber,omitempty" name:"PartitionNumber"`
+
+	// 公网带宽类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetworkChargeType *string `json:"PublicNetworkChargeType,omitempty" name:"PublicNetworkChargeType"`
+
+	// 公网带宽值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
 }
 
 type InstanceDetailResponse struct {

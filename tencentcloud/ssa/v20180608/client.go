@@ -745,9 +745,7 @@ func NewDescribeSocAlertListResponse() (response *DescribeSocAlertListResponse) 
 // 拉取告警列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (response *DescribeSocAlertListResponse, err error) {
     if request == nil {
         request = NewDescribeSocAlertListRequest()
@@ -762,9 +760,7 @@ func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (res
 // 拉取告警列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeSocAlertListWithContext(ctx context.Context, request *DescribeSocAlertListRequest) (response *DescribeSocAlertListResponse, err error) {
     if request == nil {
         request = NewDescribeSocAlertListRequest()

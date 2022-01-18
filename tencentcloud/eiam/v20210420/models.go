@@ -1607,6 +1607,10 @@ type DescribeUserInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SecondaryOrgNodeIdList []*string `json:"SecondaryOrgNodeIdList,omitempty" name:"SecondaryOrgNodeIdList"`
 
+		// 是否管理员标志，0为否、1为是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AdminFlag *int64 `json:"AdminFlag,omitempty" name:"AdminFlag"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

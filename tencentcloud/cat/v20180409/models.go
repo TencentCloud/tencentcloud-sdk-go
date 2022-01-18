@@ -1251,6 +1251,9 @@ type DescribeDetailedSingleProbeDataRequest struct {
 
 	// 错误类型
 	ErrorTypes []*string `json:"ErrorTypes,omitempty" name:"ErrorTypes"`
+
+	// 城市
+	City []*string `json:"City,omitempty" name:"City"`
 }
 
 func (r *DescribeDetailedSingleProbeDataRequest) ToJsonString() string {
@@ -1277,6 +1280,7 @@ func (r *DescribeDetailedSingleProbeDataRequest) FromJsonString(s string) error 
 	delete(f, "Operators")
 	delete(f, "Districts")
 	delete(f, "ErrorTypes")
+	delete(f, "City")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailedSingleProbeDataRequest has unknown keys!", "")
 	}

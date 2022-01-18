@@ -26,8 +26,14 @@ const (
 	// 未检测到人脸。
 	FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
 
+	// 人脸检测失败。
+	FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
+
 	// 人脸出框，无法使用。
 	FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
+
+	// 人脸配准失败。
+	FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
 
 	// 人脸因太小被过滤，建议人脸分辨率不小于34*34。
 	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"

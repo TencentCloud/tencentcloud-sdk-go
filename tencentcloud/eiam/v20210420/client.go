@@ -765,6 +765,7 @@ func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
 // 批量删除当前节点下的用户。如果出现个别用户删除错误，将不影响其余被勾选用户被删除的操作，同时提示未被删除的用户名称/用户ID。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
@@ -781,6 +782,7 @@ func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsers
 // 批量删除当前节点下的用户。如果出现个别用户删除错误，将不影响其余被勾选用户被删除的操作，同时提示未被删除的用户名称/用户ID。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
@@ -2129,6 +2131,7 @@ func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
     if request == nil {
@@ -2146,6 +2149,7 @@ func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
     if request == nil {

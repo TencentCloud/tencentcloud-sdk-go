@@ -623,6 +623,7 @@ func NewCreateDBResponse() (response *CreateDBResponse) {
 // 本接口（CreateDB）用于创建数据库。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
@@ -652,6 +653,7 @@ func (c *Client) CreateDB(request *CreateDBRequest) (response *CreateDBResponse,
 // 本接口（CreateDB）用于创建数据库。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"

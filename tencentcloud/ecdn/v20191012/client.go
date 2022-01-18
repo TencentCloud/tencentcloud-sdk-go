@@ -64,6 +64,10 @@ func NewAddEcdnDomainResponse() (response *AddEcdnDomainResponse) {
 // AddEcdnDomain
 // 本接口（AddEcdnDomain）用于创建加速域名。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41123"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -102,6 +106,10 @@ func (c *Client) AddEcdnDomain(request *AddEcdnDomainRequest) (response *AddEcdn
 
 // AddEcdnDomain
 // 本接口（AddEcdnDomain）用于创建加速域名。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41123"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -224,6 +232,10 @@ func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
 // DeleteEcdnDomain
 // 本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/570/42471"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -250,6 +262,10 @@ func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *D
 
 // DeleteEcdnDomain
 // 本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/570/42471"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -296,6 +312,10 @@ func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
 // DescribeDomains
 // 本接口（DescribeDomains）用于查询CDN域名基本信息，包括项目id，状态，业务类型，创建时间，更新时间等。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41118"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
@@ -318,6 +338,10 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
 
 // DescribeDomains
 // 本接口（DescribeDomains）用于查询CDN域名基本信息，包括项目id，状态，业务类型，创建时间，更新时间等。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41118"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -360,6 +384,10 @@ func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse
 // DescribeDomainsConfig
 // 本接口（DescribeDomainsConfig）用于查询CDN加速域名详细配置信息。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41117"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -385,6 +413,10 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
 
 // DescribeDomainsConfig
 // 本接口（DescribeDomainsConfig）用于查询CDN加速域名详细配置信息。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41117"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -622,6 +654,7 @@ func NewDescribeEcdnStatisticsResponse() (response *DescribeEcdnStatisticsRespon
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INVALIDPARAMETER_ECDNINVALIDPARAMINTERVAL = "InvalidParameter.EcdnInvalidParamInterval"
 //  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 //  INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
@@ -683,6 +716,7 @@ func (c *Client) DescribeEcdnStatistics(request *DescribeEcdnStatisticsRequest) 
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INVALIDPARAMETER_ECDNINVALIDPARAMINTERVAL = "InvalidParameter.EcdnInvalidParamInterval"
 //  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 //  INVALIDPARAMETER_ECDNSTATINVALIDDATE = "InvalidParameter.EcdnStatInvalidDate"
@@ -818,6 +852,10 @@ func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
 // DescribePurgeQuota
 // 查询刷新接口的用量配额。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41956"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
@@ -840,6 +878,10 @@ func (c *Client) DescribePurgeQuota(request *DescribePurgeQuotaRequest) (respons
 
 // DescribePurgeQuota
 // 查询刷新接口的用量配额。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41956"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -882,6 +924,10 @@ func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
 // DescribePurgeTasks
 // DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37873"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
@@ -903,6 +949,10 @@ func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (respons
 
 // DescribePurgeTasks
 // DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37873"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
@@ -944,6 +994,10 @@ func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
 // PurgePathCache
 // PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="	https://cloud.tencent.com/document/api/570/42475"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
@@ -973,6 +1027,10 @@ func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *Purge
 
 // PurgePathCache
 // PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="	https://cloud.tencent.com/document/api/570/42475"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -1022,6 +1080,10 @@ func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
 // PurgeUrlsCache
 // PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37870"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -1052,6 +1114,10 @@ func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *Purge
 
 // PurgeUrlsCache
 // PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/37870"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -1102,6 +1168,10 @@ func NewStartEcdnDomainResponse() (response *StartEcdnDomainResponse) {
 // StartEcdnDomain
 // 本接口（StartEcdnDomain）用于启用加速域名，待启用域名必须处于已下线状态。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/product/228/41121"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -1127,6 +1197,10 @@ func (c *Client) StartEcdnDomain(request *StartEcdnDomainRequest) (response *Sta
 
 // StartEcdnDomain
 // 本接口（StartEcdnDomain）用于启用加速域名，待启用域名必须处于已下线状态。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/product/228/41121"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -1172,6 +1246,10 @@ func NewStopEcdnDomainResponse() (response *StopEcdnDomainResponse) {
 // StopEcdnDomain
 // 本接口（StopCdnDomain）用于停止加速域名，待停用加速域名必须处于已上线或部署中状态。
 //
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/product/228/41120"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
@@ -1198,6 +1276,10 @@ func (c *Client) StopEcdnDomain(request *StopEcdnDomainRequest) (response *StopE
 
 // StopEcdnDomain
 // 本接口（StopCdnDomain）用于停止加速域名，待停用加速域名必须处于已上线或部署中状态。
+//
+// 
+//
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/product/228/41120"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"

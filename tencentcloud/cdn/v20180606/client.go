@@ -2008,6 +2008,7 @@ func NewDescribeEventLogDataResponse() (response *DescribeEventLogDataResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) DescribeEventLogData(request *DescribeEventLogDataRequest) (response *DescribeEventLogDataResponse, err error) {
     if request == nil {
         request = NewDescribeEventLogDataRequest()
@@ -2023,6 +2024,7 @@ func (c *Client) DescribeEventLogData(request *DescribeEventLogDataRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) DescribeEventLogDataWithContext(ctx context.Context, request *DescribeEventLogDataRequest) (response *DescribeEventLogDataResponse, err error) {
     if request == nil {
         request = NewDescribeEventLogDataRequest()
@@ -2908,6 +2910,7 @@ func NewDescribeScdnBotDataResponse() (response *DescribeScdnBotDataResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) DescribeScdnBotData(request *DescribeScdnBotDataRequest) (response *DescribeScdnBotDataResponse, err error) {
     if request == nil {
         request = NewDescribeScdnBotDataRequest()
@@ -2931,6 +2934,7 @@ func (c *Client) DescribeScdnBotData(request *DescribeScdnBotDataRequest) (respo
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) DescribeScdnBotDataWithContext(ctx context.Context, request *DescribeScdnBotDataRequest) (response *DescribeScdnBotDataResponse, err error) {
     if request == nil {
         request = NewDescribeScdnBotDataRequest()
@@ -3773,6 +3777,7 @@ func NewDuplicateDomainConfigResponse() (response *DuplicateDomainConfigResponse
 //  RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.CdnHostIsOwnedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISTOAPPLYHOST = "UnauthorizedOperation.CdnHostIsToApplyHost"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
@@ -3819,6 +3824,7 @@ func (c *Client) DuplicateDomainConfig(request *DuplicateDomainConfigRequest) (r
 //  RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.CdnHostIsOwnedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISTOAPPLYHOST = "UnauthorizedOperation.CdnHostIsToApplyHost"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
@@ -4518,6 +4524,7 @@ func NewListScdnTopBotDataResponse() (response *ListScdnTopBotDataResponse) {
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
 //  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) ListScdnTopBotData(request *ListScdnTopBotDataRequest) (response *ListScdnTopBotDataResponse, err error) {
     if request == nil {
         request = NewListScdnTopBotDataRequest()
@@ -4537,6 +4544,7 @@ func (c *Client) ListScdnTopBotData(request *ListScdnTopBotDataRequest) (respons
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
 //  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) ListScdnTopBotDataWithContext(ctx context.Context, request *ListScdnTopBotDataRequest) (response *ListScdnTopBotDataResponse, err error) {
     if request == nil {
         request = NewListScdnTopBotDataRequest()
@@ -4631,6 +4639,7 @@ func NewListTopCcDataResponse() (response *ListTopCcDataResponse) {
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ListTopCcData(request *ListTopCcDataRequest) (response *ListTopCcDataResponse, err error) {
     if request == nil {
@@ -4650,6 +4659,7 @@ func (c *Client) ListTopCcData(request *ListTopCcDataRequest) (response *ListTop
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ListTopCcDataWithContext(ctx context.Context, request *ListTopCcDataRequest) (response *ListTopCcDataResponse, err error) {
     if request == nil {
@@ -5005,6 +5015,7 @@ func NewListTopWafDataResponse() (response *ListTopWafDataResponse) {
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) ListTopWafData(request *ListTopWafDataRequest) (response *ListTopWafDataResponse, err error) {
     if request == nil {
         request = NewListTopWafDataRequest()
@@ -5033,6 +5044,7 @@ func (c *Client) ListTopWafData(request *ListTopWafDataRequest) (response *ListT
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  UNAUTHORIZEDOPERATION_CDNACCOUNTUNAUTHORIZED = "UnauthorizedOperation.CdnAccountUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) ListTopWafDataWithContext(ctx context.Context, request *ListTopWafDataRequest) (response *ListTopWafDataResponse, err error) {
     if request == nil {
         request = NewListTopWafDataRequest()

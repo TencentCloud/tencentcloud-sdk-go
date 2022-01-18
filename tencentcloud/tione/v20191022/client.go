@@ -72,6 +72,7 @@ func NewCreateCodeRepositoryResponse() (response *CreateCodeRepositoryResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 //  INVALIDPARAMETERVALUE_KMSKEYNOTFOUND = "InvalidParameterValue.KmsKeyNotFound"
+//  INVALIDPARAMETERVALUE_REPOSITORYURLINVALID = "InvalidParameterValue.RepositoryUrlInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -96,6 +97,7 @@ func (c *Client) CreateCodeRepository(request *CreateCodeRepositoryRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 //  INVALIDPARAMETERVALUE_KMSKEYNOTFOUND = "InvalidParameterValue.KmsKeyNotFound"
+//  INVALIDPARAMETERVALUE_REPOSITORYURLINVALID = "InvalidParameterValue.RepositoryUrlInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -327,6 +329,7 @@ func NewCreateTrainingJobResponse() (response *CreateTrainingJobResponse) {
 // 创建训练任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -358,6 +361,7 @@ func (c *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (response 
 // 创建训练任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

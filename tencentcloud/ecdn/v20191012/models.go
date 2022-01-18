@@ -902,6 +902,10 @@ type DomainBriefInfo struct {
 
 	// 域名锁定状态，normal、global，分别表示未被锁定、全球锁定。
 	Readonly *string `json:"Readonly,omitempty" name:"Readonly"`
+
+	// 域名标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
 }
 
 type DomainData struct {
@@ -1241,7 +1245,7 @@ type PurgePathCacheResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		// 刷新任务Id。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1311,7 +1315,7 @@ type PurgeUrlsCacheResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 刷新任务Id，前十位为提交任务时的UTC时间。
+		// 刷新任务Id。
 		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

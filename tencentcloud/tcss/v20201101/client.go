@@ -7569,9 +7569,7 @@ func NewDescribeVirusScanTimeoutSettingResponse() (response *DescribeVirusScanTi
 // 运行时文件扫描超时设置查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeVirusScanTimeoutSetting(request *DescribeVirusScanTimeoutSettingRequest) (response *DescribeVirusScanTimeoutSettingResponse, err error) {
     if request == nil {
         request = NewDescribeVirusScanTimeoutSettingRequest()
@@ -7586,9 +7584,7 @@ func (c *Client) DescribeVirusScanTimeoutSetting(request *DescribeVirusScanTimeo
 // 运行时文件扫描超时设置查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeVirusScanTimeoutSettingWithContext(ctx context.Context, request *DescribeVirusScanTimeoutSettingRequest) (response *DescribeVirusScanTimeoutSettingResponse, err error) {
     if request == nil {
         request = NewDescribeVirusScanTimeoutSettingRequest()

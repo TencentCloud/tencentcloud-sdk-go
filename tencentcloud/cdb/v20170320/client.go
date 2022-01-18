@@ -902,6 +902,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 //  CDBERROR = "CdbError"
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -929,6 +930,7 @@ func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response 
 //  CDBERROR = "CdbError"
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -2913,11 +2915,7 @@ func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
 // 查询数据库代理
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  OPERATIONDENIED = "OperationDenied"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
     if request == nil {
         request = NewDescribeCDBProxyRequest()
@@ -2932,11 +2930,7 @@ func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *D
 // 查询数据库代理
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  OPERATIONDENIED = "OperationDenied"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
     if request == nil {
         request = NewDescribeCDBProxyRequest()
@@ -3255,6 +3249,7 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
 // 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
@@ -3271,6 +3266,7 @@ func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) 
 // 查询实例基本信息（实例 ID ，实例名称，是否开通加密 ）
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) DescribeDBInstanceInfoWithContext(ctx context.Context, request *DescribeDBInstanceInfoRequest) (response *DescribeDBInstanceInfoResponse, err error) {
@@ -3355,6 +3351,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
@@ -3384,6 +3381,7 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
@@ -4437,12 +4435,7 @@ func NewDescribeProxyCustomConfResponse() (response *DescribeProxyCustomConfResp
 // 查询代理规格配置
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
-//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
-//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeProxyCustomConf(request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
     if request == nil {
         request = NewDescribeProxyCustomConfRequest()
@@ -4457,12 +4450,7 @@ func (c *Client) DescribeProxyCustomConf(request *DescribeProxyCustomConfRequest
 // 查询代理规格配置
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_DFWERROR = "InternalError.DfwError"
-//  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
-//  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeProxyCustomConfWithContext(ctx context.Context, request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
     if request == nil {
         request = NewDescribeProxyCustomConfRequest()
@@ -6689,8 +6677,10 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
@@ -6711,8 +6701,10 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 func (c *Client) ModifyInstanceParamWithContext(ctx context.Context, request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
@@ -6821,20 +6813,7 @@ func NewModifyLocalBinlogConfigResponse() (response *ModifyLocalBinlogConfigResp
 // 该接口用于修改实例本地binlog保留策略。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR = "CdbError"
-//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
-//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
-//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
-//  CDBERROR_TASKERROR = "CdbError.TaskError"
-//  INTERNALERROR_COSERROR = "InternalError.CosError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_TAGERROR = "InternalError.TagError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
-//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
     if request == nil {
         request = NewModifyLocalBinlogConfigRequest()
@@ -6849,20 +6828,7 @@ func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest
 // 该接口用于修改实例本地binlog保留策略。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR = "CdbError"
-//  CDBERROR_BACKUPERROR = "CdbError.BackupError"
-//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
-//  CDBERROR_IMPORTERROR = "CdbError.ImportError"
-//  CDBERROR_TASKERROR = "CdbError.TaskError"
-//  INTERNALERROR_COSERROR = "InternalError.CosError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_TAGERROR = "InternalError.TagError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
-//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyLocalBinlogConfigWithContext(ctx context.Context, request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
     if request == nil {
         request = NewModifyLocalBinlogConfigRequest()
@@ -7637,6 +7603,7 @@ func NewStartReplicationResponse() (response *StartReplicationResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) StartReplication(request *StartReplicationRequest) (response *StartReplicationResponse, err error) {
     if request == nil {
         request = NewStartReplicationRequest()
@@ -7655,6 +7622,7 @@ func (c *Client) StartReplication(request *StartReplicationRequest) (response *S
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) StartReplicationWithContext(ctx context.Context, request *StartReplicationRequest) (response *StartReplicationResponse, err error) {
     if request == nil {
         request = NewStartReplicationRequest()
@@ -7746,6 +7714,7 @@ func NewStopReplicationResponse() (response *StopReplicationResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) StopReplication(request *StopReplicationRequest) (response *StopReplicationResponse, err error) {
     if request == nil {
         request = NewStopReplicationRequest()
@@ -7765,6 +7734,7 @@ func (c *Client) StopReplication(request *StopReplicationRequest) (response *Sto
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  OPERATIONDENIED_INSTANCETASKRUNNING = "OperationDenied.InstanceTaskRunning"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) StopReplicationWithContext(ctx context.Context, request *StopReplicationRequest) (response *StopReplicationResponse, err error) {
     if request == nil {
         request = NewStopReplicationRequest()

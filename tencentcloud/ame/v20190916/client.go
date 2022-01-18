@@ -44,6 +44,66 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateKTVRobotRequest() (request *CreateKTVRobotRequest) {
+    request = &CreateKTVRobotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "CreateKTVRobot")
+    
+    
+    return
+}
+
+func NewCreateKTVRobotResponse() (response *CreateKTVRobotResponse) {
+    response = &CreateKTVRobotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateKTVRobot
+// 创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateKTVRobot(request *CreateKTVRobotRequest) (response *CreateKTVRobotResponse, err error) {
+    if request == nil {
+        request = NewCreateKTVRobotRequest()
+    }
+    
+    response = NewCreateKTVRobotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateKTVRobot
+// 创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateKTVRobotWithContext(ctx context.Context, request *CreateKTVRobotRequest) (response *CreateKTVRobotResponse, err error) {
+    if request == nil {
+        request = NewCreateKTVRobotRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateKTVRobotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuthInfoRequest() (request *DescribeAuthInfoRequest) {
     request = &DescribeAuthInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -544,6 +604,66 @@ func (c *Client) DescribeKTVPlaylistsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeKTVRobotsRequest() (request *DescribeKTVRobotsRequest) {
+    request = &DescribeKTVRobotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVRobots")
+    
+    
+    return
+}
+
+func NewDescribeKTVRobotsResponse() (response *DescribeKTVRobotsResponse) {
+    response = &DescribeKTVRobotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVRobots
+// 查询机器人列表，支持 Id、状态等过滤条件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVRobots(request *DescribeKTVRobotsRequest) (response *DescribeKTVRobotsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVRobotsRequest()
+    }
+    
+    response = NewDescribeKTVRobotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVRobots
+// 查询机器人列表，支持 Id、状态等过滤条件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVRobotsWithContext(ctx context.Context, request *DescribeKTVRobotsRequest) (response *DescribeKTVRobotsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVRobotsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVRobotsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -960,6 +1080,66 @@ func (c *Client) DescribeStationsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDestroyKTVRobotRequest() (request *DestroyKTVRobotRequest) {
+    request = &DestroyKTVRobotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DestroyKTVRobot")
+    
+    
+    return
+}
+
+func NewDestroyKTVRobotResponse() (response *DestroyKTVRobotResponse) {
+    response = &DestroyKTVRobotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyKTVRobot
+// 销毁机器人，机器人退出 RTC 房间。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DestroyKTVRobot(request *DestroyKTVRobotRequest) (response *DestroyKTVRobotResponse, err error) {
+    if request == nil {
+        request = NewDestroyKTVRobotRequest()
+    }
+    
+    response = NewDestroyKTVRobotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DestroyKTVRobot
+// 销毁机器人，机器人退出 RTC 房间。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DestroyKTVRobotWithContext(ctx context.Context, request *DestroyKTVRobotRequest) (response *DestroyKTVRobotResponse, err error) {
+    if request == nil {
+        request = NewDestroyKTVRobotRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDestroyKTVRobotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMusicOnShelvesRequest() (request *ModifyMusicOnShelvesRequest) {
     request = &ModifyMusicOnShelvesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1194,6 +1374,66 @@ func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchKTVMusicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncKTVRobotCommandRequest() (request *SyncKTVRobotCommandRequest) {
+    request = &SyncKTVRobotCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "SyncKTVRobotCommand")
+    
+    
+    return
+}
+
+func NewSyncKTVRobotCommandResponse() (response *SyncKTVRobotCommandResponse) {
+    response = &SyncKTVRobotCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncKTVRobotCommand
+// 下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncKTVRobotCommand(request *SyncKTVRobotCommandRequest) (response *SyncKTVRobotCommandResponse, err error) {
+    if request == nil {
+        request = NewSyncKTVRobotCommandRequest()
+    }
+    
+    response = NewSyncKTVRobotCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SyncKTVRobotCommand
+// 下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) SyncKTVRobotCommandWithContext(ctx context.Context, request *SyncKTVRobotCommandRequest) (response *SyncKTVRobotCommandResponse, err error) {
+    if request == nil {
+        request = NewSyncKTVRobotCommandRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSyncKTVRobotCommandResponse()
     err = c.Send(request, response)
     return
 }

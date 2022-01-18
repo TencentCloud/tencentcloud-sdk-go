@@ -1301,6 +1301,7 @@ func NewDescribeDBPerformanceResponse() (response *DescribeDBPerformanceResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_FETCHMETRICDATAFAILED = "InternalError.FetchMetricDataFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
@@ -1325,6 +1326,7 @@ func (c *Client) DescribeDBPerformance(request *DescribeDBPerformanceRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_FETCHMETRICDATAFAILED = "InternalError.FetchMetricDataFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
@@ -1429,6 +1431,7 @@ func NewDescribeDBResourceUsageResponse() (response *DescribeDBResourceUsageResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_FETCHMETRICDATAFAILED = "InternalError.FetchMetricDataFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
@@ -1453,6 +1456,7 @@ func (c *Client) DescribeDBResourceUsage(request *DescribeDBResourceUsageRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INTERNALERROR_FETCHMETRICDATAFAILED = "InternalError.FetchMetricDataFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"

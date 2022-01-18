@@ -2040,6 +2040,59 @@ func (r *DescribeBindSceneDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeChannelLiveStreamURLRequest struct {
+	*tchttp.BaseRequest
+
+	// 设备唯一标识，必填参数
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 通道唯一标识（接口升级字段为必填），必填参数
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeChannelLiveStreamURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelLiveStreamURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelLiveStreamURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeChannelLiveStreamURLResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 设备实时流地址列表
+		Data *DescribeDeviceStreamsData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeChannelLiveStreamURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelLiveStreamURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeChannelLocalRecordURLRequest struct {
 	*tchttp.BaseRequest
 
@@ -2051,6 +2104,9 @@ type DescribeChannelLocalRecordURLRequest struct {
 
 	// 录像文件Id，通过获取本地录像返回
 	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// UNIX 时间戳，30天内，URL失效时间，如180s无人观看此流则URL提前失效
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
@@ -2074,6 +2130,7 @@ func (r *DescribeChannelLocalRecordURLRequest) FromJsonString(s string) error {
 	delete(f, "DeviceId")
 	delete(f, "ChannelId")
 	delete(f, "RecordId")
+	delete(f, "ExpireTime")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	if len(f) > 0 {

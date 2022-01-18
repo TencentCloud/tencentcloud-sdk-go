@@ -165,8 +165,6 @@ func NewBindRsResponse() (response *BindRsResponse) {
 // 绑定黑石EIP
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindRs(request *BindRsRequest) (response *BindRsResponse, err error) {
     if request == nil {
@@ -182,8 +180,6 @@ func (c *Client) BindRs(request *BindRsRequest) (response *BindRsResponse, err e
 // 绑定黑石EIP
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindRsWithContext(ctx context.Context, request *BindRsRequest) (response *BindRsResponse, err error) {
     if request == nil {

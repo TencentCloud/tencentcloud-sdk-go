@@ -3912,6 +3912,9 @@ type KillMasterGroupRequest struct {
 	//     c.数字0-9
 	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
 	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 单AZ实例节点信息
+	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
 }
 
 func (r *KillMasterGroupRequest) ToJsonString() string {
@@ -3928,6 +3931,7 @@ func (r *KillMasterGroupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Password")
+	delete(f, "ShardIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillMasterGroupRequest has unknown keys!", "")
 	}

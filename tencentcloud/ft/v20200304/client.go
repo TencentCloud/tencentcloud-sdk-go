@@ -234,6 +234,8 @@ func NewFaceCartoonPicResponse() (response *FaceCartoonPicResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
+//  FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
+//  FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
@@ -271,6 +273,8 @@ func (c *Client) FaceCartoonPic(request *FaceCartoonPicRequest) (response *FaceC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
+//  FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
+//  FAILEDOPERATION_FACESHAPEFAILED = "FailedOperation.FaceShapeFailed"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
@@ -334,6 +338,7 @@ func NewMorphFaceResponse() (response *MorphFaceResponse) {
 //  FAILEDOPERATION_JOBCONFLICT = "FailedOperation.JobConflict"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
@@ -367,6 +372,7 @@ func (c *Client) MorphFace(request *MorphFaceRequest) (response *MorphFaceRespon
 //  FAILEDOPERATION_JOBCONFLICT = "FailedOperation.JobConflict"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"

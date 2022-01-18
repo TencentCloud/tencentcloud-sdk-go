@@ -412,6 +412,36 @@ type CertIdInsL7Rules struct {
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
 }
 
+type ConnectLimitConfig struct {
+
+	// 基于源IP+目的IP的每秒新建数限制
+	SdNewLimit *uint64 `json:"SdNewLimit,omitempty" name:"SdNewLimit"`
+
+	// 基于目的IP的每秒新建数限制
+	DstNewLimit *uint64 `json:"DstNewLimit,omitempty" name:"DstNewLimit"`
+
+	// 基于源IP+目的IP的并发连接控制
+	SdConnLimit *uint64 `json:"SdConnLimit,omitempty" name:"SdConnLimit"`
+
+	// 基于目的IP+目的端口的并发连接控制
+	DstConnLimit *uint64 `json:"DstConnLimit,omitempty" name:"DstConnLimit"`
+
+	// 基于连接抑制触发阈值，取值范围[0,4294967295]
+	BadConnThreshold *uint64 `json:"BadConnThreshold,omitempty" name:"BadConnThreshold"`
+
+	// 异常连接检测条件，空连接防护开关，，取值范围[0,1]
+	NullConnEnable *uint64 `json:"NullConnEnable,omitempty" name:"NullConnEnable"`
+
+	// 异常连接检测条件，连接超时，，取值范围[0,65535]
+	ConnTimeout *uint64 `json:"ConnTimeout,omitempty" name:"ConnTimeout"`
+
+	// 异常连接检测条件，syn占比ack百分比，，取值范围[0,100]
+	SynRate *uint64 `json:"SynRate,omitempty" name:"SynRate"`
+
+	// 异常连接检测条件，syn阈值，取值范围[0,100]
+	SynLimit *uint64 `json:"SynLimit,omitempty" name:"SynLimit"`
+}
+
 type CreateBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
@@ -635,6 +665,56 @@ func (r *CreateDDoSBlackWhiteIpListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSConnectLimitRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 连接抑制配置
+	ConnectLimitConfig *ConnectLimitConfig `json:"ConnectLimitConfig,omitempty" name:"ConnectLimitConfig"`
+}
+
+func (r *CreateDDoSConnectLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDDoSConnectLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ConnectLimitConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDDoSConnectLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDDoSConnectLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDDoSConnectLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDDoSConnectLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

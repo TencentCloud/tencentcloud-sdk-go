@@ -883,6 +883,7 @@ func NewDescribeWordItemsResponse() (response *DescribeWordItemsResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
     if request == nil {
         request = NewDescribeWordItemsRequest()
@@ -903,6 +904,7 @@ func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response 
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) DescribeWordItemsWithContext(ctx context.Context, request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
     if request == nil {
         request = NewDescribeWordItemsRequest()

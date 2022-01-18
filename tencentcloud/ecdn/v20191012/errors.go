@@ -38,6 +38,9 @@ const (
 	// 系统错误，请联系腾讯云工程师进一步排查。
 	INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 
+	// 后端服务错误,请稍后重试 。
+	INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+
 	// 标签键不存在。
 	INVALIDPARAMETER_ECDNCAMTAGKEYNOTEXIST = "InvalidParameter.EcdnCamTagKeyNotExist"
 

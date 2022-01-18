@@ -5195,6 +5195,7 @@ func NewDescribeGroupReleaseResponse() (response *DescribeGroupReleaseResponse) 
 // 查询部署组相关的发布信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) DescribeGroupRelease(request *DescribeGroupReleaseRequest) (response *DescribeGroupReleaseResponse, err error) {
     if request == nil {
@@ -5210,6 +5211,7 @@ func (c *Client) DescribeGroupRelease(request *DescribeGroupReleaseRequest) (res
 // 查询部署组相关的发布信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) DescribeGroupReleaseWithContext(ctx context.Context, request *DescribeGroupReleaseRequest) (response *DescribeGroupReleaseResponse, err error) {
     if request == nil {
@@ -6775,6 +6777,7 @@ func NewDescribeServerlessGroupsResponse() (response *DescribeServerlessGroupsRe
 // 查询Serverless部署组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
 //  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
@@ -6793,6 +6796,7 @@ func (c *Client) DescribeServerlessGroups(request *DescribeServerlessGroupsReque
 // 查询Serverless部署组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
 //  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"

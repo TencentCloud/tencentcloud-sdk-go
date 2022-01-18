@@ -272,6 +272,9 @@ const (
 	// 请求参数RefText包含OOV词汇，请使用指定发音或联系我们处理。
 	INVALIDPARAMETERVALUE_REFTEXTOOV = "InvalidParameterValue.RefTextOOV"
 
+	// 请检查参考文本中是否包含大量多音字，可通过发音描述块指定标准发音解决。
+	INVALIDPARAMETERVALUE_REFTEXTPOLYPHONICLIMITEXCEEDED = "InvalidParameterValue.RefTextPolyphonicLimitExceeded"
+
 	// 输入文本为空。
 	INVALIDPARAMETERVALUE_REFTXTEMPTY = "InvalidParameterValue.RefTxtEmpty"
 

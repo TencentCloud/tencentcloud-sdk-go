@@ -56,6 +56,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// AccessKey已经达到上限。
+	OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+
 	// 不允许手动更新具有自动轮换功能的凭据。
 	OPERATIONDENIED_AUTOROTATEDRESOURCE = "OperationDenied.AutoRotatedResource"
 

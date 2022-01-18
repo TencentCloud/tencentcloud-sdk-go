@@ -6332,6 +6332,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 资源标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+	Unschedulable *int64 `json:"Unschedulable,omitempty" name:"Unschedulable"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -6358,6 +6361,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "OsCustomizeType")
 	delete(f, "ExtraArgs")
 	delete(f, "Tags")
+	delete(f, "Unschedulable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}

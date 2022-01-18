@@ -985,11 +985,7 @@ func NewGetTransformationResponse() (response *GetTransformationResponse) {
 // 用于获取转换器详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
-//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
-//  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) GetTransformation(request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     if request == nil {
         request = NewGetTransformationRequest()
@@ -1004,11 +1000,7 @@ func (c *Client) GetTransformation(request *GetTransformationRequest) (response 
 // 用于获取转换器详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
-//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
-//  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) GetTransformationWithContext(ctx context.Context, request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     if request == nil {
         request = NewGetTransformationRequest()

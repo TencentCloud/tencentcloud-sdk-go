@@ -17,8 +17,14 @@ package v20210701
 const (
 	// 此产品的特有错误码
 
+	// 请求响应超时。
+	INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+
 	// 创建apm资源失败。
 	INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
+
+	// 底层集群创建失败。
+	INTERNALERROR_CREATEEKSCLUSTERERROR = "InternalError.CreateEksClusterError"
 
 	// 创建服务失败。
 	INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
@@ -31,6 +37,9 @@ const (
 
 	// 查询实例信息失败。
 	INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+
+	// 重启失败。
+	INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 
 	// 版本号格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
@@ -49,6 +58,9 @@ const (
 
 	// 非 JAVA 应用不支持链路追踪特性。
 	INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
+
+	// 版本必须小写。
+	INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 
 	// 版本的路由流量不为0。
 	INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"

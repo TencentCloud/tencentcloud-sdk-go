@@ -570,6 +570,7 @@ func NewDescribeInvocationTasksResponse() (response *DescribeInvocationTasksResp
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOCATIONID = "InvalidParameterValue.InvalidInvocationId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOCATIONTASKID = "InvalidParameterValue.InvalidInvocationTaskId"
 //  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
@@ -595,6 +596,7 @@ func (c *Client) DescribeInvocationTasks(request *DescribeInvocationTasksRequest
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOCATIONID = "InvalidParameterValue.InvalidInvocationId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOCATIONTASKID = "InvalidParameterValue.InvalidInvocationTaskId"
 //  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
@@ -701,6 +703,7 @@ func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeInvokerRecordsRequest()
@@ -717,6 +720,7 @@ func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 func (c *Client) DescribeInvokerRecordsWithContext(ctx context.Context, request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeInvokerRecordsRequest()

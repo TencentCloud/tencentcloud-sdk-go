@@ -80,7 +80,7 @@ type CreateOrganizationMemberRequest struct {
 	// 名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 关系策略
+	// 关系策略  取值：Financial
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
 
 	// 关系权限
@@ -97,6 +97,12 @@ type CreateOrganizationMemberRequest struct {
 
 	// 重试创建传记录ID
 	RecordId *int64 `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 代付者Uin
+	PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
+
+	// 管理身份
+	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitempty" name:"IdentityRoleID"`
 }
 
 func (r *CreateOrganizationMemberRequest) ToJsonString() string {
@@ -118,6 +124,8 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 	delete(f, "AccountName")
 	delete(f, "Remark")
 	delete(f, "RecordId")
+	delete(f, "PayUin")
+	delete(f, "IdentityRoleID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationMemberRequest has unknown keys!", "")
 	}
@@ -127,6 +135,10 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 type CreateOrganizationMemberResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 成员Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uin *int64 `json:"Uin,omitempty" name:"Uin"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -302,6 +314,17 @@ func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MemberIdentity struct {
+
+	// 身份ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 身份名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityAliasName *string `json:"IdentityAliasName,omitempty" name:"IdentityAliasName"`
+}
+
 type OrgMember struct {
 
 	// 成员Uin
@@ -351,6 +374,18 @@ type OrgMember struct {
 	// 是否允许成员退出。允许：Allow，不允许：Denied。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
+
+	// 代付者Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
+
+	// 代付者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 管理身份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgIdentity []*MemberIdentity `json:"OrgIdentity,omitempty" name:"OrgIdentity"`
 }
 
 type OrgPermission struct {

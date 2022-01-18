@@ -5012,6 +5012,64 @@ type Price struct {
 	BandwidthPrice *ItemPrice `json:"BandwidthPrice,omitempty" name:"BandwidthPrice"`
 }
 
+type ProgramFpgaImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例的ID信息。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// FPGA镜像文件的COS URL地址。
+	FPGAUrl *string `json:"FPGAUrl,omitempty" name:"FPGAUrl"`
+
+	// 实例上FPGA卡的DBDF号，不填默认烧录FPGA镜像到实例所拥有的所有FPGA卡。
+	DBDFs []*string `json:"DBDFs,omitempty" name:"DBDFs"`
+
+	// 试运行，不会执行实际的烧录动作，默认为False。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *ProgramFpgaImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProgramFpgaImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FPGAUrl")
+	delete(f, "DBDFs")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProgramFpgaImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProgramFpgaImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ProgramFpgaImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProgramFpgaImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PurchaseReservedInstancesOfferingRequest struct {
 	*tchttp.BaseRequest
 

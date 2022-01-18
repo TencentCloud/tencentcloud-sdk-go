@@ -32,6 +32,9 @@ const (
 	// 实例安全组信息清除失败。
 	FAILEDOPERATION_CLEARINSTANCEINFOFAILED = "FailedOperation.ClearInstanceInfoFailed"
 
+	// 提交工作流失败。
+	FAILEDOPERATION_COMMITFLOWERROR = "FailedOperation.CommitFlowError"
+
 	// 解绑安全组失败。
 	FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
 

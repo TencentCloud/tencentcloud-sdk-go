@@ -152,6 +152,9 @@ const (
 	// 文件路径不合法。
 	INVALIDPARAMETER_INVALIDFILEPATH = "InvalidParameter.InvalidFilePath"
 
+	// 图片不合法。
+	INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
+
 	// 图片ID不合法。
 	INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
 
@@ -169,6 +172,9 @@ const (
 
 	// MediaLabel无效。
 	INVALIDPARAMETER_INVALIDMEDIALABEL = "InvalidParameter.InvalidMediaLabel"
+
+	// MediaLang无效。
+	INVALIDPARAMETER_INVALIDMEDIALANG = "InvalidParameter.InvalidMediaLang"
 
 	// 媒体名称非法。
 	INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"

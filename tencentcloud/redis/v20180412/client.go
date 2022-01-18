@@ -190,7 +190,7 @@ func NewChangeReplicaToMasterResponse() (response *ChangeReplicaToMasterResponse
 }
 
 // ChangeReplicaToMaster
-// 该接口仅支持多AZ实例副本组提主
+// 该接口仅支持多AZ实例副本组提主和单AZ副本提主
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -214,7 +214,7 @@ func (c *Client) ChangeReplicaToMaster(request *ChangeReplicaToMasterRequest) (r
 }
 
 // ChangeReplicaToMaster
-// 该接口仅支持多AZ实例副本组提主
+// 该接口仅支持多AZ实例副本组提主和单AZ副本提主
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -691,6 +691,7 @@ func NewDescribeAutoBackupConfigResponse() (response *DescribeAutoBackupConfigRe
 // 获取备份配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -710,6 +711,7 @@ func (c *Client) DescribeAutoBackupConfig(request *DescribeAutoBackupConfigReque
 // 获取备份配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -3149,6 +3151,7 @@ func NewManualBackupInstanceResponse() (response *ManualBackupInstanceResponse) 
 // 手动备份Redis实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMMITFLOWERROR = "FailedOperation.CommitFlowError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -3172,6 +3175,7 @@ func (c *Client) ManualBackupInstance(request *ManualBackupInstanceRequest) (res
 // 手动备份Redis实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMMITFLOWERROR = "FailedOperation.CommitFlowError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

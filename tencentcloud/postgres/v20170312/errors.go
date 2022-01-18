@@ -68,6 +68,9 @@ const (
 	// 资源解绑项目失败。
 	FAILEDOPERATION_DELETERESOURCEPROJECTTAGERROR = "FailedOperation.DeleteResourceProjectTagError"
 
+	// 资源解绑标签失败。
+	FAILEDOPERATION_DELETERESOURCESTOTAGERROR = "FailedOperation.DeleteResourcesToTagError"
+
 	// ES访问失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_ESCONNECTERROR = "FailedOperation.ESConnectError"
 

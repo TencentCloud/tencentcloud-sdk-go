@@ -322,6 +322,122 @@ func (c *Client) CreateEmailTemplateWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateReceiverRequest() (request *CreateReceiverRequest) {
+    request = &CreateReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "CreateReceiver")
+    
+    
+    return
+}
+
+func NewCreateReceiverResponse() (response *CreateReceiverResponse) {
+    response = &CreateReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReceiver
+// 创建收件人列表，收件人列表是发送批量邮件的目标邮件地址列表。创建列表后，需要上传收件人邮箱地址。之后创建发送任务，关联列表，便可以实现批量发送邮件的功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_RECEIVERDESCILLEGAL = "InvalidParameterValue.ReceiverDescIllegal"
+//  INVALIDPARAMETERVALUE_RECEIVERNAMEILLEGAL = "InvalidParameterValue.ReceiverNameIllegal"
+//  INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = "InvalidParameterValue.RepeatReceiverName"
+//  LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = "LimitExceeded.ExceedReceiverLimit"
+func (c *Client) CreateReceiver(request *CreateReceiverRequest) (response *CreateReceiverResponse, err error) {
+    if request == nil {
+        request = NewCreateReceiverRequest()
+    }
+    
+    response = NewCreateReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateReceiver
+// 创建收件人列表，收件人列表是发送批量邮件的目标邮件地址列表。创建列表后，需要上传收件人邮箱地址。之后创建发送任务，关联列表，便可以实现批量发送邮件的功能
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_RECEIVERDESCILLEGAL = "InvalidParameterValue.ReceiverDescIllegal"
+//  INVALIDPARAMETERVALUE_RECEIVERNAMEILLEGAL = "InvalidParameterValue.ReceiverNameIllegal"
+//  INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = "InvalidParameterValue.RepeatReceiverName"
+//  LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = "LimitExceeded.ExceedReceiverLimit"
+func (c *Client) CreateReceiverWithContext(ctx context.Context, request *CreateReceiverRequest) (response *CreateReceiverResponse, err error) {
+    if request == nil {
+        request = NewCreateReceiverRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateReceiverDetailRequest() (request *CreateReceiverDetailRequest) {
+    request = &CreateReceiverDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "CreateReceiverDetail")
+    
+    
+    return
+}
+
+func NewCreateReceiverDetailResponse() (response *CreateReceiverDetailResponse) {
+    response = &CreateReceiverDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReceiverDetail
+// 在创建完收件人列表后，向这个收件人列表中批量增加收件人邮箱地址，一次最大支持10W，异步完成处理。收件人列表只可以上传一次，不可追加上传。数据量比较大的时候，上传可能需要一点时间，可以通过查询收件人列表了解上传状态和上传数量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = "LimitExceeded.ExceedReceiverDetailLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
+//  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+//  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
+func (c *Client) CreateReceiverDetail(request *CreateReceiverDetailRequest) (response *CreateReceiverDetailResponse, err error) {
+    if request == nil {
+        request = NewCreateReceiverDetailRequest()
+    }
+    
+    response = NewCreateReceiverDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateReceiverDetail
+// 在创建完收件人列表后，向这个收件人列表中批量增加收件人邮箱地址，一次最大支持10W，异步完成处理。收件人列表只可以上传一次，不可追加上传。数据量比较大的时候，上传可能需要一点时间，可以通过查询收件人列表了解上传状态和上传数量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = "LimitExceeded.ExceedReceiverDetailLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
+//  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+//  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
+func (c *Client) CreateReceiverDetailWithContext(ctx context.Context, request *CreateReceiverDetailRequest) (response *CreateReceiverDetailResponse, err error) {
+    if request == nil {
+        request = NewCreateReceiverDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateReceiverDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBlackListRequest() (request *DeleteBlackListRequest) {
     request = &DeleteBlackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1084,6 +1200,104 @@ func (c *Client) ListEmailTemplatesWithContext(ctx context.Context, request *Lis
     request.SetContext(ctx)
     
     response = NewListEmailTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListReceiversRequest() (request *ListReceiversRequest) {
+    request = &ListReceiversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "ListReceivers")
+    
+    
+    return
+}
+
+func NewListReceiversResponse() (response *ListReceiversResponse) {
+    response = &ListReceiversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListReceivers
+// 根据条件查询收件人列表，支持分页，模糊查询，状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListReceivers(request *ListReceiversRequest) (response *ListReceiversResponse, err error) {
+    if request == nil {
+        request = NewListReceiversRequest()
+    }
+    
+    response = NewListReceiversResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListReceivers
+// 根据条件查询收件人列表，支持分页，模糊查询，状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListReceiversWithContext(ctx context.Context, request *ListReceiversRequest) (response *ListReceiversResponse, err error) {
+    if request == nil {
+        request = NewListReceiversRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListReceiversResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSendTasksRequest() (request *ListSendTasksRequest) {
+    request = &ListSendTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "ListSendTasks")
+    
+    
+    return
+}
+
+func NewListSendTasksResponse() (response *ListSendTasksResponse) {
+    response = &ListSendTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListSendTasks
+// 分页查询批量发送邮件任务，包含即时发送任务，定时发送任务，周期重复发送任务，查询发送情况，包括请求数量，已发数量，缓存数量，任务状态等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+func (c *Client) ListSendTasks(request *ListSendTasksRequest) (response *ListSendTasksResponse, err error) {
+    if request == nil {
+        request = NewListSendTasksRequest()
+    }
+    
+    response = NewListSendTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ListSendTasks
+// 分页查询批量发送邮件任务，包含即时发送任务，定时发送任务，周期重复发送任务，查询发送情况，包括请求数量，已发数量，缓存数量，任务状态等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+func (c *Client) ListSendTasksWithContext(ctx context.Context, request *ListSendTasksRequest) (response *ListSendTasksResponse, err error) {
+    if request == nil {
+        request = NewListSendTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewListSendTasksResponse()
     err = c.Send(request, response)
     return
 }

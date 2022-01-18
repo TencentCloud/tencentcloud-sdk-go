@@ -416,6 +416,88 @@ func (c *Client) CreateDDoSBlackWhiteIpListWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateDDoSConnectLimitRequest() (request *CreateDDoSConnectLimitRequest) {
+    request = &CreateDDoSConnectLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateDDoSConnectLimit")
+    
+    
+    return
+}
+
+func NewCreateDDoSConnectLimitResponse() (response *CreateDDoSConnectLimitResponse) {
+    response = &CreateDDoSConnectLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDDoSConnectLimit
+// 配置DDoS连接抑制选项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSConnectLimit(request *CreateDDoSConnectLimitRequest) (response *CreateDDoSConnectLimitResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSConnectLimitRequest()
+    }
+    
+    response = NewCreateDDoSConnectLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDDoSConnectLimit
+// 配置DDoS连接抑制选项
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDDoSConnectLimitWithContext(ctx context.Context, request *CreateDDoSConnectLimitRequest) (response *CreateDDoSConnectLimitResponse, err error) {
+    if request == nil {
+        request = NewCreateDDoSConnectLimitRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDDoSConnectLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDDoSGeoIPBlockConfigRequest() (request *CreateDDoSGeoIPBlockConfigRequest) {
     request = &CreateDDoSGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
