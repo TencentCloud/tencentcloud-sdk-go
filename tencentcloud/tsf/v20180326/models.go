@@ -4197,6 +4197,9 @@ type DeployContainerGroupRequest struct {
 
 	// 数据卷挂载点信息，list
 	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitempty" name:"VolumeMountInfoList"`
+
+	// 是否清除数据卷信息，默认false
+	VolumeClean *bool `json:"VolumeClean,omitempty" name:"VolumeClean"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -4246,6 +4249,7 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "VolumeMountInfos")
 	delete(f, "VolumeInfoList")
 	delete(f, "VolumeMountInfoList")
+	delete(f, "VolumeClean")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}

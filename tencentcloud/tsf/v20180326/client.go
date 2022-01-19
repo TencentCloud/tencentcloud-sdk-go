@@ -3054,7 +3054,7 @@ func NewDeployContainerGroupResponse() (response *DeployContainerGroupResponse) 
 }
 
 // DeployContainerGroup
-// 部署容器应用
+// 部署容器应用-更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
@@ -3097,7 +3097,7 @@ func (c *Client) DeployContainerGroup(request *DeployContainerGroupRequest) (res
 }
 
 // DeployContainerGroup
-// 部署容器应用
+// 部署容器应用-更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"

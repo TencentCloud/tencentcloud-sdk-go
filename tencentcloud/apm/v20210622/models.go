@@ -402,6 +402,9 @@ type DescribeMetricRecordsRequest struct {
 
 	// 结束时间
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 业务名称（默认值：taw）
+	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
 }
 
 func (r *DescribeMetricRecordsRequest) ToJsonString() string {
@@ -425,6 +428,7 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "Offset")
 	delete(f, "EndTime")
+	delete(f, "BusinessName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricRecordsRequest has unknown keys!", "")
 	}

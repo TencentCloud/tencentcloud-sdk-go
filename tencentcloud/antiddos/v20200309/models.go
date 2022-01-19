@@ -45,6 +45,15 @@ type AclConfig struct {
 	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
 }
 
+type AclConfigRelation struct {
+
+	// acl策略
+	AclConfig *AclConfig `json:"AclConfig,omitempty" name:"AclConfig"`
+
+	// 实例列表
+	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitempty" name:"InstanceDetailList"`
+}
+
 type AssociateDDoSEipAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -440,6 +449,15 @@ type ConnectLimitConfig struct {
 
 	// 异常连接检测条件，syn阈值，取值范围[0,100]
 	SynLimit *uint64 `json:"SynLimit,omitempty" name:"SynLimit"`
+}
+
+type ConnectLimitRelation struct {
+
+	// 连接抑制配置
+	ConnectLimitConfig *ConnectLimitConfig `json:"ConnectLimitConfig,omitempty" name:"ConnectLimitConfig"`
+
+	// 连接抑制关联的实例信息
+	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitempty" name:"InstanceDetailList"`
 }
 
 type CreateBlackWhiteIpListRequest struct {
@@ -2102,6 +2120,70 @@ func (r *DescribeDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDDoSConnectLimitListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可选参数，按照IP进行过滤
+	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+
+	// 可选参数，按照实例id进行过滤
+	FilterInstanceId *string `json:"FilterInstanceId,omitempty" name:"FilterInstanceId"`
+}
+
+func (r *DescribeDDoSConnectLimitListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSConnectLimitListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FilterIp")
+	delete(f, "FilterInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSConnectLimitListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDoSConnectLimitListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 连接抑制配置总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 连接抑制配置详情信息
+		ConfigList []*ConnectLimitRelation `json:"ConfigList,omitempty" name:"ConfigList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDoSConnectLimitListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSConnectLimitListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDDoSTrendRequest struct {
 	*tchttp.BaseRequest
 
@@ -2930,6 +3012,70 @@ func (r *DescribeListPacketFilterConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeListPacketFilterConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeListPortAclListRequest struct {
+	*tchttp.BaseRequest
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+	FilterInstanceId *string `json:"FilterInstanceId,omitempty" name:"FilterInstanceId"`
+
+	// ip搜索
+	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+}
+
+func (r *DescribeListPortAclListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeListPortAclListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "FilterInstanceId")
+	delete(f, "FilterIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListPortAclListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeListPortAclListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 端口acl策略
+		AclList []*AclConfigRelation `json:"AclList,omitempty" name:"AclList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeListPortAclListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeListPortAclListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

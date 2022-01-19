@@ -5599,11 +5599,11 @@ type RuleHealth struct {
 
 type RuleInput struct {
 
-	// 转发规则的域名。长度限制为：1~80。
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
-
 	// 转发规则的路径。长度限制为：1~200。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitempty" name:"SessionExpireTime"`
@@ -5638,6 +5638,9 @@ type RuleInput struct {
 
 	// 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
 	Quic *bool `json:"Quic,omitempty" name:"Quic"`
+
+	// 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 type RuleOutput struct {

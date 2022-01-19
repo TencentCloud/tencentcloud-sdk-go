@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## DDoS 防护(antiddos) 版本：2020-03-09
 
 ### 第 20 次发布
 
-发布时间：2022-01-18 08:03:18
+发布时间：2022-01-19 08:04:47
 
 本次发布包含了以下内容：
 
@@ -12,49 +12,21 @@
 
 新增接口：
 
-* [CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)
-* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)
-* [DestroyKTVRobot](https://cloud.tencent.com/document/api/1155/68349)
-* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+* [DescribeDDoSConnectLimitList](https://cloud.tencent.com/document/api/1021/68398)
+* [DescribeListPortAclList](https://cloud.tencent.com/document/api/1021/68397)
 
 新增数据结构：
 
-* [JoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#JoinRoomInput)
-* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
-* [PlayCommandInput](https://cloud.tencent.com/document/api/1155/40113#PlayCommandInput)
-* [SeekCommandInput](https://cloud.tencent.com/document/api/1155/40113#SeekCommandInput)
-* [SendMessageCommandInput](https://cloud.tencent.com/document/api/1155/40113#SendMessageCommandInput)
-* [SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetAudioParamCommandInput)
-* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
-* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+* [AclConfigRelation](https://cloud.tencent.com/document/api/1021/57582#AclConfigRelation)
+* [ConnectLimitRelation](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitRelation)
 
 
 
-## DDoS 防护(antiddos) 版本：2020-03-09
-
-### 第 19 次发布
-
-发布时间：2022-01-18 08:03:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDDoSConnectLimit](https://cloud.tencent.com/document/api/1021/68352)
-
-新增数据结构：
-
-* [ConnectLimitConfig](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitConfig)
-
-
-
-## 云拨测(cat) 版本：2018-04-09
+## 应用性能观测(apm) 版本：2021-06-22
 
 ### 第 6 次发布
 
-发布时间：2022-01-18 08:04:56
+发布时间：2022-01-19 08:05:14
 
 本次发布包含了以下内容：
 
@@ -62,64 +34,18 @@
 
 修改接口：
 
-* [DescribeDetailedSingleProbeData](https://cloud.tencent.com/document/api/280/66205)
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
 
-	* 新增入参：City
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 33 次发布
-
-发布时间：2022-01-18 08:06:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/597/40835)
-
-	* 新增入参：VpcId
-
-* [DescribeInstancesDetail](https://cloud.tencent.com/document/api/597/40834)
-
-	* 新增入参：InstanceIds
-
-
-修改数据结构：
-
-* [InstanceDetail](https://cloud.tencent.com/document/api/597/40861#InstanceDetail)
-
-	* 新增成员：PartitionNumber, PublicNetworkChargeType, PublicNetwork
+	* 新增入参：BusinessName
 
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 70 次发布
+### 第 64 次发布
 
-发布时间：2022-01-18 08:07:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ProgramFpgaImage](https://cloud.tencent.com/document/api/213/68353)
-
-
-
-## 全站加速网络(ecdn) 版本：2019-10-12
-
-### 第 11 次发布
-
-发布时间：2022-01-18 08:09:09
+发布时间：2022-01-19 08:07:15
 
 本次发布包含了以下内容：
 
@@ -127,96 +53,20 @@
 
 修改数据结构：
 
-* [DomainBriefInfo](https://cloud.tencent.com/document/api/570/42478#DomainBriefInfo)
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
 
-	* 新增成员：Tag
+	* 新增成员：Domains
 
+	* <font color="#dd0000">**修改成员**：</font>Domain
 
-
-
-## 数字身份管控平台（员工版）(eiam) 版本：2021-04-20
-
-### 第 14 次发布
-
-发布时间：2022-01-18 08:09:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
-
-	* 新增出参：AdminFlag
-
-
-
-
-## 企业组织(organization) 版本：2021-03-31
-
-### 第 5 次发布
-
-发布时间：2022-01-18 08:13:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)
-
-	* 新增入参：PayUin, IdentityRoleID
-
-	* 新增出参：Uin
-
-
-新增数据结构：
-
-* [MemberIdentity](https://cloud.tencent.com/document/api/850/67060#MemberIdentity)
-
-修改数据结构：
-
-* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
-
-	* 新增成员：PayUin, PayName, OrgIdentity
-
-
-
-
-## 企业组织(organization) 版本：2018-12-25
 
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 39 次发布
+### 第 40 次发布
 
-发布时间：2022-01-18 08:13:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChangeReplicaToMaster](https://cloud.tencent.com/document/api/239/56698)
-
-	* <font color="#dd0000">**修改入参**：</font>GroupId
-
-* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
-
-	* 新增入参：ShardIds
-
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 10 次发布
-
-发布时间：2022-01-18 08:14:02
+发布时间：2022-01-19 08:13:55
 
 本次发布包含了以下内容：
 
@@ -224,47 +74,17 @@
 
 新增接口：
 
-* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
-* [DescribeDataFetchUrlInfo](https://cloud.tencent.com/document/api/1464/68354)
+* [AddReplicationInstance](https://cloud.tencent.com/document/api/239/68401)
+* [CreateReplicationGroup](https://cloud.tencent.com/document/api/239/68400)
+* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/239/68399)
 
 
 
-## 邮件推送(ses) 版本：2020-10-02
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 7 次发布
+### 第 67 次发布
 
-发布时间：2022-01-18 08:14:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateReceiver](https://cloud.tencent.com/document/api/1288/68360)
-* [CreateReceiverDetail](https://cloud.tencent.com/document/api/1288/68359)
-* [ListReceivers](https://cloud.tencent.com/document/api/1288/68358)
-* [ListSendTasks](https://cloud.tencent.com/document/api/1288/68357)
-
-修改接口：
-
-* [BatchSendEmail](https://cloud.tencent.com/document/api/1288/63481)
-
-	* 新增入参：Unsubscribe
-
-
-新增数据结构：
-
-* [ReceiverData](https://cloud.tencent.com/document/api/1288/51053#ReceiverData)
-* [SendTaskData](https://cloud.tencent.com/document/api/1288/51053#SendTaskData)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 87 次发布
-
-发布时间：2022-01-18 08:16:47
+发布时间：2022-01-19 08:17:04
 
 本次发布包含了以下内容：
 
@@ -272,28 +92,9 @@
 
 修改接口：
 
-* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
 
-	* 新增入参：Unschedulable
-
-
-
-
-## 语音合成(tts) 版本：2019-08-23
-
-### 第 6 次发布
-
-发布时间：2022-01-18 08:17:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
-
-	* <font color="#dd0000">**修改入参**：</font>ModelType
+	* 新增入参：VolumeClean
 
 
 
@@ -707,21 +508,21 @@
 
 新增接口：
 
-* [[CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyKTVRobot](https://cloud.tencent.com/document/api/1155/68349)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)](https://cloud.tencent.com/document/api/#/#)
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)
+* [DestroyKTVRobot](https://cloud.tencent.com/document/api/1155/68349)
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
 
 新增数据结构：
 
-* [[JoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#JoinRoomInput)](https://cloud.tencent.com/document/api/1155/40113#[JoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#JoinRoomInput))
-* [[KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo))
-* [[PlayCommandInput](https://cloud.tencent.com/document/api/1155/40113#PlayCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[PlayCommandInput](https://cloud.tencent.com/document/api/1155/40113#PlayCommandInput))
-* [[SeekCommandInput](https://cloud.tencent.com/document/api/1155/40113#SeekCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SeekCommandInput](https://cloud.tencent.com/document/api/1155/40113#SeekCommandInput))
-* [[SendMessageCommandInput](https://cloud.tencent.com/document/api/1155/40113#SendMessageCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SendMessageCommandInput](https://cloud.tencent.com/document/api/1155/40113#SendMessageCommandInput))
-* [[SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetAudioParamCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetAudioParamCommandInput))
-* [[SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput))
-* [[TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)](https://cloud.tencent.com/document/api/1155/40113#[TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput))
+* [JoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#JoinRoomInput)
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
+* [PlayCommandInput](https://cloud.tencent.com/document/api/1155/40113#PlayCommandInput)
+* [SeekCommandInput](https://cloud.tencent.com/document/api/1155/40113#SeekCommandInput)
+* [SendMessageCommandInput](https://cloud.tencent.com/document/api/1155/40113#SendMessageCommandInput)
+* [SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetAudioParamCommandInput)
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
 
 ### 第 19 次发布
 
@@ -1285,6 +1086,24 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
+### 第 20 次发布
+
+发布时间：2022-01-19 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDDoSConnectLimitList](https://cloud.tencent.com/document/api/1021/68398)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeListPortAclList](https://cloud.tencent.com/document/api/1021/68397)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AclConfigRelation](https://cloud.tencent.com/document/api/1021/57582#AclConfigRelation)](https://cloud.tencent.com/document/api/1021/57582#[AclConfigRelation](https://cloud.tencent.com/document/api/1021/57582#AclConfigRelation))
+* [[ConnectLimitRelation](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitRelation)](https://cloud.tencent.com/document/api/1021/57582#[ConnectLimitRelation](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitRelation))
+
 ### 第 19 次发布
 
 发布时间：2022-01-18 08:03:27
@@ -1295,11 +1114,11 @@
 
 新增接口：
 
-* [[CreateDDoSConnectLimit](https://cloud.tencent.com/document/api/1021/68352)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDDoSConnectLimit](https://cloud.tencent.com/document/api/1021/68352)
 
 新增数据结构：
 
-* [[ConnectLimitConfig](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitConfig)](https://cloud.tencent.com/document/api/1021/57582#[ConnectLimitConfig](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitConfig))
+* [ConnectLimitConfig](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitConfig)
 
 ### 第 18 次发布
 
@@ -2475,6 +2294,21 @@
 
 
 ## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 6 次发布
+
+发布时间：2022-01-19 08:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+	* 新增入参：BusinessName
+
 
 ### 第 5 次发布
 
@@ -14711,6 +14545,23 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 64 次发布
+
+发布时间：2022-01-19 08:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+
+	* 新增成员：Domains
+
+	* <font color="#dd0000">**修改成员**：</font>Domain
+
+
 ### 第 63 次发布
 
 发布时间：2022-01-07 08:05:24
@@ -19752,7 +19603,7 @@
 
 新增接口：
 
-* [[ProgramFpgaImage](https://cloud.tencent.com/document/api/213/68353)](https://cloud.tencent.com/document/api/#/#)
+* [ProgramFpgaImage](https://cloud.tencent.com/document/api/213/68353)
 
 ### 第 69 次发布
 
@@ -45908,7 +45759,7 @@
 
 新增数据结构：
 
-* [[MemberIdentity](https://cloud.tencent.com/document/api/850/67060#MemberIdentity)](https://cloud.tencent.com/document/api/850/67060#[MemberIdentity](https://cloud.tencent.com/document/api/850/67060#MemberIdentity))
+* [MemberIdentity](https://cloud.tencent.com/document/api/850/67060#MemberIdentity)
 
 修改数据结构：
 
@@ -47251,6 +47102,20 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 40 次发布
+
+发布时间：2022-01-19 08:13:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddReplicationInstance](https://cloud.tencent.com/document/api/239/68401)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateReplicationGroup](https://cloud.tencent.com/document/api/239/68400)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReplicationInstance](https://cloud.tencent.com/document/api/239/68399)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 39 次发布
 
 发布时间：2022-01-18 08:13:46
@@ -48133,8 +47998,8 @@
 
 新增接口：
 
-* [[DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDataFetchUrlInfo](https://cloud.tencent.com/document/api/1464/68354)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
+* [DescribeDataFetchUrlInfo](https://cloud.tencent.com/document/api/1464/68354)
 
 ### 第 9 次发布
 
@@ -49235,10 +49100,10 @@
 
 新增接口：
 
-* [[CreateReceiver](https://cloud.tencent.com/document/api/1288/68360)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateReceiverDetail](https://cloud.tencent.com/document/api/1288/68359)](https://cloud.tencent.com/document/api/#/#)
-* [[ListReceivers](https://cloud.tencent.com/document/api/1288/68358)](https://cloud.tencent.com/document/api/#/#)
-* [[ListSendTasks](https://cloud.tencent.com/document/api/1288/68357)](https://cloud.tencent.com/document/api/#/#)
+* [CreateReceiver](https://cloud.tencent.com/document/api/1288/68360)
+* [CreateReceiverDetail](https://cloud.tencent.com/document/api/1288/68359)
+* [ListReceivers](https://cloud.tencent.com/document/api/1288/68358)
+* [ListSendTasks](https://cloud.tencent.com/document/api/1288/68357)
 
 修改接口：
 
@@ -49249,8 +49114,8 @@
 
 新增数据结构：
 
-* [[ReceiverData](https://cloud.tencent.com/document/api/1288/51053#ReceiverData)](https://cloud.tencent.com/document/api/1288/51053#[ReceiverData](https://cloud.tencent.com/document/api/1288/51053#ReceiverData))
-* [[SendTaskData](https://cloud.tencent.com/document/api/1288/51053#SendTaskData)](https://cloud.tencent.com/document/api/1288/51053#[SendTaskData](https://cloud.tencent.com/document/api/1288/51053#SendTaskData))
+* [ReceiverData](https://cloud.tencent.com/document/api/1288/51053#ReceiverData)
+* [SendTaskData](https://cloud.tencent.com/document/api/1288/51053#SendTaskData)
 
 ### 第 6 次发布
 
@@ -61713,6 +61578,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 67 次发布
+
+发布时间：2022-01-19 08:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：VolumeClean
+
 
 ### 第 66 次发布
 

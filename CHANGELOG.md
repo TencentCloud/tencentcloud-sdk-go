@@ -1,3 +1,104 @@
+# Release v1.0.333
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 20 次发布
+
+发布时间：2022-01-19 08:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDDoSConnectLimitList](https://cloud.tencent.com/document/api/1021/68398)
+* [DescribeListPortAclList](https://cloud.tencent.com/document/api/1021/68397)
+
+新增数据结构：
+
+* [AclConfigRelation](https://cloud.tencent.com/document/api/1021/57582#AclConfigRelation)
+* [ConnectLimitRelation](https://cloud.tencent.com/document/api/1021/57582#ConnectLimitRelation)
+
+
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 6 次发布
+
+发布时间：2022-01-19 08:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+	* 新增入参：BusinessName
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 64 次发布
+
+发布时间：2022-01-19 08:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+
+	* 新增成员：Domains
+
+	* <font color="#dd0000">**修改成员**：</font>Domain
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 40 次发布
+
+发布时间：2022-01-19 08:13:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddReplicationInstance](https://cloud.tencent.com/document/api/239/68401)
+* [CreateReplicationGroup](https://cloud.tencent.com/document/api/239/68400)
+* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/239/68399)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 67 次发布
+
+发布时间：2022-01-19 08:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：VolumeClean
+
+
+
+
 # Release v1.0.332
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

@@ -250,7 +250,7 @@ type AddMerchantRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 营业执照过期时间（yyyy-mm-dd）
+	// 营业执照过期时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
 	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
 
 	// 法人证件生效时间（yyyy-mm-dd）
@@ -409,7 +409,7 @@ type AddMerchantRequest struct {
 	// 税务登记证号
 	TaxRegistrationNo *string `json:"TaxRegistrationNo,omitempty" name:"TaxRegistrationNo"`
 
-	// 商户类型：1-个人，2-小微，3-企事业。不传默认为2-小微商户。
+	// 商户类型：1-个体，2-小微，3-企业。不传默认为2-小微商户。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -497,7 +497,7 @@ type AddMerchantResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 添加商户响应对象
@@ -8586,7 +8586,7 @@ type QueryContractPayFeeResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 查询支付方式费率及自定义表单项响应对象
@@ -10098,7 +10098,7 @@ type QueryMerchantPayWayListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 业务系统返回消息
@@ -10438,7 +10438,7 @@ type QueryOrderStatusResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 业务系统返回消息
@@ -12752,7 +12752,7 @@ type RefundTlinxOrderRequest struct {
 	// 退款金额（以分为单位，没有小数点）
 	RefundAmount *string `json:"RefundAmount,omitempty" name:"RefundAmount"`
 
-	// 主管密码，对密码进行sha1加密，默认为123456
+	// 主管密码，对密码进行SHA-1加密，默认为123456
 	ShopPassword *string `json:"ShopPassword,omitempty" name:"ShopPassword"`
 
 	// 退款备注
@@ -12793,7 +12793,7 @@ type RefundTlinxOrderResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 业务系统返回消息
@@ -14693,7 +14693,7 @@ type UnifiedTlinxOrderResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
 
-		// 业务系统返回码
+		// 业务系统返回码，0表示成功，其他表示失败。
 		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
 
 		// 统一下单响应对象

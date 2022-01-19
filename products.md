@@ -7,12 +7,12 @@
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-01-07 08:02:54 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2022-01-18 08:03:18 |
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2021-12-21 08:00:20 |
-| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2022-01-18 08:03:27 |
+| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2022-01-19 08:04:47 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-11-10 08:02:02 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-11-10 08:02:03 |
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2022-01-14 10:07:56 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2022-01-14 08:05:13 |
-| apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2022-01-17 08:02:51 |
+| apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2022-01-19 08:05:14 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-01-18 08:03:59 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-12-22 08:06:39 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-11-29 08:03:58 |
@@ -42,14 +42,14 @@
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2022-01-18 08:06:14 |
-| clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2022-01-18 08:06:24 |
+| clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2022-01-19 08:07:15 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2021-11-16 08:07:51 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2021-11-10 08:04:28 |
 | cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2022-01-17 08:05:17 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2021-12-24 08:07:24 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2021-11-10 08:04:45 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2021-12-09 08:03:47 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-01-19 08:07:49 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-01-18 08:07:22 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-01-17 08:06:09 |
@@ -101,7 +101,7 @@
 | ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2021-11-30 14:56:41 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-12-24 08:11:42 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2022-01-11 08:11:43 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-01-11 08:11:54 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-01-19 08:12:24 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-11-10 08:08:46 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2022-01-14 08:12:58 |
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-11-10 08:08:54 |
@@ -125,7 +125,7 @@
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2022-01-13 08:55:35 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2021-12-23 08:13:49 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2022-01-10 08:14:37 |
-| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-01-18 08:13:46 |
+| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-01-19 08:13:55 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2021-11-10 08:10:03 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2021-11-10 08:10:04 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2022-01-18 08:14:02 |
@@ -167,20 +167,20 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2021-12-22 08:17:35 |
 | tione | [腾讯云 TI 平台 TI-ONE](https://cloud.tencent.com/document/product/851) | 2022-01-07 08:14:32 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2021-12-27 08:11:32 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-01-18 08:16:47 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-01-19 08:16:28 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-01-13 09:12:45 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2021-11-10 08:12:05 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2021-11-11 11:09:51 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2021-12-16 08:15:47 |
-| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2022-01-07 08:15:02 |
+| tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2022-01-19 08:17:04 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2021-11-10 08:12:32 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2022-01-18 08:17:37 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2021-11-10 08:12:34 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2021-12-21 08:12:32 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2021-11-10 08:12:38 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-01-11 08:17:35 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-01-18 08:18:04 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-01-19 08:17:55 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2021-12-02 08:14:23 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2022-01-10 08:18:57 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
