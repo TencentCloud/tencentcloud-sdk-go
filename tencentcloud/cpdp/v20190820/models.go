@@ -4239,6 +4239,8 @@ type CreateRedInvoiceRequest struct {
 	*tchttp.BaseRequest
 
 	// 开票平台ID
+	// 0 : 高灯
+	// 1 : 票易通
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 红冲明细
@@ -4334,6 +4336,8 @@ type CreateRedInvoiceV2Request struct {
 	*tchttp.BaseRequest
 
 	// 开票平台ID
+	// 0 : 高灯
+	// 1 : 票易通
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 订单号
@@ -9225,6 +9229,8 @@ type QueryInvoiceRequest struct {
 	*tchttp.BaseRequest
 
 	// 开票平台ID
+	// 0 : 高灯
+	// 1 : 票易通
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 订单号
@@ -9363,6 +9369,8 @@ type QueryInvoiceV2Request struct {
 	*tchttp.BaseRequest
 
 	// 开票平台ID
+	// 0 : 高灯
+	// 1 : 票易通
 	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
 
 	// 订单号

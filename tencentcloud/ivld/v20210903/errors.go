@@ -197,7 +197,7 @@ const (
 	// 分页大小不合法。
 	INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
 
-	// 输入字段 %!s(MISSING) 不合法。
+	// 输入字段不合法。
 	INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 
 	// 人物ID不合法。

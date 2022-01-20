@@ -7264,6 +7264,54 @@ func (c *Client) OpenWanServiceWithContext(ctx context.Context, request *OpenWan
     return
 }
 
+func NewQueryCDBProxyRequest() (request *QueryCDBProxyRequest) {
+    request = &QueryCDBProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "QueryCDBProxy")
+    
+    
+    return
+}
+
+func NewQueryCDBProxyResponse() (response *QueryCDBProxyResponse) {
+    response = &QueryCDBProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCDBProxy
+// 查询代理详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+func (c *Client) QueryCDBProxy(request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewQueryCDBProxyRequest()
+    }
+    
+    response = NewQueryCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryCDBProxy
+// 查询代理详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+func (c *Client) QueryCDBProxyWithContext(ctx context.Context, request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
+    if request == nil {
+        request = NewQueryCDBProxyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReleaseIsolatedDBInstancesRequest() (request *ReleaseIsolatedDBInstancesRequest) {
     request = &ReleaseIsolatedDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

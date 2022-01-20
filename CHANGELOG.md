@@ -1,3 +1,165 @@
+# Release v1.0.334
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 82 次发布
+
+发布时间：2022-01-20 08:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryCDBProxy](https://cloud.tencent.com/document/api/236/68461)
+
+新增数据结构：
+
+* [ProxyGroups](https://cloud.tencent.com/document/api/236/15878#ProxyGroups)
+* [RWInfos](https://cloud.tencent.com/document/api/236/15878#RWInfos)
+
+
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 9 次发布
+
+发布时间：2022-01-20 08:06:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddSubStructureTasks](https://cloud.tencent.com/document/api/1368/68463)
+* [DescribeReportClassify](https://cloud.tencent.com/document/api/1368/68462)
+* [DescribeUnderwriteTask](https://cloud.tencent.com/document/api/1368/68464)
+
+新增数据结构：
+
+* [ClassifiedReports](https://cloud.tencent.com/document/api/1368/56853#ClassifiedReports)
+* [UnderwriteConclusion](https://cloud.tencent.com/document/api/1368/56853#UnderwriteConclusion)
+* [UnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#UnderwriteOutput)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 65 次发布
+
+发布时间：2022-01-20 08:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+
+	* <font color="#dd0000">**修改入参**：</font>Period
+
+* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
+
+	* 新增入参：Period
+
+* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
+
+	* 新增入参：NewDomains
+
+
+修改数据结构：
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：Domains
+
+* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
+
+	* 新增成员：Domains
+
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 2 次发布
+
+发布时间：2022-01-20 08:09:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PutEvents](https://cloud.tencent.com/document/api/1359/68465)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 23 次发布
+
+发布时间：2022-01-20 08:10:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：HealthStatus
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：HealthStatus
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 68 次发布
+
+发布时间：2022-01-20 08:16:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTask](https://cloud.tencent.com/document/api/649/48886)
+
+	* 新增入参：ProgramIdList
+
+* [CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)
+
+	* 新增入参：ProgramIdList
+
+* [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)
+
+	* 新增入参：Ids
+
+* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
+
+	* 新增入参：ProgramIdList
+
+
+
+
 # Release v1.0.333
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

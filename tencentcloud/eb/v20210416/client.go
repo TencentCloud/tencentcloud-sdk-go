@@ -1264,7 +1264,7 @@ func NewPublishEventResponse() (response *PublishEventResponse) {
 }
 
 // PublishEvent
-// 用于Event事件投递
+// （已废弃）用于Event事件投递
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1284,7 +1284,7 @@ func (c *Client) PublishEvent(request *PublishEventRequest) (response *PublishEv
 }
 
 // PublishEvent
-// 用于Event事件投递
+// （已废弃）用于Event事件投递
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1300,6 +1300,64 @@ func (c *Client) PublishEventWithContext(ctx context.Context, request *PublishEv
     request.SetContext(ctx)
     
     response = NewPublishEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPutEventsRequest() (request *PutEventsRequest) {
+    request = &PutEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("eb", APIVersion, "PutEvents")
+    
+    
+    return
+}
+
+func NewPutEventsResponse() (response *PutEventsResponse) {
+    response = &PutEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PutEvents
+// 用于Event事件投递
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsResponse, err error) {
+    if request == nil {
+        request = NewPutEventsRequest()
+    }
+    
+    response = NewPutEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PutEvents
+// 用于Event事件投递
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+func (c *Client) PutEventsWithContext(ctx context.Context, request *PutEventsRequest) (response *PutEventsResponse, err error) {
+    if request == nil {
+        request = NewPutEventsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPutEventsResponse()
     err = c.Send(request, response)
     return
 }

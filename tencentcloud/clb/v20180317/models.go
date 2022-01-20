@@ -887,11 +887,11 @@ type ConfigListItem struct {
 type CreateClsLogSetRequest struct {
 	*tchttp.BaseRequest
 
-	// 日志集的保存周期，单位：天，最大 90。
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
 	// 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
 	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+
+	// 日志集的保存周期，单位：天。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 日志集类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	LogsetType *string `json:"LogsetType,omitempty" name:"LogsetType"`
@@ -909,8 +909,8 @@ func (r *CreateClsLogSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Period")
 	delete(f, "LogsetName")
+	delete(f, "Period")
 	delete(f, "LogsetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClsLogSetRequest has unknown keys!", "")
@@ -1380,6 +1380,9 @@ type CreateTopicRequest struct {
 
 	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	TopicType *string `json:"TopicType,omitempty" name:"TopicType"`
+
+	// 日志集的保存周期，单位：天，默认30天。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -1397,6 +1400,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicName")
 	delete(f, "PartitionCount")
 	delete(f, "TopicType")
+	delete(f, "Period")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -1721,13 +1725,13 @@ type DeleteRuleRequest struct {
 	// 要删除的转发规则的ID组成的数组。
 	LocationIds []*string `json:"LocationIds,omitempty" name:"LocationIds"`
 
-	// 要删除的转发规则的域名，已提供LocationIds参数时本参数不生效。
+	// 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。已提供LocationIds参数时本参数不生效。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名。
+	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
 }
 
@@ -4348,6 +4352,10 @@ type LoadBalancerDetail struct {
 	// 后端目标健康状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetHealth *string `json:"TargetHealth,omitempty" name:"TargetHealth"`
+
+	// 转发规则的域名列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains *string `json:"Domains,omitempty" name:"Domains"`
 }
 
 type LoadBalancerHealth struct {
@@ -4574,10 +4582,10 @@ type ModifyDomainAttributesRequest struct {
 	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 域名（必须是已经创建的转发规则下的域名）。
+	// 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 要修改的新域名。
+	// 要修改的新域名。NewDomain和NewDomains只能传一个。
 	NewDomain *string `json:"NewDomain,omitempty" name:"NewDomain"`
 
 	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
@@ -4589,8 +4597,11 @@ type ModifyDomainAttributesRequest struct {
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
 
-	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名。
+	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
+
+	// 要修改的新域名列表。NewDomain和NewDomains只能传一个。
+	NewDomains []*string `json:"NewDomains,omitempty" name:"NewDomains"`
 }
 
 func (r *ModifyDomainAttributesRequest) ToJsonString() string {
@@ -4613,6 +4624,7 @@ func (r *ModifyDomainAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Http2")
 	delete(f, "DefaultServer")
 	delete(f, "NewDefaultServerDomain")
+	delete(f, "NewDomains")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainAttributesRequest has unknown keys!", "")
 	}
@@ -5717,6 +5729,10 @@ type RuleOutput struct {
 	// QUIC状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuicStatus *string `json:"QuicStatus,omitempty" name:"QuicStatus"`
+
+	// 转发规则的域名列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 type RuleTargets struct {

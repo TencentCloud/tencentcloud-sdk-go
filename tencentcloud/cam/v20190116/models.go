@@ -1637,7 +1637,7 @@ type DescribeUserSAMLConfigResponse struct {
 		// SAML元数据文档
 		SAMLMetadata *string `json:"SAMLMetadata,omitempty" name:"SAMLMetadata"`
 
-		// 状态：0:未设置，11:已开启，2:已禁用
+		// 状态：0:未设置，1:已开启，2:已禁用
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2071,7 +2071,7 @@ type GetPolicyVersionRequest struct {
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 策略版本号
+	// 策略版本号，可由ListPolicyVersions获取
 	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
 }
 
@@ -2514,9 +2514,10 @@ type GetUserResponse struct {
 		Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
 		// 子用户备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-		// 子用户能否登录控制台
+		// 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
 		ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
 
 		// 手机号
@@ -2588,22 +2589,22 @@ type GroupMemberInfo struct {
 	// 手机区域代码。
 	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
 
-	// 是否已验证手机。
+	// 是否已验证手机。0-未验证  1-验证
 	PhoneFlag *uint64 `json:"PhoneFlag,omitempty" name:"PhoneFlag"`
 
 	// 邮箱地址。
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 是否已验证邮箱。
+	// 是否已验证邮箱。0-未验证  1-验证
 	EmailFlag *uint64 `json:"EmailFlag,omitempty" name:"EmailFlag"`
 
-	// 用户类型。
+	// 用户类型。1-全局协作者 2-项目协作者 3-消息接收者
 	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 是否为主消息接收人。
+	// 是否为主消息接收人。0-否 1-是
 	IsReceiverOwner *uint64 `json:"IsReceiverOwner,omitempty" name:"IsReceiverOwner"`
 }
 
@@ -3933,7 +3934,7 @@ type SetDefaultPolicyVersionRequest struct {
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 策略版本号
+	// 策略版本号，可由ListPolicyVersions获取
 	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
 }
 
@@ -4329,10 +4330,10 @@ type UpdateRoleConsoleLoginRequest struct {
 	// 是否可登录，可登录：1，不可登录：0
 	ConsoleLogin *int64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
 
-	// 角色ID
+	// 角色ID，入参 RoleId 与 RoleName 二选一
 	RoleId *int64 `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 角色名
+	// 角色名，入参 RoleId 与 RoleName 二选一
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 

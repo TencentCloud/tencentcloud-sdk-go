@@ -2945,6 +2945,9 @@ type CreateTaskFlowRequest struct {
 
 	// 工作流执行超时时间
 	TimeOut *uint64 `json:"TimeOut,omitempty" name:"TimeOut"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateTaskFlowRequest) ToJsonString() string {
@@ -2963,6 +2966,7 @@ func (r *CreateTaskFlowRequest) FromJsonString(s string) error {
 	delete(f, "TriggerRule")
 	delete(f, "FlowEdges")
 	delete(f, "TimeOut")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskFlowRequest has unknown keys!", "")
 	}
@@ -2974,6 +2978,7 @@ type CreateTaskFlowResponse struct {
 	Response *struct {
 
 		// 工作流 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3039,6 +3044,9 @@ type CreateTaskRequest struct {
 
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitempty" name:"TaskArgument"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -3068,6 +3076,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "SuccessRatio")
 	delete(f, "AdvanceSettings")
 	delete(f, "TaskArgument")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -3079,6 +3088,7 @@ type CreateTaskResponse struct {
 	Response *struct {
 
 		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *string `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8593,6 +8603,9 @@ type DescribeTaskRecordsRequest struct {
 
 	// 任务触发类型，UNICAST、BROADCAST。
 	ExecuteType *string `json:"ExecuteType,omitempty" name:"ExecuteType"`
+
+	// 无
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 }
 
 func (r *DescribeTaskRecordsRequest) ToJsonString() string {
@@ -8614,6 +8627,7 @@ func (r *DescribeTaskRecordsRequest) FromJsonString(s string) error {
 	delete(f, "GroupId")
 	delete(f, "TaskType")
 	delete(f, "ExecuteType")
+	delete(f, "Ids")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskRecordsRequest has unknown keys!", "")
 	}
@@ -8625,6 +8639,7 @@ type DescribeTaskRecordsResponse struct {
 	Response *struct {
 
 		// 任务记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *TaskRecordPage `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11151,6 +11166,9 @@ type ModifyTaskRequest struct {
 
 	// 任务参数，长度限制10000个字符
 	TaskArgument *string `json:"TaskArgument,omitempty" name:"TaskArgument"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
 }
 
 func (r *ModifyTaskRequest) ToJsonString() string {
@@ -11181,6 +11199,7 @@ func (r *ModifyTaskRequest) FromJsonString(s string) error {
 	delete(f, "RetryCount")
 	delete(f, "RetryInterval")
 	delete(f, "TaskArgument")
+	delete(f, "ProgramIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskRequest has unknown keys!", "")
 	}
@@ -11192,6 +11211,7 @@ type ModifyTaskResponse struct {
 	Response *struct {
 
 		// 更新是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *bool `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -3945,7 +3945,7 @@ type DescribeRecordStreamRequest struct {
 	// 录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 通道唯一标识
+	// 通道唯一标识（此接口升级为必填字段）
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
@@ -5006,7 +5006,7 @@ type GetRecordDatesByDevRequest struct {
 	// 偏移量，默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 通道唯一标识
+	// 通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
 	// 1: 云端录制 2: 本地录制
@@ -5321,7 +5321,7 @@ type GetVideoListByConRequest struct {
 	// 限制量，默认200
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 通道唯一标识
+	// 通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
 	// 0：查询指定日期的录像；1：查询最近一天的录像；默认0

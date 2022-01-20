@@ -44,6 +44,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddSubStructureTasksRequest() (request *AddSubStructureTasksRequest) {
+    request = &AddSubStructureTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "AddSubStructureTasks")
+    
+    
+    return
+}
+
+func NewAddSubStructureTasksResponse() (response *AddSubStructureTasksResponse) {
+    response = &AddSubStructureTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddSubStructureTasks
+// 中银三星需求，基于主任务批量添加结构化子任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddSubStructureTasks(request *AddSubStructureTasksRequest) (response *AddSubStructureTasksResponse, err error) {
+    if request == nil {
+        request = NewAddSubStructureTasksRequest()
+    }
+    
+    response = NewAddSubStructureTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddSubStructureTasks
+// 中银三星需求，基于主任务批量添加结构化子任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) AddSubStructureTasksWithContext(ctx context.Context, request *AddSubStructureTasksRequest) (response *AddSubStructureTasksResponse, err error) {
+    if request == nil {
+        request = NewAddSubStructureTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddSubStructureTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoClassifyStructureTaskRequest() (request *CreateAutoClassifyStructureTaskRequest) {
     request = &CreateAutoClassifyStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -280,6 +334,56 @@ func (c *Client) DescribeMachineUnderwriteWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeReportClassifyRequest() (request *DescribeReportClassifyRequest) {
+    request = &DescribeReportClassifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeReportClassify")
+    
+    
+    return
+}
+
+func NewDescribeReportClassifyResponse() (response *DescribeReportClassifyResponse) {
+    response = &DescribeReportClassifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeReportClassify
+// saas页面集成了自动分类功能，该接口提供自动分类结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeReportClassify(request *DescribeReportClassifyRequest) (response *DescribeReportClassifyResponse, err error) {
+    if request == nil {
+        request = NewDescribeReportClassifyRequest()
+    }
+    
+    response = NewDescribeReportClassifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeReportClassify
+// saas页面集成了自动分类功能，该接口提供自动分类结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeReportClassifyWithContext(ctx context.Context, request *DescribeReportClassifyRequest) (response *DescribeReportClassifyResponse, err error) {
+    if request == nil {
+        request = NewDescribeReportClassifyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeReportClassifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRequest) {
     request = &DescribeStructCompareDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -498,6 +602,64 @@ func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeStructureTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUnderwriteTaskRequest() (request *DescribeUnderwriteTaskRequest) {
+    request = &DescribeUnderwriteTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeUnderwriteTask")
+    
+    
+    return
+}
+
+func NewDescribeUnderwriteTaskResponse() (response *DescribeUnderwriteTaskResponse) {
+    response = &DescribeUnderwriteTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUnderwriteTask
+// 本接口(DescribeUnderwriteTask)用于查询核保任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeUnderwriteTask(request *DescribeUnderwriteTaskRequest) (response *DescribeUnderwriteTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnderwriteTaskRequest()
+    }
+    
+    response = NewDescribeUnderwriteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUnderwriteTask
+// 本接口(DescribeUnderwriteTask)用于查询核保任务结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeUnderwriteTaskWithContext(ctx context.Context, request *DescribeUnderwriteTaskRequest) (response *DescribeUnderwriteTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnderwriteTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUnderwriteTaskResponse()
     err = c.Send(request, response)
     return
 }

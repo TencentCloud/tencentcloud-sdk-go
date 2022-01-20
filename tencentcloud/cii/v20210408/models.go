@@ -20,6 +20,68 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddSubStructureTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 主任务id
+	MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+	// 子任务信息数组
+	TaskInfos []*CreateStructureTaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
+}
+
+func (r *AddSubStructureTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSubStructureTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MainTaskId")
+	delete(f, "TaskInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSubStructureTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSubStructureTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增量子任务id数组
+		SubTaskIds []*string `json:"SubTaskIds,omitempty" name:"SubTaskIds"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddSubStructureTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSubStructureTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ClassifiedReports struct {
+
+	// 报告类型
+	ReportType *string `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 文件列表
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+}
+
 type ClassifyInfo struct {
 
 	// 一级分类
@@ -376,6 +438,59 @@ func (r *DescribeMachineUnderwriteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReportClassifyRequest struct {
+	*tchttp.BaseRequest
+
+	// 服务类型（Structured/Underwrite）
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 文件地址数组
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+}
+
+func (r *DescribeReportClassifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportClassifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceType")
+	delete(f, "FileList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReportClassifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReportClassifyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 报告分类结果
+		Reports []*ClassifiedReports `json:"Reports,omitempty" name:"Reports"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReportClassifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportClassifyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeStructCompareDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -644,6 +759,73 @@ func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUnderwriteTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
+}
+
+func (r *DescribeUnderwriteTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnderwriteTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UnderwriteTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUnderwriteTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUnderwriteTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 腾讯云主账号ID
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 操作人子账户ID
+		SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+		// 保单ID
+		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 主任务ID
+		MainTaskId *string `json:"MainTaskId,omitempty" name:"MainTaskId"`
+
+		// 核保任务ID
+		UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
+
+		// 状态码
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 核保结果
+		UnderwriteResults []*UnderwriteOutput `json:"UnderwriteResults,omitempty" name:"UnderwriteResults"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUnderwriteTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnderwriteTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InsuranceResult struct {
 
 	// 险种:CriticalDiseaseInsurance(重疾险);LifeInsurance(寿险);AccidentInsurance(意外险);MedicalInsurance(医疗险)
@@ -770,6 +952,18 @@ type StructureResultObject struct {
 	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
 }
 
+type UnderwriteConclusion struct {
+
+	// 类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 结论
+	Conclusion *string `json:"Conclusion,omitempty" name:"Conclusion"`
+
+	// 解释
+	Explanation *string `json:"Explanation,omitempty" name:"Explanation"`
+}
+
 type UnderwriteItem struct {
 
 	// 字段名
@@ -780,6 +974,24 @@ type UnderwriteItem struct {
 
 	// 风险值或者说明
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type UnderwriteOutput struct {
+
+	// 客户ID
+	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 结果
+	Results []*InsuranceResult `json:"Results,omitempty" name:"Results"`
+
+	// 复核时间
+	ReviewTime *string `json:"ReviewTime,omitempty" name:"ReviewTime"`
+
+	// 人工复核结果
+	ManualDetail []*UnderwriteConclusion `json:"ManualDetail,omitempty" name:"ManualDetail"`
 }
 
 type UploadMedicalFileRequest struct {

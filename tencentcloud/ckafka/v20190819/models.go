@@ -1912,7 +1912,7 @@ type DescribeInstancesDetailRequest struct {
 	// 过滤器。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 按照实例ID过滤
+	// 已经废弃， 使用InstanceIdList
 	InstanceIds *string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 

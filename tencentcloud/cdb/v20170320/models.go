@@ -8390,6 +8390,29 @@ type ProxyGroup struct {
 	RWInstInfo *RWInfo `json:"RWInstInfo,omitempty" name:"RWInstInfo"`
 }
 
+type ProxyGroups struct {
+
+	// 代理基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseGroup *BaseGroupInfo `json:"BaseGroup,omitempty" name:"BaseGroup"`
+
+	// 代理地址信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address []*Address `json:"Address,omitempty" name:"Address"`
+
+	// 代理连接池信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionPoolInfo *ConnectionPoolInfo `json:"ConnectionPoolInfo,omitempty" name:"ConnectionPoolInfo"`
+
+	// 代理节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyNode []*ProxyNodeInfo `json:"ProxyNode,omitempty" name:"ProxyNode"`
+
+	// 代理路由信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RWInstInfo *RWInfos `json:"RWInstInfo,omitempty" name:"RWInstInfo"`
+}
+
 type ProxyNodeInfo struct {
 
 	// 代理节点ID
@@ -8417,6 +8440,64 @@ type ProxyNodeInfo struct {
 	// error（节点故障）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyStatus *string `json:"ProxyStatus,omitempty" name:"ProxyStatus"`
+}
+
+type QueryCDBProxyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 代理ID
+	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
+}
+
+func (r *QueryCDBProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCDBProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ProxyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCDBProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCDBProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 代理数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 代理信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ProxyGroup []*ProxyGroups `json:"ProxyGroup,omitempty" name:"ProxyGroup"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCDBProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCDBProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RWInfo struct {
@@ -8453,6 +8534,42 @@ type RWInfo struct {
 	// 代理实例信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RWInstInfo *RWInstanceInfo `json:"RWInstInfo,omitempty" name:"RWInstInfo"`
+}
+
+type RWInfos struct {
+
+	// 代理实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstCount *uint64 `json:"InstCount,omitempty" name:"InstCount"`
+
+	// 权重分配模式；
+	// 系统自动分配："system"， 自定义："custom"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
+
+	// 是否开启延迟剔除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsKickOut *bool `json:"IsKickOut,omitempty" name:"IsKickOut"`
+
+	// 最小保留数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinCount *uint64 `json:"MinCount,omitempty" name:"MinCount"`
+
+	// 延迟剔除阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDelay *uint64 `json:"MaxDelay,omitempty" name:"MaxDelay"`
+
+	// 是否开启故障转移
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailOver *bool `json:"FailOver,omitempty" name:"FailOver"`
+
+	// 是否自动添加RO
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoAddRo *bool `json:"AutoAddRo,omitempty" name:"AutoAddRo"`
+
+	// 代理实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RWInstInfo []*RWInstanceInfo `json:"RWInstInfo,omitempty" name:"RWInstInfo"`
 }
 
 type RWInstanceInfo struct {

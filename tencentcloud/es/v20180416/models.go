@@ -509,6 +509,9 @@ type DescribeInstancesRequest struct {
 
 	// 可用区列表
 	ZoneList []*string `json:"ZoneList,omitempty" name:"ZoneList"`
+
+	// 健康状态筛列表
+	HealthStatus []*int64 `json:"HealthStatus,omitempty" name:"HealthStatus"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -533,6 +536,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagList")
 	delete(f, "IpList")
 	delete(f, "ZoneList")
+	delete(f, "HealthStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -1023,6 +1027,10 @@ type InstanceInfo struct {
 	// 冻节点磁盘大小，单位GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenDiskSize *uint64 `json:"FrozenDiskSize,omitempty" name:"FrozenDiskSize"`
+
+	// 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthStatus *int64 `json:"HealthStatus,omitempty" name:"HealthStatus"`
 }
 
 type InstanceLog struct {
