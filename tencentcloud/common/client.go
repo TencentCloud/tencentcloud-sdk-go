@@ -60,7 +60,10 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		safeInjectClientToken(request)
 	}
 
-	if c.profile.DisableRegionBreaker == true || c.rb == nil {
+	if c.credential == nil {
+		// Some APIs can skip signature.
+		return c.sendWithoutSignature(request, response)
+	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
 		return c.sendWithSignature(request, response)
 	} else {
 		return c.sendWithRegionBreaker(request, response)
@@ -100,6 +103,22 @@ func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Respo
 	} else {
 		return c.sendWithSignatureV3(request, response)
 	}
+}
+
+func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Response) error {
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+	if err != nil {
+		return err
+	}
+	if request.GetHttpMethod() == "POST" {
+		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	}
+	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
+	if err != nil {
+		return err
+	}
+	err = tchttp.ParseFromHttpResponse(httpResponse, response)
+	return err
 }
 
 func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Response) (err error) {
@@ -319,6 +338,10 @@ func (c *Client) WithSecretId(secretId, secretKey string) *Client {
 func (c *Client) WithCredential(cred CredentialIface) *Client {
 	c.credential = cred
 	return c
+}
+
+func (c *Client) GetCredential() CredentialIface {
+	return c.credential
 }
 
 func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
