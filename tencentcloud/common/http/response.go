@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"strconv"
+
 	//"log"
 	"net/http"
 
@@ -33,6 +35,12 @@ type DeprecatedAPIErrorResponse struct {
 	CodeDesc string `json:"codeDesc"`
 }
 
+type CMQAPIErrorResponse struct {
+	Code      int    `json:"code"`
+	Message   string `json:"message"`
+	RequestId string `json:"requestId"`
+}
+
 func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 	resp := &ErrorResponse{}
 	err = json.Unmarshal(body, resp)
@@ -42,6 +50,16 @@ func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 	}
 	if resp.Response.Error.Code != "" {
 		return errors.NewTencentCloudSDKError(resp.Response.Error.Code, resp.Response.Error.Message, resp.Response.RequestId)
+	}
+
+	cmqResp := &CMQAPIErrorResponse{}
+	err = json.Unmarshal(body, cmqResp)
+	if err != nil {
+		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
+		return errors.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
+	}
+	if cmqResp.RequestId != "" {
+		return errors.NewTencentCloudSDKError(strconv.Itoa(cmqResp.Code), cmqResp.Message, cmqResp.RequestId)
 	}
 
 	deprecated := &DeprecatedAPIErrorResponse{}
@@ -65,6 +83,16 @@ func ParseErrorFromHTTPResponse(body []byte) (err error) {
 	}
 	if resp.Response.Error.Code != "" {
 		return errors.NewTencentCloudSDKError(resp.Response.Error.Code, resp.Response.Error.Message, resp.Response.RequestId)
+	}
+
+	cmqResp := &CMQAPIErrorResponse{}
+	err = json.Unmarshal(body, cmqResp)
+	if err != nil {
+		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
+		return errors.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
+	}
+	if cmqResp.RequestId != "" {
+		return errors.NewTencentCloudSDKError(strconv.Itoa(cmqResp.Code), cmqResp.Message, cmqResp.RequestId)
 	}
 
 	deprecated := &DeprecatedAPIErrorResponse{}
