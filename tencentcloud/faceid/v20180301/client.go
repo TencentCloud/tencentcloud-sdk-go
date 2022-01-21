@@ -2447,3 +2447,201 @@ func (c *Client) PhoneVerificationWithContext(ctx context.Context, request *Phon
     err = c.Send(request, response)
     return
 }
+
+func NewPhoneVerificationCMCCRequest() (request *PhoneVerificationCMCCRequest) {
+    request = &PhoneVerificationCMCCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCMCC")
+    
+    
+    return
+}
+
+func NewPhoneVerificationCMCCResponse() (response *PhoneVerificationCMCCResponse) {
+    response = &PhoneVerificationCMCCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PhoneVerificationCMCC
+// 本接口用于校验中国移动手机号、姓名和身份证号的真实性和一致性。中国移动支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCMCC(request *PhoneVerificationCMCCRequest) (response *PhoneVerificationCMCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCMCCRequest()
+    }
+    
+    response = NewPhoneVerificationCMCCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PhoneVerificationCMCC
+// 本接口用于校验中国移动手机号、姓名和身份证号的真实性和一致性。中国移动支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCMCCWithContext(ctx context.Context, request *PhoneVerificationCMCCRequest) (response *PhoneVerificationCMCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCMCCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPhoneVerificationCMCCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPhoneVerificationCTCCRequest() (request *PhoneVerificationCTCCRequest) {
+    request = &PhoneVerificationCTCCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCTCC")
+    
+    
+    return
+}
+
+func NewPhoneVerificationCTCCResponse() (response *PhoneVerificationCTCCResponse) {
+    response = &PhoneVerificationCTCCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PhoneVerificationCTCC
+// 本接口用于校验中国电信手机号、姓名和身份证号的真实性和一致性。中国电信支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCTCC(request *PhoneVerificationCTCCRequest) (response *PhoneVerificationCTCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCTCCRequest()
+    }
+    
+    response = NewPhoneVerificationCTCCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PhoneVerificationCTCC
+// 本接口用于校验中国电信手机号、姓名和身份证号的真实性和一致性。中国电信支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCTCCWithContext(ctx context.Context, request *PhoneVerificationCTCCRequest) (response *PhoneVerificationCTCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCTCCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPhoneVerificationCTCCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPhoneVerificationCUCCRequest() (request *PhoneVerificationCUCCRequest) {
+    request = &PhoneVerificationCUCCRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCUCC")
+    
+    
+    return
+}
+
+func NewPhoneVerificationCUCCResponse() (response *PhoneVerificationCUCCResponse) {
+    response = &PhoneVerificationCUCCResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PhoneVerificationCUCC
+// 本接口用于校验中国联通手机号、姓名和身份证号的真实性和一致性。中国联通支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCUCC(request *PhoneVerificationCUCCRequest) (response *PhoneVerificationCUCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCUCCRequest()
+    }
+    
+    response = NewPhoneVerificationCUCCResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// PhoneVerificationCUCC
+// 本接口用于校验中国联通手机号、姓名和身份证号的真实性和一致性。中国联通支持的手机号段详情请查阅<a href="https://cloud.tencent.com/document/product/1007/46063">运营商类</a>文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
+//  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
+//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) PhoneVerificationCUCCWithContext(ctx context.Context, request *PhoneVerificationCUCCRequest) (response *PhoneVerificationCUCCResponse, err error) {
+    if request == nil {
+        request = NewPhoneVerificationCUCCRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewPhoneVerificationCUCCResponse()
+    err = c.Send(request, response)
+    return
+}

@@ -2768,6 +2768,240 @@ func (r *MobileStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PhoneVerificationCMCCRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+}
+
+func (r *PhoneVerificationCMCCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCMCCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdCard")
+	delete(f, "Name")
+	delete(f, "Phone")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PhoneVerificationCMCCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationCMCCResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 认证通过
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+	// 不收费结果码：
+	// -6: 手机号码不合法
+	// -7: 身份证号码有误
+	// -8: 姓名校验不通过
+	// -9: 没有记录
+	// -10: 认证未通过
+	// -11: 验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 运营商名称。
+	// 取值范围为["移动","联通","电信",""]
+		Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PhoneVerificationCMCCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCMCCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationCTCCRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+}
+
+func (r *PhoneVerificationCTCCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCTCCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdCard")
+	delete(f, "Name")
+	delete(f, "Phone")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PhoneVerificationCTCCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationCTCCResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 认证通过
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+	// 不收费结果码：
+	// -6: 手机号码不合法
+	// -7: 身份证号码有误
+	// -8: 姓名校验不通过
+	// -9: 没有记录
+	// -10: 认证未通过
+	// -11: 验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 运营商名称。
+	// 取值范围为["移动","联通","电信",""]
+		Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PhoneVerificationCTCCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCTCCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationCUCCRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份证号
+	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
+}
+
+func (r *PhoneVerificationCUCCRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCUCCRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdCard")
+	delete(f, "Name")
+	delete(f, "Phone")
+	delete(f, "Encryption")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PhoneVerificationCUCCRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PhoneVerificationCUCCResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 认证结果码，收费情况如下。
+	// 收费结果码：
+	// 0: 认证通过
+	// -4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+	// 不收费结果码：
+	// -6: 手机号码不合法
+	// -7: 身份证号码有误
+	// -8: 姓名校验不通过
+	// -9: 没有记录
+	// -10: 认证未通过
+	// -11: 验证中心服务繁忙
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 运营商名称。
+	// 取值范围为["移动","联通","电信",""]
+		Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+		// 业务结果描述。
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PhoneVerificationCUCCResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PhoneVerificationCUCCResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PhoneVerificationRequest struct {
 	*tchttp.BaseRequest
 

@@ -1722,8 +1722,17 @@ type CreateAssetImageRegistryScanTaskRequest struct {
 	// 扫描类型数组
 	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
 
-	// 扫描的镜像列表Id
+	// 扫描的镜像列表
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 过滤条件
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 不需要扫描的镜像列表, 与Filters配合使用
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+
+	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskRequest) ToJsonString() string {
@@ -1742,6 +1751,9 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 	delete(f, "Images")
 	delete(f, "ScanType")
 	delete(f, "Id")
+	delete(f, "Filters")
+	delete(f, "ExcludeImageList")
+	delete(f, "OnlyScanLatest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageRegistryScanTaskRequest has unknown keys!", "")
 	}
@@ -4600,6 +4612,9 @@ func (r *DescribeAssetImageRegistryAssetStatusResponse) FromJsonString(s string)
 
 type DescribeAssetImageRegistryDetailRequest struct {
 	*tchttp.BaseRequest
+
+	// 仓库列表id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryDetailRequest) ToJsonString() string {
@@ -4614,6 +4629,7 @@ func (r *DescribeAssetImageRegistryDetailRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Id")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryDetailRequest has unknown keys!", "")
 	}
@@ -4631,6 +4647,126 @@ type DescribeAssetImageRegistryDetailResponse struct {
 		// 镜像地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+
+		// 镜像类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+		// 仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+		// 镜像版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+		// 扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+
+		// 扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+
+		// 安全漏洞数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+
+		// 木马病毒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+
+		// 风险行为数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+
+		// 敏感信息数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitempty" name:"SentiveInfoCnt"`
+
+		// 镜像系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+		// 木马扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+
+		// 漏洞扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+
+		// 层文件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		LayerInfo *string `json:"LayerInfo,omitempty" name:"LayerInfo"`
+
+		// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+		// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+		// 高危扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+
+		// 木马信息扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitempty" name:"ScanVirusProgress"`
+
+		// 漏洞扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanVulProgress *uint64 `json:"ScanVulProgress,omitempty" name:"ScanVulProgress"`
+
+		// 敏感扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitempty" name:"ScanRiskProgress"`
+
+		// 剩余扫描时间秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ScanRemainTime *uint64 `json:"ScanRemainTime,omitempty" name:"ScanRemainTime"`
+
+		// cve扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CveStatus *string `json:"CveStatus,omitempty" name:"CveStatus"`
+
+		// 高危扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RiskStatus *string `json:"RiskStatus,omitempty" name:"RiskStatus"`
+
+		// 木马扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VirusStatus *string `json:"VirusStatus,omitempty" name:"VirusStatus"`
+
+		// 总进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+		// 授权状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+		// 镜像大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+
+		// 镜像Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+		// 镜像区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+
+		// 镜像创建的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageCreateTime *string `json:"ImageCreateTime,omitempty" name:"ImageCreateTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4668,6 +4804,9 @@ type DescribeAssetImageRegistryListExportRequest struct {
 
 	// 排序方式，asc，desc
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 是否仅展示repository版本最新的镜像，默认为false
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
 }
 
 func (r *DescribeAssetImageRegistryListExportRequest) ToJsonString() string {
@@ -4688,6 +4827,7 @@ func (r *DescribeAssetImageRegistryListExportRequest) FromJsonString(s string) e
 	delete(f, "Filters")
 	delete(f, "By")
 	delete(f, "Order")
+	delete(f, "OnlyShowLatest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryListExportRequest has unknown keys!", "")
 	}
@@ -4720,6 +4860,25 @@ func (r *DescribeAssetImageRegistryListExportResponse) FromJsonString(s string) 
 
 type DescribeAssetImageRegistryListRequest struct {
 	*tchttp.BaseRequest
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤字段
+	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序方式，asc，desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 是否仅展示各repository最新的镜像, 默认为false
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
 }
 
 func (r *DescribeAssetImageRegistryListRequest) ToJsonString() string {
@@ -4734,6 +4893,12 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "OnlyShowLatest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryListRequest has unknown keys!", "")
 	}
@@ -4743,6 +4908,14 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 type DescribeAssetImageRegistryListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 镜像仓库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		List []*ImageRepoInfo `json:"List,omitempty" name:"List"`
+
+		// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10358,6 +10531,125 @@ type ImageProgress struct {
 	VirusProgress *uint64 `json:"VirusProgress,omitempty" name:"VirusProgress"`
 }
 
+type ImageRepoInfo struct {
+
+	// 镜像Digest
+	ImageDigest *string `json:"ImageDigest,omitempty" name:"ImageDigest"`
+
+	// 镜像仓库地址
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+
+	// 仓库类型
+	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 镜像版本
+	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 镜像大小
+	ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+
+	// 最近扫描时间
+	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+
+	// 扫描状态
+	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+
+	// 安全漏洞数
+	VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+
+	// 木马病毒数
+	VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+
+	// 风险行为数
+	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+
+	// 敏感信息数
+	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitempty" name:"SentiveInfoCnt"`
+
+	// 是否可信镜像
+	IsTrustImage *bool `json:"IsTrustImage,omitempty" name:"IsTrustImage"`
+
+	// 镜像系统
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// 木马扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+
+	// 漏洞扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 高危扫描错误
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+
+	// 敏感信息扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitempty" name:"ScanVirusProgress"`
+
+	// 木马扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanVulProgress *uint64 `json:"ScanVulProgress,omitempty" name:"ScanVulProgress"`
+
+	// 漏洞扫描进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitempty" name:"ScanRiskProgress"`
+
+	// 剩余扫描时间秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRemainTime *uint64 `json:"ScanRemainTime,omitempty" name:"ScanRemainTime"`
+
+	// cve扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CveStatus *string `json:"CveStatus,omitempty" name:"CveStatus"`
+
+	// 高危扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskStatus *string `json:"RiskStatus,omitempty" name:"RiskStatus"`
+
+	// 木马扫描状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusStatus *string `json:"VirusStatus,omitempty" name:"VirusStatus"`
+
+	// 总进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 授权状态
+	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 仓库区域
+	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+
+	// 列表id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 镜像Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 镜像创建的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCreateTime *string `json:"ImageCreateTime,omitempty" name:"ImageCreateTime"`
+
+	// 是否为镜像的最新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLatestImage *bool `json:"IsLatestImage,omitempty" name:"IsLatestImage"`
+}
+
 type ImageRisk struct {
 
 	// 高危行为
@@ -11078,8 +11370,17 @@ type ModifyAssetImageRegistryScanStopRequest struct {
 	// 扫描的镜像列表
 	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
 
-	// 扫描的镜像列表Id
+	// 扫描的镜像列表
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 过滤条件
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 不要扫描的镜像列表，与Filters配合使用
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+
+	// 是否仅扫描各repository最新版本的镜像
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
 }
 
 func (r *ModifyAssetImageRegistryScanStopRequest) ToJsonString() string {
@@ -11097,6 +11398,9 @@ func (r *ModifyAssetImageRegistryScanStopRequest) FromJsonString(s string) error
 	delete(f, "All")
 	delete(f, "Images")
 	delete(f, "Id")
+	delete(f, "Filters")
+	delete(f, "ExcludeImageList")
+	delete(f, "OnlyScanLatest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetImageRegistryScanStopRequest has unknown keys!", "")
 	}

@@ -3050,7 +3050,7 @@ func NewLicensePlateOCRResponse() (response *LicensePlateOCRResponse) {
 }
 
 // LicensePlateOCR
-// 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号信息。
+// 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号码与车牌颜色信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3072,7 +3072,7 @@ func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *Lic
 }
 
 // LicensePlateOCR
-// 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号信息。
+// 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号码与车牌颜色信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

@@ -2049,7 +2049,7 @@ type DescribeLogContextRequest struct {
 	// 要查询的日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 日志时间,  格式: YYYY-mm-dd HH:MM:SS
+	// 日志时间,  格式: YYYY-mm-dd HH:MM:SS.FFF
 	BTime *string `json:"BTime,omitempty" name:"BTime"`
 
 	// 日志包序号

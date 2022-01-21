@@ -1,3 +1,189 @@
+# Release v1.0.335
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 71 次发布
+
+发布时间：2022-01-21 08:08:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImage](https://cloud.tencent.com/document/api/213/16726)
+
+	* 新增入参：TagSpecification
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：TagSpecification
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 38 次发布
+
+发布时间：2022-01-21 08:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PhoneVerificationCMCC](https://cloud.tencent.com/document/api/1007/68559)
+* [PhoneVerificationCTCC](https://cloud.tencent.com/document/api/1007/68558)
+* [PhoneVerificationCUCC](https://cloud.tencent.com/document/api/1007/68557)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 37 次发布
+
+发布时间：2022-01-21 08:14:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBaseMetrics](https://cloud.tencent.com/document/api/248/30351)
+
+	* 新增入参：Dimensions
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 61 次发布
+
+发布时间：2022-01-21 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
+
+	* 新增出参：Color
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 7 次发布
+
+发布时间：2022-01-20 19:50:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增出参：RegistryType, ImageName, ImageTag, ScanTime, ScanStatus, VulCnt, VirusCnt, RiskCnt, SentiveInfoCnt, OsName, ScanVirusError, ScanVulError, LayerInfo, InstanceId, InstanceName, Namespace, ScanRiskError, ScanVirusProgress, ScanVulProgress, ScanRiskProgress, ScanRemainTime, CveStatus, RiskStatus, VirusStatus, Progress, IsAuthorized, ImageSize, ImageId, RegistryRegion, ImageCreateTime
+
+
+### 第 6 次发布
+
+发布时间：2022-01-20 19:25:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增入参：Id
+
+* [DescribeAssetImageRegistryList](https://cloud.tencent.com/document/api/1285/65500)
+
+	* 新增入参：Limit, Offset, Filters, By, Order, OnlyShowLatest
+
+	* 新增出参：List, TotalCount
+
+* [DescribeAssetImageRegistryListExport](https://cloud.tencent.com/document/api/1285/65499)
+
+	* 新增入参：OnlyShowLatest
+
+* [ModifyAssetImageRegistryScanStop](https://cloud.tencent.com/document/api/1285/65462)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+
+新增数据结构：
+
+* [ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 28 次发布
+
+发布时间：2022-01-21 08:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+
+	* 新增成员：Status, MaxUnackedMsgNum, MaxMsgBacklogSize
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 11 次发布
+
+发布时间：2022-01-21 08:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollingUpdateApplicationByVersion](https://cloud.tencent.com/document/api/1371/66371)
+
+	* 新增入参：DeployStrategyType, TotalBatchCount, BatchInterval, BetaBatchNum, MinAvailable
+
+
+修改数据结构：
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：Locked
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.334
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

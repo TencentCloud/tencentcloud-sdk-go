@@ -2222,6 +2222,9 @@ type DescribeBaseMetricsRequest struct {
 
 	// 指标名，各个云产品的指标名不同。如需获取指标名，请前往各产品监控指标文档，例如云服务器的指标名，可参见 [云服务器监控指标](https://cloud.tencent.com/document/product/248/6843)
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 可选参数，按照维度过滤
+	Dimensions []*string `json:"Dimensions,omitempty" name:"Dimensions"`
 }
 
 func (r *DescribeBaseMetricsRequest) ToJsonString() string {
@@ -2238,6 +2241,7 @@ func (r *DescribeBaseMetricsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Namespace")
 	delete(f, "MetricName")
+	delete(f, "Dimensions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaseMetricsRequest has unknown keys!", "")
 	}

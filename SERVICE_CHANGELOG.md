@@ -1,59 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 82 次发布
+### 第 71 次发布
 
-发布时间：2022-01-20 08:05:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryCDBProxy](https://cloud.tencent.com/document/api/236/68461)
-
-新增数据结构：
-
-* [ProxyGroups](https://cloud.tencent.com/document/api/236/15878#ProxyGroups)
-* [RWInfos](https://cloud.tencent.com/document/api/236/15878#RWInfos)
-
-
-
-## 智能保险助手(cii) 版本：2021-04-08
-
-### 第 9 次发布
-
-发布时间：2022-01-20 08:06:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddSubStructureTasks](https://cloud.tencent.com/document/api/1368/68463)
-* [DescribeReportClassify](https://cloud.tencent.com/document/api/1368/68462)
-* [DescribeUnderwriteTask](https://cloud.tencent.com/document/api/1368/68464)
-
-新增数据结构：
-
-* [ClassifiedReports](https://cloud.tencent.com/document/api/1368/56853#ClassifiedReports)
-* [UnderwriteConclusion](https://cloud.tencent.com/document/api/1368/56853#UnderwriteConclusion)
-* [UnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#UnderwriteOutput)
-
-
-
-## 智能保险助手(cii) 版本：2020-12-10
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 65 次发布
-
-发布时间：2022-01-20 08:06:53
+发布时间：2022-01-21 08:08:55
 
 本次发布包含了以下内容：
 
@@ -61,102 +12,175 @@
 
 修改接口：
 
-* [CreateClsLogSet](https://cloud.tencent.com/document/api/214/46803)
+* [CreateImage](https://cloud.tencent.com/document/api/213/16726)
 
-	* <font color="#dd0000">**修改入参**：</font>Period
+	* 新增入参：TagSpecification
 
-* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
 
-	* 新增入参：Period
+	* 新增入参：TagSpecification
 
-* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
 
-	* 新增入参：NewDomains
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 38 次发布
+
+发布时间：2022-01-21 08:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PhoneVerificationCMCC](https://cloud.tencent.com/document/api/1007/68559)
+* [PhoneVerificationCTCC](https://cloud.tencent.com/document/api/1007/68558)
+* [PhoneVerificationCUCC](https://cloud.tencent.com/document/api/1007/68557)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 37 次发布
+
+发布时间：2022-01-21 08:14:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBaseMetrics](https://cloud.tencent.com/document/api/248/30351)
+
+	* 新增入参：Dimensions
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 61 次发布
+
+发布时间：2022-01-21 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
+
+	* 新增出参：Color
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 7 次发布
+
+发布时间：2022-01-20 19:50:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增出参：RegistryType, ImageName, ImageTag, ScanTime, ScanStatus, VulCnt, VirusCnt, RiskCnt, SentiveInfoCnt, OsName, ScanVirusError, ScanVulError, LayerInfo, InstanceId, InstanceName, Namespace, ScanRiskError, ScanVirusProgress, ScanVulProgress, ScanRiskProgress, ScanRemainTime, CveStatus, RiskStatus, VirusStatus, Progress, IsAuthorized, ImageSize, ImageId, RegistryRegion, ImageCreateTime
+
+
+### 第 6 次发布
+
+发布时间：2022-01-20 19:25:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增入参：Id
+
+* [DescribeAssetImageRegistryList](https://cloud.tencent.com/document/api/1285/65500)
+
+	* 新增入参：Limit, Offset, Filters, By, Order, OnlyShowLatest
+
+	* 新增出参：List, TotalCount
+
+* [DescribeAssetImageRegistryListExport](https://cloud.tencent.com/document/api/1285/65499)
+
+	* 新增入参：OnlyShowLatest
+
+* [ModifyAssetImageRegistryScanStop](https://cloud.tencent.com/document/api/1285/65462)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+
+新增数据结构：
+
+* [ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 28 次发布
+
+发布时间：2022-01-21 08:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+
+	* 新增成员：Status, MaxUnackedMsgNum, MaxMsgBacklogSize
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 11 次发布
+
+发布时间：2022-01-21 08:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollingUpdateApplicationByVersion](https://cloud.tencent.com/document/api/1371/66371)
+
+	* 新增入参：DeployStrategyType, TotalBatchCount, BatchInterval, BetaBatchNum, MinAvailable
 
 
 修改数据结构：
 
-* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
 
-	* 新增成员：Domains
-
-* [RuleOutput](https://cloud.tencent.com/document/api/214/30694#RuleOutput)
-
-	* 新增成员：Domains
+	* 新增成员：Locked
 
 
 
 
-## 事件总线(eb) 版本：2021-04-16
-
-### 第 2 次发布
-
-发布时间：2022-01-20 08:09:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [PutEvents](https://cloud.tencent.com/document/api/1359/68465)
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 23 次发布
-
-发布时间：2022-01-20 08:10:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
-
-	* 新增入参：HealthStatus
-
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：HealthStatus
-
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 68 次发布
-
-发布时间：2022-01-20 08:16:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTask](https://cloud.tencent.com/document/api/649/48886)
-
-	* 新增入参：ProgramIdList
-
-* [CreateTaskFlow](https://cloud.tencent.com/document/api/649/50088)
-
-	* 新增入参：ProgramIdList
-
-* [DescribeTaskRecords](https://cloud.tencent.com/document/api/649/56136)
-
-	* 新增入参：Ids
-
-* [ModifyTask](https://cloud.tencent.com/document/api/649/50087)
-
-	* 新增入参：ProgramIdList
-
+## 弹性微服务(tem) 版本：2020-12-21
 
 
 
@@ -8979,12 +9003,12 @@
 
 新增接口：
 
-* [[QueryCDBProxy](https://cloud.tencent.com/document/api/236/68461)](https://cloud.tencent.com/document/api/#/#)
+* [QueryCDBProxy](https://cloud.tencent.com/document/api/236/68461)
 
 新增数据结构：
 
-* [[ProxyGroups](https://cloud.tencent.com/document/api/236/15878#ProxyGroups)](https://cloud.tencent.com/document/api/236/15878#[ProxyGroups](https://cloud.tencent.com/document/api/236/15878#ProxyGroups))
-* [[RWInfos](https://cloud.tencent.com/document/api/236/15878#RWInfos)](https://cloud.tencent.com/document/api/236/15878#[RWInfos](https://cloud.tencent.com/document/api/236/15878#RWInfos))
+* [ProxyGroups](https://cloud.tencent.com/document/api/236/15878#ProxyGroups)
+* [RWInfos](https://cloud.tencent.com/document/api/236/15878#RWInfos)
 
 ### 第 81 次发布
 
@@ -13687,15 +13711,15 @@
 
 新增接口：
 
-* [[AddSubStructureTasks](https://cloud.tencent.com/document/api/1368/68463)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeReportClassify](https://cloud.tencent.com/document/api/1368/68462)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUnderwriteTask](https://cloud.tencent.com/document/api/1368/68464)](https://cloud.tencent.com/document/api/#/#)
+* [AddSubStructureTasks](https://cloud.tencent.com/document/api/1368/68463)
+* [DescribeReportClassify](https://cloud.tencent.com/document/api/1368/68462)
+* [DescribeUnderwriteTask](https://cloud.tencent.com/document/api/1368/68464)
 
 新增数据结构：
 
-* [[ClassifiedReports](https://cloud.tencent.com/document/api/1368/56853#ClassifiedReports)](https://cloud.tencent.com/document/api/1368/56853#[ClassifiedReports](https://cloud.tencent.com/document/api/1368/56853#ClassifiedReports))
-* [[UnderwriteConclusion](https://cloud.tencent.com/document/api/1368/56853#UnderwriteConclusion)](https://cloud.tencent.com/document/api/1368/56853#[UnderwriteConclusion](https://cloud.tencent.com/document/api/1368/56853#UnderwriteConclusion))
-* [[UnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#UnderwriteOutput)](https://cloud.tencent.com/document/api/1368/56853#[UnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#UnderwriteOutput))
+* [ClassifiedReports](https://cloud.tencent.com/document/api/1368/56853#ClassifiedReports)
+* [UnderwriteConclusion](https://cloud.tencent.com/document/api/1368/56853#UnderwriteConclusion)
+* [UnderwriteOutput](https://cloud.tencent.com/document/api/1368/56853#UnderwriteOutput)
 
 ### 第 8 次发布
 
@@ -19724,6 +19748,25 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 71 次发布
+
+发布时间：2022-01-21 08:08:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImage](https://cloud.tencent.com/document/api/213/16726)
+
+	* 新增入参：TagSpecification
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：TagSpecification
+
 
 ### 第 70 次发布
 
@@ -26179,7 +26222,7 @@
 
 新增接口：
 
-* [[PutEvents](https://cloud.tencent.com/document/api/1359/68465)](https://cloud.tencent.com/document/api/#/#)
+* [PutEvents](https://cloud.tencent.com/document/api/1359/68465)
 
 ### 第 1 次发布
 
@@ -30038,6 +30081,20 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 38 次发布
+
+发布时间：2022-01-21 08:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[PhoneVerificationCMCC](https://cloud.tencent.com/document/api/1007/68559)](https://cloud.tencent.com/document/api/#/#)
+* [[PhoneVerificationCTCC](https://cloud.tencent.com/document/api/1007/68558)](https://cloud.tencent.com/document/api/#/#)
+* [[PhoneVerificationCUCC](https://cloud.tencent.com/document/api/1007/68557)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 37 次发布
 
@@ -41590,6 +41647,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 37 次发布
+
+发布时间：2022-01-21 08:14:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBaseMetrics](https://cloud.tencent.com/document/api/248/30351)
+
+	* 新增入参：Dimensions
+
+
 ### 第 36 次发布
 
 发布时间：2022-01-12 08:12:33
@@ -44647,6 +44719,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 61 次发布
+
+发布时间：2022-01-21 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
+
+	* 新增出参：Color
+
 
 ### 第 60 次发布
 
@@ -55742,6 +55829,58 @@
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
+### 第 7 次发布
+
+发布时间：2022-01-20 19:50:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增出参：RegistryType, ImageName, ImageTag, ScanTime, ScanStatus, VulCnt, VirusCnt, RiskCnt, SentiveInfoCnt, OsName, ScanVirusError, ScanVulError, LayerInfo, InstanceId, InstanceName, Namespace, ScanRiskError, ScanVirusProgress, ScanVulProgress, ScanRiskProgress, ScanRemainTime, CveStatus, RiskStatus, VirusStatus, Progress, IsAuthorized, ImageSize, ImageId, RegistryRegion, ImageCreateTime
+
+
+### 第 6 次发布
+
+发布时间：2022-01-20 19:25:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增入参：Id
+
+* [DescribeAssetImageRegistryList](https://cloud.tencent.com/document/api/1285/65500)
+
+	* 新增入参：Limit, Offset, Filters, By, Order, OnlyShowLatest
+
+	* 新增出参：List, TotalCount
+
+* [DescribeAssetImageRegistryListExport](https://cloud.tencent.com/document/api/1285/65499)
+
+	* 新增入参：OnlyShowLatest
+
+* [ModifyAssetImageRegistryScanStop](https://cloud.tencent.com/document/api/1285/65462)
+
+	* 新增入参：Filters, ExcludeImageList, OnlyScanLatest
+
+
+新增数据结构：
+
+* [[ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo)](https://cloud.tencent.com/document/api/1285/65614#[ImageRepoInfo](https://cloud.tencent.com/document/api/1285/65614#ImageRepoInfo))
+
 ### 第 5 次发布
 
 发布时间：2022-01-14 08:15:55
@@ -56137,6 +56276,21 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 28 次发布
+
+发布时间：2022-01-21 08:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+
+	* 新增成员：Status, MaxUnackedMsgNum, MaxMsgBacklogSize
+
 
 ### 第 27 次发布
 
@@ -57057,6 +57211,28 @@
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 11 次发布
+
+发布时间：2022-01-21 08:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollingUpdateApplicationByVersion](https://cloud.tencent.com/document/api/1371/66371)
+
+	* 新增入参：DeployStrategyType, TotalBatchCount, BatchInterval, BetaBatchNum, MinAvailable
+
+
+修改数据结构：
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：Locked
+
 
 ### 第 10 次发布
 

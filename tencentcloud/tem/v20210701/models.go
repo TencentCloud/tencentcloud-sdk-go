@@ -2017,6 +2017,21 @@ type RollingUpdateApplicationByVersionRequest struct {
 
 	// 请求来源平台，含 IntelliJ，Coding
 	From *string `json:"From,omitempty" name:"From"`
+
+	// 部署策略，AUTO 为全自动；BETA 为小批量验证后自动；MANUAL 为全手动；
+	DeployStrategyType *string `json:"DeployStrategyType,omitempty" name:"DeployStrategyType"`
+
+	// 发布批次数
+	TotalBatchCount *int64 `json:"TotalBatchCount,omitempty" name:"TotalBatchCount"`
+
+	// 批次间隔时间
+	BatchInterval *int64 `json:"BatchInterval,omitempty" name:"BatchInterval"`
+
+	// 小批量验证批次的实例数
+	BetaBatchNum *int64 `json:"BetaBatchNum,omitempty" name:"BetaBatchNum"`
+
+	// 发布过程中保障的最小可用实例数
+	MinAvailable *int64 `json:"MinAvailable,omitempty" name:"MinAvailable"`
 }
 
 func (r *RollingUpdateApplicationByVersionRequest) ToJsonString() string {
@@ -2036,6 +2051,11 @@ func (r *RollingUpdateApplicationByVersionRequest) FromJsonString(s string) erro
 	delete(f, "DeployVersion")
 	delete(f, "PackageName")
 	delete(f, "From")
+	delete(f, "DeployStrategyType")
+	delete(f, "TotalBatchCount")
+	delete(f, "BatchInterval")
+	delete(f, "BetaBatchNum")
+	delete(f, "MinAvailable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollingUpdateApplicationByVersionRequest has unknown keys!", "")
 	}
@@ -2291,4 +2311,7 @@ type TemNamespaceInfo struct {
 
 	// 是否开启tsw
 	EnableTswTraceService *bool `json:"EnableTswTraceService,omitempty" name:"EnableTswTraceService"`
+
+	// 环境锁，1为上锁，0则为上锁
+	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
 }
