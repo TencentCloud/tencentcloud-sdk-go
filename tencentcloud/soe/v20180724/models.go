@@ -62,12 +62,8 @@ type InitOralProcessRequest struct {
 	// 长效session标识，当该参数为1时，session的持续时间为300s，但会一定程度上影响第一个数据包的返回速度，且TransmitOralProcess必须同时为1才可生效。
 	IsLongLifeSession *int64 `json:"IsLongLifeSession,omitempty" name:"IsLongLifeSession"`
 
-	// 音频存储模式
-	// 0：不存储
-	// 1：存储到公共对象存储，不会产生费用，存储时间为一个月。输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段；
-	// 2：永久存储音频，需要提工单申请，会产生一定的存储费用；
-	// 3：自定义存储，将音频存储到自定义的腾讯云[对象存储](https://cloud.tencent.com/product/cos)中。
-	// 注：对可用性要求较高的用户建议自行存储至腾讯云COS。
+	// 音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
+	// 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
 	StorageMode *int64 `json:"StorageMode,omitempty" name:"StorageMode"`
 
 	// 输出断句中间结果标识
@@ -504,12 +500,8 @@ type TransmitOralProcessWithInitRequest struct {
 	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 SoeAppId 可以在[控制台](https://console.cloud.tencent.com/soe)【应用管理】下新建。如果没有新建SoeAppId，请勿填入该参数，否则会报欠费错误。
 	SoeAppId *string `json:"SoeAppId,omitempty" name:"SoeAppId"`
 
-	// 音频存储模式
-	// 0：不存储
-	// 1：存储到公共对象存储，不会产生费用，存储时间为一个月。输出结果为该会话最后一个分片TransmitOralProcess 返回结果 AudioUrl 字段；
-	// 2：永久存储音频，需要提工单申请，会产生一定的存储费用；
-	// 3：自定义存储，将音频存储到自定义的腾讯云[对象存储](https://cloud.tencent.com/product/cos)中。
-	// 注：对可用性要求较高的用户建议自行存储至腾讯云COS。
+	// 音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
+	// 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
 	StorageMode *int64 `json:"StorageMode,omitempty" name:"StorageMode"`
 
 	// 输出断句中间结果标识

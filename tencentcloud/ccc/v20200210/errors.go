@@ -17,6 +17,9 @@ package v20200210
 const (
 	// 此产品的特有错误码
 
+	// 外呼失败。
+	FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+
 	// 重复账号。
 	FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
 
@@ -49,6 +52,9 @@ const (
 
 	// 超出数量限制。
 	LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+
+	// 不在白名单中。
+	OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

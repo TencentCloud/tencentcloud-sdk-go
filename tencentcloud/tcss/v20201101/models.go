@@ -1857,20 +1857,26 @@ func (r *CreateAssetImageScanSettingResponse) FromJsonString(s string) error {
 type CreateAssetImageScanTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 是否扫描全部镜像
+	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
 	All *bool `json:"All,omitempty" name:"All"`
 
-	// 需要扫描的镜像列表
+	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
 	Images []*string `json:"Images,omitempty" name:"Images"`
 
-	// 扫描漏洞
+	// 扫描漏洞；漏洞，木马和风险需选其一
 	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
 
-	// 扫描木马
+	// 扫描木马；漏洞，木马和风险需选其一
 	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
 
-	// 扫描风险
+	// 扫描风险；漏洞，木马和风险需选其一
 	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+
+	// 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 根据过滤条件筛选出镜像，再排除个别镜像
+	ExcludeImageIds []*string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
 }
 
 func (r *CreateAssetImageScanTaskRequest) ToJsonString() string {
@@ -1890,6 +1896,8 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanVul")
 	delete(f, "ScanVirus")
 	delete(f, "ScanRisk")
+	delete(f, "Filters")
+	delete(f, "ExcludeImageIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanTaskRequest has unknown keys!", "")
 	}
@@ -7948,6 +7956,9 @@ type DescribeImageAuthorizedInfoResponse struct {
 		// 未开启扫描镜像数
 		NotScannedImageCnt *uint64 `json:"NotScannedImageCnt,omitempty" name:"NotScannedImageCnt"`
 
+		// 本地未开启扫描镜像数
+		NotScannedLocalImageCnt *uint64 `json:"NotScannedLocalImageCnt,omitempty" name:"NotScannedLocalImageCnt"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -11430,11 +11441,17 @@ func (r *ModifyAssetImageRegistryScanStopResponse) FromJsonString(s string) erro
 type ModifyAssetImageScanStopRequest struct {
 	*tchttp.BaseRequest
 
-	// 任务id
+	// 任务id；任务id，镜像id和根据过滤条件筛选三选一。
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 
-	// 镜像id
+	// 镜像id；任务id，镜像id和根据过滤条件筛选三选一。
 	Images []*string `json:"Images,omitempty" name:"Images"`
+
+	// 根据过滤条件筛选出镜像；任务id，镜像id和根据过滤条件筛选三选一。
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 根据过滤条件筛选出镜像，再排除个别镜像
+	ExcludeImageIds *string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
 }
 
 func (r *ModifyAssetImageScanStopRequest) ToJsonString() string {
@@ -11451,6 +11468,8 @@ func (r *ModifyAssetImageScanStopRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskID")
 	delete(f, "Images")
+	delete(f, "Filters")
+	delete(f, "ExcludeImageIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetImageScanStopRequest has unknown keys!", "")
 	}

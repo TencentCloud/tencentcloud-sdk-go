@@ -491,7 +491,7 @@ type MeshStatus struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanaryVersion *string `json:"CanaryVersion,omitempty" name:"CanaryVersion"`
 
-	// Prometheus状态
+	// 已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Prometheus []*PrometheusStatus `json:"Prometheus,omitempty" name:"Prometheus"`
 
@@ -502,6 +502,10 @@ type MeshStatus struct {
 	// 正在执行的异步操作
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveOperationList []*ActiveOperation `json:"ActiveOperationList,omitempty" name:"ActiveOperationList"`
+
+	// 获取TPS信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TPS *PrometheusStatus `json:"TPS,omitempty" name:"TPS"`
 }
 
 type MetricSpec struct {

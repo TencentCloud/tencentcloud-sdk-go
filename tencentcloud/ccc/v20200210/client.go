@@ -98,6 +98,60 @@ func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateCallOutSessionRequest() (request *CreateCallOutSessionRequest) {
+    request = &CreateCallOutSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateCallOutSession")
+    
+    
+    return
+}
+
+func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) {
+    response = &CreateCallOutSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCallOutSession
+// 创建外呼会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateCallOutSessionRequest()
+    }
+    
+    response = NewCreateCallOutSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCallOutSession
+// 创建外呼会话
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateCallOutSessionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCallOutSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +368,58 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     request.SetContext(ctx)
     
     response = NewDeleteStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoCalloutTasksRequest() (request *DescribeAutoCalloutTasksRequest) {
+    request = &DescribeAutoCalloutTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAutoCalloutTasks")
+    
+    
+    return
+}
+
+func NewDescribeAutoCalloutTasksResponse() (response *DescribeAutoCalloutTasksResponse) {
+    response = &DescribeAutoCalloutTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoCalloutTasks
+// 批量查询自动任务外呼
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAutoCalloutTasks(request *DescribeAutoCalloutTasksRequest) (response *DescribeAutoCalloutTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoCalloutTasksRequest()
+    }
+    
+    response = NewDescribeAutoCalloutTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAutoCalloutTasks
+// 批量查询自动任务外呼
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAutoCalloutTasksWithContext(ctx context.Context, request *DescribeAutoCalloutTasksRequest) (response *DescribeAutoCalloutTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoCalloutTasksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoCalloutTasksResponse()
     err = c.Send(request, response)
     return
 }

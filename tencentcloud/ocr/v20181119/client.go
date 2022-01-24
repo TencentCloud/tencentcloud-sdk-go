@@ -3936,6 +3936,74 @@ func (c *Client) RecognizeContainerOCRWithContext(ctx context.Context, request *
     return
 }
 
+func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest) {
+    request = &RecognizeHealthCodeOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeHealthCodeOCR")
+    
+    
+    return
+}
+
+func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRResponse) {
+    response = &RecognizeHealthCodeOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeHealthCodeOCR
+// 本接口支持粤康码识别，包括姓名、更新时间、健康码颜色，三个字段的识别结果输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeHealthCodeOCRRequest()
+    }
+    
+    response = NewRecognizeHealthCodeOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// RecognizeHealthCodeOCR
+// 本接口支持粤康码识别，包括姓名、更新时间、健康码颜色，三个字段的识别结果输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeHealthCodeOCRWithContext(ctx context.Context, request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeHealthCodeOCRRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewRecognizeHealthCodeOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiItineraryOCRRequest) {
     request = &RecognizeOnlineTaxiItineraryOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

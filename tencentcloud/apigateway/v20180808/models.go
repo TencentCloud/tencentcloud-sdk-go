@@ -6420,7 +6420,7 @@ type ParameterInfo struct {
 	// 单位
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 
-	// 类型
+	// 类型, integer|string
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 最小
@@ -6431,6 +6431,18 @@ type ParameterInfo struct {
 
 	// 修改时间
 	ModifedTime *string `json:"ModifedTime,omitempty" name:"ModifedTime"`
+
+	// 字符类型的值，当Type为string时才有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueString *string `json:"ValueString,omitempty" name:"ValueString"`
+
+	// 字符类型的默认值，当Type为string时才有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValueString *string `json:"DefaultValueString,omitempty" name:"DefaultValueString"`
+
+	// 可调整范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Range *string `json:"Range,omitempty" name:"Range"`
 }
 
 type PathMapping struct {

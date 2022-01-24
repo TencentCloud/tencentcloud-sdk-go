@@ -8289,6 +8289,8 @@ func NewModifyAssetImageScanStopResponse() (response *ModifyAssetImageScanStopRe
 // 容器安全停止镜像扫描
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
@@ -8308,6 +8310,8 @@ func (c *Client) ModifyAssetImageScanStop(request *ModifyAssetImageScanStopReque
 // 容器安全停止镜像扫描
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"

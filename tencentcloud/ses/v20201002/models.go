@@ -25,7 +25,7 @@ type Attachment struct {
 	// 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。
+	// base64之后的附件内容，您可以发送的附件大小上限为4 MB。 注意：腾讯云api目前要求请求包大小不得超过8 MB。如果您要发送多个附件，那么这些附件的总大小不能超过8 MB。
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
@@ -46,16 +46,16 @@ type BatchSendEmailRequest struct {
 	// 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云（暂未支持）
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
 	// 使用模板发送时，填写的模板相关参数
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
-	// 使用API直接发送内容时，填写的邮件内容
+	// 使用API直接发送内容时，填写的邮件内容（暂未支持）
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
-	// 需要发送附件时，填写附件相关参数。
+	// 需要发送附件时，填写附件相关参数（暂未支持）
 	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
 
 	// 周期发送任务的必要参数

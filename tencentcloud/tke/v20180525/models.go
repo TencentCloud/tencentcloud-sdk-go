@@ -828,6 +828,46 @@ type ClusterPublicLB struct {
 	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
+type ClusterStatus struct {
+
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群状态
+	ClusterState *string `json:"ClusterState,omitempty" name:"ClusterState"`
+
+	// 集群下机器实例的状态
+	ClusterInstanceState *string `json:"ClusterInstanceState,omitempty" name:"ClusterInstanceState"`
+
+	// 集群是否开启监控
+	ClusterBMonitor *bool `json:"ClusterBMonitor,omitempty" name:"ClusterBMonitor"`
+
+	// 集群创建中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+	ClusterInitNodeNum *int64 `json:"ClusterInitNodeNum,omitempty" name:"ClusterInitNodeNum"`
+
+	// 集群运行中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+	ClusterRunningNodeNum *int64 `json:"ClusterRunningNodeNum,omitempty" name:"ClusterRunningNodeNum"`
+
+	// 集群异常的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+	ClusterFailedNodeNum *int64 `json:"ClusterFailedNodeNum,omitempty" name:"ClusterFailedNodeNum"`
+
+	// 集群已关机的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterClosedNodeNum *int64 `json:"ClusterClosedNodeNum,omitempty" name:"ClusterClosedNodeNum"`
+
+	// 集群关机中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterClosingNodeNum *int64 `json:"ClusterClosingNodeNum,omitempty" name:"ClusterClosingNodeNum"`
+
+	// 集群是否开启删除保护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterDeletionProtection *bool `json:"ClusterDeletionProtection,omitempty" name:"ClusterDeletionProtection"`
+
+	// 集群是否可审计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterAuditEnabled *bool `json:"ClusterAuditEnabled,omitempty" name:"ClusterAuditEnabled"`
+}
+
 type ClusterVersion struct {
 
 	// 集群ID
@@ -3460,6 +3500,58 @@ func (r *DescribeClusterSecurityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterSecurityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID列表，不传默认拉取所有集群
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+}
+
+func (r *DescribeClusterStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 集群状态列表
+		ClusterStatusSet []*ClusterStatus `json:"ClusterStatusSet,omitempty" name:"ClusterStatusSet"`
+
+		// 集群个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

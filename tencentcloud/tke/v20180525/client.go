@@ -3324,6 +3324,74 @@ func (c *Client) DescribeClusterSecurityWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeClusterStatusRequest() (request *DescribeClusterStatusRequest) {
+    request = &DescribeClusterStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterStatus")
+    
+    
+    return
+}
+
+func NewDescribeClusterStatusResponse() (response *DescribeClusterStatusResponse) {
+    response = &DescribeClusterStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterStatus
+// 查看集群状态列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterStatus(request *DescribeClusterStatusRequest) (response *DescribeClusterStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterStatusRequest()
+    }
+    
+    response = NewDescribeClusterStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeClusterStatus
+// 查看集群状态列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INTERNALERROR_CVMCOMMON = "InternalError.CvmCommon"
+//  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterStatusWithContext(ctx context.Context, request *DescribeClusterStatusRequest) (response *DescribeClusterStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},

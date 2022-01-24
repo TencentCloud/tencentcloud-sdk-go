@@ -2656,17 +2656,23 @@ type CreateFlowLogRequest struct {
 	// 流日志采集类型，ACCEPT|REJECT|ALL
 	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
 
-	// 流日志存储ID
-	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
-
 	// 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 流日志实例描述
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 
+	// 流日志存储ID
+	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
+
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 消费端类型：cls、ckafka
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 流日志消费端信息，当消费端类型为ckafka时，必填。
+	FlowLogStorage *FlowLogStorage `json:"FlowLogStorage,omitempty" name:"FlowLogStorage"`
 }
 
 func (r *CreateFlowLogRequest) ToJsonString() string {
@@ -2685,10 +2691,12 @@ func (r *CreateFlowLogRequest) FromJsonString(s string) error {
 	delete(f, "ResourceType")
 	delete(f, "ResourceId")
 	delete(f, "TrafficType")
-	delete(f, "CloudLogId")
 	delete(f, "VpcId")
 	delete(f, "FlowLogDescription")
+	delete(f, "CloudLogId")
 	delete(f, "Tags")
+	delete(f, "StorageType")
+	delete(f, "FlowLogStorage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowLogRequest has unknown keys!", "")
 	}
@@ -11611,38 +11619,59 @@ type FilterObject struct {
 
 type FlowLog struct {
 
-	// 私用网络ID或者统一ID，建议使用统一ID
+	// 私用网络ID或者统一ID，建议使用统一ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 
-	// 流日志实例名字
+	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源唯一ID
+	// 资源唯一ID。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 流日志采集类型，ACCEPT|REJECT|ALL
+	// 流日志采集类型，ACCEPT|REJECT|ALL。
 	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
 
-	// 流日志存储ID
+	// 流日志存储ID。
 	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
 
-	// 流日志存储ID状态
+	// 流日志存储ID状态。
 	CloudLogState *string `json:"CloudLogState,omitempty" name:"CloudLogState"`
 
-	// 流日志描述信息
+	// 流日志描述信息。
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 
-	// 流日志创建时间
+	// 流日志创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 是否启用，true-启用，false-停用。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 消费端类型：cls、ckafka。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 消费端信息，当消费端类型为ckafka时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowLogStorage *FlowLogStorage `json:"FlowLogStorage,omitempty" name:"FlowLogStorage"`
+}
+
+type FlowLogStorage struct {
+
+	// 存储实例Id，当流日志存储类型为ckafka时，必填。
+	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
+
+	// 主题Id，当流日志存储类型为ckafka时，必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageTopic *string `json:"StorageTopic,omitempty" name:"StorageTopic"`
 }
 
 type GatewayFlowMonitorDetail struct {
