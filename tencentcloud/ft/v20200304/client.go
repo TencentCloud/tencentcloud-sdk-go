@@ -423,6 +423,7 @@ func NewQueryFaceMorphJobResponse() (response *QueryFaceMorphJobResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) QueryFaceMorphJob(request *QueryFaceMorphJobRequest) (response *QueryFaceMorphJobResponse, err error) {
     if request == nil {
         request = NewQueryFaceMorphJobRequest()
@@ -445,6 +446,7 @@ func (c *Client) QueryFaceMorphJob(request *QueryFaceMorphJobRequest) (response 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) QueryFaceMorphJobWithContext(ctx context.Context, request *QueryFaceMorphJobRequest) (response *QueryFaceMorphJobResponse, err error) {
     if request == nil {
         request = NewQueryFaceMorphJobRequest()

@@ -11,10 +11,10 @@
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2021-11-10 08:02:02 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2021-11-10 08:02:03 |
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2022-01-14 10:07:56 |
-| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2022-01-24 08:04:33 |
+| apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2022-01-25 08:05:51 |
 | apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2022-01-19 08:05:14 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-01-21 08:05:34 |
-| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2021-12-22 08:06:39 |
+| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2022-01-25 08:06:14 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2021-11-29 08:03:58 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2021-11-10 08:02:33 |
 | batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2021-11-10 08:02:34 |
@@ -38,7 +38,7 @@
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2021-12-06 08:02:54 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2022-01-17 08:04:37 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2022-01-21 08:07:44 |
-| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-01-20 08:06:41 |
+| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-01-25 08:08:24 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2022-01-20 08:06:46 |
@@ -101,7 +101,7 @@
 | ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2021-11-30 14:56:41 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2021-12-24 08:11:42 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2022-01-11 08:11:43 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-01-19 08:12:24 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-01-25 08:14:02 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2021-11-10 08:08:46 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2022-01-14 08:12:58 |
 | market | [云市场](https://cloud.tencent.com/document/product/306) | 2021-11-10 08:08:54 |
@@ -117,7 +117,7 @@
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2021-12-21 16:54:01 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
-| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2021-12-21 08:08:44 |
+| oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-01-25 08:15:03 |
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-01-24 08:13:05 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-01-18 08:13:20 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2021-11-18 08:11:02 |

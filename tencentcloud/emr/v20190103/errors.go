@@ -23,6 +23,9 @@ const (
 	// 重复的订单，请检查emr控制台。
 	FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
 
+	// 操作失败，不支持pod。
+	FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

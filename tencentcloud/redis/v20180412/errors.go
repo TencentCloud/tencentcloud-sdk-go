@@ -80,6 +80,9 @@ const (
 	// 执行Http请求失败。
 	INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
 
+	// 无操作权限。
+	INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
+
 	// 内部错误。
 	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 

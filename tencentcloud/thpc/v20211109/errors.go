@@ -26,6 +26,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 不支持该参数值。
+	INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+
 	// 参数值过大。
 	INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 

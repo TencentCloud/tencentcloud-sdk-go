@@ -8494,13 +8494,13 @@ type PushDataInfo struct {
 	// 推流视频帧率，单位: Hz。
 	VideoFps *uint64 `json:"VideoFps,omitempty" name:"VideoFps"`
 
-	// 推流视频码率，单位: Kbps。
+	// 推流视频码率，单位: bps。
 	VideoSpeed *uint64 `json:"VideoSpeed,omitempty" name:"VideoSpeed"`
 
 	// 推流音频帧率，单位: Hz。
 	AudioFps *uint64 `json:"AudioFps,omitempty" name:"AudioFps"`
 
-	// 推流音频码率，单位: Kbps。
+	// 推流音频码率，单位: bps。
 	AudioSpeed *uint64 `json:"AudioSpeed,omitempty" name:"AudioSpeed"`
 
 	// 推流域名。
@@ -8523,10 +8523,10 @@ type PushDataInfo struct {
 	// 采样率。
 	AsampleRate *uint64 `json:"AsampleRate,omitempty" name:"AsampleRate"`
 
-	// metadata 中的音频码率，单位: Kbps。
+	// metadata 中的音频码率，单位: bps。
 	MetaAudioSpeed *uint64 `json:"MetaAudioSpeed,omitempty" name:"MetaAudioSpeed"`
 
-	// metadata 中的视频码率，单位: Kbps。
+	// metadata 中的视频码率，单位: bps。
 	MetaVideoSpeed *uint64 `json:"MetaVideoSpeed,omitempty" name:"MetaVideoSpeed"`
 
 	// metadata 中的帧率。

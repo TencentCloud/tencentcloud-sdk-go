@@ -333,9 +333,7 @@ func NewCreateDDoSAIResponse() (response *CreateDDoSAIResponse) {
 // 设置DDoS防护的AI防护开关
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateDDoSAI(request *CreateDDoSAIRequest) (response *CreateDDoSAIResponse, err error) {
     if request == nil {
         request = NewCreateDDoSAIRequest()
@@ -350,9 +348,7 @@ func (c *Client) CreateDDoSAI(request *CreateDDoSAIRequest) (response *CreateDDo
 // 设置DDoS防护的AI防护开关
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateDDoSAIWithContext(ctx context.Context, request *CreateDDoSAIRequest) (response *CreateDDoSAIResponse, err error) {
     if request == nil {
         request = NewCreateDDoSAIRequest()
@@ -520,6 +516,7 @@ func NewCreateDDoSGeoIPBlockConfigResponse() (response *CreateDDoSGeoIPBlockConf
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSGeoIPBlockConfig(request *CreateDDoSGeoIPBlockConfigRequest) (response *CreateDDoSGeoIPBlockConfigResponse, err error) {
     if request == nil {
@@ -536,6 +533,7 @@ func (c *Client) CreateDDoSGeoIPBlockConfig(request *CreateDDoSGeoIPBlockConfigR
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSGeoIPBlockConfigWithContext(ctx context.Context, request *CreateDDoSGeoIPBlockConfigRequest) (response *CreateDDoSGeoIPBlockConfigResponse, err error) {
     if request == nil {
@@ -570,6 +568,7 @@ func NewCreateDDoSSpeedLimitConfigResponse() (response *CreateDDoSSpeedLimitConf
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSSpeedLimitConfig(request *CreateDDoSSpeedLimitConfigRequest) (response *CreateDDoSSpeedLimitConfigResponse, err error) {
     if request == nil {
@@ -586,6 +585,7 @@ func (c *Client) CreateDDoSSpeedLimitConfig(request *CreateDDoSSpeedLimitConfigR
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSSpeedLimitConfigWithContext(ctx context.Context, request *CreateDDoSSpeedLimitConfigRequest) (response *CreateDDoSSpeedLimitConfigResponse, err error) {
     if request == nil {
@@ -775,6 +775,7 @@ func NewCreatePacketFilterConfigResponse() (response *CreatePacketFilterConfigRe
 // 添加DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePacketFilterConfig(request *CreatePacketFilterConfigRequest) (response *CreatePacketFilterConfigResponse, err error) {
     if request == nil {
@@ -790,6 +791,7 @@ func (c *Client) CreatePacketFilterConfig(request *CreatePacketFilterConfigReque
 // 添加DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePacketFilterConfigWithContext(ctx context.Context, request *CreatePacketFilterConfigRequest) (response *CreatePacketFilterConfigResponse, err error) {
     if request == nil {
@@ -987,6 +989,7 @@ func NewCreateProtocolBlockConfigResponse() (response *CreateProtocolBlockConfig
 // 设置DDoS防护的协议封禁配置
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProtocolBlockConfig(request *CreateProtocolBlockConfigRequest) (response *CreateProtocolBlockConfigResponse, err error) {
     if request == nil {
@@ -1002,6 +1005,7 @@ func (c *Client) CreateProtocolBlockConfig(request *CreateProtocolBlockConfigReq
 // 设置DDoS防护的协议封禁配置
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProtocolBlockConfigWithContext(ctx context.Context, request *CreateProtocolBlockConfigRequest) (response *CreateProtocolBlockConfigResponse, err error) {
     if request == nil {
@@ -1155,6 +1159,7 @@ func NewCreateWaterPrintKeyResponse() (response *CreateWaterPrintKeyResponse) {
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWaterPrintKey(request *CreateWaterPrintKeyRequest) (response *CreateWaterPrintKeyResponse, err error) {
     if request == nil {
@@ -1172,6 +1177,7 @@ func (c *Client) CreateWaterPrintKey(request *CreateWaterPrintKeyRequest) (respo
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWaterPrintKeyWithContext(ctx context.Context, request *CreateWaterPrintKeyRequest) (response *CreateWaterPrintKeyResponse, err error) {
     if request == nil {
@@ -1450,6 +1456,7 @@ func NewDeleteWaterPrintConfigResponse() (response *DeleteWaterPrintConfigRespon
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteWaterPrintConfig(request *DeleteWaterPrintConfigRequest) (response *DeleteWaterPrintConfigResponse, err error) {
     if request == nil {
         request = NewDeleteWaterPrintConfigRequest()
@@ -1465,6 +1472,7 @@ func (c *Client) DeleteWaterPrintConfig(request *DeleteWaterPrintConfigRequest) 
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteWaterPrintConfigWithContext(ctx context.Context, request *DeleteWaterPrintConfigRequest) (response *DeleteWaterPrintConfigResponse, err error) {
     if request == nil {
         request = NewDeleteWaterPrintConfigRequest()

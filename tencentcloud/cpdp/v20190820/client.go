@@ -1073,6 +1073,7 @@ func NewContractOrderResponse() (response *ContractOrderResponse) {
 // 应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
@@ -1107,6 +1108,7 @@ func (c *Client) ContractOrder(request *ContractOrderRequest) (response *Contrac
 // 应用需要先带上签约信息调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"

@@ -71,6 +71,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
+//  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
@@ -100,6 +101,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
+//  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"

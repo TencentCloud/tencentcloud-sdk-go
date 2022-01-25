@@ -344,6 +344,9 @@ const (
 	// 租户每天申请的弹性IP超过上限。
 	LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.DailyAllocateAddressQuotaLimitExceeded"
 
+	// NAT网关数量已达到上限。
+	LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = "LimitExceeded.NatGatewayLimitExceeded"
+
 	// 私有网络创建的NAT网关超过上限。
 	LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = "LimitExceeded.NatGatewayPerVpcLimitExceeded"
 

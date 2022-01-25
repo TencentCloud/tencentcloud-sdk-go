@@ -1097,7 +1097,6 @@ type SentenceRecognitionRequest struct {
 	// • 16k_en：16k 英语；
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
-	// • 16k_wuu-SH：16k 上海话方言；
 	// • 16k_zh_medical：16k 医疗；
 	// • 16k_zh_dialect：多方言。
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
@@ -1135,7 +1134,7 @@ type SentenceRecognitionRequest struct {
 	// 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1。
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitempty" name:"ConvertNumMode"`
 
-	// 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH。默认值为 0。
+	// 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认值为 0。
 	WordInfo *int64 `json:"WordInfo,omitempty" name:"WordInfo"`
 }
 

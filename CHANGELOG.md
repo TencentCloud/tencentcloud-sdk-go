@@ -1,3 +1,24 @@
+# Release v1.0.337
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 14 次发布
+
+发布时间：2022-01-25 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：LogCollectType
+
+
+
+
 # Release v1.0.336
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

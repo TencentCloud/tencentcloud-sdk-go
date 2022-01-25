@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 21 次发布
+### 第 14 次发布
 
-发布时间：2022-01-24 08:04:15
+发布时间：2022-01-25 08:15:03
 
 本次发布包含了以下内容：
 
@@ -12,204 +12,9 @@
 
 修改接口：
 
-* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
 
-	* 新增入参：SetPlayModeCommandInput
-
-
-新增数据结构：
-
-* [SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlayModeCommandInput)
-
-修改数据结构：
-
-* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
-
-	* 新增成员：SetPlayModeInput
-
-
-
-
-## API网关(apigateway) 版本：2018-08-08
-
-### 第 25 次发布
-
-发布时间：2022-01-24 08:04:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ParameterInfo](https://cloud.tencent.com/document/api/628/45244#ParameterInfo)
-
-	* 新增成员：ValueString, DefaultValueString, Range
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 20 次发布
-
-发布时间：2022-01-24 08:05:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCallOutSession](https://cloud.tencent.com/document/api/679/68726)
-* [DescribeAutoCalloutTasks](https://cloud.tencent.com/document/api/679/68725)
-
-新增数据结构：
-
-* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
-
-修改数据结构：
-
-* [IMCdrInfo](https://cloud.tencent.com/document/api/679/47715#IMCdrInfo)
-
-	* 新增成员：SessionId, SkillGroupId, SkillGroupName
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 72 次发布
-
-发布时间：2022-01-24 08:07:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [GPUInfo](https://cloud.tencent.com/document/api/213/15753#GPUInfo)
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
-
-	* 新增成员：GPUInfo
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 62 次发布
-
-发布时间：2022-01-21 10:52:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 3 次发布
-
-发布时间：2022-01-24 08:14:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MeshStatus](https://cloud.tencent.com/document/api/1261/63843#MeshStatus)
-
-	* 新增成员：TPS
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 8 次发布
-
-发布时间：2022-01-24 08:15:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAssetImageScanTask](https://cloud.tencent.com/document/api/1285/65515)
-
-	* 新增入参：Filters, ExcludeImageIds
-
-* [DescribeImageAuthorizedInfo](https://cloud.tencent.com/document/api/1285/65473)
-
-	* 新增出参：NotScannedLocalImageCnt
-
-* [ModifyAssetImageScanStop](https://cloud.tencent.com/document/api/1285/65460)
-
-	* 新增入参：Filters, ExcludeImageIds
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 88 次发布
-
-发布时间：2022-01-24 08:16:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeClusterStatus](https://cloud.tencent.com/document/api/457/68727)
-
-新增数据结构：
-
-* [ClusterStatus](https://cloud.tencent.com/document/api/457/31866#ClusterStatus)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 105 次发布
-
-发布时间：2022-01-24 08:17:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
-
-	* 新增入参：StorageType, FlowLogStorage
-
-	* <font color="#dd0000">**修改入参**：</font>CloudLogId
-
-
-新增数据结构：
-
-* [FlowLogStorage](https://cloud.tencent.com/document/api/215/15824#FlowLogStorage)
-
-修改数据结构：
-
-* [FlowLog](https://cloud.tencent.com/document/api/215/15824#FlowLog)
-
-	* 新增成员：Enable, StorageType, FlowLogStorage
+	* 新增入参：LogCollectType
 
 
 
@@ -630,7 +435,7 @@
 
 新增数据结构：
 
-* [[SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlayModeCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlayModeCommandInput))
+* [SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlayModeCommandInput)
 
 修改数据结构：
 
@@ -8712,12 +8517,12 @@
 
 新增接口：
 
-* [[CreateCallOutSession](https://cloud.tencent.com/document/api/679/68726)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAutoCalloutTasks](https://cloud.tencent.com/document/api/679/68725)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCallOutSession](https://cloud.tencent.com/document/api/679/68726)
+* [DescribeAutoCalloutTasks](https://cloud.tencent.com/document/api/679/68725)
 
 新增数据结构：
 
-* [[AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)](https://cloud.tencent.com/document/api/679/47715#[AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo))
+* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
 
 修改数据结构：
 
@@ -19854,7 +19659,7 @@
 
 新增数据结构：
 
-* [[GPUInfo](https://cloud.tencent.com/document/api/213/15753#GPUInfo)](https://cloud.tencent.com/document/api/213/15753#[GPUInfo](https://cloud.tencent.com/document/api/213/15753#GPUInfo))
+* [GPUInfo](https://cloud.tencent.com/document/api/213/15753#GPUInfo)
 
 修改数据结构：
 
@@ -44580,6 +44385,21 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 14 次发布
+
+发布时间：2022-01-25 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：LogCollectType
+
+
 ### 第 13 次发布
 
 发布时间：2021-12-21 08:08:44
@@ -44844,7 +44664,7 @@
 
 新增接口：
 
-* [[RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
 
 ### 第 61 次发布
 
@@ -59370,11 +59190,11 @@
 
 新增接口：
 
-* [[DescribeClusterStatus](https://cloud.tencent.com/document/api/457/68727)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterStatus](https://cloud.tencent.com/document/api/457/68727)
 
 新增数据结构：
 
-* [[ClusterStatus](https://cloud.tencent.com/document/api/457/31866#ClusterStatus)](https://cloud.tencent.com/document/api/457/31866#[ClusterStatus](https://cloud.tencent.com/document/api/457/31866#ClusterStatus))
+* [ClusterStatus](https://cloud.tencent.com/document/api/457/31866#ClusterStatus)
 
 ### 第 87 次发布
 
@@ -67109,7 +66929,7 @@
 
 新增数据结构：
 
-* [[FlowLogStorage](https://cloud.tencent.com/document/api/215/15824#FlowLogStorage)](https://cloud.tencent.com/document/api/215/15824#[FlowLogStorage](https://cloud.tencent.com/document/api/215/15824#FlowLogStorage))
+* [FlowLogStorage](https://cloud.tencent.com/document/api/215/15824#FlowLogStorage)
 
 修改数据结构：
 

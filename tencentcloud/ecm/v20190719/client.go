@@ -4685,6 +4685,7 @@ func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
 // *  如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4708,6 +4709,7 @@ func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response 
 // *  如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"

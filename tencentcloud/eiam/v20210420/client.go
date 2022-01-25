@@ -301,6 +301,7 @@ func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 //  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
@@ -322,6 +323,7 @@ func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateO
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 //  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
+//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) CreateOrgNodeWithContext(ctx context.Context, request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
@@ -357,6 +359,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
 //  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_LIMITQUOTANOTENOUGH = "FailedOperation.LimitQuotaNotEnough"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
@@ -383,6 +386,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
 //  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_LIMITQUOTANOTENOUGH = "FailedOperation.LimitQuotaNotEnough"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
@@ -593,12 +597,12 @@ func NewDeleteOrgNodeResponse() (response *DeleteOrgNodeResponse) {
 // 删除一个机构节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted"
+//  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
 //  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
-//  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCannotBeDeleted"
-//  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCannotBeDeleted"
+//  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCanNotBeDeleted"
+//  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCanNotBeDeleted"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteOrgNodeResponse, err error) {
     if request == nil {
@@ -614,12 +618,12 @@ func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteO
 // 删除一个机构节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted"
+//  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
 //  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
-//  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCannotBeDeleted"
-//  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCannotBeDeleted"
+//  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCanNotBeDeleted"
+//  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCanNotBeDeleted"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) DeleteOrgNodeWithContext(ctx context.Context, request *DeleteOrgNodeRequest) (response *DeleteOrgNodeResponse, err error) {
     if request == nil {
@@ -2193,6 +2197,8 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
 //  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = "FailedOperation.UpdateLDAPUserOrgExceedsRange"
+//  FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = "FailedOperation.UpdateUserExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
@@ -2228,6 +2234,8 @@ func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *Modif
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
 //  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = "FailedOperation.UpdateLDAPUserOrgExceedsRange"
+//  FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = "FailedOperation.UpdateUserExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"

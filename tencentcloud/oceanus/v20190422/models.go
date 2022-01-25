@@ -64,6 +64,9 @@ type CreateJobConfigRequest struct {
 
 	// CLS日志主题ID
 	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+	// 日志采集类型 2：CLS；3：COS
+	LogCollectType *int64 `json:"LogCollectType,omitempty" name:"LogCollectType"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -92,6 +95,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "TaskManagerSpec")
 	delete(f, "ClsLogsetId")
 	delete(f, "ClsTopicId")
+	delete(f, "LogCollectType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
