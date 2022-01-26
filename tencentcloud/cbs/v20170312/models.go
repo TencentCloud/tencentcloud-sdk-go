@@ -282,6 +282,63 @@ type CdcSize struct {
 	DiskTotal *uint64 `json:"DiskTotal,omitempty" name:"DiskTotal"`
 }
 
+type CopySnapshotCrossRegionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 快照需要复制到的目标地域，各地域的标准取值可通过接口[DescribeRegions](https://cloud.tencent.com/document/product/213/9456)查询，且只能传入支持快照的地域。
+	DestinationRegions []*string `json:"DestinationRegions,omitempty" name:"DestinationRegions"`
+
+	// 需要跨地域复制的源快照ID，可通过[DescribeSnapshots](/document/product/362/15647)查询。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 新复制快照的名称，如果不传，则默认取值为“Copied 源快照ID from 地域名”。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+}
+
+func (r *CopySnapshotCrossRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopySnapshotCrossRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DestinationRegions")
+	delete(f, "SnapshotId")
+	delete(f, "SnapshotName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopySnapshotCrossRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CopySnapshotCrossRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照跨地域复制的结果，如果请求下发成功，则返回相应地地域的新快照ID，否则返回Error。
+		SnapshotCopyResultSet []*SnapshotCopyResult `json:"SnapshotCopyResultSet,omitempty" name:"SnapshotCopyResultSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CopySnapshotCrossRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CopySnapshotCrossRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -2530,6 +2587,21 @@ type Snapshot struct {
 
 	// 快照开始共享的时间。
 	TimeStartShare *string `json:"TimeStartShare,omitempty" name:"TimeStartShare"`
+}
+
+type SnapshotCopyResult struct {
+
+	// 复制到目标地域的新快照ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 指示具体错误信息，成功时为空字符串。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码，成功时取值为“Success”。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 跨地复制的目标地域。
+	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
 }
 
 type SnapshotOperationLog struct {

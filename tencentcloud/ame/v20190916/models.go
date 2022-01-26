@@ -636,6 +636,10 @@ type DescribeKTVRobotsRequest struct {
 	// <li>Destroy：销毁</li>
 	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
 
+	// 匹配创建时间在此时间段内的机器人。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
+
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -657,6 +661,7 @@ func (r *DescribeKTVRobotsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RobotIds")
 	delete(f, "Statuses")
+	delete(f, "CreateTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {
@@ -1955,6 +1960,17 @@ func (r *TakeMusicOffShelvesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TakeMusicOffShelvesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TimeRange struct {
+
+	// <li>大于等于此时间（起始时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+	Before *string `json:"Before,omitempty" name:"Before"`
+
+	// <li>小于此时间（结束时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+	After *string `json:"After,omitempty" name:"After"`
 }
 
 type UseRange struct {

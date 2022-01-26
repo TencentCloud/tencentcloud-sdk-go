@@ -44,6 +44,426 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddCustomPersonImageRequest() (request *AddCustomPersonImageRequest) {
+    request = &AddCustomPersonImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "AddCustomPersonImage")
+    
+    
+    return
+}
+
+func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) {
+    response = &AddCustomPersonImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddCustomPersonImage
+// 增加自定义人脸图片，每个自定义人物最多可包含5张人脸图片
+//
+// 
+//
+// 请注意，与创建自定义人物一样，图片数据优先级优于图片URL优先级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
+//  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
+//  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
+//  FAILEDOPERATION_NOFACEINIMAGE = "FailedOperation.NoFaceInImage"
+//  FAILEDOPERATION_PERSONNOTMATCHED = "FailedOperation.PersonNotMatched"
+//  FAILEDOPERATION_QUALITYALGOFAILED = "FailedOperation.QualityAlgoFailed"
+//  FAILEDOPERATION_QUALITYTOOLOW = "FailedOperation.QualityTooLow"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (response *AddCustomPersonImageResponse, err error) {
+    if request == nil {
+        request = NewAddCustomPersonImageRequest()
+    }
+    
+    response = NewAddCustomPersonImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AddCustomPersonImage
+// 增加自定义人脸图片，每个自定义人物最多可包含5张人脸图片
+//
+// 
+//
+// 请注意，与创建自定义人物一样，图片数据优先级优于图片URL优先级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
+//  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
+//  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
+//  FAILEDOPERATION_NOFACEINIMAGE = "FailedOperation.NoFaceInImage"
+//  FAILEDOPERATION_PERSONNOTMATCHED = "FailedOperation.PersonNotMatched"
+//  FAILEDOPERATION_QUALITYALGOFAILED = "FailedOperation.QualityAlgoFailed"
+//  FAILEDOPERATION_QUALITYTOOLOW = "FailedOperation.QualityTooLow"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) AddCustomPersonImageWithContext(ctx context.Context, request *AddCustomPersonImageRequest) (response *AddCustomPersonImageResponse, err error) {
+    if request == nil {
+        request = NewAddCustomPersonImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAddCustomPersonImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCustomCategoryRequest() (request *CreateCustomCategoryRequest) {
+    request = &CreateCustomCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomCategory")
+    
+    
+    return
+}
+
+func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) {
+    response = &CreateCustomCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomCategory
+// 创建自定义人物分类信息
+//
+// 
+//
+// 当L2Category为空时，将创建一级自定义分类。
+//
+// 当L1Category与L2Category均不为空时，将创建二级自定义分类。请注意，**只有当一级自定义分类存在时，才可创建二级自定义分类**。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomCategoryRequest()
+    }
+    
+    response = NewCreateCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCustomCategory
+// 创建自定义人物分类信息
+//
+// 
+//
+// 当L2Category为空时，将创建一级自定义分类。
+//
+// 当L1Category与L2Category均不为空时，将创建二级自定义分类。请注意，**只有当一级自定义分类存在时，才可创建二级自定义分类**。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomCategoryWithContext(ctx context.Context, request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomCategoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCustomGroupRequest() (request *CreateCustomGroupRequest) {
+    request = &CreateCustomGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomGroup")
+    
+    
+    return
+}
+
+func NewCreateCustomGroupResponse() (response *CreateCustomGroupResponse) {
+    response = &CreateCustomGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomGroup
+// 创建自定义人物库
+//
+// 
+//
+// Bucket的格式参考为 `bucketName-123456.cos.ap-shanghai.myqcloud.com`
+//
+// 
+//
+// 在调用CreateCustomPerson和AddCustomPersonImage接口之前，请先确保本接口成功调用。当前每个用户只支持一个自定义人物库，一旦自定义人物库创建成功，后续接口调用均会返回人物库已存在错误。
+//
+// 
+//
+// 由于人脸图片对于自定义人物识别至关重要，因此自定义人物识别功能需要用户显式指定COS存储桶方可使用。具体来说，自定义人物识别功能接口(主要是CreateCustomPerson和AddCustomPersonImage)会在此COS桶下面新建IVLDCustomPersonImage目录，并在此目录下存储自定义人物图片数据以支持后续潜在的特征更新。
+//
+// 
+//
+// 请注意：本接口指定的COS桶仅用于**备份存储自定义人物图片**，CreateCustomPerson和AddCustomPersonImage接口入参URL可使用任意COS存储桶下的任意图片。
+//
+// 
+//
+// **重要**：请务必确保本接口指定的COS存储桶存在(不要手动删除COS桶)。COS存储桶一旦指定，将不能修改。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (response *CreateCustomGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomGroupRequest()
+    }
+    
+    response = NewCreateCustomGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCustomGroup
+// 创建自定义人物库
+//
+// 
+//
+// Bucket的格式参考为 `bucketName-123456.cos.ap-shanghai.myqcloud.com`
+//
+// 
+//
+// 在调用CreateCustomPerson和AddCustomPersonImage接口之前，请先确保本接口成功调用。当前每个用户只支持一个自定义人物库，一旦自定义人物库创建成功，后续接口调用均会返回人物库已存在错误。
+//
+// 
+//
+// 由于人脸图片对于自定义人物识别至关重要，因此自定义人物识别功能需要用户显式指定COS存储桶方可使用。具体来说，自定义人物识别功能接口(主要是CreateCustomPerson和AddCustomPersonImage)会在此COS桶下面新建IVLDCustomPersonImage目录，并在此目录下存储自定义人物图片数据以支持后续潜在的特征更新。
+//
+// 
+//
+// 请注意：本接口指定的COS桶仅用于**备份存储自定义人物图片**，CreateCustomPerson和AddCustomPersonImage接口入参URL可使用任意COS存储桶下的任意图片。
+//
+// 
+//
+// **重要**：请务必确保本接口指定的COS存储桶存在(不要手动删除COS桶)。COS存储桶一旦指定，将不能修改。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomGroupWithContext(ctx context.Context, request *CreateCustomGroupRequest) (response *CreateCustomGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCustomPersonRequest() (request *CreateCustomPersonRequest) {
+    request = &CreateCustomPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomPerson")
+    
+    
+    return
+}
+
+func NewCreateCustomPersonResponse() (response *CreateCustomPersonResponse) {
+    response = &CreateCustomPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomPerson
+// 创建自定义人物。
+//
+// 
+//
+// 输入人物名称，基本信息，分类信息与人脸图片，创建自定义人物
+//
+// 
+//
+// 人脸图片可使用图片数据(base64编码的图片数据)或者图片URL(推荐使用COS以减少下载时间，其他地址也支持)，原始图片优先，也即如果同时指定了图片数据和图片URL，接口将仅使用图片数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDSECRETID = "AuthFailure.InvalidSecretId"
+//  AUTHFAILURE_SECRETIDNOTFOUND = "AuthFailure.SecretIdNotFound"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
+//  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
+//  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
+//  FAILEDOPERATION_NOFACEINIMAGE = "FailedOperation.NoFaceInImage"
+//  FAILEDOPERATION_PERSONDUPLICATED = "FailedOperation.PersonDuplicated"
+//  FAILEDOPERATION_PERSONNUMEXCEEDED = "FailedOperation.PersonNumExceeded"
+//  FAILEDOPERATION_QUALITYALGOFAILED = "FailedOperation.QualityAlgoFailed"
+//  FAILEDOPERATION_QUALITYTOOLOW = "FailedOperation.QualityTooLow"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomPerson(request *CreateCustomPersonRequest) (response *CreateCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomPersonRequest()
+    }
+    
+    response = NewCreateCustomPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCustomPerson
+// 创建自定义人物。
+//
+// 
+//
+// 输入人物名称，基本信息，分类信息与人脸图片，创建自定义人物
+//
+// 
+//
+// 人脸图片可使用图片数据(base64编码的图片数据)或者图片URL(推荐使用COS以减少下载时间，其他地址也支持)，原始图片优先，也即如果同时指定了图片数据和图片URL，接口将仅使用图片数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDSECRETID = "AuthFailure.InvalidSecretId"
+//  AUTHFAILURE_SECRETIDNOTFOUND = "AuthFailure.SecretIdNotFound"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
+//  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
+//  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
+//  FAILEDOPERATION_NOFACEINIMAGE = "FailedOperation.NoFaceInImage"
+//  FAILEDOPERATION_PERSONDUPLICATED = "FailedOperation.PersonDuplicated"
+//  FAILEDOPERATION_PERSONNUMEXCEEDED = "FailedOperation.PersonNumExceeded"
+//  FAILEDOPERATION_QUALITYALGOFAILED = "FailedOperation.QualityAlgoFailed"
+//  FAILEDOPERATION_QUALITYTOOLOW = "FailedOperation.QualityTooLow"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateCustomPersonWithContext(ctx context.Context, request *CreateCustomPersonRequest) (response *CreateCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomPersonRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDefaultCategoriesRequest() (request *CreateDefaultCategoriesRequest) {
+    request = &CreateDefaultCategoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "CreateDefaultCategories")
+    
+    
+    return
+}
+
+func NewCreateDefaultCategoriesResponse() (response *CreateDefaultCategoriesResponse) {
+    response = &CreateDefaultCategoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDefaultCategories
+// 创建默认自定义人物类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateDefaultCategories(request *CreateDefaultCategoriesRequest) (response *CreateDefaultCategoriesResponse, err error) {
+    if request == nil {
+        request = NewCreateDefaultCategoriesRequest()
+    }
+    
+    response = NewCreateDefaultCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDefaultCategories
+// 创建默认自定义人物类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) CreateDefaultCategoriesWithContext(ctx context.Context, request *CreateDefaultCategoriesRequest) (response *CreateDefaultCategoriesResponse, err error) {
+    if request == nil {
+        request = NewCreateDefaultCategoriesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDefaultCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -76,6 +496,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIALANG = "InvalidParameter.InvalidMediaLang"
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
@@ -106,6 +527,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
+//  INVALIDPARAMETER_INVALIDMEDIALANG = "InvalidParameter.InvalidMediaLang"
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
@@ -118,6 +540,186 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
     request.SetContext(ctx)
     
     response = NewCreateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomCategoryRequest() (request *DeleteCustomCategoryRequest) {
+    request = &DeleteCustomCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomCategory")
+    
+    
+    return
+}
+
+func NewDeleteCustomCategoryResponse() (response *DeleteCustomCategoryResponse) {
+    response = &DeleteCustomCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomCategory
+// 删除自定义分类信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomCategory(request *DeleteCustomCategoryRequest) (response *DeleteCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomCategoryRequest()
+    }
+    
+    response = NewDeleteCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCustomCategory
+// 删除自定义分类信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomCategoryWithContext(ctx context.Context, request *DeleteCustomCategoryRequest) (response *DeleteCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomCategoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomPersonRequest() (request *DeleteCustomPersonRequest) {
+    request = &DeleteCustomPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomPerson")
+    
+    
+    return
+}
+
+func NewDeleteCustomPersonResponse() (response *DeleteCustomPersonResponse) {
+    response = &DeleteCustomPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomPerson
+// 删除自定义人物
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomPerson(request *DeleteCustomPersonRequest) (response *DeleteCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomPersonRequest()
+    }
+    
+    response = NewDeleteCustomPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCustomPerson
+// 删除自定义人物
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomPersonWithContext(ctx context.Context, request *DeleteCustomPersonRequest) (response *DeleteCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomPersonRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomPersonImageRequest() (request *DeleteCustomPersonImageRequest) {
+    request = &DeleteCustomPersonImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomPersonImage")
+    
+    
+    return
+}
+
+func NewDeleteCustomPersonImageResponse() (response *DeleteCustomPersonImageResponse) {
+    response = &DeleteCustomPersonImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomPersonImage
+// 删除自定义人脸数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomPersonImage(request *DeleteCustomPersonImageRequest) (response *DeleteCustomPersonImageResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomPersonImageRequest()
+    }
+    
+    response = NewDeleteCustomPersonImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCustomPersonImage
+// 删除自定义人脸数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DeleteCustomPersonImageWithContext(ctx context.Context, request *DeleteCustomPersonImageRequest) (response *DeleteCustomPersonImageResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomPersonImageRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomPersonImageResponse()
     err = c.Send(request, response)
     return
 }
@@ -188,6 +790,250 @@ func (c *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMedi
     request.SetContext(ctx)
     
     response = NewDeleteMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomCategoriesRequest() (request *DescribeCustomCategoriesRequest) {
+    request = &DescribeCustomCategoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomCategories")
+    
+    
+    return
+}
+
+func NewDescribeCustomCategoriesResponse() (response *DescribeCustomCategoriesResponse) {
+    response = &DescribeCustomCategoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomCategories
+// 批量描述自定义人物分类信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomCategories(request *DescribeCustomCategoriesRequest) (response *DescribeCustomCategoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomCategoriesRequest()
+    }
+    
+    response = NewDescribeCustomCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomCategories
+// 批量描述自定义人物分类信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomCategoriesWithContext(ctx context.Context, request *DescribeCustomCategoriesRequest) (response *DescribeCustomCategoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomCategoriesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomGroupRequest() (request *DescribeCustomGroupRequest) {
+    request = &DescribeCustomGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomGroup")
+    
+    
+    return
+}
+
+func NewDescribeCustomGroupResponse() (response *DescribeCustomGroupResponse) {
+    response = &DescribeCustomGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomGroup
+// 描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  RESOURCENOTFOUND_CUSTOMGROUPNOTFOUND = "ResourceNotFound.CustomGroupNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomGroup(request *DescribeCustomGroupRequest) (response *DescribeCustomGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomGroupRequest()
+    }
+    
+    response = NewDescribeCustomGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomGroup
+// 描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  RESOURCENOTFOUND_CUSTOMGROUPNOTFOUND = "ResourceNotFound.CustomGroupNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomGroupWithContext(ctx context.Context, request *DescribeCustomGroupRequest) (response *DescribeCustomGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomPersonDetailRequest() (request *DescribeCustomPersonDetailRequest) {
+    request = &DescribeCustomPersonDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomPersonDetail")
+    
+    
+    return
+}
+
+func NewDescribeCustomPersonDetailResponse() (response *DescribeCustomPersonDetailResponse) {
+    response = &DescribeCustomPersonDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomPersonDetail
+// 描述自定义人物详细信息，包括人物信息与人物信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomPersonDetail(request *DescribeCustomPersonDetailRequest) (response *DescribeCustomPersonDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomPersonDetailRequest()
+    }
+    
+    response = NewDescribeCustomPersonDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomPersonDetail
+// 描述自定义人物详细信息，包括人物信息与人物信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomPersonDetailWithContext(ctx context.Context, request *DescribeCustomPersonDetailRequest) (response *DescribeCustomPersonDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomPersonDetailRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomPersonDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomPersonsRequest() (request *DescribeCustomPersonsRequest) {
+    request = &DescribeCustomPersonsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomPersons")
+    
+    
+    return
+}
+
+func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse) {
+    response = &DescribeCustomPersonsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomPersons
+// 批量描述自定义人物
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (response *DescribeCustomPersonsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomPersonsRequest()
+    }
+    
+    response = NewDescribeCustomPersonsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCustomPersons
+// 批量描述自定义人物
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
+//  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) DescribeCustomPersonsWithContext(ctx context.Context, request *DescribeCustomPersonsRequest) (response *DescribeCustomPersonsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomPersonsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomPersonsResponse()
     err = c.Send(request, response)
     return
 }
@@ -377,6 +1223,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
@@ -401,6 +1248,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
@@ -592,7 +1440,6 @@ func NewImportMediaResponse() (response *ImportMediaResponse) {
 //  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
 //  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
 //  FAILEDOPERATION_DBCONNECTIONERROR = "FailedOperation.DBConnectionError"
-//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_GETCAMTOKENFAILED = "FailedOperation.GetCAMTokenFailed"
@@ -701,7 +1548,6 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
 //  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
 //  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
 //  FAILEDOPERATION_DBCONNECTIONERROR = "FailedOperation.DBConnectionError"
-//  FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_GETCAMTOKENFAILED = "FailedOperation.GetCAMTokenFailed"
@@ -776,6 +1622,148 @@ func (c *Client) ImportMediaWithContext(ctx context.Context, request *ImportMedi
     request.SetContext(ctx)
     
     response = NewImportMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCustomCategoryRequest() (request *UpdateCustomCategoryRequest) {
+    request = &UpdateCustomCategoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "UpdateCustomCategory")
+    
+    
+    return
+}
+
+func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) {
+    response = &UpdateCustomCategoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCustomCategory
+// 更新自定义人物分类
+//
+// 
+//
+// 当L2Category为空时，代表更新CategoryId对应的一级自定义人物类型以及所有二级自定义人物类型所从属的一级自定义人物类型；
+//
+// 当L2Category非空时，仅更新CategoryId对应的二级自定义人物类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomCategoryRequest()
+    }
+    
+    response = NewUpdateCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateCustomCategory
+// 更新自定义人物分类
+//
+// 
+//
+// 当L2Category为空时，代表更新CategoryId对应的一级自定义人物类型以及所有二级自定义人物类型所从属的一级自定义人物类型；
+//
+// 当L2Category非空时，仅更新CategoryId对应的二级自定义人物类型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
+//  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) UpdateCustomCategoryWithContext(ctx context.Context, request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomCategoryRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateCustomCategoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCustomPersonRequest() (request *UpdateCustomPersonRequest) {
+    request = &UpdateCustomPersonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "UpdateCustomPerson")
+    
+    
+    return
+}
+
+func NewUpdateCustomPersonResponse() (response *UpdateCustomPersonResponse) {
+    response = &UpdateCustomPersonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCustomPerson
+// 更新自定义人物信息，包括姓名，简要信息，分类信息等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) UpdateCustomPerson(request *UpdateCustomPersonRequest) (response *UpdateCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomPersonRequest()
+    }
+    
+    response = NewUpdateCustomPersonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateCustomPerson
+// 更新自定义人物信息，包括姓名，简要信息，分类信息等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) UpdateCustomPersonWithContext(ctx context.Context, request *UpdateCustomPersonRequest) (response *UpdateCustomPersonResponse, err error) {
+    if request == nil {
+        request = NewUpdateCustomPersonRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateCustomPersonResponse()
     err = c.Send(request, response)
     return
 }

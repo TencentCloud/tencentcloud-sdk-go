@@ -1657,6 +1657,7 @@ func NewCheckNetDetectStateResponse() (response *CheckNetDetectStateResponse) {
 // 本接口(CheckNetDetectState)用于验证网络探测。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1664,6 +1665,7 @@ func NewCheckNetDetectStateResponse() (response *CheckNetDetectStateResponse) {
 //  INVALIDPARAMETERVALUE_NETDETECTINVPC = "InvalidParameterValue.NetDetectInVpc"
 //  INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = "InvalidParameterValue.NetDetectNotFoundIp"
 //  INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -1685,6 +1687,7 @@ func (c *Client) CheckNetDetectState(request *CheckNetDetectStateRequest) (respo
 // 本接口(CheckNetDetectState)用于验证网络探测。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1692,6 +1695,7 @@ func (c *Client) CheckNetDetectState(request *CheckNetDetectStateRequest) (respo
 //  INVALIDPARAMETERVALUE_NETDETECTINVPC = "InvalidParameterValue.NetDetectInVpc"
 //  INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = "InvalidParameterValue.NetDetectNotFoundIp"
 //  INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -3077,6 +3081,7 @@ func NewCreateNetDetectResponse() (response *CreateNetDetectResponse) {
 // 本接口(CreateNetDetect)用于创建网络探测。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3084,6 +3089,7 @@ func NewCreateNetDetectResponse() (response *CreateNetDetectResponse) {
 //  INVALIDPARAMETERVALUE_NETDETECTINVPC = "InvalidParameterValue.NetDetectInVpc"
 //  INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = "InvalidParameterValue.NetDetectNotFoundIp"
 //  INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -3105,6 +3111,7 @@ func (c *Client) CreateNetDetect(request *CreateNetDetectRequest) (response *Cre
 // 本接口(CreateNetDetect)用于创建网络探测。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3112,6 +3119,7 @@ func (c *Client) CreateNetDetect(request *CreateNetDetectRequest) (response *Cre
 //  INVALIDPARAMETERVALUE_NETDETECTINVPC = "InvalidParameterValue.NetDetectInVpc"
 //  INVALIDPARAMETERVALUE_NETDETECTNOTFOUNDIP = "InvalidParameterValue.NetDetectNotFoundIp"
 //  INVALIDPARAMETERVALUE_NETDETECTSAMEIP = "InvalidParameterValue.NetDetectSameIp"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -8431,12 +8439,14 @@ func NewDescribeNetDetectStatesResponse() (response *DescribeNetDetectStatesResp
 // 本接口(DescribeNetDetectStates)用于查询网络探测验证结果列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetDetectStates(request *DescribeNetDetectStatesRequest) (response *DescribeNetDetectStatesResponse, err error) {
     if request == nil {
@@ -8452,12 +8462,14 @@ func (c *Client) DescribeNetDetectStates(request *DescribeNetDetectStatesRequest
 // 本接口(DescribeNetDetectStates)用于查询网络探测验证结果列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNetDetectStatesWithContext(ctx context.Context, request *DescribeNetDetectStatesRequest) (response *DescribeNetDetectStatesResponse, err error) {
     if request == nil {
@@ -13291,6 +13303,7 @@ func NewModifyNetDetectResponse() (response *ModifyNetDetectResponse) {
 // 本接口(ModifyNetDetect)用于修改网络探测参数。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -13314,6 +13327,7 @@ func (c *Client) ModifyNetDetect(request *ModifyNetDetectRequest) (response *Mod
 // 本接口(ModifyNetDetect)用于修改网络探测参数。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_NETDETECTTIMEOUT = "InternalError.NetDetectTimeOut"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_NEXTHOPMISMATCH = "InvalidParameter.NextHopMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

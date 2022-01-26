@@ -1,3 +1,94 @@
+# Release v1.0.338
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 22 次发布
+
+发布时间：2022-01-26 08:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)
+
+	* 新增入参：CreateTime
+
+
+新增数据结构：
+
+* [TimeRange](https://cloud.tencent.com/document/api/1155/40113#TimeRange)
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-01-26 08:03:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CopySnapshotCrossRegions](https://cloud.tencent.com/document/api/362/68848)
+
+新增数据结构：
+
+* [SnapshotCopyResult](https://cloud.tencent.com/document/api/362/15669#SnapshotCopyResult)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 6 次发布
+
+发布时间：2022-01-26 08:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：PayUin, PayName
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 95 次发布
+
+发布时间：2022-01-26 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
+
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
+
+
+
+
 # Release v1.0.337
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22

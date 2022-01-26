@@ -4090,7 +4090,7 @@ type DescribeAssetHostListRequest struct {
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
-	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
+	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 

@@ -3807,17 +3807,34 @@ type CreateSuperPlayerConfigRequest struct {
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 播放的音视频类型，可选值：
+	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
+	// <li>Transcode：转码输出；</li>
+	// <li>Original：原始音视频。</li>
+	// 默认为 AdaptiveDynamicStream。
+	AudioVideoType *string `json:"AudioVideoType,omitempty" name:"AudioVideoType"`
+
 	// 播放 DRM 保护的自适应码流开关：
 	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
 	// 默认为 OFF。
+	// 当 AudioVideoType 为 AdaptiveDynamicStream 时，此参数有效。
 	DrmSwitch *string `json:"DrmSwitch,omitempty" name:"DrmSwitch"`
 
-	// 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。
+	// 允许输出的未加密的自适应码流模板 ID。
+	// 
+	// 当 AudioVideoType 为 AdaptiveDynamicStream 并且 DrmSwitch 为 OFF 时，此参数为必填。
 	AdaptiveDynamicStreamingDefinition *uint64 `json:"AdaptiveDynamicStreamingDefinition,omitempty" name:"AdaptiveDynamicStreamingDefinition"`
 
-	// 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。
+	// 允许输出的 DRM 自适应码流模板内容。
+	// 
+	// 当 AudioVideoType 为 AdaptiveDynamicStream 并且 DrmSwitch 为 ON 时，此参数为必填。
 	DrmStreamingsInfo *DrmStreamingsInfo `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的转码模板 ID。
+	// 
+	// 当 AudioVideoType 为 Transcode 时必填。
+	TranscodeDefinition *uint64 `json:"TranscodeDefinition,omitempty" name:"TranscodeDefinition"`
 
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
@@ -3860,9 +3877,11 @@ func (r *CreateSuperPlayerConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "AudioVideoType")
 	delete(f, "DrmSwitch")
 	delete(f, "AdaptiveDynamicStreamingDefinition")
 	delete(f, "DrmStreamingsInfo")
+	delete(f, "TranscodeDefinition")
 	delete(f, "ImageSpriteDefinition")
 	delete(f, "ResolutionNames")
 	delete(f, "Domain")
@@ -11054,6 +11073,12 @@ type ModifySuperPlayerConfigRequest struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 播放的音视频类型，可选值：
+	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
+	// <li>Transcode：转码输出；</li>
+	// <li>Original：原始音视频。</li>
+	AudioVideoType *string `json:"AudioVideoType,omitempty" name:"AudioVideoType"`
+
 	// 播放 DRM 保护的自适应码流开关：
 	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -11064,6 +11089,9 @@ type ModifySuperPlayerConfigRequest struct {
 
 	// 允许输出的 DRM 自适应码流模板内容。
 	DrmStreamingsInfo *DrmStreamingsInfoForUpdate `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的转码模板 ID。
+	TranscodeDefinition *uint64 `json:"TranscodeDefinition,omitempty" name:"TranscodeDefinition"`
 
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
@@ -11100,9 +11128,11 @@ func (r *ModifySuperPlayerConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "AudioVideoType")
 	delete(f, "DrmSwitch")
 	delete(f, "AdaptiveDynamicStreamingDefinition")
 	delete(f, "DrmStreamingsInfo")
+	delete(f, "TranscodeDefinition")
 	delete(f, "ImageSpriteDefinition")
 	delete(f, "ResolutionNames")
 	delete(f, "Domain")

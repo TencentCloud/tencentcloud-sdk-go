@@ -298,6 +298,14 @@ type DescribeOrganizationResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
 
+		// 代付者Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
+
+		// 代付者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PayName *string `json:"PayName,omitempty" name:"PayName"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

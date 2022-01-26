@@ -2202,7 +2202,7 @@ func NewDescribeProductListResponse() (response *DescribeProductListResponse) {
 }
 
 // DescribeProductList
-// 查询云监控产品列表
+// 查询云监控产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2227,7 +2227,7 @@ func (c *Client) DescribeProductList(request *DescribeProductListRequest) (respo
 }
 
 // DescribeProductList
-// 查询云监控产品列表
+// 查询云监控产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

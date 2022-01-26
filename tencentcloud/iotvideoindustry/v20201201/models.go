@@ -2424,7 +2424,7 @@ type DescribeDeviceEventRequest struct {
 	// 设备Id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+	// 默认为全部 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
 	EventTypes []*int64 `json:"EventTypes,omitempty" name:"EventTypes"`
 
 	// 偏移值
@@ -4862,10 +4862,10 @@ type DescribeXP2PDataRequest struct {
 	// P2P应用ID
 	P2PAppId *string `json:"P2PAppId,omitempty" name:"P2PAppId"`
 
-	// 查询开始时间
+	// 查询开始时间，时间戳秒
 	From *int64 `json:"From,omitempty" name:"From"`
 
-	// 查询结束时间
+	// 查询结束时间，时间戳秒
 	To *int64 `json:"To,omitempty" name:"To"`
 
 	// P2P通路ID
@@ -5315,10 +5315,10 @@ type GetVideoListByConRequest struct {
 	// 设备唯一标识
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
-	// 偏移量，默认0
+	// 偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制量，默认200
+	// 限制量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填

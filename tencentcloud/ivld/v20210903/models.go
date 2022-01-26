@@ -20,6 +20,66 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddCustomPersonImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人物图片地址
+	ImageURL *string `json:"ImageURL,omitempty" name:"ImageURL"`
+
+	// 图片数据base64之后的结果
+	Image *string `json:"Image,omitempty" name:"Image"`
+}
+
+func (r *AddCustomPersonImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomPersonImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "ImageURL")
+	delete(f, "Image")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomPersonImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddCustomPersonImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物Id
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 自定义人脸图片信息
+		ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddCustomPersonImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomPersonImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AppearIndexPair struct {
 
 	// 出现信息，取值范围为[1，3]
@@ -57,6 +117,215 @@ type AudioInfo struct {
 
 	// ASR提取的音频标签
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
+type CreateCustomCategoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义一级类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 自定义二级类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
+func (r *CreateCustomCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "L1Category")
+	delete(f, "L2Category")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义分类信息ID
+		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 人脸图片COS存储桶Host地址
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+}
+
+func (r *CreateCustomGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Bucket")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomPersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义人物姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义人物简要信息(仅用于标记，不支持检索)
+	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
+
+	// 自定义分类ID，如不存在接口会报错
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 自定义人物图片URL，可支持任意地址，推荐使用COS
+	ImageURL *string `json:"ImageURL,omitempty" name:"ImageURL"`
+
+	// 原始图片base64编码后的数据
+	Image *string `json:"Image,omitempty" name:"Image"`
+}
+
+func (r *CreateCustomPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomPersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "BasicInfo")
+	delete(f, "CategoryId")
+	delete(f, "ImageURL")
+	delete(f, "Image")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCustomPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物Id
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 自定义人脸信息
+		ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCustomPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomPersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDefaultCategoriesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *CreateDefaultCategoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDefaultCategoriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDefaultCategoriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDefaultCategoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDefaultCategoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDefaultCategoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTaskRequest struct {
@@ -120,11 +389,210 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomCategory struct {
+
+	// 自定义分类ID
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 一级自定义类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 二级自定义类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
+type CustomPersonFilter struct {
+
+	// 待查询的人物姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 待过滤的自定义类型Id数组
+	CategoryIdSet []*string `json:"CategoryIdSet,omitempty" name:"CategoryIdSet"`
+
+	// 待过滤的自定义人物Id数组
+	PersonIdSet []*string `json:"PersonIdSet,omitempty" name:"PersonIdSet"`
+
+	// 一级自定义人物类型数组
+	L1CategorySet []*string `json:"L1CategorySet,omitempty" name:"L1CategorySet"`
+}
+
+type CustomPersonInfo struct {
+
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人物姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义人物简介信息
+	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
+
+	// 一级自定义人物类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 二级自定义人物类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
 type Data struct {
 
 	// 节目粒度结构化结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowInfo *ShowInfo `json:"ShowInfo,omitempty" name:"ShowInfo"`
+}
+
+type DeleteCustomCategoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义分类ID
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+}
+
+func (r *DeleteCustomCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CategoryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 123
+		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomPersonImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人脸图片Id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *DeleteCustomPersonImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomPersonImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "ImageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomPersonImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomPersonImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物Id
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 已删除的人物图片Id
+		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomPersonImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomPersonImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomPersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的自定义人物ID
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
+func (r *DeleteCustomPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomPersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCustomPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 已删除的自定义人物Id
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCustomPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomPersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteMediaRequest struct {
@@ -170,6 +638,216 @@ func (r *DeleteMediaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMediaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomCategoriesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCustomCategoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomCategoriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomCategoriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomCategoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物类型数组
+		CategorySet []*CustomCategory `json:"CategorySet,omitempty" name:"CategorySet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomCategoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomCategoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomGroupRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeCustomGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物库所包含的人物个数
+		GroupSize *int64 `json:"GroupSize,omitempty" name:"GroupSize"`
+
+		// 自定义人物库图片后续所在的存储桶
+		Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomPersonDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
+func (r *DescribeCustomPersonDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomPersonDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomPersonDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomPersonDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 自定义人物信息
+		PersonInfo *CustomPersonInfo `json:"PersonInfo,omitempty" name:"PersonInfo"`
+
+		// 出现该自定义人物的所有分析人物Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomPersonDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomPersonDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomPersonsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页序号，从1开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页数据行数，最多50
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序信息，默认倒序
+	SortBy *SortBy `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 自定义人物过滤条件
+	Filter *CustomPersonFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeCustomPersonsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomPersonsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortBy")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomPersonsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCustomPersonsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 满足过滤条件的自定义人物数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 自定义人物信息
+		PersonInfoSet []*CustomPersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCustomPersonsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomPersonsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -668,6 +1346,21 @@ type MultiLevelTag struct {
 	AppearInfo *AppearInfo `json:"AppearInfo,omitempty" name:"AppearInfo"`
 }
 
+type PersonImageInfo struct {
+
+	// 人脸图片ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 自定义人脸图片的URL，存储在IVLDCustomPreson存储桶内
+	ImageURL *string `json:"ImageURL,omitempty" name:"ImageURL"`
+
+	// 自定义人脸图片处理错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 自定义人脸图片处理错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+}
+
 type ShowInfo struct {
 
 	// 节目日期(只在新闻有效)
@@ -827,6 +1520,124 @@ type TextInfo struct {
 
 	// OCR标签信息
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
+type UpdateCustomCategoryRequest struct {
+	*tchttp.BaseRequest
+
+	// 自定义人物类型Id
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 一级自定义人物类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 二级自定义人物类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
+func (r *UpdateCustomCategoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomCategoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CategoryId")
+	delete(f, "L1Category")
+	delete(f, "L2Category")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomCategoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateCustomCategoryResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功更新的自定义人物类型Id
+		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateCustomCategoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomCategoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateCustomPersonRequest struct {
+	*tchttp.BaseRequest
+
+	// 待更新的自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 更新后的自定义人物名称，如为空则不更新
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 更新后的自定义人物简介，如为空则不更新
+	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
+
+	// 更新后的分类信息，如为空则不更新
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+}
+
+func (r *UpdateCustomPersonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomPersonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PersonId")
+	delete(f, "Name")
+	delete(f, "BasicInfo")
+	delete(f, "CategoryId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCustomPersonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateCustomPersonResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功更新的自定义人物Id
+		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateCustomPersonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCustomPersonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VideoAppearInfo struct {

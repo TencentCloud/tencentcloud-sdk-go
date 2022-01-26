@@ -62,9 +62,6 @@ const (
 	// 内部DB连接失败。
 	FAILEDOPERATION_DBCONNECTIONERROR = "FailedOperation.DBConnectionError"
 
-	// 内部DB操作错误。
-	FAILEDOPERATION_DBOPERATIONERROR = "FailedOperation.DBOperationError"
-
 	// 媒资文件下载失败。
 	FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 
@@ -136,6 +133,9 @@ const (
 
 	// 上传文件失败。
 	FAILEDOPERATION_UPLOADFAILED = "FailedOperation.UploadFailed"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
 
 	// 内部DB连接失败。
 	INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"

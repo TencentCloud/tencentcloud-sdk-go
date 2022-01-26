@@ -13873,6 +13873,7 @@ type ModifyNetDetectRequest struct {
 	// PEERCONNECTION：对等连接；
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
+	// CCN：云联网网关；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -13881,6 +13882,7 @@ type ModifyNetDetectRequest struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+	// 下一跳类型为CCN，取值云联网ID，形如：ccn-44csczop；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 14 次发布
+### 第 22 次发布
 
-发布时间：2022-01-25 08:15:03
+发布时间：2022-01-26 08:02:19
 
 本次发布包含了以下内容：
 
@@ -12,9 +12,79 @@
 
 修改接口：
 
-* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)
 
-	* 新增入参：LogCollectType
+	* 新增入参：CreateTime
+
+
+新增数据结构：
+
+* [TimeRange](https://cloud.tencent.com/document/api/1155/40113#TimeRange)
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-01-26 08:03:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CopySnapshotCrossRegions](https://cloud.tencent.com/document/api/362/68848)
+
+新增数据结构：
+
+* [SnapshotCopyResult](https://cloud.tencent.com/document/api/362/15669#SnapshotCopyResult)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 6 次发布
+
+发布时间：2022-01-26 08:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：PayUin, PayName
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 95 次发布
+
+发布时间：2022-01-26 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
+
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
 
 
 
@@ -417,6 +487,25 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 22 次发布
+
+发布时间：2022-01-26 08:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1155/68350)
+
+	* 新增入参：CreateTime
+
+
+新增数据结构：
+
+* [[TimeRange](https://cloud.tencent.com/document/api/1155/40113#TimeRange)](https://cloud.tencent.com/document/api/1155/40113#[TimeRange](https://cloud.tencent.com/document/api/1155/40113#TimeRange))
 
 ### 第 21 次发布
 
@@ -7759,6 +7848,22 @@
 
 
 ## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-01-26 08:03:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CopySnapshotCrossRegions](https://cloud.tencent.com/document/api/362/68848)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SnapshotCopyResult](https://cloud.tencent.com/document/api/362/15669#SnapshotCopyResult)](https://cloud.tencent.com/document/api/362/15669#[SnapshotCopyResult](https://cloud.tencent.com/document/api/362/15669#SnapshotCopyResult))
 
 ### 第 38 次发布
 
@@ -37744,6 +37849,38 @@
 
 ## 视频智能标签(ivld) 版本：2021-09-03
 
+### 第 2 次发布
+
+发布时间：2022-01-25 16:20:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddCustomPersonImage](https://cloud.tencent.com/document/api/1509/68841)
+* [CreateCustomCategory](https://cloud.tencent.com/document/api/1509/68840)
+* [CreateCustomGroup](https://cloud.tencent.com/document/api/1509/68839)
+* [CreateCustomPerson](https://cloud.tencent.com/document/api/1509/68838)
+* [CreateDefaultCategories](https://cloud.tencent.com/document/api/1509/68837)
+* [DeleteCustomCategory](https://cloud.tencent.com/document/api/1509/68836)
+* [DeleteCustomPerson](https://cloud.tencent.com/document/api/1509/68835)
+* [DeleteCustomPersonImage](https://cloud.tencent.com/document/api/1509/68834)
+* [DescribeCustomCategories](https://cloud.tencent.com/document/api/1509/68833)
+* [DescribeCustomGroup](https://cloud.tencent.com/document/api/1509/68832)
+* [DescribeCustomPersonDetail](https://cloud.tencent.com/document/api/1509/68831)
+* [DescribeCustomPersons](https://cloud.tencent.com/document/api/1509/68830)
+* [UpdateCustomCategory](https://cloud.tencent.com/document/api/1509/68829)
+* [UpdateCustomPerson](https://cloud.tencent.com/document/api/1509/68828)
+
+新增数据结构：
+
+* [CustomCategory](https://cloud.tencent.com/document/api/1509/65063#CustomCategory)
+* [CustomPersonFilter](https://cloud.tencent.com/document/api/1509/65063#CustomPersonFilter)
+* [CustomPersonInfo](https://cloud.tencent.com/document/api/1509/65063#CustomPersonInfo)
+* [PersonImageInfo](https://cloud.tencent.com/document/api/1509/65063#PersonImageInfo)
+
 ### 第 1 次发布
 
 发布时间：2021-11-30 14:02:22
@@ -45938,6 +46075,21 @@
 
 
 ## 企业组织(organization) 版本：2021-03-31
+
+### 第 6 次发布
+
+发布时间：2022-01-26 08:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：PayUin, PayName
+
 
 ### 第 5 次发布
 
@@ -64206,6 +64358,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 95 次发布
+
+发布时间：2022-01-26 08:14:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSuperPlayerConfig](https://cloud.tencent.com/document/api/266/43067)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
+
+* [ModifySuperPlayerConfig](https://cloud.tencent.com/document/api/266/43062)
+
+	* 新增入参：AudioVideoType, TranscodeDefinition
+
 
 ### 第 94 次发布
 
