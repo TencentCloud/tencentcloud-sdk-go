@@ -160,10 +160,10 @@ type AgentClientElem struct {
 
 type AgentDealElem struct {
 
-	// 订单自增 ID
+	// 订单自增 ID【请勿依赖该字段作为唯一标识】
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
-	// 订单号
+	// 订单号【订单唯一键】
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 	// 商品类型 ID
@@ -271,10 +271,10 @@ type AgentDealElem struct {
 
 type AgentDealNewElem struct {
 
-	// 订单自增 ID
+	// 订单自增 ID【请勿依赖该字段作为唯一标识】
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
-	// 订单号
+	// 订单号【订单唯一键】
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 	// 商品类型 ID

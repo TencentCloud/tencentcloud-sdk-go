@@ -217,6 +217,24 @@ type CMEExportInfo struct {
 	ThirdPartyPublishInfos []*ThirdPartyPublishInfo `json:"ThirdPartyPublishInfos,omitempty" name:"ThirdPartyPublishInfos"`
 }
 
+type ClassCreatedEvent struct {
+
+	// 分类归属。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+}
+
+type ClassDeletedEvent struct {
+
+	// 删除的分类归属。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 删除的分类路径列表。
+	ClassPathSet []*string `json:"ClassPathSet,omitempty" name:"ClassPathSet"`
+}
+
 type ClassInfo struct {
 
 	// 归属者。
@@ -224,6 +242,21 @@ type ClassInfo struct {
 
 	// 分类路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+}
+
+type ClassMovedEvent struct {
+
+	// 源分类归属。
+	SourceOwner *Entity `json:"SourceOwner,omitempty" name:"SourceOwner"`
+
+	// 源分类路径列表。
+	SourceClassPathSet []*string `json:"SourceClassPathSet,omitempty" name:"SourceClassPathSet"`
+
+	// 目标分类归属。
+	DestinationOwner *Entity `json:"DestinationOwner,omitempty" name:"DestinationOwner"`
+
+	// 目标分类归属。
+	DestinationClassPath *string `json:"DestinationClassPath,omitempty" name:"DestinationClassPath"`
 }
 
 type CopyProjectRequest struct {
@@ -2062,16 +2095,64 @@ type Entity struct {
 
 type EventContent struct {
 
-	// 事件类型，可取值为：
-	// <li>Storage.NewFileCreated：新文件产生；</li>
-	// <li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
+	// 事件类型，可取值有：
+	// <li>Storage.NewFileCreated：新文件产生事件；</li>
+	// <li>Project.StreamConnect.StatusChanged：云转推项目状态变更事件；</li>
+	// <li>Project.Switcher.StatusChanged：导播台项目状态变更事件；</li>
+	// <li>Material.Imported：媒体导入事件；</li>
+	// <li>Material.Added：媒体添加事件；</li>
+	// <li>Material.Moved：媒体移动事件；</li>
+	// <li>Material.Modified：媒体变更事件；</li>
+	// <li>Material.Deleted：媒体删除事件；</li>
+	// <li>Class.Created：分类新增事件；</li>
+	// <li>Class.Moved：分类移动事件；</li>
+	// <li>Class.Deleted：分类删除事件。</li>
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
-	// 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
+	// 操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 新文件产生事件。仅当 EventType 为 Storage.NewFileCreated 时有效。
 	StorageNewFileCreatedEvent *StorageNewFileCreatedEvent `json:"StorageNewFileCreatedEvent,omitempty" name:"StorageNewFileCreatedEvent"`
 
-	// 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
+	// 云转推项目状态变更事件。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
 	ProjectStreamConnectStatusChangedEvent *ProjectStreamConnectStatusChangedEvent `json:"ProjectStreamConnectStatusChangedEvent,omitempty" name:"ProjectStreamConnectStatusChangedEvent"`
+
+	// 导播台项目状态变更事件。仅当 EventType 为 Project.Switcher.StatusChanged 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectSwitcherStatusChangedEvent *ProjectSwitcherStatusChangedEvent `json:"ProjectSwitcherStatusChangedEvent,omitempty" name:"ProjectSwitcherStatusChangedEvent"`
+
+	// 媒体导入事件。仅当 EventType 为 Material.Imported 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialImportedEvent *MaterialImportedEvent `json:"MaterialImportedEvent,omitempty" name:"MaterialImportedEvent"`
+
+	// 媒体添加事件。仅当 EventType 为 Material.Added 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialAddedEvent *MaterialAddedEvent `json:"MaterialAddedEvent,omitempty" name:"MaterialAddedEvent"`
+
+	// 媒体移动事件。仅当 EventType 为 Material.Moved 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialMovedEvent *MaterialMovedEvent `json:"MaterialMovedEvent,omitempty" name:"MaterialMovedEvent"`
+
+	// 媒体更新事件。仅当 EventType 为 Material.Modified 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialModifiedEvent *MaterialModifiedEvent `json:"MaterialModifiedEvent,omitempty" name:"MaterialModifiedEvent"`
+
+	// 媒体删除事件。仅当 EventType 为 Material.Deleted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialDeletedEvent *MaterialDeletedEvent `json:"MaterialDeletedEvent,omitempty" name:"MaterialDeletedEvent"`
+
+	// 分类创建事件。仅当 EventType 为 Class.Created 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassCreatedEvent *ClassCreatedEvent `json:"ClassCreatedEvent,omitempty" name:"ClassCreatedEvent"`
+
+	// 分类移动事件。仅当 EventType 为 Class.Moved 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassMovedEvent *ClassMovedEvent `json:"ClassMovedEvent,omitempty" name:"ClassMovedEvent"`
+
+	// 分类删除事件。仅当 EventType 为 Class.Deleted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassDeletedEvent *ClassDeletedEvent `json:"ClassDeletedEvent,omitempty" name:"ClassDeletedEvent"`
 }
 
 type ExportVideoByEditorTrackDataRequest struct {
@@ -2816,6 +2897,15 @@ func (r *ImportMaterialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ImportMediaInfo struct {
+
+	// 云点播文件 FileId。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+}
+
 type ImportMediaToProjectRequest struct {
 	*tchttp.BaseRequest
 
@@ -3076,6 +3166,18 @@ type LoginStatusInfo struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type MaterialAddedEvent struct {
+
+	// 添加的媒体 Id 列表。
+	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
+
+	// 添加的媒体归属。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 添加的媒体分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+}
+
 type MaterialBasicInfo struct {
 
 	// 媒体 Id。
@@ -3119,6 +3221,24 @@ type MaterialBasicInfo struct {
 	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet"`
 }
 
+type MaterialDeletedEvent struct {
+
+	// 删除的媒体 Id 列表。
+	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
+}
+
+type MaterialImportedEvent struct {
+
+	// 导入的媒体信息列表。
+	MediaInfoSet []*ImportMediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
+
+	// 媒体归属。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 媒体分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+}
+
 type MaterialInfo struct {
 
 	// 媒体基本信息。
@@ -3147,6 +3267,39 @@ type MaterialInfo struct {
 	// 其他类型媒体信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherMaterial *OtherMaterial `json:"OtherMaterial,omitempty" name:"OtherMaterial"`
+}
+
+type MaterialModifiedEvent struct {
+
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 更新后的媒体名称。如未更新则为空。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 更新后的媒体预置标签列表。如未更新媒体预置标签，则该字段为空数组。
+	PresetTagIdSet []*string `json:"PresetTagIdSet,omitempty" name:"PresetTagIdSet"`
+
+	// 更新后的媒体自定义标签列表。如未更新媒体自定义标签，则该字段为空数组。
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+type MaterialMovedEvent struct {
+
+	// 要移动的媒体 Id 列表。
+	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
+
+	// 源媒体归属。
+	SourceOwner *Entity `json:"SourceOwner,omitempty" name:"SourceOwner"`
+
+	// 源媒体分类路径。
+	SourceClassPath *string `json:"SourceClassPath,omitempty" name:"SourceClassPath"`
+
+	// 目标媒体分类归属。
+	DestinationOwner *Entity `json:"DestinationOwner,omitempty" name:"DestinationOwner"`
+
+	// 目标媒体分类路径。
+	DestinationClassPath *string `json:"DestinationClassPath,omitempty" name:"DestinationClassPath"`
 }
 
 type MaterialStatus struct {
@@ -3921,6 +4074,21 @@ type ProjectStreamConnectStatusChangedEvent struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type ProjectSwitcherStatusChangedEvent struct {
+
+	// 导播台项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 导播台项目状态，可取值有：
+	// <li>Started：导播台启动；</li>
+	// <li>Stopped：导播台停止；</li>
+	// <li>PvwStarted：导播台 PVW 开启；</li>
+	// <li>PgmStarted：导播台 PGM 开启，输出推流开始；</li>
+	// <li>PvwStopped：导播台 PVW 停止；</li>
+	// <li>PgmStopped：导播台 PGM 停止，输出推流结束。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type RecordReplayProjectInput struct {
 
 	// 录制拉流地址。
@@ -4205,13 +4373,15 @@ type StorageNewFileCreatedEvent struct {
 	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 操作者 Id。
+	// 操作者 Id。（废弃，请勿使用）
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
-	// 操作类型，可取值为：
-	// <li>Upload：上传；</li>
+	// 操作类型，可取值有：
+	// <li>Upload：本地上传；</li>
 	// <li>PullUpload：拉取上传；</li>
-	// <li>Record：直播录制。</li>
+	// <li>VideoEdit：视频剪辑；</li>
+	// <li>LiveStreamClip：直播流剪辑；</li>
+	// <li>LiveStreamRecord：直播流录制。</li>
 	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
 	// 媒体归属。
@@ -4219,6 +4389,12 @@ type StorageNewFileCreatedEvent struct {
 
 	// 媒体分类路径。
 	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 生成文件的任务 Id。当生成新文件是拉取上传、视频剪辑、直播流剪辑时为任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 来源上下文信息。视频剪辑生成新文件时此字段为项目 Id；直播流剪辑或者直播流录制生成新文件则为原始流地址。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
 
 type StreamConnectOutput struct {

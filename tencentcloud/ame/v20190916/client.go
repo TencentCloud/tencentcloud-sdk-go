@@ -664,6 +664,170 @@ func (c *Client) DescribeKTVRobotsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeKTVSingerCategoriesRequest() (request *DescribeKTVSingerCategoriesRequest) {
+    request = &DescribeKTVSingerCategoriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingerCategories")
+    
+    
+    return
+}
+
+func NewDescribeKTVSingerCategoriesResponse() (response *DescribeKTVSingerCategoriesResponse) {
+    response = &DescribeKTVSingerCategoriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVSingerCategories
+// 获取直播互动曲库歌手分类信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingerCategories(request *DescribeKTVSingerCategoriesRequest) (response *DescribeKTVSingerCategoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingerCategoriesRequest()
+    }
+    
+    response = NewDescribeKTVSingerCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVSingerCategories
+// 获取直播互动曲库歌手分类信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingerCategoriesWithContext(ctx context.Context, request *DescribeKTVSingerCategoriesRequest) (response *DescribeKTVSingerCategoriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingerCategoriesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVSingerCategoriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKTVSingerMusicsRequest() (request *DescribeKTVSingerMusicsRequest) {
+    request = &DescribeKTVSingerMusicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingerMusics")
+    
+    
+    return
+}
+
+func NewDescribeKTVSingerMusicsResponse() (response *DescribeKTVSingerMusicsResponse) {
+    response = &DescribeKTVSingerMusicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVSingerMusics
+// 根据歌手id，返回该歌手下歌曲列表。
+//
+// 
+//
+// 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingerMusics(request *DescribeKTVSingerMusicsRequest) (response *DescribeKTVSingerMusicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingerMusicsRequest()
+    }
+    
+    response = NewDescribeKTVSingerMusicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVSingerMusics
+// 根据歌手id，返回该歌手下歌曲列表。
+//
+// 
+//
+// 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingerMusicsWithContext(ctx context.Context, request *DescribeKTVSingerMusicsRequest) (response *DescribeKTVSingerMusicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingerMusicsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVSingerMusicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKTVSingersRequest() (request *DescribeKTVSingersRequest) {
+    request = &DescribeKTVSingersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingers")
+    
+    
+    return
+}
+
+func NewDescribeKTVSingersResponse() (response *DescribeKTVSingersResponse) {
+    response = &DescribeKTVSingersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVSingers
+// 根据过滤条件，返回匹配的歌手列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingers(request *DescribeKTVSingersRequest) (response *DescribeKTVSingersResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingersRequest()
+    }
+    
+    response = NewDescribeKTVSingersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVSingers
+// 根据过滤条件，返回匹配的歌手列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSingersWithContext(ctx context.Context, request *DescribeKTVSingersRequest) (response *DescribeKTVSingersResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSingersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVSingersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},

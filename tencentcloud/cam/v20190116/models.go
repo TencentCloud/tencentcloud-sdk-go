@@ -4119,6 +4119,10 @@ type SubAccountInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NickName *string `json:"NickName,omitempty" name:"NickName"`
 }
 
 type SubAccountUser struct {

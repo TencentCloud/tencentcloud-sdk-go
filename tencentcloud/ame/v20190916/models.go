@@ -65,6 +65,15 @@ type AuthInfo struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
+type ChorusClip struct {
+
+	// 副歌时间，单位：毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 副歌结束时间，单位：毫秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type CreateKTVRobotRequest struct {
 	*tchttp.BaseRequest
 
@@ -492,6 +501,12 @@ type DescribeKTVMusicDetailResponse struct {
 		// 歌曲规格信息列表
 		DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitempty" name:"DefinitionInfoSet"`
 
+		// 音高数据文件下载地址
+		MidiJsonUrl *string `json:"MidiJsonUrl,omitempty" name:"MidiJsonUrl"`
+
+		// 副歌片段数据列表
+		ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -693,6 +708,192 @@ func (r *DescribeKTVRobotsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKTVRobotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingerCategoriesRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeKTVSingerCategoriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingerCategoriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVSingerCategoriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingerCategoriesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌手性别分类列表
+		GenderSet []*KTVSingerCategoryInfo `json:"GenderSet,omitempty" name:"GenderSet"`
+
+		// 歌手区域分类列表
+		AreaSet []*KTVSingerCategoryInfo `json:"AreaSet,omitempty" name:"AreaSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVSingerCategoriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingerCategoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingerMusicsRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌手id
+	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKTVSingerMusicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingerMusicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SingerId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVSingerMusicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingerMusicsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总曲目数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// KTV 曲目列表
+		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVSingerMusicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingerMusicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingersRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌手id集合，精确匹配歌手id
+	// <li> 数组长度限制10</li>
+	SingerIds []*string `json:"SingerIds,omitempty" name:"SingerIds"`
+
+	// 歌手性别集合，不传为全部，精确匹配歌手性别类型，
+	// <li>数组长度限制1</li>
+	// <li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
+	Genders []*string `json:"Genders,omitempty" name:"Genders"`
+
+	// 歌手区域集合，不传为全部，精确匹配歌手区域
+	// <li>数组长度限制10</li>
+	// <li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
+	Areas []*string `json:"Areas,omitempty" name:"Areas"`
+
+	// 排序方式。默认按照播放数倒序
+	// <li> Sort.Field 可选 PlayCount。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKTVSingersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SingerIds")
+	delete(f, "Genders")
+	delete(f, "Areas")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVSingersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSingersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总歌手数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// KTV歌手列表
+		KTVSingerInfoSet []*KTVSingerInfo `json:"KTVSingerInfoSet,omitempty" name:"KTVSingerInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVSingersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSingersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1200,7 +1401,10 @@ type KTVMusicBaseInfo struct {
 	// 歌曲名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 演唱者列表
+	// 演唱者基础信息列表
+	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitempty" name:"SingerInfoSet"`
+
+	// 已弃用，请使用SingerInfoSet
 	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet"`
 
 	// 作词者列表
@@ -1282,6 +1486,45 @@ type KTVRobotInfo struct {
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
 	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitempty" name:"SetPlayModeInput"`
+}
+
+type KTVSingerBaseInfo struct {
+
+	// 歌手id
+	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
+
+	// 歌手名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type KTVSingerCategoryInfo struct {
+
+	// 分类中文名
+	ChineseName *string `json:"ChineseName,omitempty" name:"ChineseName"`
+
+	// 分类英文名
+	EnglishName *string `json:"EnglishName,omitempty" name:"EnglishName"`
+}
+
+type KTVSingerInfo struct {
+
+	// 歌手id
+	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
+
+	// 歌手名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 歌手性别: 男，女，组合
+	Gender *string `json:"Gender,omitempty" name:"Gender"`
+
+	// 地区: 大陆，港台，欧美，日本
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 歌曲数
+	MusicCount *int64 `json:"MusicCount,omitempty" name:"MusicCount"`
+
+	// 歌曲总播放次数
+	PlayCount *int64 `json:"PlayCount,omitempty" name:"PlayCount"`
 }
 
 type Lyric struct {
@@ -1774,6 +2017,15 @@ type SetPlaylistCommandInput struct {
 
 	// 歌曲 ID 列表，当 Type 取 Add 时，必填。
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+}
+
+type SortBy struct {
+
+	// 排序字段
+	Field *string `json:"Field,omitempty" name:"Field"`
+
+	// 排序方式，可选值：Asc（升序）、Desc（降序）
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 type Station struct {

@@ -107,7 +107,7 @@ const (
 	// 查询独享集群信息失败。
 	INTERNALERROR_FENCEERROR = "InternalError.FenceError"
 
-	// 获取指标数据。
+	// 获取监控数据失败。
 	INTERNALERROR_FETCHMETRICDATAFAILED = "InternalError.FetchMetricDataFailed"
 
 	// 获取数据库实例参数失败。
@@ -209,7 +209,7 @@ const (
 	// 密码包含了非法字符。
 	INVALIDPARAMETER_CHARACTERERROR = "InvalidParameter.CharacterError"
 
-	// 参数检测为通过。
+	// 入参校验失败。
 	INVALIDPARAMETER_CHECKPARAMNOTPASS = "InvalidParameter.CheckParamNotPass"
 
 	// 未指定需要查询的订单ID。
