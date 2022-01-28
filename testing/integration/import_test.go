@@ -133,6 +133,7 @@ import (
 	kmsv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms/v20190118"
 	lighthousev20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse/v20200324"
 	livev20180801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live/v20180801"
+	lowcodev20210108 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode/v20210108"
 	lpv20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp/v20200224"
 	mariadbv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb/v20170312"
 	marketv20191010 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market/v20191010"
@@ -1697,6 +1698,19 @@ func TestLivev20180801Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init live_v20180801 client: %v", err))
+    }
+}
+
+func TestLowcodev20210108Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := lowcodev20210108.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init lowcode_v20210108 client: %v", err))
     }
 }
 

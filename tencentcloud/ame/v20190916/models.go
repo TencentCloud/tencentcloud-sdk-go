@@ -897,6 +897,65 @@ func (r *DescribeKTVSingersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeKTVTopListRequest struct {
+	*tchttp.BaseRequest
+
+	// 榜单类型。默认Hot
+	// <li> Hot, 热歌榜。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 榜单周期 默认为Week
+	// <li> Week, 周榜。</li>
+	// <li> Month, 月榜。</li>
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeKTVTopListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVTopListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVTopListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVTopListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲基础信息列表
+		KTVMusicTopInfoSet []*KTVMusicTopInfo `json:"KTVMusicTopInfoSet,omitempty" name:"KTVMusicTopInfoSet"`
+
+		// 返回总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVTopListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVTopListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLyricRequest struct {
 	*tchttp.BaseRequest
 
@@ -1433,6 +1492,30 @@ type KTVMusicDefinitionInfo struct {
 
 	// 文件大小，单位为字节。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
+}
+
+type KTVMusicTopInfo struct {
+
+	// 歌曲Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 歌手名称列表
+	SingerInfoSet []*KTVSingerBaseInfo `json:"SingerInfoSet,omitempty" name:"SingerInfoSet"`
+
+	// 歌词名称列表
+	LyricistSet []*string `json:"LyricistSet,omitempty" name:"LyricistSet"`
+
+	// 作曲列表
+	ComposerSet []*string `json:"ComposerSet,omitempty" name:"ComposerSet"`
+
+	// 标签列表
+	TagSet []*string `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 播放时长
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type KTVPlaylistBaseInfo struct {

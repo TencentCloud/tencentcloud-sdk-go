@@ -828,6 +828,58 @@ func (c *Client) DescribeKTVSingersWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeKTVTopListRequest() (request *DescribeKTVTopListRequest) {
+    request = &DescribeKTVTopListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVTopList")
+    
+    
+    return
+}
+
+func NewDescribeKTVTopListResponse() (response *DescribeKTVTopListResponse) {
+    response = &DescribeKTVTopListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVTopList
+// 获取直播互动曲库歌曲的周榜和月榜
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeKTVTopList(request *DescribeKTVTopListRequest) (response *DescribeKTVTopListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVTopListRequest()
+    }
+    
+    response = NewDescribeKTVTopListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeKTVTopList
+// 获取直播互动曲库歌曲的周榜和月榜
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeKTVTopListWithContext(ctx context.Context, request *DescribeKTVTopListRequest) (response *DescribeKTVTopListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVTopListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVTopListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},

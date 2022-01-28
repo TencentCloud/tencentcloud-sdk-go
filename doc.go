@@ -121,6 +121,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market"

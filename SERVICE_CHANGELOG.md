@@ -2,9 +2,9 @@
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 23 次发布
+### 第 24 次发布
 
-发布时间：2022-01-27 08:04:32
+发布时间：2022-01-28 08:00:20
 
 本次发布包含了以下内容：
 
@@ -12,86 +12,11 @@
 
 新增接口：
 
-* [DescribeKTVSingerCategories](https://cloud.tencent.com/document/api/1155/68860)
-* [DescribeKTVSingerMusics](https://cloud.tencent.com/document/api/1155/68859)
-* [DescribeKTVSingers](https://cloud.tencent.com/document/api/1155/68858)
-
-修改接口：
-
-* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
-
-	* 新增出参：MidiJsonUrl, ChorusClipSet
-
+* [DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)
 
 新增数据结构：
 
-* [ChorusClip](https://cloud.tencent.com/document/api/1155/40113#ChorusClip)
-* [KTVSingerBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerBaseInfo)
-* [KTVSingerCategoryInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerCategoryInfo)
-* [KTVSingerInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerInfo)
-* [SortBy](https://cloud.tencent.com/document/api/1155/40113#SortBy)
-
-修改数据结构：
-
-* [KTVMusicBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicBaseInfo)
-
-	* 新增成员：SingerInfoSet
-
-
-
-
-## 访问管理(cam) 版本：2019-01-16
-
-### 第 42 次发布
-
-发布时间：2022-01-27 08:10:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SubAccountInfo](https://cloud.tencent.com/document/api/598/33167#SubAccountInfo)
-
-	* 新增成员：NickName
-
-
-
-
-## 多媒体创作引擎(cme) 版本：2019-10-29
-
-### 第 47 次发布
-
-发布时间：2022-01-27 08:22:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [ClassCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassCreatedEvent)
-* [ClassDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassDeletedEvent)
-* [ClassMovedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassMovedEvent)
-* [ImportMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ImportMediaInfo)
-* [MaterialAddedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialAddedEvent)
-* [MaterialDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialDeletedEvent)
-* [MaterialImportedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialImportedEvent)
-* [MaterialModifiedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialModifiedEvent)
-* [MaterialMovedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialMovedEvent)
-* [ProjectSwitcherStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectSwitcherStatusChangedEvent)
-
-修改数据结构：
-
-* [EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)
-
-	* 新增成员：Operator, ProjectSwitcherStatusChangedEvent, MaterialImportedEvent, MaterialAddedEvent, MaterialMovedEvent, MaterialModifiedEvent, MaterialDeletedEvent, ClassCreatedEvent, ClassMovedEvent, ClassDeletedEvent
-
-* [StorageNewFileCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#StorageNewFileCreatedEvent)
-
-	* 新增成员：TaskId, SourceContext
-
+* [KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)
 
 
 
@@ -494,6 +419,22 @@
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
 
+### 第 24 次发布
+
+发布时间：2022-01-28 08:00:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo))
+
 ### 第 23 次发布
 
 发布时间：2022-01-27 08:04:32
@@ -504,9 +445,9 @@
 
 新增接口：
 
-* [[DescribeKTVSingerCategories](https://cloud.tencent.com/document/api/1155/68860)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKTVSingerMusics](https://cloud.tencent.com/document/api/1155/68859)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKTVSingers](https://cloud.tencent.com/document/api/1155/68858)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeKTVSingerCategories](https://cloud.tencent.com/document/api/1155/68860)
+* [DescribeKTVSingerMusics](https://cloud.tencent.com/document/api/1155/68859)
+* [DescribeKTVSingers](https://cloud.tencent.com/document/api/1155/68858)
 
 修改接口：
 
@@ -517,11 +458,11 @@
 
 新增数据结构：
 
-* [[ChorusClip](https://cloud.tencent.com/document/api/1155/40113#ChorusClip)](https://cloud.tencent.com/document/api/1155/40113#[ChorusClip](https://cloud.tencent.com/document/api/1155/40113#ChorusClip))
-* [[KTVSingerBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerBaseInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVSingerBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerBaseInfo))
-* [[KTVSingerCategoryInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerCategoryInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVSingerCategoryInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerCategoryInfo))
-* [[KTVSingerInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVSingerInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerInfo))
-* [[SortBy](https://cloud.tencent.com/document/api/1155/40113#SortBy)](https://cloud.tencent.com/document/api/1155/40113#[SortBy](https://cloud.tencent.com/document/api/1155/40113#SortBy))
+* [ChorusClip](https://cloud.tencent.com/document/api/1155/40113#ChorusClip)
+* [KTVSingerBaseInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerBaseInfo)
+* [KTVSingerCategoryInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerCategoryInfo)
+* [KTVSingerInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSingerInfo)
+* [SortBy](https://cloud.tencent.com/document/api/1155/40113#SortBy)
 
 修改数据结构：
 
@@ -16801,16 +16742,16 @@
 
 新增数据结构：
 
-* [[ClassCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassCreatedEvent)](https://cloud.tencent.com/document/api/1156/40360#[ClassCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassCreatedEvent))
-* [[ClassDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassDeletedEvent)](https://cloud.tencent.com/document/api/1156/40360#[ClassDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassDeletedEvent))
-* [[ClassMovedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassMovedEvent)](https://cloud.tencent.com/document/api/1156/40360#[ClassMovedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassMovedEvent))
-* [[ImportMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ImportMediaInfo)](https://cloud.tencent.com/document/api/1156/40360#[ImportMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ImportMediaInfo))
-* [[MaterialAddedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialAddedEvent)](https://cloud.tencent.com/document/api/1156/40360#[MaterialAddedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialAddedEvent))
-* [[MaterialDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialDeletedEvent)](https://cloud.tencent.com/document/api/1156/40360#[MaterialDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialDeletedEvent))
-* [[MaterialImportedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialImportedEvent)](https://cloud.tencent.com/document/api/1156/40360#[MaterialImportedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialImportedEvent))
-* [[MaterialModifiedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialModifiedEvent)](https://cloud.tencent.com/document/api/1156/40360#[MaterialModifiedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialModifiedEvent))
-* [[MaterialMovedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialMovedEvent)](https://cloud.tencent.com/document/api/1156/40360#[MaterialMovedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialMovedEvent))
-* [[ProjectSwitcherStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectSwitcherStatusChangedEvent)](https://cloud.tencent.com/document/api/1156/40360#[ProjectSwitcherStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectSwitcherStatusChangedEvent))
+* [ClassCreatedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassCreatedEvent)
+* [ClassDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassDeletedEvent)
+* [ClassMovedEvent](https://cloud.tencent.com/document/api/1156/40360#ClassMovedEvent)
+* [ImportMediaInfo](https://cloud.tencent.com/document/api/1156/40360#ImportMediaInfo)
+* [MaterialAddedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialAddedEvent)
+* [MaterialDeletedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialDeletedEvent)
+* [MaterialImportedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialImportedEvent)
+* [MaterialModifiedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialModifiedEvent)
+* [MaterialMovedEvent](https://cloud.tencent.com/document/api/1156/40360#MaterialMovedEvent)
+* [ProjectSwitcherStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectSwitcherStatusChangedEvent)
 
 修改数据结构：
 
@@ -40363,6 +40304,31 @@
 * [StreamInfo](https://cloud.tencent.com/document/api/267/20474#StreamInfo)
 * [StreamName](https://cloud.tencent.com/document/api/267/20474#StreamName)
 * [StreamOnlineInfo](https://cloud.tencent.com/document/api/267/20474#StreamOnlineInfo)
+
+
+
+
+## 云开发低码(lowcode) 版本：2021-01-08
+
+### 第 1 次发布
+
+发布时间：2022-01-27 10:15:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDataSourceList](https://cloud.tencent.com/document/api/1301/68877)
+
+新增数据结构：
+
+* [DataSourceDetail](https://cloud.tencent.com/document/api/1301/68878#DataSourceDetail)
+* [DataSourceDetailItems](https://cloud.tencent.com/document/api/1301/68878#DataSourceDetailItems)
+* [DataSourceLinkApp](https://cloud.tencent.com/document/api/1301/68878#DataSourceLinkApp)
+* [DataSourceQueryOption](https://cloud.tencent.com/document/api/1301/68878#DataSourceQueryOption)
+* [TicketAuthInfo](https://cloud.tencent.com/document/api/1301/68878#TicketAuthInfo)
 
 
 
