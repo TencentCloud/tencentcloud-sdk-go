@@ -249,6 +249,7 @@ func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
 //  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
 //  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *DeleteEcdnDomainResponse, err error) {
     if request == nil {
@@ -280,6 +281,7 @@ func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *D
 //  RESOURCEUNAVAILABLE_ECDNDOMAINISLOCKED = "ResourceUnavailable.EcdnDomainIsLocked"
 //  RESOURCEUNAVAILABLE_ECDNDOMAINISNOTOFFLINE = "ResourceUnavailable.EcdnDomainIsNotOffline"
 //  UNAUTHORIZEDOPERATION_ECDNCAMUNAUTHORIZED = "UnauthorizedOperation.EcdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_ECDNUSERISSUSPENDED = "UnauthorizedOperation.EcdnUserIsSuspended"
 func (c *Client) DeleteEcdnDomainWithContext(ctx context.Context, request *DeleteEcdnDomainRequest) (response *DeleteEcdnDomainResponse, err error) {
     if request == nil {

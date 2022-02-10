@@ -488,6 +488,7 @@ func NewDeleteAsrVocabResponse() (response *DeleteAsrVocabResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
 //  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"
@@ -513,6 +514,7 @@ func (c *Client) DeleteAsrVocab(request *DeleteAsrVocabRequest) (response *Delet
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORCONTENTLENGTH = "InvalidParameter.ErrorContentlength"
 //  INVALIDPARAMETER_ERRORPARAMSMISSING = "InvalidParameter.ErrorParamsMissing"

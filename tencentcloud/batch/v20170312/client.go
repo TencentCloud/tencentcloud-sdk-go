@@ -1919,6 +1919,7 @@ func NewTerminateJobResponse() (response *TerminateJobResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
+//  RESOURCEINUSE_JOB = "ResourceInUse.Job"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TERMINATEOPERATIONWITHENVID = "UnsupportedOperation.TerminateOperationWithEnvId"
@@ -1942,6 +1943,7 @@ func (c *Client) TerminateJob(request *TerminateJobRequest) (response *Terminate
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
+//  RESOURCEINUSE_JOB = "ResourceInUse.Job"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TERMINATEOPERATIONWITHENVID = "UnsupportedOperation.TerminateOperationWithEnvId"

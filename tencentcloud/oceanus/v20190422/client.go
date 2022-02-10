@@ -82,6 +82,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
 //  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 //  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
@@ -115,6 +116,7 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_JOB = "LimitExceeded.Job"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
 //  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 //  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
 func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest) (response *CreateJobResponse, err error) {

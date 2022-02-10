@@ -2926,6 +2926,7 @@ func NewInvokeChainMakerContractResponse() (response *InvokeChainMakerContractRe
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractRequest) (response *InvokeChainMakerContractResponse, err error) {
@@ -2981,6 +2982,7 @@ func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractReque
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) InvokeChainMakerContractWithContext(ctx context.Context, request *InvokeChainMakerContractRequest) (response *InvokeChainMakerContractResponse, err error) {
@@ -3276,6 +3278,7 @@ func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResp
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest) (response *QueryChainMakerContractResponse, err error) {
@@ -3331,6 +3334,7 @@ func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerContractWithContext(ctx context.Context, request *QueryChainMakerContractRequest) (response *QueryChainMakerContractResponse, err error) {

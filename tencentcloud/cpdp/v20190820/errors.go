@@ -32,6 +32,9 @@ const (
 	// 商户状态异常。
 	FAILEDOPERATION_ABNORMALMERCHANTSTATE = "FailedOperation.AbnormalMerchantState"
 
+	// 订单状态异常。
+	FAILEDOPERATION_ABNORMALORDERSTATE = "FailedOperation.AbnormalOrderState"
+
 	// 账户未绑定。
 	FAILEDOPERATION_ACCTNOTBIND = "FailedOperation.AcctNotBind"
 

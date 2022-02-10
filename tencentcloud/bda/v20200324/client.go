@@ -470,6 +470,7 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBCONFLICT = "FailedOperation.JobConflict"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -495,6 +496,7 @@ func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroup
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_JOBCONFLICT = "FailedOperation.JobConflict"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

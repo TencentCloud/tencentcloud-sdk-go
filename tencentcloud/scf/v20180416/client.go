@@ -1469,6 +1469,7 @@ func NewGetFunctionAddressResponse() (response *GetFunctionAddressResponse) {
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNAUTHORIZEDOPERATION_CODESECRET = "UnauthorizedOperation.CodeSecret"
@@ -1498,6 +1499,7 @@ func (c *Client) GetFunctionAddress(request *GetFunctionAddressRequest) (respons
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNAUTHORIZEDOPERATION_CODESECRET = "UnauthorizedOperation.CodeSecret"
@@ -3397,6 +3399,7 @@ func NewUpdateFunctionEventInvokeConfigResponse() (response *UpdateFunctionEvent
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONEVENTINVOKECONFIG = "UnsupportedOperation.UpdateFunctionEventInvokeConfig"
 //  UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 func (c *Client) UpdateFunctionEventInvokeConfig(request *UpdateFunctionEventInvokeConfigRequest) (response *UpdateFunctionEventInvokeConfigResponse, err error) {
     if request == nil {
@@ -3430,6 +3433,7 @@ func (c *Client) UpdateFunctionEventInvokeConfig(request *UpdateFunctionEventInv
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_EIPFIXED = "UnsupportedOperation.EipFixed"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONEVENTINVOKECONFIG = "UnsupportedOperation.UpdateFunctionEventInvokeConfig"
 //  UNSUPPORTEDOPERATION_VPCCONFIG = "UnsupportedOperation.VpcConfig"
 func (c *Client) UpdateFunctionEventInvokeConfigWithContext(ctx context.Context, request *UpdateFunctionEventInvokeConfigRequest) (response *UpdateFunctionEventInvokeConfigResponse, err error) {
     if request == nil {

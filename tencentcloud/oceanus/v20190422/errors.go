@@ -197,6 +197,9 @@ const (
 	// 检查资源位置是否存在错误。
 	RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = "ResourceUnavailable.CheckResourceLocExists"
 
+	// 集群处于非运行状态。
+	RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
+
 	// 群集组状态错误。
 	RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 

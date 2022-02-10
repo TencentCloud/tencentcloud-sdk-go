@@ -75,6 +75,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_ATTACHPLUGIN = "UnsupportedOperation.AttachPlugin"
+//  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
 func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPluginResponse, err error) {
     if request == nil {
         request = NewAttachPluginRequest()
@@ -99,6 +100,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_ATTACHPLUGIN = "UnsupportedOperation.AttachPlugin"
+//  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
 func (c *Client) AttachPluginWithContext(ctx context.Context, request *AttachPluginRequest) (response *AttachPluginResponse, err error) {
     if request == nil {
         request = NewAttachPluginRequest()
@@ -672,6 +674,7 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_CLBEXCEPTION = "InternalError.ClbException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
@@ -728,6 +731,7 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INTERNALERROR_CLBEXCEPTION = "InternalError.ClbException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
@@ -2018,6 +2022,7 @@ func NewDescribeApiResponse() (response *DescribeApiResponse) {
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDUPSTREAM = "InvalidParameterValue.InvalidUpstream"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
@@ -2042,6 +2047,7 @@ func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApi
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDUPSTREAM = "InvalidParameterValue.InvalidUpstream"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
@@ -3593,6 +3599,7 @@ func NewDescribeServicesStatusResponse() (response *DescribeServicesStatusRespon
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
@@ -3625,6 +3632,7 @@ func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) 
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
@@ -4605,6 +4613,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDCLB = "InvalidParameterValue.InvalidClb"
 //  INVALIDPARAMETERVALUE_INVALIDCONDITION = "InvalidParameterValue.InvalidCondition"
 //  INVALIDPARAMETERVALUE_INVALIDIPADDRESS = "InvalidParameterValue.InvalidIPAddress"
+//  INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = "InvalidParameterValue.InvalidPluginConfig"
 //  INVALIDPARAMETERVALUE_INVALIDPORT = "InvalidParameterValue.InvalidPort"
 //  INVALIDPARAMETERVALUE_INVALIDREQUESTPARAMETERS = "InvalidParameterValue.InvalidRequestParameters"
 //  INVALIDPARAMETERVALUE_INVALIDSCFCONFIG = "InvalidParameterValue.InvalidScfConfig"
@@ -4646,6 +4655,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 //  INVALIDPARAMETERVALUE_INVALIDCLB = "InvalidParameterValue.InvalidClb"
 //  INVALIDPARAMETERVALUE_INVALIDCONDITION = "InvalidParameterValue.InvalidCondition"
 //  INVALIDPARAMETERVALUE_INVALIDIPADDRESS = "InvalidParameterValue.InvalidIPAddress"
+//  INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = "InvalidParameterValue.InvalidPluginConfig"
 //  INVALIDPARAMETERVALUE_INVALIDPORT = "InvalidParameterValue.InvalidPort"
 //  INVALIDPARAMETERVALUE_INVALIDREQUESTPARAMETERS = "InvalidParameterValue.InvalidRequestParameters"
 //  INVALIDPARAMETERVALUE_INVALIDSCFCONFIG = "InvalidParameterValue.InvalidScfConfig"

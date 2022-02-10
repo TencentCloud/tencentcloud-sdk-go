@@ -275,15 +275,7 @@ func NewCreateDDoSPolicyResponse() (response *CreateDDoSPolicyResponse) {
 // 添加DDoS高级策略
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateDDoSPolicy(request *CreateDDoSPolicyRequest) (response *CreateDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewCreateDDoSPolicyRequest()
@@ -298,15 +290,7 @@ func (c *Client) CreateDDoSPolicy(request *CreateDDoSPolicyRequest) (response *C
 // 添加DDoS高级策略
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateDDoSPolicyWithContext(ctx context.Context, request *CreateDDoSPolicyRequest) (response *CreateDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewCreateDDoSPolicyRequest()

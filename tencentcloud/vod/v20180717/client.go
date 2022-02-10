@@ -6854,6 +6854,7 @@ func NewModifyVodDomainConfigResponse() (response *ModifyVodDomainConfigResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyVodDomainConfig(request *ModifyVodDomainConfigRequest) (response *ModifyVodDomainConfigResponse, err error) {
     if request == nil {
@@ -6872,6 +6873,7 @@ func (c *Client) ModifyVodDomainConfig(request *ModifyVodDomainConfigRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyVodDomainConfigWithContext(ctx context.Context, request *ModifyVodDomainConfigRequest) (response *ModifyVodDomainConfigResponse, err error) {
     if request == nil {

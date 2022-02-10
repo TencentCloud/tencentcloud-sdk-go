@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 24 次发布
+### 第 34 次发布
 
-发布时间：2022-01-28 08:00:20
+发布时间：2022-02-10 08:03:19
 
 本次发布包含了以下内容：
 
@@ -12,11 +12,7 @@
 
 新增接口：
 
-* [DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)
-
-新增数据结构：
-
-* [KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)
+* [DeleteGroup](https://cloud.tencent.com/document/api/597/69059)
 
 
 
@@ -429,11 +425,11 @@
 
 新增接口：
 
-* [[DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)
 
 新增数据结构：
 
-* [[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo))
+* [KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)
 
 ### 第 23 次发布
 
@@ -13934,6 +13930,18 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 34 次发布
+
+发布时间：2022-02-10 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteGroup](https://cloud.tencent.com/document/api/597/69059)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 33 次发布
 

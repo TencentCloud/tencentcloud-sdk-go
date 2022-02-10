@@ -679,8 +679,7 @@ func NewDescribeIngressesResponse() (response *DescribeIngressesResponse) {
 // 查询 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()
@@ -695,8 +694,7 @@ func (c *Client) DescribeIngresses(request *DescribeIngressesRequest) (response 
 // 查询 Ingress 规则列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 func (c *Client) DescribeIngressesWithContext(ctx context.Context, request *DescribeIngressesRequest) (response *DescribeIngressesResponse, err error) {
     if request == nil {
         request = NewDescribeIngressesRequest()

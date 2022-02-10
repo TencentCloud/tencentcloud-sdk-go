@@ -319,6 +319,7 @@ func NewBindLiveDomainCertResponse() (response *BindLiveDomainCertResponse) {
 //  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
     if request == nil {
@@ -342,6 +343,7 @@ func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (respons
 //  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) BindLiveDomainCertWithContext(ctx context.Context, request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
     if request == nil {

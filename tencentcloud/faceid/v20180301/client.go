@@ -1414,6 +1414,7 @@ func NewGetRealNameAuthTokenResponse() (response *GetRealNameAuthTokenResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetRealNameAuthToken(request *GetRealNameAuthTokenRequest) (response *GetRealNameAuthTokenResponse, err error) {
@@ -1435,6 +1436,7 @@ func (c *Client) GetRealNameAuthToken(request *GetRealNameAuthTokenRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
+//  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetRealNameAuthTokenWithContext(ctx context.Context, request *GetRealNameAuthTokenRequest) (response *GetRealNameAuthTokenResponse, err error) {

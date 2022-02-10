@@ -598,6 +598,7 @@ func NewDeleteOrgNodeResponse() (response *DeleteOrgNodeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
+//  FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = "FailedOperation.DefaultOrgNodeCanNotBeDeleted"
 //  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
@@ -619,6 +620,7 @@ func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteO
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
+//  FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = "FailedOperation.DefaultOrgNodeCanNotBeDeleted"
 //  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
@@ -1631,7 +1633,7 @@ func NewListAuthorizedApplicationsToUserResponse() (response *ListAuthorizedAppl
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_USERAUTHLISTFAILED = "FailedOperation.UserAuthListFailed"
+//  FAILEDOPERATION_USERAUTHLISTERROR = "FailedOperation.UserAuthListError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplicationsToUserRequest) (response *ListAuthorizedApplicationsToUserResponse, err error) {
     if request == nil {
@@ -1649,7 +1651,7 @@ func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplica
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_USERAUTHLISTFAILED = "FailedOperation.UserAuthListFailed"
+//  FAILEDOPERATION_USERAUTHLISTERROR = "FailedOperation.UserAuthListError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 func (c *Client) ListAuthorizedApplicationsToUserWithContext(ctx context.Context, request *ListAuthorizedApplicationsToUserRequest) (response *ListAuthorizedApplicationsToUserResponse, err error) {
     if request == nil {

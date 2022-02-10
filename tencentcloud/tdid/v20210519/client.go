@@ -66,6 +66,7 @@ func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -86,6 +87,7 @@ func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *C
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 //  INVALIDPARAMETER = "InvalidParameter"

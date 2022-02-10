@@ -2452,6 +2452,7 @@ func NewDescribeBackupDatabasesResponse() (response *DescribeBackupDatabasesResp
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -2476,6 +2477,7 @@ func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -4045,6 +4047,7 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
 // 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4063,6 +4066,7 @@ func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamReco
 // 该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6971,6 +6975,7 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 //  OPERATIONDENIED_CONFLICTROSTATUS = "OperationDenied.ConflictRoStatus"
@@ -6995,6 +7000,7 @@ func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response 
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 //  OPERATIONDENIED_CONFLICTROSTATUS = "OperationDenied.ConflictRoStatus"

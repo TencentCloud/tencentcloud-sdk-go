@@ -686,11 +686,13 @@ func NewDeleteCustomPersonImageResponse() (response *DeleteCustomPersonImageResp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
 //  INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DeleteCustomPersonImage(request *DeleteCustomPersonImageRequest) (response *DeleteCustomPersonImageResponse, err error) {
     if request == nil {
@@ -707,11 +709,13 @@ func (c *Client) DeleteCustomPersonImage(request *DeleteCustomPersonImageRequest
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
 //  INVALIDPARAMETER_INVALIDIMAGEID = "InvalidParameter.InvalidImageId"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DeleteCustomPersonImageWithContext(ctx context.Context, request *DeleteCustomPersonImageRequest) (response *DeleteCustomPersonImageResponse, err error) {
     if request == nil {
@@ -997,6 +1001,7 @@ func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (response *DescribeCustomPersonsResponse, err error) {
@@ -1025,6 +1030,7 @@ func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (r
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomPersonsWithContext(ctx context.Context, request *DescribeCustomPersonsRequest) (response *DescribeCustomPersonsResponse, err error) {
@@ -1134,6 +1140,7 @@ func NewDescribeMediasResponse() (response *DescribeMediasResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
@@ -1147,6 +1154,7 @@ func NewDescribeMediasResponse() (response *DescribeMediasResponse) {
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *DescribeMediasResponse, err error) {
     if request == nil {
         request = NewDescribeMediasRequest()
@@ -1170,6 +1178,7 @@ func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
@@ -1183,6 +1192,7 @@ func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *Descr
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeMediasWithContext(ctx context.Context, request *DescribeMediasRequest) (response *DescribeMediasResponse, err error) {
     if request == nil {
         request = NewDescribeMediasRequest()
@@ -1285,7 +1295,9 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
@@ -1304,7 +1316,9 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {

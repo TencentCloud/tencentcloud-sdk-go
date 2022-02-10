@@ -7360,6 +7360,7 @@ func NewDescribeVirusListResponse() (response *DescribeVirusListResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -7378,6 +7379,7 @@ func (c *Client) DescribeVirusList(request *DescribeVirusListRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
