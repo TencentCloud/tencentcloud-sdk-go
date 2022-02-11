@@ -1285,17 +1285,20 @@ type CreateDBImportJobRequest struct {
 	// 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
-
 	// 云数据库的用户名。
 	User *string `json:"User,omitempty" name:"User"`
+
+	// 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 云数据库实例 User 账号的密码。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 导入的目标数据库名，不传表示不指定数据库。
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 腾讯云COS文件链接。 用户需要指定 FileName 或者 CosUrl 其中一个。 COS文件需要是 .sql 文件。
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
 }
 
 func (r *CreateDBImportJobRequest) ToJsonString() string {
@@ -1311,10 +1314,11 @@ func (r *CreateDBImportJobRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "FileName")
 	delete(f, "User")
+	delete(f, "FileName")
 	delete(f, "Password")
 	delete(f, "DbName")
+	delete(f, "CosUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBImportJobRequest has unknown keys!", "")
 	}

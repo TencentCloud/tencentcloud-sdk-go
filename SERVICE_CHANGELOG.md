@@ -1,10 +1,50 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 34 次发布
+### 第 83 次发布
 
-发布时间：2022-02-10 08:03:19
+发布时间：2022-02-11 08:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBImportJob](https://cloud.tencent.com/document/api/236/15858)
+
+	* 新增入参：CosUrl
+
+	* <font color="#dd0000">**修改入参**：</font>FileName
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 10 次发布
+
+发布时间：2022-02-11 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：Tags
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 31 次发布
+
+发布时间：2022-02-11 08:09:25
 
 本次发布包含了以下内容：
 
@@ -12,7 +52,49 @@
 
 新增接口：
 
-* [DeleteGroup](https://cloud.tencent.com/document/api/597/69059)
+* [DescribeDatabaseTable](https://cloud.tencent.com/document/api/237/69130)
+
+新增数据结构：
+
+* [TableColumn](https://cloud.tencent.com/document/api/237/16191#TableColumn)
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 11 次发布
+
+发布时间：2022-02-11 08:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：ResourceIds
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 89 次发布
+
+发布时间：2022-02-11 08:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodePools](https://cloud.tencent.com/document/api/457/49432)
+
+	* 新增入参：Filters
+
 
 
 
@@ -8992,6 +9074,23 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 83 次发布
+
+发布时间：2022-02-11 08:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBImportJob](https://cloud.tencent.com/document/api/236/15858)
+
+	* 新增入参：CosUrl
+
+	* <font color="#dd0000">**修改入参**：</font>FileName
+
+
 ### 第 82 次发布
 
 发布时间：2022-01-20 08:05:53
@@ -12891,6 +12990,21 @@
 
 ## 文件存储(cfs) 版本：2019-07-19
 
+### 第 10 次发布
+
+发布时间：2022-02-11 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：Tags
+
+
 ### 第 9 次发布
 
 发布时间：2021-08-26 08:04:29
@@ -13941,7 +14055,7 @@
 
 新增接口：
 
-* [[DeleteGroup](https://cloud.tencent.com/document/api/597/69059)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteGroup](https://cloud.tencent.com/document/api/597/69059)
 
 ### 第 33 次发布
 
@@ -40360,6 +40474,22 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 31 次发布
+
+发布时间：2022-02-11 08:09:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDatabaseTable](https://cloud.tencent.com/document/api/237/69130)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TableColumn](https://cloud.tencent.com/document/api/237/16191#TableColumn)](https://cloud.tencent.com/document/api/237/16191#[TableColumn](https://cloud.tencent.com/document/api/237/16191#TableColumn))
+
 ### 第 30 次发布
 
 发布时间：2022-01-13 08:50:16
@@ -49656,6 +49786,39 @@
 
 
 
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 1 次发布
+
+发布时间：2022-02-10 11:28:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateLibrary](https://cloud.tencent.com/document/api/1339/69089)
+* [DeleteLibrary](https://cloud.tencent.com/document/api/1339/69088)
+* [DescribeLibraries](https://cloud.tencent.com/document/api/1339/69087)
+* [DescribeLibrarySecret](https://cloud.tencent.com/document/api/1339/69086)
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
+* [DescribeOfficialOverview](https://cloud.tencent.com/document/api/1339/69082)
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
+* [ModifyLibrary](https://cloud.tencent.com/document/api/1339/69085)
+* [SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)
+* [VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)
+
+新增数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1339/69090#Instance)
+* [Library](https://cloud.tencent.com/document/api/1339/69090#Library)
+* [LibraryExtension](https://cloud.tencent.com/document/api/1339/69090#LibraryExtension)
+* [TrafficPackage](https://cloud.tencent.com/document/api/1339/69090#TrafficPackage)
+
+
+
+
 ## 营销号码安全(smpn) 版本：2019-08-22
 
 ### 第 1 次发布
@@ -51109,6 +51272,21 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 11 次发布
+
+发布时间：2022-02-11 08:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：ResourceIds
+
 
 ### 第 10 次发布
 
@@ -59394,6 +59572,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 89 次发布
+
+发布时间：2022-02-11 08:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodePools](https://cloud.tencent.com/document/api/457/49432)
+
+	* 新增入参：Filters
+
 
 ### 第 88 次发布
 

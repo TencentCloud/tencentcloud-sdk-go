@@ -1,3 +1,103 @@
+# Release v1.0.342
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 83 次发布
+
+发布时间：2022-02-11 08:03:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBImportJob](https://cloud.tencent.com/document/api/236/15858)
+
+	* 新增入参：CosUrl
+
+	* <font color="#dd0000">**修改入参**：</font>FileName
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 10 次发布
+
+发布时间：2022-02-11 08:03:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileSystemInfo](https://cloud.tencent.com/document/api/582/38175#FileSystemInfo)
+
+	* 新增成员：Tags
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 31 次发布
+
+发布时间：2022-02-11 08:09:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDatabaseTable](https://cloud.tencent.com/document/api/237/69130)
+
+新增数据结构：
+
+* [TableColumn](https://cloud.tencent.com/document/api/237/16191#TableColumn)
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 11 次发布
+
+发布时间：2022-02-11 08:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：ResourceIds
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 89 次发布
+
+发布时间：2022-02-11 08:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodePools](https://cloud.tencent.com/document/api/457/49432)
+
+	* 新增入参：Filters
+
+
+
+
 # Release v1.0.341
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19

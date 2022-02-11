@@ -179,7 +179,7 @@ type FaceFusionRequest struct {
 	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
 
-	// 图片Url地址
+	// 图片Url地址，目前Url方式还不支持，后续会支持，可以使用FuseFace接口
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
@@ -352,7 +352,7 @@ type FuseFaceReviewDetail struct {
 	// 人员名称
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 对应识别label的置信度，分数越高意味涉政可能性越大。 
+	// 对应识别label的置信度，分数越高意味违法违规可能性越大。 
 	// 0到70，Suggestion建议为PASS； 
 	// 70到80，Suggestion建议为REVIEW； 
 	// 80到100，Suggestion建议为BLOCK。

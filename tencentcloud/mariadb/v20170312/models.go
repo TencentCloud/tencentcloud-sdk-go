@@ -2173,6 +2173,72 @@ func (r *DescribeDBSlowLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDatabaseTableRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，形如：dcdbt-ow7t8lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库名称，通过 DescribeDatabases 接口获取。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 表名称，通过 DescribeDatabaseObjects 接口获取。
+	Table *string `json:"Table,omitempty" name:"Table"`
+}
+
+func (r *DescribeDatabaseTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DbName")
+	delete(f, "Table")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseTableResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例名称。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 数据库名称。
+		DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+		// 表名称。
+		Table *string `json:"Table,omitempty" name:"Table"`
+
+		// 列信息。
+		Cols []*TableColumn `json:"Cols,omitempty" name:"Cols"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDatabaseTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDatabasesRequest struct {
 	*tchttp.BaseRequest
 
@@ -4509,6 +4575,15 @@ func (r *SwitchDBInstanceHAResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SwitchDBInstanceHAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TableColumn struct {
+
+	// 列名称
+	Col *string `json:"Col,omitempty" name:"Col"`
+
+	// 列类型
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type TablePrivilege struct {

@@ -972,6 +972,9 @@ type FileSystemInfo struct {
 
 	// 文件系统总容量
 	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 文件系统标签列表
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 type MountInfo struct {

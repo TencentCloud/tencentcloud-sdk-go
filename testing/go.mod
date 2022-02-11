@@ -137,6 +137,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v0.0.0
@@ -331,6 +332,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum => ../tencentcloud/rum
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf => ../tencentcloud/scf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses => ../tencentcloud/ses
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh => ../tencentcloud/smh
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn => ../tencentcloud/smpn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms => ../tencentcloud/sms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe => ../tencentcloud/soe

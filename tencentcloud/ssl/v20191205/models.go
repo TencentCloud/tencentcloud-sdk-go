@@ -656,6 +656,10 @@ type DeployedResources struct {
 
 	// 资源标识:clb,cdn,live,waf,antiddos
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 关联资源ID或关联域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
 type DescribeCertificateDetailRequest struct {

@@ -154,6 +154,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms"

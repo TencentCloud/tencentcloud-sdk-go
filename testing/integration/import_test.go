@@ -166,6 +166,7 @@ import (
 	rumv20210622 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum/v20210622"
 	scfv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf/v20180416"
 	sesv20201002 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses/v20201002"
+	smhv20210712 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh/v20210712"
 	smpnv20190822 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn/v20190822"
 	smsv20190711 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20190711"
 	smsv20210111 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20210111"
@@ -2127,6 +2128,19 @@ func TestSesv20201002Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init ses_v20201002 client: %v", err))
+    }
+}
+
+func TestSmhv20210712Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := smhv20210712.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init smh_v20210712 client: %v", err))
     }
 }
 

@@ -1175,6 +1175,7 @@ type CreateLoadBalancerResponse struct {
 	Response *struct {
 
 		// 由负载均衡实例唯一 ID 组成的数组。
+	// 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
 		LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 		// 订单号。
@@ -3791,7 +3792,7 @@ type HealthCheck struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpVersion *string `json:"HttpVersion,omitempty" name:"HttpVersion"`
 
-	// 自定义探测相关参数。健康检查原IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
+	// 自定义探测相关参数。健康检查源IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIpType *int64 `json:"SourceIpType,omitempty" name:"SourceIpType"`
 }

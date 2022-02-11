@@ -3275,6 +3275,27 @@ type DescribeClusterNodePoolsRequest struct {
 
 	// ClusterId（集群id）
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// ·  NodePoolsName
+	//     按照【节点池名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  NodePoolsId
+	//     按照【节点池id】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tags
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  tag:tag-key
+	//     按照【标签键值对】进行过滤。
+	//     类型：String
+	//     必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClusterNodePoolsRequest) ToJsonString() string {
@@ -3290,6 +3311,7 @@ func (r *DescribeClusterNodePoolsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterNodePoolsRequest has unknown keys!", "")
 	}
@@ -3570,6 +3592,16 @@ type DescribeClustersRequest struct {
 
 	// ·  ClusterName
 	//     按照【集群名】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterType
+	//     按照【集群类型】进行过滤。
+	//     类型：String
+	//     必选：否
+	// 
+	// ·  ClusterStatus
+	//     按照【集群状态】进行过滤。
 	//     类型：String
 	//     必选：否
 	// 
