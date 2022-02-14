@@ -83,10 +83,10 @@ type CreateOrganizationMemberRequest struct {
 	// 关系策略  取值：Financial
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
 
-	// 关系权限
+	// 关系权限 取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票 ，1、2 默认必须
 	PermissionIds []*uint64 `json:"PermissionIds,omitempty" name:"PermissionIds"`
 
-	// 需要调节的节点
+	// 成员所属部门的节点ID
 	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
 
 	// 账号名

@@ -20,6 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AutoCalloutTaskCalleeInfo struct {
+
+	// 被叫号码
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 呼叫状态 0初始 1已接听 2未接听 3呼叫中 4待重试
+	State *uint64 `json:"State,omitempty" name:"State"`
+}
+
 type AutoCalloutTaskInfo struct {
 
 	// 任务名
@@ -157,6 +166,87 @@ type CallInSkillGroupMetrics struct {
 
 	// 技能组名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CreateAutoCalloutTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 呼叫中心实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务起始时间戳，Unix 秒级时间戳
+	NotBefore *int64 `json:"NotBefore,omitempty" name:"NotBefore"`
+
+	// 被叫号码列表
+	Callees []*string `json:"Callees,omitempty" name:"Callees"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 呼叫使用的Ivr
+	IvrId *uint64 `json:"IvrId,omitempty" name:"IvrId"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 任务停止时间戳，Unix 秒级时间戳
+	NotAfter *int64 `json:"NotAfter,omitempty" name:"NotAfter"`
+
+	// 最大尝试次数
+	Tries *uint64 `json:"Tries,omitempty" name:"Tries"`
+}
+
+func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "NotBefore")
+	delete(f, "Callees")
+	delete(f, "Callers")
+	delete(f, "IvrId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "NotAfter")
+	delete(f, "Tries")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoCalloutTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务Id
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAutoCalloutTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoCalloutTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCallOutSessionRequest struct {
@@ -453,6 +543,81 @@ func (r *DeleteStaffResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStaffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoCalloutTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 呼叫中心实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAutoCalloutTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoCalloutTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoCalloutTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoCalloutTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务名
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 任务描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 任务起始时间戳
+		NotBefore *int64 `json:"NotBefore,omitempty" name:"NotBefore"`
+
+		// 任务结束时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NotAfter *int64 `json:"NotAfter,omitempty" name:"NotAfter"`
+
+		// 主叫列表
+		Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+		// 被叫信息列表
+		Callees []*AutoCalloutTaskCalleeInfo `json:"Callees,omitempty" name:"Callees"`
+
+		// 任务使用的IvrId
+		IvrId *uint64 `json:"IvrId,omitempty" name:"IvrId"`
+
+		// 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+		State *uint64 `json:"State,omitempty" name:"State"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeAutoCalloutTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoCalloutTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1772,6 +1937,56 @@ type StaffStatusMetrics struct {
 	ReserveNotReady *bool `json:"ReserveNotReady,omitempty" name:"ReserveNotReady"`
 }
 
+type StopAutoCalloutTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 呼叫中心实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopAutoCalloutTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAutoCalloutTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopAutoCalloutTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopAutoCalloutTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *StopAutoCalloutTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopAutoCalloutTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TelCdrInfo struct {
 
 	// 主叫号码
@@ -1918,6 +2133,10 @@ type TelCdrInfo struct {
 	// IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IVRKeyPressedEx []*IVRKeyPressedElement `json:"IVRKeyPressedEx,omitempty" name:"IVRKeyPressedEx"`
+
+	// 获取录音ASR文本信息地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrUrl *string `json:"AsrUrl,omitempty" name:"AsrUrl"`
 }
 
 type UnbindStaffSkillGroupListRequest struct {

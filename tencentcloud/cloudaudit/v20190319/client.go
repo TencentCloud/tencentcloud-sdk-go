@@ -250,6 +250,60 @@ func (c *Client) DescribeAuditWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeAuditTracksRequest() (request *DescribeAuditTracksRequest) {
+    request = &DescribeAuditTracksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeAuditTracks")
+    
+    
+    return
+}
+
+func NewDescribeAuditTracksResponse() (response *DescribeAuditTracksResponse) {
+    response = &DescribeAuditTracksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuditTracks
+// 查询云审计跟踪集列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) DescribeAuditTracks(request *DescribeAuditTracksRequest) (response *DescribeAuditTracksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditTracksRequest()
+    }
+    
+    response = NewDescribeAuditTracksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAuditTracks
+// 查询云审计跟踪集列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) DescribeAuditTracksWithContext(ctx context.Context, request *DescribeAuditTracksRequest) (response *DescribeAuditTracksResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditTracksRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditTracksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
     request = &DescribeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

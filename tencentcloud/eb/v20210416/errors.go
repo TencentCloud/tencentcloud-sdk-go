@@ -158,6 +158,9 @@ const (
 	// 投递目标创建失败，检测到当前账号不存在，请确认您的账号状态。
 	OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 
+	// 不允许在自定义事件集上创建基于EB默认日志集的CLS事件目标。
+	OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = "OperationDenied.DefaultCLSResourceUnsupported"
+
 	// 操作失败，该资源不可修改或删除。
 	OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 

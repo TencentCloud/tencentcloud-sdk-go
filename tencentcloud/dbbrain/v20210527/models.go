@@ -1384,6 +1384,66 @@ func (r *DescribeMySqlProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProxySessionKillTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeProxySessionKillTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxySessionKillTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AsyncRequestIds")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxySessionKillTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProxySessionKillTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// kill 任务的详情。
+		Tasks []*TaskInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+		// 任务总数。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProxySessionKillTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxySessionKillTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityAuditLogDownloadUrlsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2809,6 +2869,42 @@ type TableSpaceTimeSeries struct {
 
 	// 单位时间间隔内的空间指标数据。
 	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
+}
+
+type TaskInfo struct {
+
+	// 异步任务 ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 当前实例所有 proxy 列表。
+	InstProxyList []*string `json:"InstProxyList,omitempty" name:"InstProxyList"`
+
+	// 当前实例所有 proxy 数量。
+	InstProxyCount *int64 `json:"InstProxyCount,omitempty" name:"InstProxyCount"`
+
+	// 任务创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务启动时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 完成 kill 任务的 proxyId。
+	FinishedProxyList []*string `json:"FinishedProxyList,omitempty" name:"FinishedProxyList"`
+
+	// kill 任务实行失败的 proxyId。
+	FailedProxyList []*string `json:"FailedProxyList,omitempty" name:"FailedProxyList"`
+
+	// 任务结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务执行进度。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type TimeSlice struct {

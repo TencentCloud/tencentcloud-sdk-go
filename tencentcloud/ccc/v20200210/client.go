@@ -98,6 +98,60 @@ func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateAutoCalloutTaskRequest() (request *CreateAutoCalloutTaskRequest) {
+    request = &CreateAutoCalloutTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateAutoCalloutTask")
+    
+    
+    return
+}
+
+func NewCreateAutoCalloutTaskResponse() (response *CreateAutoCalloutTaskResponse) {
+    response = &CreateAutoCalloutTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAutoCalloutTask
+// 创建自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateAutoCalloutTask(request *CreateAutoCalloutTaskRequest) (response *CreateAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoCalloutTaskRequest()
+    }
+    
+    response = NewCreateAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAutoCalloutTask
+// 创建自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateAutoCalloutTaskWithContext(ctx context.Context, request *CreateAutoCalloutTaskRequest) (response *CreateAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAutoCalloutTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCallOutSessionRequest() (request *CreateCallOutSessionRequest) {
     request = &CreateCallOutSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -368,6 +422,58 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     request.SetContext(ctx)
     
     response = NewDeleteStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAutoCalloutTaskRequest() (request *DescribeAutoCalloutTaskRequest) {
+    request = &DescribeAutoCalloutTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAutoCalloutTask")
+    
+    
+    return
+}
+
+func NewDescribeAutoCalloutTaskResponse() (response *DescribeAutoCalloutTaskResponse) {
+    response = &DescribeAutoCalloutTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoCalloutTask
+// 查询自动外呼任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAutoCalloutTask(request *DescribeAutoCalloutTaskRequest) (response *DescribeAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoCalloutTaskRequest()
+    }
+    
+    response = NewDescribeAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeAutoCalloutTask
+// 查询自动外呼任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAutoCalloutTaskWithContext(ctx context.Context, request *DescribeAutoCalloutTaskRequest) (response *DescribeAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoCalloutTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoCalloutTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1076,6 +1182,60 @@ func (c *Client) DescribeTelSessionWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeTelSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopAutoCalloutTaskRequest() (request *StopAutoCalloutTaskRequest) {
+    request = &StopAutoCalloutTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "StopAutoCalloutTask")
+    
+    
+    return
+}
+
+func NewStopAutoCalloutTaskResponse() (response *StopAutoCalloutTaskResponse) {
+    response = &StopAutoCalloutTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopAutoCalloutTask
+// 停止自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopAutoCalloutTask(request *StopAutoCalloutTaskRequest) (response *StopAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewStopAutoCalloutTaskRequest()
+    }
+    
+    response = NewStopAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// StopAutoCalloutTask
+// 停止自动外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StopAutoCalloutTaskWithContext(ctx context.Context, request *StopAutoCalloutTaskRequest) (response *StopAutoCalloutTaskResponse, err error) {
+    if request == nil {
+        request = NewStopAutoCalloutTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewStopAutoCalloutTaskResponse()
     err = c.Send(request, response)
     return
 }

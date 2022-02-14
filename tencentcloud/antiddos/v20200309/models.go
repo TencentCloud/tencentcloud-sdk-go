@@ -412,6 +412,193 @@ type BoundIpInfo struct {
 	IspCode *uint64 `json:"IspCode,omitempty" name:"IspCode"`
 }
 
+type CCPrecisionPlyRecord struct {
+
+	// 配置项类型，当前仅支持value
+	FieldType *string `json:"FieldType,omitempty" name:"FieldType"`
+
+	// 配置字段，可取值cgi， ua， cookie， referer， accept,  srcip
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 配置取值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 配置项值比对方式，可取值equal ，not_equal， include
+	ValueOperator *string `json:"ValueOperator,omitempty" name:"ValueOperator"`
+}
+
+type CCPrecisionPolicy struct {
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 策略方式（丢弃或验证码）
+	PolicyAction *string `json:"PolicyAction,omitempty" name:"PolicyAction"`
+
+	// 策略列表
+	PolicyList []*CCPrecisionPlyRecord `json:"PolicyList,omitempty" name:"PolicyList"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type CCReqLimitPolicy struct {
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 策略项
+	PolicyRecord *CCReqLimitPolicyRecord `json:"PolicyRecord,omitempty" name:"PolicyRecord"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type CCReqLimitPolicyRecord struct {
+
+	// 统计周期，可取值1，10，30，60，单位秒
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 请求数，取值1~20000
+	RequestNum *uint64 `json:"RequestNum,omitempty" name:"RequestNum"`
+
+	// 频率限制策略方式，可取值alg表示验证码，drop表示丢弃
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 频率限制策略时长，可取值1~86400，单位秒
+	ExecuteDuration *uint64 `json:"ExecuteDuration,omitempty" name:"ExecuteDuration"`
+
+	// 策略项比对方式，可取值include表示包含，equal表示等于
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// Uri，三个策略项仅可填其中之一
+	Uri *string `json:"Uri,omitempty" name:"Uri"`
+
+	// User-Agent，三个策略项仅可填其中之一
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// Cookie，三个策略项仅可填其中之一
+	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
+}
+
+type CcBlackWhiteIpPolicy struct {
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// IP类型，取值[black(黑名单IP), white(白名单IP)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 黑白名单IP地址
+	BlackWhiteIp *string `json:"BlackWhiteIp,omitempty" name:"BlackWhiteIp"`
+
+	// 掩码
+	Mask *uint64 `json:"Mask,omitempty" name:"Mask"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type CcGeoIPBlockConfig struct {
+
+	// 区域类型，取值[
+	// oversea(海外)
+	// china(国内)
+	// customized(自定义地区)
+	// ]
+	RegionType *string `json:"RegionType,omitempty" name:"RegionType"`
+
+	// 封禁动作，取值[
+	// drop(拦截)
+	// alg(人机校验)
+	// ]
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 配置ID，配置添加成功后生成；添加新配置时不用填写此字段，修改或删除配置时需要填写配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 当RegionType为customized时，必须填写AreaList；当RegionType为china或oversea时，AreaList为空
+	AreaList []*int64 `json:"AreaList,omitempty" name:"AreaList"`
+}
+
+type CcGeoIpPolicyNew struct {
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户动作，drop或alg
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 地域类型，分为china, oversea与customized
+	RegionType *string `json:"RegionType,omitempty" name:"RegionType"`
+
+	// 用户选择封禁的地域ID列表
+	AreaList []*uint64 `json:"AreaList,omitempty" name:"AreaList"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
 type CertIdInsL7Rules struct {
 
 	// 使用证书的规则列表
@@ -576,6 +763,196 @@ func (r *CreateBoundIPResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBoundIPResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCPrecisionPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP值
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议， 可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 策略方式，可取值alg表示验证码，drop表示丢弃
+	PolicyAction *string `json:"PolicyAction,omitempty" name:"PolicyAction"`
+
+	// 策略记录
+	PolicyList []*CCPrecisionPlyRecord `json:"PolicyList,omitempty" name:"PolicyList"`
+}
+
+func (r *CreateCCPrecisionPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCPrecisionPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Protocol")
+	delete(f, "Domain")
+	delete(f, "PolicyAction")
+	delete(f, "PolicyList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCCPrecisionPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCPrecisionPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCCPrecisionPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCPrecisionPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCReqLimitPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP值
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 策略项
+	Policy *CCReqLimitPolicyRecord `json:"Policy,omitempty" name:"Policy"`
+}
+
+func (r *CreateCCReqLimitPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCReqLimitPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Protocol")
+	delete(f, "Domain")
+	delete(f, "Policy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCCReqLimitPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCReqLimitPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCCReqLimitPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCReqLimitPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcGeoIPBlockConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ip地址
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议类型
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// CC区域封禁配置，填写参数时配置ID请为空
+	CcGeoIPBlockConfig *CcGeoIPBlockConfig `json:"CcGeoIPBlockConfig,omitempty" name:"CcGeoIPBlockConfig"`
+}
+
+func (r *CreateCcGeoIPBlockConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcGeoIPBlockConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IP")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "CcGeoIPBlockConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCcGeoIPBlockConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcGeoIPBlockConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCcGeoIPBlockConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcGeoIPBlockConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1478,6 +1855,206 @@ func (r *DeleteBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteCCPrecisionPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteCCPrecisionPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCPrecisionPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCPrecisionPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCPrecisionPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCCPrecisionPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCPrecisionPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCRequestLimitPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteCCRequestLimitPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCRequestLimitPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCRequestLimitPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCRequestLimitPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCCRequestLimitPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCRequestLimitPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteCcBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCcBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCcBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcGeoIPBlockConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// CC区域封禁配置，填写参数时配置ID不能为空
+	CcGeoIPBlockConfig *CcGeoIPBlockConfig `json:"CcGeoIPBlockConfig,omitempty" name:"CcGeoIPBlockConfig"`
+}
+
+func (r *DeleteCcGeoIPBlockConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcGeoIPBlockConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CcGeoIPBlockConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCcGeoIPBlockConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCcGeoIPBlockConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCcGeoIPBlockConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCcGeoIPBlockConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteDDoSBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1679,6 +2256,56 @@ func (r *DeletePacketFilterConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePacketFilterConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePortAclConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 端口acl策略
+	AclConfig *AclConfig `json:"AclConfig,omitempty" name:"AclConfig"`
+}
+
+func (r *DeletePortAclConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePortAclConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AclConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePortAclConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePortAclConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeletePortAclConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePortAclConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1966,6 +2593,158 @@ func (r *DescribeBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCCPrecisionPlyListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定特定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ip地址，普通高防ip要传该字段
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名，普通高防ip要传该字段
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，普通高防ip要传该字段
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCCPrecisionPlyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCPrecisionPlyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCPrecisionPlyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCPrecisionPlyListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 策略列表详情
+		PrecisionPolicyList []*CCPrecisionPolicy `json:"PrecisionPolicyList,omitempty" name:"PrecisionPolicyList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCPrecisionPlyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCPrecisionPlyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCReqLimitPolicyListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防ip）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址，普通高防ip要传该字段
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名，普通高防ip要传该字段
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，普通高防ip要传该字段
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCCReqLimitPolicyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCReqLimitPolicyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCReqLimitPolicyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCReqLimitPolicyListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 频率限制列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 频率限制列表详情
+		RequestLimitPolicyList []*CCReqLimitPolicy `json:"RequestLimitPolicyList,omitempty" name:"RequestLimitPolicyList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCReqLimitPolicyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCReqLimitPolicyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCCTrendRequest struct {
 	*tchttp.BaseRequest
 
@@ -2065,6 +2844,166 @@ func (r *DescribeCCTrendResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防ip）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 指定特定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Ip地址，普通高防ip要传该字段
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名，普通高防ip要传该字段
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，普通高防ip要传该字段
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 筛选ip，需要筛选黑白名单ip时传该字段
+	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+
+	// 黑白名单筛选字段，需要筛选黑白名单列表时传该字段
+	FilterType *string `json:"FilterType,omitempty" name:"FilterType"`
+}
+
+func (r *DescribeCcBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "FilterIp")
+	delete(f, "FilterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CC四层黑白名单策略列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// CC四层黑白名单策略列表详情
+		CcBlackWhiteIpList []*CcBlackWhiteIpPolicy `json:"CcBlackWhiteIpList,omitempty" name:"CcBlackWhiteIpList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcGeoIPBlockConfigListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定特定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址，普通高防ip要传该字段
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名，普通高防ip要传该字段
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，普通高防ip要传该字段
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCcGeoIPBlockConfigListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcGeoIPBlockConfigListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCcGeoIPBlockConfigListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCcGeoIPBlockConfigListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CC地域封禁策略列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// CC地域封禁策略列表详情
+		CcGeoIpPolicyList []*CcGeoIpPolicyNew `json:"CcGeoIpPolicyList,omitempty" name:"CcGeoIpPolicyList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCcGeoIPBlockConfigListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCcGeoIPBlockConfigListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2516,7 +3455,7 @@ type DescribeListBGPInstancesRequest struct {
 	// 按照线路搜索, 1: BGP; 2: 三网
 	FilterLine *uint64 `json:"FilterLine,omitempty" name:"FilterLine"`
 
-	// 状态搜索，idle：允许中；attacking：攻击中；blocking：封堵中
+	// 状态搜索，idle：运行中；attacking：攻击中；blocking：封堵中
 	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
 
 	// 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
@@ -3677,6 +4616,362 @@ type ListenerCcThreholdConfig struct {
 	CCThreshold *int64 `json:"CCThreshold,omitempty" name:"CCThreshold"`
 }
 
+type ModifyCCLevelPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
+	Level *string `json:"Level,omitempty" name:"Level"`
+}
+
+func (r *ModifyCCLevelPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCLevelPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "Level")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCCLevelPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCLevelPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCLevelPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCLevelPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCPrecisionPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略方式，可取值alg表示验证码，drop表示丢弃
+	PolicyAction *string `json:"PolicyAction,omitempty" name:"PolicyAction"`
+
+	// 策略记录
+	PolicyList []*CCPrecisionPlyRecord `json:"PolicyList,omitempty" name:"PolicyList"`
+}
+
+func (r *ModifyCCPrecisionPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCPrecisionPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PolicyId")
+	delete(f, "PolicyAction")
+	delete(f, "PolicyList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCCPrecisionPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCPrecisionPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCPrecisionPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCPrecisionPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCReqLimitPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略项
+	Policy *CCReqLimitPolicyRecord `json:"Policy,omitempty" name:"Policy"`
+}
+
+func (r *ModifyCCReqLimitPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCReqLimitPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PolicyId")
+	delete(f, "Policy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCCReqLimitPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCReqLimitPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCReqLimitPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCReqLimitPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCThresholdPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 清洗阈值，-1表示开启“默认”模式
+	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
+}
+
+func (r *ModifyCCThresholdPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCThresholdPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	delete(f, "Threshold")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCCThresholdPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCCThresholdPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCCThresholdPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCCThresholdPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP列表
+	IpList []*IpSegment `json:"IpList,omitempty" name:"IpList"`
+
+	// IP类型，取值[black(黑名单IP), white(白名单IP)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 策略Id
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *ModifyCcBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IpList")
+	delete(f, "Type")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCcBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCcBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCcBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCcBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 当前黑名单类型，取值black时黑名单；取值white时白名单
+	OldIpType *string `json:"OldIpType,omitempty" name:"OldIpType"`
+
+	// 当前配置的Ip段，包含ip与掩码
+	OldIp *IpSegment `json:"OldIp,omitempty" name:"OldIp"`
+
+	// 修改后黑白名单类型，取值black时黑名单，取值white时白名单
+	NewIpType *string `json:"NewIpType,omitempty" name:"NewIpType"`
+
+	// 当前配置的Ip段，包含ip与掩码
+	NewIp *IpSegment `json:"NewIp,omitempty" name:"NewIp"`
+}
+
+func (r *ModifyDDoSBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OldIpType")
+	delete(f, "OldIp")
+	delete(f, "NewIpType")
+	delete(f, "NewIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSBlackWhiteIpListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDDoSGeoIPBlockConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -3727,6 +5022,70 @@ func (r *ModifyDDoSGeoIPBlockConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDDoSLevelRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// =get表示读取防护等级；=set表示修改防护等级
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 防护等级，取值[low,middle,high]；当Method=set时必填
+	DDoSLevel *string `json:"DDoSLevel,omitempty" name:"DDoSLevel"`
+}
+
+func (r *ModifyDDoSLevelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSLevelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Business")
+	delete(f, "Method")
+	delete(f, "DDoSLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSLevelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSLevelResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 防护等级，取值[low,middle,high]
+		DDoSLevel *string `json:"DDoSLevel,omitempty" name:"DDoSLevel"`
+
+		// 资源ID
+		Id *string `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSLevelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSLevelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDDoSSpeedLimitConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -3774,6 +5133,64 @@ func (r *ModifyDDoSSpeedLimitConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDDoSSpeedLimitConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSThresholdRequest struct {
+	*tchttp.BaseRequest
+
+	// DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+	// 当设置值为0时，表示采用默认值；
+	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 资源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	Business *string `json:"Business,omitempty" name:"Business"`
+}
+
+func (r *ModifyDDoSThresholdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSThresholdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Threshold")
+	delete(f, "Id")
+	delete(f, "Business")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSThresholdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDDoSThresholdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功码
+		Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDDoSThresholdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSThresholdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3988,6 +5405,60 @@ func (r *ModifyPacketFilterConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyPacketFilterConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPortAclConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 旧端口acl策略
+	OldAclConfig *AclConfig `json:"OldAclConfig,omitempty" name:"OldAclConfig"`
+
+	// 新端口acl策略
+	NewAclConfig *AclConfig `json:"NewAclConfig,omitempty" name:"NewAclConfig"`
+}
+
+func (r *ModifyPortAclConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPortAclConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OldAclConfig")
+	delete(f, "NewAclConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPortAclConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPortAclConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyPortAclConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPortAclConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

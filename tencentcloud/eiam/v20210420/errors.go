@@ -45,7 +45,7 @@ const (
 	FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
 
 	// 应用不存在。
-	FAILEDOPERATION_APPNOTEXISTED = "FailedOperation.AppNotExisted"
+	FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 
 	// 同一组织下不能存在相同名称的子组织机构。
 	FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"

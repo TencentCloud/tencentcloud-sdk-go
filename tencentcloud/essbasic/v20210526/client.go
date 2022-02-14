@@ -779,6 +779,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFlowsResponse, err error) {
     if request == nil {
@@ -806,6 +807,7 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) PrepareFlowsWithContext(ctx context.Context, request *PrepareFlowsRequest) (response *PrepareFlowsResponse, err error) {
     if request == nil {

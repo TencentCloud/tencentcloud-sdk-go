@@ -1047,8 +1047,8 @@ type GetServiceStatusResponse struct {
 		// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
 		InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
 
-		// true表示用户已经可以使用云API密钥安全托管功能，
-	// false表示用户暂时不能使用云API密钥安全托管功能。
+		// true表示用户已经可以使用密钥安全托管功能，
+	// false表示用户暂时不能使用密钥安全托管功能。
 		AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitempty" name:"AccessKeyEscrowEnabled"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1401,7 +1401,7 @@ type RotateProductSecretResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 当凭据类型为云产品凭据时（即SecretType为1，如Mysq、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
+		// 当凭据类型为云产品凭据时（即SecretType为1，如MySQL、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
 		FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

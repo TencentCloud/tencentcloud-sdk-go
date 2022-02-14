@@ -1992,12 +1992,17 @@ type SearchKTVMusicsRequest struct {
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	// 取值范围：Offset + Limit 不超过5000。取值范围：小于5000
+	// 取值范围：Offset + Limit 不超过5000。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-	// 取值范围：Offset + Limit 不超过5000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式。默认按照匹配度排序
+	// <li> Sort.Field 可选 CreateTime</li>
+	// <li> Sort.Order 可选 Desc </li>
+	// <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -2015,6 +2020,7 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	delete(f, "KeyWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Sort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKTVMusicsRequest has unknown keys!", "")
 	}

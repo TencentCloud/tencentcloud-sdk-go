@@ -1,3 +1,228 @@
+# Release v1.0.343
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 25 次发布
+
+发布时间：2022-02-14 08:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchKTVMusics](https://cloud.tencent.com/document/api/1155/56401)
+
+	* 新增入参：Sort
+
+
+
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 21 次发布
+
+发布时间：2022-02-14 08:04:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69188)
+* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69187)
+* [CreateCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/69178)
+* [DeleteCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69186)
+* [DeleteCCRequestLimitPolicy](https://cloud.tencent.com/document/api/1021/69185)
+* [DeleteCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69177)
+* [DeleteCcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/69176)
+* [DeletePortAclConfig](https://cloud.tencent.com/document/api/1021/69175)
+* [DescribeCCPrecisionPlyList](https://cloud.tencent.com/document/api/1021/69184)
+* [DescribeCCReqLimitPolicyList](https://cloud.tencent.com/document/api/1021/69183)
+* [DescribeCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69174)
+* [DescribeCcGeoIPBlockConfigList](https://cloud.tencent.com/document/api/1021/69173)
+* [ModifyCCLevelPolicy](https://cloud.tencent.com/document/api/1021/69182)
+* [ModifyCCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/69181)
+* [ModifyCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69180)
+* [ModifyCCThresholdPolicy](https://cloud.tencent.com/document/api/1021/69179)
+* [ModifyCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69172)
+* [ModifyDDoSBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/69171)
+* [ModifyDDoSLevel](https://cloud.tencent.com/document/api/1021/69191)
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
+* [ModifyPortAclConfig](https://cloud.tencent.com/document/api/1021/69170)
+
+新增数据结构：
+
+* [CCPrecisionPlyRecord](https://cloud.tencent.com/document/api/1021/57582#CCPrecisionPlyRecord)
+* [CCPrecisionPolicy](https://cloud.tencent.com/document/api/1021/57582#CCPrecisionPolicy)
+* [CCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/57582#CCReqLimitPolicy)
+* [CCReqLimitPolicyRecord](https://cloud.tencent.com/document/api/1021/57582#CCReqLimitPolicyRecord)
+* [CcBlackWhiteIpPolicy](https://cloud.tencent.com/document/api/1021/57582#CcBlackWhiteIpPolicy)
+* [CcGeoIPBlockConfig](https://cloud.tencent.com/document/api/1021/57582#CcGeoIPBlockConfig)
+* [CcGeoIpPolicyNew](https://cloud.tencent.com/document/api/1021/57582#CcGeoIpPolicyNew)
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 21 次发布
+
+发布时间：2022-02-14 08:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAutoCalloutTask](https://cloud.tencent.com/document/api/679/69194)
+* [DescribeAutoCalloutTask](https://cloud.tencent.com/document/api/679/69193)
+* [StopAutoCalloutTask](https://cloud.tencent.com/document/api/679/69192)
+
+新增数据结构：
+
+* [AutoCalloutTaskCalleeInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskCalleeInfo)
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：AsrUrl
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 84 次发布
+
+发布时间：2022-02-14 08:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662)
+
+	* 新增入参：TemplateType
+
+
+
+
+## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 10 次发布
+
+发布时间：2022-02-14 08:08:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAuditTracks](https://cloud.tencent.com/document/api/629/69204)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 7 次发布
+
+发布时间：2022-02-14 08:09:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProxySessionKillTasks](https://cloud.tencent.com/document/api/1130/69205)
+
+新增数据结构：
+
+* [TaskInfo](https://cloud.tencent.com/document/api/1130/57812#TaskInfo)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 11 次发布
+
+发布时间：2022-02-14 08:15:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateLogExport](https://cloud.tencent.com/document/api/1464/69248)
+* [CreateOfflineLogConfig](https://cloud.tencent.com/document/api/1464/69247)
+* [CreateReleaseFile](https://cloud.tencent.com/document/api/1464/69246)
+* [CreateStarProject](https://cloud.tencent.com/document/api/1464/69245)
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+* [CreateWhitelist](https://cloud.tencent.com/document/api/1464/69243)
+* [DeleteInstance](https://cloud.tencent.com/document/api/1464/69242)
+* [DeleteLogExport](https://cloud.tencent.com/document/api/1464/69241)
+* [DeleteOfflineLogConfig](https://cloud.tencent.com/document/api/1464/69240)
+* [DeleteOfflineLogRecord](https://cloud.tencent.com/document/api/1464/69239)
+* [DeleteProject](https://cloud.tencent.com/document/api/1464/69238)
+* [DeleteReleaseFile](https://cloud.tencent.com/document/api/1464/69237)
+* [DeleteStarProject](https://cloud.tencent.com/document/api/1464/69236)
+* [DeleteWhitelist](https://cloud.tencent.com/document/api/1464/69235)
+* [DescribeData](https://cloud.tencent.com/document/api/1464/69234)
+* [DescribeDataCustomUrl](https://cloud.tencent.com/document/api/1464/69233)
+* [DescribeDataFetchProject](https://cloud.tencent.com/document/api/1464/69232)
+* [DescribeDataLogUrlInfo](https://cloud.tencent.com/document/api/1464/69231)
+* [DescribeDataPerformanceProject](https://cloud.tencent.com/document/api/1464/69230)
+* [DescribeDataPvUrlInfo](https://cloud.tencent.com/document/api/1464/69229)
+* [DescribeDataReportCount](https://cloud.tencent.com/document/api/1464/69228)
+* [DescribeDataSetUrlStatistics](https://cloud.tencent.com/document/api/1464/69227)
+* [DescribeDataStaticProject](https://cloud.tencent.com/document/api/1464/69226)
+* [DescribeDataStaticResource](https://cloud.tencent.com/document/api/1464/69225)
+* [DescribeDataStaticUrl](https://cloud.tencent.com/document/api/1464/69224)
+* [DescribeDataWebVitalsPage](https://cloud.tencent.com/document/api/1464/69223)
+* [DescribeLogExports](https://cloud.tencent.com/document/api/1464/69222)
+* [DescribeOfflineLogConfigs](https://cloud.tencent.com/document/api/1464/69221)
+* [DescribeOfflineLogRecords](https://cloud.tencent.com/document/api/1464/69220)
+* [DescribeOfflineLogs](https://cloud.tencent.com/document/api/1464/69219)
+* [DescribeProjectLimits](https://cloud.tencent.com/document/api/1464/69218)
+* [DescribePvList](https://cloud.tencent.com/document/api/1464/69217)
+* [DescribeReleaseFileSign](https://cloud.tencent.com/document/api/1464/69216)
+* [DescribeReleaseFiles](https://cloud.tencent.com/document/api/1464/69215)
+* [DescribeTawAreas](https://cloud.tencent.com/document/api/1464/69214)
+* [DescribeTawInstances](https://cloud.tencent.com/document/api/1464/69213)
+* [DescribeUvList](https://cloud.tencent.com/document/api/1464/69212)
+* [DescribeWhitelists](https://cloud.tencent.com/document/api/1464/69211)
+* [ModifyInstance](https://cloud.tencent.com/document/api/1464/69210)
+* [ModifyProject](https://cloud.tencent.com/document/api/1464/69209)
+* [ModifyProjectLimit](https://cloud.tencent.com/document/api/1464/69208)
+* [ResumeInstance](https://cloud.tencent.com/document/api/1464/69207)
+* [StopInstance](https://cloud.tencent.com/document/api/1464/69206)
+
+新增数据结构：
+
+* [LogExport](https://cloud.tencent.com/document/api/1464/61476#LogExport)
+* [ProjectLimit](https://cloud.tencent.com/document/api/1464/61476#ProjectLimit)
+* [ReleaseFile](https://cloud.tencent.com/document/api/1464/61476#ReleaseFile)
+* [RumAreaInfo](https://cloud.tencent.com/document/api/1464/61476#RumAreaInfo)
+* [RumInstanceInfo](https://cloud.tencent.com/document/api/1464/61476#RumInstanceInfo)
+* [RumPvInfo](https://cloud.tencent.com/document/api/1464/61476#RumPvInfo)
+* [RumUvInfo](https://cloud.tencent.com/document/api/1464/61476#RumUvInfo)
+* [Tag](https://cloud.tencent.com/document/api/1464/61476#Tag)
+* [Whitelist](https://cloud.tencent.com/document/api/1464/61476#Whitelist)
+
+
+
 # Release v1.0.342
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

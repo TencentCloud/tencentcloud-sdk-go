@@ -68,6 +68,9 @@ const (
 	// 必须包含开始时间和结束时间，且必须为整形时间戳（精确到秒）
 	INVALIDPARAMETER_TIME = "InvalidParameter.Time"
 
+	// 别名已经存在
+	INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+
 	// 跟踪集名称不符合规则
 	INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
 

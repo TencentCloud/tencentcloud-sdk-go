@@ -416,7 +416,10 @@ type DescribeMachineUnderwriteResponse struct {
 		// 核保任务ID
 		UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
 
-		// 状态码
+		// 结果状态：
+	// 0：返回成功
+	// 1：结果未生成
+	// 2：结果生成失败
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 机器核保结果
@@ -441,7 +444,9 @@ func (r *DescribeMachineUnderwriteResponse) FromJsonString(s string) error {
 type DescribeReportClassifyRequest struct {
 	*tchttp.BaseRequest
 
-	// 服务类型（Structured/Underwrite）
+	// 服务类型
+	// Structured 仅结构化
+	// Underwrite 结构化+核保
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 文件地址数组
@@ -804,7 +809,10 @@ type DescribeUnderwriteTaskResponse struct {
 		// 核保任务ID
 		UnderwriteTaskId *string `json:"UnderwriteTaskId,omitempty" name:"UnderwriteTaskId"`
 
-		// 状态码
+		// 结果状态：
+	// 0：返回成功
+	// 1：结果未生成
+	// 2：结果生成失败
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 		// 核保结果

@@ -4452,6 +4452,9 @@ type DescribeDefaultParamsRequest struct {
 
 	// mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 }
 
 func (r *DescribeDefaultParamsRequest) ToJsonString() string {
@@ -4467,6 +4470,7 @@ func (r *DescribeDefaultParamsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EngineVersion")
+	delete(f, "TemplateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDefaultParamsRequest has unknown keys!", "")
 	}

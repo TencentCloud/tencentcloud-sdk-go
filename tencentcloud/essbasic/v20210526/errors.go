@@ -101,6 +101,9 @@ const (
 	// 应用号不存在。
 	RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 
+	// 机构不存在。
+	RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+
 	// 模板不存在。
 	RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 
