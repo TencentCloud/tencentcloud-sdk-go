@@ -1157,11 +1157,7 @@ func NewCreateSceneResponse() (response *CreateSceneResponse) {
 // 创建场景
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
-//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
-//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 func (c *Client) CreateScene(request *CreateSceneRequest) (response *CreateSceneResponse, err error) {
     if request == nil {
         request = NewCreateSceneRequest()
@@ -1176,11 +1172,7 @@ func (c *Client) CreateScene(request *CreateSceneRequest) (response *CreateScene
 // 创建场景
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
-//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
-//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 func (c *Client) CreateSceneWithContext(ctx context.Context, request *CreateSceneRequest) (response *CreateSceneResponse, err error) {
     if request == nil {
         request = NewCreateSceneRequest()
@@ -9004,8 +8996,7 @@ func NewModifyBindRecordingPlanResponse() (response *ModifyBindRecordingPlanResp
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindRecordingPlan(request *ModifyBindRecordingPlanRequest) (response *ModifyBindRecordingPlanResponse, err error) {
     if request == nil {
         request = NewModifyBindRecordingPlanRequest()
@@ -9021,8 +9012,7 @@ func (c *Client) ModifyBindRecordingPlan(request *ModifyBindRecordingPlanRequest
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindRecordingPlanWithContext(ctx context.Context, request *ModifyBindRecordingPlanRequest) (response *ModifyBindRecordingPlanResponse, err error) {
     if request == nil {
         request = NewModifyBindRecordingPlanRequest()
@@ -9056,8 +9046,7 @@ func NewModifyBindSceneChannelsResponse() (response *ModifyBindSceneChannelsResp
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindSceneChannels(request *ModifyBindSceneChannelsRequest) (response *ModifyBindSceneChannelsResponse, err error) {
     if request == nil {
         request = NewModifyBindSceneChannelsRequest()
@@ -9073,8 +9062,7 @@ func (c *Client) ModifyBindSceneChannels(request *ModifyBindSceneChannelsRequest
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindSceneChannelsWithContext(ctx context.Context, request *ModifyBindSceneChannelsRequest) (response *ModifyBindSceneChannelsResponse, err error) {
     if request == nil {
         request = NewModifyBindSceneChannelsRequest()

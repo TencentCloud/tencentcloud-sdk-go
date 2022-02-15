@@ -2082,6 +2082,18 @@ type SetAudioParamCommandInput struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type SetDestroyModeCommandInput struct {
+
+	// 销毁模式，取值有：
+	// <li>Auto：房间没人时自动销毁</li>
+	// <li>Expire：房间没人时过期自动销毁</li>
+	// <li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
+	DestroyMode *string `json:"DestroyMode,omitempty" name:"DestroyMode"`
+
+	// 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
+	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitempty" name:"DestroyExpireTime"`
+}
+
 type SetPlayModeCommandInput struct {
 
 	// 播放模式，取值有：
@@ -2155,6 +2167,7 @@ type SyncKTVRobotCommandRequest struct {
 	// <li>SetPlaylist：歌单变更</li>
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
+	// <li>SetDestroyMode：设置销毁模式</li>
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 播放参数。
@@ -2174,6 +2187,9 @@ type SyncKTVRobotCommandRequest struct {
 
 	// 播放模式，当Command取SetPlayMode时，必填。
 	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitempty" name:"SetPlayModeCommandInput"`
+
+	// 销毁模式，当Command取SetDestroyMode时，必填。
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
 }
 
 func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
@@ -2196,6 +2212,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 	delete(f, "SetAudioParamCommandInput")
 	delete(f, "SendMessageCommandInput")
 	delete(f, "SetPlayModeCommandInput")
+	delete(f, "SetDestroyModeCommandInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncKTVRobotCommandRequest has unknown keys!", "")
 	}

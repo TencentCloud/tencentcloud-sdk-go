@@ -308,6 +308,7 @@ func NewStopGameResponse() (response *StopGameResponse) {
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  RESOURCEUNAVAILABLE_ACCESSFAILED = "ResourceUnavailable.AccessFailed"
 func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
     if request == nil {
         request = NewStopGameRequest()
@@ -325,6 +326,7 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  RESOURCEUNAVAILABLE_ACCESSFAILED = "ResourceUnavailable.AccessFailed"
 func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameRequest) (response *StopGameResponse, err error) {
     if request == nil {
         request = NewStopGameRequest()

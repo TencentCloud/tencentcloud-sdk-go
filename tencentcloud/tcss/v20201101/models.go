@@ -1372,6 +1372,10 @@ type ComplianceK8SDetailInfo struct {
 	// K8S集群的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// K8S集群的版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
 }
 
 type CompliancePeriodTask struct {
@@ -4623,6 +4627,9 @@ type DescribeAssetImageRegistryDetailRequest struct {
 
 	// 仓库列表id
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
 func (r *DescribeAssetImageRegistryDetailRequest) ToJsonString() string {
@@ -4638,6 +4645,7 @@ func (r *DescribeAssetImageRegistryDetailRequest) FromJsonString(s string) error
 		return err
 	}
 	delete(f, "Id")
+	delete(f, "ImageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryDetailRequest has unknown keys!", "")
 	}
@@ -10136,7 +10144,7 @@ type DescribeVirusTaskListResponse struct {
 		// 文件查杀列表
 		List []*VirusTaskInfo `json:"List,omitempty" name:"List"`
 
-		// 总数量
+		// 总数量(容器任务数量)
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11893,7 +11901,7 @@ type ModifyVirusMonitorSettingRequest struct {
 	// 扫描全部路径
 	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
 
-	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
+	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径(扫描范围只能小于等于1)
 	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
 
 	// 自选排除或扫描的地址

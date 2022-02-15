@@ -70,6 +70,7 @@ func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
@@ -82,6 +83,7 @@ func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) 
 //  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
 //  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (response *AddCustomPersonImageResponse, err error) {
@@ -103,6 +105,7 @@ func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (res
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
@@ -115,6 +118,7 @@ func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (res
 //  INTERNALERROR_INTERNALOVERFLOW = "InternalError.InternalOverflow"
 //  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) AddCustomPersonImageWithContext(ctx context.Context, request *AddCustomPersonImageRequest) (response *AddCustomPersonImageResponse, err error) {
@@ -161,6 +165,7 @@ func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) 
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
     if request == nil {
@@ -188,6 +193,7 @@ func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (res
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomCategoryWithContext(ctx context.Context, request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
     if request == nil {
@@ -349,6 +355,7 @@ func NewCreateCustomPersonResponse() (response *CreateCustomPersonResponse) {
 //  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomPerson(request *CreateCustomPersonRequest) (response *CreateCustomPersonResponse, err error) {
@@ -393,6 +400,7 @@ func (c *Client) CreateCustomPerson(request *CreateCustomPersonRequest) (respons
 //  INVALIDPARAMETER_INVALIDIMAGE = "InvalidParameter.InvalidImage"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomPersonWithContext(ctx context.Context, request *CreateCustomPersonRequest) (response *CreateCustomPersonResponse, err error) {
@@ -1674,6 +1682,7 @@ func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -1704,6 +1713,7 @@ func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (res
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"

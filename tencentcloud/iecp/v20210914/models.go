@@ -64,6 +64,10 @@ type ApplicationBasicInfo struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否允许可视化修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowVisualModify *bool `json:"AllowVisualModify,omitempty" name:"AllowVisualModify"`
 }
 
 type ApplicationDeployMode struct {

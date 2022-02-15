@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// CMQ 后台服务错误。
+	FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
+
 	// 创建vpc绑定关系失败。
 	FAILEDOPERATION_CREATEBINDVPC = "FailedOperation.CreateBindVpc"
 

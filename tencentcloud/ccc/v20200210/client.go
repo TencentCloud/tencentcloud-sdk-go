@@ -177,6 +177,7 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
     if request == nil {
         request = NewCreateCallOutSessionRequest()
@@ -195,6 +196,7 @@ func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (res
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
     if request == nil {
         request = NewCreateCallOutSessionRequest()

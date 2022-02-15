@@ -6729,6 +6729,7 @@ func NewRefundResponse() (response *RefundResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
 //  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6758,6 +6759,7 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
 //  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6793,6 +6795,7 @@ func NewRefundMemberTransactionResponse() (response *RefundMemberTransactionResp
 // 会员间交易退款
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest) (response *RefundMemberTransactionResponse, err error) {
@@ -6809,6 +6812,7 @@ func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest
 // 会员间交易退款
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RefundMemberTransactionWithContext(ctx context.Context, request *RefundMemberTransactionRequest) (response *RefundMemberTransactionResponse, err error) {

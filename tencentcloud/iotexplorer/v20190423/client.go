@@ -2470,6 +2470,66 @@ func (c *Client) DescribeGatewayBindDevicesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeGatewaySubDeviceListRequest() (request *DescribeGatewaySubDeviceListRequest) {
+    request = &DescribeGatewaySubDeviceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewaySubDeviceList")
+    
+    
+    return
+}
+
+func NewDescribeGatewaySubDeviceListResponse() (response *DescribeGatewaySubDeviceListResponse) {
+    response = &DescribeGatewaySubDeviceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGatewaySubDeviceList
+// 查询绑定到家庭的网关设备的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTBIND = "ResourceNotFound.DeviceNotBind"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeGatewaySubDeviceList(request *DescribeGatewaySubDeviceListRequest) (response *DescribeGatewaySubDeviceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewaySubDeviceListRequest()
+    }
+    
+    response = NewDescribeGatewaySubDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeGatewaySubDeviceList
+// 查询绑定到家庭的网关设备的子设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTBIND = "ResourceNotFound.DeviceNotBind"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) DescribeGatewaySubDeviceListWithContext(ctx context.Context, request *DescribeGatewaySubDeviceListRequest) (response *DescribeGatewaySubDeviceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewaySubDeviceListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewaySubDeviceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGatewaySubProductsRequest() (request *DescribeGatewaySubProductsRequest) {
     request = &DescribeGatewaySubProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},

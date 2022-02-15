@@ -53,6 +53,9 @@ const (
 	// 会话未找到。
 	RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 
+	// 访问并发实例失败。
+	RESOURCEUNAVAILABLE_ACCESSFAILED = "ResourceUnavailable.AccessFailed"
+
 	// 机器还在初始化中。
 	RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 

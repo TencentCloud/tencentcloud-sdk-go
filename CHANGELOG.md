@@ -1,3 +1,89 @@
+# Release v1.0.344
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 26 次发布
+
+发布时间：2022-02-15 08:02:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+
+	* 新增入参：SetDestroyModeCommandInput
+
+
+新增数据结构：
+
+* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetDestroyModeCommandInput)
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 2 次发布
+
+发布时间：2022-02-15 08:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApplicationBasicInfo](https://cloud.tencent.com/document/api/1118/66797#ApplicationBasicInfo)
+
+	* 新增成员：AllowVisualModify
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 41 次发布
+
+发布时间：2022-02-15 08:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/69291)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 9 次发布
+
+发布时间：2022-02-15 08:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
+
+	* 新增入参：ImageId
+
+
+修改数据结构：
+
+* [ComplianceK8SDetailInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceK8SDetailInfo)
+
+	* 新增成员：ClusterVersion
+
+
+
+
 # Release v1.0.343
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

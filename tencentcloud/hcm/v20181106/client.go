@@ -66,6 +66,7 @@ func NewEvaluationResponse() (response *EvaluationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHARGECOUNTERROR = "FailedOperation.ChargeCountError"
+//  INTERNALERROR_ENGINEREQUESTFAILED = "InternalError.EngineRequestFailed"
 //  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
 //  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"
@@ -94,6 +95,7 @@ func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHARGECOUNTERROR = "FailedOperation.ChargeCountError"
+//  INTERNALERROR_ENGINEREQUESTFAILED = "InternalError.EngineRequestFailed"
 //  INTERNALERROR_ENGINERESULTERROR = "InternalError.EngineResultError"
 //  INTERNALERROR_INITIALPARAMETERERROR = "InternalError.InitialParameterError"
 //  INTERNALERROR_SERVERINTERNALERROR = "InternalError.ServerInternalError"

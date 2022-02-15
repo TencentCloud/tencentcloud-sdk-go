@@ -187,6 +187,7 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_BODYRECTILLEGAL = "FailedOperation.BodyRectIllegal"
 //  FAILEDOPERATION_BODYRECTNUMILLEGAL = "FailedOperation.BodyRectNumIllegal"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -238,6 +239,7 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
 // 可能返回的错误码:
 //  FAILEDOPERATION_BODYRECTILLEGAL = "FailedOperation.BodyRectIllegal"
 //  FAILEDOPERATION_BODYRECTNUMILLEGAL = "FailedOperation.BodyRectNumIllegal"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -915,6 +917,7 @@ func NewGetPersonListResponse() (response *GetPersonListResponse) {
 //  INVALIDPARAMETERVALUE_GROUPIDTOOLONG = "InvalidParameterValue.GroupIdTooLong"
 //  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
 //  INVALIDPARAMETERVALUE_OFFSETEXCEED = "InvalidParameterValue.OffsetExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPersonListResponse, err error) {
@@ -941,6 +944,7 @@ func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPers
 //  INVALIDPARAMETERVALUE_GROUPIDTOOLONG = "InvalidParameterValue.GroupIdTooLong"
 //  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
 //  INVALIDPARAMETERVALUE_OFFSETEXCEED = "InvalidParameterValue.OffsetExceed"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonListWithContext(ctx context.Context, request *GetPersonListRequest) (response *GetPersonListResponse, err error) {
