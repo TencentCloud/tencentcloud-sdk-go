@@ -10258,7 +10258,7 @@ type ZoneConf struct {
 
 type ZoneSellConf struct {
 
-	// 可用区状态。可能的返回值为：0-未上线；1-上线；2-开放；3-停售；4-不展示
+	// 可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 可用区中文名称
@@ -10306,4 +10306,15 @@ type ZoneSellConf struct {
 	// 可支持的跨可用区只读区信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteRoZone []*string `json:"RemoteRoZone,omitempty" name:"RemoteRoZone"`
+
+	// 独享型可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
+	ExClusterStatus *int64 `json:"ExClusterStatus,omitempty" name:"ExClusterStatus"`
+
+	// 独享型可支持的跨可用区只读区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExClusterRemoteRoZone []*string `json:"ExClusterRemoteRoZone,omitempty" name:"ExClusterRemoteRoZone"`
+
+	// 独享型多可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExClusterZoneConf *ZoneConf `json:"ExClusterZoneConf,omitempty" name:"ExClusterZoneConf"`
 }

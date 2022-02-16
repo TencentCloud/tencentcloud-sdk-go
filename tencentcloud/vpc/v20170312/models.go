@@ -1950,7 +1950,7 @@ func (r *CreateAddressTemplateGroupResponse) FromJsonString(s string) error {
 type CreateAddressTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// IP地址模版名称
+	// IP地址模板名称。
 	AddressTemplateName *string `json:"AddressTemplateName,omitempty" name:"AddressTemplateName"`
 
 	// 地址信息，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。

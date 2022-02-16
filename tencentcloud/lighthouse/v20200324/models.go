@@ -395,6 +395,15 @@ type CcnAttachedInstance struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+type ContainerEnv struct {
+
+	// 环境变量Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 环境变量值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type CreateBlueprintRequest struct {
 	*tchttp.BaseRequest
 
@@ -556,6 +565,97 @@ func (r *CreateInstanceSnapshotResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateInstanceSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// Lighthouse套餐ID。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+
+	// Lighthouse镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
+
+	// 当前Lighthouse实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// Lighthouse实例显示名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 购买Lighthouse实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 可用区列表。默认为随机可用区
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 是否只预检此次请求。
+	// true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和库存。
+	// 如果检查不通过，则返回对应错误码；
+	// 如果检查通过，则返回RequestId.
+	// false（默认）：发送正常请求，通过检查后直接创建实例
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 实例登录密码信息配置。本字段目前仅支持WINDOWS实例进行密码设置。默认缺失情况下代表用户选择实例创建后设置登录密码。
+	LoginConfiguration *LoginConfiguration `json:"LoginConfiguration,omitempty" name:"LoginConfiguration"`
+
+	// 要创建的容器配置列表。
+	Containers []*DockerContainerConfiguration `json:"Containers,omitempty" name:"Containers"`
+}
+
+func (r *CreateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BundleId")
+	delete(f, "BlueprintId")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "InstanceName")
+	delete(f, "InstanceCount")
+	delete(f, "Zones")
+	delete(f, "DryRun")
+	delete(f, "ClientToken")
+	delete(f, "LoginConfiguration")
+	delete(f, "Containers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
+	// 
+	// 可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+		InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2755,6 +2855,53 @@ type DiskReturnable struct {
 	ReturnFailMessage *string `json:"ReturnFailMessage,omitempty" name:"ReturnFailMessage"`
 }
 
+type DockerContainerConfiguration struct {
+
+	// 容器镜像地址
+	ContainerImage *string `json:"ContainerImage,omitempty" name:"ContainerImage"`
+
+	// 容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 环境变量列表
+	Envs []*ContainerEnv `json:"Envs,omitempty" name:"Envs"`
+
+	// 容器端口主机端口映射列表
+	PublishPorts []*DockerContainerPublishPort `json:"PublishPorts,omitempty" name:"PublishPorts"`
+
+	// 容器加载本地卷列表
+	Volumes []*DockerContainerVolume `json:"Volumes,omitempty" name:"Volumes"`
+
+	// 运行的命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+}
+
+type DockerContainerPublishPort struct {
+
+	// 主机端口
+	HostPort *int64 `json:"HostPort,omitempty" name:"HostPort"`
+
+	// 容器端口
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 对外绑定IP，默认0.0.0.0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议，默认tcp，支持tcp/udp/sctp
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+type DockerContainerVolume struct {
+
+	// 容器路径
+	ContainerPath *string `json:"ContainerPath,omitempty" name:"ContainerPath"`
+
+	// 主机路径
+	HostPath *string `json:"HostPath,omitempty" name:"HostPath"`
+}
+
 type Filter struct {
 
 	// 需要过滤的字段。
@@ -3349,6 +3496,9 @@ type KeyPair struct {
 	// 密钥对私钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+}
+
+type LoginConfiguration struct {
 }
 
 type LoginSettings struct {

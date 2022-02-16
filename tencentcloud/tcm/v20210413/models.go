@@ -33,6 +33,12 @@ type AccessLogConfig struct {
 
 	// 腾讯云日志服务相关参数
 	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+
+	// 编码格式，可选值：TEXT、JSON
+	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+
+	// 日志格式
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ActiveOperation struct {

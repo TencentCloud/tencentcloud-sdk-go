@@ -432,6 +432,12 @@ type CustomPersonInfo struct {
 
 	// 二级自定义人物类型
 	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+
+	// 自定义人物图片信息
+	ImageInfoSet []*PersonImageInfo `json:"ImageInfoSet,omitempty" name:"ImageInfoSet"`
+
+	// 自定义人物创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type Data struct {

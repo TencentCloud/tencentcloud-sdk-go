@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 26 次发布
+### 第 85 次发布
 
-发布时间：2022-02-15 08:02:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
-
-	* 新增入参：SetDestroyModeCommandInput
-
-
-新增数据结构：
-
-* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetDestroyModeCommandInput)
-
-
-
-## 物联网边缘计算平台(iecp) 版本：2021-09-14
-
-### 第 2 次发布
-
-发布时间：2022-02-15 08:09:12
+发布时间：2022-02-16 08:02:33
 
 本次发布包含了以下内容：
 
@@ -35,18 +12,37 @@
 
 修改数据结构：
 
-* [ApplicationBasicInfo](https://cloud.tencent.com/document/api/1118/66797#ApplicationBasicInfo)
+* [ZoneSellConf](https://cloud.tencent.com/document/api/236/15878#ZoneSellConf)
 
-	* 新增成员：AllowVisualModify
-
-
+	* 新增成员：ExClusterStatus, ExClusterRemoteRoZone, ExClusterZoneConf
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 41 次发布
 
-发布时间：2022-02-15 08:09:38
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 3 次发布
+
+发布时间：2022-02-16 08:08:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CustomPersonInfo](https://cloud.tencent.com/document/api/1509/65063#CustomPersonInfo)
+
+	* 新增成员：ImageInfoSet, CreateTime
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 25 次发布
+
+发布时间：2022-02-16 08:08:43
 
 本次发布包含了以下内容：
 
@@ -54,32 +50,33 @@
 
 新增接口：
 
-* [DescribeGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/69291)
+* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
+
+新增数据结构：
+
+* [ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)
+* [DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)
+* [DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)
+* [DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
 
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
+## 服务网格(tcm) 版本：2021-04-13
 
-### 第 9 次发布
+### 第 4 次发布
 
-发布时间：2022-02-15 08:13:53
+发布时间：2022-02-16 08:11:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeAssetImageRegistryDetail](https://cloud.tencent.com/document/api/1285/65501)
-
-	* 新增入参：ImageId
-
-
 修改数据结构：
 
-* [ComplianceK8SDetailInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceK8SDetailInfo)
+* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
 
-	* 新增成员：ClusterVersion
+	* 新增成员：Encoding, Format
 
 
 
@@ -500,7 +497,7 @@
 
 新增数据结构：
 
-* [[SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetDestroyModeCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetDestroyModeCommandInput))
+* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetDestroyModeCommandInput)
 
 ### 第 25 次发布
 
@@ -9160,6 +9157,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 85 次发布
+
+发布时间：2022-02-16 08:02:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ZoneSellConf](https://cloud.tencent.com/document/api/236/15878#ZoneSellConf)
+
+	* 新增成员：ExClusterStatus, ExClusterRemoteRoZone, ExClusterZoneConf
+
 
 ### 第 84 次发布
 
@@ -35942,7 +35954,7 @@
 
 新增接口：
 
-* [[DescribeGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/69291)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGatewaySubDeviceList](https://cloud.tencent.com/document/api/1081/69291)
 
 ### 第 40 次发布
 
@@ -38158,6 +38170,21 @@
 
 ## 视频智能标签(ivld) 版本：2021-09-03
 
+### 第 3 次发布
+
+发布时间：2022-02-16 08:08:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CustomPersonInfo](https://cloud.tencent.com/document/api/1509/65063#CustomPersonInfo)
+
+	* 新增成员：ImageInfoSet, CreateTime
+
+
 ### 第 2 次发布
 
 发布时间：2022-01-25 16:20:40
@@ -38581,6 +38608,26 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 25 次发布
+
+发布时间：2022-02-16 08:08:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInstances](https://cloud.tencent.com/document/api/1207/69573)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)](https://cloud.tencent.com/document/api/1207/47576#[ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv))
+* [[DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration))
+* [[DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort))
+* [[DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume))
+* [[LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)](https://cloud.tencent.com/document/api/1207/47576#[LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration))
 
 ### 第 24 次发布
 
@@ -55567,6 +55614,21 @@
 
 
 ## 服务网格(tcm) 版本：2021-04-13
+
+### 第 4 次发布
+
+发布时间：2022-02-16 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
+
+	* 新增成员：Encoding, Format
+
 
 ### 第 3 次发布
 

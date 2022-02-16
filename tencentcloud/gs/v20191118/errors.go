@@ -26,7 +26,7 @@ const (
 	// 请降低访问频率。
 	FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 
-	// 锁定机器超时或未调用TrylockWorker。
+	// 操作超时。
 	FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 
 	// 请求太频繁。

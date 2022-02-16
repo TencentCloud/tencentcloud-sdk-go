@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 创建镜像失败。
 	FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
 
@@ -43,6 +46,9 @@ const (
 
 	// 操作失败，不能创建自定义镜像。
 	FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"
+
+	// 无法创建实例。
+	FAILEDOPERATION_UNABLETOCREATEINSTANCES = "FailedOperation.UnableToCreateInstances"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -68,6 +74,9 @@ const (
 	// 快照配额锁获取失败。
 	INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = "InternalError.GetSnapshotAllocQuotaLockError"
 
+	// 无法找到此接口。
+	INTERNALERROR_INVALIDACTIONNOTFOUND = "InternalError.InvalidActionNotFound"
+
 	// 套餐价格错误。
 	INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 
@@ -85,6 +94,9 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 套餐和镜像不匹配。
+	INVALIDPARAMETER_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameter.BundleAndBlueprintNotMatch"
 
 	// 产品未定义的套餐 ID。
 	INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
@@ -167,6 +179,9 @@ const (
 	// 镜像类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDBLUEPRINTTYPE = "InvalidParameterValue.InvalidBlueprintType"
 
+	// 非法的套餐参数。
+	INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
+
 	// 控制台显示类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDCONSOLEDISPLAYTYPES = "InvalidParameterValue.InvalidConsoleDisplayTypes"
 
@@ -187,6 +202,9 @@ const (
 
 	// 参数长度非法。
 	INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAMETOOLONG = "InvalidParameterValue.InvalidKeyPairNameTooLong"
+
+	// 参数组合非法。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
 
 	// 参数中的密码不合法。
 	INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
@@ -230,11 +248,17 @@ const (
 	// 非法的可用区。
 	INVALIDPARAMETERVALUE_ZONEINVALID = "InvalidParameterValue.ZoneInvalid"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 实例挂载数据盘配额不足，无法挂载磁盘。
 	LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
 
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
+
+	// 超过实例配额。
+	LIMITEXCEEDED_INSTANCEQUOTALIMITEXCEEDED = "LimitExceeded.InstanceQuotaLimitExceeded"
 
 	// 超过密钥对配额。
 	LIMITEXCEEDED_KEYPAIRLIMITEXCEEDED = "LimitExceeded.KeyPairLimitExceeded"
@@ -311,6 +335,15 @@ const (
 	// 镜像资源不可用。
 	RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = "ResourceUnavailable.BlueprintUnavailable"
 
+	// 套餐不可用。
+	RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
+
+	// 套餐无可用配置。
+	RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = "ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs"
+
+	// 套餐无可用配置。
+	RESOURCESSOLDOUT_ZONESHASNOBUNDLECONFIGS = "ResourcesSoldOut.ZonesHasNoBundleConfigs"
+
 	// MFA 已过期。
 	UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 
@@ -358,6 +391,9 @@ const (
 
 	// 实例已到期，不支持该操作。
 	UNSUPPORTEDOPERATION_INSTANCEEXPIRED = "UnsupportedOperation.InstanceExpired"
+
+	// LinuxUnix实例在创建时不支持设置密码。
+	UNSUPPORTEDOPERATION_INSTANCELINUXUNIXCREATINGNOTSUPPORTPASSWORD = "UnsupportedOperation.InstanceLinuxUnixCreatingNotSupportPassword"
 
 	// 磁盘状态不支持该操作。
 	UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"

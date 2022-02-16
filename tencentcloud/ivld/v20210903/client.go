@@ -69,7 +69,9 @@ func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) 
 // 请注意，与创建自定义人物一样，图片数据优先级优于图片URL优先级
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
@@ -104,7 +106,9 @@ func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (res
 // 请注意，与创建自定义人物一样，图片数据优先级优于图片URL优先级
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
@@ -159,7 +163,9 @@ func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) 
 // 当L1Category与L2Category均不为空时，将创建二级自定义分类。请注意，**只有当一级自定义分类存在时，才可创建二级自定义分类**。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -187,7 +193,9 @@ func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (res
 // 当L1Category与L2Category均不为空时，将创建二级自定义分类。请注意，**只有当一级自定义分类存在时，才可创建二级自定义分类**。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -247,7 +255,9 @@ func NewCreateCustomGroupResponse() (response *CreateCustomGroupResponse) {
 // **重要**：请务必确保本接口指定的COS存储桶存在(不要手动删除COS桶)。COS存储桶一旦指定，将不能修改。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -288,7 +298,9 @@ func (c *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (response 
 // **重要**：请务必确保本接口指定的COS存储桶存在(不要手动删除COS桶)。COS存储桶一旦指定，将不能修改。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = "FailedOperation.CustomGroupAlreadyExist"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -339,7 +351,9 @@ func NewCreateCustomPersonResponse() (response *CreateCustomPersonResponse) {
 //  AUTHFAILURE_SECRETIDNOTFOUND = "AuthFailure.SecretIdNotFound"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
@@ -384,7 +398,9 @@ func (c *Client) CreateCustomPerson(request *CreateCustomPersonRequest) (respons
 //  AUTHFAILURE_SECRETIDNOTFOUND = "AuthFailure.SecretIdNotFound"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  AUTHFAILURE_SIGNATUREFAILURE = "AuthFailure.SignatureFailure"
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_FEATUREALGOFAILED = "FailedOperation.FeatureAlgoFailed"
 //  FAILEDOPERATION_MULTIPLEFACESINIMAGE = "FailedOperation.MultipleFacesInImage"
@@ -435,7 +451,9 @@ func NewCreateDefaultCategoriesResponse() (response *CreateDefaultCategoriesResp
 // 创建默认自定义人物类型
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -455,7 +473,9 @@ func (c *Client) CreateDefaultCategories(request *CreateDefaultCategoriesRequest
 // 创建默认自定义人物类型
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -497,7 +517,9 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 // 请注意，本接口为异步接口，**返回TaskId只代表任务创建成功，不代表任务执行成功**。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
 //  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
@@ -528,7 +550,9 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 // 请注意，本接口为异步接口，**返回TaskId只代表任务创建成功，不代表任务执行成功**。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_AITEMPLATENOTEXIST = "FailedOperation.AiTemplateNotExist"
 //  FAILEDOPERATION_MEDIAEXPIRED = "FailedOperation.MediaExpired"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
@@ -573,7 +597,9 @@ func NewDeleteCustomCategoryResponse() (response *DeleteCustomCategoryResponse) 
 // 删除自定义分类信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -595,7 +621,9 @@ func (c *Client) DeleteCustomCategory(request *DeleteCustomCategoryRequest) (res
 // 删除自定义分类信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYREFERRED = "FailedOperation.CategoryReferred"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -635,7 +663,9 @@ func NewDeleteCustomPersonResponse() (response *DeleteCustomPersonResponse) {
 // 删除自定义人物
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
@@ -655,7 +685,9 @@ func (c *Client) DeleteCustomPerson(request *DeleteCustomPersonRequest) (respons
 // 删除自定义人物
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
@@ -693,7 +725,9 @@ func NewDeleteCustomPersonImageResponse() (response *DeleteCustomPersonImageResp
 // 删除自定义人脸数据
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -716,7 +750,9 @@ func (c *Client) DeleteCustomPersonImage(request *DeleteCustomPersonImageRequest
 // 删除自定义人脸数据
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_IMAGENUMEXCEEDED = "FailedOperation.ImageNumExceeded"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
@@ -761,6 +797,9 @@ func NewDeleteMediaResponse() (response *DeleteMediaResponse) {
 // **请注意，本接口仅删除媒资文件，媒资文件对应的视频分析结果不会被删除**。如您需要删除结构化分析结果，请调用DeleteTask接口。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
 //  FAILEDOPERATION_MEDIAINUSE = "FailedOperation.MediaInUse"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -787,6 +826,9 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
 // **请注意，本接口仅删除媒资文件，媒资文件对应的视频分析结果不会被删除**。如您需要删除结构化分析结果，请调用DeleteTask接口。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
 //  FAILEDOPERATION_MEDIAINUSE = "FailedOperation.MediaInUse"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -827,7 +869,9 @@ func NewDescribeCustomCategoriesResponse() (response *DescribeCustomCategoriesRe
 // 批量描述自定义人物分类信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
@@ -845,7 +889,9 @@ func (c *Client) DescribeCustomCategories(request *DescribeCustomCategoriesReque
 // 批量描述自定义人物分类信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
@@ -881,7 +927,9 @@ func NewDescribeCustomGroupResponse() (response *DescribeCustomGroupResponse) {
 // 描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  RESOURCENOTFOUND_CUSTOMGROUPNOTFOUND = "ResourceNotFound.CustomGroupNotFound"
@@ -901,7 +949,9 @@ func (c *Client) DescribeCustomGroup(request *DescribeCustomGroupRequest) (respo
 // 描述自定义人物库信息，当前库大小(库中有多少人脸)，以及库中的存储桶
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  RESOURCENOTFOUND_CUSTOMGROUPNOTFOUND = "ResourceNotFound.CustomGroupNotFound"
@@ -939,7 +989,9 @@ func NewDescribeCustomPersonDetailResponse() (response *DescribeCustomPersonDeta
 // 描述自定义人物详细信息，包括人物信息与人物信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
@@ -959,7 +1011,9 @@ func (c *Client) DescribeCustomPersonDetail(request *DescribeCustomPersonDetailR
 // 描述自定义人物详细信息，包括人物信息与人物信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPERSONID = "InvalidParameter.InvalidPersonId"
@@ -999,7 +1053,9 @@ func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
@@ -1028,7 +1084,9 @@ func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (r
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
@@ -1077,6 +1135,9 @@ func NewDescribeMediaResponse() (response *DescribeMediaResponse) {
 // 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_MD5MISMATCH = "FailedOperation.MD5Mismatch"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
@@ -1101,6 +1162,9 @@ func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *Describ
 // 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_DOWNLOADFAILED = "FailedOperation.DownloadFailed"
 //  FAILEDOPERATION_MD5MISMATCH = "FailedOperation.MD5Mismatch"
 //  FAILEDOPERATION_MEDIANOTREADY = "FailedOperation.MediaNotReady"
@@ -1147,6 +1211,9 @@ func NewDescribeMediasResponse() (response *DescribeMediasResponse) {
 // 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
@@ -1185,6 +1252,9 @@ func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *Descr
 // 如果媒资文件未完成导入，本接口将仅输出媒资文件的状态信息；导入完成后，本接口还将输出媒资文件的其他元信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_MEDIAALREADYEXIST = "FailedOperation.MediaAlreadyExist"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDMD5 = "InvalidParameter.InvalidMD5"
@@ -1239,7 +1309,9 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
@@ -1264,7 +1336,9 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
@@ -1301,7 +1375,9 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 // 描述任务信息，如果任务成功完成，还将返回任务结果
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
@@ -1322,7 +1398,9 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 // 描述任务信息，如果任务成功完成，还将返回任务结果
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
@@ -1365,7 +1443,9 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 // 请注意，本接口最多支持同时描述**50**个任务信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
 //  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
@@ -1393,7 +1473,9 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 // 请注意，本接口最多支持同时描述**50**个任务信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_GETTASKLISTFAILED = "FailedOperation.GetTaskListFailed"
 //  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
@@ -1681,7 +1763,9 @@ func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) 
 // 当L2Category非空时，仅更新CategoryId对应的二级自定义人物类型
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
@@ -1712,7 +1796,9 @@ func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (res
 // 当L2Category非空时，仅更新CategoryId对应的二级自定义人物类型
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  FAILEDOPERATION_CATEGORYEXIST = "FailedOperation.CategoryExist"
 //  FAILEDOPERATION_CATEGORYLEVELCHANGED = "FailedOperation.CategoryLevelChanged"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
@@ -1755,7 +1841,9 @@ func NewUpdateCustomPersonResponse() (response *UpdateCustomPersonResponse) {
 // 更新自定义人物信息，包括姓名，简要信息，分类信息等
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
@@ -1778,7 +1866,9 @@ func (c *Client) UpdateCustomPerson(request *UpdateCustomPersonRequest) (respons
 // 更新自定义人物信息，包括姓名，简要信息，分类信息等
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
 //  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"

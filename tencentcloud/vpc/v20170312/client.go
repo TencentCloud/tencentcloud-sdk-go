@@ -258,7 +258,7 @@ func NewAddTemplateMemberResponse() (response *AddTemplateMemberResponse) {
 }
 
 // AddTemplateMember
-// 增加模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -277,7 +277,7 @@ func (c *Client) AddTemplateMember(request *AddTemplateMemberRequest) (response 
 }
 
 // AddTemplateMember
-// 增加模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1792,7 +1792,7 @@ func NewCreateAddressTemplateResponse() (response *CreateAddressTemplateResponse
 }
 
 // CreateAddressTemplate
-// 本接口（CreateAddressTemplate）用于创建IP地址模版
+// 本接口（CreateAddressTemplate）用于创建IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1811,7 +1811,7 @@ func (c *Client) CreateAddressTemplate(request *CreateAddressTemplateRequest) (r
 }
 
 // CreateAddressTemplate
-// 本接口（CreateAddressTemplate）用于创建IP地址模版
+// 本接口（CreateAddressTemplate）用于创建IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6032,7 +6032,7 @@ func NewDeleteTemplateMemberResponse() (response *DeleteTemplateMemberResponse) 
 }
 
 // DeleteTemplateMember
-// 删除模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6050,7 +6050,7 @@ func (c *Client) DeleteTemplateMember(request *DeleteTemplateMemberRequest) (res
 }
 
 // DeleteTemplateMember
-// 删除模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14036,7 +14036,7 @@ func NewModifyTemplateMemberResponse() (response *ModifyTemplateMemberResponse) 
 }
 
 // ModifyTemplateMember
-// 修改模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14054,7 +14054,7 @@ func (c *Client) ModifyTemplateMember(request *ModifyTemplateMemberRequest) (res
 }
 
 // ModifyTemplateMember
-// 修改模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+// 修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
