@@ -1,3 +1,86 @@
+# Release v1.0.347
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 85 次发布
+
+发布时间：2022-02-16 08:02:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ZoneSellConf](https://cloud.tencent.com/document/api/236/15878#ZoneSellConf)
+
+	* 新增成员：ExClusterStatus, ExClusterRemoteRoZone, ExClusterZoneConf
+
+
+
+
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 3 次发布
+
+发布时间：2022-02-16 08:08:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CustomPersonInfo](https://cloud.tencent.com/document/api/1509/65063#CustomPersonInfo)
+
+	* 新增成员：ImageInfoSet, CreateTime
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 25 次发布
+
+发布时间：2022-02-16 08:08:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
+
+新增数据结构：
+
+* [ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)
+* [DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)
+* [DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)
+* [DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 4 次发布
+
+发布时间：2022-02-16 08:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
+
+	* 新增成员：Encoding, Format
+
+
+
+
 # Release v1.0.346
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
