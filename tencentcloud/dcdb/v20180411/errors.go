@@ -122,6 +122,9 @@ const (
 	// 拉圈安全组详情失败。
 	INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
 
+	// 查询慢日志DB失败。
+	INTERNALERROR_GETSLOWLOGFAILED = "InternalError.GetSlowLogFailed"
+
 	// 查询虚拟私有网络子网信息失败。
 	INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 
@@ -205,6 +208,9 @@ const (
 
 	// 非法参数。
 	INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+
+	// 错误的时间参数。
+	INVALIDPARAMETER_ILLEGALTIME = "InvalidParameter.IllegalTime"
 
 	// 未找到请求的实例。
 	INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"

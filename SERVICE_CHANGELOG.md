@@ -1,10 +1,37 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 85 次发布
+### 第 93 次发布
 
-发布时间：2022-02-16 08:02:33
+发布时间：2022-02-17 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：RuleEngine
+
+* [ServerCert](https://cloud.tencent.com/document/api/228/30987#ServerCert)
+
+	* 新增成员：From
+
+
+
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 10 次发布
+
+发布时间：2022-02-17 08:07:32
 
 本次发布包含了以下内容：
 
@@ -12,37 +39,22 @@
 
 修改数据结构：
 
-* [ZoneSellConf](https://cloud.tencent.com/document/api/236/15878#ZoneSellConf)
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
 
-	* 新增成员：ExClusterStatus, ExClusterRemoteRoZone, ExClusterZoneConf
-
-
-
-
-## 视频智能标签(ivld) 版本：2021-09-03
-
-### 第 3 次发布
-
-发布时间：2022-02-16 08:08:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CustomPersonInfo](https://cloud.tencent.com/document/api/1509/65063#CustomPersonInfo)
-
-	* 新增成员：ImageInfoSet, CreateTime
+	* 新增成员：TaskFiles
 
 
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
+## 智能保险助手(cii) 版本：2020-12-10
 
-### 第 25 次发布
 
-发布时间：2022-02-16 08:08:43
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 34 次发布
+
+发布时间：2022-02-17 08:09:34
 
 本次发布包含了以下内容：
 
@@ -50,33 +62,126 @@
 
 新增接口：
 
-* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
+* [DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)
 
 新增数据结构：
 
-* [ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)
-* [DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)
-* [DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)
-* [DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)
-* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
+* [SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)
 
 
 
-## 服务网格(tcm) 版本：2021-04-13
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 4 次发布
+### 第 28 次发布
 
-发布时间：2022-02-16 08:11:56
+发布时间：2022-02-17 08:10:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+
 修改数据结构：
 
-* [AccessLogConfig](https://cloud.tencent.com/document/api/1261/63843#AccessLogConfig)
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
 
-	* 新增成员：Encoding, Format
+	* 新增成员：InBanBlacklist
+
+* [RealServer](https://cloud.tencent.com/document/api/608/37023#RealServer)
+
+	* 新增成员：InBanBlacklist
+
+* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
+
+	* 新增成员：ServerNameIndicationSwitch, ServerNameIndication
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 38 次发布
+
+发布时间：2022-02-17 08:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：NeedCorrespondence
+
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：FilterDimensionsParam
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：PhoneCallType
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 29 次发布
+
+发布时间：2022-02-17 08:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+
+	* 新增入参：Tags
+
+* [CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)
+
+	* 新增入参：Tags
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：PulsarTopicType
+
+	* <font color="#dd0000">**修改入参**：</font>TopicType
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：PayMode
+
+* [Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)
+
+	* 新增成员：Partition
+
+* [Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)
+
+	* 新增成员：SubType, BlockedSubscriptionOnUnackedMsgs, MaxUnackedMsgNum
+
+* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+
+	* 新增成员：PulsarTopicType
 
 
 
@@ -10948,6 +11053,29 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 93 次发布
+
+发布时间：2022-02-17 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)](https://cloud.tencent.com/document/api/228/30987#[RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine))
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：RuleEngine
+
+* [ServerCert](https://cloud.tencent.com/document/api/228/30987#ServerCert)
+
+	* 新增成员：From
+
+
 ### 第 92 次发布
 
 发布时间：2022-01-05 08:05:09
@@ -13927,6 +14055,21 @@
 
 
 ## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 10 次发布
+
+发布时间：2022-02-17 08:07:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+
+	* 新增成员：TaskFiles
+
 
 ### 第 9 次发布
 
@@ -24563,6 +24706,22 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 34 次发布
+
+发布时间：2022-02-17 08:09:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)](https://cloud.tencent.com/document/api/557/16142#[SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData))
+
 ### 第 33 次发布
 
 发布时间：2022-01-13 08:32:29
@@ -31281,6 +31440,40 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 28 次发布
+
+发布时间：2022-02-17 08:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：InBanBlacklist
+
+* [RealServer](https://cloud.tencent.com/document/api/608/37023#RealServer)
+
+	* 新增成员：InBanBlacklist
+
+* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
+
+	* 新增成员：ServerNameIndicationSwitch, ServerNameIndication
+
 
 ### 第 27 次发布
 
@@ -38619,15 +38812,15 @@
 
 新增接口：
 
-* [[CreateInstances](https://cloud.tencent.com/document/api/1207/69573)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
 
 新增数据结构：
 
-* [[ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)](https://cloud.tencent.com/document/api/1207/47576#[ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv))
-* [[DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration))
-* [[DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort))
-* [[DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)](https://cloud.tencent.com/document/api/1207/47576#[DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume))
-* [[LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)](https://cloud.tencent.com/document/api/1207/47576#[LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration))
+* [ContainerEnv](https://cloud.tencent.com/document/api/1207/47576#ContainerEnv)
+* [DockerContainerConfiguration](https://cloud.tencent.com/document/api/1207/47576#DockerContainerConfiguration)
+* [DockerContainerPublishPort](https://cloud.tencent.com/document/api/1207/47576#DockerContainerPublishPort)
+* [DockerContainerVolume](https://cloud.tencent.com/document/api/1207/47576#DockerContainerVolume)
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
 
 ### 第 24 次发布
 
@@ -42099,6 +42292,32 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 38 次发布
+
+发布时间：2022-02-17 08:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：NeedCorrespondence
+
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：FilterDimensionsParam
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：PhoneCallType
+
 
 ### 第 37 次发布
 
@@ -56960,6 +57179,50 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 29 次发布
+
+发布时间：2022-02-17 08:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+
+	* 新增入参：Tags
+
+* [CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)
+
+	* 新增入参：Tags
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：PulsarTopicType
+
+	* <font color="#dd0000">**修改入参**：</font>TopicType
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：PayMode
+
+* [Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)
+
+	* 新增成员：Partition
+
+* [Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)
+
+	* 新增成员：SubType, BlockedSubscriptionOnUnackedMsgs, MaxUnackedMsgNum
+
+* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+
+	* 新增成员：PulsarTopicType
+
 
 ### 第 28 次发布
 

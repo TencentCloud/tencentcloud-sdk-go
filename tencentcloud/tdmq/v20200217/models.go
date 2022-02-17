@@ -491,6 +491,12 @@ type Cluster struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 计费模式：
+	// 0: 按量计费
+	// 1: 包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 type CmqDeadLetterPolicy struct {
@@ -787,6 +793,10 @@ type Consumer struct {
 	// 消费者版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientVersion *string `json:"ClientVersion,omitempty" name:"ClientVersion"`
+
+	// 消费者连接的主题分区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 }
 
 type ConsumersSchedule struct {
@@ -1243,6 +1253,9 @@ type CreateCmqQueueRequest struct {
 
 	// 是否开启消息轨迹追踪，当不设置字段时，默认为不开启，该字段为true表示开启，为false表示不开启
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
+
+	// 标签数组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateCmqQueueRequest) ToJsonString() string {
@@ -1272,6 +1285,7 @@ func (r *CreateCmqQueueRequest) FromJsonString(s string) error {
 	delete(f, "MaxReceiveCount")
 	delete(f, "MaxTimeToLive")
 	delete(f, "Trace")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCmqQueueRequest has unknown keys!", "")
 	}
@@ -1395,6 +1409,9 @@ type CreateCmqTopicRequest struct {
 
 	// 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
 	Trace *bool `json:"Trace,omitempty" name:"Trace"`
+
+	// 标签数组
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateCmqTopicRequest) ToJsonString() string {
@@ -1414,6 +1431,7 @@ func (r *CreateCmqTopicRequest) FromJsonString(s string) error {
 	delete(f, "FilterType")
 	delete(f, "MsgRetentionSeconds")
 	delete(f, "Trace")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCmqTopicRequest has unknown keys!", "")
 	}
@@ -1976,6 +1994,9 @@ type CreateTopicRequest struct {
 	// 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
+	// 备注，128字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
 	// 0： 普通消息；
 	// 1 ：全局顺序消息；
 	// 2 ：局部顺序消息；
@@ -1983,11 +2004,15 @@ type CreateTopicRequest struct {
 	// 4 ：死信队列。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 
-	// 备注，128字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Pulsar 主题类型
+	// 0: 非持久非分区
+	// 1: 非持久分区
+	// 2: 持久非分区
+	// 3: 持久分区
+	PulsarTopicType *int64 `json:"PulsarTopicType,omitempty" name:"PulsarTopicType"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -2005,9 +2030,10 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "EnvironmentId")
 	delete(f, "TopicName")
 	delete(f, "Partitions")
-	delete(f, "TopicType")
 	delete(f, "Remark")
+	delete(f, "TopicType")
 	delete(f, "ClusterId")
+	delete(f, "PulsarTopicType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -7301,6 +7327,18 @@ type Subscription struct {
 	// 最近修改时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubType *string `json:"SubType,omitempty" name:"SubType"`
+
+	// 是否由于未 ack 数到达上限而被 block
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlockedSubscriptionOnUnackedMsgs *bool `json:"BlockedSubscriptionOnUnackedMsgs,omitempty" name:"BlockedSubscriptionOnUnackedMsgs"`
+
+	// 未 ack 消息数上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxUnackedMsgNum *int64 `json:"MaxUnackedMsgNum,omitempty" name:"MaxUnackedMsgNum"`
 }
 
 type SubscriptionTopic struct {
@@ -7415,6 +7453,13 @@ type Topic struct {
 	// 消费者上限。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerLimit *string `json:"ConsumerLimit,omitempty" name:"ConsumerLimit"`
+
+	// 0: 非持久非分区
+	// 1: 非持久分区
+	// 2: 持久非分区
+	// 3: 持久分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PulsarTopicType *int64 `json:"PulsarTopicType,omitempty" name:"PulsarTopicType"`
 }
 
 type TopicRecord struct {

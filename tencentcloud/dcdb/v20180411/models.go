@@ -1485,6 +1485,103 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBSlowLogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，形如：dcdbt-hw0qj6m1
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 从结果的第几条数据开始返回
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回的结果条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的起始时间，形如2016-07-23 14:55:20
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 实例的分片ID，形如shard-53ima8ln
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+
+	// 查询的结束时间，形如2016-08-22 14:55:20。如果不填，那么查询结束时间就是当前时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要查询的具体数据库名称
+	Db *string `json:"Db,omitempty" name:"Db"`
+
+	// 排序指标，取值为query_time_sum或者query_count。不填默认按照query_time_sum排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，desc（降序）或者asc（升序）。不填默认desc排序
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 是否查询从机的慢查询，0-主机; 1-从机。不填默认查询主机慢查询
+	Slave *int64 `json:"Slave,omitempty" name:"Slave"`
+}
+
+func (r *DescribeDBSlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSlowLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "ShardId")
+	delete(f, "EndTime")
+	delete(f, "Db")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Slave")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSlowLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 所有语句锁时间总和
+		LockTimeSum *float64 `json:"LockTimeSum,omitempty" name:"LockTimeSum"`
+
+		// 所有语句查询总次数
+		QueryCount *int64 `json:"QueryCount,omitempty" name:"QueryCount"`
+
+		// 总记录数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 所有语句查询时间总和
+		QueryTimeSum *float64 `json:"QueryTimeSum,omitempty" name:"QueryTimeSum"`
+
+		// 慢查询日志数据
+		Data []*SlowLogData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBSlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBSyncModeRequest struct {
 	*tchttp.BaseRequest
 
@@ -3853,6 +3950,68 @@ type ShardZoneChooseInfo struct {
 
 	// 可选的从可用区
 	SlaveZones []*ZonesInfo `json:"SlaveZones,omitempty" name:"SlaveZones"`
+}
+
+type SlowLogData struct {
+
+	// 语句校验和，用于查询详情
+	CheckSum *string `json:"CheckSum,omitempty" name:"CheckSum"`
+
+	// 数据库名称
+	Db *string `json:"Db,omitempty" name:"Db"`
+
+	// 抽象的SQL语句
+	FingerPrint *string `json:"FingerPrint,omitempty" name:"FingerPrint"`
+
+	// 平均的锁时间
+	LockTimeAvg *string `json:"LockTimeAvg,omitempty" name:"LockTimeAvg"`
+
+	// 最大锁时间
+	LockTimeMax *string `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
+
+	// 最小锁时间
+	LockTimeMin *string `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
+
+	// 锁时间总和
+	LockTimeSum *string `json:"LockTimeSum,omitempty" name:"LockTimeSum"`
+
+	// 查询次数
+	QueryCount *string `json:"QueryCount,omitempty" name:"QueryCount"`
+
+	// 平均查询时间
+	QueryTimeAvg *string `json:"QueryTimeAvg,omitempty" name:"QueryTimeAvg"`
+
+	// 最大查询时间
+	QueryTimeMax *string `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
+
+	// 最小查询时间
+	QueryTimeMin *string `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
+
+	// 查询时间总和
+	QueryTimeSum *string `json:"QueryTimeSum,omitempty" name:"QueryTimeSum"`
+
+	// 扫描行数
+	RowsExaminedSum *string `json:"RowsExaminedSum,omitempty" name:"RowsExaminedSum"`
+
+	// 发送行数
+	RowsSentSum *string `json:"RowsSentSum,omitempty" name:"RowsSentSum"`
+
+	// 最后执行时间
+	TsMax *string `json:"TsMax,omitempty" name:"TsMax"`
+
+	// 首次执行时间
+	TsMin *string `json:"TsMin,omitempty" name:"TsMin"`
+
+	// 帐号
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 样例Sql
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExampleSql *string `json:"ExampleSql,omitempty" name:"ExampleSql"`
+
+	// 账户的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitempty" name:"Host"`
 }
 
 type SpecConfig struct {

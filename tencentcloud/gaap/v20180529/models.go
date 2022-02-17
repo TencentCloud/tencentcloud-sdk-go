@@ -1335,8 +1335,14 @@ type CreateRuleRequest struct {
 	// 不传递该字段时表示使用对应监听器的ForwardProtocol。
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 
-	// 加速通道转发到远照的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+	// 回源Host。加速通道转发到远照的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
+	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitempty" name:"ServerNameIndicationSwitch"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -1360,6 +1366,8 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "CheckParams")
 	delete(f, "ForwardProtocol")
 	delete(f, "ForwardHost")
+	delete(f, "ServerNameIndicationSwitch")
+	delete(f, "ServerNameIndication")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
@@ -3337,7 +3345,7 @@ type DescribeProxyGroupListRequest struct {
 	// 过滤条件。   
 	// 每次请求的Filter.Values的上限为5。
 	// RealServerRegion - String - 是否必填：否 -（过滤条件）按照源站地域过滤，可参考DescribeDestRegions接口返回结果中的RegionId。
-	// PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+	// PackageType - String - 是否必填：否 - （过滤条件）通道组类型，Thunder表示标准通道组，Accelerator表示银牌加速通道组。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
@@ -5487,9 +5495,15 @@ type ModifyRuleAttributeRequest struct {
 	// 当ForwardProtocol=default时，表示使用对应监听器的ForwardProtocol。
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 
-	// 加速通道转发到源站的请求中携带的host。
+	// 回源Host。加速通道转发到源站的请求中携带的host。
 	// 当ForwardHost=default时，使用规则的域名，其他情况为该字段所设置的值。
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
+	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitempty" name:"ServerNameIndicationSwitch"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
 }
 
 func (r *ModifyRuleAttributeRequest) ToJsonString() string {
@@ -5512,6 +5526,8 @@ func (r *ModifyRuleAttributeRequest) FromJsonString(s string) error {
 	delete(f, "Path")
 	delete(f, "ForwardProtocol")
 	delete(f, "ForwardHost")
+	delete(f, "ServerNameIndicationSwitch")
+	delete(f, "ServerNameIndication")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleAttributeRequest has unknown keys!", "")
 	}
@@ -6007,7 +6023,7 @@ type ProxyGroupDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组，CrossBorder表示跨境通道组。
+	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示银牌加速通道组，CrossBorder表示跨境通道组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -6187,7 +6203,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道，
+	// 通道套餐类型：Thunder表示标准通道，Accelerator表示银牌加速通道，
 	// CrossBorder表示跨境通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
@@ -6205,6 +6221,10 @@ type ProxyInfo struct {
 	// 1表示启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
+
+	// 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InBanBlacklist *int64 `json:"InBanBlacklist,omitempty" name:"InBanBlacklist"`
 }
 
 type ProxySimpleInfo struct {
@@ -6251,6 +6271,9 @@ type RealServer struct {
 
 	// 项目ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
+	InBanBlacklist *int64 `json:"InBanBlacklist,omitempty" name:"InBanBlacklist"`
 }
 
 type RealServerBindSetReq struct {
@@ -6439,6 +6462,16 @@ type RuleInfo struct {
 	// 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitempty" name:"ServerNameIndicationSwitch"`
+
+	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
 }
 
 type SecurityPolicyRuleIn struct {
@@ -6526,7 +6559,7 @@ type SetAuthenticationRequest struct {
 	// 源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数
 	RealServerCertificateId *string `json:"RealServerCertificateId,omitempty" name:"RealServerCertificateId"`
 
-	// 源站证书域名。
+	// 该字段已废弃，请使用创建规则和修改规则中的SNI功能。
 	RealServerCertificateDomain *string `json:"RealServerCertificateDomain,omitempty" name:"RealServerCertificateDomain"`
 
 	// 多源站CA证书ID，从证书管理页获取。源站认证时，填写该参数或RealServerCertificateId参数

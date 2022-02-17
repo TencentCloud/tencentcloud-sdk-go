@@ -1,3 +1,191 @@
+# Release v1.0.348
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 93 次发布
+
+发布时间：2022-02-17 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：RuleEngine
+
+* [ServerCert](https://cloud.tencent.com/document/api/228/30987#ServerCert)
+
+	* 新增成员：From
+
+
+
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 10 次发布
+
+发布时间：2022-02-17 08:07:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+
+	* 新增成员：TaskFiles
+
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 34 次发布
+
+发布时间：2022-02-17 08:09:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)
+
+新增数据结构：
+
+* [SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 28 次发布
+
+发布时间：2022-02-17 08:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
+
+	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
+
+
+修改数据结构：
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：InBanBlacklist
+
+* [RealServer](https://cloud.tencent.com/document/api/608/37023#RealServer)
+
+	* 新增成员：InBanBlacklist
+
+* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
+
+	* 新增成员：ServerNameIndicationSwitch, ServerNameIndication
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 38 次发布
+
+发布时间：2022-02-17 08:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：NeedCorrespondence
+
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：FilterDimensionsParam
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：PhoneCallType
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 29 次发布
+
+发布时间：2022-02-17 08:16:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+
+	* 新增入参：Tags
+
+* [CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)
+
+	* 新增入参：Tags
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* 新增入参：PulsarTopicType
+
+	* <font color="#dd0000">**修改入参**：</font>TopicType
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+
+	* 新增成员：PayMode
+
+* [Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)
+
+	* 新增成员：Partition
+
+* [Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)
+
+	* 新增成员：SubType, BlockedSubscriptionOnUnackedMsgs, MaxUnackedMsgNum
+
+* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
+
+	* 新增成员：PulsarTopicType
+
+
+
+
 # Release v1.0.347
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

@@ -958,6 +958,9 @@ type StructureResultObject struct {
 
 	// 子任务ID
 	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
+
+	// 任务文件列表
+	TaskFiles []*string `json:"TaskFiles,omitempty" name:"TaskFiles"`
 }
 
 type UnderwriteConclusion struct {
