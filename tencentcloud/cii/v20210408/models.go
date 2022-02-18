@@ -441,6 +441,55 @@ func (r *DescribeMachineUnderwriteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeQualityScoreRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件二进制数据
+	File *string `json:"File,omitempty" name:"File"`
+}
+
+func (r *DescribeQualityScoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityScoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "File")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityScoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQualityScoreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 质量分
+		QualityScore *float64 `json:"QualityScore,omitempty" name:"QualityScore"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQualityScoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityScoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeReportClassifyRequest struct {
 	*tchttp.BaseRequest
 
@@ -985,6 +1034,34 @@ type UnderwriteItem struct {
 
 	// 风险值或者说明
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 参考范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Range *string `json:"Range,omitempty" name:"Range"`
+
+	// 报告时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportDate []*string `json:"ReportDate,omitempty" name:"ReportDate"`
+
+	// 文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 检查项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InspectProject *string `json:"InspectProject,omitempty" name:"InspectProject"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 原名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginName *string `json:"OriginName,omitempty" name:"OriginName"`
+
+	// 阴阳性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YinYang *string `json:"YinYang,omitempty" name:"YinYang"`
 }
 
 type UnderwriteOutput struct {

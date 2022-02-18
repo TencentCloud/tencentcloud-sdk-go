@@ -334,6 +334,62 @@ func (c *Client) DescribeMachineUnderwriteWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeQualityScoreRequest() (request *DescribeQualityScoreRequest) {
+    request = &DescribeQualityScoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cii", APIVersion, "DescribeQualityScore")
+    
+    
+    return
+}
+
+func NewDescribeQualityScoreResponse() (response *DescribeQualityScoreResponse) {
+    response = &DescribeQualityScoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQualityScore
+// 获取图片质量分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeQualityScore(request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityScoreRequest()
+    }
+    
+    response = NewDescribeQualityScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeQualityScore
+// 获取图片质量分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeQualityScoreWithContext(ctx context.Context, request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityScoreRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReportClassifyRequest() (request *DescribeReportClassifyRequest) {
     request = &DescribeReportClassifyRequest{
         BaseRequest: &tchttp.BaseRequest{},

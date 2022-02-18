@@ -38,7 +38,7 @@
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2022-02-11 08:03:37 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2022-01-17 08:04:37 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2022-01-26 08:04:40 |
-| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-02-17 08:07:32 |
+| cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-02-18 16:00:08 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 Ckafka](https://cloud.tencent.com/document/product/597) | 2022-02-10 08:03:19 |

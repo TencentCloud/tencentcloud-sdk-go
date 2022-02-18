@@ -1,3 +1,40 @@
+# Release v1.0.350
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 12 次发布
+
+发布时间：2022-02-18 16:00:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UnderwriteItem](https://cloud.tencent.com/document/api/1368/56853#UnderwriteItem)
+
+	* 新增成员：Range, ReportDate, FileType, InspectProject, Unit, OriginName, YinYang
+
+
+### 第 11 次发布
+
+发布时间：2022-02-18 14:29:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeQualityScore](https://cloud.tencent.com/document/api/1368/70151)
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
 # Release v1.0.349
 
 ## 批量计算(batch) 版本：2017-03-12
