@@ -323,6 +323,12 @@ type ServiceGovernanceInfo struct {
 
 	// 服务治理引擎绑定的网络信息
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
+
+	// 当前实例鉴权是否开启
+	AuthOpen *bool `json:"AuthOpen,omitempty" name:"AuthOpen"`
+
+	// 该实例支持的功能，鉴权就是 Auth
+	Features []*string `json:"Features,omitempty" name:"Features"`
 }
 
 type VpcInfo struct {

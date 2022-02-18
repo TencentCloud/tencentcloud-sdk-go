@@ -887,7 +887,7 @@ type DescribeDataCustomUrlRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -1024,7 +1024,7 @@ type DescribeDataEventUrlRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -1157,7 +1157,7 @@ type DescribeDataFetchProjectRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -1431,7 +1431,7 @@ type DescribeDataFetchUrlRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// allcount：性能视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -1625,7 +1625,7 @@ type DescribeDataLogUrlStatisticsRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// "analysis", "compare", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+	// analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -1760,7 +1760,7 @@ type DescribeDataPerformancePageRequest struct {
 	// 结束时间
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// ["pagepv", "allcount"]
+	// pagepv：性能视图，allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 日志等级
@@ -1887,7 +1887,7 @@ type DescribeDataPerformanceProjectRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// "allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+	// allcount：性能视图，falls：页面加载瀑布图，samp：首屏时间，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，condition：条件列表，area：请求速度分布，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2149,7 +2149,7 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型:"allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+	// allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2396,7 +2396,7 @@ type DescribeDataSetUrlStatisticsRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// "allcount", "falls", "samp", "version", "ext3","nettype", "platform","isp","region","device","browser","ext1","ext2"
+	// allcount：性能视图，data：小程序，component：小程序相关，day：14天数据，nettype：网络/平台视图，performance：页面性能TOP视图，version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：ISP视图/地区视图/浏览器视图等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2529,7 +2529,7 @@ type DescribeDataStaticProjectRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2666,7 +2666,7 @@ type DescribeDataStaticResourceRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间
@@ -2803,7 +2803,7 @@ type DescribeDataStaticUrlRequest struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 类型
+	// pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 结束时间

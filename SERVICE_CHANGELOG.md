@@ -1,37 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 93 次发布
+### 第 39 次发布
 
-发布时间：2022-02-17 08:07:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)
-
-修改数据结构：
-
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
-
-	* 新增成员：RuleEngine
-
-* [ServerCert](https://cloud.tencent.com/document/api/228/30987#ServerCert)
-
-	* 新增成员：From
-
-
-
-
-## 智能保险助手(cii) 版本：2021-04-08
-
-### 第 10 次发布
-
-发布时间：2022-02-17 08:07:32
+发布时间：2022-02-18 08:04:38
 
 本次发布包含了以下内容：
 
@@ -39,22 +12,37 @@
 
 修改数据结构：
 
-* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+* [ItemPrice](https://cloud.tencent.com/document/api/599/15912#ItemPrice)
 
-	* 新增成员：TaskFiles
-
-
-
-
-## 智能保险助手(cii) 版本：2020-12-10
+	* <font color="#dd0000">**修改成员**：</font>Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
 
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
-### 第 34 次发布
+## 云服务器(cvm) 版本：2017-03-12
 
-发布时间：2022-02-17 08:09:34
+### 第 73 次发布
+
+发布时间：2022-02-18 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/213/15753#ItemPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 14 次发布
+
+发布时间：2022-02-18 08:07:59
 
 本次发布包含了以下内容：
 
@@ -62,126 +50,73 @@
 
 新增接口：
 
-* [DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)
+* [ActivateInstance](https://cloud.tencent.com/document/api/1003/70116)
+* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/1003/70119)
+* [DescribeAccountAllGrantPrivileges](https://cloud.tencent.com/document/api/1003/70114)
+* [DescribeClusterParamLogs](https://cloud.tencent.com/document/api/1003/70118)
+* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/1003/70117)
+* [GrantAccountPrivileges](https://cloud.tencent.com/document/api/1003/70113)
+* [ModifyAccountParams](https://cloud.tencent.com/document/api/1003/70112)
+* [PauseServerless](https://cloud.tencent.com/document/api/1003/70122)
+* [ResumeServerless](https://cloud.tencent.com/document/api/1003/70121)
+* [RevokeAccountPrivileges](https://cloud.tencent.com/document/api/1003/70111)
+* [RollBackCluster](https://cloud.tencent.com/document/api/1003/70115)
+
+修改接口：
+
+* [ModifyClusterParam](https://cloud.tencent.com/document/api/1003/63365)
+
+	* 新增入参：IsInMaintainPeriod
+
 
 新增数据结构：
 
-* [SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)
+* [AccountParam](https://cloud.tencent.com/document/api/1003/48097#AccountParam)
+* [ClusterParamModifyLog](https://cloud.tencent.com/document/api/1003/48097#ClusterParamModifyLog)
+* [DatabasePrivileges](https://cloud.tencent.com/document/api/1003/48097#DatabasePrivileges)
+* [DbTable](https://cloud.tencent.com/document/api/1003/48097#DbTable)
+* [InputAccount](https://cloud.tencent.com/document/api/1003/48097#InputAccount)
+* [RollbackDatabase](https://cloud.tencent.com/document/api/1003/48097#RollbackDatabase)
+* [RollbackTable](https://cloud.tencent.com/document/api/1003/48097#RollbackTable)
+* [RollbackTableInfo](https://cloud.tencent.com/document/api/1003/48097#RollbackTableInfo)
+* [TablePrivileges](https://cloud.tencent.com/document/api/1003/48097#TablePrivileges)
 
 
 
-## 全球应用加速(gaap) 版本：2018-05-29
+## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 28 次发布
+### 第 24 次发布
 
-发布时间：2022-02-17 08:10:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
-
-	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
-
-* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
-
-	* 新增入参：ServerNameIndicationSwitch, ServerNameIndication
-
-
-修改数据结构：
-
-* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
-
-	* 新增成员：InBanBlacklist
-
-* [RealServer](https://cloud.tencent.com/document/api/608/37023#RealServer)
-
-	* 新增成员：InBanBlacklist
-
-* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
-
-	* 新增成员：ServerNameIndicationSwitch, ServerNameIndication
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 38 次发布
-
-发布时间：2022-02-17 08:13:29
+发布时间：2022-02-18 08:09:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
-
-	* 新增入参：NeedCorrespondence
-
-
 修改数据结构：
 
-* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
 
-	* 新增成员：FilterDimensionsParam
-
-* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
-
-	* 新增成员：PhoneCallType
+	* 新增成员：EsPrivateUrl, EsPrivateDomain
 
 
 
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
-### 第 29 次发布
+### 第 14 次发布
 
-发布时间：2022-02-17 08:16:33
+发布时间：2022-02-18 08:16:25
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
-
-	* 新增入参：Tags
-
-* [CreateCmqTopic](https://cloud.tencent.com/document/api/1179/55915)
-
-	* 新增入参：Tags
-
-* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
-
-	* 新增入参：PulsarTopicType
-
-	* <font color="#dd0000">**修改入参**：</font>TopicType
-
-
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/1179/46089#Cluster)
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
 
-	* 新增成员：PayMode
-
-* [Consumer](https://cloud.tencent.com/document/api/1179/46089#Consumer)
-
-	* 新增成员：Partition
-
-* [Subscription](https://cloud.tencent.com/document/api/1179/46089#Subscription)
-
-	* 新增成员：SubType, BlockedSubscriptionOnUnackedMsgs, MaxUnackedMsgNum
-
-* [Topic](https://cloud.tencent.com/document/api/1179/46089#Topic)
-
-	* 新增成员：PulsarTopicType
+	* 新增成员：AuthOpen, Features
 
 
 
@@ -4176,6 +4111,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-02-18 08:04:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/599/15912#ItemPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
+
 
 ### 第 38 次发布
 
@@ -11063,7 +11013,7 @@
 
 新增数据结构：
 
-* [[RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)](https://cloud.tencent.com/document/api/228/30987#[RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine))
+* [RuleEngine](https://cloud.tencent.com/document/api/228/30987#RuleEngine)
 
 修改数据结构：
 
@@ -20175,6 +20125,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 73 次发布
+
+发布时间：2022-02-18 08:07:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/213/15753#ItemPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
+
+
 ### 第 72 次发布
 
 发布时间：2022-01-24 08:07:40
@@ -23034,6 +22999,47 @@
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
+### 第 14 次发布
+
+发布时间：2022-02-18 08:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ActivateInstance](https://cloud.tencent.com/document/api/1003/70116)](https://cloud.tencent.com/document/api/#/#)
+* [[AssociateSecurityGroups](https://cloud.tencent.com/document/api/1003/70119)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAccountAllGrantPrivileges](https://cloud.tencent.com/document/api/1003/70114)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterParamLogs](https://cloud.tencent.com/document/api/1003/70118)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateSecurityGroups](https://cloud.tencent.com/document/api/1003/70117)](https://cloud.tencent.com/document/api/#/#)
+* [[GrantAccountPrivileges](https://cloud.tencent.com/document/api/1003/70113)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAccountParams](https://cloud.tencent.com/document/api/1003/70112)](https://cloud.tencent.com/document/api/#/#)
+* [[PauseServerless](https://cloud.tencent.com/document/api/1003/70122)](https://cloud.tencent.com/document/api/#/#)
+* [[ResumeServerless](https://cloud.tencent.com/document/api/1003/70121)](https://cloud.tencent.com/document/api/#/#)
+* [[RevokeAccountPrivileges](https://cloud.tencent.com/document/api/1003/70111)](https://cloud.tencent.com/document/api/#/#)
+* [[RollBackCluster](https://cloud.tencent.com/document/api/1003/70115)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyClusterParam](https://cloud.tencent.com/document/api/1003/63365)
+
+	* 新增入参：IsInMaintainPeriod
+
+
+新增数据结构：
+
+* [[AccountParam](https://cloud.tencent.com/document/api/1003/48097#AccountParam)](https://cloud.tencent.com/document/api/1003/48097#[AccountParam](https://cloud.tencent.com/document/api/1003/48097#AccountParam))
+* [[ClusterParamModifyLog](https://cloud.tencent.com/document/api/1003/48097#ClusterParamModifyLog)](https://cloud.tencent.com/document/api/1003/48097#[ClusterParamModifyLog](https://cloud.tencent.com/document/api/1003/48097#ClusterParamModifyLog))
+* [[DatabasePrivileges](https://cloud.tencent.com/document/api/1003/48097#DatabasePrivileges)](https://cloud.tencent.com/document/api/1003/48097#[DatabasePrivileges](https://cloud.tencent.com/document/api/1003/48097#DatabasePrivileges))
+* [[DbTable](https://cloud.tencent.com/document/api/1003/48097#DbTable)](https://cloud.tencent.com/document/api/1003/48097#[DbTable](https://cloud.tencent.com/document/api/1003/48097#DbTable))
+* [[InputAccount](https://cloud.tencent.com/document/api/1003/48097#InputAccount)](https://cloud.tencent.com/document/api/1003/48097#[InputAccount](https://cloud.tencent.com/document/api/1003/48097#InputAccount))
+* [[RollbackDatabase](https://cloud.tencent.com/document/api/1003/48097#RollbackDatabase)](https://cloud.tencent.com/document/api/1003/48097#[RollbackDatabase](https://cloud.tencent.com/document/api/1003/48097#RollbackDatabase))
+* [[RollbackTable](https://cloud.tencent.com/document/api/1003/48097#RollbackTable)](https://cloud.tencent.com/document/api/1003/48097#[RollbackTable](https://cloud.tencent.com/document/api/1003/48097#RollbackTable))
+* [[RollbackTableInfo](https://cloud.tencent.com/document/api/1003/48097#RollbackTableInfo)](https://cloud.tencent.com/document/api/1003/48097#[RollbackTableInfo](https://cloud.tencent.com/document/api/1003/48097#RollbackTableInfo))
+* [[TablePrivileges](https://cloud.tencent.com/document/api/1003/48097#TablePrivileges)](https://cloud.tencent.com/document/api/1003/48097#[TablePrivileges](https://cloud.tencent.com/document/api/1003/48097#TablePrivileges))
+
 ### 第 13 次发布
 
 发布时间：2021-10-27 08:06:08
@@ -24716,11 +24722,11 @@
 
 新增接口：
 
-* [[DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBSlowLogs](https://cloud.tencent.com/document/api/557/70099)
 
 新增数据结构：
 
-* [[SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)](https://cloud.tencent.com/document/api/557/16142#[SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData))
+* [SlowLogData](https://cloud.tencent.com/document/api/557/16142#SlowLogData)
 
 ### 第 33 次发布
 
@@ -29564,6 +29570,21 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 24 次发布
+
+发布时间：2022-02-18 08:09:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：EsPrivateUrl, EsPrivateDomain
+
 
 ### 第 23 次发布
 
@@ -62642,6 +62663,21 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 14 次发布
+
+发布时间：2022-02-18 08:16:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：AuthOpen, Features
+
 
 ### 第 13 次发布
 

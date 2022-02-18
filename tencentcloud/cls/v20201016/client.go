@@ -1226,7 +1226,7 @@ func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
 }
 
 // DeleteIndex
-// 本接口用于日志主题的索引配置
+// 本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1251,7 +1251,7 @@ func (c *Client) DeleteIndex(request *DeleteIndexRequest) (response *DeleteIndex
 }
 
 // DeleteIndex
-// 本接口用于日志主题的索引配置
+// 本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

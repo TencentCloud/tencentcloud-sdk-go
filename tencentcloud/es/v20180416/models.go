@@ -1031,6 +1031,14 @@ type InstanceInfo struct {
 	// 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthStatus *int64 `json:"HealthStatus,omitempty" name:"HealthStatus"`
+
+	// https集群内网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsPrivateUrl *string `json:"EsPrivateUrl,omitempty" name:"EsPrivateUrl"`
+
+	// https集群内网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsPrivateDomain *string `json:"EsPrivateDomain,omitempty" name:"EsPrivateDomain"`
 }
 
 type InstanceLog struct {
