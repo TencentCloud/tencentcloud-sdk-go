@@ -29,6 +29,18 @@ type Capacity struct {
 	Province *string `json:"Province,omitempty" name:"Province"`
 }
 
+type Context struct {
+
+	// 测速数据
+	NetworkData *NetworkData `json:"NetworkData,omitempty" name:"NetworkData"`
+
+	// 用户期望最低门限
+	ExpectedLowThreshold *ExpectedThreshold `json:"ExpectedLowThreshold,omitempty" name:"ExpectedLowThreshold"`
+
+	// 用户期望最高门限
+	ExpectedHighThreshold *ExpectedThreshold `json:"ExpectedHighThreshold,omitempty" name:"ExpectedHighThreshold"`
+}
+
 type CreateQosRequest struct {
 	*tchttp.BaseRequest
 
@@ -67,6 +79,12 @@ type CreateQosRequest struct {
 	// 2. UDP
 	// 3. TCP
 	Protocol *uint64 `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 加速策略关键数据
+	Context *Context `json:"Context,omitempty" name:"Context"`
+
+	// 签名
+	Extern *string `json:"Extern,omitempty" name:"Extern"`
 }
 
 func (r *CreateQosRequest) ToJsonString() string {
@@ -89,6 +107,8 @@ func (r *CreateQosRequest) FromJsonString(s string) error {
 	delete(f, "Capacity")
 	delete(f, "TemplateId")
 	delete(f, "Protocol")
+	delete(f, "Context")
+	delete(f, "Extern")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQosRequest has unknown keys!", "")
 	}
@@ -275,6 +295,33 @@ type DeviceInfo struct {
 	// 3：WIFI
 	// 99：其他
 	Wireless *uint64 `json:"Wireless,omitempty" name:"Wireless"`
+}
+
+type ExpectedThreshold struct {
+
+	// 期望发起加速的时延阈值
+	RTT *float64 `json:"RTT,omitempty" name:"RTT"`
+
+	// 期望发起加速的丢包率阈值
+	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+
+	// 期望发起加速的抖动阈值
+	Jitter *float64 `json:"Jitter,omitempty" name:"Jitter"`
+}
+
+type NetworkData struct {
+
+	// 时延数组，最大长度30
+	RTT []*float64 `json:"RTT,omitempty" name:"RTT"`
+
+	// 丢包率
+	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+
+	// 抖动
+	Jitter *float64 `json:"Jitter,omitempty" name:"Jitter"`
+
+	// 10位秒级时间戳
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
 }
 
 type SrcAddressInfo struct {

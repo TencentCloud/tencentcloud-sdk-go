@@ -603,6 +603,67 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// group名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// topic名称数组
+	TopicNameList []*string `json:"TopicNameList,omitempty" name:"TopicNameList"`
+}
+
+func (r *CreateConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupName")
+	delete(f, "TopicName")
+	delete(f, "TopicNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建group描述
+		Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateInstancePreData struct {
 
 	// CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
@@ -798,6 +859,87 @@ func (r *CreatePartitionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePartitionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+	VipType *int64 `json:"VipType,omitempty" name:"VipType"`
+
+	// vpc网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// vpc子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 访问类型
+	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 是否需要权限管理
+	AuthFlag *int64 `json:"AuthFlag,omitempty" name:"AuthFlag"`
+
+	// 调用方appId
+	CallerAppid *int64 `json:"CallerAppid,omitempty" name:"CallerAppid"`
+
+	// 公网带宽
+	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
+
+	// vip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+func (r *CreateRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VipType")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "AccessType")
+	delete(f, "AuthFlag")
+	delete(f, "CallerAppid")
+	delete(f, "PublicNetwork")
+	delete(f, "Ip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRouteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

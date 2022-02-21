@@ -604,6 +604,62 @@ func (c *Client) BindAcctWithContext(ctx context.Context, request *BindAcctReque
     return
 }
 
+func NewBindOpenBankExternalSubMerchantBankAccountRequest() (request *BindOpenBankExternalSubMerchantBankAccountRequest) {
+    request = &BindOpenBankExternalSubMerchantBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "BindOpenBankExternalSubMerchantBankAccount")
+    
+    
+    return
+}
+
+func NewBindOpenBankExternalSubMerchantBankAccountResponse() (response *BindOpenBankExternalSubMerchantBankAccountResponse) {
+    response = &BindOpenBankExternalSubMerchantBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡绑定
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) BindOpenBankExternalSubMerchantBankAccount(request *BindOpenBankExternalSubMerchantBankAccountRequest) (response *BindOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewBindOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    
+    response = NewBindOpenBankExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BindOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡绑定
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) BindOpenBankExternalSubMerchantBankAccountWithContext(ctx context.Context, request *BindOpenBankExternalSubMerchantBankAccountRequest) (response *BindOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewBindOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBindOpenBankExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindRelateAccReUnionPayRequest() (request *BindRelateAccReUnionPayRequest) {
     request = &BindRelateAccReUnionPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -940,6 +996,70 @@ func (c *Client) CheckAmountWithContext(ctx context.Context, request *CheckAmoun
     request.SetContext(ctx)
     
     response = NewCheckAmountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCloseOpenBankPaymentOrderRequest() (request *CloseOpenBankPaymentOrderRequest) {
+    request = &CloseOpenBankPaymentOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CloseOpenBankPaymentOrder")
+    
+    
+    return
+}
+
+func NewCloseOpenBankPaymentOrderResponse() (response *CloseOpenBankPaymentOrderResponse) {
+    response = &CloseOpenBankPaymentOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseOpenBankPaymentOrder
+// 云企付-关闭订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) CloseOpenBankPaymentOrder(request *CloseOpenBankPaymentOrderRequest) (response *CloseOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewCloseOpenBankPaymentOrderRequest()
+    }
+    
+    response = NewCloseOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CloseOpenBankPaymentOrder
+// 云企付-关闭订单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) CloseOpenBankPaymentOrderWithContext(ctx context.Context, request *CloseOpenBankPaymentOrderRequest) (response *CloseOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewCloseOpenBankPaymentOrderRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCloseOpenBankPaymentOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -1682,6 +1802,192 @@ func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateM
     request.SetContext(ctx)
     
     response = NewCreateMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankExternalSubMerchantRegistrationRequest() (request *CreateOpenBankExternalSubMerchantRegistrationRequest) {
+    request = &CreateOpenBankExternalSubMerchantRegistrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankExternalSubMerchantRegistration")
+    
+    
+    return
+}
+
+func NewCreateOpenBankExternalSubMerchantRegistrationResponse() (response *CreateOpenBankExternalSubMerchantRegistrationResponse) {
+    response = &CreateOpenBankExternalSubMerchantRegistrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankExternalSubMerchantRegistration
+// 云企付-子商户进件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankExternalSubMerchantRegistration(request *CreateOpenBankExternalSubMerchantRegistrationRequest) (response *CreateOpenBankExternalSubMerchantRegistrationResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankExternalSubMerchantRegistrationRequest()
+    }
+    
+    response = NewCreateOpenBankExternalSubMerchantRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOpenBankExternalSubMerchantRegistration
+// 云企付-子商户进件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankExternalSubMerchantRegistrationWithContext(ctx context.Context, request *CreateOpenBankExternalSubMerchantRegistrationRequest) (response *CreateOpenBankExternalSubMerchantRegistrationResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankExternalSubMerchantRegistrationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankExternalSubMerchantRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankMerchantRequest() (request *CreateOpenBankMerchantRequest) {
+    request = &CreateOpenBankMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankMerchant")
+    
+    
+    return
+}
+
+func NewCreateOpenBankMerchantResponse() (response *CreateOpenBankMerchantResponse) {
+    response = &CreateOpenBankMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankMerchant
+// 云企付-创建商户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankMerchant(request *CreateOpenBankMerchantRequest) (response *CreateOpenBankMerchantResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankMerchantRequest()
+    }
+    
+    response = NewCreateOpenBankMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOpenBankMerchant
+// 云企付-创建商户
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankMerchantWithContext(ctx context.Context, request *CreateOpenBankMerchantRequest) (response *CreateOpenBankMerchantResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankMerchantRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankMerchantResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankPaymentOrderRequest() (request *CreateOpenBankPaymentOrderRequest) {
+    request = &CreateOpenBankPaymentOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankPaymentOrder")
+    
+    
+    return
+}
+
+func NewCreateOpenBankPaymentOrderResponse() (response *CreateOpenBankPaymentOrderResponse) {
+    response = &CreateOpenBankPaymentOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankPaymentOrder
+// 云企付-创建支付订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankPaymentOrder(request *CreateOpenBankPaymentOrderRequest) (response *CreateOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankPaymentOrderRequest()
+    }
+    
+    response = NewCreateOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateOpenBankPaymentOrder
+// 云企付-创建支付订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankPaymentOrderWithContext(ctx context.Context, request *CreateOpenBankPaymentOrderRequest) (response *CreateOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankPaymentOrderRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankPaymentOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -5682,6 +5988,330 @@ func (c *Client) QueryMerchantPayWayListWithContext(ctx context.Context, request
     return
 }
 
+func NewQueryOpenBankBindExternalSubMerchantBankAccountRequest() (request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) {
+    request = &QueryOpenBankBindExternalSubMerchantBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBindExternalSubMerchantBankAccount")
+    
+    
+    return
+}
+
+func NewQueryOpenBankBindExternalSubMerchantBankAccountResponse() (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse) {
+    response = &QueryOpenBankBindExternalSubMerchantBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankBindExternalSubMerchantBankAccount
+// 云企付-子商户银行卡绑定结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccount(request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
+    }
+    
+    response = NewQueryOpenBankBindExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankBindExternalSubMerchantBankAccount
+// 云企付-子商户银行卡绑定结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankBindExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankDownLoadUrlRequest() (request *QueryOpenBankDownLoadUrlRequest) {
+    request = &QueryOpenBankDownLoadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankDownLoadUrl")
+    
+    
+    return
+}
+
+func NewQueryOpenBankDownLoadUrlResponse() (response *QueryOpenBankDownLoadUrlResponse) {
+    response = &QueryOpenBankDownLoadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankDownLoadUrl
+// 云企付-查询对账单下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankDownLoadUrl(request *QueryOpenBankDownLoadUrlRequest) (response *QueryOpenBankDownLoadUrlResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankDownLoadUrlRequest()
+    }
+    
+    response = NewQueryOpenBankDownLoadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankDownLoadUrl
+// 云企付-查询对账单下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankDownLoadUrlWithContext(ctx context.Context, request *QueryOpenBankDownLoadUrlRequest) (response *QueryOpenBankDownLoadUrlResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankDownLoadUrlRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankDownLoadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankExternalSubMerchantBankAccountRequest() (request *QueryOpenBankExternalSubMerchantBankAccountRequest) {
+    request = &QueryOpenBankExternalSubMerchantBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankExternalSubMerchantBankAccount")
+    
+    
+    return
+}
+
+func NewQueryOpenBankExternalSubMerchantBankAccountResponse() (response *QueryOpenBankExternalSubMerchantBankAccountResponse) {
+    response = &QueryOpenBankExternalSubMerchantBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡列表查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankExternalSubMerchantBankAccount(request *QueryOpenBankExternalSubMerchantBankAccountRequest) (response *QueryOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    
+    response = NewQueryOpenBankExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡列表查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankExternalSubMerchantBankAccountRequest) (response *QueryOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankExternalSubMerchantRegistrationRequest() (request *QueryOpenBankExternalSubMerchantRegistrationRequest) {
+    request = &QueryOpenBankExternalSubMerchantRegistrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankExternalSubMerchantRegistration")
+    
+    
+    return
+}
+
+func NewQueryOpenBankExternalSubMerchantRegistrationResponse() (response *QueryOpenBankExternalSubMerchantRegistrationResponse) {
+    response = &QueryOpenBankExternalSubMerchantRegistrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankExternalSubMerchantRegistration
+// 云企付-子商户进件结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankExternalSubMerchantRegistration(request *QueryOpenBankExternalSubMerchantRegistrationRequest) (response *QueryOpenBankExternalSubMerchantRegistrationResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankExternalSubMerchantRegistrationRequest()
+    }
+    
+    response = NewQueryOpenBankExternalSubMerchantRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankExternalSubMerchantRegistration
+// 云企付-子商户进件结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankExternalSubMerchantRegistrationWithContext(ctx context.Context, request *QueryOpenBankExternalSubMerchantRegistrationRequest) (response *QueryOpenBankExternalSubMerchantRegistrationResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankExternalSubMerchantRegistrationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankExternalSubMerchantRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankPaymentOrderRequest() (request *QueryOpenBankPaymentOrderRequest) {
+    request = &QueryOpenBankPaymentOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankPaymentOrder")
+    
+    
+    return
+}
+
+func NewQueryOpenBankPaymentOrderResponse() (response *QueryOpenBankPaymentOrderResponse) {
+    response = &QueryOpenBankPaymentOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankPaymentOrder
+// 云企付-查询订单支付结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankPaymentOrder(request *QueryOpenBankPaymentOrderRequest) (response *QueryOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankPaymentOrderRequest()
+    }
+    
+    response = NewQueryOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankPaymentOrder
+// 云企付-查询订单支付结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankPaymentOrderWithContext(ctx context.Context, request *QueryOpenBankPaymentOrderRequest) (response *QueryOpenBankPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankPaymentOrderRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest() (request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) {
+    request = &QueryOpenBankUnbindExternalSubMerchantBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankUnbindExternalSubMerchantBankAccount")
+    
+    
+    return
+}
+
+func NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse() (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse) {
+    response = &QueryOpenBankUnbindExternalSubMerchantBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankUnbindExternalSubMerchantBankAccount
+// 云企付-子商户银行卡解绑结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccount(request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
+    }
+    
+    response = NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryOpenBankUnbindExternalSubMerchantBankAccount
+// 云企付-子商户银行卡解绑结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOrderRequest() (request *QueryOrderRequest) {
     request = &QueryOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7730,6 +8360,62 @@ func (c *Client) UnBindAcctWithContext(ctx context.Context, request *UnBindAcctR
     request.SetContext(ctx)
     
     response = NewUnBindAcctResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindOpenBankExternalSubMerchantBankAccountRequest() (request *UnbindOpenBankExternalSubMerchantBankAccountRequest) {
+    request = &UnbindOpenBankExternalSubMerchantBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UnbindOpenBankExternalSubMerchantBankAccount")
+    
+    
+    return
+}
+
+func NewUnbindOpenBankExternalSubMerchantBankAccountResponse() (response *UnbindOpenBankExternalSubMerchantBankAccountResponse) {
+    response = &UnbindOpenBankExternalSubMerchantBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡解绑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) UnbindOpenBankExternalSubMerchantBankAccount(request *UnbindOpenBankExternalSubMerchantBankAccountRequest) (response *UnbindOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewUnbindOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    
+    response = NewUnbindOpenBankExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UnbindOpenBankExternalSubMerchantBankAccount
+// 云企付-子商户银行卡解绑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) UnbindOpenBankExternalSubMerchantBankAccountWithContext(ctx context.Context, request *UnbindOpenBankExternalSubMerchantBankAccountRequest) (response *UnbindOpenBankExternalSubMerchantBankAccountResponse, err error) {
+    if request == nil {
+        request = NewUnbindOpenBankExternalSubMerchantBankAccountRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUnbindOpenBankExternalSubMerchantBankAccountResponse()
     err = c.Send(request, response)
     return
 }

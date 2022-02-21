@@ -59,6 +59,12 @@ const (
 	// zone不支持。
 	INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
 
+	// 路由数超过限制。
+	LIMITEXCEEDED_ROUTEOVERLIMIT = "LimitExceeded.RouteOverLimit"
+
+	// SASL路由超过限制。
+	LIMITEXCEEDED_ROUTESASLOVERLIMIT = "LimitExceeded.RouteSASLOverLimit"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 

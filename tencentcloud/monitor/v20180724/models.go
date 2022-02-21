@@ -1916,6 +1916,8 @@ type DescribeAlarmPoliciesRequest struct {
 	// 具体也可以参考下方的示例 2。
 	// 
 	// 不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+	// 
+	// 注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
 	Dimensions *string `json:"Dimensions,omitempty" name:"Dimensions"`
 
 	// 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段

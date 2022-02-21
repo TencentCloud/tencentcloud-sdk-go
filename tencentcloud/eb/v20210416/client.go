@@ -62,9 +62,10 @@ func NewCheckRuleResponse() (response *CheckRuleResponse) {
 }
 
 // CheckRule
-// 规则检验
+// 检验规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -79,9 +80,10 @@ func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleRespon
 }
 
 // CheckRule
-// 规则检验
+// 检验规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -117,6 +119,7 @@ func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
 // 用于在ETL配置页面, 测试规则和数据.
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -134,6 +137,7 @@ func (c *Client) CheckTransformation(request *CheckTransformationRequest) (respo
 // 用于在ETL配置页面, 测试规则和数据.
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1333,8 +1337,10 @@ func NewPutEventsResponse() (response *PutEventsResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsResponse, err error) {
     if request == nil {
         request = NewPutEventsRequest()
@@ -1353,8 +1359,10 @@ func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsRespon
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PutEventsWithContext(ctx context.Context, request *PutEventsRequest) (response *PutEventsResponse, err error) {
     if request == nil {
         request = NewPutEventsRequest()
