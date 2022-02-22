@@ -844,6 +844,62 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     return
 }
 
+func NewDeleteDeviceResourceRequest() (request *DeleteDeviceResourceRequest) {
+    request = &DeleteDeviceResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteDeviceResource")
+    
+    
+    return
+}
+
+func NewDeleteDeviceResourceResponse() (response *DeleteDeviceResourceResponse) {
+    response = &DeleteDeviceResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDeviceResource
+// 本接口（DeleteDeviceResource）用于删除设备资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
+func (c *Client) DeleteDeviceResource(request *DeleteDeviceResourceRequest) (response *DeleteDeviceResourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceResourceRequest()
+    }
+    
+    response = NewDeleteDeviceResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDeviceResource
+// 本接口（DeleteDeviceResource）用于删除设备资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
+func (c *Client) DeleteDeviceResourceWithContext(ctx context.Context, request *DeleteDeviceResourceRequest) (response *DeleteDeviceResourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceResourceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLoraDeviceRequest() (request *DeleteLoraDeviceRequest) {
     request = &DeleteLoraDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2370,6 +2426,64 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, request *Disab
     request.SetContext(ctx)
     
     response = NewDisableTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadDeviceResourceRequest() (request *DownloadDeviceResourceRequest) {
+    request = &DownloadDeviceResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DownloadDeviceResource")
+    
+    
+    return
+}
+
+func NewDownloadDeviceResourceResponse() (response *DownloadDeviceResourceResponse) {
+    response = &DownloadDeviceResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadDeviceResource
+// 本接口（DownloadDeviceResource）用于下载设备资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_RESOURCEFILENOTEXIST = "ResourceNotFound.ResourceFileNotExist"
+//  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
+func (c *Client) DownloadDeviceResource(request *DownloadDeviceResourceRequest) (response *DownloadDeviceResourceResponse, err error) {
+    if request == nil {
+        request = NewDownloadDeviceResourceRequest()
+    }
+    
+    response = NewDownloadDeviceResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DownloadDeviceResource
+// 本接口（DownloadDeviceResource）用于下载设备资源
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_RESOURCEFILENOTEXIST = "ResourceNotFound.ResourceFileNotExist"
+//  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
+func (c *Client) DownloadDeviceResourceWithContext(ctx context.Context, request *DownloadDeviceResourceRequest) (response *DownloadDeviceResourceResponse, err error) {
+    if request == nil {
+        request = NewDownloadDeviceResourceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDownloadDeviceResourceResponse()
     err = c.Send(request, response)
     return
 }

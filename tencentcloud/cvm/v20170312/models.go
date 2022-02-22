@@ -4599,6 +4599,9 @@ type ModifyInstancesAttributeRequest struct {
 
 	// 指定实例的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。<dx-alert infotype="explain" title="">必须指定SecurityGroups与InstanceName的其中一个，但不能同时设置</dx-alert>
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例<br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例<br><br>默认取值：FALSE。
+	DisableApiTermination *bool `json:"DisableApiTermination,omitempty" name:"DisableApiTermination"`
 }
 
 func (r *ModifyInstancesAttributeRequest) ToJsonString() string {
@@ -4616,6 +4619,7 @@ func (r *ModifyInstancesAttributeRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "InstanceName")
 	delete(f, "SecurityGroups")
+	delete(f, "DisableApiTermination")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstancesAttributeRequest has unknown keys!", "")
 	}
@@ -5930,6 +5934,9 @@ type RunInstancesRequest struct {
 
 	// 实例启动模板。
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitempty" name:"LaunchTemplate"`
+
+	// 指定CHC物理服务器来创建CHC云主机。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -5969,6 +5976,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "CamRoleName")
 	delete(f, "HpcClusterId")
 	delete(f, "LaunchTemplate")
+	delete(f, "ChcIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}

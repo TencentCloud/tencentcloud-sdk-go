@@ -1441,7 +1441,7 @@ type CreateDBInstanceHourRequest struct {
 	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。该值默认为0。
 	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
 
 	// 金融围拢 ID 。
@@ -1632,7 +1632,7 @@ type CreateDBInstanceRequest struct {
 	// 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+	// 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。该值默认为0。
 	AutoSyncFlag *int64 `json:"AutoSyncFlag,omitempty" name:"AutoSyncFlag"`
 
 	// 金融围拢 ID。
@@ -3104,16 +3104,16 @@ type DescribeBackupSummariesRequest struct {
 	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 分页查询数据的偏移量。
+	// 分页查询数据的偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询数据的条目限制，默认值为20。
+	// 分页查询数据的条目限制，默认值为20。最小值为1，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。
+	// 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。默认按照BackupVolume排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。
+	// 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。默认值为 ASC。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -4161,7 +4161,7 @@ type DescribeDBSecurityGroupsRequest struct {
 	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	// 该值默认为False，表示当传入只读实例ID时，查询操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitempty" name:"ForReadonlyInstance"`
 }
 
@@ -5491,7 +5491,7 @@ type DescribeSlowLogsRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 偏移量，最小值为0。
+	// 偏移量，默认值为0，最小值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页大小，默认值为20，最小值为1，最大值为100。
@@ -7483,7 +7483,7 @@ type ModifyDBInstanceNameRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称。
+	// 修改后的实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 

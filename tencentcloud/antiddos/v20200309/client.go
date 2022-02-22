@@ -985,6 +985,7 @@ func NewCreatePacketFilterConfigResponse() (response *CreatePacketFilterConfigRe
 // 添加DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePacketFilterConfig(request *CreatePacketFilterConfigRequest) (response *CreatePacketFilterConfigResponse, err error) {
@@ -1001,6 +1002,7 @@ func (c *Client) CreatePacketFilterConfig(request *CreatePacketFilterConfigReque
 // 添加DDoS防护的特征过滤规则
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePacketFilterConfigWithContext(ctx context.Context, request *CreatePacketFilterConfigRequest) (response *CreatePacketFilterConfigResponse, err error) {

@@ -77,6 +77,9 @@ const (
 	// 协议检查错误，请检查协议是否正确。
 	FAILEDOPERATION_PROTOCOLCHECKERR = "FailedOperation.ProtocolCheckErr"
 
+	// 收件人已退订。
+	FAILEDOPERATION_RECEIVERHASUNSUBSCRIBED = "FailedOperation.ReceiverHasUnsubscribed"
+
 	// 您的发送遇到问题，请联系腾讯云提交工单沟通原因并解决。
 	FAILEDOPERATION_SENDEMAILERR = "FailedOperation.SendEmailErr"
 

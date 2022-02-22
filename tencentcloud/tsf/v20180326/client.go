@@ -2687,6 +2687,7 @@ func NewDeletePkgsResponse() (response *DeletePkgsResponse) {
 //  INVALIDPARAMETER_PACKAGEINUSE = "InvalidParameter.PackageInUse"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_UPPERDELETELIMIT = "InvalidParameter.UpperDeleteLimit"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DeletePkgs(request *DeletePkgsRequest) (response *DeletePkgsResponse, err error) {
     if request == nil {
         request = NewDeletePkgsRequest()
@@ -2707,6 +2708,7 @@ func (c *Client) DeletePkgs(request *DeletePkgsRequest) (response *DeletePkgsRes
 //  INVALIDPARAMETER_PACKAGEINUSE = "InvalidParameter.PackageInUse"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_UPPERDELETELIMIT = "InvalidParameter.UpperDeleteLimit"
+//  RESOURCENOTFOUND_OBJECTNOEXIST = "ResourceNotFound.ObjectNoExist"
 func (c *Client) DeletePkgsWithContext(ctx context.Context, request *DeletePkgsRequest) (response *DeletePkgsResponse, err error) {
     if request == nil {
         request = NewDeletePkgsRequest()
@@ -3573,6 +3575,7 @@ func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (response *DescribeApiVersionsResponse, err error) {
     if request == nil {
@@ -3590,6 +3593,7 @@ func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
 func (c *Client) DescribeApiVersionsWithContext(ctx context.Context, request *DescribeApiVersionsRequest) (response *DescribeApiVersionsResponse, err error) {
     if request == nil {

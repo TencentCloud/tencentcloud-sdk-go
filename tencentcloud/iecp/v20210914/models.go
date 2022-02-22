@@ -560,7 +560,7 @@ type CreateEdgeNodeUnitTemplateRequest struct {
 	// IECP边缘单元ID
 	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
 
-	// NodeUnit模版名称
+	// NodeUnit模板名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 命名空间，默认default
@@ -1211,7 +1211,7 @@ type DeleteEdgeNodeUnitTemplatesRequest struct {
 	// IECP边缘单元ID
 	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
 
-	// 删除的NodeUnit模版ID列表
+	// 删除的NodeUnit模板ID列表
 	NodeUnitTemplateIDs []*uint64 `json:"NodeUnitTemplateIDs,omitempty" name:"NodeUnitTemplateIDs"`
 }
 
@@ -3901,7 +3901,7 @@ type DescribeEdgeUnitNodeUnitTemplatesResponse struct {
 		// 符合查询条件的记录总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
-		// NodeUnit模版列表
+		// NodeUnit模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		NodeUnitTemplates []*NodeUnitTemplate `json:"NodeUnitTemplates,omitempty" name:"NodeUnitTemplates"`
 
@@ -4380,7 +4380,7 @@ type DescribeNodeUnitTemplateOnNodeGroupResponse struct {
 		// 记录总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
-		// NodeUnit模版
+		// NodeUnit模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		NodeUnitTemplates []*NodeGroupNodeUnitTemplateInfo `json:"NodeUnitTemplates,omitempty" name:"NodeUnitTemplates"`
 
@@ -5914,7 +5914,7 @@ type ModifyNodeUnitTemplateRequest struct {
 	// IECP边缘单元ID
 	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
 
-	// NodeUnit模版ID
+	// NodeUnit模板ID
 	NodeUnitTemplateID *uint64 `json:"NodeUnitTemplateID,omitempty" name:"NodeUnitTemplateID"`
 
 	// 包含的节点列表

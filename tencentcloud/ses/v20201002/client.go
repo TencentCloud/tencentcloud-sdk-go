@@ -272,7 +272,7 @@ func NewCreateEmailTemplateResponse() (response *CreateEmailTemplateResponse) {
 // CreateEmailTemplate
 // 创建模板，该模板可以是TXT或者HTML，请注意如果HTML不要包含外部文件的CSS。模板中的变量使用 {{变量名}} 表示。
 //
-// 注意：模版需要审核通过才可以使用。
+// 注意：模板需要审核通过才可以使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXCEEDTEMPLATELIMIT = "FailedOperation.ExceedTemplateLimit"
@@ -299,7 +299,7 @@ func (c *Client) CreateEmailTemplate(request *CreateEmailTemplateRequest) (respo
 // CreateEmailTemplate
 // 创建模板，该模板可以是TXT或者HTML，请注意如果HTML不要包含外部文件的CSS。模板中的变量使用 {{变量名}} 表示。
 //
-// 注意：模版需要审核通过才可以使用。
+// 注意：模板需要审核通过才可以使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXCEEDTEMPLATELIMIT = "FailedOperation.ExceedTemplateLimit"
@@ -1341,6 +1341,7 @@ func NewSendEmailResponse() (response *SendEmailResponse) {
 //  FAILEDOPERATION_NOATTACHPERMISSION = "FailedOperation.NoAttachPermission"
 //  FAILEDOPERATION_NOTAUTHENTICATEDSENDER = "FailedOperation.NotAuthenticatedSender"
 //  FAILEDOPERATION_PROTOCOLCHECKERR = "FailedOperation.ProtocolCheckErr"
+//  FAILEDOPERATION_RECEIVERHASUNSUBSCRIBED = "FailedOperation.ReceiverHasUnsubscribed"
 //  FAILEDOPERATION_SENDEMAILERR = "FailedOperation.SendEmailErr"
 //  FAILEDOPERATION_TEMPORARYBLOCKED = "FailedOperation.TemporaryBlocked"
 //  FAILEDOPERATION_TOOMANYATTACHMENTS = "FailedOperation.TooManyAttachments"
@@ -1393,6 +1394,7 @@ func (c *Client) SendEmail(request *SendEmailRequest) (response *SendEmailRespon
 //  FAILEDOPERATION_NOATTACHPERMISSION = "FailedOperation.NoAttachPermission"
 //  FAILEDOPERATION_NOTAUTHENTICATEDSENDER = "FailedOperation.NotAuthenticatedSender"
 //  FAILEDOPERATION_PROTOCOLCHECKERR = "FailedOperation.ProtocolCheckErr"
+//  FAILEDOPERATION_RECEIVERHASUNSUBSCRIBED = "FailedOperation.ReceiverHasUnsubscribed"
 //  FAILEDOPERATION_SENDEMAILERR = "FailedOperation.SendEmailErr"
 //  FAILEDOPERATION_TEMPORARYBLOCKED = "FailedOperation.TemporaryBlocked"
 //  FAILEDOPERATION_TOOMANYATTACHMENTS = "FailedOperation.TooManyAttachments"

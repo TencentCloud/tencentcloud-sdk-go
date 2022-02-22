@@ -197,6 +197,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 // 返回用户可用的运行时列表，发布应用时返回的运行时环境，仅shared和private运行时，无sandbox运行时，并且只有running/scaling状态的
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     if request == nil {
@@ -212,6 +213,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
 // 返回用户可用的运行时列表，发布应用时返回的运行时环境，仅shared和private运行时，无sandbox运行时，并且只有running/scaling状态的
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     if request == nil {

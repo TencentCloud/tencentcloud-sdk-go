@@ -2910,6 +2910,70 @@ func (c *Client) DescribeQuotaWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
+    request = &DescribeResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeResources")
+    
+    
+    return
+}
+
+func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
+    response = &DescribeResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResources
+// 查询用户在当前地域支持可用区列表和资源列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesRequest()
+    }
+    
+    response = NewDescribeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeResources
+// 查询用户在当前地域支持可用区列表和资源列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcesRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRewriteRequest() (request *DescribeRewriteRequest) {
     request = &DescribeRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},

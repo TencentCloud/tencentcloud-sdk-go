@@ -1105,6 +1105,12 @@ type Database struct {
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
 }
 
+type DatabaseFunction struct {
+
+	// 函数名称
+	Func *string `json:"Func,omitempty" name:"Func"`
+}
+
 type DatabasePrivilege struct {
 
 	// 权限信息
@@ -1112,6 +1118,24 @@ type DatabasePrivilege struct {
 
 	// 数据库名
 	Database *string `json:"Database,omitempty" name:"Database"`
+}
+
+type DatabaseProcedure struct {
+
+	// 存储过程名称
+	Proc *string `json:"Proc,omitempty" name:"Proc"`
+}
+
+type DatabaseTable struct {
+
+	// 表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+}
+
+type DatabaseView struct {
+
+	// 视图名称
+	View *string `json:"View,omitempty" name:"View"`
 }
 
 type DcnDetailItem struct {
@@ -2170,6 +2194,74 @@ func (r *DescribeDBSlowLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBSlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseObjectsRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例 ID，形如：dcdbt-ow7t8lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库名称，通过 DescribeDatabases 接口获取。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+}
+
+func (r *DescribeDatabaseObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DbName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 透传入参。
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 数据库名称。
+		DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+		// 表列表。
+		Tables []*DatabaseTable `json:"Tables,omitempty" name:"Tables"`
+
+		// 视图列表。
+		Views []*DatabaseView `json:"Views,omitempty" name:"Views"`
+
+		// 存储过程列表。
+		Procs []*DatabaseProcedure `json:"Procs,omitempty" name:"Procs"`
+
+		// 函数列表。
+		Funcs []*DatabaseFunction `json:"Funcs,omitempty" name:"Funcs"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDatabaseObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseObjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

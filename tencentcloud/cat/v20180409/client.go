@@ -170,6 +170,7 @@ func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
@@ -194,6 +195,7 @@ func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
 //  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"

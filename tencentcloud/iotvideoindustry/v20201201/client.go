@@ -10948,6 +10948,7 @@ func NewUpdateTimeTemplateResponse() (response *UpdateTimeTemplateResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) UpdateTimeTemplate(request *UpdateTimeTemplateRequest) (response *UpdateTimeTemplateResponse, err error) {
     if request == nil {
@@ -10964,6 +10965,7 @@ func (c *Client) UpdateTimeTemplate(request *UpdateTimeTemplateRequest) (respons
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) UpdateTimeTemplateWithContext(ctx context.Context, request *UpdateTimeTemplateRequest) (response *UpdateTimeTemplateResponse, err error) {
     if request == nil {

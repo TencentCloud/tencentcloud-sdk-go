@@ -3232,6 +3232,68 @@ func (r *DescribeQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回可用区资源列表数目，默认20，最大值100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回可用区资源列表起始偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询可用区资源列表条件，详细的过滤条件如下：
+	// <li> zone - String - 是否必填：否 - （过滤条件）按照 可用区 过滤，如："ap-guangzhou-1"（广州一区）。</li>
+	// <li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 可用区支持的资源列表。
+		ZoneResourceSet []*ZoneResource `json:"ZoneResourceSet,omitempty" name:"ZoneResourceSet"`
+
+		// 可用区资源列表数目。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRewriteRequest struct {
 	*tchttp.BaseRequest
 
@@ -5528,6 +5590,15 @@ func (r *ReplaceCertForLoadBalancersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Resource struct {
+
+	// 运营商内具体资源信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 运营商信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
+	Isp *string `json:"Isp,omitempty" name:"Isp"`
+}
+
 type RewriteLocationMap struct {
 
 	// 源转发规则ID
@@ -6199,5 +6270,28 @@ type ZoneInfo struct {
 
 	// 可用区是否是LocalZone可用区，如：false
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
+}
+
+type ZoneResource struct {
+
+	// 主可用区，如"ap-guangzhou-1"。
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 资源列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
+
+	// 备可用区，如"ap-guangzhou-2"，单可用区时，备可用区为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// IP版本，如IPv4，IPv6，IPv6_Nat。
+	IPVersion *string `json:"IPVersion,omitempty" name:"IPVersion"`
+
+	// 可用区所属地域，如：ap-guangzhou
+	ZoneRegion *string `json:"ZoneRegion,omitempty" name:"ZoneRegion"`
+
+	// 可用区是否是LocalZone可用区，如：false
 	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
 }

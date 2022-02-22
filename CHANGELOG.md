@@ -1,3 +1,93 @@
+# Release v1.0.352
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 66 次发布
+
+发布时间：2022-02-22 08:03:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeResources](https://cloud.tencent.com/document/api/214/70213)
+
+新增数据结构：
+
+* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
+* [ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 74 次发布
+
+发布时间：2022-02-22 08:04:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstancesAttribute](https://cloud.tencent.com/document/api/213/15739)
+
+	* 新增入参：DisableApiTermination
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：ChcIds
+
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+### 第 26 次发布
+
+发布时间：2022-02-22 08:08:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/70215)
+* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/70214)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 32 次发布
+
+发布时间：2022-02-22 08:09:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDatabaseObjects](https://cloud.tencent.com/document/api/237/70216)
+
+新增数据结构：
+
+* [DatabaseFunction](https://cloud.tencent.com/document/api/237/16191#DatabaseFunction)
+* [DatabaseProcedure](https://cloud.tencent.com/document/api/237/16191#DatabaseProcedure)
+* [DatabaseTable](https://cloud.tencent.com/document/api/237/16191#DatabaseTable)
+* [DatabaseView](https://cloud.tencent.com/document/api/237/16191#DatabaseView)
+
+
+
 # Release v1.0.351
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19

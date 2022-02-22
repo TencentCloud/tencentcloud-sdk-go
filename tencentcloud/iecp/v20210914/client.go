@@ -424,7 +424,7 @@ func NewCreateEdgeNodeUnitTemplateResponse() (response *CreateEdgeNodeUnitTempla
 }
 
 // CreateEdgeNodeUnitTemplate
-// 创建边缘单元NodeUnit模版
+// 创建边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -451,7 +451,7 @@ func (c *Client) CreateEdgeNodeUnitTemplate(request *CreateEdgeNodeUnitTemplateR
 }
 
 // CreateEdgeNodeUnitTemplate
-// 创建边缘单元NodeUnit模版
+// 创建边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1172,7 +1172,7 @@ func NewDeleteEdgeNodeUnitTemplatesResponse() (response *DeleteEdgeNodeUnitTempl
 }
 
 // DeleteEdgeNodeUnitTemplates
-// 删除边缘单元NodeUnit模版
+// 删除边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1199,7 +1199,7 @@ func (c *Client) DeleteEdgeNodeUnitTemplates(request *DeleteEdgeNodeUnitTemplate
 }
 
 // DeleteEdgeNodeUnitTemplates
-// 删除边缘单元NodeUnit模版
+// 删除边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4196,7 +4196,7 @@ func NewDescribeEdgeUnitNodeUnitTemplatesResponse() (response *DescribeEdgeUnitN
 }
 
 // DescribeEdgeUnitNodeUnitTemplates
-// 查询边缘单元EdgeUnit模版列表
+// 查询边缘单元EdgeUnit模板列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4223,7 +4223,7 @@ func (c *Client) DescribeEdgeUnitNodeUnitTemplates(request *DescribeEdgeUnitNode
 }
 
 // DescribeEdgeUnitNodeUnitTemplates
-// 查询边缘单元EdgeUnit模版列表
+// 查询边缘单元EdgeUnit模板列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4712,7 +4712,7 @@ func NewDescribeNodeUnitTemplateOnNodeGroupResponse() (response *DescribeNodeUni
 }
 
 // DescribeNodeUnitTemplateOnNodeGroup
-// 查询指定NodeGroup下NodeUnit模版列表
+// 查询指定NodeGroup下NodeUnit模板列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4739,7 +4739,7 @@ func (c *Client) DescribeNodeUnitTemplateOnNodeGroup(request *DescribeNodeUnitTe
 }
 
 // DescribeNodeUnitTemplateOnNodeGroup
-// 查询指定NodeGroup下NodeUnit模版列表
+// 查询指定NodeGroup下NodeUnit模板列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5820,7 +5820,7 @@ func NewModifyNodeUnitTemplateResponse() (response *ModifyNodeUnitTemplateRespon
 }
 
 // ModifyNodeUnitTemplate
-// 修改边缘单元NodeUnit模版
+// 修改边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5847,7 +5847,7 @@ func (c *Client) ModifyNodeUnitTemplate(request *ModifyNodeUnitTemplateRequest) 
 }
 
 // ModifyNodeUnitTemplate
-// 修改边缘单元NodeUnit模版
+// 修改边缘单元NodeUnit模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

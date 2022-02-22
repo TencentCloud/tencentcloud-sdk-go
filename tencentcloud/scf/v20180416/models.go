@@ -545,7 +545,7 @@ type CreateTriggerRequest struct {
 	// 函数的命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 函数的版本
+	// 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
