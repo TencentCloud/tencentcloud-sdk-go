@@ -3027,6 +3027,12 @@ type ModifyDesiredCapacityRequest struct {
 
 	// 期望实例数
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+
+	// 最小实例数，取值范围为0-2000。
+	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 最大实例数，取值范围为0-2000。
+	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
 func (r *ModifyDesiredCapacityRequest) ToJsonString() string {
@@ -3043,6 +3049,8 @@ func (r *ModifyDesiredCapacityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoScalingGroupId")
 	delete(f, "DesiredCapacity")
+	delete(f, "MinSize")
+	delete(f, "MaxSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDesiredCapacityRequest has unknown keys!", "")
 	}

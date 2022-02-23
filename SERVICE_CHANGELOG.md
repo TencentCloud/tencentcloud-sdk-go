@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 66 次发布
+### 第 27 次发布
 
-发布时间：2022-02-22 08:03:47
+发布时间：2022-02-23 08:01:52
 
 本次发布包含了以下内容：
 
@@ -12,20 +12,19 @@
 
 新增接口：
 
-* [DescribeResources](https://cloud.tencent.com/document/api/214/70213)
+* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)
 
 新增数据结构：
 
-* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
-* [ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource)
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 74 次发布
+### 第 46 次发布
 
-发布时间：2022-02-22 08:04:45
+发布时间：2022-02-23 08:02:26
 
 本次发布包含了以下内容：
 
@@ -33,26 +32,18 @@
 
 修改接口：
 
-* [ModifyInstancesAttribute](https://cloud.tencent.com/document/api/213/15739)
+* [ModifyDesiredCapacity](https://cloud.tencent.com/document/api/377/20432)
 
-	* 新增入参：DisableApiTermination
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：ChcIds
+	* 新增入参：MinSize, MaxSize
 
 
 
 
-## 物联网通信(iotcloud) 版本：2021-04-08
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 35 次发布
 
-
-## 物联网通信(iotcloud) 版本：2018-06-14
-
-### 第 26 次发布
-
-发布时间：2022-02-22 08:08:24
+发布时间：2022-02-23 08:06:28
 
 本次发布包含了以下内容：
 
@@ -60,16 +51,41 @@
 
 新增接口：
 
-* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/70215)
-* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/70214)
+* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
 
 
 
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
 
-### 第 32 次发布
+### 第 3 次发布
 
-发布时间：2022-02-22 08:09:47
+发布时间：2022-02-23 08:08:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgeUnitApplicationYaml](https://cloud.tencent.com/document/api/1118/66785)
+
+	* <font color="#dd0000">**修改入参**：</font>BasicInfo
+
+
+修改数据结构：
+
+* [MarketComponentInfo](https://cloud.tencent.com/document/api/1118/66797#MarketComponentInfo)
+
+	* 新增成员：DetailUrl, Installed
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 39 次发布
+
+发布时间：2022-02-23 08:10:23
 
 本次发布包含了以下内容：
 
@@ -77,14 +93,38 @@
 
 新增接口：
 
-* [DescribeDatabaseObjects](https://cloud.tencent.com/document/api/237/70216)
+* [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)
 
 新增数据结构：
 
-* [DatabaseFunction](https://cloud.tencent.com/document/api/237/16191#DatabaseFunction)
-* [DatabaseProcedure](https://cloud.tencent.com/document/api/237/16191#DatabaseProcedure)
-* [DatabaseTable](https://cloud.tencent.com/document/api/237/16191#DatabaseTable)
-* [DatabaseView](https://cloud.tencent.com/document/api/237/16191#DatabaseView)
+* [Condition](https://cloud.tencent.com/document/api/248/30354#Condition)
+* [EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)
+* [PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)
+* [PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)
+* [TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)
+
+
+
+## 短信(sms) 版本：2021-01-11
+
+### 第 4 次发布
+
+发布时间：2022-02-23 08:11:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsSendStatus)
+
+	* 新增成员：SessionContext
+
+
+
+
+## 短信(sms) 版本：2019-07-11
 
 
 
@@ -486,6 +526,22 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 27 次发布
+
+发布时间：2022-02-23 08:01:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo))
 
 ### 第 26 次发布
 
@@ -2572,6 +2628,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 46 次发布
+
+发布时间：2022-02-23 08:02:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDesiredCapacity](https://cloud.tencent.com/document/api/377/20432)
+
+	* 新增入参：MinSize, MaxSize
+
 
 ### 第 45 次发布
 
@@ -15016,12 +15087,12 @@
 
 新增接口：
 
-* [[DescribeResources](https://cloud.tencent.com/document/api/214/70213)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResources](https://cloud.tencent.com/document/api/214/70213)
 
 新增数据结构：
 
-* [[Resource](https://cloud.tencent.com/document/api/214/30694#Resource)](https://cloud.tencent.com/document/api/214/30694#[Resource](https://cloud.tencent.com/document/api/214/30694#Resource))
-* [[ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource)](https://cloud.tencent.com/document/api/214/30694#[ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource))
+* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
+* [ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource)
 
 ### 第 65 次发布
 
@@ -24799,6 +24870,18 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 35 次发布
+
+发布时间：2022-02-23 08:06:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 34 次发布
 
@@ -34939,6 +35022,28 @@
 
 ## 物联网边缘计算平台(iecp) 版本：2021-09-14
 
+### 第 3 次发布
+
+发布时间：2022-02-23 08:08:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgeUnitApplicationYaml](https://cloud.tencent.com/document/api/1118/66785)
+
+	* <font color="#dd0000">**修改入参**：</font>BasicInfo
+
+
+修改数据结构：
+
+* [MarketComponentInfo](https://cloud.tencent.com/document/api/1118/66797#MarketComponentInfo)
+
+	* 新增成员：DetailUrl, Installed
+
+
 ### 第 2 次发布
 
 发布时间：2022-02-15 08:09:12
@@ -35620,8 +35725,8 @@
 
 新增接口：
 
-* [[DeleteDeviceResource](https://cloud.tencent.com/document/api/634/70215)](https://cloud.tencent.com/document/api/#/#)
-* [[DownloadDeviceResource](https://cloud.tencent.com/document/api/634/70214)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/70215)
+* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/70214)
 
 ### 第 25 次发布
 
@@ -41003,14 +41108,14 @@
 
 新增接口：
 
-* [[DescribeDatabaseObjects](https://cloud.tencent.com/document/api/237/70216)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDatabaseObjects](https://cloud.tencent.com/document/api/237/70216)
 
 新增数据结构：
 
-* [[DatabaseFunction](https://cloud.tencent.com/document/api/237/16191#DatabaseFunction)](https://cloud.tencent.com/document/api/237/16191#[DatabaseFunction](https://cloud.tencent.com/document/api/237/16191#DatabaseFunction))
-* [[DatabaseProcedure](https://cloud.tencent.com/document/api/237/16191#DatabaseProcedure)](https://cloud.tencent.com/document/api/237/16191#[DatabaseProcedure](https://cloud.tencent.com/document/api/237/16191#DatabaseProcedure))
-* [[DatabaseTable](https://cloud.tencent.com/document/api/237/16191#DatabaseTable)](https://cloud.tencent.com/document/api/237/16191#[DatabaseTable](https://cloud.tencent.com/document/api/237/16191#DatabaseTable))
-* [[DatabaseView](https://cloud.tencent.com/document/api/237/16191#DatabaseView)](https://cloud.tencent.com/document/api/237/16191#[DatabaseView](https://cloud.tencent.com/document/api/237/16191#DatabaseView))
+* [DatabaseFunction](https://cloud.tencent.com/document/api/237/16191#DatabaseFunction)
+* [DatabaseProcedure](https://cloud.tencent.com/document/api/237/16191#DatabaseProcedure)
+* [DatabaseTable](https://cloud.tencent.com/document/api/237/16191#DatabaseTable)
+* [DatabaseView](https://cloud.tencent.com/document/api/237/16191#DatabaseView)
 
 ### 第 31 次发布
 
@@ -42454,6 +42559,26 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 39 次发布
+
+发布时间：2022-02-23 08:10:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Condition](https://cloud.tencent.com/document/api/248/30354#Condition)](https://cloud.tencent.com/document/api/248/30354#[Condition](https://cloud.tencent.com/document/api/248/30354#Condition))
+* [[EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)](https://cloud.tencent.com/document/api/248/30354#[EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition))
+* [[PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)](https://cloud.tencent.com/document/api/248/30354#[PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup))
+* [[PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)](https://cloud.tencent.com/document/api/248/30354#[PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo))
+* [[TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)](https://cloud.tencent.com/document/api/248/30354#[TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup))
 
 ### 第 38 次发布
 
@@ -50707,6 +50832,21 @@
 
 
 ## 短信(sms) 版本：2021-01-11
+
+### 第 4 次发布
+
+发布时间：2022-02-23 08:11:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsSendStatus)
+
+	* 新增成员：SessionContext
+
 
 ### 第 3 次发布
 

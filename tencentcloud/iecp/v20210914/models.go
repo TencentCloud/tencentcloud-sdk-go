@@ -720,11 +720,11 @@ type CreateEdgeUnitApplicationYamlRequest struct {
 	// 单元ID
 	EdgeUnitId *int64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
 
+	// base64后的Yaml配置
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+
 	// 基本信息
 	BasicInfo *ApplicationBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
-
-	// Yaml配置
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
 }
 
 func (r *CreateEdgeUnitApplicationYamlRequest) ToJsonString() string {
@@ -740,8 +740,8 @@ func (r *CreateEdgeUnitApplicationYamlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EdgeUnitId")
-	delete(f, "BasicInfo")
 	delete(f, "Yaml")
+	delete(f, "BasicInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEdgeUnitApplicationYamlRequest has unknown keys!", "")
 	}
@@ -5340,6 +5340,12 @@ type MarketComponentInfo struct {
 
 	// 组件可视化信息
 	WorkloadVisualConfig *string `json:"WorkloadVisualConfig,omitempty" name:"WorkloadVisualConfig"`
+
+	// 无
+	DetailUrl *string `json:"DetailUrl,omitempty" name:"DetailUrl"`
+
+	// 无
+	Installed *bool `json:"Installed,omitempty" name:"Installed"`
 }
 
 type ModifyApplicationBasicInfoRequest struct {

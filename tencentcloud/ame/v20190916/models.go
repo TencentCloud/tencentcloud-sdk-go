@@ -65,6 +65,58 @@ type AuthInfo struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
+type BatchDescribeKTVMusicDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 歌曲Id列表，注：列表最大长度为50
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+}
+
+func (r *BatchDescribeKTVMusicDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MusicIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeKTVMusicDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchDescribeKTVMusicDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 歌曲详情列表信息
+		KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitempty" name:"KTVMusicDetailInfoSet"`
+
+		// 不存在的歌曲 ID 列表。
+		NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitempty" name:"NotExistMusicIdSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BatchDescribeKTVMusicDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeKTVMusicDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChorusClip struct {
 
 	// 副歌时间，单位：毫秒
@@ -1492,6 +1544,27 @@ type KTVMusicDefinitionInfo struct {
 
 	// 文件大小，单位为字节。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
+}
+
+type KTVMusicDetailInfo struct {
+
+	// 即使广播曲库歌曲基础信息
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
+
+	// 播放凭证
+	PlayToken *string `json:"PlayToken,omitempty" name:"PlayToken"`
+
+	// 歌词下载地址
+	LyricsUrl *string `json:"LyricsUrl,omitempty" name:"LyricsUrl"`
+
+	// 歌曲规格信息列表
+	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitempty" name:"DefinitionInfoSet"`
+
+	// 音高数据文件下载地址
+	MidiJsonUrl *string `json:"MidiJsonUrl,omitempty" name:"MidiJsonUrl"`
+
+	// 副歌片段数据列表
+	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
 }
 
 type KTVMusicTopInfo struct {

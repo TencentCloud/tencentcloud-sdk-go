@@ -723,6 +723,146 @@ func (r *CreateDedicatedClusterDCDBInstanceResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateHourDCDBInstanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 分片内存大小，单位：GB，可以通过 DescribeShardSpec
+	//  查询实例规格获得。
+	ShardMemory *int64 `json:"ShardMemory,omitempty" name:"ShardMemory"`
+
+	// 分片存储空间大小，单位：GB，可以通过 DescribeShardSpec
+	//  查询实例规格获得。
+	ShardStorage *int64 `json:"ShardStorage,omitempty" name:"ShardStorage"`
+
+	// 单个分片节点个数，可以通过 DescribeShardSpec
+	//  查询实例规格获得。
+	ShardNodeCount *int64 `json:"ShardNodeCount,omitempty" name:"ShardNodeCount"`
+
+	// 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
+	ShardCount *int64 `json:"ShardCount,omitempty" name:"ShardCount"`
+
+	// 欲购买实例的数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 虚拟私有网络 ID，不传或传空表示创建为基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 虚拟私有网络子网 ID，VpcId不为空时必填
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 分片cpu大小，单位：核，可以通过 DescribeShardSpec
+	//  查询实例规格获得。
+	ShardCpu *int64 `json:"ShardCpu,omitempty" name:"ShardCpu"`
+
+	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+	// 10.0.10 - Mariadb 10.0.10；
+	// 10.1.9 - Mariadb 10.1.9；
+	// 5.7.17 - Percona 5.7.17。
+	// 如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 安全组id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 实例名称， 可以通过该字段自主的设置实例的名字
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 是否支持IPv6
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 标签键值对数组
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// DCN源地域
+	DcnRegion *string `json:"DcnRegion,omitempty" name:"DcnRegion"`
+
+	// DCN源实例ID
+	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
+
+	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
+
+	// 需要回档的源实例ID
+	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
+
+	// 回档时间
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+
+	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+}
+
+func (r *CreateHourDCDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHourDCDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ShardMemory")
+	delete(f, "ShardStorage")
+	delete(f, "ShardNodeCount")
+	delete(f, "ShardCount")
+	delete(f, "Count")
+	delete(f, "ProjectId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ShardCpu")
+	delete(f, "DbVersionId")
+	delete(f, "Zones")
+	delete(f, "SecurityGroupId")
+	delete(f, "InstanceName")
+	delete(f, "Ipv6Flag")
+	delete(f, "ResourceTags")
+	delete(f, "DcnRegion")
+	delete(f, "DcnInstanceId")
+	delete(f, "InitParams")
+	delete(f, "RollbackInstanceId")
+	delete(f, "RollbackTime")
+	delete(f, "SecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDCDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHourDCDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+		InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+		// 流程id，可以根据流程id查询创建进度
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateHourDCDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHourDCDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAccount struct {
 
 	// 用户名

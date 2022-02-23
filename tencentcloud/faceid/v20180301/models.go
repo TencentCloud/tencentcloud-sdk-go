@@ -361,7 +361,7 @@ type CheckBankCardInformationResponse struct {
 		// 开户行
 		AccountBank *string `json:"AccountBank,omitempty" name:"AccountBank"`
 
-		// 卡性质：1. 借记卡；2. 贷记卡
+		// 卡性质：1. 借记卡；2. 贷记卡；3. 预付费卡；4. 准贷记卡
 		AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

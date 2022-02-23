@@ -1897,10 +1897,10 @@ type ConflictSource struct {
 type CreateAddressTemplateGroupRequest struct {
 	*tchttp.BaseRequest
 
-	// IP地址模版集合名称。
+	// IP地址模板集合名称。
 	AddressTemplateGroupName *string `json:"AddressTemplateGroupName,omitempty" name:"AddressTemplateGroupName"`
 
-	// IP地址模版实例ID，例如：ipm-mdunqeb6。
+	// IP地址模板实例ID，例如：ipm-mdunqeb6。
 	AddressTemplateIds []*string `json:"AddressTemplateIds,omitempty" name:"AddressTemplateIds"`
 }
 
@@ -6293,7 +6293,7 @@ type DescribeAddressTemplatesResponse struct {
 		// 符合条件的实例数量。
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// IP地址模版。
+		// IP地址模板。
 		AddressTemplateSet []*AddressTemplate `json:"AddressTemplateSet,omitempty" name:"AddressTemplateSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

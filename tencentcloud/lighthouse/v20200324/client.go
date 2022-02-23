@@ -1740,7 +1740,7 @@ func NewDescribeFirewallRulesTemplateResponse() (response *DescribeFirewallRules
 }
 
 // DescribeFirewallRulesTemplate
-// 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模版。
+// 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -1759,7 +1759,7 @@ func (c *Client) DescribeFirewallRulesTemplate(request *DescribeFirewallRulesTem
 }
 
 // DescribeFirewallRulesTemplate
-// 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模版。
+// 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"

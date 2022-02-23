@@ -1856,7 +1856,7 @@ func NewCreateAddressTemplateGroupResponse() (response *CreateAddressTemplateGro
 }
 
 // CreateAddressTemplateGroup
-// 本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
+// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -1874,7 +1874,7 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
 }
 
 // CreateAddressTemplateGroup
-// 本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
+// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

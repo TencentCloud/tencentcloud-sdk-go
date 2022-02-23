@@ -1,3 +1,133 @@
+# Release v1.0.353
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 27 次发布
+
+发布时间：2022-02-23 08:01:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)
+
+新增数据结构：
+
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
+
+
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 46 次发布
+
+发布时间：2022-02-23 08:02:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDesiredCapacity](https://cloud.tencent.com/document/api/377/20432)
+
+	* 新增入参：MinSize, MaxSize
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 35 次发布
+
+发布时间：2022-02-23 08:06:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 3 次发布
+
+发布时间：2022-02-23 08:08:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgeUnitApplicationYaml](https://cloud.tencent.com/document/api/1118/66785)
+
+	* <font color="#dd0000">**修改入参**：</font>BasicInfo
+
+
+修改数据结构：
+
+* [MarketComponentInfo](https://cloud.tencent.com/document/api/1118/66797#MarketComponentInfo)
+
+	* 新增成员：DetailUrl, Installed
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 39 次发布
+
+发布时间：2022-02-23 08:10:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)
+
+新增数据结构：
+
+* [Condition](https://cloud.tencent.com/document/api/248/30354#Condition)
+* [EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)
+* [PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)
+* [PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)
+* [TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)
+
+
+
+## 短信(sms) 版本：2021-01-11
+
+### 第 4 次发布
+
+发布时间：2022-02-23 08:11:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsSendStatus)
+
+	* 新增成员：SessionContext
+
+
+
+
+## 短信(sms) 版本：2019-07-11
+
+
+
 # Release v1.0.352
 
 ## 负载均衡(clb) 版本：2018-03-17

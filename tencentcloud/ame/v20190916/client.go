@@ -44,6 +44,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBatchDescribeKTVMusicDetailsRequest() (request *BatchDescribeKTVMusicDetailsRequest) {
+    request = &BatchDescribeKTVMusicDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "BatchDescribeKTVMusicDetails")
+    
+    
+    return
+}
+
+func NewBatchDescribeKTVMusicDetailsResponse() (response *BatchDescribeKTVMusicDetailsResponse) {
+    response = &BatchDescribeKTVMusicDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDescribeKTVMusicDetails
+// 根据 Id 列表查询歌曲的详细信息，包含基础信息及播放信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) BatchDescribeKTVMusicDetails(request *BatchDescribeKTVMusicDetailsRequest) (response *BatchDescribeKTVMusicDetailsResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeKTVMusicDetailsRequest()
+    }
+    
+    response = NewBatchDescribeKTVMusicDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// BatchDescribeKTVMusicDetails
+// 根据 Id 列表查询歌曲的详细信息，包含基础信息及播放信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) BatchDescribeKTVMusicDetailsWithContext(ctx context.Context, request *BatchDescribeKTVMusicDetailsRequest) (response *BatchDescribeKTVMusicDetailsResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeKTVMusicDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewBatchDescribeKTVMusicDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateKTVRobotRequest() (request *CreateKTVRobotRequest) {
     request = &CreateKTVRobotRequest{
         BaseRequest: &tchttp.BaseRequest{},
