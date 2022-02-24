@@ -3788,12 +3788,15 @@ type DescribePayTypeResponse struct {
 	// flux：流量计费
 	// bandwidth：带宽计费
 	// request：请求数计费
+	// flux_sep：动静分离流量计费
+	// bandwidth_sep：动静分离带宽计费
 	// 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
 		PayType *string `json:"PayType,omitempty" name:"PayType"`
 
 		// 计费周期：
 	// day：日结计费
 	// month：月结计费
+	// hour：小时结计费
 		BillingCycle *string `json:"BillingCycle,omitempty" name:"BillingCycle"`
 
 		// monthMax：日峰值月平均，月结模式
@@ -3812,6 +3815,8 @@ type DescribePayTypeResponse struct {
 	// flux：流量计费
 	// bandwidth：带宽计费
 	// request：请求数计费
+	// flux_sep：动静分离流量计费
+	// bandwidth_sep：动静分离带宽计费
 		CurrentPayType *string `json:"CurrentPayType,omitempty" name:"CurrentPayType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

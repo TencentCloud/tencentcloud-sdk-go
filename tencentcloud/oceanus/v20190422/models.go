@@ -67,6 +67,9 @@ type CreateJobConfigRequest struct {
 
 	// 日志采集类型 2：CLS；3：COS
 	LogCollectType *int64 `json:"LogCollectType,omitempty" name:"LogCollectType"`
+
+	// pyflink作业运行时使用的python版本
+	PythonVersion *string `json:"PythonVersion,omitempty" name:"PythonVersion"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -96,6 +99,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "ClsLogsetId")
 	delete(f, "ClsTopicId")
 	delete(f, "LogCollectType")
+	delete(f, "PythonVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -977,6 +981,10 @@ type JobConfig struct {
 	// CLS日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+
+	// pyflink作业运行的python版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PythonVersion *string `json:"PythonVersion,omitempty" name:"PythonVersion"`
 }
 
 type JobV1 struct {

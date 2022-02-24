@@ -4542,6 +4542,116 @@ func (c *Client) CreateVpnGatewayRoutesWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateVpnGatewaySslClientRequest() (request *CreateVpnGatewaySslClientRequest) {
+    request = &CreateVpnGatewaySslClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewaySslClient")
+    
+    
+    return
+}
+
+func NewCreateVpnGatewaySslClientResponse() (response *CreateVpnGatewaySslClientResponse) {
+    response = &CreateVpnGatewaySslClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVpnGatewaySslClient
+// 创建SSL-VPN-CLIENT
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpnGatewaySslClient(request *CreateVpnGatewaySslClientRequest) (response *CreateVpnGatewaySslClientResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewaySslClientRequest()
+    }
+    
+    response = NewCreateVpnGatewaySslClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVpnGatewaySslClient
+// 创建SSL-VPN-CLIENT
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpnGatewaySslClientWithContext(ctx context.Context, request *CreateVpnGatewaySslClientRequest) (response *CreateVpnGatewaySslClientResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewaySslClientRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVpnGatewaySslClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateVpnGatewaySslServerRequest() (request *CreateVpnGatewaySslServerRequest) {
+    request = &CreateVpnGatewaySslServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewaySslServer")
+    
+    
+    return
+}
+
+func NewCreateVpnGatewaySslServerResponse() (response *CreateVpnGatewaySslServerResponse) {
+    response = &CreateVpnGatewaySslServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVpnGatewaySslServer
+// 创建 Server端
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpnGatewaySslServer(request *CreateVpnGatewaySslServerRequest) (response *CreateVpnGatewaySslServerResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewaySslServerRequest()
+    }
+    
+    response = NewCreateVpnGatewaySslServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateVpnGatewaySslServer
+// 创建 Server端
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpnGatewaySslServerWithContext(ctx context.Context, request *CreateVpnGatewaySslServerRequest) (response *CreateVpnGatewaySslServerResponse, err error) {
+    if request == nil {
+        request = NewCreateVpnGatewaySslServerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateVpnGatewaySslServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAddressTemplateRequest() (request *DeleteAddressTemplateRequest) {
     request = &DeleteAddressTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6464,6 +6574,112 @@ func (c *Client) DeleteVpnGatewayRoutesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteVpnGatewaySslClientRequest() (request *DeleteVpnGatewaySslClientRequest) {
+    request = &DeleteVpnGatewaySslClientRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewaySslClient")
+    
+    
+    return
+}
+
+func NewDeleteVpnGatewaySslClientResponse() (response *DeleteVpnGatewaySslClientResponse) {
+    response = &DeleteVpnGatewaySslClientResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVpnGatewaySslClient
+// 删除SSL-VPN-CLIENT
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteVpnGatewaySslClient(request *DeleteVpnGatewaySslClientRequest) (response *DeleteVpnGatewaySslClientResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewaySslClientRequest()
+    }
+    
+    response = NewDeleteVpnGatewaySslClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteVpnGatewaySslClient
+// 删除SSL-VPN-CLIENT
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteVpnGatewaySslClientWithContext(ctx context.Context, request *DeleteVpnGatewaySslClientRequest) (response *DeleteVpnGatewaySslClientResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewaySslClientRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteVpnGatewaySslClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpnGatewaySslServerRequest() (request *DeleteVpnGatewaySslServerRequest) {
+    request = &DeleteVpnGatewaySslServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewaySslServer")
+    
+    
+    return
+}
+
+func NewDeleteVpnGatewaySslServerResponse() (response *DeleteVpnGatewaySslServerResponse) {
+    response = &DeleteVpnGatewaySslServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVpnGatewaySslServer
+// 删除SSL-VPN-SERVER 实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteVpnGatewaySslServer(request *DeleteVpnGatewaySslServerRequest) (response *DeleteVpnGatewaySslServerResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewaySslServerRequest()
+    }
+    
+    response = NewDeleteVpnGatewaySslServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteVpnGatewaySslServer
+// 删除SSL-VPN-SERVER 实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteVpnGatewaySslServerWithContext(ctx context.Context, request *DeleteVpnGatewaySslServerRequest) (response *DeleteVpnGatewaySslServerResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpnGatewaySslServerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteVpnGatewaySslServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountAttributesRequest() (request *DescribeAccountAttributesRequest) {
     request = &DescribeAccountAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6485,9 +6701,9 @@ func NewDescribeAccountAttributesResponse() (response *DescribeAccountAttributes
 // 本接口（DescribeAccountAttributes）用于查询用户账号私有属性。
 //
 // 可能返回的错误码:
-//  INTERNALSERVERERROR = "InternalServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccountAttributes(request *DescribeAccountAttributesRequest) (response *DescribeAccountAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeAccountAttributesRequest()
@@ -6502,9 +6718,9 @@ func (c *Client) DescribeAccountAttributes(request *DescribeAccountAttributesReq
 // 本接口（DescribeAccountAttributes）用于查询用户账号私有属性。
 //
 // 可能返回的错误码:
-//  INTERNALSERVERERROR = "InternalServerError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, request *DescribeAccountAttributesRequest) (response *DescribeAccountAttributesResponse, err error) {
     if request == nil {
         request = NewDescribeAccountAttributesRequest()
@@ -10260,6 +10476,110 @@ func (c *Client) DescribeVpnGatewayRoutesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeVpnGatewaySslClientsRequest() (request *DescribeVpnGatewaySslClientsRequest) {
+    request = &DescribeVpnGatewaySslClientsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewaySslClients")
+    
+    
+    return
+}
+
+func NewDescribeVpnGatewaySslClientsResponse() (response *DescribeVpnGatewaySslClientsResponse) {
+    response = &DescribeVpnGatewaySslClientsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpnGatewaySslClients
+// 查询SSL-VPN-CLIENT 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpnGatewaySslClients(request *DescribeVpnGatewaySslClientsRequest) (response *DescribeVpnGatewaySslClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaySslClientsRequest()
+    }
+    
+    response = NewDescribeVpnGatewaySslClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVpnGatewaySslClients
+// 查询SSL-VPN-CLIENT 列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpnGatewaySslClientsWithContext(ctx context.Context, request *DescribeVpnGatewaySslClientsRequest) (response *DescribeVpnGatewaySslClientsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaySslClientsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpnGatewaySslClientsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpnGatewaySslServersRequest() (request *DescribeVpnGatewaySslServersRequest) {
+    request = &DescribeVpnGatewaySslServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewaySslServers")
+    
+    
+    return
+}
+
+func NewDescribeVpnGatewaySslServersResponse() (response *DescribeVpnGatewaySslServersResponse) {
+    response = &DescribeVpnGatewaySslServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpnGatewaySslServers
+// 查询SSL-VPN SERVER 列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVpnGatewaySslServers(request *DescribeVpnGatewaySslServersRequest) (response *DescribeVpnGatewaySslServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaySslServersRequest()
+    }
+    
+    response = NewDescribeVpnGatewaySslServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeVpnGatewaySslServers
+// 查询SSL-VPN SERVER 列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVpnGatewaySslServersWithContext(ctx context.Context, request *DescribeVpnGatewaySslServersRequest) (response *DescribeVpnGatewaySslServersResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpnGatewaySslServersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpnGatewaySslServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
     request = &DescribeVpnGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10662,6 +10982,56 @@ func (c *Client) DisableRoutesWithContext(ctx context.Context, request *DisableR
     request.SetContext(ctx)
     
     response = NewDisableRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableVpnGatewaySslClientCertRequest() (request *DisableVpnGatewaySslClientCertRequest) {
+    request = &DisableVpnGatewaySslClientCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisableVpnGatewaySslClientCert")
+    
+    
+    return
+}
+
+func NewDisableVpnGatewaySslClientCertResponse() (response *DisableVpnGatewaySslClientCertResponse) {
+    response = &DisableVpnGatewaySslClientCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableVpnGatewaySslClientCert
+// 禁用SSL-VPN-CLIENT 证书
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisableVpnGatewaySslClientCert(request *DisableVpnGatewaySslClientCertRequest) (response *DisableVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewDisableVpnGatewaySslClientCertRequest()
+    }
+    
+    response = NewDisableVpnGatewaySslClientCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DisableVpnGatewaySslClientCert
+// 禁用SSL-VPN-CLIENT 证书
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DisableVpnGatewaySslClientCertWithContext(ctx context.Context, request *DisableVpnGatewaySslClientCertRequest) (response *DisableVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewDisableVpnGatewaySslClientCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDisableVpnGatewaySslClientCertResponse()
     err = c.Send(request, response)
     return
 }
@@ -11140,6 +11510,56 @@ func (c *Client) DownloadCustomerGatewayConfigurationWithContext(ctx context.Con
     return
 }
 
+func NewDownloadVpnGatewaySslClientCertRequest() (request *DownloadVpnGatewaySslClientCertRequest) {
+    request = &DownloadVpnGatewaySslClientCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DownloadVpnGatewaySslClientCert")
+    
+    
+    return
+}
+
+func NewDownloadVpnGatewaySslClientCertResponse() (response *DownloadVpnGatewaySslClientCertResponse) {
+    response = &DownloadVpnGatewaySslClientCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadVpnGatewaySslClientCert
+// 下载SSL-VPN-CLIENT 客户端证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadVpnGatewaySslClientCert(request *DownloadVpnGatewaySslClientCertRequest) (response *DownloadVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewDownloadVpnGatewaySslClientCertRequest()
+    }
+    
+    response = NewDownloadVpnGatewaySslClientCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DownloadVpnGatewaySslClientCert
+// 下载SSL-VPN-CLIENT 客户端证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadVpnGatewaySslClientCertWithContext(ctx context.Context, request *DownloadVpnGatewaySslClientCertRequest) (response *DownloadVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewDownloadVpnGatewaySslClientCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDownloadVpnGatewaySslClientCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableCcnRoutesRequest() (request *EnableCcnRoutesRequest) {
     request = &EnableCcnRoutesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11370,6 +11790,56 @@ func (c *Client) EnableVpcEndPointConnectWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewEnableVpcEndPointConnectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableVpnGatewaySslClientCertRequest() (request *EnableVpnGatewaySslClientCertRequest) {
+    request = &EnableVpnGatewaySslClientCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "EnableVpnGatewaySslClientCert")
+    
+    
+    return
+}
+
+func NewEnableVpnGatewaySslClientCertResponse() (response *EnableVpnGatewaySslClientCertResponse) {
+    response = &EnableVpnGatewaySslClientCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableVpnGatewaySslClientCert
+// 启用SSL-VPN-CLIENT 证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableVpnGatewaySslClientCert(request *EnableVpnGatewaySslClientCertRequest) (response *EnableVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewEnableVpnGatewaySslClientCertRequest()
+    }
+    
+    response = NewEnableVpnGatewaySslClientCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// EnableVpnGatewaySslClientCert
+// 启用SSL-VPN-CLIENT 证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableVpnGatewaySslClientCertWithContext(ctx context.Context, request *EnableVpnGatewaySslClientCertRequest) (response *EnableVpnGatewaySslClientCertResponse, err error) {
+    if request == nil {
+        request = NewEnableVpnGatewaySslClientCertRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewEnableVpnGatewaySslClientCertResponse()
     err = c.Send(request, response)
     return
 }

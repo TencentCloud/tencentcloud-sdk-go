@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 云直播(live) 版本：2018-08-01
 
-### 第 27 次发布
+### 第 73 次发布
 
-发布时间：2022-02-23 08:01:52
+发布时间：2022-02-24 08:10:24
 
 本次发布包含了以下内容：
 
@@ -12,19 +12,22 @@
 
 新增接口：
 
-* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)
+* [CreateScreenshotTask](https://cloud.tencent.com/document/api/267/70281)
+* [DeleteScreenshotTask](https://cloud.tencent.com/document/api/267/70280)
+* [DescribeScreenshotTask](https://cloud.tencent.com/document/api/267/70279)
+* [StopScreenshotTask](https://cloud.tencent.com/document/api/267/70278)
 
 新增数据结构：
 
-* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
+* [ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask)
 
 
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 46 次发布
+### 第 15 次发布
 
-发布时间：2022-02-23 08:02:26
+发布时间：2022-02-24 08:11:34
 
 本次发布包含了以下内容：
 
@@ -32,60 +35,44 @@
 
 修改接口：
 
-* [ModifyDesiredCapacity](https://cloud.tencent.com/document/api/377/20432)
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
 
-	* 新增入参：MinSize, MaxSize
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 35 次发布
-
-发布时间：2022-02-23 08:06:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
-
-
-
-## 物联网边缘计算平台(iecp) 版本：2021-09-14
-
-### 第 3 次发布
-
-发布时间：2022-02-23 08:08:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateEdgeUnitApplicationYaml](https://cloud.tencent.com/document/api/1118/66785)
-
-	* <font color="#dd0000">**修改入参**：</font>BasicInfo
+	* 新增入参：PythonVersion
 
 
 修改数据结构：
 
-* [MarketComponentInfo](https://cloud.tencent.com/document/api/1118/66797#MarketComponentInfo)
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
 
-	* 新增成员：DetailUrl, Installed
-
-
+	* 新增成员：PythonVersion
 
 
-## 云监控(monitor) 版本：2018-07-24
 
-### 第 39 次发布
 
-发布时间：2022-02-23 08:10:23
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 69 次发布
+
+发布时间：2022-02-24 08:15:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
+
+	* 新增成员：OpenSessionAffinity, SessionAffinityTimeoutSeconds
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 106 次发布
+
+发布时间：2022-02-24 08:15:58
 
 本次发布包含了以下内容：
 
@@ -93,38 +80,20 @@
 
 新增接口：
 
-* [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)
+* [CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
+* [DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)
+* [DeleteVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70287)
+* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
+* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
+* [DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+* [EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)
 
 新增数据结构：
 
-* [Condition](https://cloud.tencent.com/document/api/248/30354#Condition)
-* [EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)
-* [PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)
-* [PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)
-* [TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)
-
-
-
-## 短信(sms) 版本：2021-01-11
-
-### 第 4 次发布
-
-发布时间：2022-02-23 08:11:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PullSmsSendStatus](https://cloud.tencent.com/document/api/382/52068#PullSmsSendStatus)
-
-	* 新增成员：SessionContext
-
-
-
-
-## 短信(sms) 版本：2019-07-11
+* [SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient)
+* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
 
 
 
@@ -537,11 +506,11 @@
 
 新增接口：
 
-* [[BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)](https://cloud.tencent.com/document/api/#/#)
+* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1155/70248)
 
 新增数据结构：
 
-* [[KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo))
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
 
 ### 第 26 次发布
 
@@ -24881,7 +24850,7 @@
 
 新增接口：
 
-* [[CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)](https://cloud.tencent.com/document/api/#/#)
+* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
 
 ### 第 34 次发布
 
@@ -39557,6 +39526,25 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 73 次发布
+
+发布时间：2022-02-24 08:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateScreenshotTask](https://cloud.tencent.com/document/api/267/70281)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteScreenshotTask](https://cloud.tencent.com/document/api/267/70280)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScreenshotTask](https://cloud.tencent.com/document/api/267/70279)](https://cloud.tencent.com/document/api/#/#)
+* [[StopScreenshotTask](https://cloud.tencent.com/document/api/267/70278)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask)](https://cloud.tencent.com/document/api/267/20474#[ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask))
+
 ### 第 72 次发布
 
 发布时间：2022-01-05 08:10:51
@@ -42570,15 +42558,15 @@
 
 新增接口：
 
-* [[DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)
 
 新增数据结构：
 
-* [[Condition](https://cloud.tencent.com/document/api/248/30354#Condition)](https://cloud.tencent.com/document/api/248/30354#[Condition](https://cloud.tencent.com/document/api/248/30354#Condition))
-* [[EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)](https://cloud.tencent.com/document/api/248/30354#[EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition))
-* [[PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)](https://cloud.tencent.com/document/api/248/30354#[PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup))
-* [[PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)](https://cloud.tencent.com/document/api/248/30354#[PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo))
-* [[TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)](https://cloud.tencent.com/document/api/248/30354#[TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup))
+* [Condition](https://cloud.tencent.com/document/api/248/30354#Condition)
+* [EventCondition](https://cloud.tencent.com/document/api/248/30354#EventCondition)
+* [PolicyGroup](https://cloud.tencent.com/document/api/248/30354#PolicyGroup)
+* [PolicyGroupReceiverInfo](https://cloud.tencent.com/document/api/248/30354#PolicyGroupReceiverInfo)
+* [TemplateGroup](https://cloud.tencent.com/document/api/248/30354#TemplateGroup)
 
 ### 第 38 次发布
 
@@ -45424,6 +45412,28 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 15 次发布
+
+发布时间：2022-02-24 08:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：PythonVersion
+
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：PythonVersion
+
 
 ### 第 14 次发布
 
@@ -63216,6 +63226,21 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 69 次发布
+
+发布时间：2022-02-24 08:15:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
+
+	* 新增成员：OpenSessionAffinity, SessionAffinityTimeoutSeconds
+
+
 ### 第 68 次发布
 
 发布时间：2022-01-20 08:16:32
@@ -68223,6 +68248,31 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 106 次发布
+
+发布时间：2022-02-24 08:15:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70287)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)](https://cloud.tencent.com/document/api/#/#)
+* [[DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient)](https://cloud.tencent.com/document/api/215/15824#[SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient))
+* [[SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)](https://cloud.tencent.com/document/api/215/15824#[SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever))
 
 ### 第 105 次发布
 

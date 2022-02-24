@@ -71,8 +71,9 @@ func NewAddAccountToAccountGroupResponse() (response *AddAccountToAccountGroupRe
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddAccountToAccountGroup(request *AddAccountToAccountGroupRequest) (response *AddAccountToAccountGroupResponse, err error) {
     if request == nil {
         request = NewAddAccountToAccountGroupRequest()
@@ -93,8 +94,9 @@ func (c *Client) AddAccountToAccountGroup(request *AddAccountToAccountGroupReque
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddAccountToAccountGroupWithContext(ctx context.Context, request *AddAccountToAccountGroupRequest) (response *AddAccountToAccountGroupResponse, err error) {
     if request == nil {
         request = NewAddAccountToAccountGroupRequest()
@@ -129,10 +131,10 @@ func NewAddUserToUserGroupResponse() (response *AddUserToUserGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDUSERSTOUSERGROUP = "FailedOperation.AddUsersToUserGroup"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = "FailedOperation.UserAlreadyExistedInUserGroup"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddUserToUserGroup(request *AddUserToUserGroupRequest) (response *AddUserToUserGroupResponse, err error) {
     if request == nil {
         request = NewAddUserToUserGroupRequest()
@@ -149,10 +151,10 @@ func (c *Client) AddUserToUserGroup(request *AddUserToUserGroupRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDUSERSTOUSERGROUP = "FailedOperation.AddUsersToUserGroup"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = "FailedOperation.UserAlreadyExistedInUserGroup"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddUserToUserGroupWithContext(ctx context.Context, request *AddUserToUserGroupRequest) (response *AddUserToUserGroupResponse, err error) {
     if request == nil {
         request = NewAddUserToUserGroupRequest()
@@ -187,8 +189,8 @@ func NewCreateAccountGroupResponse() (response *CreateAccountGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = "FailedOperation.AccountGroupNameExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAccountGroup(request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
     if request == nil {
         request = NewCreateAccountGroupRequest()
@@ -205,8 +207,8 @@ func (c *Client) CreateAccountGroup(request *CreateAccountGroupRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = "FailedOperation.AccountGroupNameExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAccountGroupWithContext(ctx context.Context, request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
     if request == nil {
         request = NewCreateAccountGroupRequest()
@@ -242,8 +244,8 @@ func NewCreateAppAccountResponse() (response *CreateAppAccountResponse) {
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAppAccount(request *CreateAppAccountRequest) (response *CreateAppAccountResponse, err error) {
     if request == nil {
         request = NewCreateAppAccountRequest()
@@ -261,8 +263,8 @@ func (c *Client) CreateAppAccount(request *CreateAppAccountRequest) (response *C
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAppAccountWithContext(ctx context.Context, request *CreateAppAccountRequest) (response *CreateAppAccountResponse, err error) {
     if request == nil {
         request = NewCreateAppAccountRequest()
@@ -295,14 +297,14 @@ func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
 // 新建一个机构节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
-//  FAILEDOPERATION_CREATEORGNODEFAILURE = "FailedOperation.CreateOrgNodeFailure"
-//  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_CHILDORGNODENAMEALREADYEXISTS = "FailedOperation.ChildOrgNodeNameAlreadyExists"
+//  FAILEDOPERATION_CREATEORGNODEERROR = "FailedOperation.CreateOrgNodeError"
+//  FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = "FailedOperation.CustomizeParentOrgNodeIdAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEDORGNODEIDCANNOTBEEMPTY = "FailedOperation.CustomizedOrgNodeIdCanNotBeEmpty"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
         request = NewCreateOrgNodeRequest()
@@ -317,14 +319,14 @@ func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateO
 // 新建一个机构节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
-//  FAILEDOPERATION_CREATEORGNODEFAILURE = "FailedOperation.CreateOrgNodeFailure"
-//  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_CHILDORGNODENAMEALREADYEXISTS = "FailedOperation.ChildOrgNodeNameAlreadyExists"
+//  FAILEDOPERATION_CREATEORGNODEERROR = "FailedOperation.CreateOrgNodeError"
+//  FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = "FailedOperation.CustomizeParentOrgNodeIdAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEDORGNODEIDCANNOTBEEMPTY = "FailedOperation.CustomizedOrgNodeIdCanNotBeEmpty"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateOrgNodeWithContext(ctx context.Context, request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
         request = NewCreateOrgNodeRequest()
@@ -358,19 +360,19 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
 //  FAILEDOPERATION_LIMITQUOTANOTENOUGH = "FailedOperation.LimitQuotaNotEnough"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_ORGNODESETTINGERROR = "FailedOperation.OrgNodeSettingError"
+//  FAILEDOPERATION_SECONDARYORGNODEDUPLICATES = "FailedOperation.SecondaryOrgNodeDuplicates"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
-//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
-//  FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
-//  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
-//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
+//  FAILEDOPERATION_USERNAMEALREADYEXISTS = "FailedOperation.UserNameAlreadyExists"
+//  FAILEDOPERATION_USERPHONEALREADYEXISTS = "FailedOperation.UserPhoneAlreadyExists"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = "InvalidParameter.AttributeValueValidError"
+//  INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = "InvalidParameter.UserExpirationTimeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
     if request == nil {
         request = NewCreateUserRequest()
@@ -386,19 +388,19 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
 //  FAILEDOPERATION_LIMITQUOTANOTENOUGH = "FailedOperation.LimitQuotaNotEnough"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_ORGNODESETTINGERROR = "FailedOperation.OrgNodeSettingError"
+//  FAILEDOPERATION_SECONDARYORGNODEDUPLICATES = "FailedOperation.SecondaryOrgNodeDuplicates"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
-//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
-//  FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
-//  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
-//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
+//  FAILEDOPERATION_USERNAMEALREADYEXISTS = "FailedOperation.UserNameAlreadyExists"
+//  FAILEDOPERATION_USERPHONEALREADYEXISTS = "FailedOperation.UserPhoneAlreadyExists"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = "InvalidParameter.AttributeValueValidError"
+//  INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = "InvalidParameter.UserExpirationTimeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
     if request == nil {
         request = NewCreateUserRequest()
@@ -432,8 +434,8 @@ func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERGROUPFAILURE = "FailedOperation.CreateUserGroupFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     if request == nil {
         request = NewCreateUserGroupRequest()
@@ -449,8 +451,8 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEUSERGROUPFAILURE = "FailedOperation.CreateUserGroupFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     if request == nil {
         request = NewCreateUserGroupRequest()
@@ -487,8 +489,8 @@ func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAccountGroupRequest()
@@ -507,8 +509,8 @@ func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (respons
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAccountGroupWithContext(ctx context.Context, request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
     if request == nil {
         request = NewDeleteAccountGroupRequest()
@@ -545,8 +547,8 @@ func NewDeleteAppAccountResponse() (response *DeleteAppAccountResponse) {
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAppAccount(request *DeleteAppAccountRequest) (response *DeleteAppAccountResponse, err error) {
     if request == nil {
         request = NewDeleteAppAccountRequest()
@@ -565,8 +567,8 @@ func (c *Client) DeleteAppAccount(request *DeleteAppAccountRequest) (response *D
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAppAccountWithContext(ctx context.Context, request *DeleteAppAccountRequest) (response *DeleteAppAccountResponse, err error) {
     if request == nil {
         request = NewDeleteAppAccountRequest()
@@ -601,12 +603,13 @@ func NewDeleteOrgNodeResponse() (response *DeleteOrgNodeResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
 //  FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = "FailedOperation.DefaultOrgNodeCanNotBeDeleted"
-//  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DELETEORGNODEERROR = "FailedOperation.DeleteOrgNodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCanNotBeDeleted"
 //  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCanNotBeDeleted"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteOrgNodeResponse, err error) {
     if request == nil {
         request = NewDeleteOrgNodeRequest()
@@ -623,12 +626,13 @@ func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteO
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
 //  FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = "FailedOperation.DefaultOrgNodeCanNotBeDeleted"
-//  FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DELETEORGNODEERROR = "FailedOperation.DeleteOrgNodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCanNotBeDeleted"
 //  FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCanNotBeDeleted"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteOrgNodeWithContext(ctx context.Context, request *DeleteOrgNodeRequest) (response *DeleteOrgNodeResponse, err error) {
     if request == nil {
         request = NewDeleteOrgNodeRequest()
@@ -663,10 +667,9 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
 //  FAILEDOPERATION_DELETEUSERFAILURE = "FailedOperation.DeleteUserFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
         request = NewDeleteUserRequest()
@@ -683,10 +686,9 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
 //  FAILEDOPERATION_DELETEUSERFAILURE = "FailedOperation.DeleteUserFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
         request = NewDeleteUserRequest()
@@ -721,8 +723,9 @@ func NewDeleteUserGroupResponse() (response *DeleteUserGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSERGROUPFAILURE = "FailedOperation.DeleteUserGroupFailure"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *DeleteUserGroupResponse, err error) {
     if request == nil {
         request = NewDeleteUserGroupRequest()
@@ -739,8 +742,9 @@ func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *Del
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSERGROUPFAILURE = "FailedOperation.DeleteUserGroupFailure"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUserGroupWithContext(ctx context.Context, request *DeleteUserGroupRequest) (response *DeleteUserGroupResponse, err error) {
     if request == nil {
         request = NewDeleteUserGroupRequest()
@@ -774,8 +778,8 @@ func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
     if request == nil {
         request = NewDeleteUsersRequest()
@@ -791,8 +795,8 @@ func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsers
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
     if request == nil {
         request = NewDeleteUsersRequest()
@@ -826,8 +830,8 @@ func NewDescribeAccountGroupResponse() (response *DescribeAccountGroupResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAccountGroup(request *DescribeAccountGroupRequest) (response *DescribeAccountGroupResponse, err error) {
     if request == nil {
         request = NewDescribeAccountGroupRequest()
@@ -843,8 +847,8 @@ func (c *Client) DescribeAccountGroup(request *DescribeAccountGroupRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAccountGroupWithContext(ctx context.Context, request *DescribeAccountGroupRequest) (response *DescribeAccountGroupResponse, err error) {
     if request == nil {
         request = NewDescribeAccountGroupRequest()
@@ -878,8 +882,9 @@ func NewDescribeAppAccountResponse() (response *DescribeAppAccountResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {
     if request == nil {
         request = NewDescribeAppAccountRequest()
@@ -895,8 +900,9 @@ func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAppAccountWithContext(ctx context.Context, request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {
     if request == nil {
         request = NewDescribeAppAccountRequest()
@@ -930,8 +936,8 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationRequest()
@@ -947,8 +953,8 @@ func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeApplicationWithContext(ctx context.Context, request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationRequest()
@@ -981,11 +987,11 @@ func NewDescribeOrgNodeResponse() (response *DescribeOrgNodeResponse) {
 // 根据机构节点ID读取机构节点信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEERROR = "FailedOperation.DescribeOrgNodeError"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *DescribeOrgNodeResponse, err error) {
     if request == nil {
         request = NewDescribeOrgNodeRequest()
@@ -1000,11 +1006,11 @@ func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *Des
 // 根据机构节点ID读取机构节点信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEERROR = "FailedOperation.DescribeOrgNodeError"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgNodeWithContext(ctx context.Context, request *DescribeOrgNodeRequest) (response *DescribeOrgNodeResponse, err error) {
     if request == nil {
         request = NewDescribeOrgNodeRequest()
@@ -1038,9 +1044,9 @@ func NewDescribeOrgResourcesAuthorizationResponse() (response *DescribeOrgResour
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgResourcesAuthorization(request *DescribeOrgResourcesAuthorizationRequest) (response *DescribeOrgResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeOrgResourcesAuthorizationRequest()
@@ -1056,9 +1062,9 @@ func (c *Client) DescribeOrgResourcesAuthorization(request *DescribeOrgResources
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgResourcesAuthorizationWithContext(ctx context.Context, request *DescribeOrgResourcesAuthorizationRequest) (response *DescribeOrgResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeOrgResourcesAuthorizationRequest()
@@ -1093,8 +1099,8 @@ func NewDescribePublicKeyResponse() (response *DescribePublicKeyResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
 //  FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribePublicKey(request *DescribePublicKeyRequest) (response *DescribePublicKeyResponse, err error) {
     if request == nil {
         request = NewDescribePublicKeyRequest()
@@ -1111,8 +1117,8 @@ func (c *Client) DescribePublicKey(request *DescribePublicKeyRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPIDISNULL = "FailedOperation.AppIdIsNull"
 //  FAILEDOPERATION_APPIDNOTFOUND = "FailedOperation.AppIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribePublicKeyWithContext(ctx context.Context, request *DescribePublicKeyRequest) (response *DescribePublicKeyResponse, err error) {
     if request == nil {
         request = NewDescribePublicKeyRequest()
@@ -1146,8 +1152,8 @@ func NewDescribeUserGroupResponse() (response *DescribeUserGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroup(request *DescribeUserGroupRequest) (response *DescribeUserGroupResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupRequest()
@@ -1163,8 +1169,8 @@ func (c *Client) DescribeUserGroup(request *DescribeUserGroupRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroupWithContext(ctx context.Context, request *DescribeUserGroupRequest) (response *DescribeUserGroupResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupRequest()
@@ -1199,8 +1205,8 @@ func NewDescribeUserGroupResourcesAuthorizationResponse() (response *DescribeUse
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroupResourcesAuthorization(request *DescribeUserGroupResourcesAuthorizationRequest) (response *DescribeUserGroupResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupResourcesAuthorizationRequest()
@@ -1217,8 +1223,8 @@ func (c *Client) DescribeUserGroupResourcesAuthorization(request *DescribeUserGr
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroupResourcesAuthorizationWithContext(ctx context.Context, request *DescribeUserGroupResourcesAuthorizationRequest) (response *DescribeUserGroupResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupResourcesAuthorizationRequest()
@@ -1251,11 +1257,11 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 // 通过用户名或用户 id 搜索用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
-//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
+//  INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()
@@ -1270,11 +1276,11 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 // 通过用户名或用户 id 搜索用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
-//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
+//  INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
 func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserInfoRequest()
@@ -1308,9 +1314,9 @@ func NewDescribeUserResourcesAuthorizationResponse() (response *DescribeUserReso
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourcesAuthorizationRequest) (response *DescribeUserResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeUserResourcesAuthorizationRequest()
@@ -1326,9 +1332,9 @@ func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourc
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserResourcesAuthorizationWithContext(ctx context.Context, request *DescribeUserResourcesAuthorizationRequest) (response *DescribeUserResourcesAuthorizationResponse, err error) {
     if request == nil {
         request = NewDescribeUserResourcesAuthorizationRequest()
@@ -1361,11 +1367,11 @@ func NewDescribeUserThirdPartyAccountInfoResponse() (response *DescribeUserThird
 // 通过用户名或用户 id 获取用户的第三方账号绑定信息。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
 //  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserThirdPartyAccountInfo(request *DescribeUserThirdPartyAccountInfoRequest) (response *DescribeUserThirdPartyAccountInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserThirdPartyAccountInfoRequest()
@@ -1380,11 +1386,11 @@ func (c *Client) DescribeUserThirdPartyAccountInfo(request *DescribeUserThirdPar
 // 通过用户名或用户 id 获取用户的第三方账号绑定信息。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
 //  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserThirdPartyAccountInfoWithContext(ctx context.Context, request *DescribeUserThirdPartyAccountInfoRequest) (response *DescribeUserThirdPartyAccountInfoResponse, err error) {
     if request == nil {
         request = NewDescribeUserThirdPartyAccountInfoRequest()
@@ -1419,8 +1425,8 @@ func NewListAccountInAccountGroupResponse() (response *ListAccountInAccountGroup
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAccountInAccountGroup(request *ListAccountInAccountGroupRequest) (response *ListAccountInAccountGroupResponse, err error) {
     if request == nil {
         request = NewListAccountInAccountGroupRequest()
@@ -1437,8 +1443,8 @@ func (c *Client) ListAccountInAccountGroup(request *ListAccountInAccountGroupReq
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAccountInAccountGroupWithContext(ctx context.Context, request *ListAccountInAccountGroupRequest) (response *ListAccountInAccountGroupResponse, err error) {
     if request == nil {
         request = NewListAccountInAccountGroupRequest()
@@ -1472,10 +1478,10 @@ func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthor
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()
@@ -1491,10 +1497,10 @@ func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthoriza
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplicationAuthorizationsWithContext(ctx context.Context, request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()
@@ -1527,10 +1533,10 @@ func NewListApplicationsResponse() (response *ListApplicationsResponse) {
 // 获取应用列表信息。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplications(request *ListApplicationsRequest) (response *ListApplicationsResponse, err error) {
     if request == nil {
         request = NewListApplicationsRequest()
@@ -1545,10 +1551,10 @@ func (c *Client) ListApplications(request *ListApplicationsRequest) (response *L
 // 获取应用列表信息。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplicationsWithContext(ctx context.Context, request *ListApplicationsRequest) (response *ListApplicationsResponse, err error) {
     if request == nil {
         request = NewListApplicationsRequest()
@@ -1581,9 +1587,10 @@ func NewListAuthorizedApplicationsToOrgNodeResponse() (response *ListAuthorizedA
 // 通过机构节点ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToOrgNode(request *ListAuthorizedApplicationsToOrgNodeRequest) (response *ListAuthorizedApplicationsToOrgNodeResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToOrgNodeRequest()
@@ -1598,9 +1605,10 @@ func (c *Client) ListAuthorizedApplicationsToOrgNode(request *ListAuthorizedAppl
 // 通过机构节点ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToOrgNodeWithContext(ctx context.Context, request *ListAuthorizedApplicationsToOrgNodeRequest) (response *ListAuthorizedApplicationsToOrgNodeResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToOrgNodeRequest()
@@ -1633,10 +1641,13 @@ func NewListAuthorizedApplicationsToUserResponse() (response *ListAuthorizedAppl
 // 通过用户ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
+//  FAILEDOPERATION_IDTOCODEERROR = "FailedOperation.IdToCodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_USERAUTHLISTERROR = "FailedOperation.UserAuthListError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplicationsToUserRequest) (response *ListAuthorizedApplicationsToUserResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToUserRequest()
@@ -1651,10 +1662,13 @@ func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplica
 // 通过用户ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
+//  FAILEDOPERATION_IDTOCODEERROR = "FailedOperation.IdToCodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  FAILEDOPERATION_USERAUTHLISTERROR = "FailedOperation.UserAuthListError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUserWithContext(ctx context.Context, request *ListAuthorizedApplicationsToUserRequest) (response *ListAuthorizedApplicationsToUserResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToUserRequest()
@@ -1687,9 +1701,11 @@ func NewListAuthorizedApplicationsToUserGroupResponse() (response *ListAuthorize
 // 通过用户组ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERGROUPNOTEXIST = "FailedOperation.UserGroupNotExist"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUserGroup(request *ListAuthorizedApplicationsToUserGroupRequest) (response *ListAuthorizedApplicationsToUserGroupResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToUserGroupRequest()
@@ -1704,9 +1720,11 @@ func (c *Client) ListAuthorizedApplicationsToUserGroup(request *ListAuthorizedAp
 // 通过用户组ID获得被授权访问的应用列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERGROUPNOTEXIST = "FailedOperation.UserGroupNotExist"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUserGroupWithContext(ctx context.Context, request *ListAuthorizedApplicationsToUserGroupRequest) (response *ListAuthorizedApplicationsToUserGroupResponse, err error) {
     if request == nil {
         request = NewListAuthorizedApplicationsToUserGroupRequest()
@@ -1739,10 +1757,8 @@ func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
 // 获取用户组列表信息（包含查询条件）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
     if request == nil {
         request = NewListUserGroupsRequest()
@@ -1757,10 +1773,8 @@ func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListU
 // 获取用户组列表信息（包含查询条件）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
     if request == nil {
         request = NewListUserGroupsRequest()
@@ -1793,12 +1807,11 @@ func NewListUserGroupsOfUserResponse() (response *ListUserGroupsOfUserResponse) 
 // 获取用户所在的用户组列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = "FailedOperation.ListUserGroupsOfUserFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
+//  FAILEDOPERATION_LISTUSERGROUPSOFUSERERROR = "FailedOperation.ListUserGroupsOfUserError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
     if request == nil {
         request = NewListUserGroupsOfUserRequest()
@@ -1813,12 +1826,11 @@ func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (res
 // 获取用户所在的用户组列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = "FailedOperation.ListUserGroupsOfUserFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
+//  FAILEDOPERATION_LISTUSERGROUPSOFUSERERROR = "FailedOperation.ListUserGroupsOfUserError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUserGroupsOfUserWithContext(ctx context.Context, request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
     if request == nil {
         request = NewListUserGroupsOfUserRequest()
@@ -1852,11 +1864,11 @@ func NewListUsersResponse() (response *ListUsersResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXPECTFIELDSNOTFOUND = "FailedOperation.ExpectFieldsNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
     if request == nil {
         request = NewListUsersRequest()
@@ -1872,11 +1884,11 @@ func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EXPECTFIELDSNOTFOUND = "FailedOperation.ExpectFieldsNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+//  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest) (response *ListUsersResponse, err error) {
     if request == nil {
         request = NewListUsersRequest()
@@ -1909,13 +1921,12 @@ func NewListUsersInOrgNodeResponse() (response *ListUsersInOrgNodeResponse) {
 // 根据机构节点ID读取节点下用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
-//  FAILEDOPERATION_LISTUSERSINORGNODEFAILURE = "FailedOperation.ListUsersInOrgNodeFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
+//  FAILEDOPERATION_LISTUSERSINORGNODEERROR = "FailedOperation.ListUsersInOrgNodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInOrgNode(request *ListUsersInOrgNodeRequest) (response *ListUsersInOrgNodeResponse, err error) {
     if request == nil {
         request = NewListUsersInOrgNodeRequest()
@@ -1930,13 +1941,12 @@ func (c *Client) ListUsersInOrgNode(request *ListUsersInOrgNodeRequest) (respons
 // 根据机构节点ID读取节点下用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
-//  FAILEDOPERATION_LISTUSERSINORGNODEFAILURE = "FailedOperation.ListUsersInOrgNodeFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
+//  FAILEDOPERATION_LISTUSERSINORGNODEERROR = "FailedOperation.ListUsersInOrgNodeError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInOrgNodeWithContext(ctx context.Context, request *ListUsersInOrgNodeRequest) (response *ListUsersInOrgNodeResponse, err error) {
     if request == nil {
         request = NewListUsersInOrgNodeRequest()
@@ -1970,9 +1980,10 @@ func NewListUsersInUserGroupResponse() (response *ListUsersInUserGroupResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_LISTUSERSINUSERGROUPFAILURE = "FailedOperation.ListUsersInUserGroupFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = "FailedOperation.ListUsersInUserGroupError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (response *ListUsersInUserGroupResponse, err error) {
     if request == nil {
         request = NewListUsersInUserGroupRequest()
@@ -1988,9 +1999,10 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_LISTUSERSINUSERGROUPFAILURE = "FailedOperation.ListUsersInUserGroupFailure"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = "FailedOperation.ListUsersInUserGroupError"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInUserGroupWithContext(ctx context.Context, request *ListUsersInUserGroupRequest) (response *ListUsersInUserGroupResponse, err error) {
     if request == nil {
         request = NewListUsersInUserGroupRequest()
@@ -2027,8 +2039,8 @@ func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
     if request == nil {
         request = NewModifyAccountGroupRequest()
@@ -2047,8 +2059,8 @@ func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (respons
 //  FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = "FailedOperation.AccountGroupNotExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAccountGroupWithContext(ctx context.Context, request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
     if request == nil {
         request = NewModifyAccountGroupRequest()
@@ -2084,8 +2096,8 @@ func NewModifyAppAccountResponse() (response *ModifyAppAccountResponse) {
 //  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAppAccount(request *ModifyAppAccountRequest) (response *ModifyAppAccountResponse, err error) {
     if request == nil {
         request = NewModifyAppAccountRequest()
@@ -2103,8 +2115,8 @@ func (c *Client) ModifyAppAccount(request *ModifyAppAccountRequest) (response *M
 //  FAILEDOPERATION_ACCOUNTNAMEEXISTED = "FailedOperation.AccountNameExisted"
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAppAccountWithContext(ctx context.Context, request *ModifyAppAccountRequest) (response *ModifyAppAccountResponse, err error) {
     if request == nil {
         request = NewModifyAppAccountRequest()
@@ -2138,9 +2150,9 @@ func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
     if request == nil {
         request = NewModifyApplicationRequest()
@@ -2156,9 +2168,9 @@ func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
     if request == nil {
         request = NewModifyApplicationRequest()
@@ -2191,29 +2203,31 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 // 通过用户名或用户 id 冻结用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEERROR = "FailedOperation.DescribeOrgNodeError"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
 //  FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = "FailedOperation.NewPasswordMustNotBlank"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
+//  FAILEDOPERATION_ORGNODESETTINGERROR = "FailedOperation.OrgNodeSettingError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_SECONDARYORGNODEDUPLICATES = "FailedOperation.SecondaryOrgNodeDuplicates"
 //  FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = "FailedOperation.UpdateLDAPUserOrgExceedsRange"
+//  FAILEDOPERATION_UPDATELDAPUSERORGNOTINSAMECROP = "FailedOperation.UpdateLDAPUserOrgNotInSameCrop"
 //  FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = "FailedOperation.UpdateUserExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
-//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
-//  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
+//  FAILEDOPERATION_USERPHONEALREADYEXISTS = "FailedOperation.UserPhoneAlreadyExists"
 //  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
-//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = "InvalidParameter.AttributeValueValidError"
+//  INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = "InvalidParameter.UserExpirationTimeIllegal"
 //  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
 //  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
+//  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
     if request == nil {
         request = NewModifyUserInfoRequest()
@@ -2228,29 +2242,31 @@ func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *Modif
 // 通过用户名或用户 id 冻结用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
-//  FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+//  FAILEDOPERATION_DESCRIBEORGNODEERROR = "FailedOperation.DescribeOrgNodeError"
+//  FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
 //  FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
 //  FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = "FailedOperation.NewPasswordMustNotBlank"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
+//  FAILEDOPERATION_ORGNODESETTINGERROR = "FailedOperation.OrgNodeSettingError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
-//  FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+//  FAILEDOPERATION_SECONDARYORGNODEDUPLICATES = "FailedOperation.SecondaryOrgNodeDuplicates"
 //  FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = "FailedOperation.UpdateLDAPUserOrgExceedsRange"
+//  FAILEDOPERATION_UPDATELDAPUSERORGNOTINSAMECROP = "FailedOperation.UpdateLDAPUserOrgNotInSameCrop"
 //  FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = "FailedOperation.UpdateUserExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = "FailedOperation.UpdateWeComUserOrgExceedsRange"
 //  FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = "FailedOperation.UpdateWeComUserOrgNotInSameCrop"
 //  FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
-//  FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
-//  FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
+//  FAILEDOPERATION_USERPHONEALREADYEXISTS = "FailedOperation.UserPhoneAlreadyExists"
 //  FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
-//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = "InvalidParameter.AttributeValueValidError"
+//  INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = "InvalidParameter.UserExpirationTimeIllegal"
 //  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
 //  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
+//  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) ModifyUserInfoWithContext(ctx context.Context, request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
     if request == nil {
         request = NewModifyUserInfoRequest()
@@ -2288,8 +2304,8 @@ func NewRemoveAccountFromAccountGroupResponse() (response *RemoveAccountFromAcco
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveAccountFromAccountGroup(request *RemoveAccountFromAccountGroupRequest) (response *RemoveAccountFromAccountGroupResponse, err error) {
     if request == nil {
         request = NewRemoveAccountFromAccountGroupRequest()
@@ -2309,8 +2325,8 @@ func (c *Client) RemoveAccountFromAccountGroup(request *RemoveAccountFromAccount
 //  FAILEDOPERATION_ACCOUNTNOTEXISTED = "FailedOperation.AccountNotExisted"
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveAccountFromAccountGroupWithContext(ctx context.Context, request *RemoveAccountFromAccountGroupRequest) (response *RemoveAccountFromAccountGroupResponse, err error) {
     if request == nil {
         request = NewRemoveAccountFromAccountGroupRequest()
@@ -2344,12 +2360,12 @@ func NewRemoveUserFromUserGroupResponse() (response *RemoveUserFromUserGroupResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPFAILURE = "FailedOperation.RemoveUsersFromUserGroupFailure"
-//  FAILEDOPERATION_USERGROUPNOTEXISTED = "FailedOperation.UserGroupNotExisted"
-//  FAILEDOPERATION_USERNOTEXISTEDINUSERGROUP = "FailedOperation.UserNotExistedInUserGroup"
+//  FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPERROR = "FailedOperation.RemoveUsersFromUserGroupError"
+//  FAILEDOPERATION_USERNOTEXISTINUSERGROUP = "FailedOperation.UserNotExistInUserGroup"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveUserFromUserGroup(request *RemoveUserFromUserGroupRequest) (response *RemoveUserFromUserGroupResponse, err error) {
     if request == nil {
         request = NewRemoveUserFromUserGroupRequest()
@@ -2365,12 +2381,12 @@ func (c *Client) RemoveUserFromUserGroup(request *RemoveUserFromUserGroupRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
-//  FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPFAILURE = "FailedOperation.RemoveUsersFromUserGroupFailure"
-//  FAILEDOPERATION_USERGROUPNOTEXISTED = "FailedOperation.UserGroupNotExisted"
-//  FAILEDOPERATION_USERNOTEXISTEDINUSERGROUP = "FailedOperation.UserNotExistedInUserGroup"
+//  FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPERROR = "FailedOperation.RemoveUsersFromUserGroupError"
+//  FAILEDOPERATION_USERNOTEXISTINUSERGROUP = "FailedOperation.UserNotExistInUserGroup"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveUserFromUserGroupWithContext(ctx context.Context, request *RemoveUserFromUserGroupRequest) (response *RemoveUserFromUserGroupResponse, err error) {
     if request == nil {
         request = NewRemoveUserFromUserGroupRequest()
@@ -2403,13 +2419,13 @@ func NewUpdateOrgNodeResponse() (response *UpdateOrgNodeResponse) {
 // 新建一个机构节点，
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
-//  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  FAILEDOPERATION_PARENTORGNODEISEMPTY = "FailedOperation.ParentOrgNodeIsEmpty"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_CHILDORGNODENAMEALREADYEXISTS = "FailedOperation.ChildOrgNodeNameAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = "FailedOperation.CustomizeParentOrgNodeIdAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEDORGNODEIDCANNOTBEEMPTY = "FailedOperation.CustomizedOrgNodeIdCanNotBeEmpty"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) UpdateOrgNode(request *UpdateOrgNodeRequest) (response *UpdateOrgNodeResponse, err error) {
     if request == nil {
         request = NewUpdateOrgNodeRequest()
@@ -2424,13 +2440,13 @@ func (c *Client) UpdateOrgNode(request *UpdateOrgNodeRequest) (response *UpdateO
 // 新建一个机构节点，
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
-//  FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
-//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
-//  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
-//  FAILEDOPERATION_PARENTORGNODEISEMPTY = "FailedOperation.ParentOrgNodeIsEmpty"
-//  INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
-//  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  FAILEDOPERATION_CHILDORGNODENAMEALREADYEXISTS = "FailedOperation.ChildOrgNodeNameAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = "FailedOperation.CustomizeParentOrgNodeIdAlreadyExists"
+//  FAILEDOPERATION_CUSTOMIZEDORGNODEIDCANNOTBEEMPTY = "FailedOperation.CustomizedOrgNodeIdCanNotBeEmpty"
+//  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) UpdateOrgNodeWithContext(ctx context.Context, request *UpdateOrgNodeRequest) (response *UpdateOrgNodeResponse, err error) {
     if request == nil {
         request = NewUpdateOrgNodeRequest()

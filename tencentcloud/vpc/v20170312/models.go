@@ -4334,6 +4334,140 @@ func (r *CreateVpnGatewayRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateVpnGatewaySslClientRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-SERVER 实例ID。
+	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
+
+	// name
+	SslVpnClientName *string `json:"SslVpnClientName,omitempty" name:"SslVpnClientName"`
+}
+
+func (r *CreateVpnGatewaySslClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpnGatewaySslClientRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnServerId")
+	delete(f, "SslVpnClientName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewaySslClientResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpnGatewaySslClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpnGatewaySslClientResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewaySslServerRequest struct {
+	*tchttp.BaseRequest
+
+	// VPN实例ID
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// SSL_VPN_SERVER 实例名
+	SslVpnServerName *string `json:"SslVpnServerName,omitempty" name:"SslVpnServerName"`
+
+	// 本端地址网段
+	LocalAddress []*string `json:"LocalAddress,omitempty" name:"LocalAddress"`
+
+	// 客户端地址网段
+	RemoteAddress *string `json:"RemoteAddress,omitempty" name:"RemoteAddress"`
+
+	// SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+	SslVpnProtocol *string `json:"SslVpnProtocol,omitempty" name:"SslVpnProtocol"`
+
+	// SSL VPN服务端监听协议端口。默认1194。
+	SslVpnPort *int64 `json:"SslVpnPort,omitempty" name:"SslVpnPort"`
+
+	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitempty" name:"IntegrityAlgorithm"`
+
+	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
+
+	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	Compress *bool `json:"Compress,omitempty" name:"Compress"`
+}
+
+func (r *CreateVpnGatewaySslServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpnGatewaySslServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpnGatewayId")
+	delete(f, "SslVpnServerName")
+	delete(f, "LocalAddress")
+	delete(f, "RemoteAddress")
+	delete(f, "SslVpnProtocol")
+	delete(f, "SslVpnPort")
+	delete(f, "IntegrityAlgorithm")
+	delete(f, "EncryptAlgorithm")
+	delete(f, "Compress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewaySslServerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建SSL-VPN server 异步任务ID
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateVpnGatewaySslServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpnGatewaySslServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CrossBorderCompliance struct {
 
 	// 服务商，可选值：`UNICOM`。
@@ -6094,6 +6228,104 @@ func (r *DeleteVpnGatewayRoutesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteVpnGatewayRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewaySslClientRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-CLIENT 实例ID。
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+}
+
+func (r *DeleteVpnGatewaySslClientRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpnGatewaySslClientRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpnGatewaySslClientRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewaySslClientResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpnGatewaySslClientResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpnGatewaySslClientResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewaySslServerRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-SERVER 实例ID。
+	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
+}
+
+func (r *DeleteVpnGatewaySslServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpnGatewaySslServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnServerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpnGatewaySslServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewaySslServerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务ID。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteVpnGatewaySslServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpnGatewaySslServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10348,6 +10580,144 @@ func (r *DescribeVpnGatewayRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVpnGatewaySslClientsRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件，参数不支持同时指定SslVpnClientIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+	// <li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpngwSslClient-123456。</li>
+	// <li>ssl-vpn-client-name - String - （过滤条件）SSL-VPN-CLIENT实例名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
+}
+
+func (r *DescribeVpnGatewaySslClientsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpnGatewaySslClientsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SslVpnClientIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpnGatewaySslClientsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaySslClientsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 符合条件的实例个数。
+		SslVpnClientSet []*SslVpnClient `json:"SslVpnClientSet,omitempty" name:"SslVpnClientSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnGatewaySslClientsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpnGatewaySslClientsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaySslServersRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
+	SslVpnServerIds []*string `json:"SslVpnServerIds,omitempty" name:"SslVpnServerIds"`
+
+	// 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
+	// <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeVpnGatewaySslServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpnGatewaySslServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SslVpnServerIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpnGatewaySslServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewaySslServersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// SSL-VPN-SERVER 实例详细信息列表。
+		SslVpnSeverSet []*SslVpnSever `json:"SslVpnSeverSet,omitempty" name:"SslVpnSeverSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVpnGatewaySslServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpnGatewaySslServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeVpnGatewaysRequest struct {
 	*tchttp.BaseRequest
 
@@ -10900,6 +11270,55 @@ func (r *DisableRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisableVpnGatewaySslClientCertRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-CLIENT 实例ID。
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+}
+
+func (r *DisableVpnGatewaySslClientCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableVpnGatewaySslClientCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableVpnGatewaySslClientCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务实例ID。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableVpnGatewaySslClientCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableVpnGatewaySslClientCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateAddressRequest struct {
 	*tchttp.BaseRequest
 
@@ -11314,6 +11733,55 @@ func (r *DownloadCustomerGatewayConfigurationResponse) FromJsonString(s string) 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadVpnGatewaySslClientCertRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-CLIENT 实例ID。
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+}
+
+func (r *DownloadVpnGatewaySslClientCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadVpnGatewaySslClientCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadVpnGatewaySslClientCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// SSL-VPN-CLIENT 证书配置
+		SslClientConfigsSet *string `json:"SslClientConfigsSet,omitempty" name:"SslClientConfigsSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadVpnGatewaySslClientCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadVpnGatewaySslClientCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EnableCcnRoutesRequest struct {
 	*tchttp.BaseRequest
 
@@ -11518,6 +11986,55 @@ func (r *EnableVpcEndPointConnectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnableVpcEndPointConnectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableVpnGatewaySslClientCertRequest struct {
+	*tchttp.BaseRequest
+
+	// SSL-VPN-CLIENT 实例ID。
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+}
+
+func (r *EnableVpnGatewaySslClientCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SslVpnClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableVpnGatewaySslClientCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableVpnGatewaySslClientCertResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 异步任务实例ID。
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *EnableVpnGatewaySslClientCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableVpnGatewaySslClientCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16935,6 +17452,103 @@ type SourceIpTranslationNatRule struct {
 	// NAT网关SNAT规则创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type SslVpnClient struct {
+
+	// VPC实例ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// SSL-VPN-SERVER 实例ID
+	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
+
+	// 证书状态. 
+	// 0:创建中
+	// 1:正常
+	// 2:已停用
+	// 3.已过期
+	// 4.创建出错
+	CertStatus *uint64 `json:"CertStatus,omitempty" name:"CertStatus"`
+
+	// SSL-VPN-CLIENT 实例ID
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// 证书开始时间
+	CertBeginTime *string `json:"CertBeginTime,omitempty" name:"CertBeginTime"`
+
+	// 证书到期时间
+	CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
+
+	// CLIENT NAME
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 创建CLIENT 状态。
+	// 0 创建中
+	// 1 创建出错
+	// 2 更新中
+	// 3 更新出错
+	// 4 销毁中
+	// 5 销毁出粗
+	// 6 已连通
+	// 7 未知
+	State *string `json:"State,omitempty" name:"State"`
+}
+
+type SslVpnSever struct {
+
+	// VPC实例ID.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// SSL-VPN-SERVER 实例ID。
+	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
+
+	// VPN 实例ID。
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+
+	// SSL-VPN-SERVER name。
+	SslVpnServerName *string `json:"SslVpnServerName,omitempty" name:"SslVpnServerName"`
+
+	// 本端地址段。
+	LocalAddress []*string `json:"LocalAddress,omitempty" name:"LocalAddress"`
+
+	// 客户端地址段。
+	RemoteAddress *string `json:"RemoteAddress,omitempty" name:"RemoteAddress"`
+
+	// 客户端最大连接数。
+	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
+
+	// SSL-VPN 网关公网IP。
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// SSL VPN服务端监听协议
+	SslVpnProtocol *string `json:"SslVpnProtocol,omitempty" name:"SslVpnProtocol"`
+
+	// SSL VPN服务端监听协议端口
+	SslVpnPort *uint64 `json:"SslVpnPort,omitempty" name:"SslVpnPort"`
+
+	// 加密算法。
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
+
+	// 认证算法。
+	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitempty" name:"IntegrityAlgorithm"`
+
+	// 是否支持压缩。
+	Compress *uint64 `json:"Compress,omitempty" name:"Compress"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// SSL-VPN-SERVER 创建状态。
+	// 0 创建中
+	// 1 创建出错
+	// 2 更新中
+	// 3 更新出错
+	// 4 销毁中
+	// 5 销毁出粗
+	// 6 已连通
+	// 7 未知
+	State *uint64 `json:"State,omitempty" name:"State"`
 }
 
 type Subnet struct {

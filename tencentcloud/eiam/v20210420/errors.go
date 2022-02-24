@@ -47,14 +47,14 @@ const (
 	// 应用不存在。
 	FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 
-	// 同一组织下不能存在相同名称的子组织机构。
-	FAILEDOPERATION_CHILDORGNODENAMEEXISTS = "FailedOperation.ChildOrgNodeNameExists"
+	// 同一组织下相同名称的子组织机构已存在。
+	FAILEDOPERATION_CHILDORGNODENAMEALREADYEXISTS = "FailedOperation.ChildOrgNodeNameAlreadyExists"
 
 	// 其子机构中存在用户的机构节点不能被删除。
 	FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted"
 
 	// 创建机构节点失败。
-	FAILEDOPERATION_CREATEORGNODEFAILURE = "FailedOperation.CreateOrgNodeFailure"
+	FAILEDOPERATION_CREATEORGNODEERROR = "FailedOperation.CreateOrgNodeError"
 
 	// 创建用户异常。
 	FAILEDOPERATION_CREATEUSERFAILURE = "FailedOperation.CreateUserFailure"
@@ -63,13 +63,16 @@ const (
 	FAILEDOPERATION_CREATEUSERGROUPFAILURE = "FailedOperation.CreateUserGroupFailure"
 
 	// 自定义机构节点对外ID已存在。
-	FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = "FailedOperation.CustomizedParentOrgNodeIdExisted"
+	FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = "FailedOperation.CustomizeParentOrgNodeIdAlreadyExists"
+
+	// 自定义机构节点对外ID不可填为空字符。
+	FAILEDOPERATION_CUSTOMIZEDORGNODEIDCANNOTBEEMPTY = "FailedOperation.CustomizedOrgNodeIdCanNotBeEmpty"
 
 	// 默认导入机构不能被删除。
 	FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = "FailedOperation.DefaultOrgNodeCanNotBeDeleted"
 
 	// 删除机构节点失败。
-	FAILEDOPERATION_DELETEORGNODEFAILURE = "FailedOperation.DeleteOrgNodeFailure"
+	FAILEDOPERATION_DELETEORGNODEERROR = "FailedOperation.DeleteOrgNodeError"
 
 	// 用户为管理员，不能删除。
 	FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = "FailedOperation.DeleteUserExistsAdministrator"
@@ -80,11 +83,11 @@ const (
 	// 删除用户组异常。
 	FAILEDOPERATION_DELETEUSERGROUPFAILURE = "FailedOperation.DeleteUserGroupFailure"
 
-	// 读取机构节点信息异常。
-	FAILEDOPERATION_DESCRIBEORGNODEFAILURE = "FailedOperation.DescribeOrgNodeFailure"
+	// 读取机构节点信息失败。
+	FAILEDOPERATION_DESCRIBEORGNODEERROR = "FailedOperation.DescribeOrgNodeError"
 
-	// 读取根机构节点信息异常。
-	FAILEDOPERATION_DESCRIBEORGNODEROOTFAILURE = "FailedOperation.DescribeOrgNodeRootFailure"
+	// 读取根机构节点信息失败。
+	FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = "FailedOperation.DescribeOrgNodeRootError"
 
 	// EntityType取值不合法。
 	FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
@@ -95,20 +98,23 @@ const (
 	// 用户组ID未找到。
 	FAILEDOPERATION_GROUPIDNOTFOUND = "FailedOperation.GroupIdNotFound"
 
+	// ID转换编码失败。
+	FAILEDOPERATION_IDTOCODEERROR = "FailedOperation.IdToCodeError"
+
 	// 数据条目超过最大限制。
 	FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = "FailedOperation.ItemsExceedMaxNumber"
 
 	// 同一个应用，相同的用户不能添加超过 %s 个映射关系。
 	FAILEDOPERATION_LIMITQUOTANOTENOUGH = "FailedOperation.LimitQuotaNotEnough"
 
-	// 获取用户所在的用户组列表异常。
-	FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = "FailedOperation.ListUserGroupsOfUserFailure"
+	// 获取用户所在的用户组列表失败。
+	FAILEDOPERATION_LISTUSERGROUPSOFUSERERROR = "FailedOperation.ListUserGroupsOfUserError"
 
-	// 读取节点下用户异常。
-	FAILEDOPERATION_LISTUSERSINORGNODEFAILURE = "FailedOperation.ListUsersInOrgNodeFailure"
+	// 读取节点下用户失败。
+	FAILEDOPERATION_LISTUSERSINORGNODEERROR = "FailedOperation.ListUsersInOrgNodeError"
 
-	// 获取用户组中的用户列表异常。
-	FAILEDOPERATION_LISTUSERSINUSERGROUPFAILURE = "FailedOperation.ListUsersInUserGroupFailure"
+	// 获取用户组中的用户列表失败。
+	FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = "FailedOperation.ListUsersInUserGroupError"
 
 	// 主组织机构不存在。
 	FAILEDOPERATION_MAINORGNODENOTEXIST = "FailedOperation.MainOrgNodeNotExist"
@@ -117,7 +123,7 @@ const (
 	FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = "FailedOperation.NewPasswordMustNotBlank"
 
 	// 操作失败。
-	FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+	FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 
 	// 机构节点ID不存在。
 	FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
@@ -128,32 +134,29 @@ const (
 	// 机构根节点不能被删除。
 	FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = "FailedOperation.OrgNodeRootCanNotBeDeleted"
 
+	// 组织机构设置失败，组织机构不可同时被选择为用户所属的主组织和次要机构。
+	FAILEDOPERATION_ORGNODESETTINGERROR = "FailedOperation.OrgNodeSettingError"
+
 	// 有用户存在的机构节点不能被删除。
 	FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = "FailedOperation.OrgNodeWithUsersCanNotBeDeleted"
 
 	// 父机构节点ID未找到。
 	FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 
-	// 父机构节点ID为空。
-	FAILEDOPERATION_PARENTORGNODEISEMPTY = "FailedOperation.ParentOrgNodeIsEmpty"
-
 	// 身份主体未找到。
 	FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 
-	// 从用户组中移除用户异常。
-	FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPFAILURE = "FailedOperation.RemoveUsersFromUserGroupFailure"
+	// 从用户组中移除用户失败。
+	FAILEDOPERATION_REMOVEUSERSFROMUSERGROUPERROR = "FailedOperation.RemoveUsersFromUserGroupError"
 
-	// 列表搜索条件不合法。
-	FAILEDOPERATION_SEARCHCRITERIAISILLEGAL = "FailedOperation.SearchCriteriaIsIllegal"
-
-	// 用户的次要机构数量超过上限。
-	FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = "FailedOperation.SecondaryNodeNumberOverLimit"
-
-	// 设定的时间格式不合法。
-	FAILEDOPERATION_TIMEFORMATISILLEGAL = "FailedOperation.TimeFormatIsIllegal"
+	// 次要机构元素重复。
+	FAILEDOPERATION_SECONDARYORGNODEDUPLICATES = "FailedOperation.SecondaryOrgNodeDuplicates"
 
 	// 不能变更LDAP导入的用户到目录外的组织机构下。
 	FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = "FailedOperation.UpdateLDAPUserOrgExceedsRange"
+
+	// 不能变更LDAP导入的用户到其他目录的企业机构下。
+	FAILEDOPERATION_UPDATELDAPUSERORGNOTINSAMECROP = "FailedOperation.UpdateLDAPUserOrgNotInSameCrop"
 
 	// 不能变更自建用户到有同步操作类型的组织机构下。
 	FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = "FailedOperation.UpdateUserExceedsRange"
@@ -173,29 +176,20 @@ const (
 	// 用户邮箱已存在。
 	FAILEDOPERATION_USEREMAILEXISTED = "FailedOperation.UserEmailExisted"
 
-	// 设定的时间格式不合法。
-	FAILEDOPERATION_USEREXPRIATIONTIMEISILLEGAL = "FailedOperation.UserExpriationTimeIsIllegal"
-
 	// 用户组不存在。
 	FAILEDOPERATION_USERGROUPNOTEXIST = "FailedOperation.UserGroupNotExist"
 
-	// 用户组不存在。
-	FAILEDOPERATION_USERGROUPNOTEXISTED = "FailedOperation.UserGroupNotExisted"
-
-	// 用户信息分页展示的排列属性不合法。
-	FAILEDOPERATION_USERINFOSORTKEYISILLEGAL = "FailedOperation.UserInfoSortKeyIsIllegal"
-
 	// 用户名字已存在。
-	FAILEDOPERATION_USERNAMEEXISTED = "FailedOperation.UserNameExisted"
+	FAILEDOPERATION_USERNAMEALREADYEXISTS = "FailedOperation.UserNameAlreadyExists"
 
 	// 用户不存在于该用户组。
-	FAILEDOPERATION_USERNOTEXISTEDINUSERGROUP = "FailedOperation.UserNotExistedInUserGroup"
+	FAILEDOPERATION_USERNOTEXISTINUSERGROUP = "FailedOperation.UserNotExistInUserGroup"
 
 	// 用户不存在。
 	FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 
 	// 用户手机已存在。
-	FAILEDOPERATION_USERPHONEEXISTED = "FailedOperation.UserPhoneExisted"
+	FAILEDOPERATION_USERPHONEALREADYEXISTS = "FailedOperation.UserPhoneAlreadyExists"
 
 	// 用户手机不能为空。
 	FAILEDOPERATION_USERPHONEISEMPTY = "FailedOperation.UserPhoneIsEmpty"
@@ -203,11 +197,11 @@ const (
 	// 应用名称已存在。
 	INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
 
-	// 校验失败：
-	INVALIDPARAMETER_ATTRIBUTEVALUEVALIDFAILURE = "InvalidParameter.AttributeValueValidFailure"
+	// 属性校验失败。
+	INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = "InvalidParameter.AttributeValueValidError"
 
-	// 输入参数超出长度限制。
-	INVALIDPARAMETER_PARAMETEREXCEEDSLENGTHLIMIT = "InvalidParameter.ParameterExceedsLengthLimit"
+	// 组织机构代码不合法。
+	INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
 
 	// 参数不合法。
 	INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
@@ -215,12 +209,36 @@ const (
 	// 参数不合法。
 	INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 
-	// 输入密码不合法。
-	INVALIDPARAMETER_PASSWORDISILLEGAL = "InvalidParameter.PasswordIsIllegal"
+	// 列表搜索条件不合法。
+	INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+
+	// 时间格式不合法。
+	INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
+
+	// 设定的用户过期时间不合法。
+	INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = "InvalidParameter.UserExpirationTimeIllegal"
 
 	// 用户ID参数为空。
 	INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
 
+	// 用户信息分页展示的排列属性不合法。
+	INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
+
 	// 用户名参数为空。
 	INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
+
+	// 参数不合法。
+	INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+
+	// 用户ID不能为空。
+	INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
+
+	// 用户名不能为空。
+	INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
+
+	// 输入参数超出长度限制。
+	LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
+
+	// 用户的次要机构超出数量上限。
+	LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 )

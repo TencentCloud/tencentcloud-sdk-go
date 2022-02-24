@@ -12846,6 +12846,14 @@ type ServiceSetting struct {
 	// 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowDeleteService *bool `json:"AllowDeleteService,omitempty" name:"AllowDeleteService"`
+
+	// 开启SessionAffinity，true为开启，false为不开启，默认为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenSessionAffinity *bool `json:"OpenSessionAffinity,omitempty" name:"OpenSessionAffinity"`
+
+	// SessionAffinity会话时间，默认10800
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionAffinityTimeoutSeconds *int64 `json:"SessionAffinityTimeoutSeconds,omitempty" name:"SessionAffinityTimeoutSeconds"`
 }
 
 type ShardArgument struct {
