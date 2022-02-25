@@ -559,6 +559,9 @@ type DescribeKTVMusicDetailResponse struct {
 		// 副歌片段数据列表
 		ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
 
+		// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+		PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1565,6 +1568,9 @@ type KTVMusicDetailInfo struct {
 
 	// 副歌片段数据列表
 	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
+
+	// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+	PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
 }
 
 type KTVMusicTopInfo struct {

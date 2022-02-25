@@ -20,6 +20,20 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type APM struct {
+
+	// 是否启用
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type AccessLogConfig struct {
 
 	// 是否启用
@@ -378,7 +392,7 @@ type IstioConfig struct {
 	// 外部流量策略
 	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" name:"OutboundTrafficPolicy"`
 
-	// 调用链配置
+	// 调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
 	Tracing *TracingConfig `json:"Tracing,omitempty" name:"Tracing"`
 
 	// 禁用策略检查功能
@@ -645,6 +659,12 @@ type TracingConfig struct {
 
 	// 调用链采样率，百分比
 	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+
+	// 是否启用调用跟踪
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 腾讯云 APM 服务相关参数
+	APM *APM `json:"APM,omitempty" name:"APM"`
 }
 
 type WorkloadConfig struct {

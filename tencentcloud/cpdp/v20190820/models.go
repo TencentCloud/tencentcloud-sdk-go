@@ -7685,6 +7685,15 @@ type OrganizationInfo struct {
 	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
 }
 
+type Paging struct {
+
+	// 页码
+	Index *int64 `json:"Index,omitempty" name:"Index"`
+
+	// 页长
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type PayDataResult struct {
 
 	// 支付标签（唯一性）
@@ -9829,6 +9838,104 @@ func (r *QueryDownloadBillURLResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryDownloadBillURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExceedingInfoData struct {
+
+	// 代理商ID。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 主播ID。当入参Dimension为ANCHOR或ORDER时，该字段才会有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnchorId *string `json:"AnchorId,omitempty" name:"AnchorId"`
+
+	// 主播名称。当入参Dimension为ANCHOR或ORDER时，该字段才会有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnchorName *string `json:"AnchorName,omitempty" name:"AnchorName"`
+
+	// 订单号。当入参Dimension为ORDER时，该字段才会有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 超额类型。目前支持 AGENT_EXCEED_100 和 ANCHOR_EXCEED_100_12 两种类型。
+	ExceedingType *string `json:"ExceedingType,omitempty" name:"ExceedingType"`
+}
+
+type QueryExceedingInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 超额日期。格式为yyyy-MM-dd。
+	TimeStr *string `json:"TimeStr,omitempty" name:"TimeStr"`
+
+	// 维度。目前支持三个维度: AGENT, ANCHOR, ORDER。不填默认使用AGENT维度。
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+
+	// 分页信息。不填默认Index为1，Count为100。
+	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryExceedingInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExceedingInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimeStr")
+	delete(f, "Dimension")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryExceedingInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExceedingInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 超额信息结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryExceedingInfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryExceedingInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExceedingInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExceedingInfoResult struct {
+
+	// 记录总数。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 超额信息数据。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*QueryExceedingInfoData `json:"Data,omitempty" name:"Data"`
 }
 
 type QueryExchangeRateRequest struct {

@@ -300,7 +300,7 @@ func NewCreateConsumerResponse() (response *CreateConsumerResponse) {
 }
 
 // CreateConsumer
-// 创建消费者
+// 创建消费者组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -319,7 +319,7 @@ func (c *Client) CreateConsumer(request *CreateConsumerRequest) (response *Creat
 }
 
 // CreateConsumer
-// 创建消费者
+// 创建消费者组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

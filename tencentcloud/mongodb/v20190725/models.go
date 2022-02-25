@@ -26,7 +26,7 @@ type AssignProjectRequest struct {
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 项目ID
+	// 项目ID，用户已创建项目的唯一ID,非自定义
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -107,6 +107,13 @@ type BackupDownloadTask struct {
 
 	// 备份数据下载链接
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 备份文件备份类型，0-逻辑备份，1-物理备份
+	BackupMethod *int64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// 发起备份时指定的备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupDesc *string `json:"BackupDesc,omitempty" name:"BackupDesc"`
 }
 
 type BackupDownloadTaskStatus struct {
@@ -755,10 +762,10 @@ type DescribeBackupDownloadTaskRequest struct {
 	// 备份文件名，用来过滤指定文件的下载任务
 	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 
-	// 指定要查询任务的时间范围，StartTime指定开始时间，不填默认不限制开始时间
+	// 指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 指定要查询任务的时间范围，EndTime指定结束时间，不填默认不限制结束时间
+	// 指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 此次查询返回的条数，取值范围为1-100，默认为20
@@ -836,7 +843,7 @@ type DescribeClientConnectionsRequest struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 查询返回记录条数，默认为10000。
+	// 单次请求返回的数量，最小值为1，最大值为1000，默认值为1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，默认值为0。
@@ -1569,7 +1576,7 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// 实例所属区域名称，格式如：ap-guangzhou-2
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 每个副本集内节点个数，当前副本集节点数固定为3，分片从节点数可选，具体参照查询云数据库的售卖规格返回参数
+	// 每个副本集内节点个数，具体参照查询云数据库的售卖规格返回参数
 	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
 	// 实例内存大小，单位：GB
@@ -1581,7 +1588,7 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本
 	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
-	// 机器类型，HIO：高IO型；HIO10G：高IO万兆型；STDS5：标准型
+	// 机器类型，HIO：高IO型；HIO10G：高IO万兆型；
 	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
 
 	// 实例数量, 最小值1，最大值为10
@@ -1659,6 +1666,12 @@ type InquirePriceModifyDBInstanceSpecRequest struct {
 
 	// 变更配置后实例磁盘大小，单位：GB。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+
+	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	ReplicateSetNum *int64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 }
 
 func (r *InquirePriceModifyDBInstanceSpecRequest) ToJsonString() string {
@@ -1676,6 +1689,8 @@ func (r *InquirePriceModifyDBInstanceSpecRequest) FromJsonString(s string) error
 	delete(f, "InstanceId")
 	delete(f, "Memory")
 	delete(f, "Volume")
+	delete(f, "NodeNum")
+	delete(f, "ReplicateSetNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceModifyDBInstanceSpecRequest has unknown keys!", "")
 	}
@@ -1902,7 +1917,7 @@ type InstanceEnumParam struct {
 	// 枚举值，所有支持的值
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
-	// 是否需要重启后生效，"1"需要，"0"无需重启
+	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
 	// 参数名称
@@ -1914,7 +1929,7 @@ type InstanceEnumParam struct {
 	// 参数值类型说明
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 是否获取到参数，1为获取，前端正常显示，0:前段显示loading
+	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -1932,7 +1947,7 @@ type InstanceIntegerParam struct {
 	// 最小值
 	Min *string `json:"Min,omitempty" name:"Min"`
 
-	// 是否徐亚哦重启后生效 1:需要重启；0:无需重启
+	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
 	// 参数名称
@@ -1944,10 +1959,10 @@ type InstanceIntegerParam struct {
 	// 参数类型
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 是否正常获取到，1：未正常获取；0：正常获取，仅对前端有实际意义；
+	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 暂时未用到，前端使用redis侧代码，为了兼容，保留该参数
+	// 冗余字段，可忽略
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 }
 
@@ -1962,46 +1977,46 @@ type InstanceMultiParam struct {
 	// 指导值范围
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
+	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
+	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 参数说明
+	Tips []*string `json:"Tips,omitempty" name:"Tips"`
+
+	// 当前值的类型描述，默认为multi
+	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
+}
+
+type InstanceTextParam struct {
+
+	// 当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
 	// 是否需要重启
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
 	// 参数名称
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 状态值
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	// text类型值
+	TextValue *string `json:"TextValue,omitempty" name:"TextValue"`
 
 	// 参数说明
 	Tips []*string `json:"Tips,omitempty" name:"Tips"`
 
-	// 值类型，multi混合类型
-	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
-}
-
-type InstanceTextParam struct {
-
-	// 当前值(暂未使用)
-	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
-
-	// 默认值(暂未使用)
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
-
-	// 是否需要重启(暂未使用)
-	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
-
-	// 参数名称(暂未使用)
-	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
-
-	// text类型值(暂未使用)
-	TextValue *string `json:"TextValue,omitempty" name:"TextValue"`
-
-	// 说明(暂未使用)
-	Tips []*string `json:"Tips,omitempty" name:"Tips"`
-
-	// 值类型(暂未使用)
+	// 值类型说明
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 值获取状态(暂未使用)
+	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -2244,7 +2259,7 @@ type RenameInstanceRequest struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// 自定义实例名称，名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符 -
 	NewName *string `json:"NewName,omitempty" name:"NewName"`
 }
 
@@ -2353,7 +2368,7 @@ type ResetDBInstancePasswordRequest struct {
 	// 实例账号名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 新密码
+	// 新密码，新密码长度不能少于8位
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 

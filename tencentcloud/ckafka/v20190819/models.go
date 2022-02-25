@@ -612,7 +612,7 @@ type CreateConsumerRequest struct {
 	// group名称
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// topic名称
+	// topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// topic名称数组
@@ -3118,7 +3118,7 @@ type InstanceDetail struct {
 	// 实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 实例状态 int：0表示健康，1表示告警，2 表示实例状态异常
+	// 实例状态 int：1表示健康，2表示告警，3 表示实例状态异常
 	Healthy *int64 `json:"Healthy,omitempty" name:"Healthy"`
 
 	// 实例状态信息

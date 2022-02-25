@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云直播(live) 版本：2018-08-01
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 73 次发布
+### 第 28 次发布
 
-发布时间：2022-02-24 08:10:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateScreenshotTask](https://cloud.tencent.com/document/api/267/70281)
-* [DeleteScreenshotTask](https://cloud.tencent.com/document/api/267/70280)
-* [DescribeScreenshotTask](https://cloud.tencent.com/document/api/267/70279)
-* [StopScreenshotTask](https://cloud.tencent.com/document/api/267/70278)
-
-新增数据结构：
-
-* [ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask)
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 15 次发布
-
-发布时间：2022-02-24 08:11:34
+发布时间：2022-02-25 08:03:09
 
 本次发布包含了以下内容：
 
@@ -35,44 +12,25 @@
 
 修改接口：
 
-* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
 
-	* 新增入参：PythonVersion
+	* 新增出参：PreludeInterval
 
 
 修改数据结构：
 
-* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
 
-	* 新增成员：PythonVersion
-
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 69 次发布
-
-发布时间：2022-02-24 08:15:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ServiceSetting](https://cloud.tencent.com/document/api/649/36099#ServiceSetting)
-
-	* 新增成员：OpenSessionAffinity, SessionAffinityTimeoutSeconds
+	* 新增成员：PreludeInterval
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 106 次发布
+### 第 55 次发布
 
-发布时间：2022-02-24 08:15:58
+发布时间：2022-02-25 08:06:26
 
 本次发布包含了以下内容：
 
@@ -80,20 +38,66 @@
 
 新增接口：
 
-* [CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)
-* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
-* [DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)
-* [DeleteVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70287)
-* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
-* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
-* [DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)
-* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
-* [EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)
+* [QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)
 
 新增数据结构：
 
-* [SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient)
-* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
+* [Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)
+* [QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)
+* [QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 18 次发布
+
+发布时间：2022-02-25 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
+
+	* 新增入参：NodeNum, ReplicateSetNum
+
+
+修改数据结构：
+
+* [BackupDownloadTask](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTask)
+
+	* 新增成员：BackupMethod, BackupDesc
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 5 次发布
+
+发布时间：2022-02-25 08:14:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [APM](https://cloud.tencent.com/document/api/1261/63843#APM)
+
+修改数据结构：
+
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+
+	* 新增成员：Enable, APM
+
 
 
 
@@ -495,6 +499,28 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 28 次发布
+
+发布时间：2022-02-25 08:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
+
+	* 新增出参：PreludeInterval
+
+
+修改数据结构：
+
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
+
+	* 新增成员：PreludeInterval
+
 
 ### 第 27 次发布
 
@@ -18607,6 +18633,24 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 55 次发布
+
+发布时间：2022-02-25 08:06:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)](https://cloud.tencent.com/document/api/1122/40683#[Paging](https://cloud.tencent.com/document/api/1122/40683#Paging))
+* [[QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)](https://cloud.tencent.com/document/api/1122/40683#[QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData))
+* [[QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult))
 
 ### 第 54 次发布
 
@@ -39536,14 +39580,14 @@
 
 新增接口：
 
-* [[CreateScreenshotTask](https://cloud.tencent.com/document/api/267/70281)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteScreenshotTask](https://cloud.tencent.com/document/api/267/70280)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeScreenshotTask](https://cloud.tencent.com/document/api/267/70279)](https://cloud.tencent.com/document/api/#/#)
-* [[StopScreenshotTask](https://cloud.tencent.com/document/api/267/70278)](https://cloud.tencent.com/document/api/#/#)
+* [CreateScreenshotTask](https://cloud.tencent.com/document/api/267/70281)
+* [DeleteScreenshotTask](https://cloud.tencent.com/document/api/267/70280)
+* [DescribeScreenshotTask](https://cloud.tencent.com/document/api/267/70279)
+* [StopScreenshotTask](https://cloud.tencent.com/document/api/267/70278)
 
 新增数据结构：
 
-* [[ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask)](https://cloud.tencent.com/document/api/267/20474#[ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask))
+* [ScreenshotTask](https://cloud.tencent.com/document/api/267/20474#ScreenshotTask)
 
 ### 第 72 次发布
 
@@ -42221,6 +42265,28 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 18 次发布
+
+发布时间：2022-02-25 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
+
+	* 新增入参：NodeNum, ReplicateSetNum
+
+
+修改数据结构：
+
+* [BackupDownloadTask](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTask)
+
+	* 新增成员：BackupMethod, BackupDesc
+
 
 ### 第 17 次发布
 
@@ -56146,6 +56212,25 @@
 
 ## 服务网格(tcm) 版本：2021-04-13
 
+### 第 5 次发布
+
+发布时间：2022-02-25 08:14:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[APM](https://cloud.tencent.com/document/api/1261/63843#APM)](https://cloud.tencent.com/document/api/1261/63843#[APM](https://cloud.tencent.com/document/api/1261/63843#APM))
+
+修改数据结构：
+
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+
+	* 新增成员：Enable, APM
+
+
 ### 第 4 次发布
 
 发布时间：2022-02-16 08:11:56
@@ -68259,20 +68344,20 @@
 
 新增接口：
 
-* [[CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70287)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)](https://cloud.tencent.com/document/api/#/#)
-* [[DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)](https://cloud.tencent.com/document/api/#/#)
+* [CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
+* [DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)
+* [DeleteVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70287)
+* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
+* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
+* [DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+* [EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)
 
 新增数据结构：
 
-* [[SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient)](https://cloud.tencent.com/document/api/215/15824#[SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient))
-* [[SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)](https://cloud.tencent.com/document/api/215/15824#[SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever))
+* [SslVpnClient](https://cloud.tencent.com/document/api/215/15824#SslVpnClient)
+* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
 
 ### 第 105 次发布
 

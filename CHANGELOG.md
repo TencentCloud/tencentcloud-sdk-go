@@ -1,3 +1,106 @@
+# Release v1.0.355
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 28 次发布
+
+发布时间：2022-02-25 08:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
+
+	* 新增出参：PreludeInterval
+
+
+修改数据结构：
+
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
+
+	* 新增成员：PreludeInterval
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 55 次发布
+
+发布时间：2022-02-25 08:06:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)
+
+新增数据结构：
+
+* [Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)
+* [QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)
+* [QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 18 次发布
+
+发布时间：2022-02-25 08:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
+
+	* 新增入参：NodeNum, ReplicateSetNum
+
+
+修改数据结构：
+
+* [BackupDownloadTask](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTask)
+
+	* 新增成员：BackupMethod, BackupDesc
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 5 次发布
+
+发布时间：2022-02-25 08:14:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [APM](https://cloud.tencent.com/document/api/1261/63843#APM)
+
+修改数据结构：
+
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+
+	* 新增成员：Enable, APM
+
+
+
+
 # Release v1.0.354
 
 ## 云直播(live) 版本：2018-08-01

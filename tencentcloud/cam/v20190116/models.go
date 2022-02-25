@@ -2302,7 +2302,7 @@ func (r *GetSAMLProviderResponse) FromJsonString(s string) error {
 type GetSecurityLastUsedRequest struct {
 	*tchttp.BaseRequest
 
-	// 查询密钥ID列表
+	// 查询密钥ID列表。最多支持10个。
 	SecretIdList []*string `json:"SecretIdList,omitempty" name:"SecretIdList"`
 }
 

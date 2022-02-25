@@ -5300,6 +5300,60 @@ func (c *Client) QueryDownloadBillURLWithContext(ctx context.Context, request *Q
     return
 }
 
+func NewQueryExceedingInfoRequest() (request *QueryExceedingInfoRequest) {
+    request = &QueryExceedingInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryExceedingInfo")
+    
+    
+    return
+}
+
+func NewQueryExceedingInfoResponse() (response *QueryExceedingInfoResponse) {
+    response = &QueryExceedingInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExceedingInfo
+// 灵云-查询超额信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADBILLERROR = "FailedOperation.DownloadBillError"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryExceedingInfo(request *QueryExceedingInfoRequest) (response *QueryExceedingInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryExceedingInfoRequest()
+    }
+    
+    response = NewQueryExceedingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryExceedingInfo
+// 灵云-查询超额信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADBILLERROR = "FailedOperation.DownloadBillError"
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryExceedingInfoWithContext(ctx context.Context, request *QueryExceedingInfoRequest) (response *QueryExceedingInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryExceedingInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryExceedingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
     request = &QueryExchangeRateRequest{
         BaseRequest: &tchttp.BaseRequest{},
