@@ -29,6 +29,8 @@ const (
 	GuangzhouOpen = "ap-guangzhou-open"
 	// 中国香港
 	HongKong = "ap-hongkong"
+	// 雅加达
+	Jakarta = "ap-jakarta"
 	// 孟买
 	Mumbai = "ap-mumbai"
 	// 首尔
@@ -55,4 +57,6 @@ const (
 	SiliconValley = "na-siliconvalley"
 	// 多伦多
 	Toronto = "na-toronto"
+	// 圣保罗
+	SaoPaulo = "sa-saopaulo"
 )
