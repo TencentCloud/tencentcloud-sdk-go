@@ -1,3 +1,99 @@
+# Release v1.0.356
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 29 次发布
+
+发布时间：2022-02-28 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：ChangedIndex
+
+	* <font color="#dd0000">**修改成员**：</font>Index
+
+
+
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 22 次发布
+
+发布时间：2022-02-28 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
+
+	* 新增入参：Vip
+
+
+
+
+## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 11 次发布
+
+发布时间：2022-02-28 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAuditTrack](https://cloud.tencent.com/document/api/629/70383)
+* [DeleteAuditTrack](https://cloud.tencent.com/document/api/629/70382)
+* [ModifyAuditTrack](https://cloud.tencent.com/document/api/629/70381)
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 1 次发布
+
+发布时间：2022-02-25 16:43:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelFlow](https://cloud.tencent.com/document/api/1323/70362)
+* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+* [DescribeFileUrls](https://cloud.tencent.com/document/api/1323/70366)
+* [DescribeFlowBriefs](https://cloud.tencent.com/document/api/1323/70358)
+* [DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)
+* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
+
+新增数据结构：
+
+* [Agent](https://cloud.tencent.com/document/api/1323/70369#Agent)
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+* [CcInfo](https://cloud.tencent.com/document/api/1323/70369#CcInfo)
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+* [FileUrl](https://cloud.tencent.com/document/api/1323/70369#FileUrl)
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+* [FormField](https://cloud.tencent.com/document/api/1323/70369#FormField)
+* [UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo)
+
+
+
 # Release v1.0.355
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

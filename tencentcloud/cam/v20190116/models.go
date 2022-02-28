@@ -4133,7 +4133,7 @@ type SubAccountUser struct {
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 子用户 UID
+	// 子用户 UID，UID是用户作为消息接收人时的唯一标识，和 UIN 一样可以唯一标识一个用户，可通过接口https://cloud.tencent.com/document/api/598/53486 获取
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
 	// 子用户备注

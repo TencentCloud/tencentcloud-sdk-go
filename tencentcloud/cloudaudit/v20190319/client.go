@@ -150,6 +150,60 @@ func (c *Client) CreateAuditWithContext(ctx context.Context, request *CreateAudi
     return
 }
 
+func NewCreateAuditTrackRequest() (request *CreateAuditTrackRequest) {
+    request = &CreateAuditTrackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "CreateAuditTrack")
+    
+    
+    return
+}
+
+func NewCreateAuditTrackResponse() (response *CreateAuditTrackResponse) {
+    response = &CreateAuditTrackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAuditTrack
+// 创建跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditTrackRequest()
+    }
+    
+    response = NewCreateAuditTrackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateAuditTrack
+// 创建跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditTrackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditTrackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuditRequest() (request *DeleteAuditRequest) {
     request = &DeleteAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -196,6 +250,60 @@ func (c *Client) DeleteAuditWithContext(ctx context.Context, request *DeleteAudi
     request.SetContext(ctx)
     
     response = NewDeleteAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAuditTrackRequest() (request *DeleteAuditTrackRequest) {
+    request = &DeleteAuditTrackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "DeleteAuditTrack")
+    
+    
+    return
+}
+
+func NewDeleteAuditTrackResponse() (response *DeleteAuditTrackResponse) {
+    response = &DeleteAuditTrackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAuditTrack
+// 删除云审计跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) DeleteAuditTrack(request *DeleteAuditTrackRequest) (response *DeleteAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditTrackRequest()
+    }
+    
+    response = NewDeleteAuditTrackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteAuditTrack
+// 删除云审计跟踪集
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) DeleteAuditTrackWithContext(ctx context.Context, request *DeleteAuditTrackRequest) (response *DeleteAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditTrackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditTrackResponse()
     err = c.Send(request, response)
     return
 }
@@ -696,6 +804,60 @@ func (c *Client) LookUpEventsWithContext(ctx context.Context, request *LookUpEve
     request.SetContext(ctx)
     
     response = NewLookUpEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAuditTrackRequest() (request *ModifyAuditTrackRequest) {
+    request = &ModifyAuditTrackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "ModifyAuditTrack")
+    
+    
+    return
+}
+
+func NewModifyAuditTrackResponse() (response *ModifyAuditTrackResponse) {
+    response = &ModifyAuditTrackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAuditTrack
+// 修改云审计跟踪
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewModifyAuditTrackRequest()
+    }
+    
+    response = NewModifyAuditTrackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyAuditTrack
+// 修改云审计跟踪
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewModifyAuditTrackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyAuditTrackResponse()
     err = c.Send(request, response)
     return
 }

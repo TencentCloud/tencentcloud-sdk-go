@@ -124,8 +124,11 @@ type AssociateDDoSEipLoadBalancerRequest struct {
 	// 要绑定的负载均衡ID。负载均衡 ID 形如：lb-0000002i。可通过登录控制台查询，也可通过 DescribeLoadBalancers 接口返回值中的LoadBalancerId获取。
 	LoadBalancerID *string `json:"LoadBalancerID,omitempty" name:"LoadBalancerID"`
 
-	// Clb所在地域，例如：ap-hongkong。
+	// CLB所在地域，例如：ap-hongkong。
 	LoadBalancerRegion *string `json:"LoadBalancerRegion,omitempty" name:"LoadBalancerRegion"`
+
+	// CLB内网IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
 }
 
 func (r *AssociateDDoSEipLoadBalancerRequest) ToJsonString() string {
@@ -144,6 +147,7 @@ func (r *AssociateDDoSEipLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "Eip")
 	delete(f, "LoadBalancerID")
 	delete(f, "LoadBalancerRegion")
+	delete(f, "Vip")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateDDoSEipLoadBalancerRequest has unknown keys!", "")
 	}

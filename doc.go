@@ -88,6 +88,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion"

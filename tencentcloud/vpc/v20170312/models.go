@@ -17263,6 +17263,7 @@ type SecurityGroupPolicy struct {
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 端口(all, 离散port,  range)。
+	// 说明：如果Protocol设置为ALL，则Port也需要设置为all。
 	Port *string `json:"Port,omitempty" name:"Port"`
 
 	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。

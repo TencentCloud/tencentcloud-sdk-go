@@ -2,9 +2,30 @@
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 28 次发布
+### 第 29 次发布
 
-发布时间：2022-02-25 08:03:09
+发布时间：2022-02-28 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：ChangedIndex
+
+	* <font color="#dd0000">**修改成员**：</font>Index
+
+
+
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 22 次发布
+
+发布时间：2022-02-28 08:05:20
 
 本次发布包含了以下内容：
 
@@ -12,25 +33,18 @@
 
 修改接口：
 
-* [DescribeKTVMusicDetail](https://cloud.tencent.com/document/api/1155/56402)
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
 
-	* 新增出参：PreludeInterval
-
-
-修改数据结构：
-
-* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicDetailInfo)
-
-	* 新增成员：PreludeInterval
+	* 新增入参：Vip
 
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 云审计(cloudaudit) 版本：2019-03-19
 
-### 第 55 次发布
+### 第 11 次发布
 
-发布时间：2022-02-25 08:06:26
+发布时间：2022-02-28 08:08:23
 
 本次发布包含了以下内容：
 
@@ -38,66 +52,45 @@
 
 新增接口：
 
-* [QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)
-
-新增数据结构：
-
-* [Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)
-* [QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)
-* [QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)
+* [CreateAuditTrack](https://cloud.tencent.com/document/api/629/70383)
+* [DeleteAuditTrack](https://cloud.tencent.com/document/api/629/70382)
+* [ModifyAuditTrack](https://cloud.tencent.com/document/api/629/70381)
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 18 次发布
+### 第 1 次发布
 
-发布时间：2022-02-25 08:11:43
+发布时间：2022-02-25 16:43:22
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [InquirePriceModifyDBInstanceSpec](https://cloud.tencent.com/document/api/240/43665)
-
-	* 新增入参：NodeNum, ReplicateSetNum
-
-
-修改数据结构：
-
-* [BackupDownloadTask](https://cloud.tencent.com/document/api/240/38576#BackupDownloadTask)
-
-	* 新增成员：BackupMethod, BackupDesc
-
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 5 次发布
-
-发布时间：2022-02-25 08:14:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CancelFlow](https://cloud.tencent.com/document/api/1323/70362)
+* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+* [DescribeFileUrls](https://cloud.tencent.com/document/api/1323/70366)
+* [DescribeFlowBriefs](https://cloud.tencent.com/document/api/1323/70358)
+* [DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)
+* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
 
 新增数据结构：
 
-* [APM](https://cloud.tencent.com/document/api/1261/63843#APM)
-
-修改数据结构：
-
-* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
-
-	* 新增成员：Enable, APM
-
+* [Agent](https://cloud.tencent.com/document/api/1323/70369#Agent)
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+* [CcInfo](https://cloud.tencent.com/document/api/1323/70369#CcInfo)
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+* [FileUrl](https://cloud.tencent.com/document/api/1323/70369#FileUrl)
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+* [FormField](https://cloud.tencent.com/document/api/1323/70369#FormField)
+* [UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo)
 
 
 
@@ -499,6 +492,23 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 29 次发布
+
+发布时间：2022-02-28 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：ChangedIndex
+
+	* <font color="#dd0000">**修改成员**：</font>Index
+
 
 ### 第 28 次发布
 
@@ -1256,6 +1266,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 22 次发布
+
+发布时间：2022-02-28 08:05:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssociateDDoSEipLoadBalancer](https://cloud.tencent.com/document/api/1021/59863)
+
+	* 新增入参：Vip
+
 
 ### 第 21 次发布
 
@@ -16500,6 +16525,20 @@
 
 ## 云审计(cloudaudit) 版本：2019-03-19
 
+### 第 11 次发布
+
+发布时间：2022-02-28 08:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAuditTrack](https://cloud.tencent.com/document/api/629/70383)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAuditTrack](https://cloud.tencent.com/document/api/629/70382)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAuditTrack](https://cloud.tencent.com/document/api/629/70381)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 10 次发布
 
 发布时间：2022-02-14 08:08:17
@@ -18644,13 +18683,13 @@
 
 新增接口：
 
-* [[QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)](https://cloud.tencent.com/document/api/#/#)
+* [QueryExceedingInfo](https://cloud.tencent.com/document/api/1122/70343)
 
 新增数据结构：
 
-* [[Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)](https://cloud.tencent.com/document/api/1122/40683#[Paging](https://cloud.tencent.com/document/api/1122/40683#Paging))
-* [[QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)](https://cloud.tencent.com/document/api/1122/40683#[QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData))
-* [[QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult))
+* [Paging](https://cloud.tencent.com/document/api/1122/40683#Paging)
+* [QueryExceedingInfoData](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoData)
+* [QueryExceedingInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryExceedingInfoResult)
 
 ### 第 54 次发布
 
@@ -30329,6 +30368,43 @@
 * [EsDictionaryInfo](https://cloud.tencent.com/document/api/845/30634#EsDictionaryInfo)
 * [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
 * [MasterNodeInfo](https://cloud.tencent.com/document/api/845/30634#MasterNodeInfo)
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 1 次发布
+
+发布时间：2022-02-25 16:43:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelFlow](https://cloud.tencent.com/document/api/1323/70362)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDocument](https://cloud.tencent.com/document/api/1323/70364)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateFlow](https://cloud.tencent.com/document/api/1323/70361)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFileUrls](https://cloud.tencent.com/document/api/1323/70366)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFlowBriefs](https://cloud.tencent.com/document/api/1323/70358)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeThirdPartyAuthCode](https://cloud.tencent.com/document/api/1323/70368)](https://cloud.tencent.com/document/api/#/#)
+* [[StartFlow](https://cloud.tencent.com/document/api/1323/70357)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Agent](https://cloud.tencent.com/document/api/1323/70369#Agent)](https://cloud.tencent.com/document/api/1323/70369#[Agent](https://cloud.tencent.com/document/api/1323/70369#Agent))
+* [[ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)](https://cloud.tencent.com/document/api/1323/70369#[ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo))
+* [[CcInfo](https://cloud.tencent.com/document/api/1323/70369#CcInfo)](https://cloud.tencent.com/document/api/1323/70369#[CcInfo](https://cloud.tencent.com/document/api/1323/70369#CcInfo))
+* [[Component](https://cloud.tencent.com/document/api/1323/70369#Component)](https://cloud.tencent.com/document/api/1323/70369#[Component](https://cloud.tencent.com/document/api/1323/70369#Component))
+* [[FileUrl](https://cloud.tencent.com/document/api/1323/70369#FileUrl)](https://cloud.tencent.com/document/api/1323/70369#[FileUrl](https://cloud.tencent.com/document/api/1323/70369#FileUrl))
+* [[FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)](https://cloud.tencent.com/document/api/1323/70369#[FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief))
+* [[FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)](https://cloud.tencent.com/document/api/1323/70369#[FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover))
+* [[FormField](https://cloud.tencent.com/document/api/1323/70369#FormField)](https://cloud.tencent.com/document/api/1323/70369#[FormField](https://cloud.tencent.com/document/api/1323/70369#FormField))
+* [[UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo)](https://cloud.tencent.com/document/api/1323/70369#[UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo))
 
 
 
@@ -56222,7 +56298,7 @@
 
 新增数据结构：
 
-* [[APM](https://cloud.tencent.com/document/api/1261/63843#APM)](https://cloud.tencent.com/document/api/1261/63843#[APM](https://cloud.tencent.com/document/api/1261/63843#APM))
+* [APM](https://cloud.tencent.com/document/api/1261/63843#APM)
 
 修改数据结构：
 

@@ -3914,16 +3914,17 @@ type SearchLogRequest struct {
 	To *int64 `json:"To,omitempty" name:"To"`
 
 	// 查询语句，语句长度最大为12KB
+	// 查询语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code>|</code>及SQL语句
 	Query *string `json:"Query,omitempty" name:"Query"`
 
 	// 仅当查询语句(Query)不包含SQL时有效
-	// 表示单次查询返回的原始日志条数，最大值为1000，获取下一页日志需使用Context参数
+	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
 	// SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 仅当查询语句(Query)不包含SQL时有效
-	// 透传上次接口返回的Context值，可获取下一页日志，总计最多可获取1万条原始日志。过期时间1小时
-	// SQL结果翻页方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// 透传上次接口返回的Context值，可获取后续日志，总计最多可获取1万条原始日志。过期时间1小时
+	// SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 仅当查询语句(Query)不包含SQL时有效。

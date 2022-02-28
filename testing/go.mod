@@ -53,7 +53,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.355
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.356
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -79,6 +79,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid v0.0.0
@@ -274,6 +275,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis => ../tencentcloud/eis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr => ../tencentcloud/emr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es => ../tencentcloud/es
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess => ../tencentcloud/ess
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic => ../tencentcloud/essbasic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion => ../tencentcloud/facefusion
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid => ../tencentcloud/faceid

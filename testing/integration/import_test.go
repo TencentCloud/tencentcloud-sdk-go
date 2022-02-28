@@ -100,6 +100,7 @@ import (
 	eisv20210601 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eis/v20210601"
 	emrv20190103 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/emr/v20190103"
 	esv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20180416"
+	essv20201111 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess/v20201111"
 	essbasicv20201222 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20201222"
 	essbasicv20210526 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20210526"
 	facefusionv20181201 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion/v20181201"
@@ -1270,6 +1271,19 @@ func TestEsv20180416Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init es_v20180416 client: %v", err))
+    }
+}
+
+func TestEssv20201111Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := essv20201111.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init ess_v20201111 client: %v", err))
     }
 }
 
