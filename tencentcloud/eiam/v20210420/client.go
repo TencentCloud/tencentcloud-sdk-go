@@ -305,6 +305,7 @@ func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 //  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
         request = NewCreateOrgNodeRequest()
@@ -327,6 +328,7 @@ func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateO
 //  FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = "FailedOperation.ParentOrgNodeIdNotFound"
 //  INVALIDPARAMETER_ORGCODEILLEGAL = "InvalidParameter.OrgCodeIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) CreateOrgNodeWithContext(ctx context.Context, request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
     if request == nil {
         request = NewCreateOrgNodeRequest()
@@ -1259,6 +1261,8 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
 //  INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
@@ -1278,6 +1282,8 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
+//  INVALIDPARAMETER_USERIDISNULL = "InvalidParameter.UserIDIsNull"
+//  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
 //  INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
@@ -1479,6 +1485,7 @@ func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthor
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
@@ -1498,6 +1505,7 @@ func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthoriza
 // 可能返回的错误码:
 //  FAILEDOPERATION_ENTITYTYPENOTEXISTED = "FailedOperation.EntityTypeNotExisted"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
@@ -1534,6 +1542,7 @@ func NewListApplicationsResponse() (response *ListApplicationsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
@@ -1552,6 +1561,7 @@ func (c *Client) ListApplications(request *ListApplicationsRequest) (response *L
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"

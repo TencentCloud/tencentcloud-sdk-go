@@ -29,6 +29,9 @@ const (
 	// 地址没有弹性网卡信息。
 	FAILEDOPERATION_ADDRESSENIINFONOTFOUND = "FailedOperation.AddressEniInfoNotFound"
 
+	// 网络探测超时，请稍后重试。
+	FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -163,6 +166,9 @@ const (
 
 	// 入参重复。
 	INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+
+	// 参数值存在重复。
+	INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
 
 	// 缺少参数。
 	INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"

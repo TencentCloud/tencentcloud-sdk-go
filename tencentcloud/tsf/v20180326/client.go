@@ -5558,6 +5558,328 @@ func (c *Client) DescribeImageTagsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeInovcationIndicatorsRequest() (request *DescribeInovcationIndicatorsRequest) {
+    request = &DescribeInovcationIndicatorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeInovcationIndicators")
+    
+    
+    return
+}
+
+func NewDescribeInovcationIndicatorsResponse() (response *DescribeInovcationIndicatorsResponse) {
+    response = &DescribeInovcationIndicatorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInovcationIndicators
+// 查询调用监控指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeInovcationIndicators(request *DescribeInovcationIndicatorsRequest) (response *DescribeInovcationIndicatorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInovcationIndicatorsRequest()
+    }
+    
+    response = NewDescribeInovcationIndicatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInovcationIndicators
+// 查询调用监控指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeInovcationIndicatorsWithContext(ctx context.Context, request *DescribeInovcationIndicatorsRequest) (response *DescribeInovcationIndicatorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInovcationIndicatorsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInovcationIndicatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInvocationMetricDataCurveRequest() (request *DescribeInvocationMetricDataCurveRequest) {
+    request = &DescribeInvocationMetricDataCurveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataCurve")
+    
+    
+    return
+}
+
+func NewDescribeInvocationMetricDataCurveResponse() (response *DescribeInvocationMetricDataCurveResponse) {
+    response = &DescribeInvocationMetricDataCurveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvocationMetricDataCurve
+// 查询调用指标数据变化曲线
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataCurve(request *DescribeInvocationMetricDataCurveRequest) (response *DescribeInvocationMetricDataCurveResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataCurveRequest()
+    }
+    
+    response = NewDescribeInvocationMetricDataCurveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInvocationMetricDataCurve
+// 查询调用指标数据变化曲线
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataCurveWithContext(ctx context.Context, request *DescribeInvocationMetricDataCurveRequest) (response *DescribeInvocationMetricDataCurveResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataCurveRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationMetricDataCurveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInvocationMetricDataDimensionRequest() (request *DescribeInvocationMetricDataDimensionRequest) {
+    request = &DescribeInvocationMetricDataDimensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataDimension")
+    
+    
+    return
+}
+
+func NewDescribeInvocationMetricDataDimensionResponse() (response *DescribeInvocationMetricDataDimensionResponse) {
+    response = &DescribeInvocationMetricDataDimensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvocationMetricDataDimension
+// 查询维度
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataDimension(request *DescribeInvocationMetricDataDimensionRequest) (response *DescribeInvocationMetricDataDimensionResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataDimensionRequest()
+    }
+    
+    response = NewDescribeInvocationMetricDataDimensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInvocationMetricDataDimension
+// 查询维度
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataDimensionWithContext(ctx context.Context, request *DescribeInvocationMetricDataDimensionRequest) (response *DescribeInvocationMetricDataDimensionResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataDimensionRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationMetricDataDimensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInvocationMetricDataPointRequest() (request *DescribeInvocationMetricDataPointRequest) {
+    request = &DescribeInvocationMetricDataPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataPoint")
+    
+    
+    return
+}
+
+func NewDescribeInvocationMetricDataPointResponse() (response *DescribeInvocationMetricDataPointResponse) {
+    response = &DescribeInvocationMetricDataPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvocationMetricDataPoint
+// 查询单值指标维度
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataPoint(request *DescribeInvocationMetricDataPointRequest) (response *DescribeInvocationMetricDataPointResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataPointRequest()
+    }
+    
+    response = NewDescribeInvocationMetricDataPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInvocationMetricDataPoint
+// 查询单值指标维度
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeInvocationMetricDataPointWithContext(ctx context.Context, request *DescribeInvocationMetricDataPointRequest) (response *DescribeInvocationMetricDataPointResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricDataPointRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationMetricDataPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInvocationMetricScatterPlotRequest() (request *DescribeInvocationMetricScatterPlotRequest) {
+    request = &DescribeInvocationMetricScatterPlotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricScatterPlot")
+    
+    
+    return
+}
+
+func NewDescribeInvocationMetricScatterPlotResponse() (response *DescribeInvocationMetricScatterPlotResponse) {
+    response = &DescribeInvocationMetricScatterPlotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInvocationMetricScatterPlot
+// 查询调用指标数据散点图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeInvocationMetricScatterPlot(request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricScatterPlotRequest()
+    }
+    
+    response = NewDescribeInvocationMetricScatterPlotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeInvocationMetricScatterPlot
+// 查询调用指标数据散点图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) DescribeInvocationMetricScatterPlotWithContext(ctx context.Context, request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
+    if request == nil {
+        request = NewDescribeInvocationMetricScatterPlotRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeInvocationMetricScatterPlotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJvmMonitorRequest() (request *DescribeJvmMonitorRequest) {
+    request = &DescribeJvmMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeJvmMonitor")
+    
+    
+    return
+}
+
+func NewDescribeJvmMonitorResponse() (response *DescribeJvmMonitorResponse) {
+    response = &DescribeJvmMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeJvmMonitor
+// 查询java实例jvm监控数据,返回数据可选
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = "FailedOperation.TsfCmonitorCtsdbClientRequestFail"
+//  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
+//  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
+//  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
+//  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeJvmMonitorRequest()
+    }
+    
+    response = NewDescribeJvmMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeJvmMonitor
+// 查询java实例jvm监控数据,返回数据可选
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = "FailedOperation.TsfCmonitorCtsdbClientRequestFail"
+//  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
+//  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
+//  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
+//  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeJvmMonitorWithContext(ctx context.Context, request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeJvmMonitorRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeJvmMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLaneRulesRequest() (request *DescribeLaneRulesRequest) {
     request = &DescribeLaneRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6028,6 +6350,62 @@ func (c *Client) DescribeMsApiListWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeMsApiListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOverviewInvocationRequest() (request *DescribeOverviewInvocationRequest) {
+    request = &DescribeOverviewInvocationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeOverviewInvocation")
+    
+    
+    return
+}
+
+func NewDescribeOverviewInvocationResponse() (response *DescribeOverviewInvocationResponse) {
+    response = &DescribeOverviewInvocationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewInvocation
+// 服务调用监控统计概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeOverviewInvocation(request *DescribeOverviewInvocationRequest) (response *DescribeOverviewInvocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewInvocationRequest()
+    }
+    
+    response = NewDescribeOverviewInvocationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeOverviewInvocation
+// 服务调用监控统计概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeOverviewInvocationWithContext(ctx context.Context, request *DescribeOverviewInvocationRequest) (response *DescribeOverviewInvocationResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewInvocationRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewInvocationResponse()
     err = c.Send(request, response)
     return
 }
@@ -7070,6 +7448,64 @@ func (c *Client) DescribeSimpleNamespacesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSimpleNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStatisticsRequest() (request *DescribeStatisticsRequest) {
+    request = &DescribeStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeStatistics")
+    
+    
+    return
+}
+
+func NewDescribeStatisticsResponse() (response *DescribeStatisticsResponse) {
+    response = &DescribeStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStatistics
+// 服务统计页面：接口和服务维度
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
+//  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeStatistics(request *DescribeStatisticsRequest) (response *DescribeStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStatisticsRequest()
+    }
+    
+    response = NewDescribeStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeStatistics
+// 服务统计页面：接口和服务维度
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
+//  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeStatisticsWithContext(ctx context.Context, request *DescribeStatisticsRequest) (response *DescribeStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStatisticsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeStatisticsResponse()
     err = c.Send(request, response)
     return
 }

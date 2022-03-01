@@ -490,6 +490,54 @@ func (c *Client) DescribeFilterResultListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRealtimeScanConfigRequest() (request *DescribeRealtimeScanConfigRequest) {
+    request = &DescribeRealtimeScanConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeRealtimeScanConfig")
+    
+    
+    return
+}
+
+func NewDescribeRealtimeScanConfigResponse() (response *DescribeRealtimeScanConfigResponse) {
+    response = &DescribeRealtimeScanConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRealtimeScanConfig
+// 获取用户自定义送检信息
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRealtimeScanConfig(request *DescribeRealtimeScanConfigRequest) (response *DescribeRealtimeScanConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealtimeScanConfigRequest()
+    }
+    
+    response = NewDescribeRealtimeScanConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeRealtimeScanConfig
+// 获取用户自定义送检信息
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRealtimeScanConfigWithContext(ctx context.Context, request *DescribeRealtimeScanConfigRequest) (response *DescribeRealtimeScanConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealtimeScanConfigRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeRealtimeScanConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
     request = &DescribeRoomInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1418,6 +1466,142 @@ func (c *Client) ScanVoiceWithContext(ctx context.Context, request *ScanVoiceReq
     request.SetContext(ctx)
     
     response = NewScanVoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateScanRoomsRequest() (request *UpdateScanRoomsRequest) {
+    request = &UpdateScanRoomsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "UpdateScanRooms")
+    
+    
+    return
+}
+
+func NewUpdateScanRoomsResponse() (response *UpdateScanRoomsResponse) {
+    response = &UpdateScanRoomsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateScanRooms
+// 更新自定义送检房间号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateScanRooms(request *UpdateScanRoomsRequest) (response *UpdateScanRoomsResponse, err error) {
+    if request == nil {
+        request = NewUpdateScanRoomsRequest()
+    }
+    
+    response = NewUpdateScanRoomsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateScanRooms
+// 更新自定义送检房间号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateScanRoomsWithContext(ctx context.Context, request *UpdateScanRoomsRequest) (response *UpdateScanRoomsResponse, err error) {
+    if request == nil {
+        request = NewUpdateScanRoomsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateScanRoomsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateScanUsersRequest() (request *UpdateScanUsersRequest) {
+    request = &UpdateScanUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "UpdateScanUsers")
+    
+    
+    return
+}
+
+func NewUpdateScanUsersResponse() (response *UpdateScanUsersResponse) {
+    response = &UpdateScanUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateScanUsers
+// 更新自定义送检用户号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateScanUsers(request *UpdateScanUsersRequest) (response *UpdateScanUsersResponse, err error) {
+    if request == nil {
+        request = NewUpdateScanUsersRequest()
+    }
+    
+    response = NewUpdateScanUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// UpdateScanUsers
+// 更新自定义送检用户号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateScanUsersWithContext(ctx context.Context, request *UpdateScanUsersRequest) (response *UpdateScanUsersResponse, err error) {
+    if request == nil {
+        request = NewUpdateScanUsersRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewUpdateScanUsersResponse()
     err = c.Send(request, response)
     return
 }

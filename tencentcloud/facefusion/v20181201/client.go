@@ -71,6 +71,7 @@ func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) 
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
     if request == nil {
         request = NewDescribeMaterialListRequest()
@@ -91,6 +92,7 @@ func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (res
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DescribeMaterialListWithContext(ctx context.Context, request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
     if request == nil {
         request = NewDescribeMaterialListRequest()

@@ -977,6 +977,7 @@ func NewGetDetectInfoEnhancedResponse() (response *GetDetectInfoEnhancedResponse
 // 完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTSYSTEMERROR = "FailedOperation.EncryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1001,6 +1002,7 @@ func (c *Client) GetDetectInfoEnhanced(request *GetDetectInfoEnhancedRequest) (r
 // 完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTSYSTEMERROR = "FailedOperation.EncryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1236,6 +1238,7 @@ func NewGetFaceIdTokenResponse() (response *GetFaceIdTokenResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
@@ -1254,6 +1257,7 @@ func (c *Client) GetFaceIdToken(request *GetFaceIdTokenRequest) (response *GetFa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"

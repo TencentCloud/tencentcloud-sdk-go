@@ -2914,6 +2914,7 @@ func NewDescribeLogExportsResponse() (response *DescribeLogExportsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogExports(request *DescribeLogExportsRequest) (response *DescribeLogExportsResponse, err error) {
     if request == nil {
         request = NewDescribeLogExportsRequest()
@@ -2937,6 +2938,7 @@ func (c *Client) DescribeLogExports(request *DescribeLogExportsRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogExportsWithContext(ctx context.Context, request *DescribeLogExportsRequest) (response *DescribeLogExportsResponse, err error) {
     if request == nil {
         request = NewDescribeLogExportsRequest()

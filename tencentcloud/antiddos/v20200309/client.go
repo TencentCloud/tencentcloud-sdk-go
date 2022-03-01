@@ -1318,6 +1318,7 @@ func NewCreateWaterPrintConfigResponse() (response *CreateWaterPrintConfigRespon
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWaterPrintConfig(request *CreateWaterPrintConfigRequest) (response *CreateWaterPrintConfigResponse, err error) {
@@ -1335,6 +1336,7 @@ func (c *Client) CreateWaterPrintConfig(request *CreateWaterPrintConfigRequest) 
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWaterPrintConfigWithContext(ctx context.Context, request *CreateWaterPrintConfigRequest) (response *CreateWaterPrintConfigResponse, err error) {
@@ -4980,6 +4982,7 @@ func NewSwitchWaterPrintConfigResponse() (response *SwitchWaterPrintConfigRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
     if request == nil {
@@ -4996,6 +4999,7 @@ func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SwitchWaterPrintConfigWithContext(ctx context.Context, request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
     if request == nil {

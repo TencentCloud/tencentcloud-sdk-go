@@ -67,6 +67,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETER_DOMAINNOTREGED = "InvalidParameter.DomainNotReged"
@@ -88,6 +89,7 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETER_DOMAINNOTREGED = "InvalidParameter.DomainNotReged"
@@ -592,6 +594,7 @@ func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININEFFECTORINVALIDATED = "InvalidParameter.DomainInEffectOrInvalidated"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -617,6 +620,7 @@ func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDom
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININEFFECTORINVALIDATED = "InvalidParameter.DomainInEffectOrInvalidated"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"

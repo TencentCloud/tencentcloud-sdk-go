@@ -201,6 +201,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 // 创建签署流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -227,6 +228,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // 创建签署流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"

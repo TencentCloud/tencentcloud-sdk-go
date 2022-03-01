@@ -3904,35 +3904,40 @@ type RuleTagInfo struct {
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 要查询的日志主题ID
+	// 要检索分析的日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
 	From *int64 `json:"From,omitempty" name:"From"`
 
-	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
 	To *int64 `json:"To,omitempty" name:"To"`
 
-	// 查询语句，语句长度最大为12KB
-	// 查询语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code>|</code>及SQL语句
+	// 检索分析语句，最大长度为12KB
+	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 仅当查询语句(Query)不包含SQL时有效
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
-	// SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 仅当查询语句(Query)不包含SQL时有效
-	// 透传上次接口返回的Context值，可获取后续日志，总计最多可获取1万条原始日志。过期时间1小时
-	// SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 仅当查询语句(Query)不包含SQL时有效。
 	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	// SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY 语法</a>
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// 为true代表使用新的检索结果返回方式，响应参数AnalysisRecords和Columns有效；为false时代表使用老检索结果返回方式, AnalysisResults和ColNames有效
+	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+	// 两种返回方式在编码格式上有少量区别，建议使用true
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitempty" name:"UseNewAnalysis"`
 }
 
@@ -3966,32 +3971,37 @@ type SearchLogResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 加载后续内容的Context，过期时间1小时
+		// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
 		Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 原始日志查询结果是否全部返回。查询语句(Query)包含SQL时该参数无意义
+		// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+	// 注意：仅当检索分析语句(Query)不包含SQL时有效
 		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
 
-		// 返回的是否为分析结果
+		// 返回的是否为统计分析（即SQL）结果
 		Analysis *bool `json:"Analysis,omitempty" name:"Analysis"`
 
-		// 如果Analysis为True，则返回分析结果的列名，否则为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
-
-		// 日志查询结果；当Analysis为True时，可能返回为null
+		// 匹配检索条件的原始日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Results []*LogInfo `json:"Results,omitempty" name:"Results"`
 
-		// 日志分析结果；当Analysis为False时，可能返回为null
+		// 日志统计分析结果的列名
+	// 当UseNewAnalysis为false时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
+
+		// 日志统计分析结果
+	// 当UseNewAnalysis为false时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AnalysisResults []*LogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
 
-		// 新的日志分析结果; UseNewAnalysis为true有效
+		// 日志统计分析结果
+	// 当UseNewAnalysis为true时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AnalysisRecords []*string `json:"AnalysisRecords,omitempty" name:"AnalysisRecords"`
 
-		// 日志分析的列属性; UseNewAnalysis为true有效
+		// 日志统计分析结果的列属性
+	// 当UseNewAnalysis为true时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Columns []*Column `json:"Columns,omitempty" name:"Columns"`
 

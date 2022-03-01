@@ -125,6 +125,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 
+	// 操作失败。
+	FAILEDOPERATION_OPERATIONFAILURE = "FailedOperation.OperationFailure"
+
 	// 机构节点ID不存在。
 	FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
 

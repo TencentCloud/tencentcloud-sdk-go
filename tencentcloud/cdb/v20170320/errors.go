@@ -362,6 +362,9 @@ const (
 	// 审计策略不存在。
 	OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 
+	// 审计策略数量超限。
+	OPERATIONDENIED_AUDITPOLICYOVERQUOTAERROR = "OperationDenied.AuditPolicyOverQuotaError"
+
 	// 审计规则删除失败。
 	OPERATIONDENIED_AUDITRULEDELETEERROR = "OperationDenied.AuditRuleDeleteError"
 

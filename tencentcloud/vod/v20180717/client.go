@@ -3633,6 +3633,7 @@ func NewDescribeDrmDataKeyResponse() (response *DescribeDrmDataKeyResponse) {
 // 如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDrmDataKey(request *DescribeDrmDataKeyRequest) (response *DescribeDrmDataKeyResponse, err error) {
@@ -3651,6 +3652,7 @@ func (c *Client) DescribeDrmDataKey(request *DescribeDrmDataKeyRequest) (respons
 // 如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDrmDataKeyWithContext(ctx context.Context, request *DescribeDrmDataKeyRequest) (response *DescribeDrmDataKeyResponse, err error) {

@@ -986,6 +986,7 @@ func NewCreatePluginResponse() (response *CreatePluginResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDIPADDRESS = "InvalidParameterValue.InvalidIPAddress"
 //  INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = "InvalidParameterValue.InvalidPluginConfig"
 //  INVALIDPARAMETERVALUE_INVALIDPORT = "InvalidParameterValue.InvalidPort"
+//  INVALIDPARAMETERVALUE_INVALIDSCFCONFIG = "InvalidParameterValue.InvalidScfConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEPARAM = "InvalidParameterValue.InvalidServiceParam"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICETYPE = "InvalidParameterValue.InvalidServiceType"
@@ -1025,6 +1026,7 @@ func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePlu
 //  INVALIDPARAMETERVALUE_INVALIDIPADDRESS = "InvalidParameterValue.InvalidIPAddress"
 //  INVALIDPARAMETERVALUE_INVALIDPLUGINCONFIG = "InvalidParameterValue.InvalidPluginConfig"
 //  INVALIDPARAMETERVALUE_INVALIDPORT = "InvalidParameterValue.InvalidPort"
+//  INVALIDPARAMETERVALUE_INVALIDSCFCONFIG = "InvalidParameterValue.InvalidScfConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEPARAM = "InvalidParameterValue.InvalidServiceParam"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICETYPE = "InvalidParameterValue.InvalidServiceType"
@@ -1083,6 +1085,7 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDVPCCONFIG = "InvalidParameterValue.InvalidVpcConfig"
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = "InvalidParameterValue.ParameterValueLimitExceeded"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -1123,6 +1126,7 @@ func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateS
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  INVALIDPARAMETERVALUE_INVALIDVPCCONFIG = "InvalidParameterValue.InvalidVpcConfig"
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = "InvalidParameterValue.ParameterValueLimitExceeded"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -1142,6 +1146,90 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateSe
     request.SetContext(ctx)
     
     response = NewCreateServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUpstreamRequest() (request *CreateUpstreamRequest) {
+    request = &CreateUpstreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "CreateUpstream")
+    
+    
+    return
+}
+
+func NewCreateUpstreamResponse() (response *CreateUpstreamResponse) {
+    response = &CreateUpstreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUpstream
+// 用于创建创建VPC通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATEUPSTREAM = "FailedOperation.OperateUpstream"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDVPCCONFIG = "InvalidParameterValue.InvalidVpcConfig"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUpstream(request *CreateUpstreamRequest) (response *CreateUpstreamResponse, err error) {
+    if request == nil {
+        request = NewCreateUpstreamRequest()
+    }
+    
+    response = NewCreateUpstreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateUpstream
+// 用于创建创建VPC通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATEUPSTREAM = "FailedOperation.OperateUpstream"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDVPCCONFIG = "InvalidParameterValue.InvalidVpcConfig"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUpstreamWithContext(ctx context.Context, request *CreateUpstreamRequest) (response *CreateUpstreamResponse, err error) {
+    if request == nil {
+        request = NewCreateUpstreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateUpstreamResponse()
     err = c.Send(request, response)
     return
 }
@@ -1570,6 +1658,7 @@ func NewDeletePluginResponse() (response *DeletePluginResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
@@ -1587,6 +1676,7 @@ func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePlu
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
@@ -1716,6 +1806,74 @@ func (c *Client) DeleteServiceSubDomainMappingWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDeleteServiceSubDomainMappingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUpstreamRequest() (request *DeleteUpstreamRequest) {
+    request = &DeleteUpstreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DeleteUpstream")
+    
+    
+    return
+}
+
+func NewDeleteUpstreamResponse() (response *DeleteUpstreamResponse) {
+    response = &DeleteUpstreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUpstream
+// 删除VPC通道，需要注意有api绑定时，不允许删除
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEUPSTREAM = "UnsupportedOperation.UnsupportedDeleteUpstream"
+func (c *Client) DeleteUpstream(request *DeleteUpstreamRequest) (response *DeleteUpstreamResponse, err error) {
+    if request == nil {
+        request = NewDeleteUpstreamRequest()
+    }
+    
+    response = NewDeleteUpstreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteUpstream
+// 删除VPC通道，需要注意有api绑定时，不允许删除
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEUPSTREAM = "UnsupportedOperation.UnsupportedDeleteUpstream"
+func (c *Client) DeleteUpstreamWithContext(ctx context.Context, request *DeleteUpstreamRequest) (response *DeleteUpstreamResponse, err error) {
+    if request == nil {
+        request = NewDeleteUpstreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteUpstreamResponse()
     err = c.Send(request, response)
     return
 }
@@ -3626,6 +3784,7 @@ func NewDescribeServicesStatusResponse() (response *DescribeServicesStatusRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) (response *DescribeServicesStatusResponse, err error) {
     if request == nil {
         request = NewDescribeServicesStatusRequest()
@@ -3659,6 +3818,7 @@ func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeServicesStatusWithContext(ctx context.Context, request *DescribeServicesStatusRequest) (response *DescribeServicesStatusResponse, err error) {
     if request == nil {
         request = NewDescribeServicesStatusRequest()
@@ -3666,6 +3826,138 @@ func (c *Client) DescribeServicesStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeServicesStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpstreamBindApisRequest() (request *DescribeUpstreamBindApisRequest) {
+    request = &DescribeUpstreamBindApisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUpstreamBindApis")
+    
+    
+    return
+}
+
+func NewDescribeUpstreamBindApisResponse() (response *DescribeUpstreamBindApisResponse) {
+    response = &DescribeUpstreamBindApisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUpstreamBindApis
+// 查询VPC通道绑定的api列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUpstreamBindApis(request *DescribeUpstreamBindApisRequest) (response *DescribeUpstreamBindApisResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpstreamBindApisRequest()
+    }
+    
+    response = NewDescribeUpstreamBindApisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUpstreamBindApis
+// 查询VPC通道绑定的api列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUpstreamBindApisWithContext(ctx context.Context, request *DescribeUpstreamBindApisRequest) (response *DescribeUpstreamBindApisResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpstreamBindApisRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpstreamBindApisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUpstreamsRequest() (request *DescribeUpstreamsRequest) {
+    request = &DescribeUpstreamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeUpstreams")
+    
+    
+    return
+}
+
+func NewDescribeUpstreamsResponse() (response *DescribeUpstreamsResponse) {
+    response = &DescribeUpstreamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUpstreams
+// 查询VPC通道列表详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response *DescribeUpstreamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpstreamsRequest()
+    }
+    
+    response = NewDescribeUpstreamsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeUpstreams
+// 查询VPC通道列表详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeUpstreamsWithContext(ctx context.Context, request *DescribeUpstreamsRequest) (response *DescribeUpstreamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUpstreamsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeUpstreamsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4882,6 +5174,80 @@ func (c *Client) ModifySubDomainWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifySubDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUpstreamRequest() (request *ModifyUpstreamRequest) {
+    request = &ModifyUpstreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "ModifyUpstream")
+    
+    
+    return
+}
+
+func NewModifyUpstreamResponse() (response *ModifyUpstreamResponse) {
+    response = &ModifyUpstreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUpstream
+// 修改VPC通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATEUPSTREAM = "FailedOperation.OperateUpstream"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUpstream(request *ModifyUpstreamRequest) (response *ModifyUpstreamResponse, err error) {
+    if request == nil {
+        request = NewModifyUpstreamRequest()
+    }
+    
+    response = NewModifyUpstreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyUpstream
+// 修改VPC通道
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPERATEUPSTREAM = "FailedOperation.OperateUpstream"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
+//  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUpstreamWithContext(ctx context.Context, request *ModifyUpstreamRequest) (response *ModifyUpstreamResponse, err error) {
+    if request == nil {
+        request = NewModifyUpstreamRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyUpstreamResponse()
     err = c.Send(request, response)
     return
 }

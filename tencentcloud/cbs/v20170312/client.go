@@ -346,6 +346,7 @@ func NewCopySnapshotCrossRegionsResponse() (response *CopySnapshotCrossRegionsRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  RESOURCEBUSY = "ResourceBusy"
 //  RESOURCEINUSE_COPYSNAPSHOTCONFLICT = "ResourceInUse.CopySnapshotConflict"
 //  UNSUPPORTEDOPERATION_SNAPSHOTNOTSUPPORTCOPY = "UnsupportedOperation.SnapshotNotSupportCopy"
 func (c *Client) CopySnapshotCrossRegions(request *CopySnapshotCrossRegionsRequest) (response *CopySnapshotCrossRegionsResponse, err error) {
@@ -373,6 +374,7 @@ func (c *Client) CopySnapshotCrossRegions(request *CopySnapshotCrossRegionsReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  RESOURCEBUSY = "ResourceBusy"
 //  RESOURCEINUSE_COPYSNAPSHOTCONFLICT = "ResourceInUse.CopySnapshotConflict"
 //  UNSUPPORTEDOPERATION_SNAPSHOTNOTSUPPORTCOPY = "UnsupportedOperation.SnapshotNotSupportCopy"
 func (c *Client) CopySnapshotCrossRegionsWithContext(ctx context.Context, request *CopySnapshotCrossRegionsRequest) (response *CopySnapshotCrossRegionsResponse, err error) {

@@ -32,6 +32,9 @@ const (
 	// 会话缓存保存失败，请重新初始化。
 	FAILEDOPERATION_ERRORGETSESSION = "FailedOperation.ErrorGetSession"
 
+	// 获取用户信息失败。
+	FAILEDOPERATION_ERRORGETUSER = "FailedOperation.ErrorGetUser"
+
 	// 评测时间超出限制，请检查音频时间是否过长后重试。
 	FAILEDOPERATION_EVALUATETIMEOUT = "FailedOperation.EvaluateTimeout"
 

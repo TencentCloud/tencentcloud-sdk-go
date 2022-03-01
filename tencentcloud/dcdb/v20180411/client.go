@@ -44,6 +44,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActiveHourDCDBInstanceRequest() (request *ActiveHourDCDBInstanceRequest) {
+    request = &ActiveHourDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "ActiveHourDCDBInstance")
+    
+    
+    return
+}
+
+func NewActiveHourDCDBInstanceResponse() (response *ActiveHourDCDBInstanceResponse) {
+    response = &ActiveHourDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ActiveHourDCDBInstance
+// 解隔离DCDB后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ActiveHourDCDBInstance(request *ActiveHourDCDBInstanceRequest) (response *ActiveHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewActiveHourDCDBInstanceRequest()
+    }
+    
+    response = NewActiveHourDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ActiveHourDCDBInstance
+// 解隔离DCDB后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ActiveHourDCDBInstanceWithContext(ctx context.Context, request *ActiveHourDCDBInstanceRequest) (response *ActiveHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewActiveHourDCDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewActiveHourDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2704,6 +2758,58 @@ func (c *Client) InitDCDBInstancesWithContext(ctx context.Context, request *Init
     request.SetContext(ctx)
     
     response = NewInitDCDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewIsolateHourDCDBInstanceRequest() (request *IsolateHourDCDBInstanceRequest) {
+    request = &IsolateHourDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "IsolateHourDCDBInstance")
+    
+    
+    return
+}
+
+func NewIsolateHourDCDBInstanceResponse() (response *IsolateHourDCDBInstanceResponse) {
+    response = &IsolateHourDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateHourDCDBInstance
+// 隔离DCDB后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) IsolateHourDCDBInstance(request *IsolateHourDCDBInstanceRequest) (response *IsolateHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateHourDCDBInstanceRequest()
+    }
+    
+    response = NewIsolateHourDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// IsolateHourDCDBInstance
+// 隔离DCDB后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) IsolateHourDCDBInstanceWithContext(ctx context.Context, request *IsolateHourDCDBInstanceRequest) (response *IsolateHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateHourDCDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewIsolateHourDCDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

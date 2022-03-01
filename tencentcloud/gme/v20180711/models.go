@@ -575,6 +575,73 @@ func (r *DescribeFilterResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRealtimeScanConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *DescribeRealtimeScanConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealtimeScanConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealtimeScanConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRealtimeScanConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果码
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 应用ID
+		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+		// 送检类型
+		AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+		// 用户号正则
+		UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
+
+		// 房间号正则
+		RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
+
+		// 用户号字符串，逗号分隔
+		UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+		// 房间号字符串，逗号分隔
+		RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRealtimeScanConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealtimeScanConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRoomInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -1154,6 +1221,121 @@ type Task struct {
 
 	// gme实时语音用户ID，通过gme实时语音进行语音分析时输入
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+type UpdateScanRoomsRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 字符串房间号，逗号分隔
+	RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
+
+	// 正则表达式房间号，["^6.*"]6开头的房间号
+	RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
+}
+
+func (r *UpdateScanRoomsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateScanRoomsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "RoomIdString")
+	delete(f, "RoomIdRegex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateScanRoomsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateScanRoomsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateScanRoomsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateScanRoomsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateScanUsersRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 字符串用户号，逗号分隔
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+	// 正则表达式用户号，["^6.*"]6开头的用户号
+	UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
+}
+
+func (r *UpdateScanUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateScanUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "UserIdString")
+	delete(f, "UserIdRegex")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateScanUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateScanUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果码
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateScanUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateScanUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VoiceFilter struct {

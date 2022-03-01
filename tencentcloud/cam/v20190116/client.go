@@ -2506,6 +2506,56 @@ func (c *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest
     return
 }
 
+func NewGetUserAppIdRequest() (request *GetUserAppIdRequest) {
+    request = &GetUserAppIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "GetUserAppId")
+    
+    
+    return
+}
+
+func NewGetUserAppIdResponse() (response *GetUserAppIdResponse) {
+    response = &GetUserAppIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetUserAppId
+// 获取用户AppId
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) GetUserAppId(request *GetUserAppIdRequest) (response *GetUserAppIdResponse, err error) {
+    if request == nil {
+        request = NewGetUserAppIdRequest()
+    }
+    
+    response = NewGetUserAppIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetUserAppId
+// 获取用户AppId
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) GetUserAppIdWithContext(ctx context.Context, request *GetUserAppIdRequest) (response *GetUserAppIdResponse, err error) {
+    if request == nil {
+        request = NewGetUserAppIdRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetUserAppIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetUserPermissionBoundaryRequest() (request *GetUserPermissionBoundaryRequest) {
     request = &GetUserPermissionBoundaryRequest{
         BaseRequest: &tchttp.BaseRequest{},

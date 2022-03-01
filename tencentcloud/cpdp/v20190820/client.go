@@ -6333,10 +6333,7 @@ func NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse() (response *Q
 // 云企付-子商户银行卡解绑结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccount(request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
@@ -6351,10 +6348,7 @@ func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccount(request *Quer
 // 云企付-子商户银行卡解绑结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()

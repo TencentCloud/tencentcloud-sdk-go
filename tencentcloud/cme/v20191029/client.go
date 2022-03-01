@@ -1771,6 +1771,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 // 使用 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225) 合成视频，支持导出视频到 CME 云媒资或者云点播媒资。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1802,6 +1803,7 @@ func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackD
 // 使用 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225) 合成视频，支持导出视频到 CME 云媒资或者云点播媒资。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2481,10 +2483,12 @@ func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) 
 // 将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
+//  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
@@ -2509,10 +2513,12 @@ func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (res
 // 将云点播中的媒资或者用户自有媒资文件添加到项目中与项目关联，供后续视频编辑使用。目前仅视频编辑项目和智能视频拆条项目有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
+//  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_NAMELENLIMT = "InvalidParameterValue.NameLenLimt"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"

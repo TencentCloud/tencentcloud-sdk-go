@@ -1795,6 +1795,7 @@ func NewTerminateComputeNodeResponse() (response *TerminateComputeNodeResponse) 
 //  RESOURCENOTFOUND_COMPUTENODE = "ResourceNotFound.ComputeNode"
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_COMPUTEENVOPERATION = "UnsupportedOperation.ComputeEnvOperation"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 //  UNSUPPORTEDOPERATION_COMPUTENODEISTERMINATING = "UnsupportedOperation.ComputeNodeIsTerminating"
 func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (response *TerminateComputeNodeResponse, err error) {
@@ -1819,6 +1820,7 @@ func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (res
 //  RESOURCENOTFOUND_COMPUTENODE = "ResourceNotFound.ComputeNode"
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_COMPUTEENVOPERATION = "UnsupportedOperation.ComputeEnvOperation"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 //  UNSUPPORTEDOPERATION_COMPUTENODEISTERMINATING = "UnsupportedOperation.ComputeNodeIsTerminating"
 func (c *Client) TerminateComputeNodeWithContext(ctx context.Context, request *TerminateComputeNodeRequest) (response *TerminateComputeNodeResponse, err error) {

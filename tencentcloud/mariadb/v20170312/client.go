@@ -44,6 +44,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewActivateHourDBInstanceRequest() (request *ActivateHourDBInstanceRequest) {
+    request = &ActivateHourDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "ActivateHourDBInstance")
+    
+    
+    return
+}
+
+func NewActivateHourDBInstanceResponse() (response *ActivateHourDBInstanceResponse) {
+    response = &ActivateHourDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ActivateHourDBInstance
+// 解隔离后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = "InvalidParameterValue.IllegalInstanceId"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ActivateHourDBInstance(request *ActivateHourDBInstanceRequest) (response *ActivateHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewActivateHourDBInstanceRequest()
+    }
+    
+    response = NewActivateHourDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ActivateHourDBInstance
+// 解隔离后付费实例
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = "InvalidParameterValue.IllegalInstanceId"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ActivateHourDBInstanceWithContext(ctx context.Context, request *ActivateHourDBInstanceRequest) (response *ActivateHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewActivateHourDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewActivateHourDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2882,6 +2938,62 @@ func (c *Client) InitDBInstancesWithContext(ctx context.Context, request *InitDB
     request.SetContext(ctx)
     
     response = NewInitDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewIsolateHourDBInstanceRequest() (request *IsolateHourDBInstanceRequest) {
+    request = &IsolateHourDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "IsolateHourDBInstance")
+    
+    
+    return
+}
+
+func NewIsolateHourDBInstanceResponse() (response *IsolateHourDBInstanceResponse) {
+    response = &IsolateHourDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateHourDBInstance
+// 隔离后付费实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = "InvalidParameterValue.IllegalInstanceId"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) IsolateHourDBInstance(request *IsolateHourDBInstanceRequest) (response *IsolateHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateHourDBInstanceRequest()
+    }
+    
+    response = NewIsolateHourDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// IsolateHourDBInstance
+// 隔离后付费实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = "InvalidParameterValue.IllegalInstanceId"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) IsolateHourDBInstanceWithContext(ctx context.Context, request *IsolateHourDBInstanceRequest) (response *IsolateHourDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateHourDBInstanceRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewIsolateHourDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

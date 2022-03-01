@@ -63,6 +63,9 @@ func NewBindGroupDevicesResponse() (response *BindGroupDevicesResponse) {
 
 // BindGroupDevices
 // 本接口(BindGroupDevices) 用于绑定设备到分组。
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_DEVICENOTFOUND = "UnsupportedOperation.DeviceNotFound"
 func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *BindGroupDevicesResponse, err error) {
     if request == nil {
         request = NewBindGroupDevicesRequest()
@@ -75,6 +78,9 @@ func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *B
 
 // BindGroupDevices
 // 本接口(BindGroupDevices) 用于绑定设备到分组。
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_DEVICENOTFOUND = "UnsupportedOperation.DeviceNotFound"
 func (c *Client) BindGroupDevicesWithContext(ctx context.Context, request *BindGroupDevicesRequest) (response *BindGroupDevicesResponse, err error) {
     if request == nil {
         request = NewBindGroupDevicesRequest()
@@ -3262,6 +3268,7 @@ func NewDescribeChannelLiveStreamURLResponse() (response *DescribeChannelLiveStr
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  INVALIDPARAMETERVALUE_DEVICETYPENOTSUPPORT = "InvalidParameterValue.DeviceTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelLiveStreamURL(request *DescribeChannelLiveStreamURLRequest) (response *DescribeChannelLiveStreamURLResponse, err error) {
@@ -3281,6 +3288,7 @@ func (c *Client) DescribeChannelLiveStreamURL(request *DescribeChannelLiveStream
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  INVALIDPARAMETERVALUE_DEVICETYPENOTSUPPORT = "InvalidParameterValue.DeviceTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelLiveStreamURLWithContext(ctx context.Context, request *DescribeChannelLiveStreamURLRequest) (response *DescribeChannelLiveStreamURLResponse, err error) {

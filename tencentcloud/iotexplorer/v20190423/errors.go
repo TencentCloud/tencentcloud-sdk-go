@@ -368,6 +368,9 @@ const (
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
+	// APP对产品没有权限。
+	UNAUTHORIZEDOPERATION_APPNOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.APPNoPermissionToStudioProduct"
+
 	// App无权限。
 	UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
 

@@ -3196,7 +3196,7 @@ type DescribeLogListRequest struct {
 	// 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 查询语句，语句长度最大为4096
+	// 查询语句，参考控制台请求参数，语句长度最大为4096
 	Query *string `json:"Query,omitempty" name:"Query"`
 
 	// 结束时间

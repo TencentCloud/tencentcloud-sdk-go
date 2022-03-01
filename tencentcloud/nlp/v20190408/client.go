@@ -946,6 +946,7 @@ func NewKeywordsExtractionResponse() (response *KeywordsExtractionResponse) {
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) KeywordsExtraction(request *KeywordsExtractionRequest) (response *KeywordsExtractionResponse, err error) {
     if request == nil {
         request = NewKeywordsExtractionRequest()
@@ -969,6 +970,7 @@ func (c *Client) KeywordsExtraction(request *KeywordsExtractionRequest) (respons
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) KeywordsExtractionWithContext(ctx context.Context, request *KeywordsExtractionRequest) (response *KeywordsExtractionResponse, err error) {
     if request == nil {
         request = NewKeywordsExtractionRequest()

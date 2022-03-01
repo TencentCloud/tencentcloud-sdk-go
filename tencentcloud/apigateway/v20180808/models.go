@@ -813,6 +813,26 @@ func (r *BindApiAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BindApiInfo struct {
+
+	// api唯一id
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// Service唯一id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// api名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+
+	// 服务名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 绑定时间
+	BindTime *string `json:"BindTime,omitempty" name:"BindTime"`
+}
+
 type BindEnvironmentRequest struct {
 	*tchttp.BaseRequest
 
@@ -1841,6 +1861,88 @@ func (r *CreateServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateUpstreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 后端协议，HTTP, HTTPS其中之一
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 负载均衡算法目前支持ROUND_ROBIN
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// VPC唯一ID
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// VPC通道名字
+	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+
+	// VPC通道描述
+	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+
+	// 请求重试次数，默认3次
+	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+
+	// 请求到后端的，host头
+	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+
+	// 后端节点
+	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// k8s服务的配置
+	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+}
+
+func (r *CreateUpstreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUpstreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Scheme")
+	delete(f, "Algorithm")
+	delete(f, "UniqVpcId")
+	delete(f, "UpstreamName")
+	delete(f, "UpstreamDescription")
+	delete(f, "Retries")
+	delete(f, "UpstreamHost")
+	delete(f, "Nodes")
+	delete(f, "K8sService")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUpstreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUpstreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 创建返回的唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUpstreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUpstreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUsagePlanRequest struct {
 	*tchttp.BaseRequest
 
@@ -2317,6 +2419,56 @@ func (r *DeleteServiceSubDomainMappingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteServiceSubDomainMappingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUpstreamRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的VPC通道唯一ID
+	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+}
+
+func (r *DeleteUpstreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUpstreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UpstreamId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUpstreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUpstreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 成功删除的vpc通道id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUpstreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUpstreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4643,6 +4795,142 @@ func (r *DescribeServicesStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUpstreamBindApis struct {
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 绑定的api信息
+	BindApiSet []*BindApiInfo `json:"BindApiSet,omitempty" name:"BindApiSet"`
+}
+
+type DescribeUpstreamBindApisRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// vpc通道Id
+	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+
+	// ServiceId和ApiId过滤查询
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeUpstreamBindApisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpstreamBindApisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "UpstreamId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpstreamBindApisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUpstreamBindApisResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询结果
+		Result *DescribeUpstreamBindApis `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUpstreamBindApisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpstreamBindApisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUpstreamInfo struct {
+
+	// 查询总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 查询列表
+	UpstreamSet []*UpstreamInfo `json:"UpstreamSet,omitempty" name:"UpstreamSet"`
+}
+
+type DescribeUpstreamsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeUpstreamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpstreamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpstreamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUpstreamsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询结果
+		Result *DescribeUpstreamInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUpstreamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUpstreamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUsagePlanEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 
@@ -5390,6 +5678,39 @@ type InstanceParameterInput struct {
 
 	// 参数值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type K8sLabel struct {
+
+	// Label的Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// Label的Value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type K8sService struct {
+
+	// 权重
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// k8s集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 容器命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 容器服务的名字
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 服务的端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 额外选择的Pod的Label
+	ExtraLabels []*K8sLabel `json:"ExtraLabels,omitempty" name:"ExtraLabels"`
+
+	// 自定义的服务名字，可选
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type LogQuery struct {
@@ -6307,6 +6628,92 @@ func (r *ModifySubDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySubDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUpstreamRequest struct {
+	*tchttp.BaseRequest
+
+	// VPC通道唯一ID
+	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+
+	// VPC通道名字
+	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+
+	// VPC通道描述
+	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+
+	// 后端协议，HTTP, HTTPS其中之一
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 负载均衡算法目前支持ROUND_ROBIN
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// VPC唯一ID
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 请求重试次数，默认3次
+	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+
+	// 请求到后端的，host头
+	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+
+	// 后端节点列表
+	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// k8s服务配置
+	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+}
+
+func (r *ModifyUpstreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUpstreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UpstreamId")
+	delete(f, "UpstreamName")
+	delete(f, "UpstreamDescription")
+	delete(f, "Scheme")
+	delete(f, "Algorithm")
+	delete(f, "UniqVpcId")
+	delete(f, "Retries")
+	delete(f, "UpstreamHost")
+	delete(f, "Nodes")
+	delete(f, "K8sService")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUpstreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyUpstreamResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回修改后的vpc通道信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *UpstreamInfo `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyUpstreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUpstreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7504,6 +7911,141 @@ func (r *UpdateServiceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpstreamHealthChecker struct {
+
+	// 标识是否开启主动健康检查。
+	EnableActiveCheck *bool `json:"EnableActiveCheck,omitempty" name:"EnableActiveCheck"`
+
+	// 标识是否开启被动健康检查。
+	EnablePassiveCheck *bool `json:"EnablePassiveCheck,omitempty" name:"EnablePassiveCheck"`
+
+	// 健康检查时，判断为成功请求的 HTTP 状态码。
+	HealthyHttpStatus *string `json:"HealthyHttpStatus,omitempty" name:"HealthyHttpStatus"`
+
+	// 健康检查时，判断为失败请求的 HTTP 状态码。
+	UnhealthyHttpStatus *string `json:"UnhealthyHttpStatus,omitempty" name:"UnhealthyHttpStatus"`
+
+	// TCP连续错误阈值。0 表示禁用 TCP 检查。取值范围：[0, 254]。
+	TcpFailureThreshold *uint64 `json:"TcpFailureThreshold,omitempty" name:"TcpFailureThreshold"`
+
+	// 连续超时阈值。0 表示禁用超时检查。取值范围：[0, 254]。
+	TimeoutThreshold *uint64 `json:"TimeoutThreshold,omitempty" name:"TimeoutThreshold"`
+
+	// HTTP连续错误阈值。0 表示禁用HTTP检查。取值范围：[0, 254]。
+	HttpFailureThreshold *uint64 `json:"HttpFailureThreshold,omitempty" name:"HttpFailureThreshold"`
+
+	// 主动健康检查时探测请求的路径。默认为"/"。
+	ActiveCheckHttpPath *string `json:"ActiveCheckHttpPath,omitempty" name:"ActiveCheckHttpPath"`
+
+	// 主动健康检查的探测请求超时，单位秒。默认为5秒。
+	ActiveCheckTimeout *uint64 `json:"ActiveCheckTimeout,omitempty" name:"ActiveCheckTimeout"`
+
+	// 主动健康检查的时间间隔，默认5秒。
+	ActiveCheckInterval *uint64 `json:"ActiveCheckInterval,omitempty" name:"ActiveCheckInterval"`
+
+	// 主动健康检查时探测请求的的请求头。
+	ActiveRequestHeader []*UpstreamHealthCheckerReqHeaders `json:"ActiveRequestHeader,omitempty" name:"ActiveRequestHeader"`
+
+	// 异常节点的状态自动恢复时间，单位秒。当只开启被动检查的话，必须设置为 > 0 的值，否则被动异常节点将无法恢复。默认30秒。
+	UnhealthyTimeout *uint64 `json:"UnhealthyTimeout,omitempty" name:"UnhealthyTimeout"`
+}
+
+type UpstreamHealthCheckerReqHeaders struct {
+}
+
+type UpstreamInfo struct {
+
+	// VPC通道唯一ID
+	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+
+	// VPC通道名字
+	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+
+	// VPC通道描述
+	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+
+	// 写意
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 负载均衡算法
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// vpc唯一ID
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 请求重拾次数
+	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+
+	// 后端节点
+	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 健康检查配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+
+	// Upstream的类型
+	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+
+	// k8s服务配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	K8sServices []*K8sService `json:"K8sServices,omitempty" name:"K8sServices"`
+
+	// vpc通道的Host
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+}
+
+type UpstreamNode struct {
+
+	// IP（domain）
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 端口[0, 65535]
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 权重[0, 100], 0为禁用
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+
+	// vm实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VmInstanceId *string `json:"VmInstanceId,omitempty" name:"VmInstanceId"`
+
+	// 染色标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Healthy *string `json:"Healthy,omitempty" name:"Healthy"`
+
+	// k8s服务名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// k8s命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
+
+	// TKE集群的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Node的来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// API网关内部记录唯一的服务名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqueServiceName *string `json:"UniqueServiceName,omitempty" name:"UniqueServiceName"`
 }
 
 type UsagePlan struct {

@@ -769,6 +769,7 @@ func NewDeleteTargetResponse() (response *DeleteTargetResponse) {
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTarget(request *DeleteTargetRequest) (response *DeleteTargetResponse, err error) {
@@ -791,6 +792,7 @@ func (c *Client) DeleteTarget(request *DeleteTargetRequest) (response *DeleteTar
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTargetWithContext(ctx context.Context, request *DeleteTargetRequest) (response *DeleteTargetResponse, err error) {
@@ -831,6 +833,7 @@ func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) 
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
@@ -853,6 +856,7 @@ func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (res
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
@@ -1281,6 +1285,7 @@ func NewPublishEventResponse() (response *PublishEventResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PublishEvent(request *PublishEventRequest) (response *PublishEventResponse, err error) {
     if request == nil {
         request = NewPublishEventRequest()
@@ -1301,6 +1306,7 @@ func (c *Client) PublishEvent(request *PublishEventRequest) (response *PublishEv
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
+//  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PublishEventWithContext(ctx context.Context, request *PublishEventRequest) (response *PublishEventResponse, err error) {
     if request == nil {
         request = NewPublishEventRequest()

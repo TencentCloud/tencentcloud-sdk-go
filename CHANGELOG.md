@@ -1,3 +1,171 @@
+# Release v1.0.357
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 26 次发布
+
+发布时间：2022-03-01 08:00:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateUpstream](https://cloud.tencent.com/document/api/628/70414)
+* [DeleteUpstream](https://cloud.tencent.com/document/api/628/70413)
+* [DescribeUpstreamBindApis](https://cloud.tencent.com/document/api/628/70412)
+* [DescribeUpstreams](https://cloud.tencent.com/document/api/628/70411)
+* [ModifyUpstream](https://cloud.tencent.com/document/api/628/70410)
+
+新增数据结构：
+
+* [BindApiInfo](https://cloud.tencent.com/document/api/628/45244#BindApiInfo)
+* [DescribeUpstreamBindApis](https://cloud.tencent.com/document/api/628/45244#DescribeUpstreamBindApis)
+* [DescribeUpstreamInfo](https://cloud.tencent.com/document/api/628/45244#DescribeUpstreamInfo)
+* [K8sLabel](https://cloud.tencent.com/document/api/628/45244#K8sLabel)
+* [K8sService](https://cloud.tencent.com/document/api/628/45244#K8sService)
+* [UpstreamHealthChecker](https://cloud.tencent.com/document/api/628/45244#UpstreamHealthChecker)
+* [UpstreamHealthCheckerReqHeaders](https://cloud.tencent.com/document/api/628/45244#UpstreamHealthCheckerReqHeaders)
+* [UpstreamInfo](https://cloud.tencent.com/document/api/628/45244#UpstreamInfo)
+* [UpstreamNode](https://cloud.tencent.com/document/api/628/45244#UpstreamNode)
+
+
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 43 次发布
+
+发布时间：2022-03-01 08:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetUserAppId](https://cloud.tencent.com/document/api/598/70416)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 36 次发布
+
+发布时间：2022-03-01 08:05:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ActiveHourDCDBInstance](https://cloud.tencent.com/document/api/557/70421)
+* [IsolateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70420)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 18 次发布
+
+发布时间：2022-03-01 08:07:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRealtimeScanConfig](https://cloud.tencent.com/document/api/607/70424)
+* [UpdateScanRooms](https://cloud.tencent.com/document/api/607/70423)
+* [UpdateScanUsers](https://cloud.tencent.com/document/api/607/70422)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 33 次发布
+
+发布时间：2022-03-01 08:09:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ActivateHourDBInstance](https://cloud.tencent.com/document/api/237/70426)
+* [IsolateHourDBInstance](https://cloud.tencent.com/document/api/237/70425)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 12 次发布
+
+发布时间：2022-03-01 08:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployStrategyConf](https://cloud.tencent.com/document/api/1371/60171#DeployStrategyConf)
+
+	* 新增成员：Force
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 70 次发布
+
+发布时间：2022-03-01 08:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInovcationIndicators](https://cloud.tencent.com/document/api/649/70434)
+* [DescribeInvocationMetricDataCurve](https://cloud.tencent.com/document/api/649/70433)
+* [DescribeInvocationMetricDataDimension](https://cloud.tencent.com/document/api/649/70432)
+* [DescribeInvocationMetricDataPoint](https://cloud.tencent.com/document/api/649/70431)
+* [DescribeInvocationMetricScatterPlot](https://cloud.tencent.com/document/api/649/70430)
+* [DescribeJvmMonitor](https://cloud.tencent.com/document/api/649/70429)
+* [DescribeOverviewInvocation](https://cloud.tencent.com/document/api/649/70428)
+* [DescribeStatistics](https://cloud.tencent.com/document/api/649/70427)
+
+新增数据结构：
+
+* [CurvePoint](https://cloud.tencent.com/document/api/649/36099#CurvePoint)
+* [IndicatorCoord](https://cloud.tencent.com/document/api/649/36099#IndicatorCoord)
+* [InvocationIndicator](https://cloud.tencent.com/document/api/649/36099#InvocationIndicator)
+* [InvocationMetricScatterPlot](https://cloud.tencent.com/document/api/649/36099#InvocationMetricScatterPlot)
+* [JvmMonitorData](https://cloud.tencent.com/document/api/649/36099#JvmMonitorData)
+* [MemoryPicture](https://cloud.tencent.com/document/api/649/36099#MemoryPicture)
+* [Metric](https://cloud.tencent.com/document/api/649/36099#Metric)
+* [MetricDataCurve](https://cloud.tencent.com/document/api/649/36099#MetricDataCurve)
+* [MetricDataSingleValue](https://cloud.tencent.com/document/api/649/36099#MetricDataSingleValue)
+* [MetricDimension](https://cloud.tencent.com/document/api/649/36099#MetricDimension)
+* [MetricDimensionValue](https://cloud.tencent.com/document/api/649/36099#MetricDimensionValue)
+* [MultiValue](https://cloud.tencent.com/document/api/649/36099#MultiValue)
+* [MultiValueDataPoints](https://cloud.tencent.com/document/api/649/36099#MultiValueDataPoints)
+* [ServiceStatisticsResult](https://cloud.tencent.com/document/api/649/36099#ServiceStatisticsResult)
+* [ServiceStatisticsResults](https://cloud.tencent.com/document/api/649/36099#ServiceStatisticsResults)
+* [ThreadPicture](https://cloud.tencent.com/document/api/649/36099#ThreadPicture)
+* [TsfPageDimension](https://cloud.tencent.com/document/api/649/36099#TsfPageDimension)
+
+
+
 # Release v1.0.356
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

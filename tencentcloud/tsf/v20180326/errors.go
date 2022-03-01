@@ -143,8 +143,17 @@ const (
 	// TKE 集群查询失败。
 	FAILEDOPERATION_TKECLUSTERQUERYFAILED = "FailedOperation.TkeClusterQueryFailed"
 
+	// TSF应用性能管理CTSDB客户端调用失败。
+	FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+
 	// resource服务错误。
 	FAILEDOPERATION_TSFASRESOURCESERVERERROR = "FailedOperation.TsfAsResourceServerError"
+
+	// ctsdb数据库请求失败。
+	FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = "FailedOperation.TsfCmonitorCtsdbClientRequestFail"
+
+	// TSF监控统计等待超时, 请稍后重试。
+	FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
 
 	// TSF权限模块异常，请联系系统管理员。。
 	FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
@@ -251,6 +260,15 @@ const (
 	// TSF应用性能管理ES客户端响应状态异常。
 	INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
 
+	// TSF应用性能管理内部异常, 请稍后重试。
+	INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
+
+	// TSF监控统计时间日期解析失败。
+	INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
+
+	// TSF监控统计内部异常, 请稍后重试。
+	INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
+
 	// [%s]模块未处理异常。。
 	INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 
@@ -344,8 +362,17 @@ const (
 	// TSF应用性能管理业务日志搜索请求参数错误。
 	INVALIDPARAMETER_TSFAPMBUSILOGSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmBusiLogSearchRequestParamError"
 
+	// TSF应用性能管理运行状态统计查询请求参数错误。
+	INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
+
 	// TSF应用性能管理标准输出日志搜索请求参数错误。
 	INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
+
+	// TSF应用性能管理调用链搜索请求参数错误。
+	INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
+
+	// TSF监控统计请求参数[%s]非法。
+	INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
 
 	// 仓库批量删除包数量超过单次允许上限。
 	INVALIDPARAMETER_UPPERDELETELIMIT = "InvalidParameter.UpperDeleteLimit"

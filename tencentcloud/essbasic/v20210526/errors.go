@@ -50,6 +50,9 @@ const (
 	// 生成唯一ID错误。
 	INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 
+	// 系统错误。
+	INTERNALERROR_SYSTEM = "InternalError.System"
+
 	// 第三方错误。
 	INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 

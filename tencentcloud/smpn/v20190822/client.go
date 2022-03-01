@@ -69,6 +69,7 @@ func NewCreateSmpnEpaResponse() (response *CreateSmpnEpaResponse) {
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateSmpnEpaResponse, err error) {
     if request == nil {
         request = NewCreateSmpnEpaRequest()
@@ -87,6 +88,7 @@ func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateS
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSmpnEpaWithContext(ctx context.Context, request *CreateSmpnEpaRequest) (response *CreateSmpnEpaResponse, err error) {
     if request == nil {
         request = NewCreateSmpnEpaRequest()
@@ -122,6 +124,7 @@ func NewDescribeSmpnChpResponse() (response *DescribeSmpnChpResponse) {
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *DescribeSmpnChpResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnChpRequest()
@@ -139,6 +142,7 @@ func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *Des
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnChpWithContext(ctx context.Context, request *DescribeSmpnChpRequest) (response *DescribeSmpnChpResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnChpRequest()
@@ -174,6 +178,7 @@ func NewDescribeSmpnFnrResponse() (response *DescribeSmpnFnrResponse) {
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *DescribeSmpnFnrResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnFnrRequest()
@@ -191,6 +196,7 @@ func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *Des
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnFnrWithContext(ctx context.Context, request *DescribeSmpnFnrRequest) (response *DescribeSmpnFnrResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnFnrRequest()
@@ -226,6 +232,7 @@ func NewDescribeSmpnMhmResponse() (response *DescribeSmpnMhmResponse) {
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *DescribeSmpnMhmResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnMhmRequest()
@@ -243,6 +250,7 @@ func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *Des
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnMhmWithContext(ctx context.Context, request *DescribeSmpnMhmRequest) (response *DescribeSmpnMhmResponse, err error) {
     if request == nil {
         request = NewDescribeSmpnMhmRequest()

@@ -32,6 +32,9 @@ const (
 	// InvalidParameter.ParameterError
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
+	// FileContent不可用，传入的Base64编码无法转换成标准utf8内容。
+	INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+
 	// 请求的文本长度超过限制。
 	INVALIDPARAMETERVALUE_ERRTEXTCONTENTLEN = "InvalidParameterValue.ErrTextContentLen"
 

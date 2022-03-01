@@ -3169,6 +3169,18 @@ func (r *CreateUnitRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CurvePoint struct {
+
+	// 当前坐标 X轴的值 当前是日期格式:"yyyy-MM-dd HH:mm:ss"
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 当前坐标 Y轴的值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 该坐标点时间戳
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
 type DeleteApiGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -6885,6 +6897,457 @@ func (r *DescribeImageTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInovcationIndicatorsRequest struct {
+	*tchttp.BaseRequest
+
+	// 维度
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 微服务ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 调用方服务名
+	CallerServiceName *string `json:"CallerServiceName,omitempty" name:"CallerServiceName"`
+
+	// 被调方服务名
+	CalleeServiceName *string `json:"CalleeServiceName,omitempty" name:"CalleeServiceName"`
+
+	// 调用方接口名
+	CallerInterfaceName *string `json:"CallerInterfaceName,omitempty" name:"CallerInterfaceName"`
+
+	// 被调方接口名
+	CalleeInterfaceName *string `json:"CalleeInterfaceName,omitempty" name:"CalleeInterfaceName"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInovcationIndicatorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInovcationIndicatorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Dimension")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "NamespaceId")
+	delete(f, "ServiceId")
+	delete(f, "CallerServiceName")
+	delete(f, "CalleeServiceName")
+	delete(f, "CallerInterfaceName")
+	delete(f, "CalleeInterfaceName")
+	delete(f, "ApplicationId")
+	delete(f, "GroupId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInovcationIndicatorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInovcationIndicatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 服务调用监控指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *InvocationIndicator `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInovcationIndicatorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInovcationIndicatorsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataCurveRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询时间粒度，单位秒可选值：60、3600、86400
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 查询指标维度
+	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitempty" name:"MetricDimensions"`
+
+	// 查询指标名
+	Metrics []*Metric `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 类型。组件监控使用，可选值：SQL 或者 NoSQL
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeInvocationMetricDataCurveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataCurveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	delete(f, "MetricDimensions")
+	delete(f, "Metrics")
+	delete(f, "Kind")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvocationMetricDataCurveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataCurveResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标监控数据曲线集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MetricDataCurve `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvocationMetricDataCurveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataCurveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataDimensionRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始index
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 聚合维度
+	DimensionName *string `json:"DimensionName,omitempty" name:"DimensionName"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 维度
+	MetricDimensionValues []*MetricDimensionValue `json:"MetricDimensionValues,omitempty" name:"MetricDimensionValues"`
+}
+
+func (r *DescribeInvocationMetricDataDimensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataDimensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DimensionName")
+	delete(f, "SearchWord")
+	delete(f, "MetricDimensionValues")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvocationMetricDataDimensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataDimensionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 维度
+		Result *TsfPageDimension `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvocationMetricDataDimensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataDimensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataPointRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 维度
+	MetricDimensionValues []*MetricDimensionValue `json:"MetricDimensionValues,omitempty" name:"MetricDimensionValues"`
+
+	// 指标
+	Metrics []*Metric `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 调用视角。可选值：SERVER, CLIENT。默认为SERVER
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+}
+
+func (r *DescribeInvocationMetricDataPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricDimensionValues")
+	delete(f, "Metrics")
+	delete(f, "Kind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvocationMetricDataPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricDataPointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 单值指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MetricDataSingleValue `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvocationMetricDataPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricDataPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricScatterPlotRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询时间粒度，单位秒。可选值：60、3600、86400。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 查询指标维度
+	MetricDimensions []*MetricDimension `json:"MetricDimensions,omitempty" name:"MetricDimensions"`
+
+	// 查询指标名
+	Metrics []*Metric `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+}
+
+func (r *DescribeInvocationMetricScatterPlotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricScatterPlotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	delete(f, "MetricDimensions")
+	delete(f, "Metrics")
+	delete(f, "Kind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInvocationMetricScatterPlotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInvocationMetricScatterPlotResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 多值时间抽统计指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *InvocationMetricScatterPlot `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInvocationMetricScatterPlotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInvocationMetricScatterPlotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJvmMonitorRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例所属应用Id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 时间粒度,单位:秒
+	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+
+	// 查询数据起始时间格式(yyyy-MM-dd HH:mm:ss)
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询数据结束时间格式(yyyy-MM-dd HH:mm:ss)
+	To *string `json:"To,omitempty" name:"To"`
+
+	// 查询的监控图列表,以返回值属性名作为入参
+	RequiredPictures []*string `json:"RequiredPictures,omitempty" name:"RequiredPictures"`
+
+	// 扩展字段
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
+func (r *DescribeJvmMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJvmMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ApplicationId")
+	delete(f, "TimeGranularity")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "RequiredPictures")
+	delete(f, "Tag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJvmMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJvmMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Java实例jvm监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *JvmMonitorData `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeJvmMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJvmMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLaneRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -7219,6 +7682,72 @@ func (r *DescribeMsApiListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeMsApiListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewInvocationRequest struct {
+	*tchttp.BaseRequest
+
+	// 命名空间ID
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 查询开始时间，默认为当天的 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，默认为当前时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeOverviewInvocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewInvocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NamespaceId")
+	delete(f, "Type")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewInvocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewInvocationResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 监控统计数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result []*MetricDataPoint `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewInvocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewInvocationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8475,6 +9004,108 @@ func (r *DescribeSimpleNamespacesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSimpleNamespacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 类型：Interface、Service、Group、Instance、SQL、NoSQL
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 步长，单位s：60、3600、86400
+	TimeStep *uint64 `json:"TimeStep,omitempty" name:"TimeStep"`
+
+	// 偏移量，取值范围大于等于0，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 命名空间Id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式：ASC:0、DESC:1
+	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始时间：年月日 时分秒2020-05-12 14:43:12
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 服务名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 搜索关键词
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 维度
+	MetricDimensionValues []*MetricDimensionValue `json:"MetricDimensionValues,omitempty" name:"MetricDimensionValues"`
+
+	// 聚合关键词
+	BucketKey *string `json:"BucketKey,omitempty" name:"BucketKey"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+}
+
+func (r *DescribeStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "TimeStep")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "NamespaceId")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	delete(f, "EndTime")
+	delete(f, "StartTime")
+	delete(f, "ServiceName")
+	delete(f, "SearchWord")
+	delete(f, "MetricDimensionValues")
+	delete(f, "BucketKey")
+	delete(f, "DbName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询服务统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ServiceStatisticsResults `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10327,6 +10958,21 @@ type ImageTagsResult struct {
 	Content []*ImageTag `json:"Content,omitempty" name:"Content"`
 }
 
+type IndicatorCoord struct {
+
+	// 指标横坐标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoordX *string `json:"CoordX,omitempty" name:"CoordX"`
+
+	// 指标纵坐标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoordY *string `json:"CoordY,omitempty" name:"CoordY"`
+
+	// 指标标签，用于标识附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoordTag *string `json:"CoordTag,omitempty" name:"CoordTag"`
+}
+
 type Instance struct {
 
 	// 机器实例ID
@@ -10492,6 +11138,104 @@ type InstanceAdvancedSettings struct {
 	// dockerd --graph 指定值, 默认为 /var/lib/docker
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerGraphPath *string `json:"DockerGraphPath,omitempty" name:"DockerGraphPath"`
+}
+
+type InvocationIndicator struct {
+
+	// 总请求数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationQuantity *int64 `json:"InvocationQuantity,omitempty" name:"InvocationQuantity"`
+
+	// 请求成功率，百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationSuccessRate *float64 `json:"InvocationSuccessRate,omitempty" name:"InvocationSuccessRate"`
+
+	// 请求平均耗时，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationAvgDuration *float64 `json:"InvocationAvgDuration,omitempty" name:"InvocationAvgDuration"`
+
+	// 成功请求数时间分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationSuccessDistribution []*IndicatorCoord `json:"InvocationSuccessDistribution,omitempty" name:"InvocationSuccessDistribution"`
+
+	// 失败请求数时间分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationFailedDistribution []*IndicatorCoord `json:"InvocationFailedDistribution,omitempty" name:"InvocationFailedDistribution"`
+
+	// 状态码分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationStatusDistribution []*IndicatorCoord `json:"InvocationStatusDistribution,omitempty" name:"InvocationStatusDistribution"`
+
+	// 时延分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationDurationDistribution []*IndicatorCoord `json:"InvocationDurationDistribution,omitempty" name:"InvocationDurationDistribution"`
+
+	// 并发请求次数时间分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationQuantityDistribution []*IndicatorCoord `json:"InvocationQuantityDistribution,omitempty" name:"InvocationQuantityDistribution"`
+}
+
+type InvocationMetricScatterPlot struct {
+
+	// 时间轴截止时间，GMT，精确到毫秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间轴开始时间，GMT，精确到毫秒
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 多值数据点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPoints []*MultiValueDataPoints `json:"DataPoints,omitempty" name:"DataPoints"`
+}
+
+type JvmMonitorData struct {
+
+	// 堆内存监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeapMemory *MemoryPicture `json:"HeapMemory,omitempty" name:"HeapMemory"`
+
+	// 非堆内存监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonHeapMemory *MemoryPicture `json:"NonHeapMemory,omitempty" name:"NonHeapMemory"`
+
+	// 伊甸园区监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdenSpace *MemoryPicture `json:"EdenSpace,omitempty" name:"EdenSpace"`
+
+	// 幸存者区监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SurvivorSpace *MemoryPicture `json:"SurvivorSpace,omitempty" name:"SurvivorSpace"`
+
+	// 老年代监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldSpace *MemoryPicture `json:"OldSpace,omitempty" name:"OldSpace"`
+
+	// 元空间监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaSpace *MemoryPicture `json:"MetaSpace,omitempty" name:"MetaSpace"`
+
+	// 线程监控图,三条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThreadPicture *ThreadPicture `json:"ThreadPicture,omitempty" name:"ThreadPicture"`
+
+	// youngGC增量监控图,一条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YoungGC []*CurvePoint `json:"YoungGC,omitempty" name:"YoungGC"`
+
+	// fullGC增量监控图,一条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullGC []*CurvePoint `json:"FullGC,omitempty" name:"FullGC"`
+
+	// cpu使用率,一条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuUsage []*CurvePoint `json:"CpuUsage,omitempty" name:"CpuUsage"`
+
+	// 加载类数,一条线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassCount []*CurvePoint `json:"ClassCount,omitempty" name:"ClassCount"`
 }
 
 type LaneGroup struct {
@@ -10674,6 +11418,44 @@ type LaneRules struct {
 	Content []*LaneRule `json:"Content,omitempty" name:"Content"`
 }
 
+type MemoryPicture struct {
+
+	// 内存最大值
+	Max []*CurvePoint `json:"Max,omitempty" name:"Max"`
+
+	// 已用内存大小
+	Used []*CurvePoint `json:"Used,omitempty" name:"Used"`
+
+	// 系统分配内存大小
+	Committed []*CurvePoint `json:"Committed,omitempty" name:"Committed"`
+}
+
+type Metric struct {
+
+	// 指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 指标计算方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Function *string `json:"Function,omitempty" name:"Function"`
+}
+
+type MetricDataCurve struct {
+
+	// 指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 指标计算方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricFunction *string `json:"MetricFunction,omitempty" name:"MetricFunction"`
+
+	// 指标数据点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDataPoints []*MetricDataPoint `json:"MetricDataPoints,omitempty" name:"MetricDataPoints"`
+}
+
 type MetricDataPoint struct {
 
 	// 数据点键
@@ -10699,6 +11481,41 @@ type MetricDataPointMap struct {
 
 	// 平均响应时间监控数据点集合
 	AvgTimeCost []*MetricDataPoint `json:"AvgTimeCost,omitempty" name:"AvgTimeCost"`
+}
+
+type MetricDataSingleValue struct {
+
+	// 指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricFunction *string `json:"MetricFunction,omitempty" name:"MetricFunction"`
+
+	// 指标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDataValue *string `json:"MetricDataValue,omitempty" name:"MetricDataValue"`
+}
+
+type MetricDimension struct {
+
+	// 指标维度名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 指标维度取值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type MetricDimensionValue struct {
+
+	// 维度名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 维度值
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type Microservice struct {
@@ -11445,6 +12262,25 @@ type MsInstance struct {
 	// 屏蔽状态，hidden 为屏蔽，unhidden 为未屏蔽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HiddenStatus *string `json:"HiddenStatus,omitempty" name:"HiddenStatus"`
+}
+
+type MultiValue struct {
+
+	// 数据点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitempty" name:"Values"`
+}
+
+type MultiValueDataPoints struct {
+
+	// 多值数据点
+	Points []*MultiValue `json:"Points,omitempty" name:"Points"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 多值数据点key列表，每个值表示当前数据点所在区域的下限
+	PointKeys []*string `json:"PointKeys,omitempty" name:"PointKeys"`
 }
 
 type Namespace struct {
@@ -12856,6 +13692,102 @@ type ServiceSetting struct {
 	SessionAffinityTimeoutSeconds *int64 `json:"SessionAffinityTimeoutSeconds,omitempty" name:"SessionAffinityTimeoutSeconds"`
 }
 
+type ServiceStatisticsResult struct {
+
+	// 请求模版路径:type为接口时返回，服务时不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求方法:type为接口时返回，服务时不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 微服务Id
+	MicroserviceId *string `json:"MicroserviceId,omitempty" name:"MicroserviceId"`
+
+	// 微服务名称
+	MicroserviceName *string `json:"MicroserviceName,omitempty" name:"MicroserviceName"`
+
+	// 请求数
+	RequestCount *uint64 `json:"RequestCount,omitempty" name:"RequestCount"`
+
+	// 请求错误率，不带百分号
+	ErrorRate *float64 `json:"ErrorRate,omitempty" name:"ErrorRate"`
+
+	// 平均响应耗时ms
+	AvgTimeConsuming *float64 `json:"AvgTimeConsuming,omitempty" name:"AvgTimeConsuming"`
+
+	// 响应耗时曲线
+	MetricDataCurves []*MetricDataCurve `json:"MetricDataCurves,omitempty" name:"MetricDataCurves"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 部署组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 部署组类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 部署组是否存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupExist *int64 `json:"GroupExist,omitempty" name:"GroupExist"`
+
+	// 实例是否存在，仅限cvm
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceExist *int64 `json:"InstanceExist,omitempty" name:"InstanceExist"`
+
+	// 应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 微服务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MicroserviceType *string `json:"MicroserviceType,omitempty" name:"MicroserviceType"`
+
+	// cpu使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuPercent *int64 `json:"CpuPercent,omitempty" name:"CpuPercent"`
+
+	// 已用堆大小,单位KB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeapUsed *int64 `json:"HeapUsed,omitempty" name:"HeapUsed"`
+
+	// 数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// Script值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Script *string `json:"Script,omitempty" name:"Script"`
+
+	// 数据库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+}
+
+type ServiceStatisticsResults struct {
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*ServiceStatisticsResult `json:"Content,omitempty" name:"Content"`
+
+	// 条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
 type ShardArgument struct {
 
 	// 分片参数 KEY，整形, 范围 [1,1000]
@@ -13657,6 +14589,18 @@ func (r *TerminateTaskFlowBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ThreadPicture struct {
+
+	// 总线程数
+	ThreadCount []*CurvePoint `json:"ThreadCount,omitempty" name:"ThreadCount"`
+
+	// 活跃线程数
+	ThreadActive []*CurvePoint `json:"ThreadActive,omitempty" name:"ThreadActive"`
+
+	// 守护线程数
+	DeamonThreadCount []*CurvePoint `json:"DeamonThreadCount,omitempty" name:"DeamonThreadCount"`
+}
+
 type TsfApiListResponse struct {
 
 	// 数量
@@ -13765,6 +14709,15 @@ type TsfPageContainerEvent struct {
 
 	// events 数组
 	Content []*ContainerEvent `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfPageDimension struct {
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 维度
+	Content []*string `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageFileConfig struct {

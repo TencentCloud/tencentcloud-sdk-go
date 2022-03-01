@@ -783,6 +783,7 @@ func NewAppGetUserResponse() (response *AppGetUserResponse) {
 // 获取用户信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_IOTSYSTEMERROR = "InternalError.IotSystemError"
 //  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
 //  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
@@ -801,6 +802,7 @@ func (c *Client) AppGetUser(request *AppGetUserRequest) (response *AppGetUserRes
 // 获取用户信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_IOTSYSTEMERROR = "InternalError.IotSystemError"
 //  INVALIDPARAMETER_IOTEXPIREDACCESSTOKEN = "InvalidParameter.IotExpiredAccessToken"
 //  INVALIDPARAMETER_IOTINVALIDACCESSTOKEN = "InvalidParameter.IotInvalidAccessToken"
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"

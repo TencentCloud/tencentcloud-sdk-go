@@ -123,6 +123,7 @@ func NewDescribeExecutionResponse() (response *DescribeExecutionResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response *DescribeExecutionResponse, err error) {
     if request == nil {
         request = NewDescribeExecutionRequest()
@@ -141,6 +142,7 @@ func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExecutionWithContext(ctx context.Context, request *DescribeExecutionRequest) (response *DescribeExecutionResponse, err error) {
     if request == nil {
         request = NewDescribeExecutionRequest()

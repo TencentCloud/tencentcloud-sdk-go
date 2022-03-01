@@ -32,6 +32,9 @@ const (
 	// 服务器繁忙,请稍后再试。
 	INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 
+	// 删除应用失败。
+	INTERNALERROR_DELETESERVICEERROR = "InternalError.DeleteServiceError"
+
 	// 版本部署调用失败。
 	INTERNALERROR_DEPLOYVERSIONERROR = "InternalError.DeployVersionError"
 
@@ -73,6 +76,9 @@ const (
 
 	// 目标微服务已离线。
 	RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+
+	// 环境不存在。
+	RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 
 	// 找不到应用。
 	RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"

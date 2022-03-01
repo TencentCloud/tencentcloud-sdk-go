@@ -2408,6 +2408,57 @@ func (r *GetServiceLinkedRoleDeletionStatusResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetUserAppIdRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *GetUserAppIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUserAppIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUserAppIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUserAppIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前账号Uin
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 当前账号OwnerUin
+		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+		// 当前账号AppId
+		AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetUserAppIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetUserAppIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetUserPermissionBoundaryRequest struct {
 	*tchttp.BaseRequest
 
