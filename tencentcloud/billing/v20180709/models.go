@@ -812,6 +812,14 @@ type Deal struct {
 	// postMoveIn 按量计费迁入资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 产品编码中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 子产品编码中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductName *string `json:"SubProductName,omitempty" name:"SubProductName"`
 }
 
 type DescribeAccountBalanceRequest struct {

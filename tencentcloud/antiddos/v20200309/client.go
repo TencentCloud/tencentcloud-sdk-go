@@ -472,6 +472,58 @@ func (c *Client) CreateCCReqLimitPolicyWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateCcBlackWhiteIpListRequest() (request *CreateCcBlackWhiteIpListRequest) {
+    request = &CreateCcBlackWhiteIpListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateCcBlackWhiteIpList")
+    
+    
+    return
+}
+
+func NewCreateCcBlackWhiteIpListResponse() (response *CreateCcBlackWhiteIpListResponse) {
+    response = &CreateCcBlackWhiteIpListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCcBlackWhiteIpList
+// 新建CC四层黑白名单
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCcBlackWhiteIpList(request *CreateCcBlackWhiteIpListRequest) (response *CreateCcBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewCreateCcBlackWhiteIpListRequest()
+    }
+    
+    response = NewCreateCcBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateCcBlackWhiteIpList
+// 新建CC四层黑白名单
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCcBlackWhiteIpListWithContext(ctx context.Context, request *CreateCcBlackWhiteIpListRequest) (response *CreateCcBlackWhiteIpListResponse, err error) {
+    if request == nil {
+        request = NewCreateCcBlackWhiteIpListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateCcBlackWhiteIpListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCcGeoIPBlockConfigRequest() (request *CreateCcGeoIPBlockConfigRequest) {
     request = &CreateCcGeoIPBlockConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1454,6 +1506,86 @@ func (c *Client) DeleteBlackWhiteIpListWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteCCLevelPolicyRequest() (request *DeleteCCLevelPolicyRequest) {
+    request = &DeleteCCLevelPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DeleteCCLevelPolicy")
+    
+    
+    return
+}
+
+func NewDeleteCCLevelPolicyResponse() (response *DeleteCCLevelPolicyResponse) {
+    response = &DeleteCCLevelPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCCLevelPolicy
+// 删除CC分级策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCCLevelPolicy(request *DeleteCCLevelPolicyRequest) (response *DeleteCCLevelPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCLevelPolicyRequest()
+    }
+    
+    response = NewDeleteCCLevelPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCCLevelPolicy
+// 删除CC分级策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCCLevelPolicyWithContext(ctx context.Context, request *DeleteCCLevelPolicyRequest) (response *DeleteCCLevelPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCLevelPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCCLevelPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCCPrecisionPolicyRequest() (request *DeleteCCPrecisionPolicyRequest) {
     request = &DeleteCCPrecisionPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1610,6 +1742,86 @@ func (c *Client) DeleteCCRequestLimitPolicyWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteCCRequestLimitPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCCThresholdPolicyRequest() (request *DeleteCCThresholdPolicyRequest) {
+    request = &DeleteCCThresholdPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DeleteCCThresholdPolicy")
+    
+    
+    return
+}
+
+func NewDeleteCCThresholdPolicyResponse() (response *DeleteCCThresholdPolicyResponse) {
+    response = &DeleteCCThresholdPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCCThresholdPolicy
+// 删除CC清洗阈值策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCCThresholdPolicy(request *DeleteCCThresholdPolicyRequest) (response *DeleteCCThresholdPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCThresholdPolicyRequest()
+    }
+    
+    response = NewDeleteCCThresholdPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteCCThresholdPolicy
+// 删除CC清洗阈值策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCCThresholdPolicyWithContext(ctx context.Context, request *DeleteCCThresholdPolicyRequest) (response *DeleteCCThresholdPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCThresholdPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteCCThresholdPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -2284,6 +2496,166 @@ func (c *Client) DescribeBlackWhiteIpListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeCCLevelListRequest() (request *DescribeCCLevelListRequest) {
+    request = &DescribeCCLevelListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeCCLevelList")
+    
+    
+    return
+}
+
+func NewDescribeCCLevelListResponse() (response *DescribeCCLevelListResponse) {
+    response = &DescribeCCLevelListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCCLevelList
+// 获取CC防护等级列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCLevelList(request *DescribeCCLevelListRequest) (response *DescribeCCLevelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCLevelListRequest()
+    }
+    
+    response = NewDescribeCCLevelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCCLevelList
+// 获取CC防护等级列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCLevelListWithContext(ctx context.Context, request *DescribeCCLevelListRequest) (response *DescribeCCLevelListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCLevelListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCCLevelListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCCLevelPolicyRequest() (request *DescribeCCLevelPolicyRequest) {
+    request = &DescribeCCLevelPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeCCLevelPolicy")
+    
+    
+    return
+}
+
+func NewDescribeCCLevelPolicyResponse() (response *DescribeCCLevelPolicyResponse) {
+    response = &DescribeCCLevelPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCCLevelPolicy
+// 获取CC分级策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCLevelPolicy(request *DescribeCCLevelPolicyRequest) (response *DescribeCCLevelPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCLevelPolicyRequest()
+    }
+    
+    response = NewDescribeCCLevelPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCCLevelPolicy
+// 获取CC分级策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCLevelPolicyWithContext(ctx context.Context, request *DescribeCCLevelPolicyRequest) (response *DescribeCCLevelPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCLevelPolicyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCCLevelPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCCPrecisionPlyListRequest() (request *DescribeCCPrecisionPlyListRequest) {
     request = &DescribeCCPrecisionPlyListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2440,6 +2812,86 @@ func (c *Client) DescribeCCReqLimitPolicyListWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeCCReqLimitPolicyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCCThresholdListRequest() (request *DescribeCCThresholdListRequest) {
+    request = &DescribeCCThresholdListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeCCThresholdList")
+    
+    
+    return
+}
+
+func NewDescribeCCThresholdListResponse() (response *DescribeCCThresholdListResponse) {
+    response = &DescribeCCThresholdListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCCThresholdList
+// 获取CC清洗阈值列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCThresholdList(request *DescribeCCThresholdListRequest) (response *DescribeCCThresholdListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCThresholdListRequest()
+    }
+    
+    response = NewDescribeCCThresholdListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeCCThresholdList
+// 获取CC清洗阈值列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCCThresholdListWithContext(ctx context.Context, request *DescribeCCThresholdListRequest) (response *DescribeCCThresholdListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCCThresholdListRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeCCThresholdListResponse()
     err = c.Send(request, response)
     return
 }

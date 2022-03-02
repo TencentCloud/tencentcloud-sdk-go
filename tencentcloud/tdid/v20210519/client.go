@@ -244,6 +244,294 @@ func (c *Client) CreateTDidWithContext(ctx context.Context, request *CreateTDidR
     return
 }
 
+func NewCreateTDidByPublicKeyRequest() (request *CreateTDidByPublicKeyRequest) {
+    request = &CreateTDidByPublicKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByPublicKey")
+    
+    
+    return
+}
+
+func NewCreateTDidByPublicKeyResponse() (response *CreateTDidByPublicKeyResponse) {
+    response = &CreateTDidByPublicKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTDidByPublicKey
+//  新建DID根据公钥生成Tdid
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDidByPublicKey(request *CreateTDidByPublicKeyRequest) (response *CreateTDidByPublicKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateTDidByPublicKeyRequest()
+    }
+    
+    response = NewCreateTDidByPublicKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateTDidByPublicKey
+//  新建DID根据公钥生成Tdid
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTDidByPublicKeyWithContext(ctx context.Context, request *CreateTDidByPublicKeyRequest) (response *CreateTDidByPublicKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateTDidByPublicKeyRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTDidByPublicKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetAuthorityIssuerRequest() (request *GetAuthorityIssuerRequest) {
+    request = &GetAuthorityIssuerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdid", APIVersion, "GetAuthorityIssuer")
+    
+    
+    return
+}
+
+func NewGetAuthorityIssuerResponse() (response *GetAuthorityIssuerResponse) {
+    response = &GetAuthorityIssuerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAuthorityIssuer
+// 获取权威机构信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetAuthorityIssuer(request *GetAuthorityIssuerRequest) (response *GetAuthorityIssuerResponse, err error) {
+    if request == nil {
+        request = NewGetAuthorityIssuerRequest()
+    }
+    
+    response = NewGetAuthorityIssuerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetAuthorityIssuer
+// 获取权威机构信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetAuthorityIssuerWithContext(ctx context.Context, request *GetAuthorityIssuerRequest) (response *GetAuthorityIssuerResponse, err error) {
+    if request == nil {
+        request = NewGetAuthorityIssuerRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetAuthorityIssuerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDidDocumentRequest() (request *GetDidDocumentRequest) {
+    request = &GetDidDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdid", APIVersion, "GetDidDocument")
+    
+    
+    return
+}
+
+func NewGetDidDocumentResponse() (response *GetDidDocumentResponse) {
+    response = &GetDidDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDidDocument
+// 查看DID文档
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetDidDocument(request *GetDidDocumentRequest) (response *GetDidDocumentResponse, err error) {
+    if request == nil {
+        request = NewGetDidDocumentRequest()
+    }
+    
+    response = NewGetDidDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// GetDidDocument
+// 查看DID文档
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetDidDocumentWithContext(ctx context.Context, request *GetDidDocumentRequest) (response *GetDidDocumentResponse, err error) {
+    if request == nil {
+        request = NewGetDidDocumentRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewGetDidDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetCredentialStatusRequest() (request *SetCredentialStatusRequest) {
+    request = &SetCredentialStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdid", APIVersion, "SetCredentialStatus")
+    
+    
+    return
+}
+
+func NewSetCredentialStatusResponse() (response *SetCredentialStatusResponse) {
+    response = &SetCredentialStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetCredentialStatus
+// 设置凭证链上状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetCredentialStatus(request *SetCredentialStatusRequest) (response *SetCredentialStatusResponse, err error) {
+    if request == nil {
+        request = NewSetCredentialStatusRequest()
+    }
+    
+    response = NewSetCredentialStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// SetCredentialStatus
+// 设置凭证链上状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
+//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetCredentialStatusWithContext(ctx context.Context, request *SetCredentialStatusRequest) (response *SetCredentialStatusResponse, err error) {
+    if request == nil {
+        request = NewSetCredentialStatusRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewSetCredentialStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
     request = &VerifyCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},

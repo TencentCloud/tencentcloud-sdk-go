@@ -416,6 +416,30 @@ type BoundIpInfo struct {
 	IspCode *uint64 `json:"IspCode,omitempty" name:"IspCode"`
 }
 
+type CCLevelPolicy struct {
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 防护等级，可取值default表示默认策略，loose表示宽松，strict表示严格
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
 type CCPrecisionPlyRecord struct {
 
 	// 配置项类型，当前仅支持value
@@ -513,6 +537,30 @@ type CCReqLimitPolicyRecord struct {
 
 	// Cookie，三个策略项仅可填其中之一
 	Cookie *string `json:"Cookie,omitempty" name:"Cookie"`
+}
+
+type CCThresholdPolicy struct {
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 清洗阈值
+	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type CcBlackWhiteIpPolicy struct {
@@ -895,6 +943,72 @@ func (r *CreateCCReqLimitPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCCReqLimitPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcBlackWhiteIpListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP列表
+	IpList []*IpSegment `json:"IpList,omitempty" name:"IpList"`
+
+	// IP类型，取值[black(黑名单IP), white(白名单IP)]
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Ip地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *CreateCcBlackWhiteIpListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcBlackWhiteIpListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IpList")
+	delete(f, "Type")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCcBlackWhiteIpListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCcBlackWhiteIpListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCcBlackWhiteIpListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCcBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1859,6 +1973,64 @@ func (r *DeleteBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteCCLevelPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 配置策略的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值http
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DeleteCCLevelPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCLevelPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCLevelPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCLevelPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCCLevelPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCLevelPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteCCPrecisionPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -1956,6 +2128,64 @@ func (r *DeleteCCRequestLimitPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCCRequestLimitPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCThresholdPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 配置策略的IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值http
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DeleteCCThresholdPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCThresholdPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCThresholdPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCCThresholdPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteCCThresholdPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCThresholdPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2597,6 +2827,131 @@ func (r *DescribeBlackWhiteIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCCLevelListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp-multip表示高防包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCCLevelListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCLevelListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCLevelListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCLevelListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分级策略列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 分级策略列表详情
+		LevelList []*CCLevelPolicy `json:"LevelList,omitempty" name:"LevelList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCLevelListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCLevelListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCLevelPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IP值
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议，可取值HTTP，HTTPS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeCCLevelPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCLevelPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Ip")
+	delete(f, "Domain")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCLevelPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCLevelPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
+		Level *string `json:"Level,omitempty" name:"Level"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCLevelPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCLevelPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCCPrecisionPlyListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2746,6 +3101,70 @@ func (r *DescribeCCReqLimitPolicyListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCCReqLimitPolicyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCThresholdListRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgp-multip表示高防包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCCThresholdListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCThresholdListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCCThresholdListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCCThresholdListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 清洗阈值策略列表总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 清洗阈值策略列表详情
+		ThresholdList []*CCThresholdPolicy `json:"ThresholdList,omitempty" name:"ThresholdList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeCCThresholdListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCCThresholdListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

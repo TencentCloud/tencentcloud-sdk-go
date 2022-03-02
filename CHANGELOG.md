@@ -1,3 +1,173 @@
+# Release v1.0.358
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 23 次发布
+
+发布时间：2022-03-02 08:04:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCcBlackWhiteIpList](https://cloud.tencent.com/document/api/1021/70487)
+* [DeleteCCLevelPolicy](https://cloud.tencent.com/document/api/1021/70492)
+* [DeleteCCThresholdPolicy](https://cloud.tencent.com/document/api/1021/70491)
+* [DescribeCCLevelList](https://cloud.tencent.com/document/api/1021/70490)
+* [DescribeCCLevelPolicy](https://cloud.tencent.com/document/api/1021/70489)
+* [DescribeCCThresholdList](https://cloud.tencent.com/document/api/1021/70488)
+
+新增数据结构：
+
+* [CCLevelPolicy](https://cloud.tencent.com/document/api/1021/57582#CCLevelPolicy)
+* [CCThresholdPolicy](https://cloud.tencent.com/document/api/1021/57582#CCThresholdPolicy)
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 31 次发布
+
+发布时间：2022-03-02 08:05:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
+
+	* 新增成员：ProductName, SubProductName
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 10 次发布
+
+发布时间：2022-03-02 08:15:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
+
+	* 新增入参：Insecure
+
+* [DescribeAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65539)
+
+	* 新增出参：Insecure
+
+* [DescribeComplianceWhitelistItemList](https://cloud.tencent.com/document/api/1285/65600)
+
+	* 新增入参：By, Order
+
+* [UpdateAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65519)
+
+	* 新增入参：Insecure
+
+
+
+
+## TDSQL-C PostgreSQL 版(tdcpg) 版本：2021-11-18
+
+### 第 1 次发布
+
+发布时间：2022-03-01 10:49:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloneClusterToPointInTime](https://cloud.tencent.com/document/api/#/#)
+* [CreateCluster](https://cloud.tencent.com/document/api/#/#)
+* [CreateClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [DeleteCluster](https://cloud.tencent.com/document/api/#/#)
+* [DeleteClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAccounts](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterBackups](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterRecoveryTimeRange](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusters](https://cloud.tencent.com/document/api/#/#)
+* [DescribeResourcesByDealName](https://cloud.tencent.com/document/api/#/#)
+* [IsolateCluster](https://cloud.tencent.com/document/api/#/#)
+* [IsolateClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [ModifyAccountDescription](https://cloud.tencent.com/document/api/#/#)
+* [ModifyClusterEndpointWanStatus](https://cloud.tencent.com/document/api/#/#)
+* [ModifyClusterInstancesSpec](https://cloud.tencent.com/document/api/#/#)
+* [ModifyClusterName](https://cloud.tencent.com/document/api/#/#)
+* [ModifyClustersAutoRenewFlag](https://cloud.tencent.com/document/api/#/#)
+* [RecoverCluster](https://cloud.tencent.com/document/api/#/#)
+* [RecoverClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [RenewCluster](https://cloud.tencent.com/document/api/#/#)
+* [ResetAccountPassword](https://cloud.tencent.com/document/api/#/#)
+* [RestartClusterInstances](https://cloud.tencent.com/document/api/#/#)
+* [TransformClusterPayMode](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/#/##Account)
+* [AvailableRecoveryTimeRange](https://cloud.tencent.com/document/api/#/##AvailableRecoveryTimeRange)
+* [Backup](https://cloud.tencent.com/document/api/#/##Backup)
+* [Cluster](https://cloud.tencent.com/document/api/#/##Cluster)
+* [Endpoint](https://cloud.tencent.com/document/api/#/##Endpoint)
+* [Filter](https://cloud.tencent.com/document/api/#/##Filter)
+* [Instance](https://cloud.tencent.com/document/api/#/##Instance)
+* [ResourceIdInfo](https://cloud.tencent.com/document/api/#/##ResourceIdInfo)
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 3 次发布
+
+发布时间：2022-03-01 15:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetCredentialStatus](https://cloud.tencent.com/document/api/1439/70457)
+
+新增数据结构：
+
+* [CredentialStatus](https://cloud.tencent.com/document/api/1439/60283#CredentialStatus)
+
+### 第 2 次发布
+
+发布时间：2022-03-01 14:59:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTDidByPublicKey](https://cloud.tencent.com/document/api/1439/70456)
+* [GetAuthorityIssuer](https://cloud.tencent.com/document/api/1439/70455)
+* [GetDidDocument](https://cloud.tencent.com/document/api/1439/70454)
+
+修改接口：
+
+* [CreateCredential](https://cloud.tencent.com/document/api/1439/60282)
+
+	* 新增入参：UnSigned
+
+
+
+
 # Release v1.0.357
 
 ## API网关(apigateway) 版本：2018-08-08

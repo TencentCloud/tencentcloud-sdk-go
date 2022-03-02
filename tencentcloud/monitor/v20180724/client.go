@@ -224,7 +224,7 @@ func NewCreateAlarmPolicyResponse() (response *CreateAlarmPolicyResponse) {
 }
 
 // CreateAlarmPolicy
-// 创建告警策略
+// 创建云监控告警策略
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -245,7 +245,7 @@ func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) (response 
 }
 
 // CreateAlarmPolicy
-// 创建告警策略
+// 创建云监控告警策略
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

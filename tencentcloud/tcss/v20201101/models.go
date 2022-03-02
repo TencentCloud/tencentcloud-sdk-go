@@ -367,6 +367,9 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 
 	// 限速
 	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+
+	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -390,6 +393,7 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 	delete(f, "RegistryVersion")
 	delete(f, "RegistryRegion")
 	delete(f, "SpeedLimit")
+	delete(f, "Insecure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -5009,6 +5013,10 @@ type DescribeAssetImageRegistryRegistryDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SpeedLimit *uint64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
 
+		// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -7400,6 +7408,12 @@ type DescribeComplianceWhitelistItemListRequest struct {
 
 	// 查询过滤器
 	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 排序方式 desc asc
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeComplianceWhitelistItemListRequest) ToJsonString() string {
@@ -7418,6 +7432,8 @@ func (r *DescribeComplianceWhitelistItemListRequest) FromJsonString(s string) er
 	delete(f, "Limit")
 	delete(f, "AssetTypeSet")
 	delete(f, "Filters")
+	delete(f, "By")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComplianceWhitelistItemListRequest has unknown keys!", "")
 	}
@@ -13141,6 +13157,9 @@ type UpdateAssetImageRegistryRegistryDetailRequest struct {
 
 	// 限速
 	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+
+	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
+	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -13164,6 +13183,7 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 	delete(f, "RegistryVersion")
 	delete(f, "RegistryRegion")
 	delete(f, "SpeedLimit")
+	delete(f, "Insecure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}

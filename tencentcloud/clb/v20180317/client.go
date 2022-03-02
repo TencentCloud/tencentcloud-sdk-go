@@ -442,12 +442,6 @@ func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
 //
 // 
 //
-// 权限说明：
-//
-// 调用克隆接口用户需要具有：CreateLoadBalancer、CreateLoadBalancerListeners、CreateListenerRules、BatchRegisterTargets、SetLoadBalancerSecurityGroups、ModifyLoadBalancerAttributes、SetLoadBalancerClsLog、DeleteLoadBalancer权限，其中DeleteLoadBalancer用于克隆失败回滚流程，如果没有该接口权限，克隆失败后可能会残留克隆失败的CLB数据。
-//
-// 
-//
 // 通过接口调用：
 //
 // BGP带宽包必须传带宽包id
@@ -503,12 +497,6 @@ func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (response 
 // 不支持后端类型为 目标组、SCF云函数
 //
 // 个性化配置、重定向配置、安全组默认放通开关 将不会被克隆，须手工配置
-//
-// 
-//
-// 权限说明：
-//
-// 调用克隆接口用户需要具有：CreateLoadBalancer、CreateLoadBalancerListeners、CreateListenerRules、BatchRegisterTargets、SetLoadBalancerSecurityGroups、ModifyLoadBalancerAttributes、SetLoadBalancerClsLog、DeleteLoadBalancer权限，其中DeleteLoadBalancer用于克隆失败回滚流程，如果没有该接口权限，克隆失败后可能会残留克隆失败的CLB数据。
 //
 // 
 //

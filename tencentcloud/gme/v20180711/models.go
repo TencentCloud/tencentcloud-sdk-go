@@ -605,25 +605,25 @@ type DescribeRealtimeScanConfigResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回结果码
+		// 返回结果码，0正常，非0失败
 		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
 
 		// 应用ID
 		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-		// 送检类型
+		// 送检类型，0: 全量送审，1: 自定义送审
 		AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
 
-		// 用户号正则
+		// 用户号正则表达式
 		UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
 
-		// 房间号正则
+		// 房间号正则表达式
 		RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
 
-		// 用户号字符串，逗号分隔
+		// 用户号字符串，逗号分隔，示例："0001,0002,0003"
 		UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
 
-		// 房间号字符串，逗号分隔
+		// 房间号字符串，逗号分隔，示例："0001,0002,0003"
 		RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1229,10 +1229,10 @@ type UpdateScanRoomsRequest struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 字符串房间号，逗号分隔
+	// 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
 	RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
 
-	// 正则表达式房间号，["^6.*"]6开头的房间号
+	// 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
 	RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
 }
 
@@ -1287,10 +1287,10 @@ type UpdateScanUsersRequest struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 字符串用户号，逗号分隔
+	// 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
 	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
 
-	// 正则表达式用户号，["^6.*"]6开头的用户号
+	// 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
 	UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
 }
 
