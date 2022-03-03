@@ -3918,6 +3918,74 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyLoadBalancerMixIpTargetRequest() (request *ModifyLoadBalancerMixIpTargetRequest) {
+    request = &ModifyLoadBalancerMixIpTargetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyLoadBalancerMixIpTarget")
+    
+    
+    return
+}
+
+func NewModifyLoadBalancerMixIpTargetResponse() (response *ModifyLoadBalancerMixIpTargetResponse) {
+    response = &ModifyLoadBalancerMixIpTargetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLoadBalancerMixIpTarget
+// 修改IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLoadBalancerMixIpTarget(request *ModifyLoadBalancerMixIpTargetRequest) (response *ModifyLoadBalancerMixIpTargetResponse, err error) {
+    if request == nil {
+        request = NewModifyLoadBalancerMixIpTargetRequest()
+    }
+    
+    response = NewModifyLoadBalancerMixIpTargetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyLoadBalancerMixIpTarget
+// 修改IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyLoadBalancerMixIpTargetWithContext(ctx context.Context, request *ModifyLoadBalancerMixIpTargetRequest) (response *ModifyLoadBalancerMixIpTargetResponse, err error) {
+    if request == nil {
+        request = NewModifyLoadBalancerMixIpTargetRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyLoadBalancerMixIpTargetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLoadBalancerSlaRequest() (request *ModifyLoadBalancerSlaRequest) {
     request = &ModifyLoadBalancerSlaRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -758,7 +758,7 @@ func (r *CreateDedicatedClusterDBInstanceResponse) FromJsonString(s string) erro
 type CreateHourDBInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 节点可用区分布，最多可填两个可用区。
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 节点个数
@@ -783,9 +783,6 @@ type CreateHourDBInstanceRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
-	// 10.0.10 - Mariadb 10.0.10；
-	// 10.1.9 - Mariadb 10.1.9；
-	// 5.7.17 - Percona 5.7.17。
 	// 如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 
@@ -807,7 +804,9 @@ type CreateHourDBInstanceRequest struct {
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
 
-	// 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+	// 参数列表。本接口的可选值为：
+	// character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），
+	// innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化，默认为强同步可退化）。
 	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
 
 	// 回档源实例ID
@@ -857,7 +856,7 @@ type CreateHourDBInstanceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 长订单号。可以据此调用 DescribeOrders
+		// 订单号。可以据此调用 DescribeOrders
 	//  查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
 		DealName *string `json:"DealName,omitempty" name:"DealName"`
 

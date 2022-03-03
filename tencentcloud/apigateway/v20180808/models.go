@@ -1786,6 +1786,9 @@ type CreateServiceRequest struct {
 
 	// 独享实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// vpc属性
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 
 func (r *CreateServiceRequest) ToJsonString() string {
@@ -1810,6 +1813,7 @@ func (r *CreateServiceRequest) FromJsonString(s string) error {
 	delete(f, "AppIdType")
 	delete(f, "Tags")
 	delete(f, "InstanceId")
+	delete(f, "UniqVpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceRequest has unknown keys!", "")
 	}

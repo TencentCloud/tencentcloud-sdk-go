@@ -1422,6 +1422,60 @@ func (c *Client) KillOpsWithContext(ctx context.Context, request *KillOpsRequest
     return
 }
 
+func NewModifyDBInstanceSecurityGroupRequest() (request *ModifyDBInstanceSecurityGroupRequest) {
+    request = &ModifyDBInstanceSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceSecurityGroup")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceSecurityGroupResponse() (response *ModifyDBInstanceSecurityGroupResponse) {
+    response = &ModifyDBInstanceSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceSecurityGroup
+// 修改实例绑定的安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) ModifyDBInstanceSecurityGroup(request *ModifyDBInstanceSecurityGroupRequest) (response *ModifyDBInstanceSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSecurityGroupRequest()
+    }
+    
+    response = NewModifyDBInstanceSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyDBInstanceSecurityGroup
+// 修改实例绑定的安全组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+func (c *Client) ModifyDBInstanceSecurityGroupWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupRequest) (response *ModifyDBInstanceSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSecurityGroupRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
     request = &ModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},

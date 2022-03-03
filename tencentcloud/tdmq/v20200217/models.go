@@ -61,6 +61,10 @@ type AMQPClusterDetail struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type AMQPClusterInfo struct {
@@ -131,6 +135,18 @@ type AMQPExchange struct {
 
 	// 是否为内部Exchange(以amq.前缀开头的)
 	Internal *bool `json:"Internal,omitempty" name:"Internal"`
+
+	// 备用Exchange名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlternateExchange *string `json:"AlternateExchange,omitempty" name:"AlternateExchange"`
+
+	// 备用Exchange是否删除标识: true(已删除)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlternateExchangeDeleteMark *bool `json:"AlternateExchangeDeleteMark,omitempty" name:"AlternateExchangeDeleteMark"`
+
+	// 延迟Exchange的类别，为枚举类型:Direct, Fanout, Topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayType *string `json:"DelayType,omitempty" name:"DelayType"`
 }
 
 type AMQPQueueDetail struct {
@@ -233,6 +249,10 @@ type AMQPVHost struct {
 
 	// 密码
 	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type AcknowledgeMessageRequest struct {
@@ -886,7 +906,7 @@ type CreateAMQPExchangeRequest struct {
 	// 交换机所在的vhost，目前支持在单个vhost下创建主题
 	VHosts []*string `json:"VHosts,omitempty" name:"VHosts"`
 
-	// 交换机类型，可选值为Direct, Fanout, Topic
+	// 交换机类型，可选值为Direct, Fanout, Topic, x-delayed-message
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 集群ID
@@ -897,6 +917,9 @@ type CreateAMQPExchangeRequest struct {
 
 	// 备用交换机名称
 	AlternateExchange *string `json:"AlternateExchange,omitempty" name:"AlternateExchange"`
+
+	// 延迟交换机类型，可选值为Direct, Fanout, Topic, 不允许为x-delayed-message
+	DelayedType *string `json:"DelayedType,omitempty" name:"DelayedType"`
 }
 
 func (r *CreateAMQPExchangeRequest) ToJsonString() string {
@@ -917,6 +940,7 @@ func (r *CreateAMQPExchangeRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Remark")
 	delete(f, "AlternateExchange")
+	delete(f, "DelayedType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAMQPExchangeRequest has unknown keys!", "")
 	}
@@ -3453,6 +3477,9 @@ type DescribeAMQPVHostsRequest struct {
 
 	// 按名称搜索
 	NameKeyword *string `json:"NameKeyword,omitempty" name:"NameKeyword"`
+
+	// VHostId 列表过滤
+	VHostIdList []*string `json:"VHostIdList,omitempty" name:"VHostIdList"`
 }
 
 func (r *DescribeAMQPVHostsRequest) ToJsonString() string {
@@ -3471,6 +3498,7 @@ func (r *DescribeAMQPVHostsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "NameKeyword")
+	delete(f, "VHostIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAMQPVHostsRequest has unknown keys!", "")
 	}

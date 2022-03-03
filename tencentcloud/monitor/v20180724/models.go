@@ -3827,6 +3827,11 @@ type DescribePrometheusInstancesRequest struct {
 
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照【计费类型】进行过滤。
+	// <li>2：包年包月</li>
+	// <li>3：按量</li>
+	InstanceChargeType *int64 `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
 func (r *DescribePrometheusInstancesRequest) ToJsonString() string {
@@ -3849,6 +3854,7 @@ func (r *DescribePrometheusInstancesRequest) FromJsonString(s string) error {
 	delete(f, "IPv4Address")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "InstanceChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstancesRequest has unknown keys!", "")
 	}

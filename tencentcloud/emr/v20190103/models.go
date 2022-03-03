@@ -110,6 +110,25 @@ type CdbInfo struct {
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
+type ClusterExternalServiceInfo struct {
+
+	// 依赖关系，0:被其他集群依赖，1:依赖其他集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DependType *int64 `json:"DependType,omitempty" name:"DependType"`
+
+	// 共用组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 共用集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 共用集群状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+}
+
 type ClusterInstancesInfo struct {
 
 	// ID号
@@ -282,6 +301,10 @@ type ClusterInstancesInfo struct {
 	// subnet name
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 集群依赖关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterExternalServiceInfo []*ClusterExternalServiceInfo `json:"ClusterExternalServiceInfo,omitempty" name:"ClusterExternalServiceInfo"`
 }
 
 type ClusterSetting struct {
@@ -471,6 +494,9 @@ type CreateInstanceRequest struct {
 	// Hadoop-Presto
 	// Hadoop-Hbase
 	SceneName *string `json:"SceneName,omitempty" name:"SceneName"`
+
+	// 共享组件信息
+	ExternalService []*ExternalService `json:"ExternalService,omitempty" name:"ExternalService"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -513,6 +539,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MetaDBInfo")
 	delete(f, "ApplicationRole")
 	delete(f, "SceneName")
+	delete(f, "ExternalService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -1036,6 +1063,10 @@ type EmrProductConfigOutter struct {
 	// 安全组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// SSH密钥Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKeyId *string `json:"PublicKeyId,omitempty" name:"PublicKeyId"`
 }
 
 type Execution struct {

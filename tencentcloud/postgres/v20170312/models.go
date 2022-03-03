@@ -376,6 +376,72 @@ func (r *CloseServerlessDBExtranetAccessResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDBInstanceNetworkAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如：postgres-6bwgamo3。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 私有网络统一 ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 是否指定分配vip true-指定分配  false-自动分配。
+	IsAssignVip *bool `json:"IsAssignVip,omitempty" name:"IsAssignVip"`
+
+	// 目标VIP地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+}
+
+func (r *CreateDBInstanceNetworkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBInstanceNetworkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "IsAssignVip")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceNetworkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDBInstanceNetworkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDBInstanceNetworkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -785,6 +851,72 @@ func (r *CreateReadOnlyDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateReadOnlyGroupNetworkAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// RO组ID，形如：pgro-4t9c6g7k。
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+	// 私有网络统一 ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 是否指定分配vip true-指定分配  false-自动分配。
+	IsAssignVip *bool `json:"IsAssignVip,omitempty" name:"IsAssignVip"`
+
+	// 目标VIP地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+}
+
+func (r *CreateReadOnlyGroupNetworkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReadOnlyGroupNetworkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReadOnlyGroupId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "IsAssignVip")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReadOnlyGroupNetworkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReadOnlyGroupNetworkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateReadOnlyGroupNetworkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReadOnlyGroupNetworkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateReadOnlyGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1150,6 +1282,130 @@ type DBNode struct {
 
 	// 节点所在可用区，例如 ap-guangzhou-1。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type DeleteDBInstanceNetworkAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID，形如：postgres-6bwgamo3。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 私有网络统一 ID，若是基础网络则传"0"。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID，若是基础网络则传"0"。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 目标VIP地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+}
+
+func (r *DeleteDBInstanceNetworkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDBInstanceNetworkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDBInstanceNetworkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDBInstanceNetworkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDBInstanceNetworkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReadOnlyGroupNetworkAccessRequest struct {
+	*tchttp.BaseRequest
+
+	// RO组ID，形如：pgro-4t9c6g7k。
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+
+	// 私有网络统一 ID，若是基础网络则传"0"。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID，若是基础网络则传"0"。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 目标VIP地址。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+}
+
+func (r *DeleteReadOnlyGroupNetworkAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReadOnlyGroupNetworkAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReadOnlyGroupId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReadOnlyGroupNetworkAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReadOnlyGroupNetworkAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 流程ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteReadOnlyGroupNetworkAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReadOnlyGroupNetworkAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteReadOnlyGroupRequest struct {

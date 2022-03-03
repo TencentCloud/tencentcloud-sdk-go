@@ -678,7 +678,7 @@ func NewDescribeKTVRobotsResponse() (response *DescribeKTVRobotsResponse) {
 }
 
 // DescribeKTVRobots
-// 查询机器人列表，支持 Id、状态等过滤条件。
+// 获取机器人列表，支持 Id、状态等过滤条件。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -699,7 +699,7 @@ func (c *Client) DescribeKTVRobots(request *DescribeKTVRobotsRequest) (response 
 }
 
 // DescribeKTVRobots
-// 查询机器人列表，支持 Id、状态等过滤条件。
+// 获取机器人列表，支持 Id、状态等过滤条件。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

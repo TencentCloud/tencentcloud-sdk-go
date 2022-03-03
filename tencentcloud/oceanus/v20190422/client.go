@@ -501,6 +501,8 @@ func NewDeleteTableConfigResponse() (response *DeleteTableConfigResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
 func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response *DeleteTableConfigResponse, err error) {
     if request == nil {
         request = NewDeleteTableConfigRequest()
@@ -517,6 +519,8 @@ func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
 func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *DeleteTableConfigRequest) (response *DeleteTableConfigResponse, err error) {
     if request == nil {
         request = NewDeleteTableConfigRequest()
@@ -1021,10 +1025,15 @@ func NewStopJobsResponse() (response *StopJobsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
+//  INVALIDPARAMETERVALUE_UNKNOWNSTOPTYPE = "InvalidParameterValue.UnknownStopType"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_COSBUCKET = "ResourceNotFound.COSBucket"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
-//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+//  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
 //  RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse, err error) {
@@ -1043,10 +1052,15 @@ func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse,
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
+//  INVALIDPARAMETERVALUE_UNKNOWNSTOPTYPE = "InvalidParameterValue.UnknownStopType"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_COSBUCKET = "ResourceNotFound.COSBucket"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
-//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+//  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
 //  RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopJobsWithContext(ctx context.Context, request *StopJobsRequest) (response *StopJobsResponse, err error) {

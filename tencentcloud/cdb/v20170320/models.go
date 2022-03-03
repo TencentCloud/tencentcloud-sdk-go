@@ -394,6 +394,10 @@ type AuditPolicy struct {
 	// 审计规则名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 数据库实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 type AuditRule struct {

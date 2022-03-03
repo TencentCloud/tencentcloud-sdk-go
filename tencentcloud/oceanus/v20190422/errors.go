@@ -65,9 +65,6 @@ const (
 	// 内部错误。
 	INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
 
-	// 系统错误。
-	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-
 	// AppId资源不匹配。
 	INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"
 
@@ -139,6 +136,9 @@ const (
 
 	// 不支持的复合类型。
 	INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = "InvalidParameterValue.UnSupportedComposite"
+
+	// 未知停止类型错误。
+	INVALIDPARAMETERVALUE_UNKNOWNSTOPTYPE = "InvalidParameterValue.UnknownStopType"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"

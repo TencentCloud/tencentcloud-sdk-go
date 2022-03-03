@@ -1,3 +1,371 @@
+# Release v1.0.359
+
+## 云 API(api) 版本：2020-11-06
+
+### 第 2 次发布
+
+发布时间：2022-03-03 08:00:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProducts](https://cloud.tencent.com/document/api/1278/70575)
+
+新增数据结构：
+
+* [RegionProduct](https://cloud.tencent.com/document/api/1278/55256#RegionProduct)
+
+
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 27 次发布
+
+发布时间：2022-03-03 08:00:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateService](https://cloud.tencent.com/document/api/628/45201)
+
+	* 新增入参：UniqVpcId
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 86 次发布
+
+发布时间：2022-03-03 08:02:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AuditPolicy](https://cloud.tencent.com/document/api/236/15878#AuditPolicy)
+
+	* 新增成员：InstanceName
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 67 次发布
+
+发布时间：2022-03-03 08:03:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyLoadBalancerMixIpTarget](https://cloud.tencent.com/document/api/214/70576)
+
+
+
+## 消息队列 CMQ(cmq) 版本：2019-03-04
+
+### 第 2 次发布
+
+发布时间：2022-03-03 08:03:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueueSet](https://cloud.tencent.com/document/api/406/42640#QueueSet)
+
+	* 新增成员：Migrate
+
+* [TopicSet](https://cloud.tencent.com/document/api/406/42640#TopicSet)
+
+	* 新增成员：Migrate
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 8 次发布
+
+发布时间：2022-03-03 08:04:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserSqlAdvice](https://cloud.tencent.com/document/api/1130/57782)
+
+	* 新增入参：Product
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 27 次发布
+
+发布时间：2022-03-03 08:06:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
+
+	* 新增入参：ExternalService
+
+
+新增数据结构：
+
+* [ClusterExternalServiceInfo](https://cloud.tencent.com/document/api/589/33981#ClusterExternalServiceInfo)
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：ClusterExternalServiceInfo
+
+* [EmrProductConfigOutter](https://cloud.tencent.com/document/api/589/33981#EmrProductConfigOutter)
+
+	* 新增成员：PublicKeyId
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 26 次发布
+
+发布时间：2022-03-03 08:08:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ModifyBundle](https://cloud.tencent.com/document/api/1207/47576#ModifyBundle)
+
+	* 新增成员：NotSupportModifyMessage
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 19 次发布
+
+发布时间：2022-03-03 08:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDBInstanceSecurityGroup](https://cloud.tencent.com/document/api/240/70577)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 40 次发布
+
+发布时间：2022-03-03 08:09:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrometheusInstances](https://cloud.tencent.com/document/api/248/66097)
+
+	* 新增入参：InstanceChargeType
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 16 次发布
+
+发布时间：2022-03-03 08:09:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJob](https://cloud.tencent.com/document/api/849/52009)
+
+	* 新增入参：WorkSpaceId
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：WorkSpaceId
+
+* [CreateResource](https://cloud.tencent.com/document/api/849/52000)
+
+	* 新增入参：WorkSpaceId
+
+* [CreateResourceConfig](https://cloud.tencent.com/document/api/849/51997)
+
+	* 新增入参：WorkSpaceId
+
+* [DeleteResourceConfigs](https://cloud.tencent.com/document/api/849/54667)
+
+	* 新增入参：WorkSpaceId
+
+* [DeleteResources](https://cloud.tencent.com/document/api/849/54670)
+
+	* 新增入参：WorkSpaceId
+
+* [DeleteTableConfig](https://cloud.tencent.com/document/api/849/52002)
+
+	* 新增入参：WorkSpaceId
+
+* [DescribeJobConfigs](https://cloud.tencent.com/document/api/849/52875)
+
+	* 新增入参：WorkSpaceId
+
+* [DescribeJobs](https://cloud.tencent.com/document/api/849/52008)
+
+	* 新增入参：WorkSpaceId
+
+* [DescribeResourceConfigs](https://cloud.tencent.com/document/api/849/54666)
+
+	* 新增入参：WorkSpaceId
+
+* [DescribeResourceRelatedJobs](https://cloud.tencent.com/document/api/849/54669)
+
+	* 新增入参：WorkSpaceId
+
+* [DescribeResources](https://cloud.tencent.com/document/api/849/54668)
+
+	* 新增入参：WorkSpaceId
+
+* [RunJobs](https://cloud.tencent.com/document/api/849/52007)
+
+	* 新增入参：WorkSpaceId
+
+* [StopJobs](https://cloud.tencent.com/document/api/849/52006)
+
+	* 新增入参：WorkSpaceId
+
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：WorkSpaceId, WorkSpaceName
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 25 次发布
+
+发布时间：2022-03-03 08:10:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDBInstanceNetworkAccess](https://cloud.tencent.com/document/api/409/70581)
+* [CreateReadOnlyGroupNetworkAccess](https://cloud.tencent.com/document/api/409/70580)
+* [DeleteDBInstanceNetworkAccess](https://cloud.tencent.com/document/api/409/70579)
+* [DeleteReadOnlyGroupNetworkAccess](https://cloud.tencent.com/document/api/409/70578)
+
+
+
+## SSL 证书监控(sslpod) 版本：2019-06-05
+
+### 第 2 次发布
+
+发布时间：2022-03-03 08:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDomains](https://cloud.tencent.com/document/api/1084/49339)
+
+	* 新增入参：Domain
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 30 次发布
+
+发布时间：2022-03-03 08:12:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAMQPExchange](https://cloud.tencent.com/document/api/1179/64672)
+
+	* 新增入参：DelayedType
+
+* [DescribeAMQPVHosts](https://cloud.tencent.com/document/api/1179/64658)
+
+	* 新增入参：VHostIdList
+
+
+修改数据结构：
+
+* [AMQPClusterDetail](https://cloud.tencent.com/document/api/1179/46089#AMQPClusterDetail)
+
+	* 新增成员：Status
+
+* [AMQPExchange](https://cloud.tencent.com/document/api/1179/46089#AMQPExchange)
+
+	* 新增成员：AlternateExchange, AlternateExchangeDeleteMark, DelayType
+
+* [AMQPVHost](https://cloud.tencent.com/document/api/1179/46089#AMQPVHost)
+
+	* 新增成员：Status
+
+
+
+
 # Release v1.0.358
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

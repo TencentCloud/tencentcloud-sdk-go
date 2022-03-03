@@ -379,13 +379,14 @@ type DescribeDomainsRequest struct {
 	// 获取数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索的类型有：none，tags，grade，brand，code，hash，limit。
+	// 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
 	// 选tags，入参请填Tag，
 	// 选grade，入参请填Grade，
 	// 选brand，入参请填Brand，
 	// 选code，入参请填Code，
 	// 选hash，入参请填Hash
 	// 选limit，标识只返回数量信息
+	// 选domain，入参请填Domain
 	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
 
 	// 标签，多个标签用逗号分隔
@@ -408,6 +409,9 @@ type DescribeDomainsRequest struct {
 
 	// 搜索图标值
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 搜索域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -432,6 +436,7 @@ func (r *DescribeDomainsRequest) FromJsonString(s string) error {
 	delete(f, "Hash")
 	delete(f, "Item")
 	delete(f, "Status")
+	delete(f, "Domain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainsRequest has unknown keys!", "")
 	}

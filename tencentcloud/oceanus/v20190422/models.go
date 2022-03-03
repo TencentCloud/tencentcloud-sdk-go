@@ -70,6 +70,9 @@ type CreateJobConfigRequest struct {
 
 	// pyflink作业运行时使用的python版本
 	PythonVersion *string `json:"PythonVersion,omitempty" name:"PythonVersion"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -100,6 +103,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "ClsTopicId")
 	delete(f, "LogCollectType")
 	delete(f, "PythonVersion")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -155,6 +159,9 @@ type CreateJobRequest struct {
 
 	// 作业运行的Flink版本
 	FlinkVersion *string `json:"FlinkVersion,omitempty" name:"FlinkVersion"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -177,6 +184,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "FolderId")
 	delete(f, "FlinkVersion")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -220,6 +228,9 @@ type CreateResourceConfigRequest struct {
 
 	// 1： 资源版本达到上限，自动删除最早可删除的版本
 	AutoDelete *int64 `json:"AutoDelete,omitempty" name:"AutoDelete"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *CreateResourceConfigRequest) ToJsonString() string {
@@ -238,6 +249,7 @@ func (r *CreateResourceConfigRequest) FromJsonString(s string) error {
 	delete(f, "ResourceLoc")
 	delete(f, "Remark")
 	delete(f, "AutoDelete")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceConfigRequest has unknown keys!", "")
 	}
@@ -287,6 +299,9 @@ type CreateResourceRequest struct {
 
 	// 目录ID
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -307,6 +322,7 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ResourceConfigRemark")
 	delete(f, "FolderId")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}
@@ -347,6 +363,9 @@ type DeleteResourceConfigsRequest struct {
 
 	// 资源版本数组
 	ResourceConfigVersions []*int64 `json:"ResourceConfigVersions,omitempty" name:"ResourceConfigVersions"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DeleteResourceConfigsRequest) ToJsonString() string {
@@ -363,6 +382,7 @@ func (r *DeleteResourceConfigsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ResourceId")
 	delete(f, "ResourceConfigVersions")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteResourceConfigsRequest has unknown keys!", "")
 	}
@@ -394,6 +414,9 @@ type DeleteResourcesRequest struct {
 
 	// 待删除资源ID列表
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DeleteResourcesRequest) ToJsonString() string {
@@ -409,6 +432,7 @@ func (r *DeleteResourcesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ResourceIds")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteResourcesRequest has unknown keys!", "")
 	}
@@ -446,6 +470,9 @@ type DeleteTableConfigRequest struct {
 
 	// 表名
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DeleteTableConfigRequest) ToJsonString() string {
@@ -463,6 +490,7 @@ func (r *DeleteTableConfigRequest) FromJsonString(s string) error {
 	delete(f, "JobId")
 	delete(f, "DebugId")
 	delete(f, "TableName")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTableConfigRequest has unknown keys!", "")
 	}
@@ -509,6 +537,9 @@ type DescribeJobConfigsRequest struct {
 
 	// true 表示只展示草稿
 	OnlyDraft *bool `json:"OnlyDraft,omitempty" name:"OnlyDraft"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeJobConfigsRequest) ToJsonString() string {
@@ -529,6 +560,7 @@ func (r *DescribeJobConfigsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "OnlyDraft")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobConfigsRequest has unknown keys!", "")
 	}
@@ -567,7 +599,7 @@ type DescribeJobsRequest struct {
 	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
 	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
 
-	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+	// 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -575,6 +607,9 @@ type DescribeJobsRequest struct {
 
 	// 分页大小，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeJobsRequest) ToJsonString() string {
@@ -593,6 +628,7 @@ func (r *DescribeJobsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsRequest has unknown keys!", "")
 	}
@@ -645,6 +681,9 @@ type DescribeResourceConfigsRequest struct {
 
 	// 作业ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeResourceConfigsRequest) ToJsonString() string {
@@ -665,6 +704,7 @@ func (r *DescribeResourceConfigsRequest) FromJsonString(s string) error {
 	delete(f, "ResourceConfigVersions")
 	delete(f, "JobConfigVersion")
 	delete(f, "JobId")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceConfigsRequest has unknown keys!", "")
 	}
@@ -714,6 +754,9 @@ type DescribeResourceRelatedJobsRequest struct {
 
 	// 资源版本号
 	ResourceConfigVersion *int64 `json:"ResourceConfigVersion,omitempty" name:"ResourceConfigVersion"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeResourceRelatedJobsRequest) ToJsonString() string {
@@ -733,6 +776,7 @@ func (r *DescribeResourceRelatedJobsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ResourceConfigVersion")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceRelatedJobsRequest has unknown keys!", "")
 	}
@@ -780,6 +824,9 @@ type DescribeResourcesRequest struct {
 	// <li><strong>ResourceName</strong></li>
 	// <p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *DescribeResourcesRequest) ToJsonString() string {
@@ -798,6 +845,7 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesRequest has unknown keys!", "")
 	}
@@ -1104,6 +1152,14 @@ type JobV1 struct {
 	// 作业运行的 Flink 版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlinkVersion *string `json:"FlinkVersion,omitempty" name:"FlinkVersion"`
+
+	// 工作空间 SerialId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 工作空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceName *string `json:"WorkSpaceName,omitempty" name:"WorkSpaceName"`
 }
 
 type Property struct {
@@ -1294,6 +1350,9 @@ type RunJobsRequest struct {
 
 	// 批量启动作业的描述信息
 	RunJobDescriptions []*RunJobDescription `json:"RunJobDescriptions,omitempty" name:"RunJobDescriptions"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *RunJobsRequest) ToJsonString() string {
@@ -1309,6 +1368,7 @@ func (r *RunJobsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RunJobDescriptions")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunJobsRequest has unknown keys!", "")
 	}
@@ -1349,6 +1409,9 @@ type StopJobsRequest struct {
 
 	// 批量停止作业的描述信息
 	StopJobDescriptions []*StopJobDescription `json:"StopJobDescriptions,omitempty" name:"StopJobDescriptions"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *StopJobsRequest) ToJsonString() string {
@@ -1364,6 +1427,7 @@ func (r *StopJobsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "StopJobDescriptions")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopJobsRequest has unknown keys!", "")
 	}

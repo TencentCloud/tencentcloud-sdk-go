@@ -2065,6 +2065,9 @@ type DescribeUserSqlAdviceRequest struct {
 
 	// 库名。
 	Schema *string `json:"Schema,omitempty" name:"Schema"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeUserSqlAdviceRequest) ToJsonString() string {
@@ -2082,6 +2085,7 @@ func (r *DescribeUserSqlAdviceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SqlText")
 	delete(f, "Schema")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserSqlAdviceRequest has unknown keys!", "")
 	}

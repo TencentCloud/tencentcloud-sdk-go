@@ -342,6 +342,12 @@ type CreateTaskRequest struct {
 
 	// 是否上传转码后的视频，仅设置true时上传，默认为false
 	UploadVideo *bool `json:"UploadVideo,omitempty" name:"UploadVideo"`
+
+	// 自定义标签，可用于查询
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 任务分析完成的回调地址，该设置优先级高于控制台全局的设置；
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -360,6 +366,8 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "MediaPreknownInfo")
 	delete(f, "TaskName")
 	delete(f, "UploadVideo")
+	delete(f, "Label")
+	delete(f, "CallbackURL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -644,6 +652,52 @@ func (r *DeleteMediaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMediaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1150,6 +1204,15 @@ type ImportMediaRequest struct {
 
 	// 待分析视频的名称，指定后可支持筛选，最多100个中文字符
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)
+	WriteBackCosPath *string `json:"WriteBackCosPath,omitempty" name:"WriteBackCosPath"`
+
+	// 自定义标签，可用于查询
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
 func (r *ImportMediaRequest) ToJsonString() string {
@@ -1167,6 +1230,9 @@ func (r *ImportMediaRequest) FromJsonString(s string) error {
 	delete(f, "URL")
 	delete(f, "MD5")
 	delete(f, "Name")
+	delete(f, "WriteBackCosPath")
+	delete(f, "Label")
+	delete(f, "CallbackURL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportMediaRequest has unknown keys!", "")
 	}
@@ -1259,6 +1325,10 @@ type MediaFilter struct {
 	// 媒资ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaIdSet []*string `json:"MediaIdSet,omitempty" name:"MediaIdSet"`
+
+	// 媒资自定义标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type MediaInfo struct {
@@ -1289,6 +1359,10 @@ type MediaInfo struct {
 	// 导入视频进度，取值范围为[0,100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 媒资自定义标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type MediaMetadata struct {
@@ -1341,6 +1415,56 @@ type MediaPreknownInfo struct {
 	MediaLang *int64 `json:"MediaLang,omitempty" name:"MediaLang"`
 }
 
+type ModifyCallbackRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务分析完成后回调地址
+	TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
+
+	// 媒体导入完成后回调地址
+	MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitempty" name:"MediaFinishNotifyURL"`
+}
+
+func (r *ModifyCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskFinishNotifyURL")
+	delete(f, "MediaFinishNotifyURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiLevelTag struct {
 
 	// 树状标签信息
@@ -1365,6 +1489,54 @@ type PersonImageInfo struct {
 
 	// 自定义人脸图片处理错误信息
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+}
+
+type QueryCallbackRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *QueryCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务分析完成后回调地址
+		TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
+
+		// 媒体导入完成后回调地址
+		MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitempty" name:"MediaFinishNotifyURL"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ShowInfo struct {
@@ -1457,6 +1629,9 @@ type TaskFilter struct {
 
 	// 媒资素材一级类型
 	MediaLabelSet []*int64 `json:"MediaLabelSet,omitempty" name:"MediaLabelSet"`
+
+	// 媒资自定义标签数组
+	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 }
 
 type TaskInfo struct {
@@ -1499,6 +1674,10 @@ type TaskInfo struct {
 	// 媒资文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 媒资自定义标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type TextAppearInfo struct {

@@ -44,6 +44,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
+    request = &DescribeProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("api", APIVersion, "DescribeProducts")
+    
+    
+    return
+}
+
+func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
+    response = &DescribeProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProducts
+// 本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
+func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductsRequest()
+    }
+    
+    response = NewDescribeProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DescribeProducts
+// 本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
+func (c *Client) DescribeProductsWithContext(ctx context.Context, request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

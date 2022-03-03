@@ -414,6 +414,90 @@ func (c *Client) CloseServerlessDBExtranetAccessWithContext(ctx context.Context,
     return
 }
 
+func NewCreateDBInstanceNetworkAccessRequest() (request *CreateDBInstanceNetworkAccessRequest) {
+    request = &CreateDBInstanceNetworkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateDBInstanceNetworkAccess")
+    
+    
+    return
+}
+
+func NewCreateDBInstanceNetworkAccessResponse() (response *CreateDBInstanceNetworkAccessResponse) {
+    response = &CreateDBInstanceNetworkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDBInstanceNetworkAccess
+// 可对实例进行网络的添加操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETSUBNETERROR = "FailedOperation.GetSubnetError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  FAILEDOPERATION_SERVERLESSNOTSUPPORTEDERROR = "FailedOperation.ServerlessNotSupportedError"
+//  FLOWERROR = "FlowError"
+//  INTERNALERROR_MARSHALERROR = "InternalError.MarshalError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCEIPV6NOTSUPPORTEDERROR = "OperationDenied.InstanceIpv6NotSupportedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CreateDBInstanceNetworkAccess(request *CreateDBInstanceNetworkAccessRequest) (response *CreateDBInstanceNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstanceNetworkAccessRequest()
+    }
+    
+    response = NewCreateDBInstanceNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateDBInstanceNetworkAccess
+// 可对实例进行网络的添加操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETSUBNETERROR = "FailedOperation.GetSubnetError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  FAILEDOPERATION_SERVERLESSNOTSUPPORTEDERROR = "FailedOperation.ServerlessNotSupportedError"
+//  FLOWERROR = "FlowError"
+//  INTERNALERROR_MARSHALERROR = "InternalError.MarshalError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCEIPV6NOTSUPPORTEDERROR = "OperationDenied.InstanceIpv6NotSupportedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) CreateDBInstanceNetworkAccessWithContext(ctx context.Context, request *CreateDBInstanceNetworkAccessRequest) (response *CreateDBInstanceNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewCreateDBInstanceNetworkAccessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateDBInstanceNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
     request = &CreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1066,6 +1150,84 @@ func (c *Client) CreateReadOnlyGroupWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateReadOnlyGroupNetworkAccessRequest() (request *CreateReadOnlyGroupNetworkAccessRequest) {
+    request = &CreateReadOnlyGroupNetworkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyGroupNetworkAccess")
+    
+    
+    return
+}
+
+func NewCreateReadOnlyGroupNetworkAccessResponse() (response *CreateReadOnlyGroupNetworkAccessResponse) {
+    response = &CreateReadOnlyGroupNetworkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReadOnlyGroupNetworkAccess
+// 可对RO组进行网络的添加操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETSUBNETERROR = "FailedOperation.GetSubnetError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  FLOWERROR = "FlowError"
+//  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_MARSHALERROR = "InternalError.MarshalError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+func (c *Client) CreateReadOnlyGroupNetworkAccess(request *CreateReadOnlyGroupNetworkAccessRequest) (response *CreateReadOnlyGroupNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewCreateReadOnlyGroupNetworkAccessRequest()
+    }
+    
+    response = NewCreateReadOnlyGroupNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateReadOnlyGroupNetworkAccess
+// 可对RO组进行网络的添加操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = "FailedOperation.CreateBasicNetworkDeniedError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETSUBNETERROR = "FailedOperation.GetSubnetError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  FLOWERROR = "FlowError"
+//  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_MARSHALERROR = "InternalError.MarshalError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+func (c *Client) CreateReadOnlyGroupNetworkAccessWithContext(ctx context.Context, request *CreateReadOnlyGroupNetworkAccessRequest) (response *CreateReadOnlyGroupNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewCreateReadOnlyGroupNetworkAccessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateReadOnlyGroupNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateServerlessDBInstanceRequest() (request *CreateServerlessDBInstanceRequest) {
     request = &CreateServerlessDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1178,6 +1340,84 @@ func (c *Client) CreateServerlessDBInstanceWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteDBInstanceNetworkAccessRequest() (request *DeleteDBInstanceNetworkAccessRequest) {
+    request = &DeleteDBInstanceNetworkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteDBInstanceNetworkAccess")
+    
+    
+    return
+}
+
+func NewDeleteDBInstanceNetworkAccessResponse() (response *DeleteDBInstanceNetworkAccessResponse) {
+    response = &DeleteDBInstanceNetworkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDBInstanceNetworkAccess
+// 可对实例进行网络的删除操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  FAILEDOPERATION_SERVERLESSNOTSUPPORTEDERROR = "FailedOperation.ServerlessNotSupportedError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROINSTANCEIPV6NOTSUPPORTEDERROR = "OperationDenied.ROInstanceIpv6NotSupportedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DeleteDBInstanceNetworkAccess(request *DeleteDBInstanceNetworkAccessRequest) (response *DeleteDBInstanceNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewDeleteDBInstanceNetworkAccessRequest()
+    }
+    
+    response = NewDeleteDBInstanceNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteDBInstanceNetworkAccess
+// 可对实例进行网络的删除操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  FAILEDOPERATION_SERVERLESSNOTSUPPORTEDERROR = "FailedOperation.ServerlessNotSupportedError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROINSTANCEIPV6NOTSUPPORTEDERROR = "OperationDenied.ROInstanceIpv6NotSupportedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DeleteDBInstanceNetworkAccessWithContext(ctx context.Context, request *DeleteDBInstanceNetworkAccessRequest) (response *DeleteDBInstanceNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewDeleteDBInstanceNetworkAccessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteDBInstanceNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteReadOnlyGroupRequest() (request *DeleteReadOnlyGroupRequest) {
     request = &DeleteReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1250,6 +1490,76 @@ func (c *Client) DeleteReadOnlyGroupWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteReadOnlyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReadOnlyGroupNetworkAccessRequest() (request *DeleteReadOnlyGroupNetworkAccessRequest) {
+    request = &DeleteReadOnlyGroupNetworkAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteReadOnlyGroupNetworkAccess")
+    
+    
+    return
+}
+
+func NewDeleteReadOnlyGroupNetworkAccessResponse() (response *DeleteReadOnlyGroupNetworkAccessResponse) {
+    response = &DeleteReadOnlyGroupNetworkAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteReadOnlyGroupNetworkAccess
+// 可对RO组进行网络的删除操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+func (c *Client) DeleteReadOnlyGroupNetworkAccess(request *DeleteReadOnlyGroupNetworkAccessRequest) (response *DeleteReadOnlyGroupNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewDeleteReadOnlyGroupNetworkAccessRequest()
+    }
+    
+    response = NewDeleteReadOnlyGroupNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteReadOnlyGroupNetworkAccess
+// 可对RO组进行网络的删除操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_GETVPCINFOERROR = "FailedOperation.GetVpcInfoError"
+//  FAILEDOPERATION_NETWORKNUMLIMITERROR = "FailedOperation.NetworkNumLimitError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+func (c *Client) DeleteReadOnlyGroupNetworkAccessWithContext(ctx context.Context, request *DeleteReadOnlyGroupNetworkAccessRequest) (response *DeleteReadOnlyGroupNetworkAccessResponse, err error) {
+    if request == nil {
+        request = NewDeleteReadOnlyGroupNetworkAccessRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteReadOnlyGroupNetworkAccessResponse()
     err = c.Send(request, response)
     return
 }

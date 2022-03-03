@@ -62,7 +62,7 @@ func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) 
 }
 
 // AddCustomPersonImage
-// 增加自定义人脸图片，每个自定义人物最多可包含5张人脸图片
+// 增加自定义人脸图片，每个自定义人物最多可包含10张人脸图片
 //
 // 
 //
@@ -99,7 +99,7 @@ func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (res
 }
 
 // AddCustomPersonImage
-// 增加自定义人脸图片，每个自定义人物最多可包含5张人脸图片
+// 增加自定义人脸图片，每个自定义人物最多可包含10张人脸图片
 //
 // 
 //
@@ -531,7 +531,9 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDMEDIATYPE = "InvalidParameter.InvalidMediaType"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
@@ -566,7 +568,9 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INVALIDPARAMETER_INVALIDMEDIANAME = "InvalidParameter.InvalidMediaName"
 //  INVALIDPARAMETER_INVALIDMEDIATYPE = "InvalidParameter.InvalidMediaType"
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
@@ -848,6 +852,82 @@ func (c *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMedi
     request.SetContext(ctx)
     
     response = NewDeleteMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
+    request = &DeleteTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "DeleteTask")
+    
+    
+    return
+}
+
+func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
+    response = &DeleteTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTask
+// 删除任务信息
+//
+// 
+//
+// 请注意，本接口**不会**删除媒资文件
+//
+// 
+//
+// 只有已完成(成功或者失败)的任务可以删除，**正在执行中的任务不支持删除**
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNSUPPORTEDOPERATION_TASKNOTACCESSIBLE = "UnsupportedOperation.TaskNotAccessible"
+func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskRequest()
+    }
+    
+    response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// DeleteTask
+// 删除任务信息
+//
+// 
+//
+// 请注意，本接口**不会**删除媒资文件
+//
+// 
+//
+// 只有已完成(成功或者失败)的任务可以删除，**正在执行中的任务不支持删除**
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION_TASKNOTFINISHED = "FailedOperation.TaskNotFinished"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  UNSUPPORTEDOPERATION_TASKNOTACCESSIBLE = "UnsupportedOperation.TaskNotAccessible"
+func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewDeleteTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1606,6 +1686,7 @@ func NewImportMediaResponse() (response *ImportMediaResponse) {
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  LIMITEXCEEDED_USAGELIMITEXCEEDED = "LimitExceeded.UsageLimitExceeded"
 //  REQUESTLIMITEXCEEDED_BATCHIMPORTOVERFLOW = "RequestLimitExceeded.BatchImportOverflow"
@@ -1717,6 +1798,7 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  LIMITEXCEEDED_USAGELIMITEXCEEDED = "LimitExceeded.UsageLimitExceeded"
 //  REQUESTLIMITEXCEEDED_BATCHIMPORTOVERFLOW = "RequestLimitExceeded.BatchImportOverflow"
@@ -1736,6 +1818,276 @@ func (c *Client) ImportMediaWithContext(ctx context.Context, request *ImportMedi
     request.SetContext(ctx)
     
     response = NewImportMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCallbackRequest() (request *ModifyCallbackRequest) {
+    request = &ModifyCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "ModifyCallback")
+    
+    
+    return
+}
+
+func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
+    response = &ModifyCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCallback
+// 用户设置对应事件的回调地址
+//
+// 
+//
+// ### 回调事件消息通知协议
+//
+// 
+//
+// #### 网络协议
+//
+// - 回调接口协议目前仅支持http/https协议；
+//
+// - 请求：HTTP POST 请求，包体内容为 JSON，每一种消息的具体包体内容参见后文。
+//
+// - 应答：HTTP STATUS CODE = 200，服务端忽略应答包具体内容，为了协议友好，建议客户应答内容携带 JSON： `{"code":0}`
+//
+// 
+//
+// #### 通知可靠性
+//
+// 
+//
+// 事件通知服务具备重试能力，事件通知失败后会总计重试3次；
+//
+// 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
+//
+// - 长时间（20 秒）未回包应答。
+//
+// - 应答 HTTP STATUS 不为200。
+//
+// 
+//
+// 
+//
+// #### 回调接口协议
+//
+// 
+//
+// ##### 分析任务完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
+//
+// | TaskId | 是 | String | 任务ID |
+//
+// | TaskStatus | 是 | [TaskStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#TaskStatus) | 任务执行状态 |
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 
+//
+// 
+//
+// ##### 导入媒资完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
+//
+// | MediaId | 是 | String | 媒资ID |
+//
+// | MediaStatus | 是 | [MediaStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#MediaStatus) | 媒资导入状态|
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *ModifyCallbackResponse, err error) {
+    if request == nil {
+        request = NewModifyCallbackRequest()
+    }
+    
+    response = NewModifyCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ModifyCallback
+// 用户设置对应事件的回调地址
+//
+// 
+//
+// ### 回调事件消息通知协议
+//
+// 
+//
+// #### 网络协议
+//
+// - 回调接口协议目前仅支持http/https协议；
+//
+// - 请求：HTTP POST 请求，包体内容为 JSON，每一种消息的具体包体内容参见后文。
+//
+// - 应答：HTTP STATUS CODE = 200，服务端忽略应答包具体内容，为了协议友好，建议客户应答内容携带 JSON： `{"code":0}`
+//
+// 
+//
+// #### 通知可靠性
+//
+// 
+//
+// 事件通知服务具备重试能力，事件通知失败后会总计重试3次；
+//
+// 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
+//
+// - 长时间（20 秒）未回包应答。
+//
+// - 应答 HTTP STATUS 不为200。
+//
+// 
+//
+// 
+//
+// #### 回调接口协议
+//
+// 
+//
+// ##### 分析任务完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
+//
+// | TaskId | 是 | String | 任务ID |
+//
+// | TaskStatus | 是 | [TaskStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#TaskStatus) | 任务执行状态 |
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 
+//
+// 
+//
+// ##### 导入媒资完成消息回调
+//
+// | 参数名称 | 必选 | 类型 | 描述 |
+//
+// |---------|---------|---------|---------|
+//
+// | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
+//
+// | MediaId | 是 | String | 媒资ID |
+//
+// | MediaStatus | 是 | [MediaStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#MediaStatus) | 媒资导入状态|
+//
+// | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
+//  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
+//  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) ModifyCallbackWithContext(ctx context.Context, request *ModifyCallbackRequest) (response *ModifyCallbackResponse, err error) {
+    if request == nil {
+        request = NewModifyCallbackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewModifyCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCallbackRequest() (request *QueryCallbackRequest) {
+    request = &QueryCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ivld", APIVersion, "QueryCallback")
+    
+    
+    return
+}
+
+func NewQueryCallbackResponse() (response *QueryCallbackResponse) {
+    response = &QueryCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCallback
+// 查询用户回调设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) QueryCallback(request *QueryCallbackRequest) (response *QueryCallbackResponse, err error) {
+    if request == nil {
+        request = NewQueryCallbackRequest()
+    }
+    
+    response = NewQueryCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryCallback
+// 查询用户回调设置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
+//  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
+//  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBCONNECTIONERROR = "InternalError.DBConnectionError"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
+func (c *Client) QueryCallbackWithContext(ctx context.Context, request *QueryCallbackRequest) (response *QueryCallbackResponse, err error) {
+    if request == nil {
+        request = NewQueryCallbackRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryCallbackResponse()
     err = c.Send(request, response)
     return
 }
