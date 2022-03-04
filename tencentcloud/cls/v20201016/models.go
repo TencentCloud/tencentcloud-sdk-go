@@ -608,14 +608,14 @@ func (r *CreateConsumerResponse) FromJsonString(s string) error {
 type CreateExportRequest struct {
 	*tchttp.BaseRequest
 
-	// 日志主题
+	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 日志导出检索语句
-	Query *string `json:"Query,omitempty" name:"Query"`
-
-	// 日志导出数量,  最大值1000万
+	// 日志导出数量,  最大值5000万
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
+	Query *string `json:"Query,omitempty" name:"Query"`
 
 	// 日志导出起始时间，毫秒时间戳
 	From *int64 `json:"From,omitempty" name:"From"`
@@ -643,8 +643,8 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TopicId")
-	delete(f, "Query")
 	delete(f, "Count")
+	delete(f, "Query")
 	delete(f, "From")
 	delete(f, "To")
 	delete(f, "Order")

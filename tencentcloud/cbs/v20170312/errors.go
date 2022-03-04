@@ -185,6 +185,9 @@ const (
 	// 没有支付权限。
 	UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 
+	// 授权角色不存在。
+	UNAUTHORIZEDOPERATION_ROLENOTEXISTS = "UnauthorizedOperation.RoleNotExists"
+
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 

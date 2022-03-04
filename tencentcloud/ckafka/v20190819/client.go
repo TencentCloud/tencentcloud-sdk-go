@@ -44,6 +44,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAuthorizeTokenRequest() (request *AuthorizeTokenRequest) {
+    request = &AuthorizeTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "AuthorizeToken")
+    
+    
+    return
+}
+
+func NewAuthorizeTokenResponse() (response *AuthorizeTokenResponse) {
+    response = &AuthorizeTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AuthorizeToken
+// 给实例授权token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) AuthorizeToken(request *AuthorizeTokenRequest) (response *AuthorizeTokenResponse, err error) {
+    if request == nil {
+        request = NewAuthorizeTokenRequest()
+    }
+    
+    response = NewAuthorizeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// AuthorizeToken
+// 给实例授权token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) AuthorizeTokenWithContext(ctx context.Context, request *AuthorizeTokenRequest) (response *AuthorizeTokenResponse, err error) {
+    if request == nil {
+        request = NewAuthorizeTokenRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewAuthorizeTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchCreateAclRequest() (request *BatchCreateAclRequest) {
     request = &BatchCreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -206,6 +260,60 @@ func (c *Client) BatchModifyTopicAttributesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewBatchModifyTopicAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelAuthorizationTokenRequest() (request *CancelAuthorizationTokenRequest) {
+    request = &CancelAuthorizationTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CancelAuthorizationToken")
+    
+    
+    return
+}
+
+func NewCancelAuthorizationTokenResponse() (response *CancelAuthorizationTokenResponse) {
+    response = &CancelAuthorizationTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelAuthorizationToken
+// 取消授权token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CancelAuthorizationToken(request *CancelAuthorizationTokenRequest) (response *CancelAuthorizationTokenResponse, err error) {
+    if request == nil {
+        request = NewCancelAuthorizationTokenRequest()
+    }
+    
+    response = NewCancelAuthorizationTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CancelAuthorizationToken
+// 取消授权token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CancelAuthorizationTokenWithContext(ctx context.Context, request *CancelAuthorizationTokenRequest) (response *CancelAuthorizationTokenResponse, err error) {
+    if request == nil {
+        request = NewCancelAuthorizationTokenRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCancelAuthorizationTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -560,6 +668,60 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRout
     request.SetContext(ctx)
     
     response = NewCreateRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTokenRequest() (request *CreateTokenRequest) {
+    request = &CreateTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateToken")
+    
+    
+    return
+}
+
+func NewCreateTokenResponse() (response *CreateTokenResponse) {
+    response = &CreateTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateToken
+// 创建最高权限的token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateToken(request *CreateTokenRequest) (response *CreateTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateTokenRequest()
+    }
+    
+    response = NewCreateTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// CreateToken
+// 创建最高权限的token
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateTokenWithContext(ctx context.Context, request *CreateTokenRequest) (response *CreateTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateTokenRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewCreateTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -2993,10 +3155,13 @@ func NewSendMessageResponse() (response *SendMessageResponse) {
 // 通过HTTP接入层发送消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESOURCETASKPAUSED = "OperationDenied.ResourceTaskPaused"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessageResponse, err error) {
@@ -3013,10 +3178,13 @@ func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessage
 // 通过HTTP接入层发送消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_RESOURCETASKPAUSED = "OperationDenied.ResourceTaskPaused"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendMessageWithContext(ctx context.Context, request *SendMessageRequest) (response *SendMessageResponse, err error) {

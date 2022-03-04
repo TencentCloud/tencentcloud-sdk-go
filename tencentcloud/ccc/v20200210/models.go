@@ -1802,6 +1802,10 @@ type ServeParticipant struct {
 	// 技能组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 录音转存第三方COS地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRecordURL *string `json:"CustomRecordURL,omitempty" name:"CustomRecordURL"`
 }
 
 type SkillGroupInfoItem struct {
@@ -2137,6 +2141,10 @@ type TelCdrInfo struct {
 	// 获取录音ASR文本信息地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrUrl *string `json:"AsrUrl,omitempty" name:"AsrUrl"`
+
+	// 录音转存第三方COS地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRecordURL *string `json:"CustomRecordURL,omitempty" name:"CustomRecordURL"`
 }
 
 type UnbindStaffSkillGroupListRequest struct {

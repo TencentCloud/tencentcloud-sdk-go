@@ -1,3 +1,74 @@
+# Release v1.0.360
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 22 次发布
+
+发布时间：2022-03-04 08:05:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServeParticipant](https://cloud.tencent.com/document/api/679/47715#ServeParticipant)
+
+	* 新增成员：CustomRecordURL
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：CustomRecordURL
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 36 次发布
+
+发布时间：2022-03-04 08:05:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AuthorizeToken](https://cloud.tencent.com/document/api/597/70646)
+* [CancelAuthorizationToken](https://cloud.tencent.com/document/api/597/70645)
+* [CreateToken](https://cloud.tencent.com/document/api/597/70644)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 56 次发布
+
+发布时间：2022-03-04 08:06:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyReconciliationFile](https://cloud.tencent.com/document/api/1122/70650)
+* [QueryFundsTransactionDetails](https://cloud.tencent.com/document/api/1122/70649)
+* [QueryMemberTransactionDetails](https://cloud.tencent.com/document/api/1122/70648)
+* [QueryReconciliationFileApplyInfo](https://cloud.tencent.com/document/api/1122/70647)
+
+新增数据结构：
+
+* [ApplyReconciliationFileResult](https://cloud.tencent.com/document/api/1122/40683#ApplyReconciliationFileResult)
+* [FundsTransactionItem](https://cloud.tencent.com/document/api/1122/40683#FundsTransactionItem)
+* [MemberTransactionItem](https://cloud.tencent.com/document/api/1122/40683#MemberTransactionItem)
+* [QueryFundsTransactionDetailsResult](https://cloud.tencent.com/document/api/1122/40683#QueryFundsTransactionDetailsResult)
+* [QueryMemberTransactionDetailsResult](https://cloud.tencent.com/document/api/1122/40683#QueryMemberTransactionDetailsResult)
+* [QueryReconciliationFileApplyInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryReconciliationFileApplyInfoResult)
+
+
+
 # Release v1.0.359
 
 ## 云 API(api) 版本：2020-11-06

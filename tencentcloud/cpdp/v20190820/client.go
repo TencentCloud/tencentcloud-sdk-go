@@ -384,6 +384,64 @@ func (c *Client) ApplyReWithdrawalWithContext(ctx context.Context, request *Appl
     return
 }
 
+func NewApplyReconciliationFileRequest() (request *ApplyReconciliationFileRequest) {
+    request = &ApplyReconciliationFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyReconciliationFile")
+    
+    
+    return
+}
+
+func NewApplyReconciliationFileResponse() (response *ApplyReconciliationFileResponse) {
+    response = &ApplyReconciliationFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyReconciliationFile
+// 聚鑫-申请对账文件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ApplyReconciliationFile(request *ApplyReconciliationFileRequest) (response *ApplyReconciliationFileResponse, err error) {
+    if request == nil {
+        request = NewApplyReconciliationFileRequest()
+    }
+    
+    response = NewApplyReconciliationFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// ApplyReconciliationFile
+// 聚鑫-申请对账文件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  FAILEDOPERATION_OCCOMPLETEDORDER = "FailedOperation.OcCompletedOrder"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ApplyReconciliationFileWithContext(ctx context.Context, request *ApplyReconciliationFileRequest) (response *ApplyReconciliationFileResponse, err error) {
+    if request == nil {
+        request = NewApplyReconciliationFileRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewApplyReconciliationFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyTradeRequest() (request *ApplyTradeRequest) {
     request = &ApplyTradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3066,7 +3124,7 @@ func NewDistributeQueryReceiverResponse() (response *DistributeQueryReceiverResp
 }
 
 // DistributeQueryReceiver
-// 云支付-T查询已添加分账接收方接口
+// 云支付-查询已添加分账接收方接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
@@ -3082,7 +3140,7 @@ func (c *Client) DistributeQueryReceiver(request *DistributeQueryReceiverRequest
 }
 
 // DistributeQueryReceiver
-// 云支付-T查询已添加分账接收方接口
+// 云支付-查询已添加分账接收方接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
@@ -5406,6 +5464,58 @@ func (c *Client) QueryExchangeRateWithContext(ctx context.Context, request *Quer
     return
 }
 
+func NewQueryFundsTransactionDetailsRequest() (request *QueryFundsTransactionDetailsRequest) {
+    request = &QueryFundsTransactionDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFundsTransactionDetails")
+    
+    
+    return
+}
+
+func NewQueryFundsTransactionDetailsResponse() (response *QueryFundsTransactionDetailsResponse) {
+    response = &QueryFundsTransactionDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFundsTransactionDetails
+// 聚鑫-查询会员资金交易信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFundsTransactionDetails(request *QueryFundsTransactionDetailsRequest) (response *QueryFundsTransactionDetailsResponse, err error) {
+    if request == nil {
+        request = NewQueryFundsTransactionDetailsRequest()
+    }
+    
+    response = NewQueryFundsTransactionDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryFundsTransactionDetails
+// 聚鑫-查询会员资金交易信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFundsTransactionDetailsWithContext(ctx context.Context, request *QueryFundsTransactionDetailsRequest) (response *QueryFundsTransactionDetailsResponse, err error) {
+    if request == nil {
+        request = NewQueryFundsTransactionDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryFundsTransactionDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
     request = &QueryInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5708,6 +5818,70 @@ func (c *Client) QueryMemberTransactionWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewQueryMemberTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryMemberTransactionDetailsRequest() (request *QueryMemberTransactionDetailsRequest) {
+    request = &QueryMemberTransactionDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberTransactionDetails")
+    
+    
+    return
+}
+
+func NewQueryMemberTransactionDetailsResponse() (response *QueryMemberTransactionDetailsResponse) {
+    response = &QueryMemberTransactionDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMemberTransactionDetails
+// 聚鑫-查询会员间交易信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryMemberTransactionDetails(request *QueryMemberTransactionDetailsRequest) (response *QueryMemberTransactionDetailsResponse, err error) {
+    if request == nil {
+        request = NewQueryMemberTransactionDetailsRequest()
+    }
+    
+    response = NewQueryMemberTransactionDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryMemberTransactionDetails
+// 聚鑫-查询会员间交易信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryMemberTransactionDetailsWithContext(ctx context.Context, request *QueryMemberTransactionDetailsRequest) (response *QueryMemberTransactionDetailsResponse, err error) {
+    if request == nil {
+        request = NewQueryMemberTransactionDetailsRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryMemberTransactionDetailsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6636,6 +6810,70 @@ func (c *Client) QueryReconciliationDocumentWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewQueryReconciliationDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryReconciliationFileApplyInfoRequest() (request *QueryReconciliationFileApplyInfoRequest) {
+    request = &QueryReconciliationFileApplyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryReconciliationFileApplyInfo")
+    
+    
+    return
+}
+
+func NewQueryReconciliationFileApplyInfoResponse() (response *QueryReconciliationFileApplyInfoResponse) {
+    response = &QueryReconciliationFileApplyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryReconciliationFileApplyInfo
+// 聚鑫-查询对账文件申请结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryReconciliationFileApplyInfo(request *QueryReconciliationFileApplyInfoRequest) (response *QueryReconciliationFileApplyInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryReconciliationFileApplyInfoRequest()
+    }
+    
+    response = NewQueryReconciliationFileApplyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+// QueryReconciliationFileApplyInfo
+// 聚鑫-查询对账文件申请结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryReconciliationFileApplyInfoWithContext(ctx context.Context, request *QueryReconciliationFileApplyInfoRequest) (response *QueryReconciliationFileApplyInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryReconciliationFileApplyInfoRequest()
+    }
+    request.SetContext(ctx)
+    
+    response = NewQueryReconciliationFileApplyInfoResponse()
     err = c.Send(request, response)
     return
 }

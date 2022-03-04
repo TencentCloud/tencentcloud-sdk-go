@@ -54,23 +54,32 @@ type Acct struct {
 type AddContractRequest struct {
 	*tchttp.BaseRequest
 
-	// 签约扣率百分比（如：0.32）
-	Fee *string `json:"Fee,omitempty" name:"Fee"`
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 机构合同主键（系统有唯一性校验），建议使用合同表的主键ID，防止重复添加合同
 	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
 
-	// 封顶值（分为单位，无封顶填0）
-	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
-
-	// 联系人电话
-	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+	// 合同编号（系统有唯一性校验）
+	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 支付方式编号
 	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
 
-	// 收单系统分配的密钥
-	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+	// 支付方式行业分类编号
+	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+
+	// 封顶值（分为单位，无封顶填0）
+	PaymentClassificationLimit *string `json:"PaymentClassificationLimit,omitempty" name:"PaymentClassificationLimit"`
+
+	// 商户编号
+	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 签约扣率百分比（如：0.32）
+	Fee *string `json:"Fee,omitempty" name:"Fee"`
 
 	// 合同生效日期（yyyy-mm-dd）
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
@@ -84,68 +93,59 @@ type AddContractRequest struct {
 	// 签购单名称，建议使用商户招牌名称
 	SignName *string `json:"SignName,omitempty" name:"SignName"`
 
-	// 收单系统分配的开放ID
-	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
-
-	// 商户编号
-	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
-
-	// 合同照片【私密区】
-	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
-
-	// 联系人
-	Contact *string `json:"Contact,omitempty" name:"Contact"`
-
 	// 合同签署日期（yyyy-mm-dd）
 	SignDate *string `json:"SignDate,omitempty" name:"SignDate"`
-
-	// 合同编号（系统有唯一性校验）
-	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 是否自动续签（1是，0否）
 	AutoSign *string `json:"AutoSign,omitempty" name:"AutoSign"`
 
-	// 支付方式行业分类编号
-	PaymentClassificationId *string `json:"PaymentClassificationId,omitempty" name:"PaymentClassificationId"`
+	// 联系人
+	Contact *string `json:"Contact,omitempty" name:"Contact"`
+
+	// 联系人电话
+	ContactTelephone *string `json:"ContactTelephone,omitempty" name:"ContactTelephone"`
+
+	// 合同照片【私密区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
+
+	// 合同照片【私密区】
+	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+
+	// 渠道扩展字段，json格式
+	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
 
 	// 沙箱环境填sandbox，正式环境不填
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
-	// 合同照片【私密区】
-	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
+	// 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
 
 	// 合同选项8
 	PaymentOptionTen *string `json:"PaymentOptionTen,omitempty" name:"PaymentOptionTen"`
 
 	// 合同选项7（不同支付方式规则不一样，请以支付方式规定的格式传值）
 	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
-
-	// 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
-
-	// 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
-
-	// 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
-
-	// 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
-
-	// 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
-
-	// 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
-
-	// 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
-
-	// 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
-	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
-
-	// 渠道扩展字段，json格式
-	ChannelExtJson *string `json:"ChannelExtJson,omitempty" name:"ChannelExtJson"`
 }
 
 func (r *AddContractRequest) ToJsonString() string {
@@ -160,37 +160,37 @@ func (r *AddContractRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Fee")
-	delete(f, "OutContractId")
-	delete(f, "PaymentClassificationLimit")
-	delete(f, "ContactTelephone")
-	delete(f, "PaymentId")
+	delete(f, "OpenId")
 	delete(f, "OpenKey")
+	delete(f, "OutContractId")
+	delete(f, "Code")
+	delete(f, "PaymentId")
+	delete(f, "PaymentClassificationId")
+	delete(f, "PaymentClassificationLimit")
+	delete(f, "MerchantNo")
+	delete(f, "Fee")
 	delete(f, "StartDate")
 	delete(f, "EndDate")
 	delete(f, "SignMan")
 	delete(f, "SignName")
-	delete(f, "OpenId")
-	delete(f, "MerchantNo")
-	delete(f, "PictureOne")
-	delete(f, "Contact")
 	delete(f, "SignDate")
-	delete(f, "Code")
 	delete(f, "AutoSign")
-	delete(f, "PaymentClassificationId")
-	delete(f, "Profile")
+	delete(f, "Contact")
+	delete(f, "ContactTelephone")
+	delete(f, "PictureOne")
 	delete(f, "PictureTwo")
+	delete(f, "ChannelExtJson")
+	delete(f, "Profile")
+	delete(f, "PaymentOptionOne")
+	delete(f, "PaymentOptionTwo")
+	delete(f, "PaymentOptionThree")
+	delete(f, "PaymentOptionFour")
+	delete(f, "PaymentOptionFive")
+	delete(f, "PaymentOptionSix")
+	delete(f, "PaymentOptionSeven")
+	delete(f, "PaymentOptionOther")
 	delete(f, "PaymentOptionTen")
 	delete(f, "PaymentOptionNine")
-	delete(f, "PaymentOptionOther")
-	delete(f, "PaymentOptionFive")
-	delete(f, "PaymentOptionFour")
-	delete(f, "PaymentOptionSeven")
-	delete(f, "PaymentOptionSix")
-	delete(f, "PaymentOptionOne")
-	delete(f, "PaymentOptionThree")
-	delete(f, "PaymentOptionTwo")
-	delete(f, "ChannelExtJson")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddContractRequest has unknown keys!", "")
 	}
@@ -238,23 +238,53 @@ type AddContractResult struct {
 type AddMerchantRequest struct {
 	*tchttp.BaseRequest
 
-	// 法人姓名
-	BossName *string `json:"BossName,omitempty" name:"BossName"`
-
-	// 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
-	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
-
-	// 招牌名称
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
+	// 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 营业执照类型（1三证合一，2非三证合一）
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
+
+	// 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicensePicture *string `json:"BusinessLicensePicture,omitempty" name:"BusinessLicensePicture"`
+
+	// 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
+	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
+
 	// 营业执照过期时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
 	BusinessLicenseEndDate *string `json:"BusinessLicenseEndDate,omitempty" name:"BusinessLicenseEndDate"`
 
-	// 法人证件生效时间（yyyy-mm-dd）
-	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
+	// 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
+	ClassificationIds []*string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
+
+	// 招牌名称
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// 联系电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 城市编号
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 详细地址，不含省市区县名称，长度需要大于5。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 结算账户类型（2对私，1对公）
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 
 	// 清算联行号，开户行行号
 	BankNo *string `json:"BankNo,omitempty" name:"BankNo"`
@@ -262,155 +292,125 @@ type AddMerchantRequest struct {
 	// 开户行名称
 	BankName *string `json:"BankName,omitempty" name:"BankName"`
 
-	// 营业执照类型（1三证合一，2非三证合一）
-	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
-
-	// 法人证件过期时间（yyyy-mm-dd）
-	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
-
-	// 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
-	BusinessLicenseNo *string `json:"BusinessLicenseNo,omitempty" name:"BusinessLicenseNo"`
-
-	// 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
-	BusinessLicenseStartDate *string `json:"BusinessLicenseStartDate,omitempty" name:"BusinessLicenseStartDate"`
-
-	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
-	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
-
-	// 详细地址，不含省市区县名称，长度需要大于5。
-	Address *string `json:"Address,omitempty" name:"Address"`
-
-	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
-	BossIdCountry *string `json:"BossIdCountry,omitempty" name:"BossIdCountry"`
-
-	// 收单系统分配的开放ID
-	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
-
-	// 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
-	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
-
-	// 法人性别（1男，2女）
-	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
-
-	// 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
-	ClassificationIds []*string `json:"ClassificationIds,omitempty" name:"ClassificationIds"`
-
-	// 法人证件号码
-	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
-
-	// 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
-	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
-
-	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
-	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+	// 银行账号
+	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
 
 	// 银行户名
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
-	// 银行账号
-	AccountNo *string `json:"AccountNo,omitempty" name:"AccountNo"`
+	// 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+	BossIdType *string `json:"BossIdType,omitempty" name:"BossIdType"`
 
-	// 结算账户类型（2对私，1对公）
-	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+	// 法人证件号码
+	BossIdNo *string `json:"BossIdNo,omitempty" name:"BossIdNo"`
 
-	// 联系电话
-	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+	// 法人姓名
+	BossName *string `json:"BossName,omitempty" name:"BossName"`
+
+	// 法人性别（1男，2女）
+	BossSex *string `json:"BossSex,omitempty" name:"BossSex"`
+
+	// 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+	BossIdCountry *string `json:"BossIdCountry,omitempty" name:"BossIdCountry"`
 
 	// 法人身份证正面【私密区】（系统返回的图片路径）
 	BossPositive *string `json:"BossPositive,omitempty" name:"BossPositive"`
 
-	// 城市编号
-	CityId *string `json:"CityId,omitempty" name:"CityId"`
-
 	// 法人身份证背面【私密区】（系统返回的图片路径）
 	BossBack *string `json:"BossBack,omitempty" name:"BossBack"`
 
-	// 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
-	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+	// 法人证件生效时间（yyyy-mm-dd）
+	BossStartDate *string `json:"BossStartDate,omitempty" name:"BossStartDate"`
 
-	// 组织机构代码证生效时间（yyyy-mm-dd）
-	OrganizationStartDate *string `json:"OrganizationStartDate,omitempty" name:"OrganizationStartDate"`
+	// 法人证件过期时间（yyyy-mm-dd）
+	BossEndDate *string `json:"BossEndDate,omitempty" name:"BossEndDate"`
 
-	// 法人亲属证件号码
-	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+	// 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
+	LicencePicture *string `json:"LicencePicture,omitempty" name:"LicencePicture"`
 
-	// 财务联系人
-	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
-
-	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
-	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+	// 商户类型：1-个体，2-小微，3-企业。不传默认为2-小微商户。
+	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 组织机构代码证号
 	OrganizationNo *string `json:"OrganizationNo,omitempty" name:"OrganizationNo"`
 
-	// 其他资料1
-	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
-
-	// 财务联系人电话
-	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
-
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
+	// 组织机构代码证生效时间（yyyy-mm-dd）
+	OrganizationStartDate *string `json:"OrganizationStartDate,omitempty" name:"OrganizationStartDate"`
 
 	// 组织机构代码证图片【私密区】
 	OrganizationPicture *string `json:"OrganizationPicture,omitempty" name:"OrganizationPicture"`
 
-	// 税务登记证生效时间（yyyy-mm-dd）
-	TaxRegistrationStartDate *string `json:"TaxRegistrationStartDate,omitempty" name:"TaxRegistrationStartDate"`
-
-	// 商户标记，自定义参数
-	Tag *string `json:"Tag,omitempty" name:"Tag"`
-
-	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
-	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
-
-	// 法人电话
-	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
-
-	// 税务登记证图片【私密区】
-	TaxRegistrationPicture *string `json:"TaxRegistrationPicture,omitempty" name:"TaxRegistrationPicture"`
-
 	// 组织机构代码证过期时间（yyyy-mm-dd）
 	OrganizationEndDate *string `json:"OrganizationEndDate,omitempty" name:"OrganizationEndDate"`
-
-	// 法人职业
-	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
-
-	// 其他资料3
-	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
-
-	// 授权文件【私密区】
-	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
-
-	// 商户logo【公共区】
-	Logo *string `json:"Logo,omitempty" name:"Logo"`
-
-	// 法人住址
-	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
-
-	// 法人邮箱
-	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
-
-	// 其他资料2
-	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
 
 	// 商户简介
 	Intro *string `json:"Intro,omitempty" name:"Intro"`
 
-	// 客户经理姓名，必须为系统后台的管理员真实姓名
-	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+	// 商户logo【公共区】
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
 
-	// 税务登记证过期时间（yyyy-mm-dd）
-	TaxRegistrationEndDate *string `json:"TaxRegistrationEndDate,omitempty" name:"TaxRegistrationEndDate"`
+	// 商户标记，自定义参数
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
-	// 其他资料4
-	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+	// 财务联系人电话
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+
+	// 财务联系人
+	FinancialContact *string `json:"FinancialContact,omitempty" name:"FinancialContact"`
 
 	// 税务登记证号
 	TaxRegistrationNo *string `json:"TaxRegistrationNo,omitempty" name:"TaxRegistrationNo"`
 
-	// 商户类型：1-个体，2-小微，3-企业。不传默认为2-小微商户。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	// 税务登记证图片【私密区】
+	TaxRegistrationPicture *string `json:"TaxRegistrationPicture,omitempty" name:"TaxRegistrationPicture"`
+
+	// 税务登记证生效时间（yyyy-mm-dd）
+	TaxRegistrationStartDate *string `json:"TaxRegistrationStartDate,omitempty" name:"TaxRegistrationStartDate"`
+
+	// 税务登记证过期时间（yyyy-mm-dd）
+	TaxRegistrationEndDate *string `json:"TaxRegistrationEndDate,omitempty" name:"TaxRegistrationEndDate"`
+
+	// 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+	AccountBoss *string `json:"AccountBoss,omitempty" name:"AccountBoss"`
+
+	// 客户经理姓名，必须为系统后台的管理员真实姓名
+	AccountManagerName *string `json:"AccountManagerName,omitempty" name:"AccountManagerName"`
+
+	// 法人电话
+	BossTelephone *string `json:"BossTelephone,omitempty" name:"BossTelephone"`
+
+	// 法人职业
+	BossJob *string `json:"BossJob,omitempty" name:"BossJob"`
+
+	// 法人邮箱
+	BossEmail *string `json:"BossEmail,omitempty" name:"BossEmail"`
+
+	// 法人住址
+	BossAddress *string `json:"BossAddress,omitempty" name:"BossAddress"`
+
+	// 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+	AccountIdType *string `json:"AccountIdType,omitempty" name:"AccountIdType"`
+
+	// 法人亲属证件号码
+	AccountIdNo *string `json:"AccountIdNo,omitempty" name:"AccountIdNo"`
+
+	// 授权文件【私密区】
+	LicencePictureTwo *string `json:"LicencePictureTwo,omitempty" name:"LicencePictureTwo"`
+
+	// 其他资料1
+	OtherPictureOne *string `json:"OtherPictureOne,omitempty" name:"OtherPictureOne"`
+
+	// 其他资料2
+	OtherPictureTwo *string `json:"OtherPictureTwo,omitempty" name:"OtherPictureTwo"`
+
+	// 其他资料3
+	OtherPictureThree *string `json:"OtherPictureThree,omitempty" name:"OtherPictureThree"`
+
+	// 其他资料4
+	OtherPictureFour *string `json:"OtherPictureFour,omitempty" name:"OtherPictureFour"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *AddMerchantRequest) ToJsonString() string {
@@ -425,64 +425,64 @@ func (r *AddMerchantRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "BossName")
-	delete(f, "BusinessLicensePicture")
-	delete(f, "BrandName")
+	delete(f, "OpenId")
 	delete(f, "OpenKey")
+	delete(f, "OutMerchantId")
+	delete(f, "MerchantName")
+	delete(f, "BusinessLicenseType")
+	delete(f, "BusinessLicenseNo")
+	delete(f, "BusinessLicensePicture")
+	delete(f, "BusinessLicenseStartDate")
 	delete(f, "BusinessLicenseEndDate")
-	delete(f, "BossStartDate")
+	delete(f, "ClassificationIds")
+	delete(f, "BrandName")
+	delete(f, "Telephone")
+	delete(f, "CityId")
+	delete(f, "Address")
+	delete(f, "OpenHours")
+	delete(f, "AccountType")
 	delete(f, "BankNo")
 	delete(f, "BankName")
-	delete(f, "BusinessLicenseType")
-	delete(f, "BossEndDate")
-	delete(f, "BusinessLicenseNo")
-	delete(f, "BusinessLicenseStartDate")
-	delete(f, "BossIdType")
-	delete(f, "Address")
-	delete(f, "BossIdCountry")
-	delete(f, "OpenId")
-	delete(f, "MerchantName")
-	delete(f, "BossSex")
-	delete(f, "ClassificationIds")
-	delete(f, "BossIdNo")
-	delete(f, "LicencePicture")
-	delete(f, "OpenHours")
-	delete(f, "AccountName")
 	delete(f, "AccountNo")
-	delete(f, "AccountType")
-	delete(f, "Telephone")
+	delete(f, "AccountName")
+	delete(f, "BossIdType")
+	delete(f, "BossIdNo")
+	delete(f, "BossName")
+	delete(f, "BossSex")
+	delete(f, "BossIdCountry")
 	delete(f, "BossPositive")
-	delete(f, "CityId")
 	delete(f, "BossBack")
-	delete(f, "OutMerchantId")
-	delete(f, "OrganizationStartDate")
-	delete(f, "AccountIdNo")
-	delete(f, "FinancialContact")
-	delete(f, "AccountIdType")
-	delete(f, "OrganizationNo")
-	delete(f, "OtherPictureOne")
-	delete(f, "FinancialTelephone")
-	delete(f, "Profile")
-	delete(f, "OrganizationPicture")
-	delete(f, "TaxRegistrationStartDate")
-	delete(f, "Tag")
-	delete(f, "AccountBoss")
-	delete(f, "BossTelephone")
-	delete(f, "TaxRegistrationPicture")
-	delete(f, "OrganizationEndDate")
-	delete(f, "BossJob")
-	delete(f, "OtherPictureThree")
-	delete(f, "LicencePictureTwo")
-	delete(f, "Logo")
-	delete(f, "BossAddress")
-	delete(f, "BossEmail")
-	delete(f, "OtherPictureTwo")
-	delete(f, "Intro")
-	delete(f, "AccountManagerName")
-	delete(f, "TaxRegistrationEndDate")
-	delete(f, "OtherPictureFour")
-	delete(f, "TaxRegistrationNo")
+	delete(f, "BossStartDate")
+	delete(f, "BossEndDate")
+	delete(f, "LicencePicture")
 	delete(f, "Type")
+	delete(f, "OrganizationNo")
+	delete(f, "OrganizationStartDate")
+	delete(f, "OrganizationPicture")
+	delete(f, "OrganizationEndDate")
+	delete(f, "Intro")
+	delete(f, "Logo")
+	delete(f, "Tag")
+	delete(f, "FinancialTelephone")
+	delete(f, "FinancialContact")
+	delete(f, "TaxRegistrationNo")
+	delete(f, "TaxRegistrationPicture")
+	delete(f, "TaxRegistrationStartDate")
+	delete(f, "TaxRegistrationEndDate")
+	delete(f, "AccountBoss")
+	delete(f, "AccountManagerName")
+	delete(f, "BossTelephone")
+	delete(f, "BossJob")
+	delete(f, "BossEmail")
+	delete(f, "BossAddress")
+	delete(f, "AccountIdType")
+	delete(f, "AccountIdNo")
+	delete(f, "LicencePictureTwo")
+	delete(f, "OtherPictureOne")
+	delete(f, "OtherPictureTwo")
+	delete(f, "OtherPictureThree")
+	delete(f, "OtherPictureFour")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddMerchantRequest has unknown keys!", "")
 	}
@@ -533,11 +533,35 @@ type AddShopRequest struct {
 	// 收单系统分配的开放ID
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
+	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
+
 	// 门店简称（例如：南山店）
 	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
 
+	// 门店全称（例如：江山小厨（南山店））
+	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
+
 	// 商户编号
 	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 门店电话
+	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
+
+	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
+
+	// 门店所在的城市编码
+	CityId *string `json:"CityId,omitempty" name:"CityId"`
+
+	// 门店详细地址，不含省市区县名称
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 整体门面（含招牌）图片【公共区】
+	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
 
 	// 整体门面（含招牌）图片【公共区】
 	PictureTwo *string `json:"PictureTwo,omitempty" name:"PictureTwo"`
@@ -545,53 +569,29 @@ type AddShopRequest struct {
 	// 店内环境图片【公共区】
 	PictureThree *string `json:"PictureThree,omitempty" name:"PictureThree"`
 
-	// 整体门面（含招牌）图片【公共区】
-	PictureOne *string `json:"PictureOne,omitempty" name:"PictureOne"`
-
-	// 门店电话
-	Telephone *string `json:"Telephone,omitempty" name:"Telephone"`
-
-	// 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
-	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
-
-	// 门店所在的城市编码
-	CityId *string `json:"CityId,omitempty" name:"CityId"`
-
-	// 门店全称（例如：江山小厨（南山店））
-	ShopFullName *string `json:"ShopFullName,omitempty" name:"ShopFullName"`
-
-	// 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
-	OpenHours *string `json:"OpenHours,omitempty" name:"OpenHours"`
-
-	// 门店详细地址，不含省市区县名称
-	Address *string `json:"Address,omitempty" name:"Address"`
-
-	// 收单系统分配的密钥
-	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
-
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
-	// 高德地图纬度
-	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
-
-	// 其他照片【公共区】
-	OtherPicture *string `json:"OtherPicture,omitempty" name:"OtherPicture"`
-
-	// 高德地图经度
-	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+	// 负责人手机号码
+	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
 
 	// 门店负责人
 	Contact *string `json:"Contact,omitempty" name:"Contact"`
 
-	// 百度地图经度
-	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
-
 	// 百度地图纬度
 	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
 
-	// 负责人手机号码
-	FinancialTelephone *string `json:"FinancialTelephone,omitempty" name:"FinancialTelephone"`
+	// 高德地图纬度
+	LatitudeTwo *string `json:"LatitudeTwo,omitempty" name:"LatitudeTwo"`
+
+	// 百度地图经度
+	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 高德地图经度
+	LongitudeTwo *string `json:"LongitudeTwo,omitempty" name:"LongitudeTwo"`
+
+	// 其他照片【公共区】
+	OtherPicture *string `json:"OtherPicture,omitempty" name:"OtherPicture"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *AddShopRequest) ToJsonString() string {
@@ -607,26 +607,26 @@ func (r *AddShopRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "OutShopId")
 	delete(f, "ShopName")
+	delete(f, "ShopFullName")
 	delete(f, "MerchantNo")
+	delete(f, "Telephone")
+	delete(f, "OpenHours")
+	delete(f, "CityId")
+	delete(f, "Address")
+	delete(f, "PictureOne")
 	delete(f, "PictureTwo")
 	delete(f, "PictureThree")
-	delete(f, "PictureOne")
-	delete(f, "Telephone")
-	delete(f, "OutShopId")
-	delete(f, "CityId")
-	delete(f, "ShopFullName")
-	delete(f, "OpenHours")
-	delete(f, "Address")
-	delete(f, "OpenKey")
-	delete(f, "Profile")
-	delete(f, "LatitudeTwo")
-	delete(f, "OtherPicture")
-	delete(f, "LongitudeTwo")
-	delete(f, "Contact")
-	delete(f, "Longitude")
-	delete(f, "Latitude")
 	delete(f, "FinancialTelephone")
+	delete(f, "Contact")
+	delete(f, "Latitude")
+	delete(f, "LatitudeTwo")
+	delete(f, "Longitude")
+	delete(f, "LongitudeTwo")
+	delete(f, "OtherPicture")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddShopRequest has unknown keys!", "")
 	}
@@ -1218,6 +1218,101 @@ func (r *ApplyReWithdrawalResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ApplyReWithdrawalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyReconciliationFileRequest struct {
+	*tchttp.BaseRequest
+
+	// 申请的文件类型。
+	// __CZ__：充值文件
+	// __TX__：提现文件
+	// __JY__：交易文件
+	// __YE__：余额文件
+	ApplyFileType *string `json:"ApplyFileType,omitempty" name:"ApplyFileType"`
+
+	// 申请的对账文件日期，格式：yyyyMMdd。
+	ApplyFileDate *string `json:"ApplyFileDate,omitempty" name:"ApplyFileDate"`
+
+	// 父账户账号。
+	// _平安渠道为资金汇总账号_
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 环境名。
+	// __release__: 现网环境
+	// __sandbox__: 沙箱环境
+	// __development__: 开发环境
+	// _缺省: release_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *ApplyReconciliationFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyReconciliationFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyFileType")
+	delete(f, "ApplyFileDate")
+	delete(f, "BankAccountNumber")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyReconciliationFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyReconciliationFileResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ApplyReconciliationFileResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyReconciliationFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyReconciliationFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyReconciliationFileResult struct {
+
+	// 申请对账文件的任务ID。
+	ApplyFileId *string `json:"ApplyFileId,omitempty" name:"ApplyFileId"`
+
+	// 对账文件申请状态。
+	// __I__：申请中
+	// __S__：申请成功
+	// __F__：申请失败
+	ApplyStatus *string `json:"ApplyStatus,omitempty" name:"ApplyStatus"`
+
+	// 申请结果描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyMessage *string `json:"ApplyMessage,omitempty" name:"ApplyMessage"`
 }
 
 type ApplyTradeData struct {
@@ -2896,6 +2991,14 @@ func (r *ContractOrderResponse) FromJsonString(s string) error {
 
 type ContractPayListResult struct {
 
+	// 支付方式编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
+
+	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
 	// 支付标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentTag *string `json:"PaymentTag,omitempty" name:"PaymentTag"`
@@ -2904,49 +3007,9 @@ type ContractPayListResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentIcon *string `json:"PaymentIcon,omitempty" name:"PaymentIcon"`
 
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
-
 	// 付款方式名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentName *string `json:"PaymentName,omitempty" name:"PaymentName"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
-
-	// 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
-
-	// 支付方式编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentId *string `json:"PaymentId,omitempty" name:"PaymentId"`
-
-	// 支付方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
 
 	// 付款方式名称（内部名称）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2954,7 +3017,39 @@ type ContractPayListResult struct {
 
 	// 支付方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOne *string `json:"PaymentOptionOne,omitempty" name:"PaymentOptionOne"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionTwo *string `json:"PaymentOptionTwo,omitempty" name:"PaymentOptionTwo"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionThree *string `json:"PaymentOptionThree,omitempty" name:"PaymentOptionThree"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentOptionFour *string `json:"PaymentOptionFour,omitempty" name:"PaymentOptionFour"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionFive *string `json:"PaymentOptionFive,omitempty" name:"PaymentOptionFive"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSix *string `json:"PaymentOptionSix,omitempty" name:"PaymentOptionSix"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionSeven *string `json:"PaymentOptionSeven,omitempty" name:"PaymentOptionSeven"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionOther *string `json:"PaymentOptionOther,omitempty" name:"PaymentOptionOther"`
+
+	// 支付方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentOptionNine *string `json:"PaymentOptionNine,omitempty" name:"PaymentOptionNine"`
 
 	// 支付方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5782,10 +5877,10 @@ func (r *DescribeOrderStatusResponse) FromJsonString(s string) error {
 type DistributeAccreditQueryRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 沙箱环境填sandbox，正式环境不填
@@ -5873,23 +5968,23 @@ type DistributeAccreditResult struct {
 type DistributeAccreditTlinxRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 使用门店OpenKey
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 验证方式，传1手机验证(验证码时效60S)传2结算卡验证(时效6小时)，多种方式用逗号隔开
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
-
-	// 收单系统分配的密钥
-	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
-
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
 
 	// 分账比例（500=5%）不传默认百分之10
 	Percent *string `json:"Percent,omitempty" name:"Percent"`
 
 	// 营业执照商户全称
 	FullName *string `json:"FullName,omitempty" name:"FullName"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeAccreditTlinxRequest) ToJsonString() string {
@@ -5905,11 +6000,11 @@ func (r *DistributeAccreditTlinxRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "OpenId")
-	delete(f, "AuthType")
 	delete(f, "OpenKey")
-	delete(f, "Profile")
+	delete(f, "AuthType")
 	delete(f, "Percent")
 	delete(f, "FullName")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAccreditTlinxRequest has unknown keys!", "")
 	}
@@ -5950,20 +6045,20 @@ func (r *DistributeAccreditTlinxResponse) FromJsonString(s string) error {
 type DistributeAddReceiverRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 商户编号
 	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeAddReceiverRequest) ToJsonString() string {
@@ -5981,8 +6076,8 @@ func (r *DistributeAddReceiverRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
 	delete(f, "MerchantNo")
-	delete(f, "Profile")
 	delete(f, "Remark")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeAddReceiverRequest has unknown keys!", "")
 	}
@@ -6023,29 +6118,29 @@ func (r *DistributeAddReceiverResponse) FromJsonString(s string) error {
 type DistributeApplyRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 使用门店OpenKey
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 商户分账单号
 	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
 
-	// 收单系统分配的密钥
-	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
-
 	// 分账明细
 	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
-
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
-	// 说明
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 商户交易订单号，和OrderNo二者传其一
 	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
 
 	// 平台交易订单号，和DeveloperNo二者传其一
 	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 说明
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeApplyRequest) ToJsonString() string {
@@ -6061,13 +6156,13 @@ func (r *DistributeApplyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "OpenId")
-	delete(f, "OutDistributeNo")
 	delete(f, "OpenKey")
+	delete(f, "OutDistributeNo")
 	delete(f, "Details")
-	delete(f, "Profile")
-	delete(f, "Remark")
 	delete(f, "DeveloperNo")
 	delete(f, "OrderNo")
+	delete(f, "Remark")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeApplyRequest has unknown keys!", "")
 	}
@@ -6108,23 +6203,23 @@ func (r *DistributeApplyResponse) FromJsonString(s string) error {
 type DistributeCancelRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 平台交易订单号
 	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
 
 	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
 	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
 
-	// 商户分账单号，type为2时，和DistributeNo二者传其一
-	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeCancelRequest) ToJsonString() string {
@@ -6142,9 +6237,9 @@ func (r *DistributeCancelRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
 	delete(f, "OrderNo")
-	delete(f, "Profile")
-	delete(f, "DistributeNo")
 	delete(f, "OutDistributeNo")
+	delete(f, "DistributeNo")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeCancelRequest has unknown keys!", "")
 	}
@@ -6231,10 +6326,10 @@ type DistributeMultiApplyResult struct {
 type DistributeQueryReceiverRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 沙箱环境填sandbox，正式环境不填
@@ -6296,26 +6391,26 @@ func (r *DistributeQueryReceiverResponse) FromJsonString(s string) error {
 type DistributeQueryRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 查询类型（1-全部，2-单笔）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
+	// 商户分账单号，type为2时，和DistributeNo二者传其一
+	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
 
 	// 平台分账单号，type为2时，和OutDistributeNo二者传其一
 	DistributeNo *string `json:"DistributeNo,omitempty" name:"DistributeNo"`
 
-	// 商户分账单号，type为2时，和DistributeNo二者传其一
-	OutDistributeNo *string `json:"OutDistributeNo,omitempty" name:"OutDistributeNo"`
-
 	// 平台交易订单号
 	OrderNo *string `json:"OrderNo,omitempty" name:"OrderNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeQueryRequest) ToJsonString() string {
@@ -6333,10 +6428,10 @@ func (r *DistributeQueryRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
 	delete(f, "Type")
-	delete(f, "Profile")
-	delete(f, "DistributeNo")
 	delete(f, "OutDistributeNo")
+	delete(f, "DistributeNo")
 	delete(f, "OrderNo")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeQueryRequest has unknown keys!", "")
 	}
@@ -6391,20 +6486,20 @@ type DistributeReceiverResult struct {
 type DistributeRemoveReceiverRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 商户编号
 	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DistributeRemoveReceiverRequest) ToJsonString() string {
@@ -6422,8 +6517,8 @@ func (r *DistributeRemoveReceiverRequest) FromJsonString(s string) error {
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
 	delete(f, "MerchantNo")
-	delete(f, "Profile")
 	delete(f, "Remark")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeRemoveReceiverRequest has unknown keys!", "")
 	}
@@ -6556,14 +6651,14 @@ type DownloadOrgFileRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
 	Storage *string `json:"Storage,omitempty" name:"Storage"`
 
 	// 文件路径
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *DownloadOrgFileRequest) ToJsonString() string {
@@ -6580,9 +6675,9 @@ func (r *DownloadOrgFileRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
-	delete(f, "Profile")
 	delete(f, "Storage")
 	delete(f, "FilePath")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadOrgFileRequest has unknown keys!", "")
 	}
@@ -6916,6 +7011,114 @@ type FileItem struct {
 	// STRING(64)，提取码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
+}
+
+type FundsTransactionItem struct {
+
+	// 资金交易类型。
+	// __1__：提现/退款
+	// __2__：清分/充值
+	TransType *string `json:"TransType,omitempty" name:"TransType"`
+
+	// 银行记账说明。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankBookingMessage *string `json:"BankBookingMessage,omitempty" name:"BankBookingMessage"`
+
+	// 交易状态。
+	// __0__：成功
+	TranStatus *string `json:"TranStatus,omitempty" name:"TranStatus"`
+
+	// 业务方会员标识。
+	// _平安渠道为交易网会员代码_
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransNetMemberCode *string `json:"TransNetMemberCode,omitempty" name:"TransNetMemberCode"`
+
+	// 子账户账号。
+	// _平安渠道为见证子账户的账号_
+	SubAccountNumber *string `json:"SubAccountNumber,omitempty" name:"SubAccountNumber"`
+
+	// 子账户名称。
+	// _平安渠道为见证子账户的户名_
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountName *string `json:"SubAccountName,omitempty" name:"SubAccountName"`
+
+	// 交易金额。
+	TransAmount *string `json:"TransAmount,omitempty" name:"TransAmount"`
+
+	// 交易手续费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransFee *string `json:"TransFee,omitempty" name:"TransFee"`
+
+	// 交易日期，格式：yyyyMMdd。
+	TransDate *string `json:"TransDate,omitempty" name:"TransDate"`
+
+	// 交易时间，格式：HHmmss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransTime *string `json:"TransTime,omitempty" name:"TransTime"`
+
+	// 银行系统流水号。
+	// _平安渠道为见证系统流水号_
+	BankSequenceNumber *string `json:"BankSequenceNumber,omitempty" name:"BankSequenceNumber"`
+
+	// 备注。
+	// _平安渠道，如果是见证+收单的交易，返回交易订单号_
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type MemberTransactionItem struct {
+
+	// 交易类型。
+	// __1__：转出
+	// __2__：转入
+	TransType *string `json:"TransType,omitempty" name:"TransType"`
+
+	// 交易状态。
+	// __0__：成功
+	TranStatus *string `json:"TranStatus,omitempty" name:"TranStatus"`
+
+	// 交易金额。
+	TransAmount *string `json:"TransAmount,omitempty" name:"TransAmount"`
+
+	// 交易日期，格式：yyyyMMdd。
+	TransDate *string `json:"TransDate,omitempty" name:"TransDate"`
+
+	// 交易时间，格式：HHmmss。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransTime *string `json:"TransTime,omitempty" name:"TransTime"`
+
+	// 银行系统流水号。
+	// _平安渠道为见证系统流水号_
+	BankSequenceNumber *string `json:"BankSequenceNumber,omitempty" name:"BankSequenceNumber"`
+
+	// 银行记账类型。
+	// _平安渠道为：_
+	// _1：会员支付_
+	// _2：会员冻结_
+	// _3：会员解冻_
+	// _4：登记挂账_
+	// _6：下单预支付_
+	// _7：确认并付款_
+	// _8：会员退款_
+	// _22：见证+收单平台调账_
+	// _23：见证+收单资金冻结_
+	// _24：见证+收单资金解冻_
+	// _25：会员间交易退款_
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankBookingType *string `json:"BankBookingType,omitempty" name:"BankBookingType"`
+
+	// 转入方子账户账号。
+	// _平安渠道为转入见证子账户的账号_
+	InSubAccountNumber *string `json:"InSubAccountNumber,omitempty" name:"InSubAccountNumber"`
+
+	// 转出方子账户账号。
+	// _平安渠道为转出见证子账户的账号_
+	OutSubAccountNumber *string `json:"OutSubAccountNumber,omitempty" name:"OutSubAccountNumber"`
+
+	// 备注。
+	// _平安渠道，如果是见证+收单的交易，返回交易订单号_
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type MerchantClassificationId struct {
@@ -10022,6 +10225,124 @@ type QueryExchangerateResult struct {
 	Data []*QueryExchangerateData `json:"Data,omitempty" name:"Data"`
 }
 
+type QueryFundsTransactionDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的交易发生时间类型。
+	// __1__：当日
+	// __2__：历史
+	QueryDateType *string `json:"QueryDateType,omitempty" name:"QueryDateType"`
+
+	// 查询的交易类型。
+	// __2__：提现/退款
+	// __3__：清分/充值
+	QueryTranType *string `json:"QueryTranType,omitempty" name:"QueryTranType"`
+
+	// 父账户账号。
+	// _平安渠道为资金汇总账号_
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 子账户账号。
+	// _平安渠道为见证子账户的账号_
+	SubAccountNumber *string `json:"SubAccountNumber,omitempty" name:"SubAccountNumber"`
+
+	// 分页号, 起始值为1。
+	PageOffSet *string `json:"PageOffSet,omitempty" name:"PageOffSet"`
+
+	// 查询开始日期，格式：yyyyMMdd。
+	// __若是历史查询，则必输，当日查询时，不起作用；开始日期不能超过当前日期__
+	QueryStartDate *string `json:"QueryStartDate,omitempty" name:"QueryStartDate"`
+
+	// 查询终止日期，格式：yyyyMMdd。
+	// __若是历史查询，则必输，当日查询时，不起作用；终止日期不能超过当前日期__
+	QueryEndDate *string `json:"QueryEndDate,omitempty" name:"QueryEndDate"`
+
+	// 环境名。
+	// __release__: 现网环境
+	// __sandbox__: 沙箱环境
+	// __development__: 开发环境
+	// _缺省: release_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *QueryFundsTransactionDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFundsTransactionDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueryDateType")
+	delete(f, "QueryTranType")
+	delete(f, "BankAccountNumber")
+	delete(f, "SubAccountNumber")
+	delete(f, "PageOffSet")
+	delete(f, "QueryStartDate")
+	delete(f, "QueryEndDate")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFundsTransactionDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFundsTransactionDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryFundsTransactionDetailsResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFundsTransactionDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFundsTransactionDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFundsTransactionDetailsResult struct {
+
+	// 本次交易返回查询结果记录数。
+	ResultCount *uint64 `json:"ResultCount,omitempty" name:"ResultCount"`
+
+	// 符合业务查询条件的记录总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 结束标志。
+	// __0__：否
+	// __1__：是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndFlag *string `json:"EndFlag,omitempty" name:"EndFlag"`
+
+	// 会员资金交易信息数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranItemArray []*FundsTransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
+}
+
 type QueryInvoiceRequest struct {
 	*tchttp.BaseRequest
 
@@ -10470,6 +10791,125 @@ func (r *QueryMemberBindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryMemberTransactionDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询的交易发生时间类型。
+	// __1__：当日
+	// __2__：历史
+	QueryDateType *string `json:"QueryDateType,omitempty" name:"QueryDateType"`
+
+	// 查询的交易类型。
+	// __1__：全部
+	// __2__：转出
+	// __3__：转入
+	QueryTranType *string `json:"QueryTranType,omitempty" name:"QueryTranType"`
+
+	// 父账户账号。
+	// _平安渠道为资金汇总账号_
+	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
+
+	// 子账户账号。
+	// _平安渠道为见证子账户的账号_
+	SubAccountNumber *string `json:"SubAccountNumber,omitempty" name:"SubAccountNumber"`
+
+	// 分页号, 起始值为1。
+	PageOffSet *string `json:"PageOffSet,omitempty" name:"PageOffSet"`
+
+	// 查询开始日期，格式：yyyyMMdd。
+	// __若是历史查询，则必输，当日查询时，不起作用；开始日期不能超过当前日期__
+	QueryStartDate *string `json:"QueryStartDate,omitempty" name:"QueryStartDate"`
+
+	// 查询终止日期，格式：yyyyMMdd。
+	// __若是历史查询，则必输，当日查询时，不起作用；终止日期不能超过当前日期__
+	QueryEndDate *string `json:"QueryEndDate,omitempty" name:"QueryEndDate"`
+
+	// 环境名。
+	// __release__: 现网环境
+	// __sandbox__: 沙箱环境
+	// __development__: 开发环境
+	// _缺省: release_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *QueryMemberTransactionDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMemberTransactionDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueryDateType")
+	delete(f, "QueryTranType")
+	delete(f, "BankAccountNumber")
+	delete(f, "SubAccountNumber")
+	delete(f, "PageOffSet")
+	delete(f, "QueryStartDate")
+	delete(f, "QueryEndDate")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMemberTransactionDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMemberTransactionDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryMemberTransactionDetailsResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMemberTransactionDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMemberTransactionDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMemberTransactionDetailsResult struct {
+
+	// 本次交易返回查询结果记录数。
+	ResultCount *uint64 `json:"ResultCount,omitempty" name:"ResultCount"`
+
+	// 符合业务查询条件的记录总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 结束标志。
+	// __0__：否
+	// __1__：是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndFlag *string `json:"EndFlag,omitempty" name:"EndFlag"`
+
+	// 会员间交易信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranItemArray []*MemberTransactionItem `json:"TranItemArray,omitempty" name:"TranItemArray"`
+}
+
 type QueryMemberTransactionRequest struct {
 	*tchttp.BaseRequest
 
@@ -10864,10 +11304,10 @@ func (r *QueryMerchantOrderResponse) FromJsonString(s string) error {
 type QueryMerchantPayWayListRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 支付类型，逗号分隔。1-现金，2-主扫，3-被扫，4-JSAPI。
@@ -11828,10 +12268,10 @@ func (r *QueryOrderResponse) FromJsonString(s string) error {
 type QueryOrderStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 开发者流水号
@@ -12329,6 +12769,92 @@ func (r *QueryReconciliationDocumentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryReconciliationDocumentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryReconciliationFileApplyInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 申请对账文件的任务ID。
+	ApplyFileId *string `json:"ApplyFileId,omitempty" name:"ApplyFileId"`
+
+	// 环境名。
+	// __release__: 现网环境
+	// __sandbox__: 沙箱环境
+	// __development__: 开发环境
+	// _缺省: release_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *QueryReconciliationFileApplyInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryReconciliationFileApplyInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyFileId")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryReconciliationFileApplyInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryReconciliationFileApplyInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *QueryReconciliationFileApplyInfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryReconciliationFileApplyInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryReconciliationFileApplyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryReconciliationFileApplyInfoResult struct {
+
+	// 申请对账文件的任务ID。
+	ApplyFileId *string `json:"ApplyFileId,omitempty" name:"ApplyFileId"`
+
+	// 对账文件申请状态。
+	// __I__：申请中
+	// __S__：申请成功
+	// __F__：申请失败
+	ApplyStatus *string `json:"ApplyStatus,omitempty" name:"ApplyStatus"`
+
+	// 申请结果描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyMessage *string `json:"ApplyMessage,omitempty" name:"ApplyMessage"`
+
+	// 对账文件下载地址列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrlArray []*string `json:"FileUrlArray,omitempty" name:"FileUrlArray"`
 }
 
 type QueryRefundRequest struct {
@@ -14167,10 +14693,10 @@ func (r *RefundResponse) FromJsonString(s string) error {
 type RefundTlinxOrderRequest struct {
 	*tchttp.BaseRequest
 
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 原始订单的开发者交易流水号
@@ -16116,17 +16642,14 @@ func (r *UnifiedOrderResponse) FromJsonString(s string) error {
 type UnifiedTlinxOrderRequest struct {
 	*tchttp.BaseRequest
 
-	// 开发者流水号
-	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
-
-	// 收单系统分配的开放ID
+	// 使用门店OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 交易结果异步通知url地址
-	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
-
-	// 收单系统分配的密钥
+	// 使用门店OpenKey
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 开发者流水号
+	DeveloperNo *string `json:"DeveloperNo,omitempty" name:"DeveloperNo"`
 
 	// 支付标签
 	PayTag *string `json:"PayTag,omitempty" name:"PayTag"`
@@ -16134,32 +16657,26 @@ type UnifiedTlinxOrderRequest struct {
 	// 实际交易金额（以分为单位，没有小数点）
 	TradeAmount *string `json:"TradeAmount,omitempty" name:"TradeAmount"`
 
-	// 订单备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	// 交易结果异步通知url地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
-	// 订单标记，订单附加数据。
-	Tag *string `json:"Tag,omitempty" name:"Tag"`
-
-	// 抹零金额（以分为单位，没有小数点）
-	IgnoreAmount *string `json:"IgnoreAmount,omitempty" name:"IgnoreAmount"`
-
-	// 条码支付的授权码（条码抢扫手机扫到的一串数字）
-	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
-
-	// 原始交易金额（以分为单位，没有小数点）
-	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
-
-	// 订单名称（描述）
-	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
+	// 付款方式名称(当PayTag为Diy时，PayName不能为空)
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
 
 	// 公众号支付时，支付成功后跳转url地址
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
+	// 订单名称（描述）
+	OrderName *string `json:"OrderName,omitempty" name:"OrderName"`
 
-	// 收单机构原始交易报文，请转换为json
-	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
+	// 原始交易金额（以分为单位，没有小数点）
+	OriginalAmount *string `json:"OriginalAmount,omitempty" name:"OriginalAmount"`
+
+	// 抹零金额（以分为单位，没有小数点）
+	IgnoreAmount *string `json:"IgnoreAmount,omitempty" name:"IgnoreAmount"`
+
+	// 折扣金额（以分为单位，没有小数点）
+	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
 
 	// 交易帐号（银行卡号）
 	TradeAccount *string `json:"TradeAccount,omitempty" name:"TradeAccount"`
@@ -16167,11 +16684,17 @@ type UnifiedTlinxOrderRequest struct {
 	// 交易号（收单机构交易号）
 	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
 
-	// 折扣金额（以分为单位，没有小数点）
-	DiscountAmount *string `json:"DiscountAmount,omitempty" name:"DiscountAmount"`
+	// 条码支付的授权码（条码抢扫手机扫到的一串数字）
+	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
 
-	// 付款方式名称(当PayTag为Diy时，PayName不能为空)
-	PayName *string `json:"PayName,omitempty" name:"PayName"`
+	// 订单标记，订单附加数据。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 订单备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 收单机构原始交易报文，请转换为json
+	TradeResult *string `json:"TradeResult,omitempty" name:"TradeResult"`
 
 	// 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
 	Royalty *string `json:"Royalty,omitempty" name:"Royalty"`
@@ -16186,6 +16709,9 @@ type UnifiedTlinxOrderRequest struct {
 	// 小程序支付参数:
 	// 用户在子商户appid下的唯一标识。
 	SubOpenId *string `json:"SubOpenId,omitempty" name:"SubOpenId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *UnifiedTlinxOrderRequest) ToJsonString() string {
@@ -16200,29 +16726,29 @@ func (r *UnifiedTlinxOrderRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DeveloperNo")
 	delete(f, "OpenId")
-	delete(f, "NotifyUrl")
 	delete(f, "OpenKey")
+	delete(f, "DeveloperNo")
 	delete(f, "PayTag")
 	delete(f, "TradeAmount")
-	delete(f, "Remark")
-	delete(f, "Tag")
-	delete(f, "IgnoreAmount")
-	delete(f, "AuthCode")
-	delete(f, "OriginalAmount")
-	delete(f, "OrderName")
+	delete(f, "NotifyUrl")
+	delete(f, "PayName")
 	delete(f, "JumpUrl")
-	delete(f, "Profile")
-	delete(f, "TradeResult")
+	delete(f, "OrderName")
+	delete(f, "OriginalAmount")
+	delete(f, "IgnoreAmount")
+	delete(f, "DiscountAmount")
 	delete(f, "TradeAccount")
 	delete(f, "TradeNo")
-	delete(f, "DiscountAmount")
-	delete(f, "PayName")
+	delete(f, "AuthCode")
+	delete(f, "Tag")
+	delete(f, "Remark")
+	delete(f, "TradeResult")
 	delete(f, "Royalty")
 	delete(f, "Jsapi")
 	delete(f, "SubAppId")
 	delete(f, "SubOpenId")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedTlinxOrderRequest has unknown keys!", "")
 	}
@@ -16410,6 +16936,9 @@ type UploadOrgFileRequest struct {
 	// 收单系统分配的开放ID
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
 	// 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
 	Storage *string `json:"Storage,omitempty" name:"Storage"`
 
@@ -16421,9 +16950,6 @@ type UploadOrgFileRequest struct {
 
 	// 文件扩展名（png,jpg,gif）
 	FileExtension *string `json:"FileExtension,omitempty" name:"FileExtension"`
-
-	// 收单系统分配的密钥
-	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
 	// 沙箱环境填sandbox，正式环境不填
 	Profile *string `json:"Profile,omitempty" name:"Profile"`
@@ -16442,11 +16968,11 @@ func (r *UploadOrgFileRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "OpenId")
+	delete(f, "OpenKey")
 	delete(f, "Storage")
 	delete(f, "FileMd5")
 	delete(f, "FileContent")
 	delete(f, "FileExtension")
-	delete(f, "OpenKey")
 	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadOrgFileRequest has unknown keys!", "")
@@ -16609,14 +17135,14 @@ type ViewContractRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 外部合同主键编号（ContractId或OutContractId必须传一个）
 	OutContractId *string `json:"OutContractId,omitempty" name:"OutContractId"`
 
 	// 合同主键（ContractId或OutContractId必须传一个）
 	ContractId *string `json:"ContractId,omitempty" name:"ContractId"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ViewContractRequest) ToJsonString() string {
@@ -16633,9 +17159,9 @@ func (r *ViewContractRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
-	delete(f, "Profile")
 	delete(f, "OutContractId")
 	delete(f, "ContractId")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewContractRequest has unknown keys!", "")
 	}
@@ -16917,14 +17443,14 @@ type ViewMerchantRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 外部商户主键编号（MerchantNo或OutMerchantId必须传一个）
 	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
 
 	// 商户编号（MerchantNo或OutMerchantId必须传一个）
 	MerchantNo *string `json:"MerchantNo,omitempty" name:"MerchantNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ViewMerchantRequest) ToJsonString() string {
@@ -16941,9 +17467,9 @@ func (r *ViewMerchantRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
-	delete(f, "Profile")
 	delete(f, "OutMerchantId")
 	delete(f, "MerchantNo")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewMerchantRequest has unknown keys!", "")
 	}
@@ -17273,14 +17799,14 @@ type ViewShopRequest struct {
 	// 收单系统分配的密钥
 	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
 
-	// 沙箱环境填sandbox，正式环境不填
-	Profile *string `json:"Profile,omitempty" name:"Profile"`
-
 	// 外部商户主键编号（ShopNo或OutShopId必须传一个）
 	OutShopId *string `json:"OutShopId,omitempty" name:"OutShopId"`
 
 	// 门店编号（ShopNo或OutShopId必须传一个）
 	ShopNo *string `json:"ShopNo,omitempty" name:"ShopNo"`
+
+	// 沙箱环境填sandbox，正式环境不填
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
 }
 
 func (r *ViewShopRequest) ToJsonString() string {
@@ -17297,9 +17823,9 @@ func (r *ViewShopRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OpenId")
 	delete(f, "OpenKey")
-	delete(f, "Profile")
 	delete(f, "OutShopId")
 	delete(f, "ShopNo")
+	delete(f, "Profile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ViewShopRequest has unknown keys!", "")
 	}

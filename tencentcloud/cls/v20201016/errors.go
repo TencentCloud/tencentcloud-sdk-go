@@ -29,6 +29,9 @@ const (
 	// 检索日志触发最大条数限制。
 	FAILEDOPERATION_GETLOGREACHLIMIT = "FailedOperation.GetlogReachLimit"
 
+	// 低频不支持配置kv和tag索引。
+	FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = "FailedOperation.InValidIndexRuleForSearchLow"
+
 	// 该告警策略状态异常，请检查下日志主题ID是否都存在。
 	FAILEDOPERATION_INVALIDALARM = "FailedOperation.InvalidAlarm"
 
