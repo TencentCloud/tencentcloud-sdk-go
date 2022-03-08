@@ -16,6 +16,7 @@ package v20200713
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewAccountTipoffAccessResponse() (response *AccountTipoffAccessResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDSENDERACCOUNTTYPE = "InvalidParameterValue.InvalidSenderAccountType"
 //  INVALIDPARAMETERVALUE_INVALIDSENDERIP = "InvalidParameterValue.InvalidSenderIP"
 func (c *Client) AccountTipoffAccess(request *AccountTipoffAccessRequest) (response *AccountTipoffAccessResponse, err error) {
-    if request == nil {
-        request = NewAccountTipoffAccessRequest()
-    }
-    
-    response = NewAccountTipoffAccessResponse()
-    err = c.Send(request, response)
-    return
+    return c.AccountTipoffAccessWithContext(context.Background(), request)
 }
 
 // AccountTipoffAccess
@@ -107,6 +102,11 @@ func (c *Client) AccountTipoffAccessWithContext(ctx context.Context, request *Ac
     if request == nil {
         request = NewAccountTipoffAccessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AccountTipoffAccess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAccountTipoffAccessResponse()
@@ -144,13 +144,7 @@ func NewDescribeTextLibResponse() (response *DescribeTextLibResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTextLib(request *DescribeTextLibRequest) (response *DescribeTextLibResponse, err error) {
-    if request == nil {
-        request = NewDescribeTextLibRequest()
-    }
-    
-    response = NewDescribeTextLibResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTextLibWithContext(context.Background(), request)
 }
 
 // DescribeTextLib
@@ -169,6 +163,11 @@ func (c *Client) DescribeTextLibWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTextLibRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextLib require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTextLibResponse()
@@ -202,13 +201,7 @@ func NewDescribeTextStatResponse() (response *DescribeTextStatResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRTEXTCONTENTTYPE = "InvalidParameter.ErrTextContentType"
 func (c *Client) DescribeTextStat(request *DescribeTextStatRequest) (response *DescribeTextStatResponse, err error) {
-    if request == nil {
-        request = NewDescribeTextStatRequest()
-    }
-    
-    response = NewDescribeTextStatResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTextStatWithContext(context.Background(), request)
 }
 
 // DescribeTextStat
@@ -223,6 +216,11 @@ func (c *Client) DescribeTextStatWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTextStatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextStat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTextStatResponse()
@@ -258,13 +256,7 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 //  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
-    if request == nil {
-        request = NewTextModerationRequest()
-    }
-    
-    response = NewTextModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextModerationWithContext(context.Background(), request)
 }
 
 // TextModeration
@@ -281,6 +273,11 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextModerationResponse()

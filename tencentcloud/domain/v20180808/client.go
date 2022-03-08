@@ -16,6 +16,7 @@ package v20180808
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewBatchModifyDomainInfoResponse() (response *BatchModifyDomainInfoResponse
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) BatchModifyDomainInfo(request *BatchModifyDomainInfoRequest) (response *BatchModifyDomainInfoResponse, err error) {
-    if request == nil {
-        request = NewBatchModifyDomainInfoRequest()
-    }
-    
-    response = NewBatchModifyDomainInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchModifyDomainInfoWithContext(context.Background(), request)
 }
 
 // BatchModifyDomainInfo
@@ -107,6 +102,11 @@ func (c *Client) BatchModifyDomainInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewBatchModifyDomainInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyDomainInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchModifyDomainInfoResponse()
@@ -138,13 +138,7 @@ func NewCheckBatchStatusResponse() (response *CheckBatchStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckBatchStatus(request *CheckBatchStatusRequest) (response *CheckBatchStatusResponse, err error) {
-    if request == nil {
-        request = NewCheckBatchStatusRequest()
-    }
-    
-    response = NewCheckBatchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBatchStatusWithContext(context.Background(), request)
 }
 
 // CheckBatchStatus
@@ -157,6 +151,11 @@ func (c *Client) CheckBatchStatusWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckBatchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBatchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBatchStatusResponse()
@@ -191,13 +190,7 @@ func NewCheckDomainResponse() (response *CheckDomainResponse) {
 //  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomainResponse, err error) {
-    if request == nil {
-        request = NewCheckDomainRequest()
-    }
-    
-    response = NewCheckDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckDomainWithContext(context.Background(), request)
 }
 
 // CheckDomain
@@ -213,6 +206,11 @@ func (c *Client) CheckDomainWithContext(ctx context.Context, request *CheckDomai
     if request == nil {
         request = NewCheckDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckDomainResponse()
@@ -258,13 +256,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainBatchRequest()
-    }
-    
-    response = NewCreateDomainBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainBatchWithContext(context.Background(), request)
 }
 
 // CreateDomainBatch
@@ -291,6 +283,11 @@ func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDomainBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainBatchResponse()
@@ -326,13 +323,7 @@ func NewCreatePhoneEmailResponse() (response *CreatePhoneEmailResponse) {
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
 //  INVALIDPARAMETER_VERIFYCODEISINVALID = "InvalidParameter.VerifyCodeIsInvalid"
 func (c *Client) CreatePhoneEmail(request *CreatePhoneEmailRequest) (response *CreatePhoneEmailResponse, err error) {
-    if request == nil {
-        request = NewCreatePhoneEmailRequest()
-    }
-    
-    response = NewCreatePhoneEmailResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePhoneEmailWithContext(context.Background(), request)
 }
 
 // CreatePhoneEmail
@@ -349,6 +340,11 @@ func (c *Client) CreatePhoneEmailWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreatePhoneEmailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePhoneEmail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePhoneEmailResponse()
@@ -407,13 +403,7 @@ func NewCreateTemplateResponse() (response *CreateTemplateResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *CreateTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateTemplateRequest()
-    }
-    
-    response = NewCreateTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTemplateWithContext(context.Background(), request)
 }
 
 // CreateTemplate
@@ -453,6 +443,11 @@ func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateT
     if request == nil {
         request = NewCreateTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTemplateResponse()
@@ -487,13 +482,7 @@ func NewDeletePhoneEmailResponse() (response *DeletePhoneEmailResponse) {
 //  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
 func (c *Client) DeletePhoneEmail(request *DeletePhoneEmailRequest) (response *DeletePhoneEmailResponse, err error) {
-    if request == nil {
-        request = NewDeletePhoneEmailRequest()
-    }
-    
-    response = NewDeletePhoneEmailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePhoneEmailWithContext(context.Background(), request)
 }
 
 // DeletePhoneEmail
@@ -509,6 +498,11 @@ func (c *Client) DeletePhoneEmailWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeletePhoneEmailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePhoneEmail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePhoneEmailResponse()
@@ -544,13 +538,7 @@ func NewDeleteTemplateResponse() (response *DeleteTemplateResponse) {
 //  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteTemplateRequest()
-    }
-    
-    response = NewDeleteTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTemplateWithContext(context.Background(), request)
 }
 
 // DeleteTemplate
@@ -567,6 +555,11 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteT
     if request == nil {
         request = NewDeleteTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTemplateResponse()
@@ -599,13 +592,7 @@ func NewDescribeBatchOperationLogDetailsResponse() (response *DescribeBatchOpera
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBatchOperationLogDetails(request *DescribeBatchOperationLogDetailsRequest) (response *DescribeBatchOperationLogDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchOperationLogDetailsRequest()
-    }
-    
-    response = NewDescribeBatchOperationLogDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchOperationLogDetailsWithContext(context.Background(), request)
 }
 
 // DescribeBatchOperationLogDetails
@@ -619,6 +606,11 @@ func (c *Client) DescribeBatchOperationLogDetailsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeBatchOperationLogDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOperationLogDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchOperationLogDetailsResponse()
@@ -651,13 +643,7 @@ func NewDescribeBatchOperationLogsResponse() (response *DescribeBatchOperationLo
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBatchOperationLogs(request *DescribeBatchOperationLogsRequest) (response *DescribeBatchOperationLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchOperationLogsRequest()
-    }
-    
-    response = NewDescribeBatchOperationLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchOperationLogsWithContext(context.Background(), request)
 }
 
 // DescribeBatchOperationLogs
@@ -671,6 +657,11 @@ func (c *Client) DescribeBatchOperationLogsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBatchOperationLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOperationLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchOperationLogsResponse()
@@ -706,13 +697,7 @@ func NewDescribeDomainBaseInfoResponse() (response *DescribeDomainBaseInfoRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 func (c *Client) DescribeDomainBaseInfo(request *DescribeDomainBaseInfoRequest) (response *DescribeDomainBaseInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainBaseInfoRequest()
-    }
-    
-    response = NewDescribeDomainBaseInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainBaseInfoWithContext(context.Background(), request)
 }
 
 // DescribeDomainBaseInfo
@@ -729,6 +714,11 @@ func (c *Client) DescribeDomainBaseInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDomainBaseInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainBaseInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainBaseInfoResponse()
@@ -760,13 +750,7 @@ func NewDescribeDomainNameListResponse() (response *DescribeDomainNameListRespon
 //  FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainNameListRequest()
-    }
-    
-    response = NewDescribeDomainNameListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainNameListWithContext(context.Background(), request)
 }
 
 // DescribeDomainNameList
@@ -779,6 +763,11 @@ func (c *Client) DescribeDomainNameListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDomainNameListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainNameList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainNameListResponse()
@@ -812,13 +801,7 @@ func NewDescribeDomainPriceListResponse() (response *DescribeDomainPriceListResp
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDomainPriceList(request *DescribeDomainPriceListRequest) (response *DescribeDomainPriceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainPriceListRequest()
-    }
-    
-    response = NewDescribeDomainPriceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainPriceListWithContext(context.Background(), request)
 }
 
 // DescribeDomainPriceList
@@ -833,6 +816,11 @@ func (c *Client) DescribeDomainPriceListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDomainPriceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainPriceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainPriceListResponse()
@@ -864,13 +852,7 @@ func NewDescribePhoneEmailListResponse() (response *DescribePhoneEmailListRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePhoneEmailList(request *DescribePhoneEmailListRequest) (response *DescribePhoneEmailListResponse, err error) {
-    if request == nil {
-        request = NewDescribePhoneEmailListRequest()
-    }
-    
-    response = NewDescribePhoneEmailListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePhoneEmailListWithContext(context.Background(), request)
 }
 
 // DescribePhoneEmailList
@@ -883,6 +865,11 @@ func (c *Client) DescribePhoneEmailListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePhoneEmailListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePhoneEmailList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePhoneEmailListResponse()
@@ -921,13 +908,7 @@ func NewDescribeTemplateResponse() (response *DescribeTemplateResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) DescribeTemplate(request *DescribeTemplateRequest) (response *DescribeTemplateResponse, err error) {
-    if request == nil {
-        request = NewDescribeTemplateRequest()
-    }
-    
-    response = NewDescribeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTemplateWithContext(context.Background(), request)
 }
 
 // DescribeTemplate
@@ -947,6 +928,11 @@ func (c *Client) DescribeTemplateWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTemplateResponse()
@@ -983,13 +969,7 @@ func NewDescribeTemplateListResponse() (response *DescribeTemplateListResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTemplateList(request *DescribeTemplateListRequest) (response *DescribeTemplateListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTemplateListRequest()
-    }
-    
-    response = NewDescribeTemplateListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTemplateListWithContext(context.Background(), request)
 }
 
 // DescribeTemplateList
@@ -1007,6 +987,11 @@ func (c *Client) DescribeTemplateListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTemplateListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplateList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTemplateListResponse()
@@ -1051,13 +1036,7 @@ func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) 
 //  UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
 //  UNSUPPORTEDOPERATION_MODIFYDOMAINUNSUPPORTED = "UnsupportedOperation.ModifyDomainUnsupported"
 func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (response *ModifyDomainDNSBatchResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainDNSBatchRequest()
-    }
-    
-    response = NewModifyDomainDNSBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainDNSBatchWithContext(context.Background(), request)
 }
 
 // ModifyDomainDNSBatch
@@ -1083,6 +1062,11 @@ func (c *Client) ModifyDomainDNSBatchWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDomainDNSBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainDNSBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainDNSBatchResponse()
@@ -1119,13 +1103,7 @@ func NewModifyDomainOwnerBatchResponse() (response *ModifyDomainOwnerBatchRespon
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
 //  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) ModifyDomainOwnerBatch(request *ModifyDomainOwnerBatchRequest) (response *ModifyDomainOwnerBatchResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainOwnerBatchRequest()
-    }
-    
-    response = NewModifyDomainOwnerBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainOwnerBatchWithContext(context.Background(), request)
 }
 
 // ModifyDomainOwnerBatch
@@ -1143,6 +1121,11 @@ func (c *Client) ModifyDomainOwnerBatchWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyDomainOwnerBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainOwnerBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainOwnerBatchResponse()
@@ -1182,13 +1165,7 @@ func NewRenewDomainBatchResponse() (response *RenewDomainBatchResponse) {
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *RenewDomainBatchResponse, err error) {
-    if request == nil {
-        request = NewRenewDomainBatchRequest()
-    }
-    
-    response = NewRenewDomainBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewDomainBatchWithContext(context.Background(), request)
 }
 
 // RenewDomainBatch
@@ -1209,6 +1186,11 @@ func (c *Client) RenewDomainBatchWithContext(ctx context.Context, request *Renew
     if request == nil {
         request = NewRenewDomainBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewDomainBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewDomainBatchResponse()
@@ -1245,13 +1227,7 @@ func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (response *SendPhoneEmailCodeResponse, err error) {
-    if request == nil {
-        request = NewSendPhoneEmailCodeRequest()
-    }
-    
-    response = NewSendPhoneEmailCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendPhoneEmailCodeWithContext(context.Background(), request)
 }
 
 // SendPhoneEmailCode
@@ -1269,6 +1245,11 @@ func (c *Client) SendPhoneEmailCodeWithContext(ctx context.Context, request *Sen
     if request == nil {
         request = NewSendPhoneEmailCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendPhoneEmailCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendPhoneEmailCodeResponse()
@@ -1306,13 +1287,7 @@ func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
-    if request == nil {
-        request = NewSetDomainAutoRenewRequest()
-    }
-    
-    response = NewSetDomainAutoRenewResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetDomainAutoRenewWithContext(context.Background(), request)
 }
 
 // SetDomainAutoRenew
@@ -1331,6 +1306,11 @@ func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *Set
     if request == nil {
         request = NewSetDomainAutoRenewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetDomainAutoRenew require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetDomainAutoRenewResponse()
@@ -1373,13 +1353,7 @@ func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
 func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
-    if request == nil {
-        request = NewTransferInDomainBatchRequest()
-    }
-    
-    response = NewTransferInDomainBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransferInDomainBatchWithContext(context.Background(), request)
 }
 
 // TransferInDomainBatch
@@ -1403,6 +1377,11 @@ func (c *Client) TransferInDomainBatchWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTransferInDomainBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferInDomainBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransferInDomainBatchResponse()
@@ -1441,13 +1420,7 @@ func NewTransferProhibitionBatchResponse() (response *TransferProhibitionBatchRe
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
-    if request == nil {
-        request = NewTransferProhibitionBatchRequest()
-    }
-    
-    response = NewTransferProhibitionBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransferProhibitionBatchWithContext(context.Background(), request)
 }
 
 // TransferProhibitionBatch
@@ -1467,6 +1440,11 @@ func (c *Client) TransferProhibitionBatchWithContext(ctx context.Context, reques
     if request == nil {
         request = NewTransferProhibitionBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferProhibitionBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransferProhibitionBatchResponse()
@@ -1505,13 +1483,7 @@ func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchRespon
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
-    if request == nil {
-        request = NewUpdateProhibitionBatchRequest()
-    }
-    
-    response = NewUpdateProhibitionBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateProhibitionBatchWithContext(context.Background(), request)
 }
 
 // UpdateProhibitionBatch
@@ -1531,6 +1503,11 @@ func (c *Client) UpdateProhibitionBatchWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateProhibitionBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProhibitionBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateProhibitionBatchResponse()
@@ -1573,13 +1550,7 @@ func NewUploadImageResponse() (response *UploadImageResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UploadImage(request *UploadImageRequest) (response *UploadImageResponse, err error) {
-    if request == nil {
-        request = NewUploadImageRequest()
-    }
-    
-    response = NewUploadImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadImageWithContext(context.Background(), request)
 }
 
 // UploadImage
@@ -1603,6 +1574,11 @@ func (c *Client) UploadImageWithContext(ctx context.Context, request *UploadImag
     if request == nil {
         request = NewUploadImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadImageResponse()

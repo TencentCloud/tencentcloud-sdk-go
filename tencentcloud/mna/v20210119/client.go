@@ -16,6 +16,7 @@ package v20210119
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,6 +72,7 @@ func NewCreateQosResponse() (response *CreateQosResponse) {
 //  INVALIDPARAMETERVALUE_VENDORNOTFOUND = "InvalidParameterValue.VendorNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATIONNOTSUGGEST = "OperationDenied.AccelerationNotSuggest"
 //  OPERATIONDENIED_CTCCTOKENEXPIRED = "OperationDenied.CTCCTokenExpired"
 //  OPERATIONDENIED_CREATEQOSEXCEEDLIMIT = "OperationDenied.CreateQosExceedLimit"
 //  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
@@ -80,13 +82,7 @@ func NewCreateQosResponse() (response *CreateQosResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosResponse, err error) {
-    if request == nil {
-        request = NewCreateQosRequest()
-    }
-    
-    response = NewCreateQosResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateQosWithContext(context.Background(), request)
 }
 
 // CreateQos
@@ -99,6 +95,7 @@ func (c *Client) CreateQos(request *CreateQosRequest) (response *CreateQosRespon
 //  INVALIDPARAMETERVALUE_VENDORNOTFOUND = "InvalidParameterValue.VendorNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCELERATIONNOTSUGGEST = "OperationDenied.AccelerationNotSuggest"
 //  OPERATIONDENIED_CTCCTOKENEXPIRED = "OperationDenied.CTCCTokenExpired"
 //  OPERATIONDENIED_CREATEQOSEXCEEDLIMIT = "OperationDenied.CreateQosExceedLimit"
 //  OPERATIONDENIED_REQUESTQOSTIMEOUT = "OperationDenied.RequestQosTimeout"
@@ -111,6 +108,11 @@ func (c *Client) CreateQosWithContext(ctx context.Context, request *CreateQosReq
     if request == nil {
         request = NewCreateQosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateQosResponse()
@@ -151,13 +153,7 @@ func NewDeleteQosResponse() (response *DeleteQosResponse) {
 //  OPERATIONDENIED_VENDORRETURNERROR = "OperationDenied.VendorReturnError"
 //  OPERATIONDENIED_VENDORSERVERERROR = "OperationDenied.VendorServerError"
 func (c *Client) DeleteQos(request *DeleteQosRequest) (response *DeleteQosResponse, err error) {
-    if request == nil {
-        request = NewDeleteQosRequest()
-    }
-    
-    response = NewDeleteQosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteQosWithContext(context.Background(), request)
 }
 
 // DeleteQos
@@ -179,6 +175,11 @@ func (c *Client) DeleteQosWithContext(ctx context.Context, request *DeleteQosReq
     if request == nil {
         request = NewDeleteQosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteQosResponse()
@@ -210,13 +211,7 @@ func NewDescribeQosResponse() (response *DescribeQosResponse) {
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQos(request *DescribeQosRequest) (response *DescribeQosResponse, err error) {
-    if request == nil {
-        request = NewDescribeQosRequest()
-    }
-    
-    response = NewDescribeQosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQosWithContext(context.Background(), request)
 }
 
 // DescribeQos
@@ -229,6 +224,11 @@ func (c *Client) DescribeQosWithContext(ctx context.Context, request *DescribeQo
     if request == nil {
         request = NewDescribeQosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQosResponse()

@@ -16,6 +16,7 @@ package v20201106
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 // DescribeProducts
 // 本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductsRequest()
-    }
-    
-    response = NewDescribeProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductsWithContext(context.Background(), request)
 }
 
 // DescribeProducts
@@ -79,6 +74,11 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductsResponse()
@@ -110,13 +110,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionsRequest()
-    }
-    
-    response = NewDescribeRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionsWithContext(context.Background(), request)
 }
 
 // DescribeRegions
@@ -129,6 +123,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
@@ -159,13 +158,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
-    if request == nil {
-        request = NewDescribeZonesRequest()
-    }
-    
-    response = NewDescribeZonesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZonesWithContext(context.Background(), request)
 }
 
 // DescribeZones
@@ -177,6 +170,11 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZones require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZonesResponse()

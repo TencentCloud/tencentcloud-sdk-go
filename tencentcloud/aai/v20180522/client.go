@@ -16,6 +16,7 @@ package v20180522
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,13 +81,7 @@ func NewChatResponse() (response *ChatResponse) {
 //  INVALIDPARAMETERVALUE_ERRORINVALIDPROJECTID = "InvalidParameterValue.ErrorInvalidProjectid"
 //  INVALIDPARAMETERVALUE_ERRORINVALIDREQUESTID = "InvalidParameterValue.ErrorInvalidRequestid"
 func (c *Client) Chat(request *ChatRequest) (response *ChatResponse, err error) {
-    if request == nil {
-        request = NewChatRequest()
-    }
-    
-    response = NewChatResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChatWithContext(context.Background(), request)
 }
 
 // Chat
@@ -111,6 +106,11 @@ func (c *Client) ChatWithContext(ctx context.Context, request *ChatRequest) (res
     if request == nil {
         request = NewChatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Chat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChatResponse()
@@ -168,13 +168,7 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
 //  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEFORMAT = "InvalidParameterValue.ErrorInvalidVoiceFormat"
 //  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEDATA = "InvalidParameterValue.ErrorInvalidVoicedata"
 func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (response *SentenceRecognitionResponse, err error) {
-    if request == nil {
-        request = NewSentenceRecognitionRequest()
-    }
-    
-    response = NewSentenceRecognitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.SentenceRecognitionWithContext(context.Background(), request)
 }
 
 // SentenceRecognition
@@ -213,6 +207,11 @@ func (c *Client) SentenceRecognitionWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSentenceRecognitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SentenceRecognition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSentenceRecognitionResponse()
@@ -263,13 +262,7 @@ func NewSimultaneousInterpretingResponse() (response *SimultaneousInterpretingRe
 //  INVALIDPARAMETERVALUE_ERRORINVALIDTARGETLANGUAGE = "InvalidParameterValue.ErrorInvalidTargetLanguage"
 //  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEFORMAT = "InvalidParameterValue.ErrorInvalidVoiceFormat"
 func (c *Client) SimultaneousInterpreting(request *SimultaneousInterpretingRequest) (response *SimultaneousInterpretingResponse, err error) {
-    if request == nil {
-        request = NewSimultaneousInterpretingRequest()
-    }
-    
-    response = NewSimultaneousInterpretingResponse()
-    err = c.Send(request, response)
-    return
+    return c.SimultaneousInterpretingWithContext(context.Background(), request)
 }
 
 // SimultaneousInterpreting
@@ -301,6 +294,11 @@ func (c *Client) SimultaneousInterpretingWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSimultaneousInterpretingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SimultaneousInterpreting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSimultaneousInterpretingResponse()
@@ -340,13 +338,7 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //  INVALIDPARAMETERVALUE_APPIDNOTREGISTERED = "InvalidParameterValue.AppIdNotRegistered"
 //  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoiceResponse, err error) {
-    if request == nil {
-        request = NewTextToVoiceRequest()
-    }
-    
-    response = NewTextToVoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextToVoiceWithContext(context.Background(), request)
 }
 
 // TextToVoice
@@ -367,6 +359,11 @@ func (c *Client) TextToVoiceWithContext(ctx context.Context, request *TextToVoic
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToVoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextToVoiceResponse()

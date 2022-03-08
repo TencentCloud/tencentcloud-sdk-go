@@ -16,6 +16,7 @@ package v20200910
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -89,13 +90,7 @@ func NewImageToClassResponse() (response *ImageToClassResponse) {
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) ImageToClass(request *ImageToClassRequest) (response *ImageToClassResponse, err error) {
-    if request == nil {
-        request = NewImageToClassRequest()
-    }
-    
-    response = NewImageToClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageToClassWithContext(context.Background(), request)
 }
 
 // ImageToClass
@@ -129,6 +124,11 @@ func (c *Client) ImageToClassWithContext(ctx context.Context, request *ImageToCl
     if request == nil {
         request = NewImageToClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageToClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageToClassResponse()
@@ -181,13 +181,7 @@ func NewImageToObjectResponse() (response *ImageToObjectResponse) {
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) ImageToObject(request *ImageToObjectRequest) (response *ImageToObjectResponse, err error) {
-    if request == nil {
-        request = NewImageToObjectRequest()
-    }
-    
-    response = NewImageToObjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageToObjectWithContext(context.Background(), request)
 }
 
 // ImageToObject
@@ -221,6 +215,11 @@ func (c *Client) ImageToObjectWithContext(ctx context.Context, request *ImageToO
     if request == nil {
         request = NewImageToObjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageToObject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageToObjectResponse()
@@ -272,13 +271,7 @@ func NewTextToClassResponse() (response *TextToClassResponse) {
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) TextToClass(request *TextToClassRequest) (response *TextToClassResponse, err error) {
-    if request == nil {
-        request = NewTextToClassRequest()
-    }
-    
-    response = NewTextToClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextToClassWithContext(context.Background(), request)
 }
 
 // TextToClass
@@ -311,6 +304,11 @@ func (c *Client) TextToClassWithContext(ctx context.Context, request *TextToClas
     if request == nil {
         request = NewTextToClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextToClassResponse()
@@ -362,13 +360,7 @@ func NewTextToObjectResponse() (response *TextToObjectResponse) {
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) TextToObject(request *TextToObjectRequest) (response *TextToObjectResponse, err error) {
-    if request == nil {
-        request = NewTextToObjectRequest()
-    }
-    
-    response = NewTextToObjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextToObjectWithContext(context.Background(), request)
 }
 
 // TextToObject
@@ -401,6 +393,11 @@ func (c *Client) TextToObjectWithContext(ctx context.Context, request *TextToObj
     if request == nil {
         request = NewTextToObjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToObject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextToObjectResponse()

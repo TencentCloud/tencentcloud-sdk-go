@@ -16,6 +16,7 @@ package v20190107
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewActivateInstanceResponse() (response *ActivateInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ActivateInstance(request *ActivateInstanceRequest) (response *ActivateInstanceResponse, err error) {
-    if request == nil {
-        request = NewActivateInstanceRequest()
-    }
-    
-    response = NewActivateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ActivateInstanceWithContext(context.Background(), request)
 }
 
 // ActivateInstance
@@ -105,6 +100,11 @@ func (c *Client) ActivateInstanceWithContext(ctx context.Context, request *Activ
     if request == nil {
         request = NewActivateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewActivateInstanceResponse()
@@ -154,13 +154,7 @@ func NewAddInstancesResponse() (response *AddInstancesResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
-    if request == nil {
-        request = NewAddInstancesRequest()
-    }
-    
-    response = NewAddInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddInstancesWithContext(context.Background(), request)
 }
 
 // AddInstances
@@ -191,6 +185,11 @@ func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstan
     if request == nil {
         request = NewAddInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddInstancesResponse()
@@ -225,13 +224,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewAssociateSecurityGroupsRequest()
-    }
-    
-    response = NewAssociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // AssociateSecurityGroups
@@ -247,6 +240,11 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateSecurityGroupsResponse()
@@ -277,6 +275,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
 //  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
@@ -298,13 +297,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 //  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateClusters(request *CreateClustersRequest) (response *CreateClustersResponse, err error) {
-    if request == nil {
-        request = NewCreateClustersRequest()
-    }
-    
-    response = NewCreateClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClustersWithContext(context.Background(), request)
 }
 
 // CreateClusters
@@ -313,6 +306,7 @@ func (c *Client) CreateClusters(request *CreateClustersRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
 //  FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
@@ -337,6 +331,11 @@ func (c *Client) CreateClustersWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClustersResponse()
@@ -401,13 +400,7 @@ func NewDescribeAccountAllGrantPrivilegesResponse() (response *DescribeAccountAl
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeAccountAllGrantPrivileges(request *DescribeAccountAllGrantPrivilegesRequest) (response *DescribeAccountAllGrantPrivilegesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountAllGrantPrivilegesRequest()
-    }
-    
-    response = NewDescribeAccountAllGrantPrivilegesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountAllGrantPrivilegesWithContext(context.Background(), request)
 }
 
 // DescribeAccountAllGrantPrivileges
@@ -453,6 +446,11 @@ func (c *Client) DescribeAccountAllGrantPrivilegesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAccountAllGrantPrivilegesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountAllGrantPrivileges require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountAllGrantPrivilegesResponse()
@@ -490,13 +488,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountsRequest()
-    }
-    
-    response = NewDescribeAccountsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountsWithContext(context.Background(), request)
 }
 
 // DescribeAccounts
@@ -515,6 +507,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccounts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountsResponse()
@@ -552,13 +549,7 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (response *DescribeBackupConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeBackupConfigRequest()
-    }
-    
-    response = NewDescribeBackupConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBackupConfigWithContext(context.Background(), request)
 }
 
 // DescribeBackupConfig
@@ -577,6 +568,11 @@ func (c *Client) DescribeBackupConfigWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBackupConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBackupConfigResponse()
@@ -614,13 +610,7 @@ func NewDescribeBackupListResponse() (response *DescribeBackupListResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupList(request *DescribeBackupListRequest) (response *DescribeBackupListResponse, err error) {
-    if request == nil {
-        request = NewDescribeBackupListRequest()
-    }
-    
-    response = NewDescribeBackupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBackupListWithContext(context.Background(), request)
 }
 
 // DescribeBackupList
@@ -639,6 +629,11 @@ func (c *Client) DescribeBackupListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeBackupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBackupListResponse()
@@ -672,22 +667,18 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  OPERATIONDENIED_VERSIONNOTSUPPORTERROR = "OperationDenied.VersionNotSupportError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterDetailRequest()
-    }
-    
-    response = NewDescribeClusterDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterDetailWithContext(context.Background(), request)
 }
 
 // DescribeClusterDetail
@@ -699,18 +690,25 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = "InvalidParameterValue.ClusterNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  OPERATIONDENIED_VERSIONNOTSUPPORTERROR = "OperationDenied.VersionNotSupportError"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterDetailResponse()
@@ -745,13 +743,7 @@ func NewDescribeClusterInstanceGrpsResponse() (response *DescribeClusterInstance
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterInstanceGrps(request *DescribeClusterInstanceGrpsRequest) (response *DescribeClusterInstanceGrpsResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterInstanceGrpsRequest()
-    }
-    
-    response = NewDescribeClusterInstanceGrpsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterInstanceGrpsWithContext(context.Background(), request)
 }
 
 // DescribeClusterInstanceGrps
@@ -767,6 +759,11 @@ func (c *Client) DescribeClusterInstanceGrpsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeClusterInstanceGrpsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterInstanceGrps require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterInstanceGrpsResponse()
@@ -801,13 +798,7 @@ func NewDescribeClusterParamLogsResponse() (response *DescribeClusterParamLogsRe
 //  INVALIDPARAMETERVALUE_FLOWNOTFOUND = "InvalidParameterValue.FlowNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusterParamLogs(request *DescribeClusterParamLogsRequest) (response *DescribeClusterParamLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterParamLogsRequest()
-    }
-    
-    response = NewDescribeClusterParamLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterParamLogsWithContext(context.Background(), request)
 }
 
 // DescribeClusterParamLogs
@@ -823,6 +814,11 @@ func (c *Client) DescribeClusterParamLogsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClusterParamLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterParamLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterParamLogsResponse()
@@ -860,13 +856,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 //  INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeClustersRequest()
-    }
-    
-    response = NewDescribeClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClustersWithContext(context.Background(), request)
 }
 
 // DescribeClusters
@@ -885,6 +875,11 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
@@ -917,13 +912,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 //  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBSecurityGroupsRequest()
-    }
-    
-    response = NewDescribeDBSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DescribeDBSecurityGroups
@@ -937,6 +926,11 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBSecurityGroupsResponse()
@@ -974,13 +968,7 @@ func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailRespon
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) (response *DescribeInstanceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceDetailRequest()
-    }
-    
-    response = NewDescribeInstanceDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceDetailWithContext(context.Background(), request)
 }
 
 // DescribeInstanceDetail
@@ -999,6 +987,11 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceDetailResponse()
@@ -1031,13 +1024,7 @@ func NewDescribeInstanceSpecsResponse() (response *DescribeInstanceSpecsResponse
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (response *DescribeInstanceSpecsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceSpecsRequest()
-    }
-    
-    response = NewDescribeInstanceSpecsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceSpecsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceSpecs
@@ -1051,6 +1038,11 @@ func (c *Client) DescribeInstanceSpecsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceSpecsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSpecs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceSpecsResponse()
@@ -1092,13 +1084,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -1121,6 +1107,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -1155,13 +1146,7 @@ func NewDescribeMaintainPeriodResponse() (response *DescribeMaintainPeriodRespon
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeMaintainPeriod(request *DescribeMaintainPeriodRequest) (response *DescribeMaintainPeriodResponse, err error) {
-    if request == nil {
-        request = NewDescribeMaintainPeriodRequest()
-    }
-    
-    response = NewDescribeMaintainPeriodResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMaintainPeriodWithContext(context.Background(), request)
 }
 
 // DescribeMaintainPeriod
@@ -1177,6 +1162,11 @@ func (c *Client) DescribeMaintainPeriodWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMaintainPeriodRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaintainPeriod require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMaintainPeriodResponse()
@@ -1210,13 +1200,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 //  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectSecurityGroupsRequest()
-    }
-    
-    response = NewDescribeProjectSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DescribeProjectSecurityGroups
@@ -1231,6 +1215,11 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectSecurityGroupsResponse()
@@ -1266,13 +1255,7 @@ func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDeal
 //  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNameRequest) (response *DescribeResourcesByDealNameResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourcesByDealNameRequest()
-    }
-    
-    response = NewDescribeResourcesByDealNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourcesByDealNameWithContext(context.Background(), request)
 }
 
 // DescribeResourcesByDealName
@@ -1289,6 +1272,11 @@ func (c *Client) DescribeResourcesByDealNameWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourcesByDealNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcesByDealName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourcesByDealNameResponse()
@@ -1325,13 +1313,7 @@ func NewDescribeRollbackTimeRangeResponse() (response *DescribeRollbackTimeRange
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRollbackTimeRange(request *DescribeRollbackTimeRangeRequest) (response *DescribeRollbackTimeRangeResponse, err error) {
-    if request == nil {
-        request = NewDescribeRollbackTimeRangeRequest()
-    }
-    
-    response = NewDescribeRollbackTimeRangeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRollbackTimeRangeWithContext(context.Background(), request)
 }
 
 // DescribeRollbackTimeRange
@@ -1349,6 +1331,11 @@ func (c *Client) DescribeRollbackTimeRangeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRollbackTimeRangeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRollbackTimeRange require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRollbackTimeRangeResponse()
@@ -1382,13 +1369,7 @@ func NewDescribeRollbackTimeValidityResponse() (response *DescribeRollbackTimeVa
 //  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeRollbackTimeValidity(request *DescribeRollbackTimeValidityRequest) (response *DescribeRollbackTimeValidityResponse, err error) {
-    if request == nil {
-        request = NewDescribeRollbackTimeValidityRequest()
-    }
-    
-    response = NewDescribeRollbackTimeValidityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRollbackTimeValidityWithContext(context.Background(), request)
 }
 
 // DescribeRollbackTimeValidity
@@ -1403,6 +1384,11 @@ func (c *Client) DescribeRollbackTimeValidityWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRollbackTimeValidityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRollbackTimeValidity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRollbackTimeValidityResponse()
@@ -1437,13 +1423,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateSecurityGroupsRequest()
-    }
-    
-    response = NewDisassociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DisassociateSecurityGroups
@@ -1459,6 +1439,11 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
@@ -1523,13 +1508,7 @@ func NewGrantAccountPrivilegesResponse() (response *GrantAccountPrivilegesRespon
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) GrantAccountPrivileges(request *GrantAccountPrivilegesRequest) (response *GrantAccountPrivilegesResponse, err error) {
-    if request == nil {
-        request = NewGrantAccountPrivilegesRequest()
-    }
-    
-    response = NewGrantAccountPrivilegesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GrantAccountPrivilegesWithContext(context.Background(), request)
 }
 
 // GrantAccountPrivileges
@@ -1575,6 +1554,11 @@ func (c *Client) GrantAccountPrivilegesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGrantAccountPrivilegesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantAccountPrivileges require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGrantAccountPrivilegesResponse()
@@ -1617,13 +1601,7 @@ func NewIsolateClusterResponse() (response *IsolateClusterResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) IsolateCluster(request *IsolateClusterRequest) (response *IsolateClusterResponse, err error) {
-    if request == nil {
-        request = NewIsolateClusterRequest()
-    }
-    
-    response = NewIsolateClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.IsolateClusterWithContext(context.Background(), request)
 }
 
 // IsolateCluster
@@ -1647,6 +1625,11 @@ func (c *Client) IsolateClusterWithContext(ctx context.Context, request *Isolate
     if request == nil {
         request = NewIsolateClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIsolateClusterResponse()
@@ -1686,13 +1669,7 @@ func NewIsolateInstanceResponse() (response *IsolateInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) IsolateInstance(request *IsolateInstanceRequest) (response *IsolateInstanceResponse, err error) {
-    if request == nil {
-        request = NewIsolateInstanceRequest()
-    }
-    
-    response = NewIsolateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.IsolateInstanceWithContext(context.Background(), request)
 }
 
 // IsolateInstance
@@ -1713,6 +1690,11 @@ func (c *Client) IsolateInstanceWithContext(ctx context.Context, request *Isolat
     if request == nil {
         request = NewIsolateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIsolateInstanceResponse()
@@ -1777,13 +1759,7 @@ func NewModifyAccountParamsResponse() (response *ModifyAccountParamsResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountParams(request *ModifyAccountParamsRequest) (response *ModifyAccountParamsResponse, err error) {
-    if request == nil {
-        request = NewModifyAccountParamsRequest()
-    }
-    
-    response = NewModifyAccountParamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccountParamsWithContext(context.Background(), request)
 }
 
 // ModifyAccountParams
@@ -1829,6 +1805,11 @@ func (c *Client) ModifyAccountParamsWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAccountParamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountParams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccountParamsResponse()
@@ -1864,13 +1845,7 @@ func NewModifyBackupConfigResponse() (response *ModifyBackupConfigResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (response *ModifyBackupConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyBackupConfigRequest()
-    }
-    
-    response = NewModifyBackupConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBackupConfigWithContext(context.Background(), request)
 }
 
 // ModifyBackupConfig
@@ -1887,6 +1862,11 @@ func (c *Client) ModifyBackupConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyBackupConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBackupConfigResponse()
@@ -1924,13 +1904,7 @@ func NewModifyClusterParamResponse() (response *ModifyClusterParamResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyClusterParam(request *ModifyClusterParamRequest) (response *ModifyClusterParamResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterParamRequest()
-    }
-    
-    response = NewModifyClusterParamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterParamWithContext(context.Background(), request)
 }
 
 // ModifyClusterParam
@@ -1949,6 +1923,11 @@ func (c *Client) ModifyClusterParamWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyClusterParamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterParam require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterParamResponse()
@@ -1983,13 +1962,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewModifyDBInstanceSecurityGroupsRequest()
-    }
-    
-    response = NewModifyDBInstanceSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
 }
 
 // ModifyDBInstanceSecurityGroups
@@ -2005,6 +1978,11 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceSecurityGroupsResponse()
@@ -2039,13 +2017,7 @@ func NewModifyMaintainPeriodConfigResponse() (response *ModifyMaintainPeriodConf
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyMaintainPeriodConfig(request *ModifyMaintainPeriodConfigRequest) (response *ModifyMaintainPeriodConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyMaintainPeriodConfigRequest()
-    }
-    
-    response = NewModifyMaintainPeriodConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMaintainPeriodConfigWithContext(context.Background(), request)
 }
 
 // ModifyMaintainPeriodConfig
@@ -2061,6 +2033,11 @@ func (c *Client) ModifyMaintainPeriodConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyMaintainPeriodConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMaintainPeriodConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMaintainPeriodConfigResponse()
@@ -2098,13 +2075,7 @@ func NewOfflineClusterResponse() (response *OfflineClusterResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *OfflineClusterResponse, err error) {
-    if request == nil {
-        request = NewOfflineClusterRequest()
-    }
-    
-    response = NewOfflineClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.OfflineClusterWithContext(context.Background(), request)
 }
 
 // OfflineCluster
@@ -2123,6 +2094,11 @@ func (c *Client) OfflineClusterWithContext(ctx context.Context, request *Offline
     if request == nil {
         request = NewOfflineClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OfflineCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOfflineClusterResponse()
@@ -2163,13 +2139,7 @@ func NewOfflineInstanceResponse() (response *OfflineInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *OfflineInstanceResponse, err error) {
-    if request == nil {
-        request = NewOfflineInstanceRequest()
-    }
-    
-    response = NewOfflineInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.OfflineInstanceWithContext(context.Background(), request)
 }
 
 // OfflineInstance
@@ -2191,6 +2161,11 @@ func (c *Client) OfflineInstanceWithContext(ctx context.Context, request *Offlin
     if request == nil {
         request = NewOfflineInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OfflineInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOfflineInstanceResponse()
@@ -2227,13 +2202,7 @@ func NewPauseServerlessResponse() (response *PauseServerlessResponse) {
 //  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 func (c *Client) PauseServerless(request *PauseServerlessRequest) (response *PauseServerlessResponse, err error) {
-    if request == nil {
-        request = NewPauseServerlessRequest()
-    }
-    
-    response = NewPauseServerlessResponse()
-    err = c.Send(request, response)
-    return
+    return c.PauseServerlessWithContext(context.Background(), request)
 }
 
 // PauseServerless
@@ -2251,6 +2220,11 @@ func (c *Client) PauseServerlessWithContext(ctx context.Context, request *PauseS
     if request == nil {
         request = NewPauseServerlessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseServerless require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPauseServerlessResponse()
@@ -2291,13 +2265,7 @@ func NewResumeServerlessResponse() (response *ResumeServerlessResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ResumeServerless(request *ResumeServerlessRequest) (response *ResumeServerlessResponse, err error) {
-    if request == nil {
-        request = NewResumeServerlessRequest()
-    }
-    
-    response = NewResumeServerlessResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeServerlessWithContext(context.Background(), request)
 }
 
 // ResumeServerless
@@ -2319,6 +2287,11 @@ func (c *Client) ResumeServerlessWithContext(ctx context.Context, request *Resum
     if request == nil {
         request = NewResumeServerlessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeServerless require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeServerlessResponse()
@@ -2383,13 +2356,7 @@ func NewRevokeAccountPrivilegesResponse() (response *RevokeAccountPrivilegesResp
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RevokeAccountPrivileges(request *RevokeAccountPrivilegesRequest) (response *RevokeAccountPrivilegesResponse, err error) {
-    if request == nil {
-        request = NewRevokeAccountPrivilegesRequest()
-    }
-    
-    response = NewRevokeAccountPrivilegesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevokeAccountPrivilegesWithContext(context.Background(), request)
 }
 
 // RevokeAccountPrivileges
@@ -2435,6 +2402,11 @@ func (c *Client) RevokeAccountPrivilegesWithContext(ctx context.Context, request
     if request == nil {
         request = NewRevokeAccountPrivilegesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeAccountPrivileges require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevokeAccountPrivilegesResponse()
@@ -2472,13 +2444,7 @@ func NewRollBackClusterResponse() (response *RollBackClusterResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RollBackCluster(request *RollBackClusterRequest) (response *RollBackClusterResponse, err error) {
-    if request == nil {
-        request = NewRollBackClusterRequest()
-    }
-    
-    response = NewRollBackClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.RollBackClusterWithContext(context.Background(), request)
 }
 
 // RollBackCluster
@@ -2497,6 +2463,11 @@ func (c *Client) RollBackClusterWithContext(ctx context.Context, request *RollBa
     if request == nil {
         request = NewRollBackClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollBackCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRollBackClusterResponse()
@@ -2541,13 +2512,7 @@ func NewSetRenewFlagResponse() (response *SetRenewFlagResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) SetRenewFlag(request *SetRenewFlagRequest) (response *SetRenewFlagResponse, err error) {
-    if request == nil {
-        request = NewSetRenewFlagRequest()
-    }
-    
-    response = NewSetRenewFlagResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetRenewFlagWithContext(context.Background(), request)
 }
 
 // SetRenewFlag
@@ -2573,6 +2538,11 @@ func (c *Client) SetRenewFlagWithContext(ctx context.Context, request *SetRenewF
     if request == nil {
         request = NewSetRenewFlagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetRenewFlag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetRenewFlagResponse()
@@ -2614,13 +2584,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeInstanceRequest()
-    }
-    
-    response = NewUpgradeInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeInstanceWithContext(context.Background(), request)
 }
 
 // UpgradeInstance
@@ -2643,6 +2607,11 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeInstanceResponse()

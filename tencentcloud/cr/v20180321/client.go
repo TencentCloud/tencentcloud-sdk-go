@@ -16,6 +16,7 @@ package v20180321
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewApplyBlackListResponse() (response *ApplyBlackListResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) ApplyBlackList(request *ApplyBlackListRequest) (response *ApplyBlackListResponse, err error) {
-    if request == nil {
-        request = NewApplyBlackListRequest()
-    }
-    
-    response = NewApplyBlackListResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyBlackListWithContext(context.Background(), request)
 }
 
 // ApplyBlackList
@@ -89,6 +84,11 @@ func (c *Client) ApplyBlackListWithContext(ctx context.Context, request *ApplyBl
     if request == nil {
         request = NewApplyBlackListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyBlackList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyBlackListResponse()
@@ -122,13 +122,7 @@ func NewApplyBlackListDataResponse() (response *ApplyBlackListDataResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) ApplyBlackListData(request *ApplyBlackListDataRequest) (response *ApplyBlackListDataResponse, err error) {
-    if request == nil {
-        request = NewApplyBlackListDataRequest()
-    }
-    
-    response = NewApplyBlackListDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyBlackListDataWithContext(context.Background(), request)
 }
 
 // ApplyBlackListData
@@ -143,6 +137,11 @@ func (c *Client) ApplyBlackListDataWithContext(ctx context.Context, request *App
     if request == nil {
         request = NewApplyBlackListDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyBlackListData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyBlackListDataResponse()
@@ -176,13 +175,7 @@ func NewApplyCreditAuditResponse() (response *ApplyCreditAuditResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) ApplyCreditAudit(request *ApplyCreditAuditRequest) (response *ApplyCreditAuditResponse, err error) {
-    if request == nil {
-        request = NewApplyCreditAuditRequest()
-    }
-    
-    response = NewApplyCreditAuditResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyCreditAuditWithContext(context.Background(), request)
 }
 
 // ApplyCreditAudit
@@ -197,6 +190,11 @@ func (c *Client) ApplyCreditAuditWithContext(ctx context.Context, request *Apply
     if request == nil {
         request = NewApplyCreditAuditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyCreditAudit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyCreditAuditResponse()
@@ -233,13 +231,7 @@ func NewChangeBotCallStatusResponse() (response *ChangeBotCallStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ChangeBotCallStatus(request *ChangeBotCallStatusRequest) (response *ChangeBotCallStatusResponse, err error) {
-    if request == nil {
-        request = NewChangeBotCallStatusRequest()
-    }
-    
-    response = NewChangeBotCallStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeBotCallStatusWithContext(context.Background(), request)
 }
 
 // ChangeBotCallStatus
@@ -257,6 +249,11 @@ func (c *Client) ChangeBotCallStatusWithContext(ctx context.Context, request *Ch
     if request == nil {
         request = NewChangeBotCallStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeBotCallStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeBotCallStatusResponse()
@@ -289,13 +286,7 @@ func NewChangeBotTaskStatusResponse() (response *ChangeBotTaskStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ChangeBotTaskStatus(request *ChangeBotTaskStatusRequest) (response *ChangeBotTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewChangeBotTaskStatusRequest()
-    }
-    
-    response = NewChangeBotTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeBotTaskStatusWithContext(context.Background(), request)
 }
 
 // ChangeBotTaskStatus
@@ -309,6 +300,11 @@ func (c *Client) ChangeBotTaskStatusWithContext(ctx context.Context, request *Ch
     if request == nil {
         request = NewChangeBotTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeBotTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeBotTaskStatusResponse()
@@ -342,13 +338,7 @@ func NewCreateBotTaskResponse() (response *CreateBotTaskResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) CreateBotTask(request *CreateBotTaskRequest) (response *CreateBotTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateBotTaskRequest()
-    }
-    
-    response = NewCreateBotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBotTaskWithContext(context.Background(), request)
 }
 
 // CreateBotTask
@@ -363,6 +353,11 @@ func (c *Client) CreateBotTaskWithContext(ctx context.Context, request *CreateBo
     if request == nil {
         request = NewCreateBotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBotTaskResponse()
@@ -396,13 +391,7 @@ func NewDescribeBotFlowResponse() (response *DescribeBotFlowResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) DescribeBotFlow(request *DescribeBotFlowRequest) (response *DescribeBotFlowResponse, err error) {
-    if request == nil {
-        request = NewDescribeBotFlowRequest()
-    }
-    
-    response = NewDescribeBotFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBotFlowWithContext(context.Background(), request)
 }
 
 // DescribeBotFlow
@@ -417,6 +406,11 @@ func (c *Client) DescribeBotFlowWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBotFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBotFlowResponse()
@@ -450,13 +444,7 @@ func NewDescribeCreditResultResponse() (response *DescribeCreditResultResponse) 
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) DescribeCreditResult(request *DescribeCreditResultRequest) (response *DescribeCreditResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeCreditResultRequest()
-    }
-    
-    response = NewDescribeCreditResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCreditResultWithContext(context.Background(), request)
 }
 
 // DescribeCreditResult
@@ -471,6 +459,11 @@ func (c *Client) DescribeCreditResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCreditResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCreditResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCreditResultResponse()
@@ -503,13 +496,7 @@ func NewDescribeFileModelResponse() (response *DescribeFileModelResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeFileModel(request *DescribeFileModelRequest) (response *DescribeFileModelResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileModelRequest()
-    }
-    
-    response = NewDescribeFileModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileModelWithContext(context.Background(), request)
 }
 
 // DescribeFileModel
@@ -523,6 +510,11 @@ func (c *Client) DescribeFileModelWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFileModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileModelResponse()
@@ -555,13 +547,7 @@ func NewDescribeRecordsResponse() (response *DescribeRecordsResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) DescribeRecords(request *DescribeRecordsRequest) (response *DescribeRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordsRequest()
-    }
-    
-    response = NewDescribeRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordsWithContext(context.Background(), request)
 }
 
 // DescribeRecords
@@ -575,6 +561,11 @@ func (c *Client) DescribeRecordsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordsResponse()
@@ -608,13 +599,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStatusRequest()
-    }
-    
-    response = NewDescribeTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTaskStatus
@@ -629,6 +614,11 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStatusResponse()
@@ -662,13 +652,7 @@ func NewDownloadBotRecordResponse() (response *DownloadBotRecordResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DownloadBotRecord(request *DownloadBotRecordRequest) (response *DownloadBotRecordResponse, err error) {
-    if request == nil {
-        request = NewDownloadBotRecordRequest()
-    }
-    
-    response = NewDownloadBotRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadBotRecordWithContext(context.Background(), request)
 }
 
 // DownloadBotRecord
@@ -683,6 +667,11 @@ func (c *Client) DownloadBotRecordWithContext(ctx context.Context, request *Down
     if request == nil {
         request = NewDownloadBotRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadBotRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadBotRecordResponse()
@@ -716,13 +705,7 @@ func NewDownloadDialogueTextResponse() (response *DownloadDialogueTextResponse) 
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
 func (c *Client) DownloadDialogueText(request *DownloadDialogueTextRequest) (response *DownloadDialogueTextResponse, err error) {
-    if request == nil {
-        request = NewDownloadDialogueTextRequest()
-    }
-    
-    response = NewDownloadDialogueTextResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadDialogueTextWithContext(context.Background(), request)
 }
 
 // DownloadDialogueText
@@ -737,6 +720,11 @@ func (c *Client) DownloadDialogueTextWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDownloadDialogueTextRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadDialogueText require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadDialogueTextResponse()
@@ -772,13 +760,7 @@ func NewDownloadRecordListResponse() (response *DownloadRecordListResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  RESOURCENOTFOUND_RECORDLISTNOTFOUND = "ResourceNotFound.RecordListNotFound"
 func (c *Client) DownloadRecordList(request *DownloadRecordListRequest) (response *DownloadRecordListResponse, err error) {
-    if request == nil {
-        request = NewDownloadRecordListRequest()
-    }
-    
-    response = NewDownloadRecordListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadRecordListWithContext(context.Background(), request)
 }
 
 // DownloadRecordList
@@ -795,6 +777,11 @@ func (c *Client) DownloadRecordListWithContext(ctx context.Context, request *Dow
     if request == nil {
         request = NewDownloadRecordListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadRecordList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadRecordListResponse()
@@ -829,13 +816,7 @@ func NewDownloadReportResponse() (response *DownloadReportResponse) {
 //  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
 //  RESOURCENOTFOUND_REPORTNOTFOUND = "ResourceNotFound.ReportNotFound"
 func (c *Client) DownloadReport(request *DownloadReportRequest) (response *DownloadReportResponse, err error) {
-    if request == nil {
-        request = NewDownloadReportRequest()
-    }
-    
-    response = NewDownloadReportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadReportWithContext(context.Background(), request)
 }
 
 // DownloadReport
@@ -851,6 +832,11 @@ func (c *Client) DownloadReportWithContext(ctx context.Context, request *Downloa
     if request == nil {
         request = NewDownloadReportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadReport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadReportResponse()
@@ -883,13 +869,7 @@ func NewExportBotDataResponse() (response *ExportBotDataResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ExportBotData(request *ExportBotDataRequest) (response *ExportBotDataResponse, err error) {
-    if request == nil {
-        request = NewExportBotDataRequest()
-    }
-    
-    response = NewExportBotDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportBotDataWithContext(context.Background(), request)
 }
 
 // ExportBotData
@@ -903,6 +883,11 @@ func (c *Client) ExportBotDataWithContext(ctx context.Context, request *ExportBo
     if request == nil {
         request = NewExportBotDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBotData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportBotDataResponse()
@@ -937,13 +922,7 @@ func NewQueryBlackListDataResponse() (response *QueryBlackListDataResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  RESOURCENOTFOUND_BLACKLISTDATANOTFOUND = "ResourceNotFound.BlacklistDataNotFound"
 func (c *Client) QueryBlackListData(request *QueryBlackListDataRequest) (response *QueryBlackListDataResponse, err error) {
-    if request == nil {
-        request = NewQueryBlackListDataRequest()
-    }
-    
-    response = NewQueryBlackListDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBlackListDataWithContext(context.Background(), request)
 }
 
 // QueryBlackListData
@@ -959,6 +938,11 @@ func (c *Client) QueryBlackListDataWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryBlackListDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBlackListData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBlackListDataResponse()
@@ -989,13 +973,7 @@ func NewQueryBotListResponse() (response *QueryBotListResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYBOTLISTERROR = "FailedOperation.QueryBotListError"
 func (c *Client) QueryBotList(request *QueryBotListRequest) (response *QueryBotListResponse, err error) {
-    if request == nil {
-        request = NewQueryBotListRequest()
-    }
-    
-    response = NewQueryBotListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBotListWithContext(context.Background(), request)
 }
 
 // QueryBotList
@@ -1007,6 +985,11 @@ func (c *Client) QueryBotListWithContext(ctx context.Context, request *QueryBotL
     if request == nil {
         request = NewQueryBotListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBotList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBotListResponse()
@@ -1041,13 +1024,7 @@ func NewQueryCallListResponse() (response *QueryCallListResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) QueryCallList(request *QueryCallListRequest) (response *QueryCallListResponse, err error) {
-    if request == nil {
-        request = NewQueryCallListRequest()
-    }
-    
-    response = NewQueryCallListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCallListWithContext(context.Background(), request)
 }
 
 // QueryCallList
@@ -1063,6 +1040,11 @@ func (c *Client) QueryCallListWithContext(ctx context.Context, request *QueryCal
     if request == nil {
         request = NewQueryCallListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCallList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCallListResponse()
@@ -1094,13 +1076,7 @@ func NewQueryInstantDataResponse() (response *QueryInstantDataResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) QueryInstantData(request *QueryInstantDataRequest) (response *QueryInstantDataResponse, err error) {
-    if request == nil {
-        request = NewQueryInstantDataRequest()
-    }
-    
-    response = NewQueryInstantDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryInstantDataWithContext(context.Background(), request)
 }
 
 // QueryInstantData
@@ -1113,6 +1089,11 @@ func (c *Client) QueryInstantDataWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryInstantDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryInstantData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryInstantDataResponse()
@@ -1146,13 +1127,7 @@ func NewQueryProductsResponse() (response *QueryProductsResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) QueryProducts(request *QueryProductsRequest) (response *QueryProductsResponse, err error) {
-    if request == nil {
-        request = NewQueryProductsRequest()
-    }
-    
-    response = NewQueryProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryProductsWithContext(context.Background(), request)
 }
 
 // QueryProducts
@@ -1167,6 +1142,11 @@ func (c *Client) QueryProductsWithContext(ctx context.Context, request *QueryPro
     if request == nil {
         request = NewQueryProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryProductsResponse()
@@ -1197,13 +1177,7 @@ func NewQueryRecordListResponse() (response *QueryRecordListResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYRECORDLISTERROR = "FailedOperation.QueryRecordListError"
 func (c *Client) QueryRecordList(request *QueryRecordListRequest) (response *QueryRecordListResponse, err error) {
-    if request == nil {
-        request = NewQueryRecordListRequest()
-    }
-    
-    response = NewQueryRecordListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryRecordListWithContext(context.Background(), request)
 }
 
 // QueryRecordList
@@ -1215,6 +1189,11 @@ func (c *Client) QueryRecordListWithContext(ctx context.Context, request *QueryR
     if request == nil {
         request = NewQueryRecordListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryRecordList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryRecordListResponse()
@@ -1248,13 +1227,7 @@ func NewUpdateBotTaskResponse() (response *UpdateBotTaskResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UpdateBotTask(request *UpdateBotTaskRequest) (response *UpdateBotTaskResponse, err error) {
-    if request == nil {
-        request = NewUpdateBotTaskRequest()
-    }
-    
-    response = NewUpdateBotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateBotTaskWithContext(context.Background(), request)
 }
 
 // UpdateBotTask
@@ -1269,6 +1242,11 @@ func (c *Client) UpdateBotTaskWithContext(ctx context.Context, request *UpdateBo
     if request == nil {
         request = NewUpdateBotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateBotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateBotTaskResponse()
@@ -1303,13 +1281,7 @@ func NewUploadBotDataResponse() (response *UploadBotDataResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadBotData(request *UploadBotDataRequest) (response *UploadBotDataResponse, err error) {
-    if request == nil {
-        request = NewUploadBotDataRequest()
-    }
-    
-    response = NewUploadBotDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadBotDataWithContext(context.Background(), request)
 }
 
 // UploadBotData
@@ -1325,6 +1297,11 @@ func (c *Client) UploadBotDataWithContext(ctx context.Context, request *UploadBo
     if request == nil {
         request = NewUploadBotDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadBotData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadBotDataResponse()
@@ -1358,13 +1335,7 @@ func NewUploadBotFileResponse() (response *UploadBotFileResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadBotFile(request *UploadBotFileRequest) (response *UploadBotFileResponse, err error) {
-    if request == nil {
-        request = NewUploadBotFileRequest()
-    }
-    
-    response = NewUploadBotFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadBotFileWithContext(context.Background(), request)
 }
 
 // UploadBotFile
@@ -1379,6 +1350,11 @@ func (c *Client) UploadBotFileWithContext(ctx context.Context, request *UploadBo
     if request == nil {
         request = NewUploadBotFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadBotFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadBotFileResponse()
@@ -1412,13 +1388,7 @@ func NewUploadDataFileResponse() (response *UploadDataFileResponse) {
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 //  UNAUTHORIZEDOPERATION_ACCOUNTNOTFOUND = "UnauthorizedOperation.AccountNotFound"
 func (c *Client) UploadDataFile(request *UploadDataFileRequest) (response *UploadDataFileResponse, err error) {
-    if request == nil {
-        request = NewUploadDataFileRequest()
-    }
-    
-    response = NewUploadDataFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadDataFileWithContext(context.Background(), request)
 }
 
 // UploadDataFile
@@ -1433,6 +1403,11 @@ func (c *Client) UploadDataFileWithContext(ctx context.Context, request *UploadD
     if request == nil {
         request = NewUploadDataFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadDataFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadDataFileResponse()
@@ -1465,13 +1440,7 @@ func NewUploadDataJsonResponse() (response *UploadDataJsonResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MOERROR = "MissingParameter.MOError"
 func (c *Client) UploadDataJson(request *UploadDataJsonRequest) (response *UploadDataJsonResponse, err error) {
-    if request == nil {
-        request = NewUploadDataJsonRequest()
-    }
-    
-    response = NewUploadDataJsonResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadDataJsonWithContext(context.Background(), request)
 }
 
 // UploadDataJson
@@ -1485,6 +1454,11 @@ func (c *Client) UploadDataJsonWithContext(ctx context.Context, request *UploadD
     if request == nil {
         request = NewUploadDataJsonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadDataJson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadDataJsonResponse()
@@ -1519,13 +1493,7 @@ func NewUploadFileResponse() (response *UploadFileResponse) {
 //  RESOURCENOTFOUND_COMPANYNOTFOUND = "ResourceNotFound.CompanyNotFound"
 //  RESOURCEUNAVAILABLE_COMPANYUNAVAILABLE = "ResourceUnavailable.CompanyUnavailable"
 func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileResponse, err error) {
-    if request == nil {
-        request = NewUploadFileRequest()
-    }
-    
-    response = NewUploadFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFileWithContext(context.Background(), request)
 }
 
 // UploadFile
@@ -1541,6 +1509,11 @@ func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileR
     if request == nil {
         request = NewUploadFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFileResponse()

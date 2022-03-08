@@ -16,6 +16,7 @@ package v20190929
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -376,13 +377,7 @@ func NewDismissRoomResponse() (response *DismissRoomResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoomResponse, err error) {
-    if request == nil {
-        request = NewDismissRoomRequest()
-    }
-    
-    response = NewDismissRoomResponse()
-    err = c.Send(request, response)
-    return
+    return c.DismissRoomWithContext(context.Background(), request)
 }
 
 // DismissRoom
@@ -703,6 +698,11 @@ func (c *Client) DismissRoomWithContext(ctx context.Context, request *DismissRoo
     if request == nil {
         request = NewDismissRoomRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DismissRoom require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDismissRoomResponse()

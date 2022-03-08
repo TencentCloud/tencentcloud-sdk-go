@@ -110,6 +110,9 @@ const (
 	// 该域名未配置cname到默认域名，或者解析未生效。
 	FAILEDOPERATION_DOMAINRESOLVEERROR = "FailedOperation.DomainResolveError"
 
+	// EIAM返回错误。
+	FAILEDOPERATION_EIAMERROR = "FailedOperation.EIAMError"
+
 	// 事件总线绑定/解绑失败。
 	FAILEDOPERATION_EBERROR = "FailedOperation.EbError"
 

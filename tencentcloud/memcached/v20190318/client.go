@@ -16,6 +16,7 @@ package v20190318
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,13 +74,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  RESOURCENOTFOUND_ACCOUNTDOESNOTEXISTS = "ResourceNotFound.AccountDoesNotExists"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -97,6 +92,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()

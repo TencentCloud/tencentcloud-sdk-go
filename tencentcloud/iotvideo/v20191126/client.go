@@ -16,6 +16,7 @@ package v20191126
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -88,13 +89,7 @@ func NewClearDeviceActiveCodeResponse() (response *ClearDeviceActiveCodeResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ClearDeviceActiveCode(request *ClearDeviceActiveCodeRequest) (response *ClearDeviceActiveCodeResponse, err error) {
-    if request == nil {
-        request = NewClearDeviceActiveCodeRequest()
-    }
-    
-    response = NewClearDeviceActiveCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearDeviceActiveCodeWithContext(context.Background(), request)
 }
 
 // ClearDeviceActiveCode
@@ -127,6 +122,11 @@ func (c *Client) ClearDeviceActiveCodeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewClearDeviceActiveCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearDeviceActiveCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearDeviceActiveCodeResponse()
@@ -178,13 +178,7 @@ func NewCreateAnonymousAccessTokenResponse() (response *CreateAnonymousAccessTok
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAnonymousAccessToken(request *CreateAnonymousAccessTokenRequest) (response *CreateAnonymousAccessTokenResponse, err error) {
-    if request == nil {
-        request = NewCreateAnonymousAccessTokenRequest()
-    }
-    
-    response = NewCreateAnonymousAccessTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAnonymousAccessTokenWithContext(context.Background(), request)
 }
 
 // CreateAnonymousAccessToken
@@ -217,6 +211,11 @@ func (c *Client) CreateAnonymousAccessTokenWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAnonymousAccessTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAnonymousAccessToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAnonymousAccessTokenResponse()
@@ -268,13 +267,7 @@ func NewCreateAppUsrResponse() (response *CreateAppUsrResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppUsr(request *CreateAppUsrRequest) (response *CreateAppUsrResponse, err error) {
-    if request == nil {
-        request = NewCreateAppUsrRequest()
-    }
-    
-    response = NewCreateAppUsrResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAppUsrWithContext(context.Background(), request)
 }
 
 // CreateAppUsr
@@ -307,6 +300,11 @@ func (c *Client) CreateAppUsrWithContext(ctx context.Context, request *CreateApp
     if request == nil {
         request = NewCreateAppUsrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAppUsr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAppUsrResponse()
@@ -360,13 +358,7 @@ func NewCreateBindingResponse() (response *CreateBindingResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBinding(request *CreateBindingRequest) (response *CreateBindingResponse, err error) {
-    if request == nil {
-        request = NewCreateBindingRequest()
-    }
-    
-    response = NewCreateBindingResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBindingWithContext(context.Background(), request)
 }
 
 // CreateBinding
@@ -401,6 +393,11 @@ func (c *Client) CreateBindingWithContext(ctx context.Context, request *CreateBi
     if request == nil {
         request = NewCreateBindingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBinding require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBindingResponse()
@@ -458,13 +455,7 @@ func NewCreateDevTokenResponse() (response *CreateDevTokenResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDevToken(request *CreateDevTokenRequest) (response *CreateDevTokenResponse, err error) {
-    if request == nil {
-        request = NewCreateDevTokenRequest()
-    }
-    
-    response = NewCreateDevTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDevTokenWithContext(context.Background(), request)
 }
 
 // CreateDevToken
@@ -503,6 +494,11 @@ func (c *Client) CreateDevTokenWithContext(ctx context.Context, request *CreateD
     if request == nil {
         request = NewCreateDevTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDevTokenResponse()
@@ -556,13 +552,7 @@ func NewCreateDevicesResponse() (response *CreateDevicesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDevices(request *CreateDevicesRequest) (response *CreateDevicesResponse, err error) {
-    if request == nil {
-        request = NewCreateDevicesRequest()
-    }
-    
-    response = NewCreateDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDevicesWithContext(context.Background(), request)
 }
 
 // CreateDevices
@@ -597,6 +587,11 @@ func (c *Client) CreateDevicesWithContext(ctx context.Context, request *CreateDe
     if request == nil {
         request = NewCreateDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDevicesResponse()
@@ -648,13 +643,7 @@ func NewCreateGencodeResponse() (response *CreateGencodeResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateGencode(request *CreateGencodeRequest) (response *CreateGencodeResponse, err error) {
-    if request == nil {
-        request = NewCreateGencodeRequest()
-    }
-    
-    response = NewCreateGencodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGencodeWithContext(context.Background(), request)
 }
 
 // CreateGencode
@@ -687,6 +676,11 @@ func (c *Client) CreateGencodeWithContext(ctx context.Context, request *CreateGe
     if request == nil {
         request = NewCreateGencodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGencode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGencodeResponse()
@@ -738,13 +732,7 @@ func NewCreateIotDataTypeResponse() (response *CreateIotDataTypeResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateIotDataType(request *CreateIotDataTypeRequest) (response *CreateIotDataTypeResponse, err error) {
-    if request == nil {
-        request = NewCreateIotDataTypeRequest()
-    }
-    
-    response = NewCreateIotDataTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateIotDataTypeWithContext(context.Background(), request)
 }
 
 // CreateIotDataType
@@ -777,6 +765,11 @@ func (c *Client) CreateIotDataTypeWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateIotDataTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIotDataType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateIotDataTypeResponse()
@@ -830,13 +823,7 @@ func NewCreateIotModelResponse() (response *CreateIotModelResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateIotModel(request *CreateIotModelRequest) (response *CreateIotModelResponse, err error) {
-    if request == nil {
-        request = NewCreateIotModelRequest()
-    }
-    
-    response = NewCreateIotModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateIotModelWithContext(context.Background(), request)
 }
 
 // CreateIotModel
@@ -871,6 +858,11 @@ func (c *Client) CreateIotModelWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateIotModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIotModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateIotModelResponse()
@@ -922,13 +914,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
-    if request == nil {
-        request = NewCreateProductRequest()
-    }
-    
-    response = NewCreateProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProductWithContext(context.Background(), request)
 }
 
 // CreateProduct
@@ -961,6 +947,11 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProductResponse()
@@ -1012,13 +1003,7 @@ func NewCreateStorageResponse() (response *CreateStorageResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateStorage(request *CreateStorageRequest) (response *CreateStorageResponse, err error) {
-    if request == nil {
-        request = NewCreateStorageRequest()
-    }
-    
-    response = NewCreateStorageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStorageWithContext(context.Background(), request)
 }
 
 // CreateStorage
@@ -1051,6 +1036,11 @@ func (c *Client) CreateStorageWithContext(ctx context.Context, request *CreateSt
     if request == nil {
         request = NewCreateStorageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStorage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStorageResponse()
@@ -1102,13 +1092,7 @@ func NewCreateStorageServiceResponse() (response *CreateStorageServiceResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateStorageService(request *CreateStorageServiceRequest) (response *CreateStorageServiceResponse, err error) {
-    if request == nil {
-        request = NewCreateStorageServiceRequest()
-    }
-    
-    response = NewCreateStorageServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStorageServiceWithContext(context.Background(), request)
 }
 
 // CreateStorageService
@@ -1141,6 +1125,11 @@ func (c *Client) CreateStorageServiceWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateStorageServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStorageService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStorageServiceResponse()
@@ -1192,13 +1181,7 @@ func NewCreateTraceIdsResponse() (response *CreateTraceIdsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTraceIds(request *CreateTraceIdsRequest) (response *CreateTraceIdsResponse, err error) {
-    if request == nil {
-        request = NewCreateTraceIdsRequest()
-    }
-    
-    response = NewCreateTraceIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTraceIdsWithContext(context.Background(), request)
 }
 
 // CreateTraceIds
@@ -1231,6 +1214,11 @@ func (c *Client) CreateTraceIdsWithContext(ctx context.Context, request *CreateT
     if request == nil {
         request = NewCreateTraceIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTraceIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTraceIdsResponse()
@@ -1282,13 +1270,7 @@ func NewCreateUploadPathResponse() (response *CreateUploadPathResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUploadPath(request *CreateUploadPathRequest) (response *CreateUploadPathResponse, err error) {
-    if request == nil {
-        request = NewCreateUploadPathRequest()
-    }
-    
-    response = NewCreateUploadPathResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUploadPathWithContext(context.Background(), request)
 }
 
 // CreateUploadPath
@@ -1321,6 +1303,11 @@ func (c *Client) CreateUploadPathWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateUploadPathRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUploadPath require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUploadPathResponse()
@@ -1372,13 +1359,7 @@ func NewCreateUsrTokenResponse() (response *CreateUsrTokenResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUsrToken(request *CreateUsrTokenRequest) (response *CreateUsrTokenResponse, err error) {
-    if request == nil {
-        request = NewCreateUsrTokenRequest()
-    }
-    
-    response = NewCreateUsrTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUsrTokenWithContext(context.Background(), request)
 }
 
 // CreateUsrToken
@@ -1411,6 +1392,11 @@ func (c *Client) CreateUsrTokenWithContext(ctx context.Context, request *CreateU
     if request == nil {
         request = NewCreateUsrTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUsrToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUsrTokenResponse()
@@ -1462,13 +1448,7 @@ func NewDeleteAppUsrResponse() (response *DeleteAppUsrResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAppUsr(request *DeleteAppUsrRequest) (response *DeleteAppUsrResponse, err error) {
-    if request == nil {
-        request = NewDeleteAppUsrRequest()
-    }
-    
-    response = NewDeleteAppUsrResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAppUsrWithContext(context.Background(), request)
 }
 
 // DeleteAppUsr
@@ -1501,6 +1481,11 @@ func (c *Client) DeleteAppUsrWithContext(ctx context.Context, request *DeleteApp
     if request == nil {
         request = NewDeleteAppUsrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAppUsr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAppUsrResponse()
@@ -1552,13 +1537,7 @@ func NewDeleteBindingResponse() (response *DeleteBindingResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteBinding(request *DeleteBindingRequest) (response *DeleteBindingResponse, err error) {
-    if request == nil {
-        request = NewDeleteBindingRequest()
-    }
-    
-    response = NewDeleteBindingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteBindingWithContext(context.Background(), request)
 }
 
 // DeleteBinding
@@ -1591,6 +1570,11 @@ func (c *Client) DeleteBindingWithContext(ctx context.Context, request *DeleteBi
     if request == nil {
         request = NewDeleteBindingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBinding require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteBindingResponse()
@@ -1642,13 +1626,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -1681,6 +1659,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -1732,13 +1715,7 @@ func NewDeleteIotDataTypeResponse() (response *DeleteIotDataTypeResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIotDataType(request *DeleteIotDataTypeRequest) (response *DeleteIotDataTypeResponse, err error) {
-    if request == nil {
-        request = NewDeleteIotDataTypeRequest()
-    }
-    
-    response = NewDeleteIotDataTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteIotDataTypeWithContext(context.Background(), request)
 }
 
 // DeleteIotDataType
@@ -1771,6 +1748,11 @@ func (c *Client) DeleteIotDataTypeWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteIotDataTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIotDataType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteIotDataTypeResponse()
@@ -1822,13 +1804,7 @@ func NewDeleteMessageQueueResponse() (response *DeleteMessageQueueResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteMessageQueue(request *DeleteMessageQueueRequest) (response *DeleteMessageQueueResponse, err error) {
-    if request == nil {
-        request = NewDeleteMessageQueueRequest()
-    }
-    
-    response = NewDeleteMessageQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMessageQueueWithContext(context.Background(), request)
 }
 
 // DeleteMessageQueue
@@ -1861,6 +1837,11 @@ func (c *Client) DeleteMessageQueueWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteMessageQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMessageQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMessageQueueResponse()
@@ -1912,13 +1893,7 @@ func NewDeleteOtaVersionResponse() (response *DeleteOtaVersionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOtaVersion(request *DeleteOtaVersionRequest) (response *DeleteOtaVersionResponse, err error) {
-    if request == nil {
-        request = NewDeleteOtaVersionRequest()
-    }
-    
-    response = NewDeleteOtaVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOtaVersionWithContext(context.Background(), request)
 }
 
 // DeleteOtaVersion
@@ -1951,6 +1926,11 @@ func (c *Client) DeleteOtaVersionWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteOtaVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOtaVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOtaVersionResponse()
@@ -2002,13 +1982,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
-    if request == nil {
-        request = NewDeleteProductRequest()
-    }
-    
-    response = NewDeleteProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProductWithContext(context.Background(), request)
 }
 
 // DeleteProduct
@@ -2041,6 +2015,11 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
@@ -2092,13 +2071,7 @@ func NewDeleteTraceIdsResponse() (response *DeleteTraceIdsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTraceIds(request *DeleteTraceIdsRequest) (response *DeleteTraceIdsResponse, err error) {
-    if request == nil {
-        request = NewDeleteTraceIdsRequest()
-    }
-    
-    response = NewDeleteTraceIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTraceIdsWithContext(context.Background(), request)
 }
 
 // DeleteTraceIds
@@ -2131,6 +2104,11 @@ func (c *Client) DeleteTraceIdsWithContext(ctx context.Context, request *DeleteT
     if request == nil {
         request = NewDeleteTraceIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTraceIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTraceIdsResponse()
@@ -2182,13 +2160,7 @@ func NewDeliverStorageServiceResponse() (response *DeliverStorageServiceResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeliverStorageService(request *DeliverStorageServiceRequest) (response *DeliverStorageServiceResponse, err error) {
-    if request == nil {
-        request = NewDeliverStorageServiceRequest()
-    }
-    
-    response = NewDeliverStorageServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeliverStorageServiceWithContext(context.Background(), request)
 }
 
 // DeliverStorageService
@@ -2221,6 +2193,11 @@ func (c *Client) DeliverStorageServiceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeliverStorageServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeliverStorageService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeliverStorageServiceResponse()
@@ -2272,13 +2249,7 @@ func NewDescribeAccountBalanceResponse() (response *DescribeAccountBalanceRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccountBalance(request *DescribeAccountBalanceRequest) (response *DescribeAccountBalanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountBalanceRequest()
-    }
-    
-    response = NewDescribeAccountBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountBalanceWithContext(context.Background(), request)
 }
 
 // DescribeAccountBalance
@@ -2311,6 +2282,11 @@ func (c *Client) DescribeAccountBalanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAccountBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountBalanceResponse()
@@ -2362,13 +2338,7 @@ func NewDescribeBindDevResponse() (response *DescribeBindDevResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindDev(request *DescribeBindDevRequest) (response *DescribeBindDevResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindDevRequest()
-    }
-    
-    response = NewDescribeBindDevResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindDevWithContext(context.Background(), request)
 }
 
 // DescribeBindDev
@@ -2401,6 +2371,11 @@ func (c *Client) DescribeBindDevWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBindDevRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindDev require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindDevResponse()
@@ -2452,13 +2427,7 @@ func NewDescribeBindUsrResponse() (response *DescribeBindUsrResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindUsr(request *DescribeBindUsrRequest) (response *DescribeBindUsrResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindUsrRequest()
-    }
-    
-    response = NewDescribeBindUsrResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindUsrWithContext(context.Background(), request)
 }
 
 // DescribeBindUsr
@@ -2491,6 +2460,11 @@ func (c *Client) DescribeBindUsrWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBindUsrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindUsr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindUsrResponse()
@@ -2542,13 +2516,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceRequest()
-    }
-    
-    response = NewDescribeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceWithContext(context.Background(), request)
 }
 
 // DescribeDevice
@@ -2581,6 +2549,11 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
@@ -2632,13 +2605,7 @@ func NewDescribeDeviceModelResponse() (response *DescribeDeviceModelResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceModel(request *DescribeDeviceModelRequest) (response *DescribeDeviceModelResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceModelRequest()
-    }
-    
-    response = NewDescribeDeviceModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceModelWithContext(context.Background(), request)
 }
 
 // DescribeDeviceModel
@@ -2671,6 +2638,11 @@ func (c *Client) DescribeDeviceModelWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDeviceModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceModelResponse()
@@ -2722,13 +2694,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicesRequest()
-    }
-    
-    response = NewDescribeDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicesWithContext(context.Background(), request)
 }
 
 // DescribeDevices
@@ -2761,6 +2727,11 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
@@ -2812,13 +2783,7 @@ func NewDescribeIotDataTypeResponse() (response *DescribeIotDataTypeResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotDataType(request *DescribeIotDataTypeRequest) (response *DescribeIotDataTypeResponse, err error) {
-    if request == nil {
-        request = NewDescribeIotDataTypeRequest()
-    }
-    
-    response = NewDescribeIotDataTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIotDataTypeWithContext(context.Background(), request)
 }
 
 // DescribeIotDataType
@@ -2851,6 +2816,11 @@ func (c *Client) DescribeIotDataTypeWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeIotDataTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIotDataType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIotDataTypeResponse()
@@ -2902,13 +2872,7 @@ func NewDescribeIotModelResponse() (response *DescribeIotModelResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotModel(request *DescribeIotModelRequest) (response *DescribeIotModelResponse, err error) {
-    if request == nil {
-        request = NewDescribeIotModelRequest()
-    }
-    
-    response = NewDescribeIotModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIotModelWithContext(context.Background(), request)
 }
 
 // DescribeIotModel
@@ -2941,6 +2905,11 @@ func (c *Client) DescribeIotModelWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeIotModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIotModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIotModelResponse()
@@ -2992,13 +2961,7 @@ func NewDescribeIotModelsResponse() (response *DescribeIotModelsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIotModels(request *DescribeIotModelsRequest) (response *DescribeIotModelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeIotModelsRequest()
-    }
-    
-    response = NewDescribeIotModelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIotModelsWithContext(context.Background(), request)
 }
 
 // DescribeIotModels
@@ -3031,6 +2994,11 @@ func (c *Client) DescribeIotModelsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeIotModelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIotModels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIotModelsResponse()
@@ -3084,13 +3052,7 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLogsRequest()
-    }
-    
-    response = NewDescribeLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLogsWithContext(context.Background(), request)
 }
 
 // DescribeLogs
@@ -3125,6 +3087,11 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     if request == nil {
         request = NewDescribeLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLogsResponse()
@@ -3176,13 +3143,7 @@ func NewDescribeMessageQueueResponse() (response *DescribeMessageQueueResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMessageQueue(request *DescribeMessageQueueRequest) (response *DescribeMessageQueueResponse, err error) {
-    if request == nil {
-        request = NewDescribeMessageQueueRequest()
-    }
-    
-    response = NewDescribeMessageQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMessageQueueWithContext(context.Background(), request)
 }
 
 // DescribeMessageQueue
@@ -3215,6 +3176,11 @@ func (c *Client) DescribeMessageQueueWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMessageQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMessageQueueResponse()
@@ -3266,13 +3232,7 @@ func NewDescribeModelDataRetResponse() (response *DescribeModelDataRetResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModelDataRet(request *DescribeModelDataRetRequest) (response *DescribeModelDataRetResponse, err error) {
-    if request == nil {
-        request = NewDescribeModelDataRetRequest()
-    }
-    
-    response = NewDescribeModelDataRetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModelDataRetWithContext(context.Background(), request)
 }
 
 // DescribeModelDataRet
@@ -3305,6 +3265,11 @@ func (c *Client) DescribeModelDataRetWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeModelDataRetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelDataRet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModelDataRetResponse()
@@ -3356,13 +3321,7 @@ func NewDescribeOsListResponse() (response *DescribeOsListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOsList(request *DescribeOsListRequest) (response *DescribeOsListResponse, err error) {
-    if request == nil {
-        request = NewDescribeOsListRequest()
-    }
-    
-    response = NewDescribeOsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOsListWithContext(context.Background(), request)
 }
 
 // DescribeOsList
@@ -3395,6 +3354,11 @@ func (c *Client) DescribeOsListWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeOsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOsListResponse()
@@ -3446,13 +3410,7 @@ func NewDescribeOtaVersionsResponse() (response *DescribeOtaVersionsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOtaVersions(request *DescribeOtaVersionsRequest) (response *DescribeOtaVersionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeOtaVersionsRequest()
-    }
-    
-    response = NewDescribeOtaVersionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOtaVersionsWithContext(context.Background(), request)
 }
 
 // DescribeOtaVersions
@@ -3485,6 +3443,11 @@ func (c *Client) DescribeOtaVersionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeOtaVersionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOtaVersions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOtaVersionsResponse()
@@ -3536,13 +3499,7 @@ func NewDescribeProductResponse() (response *DescribeProductResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductRequest()
-    }
-    
-    response = NewDescribeProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductWithContext(context.Background(), request)
 }
 
 // DescribeProduct
@@ -3575,6 +3532,11 @@ func (c *Client) DescribeProductWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductResponse()
@@ -3626,13 +3588,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductsRequest()
-    }
-    
-    response = NewDescribeProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductsWithContext(context.Background(), request)
 }
 
 // DescribeProducts
@@ -3665,6 +3621,11 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductsResponse()
@@ -3716,13 +3677,7 @@ func NewDescribePubVersionsResponse() (response *DescribePubVersionsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePubVersions(request *DescribePubVersionsRequest) (response *DescribePubVersionsResponse, err error) {
-    if request == nil {
-        request = NewDescribePubVersionsRequest()
-    }
-    
-    response = NewDescribePubVersionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePubVersionsWithContext(context.Background(), request)
 }
 
 // DescribePubVersions
@@ -3755,6 +3710,11 @@ func (c *Client) DescribePubVersionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribePubVersionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePubVersions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePubVersionsResponse()
@@ -3806,13 +3766,7 @@ func NewDescribeRechargeRecordsResponse() (response *DescribeRechargeRecordsResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRechargeRecords(request *DescribeRechargeRecordsRequest) (response *DescribeRechargeRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRechargeRecordsRequest()
-    }
-    
-    response = NewDescribeRechargeRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRechargeRecordsWithContext(context.Background(), request)
 }
 
 // DescribeRechargeRecords
@@ -3845,6 +3799,11 @@ func (c *Client) DescribeRechargeRecordsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRechargeRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRechargeRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRechargeRecordsResponse()
@@ -3896,13 +3855,7 @@ func NewDescribeRegistrationStatusResponse() (response *DescribeRegistrationStat
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRegistrationStatus(request *DescribeRegistrationStatusRequest) (response *DescribeRegistrationStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegistrationStatusRequest()
-    }
-    
-    response = NewDescribeRegistrationStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegistrationStatusWithContext(context.Background(), request)
 }
 
 // DescribeRegistrationStatus
@@ -3935,6 +3888,11 @@ func (c *Client) DescribeRegistrationStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRegistrationStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegistrationStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegistrationStatusResponse()
@@ -3986,13 +3944,7 @@ func NewDescribeRunLogResponse() (response *DescribeRunLogResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRunLog(request *DescribeRunLogRequest) (response *DescribeRunLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeRunLogRequest()
-    }
-    
-    response = NewDescribeRunLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRunLogWithContext(context.Background(), request)
 }
 
 // DescribeRunLog
@@ -4025,6 +3977,11 @@ func (c *Client) DescribeRunLogWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeRunLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRunLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRunLogResponse()
@@ -4076,13 +4033,7 @@ func NewDescribeStorageServiceResponse() (response *DescribeStorageServiceRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeStorageService(request *DescribeStorageServiceRequest) (response *DescribeStorageServiceResponse, err error) {
-    if request == nil {
-        request = NewDescribeStorageServiceRequest()
-    }
-    
-    response = NewDescribeStorageServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStorageServiceWithContext(context.Background(), request)
 }
 
 // DescribeStorageService
@@ -4115,6 +4066,11 @@ func (c *Client) DescribeStorageServiceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeStorageServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStorageService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStorageServiceResponse()
@@ -4174,13 +4130,7 @@ func NewDescribeStreamResponse() (response *DescribeStreamResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeStream(request *DescribeStreamRequest) (response *DescribeStreamResponse, err error) {
-    if request == nil {
-        request = NewDescribeStreamRequest()
-    }
-    
-    response = NewDescribeStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStreamWithContext(context.Background(), request)
 }
 
 // DescribeStream
@@ -4221,6 +4171,11 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStreamResponse()
@@ -4272,13 +4227,7 @@ func NewDescribeTraceIdsResponse() (response *DescribeTraceIdsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTraceIds(request *DescribeTraceIdsRequest) (response *DescribeTraceIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTraceIdsRequest()
-    }
-    
-    response = NewDescribeTraceIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTraceIdsWithContext(context.Background(), request)
 }
 
 // DescribeTraceIds
@@ -4311,6 +4260,11 @@ func (c *Client) DescribeTraceIdsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTraceIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTraceIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTraceIdsResponse()
@@ -4362,13 +4316,7 @@ func NewDescribeTraceStatusResponse() (response *DescribeTraceStatusResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTraceStatus(request *DescribeTraceStatusRequest) (response *DescribeTraceStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTraceStatusRequest()
-    }
-    
-    response = NewDescribeTraceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTraceStatusWithContext(context.Background(), request)
 }
 
 // DescribeTraceStatus
@@ -4401,6 +4349,11 @@ func (c *Client) DescribeTraceStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTraceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTraceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTraceStatusResponse()
@@ -4452,13 +4405,7 @@ func NewDisableDeviceResponse() (response *DisableDeviceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableDevice(request *DisableDeviceRequest) (response *DisableDeviceResponse, err error) {
-    if request == nil {
-        request = NewDisableDeviceRequest()
-    }
-    
-    response = NewDisableDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableDeviceWithContext(context.Background(), request)
 }
 
 // DisableDevice
@@ -4491,6 +4438,11 @@ func (c *Client) DisableDeviceWithContext(ctx context.Context, request *DisableD
     if request == nil {
         request = NewDisableDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableDeviceResponse()
@@ -4542,13 +4494,7 @@ func NewDisableDeviceStreamResponse() (response *DisableDeviceStreamResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableDeviceStream(request *DisableDeviceStreamRequest) (response *DisableDeviceStreamResponse, err error) {
-    if request == nil {
-        request = NewDisableDeviceStreamRequest()
-    }
-    
-    response = NewDisableDeviceStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableDeviceStreamWithContext(context.Background(), request)
 }
 
 // DisableDeviceStream
@@ -4581,6 +4527,11 @@ func (c *Client) DisableDeviceStreamWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisableDeviceStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableDeviceStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableDeviceStreamResponse()
@@ -4632,13 +4583,7 @@ func NewDisableOtaVersionResponse() (response *DisableOtaVersionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableOtaVersion(request *DisableOtaVersionRequest) (response *DisableOtaVersionResponse, err error) {
-    if request == nil {
-        request = NewDisableOtaVersionRequest()
-    }
-    
-    response = NewDisableOtaVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableOtaVersionWithContext(context.Background(), request)
 }
 
 // DisableOtaVersion
@@ -4671,6 +4616,11 @@ func (c *Client) DisableOtaVersionWithContext(ctx context.Context, request *Disa
     if request == nil {
         request = NewDisableOtaVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableOtaVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableOtaVersionResponse()
@@ -4703,13 +4653,7 @@ func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceRequest()
-    }
-    
-    response = NewModifyDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceWithContext(context.Background(), request)
 }
 
 // ModifyDevice
@@ -4723,6 +4667,11 @@ func (c *Client) ModifyDeviceWithContext(ctx context.Context, request *ModifyDev
     if request == nil {
         request = NewModifyDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceResponse()
@@ -4786,13 +4735,7 @@ func NewModifyDeviceActionResponse() (response *ModifyDeviceActionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDeviceAction(request *ModifyDeviceActionRequest) (response *ModifyDeviceActionResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceActionRequest()
-    }
-    
-    response = NewModifyDeviceActionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceActionWithContext(context.Background(), request)
 }
 
 // ModifyDeviceAction
@@ -4837,6 +4780,11 @@ func (c *Client) ModifyDeviceActionWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDeviceActionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceAction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceActionResponse()
@@ -4900,13 +4848,7 @@ func NewModifyDevicePropertyResponse() (response *ModifyDevicePropertyResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDeviceProperty(request *ModifyDevicePropertyRequest) (response *ModifyDevicePropertyResponse, err error) {
-    if request == nil {
-        request = NewModifyDevicePropertyRequest()
-    }
-    
-    response = NewModifyDevicePropertyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDevicePropertyWithContext(context.Background(), request)
 }
 
 // ModifyDeviceProperty
@@ -4951,6 +4893,11 @@ func (c *Client) ModifyDevicePropertyWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDevicePropertyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceProperty require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDevicePropertyResponse()
@@ -5002,13 +4949,7 @@ func NewModifyProductResponse() (response *ModifyProductResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyProductResponse, err error) {
-    if request == nil {
-        request = NewModifyProductRequest()
-    }
-    
-    response = NewModifyProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProductWithContext(context.Background(), request)
 }
 
 // ModifyProduct
@@ -5041,6 +4982,11 @@ func (c *Client) ModifyProductWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProductResponse()
@@ -5092,13 +5038,7 @@ func NewModifyVerContentResponse() (response *ModifyVerContentResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyVerContent(request *ModifyVerContentRequest) (response *ModifyVerContentResponse, err error) {
-    if request == nil {
-        request = NewModifyVerContentRequest()
-    }
-    
-    response = NewModifyVerContentResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVerContentWithContext(context.Background(), request)
 }
 
 // ModifyVerContent
@@ -5131,6 +5071,11 @@ func (c *Client) ModifyVerContentWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyVerContentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVerContent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVerContentResponse()
@@ -5190,13 +5135,7 @@ func NewRefundStorageServiceResponse() (response *RefundStorageServiceResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RefundStorageService(request *RefundStorageServiceRequest) (response *RefundStorageServiceResponse, err error) {
-    if request == nil {
-        request = NewRefundStorageServiceRequest()
-    }
-    
-    response = NewRefundStorageServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefundStorageServiceWithContext(context.Background(), request)
 }
 
 // RefundStorageService
@@ -5237,6 +5176,11 @@ func (c *Client) RefundStorageServiceWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRefundStorageServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundStorageService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefundStorageServiceResponse()
@@ -5288,13 +5232,7 @@ func NewRunDeviceResponse() (response *RunDeviceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunDevice(request *RunDeviceRequest) (response *RunDeviceResponse, err error) {
-    if request == nil {
-        request = NewRunDeviceRequest()
-    }
-    
-    response = NewRunDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunDeviceWithContext(context.Background(), request)
 }
 
 // RunDevice
@@ -5327,6 +5265,11 @@ func (c *Client) RunDeviceWithContext(ctx context.Context, request *RunDeviceReq
     if request == nil {
         request = NewRunDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunDeviceResponse()
@@ -5378,13 +5321,7 @@ func NewRunDeviceStreamResponse() (response *RunDeviceStreamResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunDeviceStream(request *RunDeviceStreamRequest) (response *RunDeviceStreamResponse, err error) {
-    if request == nil {
-        request = NewRunDeviceStreamRequest()
-    }
-    
-    response = NewRunDeviceStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunDeviceStreamWithContext(context.Background(), request)
 }
 
 // RunDeviceStream
@@ -5417,6 +5354,11 @@ func (c *Client) RunDeviceStreamWithContext(ctx context.Context, request *RunDev
     if request == nil {
         request = NewRunDeviceStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunDeviceStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunDeviceStreamResponse()
@@ -5468,13 +5410,7 @@ func NewRunIotModelResponse() (response *RunIotModelResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunIotModel(request *RunIotModelRequest) (response *RunIotModelResponse, err error) {
-    if request == nil {
-        request = NewRunIotModelRequest()
-    }
-    
-    response = NewRunIotModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunIotModelWithContext(context.Background(), request)
 }
 
 // RunIotModel
@@ -5507,6 +5443,11 @@ func (c *Client) RunIotModelWithContext(ctx context.Context, request *RunIotMode
     if request == nil {
         request = NewRunIotModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunIotModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunIotModelResponse()
@@ -5558,13 +5499,7 @@ func NewRunOtaVersionResponse() (response *RunOtaVersionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunOtaVersion(request *RunOtaVersionRequest) (response *RunOtaVersionResponse, err error) {
-    if request == nil {
-        request = NewRunOtaVersionRequest()
-    }
-    
-    response = NewRunOtaVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunOtaVersionWithContext(context.Background(), request)
 }
 
 // RunOtaVersion
@@ -5597,6 +5532,11 @@ func (c *Client) RunOtaVersionWithContext(ctx context.Context, request *RunOtaVe
     if request == nil {
         request = NewRunOtaVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunOtaVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunOtaVersionResponse()
@@ -5648,13 +5588,7 @@ func NewRunTestOtaVersionResponse() (response *RunTestOtaVersionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunTestOtaVersion(request *RunTestOtaVersionRequest) (response *RunTestOtaVersionResponse, err error) {
-    if request == nil {
-        request = NewRunTestOtaVersionRequest()
-    }
-    
-    response = NewRunTestOtaVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunTestOtaVersionWithContext(context.Background(), request)
 }
 
 // RunTestOtaVersion
@@ -5687,6 +5621,11 @@ func (c *Client) RunTestOtaVersionWithContext(ctx context.Context, request *RunT
     if request == nil {
         request = NewRunTestOtaVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunTestOtaVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunTestOtaVersionResponse()
@@ -5744,13 +5683,7 @@ func NewSendOnlineMsgResponse() (response *SendOnlineMsgResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendOnlineMsg(request *SendOnlineMsgRequest) (response *SendOnlineMsgResponse, err error) {
-    if request == nil {
-        request = NewSendOnlineMsgRequest()
-    }
-    
-    response = NewSendOnlineMsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendOnlineMsgWithContext(context.Background(), request)
 }
 
 // SendOnlineMsg
@@ -5789,6 +5722,11 @@ func (c *Client) SendOnlineMsgWithContext(ctx context.Context, request *SendOnli
     if request == nil {
         request = NewSendOnlineMsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendOnlineMsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendOnlineMsgResponse()
@@ -5840,13 +5778,7 @@ func NewSetMessageQueueResponse() (response *SetMessageQueueResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetMessageQueue(request *SetMessageQueueRequest) (response *SetMessageQueueResponse, err error) {
-    if request == nil {
-        request = NewSetMessageQueueRequest()
-    }
-    
-    response = NewSetMessageQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetMessageQueueWithContext(context.Background(), request)
 }
 
 // SetMessageQueue
@@ -5879,6 +5811,11 @@ func (c *Client) SetMessageQueueWithContext(ctx context.Context, request *SetMes
     if request == nil {
         request = NewSetMessageQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetMessageQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetMessageQueueResponse()
@@ -5934,13 +5871,7 @@ func NewUpgradeDeviceResponse() (response *UpgradeDeviceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeDevice(request *UpgradeDeviceRequest) (response *UpgradeDeviceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDeviceRequest()
-    }
-    
-    response = NewUpgradeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeDeviceWithContext(context.Background(), request)
 }
 
 // UpgradeDevice
@@ -5977,6 +5908,11 @@ func (c *Client) UpgradeDeviceWithContext(ctx context.Context, request *UpgradeD
     if request == nil {
         request = NewUpgradeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeDeviceResponse()
@@ -6028,13 +5964,7 @@ func NewUploadOtaVersionResponse() (response *UploadOtaVersionResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UploadOtaVersion(request *UploadOtaVersionRequest) (response *UploadOtaVersionResponse, err error) {
-    if request == nil {
-        request = NewUploadOtaVersionRequest()
-    }
-    
-    response = NewUploadOtaVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadOtaVersionWithContext(context.Background(), request)
 }
 
 // UploadOtaVersion
@@ -6067,6 +5997,11 @@ func (c *Client) UploadOtaVersionWithContext(ctx context.Context, request *Uploa
     if request == nil {
         request = NewUploadOtaVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadOtaVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadOtaVersionResponse()

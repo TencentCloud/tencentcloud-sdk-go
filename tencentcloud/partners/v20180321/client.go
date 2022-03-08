@@ -16,6 +16,7 @@ package v20180321
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewAgentPayDealsResponse() (response *AgentPayDealsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AgentPayDeals(request *AgentPayDealsRequest) (response *AgentPayDealsResponse, err error) {
-    if request == nil {
-        request = NewAgentPayDealsRequest()
-    }
-    
-    response = NewAgentPayDealsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AgentPayDealsWithContext(context.Background(), request)
 }
 
 // AgentPayDeals
@@ -91,6 +86,11 @@ func (c *Client) AgentPayDealsWithContext(ctx context.Context, request *AgentPay
     if request == nil {
         request = NewAgentPayDealsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AgentPayDeals require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAgentPayDealsResponse()
@@ -124,13 +124,7 @@ func NewAgentTransferMoneyResponse() (response *AgentTransferMoneyResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AgentTransferMoney(request *AgentTransferMoneyRequest) (response *AgentTransferMoneyResponse, err error) {
-    if request == nil {
-        request = NewAgentTransferMoneyRequest()
-    }
-    
-    response = NewAgentTransferMoneyResponse()
-    err = c.Send(request, response)
-    return
+    return c.AgentTransferMoneyWithContext(context.Background(), request)
 }
 
 // AgentTransferMoney
@@ -145,6 +139,11 @@ func (c *Client) AgentTransferMoneyWithContext(ctx context.Context, request *Age
     if request == nil {
         request = NewAgentTransferMoneyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AgentTransferMoney require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAgentTransferMoneyResponse()
@@ -177,13 +176,7 @@ func NewAuditApplyClientResponse() (response *AuditApplyClientResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) AuditApplyClient(request *AuditApplyClientRequest) (response *AuditApplyClientResponse, err error) {
-    if request == nil {
-        request = NewAuditApplyClientRequest()
-    }
-    
-    response = NewAuditApplyClientResponse()
-    err = c.Send(request, response)
-    return
+    return c.AuditApplyClientWithContext(context.Background(), request)
 }
 
 // AuditApplyClient
@@ -197,6 +190,11 @@ func (c *Client) AuditApplyClientWithContext(ctx context.Context, request *Audit
     if request == nil {
         request = NewAuditApplyClientRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuditApplyClient require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAuditApplyClientResponse()
@@ -227,13 +225,7 @@ func NewCreatePayRelationForClientResponse() (response *CreatePayRelationForClie
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreatePayRelationForClient(request *CreatePayRelationForClientRequest) (response *CreatePayRelationForClientResponse, err error) {
-    if request == nil {
-        request = NewCreatePayRelationForClientRequest()
-    }
-    
-    response = NewCreatePayRelationForClientResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePayRelationForClientWithContext(context.Background(), request)
 }
 
 // CreatePayRelationForClient
@@ -245,6 +237,11 @@ func (c *Client) CreatePayRelationForClientWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreatePayRelationForClientRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePayRelationForClient require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePayRelationForClientResponse()
@@ -277,13 +274,7 @@ func NewDescribeAgentAuditedClientsResponse() (response *DescribeAgentAuditedCli
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentAuditedClients(request *DescribeAgentAuditedClientsRequest) (response *DescribeAgentAuditedClientsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentAuditedClientsRequest()
-    }
-    
-    response = NewDescribeAgentAuditedClientsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentAuditedClientsWithContext(context.Background(), request)
 }
 
 // DescribeAgentAuditedClients
@@ -297,6 +288,11 @@ func (c *Client) DescribeAgentAuditedClientsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAgentAuditedClientsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentAuditedClients require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentAuditedClientsResponse()
@@ -328,13 +324,7 @@ func NewDescribeAgentBillsResponse() (response *DescribeAgentBillsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAgentBills(request *DescribeAgentBillsRequest) (response *DescribeAgentBillsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentBillsRequest()
-    }
-    
-    response = NewDescribeAgentBillsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentBillsWithContext(context.Background(), request)
 }
 
 // DescribeAgentBills
@@ -347,6 +337,11 @@ func (c *Client) DescribeAgentBillsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAgentBillsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentBills require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentBillsResponse()
@@ -380,13 +375,7 @@ func NewDescribeAgentClientGradeResponse() (response *DescribeAgentClientGradeRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentClientGrade(request *DescribeAgentClientGradeRequest) (response *DescribeAgentClientGradeResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentClientGradeRequest()
-    }
-    
-    response = NewDescribeAgentClientGradeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentClientGradeWithContext(context.Background(), request)
 }
 
 // DescribeAgentClientGrade
@@ -401,6 +390,11 @@ func (c *Client) DescribeAgentClientGradeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAgentClientGradeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentClientGrade require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentClientGradeResponse()
@@ -432,13 +426,7 @@ func NewDescribeAgentClientsResponse() (response *DescribeAgentClientsResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAgentClients(request *DescribeAgentClientsRequest) (response *DescribeAgentClientsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentClientsRequest()
-    }
-    
-    response = NewDescribeAgentClientsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentClientsWithContext(context.Background(), request)
 }
 
 // DescribeAgentClients
@@ -451,6 +439,11 @@ func (c *Client) DescribeAgentClientsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAgentClientsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentClients require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentClientsResponse()
@@ -484,13 +477,7 @@ func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCache
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheRequest) (response *DescribeAgentDealsByCacheResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentDealsByCacheRequest()
-    }
-    
-    response = NewDescribeAgentDealsByCacheResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentDealsByCacheWithContext(context.Background(), request)
 }
 
 // DescribeAgentDealsByCache
@@ -505,6 +492,11 @@ func (c *Client) DescribeAgentDealsByCacheWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAgentDealsByCacheRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentDealsByCache require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentDealsByCacheResponse()
@@ -538,13 +530,7 @@ func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest) (response *DescribeAgentDealsCacheResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentDealsCacheRequest()
-    }
-    
-    response = NewDescribeAgentDealsCacheResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentDealsCacheWithContext(context.Background(), request)
 }
 
 // DescribeAgentDealsCache
@@ -559,6 +545,11 @@ func (c *Client) DescribeAgentDealsCacheWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAgentDealsCacheRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentDealsCache require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentDealsCacheResponse()
@@ -592,13 +583,7 @@ func NewDescribeAgentPayDealsResponse() (response *DescribeAgentPayDealsResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (response *DescribeAgentPayDealsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentPayDealsRequest()
-    }
-    
-    response = NewDescribeAgentPayDealsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentPayDealsWithContext(context.Background(), request)
 }
 
 // DescribeAgentPayDeals
@@ -613,6 +598,11 @@ func (c *Client) DescribeAgentPayDealsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAgentPayDealsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentPayDeals require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentPayDealsResponse()
@@ -646,13 +636,7 @@ func NewDescribeAgentPayDealsV2Response() (response *DescribeAgentPayDealsV2Resp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentPayDealsV2(request *DescribeAgentPayDealsV2Request) (response *DescribeAgentPayDealsV2Response, err error) {
-    if request == nil {
-        request = NewDescribeAgentPayDealsV2Request()
-    }
-    
-    response = NewDescribeAgentPayDealsV2Response()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentPayDealsV2WithContext(context.Background(), request)
 }
 
 // DescribeAgentPayDealsV2
@@ -667,6 +651,11 @@ func (c *Client) DescribeAgentPayDealsV2WithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAgentPayDealsV2Request()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentPayDealsV2 require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentPayDealsV2Response()
@@ -700,13 +689,7 @@ func NewDescribeAgentSelfPayDealsResponse() (response *DescribeAgentSelfPayDeals
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsRequest) (response *DescribeAgentSelfPayDealsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentSelfPayDealsRequest()
-    }
-    
-    response = NewDescribeAgentSelfPayDealsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentSelfPayDealsWithContext(context.Background(), request)
 }
 
 // DescribeAgentSelfPayDeals
@@ -721,6 +704,11 @@ func (c *Client) DescribeAgentSelfPayDealsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAgentSelfPayDealsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentSelfPayDeals require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentSelfPayDealsResponse()
@@ -754,13 +742,7 @@ func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDea
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV2Request) (response *DescribeAgentSelfPayDealsV2Response, err error) {
-    if request == nil {
-        request = NewDescribeAgentSelfPayDealsV2Request()
-    }
-    
-    response = NewDescribeAgentSelfPayDealsV2Response()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentSelfPayDealsV2WithContext(context.Background(), request)
 }
 
 // DescribeAgentSelfPayDealsV2
@@ -775,6 +757,11 @@ func (c *Client) DescribeAgentSelfPayDealsV2WithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAgentSelfPayDealsV2Request()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentSelfPayDealsV2 require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentSelfPayDealsV2Response()
@@ -807,13 +794,7 @@ func NewDescribeClientBalanceResponse() (response *DescribeClientBalanceResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClientBalance(request *DescribeClientBalanceRequest) (response *DescribeClientBalanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeClientBalanceRequest()
-    }
-    
-    response = NewDescribeClientBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClientBalanceWithContext(context.Background(), request)
 }
 
 // DescribeClientBalance
@@ -827,6 +808,11 @@ func (c *Client) DescribeClientBalanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClientBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClientBalanceResponse()
@@ -859,13 +845,7 @@ func NewDescribeClientBalanceNewResponse() (response *DescribeClientBalanceNewRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClientBalanceNew(request *DescribeClientBalanceNewRequest) (response *DescribeClientBalanceNewResponse, err error) {
-    if request == nil {
-        request = NewDescribeClientBalanceNewRequest()
-    }
-    
-    response = NewDescribeClientBalanceNewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClientBalanceNewWithContext(context.Background(), request)
 }
 
 // DescribeClientBalanceNew
@@ -879,6 +859,11 @@ func (c *Client) DescribeClientBalanceNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeClientBalanceNewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientBalanceNew require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClientBalanceNewResponse()
@@ -910,13 +895,7 @@ func NewDescribeRebateInfosResponse() (response *DescribeRebateInfosResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (response *DescribeRebateInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeRebateInfosRequest()
-    }
-    
-    response = NewDescribeRebateInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRebateInfosWithContext(context.Background(), request)
 }
 
 // DescribeRebateInfos
@@ -929,6 +908,11 @@ func (c *Client) DescribeRebateInfosWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRebateInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRebateInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRebateInfosResponse()
@@ -962,13 +946,7 @@ func NewDescribeSalesmansResponse() (response *DescribeSalesmansResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSalesmans(request *DescribeSalesmansRequest) (response *DescribeSalesmansResponse, err error) {
-    if request == nil {
-        request = NewDescribeSalesmansRequest()
-    }
-    
-    response = NewDescribeSalesmansResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSalesmansWithContext(context.Background(), request)
 }
 
 // DescribeSalesmans
@@ -983,6 +961,11 @@ func (c *Client) DescribeSalesmansWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSalesmansRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSalesmans require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSalesmansResponse()
@@ -1016,13 +999,7 @@ func NewDescribeUnbindClientListResponse() (response *DescribeUnbindClientListRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUnbindClientList(request *DescribeUnbindClientListRequest) (response *DescribeUnbindClientListResponse, err error) {
-    if request == nil {
-        request = NewDescribeUnbindClientListRequest()
-    }
-    
-    response = NewDescribeUnbindClientListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUnbindClientListWithContext(context.Background(), request)
 }
 
 // DescribeUnbindClientList
@@ -1037,6 +1014,11 @@ func (c *Client) DescribeUnbindClientListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUnbindClientListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnbindClientList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUnbindClientListResponse()
@@ -1068,13 +1050,7 @@ func NewModifyClientRemarkResponse() (response *ModifyClientRemarkResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyClientRemark(request *ModifyClientRemarkRequest) (response *ModifyClientRemarkResponse, err error) {
-    if request == nil {
-        request = NewModifyClientRemarkRequest()
-    }
-    
-    response = NewModifyClientRemarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClientRemarkWithContext(context.Background(), request)
 }
 
 // ModifyClientRemark
@@ -1087,6 +1063,11 @@ func (c *Client) ModifyClientRemarkWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyClientRemarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClientRemark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClientRemarkResponse()
@@ -1117,13 +1098,7 @@ func NewRemovePayRelationForClientResponse() (response *RemovePayRelationForClie
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) RemovePayRelationForClient(request *RemovePayRelationForClientRequest) (response *RemovePayRelationForClientResponse, err error) {
-    if request == nil {
-        request = NewRemovePayRelationForClientRequest()
-    }
-    
-    response = NewRemovePayRelationForClientResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemovePayRelationForClientWithContext(context.Background(), request)
 }
 
 // RemovePayRelationForClient
@@ -1135,6 +1110,11 @@ func (c *Client) RemovePayRelationForClientWithContext(ctx context.Context, requ
     if request == nil {
         request = NewRemovePayRelationForClientRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemovePayRelationForClient require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemovePayRelationForClientResponse()

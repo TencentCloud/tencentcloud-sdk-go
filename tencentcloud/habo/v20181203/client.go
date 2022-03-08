@@ -16,6 +16,7 @@ package v20181203
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewDescribeStatusResponse() (response *DescribeStatusResponse) {
 // DescribeStatus
 // 查询指定md5样本是否分析完成，并获取分析日志下载地址。
 func (c *Client) DescribeStatus(request *DescribeStatusRequest) (response *DescribeStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeStatusRequest()
-    }
-    
-    response = NewDescribeStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStatusWithContext(context.Background(), request)
 }
 
 // DescribeStatus
@@ -79,6 +74,11 @@ func (c *Client) DescribeStatusWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStatusResponse()
@@ -106,13 +106,7 @@ func NewStartAnalyseResponse() (response *StartAnalyseResponse) {
 // StartAnalyse
 // 上传样本到哈勃进行分析，异步生成分析日志。
 func (c *Client) StartAnalyse(request *StartAnalyseRequest) (response *StartAnalyseResponse, err error) {
-    if request == nil {
-        request = NewStartAnalyseRequest()
-    }
-    
-    response = NewStartAnalyseResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartAnalyseWithContext(context.Background(), request)
 }
 
 // StartAnalyse
@@ -121,6 +115,11 @@ func (c *Client) StartAnalyseWithContext(ctx context.Context, request *StartAnal
     if request == nil {
         request = NewStartAnalyseRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAnalyse require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartAnalyseResponse()

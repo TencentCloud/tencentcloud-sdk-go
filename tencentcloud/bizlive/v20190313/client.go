@@ -16,6 +16,7 @@ package v20190313
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
-    if request == nil {
-        request = NewCreateSessionRequest()
-    }
-    
-    response = NewCreateSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSessionWithContext(context.Background(), request)
 }
 
 // CreateSession
@@ -91,6 +86,11 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSessionResponse()
@@ -124,13 +124,7 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStreamPlayInfoListRequest()
-    }
-    
-    response = NewDescribeStreamPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStreamPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeStreamPlayInfoList
@@ -145,6 +139,11 @@ func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStreamPlayInfoListResponse()
@@ -175,13 +174,7 @@ func NewDescribeWorkersResponse() (response *DescribeWorkersResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 func (c *Client) DescribeWorkers(request *DescribeWorkersRequest) (response *DescribeWorkersResponse, err error) {
-    if request == nil {
-        request = NewDescribeWorkersRequest()
-    }
-    
-    response = NewDescribeWorkersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWorkersWithContext(context.Background(), request)
 }
 
 // DescribeWorkers
@@ -193,6 +186,11 @@ func (c *Client) DescribeWorkersWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeWorkersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWorkersResponse()
@@ -234,13 +232,7 @@ func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewForbidLiveStreamRequest()
-    }
-    
-    response = NewForbidLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ForbidLiveStreamWithContext(context.Background(), request)
 }
 
 // ForbidLiveStream
@@ -263,6 +255,11 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     if request == nil {
         request = NewForbidLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForbidLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewForbidLiveStreamResponse()
@@ -297,13 +294,7 @@ func NewRegisterIMResponse() (response *RegisterIMResponse) {
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  LIMITEXCEEDED_NOIMABILITY = "LimitExceeded.NoIMAbility"
 func (c *Client) RegisterIM(request *RegisterIMRequest) (response *RegisterIMResponse, err error) {
-    if request == nil {
-        request = NewRegisterIMRequest()
-    }
-    
-    response = NewRegisterIMResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterIMWithContext(context.Background(), request)
 }
 
 // RegisterIM
@@ -319,6 +310,11 @@ func (c *Client) RegisterIMWithContext(ctx context.Context, request *RegisterIMR
     if request == nil {
         request = NewRegisterIMRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterIM require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterIMResponse()
@@ -350,13 +346,7 @@ func NewStopGameResponse() (response *StopGameResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
-    if request == nil {
-        request = NewStopGameRequest()
-    }
-    
-    response = NewStopGameResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopGameWithContext(context.Background(), request)
 }
 
 // StopGame
@@ -369,6 +359,11 @@ func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameReque
     if request == nil {
         request = NewStopGameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopGame require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopGameResponse()

@@ -16,6 +16,7 @@ package v20181119
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,13 +83,7 @@ func NewAdvertiseOCRResponse() (response *AdvertiseOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *AdvertiseOCRResponse, err error) {
-    if request == nil {
-        request = NewAdvertiseOCRRequest()
-    }
-    
-    response = NewAdvertiseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.AdvertiseOCRWithContext(context.Background(), request)
 }
 
 // AdvertiseOCR
@@ -115,6 +110,11 @@ func (c *Client) AdvertiseOCRWithContext(ctx context.Context, request *Advertise
     if request == nil {
         request = NewAdvertiseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AdvertiseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAdvertiseOCRResponse()
@@ -155,13 +155,7 @@ func NewArithmeticOCRResponse() (response *ArithmeticOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *ArithmeticOCRResponse, err error) {
-    if request == nil {
-        request = NewArithmeticOCRRequest()
-    }
-    
-    response = NewArithmeticOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.ArithmeticOCRWithContext(context.Background(), request)
 }
 
 // ArithmeticOCR
@@ -183,6 +177,11 @@ func (c *Client) ArithmeticOCRWithContext(ctx context.Context, request *Arithmet
     if request == nil {
         request = NewArithmeticOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ArithmeticOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewArithmeticOCRResponse()
@@ -221,13 +220,7 @@ func NewBankCardOCRResponse() (response *BankCardOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCRResponse, err error) {
-    if request == nil {
-        request = NewBankCardOCRRequest()
-    }
-    
-    response = NewBankCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.BankCardOCRWithContext(context.Background(), request)
 }
 
 // BankCardOCR
@@ -247,6 +240,11 @@ func (c *Client) BankCardOCRWithContext(ctx context.Context, request *BankCardOC
     if request == nil {
         request = NewBankCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BankCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBankCardOCRResponse()
@@ -287,13 +285,7 @@ func NewBankSlipOCRResponse() (response *BankSlipOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BankSlipOCR(request *BankSlipOCRRequest) (response *BankSlipOCRResponse, err error) {
-    if request == nil {
-        request = NewBankSlipOCRRequest()
-    }
-    
-    response = NewBankSlipOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.BankSlipOCRWithContext(context.Background(), request)
 }
 
 // BankSlipOCR
@@ -315,6 +307,11 @@ func (c *Client) BankSlipOCRWithContext(ctx context.Context, request *BankSlipOC
     if request == nil {
         request = NewBankSlipOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BankSlipOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBankSlipOCRResponse()
@@ -352,13 +349,7 @@ func NewBizLicenseOCRResponse() (response *BizLicenseOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewBizLicenseOCRRequest()
-    }
-    
-    response = NewBizLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.BizLicenseOCRWithContext(context.Background(), request)
 }
 
 // BizLicenseOCR
@@ -377,6 +368,11 @@ func (c *Client) BizLicenseOCRWithContext(ctx context.Context, request *BizLicen
     if request == nil {
         request = NewBizLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BizLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBizLicenseOCRResponse()
@@ -414,13 +410,7 @@ func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewBusInvoiceOCRRequest()
-    }
-    
-    response = NewBusInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.BusInvoiceOCRWithContext(context.Background(), request)
 }
 
 // BusInvoiceOCR
@@ -439,6 +429,11 @@ func (c *Client) BusInvoiceOCRWithContext(ctx context.Context, request *BusInvoi
     if request == nil {
         request = NewBusInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BusInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBusInvoiceOCRResponse()
@@ -478,13 +473,7 @@ func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *BusinessCardOCRResponse, err error) {
-    if request == nil {
-        request = NewBusinessCardOCRRequest()
-    }
-    
-    response = NewBusinessCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.BusinessCardOCRWithContext(context.Background(), request)
 }
 
 // BusinessCardOCR
@@ -505,6 +494,11 @@ func (c *Client) BusinessCardOCRWithContext(ctx context.Context, request *Busine
     if request == nil {
         request = NewBusinessCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BusinessCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBusinessCardOCRResponse()
@@ -542,13 +536,7 @@ func NewCarInvoiceOCRResponse() (response *CarInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CarInvoiceOCR(request *CarInvoiceOCRRequest) (response *CarInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewCarInvoiceOCRRequest()
-    }
-    
-    response = NewCarInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.CarInvoiceOCRWithContext(context.Background(), request)
 }
 
 // CarInvoiceOCR
@@ -567,6 +555,11 @@ func (c *Client) CarInvoiceOCRWithContext(ctx context.Context, request *CarInvoi
     if request == nil {
         request = NewCarInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CarInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCarInvoiceOCRResponse()
@@ -606,13 +599,7 @@ func NewClassifyDetectOCRResponse() (response *ClassifyDetectOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response *ClassifyDetectOCRResponse, err error) {
-    if request == nil {
-        request = NewClassifyDetectOCRRequest()
-    }
-    
-    response = NewClassifyDetectOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClassifyDetectOCRWithContext(context.Background(), request)
 }
 
 // ClassifyDetectOCR
@@ -633,6 +620,11 @@ func (c *Client) ClassifyDetectOCRWithContext(ctx context.Context, request *Clas
     if request == nil {
         request = NewClassifyDetectOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClassifyDetectOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClassifyDetectOCRResponse()
@@ -691,13 +683,7 @@ func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *DriverLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewDriverLicenseOCRRequest()
-    }
-    
-    response = NewDriverLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.DriverLicenseOCRWithContext(context.Background(), request)
 }
 
 // DriverLicenseOCR
@@ -737,6 +723,11 @@ func (c *Client) DriverLicenseOCRWithContext(ctx context.Context, request *Drive
     if request == nil {
         request = NewDriverLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DriverLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDriverLicenseOCRResponse()
@@ -774,13 +765,7 @@ func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
-    if request == nil {
-        request = NewDutyPaidProofOCRRequest()
-    }
-    
-    response = NewDutyPaidProofOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.DutyPaidProofOCRWithContext(context.Background(), request)
 }
 
 // DutyPaidProofOCR
@@ -799,6 +784,11 @@ func (c *Client) DutyPaidProofOCRWithContext(ctx context.Context, request *DutyP
     if request == nil {
         request = NewDutyPaidProofOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DutyPaidProofOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDutyPaidProofOCRResponse()
@@ -838,13 +828,7 @@ func NewEduPaperOCRResponse() (response *EduPaperOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCRResponse, err error) {
-    if request == nil {
-        request = NewEduPaperOCRRequest()
-    }
-    
-    response = NewEduPaperOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.EduPaperOCRWithContext(context.Background(), request)
 }
 
 // EduPaperOCR
@@ -865,6 +849,11 @@ func (c *Client) EduPaperOCRWithContext(ctx context.Context, request *EduPaperOC
     if request == nil {
         request = NewEduPaperOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EduPaperOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEduPaperOCRResponse()
@@ -905,13 +894,7 @@ func NewEnglishOCRResponse() (response *EnglishOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRResponse, err error) {
-    if request == nil {
-        request = NewEnglishOCRRequest()
-    }
-    
-    response = NewEnglishOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnglishOCRWithContext(context.Background(), request)
 }
 
 // EnglishOCR
@@ -933,6 +916,11 @@ func (c *Client) EnglishOCRWithContext(ctx context.Context, request *EnglishOCRR
     if request == nil {
         request = NewEnglishOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnglishOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnglishOCRResponse()
@@ -970,13 +958,7 @@ func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) 
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (response *EnterpriseLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewEnterpriseLicenseOCRRequest()
-    }
-    
-    response = NewEnterpriseLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnterpriseLicenseOCRWithContext(context.Background(), request)
 }
 
 // EnterpriseLicenseOCR
@@ -995,6 +977,11 @@ func (c *Client) EnterpriseLicenseOCRWithContext(ctx context.Context, request *E
     if request == nil {
         request = NewEnterpriseLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnterpriseLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnterpriseLicenseOCRResponse()
@@ -1036,13 +1023,7 @@ func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateCertOCRResponse, err error) {
-    if request == nil {
-        request = NewEstateCertOCRRequest()
-    }
-    
-    response = NewEstateCertOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.EstateCertOCRWithContext(context.Background(), request)
 }
 
 // EstateCertOCR
@@ -1065,6 +1046,11 @@ func (c *Client) EstateCertOCRWithContext(ctx context.Context, request *EstateCe
     if request == nil {
         request = NewEstateCertOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EstateCertOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEstateCertOCRResponse()
@@ -1103,13 +1089,7 @@ func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
-    if request == nil {
-        request = NewFinanBillOCRRequest()
-    }
-    
-    response = NewFinanBillOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.FinanBillOCRWithContext(context.Background(), request)
 }
 
 // FinanBillOCR
@@ -1129,6 +1109,11 @@ func (c *Client) FinanBillOCRWithContext(ctx context.Context, request *FinanBill
     if request == nil {
         request = NewFinanBillOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FinanBillOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFinanBillOCRResponse()
@@ -1167,13 +1152,7 @@ func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
-    if request == nil {
-        request = NewFinanBillSliceOCRRequest()
-    }
-    
-    response = NewFinanBillSliceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.FinanBillSliceOCRWithContext(context.Background(), request)
 }
 
 // FinanBillSliceOCR
@@ -1193,6 +1172,11 @@ func (c *Client) FinanBillSliceOCRWithContext(ctx context.Context, request *Fina
     if request == nil {
         request = NewFinanBillSliceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FinanBillSliceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFinanBillSliceOCRResponse()
@@ -1230,13 +1214,7 @@ func NewFlightInvoiceOCRResponse() (response *FlightInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *FlightInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewFlightInvoiceOCRRequest()
-    }
-    
-    response = NewFlightInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.FlightInvoiceOCRWithContext(context.Background(), request)
 }
 
 // FlightInvoiceOCR
@@ -1255,6 +1233,11 @@ func (c *Client) FlightInvoiceOCRWithContext(ctx context.Context, request *Fligh
     if request == nil {
         request = NewFlightInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FlightInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFlightInvoiceOCRResponse()
@@ -1294,13 +1277,7 @@ func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRResponse, err error) {
-    if request == nil {
-        request = NewFormulaOCRRequest()
-    }
-    
-    response = NewFormulaOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.FormulaOCRWithContext(context.Background(), request)
 }
 
 // FormulaOCR
@@ -1321,6 +1298,11 @@ func (c *Client) FormulaOCRWithContext(ctx context.Context, request *FormulaOCRR
     if request == nil {
         request = NewFormulaOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FormulaOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFormulaOCRResponse()
@@ -1484,13 +1466,7 @@ func NewGeneralAccurateOCRResponse() (response *GeneralAccurateOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralAccurateOCR(request *GeneralAccurateOCRRequest) (response *GeneralAccurateOCRResponse, err error) {
-    if request == nil {
-        request = NewGeneralAccurateOCRRequest()
-    }
-    
-    response = NewGeneralAccurateOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.GeneralAccurateOCRWithContext(context.Background(), request)
 }
 
 // GeneralAccurateOCR
@@ -1635,6 +1611,11 @@ func (c *Client) GeneralAccurateOCRWithContext(ctx context.Context, request *Gen
     if request == nil {
         request = NewGeneralAccurateOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneralAccurateOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGeneralAccurateOCRResponse()
@@ -1796,13 +1777,7 @@ func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *GeneralBasicOCRResponse, err error) {
-    if request == nil {
-        request = NewGeneralBasicOCRRequest()
-    }
-    
-    response = NewGeneralBasicOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.GeneralBasicOCRWithContext(context.Background(), request)
 }
 
 // GeneralBasicOCR
@@ -1945,6 +1920,11 @@ func (c *Client) GeneralBasicOCRWithContext(ctx context.Context, request *Genera
     if request == nil {
         request = NewGeneralBasicOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneralBasicOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGeneralBasicOCRResponse()
@@ -2132,13 +2112,7 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (response *GeneralEfficientOCRResponse, err error) {
-    if request == nil {
-        request = NewGeneralEfficientOCRRequest()
-    }
-    
-    response = NewGeneralEfficientOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.GeneralEfficientOCRWithContext(context.Background(), request)
 }
 
 // GeneralEfficientOCR
@@ -2307,6 +2281,11 @@ func (c *Client) GeneralEfficientOCRWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGeneralEfficientOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneralEfficientOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGeneralEfficientOCRResponse()
@@ -2347,13 +2326,7 @@ func NewGeneralFastOCRResponse() (response *GeneralFastOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralFastOCR(request *GeneralFastOCRRequest) (response *GeneralFastOCRResponse, err error) {
-    if request == nil {
-        request = NewGeneralFastOCRRequest()
-    }
-    
-    response = NewGeneralFastOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.GeneralFastOCRWithContext(context.Background(), request)
 }
 
 // GeneralFastOCR
@@ -2375,6 +2348,11 @@ func (c *Client) GeneralFastOCRWithContext(ctx context.Context, request *General
     if request == nil {
         request = NewGeneralFastOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneralFastOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGeneralFastOCRResponse()
@@ -2417,13 +2395,7 @@ func NewGeneralHandwritingOCRResponse() (response *GeneralHandwritingOCRResponse
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (response *GeneralHandwritingOCRResponse, err error) {
-    if request == nil {
-        request = NewGeneralHandwritingOCRRequest()
-    }
-    
-    response = NewGeneralHandwritingOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.GeneralHandwritingOCRWithContext(context.Background(), request)
 }
 
 // GeneralHandwritingOCR
@@ -2447,6 +2419,11 @@ func (c *Client) GeneralHandwritingOCRWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGeneralHandwritingOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneralHandwritingOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGeneralHandwritingOCRResponse()
@@ -2487,13 +2464,7 @@ func NewHKIDCardOCRResponse() (response *HKIDCardOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) HKIDCardOCR(request *HKIDCardOCRRequest) (response *HKIDCardOCRResponse, err error) {
-    if request == nil {
-        request = NewHKIDCardOCRRequest()
-    }
-    
-    response = NewHKIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.HKIDCardOCRWithContext(context.Background(), request)
 }
 
 // HKIDCardOCR
@@ -2515,6 +2486,11 @@ func (c *Client) HKIDCardOCRWithContext(ctx context.Context, request *HKIDCardOC
     if request == nil {
         request = NewHKIDCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HKIDCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewHKIDCardOCRResponse()
@@ -2554,13 +2530,7 @@ func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) 
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
-    if request == nil {
-        request = NewHmtResidentPermitOCRRequest()
-    }
-    
-    response = NewHmtResidentPermitOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.HmtResidentPermitOCRWithContext(context.Background(), request)
 }
 
 // HmtResidentPermitOCR
@@ -2581,6 +2551,11 @@ func (c *Client) HmtResidentPermitOCRWithContext(ctx context.Context, request *H
     if request == nil {
         request = NewHmtResidentPermitOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HmtResidentPermitOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewHmtResidentPermitOCRResponse()
@@ -2715,13 +2690,7 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRResponse, err error) {
-    if request == nil {
-        request = NewIDCardOCRRequest()
-    }
-    
-    response = NewIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.IDCardOCRWithContext(context.Background(), request)
 }
 
 // IDCardOCR
@@ -2837,6 +2806,11 @@ func (c *Client) IDCardOCRWithContext(ctx context.Context, request *IDCardOCRReq
     if request == nil {
         request = NewIDCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IDCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIDCardOCRResponse()
@@ -2874,13 +2848,7 @@ func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
-    if request == nil {
-        request = NewInstitutionOCRRequest()
-    }
-    
-    response = NewInstitutionOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.InstitutionOCRWithContext(context.Background(), request)
 }
 
 // InstitutionOCR
@@ -2899,6 +2867,11 @@ func (c *Client) InstitutionOCRWithContext(ctx context.Context, request *Institu
     if request == nil {
         request = NewInstitutionOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstitutionOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInstitutionOCRResponse()
@@ -2938,13 +2911,7 @@ func NewInsuranceBillOCRResponse() (response *InsuranceBillOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *InsuranceBillOCRResponse, err error) {
-    if request == nil {
-        request = NewInsuranceBillOCRRequest()
-    }
-    
-    response = NewInsuranceBillOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.InsuranceBillOCRWithContext(context.Background(), request)
 }
 
 // InsuranceBillOCR
@@ -2965,6 +2932,11 @@ func (c *Client) InsuranceBillOCRWithContext(ctx context.Context, request *Insur
     if request == nil {
         request = NewInsuranceBillOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InsuranceBillOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInsuranceBillOCRResponse()
@@ -3002,13 +2974,7 @@ func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
-    if request == nil {
-        request = NewInvoiceGeneralOCRRequest()
-    }
-    
-    response = NewInvoiceGeneralOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvoiceGeneralOCRWithContext(context.Background(), request)
 }
 
 // InvoiceGeneralOCR
@@ -3027,6 +2993,11 @@ func (c *Client) InvoiceGeneralOCRWithContext(ctx context.Context, request *Invo
     if request == nil {
         request = NewInvoiceGeneralOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvoiceGeneralOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvoiceGeneralOCRResponse()
@@ -3064,13 +3035,7 @@ func NewLicensePlateOCRResponse() (response *LicensePlateOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *LicensePlateOCRResponse, err error) {
-    if request == nil {
-        request = NewLicensePlateOCRRequest()
-    }
-    
-    response = NewLicensePlateOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.LicensePlateOCRWithContext(context.Background(), request)
 }
 
 // LicensePlateOCR
@@ -3089,6 +3054,11 @@ func (c *Client) LicensePlateOCRWithContext(ctx context.Context, request *Licens
     if request == nil {
         request = NewLicensePlateOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LicensePlateOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLicensePlateOCRResponse()
@@ -3128,14 +3098,9 @@ func NewMLIDCardOCRResponse() (response *MLIDCardOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MLIDCardOCR(request *MLIDCardOCRRequest) (response *MLIDCardOCRResponse, err error) {
-    if request == nil {
-        request = NewMLIDCardOCRRequest()
-    }
-    
-    response = NewMLIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.MLIDCardOCRWithContext(context.Background(), request)
 }
 
 // MLIDCardOCR
@@ -3153,10 +3118,16 @@ func (c *Client) MLIDCardOCR(request *MLIDCardOCRRequest) (response *MLIDCardOCR
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MLIDCardOCRWithContext(ctx context.Context, request *MLIDCardOCRRequest) (response *MLIDCardOCRResponse, err error) {
     if request == nil {
         request = NewMLIDCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MLIDCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMLIDCardOCRResponse()
@@ -3195,13 +3166,7 @@ func NewMLIDPassportOCRResponse() (response *MLIDPassportOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLIDPassportOCRResponse, err error) {
-    if request == nil {
-        request = NewMLIDPassportOCRRequest()
-    }
-    
-    response = NewMLIDPassportOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.MLIDPassportOCRWithContext(context.Background(), request)
 }
 
 // MLIDPassportOCR
@@ -3221,6 +3186,11 @@ func (c *Client) MLIDPassportOCRWithContext(ctx context.Context, request *MLIDPa
     if request == nil {
         request = NewMLIDPassportOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MLIDPassportOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMLIDPassportOCRResponse()
@@ -3258,13 +3228,7 @@ func NewMainlandPermitOCRResponse() (response *MainlandPermitOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response *MainlandPermitOCRResponse, err error) {
-    if request == nil {
-        request = NewMainlandPermitOCRRequest()
-    }
-    
-    response = NewMainlandPermitOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.MainlandPermitOCRWithContext(context.Background(), request)
 }
 
 // MainlandPermitOCR
@@ -3283,6 +3247,11 @@ func (c *Client) MainlandPermitOCRWithContext(ctx context.Context, request *Main
     if request == nil {
         request = NewMainlandPermitOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MainlandPermitOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMainlandPermitOCRResponse()
@@ -3320,13 +3289,7 @@ func NewMixedInvoiceDetectResponse() (response *MixedInvoiceDetectResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MixedInvoiceDetect(request *MixedInvoiceDetectRequest) (response *MixedInvoiceDetectResponse, err error) {
-    if request == nil {
-        request = NewMixedInvoiceDetectRequest()
-    }
-    
-    response = NewMixedInvoiceDetectResponse()
-    err = c.Send(request, response)
-    return
+    return c.MixedInvoiceDetectWithContext(context.Background(), request)
 }
 
 // MixedInvoiceDetect
@@ -3345,6 +3308,11 @@ func (c *Client) MixedInvoiceDetectWithContext(ctx context.Context, request *Mix
     if request == nil {
         request = NewMixedInvoiceDetectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MixedInvoiceDetect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMixedInvoiceDetectResponse()
@@ -3383,13 +3351,7 @@ func NewMixedInvoiceOCRResponse() (response *MixedInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MixedInvoiceOCR(request *MixedInvoiceOCRRequest) (response *MixedInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewMixedInvoiceOCRRequest()
-    }
-    
-    response = NewMixedInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.MixedInvoiceOCRWithContext(context.Background(), request)
 }
 
 // MixedInvoiceOCR
@@ -3409,6 +3371,11 @@ func (c *Client) MixedInvoiceOCRWithContext(ctx context.Context, request *MixedI
     if request == nil {
         request = NewMixedInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MixedInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMixedInvoiceOCRResponse()
@@ -3446,13 +3413,7 @@ func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
-    if request == nil {
-        request = NewOrgCodeCertOCRRequest()
-    }
-    
-    response = NewOrgCodeCertOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.OrgCodeCertOCRWithContext(context.Background(), request)
 }
 
 // OrgCodeCertOCR
@@ -3471,6 +3432,11 @@ func (c *Client) OrgCodeCertOCRWithContext(ctx context.Context, request *OrgCode
     if request == nil {
         request = NewOrgCodeCertOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OrgCodeCertOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOrgCodeCertOCRResponse()
@@ -3509,13 +3475,7 @@ func NewPassportOCRResponse() (response *PassportOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCRResponse, err error) {
-    if request == nil {
-        request = NewPassportOCRRequest()
-    }
-    
-    response = NewPassportOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.PassportOCRWithContext(context.Background(), request)
 }
 
 // PassportOCR
@@ -3535,6 +3495,11 @@ func (c *Client) PassportOCRWithContext(ctx context.Context, request *PassportOC
     if request == nil {
         request = NewPassportOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PassportOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPassportOCRResponse()
@@ -3572,13 +3537,7 @@ func NewPermitOCRResponse() (response *PermitOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRResponse, err error) {
-    if request == nil {
-        request = NewPermitOCRRequest()
-    }
-    
-    response = NewPermitOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.PermitOCRWithContext(context.Background(), request)
 }
 
 // PermitOCR
@@ -3597,6 +3556,11 @@ func (c *Client) PermitOCRWithContext(ctx context.Context, request *PermitOCRReq
     if request == nil {
         request = NewPermitOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PermitOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPermitOCRResponse()
@@ -3639,13 +3603,7 @@ func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
-    if request == nil {
-        request = NewPropOwnerCertOCRRequest()
-    }
-    
-    response = NewPropOwnerCertOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.PropOwnerCertOCRWithContext(context.Background(), request)
 }
 
 // PropOwnerCertOCR
@@ -3669,6 +3627,11 @@ func (c *Client) PropOwnerCertOCRWithContext(ctx context.Context, request *PropO
     if request == nil {
         request = NewPropOwnerCertOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PropOwnerCertOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPropOwnerCertOCRResponse()
@@ -3711,13 +3674,7 @@ func NewQrcodeOCRResponse() (response *QrcodeOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRResponse, err error) {
-    if request == nil {
-        request = NewQrcodeOCRRequest()
-    }
-    
-    response = NewQrcodeOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.QrcodeOCRWithContext(context.Background(), request)
 }
 
 // QrcodeOCR
@@ -3741,6 +3698,11 @@ func (c *Client) QrcodeOCRWithContext(ctx context.Context, request *QrcodeOCRReq
     if request == nil {
         request = NewQrcodeOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QrcodeOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQrcodeOCRResponse()
@@ -3779,13 +3741,7 @@ func NewQueryBarCodeResponse() (response *QueryBarCodeResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QueryBarCode(request *QueryBarCodeRequest) (response *QueryBarCodeResponse, err error) {
-    if request == nil {
-        request = NewQueryBarCodeRequest()
-    }
-    
-    response = NewQueryBarCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBarCodeWithContext(context.Background(), request)
 }
 
 // QueryBarCode
@@ -3805,6 +3761,11 @@ func (c *Client) QueryBarCodeWithContext(ctx context.Context, request *QueryBarC
     if request == nil {
         request = NewQueryBarCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBarCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBarCodeResponse()
@@ -3842,13 +3803,7 @@ func NewQuotaInvoiceOCRResponse() (response *QuotaInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *QuotaInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewQuotaInvoiceOCRRequest()
-    }
-    
-    response = NewQuotaInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuotaInvoiceOCRWithContext(context.Background(), request)
 }
 
 // QuotaInvoiceOCR
@@ -3867,6 +3822,11 @@ func (c *Client) QuotaInvoiceOCRWithContext(ctx context.Context, request *QuotaI
     if request == nil {
         request = NewQuotaInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuotaInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuotaInvoiceOCRResponse()
@@ -3905,13 +3865,7 @@ func NewRecognizeContainerOCRResponse() (response *RecognizeContainerOCRResponse
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeContainerOCR(request *RecognizeContainerOCRRequest) (response *RecognizeContainerOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeContainerOCRRequest()
-    }
-    
-    response = NewRecognizeContainerOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeContainerOCRWithContext(context.Background(), request)
 }
 
 // RecognizeContainerOCR
@@ -3931,6 +3885,11 @@ func (c *Client) RecognizeContainerOCRWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRecognizeContainerOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeContainerOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeContainerOCRResponse()
@@ -3971,13 +3930,7 @@ func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRRespon
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) (response *RecognizeHealthCodeOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeHealthCodeOCRRequest()
-    }
-    
-    response = NewRecognizeHealthCodeOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeHealthCodeOCRWithContext(context.Background(), request)
 }
 
 // RecognizeHealthCodeOCR
@@ -3999,6 +3952,11 @@ func (c *Client) RecognizeHealthCodeOCRWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRecognizeHealthCodeOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeHealthCodeOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeHealthCodeOCRResponse()
@@ -4036,13 +3994,7 @@ func NewRecognizeOnlineTaxiItineraryOCRResponse() (response *RecognizeOnlineTaxi
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeOnlineTaxiItineraryOCR(request *RecognizeOnlineTaxiItineraryOCRRequest) (response *RecognizeOnlineTaxiItineraryOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeOnlineTaxiItineraryOCRRequest()
-    }
-    
-    response = NewRecognizeOnlineTaxiItineraryOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeOnlineTaxiItineraryOCRWithContext(context.Background(), request)
 }
 
 // RecognizeOnlineTaxiItineraryOCR
@@ -4061,6 +4013,11 @@ func (c *Client) RecognizeOnlineTaxiItineraryOCRWithContext(ctx context.Context,
     if request == nil {
         request = NewRecognizeOnlineTaxiItineraryOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeOnlineTaxiItineraryOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeOnlineTaxiItineraryOCRResponse()
@@ -4100,13 +4057,7 @@ func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response *RecognizeTableOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeTableOCRRequest()
-    }
-    
-    response = NewRecognizeTableOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeTableOCRWithContext(context.Background(), request)
 }
 
 // RecognizeTableOCR
@@ -4127,6 +4078,11 @@ func (c *Client) RecognizeTableOCRWithContext(ctx context.Context, request *Reco
     if request == nil {
         request = NewRecognizeTableOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeTableOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeTableOCRResponse()
@@ -4168,13 +4124,7 @@ func NewRecognizeThaiIDCardOCRResponse() (response *RecognizeThaiIDCardOCRRespon
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeThaiIDCardOCR(request *RecognizeThaiIDCardOCRRequest) (response *RecognizeThaiIDCardOCRResponse, err error) {
-    if request == nil {
-        request = NewRecognizeThaiIDCardOCRRequest()
-    }
-    
-    response = NewRecognizeThaiIDCardOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeThaiIDCardOCRWithContext(context.Background(), request)
 }
 
 // RecognizeThaiIDCardOCR
@@ -4197,6 +4147,11 @@ func (c *Client) RecognizeThaiIDCardOCRWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRecognizeThaiIDCardOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeThaiIDCardOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeThaiIDCardOCRResponse()
@@ -4237,13 +4192,7 @@ func NewResidenceBookletOCRResponse() (response *ResidenceBookletOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (response *ResidenceBookletOCRResponse, err error) {
-    if request == nil {
-        request = NewResidenceBookletOCRRequest()
-    }
-    
-    response = NewResidenceBookletOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResidenceBookletOCRWithContext(context.Background(), request)
 }
 
 // ResidenceBookletOCR
@@ -4265,6 +4214,11 @@ func (c *Client) ResidenceBookletOCRWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResidenceBookletOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResidenceBookletOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResidenceBookletOCRResponse()
@@ -4303,13 +4257,7 @@ func NewRideHailingDriverLicenseOCRResponse() (response *RideHailingDriverLicens
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOCRRequest) (response *RideHailingDriverLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewRideHailingDriverLicenseOCRRequest()
-    }
-    
-    response = NewRideHailingDriverLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RideHailingDriverLicenseOCRWithContext(context.Background(), request)
 }
 
 // RideHailingDriverLicenseOCR
@@ -4329,6 +4277,11 @@ func (c *Client) RideHailingDriverLicenseOCRWithContext(ctx context.Context, req
     if request == nil {
         request = NewRideHailingDriverLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RideHailingDriverLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRideHailingDriverLicenseOCRResponse()
@@ -4369,13 +4322,7 @@ func NewRideHailingTransportLicenseOCRResponse() (response *RideHailingTransport
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingTransportLicenseOCR(request *RideHailingTransportLicenseOCRRequest) (response *RideHailingTransportLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewRideHailingTransportLicenseOCRRequest()
-    }
-    
-    response = NewRideHailingTransportLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.RideHailingTransportLicenseOCRWithContext(context.Background(), request)
 }
 
 // RideHailingTransportLicenseOCR
@@ -4397,6 +4344,11 @@ func (c *Client) RideHailingTransportLicenseOCRWithContext(ctx context.Context, 
     if request == nil {
         request = NewRideHailingTransportLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RideHailingTransportLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRideHailingTransportLicenseOCRResponse()
@@ -4435,13 +4387,7 @@ func NewSealOCRResponse() (response *SealOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, err error) {
-    if request == nil {
-        request = NewSealOCRRequest()
-    }
-    
-    response = NewSealOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.SealOCRWithContext(context.Background(), request)
 }
 
 // SealOCR
@@ -4461,6 +4407,11 @@ func (c *Client) SealOCRWithContext(ctx context.Context, request *SealOCRRequest
     if request == nil {
         request = NewSealOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SealOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSealOCRResponse()
@@ -4498,13 +4449,7 @@ func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewShipInvoiceOCRRequest()
-    }
-    
-    response = NewShipInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.ShipInvoiceOCRWithContext(context.Background(), request)
 }
 
 // ShipInvoiceOCR
@@ -4523,6 +4468,11 @@ func (c *Client) ShipInvoiceOCRWithContext(ctx context.Context, request *ShipInv
     if request == nil {
         request = NewShipInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ShipInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewShipInvoiceOCRResponse()
@@ -4560,13 +4510,7 @@ func NewSmartStructuralOCRResponse() (response *SmartStructuralOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (response *SmartStructuralOCRResponse, err error) {
-    if request == nil {
-        request = NewSmartStructuralOCRRequest()
-    }
-    
-    response = NewSmartStructuralOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.SmartStructuralOCRWithContext(context.Background(), request)
 }
 
 // SmartStructuralOCR
@@ -4585,6 +4529,11 @@ func (c *Client) SmartStructuralOCRWithContext(ctx context.Context, request *Sma
     if request == nil {
         request = NewSmartStructuralOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SmartStructuralOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSmartStructuralOCRResponse()
@@ -4631,13 +4580,7 @@ func NewTableOCRResponse() (response *TableOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TableOCR(request *TableOCRRequest) (response *TableOCRResponse, err error) {
-    if request == nil {
-        request = NewTableOCRRequest()
-    }
-    
-    response = NewTableOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.TableOCRWithContext(context.Background(), request)
 }
 
 // TableOCR
@@ -4665,6 +4608,11 @@ func (c *Client) TableOCRWithContext(ctx context.Context, request *TableOCRReque
     if request == nil {
         request = NewTableOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TableOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTableOCRResponse()
@@ -4702,13 +4650,7 @@ func NewTaxiInvoiceOCRResponse() (response *TaxiInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewTaxiInvoiceOCRRequest()
-    }
-    
-    response = NewTaxiInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.TaxiInvoiceOCRWithContext(context.Background(), request)
 }
 
 // TaxiInvoiceOCR
@@ -4727,6 +4669,11 @@ func (c *Client) TaxiInvoiceOCRWithContext(ctx context.Context, request *TaxiInv
     if request == nil {
         request = NewTaxiInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TaxiInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTaxiInvoiceOCRResponse()
@@ -4765,13 +4712,7 @@ func NewTextDetectResponse() (response *TextDetectResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectResponse, err error) {
-    if request == nil {
-        request = NewTextDetectRequest()
-    }
-    
-    response = NewTextDetectResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextDetectWithContext(context.Background(), request)
 }
 
 // TextDetect
@@ -4791,6 +4732,11 @@ func (c *Client) TextDetectWithContext(ctx context.Context, request *TextDetectR
     if request == nil {
         request = NewTextDetectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextDetect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextDetectResponse()
@@ -4828,13 +4774,7 @@ func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewTollInvoiceOCRRequest()
-    }
-    
-    response = NewTollInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.TollInvoiceOCRWithContext(context.Background(), request)
 }
 
 // TollInvoiceOCR
@@ -4853,6 +4793,11 @@ func (c *Client) TollInvoiceOCRWithContext(ctx context.Context, request *TollInv
     if request == nil {
         request = NewTollInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TollInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTollInvoiceOCRResponse()
@@ -4890,13 +4835,7 @@ func NewTrainTicketOCRResponse() (response *TrainTicketOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *TrainTicketOCRResponse, err error) {
-    if request == nil {
-        request = NewTrainTicketOCRRequest()
-    }
-    
-    response = NewTrainTicketOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.TrainTicketOCRWithContext(context.Background(), request)
 }
 
 // TrainTicketOCR
@@ -4915,6 +4854,11 @@ func (c *Client) TrainTicketOCRWithContext(ctx context.Context, request *TrainTi
     if request == nil {
         request = NewTrainTicketOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TrainTicketOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTrainTicketOCRResponse()
@@ -4957,13 +4901,7 @@ func NewVatInvoiceOCRResponse() (response *VatInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewVatInvoiceOCRRequest()
-    }
-    
-    response = NewVatInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VatInvoiceOCRWithContext(context.Background(), request)
 }
 
 // VatInvoiceOCR
@@ -4987,6 +4925,11 @@ func (c *Client) VatInvoiceOCRWithContext(ctx context.Context, request *VatInvoi
     if request == nil {
         request = NewVatInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VatInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVatInvoiceOCRResponse()
@@ -5025,13 +4968,7 @@ func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
 //  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
-    if request == nil {
-        request = NewVatInvoiceVerifyRequest()
-    }
-    
-    response = NewVatInvoiceVerifyResponse()
-    err = c.Send(request, response)
-    return
+    return c.VatInvoiceVerifyWithContext(context.Background(), request)
 }
 
 // VatInvoiceVerify
@@ -5051,6 +4988,11 @@ func (c *Client) VatInvoiceVerifyWithContext(ctx context.Context, request *VatIn
     if request == nil {
         request = NewVatInvoiceVerifyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VatInvoiceVerify require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVatInvoiceVerifyResponse()
@@ -5088,13 +5030,7 @@ func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewVatRollInvoiceOCRRequest()
-    }
-    
-    response = NewVatRollInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VatRollInvoiceOCRWithContext(context.Background(), request)
 }
 
 // VatRollInvoiceOCR
@@ -5113,6 +5049,11 @@ func (c *Client) VatRollInvoiceOCRWithContext(ctx context.Context, request *VatR
     if request == nil {
         request = NewVatRollInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VatRollInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVatRollInvoiceOCRResponse()
@@ -5167,13 +5108,7 @@ func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response *VehicleLicenseOCRResponse, err error) {
-    if request == nil {
-        request = NewVehicleLicenseOCRRequest()
-    }
-    
-    response = NewVehicleLicenseOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VehicleLicenseOCRWithContext(context.Background(), request)
 }
 
 // VehicleLicenseOCR
@@ -5209,6 +5144,11 @@ func (c *Client) VehicleLicenseOCRWithContext(ctx context.Context, request *Vehi
     if request == nil {
         request = NewVehicleLicenseOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VehicleLicenseOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVehicleLicenseOCRResponse()
@@ -5246,13 +5186,7 @@ func NewVehicleRegCertOCRResponse() (response *VehicleRegCertOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response *VehicleRegCertOCRResponse, err error) {
-    if request == nil {
-        request = NewVehicleRegCertOCRRequest()
-    }
-    
-    response = NewVehicleRegCertOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VehicleRegCertOCRWithContext(context.Background(), request)
 }
 
 // VehicleRegCertOCR
@@ -5271,6 +5205,11 @@ func (c *Client) VehicleRegCertOCRWithContext(ctx context.Context, request *Vehi
     if request == nil {
         request = NewVehicleRegCertOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VehicleRegCertOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVehicleRegCertOCRResponse()
@@ -5313,13 +5252,7 @@ func NewVerifyBasicBizLicenseResponse() (response *VerifyBasicBizLicenseResponse
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VerifyBasicBizLicense(request *VerifyBasicBizLicenseRequest) (response *VerifyBasicBizLicenseResponse, err error) {
-    if request == nil {
-        request = NewVerifyBasicBizLicenseRequest()
-    }
-    
-    response = NewVerifyBasicBizLicenseResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyBasicBizLicenseWithContext(context.Background(), request)
 }
 
 // VerifyBasicBizLicense
@@ -5343,6 +5276,11 @@ func (c *Client) VerifyBasicBizLicenseWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifyBasicBizLicenseRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyBasicBizLicense require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyBasicBizLicenseResponse()
@@ -5389,13 +5327,7 @@ func NewVerifyBizLicenseResponse() (response *VerifyBizLicenseResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *VerifyBizLicenseResponse, err error) {
-    if request == nil {
-        request = NewVerifyBizLicenseRequest()
-    }
-    
-    response = NewVerifyBizLicenseResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyBizLicenseWithContext(context.Background(), request)
 }
 
 // VerifyBizLicense
@@ -5423,6 +5355,11 @@ func (c *Client) VerifyBizLicenseWithContext(ctx context.Context, request *Verif
     if request == nil {
         request = NewVerifyBizLicenseRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyBizLicense require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyBizLicenseResponse()
@@ -5456,13 +5393,7 @@ func NewVerifyEnterpriseFourFactorsResponse() (response *VerifyEnterpriseFourFac
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VerifyEnterpriseFourFactors(request *VerifyEnterpriseFourFactorsRequest) (response *VerifyEnterpriseFourFactorsResponse, err error) {
-    if request == nil {
-        request = NewVerifyEnterpriseFourFactorsRequest()
-    }
-    
-    response = NewVerifyEnterpriseFourFactorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyEnterpriseFourFactorsWithContext(context.Background(), request)
 }
 
 // VerifyEnterpriseFourFactors
@@ -5477,6 +5408,11 @@ func (c *Client) VerifyEnterpriseFourFactorsWithContext(ctx context.Context, req
     if request == nil {
         request = NewVerifyEnterpriseFourFactorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyEnterpriseFourFactors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyEnterpriseFourFactorsResponse()
@@ -5511,13 +5447,7 @@ func NewVerifyOfdVatInvoiceOCRResponse() (response *VerifyOfdVatInvoiceOCRRespon
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VerifyOfdVatInvoiceOCR(request *VerifyOfdVatInvoiceOCRRequest) (response *VerifyOfdVatInvoiceOCRResponse, err error) {
-    if request == nil {
-        request = NewVerifyOfdVatInvoiceOCRRequest()
-    }
-    
-    response = NewVerifyOfdVatInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyOfdVatInvoiceOCRWithContext(context.Background(), request)
 }
 
 // VerifyOfdVatInvoiceOCR
@@ -5533,6 +5463,11 @@ func (c *Client) VerifyOfdVatInvoiceOCRWithContext(ctx context.Context, request 
     if request == nil {
         request = NewVerifyOfdVatInvoiceOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyOfdVatInvoiceOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyOfdVatInvoiceOCRResponse()
@@ -5571,13 +5506,7 @@ func NewVinOCRResponse() (response *VinOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VinOCR(request *VinOCRRequest) (response *VinOCRResponse, err error) {
-    if request == nil {
-        request = NewVinOCRRequest()
-    }
-    
-    response = NewVinOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.VinOCRWithContext(context.Background(), request)
 }
 
 // VinOCR
@@ -5597,6 +5526,11 @@ func (c *Client) VinOCRWithContext(ctx context.Context, request *VinOCRRequest) 
     if request == nil {
         request = NewVinOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VinOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVinOCRResponse()
@@ -5637,13 +5571,7 @@ func NewWaybillOCRResponse() (response *WaybillOCRResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRResponse, err error) {
-    if request == nil {
-        request = NewWaybillOCRRequest()
-    }
-    
-    response = NewWaybillOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.WaybillOCRWithContext(context.Background(), request)
 }
 
 // WaybillOCR
@@ -5665,6 +5593,11 @@ func (c *Client) WaybillOCRWithContext(ctx context.Context, request *WaybillOCRR
     if request == nil {
         request = NewWaybillOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WaybillOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewWaybillOCRResponse()

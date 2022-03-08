@@ -16,6 +16,7 @@ package v20181115
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewDescribeDomainInfoResponse() (response *DescribeDomainInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (response *DescribeDomainInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainInfoRequest()
-    }
-    
-    response = NewDescribeDomainInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainInfoWithContext(context.Background(), request)
 }
 
 // DescribeDomainInfo
@@ -93,6 +88,11 @@ func (c *Client) DescribeDomainInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDomainInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainInfoResponse()
@@ -127,13 +127,7 @@ func NewDescribeFileInfoResponse() (response *DescribeFileInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeFileInfo(request *DescribeFileInfoRequest) (response *DescribeFileInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileInfoRequest()
-    }
-    
-    response = NewDescribeFileInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileInfoWithContext(context.Background(), request)
 }
 
 // DescribeFileInfo
@@ -149,6 +143,11 @@ func (c *Client) DescribeFileInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFileInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileInfoResponse()
@@ -183,13 +182,7 @@ func NewDescribeIpInfoResponse() (response *DescribeIpInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (response *DescribeIpInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeIpInfoRequest()
-    }
-    
-    response = NewDescribeIpInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIpInfoWithContext(context.Background(), request)
 }
 
 // DescribeIpInfo
@@ -205,6 +198,11 @@ func (c *Client) DescribeIpInfoWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeIpInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIpInfoResponse()
@@ -239,13 +237,7 @@ func NewDescribeThreatInfoResponse() (response *DescribeThreatInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeThreatInfo(request *DescribeThreatInfoRequest) (response *DescribeThreatInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeThreatInfoRequest()
-    }
-    
-    response = NewDescribeThreatInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeThreatInfoWithContext(context.Background(), request)
 }
 
 // DescribeThreatInfo
@@ -261,6 +253,11 @@ func (c *Client) DescribeThreatInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeThreatInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeThreatInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeThreatInfoResponse()

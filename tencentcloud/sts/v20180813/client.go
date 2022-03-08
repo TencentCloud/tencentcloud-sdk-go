@@ -16,6 +16,7 @@ package v20180813
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -88,13 +89,7 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleResponse, err error) {
-    if request == nil {
-        request = NewAssumeRoleRequest()
-    }
-    
-    response = NewAssumeRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssumeRoleWithContext(context.Background(), request)
 }
 
 // AssumeRole
@@ -127,6 +122,11 @@ func (c *Client) AssumeRoleWithContext(ctx context.Context, request *AssumeRoleR
     if request == nil {
         request = NewAssumeRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssumeRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssumeRoleResponse()
@@ -177,13 +177,7 @@ func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (response *AssumeRoleWithSAMLResponse, err error) {
-    if request == nil {
-        request = NewAssumeRoleWithSAMLRequest()
-    }
-    
-    response = NewAssumeRoleWithSAMLResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssumeRoleWithSAMLWithContext(context.Background(), request)
 }
 
 // AssumeRoleWithSAML
@@ -215,6 +209,11 @@ func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, request *Ass
     if request == nil {
         request = NewAssumeRoleWithSAMLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssumeRoleWithSAML require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssumeRoleWithSAMLResponse()
@@ -249,13 +248,7 @@ func NewGetCallerIdentityResponse() (response *GetCallerIdentityResponse) {
 //  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
 //  INVALIDPARAMETER_ACCESSKEYNOTSUPPORT = "InvalidParameter.AccessKeyNotSupport"
 func (c *Client) GetCallerIdentity(request *GetCallerIdentityRequest) (response *GetCallerIdentityResponse, err error) {
-    if request == nil {
-        request = NewGetCallerIdentityRequest()
-    }
-    
-    response = NewGetCallerIdentityResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCallerIdentityWithContext(context.Background(), request)
 }
 
 // GetCallerIdentity
@@ -271,6 +264,11 @@ func (c *Client) GetCallerIdentityWithContext(ctx context.Context, request *GetC
     if request == nil {
         request = NewGetCallerIdentityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCallerIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCallerIdentityResponse()
@@ -317,13 +315,7 @@ func NewGetFederationTokenResponse() (response *GetFederationTokenResponse) {
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (response *GetFederationTokenResponse, err error) {
-    if request == nil {
-        request = NewGetFederationTokenRequest()
-    }
-    
-    response = NewGetFederationTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetFederationTokenWithContext(context.Background(), request)
 }
 
 // GetFederationToken
@@ -351,6 +343,11 @@ func (c *Client) GetFederationTokenWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetFederationTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFederationToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetFederationTokenResponse()
@@ -383,13 +380,7 @@ func NewQueryApiKeyResponse() (response *QueryApiKeyResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) QueryApiKey(request *QueryApiKeyRequest) (response *QueryApiKeyResponse, err error) {
-    if request == nil {
-        request = NewQueryApiKeyRequest()
-    }
-    
-    response = NewQueryApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryApiKeyWithContext(context.Background(), request)
 }
 
 // QueryApiKey
@@ -403,6 +394,11 @@ func (c *Client) QueryApiKeyWithContext(ctx context.Context, request *QueryApiKe
     if request == nil {
         request = NewQueryApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryApiKeyResponse()

@@ -16,6 +16,7 @@ package v20180228
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewCreateAccountResponse() (response *CreateAccountResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateAccount(request *CreateAccountRequest) (response *CreateAccountResponse, err error) {
-    if request == nil {
-        request = NewCreateAccountRequest()
-    }
-    
-    response = NewCreateAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAccountWithContext(context.Background(), request)
 }
 
 // CreateAccount
@@ -99,6 +94,11 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
     if request == nil {
         request = NewCreateAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAccountResponse()
@@ -136,13 +136,7 @@ func NewCreateFacePictureResponse() (response *CreateFacePictureResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateFacePicture(request *CreateFacePictureRequest) (response *CreateFacePictureResponse, err error) {
-    if request == nil {
-        request = NewCreateFacePictureRequest()
-    }
-    
-    response = NewCreateFacePictureResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFacePictureWithContext(context.Background(), request)
 }
 
 // CreateFacePicture
@@ -161,6 +155,11 @@ func (c *Client) CreateFacePictureWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFacePictureRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFacePicture require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFacePictureResponse()
@@ -207,13 +206,7 @@ func NewDeletePersonFeatureResponse() (response *DeletePersonFeatureResponse) {
 //  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeletePersonFeature(request *DeletePersonFeatureRequest) (response *DeletePersonFeatureResponse, err error) {
-    if request == nil {
-        request = NewDeletePersonFeatureRequest()
-    }
-    
-    response = NewDeletePersonFeatureResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePersonFeatureWithContext(context.Background(), request)
 }
 
 // DeletePersonFeature
@@ -241,6 +234,11 @@ func (c *Client) DeletePersonFeatureWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePersonFeatureRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePersonFeature require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePersonFeatureResponse()
@@ -273,13 +271,7 @@ func NewDescribeCameraPersonResponse() (response *DescribeCameraPersonResponse) 
 //  FAILEDOPERATION_PARAMETERERROR = "FailedOperation.ParameterError"
 //  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
 func (c *Client) DescribeCameraPerson(request *DescribeCameraPersonRequest) (response *DescribeCameraPersonResponse, err error) {
-    if request == nil {
-        request = NewDescribeCameraPersonRequest()
-    }
-    
-    response = NewDescribeCameraPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCameraPersonWithContext(context.Background(), request)
 }
 
 // DescribeCameraPerson
@@ -293,6 +285,11 @@ func (c *Client) DescribeCameraPersonWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCameraPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCameraPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCameraPersonResponse()
@@ -331,13 +328,7 @@ func NewDescribeClusterPersonArrivedMallResponse() (response *DescribeClusterPer
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterPersonArrivedMall(request *DescribeClusterPersonArrivedMallRequest) (response *DescribeClusterPersonArrivedMallResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterPersonArrivedMallRequest()
-    }
-    
-    response = NewDescribeClusterPersonArrivedMallResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterPersonArrivedMallWithContext(context.Background(), request)
 }
 
 // DescribeClusterPersonArrivedMall
@@ -357,6 +348,11 @@ func (c *Client) DescribeClusterPersonArrivedMallWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeClusterPersonArrivedMallRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterPersonArrivedMall require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterPersonArrivedMallResponse()
@@ -395,13 +391,7 @@ func NewDescribeClusterPersonTraceResponse() (response *DescribeClusterPersonTra
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterPersonTrace(request *DescribeClusterPersonTraceRequest) (response *DescribeClusterPersonTraceResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterPersonTraceRequest()
-    }
-    
-    response = NewDescribeClusterPersonTraceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterPersonTraceWithContext(context.Background(), request)
 }
 
 // DescribeClusterPersonTrace
@@ -421,6 +411,11 @@ func (c *Client) DescribeClusterPersonTraceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeClusterPersonTraceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterPersonTrace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterPersonTraceResponse()
@@ -463,13 +458,7 @@ func NewDescribeFaceIdByTempIdResponse() (response *DescribeFaceIdByTempIdRespon
 //  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeFaceIdByTempId(request *DescribeFaceIdByTempIdRequest) (response *DescribeFaceIdByTempIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeFaceIdByTempIdRequest()
-    }
-    
-    response = NewDescribeFaceIdByTempIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFaceIdByTempIdWithContext(context.Background(), request)
 }
 
 // DescribeFaceIdByTempId
@@ -493,6 +482,11 @@ func (c *Client) DescribeFaceIdByTempIdWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeFaceIdByTempIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFaceIdByTempId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFaceIdByTempIdResponse()
@@ -527,13 +521,7 @@ func NewDescribeHistoryNetworkInfoResponse() (response *DescribeHistoryNetworkIn
 //  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeHistoryNetworkInfo(request *DescribeHistoryNetworkInfoRequest) (response *DescribeHistoryNetworkInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeHistoryNetworkInfoRequest()
-    }
-    
-    response = NewDescribeHistoryNetworkInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHistoryNetworkInfoWithContext(context.Background(), request)
 }
 
 // DescribeHistoryNetworkInfo
@@ -549,6 +537,11 @@ func (c *Client) DescribeHistoryNetworkInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeHistoryNetworkInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHistoryNetworkInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHistoryNetworkInfoResponse()
@@ -583,13 +576,7 @@ func NewDescribeNetworkInfoResponse() (response *DescribeNetworkInfoResponse) {
 //  FAILEDOPERATION_PROCESSFAIL = "FailedOperation.ProcessFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeNetworkInfo(request *DescribeNetworkInfoRequest) (response *DescribeNetworkInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeNetworkInfoRequest()
-    }
-    
-    response = NewDescribeNetworkInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNetworkInfoWithContext(context.Background(), request)
 }
 
 // DescribeNetworkInfo
@@ -605,6 +592,11 @@ func (c *Client) DescribeNetworkInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeNetworkInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNetworkInfoResponse()
@@ -644,13 +636,7 @@ func NewDescribePersonResponse() (response *DescribePersonResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePerson(request *DescribePersonRequest) (response *DescribePersonResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonRequest()
-    }
-    
-    response = NewDescribePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonWithContext(context.Background(), request)
 }
 
 // DescribePerson
@@ -671,6 +657,11 @@ func (c *Client) DescribePersonWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonResponse()
@@ -712,13 +703,7 @@ func NewDescribePersonArrivedMallResponse() (response *DescribePersonArrivedMall
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonArrivedMall(request *DescribePersonArrivedMallRequest) (response *DescribePersonArrivedMallResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonArrivedMallRequest()
-    }
-    
-    response = NewDescribePersonArrivedMallResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonArrivedMallWithContext(context.Background(), request)
 }
 
 // DescribePersonArrivedMall
@@ -741,6 +726,11 @@ func (c *Client) DescribePersonArrivedMallWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePersonArrivedMallRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonArrivedMall require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonArrivedMallResponse()
@@ -775,13 +765,7 @@ func NewDescribePersonInfoResponse() (response *DescribePersonInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribePersonInfo(request *DescribePersonInfoRequest) (response *DescribePersonInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonInfoRequest()
-    }
-    
-    response = NewDescribePersonInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonInfoWithContext(context.Background(), request)
 }
 
 // DescribePersonInfo
@@ -797,6 +781,11 @@ func (c *Client) DescribePersonInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePersonInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonInfoResponse()
@@ -843,13 +832,7 @@ func NewDescribePersonInfoByFacePictureResponse() (response *DescribePersonInfoB
 //  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonInfoByFacePicture(request *DescribePersonInfoByFacePictureRequest) (response *DescribePersonInfoByFacePictureResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonInfoByFacePictureRequest()
-    }
-    
-    response = NewDescribePersonInfoByFacePictureResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonInfoByFacePictureWithContext(context.Background(), request)
 }
 
 // DescribePersonInfoByFacePicture
@@ -877,6 +860,11 @@ func (c *Client) DescribePersonInfoByFacePictureWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribePersonInfoByFacePictureRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonInfoByFacePicture require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonInfoByFacePictureResponse()
@@ -916,13 +904,7 @@ func NewDescribePersonTraceResponse() (response *DescribePersonTraceResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonTrace(request *DescribePersonTraceRequest) (response *DescribePersonTraceResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonTraceRequest()
-    }
-    
-    response = NewDescribePersonTraceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonTraceWithContext(context.Background(), request)
 }
 
 // DescribePersonTrace
@@ -943,6 +925,11 @@ func (c *Client) DescribePersonTraceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribePersonTraceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonTrace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonTraceResponse()
@@ -981,13 +968,7 @@ func NewDescribePersonTraceDetailResponse() (response *DescribePersonTraceDetail
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePersonTraceDetail(request *DescribePersonTraceDetailRequest) (response *DescribePersonTraceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonTraceDetailRequest()
-    }
-    
-    response = NewDescribePersonTraceDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonTraceDetailWithContext(context.Background(), request)
 }
 
 // DescribePersonTraceDetail
@@ -1007,6 +988,11 @@ func (c *Client) DescribePersonTraceDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePersonTraceDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonTraceDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonTraceDetailResponse()
@@ -1040,13 +1026,7 @@ func NewDescribePersonVisitInfoResponse() (response *DescribePersonVisitInfoResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePersonVisitInfo(request *DescribePersonVisitInfoRequest) (response *DescribePersonVisitInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonVisitInfoRequest()
-    }
-    
-    response = NewDescribePersonVisitInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonVisitInfoWithContext(context.Background(), request)
 }
 
 // DescribePersonVisitInfo
@@ -1061,6 +1041,11 @@ func (c *Client) DescribePersonVisitInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePersonVisitInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonVisitInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonVisitInfoResponse()
@@ -1095,13 +1080,7 @@ func NewDescribeShopHourTrafficInfoResponse() (response *DescribeShopHourTraffic
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopHourTrafficInfo(request *DescribeShopHourTrafficInfoRequest) (response *DescribeShopHourTrafficInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeShopHourTrafficInfoRequest()
-    }
-    
-    response = NewDescribeShopHourTrafficInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShopHourTrafficInfoWithContext(context.Background(), request)
 }
 
 // DescribeShopHourTrafficInfo
@@ -1117,6 +1096,11 @@ func (c *Client) DescribeShopHourTrafficInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeShopHourTrafficInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShopHourTrafficInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShopHourTrafficInfoResponse()
@@ -1151,13 +1135,7 @@ func NewDescribeShopInfoResponse() (response *DescribeShopInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopInfo(request *DescribeShopInfoRequest) (response *DescribeShopInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeShopInfoRequest()
-    }
-    
-    response = NewDescribeShopInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShopInfoWithContext(context.Background(), request)
 }
 
 // DescribeShopInfo
@@ -1173,6 +1151,11 @@ func (c *Client) DescribeShopInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeShopInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShopInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShopInfoResponse()
@@ -1207,13 +1190,7 @@ func NewDescribeShopTrafficInfoResponse() (response *DescribeShopTrafficInfoResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeShopTrafficInfo(request *DescribeShopTrafficInfoRequest) (response *DescribeShopTrafficInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeShopTrafficInfoRequest()
-    }
-    
-    response = NewDescribeShopTrafficInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShopTrafficInfoWithContext(context.Background(), request)
 }
 
 // DescribeShopTrafficInfo
@@ -1229,6 +1206,11 @@ func (c *Client) DescribeShopTrafficInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeShopTrafficInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShopTrafficInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShopTrafficInfoResponse()
@@ -1265,13 +1247,7 @@ func NewDescribeTrajectoryDataResponse() (response *DescribeTrajectoryDataRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTrajectoryData(request *DescribeTrajectoryDataRequest) (response *DescribeTrajectoryDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrajectoryDataRequest()
-    }
-    
-    response = NewDescribeTrajectoryDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrajectoryDataWithContext(context.Background(), request)
 }
 
 // DescribeTrajectoryData
@@ -1289,6 +1265,11 @@ func (c *Client) DescribeTrajectoryDataWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTrajectoryDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrajectoryData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrajectoryDataResponse()
@@ -1325,13 +1306,7 @@ func NewDescribeZoneFlowAgeInfoByZoneIdResponse() (response *DescribeZoneFlowAge
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowAgeInfoByZoneId(request *DescribeZoneFlowAgeInfoByZoneIdRequest) (response *DescribeZoneFlowAgeInfoByZoneIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
-    }
-    
-    response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowAgeInfoByZoneIdWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowAgeInfoByZoneId
@@ -1349,6 +1324,11 @@ func (c *Client) DescribeZoneFlowAgeInfoByZoneIdWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeZoneFlowAgeInfoByZoneIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowAgeInfoByZoneId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowAgeInfoByZoneIdResponse()
@@ -1385,13 +1365,7 @@ func NewDescribeZoneFlowAndStayTimeResponse() (response *DescribeZoneFlowAndStay
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowAndStayTime(request *DescribeZoneFlowAndStayTimeRequest) (response *DescribeZoneFlowAndStayTimeResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowAndStayTimeRequest()
-    }
-    
-    response = NewDescribeZoneFlowAndStayTimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowAndStayTimeWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowAndStayTime
@@ -1409,6 +1383,11 @@ func (c *Client) DescribeZoneFlowAndStayTimeWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeZoneFlowAndStayTimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowAndStayTime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowAndStayTimeResponse()
@@ -1445,13 +1424,7 @@ func NewDescribeZoneFlowDailyByZoneIdResponse() (response *DescribeZoneFlowDaily
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowDailyByZoneId(request *DescribeZoneFlowDailyByZoneIdRequest) (response *DescribeZoneFlowDailyByZoneIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowDailyByZoneIdRequest()
-    }
-    
-    response = NewDescribeZoneFlowDailyByZoneIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowDailyByZoneIdWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowDailyByZoneId
@@ -1469,6 +1442,11 @@ func (c *Client) DescribeZoneFlowDailyByZoneIdWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeZoneFlowDailyByZoneIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowDailyByZoneId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowDailyByZoneIdResponse()
@@ -1505,13 +1483,7 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse() (response *DescribeZ
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneId(request *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) (response *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
-    }
-    
-    response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowGenderAvrStayTimeByZoneIdWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowGenderAvrStayTimeByZoneId
@@ -1529,6 +1501,11 @@ func (c *Client) DescribeZoneFlowGenderAvrStayTimeByZoneIdWithContext(ctx contex
     if request == nil {
         request = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowGenderAvrStayTimeByZoneId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
@@ -1565,13 +1542,7 @@ func NewDescribeZoneFlowGenderInfoByZoneIdResponse() (response *DescribeZoneFlow
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowGenderInfoByZoneId(request *DescribeZoneFlowGenderInfoByZoneIdRequest) (response *DescribeZoneFlowGenderInfoByZoneIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
-    }
-    
-    response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowGenderInfoByZoneIdWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowGenderInfoByZoneId
@@ -1589,6 +1560,11 @@ func (c *Client) DescribeZoneFlowGenderInfoByZoneIdWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeZoneFlowGenderInfoByZoneIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowGenderInfoByZoneId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowGenderInfoByZoneIdResponse()
@@ -1625,13 +1601,7 @@ func NewDescribeZoneFlowHourlyByZoneIdResponse() (response *DescribeZoneFlowHour
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneFlowHourlyByZoneId(request *DescribeZoneFlowHourlyByZoneIdRequest) (response *DescribeZoneFlowHourlyByZoneIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneFlowHourlyByZoneIdRequest()
-    }
-    
-    response = NewDescribeZoneFlowHourlyByZoneIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneFlowHourlyByZoneIdWithContext(context.Background(), request)
 }
 
 // DescribeZoneFlowHourlyByZoneId
@@ -1649,6 +1619,11 @@ func (c *Client) DescribeZoneFlowHourlyByZoneIdWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeZoneFlowHourlyByZoneIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneFlowHourlyByZoneId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneFlowHourlyByZoneIdResponse()
@@ -1683,13 +1658,7 @@ func NewDescribeZoneTrafficInfoResponse() (response *DescribeZoneTrafficInfoResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeZoneTrafficInfo(request *DescribeZoneTrafficInfoRequest) (response *DescribeZoneTrafficInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneTrafficInfoRequest()
-    }
-    
-    response = NewDescribeZoneTrafficInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneTrafficInfoWithContext(context.Background(), request)
 }
 
 // DescribeZoneTrafficInfo
@@ -1705,6 +1674,11 @@ func (c *Client) DescribeZoneTrafficInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeZoneTrafficInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneTrafficInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneTrafficInfoResponse()
@@ -1746,13 +1720,7 @@ func NewModifyPersonFeatureInfoResponse() (response *ModifyPersonFeatureInfoResp
 //  INTERNALERROR_DATAERROR = "InternalError.DataError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyPersonFeatureInfo(request *ModifyPersonFeatureInfoRequest) (response *ModifyPersonFeatureInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonFeatureInfoRequest()
-    }
-    
-    response = NewModifyPersonFeatureInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonFeatureInfoWithContext(context.Background(), request)
 }
 
 // ModifyPersonFeatureInfo
@@ -1775,6 +1743,11 @@ func (c *Client) ModifyPersonFeatureInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyPersonFeatureInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonFeatureInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonFeatureInfoResponse()
@@ -1808,13 +1781,7 @@ func NewModifyPersonTagInfoResponse() (response *ModifyPersonTagInfoResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyPersonTagInfo(request *ModifyPersonTagInfoRequest) (response *ModifyPersonTagInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonTagInfoRequest()
-    }
-    
-    response = NewModifyPersonTagInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonTagInfoWithContext(context.Background(), request)
 }
 
 // ModifyPersonTagInfo
@@ -1829,6 +1796,11 @@ func (c *Client) ModifyPersonTagInfoWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPersonTagInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonTagInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonTagInfoResponse()
@@ -1875,13 +1847,7 @@ func NewModifyPersonTypeResponse() (response *ModifyPersonTypeResponse) {
 //  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyPersonType(request *ModifyPersonTypeRequest) (response *ModifyPersonTypeResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonTypeRequest()
-    }
-    
-    response = NewModifyPersonTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonTypeWithContext(context.Background(), request)
 }
 
 // ModifyPersonType
@@ -1909,6 +1875,11 @@ func (c *Client) ModifyPersonTypeWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyPersonTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonTypeResponse()
@@ -1942,13 +1913,7 @@ func NewRegisterCallbackResponse() (response *RegisterCallbackResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_JSONPARSEERR = "InvalidParameterValue.JsonParseErr"
 func (c *Client) RegisterCallback(request *RegisterCallbackRequest) (response *RegisterCallbackResponse, err error) {
-    if request == nil {
-        request = NewRegisterCallbackRequest()
-    }
-    
-    response = NewRegisterCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterCallbackWithContext(context.Background(), request)
 }
 
 // RegisterCallback
@@ -1963,6 +1928,11 @@ func (c *Client) RegisterCallbackWithContext(ctx context.Context, request *Regis
     if request == nil {
         request = NewRegisterCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterCallbackResponse()

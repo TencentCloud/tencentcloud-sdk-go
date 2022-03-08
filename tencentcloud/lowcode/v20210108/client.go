@@ -16,6 +16,7 @@ package v20210108
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) (response *DescribeDataSourceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataSourceListRequest()
-    }
-    
-    response = NewDescribeDataSourceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataSourceListWithContext(context.Background(), request)
 }
 
 // DescribeDataSourceList
@@ -91,6 +86,11 @@ func (c *Client) DescribeDataSourceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDataSourceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSourceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataSourceListResponse()

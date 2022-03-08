@@ -119,6 +119,17 @@ type AudioInfo struct {
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
+type ClassifiedPersonInfo struct {
+
+	// 人物分类名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassifyName *string `json:"ClassifyName,omitempty" name:"ClassifyName"`
+
+	// 符合特定分类的人物信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
+}
+
 type CreateCustomCategoryRequest struct {
 	*tchttp.BaseRequest
 
@@ -1491,6 +1502,21 @@ type PersonImageInfo struct {
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
 }
 
+type PersonInfo struct {
+
+	// 公众人物姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 公众人物职务
+	Job *string `json:"Job,omitempty" name:"Job"`
+
+	// 首次出现模态，可选值为[1,3]，详细参见AppearIndex定义
+	FirstAppear *int64 `json:"FirstAppear,omitempty" name:"FirstAppear"`
+
+	// 人物出现信息
+	AppearInfo *AppearInfo `json:"AppearInfo,omitempty" name:"AppearInfo"`
+}
+
 type QueryCallbackRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1576,6 +1602,10 @@ type ShowInfo struct {
 	// 可视文字识别结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextInfoSet []*TextInfo `json:"TextInfoSet,omitempty" name:"TextInfoSet"`
+
+	// 已分类人物信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassifiedPersonInfoSet []*ClassifiedPersonInfo `json:"ClassifiedPersonInfoSet,omitempty" name:"ClassifiedPersonInfoSet"`
 
 	// 文本标签列表，包含标签内容和出现信息
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -16,6 +16,7 @@ package v20180408
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewAssignProjectResponse() (response *AssignProjectResponse) {
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 //  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
 func (c *Client) AssignProject(request *AssignProjectRequest) (response *AssignProjectResponse, err error) {
-    if request == nil {
-        request = NewAssignProjectRequest()
-    }
-    
-    response = NewAssignProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssignProjectWithContext(context.Background(), request)
 }
 
 // AssignProject
@@ -95,6 +90,11 @@ func (c *Client) AssignProjectWithContext(ctx context.Context, request *AssignPr
     if request == nil {
         request = NewAssignProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssignProjectResponse()
@@ -125,13 +125,7 @@ func NewCreateDBInstanceResponse() (response *CreateDBInstanceResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateDBInstance(request *CreateDBInstanceRequest) (response *CreateDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateDBInstanceRequest()
-    }
-    
-    response = NewCreateDBInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDBInstanceWithContext(context.Background(), request)
 }
 
 // CreateDBInstance
@@ -143,6 +137,11 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDBInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDBInstanceResponse()
@@ -173,13 +172,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (response *CreateDBInstanceHourResponse, err error) {
-    if request == nil {
-        request = NewCreateDBInstanceHourRequest()
-    }
-    
-    response = NewCreateDBInstanceHourResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDBInstanceHourWithContext(context.Background(), request)
 }
 
 // CreateDBInstanceHour
@@ -191,6 +184,11 @@ func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateDBInstanceHourRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBInstanceHour require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDBInstanceHourResponse()
@@ -225,13 +223,7 @@ func NewDescribeClientConnectionsResponse() (response *DescribeClientConnections
 //  INVALIDPARAMETERVALUE_PROXYNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.ProxyNotSupportQueryClient"
 //  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTQUERYCLIENT = "InvalidParameterValue.RegionNotSupportQueryClient"
 func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsRequest) (response *DescribeClientConnectionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeClientConnectionsRequest()
-    }
-    
-    response = NewDescribeClientConnectionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClientConnectionsWithContext(context.Background(), request)
 }
 
 // DescribeClientConnections
@@ -247,6 +239,11 @@ func (c *Client) DescribeClientConnectionsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeClientConnectionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientConnections require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClientConnectionsResponse()
@@ -281,13 +278,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 //  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBInstancesRequest()
-    }
-    
-    response = NewDescribeDBInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBInstancesWithContext(context.Background(), request)
 }
 
 // DescribeDBInstances
@@ -303,6 +294,11 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDBInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBInstancesResponse()
@@ -342,13 +338,7 @@ func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
 //  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
 //  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
 func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *DescribeSlowLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogRequest()
-    }
-    
-    response = NewDescribeSlowLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSlowLogWithContext(context.Background(), request)
 }
 
 // DescribeSlowLog
@@ -369,6 +359,11 @@ func (c *Client) DescribeSlowLogWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSlowLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogResponse()
@@ -400,13 +395,7 @@ func NewDescribeSpecInfoResponse() (response *DescribeSpecInfoResponse) {
 //  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) DescribeSpecInfo(request *DescribeSpecInfoRequest) (response *DescribeSpecInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeSpecInfoRequest()
-    }
-    
-    response = NewDescribeSpecInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSpecInfoWithContext(context.Background(), request)
 }
 
 // DescribeSpecInfo
@@ -419,6 +408,11 @@ func (c *Client) DescribeSpecInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSpecInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpecInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSpecInfoResponse()
@@ -453,13 +447,7 @@ func NewRenameInstanceResponse() (response *RenameInstanceResponse) {
 //  INVALIDPARAMETERVALUE_INSTANCEHASBEENISOLATED = "InvalidParameterValue.InstanceHasBeenIsolated"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 func (c *Client) RenameInstance(request *RenameInstanceRequest) (response *RenameInstanceResponse, err error) {
-    if request == nil {
-        request = NewRenameInstanceRequest()
-    }
-    
-    response = NewRenameInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenameInstanceWithContext(context.Background(), request)
 }
 
 // RenameInstance
@@ -475,6 +463,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
     if request == nil {
         request = NewRenameInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenameInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenameInstanceResponse()
@@ -508,13 +501,7 @@ func NewSetAutoRenewResponse() (response *SetAutoRenewResponse) {
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
 //  INVALIDPARAMETERVALUE_POSTPAYRENEWERROR = "InvalidParameterValue.PostPayRenewError"
 func (c *Client) SetAutoRenew(request *SetAutoRenewRequest) (response *SetAutoRenewResponse, err error) {
-    if request == nil {
-        request = NewSetAutoRenewRequest()
-    }
-    
-    response = NewSetAutoRenewResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetAutoRenewWithContext(context.Background(), request)
 }
 
 // SetAutoRenew
@@ -529,6 +516,11 @@ func (c *Client) SetAutoRenewWithContext(ctx context.Context, request *SetAutoRe
     if request == nil {
         request = NewSetAutoRenewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAutoRenew require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetAutoRenewResponse()
@@ -566,13 +558,7 @@ func NewSetPasswordResponse() (response *SetPasswordResponse) {
 //  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
 //  INVALIDPARAMETERVALUE_USERNOTFOUND = "InvalidParameterValue.UserNotFound"
 func (c *Client) SetPassword(request *SetPasswordRequest) (response *SetPasswordResponse, err error) {
-    if request == nil {
-        request = NewSetPasswordRequest()
-    }
-    
-    response = NewSetPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetPasswordWithContext(context.Background(), request)
 }
 
 // SetPassword
@@ -591,6 +577,11 @@ func (c *Client) SetPasswordWithContext(ctx context.Context, request *SetPasswor
     if request == nil {
         request = NewSetPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetPasswordResponse()
@@ -622,13 +613,7 @@ func NewTerminateDBInstanceResponse() (response *TerminateDBInstanceResponse) {
 //  INTERNALERROR_ASYNCREQUESTERROR = "InternalError.AsyncRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TerminateDBInstance(request *TerminateDBInstanceRequest) (response *TerminateDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewTerminateDBInstanceRequest()
-    }
-    
-    response = NewTerminateDBInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateDBInstanceWithContext(context.Background(), request)
 }
 
 // TerminateDBInstance
@@ -641,6 +626,11 @@ func (c *Client) TerminateDBInstanceWithContext(ctx context.Context, request *Te
     if request == nil {
         request = NewTerminateDBInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateDBInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateDBInstanceResponse()
@@ -671,13 +661,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response *UpgradeDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDBInstanceRequest()
-    }
-    
-    response = NewUpgradeDBInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeDBInstanceWithContext(context.Background(), request)
 }
 
 // UpgradeDBInstance
@@ -689,6 +673,11 @@ func (c *Client) UpgradeDBInstanceWithContext(ctx context.Context, request *Upgr
     if request == nil {
         request = NewUpgradeDBInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDBInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeDBInstanceResponse()
@@ -719,13 +708,7 @@ func NewUpgradeDBInstanceHourResponse() (response *UpgradeDBInstanceHourResponse
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpgradeDBInstanceHour(request *UpgradeDBInstanceHourRequest) (response *UpgradeDBInstanceHourResponse, err error) {
-    if request == nil {
-        request = NewUpgradeDBInstanceHourRequest()
-    }
-    
-    response = NewUpgradeDBInstanceHourResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeDBInstanceHourWithContext(context.Background(), request)
 }
 
 // UpgradeDBInstanceHour
@@ -737,6 +720,11 @@ func (c *Client) UpgradeDBInstanceHourWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpgradeDBInstanceHourRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDBInstanceHour require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeDBInstanceHourResponse()

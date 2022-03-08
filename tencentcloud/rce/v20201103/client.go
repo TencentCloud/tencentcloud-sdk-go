@@ -16,6 +16,7 @@ package v20201103
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -110,13 +111,7 @@ func NewDescribeRiskAssessmentResponse() (response *DescribeRiskAssessmentRespon
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskAssessment(request *DescribeRiskAssessmentRequest) (response *DescribeRiskAssessmentResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskAssessmentRequest()
-    }
-    
-    response = NewDescribeRiskAssessmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskAssessmentWithContext(context.Background(), request)
 }
 
 // DescribeRiskAssessment
@@ -171,6 +166,11 @@ func (c *Client) DescribeRiskAssessmentWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRiskAssessmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskAssessment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskAssessmentResponse()
@@ -243,13 +243,7 @@ func NewDescribeRiskModelResponse() (response *DescribeRiskModelResponse) {
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRiskModel(request *DescribeRiskModelRequest) (response *DescribeRiskModelResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskModelRequest()
-    }
-    
-    response = NewDescribeRiskModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskModelWithContext(context.Background(), request)
 }
 
 // DescribeRiskModel
@@ -303,6 +297,11 @@ func (c *Client) DescribeRiskModelWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeRiskModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskModelResponse()
@@ -359,13 +358,7 @@ func NewDescribeRiskTrendsResponse() (response *DescribeRiskTrendsResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) DescribeRiskTrends(request *DescribeRiskTrendsRequest) (response *DescribeRiskTrendsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskTrendsRequest()
-    }
-    
-    response = NewDescribeRiskTrendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskTrendsWithContext(context.Background(), request)
 }
 
 // DescribeRiskTrends
@@ -403,6 +396,11 @@ func (c *Client) DescribeRiskTrendsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRiskTrendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskTrends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskTrendsResponse()
@@ -475,13 +473,7 @@ func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
-    if request == nil {
-        request = NewManageMarketingRiskRequest()
-    }
-    
-    response = NewManageMarketingRiskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageMarketingRiskWithContext(context.Background(), request)
 }
 
 // ManageMarketingRisk
@@ -535,6 +527,11 @@ func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *Ma
     if request == nil {
         request = NewManageMarketingRiskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageMarketingRisk require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageMarketingRiskResponse()

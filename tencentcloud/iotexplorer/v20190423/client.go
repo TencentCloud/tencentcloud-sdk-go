@@ -16,6 +16,7 @@ package v20190423
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
-    if request == nil {
-        request = NewBindDevicesRequest()
-    }
-    
-    response = NewBindDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindDevicesWithContext(context.Background(), request)
 }
 
 // BindDevices
@@ -99,6 +94,11 @@ func (c *Client) BindDevicesWithContext(ctx context.Context, request *BindDevice
     if request == nil {
         request = NewBindDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindDevicesResponse()
@@ -140,13 +140,7 @@ func NewBindProductsResponse() (response *BindProductsResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BindProducts(request *BindProductsRequest) (response *BindProductsResponse, err error) {
-    if request == nil {
-        request = NewBindProductsRequest()
-    }
-    
-    response = NewBindProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindProductsWithContext(context.Background(), request)
 }
 
 // BindProducts
@@ -169,6 +163,11 @@ func (c *Client) BindProductsWithContext(ctx context.Context, request *BindProdu
     if request == nil {
         request = NewBindProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindProductsResponse()
@@ -211,13 +210,7 @@ func NewCallDeviceActionAsyncResponse() (response *CallDeviceActionAsyncResponse
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (response *CallDeviceActionAsyncResponse, err error) {
-    if request == nil {
-        request = NewCallDeviceActionAsyncRequest()
-    }
-    
-    response = NewCallDeviceActionAsyncResponse()
-    err = c.Send(request, response)
-    return
+    return c.CallDeviceActionAsyncWithContext(context.Background(), request)
 }
 
 // CallDeviceActionAsync
@@ -241,6 +234,11 @@ func (c *Client) CallDeviceActionAsyncWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCallDeviceActionAsyncRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallDeviceActionAsync require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCallDeviceActionAsyncResponse()
@@ -285,13 +283,7 @@ func NewCallDeviceActionSyncResponse() (response *CallDeviceActionSyncResponse) 
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (response *CallDeviceActionSyncResponse, err error) {
-    if request == nil {
-        request = NewCallDeviceActionSyncRequest()
-    }
-    
-    response = NewCallDeviceActionSyncResponse()
-    err = c.Send(request, response)
-    return
+    return c.CallDeviceActionSyncWithContext(context.Background(), request)
 }
 
 // CallDeviceActionSync
@@ -317,6 +309,11 @@ func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCallDeviceActionSyncRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallDeviceActionSync require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCallDeviceActionSyncResponse()
@@ -364,13 +361,7 @@ func NewControlDeviceDataResponse() (response *ControlDeviceDataResponse) {
 //  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
 //  UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
 func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response *ControlDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewControlDeviceDataRequest()
-    }
-    
-    response = NewControlDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlDeviceDataWithContext(context.Background(), request)
 }
 
 // ControlDeviceData
@@ -399,6 +390,11 @@ func (c *Client) ControlDeviceDataWithContext(ctx context.Context, request *Cont
     if request == nil {
         request = NewControlDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlDeviceDataResponse()
@@ -445,13 +441,7 @@ func NewCreateBatchProductionResponse() (response *CreateBatchProductionResponse
 //  UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = "UnsupportedOperation.DeviceExceedLimit"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CreateBatchProduction(request *CreateBatchProductionRequest) (response *CreateBatchProductionResponse, err error) {
-    if request == nil {
-        request = NewCreateBatchProductionRequest()
-    }
-    
-    response = NewCreateBatchProductionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBatchProductionWithContext(context.Background(), request)
 }
 
 // CreateBatchProduction
@@ -479,6 +469,11 @@ func (c *Client) CreateBatchProductionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateBatchProductionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchProduction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBatchProductionResponse()
@@ -524,13 +519,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = "UnsupportedOperation.DeviceExceedLimit"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateDeviceRequest()
-    }
-    
-    response = NewCreateDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDeviceWithContext(context.Background(), request)
 }
 
 // CreateDevice
@@ -557,6 +546,11 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDeviceResponse()
@@ -591,13 +585,7 @@ func NewCreateFenceBindResponse() (response *CreateFenceBindResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) CreateFenceBind(request *CreateFenceBindRequest) (response *CreateFenceBindResponse, err error) {
-    if request == nil {
-        request = NewCreateFenceBindRequest()
-    }
-    
-    response = NewCreateFenceBindResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFenceBindWithContext(context.Background(), request)
 }
 
 // CreateFenceBind
@@ -613,6 +601,11 @@ func (c *Client) CreateFenceBindWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateFenceBindRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFenceBind require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFenceBindResponse()
@@ -645,13 +638,7 @@ func NewCreateLoRaFrequencyResponse() (response *CreateLoRaFrequencyResponse) {
 //  LIMITEXCEEDED_STUDIOLORAFREQEXCEEDLIMIT = "LimitExceeded.StudioLoRaFreqExceedLimit"
 //  UNSUPPORTEDOPERATION_LORAFREQDUPKEYEXIST = "UnsupportedOperation.LoRaFreqDupKeyExist"
 func (c *Client) CreateLoRaFrequency(request *CreateLoRaFrequencyRequest) (response *CreateLoRaFrequencyResponse, err error) {
-    if request == nil {
-        request = NewCreateLoRaFrequencyRequest()
-    }
-    
-    response = NewCreateLoRaFrequencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLoRaFrequencyWithContext(context.Background(), request)
 }
 
 // CreateLoRaFrequency
@@ -665,6 +652,11 @@ func (c *Client) CreateLoRaFrequencyWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateLoRaFrequencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoRaFrequency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLoRaFrequencyResponse()
@@ -698,13 +690,7 @@ func NewCreateLoRaGatewayResponse() (response *CreateLoRaGatewayResponse) {
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  RESOURCENOTFOUND_GATEWAYDUPKEYEXIST = "ResourceNotFound.GatewayDupKeyExist"
 func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response *CreateLoRaGatewayResponse, err error) {
-    if request == nil {
-        request = NewCreateLoRaGatewayRequest()
-    }
-    
-    response = NewCreateLoRaGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLoRaGatewayWithContext(context.Background(), request)
 }
 
 // CreateLoRaGateway
@@ -719,6 +705,11 @@ func (c *Client) CreateLoRaGatewayWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateLoRaGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoRaGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLoRaGatewayResponse()
@@ -754,13 +745,7 @@ func NewCreatePositionFenceResponse() (response *CreatePositionFenceResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_FENCEDUPKEYEXIST = "UnsupportedOperation.FenceDupKeyExist"
 func (c *Client) CreatePositionFence(request *CreatePositionFenceRequest) (response *CreatePositionFenceResponse, err error) {
-    if request == nil {
-        request = NewCreatePositionFenceRequest()
-    }
-    
-    response = NewCreatePositionFenceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePositionFenceWithContext(context.Background(), request)
 }
 
 // CreatePositionFence
@@ -777,6 +762,11 @@ func (c *Client) CreatePositionFenceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePositionFenceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePositionFence require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePositionFenceResponse()
@@ -813,13 +803,7 @@ func NewCreatePositionSpaceResponse() (response *CreatePositionSpaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SPACEDUPKEYEXIST = "UnsupportedOperation.SpaceDupKeyExist"
 func (c *Client) CreatePositionSpace(request *CreatePositionSpaceRequest) (response *CreatePositionSpaceResponse, err error) {
-    if request == nil {
-        request = NewCreatePositionSpaceRequest()
-    }
-    
-    response = NewCreatePositionSpaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePositionSpaceWithContext(context.Background(), request)
 }
 
 // CreatePositionSpace
@@ -837,6 +821,11 @@ func (c *Client) CreatePositionSpaceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePositionSpaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePositionSpace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePositionSpaceResponse()
@@ -886,13 +875,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  UNSUPPORTEDOPERATION_POOLEXISTUNDERPROJECT = "UnsupportedOperation.PoolExistUnderProject"
 //  UNSUPPORTEDOPERATION_PROJECTDUPKEYEXIST = "UnsupportedOperation.ProjectDupKeyExist"
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateProjectRequest()
-    }
-    
-    response = NewCreateProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProjectWithContext(context.Background(), request)
 }
 
 // CreateProject
@@ -923,6 +906,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
@@ -978,13 +966,7 @@ func NewCreateStudioProductResponse() (response *CreateStudioProductResponse) {
 //  UNSUPPORTEDOPERATION_PRODUCTDUPKEYEXIST = "UnsupportedOperation.ProductDupKeyExist"
 //  UNSUPPORTEDOPERATION_PRODUCTEXISTUNDERPROJECT = "UnsupportedOperation.ProductExistUnderProject"
 func (c *Client) CreateStudioProduct(request *CreateStudioProductRequest) (response *CreateStudioProductResponse, err error) {
-    if request == nil {
-        request = NewCreateStudioProductRequest()
-    }
-    
-    response = NewCreateStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStudioProductWithContext(context.Background(), request)
 }
 
 // CreateStudioProduct
@@ -1021,6 +1003,11 @@ func (c *Client) CreateStudioProductWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStudioProductResponse()
@@ -1056,13 +1043,7 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicPolicyRequest()
-    }
-    
-    response = NewCreateTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicPolicyWithContext(context.Background(), request)
 }
 
 // CreateTopicPolicy
@@ -1079,6 +1060,11 @@ func (c *Client) CreateTopicPolicyWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicPolicyResponse()
@@ -1117,13 +1103,7 @@ func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicRuleRequest()
-    }
-    
-    response = NewCreateTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicRuleWithContext(context.Background(), request)
 }
 
 // CreateTopicRule
@@ -1143,6 +1123,11 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicRuleResponse()
@@ -1184,13 +1169,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -1213,6 +1192,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -1252,13 +1236,7 @@ func NewDeleteDevicesResponse() (response *DeleteDevicesResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
-    if request == nil {
-        request = NewDeleteDevicesRequest()
-    }
-    
-    response = NewDeleteDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDevicesWithContext(context.Background(), request)
 }
 
 // DeleteDevices
@@ -1279,6 +1257,11 @@ func (c *Client) DeleteDevicesWithContext(ctx context.Context, request *DeleteDe
     if request == nil {
         request = NewDeleteDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDevicesResponse()
@@ -1314,13 +1297,7 @@ func NewDeleteFenceBindResponse() (response *DeleteFenceBindResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) DeleteFenceBind(request *DeleteFenceBindRequest) (response *DeleteFenceBindResponse, err error) {
-    if request == nil {
-        request = NewDeleteFenceBindRequest()
-    }
-    
-    response = NewDeleteFenceBindResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFenceBindWithContext(context.Background(), request)
 }
 
 // DeleteFenceBind
@@ -1337,6 +1314,11 @@ func (c *Client) DeleteFenceBindWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteFenceBindRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFenceBind require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFenceBindResponse()
@@ -1371,13 +1353,7 @@ func NewDeleteLoRaFrequencyResponse() (response *DeleteLoRaFrequencyResponse) {
 //  UNSUPPORTEDOPERATION_NODESEXISTUNDERVPN = "UnsupportedOperation.NodesExistUnderVPN"
 //  UNSUPPORTEDOPERATION_STUDIOLORAFREQINUSED = "UnsupportedOperation.StudioLoRaFreqInUsed"
 func (c *Client) DeleteLoRaFrequency(request *DeleteLoRaFrequencyRequest) (response *DeleteLoRaFrequencyResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoRaFrequencyRequest()
-    }
-    
-    response = NewDeleteLoRaFrequencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoRaFrequencyWithContext(context.Background(), request)
 }
 
 // DeleteLoRaFrequency
@@ -1393,6 +1369,11 @@ func (c *Client) DeleteLoRaFrequencyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteLoRaFrequencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoRaFrequency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoRaFrequencyResponse()
@@ -1428,13 +1409,7 @@ func NewDeleteLoRaGatewayResponse() (response *DeleteLoRaGatewayResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_GATEWAYNOTEXIST = "ResourceNotFound.GatewayNotExist"
 func (c *Client) DeleteLoRaGateway(request *DeleteLoRaGatewayRequest) (response *DeleteLoRaGatewayResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoRaGatewayRequest()
-    }
-    
-    response = NewDeleteLoRaGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoRaGatewayWithContext(context.Background(), request)
 }
 
 // DeleteLoRaGateway
@@ -1451,6 +1426,11 @@ func (c *Client) DeleteLoRaGatewayWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteLoRaGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoRaGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoRaGatewayResponse()
@@ -1488,13 +1468,7 @@ func NewDeletePositionFenceResponse() (response *DeletePositionFenceResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 //  UNSUPPORTEDOPERATION_BINDSEXISTUNDERFENCE = "UnsupportedOperation.BindsExistUnderFence"
 func (c *Client) DeletePositionFence(request *DeletePositionFenceRequest) (response *DeletePositionFenceResponse, err error) {
-    if request == nil {
-        request = NewDeletePositionFenceRequest()
-    }
-    
-    response = NewDeletePositionFenceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePositionFenceWithContext(context.Background(), request)
 }
 
 // DeletePositionFence
@@ -1513,6 +1487,11 @@ func (c *Client) DeletePositionFenceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePositionFenceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePositionFence require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePositionFenceResponse()
@@ -1548,13 +1527,7 @@ func NewDeletePositionSpaceResponse() (response *DeletePositionSpaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_FENCEEXISTUNDERSPACE = "UnsupportedOperation.FenceExistUnderSpace"
 func (c *Client) DeletePositionSpace(request *DeletePositionSpaceRequest) (response *DeletePositionSpaceResponse, err error) {
-    if request == nil {
-        request = NewDeletePositionSpaceRequest()
-    }
-    
-    response = NewDeletePositionSpaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePositionSpaceWithContext(context.Background(), request)
 }
 
 // DeletePositionSpace
@@ -1571,6 +1544,11 @@ func (c *Client) DeletePositionSpaceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePositionSpaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePositionSpace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePositionSpaceResponse()
@@ -1605,13 +1583,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 //  UNSUPPORTEDOPERATION_POOLEXISTUNDERPROJECT = "UnsupportedOperation.PoolExistUnderProject"
 //  UNSUPPORTEDOPERATION_PRODUCTEXISTUNDERPROJECT = "UnsupportedOperation.ProductExistUnderProject"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
-    if request == nil {
-        request = NewDeleteProjectRequest()
-    }
-    
-    response = NewDeleteProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProjectWithContext(context.Background(), request)
 }
 
 // DeleteProject
@@ -1627,6 +1599,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
@@ -1666,13 +1643,7 @@ func NewDeleteStudioProductResponse() (response *DeleteStudioProductResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGateWayProduct"
 func (c *Client) DeleteStudioProduct(request *DeleteStudioProductRequest) (response *DeleteStudioProductResponse, err error) {
-    if request == nil {
-        request = NewDeleteStudioProductRequest()
-    }
-    
-    response = NewDeleteStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteStudioProductWithContext(context.Background(), request)
 }
 
 // DeleteStudioProduct
@@ -1693,6 +1664,11 @@ func (c *Client) DeleteStudioProductWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteStudioProductResponse()
@@ -1726,13 +1702,7 @@ func NewDeleteTopicPolicyResponse() (response *DeleteTopicPolicyResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
 func (c *Client) DeleteTopicPolicy(request *DeleteTopicPolicyRequest) (response *DeleteTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicPolicyRequest()
-    }
-    
-    response = NewDeleteTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicPolicyWithContext(context.Background(), request)
 }
 
 // DeleteTopicPolicy
@@ -1747,6 +1717,11 @@ func (c *Client) DeleteTopicPolicyWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicPolicyResponse()
@@ -1781,13 +1756,7 @@ func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *DeleteTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicRuleRequest()
-    }
-    
-    response = NewDeleteTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicRuleWithContext(context.Background(), request)
 }
 
 // DeleteTopicRule
@@ -1803,6 +1772,11 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicRuleResponse()
@@ -1839,13 +1813,7 @@ func NewDescribeBatchProductionResponse() (response *DescribeBatchProductionResp
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeBatchProduction(request *DescribeBatchProductionRequest) (response *DescribeBatchProductionResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchProductionRequest()
-    }
-    
-    response = NewDescribeBatchProductionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchProductionWithContext(context.Background(), request)
 }
 
 // DescribeBatchProduction
@@ -1863,6 +1831,11 @@ func (c *Client) DescribeBatchProductionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBatchProductionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchProduction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchProductionResponse()
@@ -1900,13 +1873,7 @@ func NewDescribeBindedProductsResponse() (response *DescribeBindedProductsRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeBindedProducts(request *DescribeBindedProductsRequest) (response *DescribeBindedProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindedProductsRequest()
-    }
-    
-    response = NewDescribeBindedProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindedProductsWithContext(context.Background(), request)
 }
 
 // DescribeBindedProducts
@@ -1925,6 +1892,11 @@ func (c *Client) DescribeBindedProductsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeBindedProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindedProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindedProductsResponse()
@@ -1962,13 +1934,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceRequest()
-    }
-    
-    response = NewDescribeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceWithContext(context.Background(), request)
 }
 
 // DescribeDevice
@@ -1987,6 +1953,11 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
@@ -2022,16 +1993,11 @@ func NewDescribeDeviceBindGatewayResponse() (response *DescribeDeviceBindGateway
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceBindGateway(request *DescribeDeviceBindGatewayRequest) (response *DescribeDeviceBindGatewayResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceBindGatewayRequest()
-    }
-    
-    response = NewDescribeDeviceBindGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceBindGatewayWithContext(context.Background(), request)
 }
 
 // DescribeDeviceBindGateway
@@ -2045,12 +2011,18 @@ func (c *Client) DescribeDeviceBindGateway(request *DescribeDeviceBindGatewayReq
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DEVICEHASNOTBINDGATEWAY = "InvalidParameterValue.DeviceHasNotBindGateway"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceBindGatewayWithContext(ctx context.Context, request *DescribeDeviceBindGatewayRequest) (response *DescribeDeviceBindGatewayResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceBindGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceBindGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceBindGatewayResponse()
@@ -2091,13 +2063,7 @@ func NewDescribeDeviceDataResponse() (response *DescribeDeviceDataResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceDataRequest()
-    }
-    
-    response = NewDescribeDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceDataWithContext(context.Background(), request)
 }
 
 // DescribeDeviceData
@@ -2119,6 +2085,11 @@ func (c *Client) DescribeDeviceDataWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceDataResponse()
@@ -2158,13 +2129,7 @@ func NewDescribeDeviceDataHistoryResponse() (response *DescribeDeviceDataHistory
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceDataHistoryRequest()
-    }
-    
-    response = NewDescribeDeviceDataHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceDataHistoryWithContext(context.Background(), request)
 }
 
 // DescribeDeviceDataHistory
@@ -2185,6 +2150,11 @@ func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceDataHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceDataHistoryResponse()
@@ -2215,13 +2185,7 @@ func NewDescribeDevicePositionListResponse() (response *DescribeDevicePositionLi
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
 func (c *Client) DescribeDevicePositionList(request *DescribeDevicePositionListRequest) (response *DescribeDevicePositionListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicePositionListRequest()
-    }
-    
-    response = NewDescribeDevicePositionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicePositionListWithContext(context.Background(), request)
 }
 
 // DescribeDevicePositionList
@@ -2233,6 +2197,11 @@ func (c *Client) DescribeDevicePositionListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDevicePositionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePositionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicePositionListResponse()
@@ -2267,13 +2236,7 @@ func NewDescribeFenceBindListResponse() (response *DescribeFenceBindListResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (response *DescribeFenceBindListResponse, err error) {
-    if request == nil {
-        request = NewDescribeFenceBindListRequest()
-    }
-    
-    response = NewDescribeFenceBindListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFenceBindListWithContext(context.Background(), request)
 }
 
 // DescribeFenceBindList
@@ -2289,6 +2252,11 @@ func (c *Client) DescribeFenceBindListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFenceBindListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFenceBindList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFenceBindListResponse()
@@ -2326,13 +2294,7 @@ func NewDescribeFenceEventListResponse() (response *DescribeFenceEventListRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) DescribeFenceEventList(request *DescribeFenceEventListRequest) (response *DescribeFenceEventListResponse, err error) {
-    if request == nil {
-        request = NewDescribeFenceEventListRequest()
-    }
-    
-    response = NewDescribeFenceEventListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFenceEventListWithContext(context.Background(), request)
 }
 
 // DescribeFenceEventList
@@ -2351,6 +2313,11 @@ func (c *Client) DescribeFenceEventListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeFenceEventListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFenceEventList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFenceEventListResponse()
@@ -2383,13 +2350,7 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTask
@@ -2403,6 +2364,11 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
@@ -2440,13 +2406,7 @@ func NewDescribeGatewayBindDevicesResponse() (response *DescribeGatewayBindDevic
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeGatewayBindDevices(request *DescribeGatewayBindDevicesRequest) (response *DescribeGatewayBindDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeGatewayBindDevicesRequest()
-    }
-    
-    response = NewDescribeGatewayBindDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGatewayBindDevicesWithContext(context.Background(), request)
 }
 
 // DescribeGatewayBindDevices
@@ -2465,6 +2425,11 @@ func (c *Client) DescribeGatewayBindDevicesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeGatewayBindDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayBindDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGatewayBindDevicesResponse()
@@ -2501,13 +2466,7 @@ func NewDescribeGatewaySubDeviceListResponse() (response *DescribeGatewaySubDevi
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeGatewaySubDeviceList(request *DescribeGatewaySubDeviceListRequest) (response *DescribeGatewaySubDeviceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeGatewaySubDeviceListRequest()
-    }
-    
-    response = NewDescribeGatewaySubDeviceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGatewaySubDeviceListWithContext(context.Background(), request)
 }
 
 // DescribeGatewaySubDeviceList
@@ -2525,6 +2484,11 @@ func (c *Client) DescribeGatewaySubDeviceListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeGatewaySubDeviceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewaySubDeviceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGatewaySubDeviceListResponse()
@@ -2561,13 +2525,7 @@ func NewDescribeGatewaySubProductsResponse() (response *DescribeGatewaySubProduc
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = "UnsupportedOperation.StaffPoolDupNameExist"
 func (c *Client) DescribeGatewaySubProducts(request *DescribeGatewaySubProductsRequest) (response *DescribeGatewaySubProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeGatewaySubProductsRequest()
-    }
-    
-    response = NewDescribeGatewaySubProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGatewaySubProductsWithContext(context.Background(), request)
 }
 
 // DescribeGatewaySubProducts
@@ -2585,6 +2543,11 @@ func (c *Client) DescribeGatewaySubProductsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeGatewaySubProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewaySubProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGatewaySubProductsResponse()
@@ -2617,13 +2580,7 @@ func NewDescribeLoRaFrequencyResponse() (response *DescribeLoRaFrequencyResponse
 //  RESOURCENOTFOUND_STUDIOLORAFREQNOTEXIST = "ResourceNotFound.StudioLoRaFreqNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLoRaFrequency(request *DescribeLoRaFrequencyRequest) (response *DescribeLoRaFrequencyResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoRaFrequencyRequest()
-    }
-    
-    response = NewDescribeLoRaFrequencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoRaFrequencyWithContext(context.Background(), request)
 }
 
 // DescribeLoRaFrequency
@@ -2637,6 +2594,11 @@ func (c *Client) DescribeLoRaFrequencyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoRaFrequencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoRaFrequency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoRaFrequencyResponse()
@@ -2695,13 +2657,7 @@ func NewDescribeModelDefinitionResponse() (response *DescribeModelDefinitionResp
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest) (response *DescribeModelDefinitionResponse, err error) {
-    if request == nil {
-        request = NewDescribeModelDefinitionRequest()
-    }
-    
-    response = NewDescribeModelDefinitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModelDefinitionWithContext(context.Background(), request)
 }
 
 // DescribeModelDefinition
@@ -2741,6 +2697,11 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelDefinition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModelDefinitionResponse()
@@ -2776,13 +2737,7 @@ func NewDescribePositionFenceListResponse() (response *DescribePositionFenceList
 //  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePositionFenceList(request *DescribePositionFenceListRequest) (response *DescribePositionFenceListResponse, err error) {
-    if request == nil {
-        request = NewDescribePositionFenceListRequest()
-    }
-    
-    response = NewDescribePositionFenceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePositionFenceListWithContext(context.Background(), request)
 }
 
 // DescribePositionFenceList
@@ -2799,6 +2754,11 @@ func (c *Client) DescribePositionFenceListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePositionFenceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePositionFenceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePositionFenceListResponse()
@@ -2833,13 +2793,7 @@ func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectRequest()
-    }
-    
-    response = NewDescribeProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectWithContext(context.Background(), request)
 }
 
 // DescribeProject
@@ -2855,6 +2809,11 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectResponse()
@@ -2890,13 +2849,7 @@ func NewDescribeSpaceFenceEventListResponse() (response *DescribeSpaceFenceEvent
 //  RESOURCENOTFOUND_SPACENOTEXIST = "ResourceNotFound.SpaceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSpaceFenceEventList(request *DescribeSpaceFenceEventListRequest) (response *DescribeSpaceFenceEventListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSpaceFenceEventListRequest()
-    }
-    
-    response = NewDescribeSpaceFenceEventListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSpaceFenceEventListWithContext(context.Background(), request)
 }
 
 // DescribeSpaceFenceEventList
@@ -2913,6 +2866,11 @@ func (c *Client) DescribeSpaceFenceEventListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSpaceFenceEventListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpaceFenceEventList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSpaceFenceEventListResponse()
@@ -2946,13 +2904,7 @@ func NewDescribeStudioProductResponse() (response *DescribeStudioProductResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (response *DescribeStudioProductResponse, err error) {
-    if request == nil {
-        request = NewDescribeStudioProductRequest()
-    }
-    
-    response = NewDescribeStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStudioProductWithContext(context.Background(), request)
 }
 
 // DescribeStudioProduct
@@ -2967,6 +2919,11 @@ func (c *Client) DescribeStudioProductWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStudioProductResponse()
@@ -3000,13 +2957,7 @@ func NewDescribeTopicPolicyResponse() (response *DescribeTopicPolicyResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
 func (c *Client) DescribeTopicPolicy(request *DescribeTopicPolicyRequest) (response *DescribeTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopicPolicyRequest()
-    }
-    
-    response = NewDescribeTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopicPolicyWithContext(context.Background(), request)
 }
 
 // DescribeTopicPolicy
@@ -3021,6 +2972,11 @@ func (c *Client) DescribeTopicPolicyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopicPolicyResponse()
@@ -3058,13 +3014,7 @@ func NewDescribeTopicRuleResponse() (response *DescribeTopicRuleResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTopicRule(request *DescribeTopicRuleRequest) (response *DescribeTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopicRuleRequest()
-    }
-    
-    response = NewDescribeTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopicRuleWithContext(context.Background(), request)
 }
 
 // DescribeTopicRule
@@ -3083,6 +3033,11 @@ func (c *Client) DescribeTopicRuleWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopicRuleResponse()
@@ -3125,13 +3080,7 @@ func NewDirectBindDeviceInFamilyResponse() (response *DirectBindDeviceInFamilyRe
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_DEVICETYPE = "UnsupportedOperation.DeviceType"
 func (c *Client) DirectBindDeviceInFamily(request *DirectBindDeviceInFamilyRequest) (response *DirectBindDeviceInFamilyResponse, err error) {
-    if request == nil {
-        request = NewDirectBindDeviceInFamilyRequest()
-    }
-    
-    response = NewDirectBindDeviceInFamilyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DirectBindDeviceInFamilyWithContext(context.Background(), request)
 }
 
 // DirectBindDeviceInFamily
@@ -3155,6 +3104,11 @@ func (c *Client) DirectBindDeviceInFamilyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDirectBindDeviceInFamilyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DirectBindDeviceInFamily require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDirectBindDeviceInFamilyResponse()
@@ -3192,13 +3146,7 @@ func NewDisableTopicRuleResponse() (response *DisableTopicRuleResponse) {
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *DisableTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewDisableTopicRuleRequest()
-    }
-    
-    response = NewDisableTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableTopicRuleWithContext(context.Background(), request)
 }
 
 // DisableTopicRule
@@ -3217,6 +3165,11 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableTopicRuleResponse()
@@ -3258,13 +3211,7 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewEnableTopicRuleRequest()
-    }
-    
-    response = NewEnableTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableTopicRuleWithContext(context.Background(), request)
 }
 
 // EnableTopicRule
@@ -3287,6 +3234,11 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableTopicRuleResponse()
@@ -3329,13 +3281,7 @@ func NewGenSingleDeviceSignatureOfPublicResponse() (response *GenSingleDeviceSig
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
-    if request == nil {
-        request = NewGenSingleDeviceSignatureOfPublicRequest()
-    }
-    
-    response = NewGenSingleDeviceSignatureOfPublicResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenSingleDeviceSignatureOfPublicWithContext(context.Background(), request)
 }
 
 // GenSingleDeviceSignatureOfPublic
@@ -3359,6 +3305,11 @@ func (c *Client) GenSingleDeviceSignatureOfPublicWithContext(ctx context.Context
     if request == nil {
         request = NewGenSingleDeviceSignatureOfPublicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenSingleDeviceSignatureOfPublic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenSingleDeviceSignatureOfPublicResponse()
@@ -3394,13 +3345,7 @@ func NewGetBatchProductionsListResponse() (response *GetBatchProductionsListResp
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 func (c *Client) GetBatchProductionsList(request *GetBatchProductionsListRequest) (response *GetBatchProductionsListResponse, err error) {
-    if request == nil {
-        request = NewGetBatchProductionsListRequest()
-    }
-    
-    response = NewGetBatchProductionsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBatchProductionsListWithContext(context.Background(), request)
 }
 
 // GetBatchProductionsList
@@ -3417,6 +3362,11 @@ func (c *Client) GetBatchProductionsListWithContext(ctx context.Context, request
     if request == nil {
         request = NewGetBatchProductionsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBatchProductionsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBatchProductionsListResponse()
@@ -3450,13 +3400,7 @@ func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLResponse, err error) {
-    if request == nil {
-        request = NewGetCOSURLRequest()
-    }
-    
-    response = NewGetCOSURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCOSURLWithContext(context.Background(), request)
 }
 
 // GetCOSURL
@@ -3471,6 +3415,11 @@ func (c *Client) GetCOSURLWithContext(ctx context.Context, request *GetCOSURLReq
     if request == nil {
         request = NewGetCOSURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCOSURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCOSURLResponse()
@@ -3510,13 +3459,7 @@ func NewGetDeviceListResponse() (response *GetDeviceListResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) GetDeviceList(request *GetDeviceListRequest) (response *GetDeviceListResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceListRequest()
-    }
-    
-    response = NewGetDeviceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceListWithContext(context.Background(), request)
 }
 
 // GetDeviceList
@@ -3537,6 +3480,11 @@ func (c *Client) GetDeviceListWithContext(ctx context.Context, request *GetDevic
     if request == nil {
         request = NewGetDeviceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceListResponse()
@@ -3575,13 +3523,7 @@ func NewGetDeviceLocationHistoryResponse() (response *GetDeviceLocationHistoryRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) GetDeviceLocationHistory(request *GetDeviceLocationHistoryRequest) (response *GetDeviceLocationHistoryResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceLocationHistoryRequest()
-    }
-    
-    response = NewGetDeviceLocationHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceLocationHistoryWithContext(context.Background(), request)
 }
 
 // GetDeviceLocationHistory
@@ -3601,6 +3543,11 @@ func (c *Client) GetDeviceLocationHistoryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetDeviceLocationHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceLocationHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceLocationHistoryResponse()
@@ -3635,16 +3582,11 @@ func NewGetFamilyDeviceUserListResponse() (response *GetFamilyDeviceUserListResp
 //  INVALIDPARAMETERVALUE_DEVICENAMEINVALID = "InvalidParameterValue.DeviceNameInvalid"
 //  INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
 //  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+//  RESOURCENOTFOUND_DEVICENOTBIND = "ResourceNotFound.DeviceNotBind"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) GetFamilyDeviceUserList(request *GetFamilyDeviceUserListRequest) (response *GetFamilyDeviceUserListResponse, err error) {
-    if request == nil {
-        request = NewGetFamilyDeviceUserListRequest()
-    }
-    
-    response = NewGetFamilyDeviceUserListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetFamilyDeviceUserListWithContext(context.Background(), request)
 }
 
 // GetFamilyDeviceUserList
@@ -3657,12 +3599,18 @@ func (c *Client) GetFamilyDeviceUserList(request *GetFamilyDeviceUserListRequest
 //  INVALIDPARAMETERVALUE_DEVICENAMEINVALID = "InvalidParameterValue.DeviceNameInvalid"
 //  INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
 //  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+//  RESOURCENOTFOUND_DEVICENOTBIND = "ResourceNotFound.DeviceNotBind"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) GetFamilyDeviceUserListWithContext(ctx context.Context, request *GetFamilyDeviceUserListRequest) (response *GetFamilyDeviceUserListResponse, err error) {
     if request == nil {
         request = NewGetFamilyDeviceUserListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFamilyDeviceUserList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetFamilyDeviceUserListResponse()
@@ -3699,13 +3647,7 @@ func NewGetGatewaySubDeviceListResponse() (response *GetGatewaySubDeviceListResp
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) GetGatewaySubDeviceList(request *GetGatewaySubDeviceListRequest) (response *GetGatewaySubDeviceListResponse, err error) {
-    if request == nil {
-        request = NewGetGatewaySubDeviceListRequest()
-    }
-    
-    response = NewGetGatewaySubDeviceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGatewaySubDeviceListWithContext(context.Background(), request)
 }
 
 // GetGatewaySubDeviceList
@@ -3723,6 +3665,11 @@ func (c *Client) GetGatewaySubDeviceListWithContext(ctx context.Context, request
     if request == nil {
         request = NewGetGatewaySubDeviceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGatewaySubDeviceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGatewaySubDeviceListResponse()
@@ -3758,13 +3705,7 @@ func NewGetLoRaGatewayListResponse() (response *GetLoRaGatewayListResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetLoRaGatewayList(request *GetLoRaGatewayListRequest) (response *GetLoRaGatewayListResponse, err error) {
-    if request == nil {
-        request = NewGetLoRaGatewayListRequest()
-    }
-    
-    response = NewGetLoRaGatewayListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetLoRaGatewayListWithContext(context.Background(), request)
 }
 
 // GetLoRaGatewayList
@@ -3781,6 +3722,11 @@ func (c *Client) GetLoRaGatewayListWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetLoRaGatewayListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLoRaGatewayList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetLoRaGatewayListResponse()
@@ -3815,13 +3761,7 @@ func NewGetPositionSpaceListResponse() (response *GetPositionSpaceListResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetPositionSpaceList(request *GetPositionSpaceListRequest) (response *GetPositionSpaceListResponse, err error) {
-    if request == nil {
-        request = NewGetPositionSpaceListRequest()
-    }
-    
-    response = NewGetPositionSpaceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPositionSpaceListWithContext(context.Background(), request)
 }
 
 // GetPositionSpaceList
@@ -3837,6 +3777,11 @@ func (c *Client) GetPositionSpaceListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetPositionSpaceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPositionSpaceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPositionSpaceListResponse()
@@ -3874,13 +3819,7 @@ func NewGetProjectListResponse() (response *GetProjectListResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) GetProjectList(request *GetProjectListRequest) (response *GetProjectListResponse, err error) {
-    if request == nil {
-        request = NewGetProjectListRequest()
-    }
-    
-    response = NewGetProjectListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetProjectListWithContext(context.Background(), request)
 }
 
 // GetProjectList
@@ -3899,6 +3838,11 @@ func (c *Client) GetProjectListWithContext(ctx context.Context, request *GetProj
     if request == nil {
         request = NewGetProjectListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetProjectList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetProjectListResponse()
@@ -3931,13 +3875,7 @@ func NewGetStudioProductListResponse() (response *GetStudioProductListResponse) 
 //  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetStudioProductList(request *GetStudioProductListRequest) (response *GetStudioProductListResponse, err error) {
-    if request == nil {
-        request = NewGetStudioProductListRequest()
-    }
-    
-    response = NewGetStudioProductListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetStudioProductListWithContext(context.Background(), request)
 }
 
 // GetStudioProductList
@@ -3951,6 +3889,11 @@ func (c *Client) GetStudioProductListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetStudioProductListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetStudioProductList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetStudioProductListResponse()
@@ -3985,13 +3928,7 @@ func NewGetTopicRuleListResponse() (response *GetTopicRuleListResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetTopicRuleList(request *GetTopicRuleListRequest) (response *GetTopicRuleListResponse, err error) {
-    if request == nil {
-        request = NewGetTopicRuleListRequest()
-    }
-    
-    response = NewGetTopicRuleListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTopicRuleListWithContext(context.Background(), request)
 }
 
 // GetTopicRuleList
@@ -4007,6 +3944,11 @@ func (c *Client) GetTopicRuleListWithContext(ctx context.Context, request *GetTo
     if request == nil {
         request = NewGetTopicRuleListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTopicRuleList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTopicRuleListResponse()
@@ -4052,13 +3994,7 @@ func NewListEventHistoryResponse() (response *ListEventHistoryResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ListEventHistory(request *ListEventHistoryRequest) (response *ListEventHistoryResponse, err error) {
-    if request == nil {
-        request = NewListEventHistoryRequest()
-    }
-    
-    response = NewListEventHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEventHistoryWithContext(context.Background(), request)
 }
 
 // ListEventHistory
@@ -4085,6 +4021,11 @@ func (c *Client) ListEventHistoryWithContext(ctx context.Context, request *ListE
     if request == nil {
         request = NewListEventHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEventHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEventHistoryResponse()
@@ -4119,13 +4060,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
-    if request == nil {
-        request = NewListFirmwaresRequest()
-    }
-    
-    response = NewListFirmwaresResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListFirmwaresWithContext(context.Background(), request)
 }
 
 // ListFirmwares
@@ -4141,6 +4076,11 @@ func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirm
     if request == nil {
         request = NewListFirmwaresRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFirmwares require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListFirmwaresResponse()
@@ -4173,13 +4113,7 @@ func NewListTopicPolicyResponse() (response *ListTopicPolicyResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 func (c *Client) ListTopicPolicy(request *ListTopicPolicyRequest) (response *ListTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewListTopicPolicyRequest()
-    }
-    
-    response = NewListTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListTopicPolicyWithContext(context.Background(), request)
 }
 
 // ListTopicPolicy
@@ -4193,6 +4127,11 @@ func (c *Client) ListTopicPolicyWithContext(ctx context.Context, request *ListTo
     if request == nil {
         request = NewListTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListTopicPolicyResponse()
@@ -4227,13 +4166,7 @@ func NewModifyFenceBindResponse() (response *ModifyFenceBindResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *ModifyFenceBindResponse, err error) {
-    if request == nil {
-        request = NewModifyFenceBindRequest()
-    }
-    
-    response = NewModifyFenceBindResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyFenceBindWithContext(context.Background(), request)
 }
 
 // ModifyFenceBind
@@ -4249,6 +4182,11 @@ func (c *Client) ModifyFenceBindWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyFenceBindRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFenceBind require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyFenceBindResponse()
@@ -4286,13 +4224,7 @@ func NewModifyLoRaFrequencyResponse() (response *ModifyLoRaFrequencyResponse) {
 //  UNSUPPORTEDOPERATION_LORAFREQDUPKEYEXIST = "UnsupportedOperation.LoRaFreqDupKeyExist"
 //  UNSUPPORTEDOPERATION_VPNDUPKEYEXIST = "UnsupportedOperation.VPNDupKeyExist"
 func (c *Client) ModifyLoRaFrequency(request *ModifyLoRaFrequencyRequest) (response *ModifyLoRaFrequencyResponse, err error) {
-    if request == nil {
-        request = NewModifyLoRaFrequencyRequest()
-    }
-    
-    response = NewModifyLoRaFrequencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoRaFrequencyWithContext(context.Background(), request)
 }
 
 // ModifyLoRaFrequency
@@ -4311,6 +4243,11 @@ func (c *Client) ModifyLoRaFrequencyWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyLoRaFrequencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoRaFrequency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoRaFrequencyResponse()
@@ -4346,13 +4283,7 @@ func NewModifyLoRaGatewayResponse() (response *ModifyLoRaGatewayResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_GATEWAYNOTEXIST = "ResourceNotFound.GatewayNotExist"
 func (c *Client) ModifyLoRaGateway(request *ModifyLoRaGatewayRequest) (response *ModifyLoRaGatewayResponse, err error) {
-    if request == nil {
-        request = NewModifyLoRaGatewayRequest()
-    }
-    
-    response = NewModifyLoRaGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoRaGatewayWithContext(context.Background(), request)
 }
 
 // ModifyLoRaGateway
@@ -4369,6 +4300,11 @@ func (c *Client) ModifyLoRaGatewayWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyLoRaGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoRaGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoRaGatewayResponse()
@@ -4446,13 +4382,7 @@ func NewModifyModelDefinitionResponse() (response *ModifyModelDefinitionResponse
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_PRODUCTEXISTUNDERPROJECT = "UnsupportedOperation.ProductExistUnderProject"
 func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (response *ModifyModelDefinitionResponse, err error) {
-    if request == nil {
-        request = NewModifyModelDefinitionRequest()
-    }
-    
-    response = NewModifyModelDefinitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModelDefinitionWithContext(context.Background(), request)
 }
 
 // ModifyModelDefinition
@@ -4511,6 +4441,11 @@ func (c *Client) ModifyModelDefinitionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyModelDefinitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelDefinition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModelDefinitionResponse()
@@ -4546,13 +4481,7 @@ func NewModifyPositionFenceResponse() (response *ModifyPositionFenceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) ModifyPositionFence(request *ModifyPositionFenceRequest) (response *ModifyPositionFenceResponse, err error) {
-    if request == nil {
-        request = NewModifyPositionFenceRequest()
-    }
-    
-    response = NewModifyPositionFenceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPositionFenceWithContext(context.Background(), request)
 }
 
 // ModifyPositionFence
@@ -4569,6 +4498,11 @@ func (c *Client) ModifyPositionFenceWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPositionFenceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPositionFence require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPositionFenceResponse()
@@ -4604,13 +4538,7 @@ func NewModifyPositionSpaceResponse() (response *ModifyPositionSpaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SPACEDUPKEYEXIST = "UnsupportedOperation.SpaceDupKeyExist"
 func (c *Client) ModifyPositionSpace(request *ModifyPositionSpaceRequest) (response *ModifyPositionSpaceResponse, err error) {
-    if request == nil {
-        request = NewModifyPositionSpaceRequest()
-    }
-    
-    response = NewModifyPositionSpaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPositionSpaceWithContext(context.Background(), request)
 }
 
 // ModifyPositionSpace
@@ -4627,6 +4555,11 @@ func (c *Client) ModifyPositionSpaceWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPositionSpaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPositionSpace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPositionSpaceResponse()
@@ -4663,13 +4596,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_PROJECTDUPKEYEXIST = "UnsupportedOperation.ProjectDupKeyExist"
 func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyProjectRequest()
-    }
-    
-    response = NewModifyProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProjectWithContext(context.Background(), request)
 }
 
 // ModifyProject
@@ -4687,6 +4614,11 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProjectResponse()
@@ -4722,13 +4654,7 @@ func NewModifySpacePropertyResponse() (response *ModifySpacePropertyResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) ModifySpaceProperty(request *ModifySpacePropertyRequest) (response *ModifySpacePropertyResponse, err error) {
-    if request == nil {
-        request = NewModifySpacePropertyRequest()
-    }
-    
-    response = NewModifySpacePropertyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySpacePropertyWithContext(context.Background(), request)
 }
 
 // ModifySpaceProperty
@@ -4745,6 +4671,11 @@ func (c *Client) ModifySpacePropertyWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySpacePropertyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySpaceProperty require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySpacePropertyResponse()
@@ -4792,13 +4723,7 @@ func NewModifyStudioProductResponse() (response *ModifyStudioProductResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (response *ModifyStudioProductResponse, err error) {
-    if request == nil {
-        request = NewModifyStudioProductRequest()
-    }
-    
-    response = NewModifyStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyStudioProductWithContext(context.Background(), request)
 }
 
 // ModifyStudioProduct
@@ -4827,6 +4752,11 @@ func (c *Client) ModifyStudioProductWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyStudioProductResponse()
@@ -4862,13 +4792,7 @@ func NewModifyTopicPolicyResponse() (response *ModifyTopicPolicyResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
 func (c *Client) ModifyTopicPolicy(request *ModifyTopicPolicyRequest) (response *ModifyTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewModifyTopicPolicyRequest()
-    }
-    
-    response = NewModifyTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTopicPolicyWithContext(context.Background(), request)
 }
 
 // ModifyTopicPolicy
@@ -4885,6 +4809,11 @@ func (c *Client) ModifyTopicPolicyWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTopicPolicyResponse()
@@ -4927,13 +4856,7 @@ func NewModifyTopicRuleResponse() (response *ModifyTopicRuleResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyTopicRule(request *ModifyTopicRuleRequest) (response *ModifyTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyTopicRuleRequest()
-    }
-    
-    response = NewModifyTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTopicRuleWithContext(context.Background(), request)
 }
 
 // ModifyTopicRule
@@ -4957,6 +4880,11 @@ func (c *Client) ModifyTopicRuleWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTopicRuleResponse()
@@ -4998,13 +4926,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishMessageRequest()
-    }
-    
-    response = NewPublishMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishMessageWithContext(context.Background(), request)
 }
 
 // PublishMessage
@@ -5027,6 +4949,11 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishMessageResponse()
@@ -5064,13 +4991,7 @@ func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (response *PublishRRPCMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishRRPCMessageRequest()
-    }
-    
-    response = NewPublishRRPCMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishRRPCMessageWithContext(context.Background(), request)
 }
 
 // PublishRRPCMessage
@@ -5089,6 +5010,11 @@ func (c *Client) PublishRRPCMessageWithContext(ctx context.Context, request *Pub
     if request == nil {
         request = NewPublishRRPCMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishRRPCMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishRRPCMessageResponse()
@@ -5123,13 +5049,7 @@ func NewReleaseStudioProductResponse() (response *ReleaseStudioProductResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 func (c *Client) ReleaseStudioProduct(request *ReleaseStudioProductRequest) (response *ReleaseStudioProductResponse, err error) {
-    if request == nil {
-        request = NewReleaseStudioProductRequest()
-    }
-    
-    response = NewReleaseStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReleaseStudioProductWithContext(context.Background(), request)
 }
 
 // ReleaseStudioProduct
@@ -5145,6 +5065,11 @@ func (c *Client) ReleaseStudioProductWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewReleaseStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReleaseStudioProductResponse()
@@ -5178,13 +5103,7 @@ func NewSearchPositionSpaceResponse() (response *SearchPositionSpaceResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchPositionSpace(request *SearchPositionSpaceRequest) (response *SearchPositionSpaceResponse, err error) {
-    if request == nil {
-        request = NewSearchPositionSpaceRequest()
-    }
-    
-    response = NewSearchPositionSpaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchPositionSpaceWithContext(context.Background(), request)
 }
 
 // SearchPositionSpace
@@ -5199,6 +5118,11 @@ func (c *Client) SearchPositionSpaceWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSearchPositionSpaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchPositionSpace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchPositionSpaceResponse()
@@ -5232,13 +5156,7 @@ func NewSearchStudioProductResponse() (response *SearchStudioProductResponse) {
 //  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchStudioProduct(request *SearchStudioProductRequest) (response *SearchStudioProductResponse, err error) {
-    if request == nil {
-        request = NewSearchStudioProductRequest()
-    }
-    
-    response = NewSearchStudioProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchStudioProductWithContext(context.Background(), request)
 }
 
 // SearchStudioProduct
@@ -5253,6 +5171,11 @@ func (c *Client) SearchStudioProductWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSearchStudioProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchStudioProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchStudioProductResponse()
@@ -5286,13 +5209,7 @@ func NewSearchTopicRuleResponse() (response *SearchTopicRuleResponse) {
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchTopicRule(request *SearchTopicRuleRequest) (response *SearchTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewSearchTopicRuleRequest()
-    }
-    
-    response = NewSearchTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchTopicRuleWithContext(context.Background(), request)
 }
 
 // SearchTopicRule
@@ -5307,6 +5224,11 @@ func (c *Client) SearchTopicRuleWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchTopicRuleResponse()
@@ -5342,13 +5264,7 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
-    if request == nil {
-        request = NewUnbindDevicesRequest()
-    }
-    
-    response = NewUnbindDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindDevicesWithContext(context.Background(), request)
 }
 
 // UnbindDevices
@@ -5365,6 +5281,11 @@ func (c *Client) UnbindDevicesWithContext(ctx context.Context, request *UnbindDe
     if request == nil {
         request = NewUnbindDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindDevicesResponse()
@@ -5401,13 +5322,7 @@ func NewUnbindProductsResponse() (response *UnbindProductsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_EXISTBINDEDDEVICESUNDERGATEWAYPRODUCT = "UnsupportedOperation.ExistBindedDevicesUnderGatewayProduct"
 func (c *Client) UnbindProducts(request *UnbindProductsRequest) (response *UnbindProductsResponse, err error) {
-    if request == nil {
-        request = NewUnbindProductsRequest()
-    }
-    
-    response = NewUnbindProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindProductsWithContext(context.Background(), request)
 }
 
 // UnbindProducts
@@ -5425,6 +5340,11 @@ func (c *Client) UnbindProductsWithContext(ctx context.Context, request *UnbindP
     if request == nil {
         request = NewUnbindProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindProductsResponse()
@@ -5464,13 +5384,7 @@ func NewUpdateDevicesEnableStateResponse() (response *UpdateDevicesEnableStateRe
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateRequest) (response *UpdateDevicesEnableStateResponse, err error) {
-    if request == nil {
-        request = NewUpdateDevicesEnableStateRequest()
-    }
-    
-    response = NewUpdateDevicesEnableStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDevicesEnableStateWithContext(context.Background(), request)
 }
 
 // UpdateDevicesEnableState
@@ -5491,6 +5405,11 @@ func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDevicesEnableState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDevicesEnableStateResponse()
@@ -5532,13 +5451,7 @@ func NewUpdateFirmwareResponse() (response *UpdateFirmwareResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) UpdateFirmware(request *UpdateFirmwareRequest) (response *UpdateFirmwareResponse, err error) {
-    if request == nil {
-        request = NewUpdateFirmwareRequest()
-    }
-    
-    response = NewUpdateFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateFirmwareWithContext(context.Background(), request)
 }
 
 // UpdateFirmware
@@ -5561,6 +5474,11 @@ func (c *Client) UpdateFirmwareWithContext(ctx context.Context, request *UpdateF
     if request == nil {
         request = NewUpdateFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateFirmwareResponse()
@@ -5597,13 +5515,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
-    if request == nil {
-        request = NewUploadFirmwareRequest()
-    }
-    
-    response = NewUploadFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFirmwareWithContext(context.Background(), request)
 }
 
 // UploadFirmware
@@ -5621,6 +5533,11 @@ func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadF
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFirmwareResponse()

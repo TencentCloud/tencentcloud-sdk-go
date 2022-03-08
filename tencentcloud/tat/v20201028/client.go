@@ -16,6 +16,7 @@ package v20201028
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,13 +87,7 @@ func NewCancelInvocationResponse() (response *CancelInvocationResponse) {
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CancelInvocation(request *CancelInvocationRequest) (response *CancelInvocationResponse, err error) {
-    if request == nil {
-        request = NewCancelInvocationRequest()
-    }
-    
-    response = NewCancelInvocationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelInvocationWithContext(context.Background(), request)
 }
 
 // CancelInvocation
@@ -123,6 +118,11 @@ func (c *Client) CancelInvocationWithContext(ctx context.Context, request *Cance
     if request == nil {
         request = NewCancelInvocationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelInvocation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelInvocationResponse()
@@ -177,13 +177,7 @@ func NewCreateCommandResponse() (response *CreateCommandResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateCommandResponse, err error) {
-    if request == nil {
-        request = NewCreateCommandRequest()
-    }
-    
-    response = NewCreateCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCommandWithContext(context.Background(), request)
 }
 
 // CreateCommand
@@ -219,6 +213,11 @@ func (c *Client) CreateCommandWithContext(ctx context.Context, request *CreateCo
     if request == nil {
         request = NewCreateCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCommandResponse()
@@ -257,13 +256,7 @@ func NewCreateInvokerResponse() (response *CreateInvokerResponse) {
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) CreateInvoker(request *CreateInvokerRequest) (response *CreateInvokerResponse, err error) {
-    if request == nil {
-        request = NewCreateInvokerRequest()
-    }
-    
-    response = NewCreateInvokerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInvokerWithContext(context.Background(), request)
 }
 
 // CreateInvoker
@@ -283,6 +276,11 @@ func (c *Client) CreateInvokerWithContext(ctx context.Context, request *CreateIn
     if request == nil {
         request = NewCreateInvokerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInvoker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInvokerResponse()
@@ -324,13 +322,7 @@ func NewDeleteCommandResponse() (response *DeleteCommandResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DeleteCommand(request *DeleteCommandRequest) (response *DeleteCommandResponse, err error) {
-    if request == nil {
-        request = NewDeleteCommandRequest()
-    }
-    
-    response = NewDeleteCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCommandWithContext(context.Background(), request)
 }
 
 // DeleteCommand
@@ -353,6 +345,11 @@ func (c *Client) DeleteCommandWithContext(ctx context.Context, request *DeleteCo
     if request == nil {
         request = NewDeleteCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCommandResponse()
@@ -384,13 +381,7 @@ func NewDeleteInvokerResponse() (response *DeleteInvokerResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
-    if request == nil {
-        request = NewDeleteInvokerRequest()
-    }
-    
-    response = NewDeleteInvokerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInvokerWithContext(context.Background(), request)
 }
 
 // DeleteInvoker
@@ -403,6 +394,11 @@ func (c *Client) DeleteInvokerWithContext(ctx context.Context, request *DeleteIn
     if request == nil {
         request = NewDeleteInvokerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInvoker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInvokerResponse()
@@ -443,13 +439,7 @@ func NewDescribeAutomationAgentStatusResponse() (response *DescribeAutomationAge
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DescribeAutomationAgentStatus(request *DescribeAutomationAgentStatusRequest) (response *DescribeAutomationAgentStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutomationAgentStatusRequest()
-    }
-    
-    response = NewDescribeAutomationAgentStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutomationAgentStatusWithContext(context.Background(), request)
 }
 
 // DescribeAutomationAgentStatus
@@ -471,6 +461,11 @@ func (c *Client) DescribeAutomationAgentStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAutomationAgentStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutomationAgentStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutomationAgentStatusResponse()
@@ -510,13 +505,7 @@ func NewDescribeCommandsResponse() (response *DescribeCommandsResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DescribeCommands(request *DescribeCommandsRequest) (response *DescribeCommandsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCommandsRequest()
-    }
-    
-    response = NewDescribeCommandsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCommandsWithContext(context.Background(), request)
 }
 
 // DescribeCommands
@@ -537,6 +526,11 @@ func (c *Client) DescribeCommandsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCommandsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCommands require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCommandsResponse()
@@ -579,13 +573,7 @@ func NewDescribeInvocationTasksResponse() (response *DescribeInvocationTasksResp
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DescribeInvocationTasks(request *DescribeInvocationTasksRequest) (response *DescribeInvocationTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeInvocationTasksRequest()
-    }
-    
-    response = NewDescribeInvocationTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInvocationTasksWithContext(context.Background(), request)
 }
 
 // DescribeInvocationTasks
@@ -609,6 +597,11 @@ func (c *Client) DescribeInvocationTasksWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInvocationTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInvocationTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInvocationTasksResponse()
@@ -648,13 +641,7 @@ func NewDescribeInvocationsResponse() (response *DescribeInvocationsResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DescribeInvocations(request *DescribeInvocationsRequest) (response *DescribeInvocationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInvocationsRequest()
-    }
-    
-    response = NewDescribeInvocationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInvocationsWithContext(context.Background(), request)
 }
 
 // DescribeInvocations
@@ -675,6 +662,11 @@ func (c *Client) DescribeInvocationsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeInvocationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInvocations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInvocationsResponse()
@@ -707,13 +699,7 @@ func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInvokerRecordsRequest()
-    }
-    
-    response = NewDescribeInvokerRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInvokerRecordsWithContext(context.Background(), request)
 }
 
 // DescribeInvokerRecords
@@ -727,6 +713,11 @@ func (c *Client) DescribeInvokerRecordsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInvokerRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInvokerRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInvokerRecordsResponse()
@@ -761,13 +752,7 @@ func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
-    if request == nil {
-        request = NewDescribeInvokersRequest()
-    }
-    
-    response = NewDescribeInvokersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInvokersWithContext(context.Background(), request)
 }
 
 // DescribeInvokers
@@ -783,6 +768,11 @@ func (c *Client) DescribeInvokersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeInvokersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInvokers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInvokersResponse()
@@ -819,13 +809,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionsRequest()
-    }
-    
-    response = NewDescribeRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionsWithContext(context.Background(), request)
 }
 
 // DescribeRegions
@@ -843,6 +827,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
@@ -874,13 +863,7 @@ func NewDisableInvokerResponse() (response *DisableInvokerResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *DisableInvokerResponse, err error) {
-    if request == nil {
-        request = NewDisableInvokerRequest()
-    }
-    
-    response = NewDisableInvokerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableInvokerWithContext(context.Background(), request)
 }
 
 // DisableInvoker
@@ -893,6 +876,11 @@ func (c *Client) DisableInvokerWithContext(ctx context.Context, request *Disable
     if request == nil {
         request = NewDisableInvokerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableInvoker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableInvokerResponse()
@@ -925,13 +913,7 @@ func NewEnableInvokerResponse() (response *EnableInvokerResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
-    if request == nil {
-        request = NewEnableInvokerRequest()
-    }
-    
-    response = NewEnableInvokerResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableInvokerWithContext(context.Background(), request)
 }
 
 // EnableInvoker
@@ -945,6 +927,11 @@ func (c *Client) EnableInvokerWithContext(ctx context.Context, request *EnableIn
     if request == nil {
         request = NewEnableInvokerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableInvoker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableInvokerResponse()
@@ -1015,13 +1002,7 @@ func NewInvokeCommandResponse() (response *InvokeCommandResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) InvokeCommand(request *InvokeCommandRequest) (response *InvokeCommandResponse, err error) {
-    if request == nil {
-        request = NewInvokeCommandRequest()
-    }
-    
-    response = NewInvokeCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvokeCommandWithContext(context.Background(), request)
 }
 
 // InvokeCommand
@@ -1073,6 +1054,11 @@ func (c *Client) InvokeCommandWithContext(ctx context.Context, request *InvokeCo
     if request == nil {
         request = NewInvokeCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvokeCommandResponse()
@@ -1125,13 +1111,7 @@ func NewModifyCommandResponse() (response *ModifyCommandResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) ModifyCommand(request *ModifyCommandRequest) (response *ModifyCommandResponse, err error) {
-    if request == nil {
-        request = NewModifyCommandRequest()
-    }
-    
-    response = NewModifyCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCommandWithContext(context.Background(), request)
 }
 
 // ModifyCommand
@@ -1165,6 +1145,11 @@ func (c *Client) ModifyCommandWithContext(ctx context.Context, request *ModifyCo
     if request == nil {
         request = NewModifyCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCommandResponse()
@@ -1203,13 +1188,7 @@ func NewModifyInvokerResponse() (response *ModifyInvokerResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
 func (c *Client) ModifyInvoker(request *ModifyInvokerRequest) (response *ModifyInvokerResponse, err error) {
-    if request == nil {
-        request = NewModifyInvokerRequest()
-    }
-    
-    response = NewModifyInvokerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInvokerWithContext(context.Background(), request)
 }
 
 // ModifyInvoker
@@ -1229,6 +1208,11 @@ func (c *Client) ModifyInvokerWithContext(ctx context.Context, request *ModifyIn
     if request == nil {
         request = NewModifyInvokerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInvoker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInvokerResponse()
@@ -1277,13 +1261,7 @@ func NewPreviewReplacedCommandContentResponse() (response *PreviewReplacedComman
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) PreviewReplacedCommandContent(request *PreviewReplacedCommandContentRequest) (response *PreviewReplacedCommandContentResponse, err error) {
-    if request == nil {
-        request = NewPreviewReplacedCommandContentRequest()
-    }
-    
-    response = NewPreviewReplacedCommandContentResponse()
-    err = c.Send(request, response)
-    return
+    return c.PreviewReplacedCommandContentWithContext(context.Background(), request)
 }
 
 // PreviewReplacedCommandContent
@@ -1313,6 +1291,11 @@ func (c *Client) PreviewReplacedCommandContentWithContext(ctx context.Context, r
     if request == nil {
         request = NewPreviewReplacedCommandContentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewReplacedCommandContent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPreviewReplacedCommandContentResponse()
@@ -1389,13 +1372,7 @@ func NewRunCommandResponse() (response *RunCommandResponse) {
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 func (c *Client) RunCommand(request *RunCommandRequest) (response *RunCommandResponse, err error) {
-    if request == nil {
-        request = NewRunCommandRequest()
-    }
-    
-    response = NewRunCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunCommandWithContext(context.Background(), request)
 }
 
 // RunCommand
@@ -1453,6 +1430,11 @@ func (c *Client) RunCommandWithContext(ctx context.Context, request *RunCommandR
     if request == nil {
         request = NewRunCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunCommandResponse()

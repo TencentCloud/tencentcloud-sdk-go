@@ -16,6 +16,7 @@ package v20210526
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -81,13 +82,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (response *CreateConsoleLoginUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateConsoleLoginUrlRequest()
-    }
-    
-    response = NewCreateConsoleLoginUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateConsoleLoginUrlWithContext(context.Background(), request)
 }
 
 // CreateConsoleLoginUrl
@@ -113,6 +108,11 @@ func (c *Client) CreateConsoleLoginUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateConsoleLoginUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsoleLoginUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateConsoleLoginUrlResponse()
@@ -161,13 +161,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) (response *CreateFlowsByTemplatesResponse, err error) {
-    if request == nil {
-        request = NewCreateFlowsByTemplatesRequest()
-    }
-    
-    response = NewCreateFlowsByTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFlowsByTemplatesWithContext(context.Background(), request)
 }
 
 // CreateFlowsByTemplates
@@ -197,6 +191,11 @@ func (c *Client) CreateFlowsByTemplatesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateFlowsByTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowsByTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFlowsByTemplatesResponse()
@@ -241,13 +240,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *CreateSignUrlsResponse, err error) {
-    if request == nil {
-        request = NewCreateSignUrlsRequest()
-    }
-    
-    response = NewCreateSignUrlsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSignUrlsWithContext(context.Background(), request)
 }
 
 // CreateSignUrls
@@ -273,6 +266,11 @@ func (c *Client) CreateSignUrlsWithContext(ctx context.Context, request *CreateS
     if request == nil {
         request = NewCreateSignUrlsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSignUrls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSignUrlsResponse()
@@ -311,13 +309,7 @@ func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) (response *DescribeFlowDetailInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowDetailInfoRequest()
-    }
-    
-    response = NewDescribeFlowDetailInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowDetailInfoWithContext(context.Background(), request)
 }
 
 // DescribeFlowDetailInfo
@@ -337,6 +329,11 @@ func (c *Client) DescribeFlowDetailInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeFlowDetailInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowDetailInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowDetailInfoResponse()
@@ -381,13 +378,7 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlowsRequest) (response *DescribeResourceUrlsByFlowsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceUrlsByFlowsRequest()
-    }
-    
-    response = NewDescribeResourceUrlsByFlowsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceUrlsByFlowsWithContext(context.Background(), request)
 }
 
 // DescribeResourceUrlsByFlows
@@ -413,6 +404,11 @@ func (c *Client) DescribeResourceUrlsByFlowsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourceUrlsByFlowsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceUrlsByFlows require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceUrlsByFlowsResponse()
@@ -456,13 +452,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response *DescribeTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTemplatesRequest()
-    }
-    
-    response = NewDescribeTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeTemplates
@@ -487,6 +477,11 @@ func (c *Client) DescribeTemplatesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTemplatesResponse()
@@ -531,13 +526,7 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *DescribeUsageResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsageRequest()
-    }
-    
-    response = NewDescribeUsageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsageWithContext(context.Background(), request)
 }
 
 // DescribeUsage
@@ -563,6 +552,11 @@ func (c *Client) DescribeUsageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeUsageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsageResponse()
@@ -607,13 +601,7 @@ func NewGetDownloadFlowUrlResponse() (response *GetDownloadFlowUrlResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetDownloadFlowUrl(request *GetDownloadFlowUrlRequest) (response *GetDownloadFlowUrlResponse, err error) {
-    if request == nil {
-        request = NewGetDownloadFlowUrlRequest()
-    }
-    
-    response = NewGetDownloadFlowUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDownloadFlowUrlWithContext(context.Background(), request)
 }
 
 // GetDownloadFlowUrl
@@ -639,6 +627,11 @@ func (c *Client) GetDownloadFlowUrlWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetDownloadFlowUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDownloadFlowUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDownloadFlowUrlResponse()
@@ -698,13 +691,7 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) (response *OperateChannelTemplateResponse, err error) {
-    if request == nil {
-        request = NewOperateChannelTemplateRequest()
-    }
-    
-    response = NewOperateChannelTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.OperateChannelTemplateWithContext(context.Background(), request)
 }
 
 // OperateChannelTemplate
@@ -745,6 +732,11 @@ func (c *Client) OperateChannelTemplateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewOperateChannelTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateChannelTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOperateChannelTemplateResponse()
@@ -788,13 +780,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFlowsResponse, err error) {
-    if request == nil {
-        request = NewPrepareFlowsRequest()
-    }
-    
-    response = NewPrepareFlowsResponse()
-    err = c.Send(request, response)
-    return
+    return c.PrepareFlowsWithContext(context.Background(), request)
 }
 
 // PrepareFlows
@@ -819,6 +805,11 @@ func (c *Client) PrepareFlowsWithContext(ctx context.Context, request *PrepareFl
     if request == nil {
         request = NewPrepareFlowsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PrepareFlows require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPrepareFlowsResponse()
@@ -861,13 +852,7 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SyncProxyOrganization(request *SyncProxyOrganizationRequest) (response *SyncProxyOrganizationResponse, err error) {
-    if request == nil {
-        request = NewSyncProxyOrganizationRequest()
-    }
-    
-    response = NewSyncProxyOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncProxyOrganizationWithContext(context.Background(), request)
 }
 
 // SyncProxyOrganization
@@ -891,6 +876,11 @@ func (c *Client) SyncProxyOrganizationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSyncProxyOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncProxyOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncProxyOrganizationResponse()
@@ -941,13 +931,7 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOperatorsRequest) (response *SyncProxyOrganizationOperatorsResponse, err error) {
-    if request == nil {
-        request = NewSyncProxyOrganizationOperatorsRequest()
-    }
-    
-    response = NewSyncProxyOrganizationOperatorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncProxyOrganizationOperatorsWithContext(context.Background(), request)
 }
 
 // SyncProxyOrganizationOperators
@@ -979,6 +963,11 @@ func (c *Client) SyncProxyOrganizationOperatorsWithContext(ctx context.Context, 
     if request == nil {
         request = NewSyncProxyOrganizationOperatorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncProxyOrganizationOperators require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncProxyOrganizationOperatorsResponse()

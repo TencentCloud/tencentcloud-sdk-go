@@ -16,6 +16,7 @@ package v20210331
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewBindOrganizationMemberAuthAccountResponse() (response *BindOrganizationM
 //  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) BindOrganizationMemberAuthAccount(request *BindOrganizationMemberAuthAccountRequest) (response *BindOrganizationMemberAuthAccountResponse, err error) {
-    if request == nil {
-        request = NewBindOrganizationMemberAuthAccountRequest()
-    }
-    
-    response = NewBindOrganizationMemberAuthAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindOrganizationMemberAuthAccountWithContext(context.Background(), request)
 }
 
 // BindOrganizationMemberAuthAccount
@@ -99,6 +94,11 @@ func (c *Client) BindOrganizationMemberAuthAccountWithContext(ctx context.Contex
     if request == nil {
         request = NewBindOrganizationMemberAuthAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindOrganizationMemberAuthAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindOrganizationMemberAuthAccountResponse()
@@ -159,13 +159,7 @@ func NewCreateOrganizationMemberResponse() (response *CreateOrganizationMemberRe
 //  UNSUPPORTEDOPERATION_PAYERARREARSANDNOCREDITACCOUNT = "UnsupportedOperation.PayerArrearsAndNoCreditAccount"
 //  UNSUPPORTEDOPERATION_PAYEREXISTACCOUNTLEVELDISCOUNTINHERIT = "UnsupportedOperation.PayerExistAccountLevelDiscountInherit"
 func (c *Client) CreateOrganizationMember(request *CreateOrganizationMemberRequest) (response *CreateOrganizationMemberResponse, err error) {
-    if request == nil {
-        request = NewCreateOrganizationMemberRequest()
-    }
-    
-    response = NewCreateOrganizationMemberResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrganizationMemberWithContext(context.Background(), request)
 }
 
 // CreateOrganizationMember
@@ -207,6 +201,11 @@ func (c *Client) CreateOrganizationMemberWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateOrganizationMemberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationMember require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrganizationMemberResponse()
@@ -235,23 +234,19 @@ func NewDescribeOrganizationResponse() (response *DescribeOrganizationResponse) 
 // 获取企业组织信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEBILLINGPERMISSIONERR = "FailedOperation.OperateBillingPermissionErr"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DescribeOrganization(request *DescribeOrganizationRequest) (response *DescribeOrganizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeOrganizationRequest()
-    }
-    
-    response = NewDescribeOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOrganizationWithContext(context.Background(), request)
 }
 
 // DescribeOrganization
 // 获取企业组织信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEBILLINGPERMISSIONERR = "FailedOperation.OperateBillingPermissionErr"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
@@ -259,6 +254,11 @@ func (c *Client) DescribeOrganizationWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOrganizationResponse()
@@ -291,13 +291,7 @@ func NewDescribeOrganizationMembersResponse() (response *DescribeOrganizationMem
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DescribeOrganizationMembers(request *DescribeOrganizationMembersRequest) (response *DescribeOrganizationMembersResponse, err error) {
-    if request == nil {
-        request = NewDescribeOrganizationMembersRequest()
-    }
-    
-    response = NewDescribeOrganizationMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOrganizationMembersWithContext(context.Background(), request)
 }
 
 // DescribeOrganizationMembers
@@ -311,6 +305,11 @@ func (c *Client) DescribeOrganizationMembersWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeOrganizationMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOrganizationMembersResponse()

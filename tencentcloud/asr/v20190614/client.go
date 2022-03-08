@@ -16,6 +16,7 @@ package v20190614
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewCloseAsyncRecognitionTaskResponse() (response *CloseAsyncRecognitionTask
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CloseAsyncRecognitionTask(request *CloseAsyncRecognitionTaskRequest) (response *CloseAsyncRecognitionTaskResponse, err error) {
-    if request == nil {
-        request = NewCloseAsyncRecognitionTaskRequest()
-    }
-    
-    response = NewCloseAsyncRecognitionTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseAsyncRecognitionTaskWithContext(context.Background(), request)
 }
 
 // CloseAsyncRecognitionTask
@@ -91,6 +86,11 @@ func (c *Client) CloseAsyncRecognitionTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCloseAsyncRecognitionTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseAsyncRecognitionTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseAsyncRecognitionTaskResponse()
@@ -150,13 +150,7 @@ func NewCreateAsrVocabResponse() (response *CreateAsrVocabResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateAsrVocab(request *CreateAsrVocabRequest) (response *CreateAsrVocabResponse, err error) {
-    if request == nil {
-        request = NewCreateAsrVocabRequest()
-    }
-    
-    response = NewCreateAsrVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAsrVocabWithContext(context.Background(), request)
 }
 
 // CreateAsrVocab
@@ -197,6 +191,11 @@ func (c *Client) CreateAsrVocabWithContext(ctx context.Context, request *CreateA
     if request == nil {
         request = NewCreateAsrVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAsrVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAsrVocabResponse()
@@ -245,13 +244,7 @@ func NewCreateAsyncRecognitionTaskResponse() (response *CreateAsyncRecognitionTa
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateAsyncRecognitionTask(request *CreateAsyncRecognitionTaskRequest) (response *CreateAsyncRecognitionTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAsyncRecognitionTaskRequest()
-    }
-    
-    response = NewCreateAsyncRecognitionTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAsyncRecognitionTaskWithContext(context.Background(), request)
 }
 
 // CreateAsyncRecognitionTask
@@ -281,6 +274,11 @@ func (c *Client) CreateAsyncRecognitionTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAsyncRecognitionTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAsyncRecognitionTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAsyncRecognitionTaskResponse()
@@ -319,13 +317,7 @@ func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_CUSTOMIZATIONFULL = "LimitExceeded.CustomizationFull"
 func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomizationRequest()
-    }
-    
-    response = NewCreateCustomizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomizationWithContext(context.Background(), request)
 }
 
 // CreateCustomization
@@ -345,6 +337,11 @@ func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCustomizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomizationResponse()
@@ -408,13 +405,7 @@ func NewCreateRecTaskResponse() (response *CreateRecTaskResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateRecTask(request *CreateRecTaskRequest) (response *CreateRecTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateRecTaskRequest()
-    }
-    
-    response = NewCreateRecTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecTaskWithContext(context.Background(), request)
 }
 
 // CreateRecTask
@@ -459,6 +450,11 @@ func (c *Client) CreateRecTaskWithContext(ctx context.Context, request *CreateRe
     if request == nil {
         request = NewCreateRecTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecTaskResponse()
@@ -500,13 +496,7 @@ func NewDeleteAsrVocabResponse() (response *DeleteAsrVocabResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHT = "InvalidParameterValue.InvalidWordWeight"
 //  INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = "InvalidParameterValue.InvalidWordWeightStr"
 func (c *Client) DeleteAsrVocab(request *DeleteAsrVocabRequest) (response *DeleteAsrVocabResponse, err error) {
-    if request == nil {
-        request = NewDeleteAsrVocabRequest()
-    }
-    
-    response = NewDeleteAsrVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAsrVocabWithContext(context.Background(), request)
 }
 
 // DeleteAsrVocab
@@ -529,6 +519,11 @@ func (c *Client) DeleteAsrVocabWithContext(ctx context.Context, request *DeleteA
     if request == nil {
         request = NewDeleteAsrVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAsrVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAsrVocabResponse()
@@ -568,13 +563,7 @@ func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
 //  INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomizationRequest()
-    }
-    
-    response = NewDeleteCustomizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomizationWithContext(context.Background(), request)
 }
 
 // DeleteCustomization
@@ -595,6 +584,11 @@ func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCustomizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomizationResponse()
@@ -627,13 +621,7 @@ func NewDescribeAsyncRecognitionTasksResponse() (response *DescribeAsyncRecognit
 // 可能返回的错误码:
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 func (c *Client) DescribeAsyncRecognitionTasks(request *DescribeAsyncRecognitionTasksRequest) (response *DescribeAsyncRecognitionTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeAsyncRecognitionTasksRequest()
-    }
-    
-    response = NewDescribeAsyncRecognitionTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAsyncRecognitionTasksWithContext(context.Background(), request)
 }
 
 // DescribeAsyncRecognitionTasks
@@ -647,6 +635,11 @@ func (c *Client) DescribeAsyncRecognitionTasksWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAsyncRecognitionTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsyncRecognitionTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAsyncRecognitionTasksResponse()
@@ -696,13 +689,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStatusRequest()
-    }
-    
-    response = NewDescribeTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTaskStatus
@@ -733,6 +720,11 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStatusResponse()
@@ -769,13 +761,7 @@ func NewDownloadAsrVocabResponse() (response *DownloadAsrVocabResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
 func (c *Client) DownloadAsrVocab(request *DownloadAsrVocabRequest) (response *DownloadAsrVocabResponse, err error) {
-    if request == nil {
-        request = NewDownloadAsrVocabRequest()
-    }
-    
-    response = NewDownloadAsrVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadAsrVocabWithContext(context.Background(), request)
 }
 
 // DownloadAsrVocab
@@ -793,6 +779,11 @@ func (c *Client) DownloadAsrVocabWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadAsrVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadAsrVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadAsrVocabResponse()
@@ -830,13 +821,7 @@ func NewDownloadCustomizationResponse() (response *DownloadCustomizationResponse
 //  INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DownloadCustomization(request *DownloadCustomizationRequest) (response *DownloadCustomizationResponse, err error) {
-    if request == nil {
-        request = NewDownloadCustomizationRequest()
-    }
-    
-    response = NewDownloadCustomizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadCustomizationWithContext(context.Background(), request)
 }
 
 // DownloadCustomization
@@ -855,6 +840,11 @@ func (c *Client) DownloadCustomizationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDownloadCustomizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadCustomization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadCustomizationResponse()
@@ -889,13 +879,7 @@ func NewGetAsrVocabResponse() (response *GetAsrVocabResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
 func (c *Client) GetAsrVocab(request *GetAsrVocabRequest) (response *GetAsrVocabResponse, err error) {
-    if request == nil {
-        request = NewGetAsrVocabRequest()
-    }
-    
-    response = NewGetAsrVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAsrVocabWithContext(context.Background(), request)
 }
 
 // GetAsrVocab
@@ -911,6 +895,11 @@ func (c *Client) GetAsrVocabWithContext(ctx context.Context, request *GetAsrVoca
     if request == nil {
         request = NewGetAsrVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAsrVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAsrVocabResponse()
@@ -949,13 +938,7 @@ func NewGetAsrVocabListResponse() (response *GetAsrVocabListResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetAsrVocabList(request *GetAsrVocabListRequest) (response *GetAsrVocabListResponse, err error) {
-    if request == nil {
-        request = NewGetAsrVocabListRequest()
-    }
-    
-    response = NewGetAsrVocabListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAsrVocabListWithContext(context.Background(), request)
 }
 
 // GetAsrVocabList
@@ -975,6 +958,11 @@ func (c *Client) GetAsrVocabListWithContext(ctx context.Context, request *GetAsr
     if request == nil {
         request = NewGetAsrVocabListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAsrVocabList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAsrVocabListResponse()
@@ -1008,13 +996,7 @@ func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
-    if request == nil {
-        request = NewGetCustomizationListRequest()
-    }
-    
-    response = NewGetCustomizationListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCustomizationListWithContext(context.Background(), request)
 }
 
 // GetCustomizationList
@@ -1029,6 +1011,11 @@ func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetCustomizationListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCustomizationList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCustomizationListResponse()
@@ -1067,13 +1054,7 @@ func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
 func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
-    if request == nil {
-        request = NewModifyCustomizationRequest()
-    }
-    
-    response = NewModifyCustomizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCustomizationWithContext(context.Background(), request)
 }
 
 // ModifyCustomization
@@ -1093,6 +1074,11 @@ func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyCustomizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCustomizationResponse()
@@ -1131,13 +1117,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 //  INVALIDPARAMETERVALUE_TOSTATE = "InvalidParameterValue.ToState"
 //  LIMITEXCEEDED_ONLINEFULL = "LimitExceeded.OnlineFull"
 func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
-    if request == nil {
-        request = NewModifyCustomizationStateRequest()
-    }
-    
-    response = NewModifyCustomizationStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCustomizationStateWithContext(context.Background(), request)
 }
 
 // ModifyCustomizationState
@@ -1157,6 +1137,11 @@ func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCustomizationStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomizationState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCustomizationStateResponse()
@@ -1216,13 +1201,7 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
 //  INVALIDPARAMETERVALUE_ERRORINVALIDVOICEDATA = "InvalidParameterValue.ErrorInvalidVoicedata"
 //  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
 func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (response *SentenceRecognitionResponse, err error) {
-    if request == nil {
-        request = NewSentenceRecognitionRequest()
-    }
-    
-    response = NewSentenceRecognitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.SentenceRecognitionWithContext(context.Background(), request)
 }
 
 // SentenceRecognition
@@ -1263,6 +1242,11 @@ func (c *Client) SentenceRecognitionWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSentenceRecognitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SentenceRecognition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSentenceRecognitionResponse()
@@ -1300,13 +1284,7 @@ func NewSetVocabStateResponse() (response *SetVocabStateResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDVOCABID = "InvalidParameterValue.InvalidVocabId"
 //  INVALIDPARAMETERVALUE_INVALIDVOCABSTATE = "InvalidParameterValue.InvalidVocabState"
 func (c *Client) SetVocabState(request *SetVocabStateRequest) (response *SetVocabStateResponse, err error) {
-    if request == nil {
-        request = NewSetVocabStateRequest()
-    }
-    
-    response = NewSetVocabStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetVocabStateWithContext(context.Background(), request)
 }
 
 // SetVocabState
@@ -1325,6 +1303,11 @@ func (c *Client) SetVocabStateWithContext(ctx context.Context, request *SetVocab
     if request == nil {
         request = NewSetVocabStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVocabState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetVocabStateResponse()
@@ -1367,13 +1350,7 @@ func NewUpdateAsrVocabResponse() (response *UpdateAsrVocabResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) UpdateAsrVocab(request *UpdateAsrVocabRequest) (response *UpdateAsrVocabResponse, err error) {
-    if request == nil {
-        request = NewUpdateAsrVocabRequest()
-    }
-    
-    response = NewUpdateAsrVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAsrVocabWithContext(context.Background(), request)
 }
 
 // UpdateAsrVocab
@@ -1397,6 +1374,11 @@ func (c *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateA
     if request == nil {
         request = NewUpdateAsrVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAsrVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAsrVocabResponse()

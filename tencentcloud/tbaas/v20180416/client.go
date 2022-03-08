@@ -16,6 +16,7 @@ package v20180416
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -88,13 +89,7 @@ func NewApplyUserCertResponse() (response *ApplyUserCertResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) ApplyUserCert(request *ApplyUserCertRequest) (response *ApplyUserCertResponse, err error) {
-    if request == nil {
-        request = NewApplyUserCertRequest()
-    }
-    
-    response = NewApplyUserCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyUserCertWithContext(context.Background(), request)
 }
 
 // ApplyUserCert
@@ -127,6 +122,11 @@ func (c *Client) ApplyUserCertWithContext(ctx context.Context, request *ApplyUse
     if request == nil {
         request = NewApplyUserCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyUserCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyUserCertResponse()
@@ -198,13 +198,7 @@ func NewBlockByNumberHandlerResponse() (response *BlockByNumberHandlerResponse) 
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) BlockByNumberHandler(request *BlockByNumberHandlerRequest) (response *BlockByNumberHandlerResponse, err error) {
-    if request == nil {
-        request = NewBlockByNumberHandlerRequest()
-    }
-    
-    response = NewBlockByNumberHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.BlockByNumberHandlerWithContext(context.Background(), request)
 }
 
 // BlockByNumberHandler
@@ -257,6 +251,11 @@ func (c *Client) BlockByNumberHandlerWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBlockByNumberHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BlockByNumberHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBlockByNumberHandlerResponse()
@@ -306,13 +305,7 @@ func NewCreateChaincodeAndInstallForUserResponse() (response *CreateChaincodeAnd
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndInstallForUserRequest) (response *CreateChaincodeAndInstallForUserResponse, err error) {
-    if request == nil {
-        request = NewCreateChaincodeAndInstallForUserRequest()
-    }
-    
-    response = NewCreateChaincodeAndInstallForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateChaincodeAndInstallForUserWithContext(context.Background(), request)
 }
 
 // CreateChaincodeAndInstallForUser
@@ -343,6 +336,11 @@ func (c *Client) CreateChaincodeAndInstallForUserWithContext(ctx context.Context
     if request == nil {
         request = NewCreateChaincodeAndInstallForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChaincodeAndInstallForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateChaincodeAndInstallForUserResponse()
@@ -413,13 +411,7 @@ func NewDeployDynamicBcosContractResponse() (response *DeployDynamicBcosContract
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) DeployDynamicBcosContract(request *DeployDynamicBcosContractRequest) (response *DeployDynamicBcosContractResponse, err error) {
-    if request == nil {
-        request = NewDeployDynamicBcosContractRequest()
-    }
-    
-    response = NewDeployDynamicBcosContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeployDynamicBcosContractWithContext(context.Background(), request)
 }
 
 // DeployDynamicBcosContract
@@ -471,6 +463,11 @@ func (c *Client) DeployDynamicBcosContractWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeployDynamicBcosContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployDynamicBcosContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeployDynamicBcosContractResponse()
@@ -545,13 +542,7 @@ func NewDeployDynamicContractHandlerResponse() (response *DeployDynamicContractH
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) DeployDynamicContractHandler(request *DeployDynamicContractHandlerRequest) (response *DeployDynamicContractHandlerResponse, err error) {
-    if request == nil {
-        request = NewDeployDynamicContractHandlerRequest()
-    }
-    
-    response = NewDeployDynamicContractHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeployDynamicContractHandlerWithContext(context.Background(), request)
 }
 
 // DeployDynamicContractHandler
@@ -607,6 +598,11 @@ func (c *Client) DeployDynamicContractHandlerWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeployDynamicContractHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployDynamicContractHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeployDynamicContractHandlerResponse()
@@ -657,13 +653,7 @@ func NewDownloadUserCertResponse() (response *DownloadUserCertResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) DownloadUserCert(request *DownloadUserCertRequest) (response *DownloadUserCertResponse, err error) {
-    if request == nil {
-        request = NewDownloadUserCertRequest()
-    }
-    
-    response = NewDownloadUserCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadUserCertWithContext(context.Background(), request)
 }
 
 // DownloadUserCert
@@ -695,6 +685,11 @@ func (c *Client) DownloadUserCertWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadUserCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadUserCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadUserCertResponse()
@@ -762,13 +757,7 @@ func NewGetBcosBlockByNumberResponse() (response *GetBcosBlockByNumberResponse) 
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosBlockByNumber(request *GetBcosBlockByNumberRequest) (response *GetBcosBlockByNumberResponse, err error) {
-    if request == nil {
-        request = NewGetBcosBlockByNumberRequest()
-    }
-    
-    response = NewGetBcosBlockByNumberResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBcosBlockByNumberWithContext(context.Background(), request)
 }
 
 // GetBcosBlockByNumber
@@ -817,6 +806,11 @@ func (c *Client) GetBcosBlockByNumberWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetBcosBlockByNumberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBcosBlockByNumber require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBcosBlockByNumberResponse()
@@ -885,13 +879,7 @@ func NewGetBcosBlockListResponse() (response *GetBcosBlockListResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosBlockList(request *GetBcosBlockListRequest) (response *GetBcosBlockListResponse, err error) {
-    if request == nil {
-        request = NewGetBcosBlockListRequest()
-    }
-    
-    response = NewGetBcosBlockListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBcosBlockListWithContext(context.Background(), request)
 }
 
 // GetBcosBlockList
@@ -941,6 +929,11 @@ func (c *Client) GetBcosBlockListWithContext(ctx context.Context, request *GetBc
     if request == nil {
         request = NewGetBcosBlockListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBcosBlockList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBcosBlockListResponse()
@@ -1010,13 +1003,7 @@ func NewGetBcosTransByHashResponse() (response *GetBcosTransByHashResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosTransByHash(request *GetBcosTransByHashRequest) (response *GetBcosTransByHashResponse, err error) {
-    if request == nil {
-        request = NewGetBcosTransByHashRequest()
-    }
-    
-    response = NewGetBcosTransByHashResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBcosTransByHashWithContext(context.Background(), request)
 }
 
 // GetBcosTransByHash
@@ -1067,6 +1054,11 @@ func (c *Client) GetBcosTransByHashWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetBcosTransByHashRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBcosTransByHash require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBcosTransByHashResponse()
@@ -1137,13 +1129,7 @@ func NewGetBcosTransListResponse() (response *GetBcosTransListResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBcosTransList(request *GetBcosTransListRequest) (response *GetBcosTransListResponse, err error) {
-    if request == nil {
-        request = NewGetBcosTransListRequest()
-    }
-    
-    response = NewGetBcosTransListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBcosTransListWithContext(context.Background(), request)
 }
 
 // GetBcosTransList
@@ -1195,6 +1181,11 @@ func (c *Client) GetBcosTransListWithContext(ctx context.Context, request *GetBc
     if request == nil {
         request = NewGetBcosTransListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBcosTransList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBcosTransListResponse()
@@ -1237,13 +1228,7 @@ func NewGetBlockListResponse() (response *GetBlockListResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetBlockList(request *GetBlockListRequest) (response *GetBlockListResponse, err error) {
-    if request == nil {
-        request = NewGetBlockListRequest()
-    }
-    
-    response = NewGetBlockListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBlockListWithContext(context.Background(), request)
 }
 
 // GetBlockList
@@ -1267,6 +1252,11 @@ func (c *Client) GetBlockListWithContext(ctx context.Context, request *GetBlockL
     if request == nil {
         request = NewGetBlockListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBlockList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBlockListResponse()
@@ -1338,13 +1328,7 @@ func NewGetBlockListHandlerResponse() (response *GetBlockListHandlerResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetBlockListHandler(request *GetBlockListHandlerRequest) (response *GetBlockListHandlerResponse, err error) {
-    if request == nil {
-        request = NewGetBlockListHandlerRequest()
-    }
-    
-    response = NewGetBlockListHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBlockListHandlerWithContext(context.Background(), request)
 }
 
 // GetBlockListHandler
@@ -1397,6 +1381,11 @@ func (c *Client) GetBlockListHandlerWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetBlockListHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBlockListHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBlockListHandlerResponse()
@@ -1444,13 +1433,7 @@ func NewGetBlockTransactionListForUserResponse() (response *GetBlockTransactionL
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetBlockTransactionListForUser(request *GetBlockTransactionListForUserRequest) (response *GetBlockTransactionListForUserResponse, err error) {
-    if request == nil {
-        request = NewGetBlockTransactionListForUserRequest()
-    }
-    
-    response = NewGetBlockTransactionListForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetBlockTransactionListForUserWithContext(context.Background(), request)
 }
 
 // GetBlockTransactionListForUser
@@ -1479,6 +1462,11 @@ func (c *Client) GetBlockTransactionListForUserWithContext(ctx context.Context, 
     if request == nil {
         request = NewGetBlockTransactionListForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBlockTransactionListForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetBlockTransactionListForUserResponse()
@@ -1528,13 +1516,7 @@ func NewGetChaincodeCompileLogForUserResponse() (response *GetChaincodeCompileLo
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeCompileLogForUser(request *GetChaincodeCompileLogForUserRequest) (response *GetChaincodeCompileLogForUserResponse, err error) {
-    if request == nil {
-        request = NewGetChaincodeCompileLogForUserRequest()
-    }
-    
-    response = NewGetChaincodeCompileLogForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetChaincodeCompileLogForUserWithContext(context.Background(), request)
 }
 
 // GetChaincodeCompileLogForUser
@@ -1565,6 +1547,11 @@ func (c *Client) GetChaincodeCompileLogForUserWithContext(ctx context.Context, r
     if request == nil {
         request = NewGetChaincodeCompileLogForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetChaincodeCompileLogForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetChaincodeCompileLogForUserResponse()
@@ -1614,13 +1601,7 @@ func NewGetChaincodeInitializeResultForUserResponse() (response *GetChaincodeIni
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeInitializeResultForUser(request *GetChaincodeInitializeResultForUserRequest) (response *GetChaincodeInitializeResultForUserResponse, err error) {
-    if request == nil {
-        request = NewGetChaincodeInitializeResultForUserRequest()
-    }
-    
-    response = NewGetChaincodeInitializeResultForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetChaincodeInitializeResultForUserWithContext(context.Background(), request)
 }
 
 // GetChaincodeInitializeResultForUser
@@ -1651,6 +1632,11 @@ func (c *Client) GetChaincodeInitializeResultForUserWithContext(ctx context.Cont
     if request == nil {
         request = NewGetChaincodeInitializeResultForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetChaincodeInitializeResultForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetChaincodeInitializeResultForUserResponse()
@@ -1700,13 +1686,7 @@ func NewGetChaincodeLogForUserResponse() (response *GetChaincodeLogForUserRespon
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChaincodeLogForUser(request *GetChaincodeLogForUserRequest) (response *GetChaincodeLogForUserResponse, err error) {
-    if request == nil {
-        request = NewGetChaincodeLogForUserRequest()
-    }
-    
-    response = NewGetChaincodeLogForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetChaincodeLogForUserWithContext(context.Background(), request)
 }
 
 // GetChaincodeLogForUser
@@ -1737,6 +1717,11 @@ func (c *Client) GetChaincodeLogForUserWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetChaincodeLogForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetChaincodeLogForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetChaincodeLogForUserResponse()
@@ -1786,13 +1771,7 @@ func NewGetChannelListForUserResponse() (response *GetChannelListForUserResponse
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetChannelListForUser(request *GetChannelListForUserRequest) (response *GetChannelListForUserResponse, err error) {
-    if request == nil {
-        request = NewGetChannelListForUserRequest()
-    }
-    
-    response = NewGetChannelListForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetChannelListForUserWithContext(context.Background(), request)
 }
 
 // GetChannelListForUser
@@ -1823,6 +1802,11 @@ func (c *Client) GetChannelListForUserWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetChannelListForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetChannelListForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetChannelListForUserResponse()
@@ -1872,13 +1856,7 @@ func NewGetClusterListForUserResponse() (response *GetClusterListForUserResponse
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetClusterListForUser(request *GetClusterListForUserRequest) (response *GetClusterListForUserResponse, err error) {
-    if request == nil {
-        request = NewGetClusterListForUserRequest()
-    }
-    
-    response = NewGetClusterListForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetClusterListForUserWithContext(context.Background(), request)
 }
 
 // GetClusterListForUser
@@ -1909,6 +1887,11 @@ func (c *Client) GetClusterListForUserWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetClusterListForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetClusterListForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetClusterListForUserResponse()
@@ -1948,13 +1931,7 @@ func NewGetClusterSummaryResponse() (response *GetClusterSummaryResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetClusterSummary(request *GetClusterSummaryRequest) (response *GetClusterSummaryResponse, err error) {
-    if request == nil {
-        request = NewGetClusterSummaryRequest()
-    }
-    
-    response = NewGetClusterSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetClusterSummaryWithContext(context.Background(), request)
 }
 
 // GetClusterSummary
@@ -1975,6 +1952,11 @@ func (c *Client) GetClusterSummaryWithContext(ctx context.Context, request *GetC
     if request == nil {
         request = NewGetClusterSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetClusterSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetClusterSummaryResponse()
@@ -2019,13 +2001,7 @@ func NewGetInvokeTxResponse() (response *GetInvokeTxResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetInvokeTx(request *GetInvokeTxRequest) (response *GetInvokeTxResponse, err error) {
-    if request == nil {
-        request = NewGetInvokeTxRequest()
-    }
-    
-    response = NewGetInvokeTxResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetInvokeTxWithContext(context.Background(), request)
 }
 
 // GetInvokeTx
@@ -2051,6 +2027,11 @@ func (c *Client) GetInvokeTxWithContext(ctx context.Context, request *GetInvokeT
     if request == nil {
         request = NewGetInvokeTxRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetInvokeTx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetInvokeTxResponse()
@@ -2093,13 +2074,7 @@ func NewGetLatesdTransactionListResponse() (response *GetLatesdTransactionListRe
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListRequest) (response *GetLatesdTransactionListResponse, err error) {
-    if request == nil {
-        request = NewGetLatesdTransactionListRequest()
-    }
-    
-    response = NewGetLatesdTransactionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetLatesdTransactionListWithContext(context.Background(), request)
 }
 
 // GetLatesdTransactionList
@@ -2123,6 +2098,11 @@ func (c *Client) GetLatesdTransactionListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetLatesdTransactionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLatesdTransactionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetLatesdTransactionListResponse()
@@ -2172,13 +2152,7 @@ func NewGetPeerLogForUserResponse() (response *GetPeerLogForUserResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) GetPeerLogForUser(request *GetPeerLogForUserRequest) (response *GetPeerLogForUserResponse, err error) {
-    if request == nil {
-        request = NewGetPeerLogForUserRequest()
-    }
-    
-    response = NewGetPeerLogForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPeerLogForUserWithContext(context.Background(), request)
 }
 
 // GetPeerLogForUser
@@ -2209,6 +2183,11 @@ func (c *Client) GetPeerLogForUserWithContext(ctx context.Context, request *GetP
     if request == nil {
         request = NewGetPeerLogForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPeerLogForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPeerLogForUserResponse()
@@ -2280,13 +2259,7 @@ func NewGetTransByHashHandlerResponse() (response *GetTransByHashHandlerResponse
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetTransByHashHandler(request *GetTransByHashHandlerRequest) (response *GetTransByHashHandlerResponse, err error) {
-    if request == nil {
-        request = NewGetTransByHashHandlerRequest()
-    }
-    
-    response = NewGetTransByHashHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTransByHashHandlerWithContext(context.Background(), request)
 }
 
 // GetTransByHashHandler
@@ -2339,6 +2312,11 @@ func (c *Client) GetTransByHashHandlerWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetTransByHashHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTransByHashHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTransByHashHandlerResponse()
@@ -2411,13 +2389,7 @@ func NewGetTransListHandlerResponse() (response *GetTransListHandlerResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) GetTransListHandler(request *GetTransListHandlerRequest) (response *GetTransListHandlerResponse, err error) {
-    if request == nil {
-        request = NewGetTransListHandlerRequest()
-    }
-    
-    response = NewGetTransListHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTransListHandlerWithContext(context.Background(), request)
 }
 
 // GetTransListHandler
@@ -2471,6 +2443,11 @@ func (c *Client) GetTransListHandlerWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetTransListHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTransListHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTransListHandlerResponse()
@@ -2515,13 +2492,7 @@ func NewGetTransactionDetailForUserResponse() (response *GetTransactionDetailFor
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) GetTransactionDetailForUser(request *GetTransactionDetailForUserRequest) (response *GetTransactionDetailForUserResponse, err error) {
-    if request == nil {
-        request = NewGetTransactionDetailForUserRequest()
-    }
-    
-    response = NewGetTransactionDetailForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTransactionDetailForUserWithContext(context.Background(), request)
 }
 
 // GetTransactionDetailForUser
@@ -2547,6 +2518,11 @@ func (c *Client) GetTransactionDetailForUserWithContext(ctx context.Context, req
     if request == nil {
         request = NewGetTransactionDetailForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTransactionDetailForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTransactionDetailForUserResponse()
@@ -2596,13 +2572,7 @@ func NewInitializeChaincodeForUserResponse() (response *InitializeChaincodeForUs
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) InitializeChaincodeForUser(request *InitializeChaincodeForUserRequest) (response *InitializeChaincodeForUserResponse, err error) {
-    if request == nil {
-        request = NewInitializeChaincodeForUserRequest()
-    }
-    
-    response = NewInitializeChaincodeForUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.InitializeChaincodeForUserWithContext(context.Background(), request)
 }
 
 // InitializeChaincodeForUser
@@ -2633,6 +2603,11 @@ func (c *Client) InitializeChaincodeForUserWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInitializeChaincodeForUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InitializeChaincodeForUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInitializeChaincodeForUserResponse()
@@ -2688,13 +2663,7 @@ func NewInvokeResponse() (response *InvokeResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) Invoke(request *InvokeRequest) (response *InvokeResponse, err error) {
-    if request == nil {
-        request = NewInvokeRequest()
-    }
-    
-    response = NewInvokeResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvokeWithContext(context.Background(), request)
 }
 
 // Invoke
@@ -2731,6 +2700,11 @@ func (c *Client) InvokeWithContext(ctx context.Context, request *InvokeRequest) 
     if request == nil {
         request = NewInvokeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Invoke require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvokeResponse()
@@ -2801,13 +2775,7 @@ func NewInvokeBcosTransResponse() (response *InvokeBcosTransResponse) {
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *InvokeBcosTransResponse, err error) {
-    if request == nil {
-        request = NewInvokeBcosTransRequest()
-    }
-    
-    response = NewInvokeBcosTransResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvokeBcosTransWithContext(context.Background(), request)
 }
 
 // InvokeBcosTrans
@@ -2859,6 +2827,11 @@ func (c *Client) InvokeBcosTransWithContext(ctx context.Context, request *Invoke
     if request == nil {
         request = NewInvokeBcosTransRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeBcosTrans require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvokeBcosTransResponse()
@@ -2930,13 +2903,7 @@ func NewInvokeChainMakerContractResponse() (response *InvokeChainMakerContractRe
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) InvokeChainMakerContract(request *InvokeChainMakerContractRequest) (response *InvokeChainMakerContractResponse, err error) {
-    if request == nil {
-        request = NewInvokeChainMakerContractRequest()
-    }
-    
-    response = NewInvokeChainMakerContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvokeChainMakerContractWithContext(context.Background(), request)
 }
 
 // InvokeChainMakerContract
@@ -2989,6 +2956,11 @@ func (c *Client) InvokeChainMakerContractWithContext(ctx context.Context, reques
     if request == nil {
         request = NewInvokeChainMakerContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeChainMakerContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvokeChainMakerContractResponse()
@@ -3042,13 +3014,7 @@ func NewQueryResponse() (response *QueryResponse) {
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
 func (c *Client) Query(request *QueryRequest) (response *QueryResponse, err error) {
-    if request == nil {
-        request = NewQueryRequest()
-    }
-    
-    response = NewQueryResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryWithContext(context.Background(), request)
 }
 
 // Query
@@ -3083,6 +3049,11 @@ func (c *Client) QueryWithContext(ctx context.Context, request *QueryRequest) (r
     if request == nil {
         request = NewQueryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Query require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryResponse()
@@ -3153,13 +3124,7 @@ func NewQueryChainMakerBlockTransactionResponse() (response *QueryChainMakerBloc
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTransactionRequest) (response *QueryChainMakerBlockTransactionResponse, err error) {
-    if request == nil {
-        request = NewQueryChainMakerBlockTransactionRequest()
-    }
-    
-    response = NewQueryChainMakerBlockTransactionResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryChainMakerBlockTransactionWithContext(context.Background(), request)
 }
 
 // QueryChainMakerBlockTransaction
@@ -3211,6 +3176,11 @@ func (c *Client) QueryChainMakerBlockTransactionWithContext(ctx context.Context,
     if request == nil {
         request = NewQueryChainMakerBlockTransactionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerBlockTransaction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryChainMakerBlockTransactionResponse()
@@ -3282,13 +3252,7 @@ func NewQueryChainMakerContractResponse() (response *QueryChainMakerContractResp
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerContract(request *QueryChainMakerContractRequest) (response *QueryChainMakerContractResponse, err error) {
-    if request == nil {
-        request = NewQueryChainMakerContractRequest()
-    }
-    
-    response = NewQueryChainMakerContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryChainMakerContractWithContext(context.Background(), request)
 }
 
 // QueryChainMakerContract
@@ -3341,6 +3305,11 @@ func (c *Client) QueryChainMakerContractWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryChainMakerContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryChainMakerContractResponse()
@@ -3411,13 +3380,7 @@ func NewQueryChainMakerTransactionResponse() (response *QueryChainMakerTransacti
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerTransaction(request *QueryChainMakerTransactionRequest) (response *QueryChainMakerTransactionResponse, err error) {
-    if request == nil {
-        request = NewQueryChainMakerTransactionRequest()
-    }
-    
-    response = NewQueryChainMakerTransactionResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryChainMakerTransactionWithContext(context.Background(), request)
 }
 
 // QueryChainMakerTransaction
@@ -3469,6 +3432,11 @@ func (c *Client) QueryChainMakerTransactionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryChainMakerTransactionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerTransaction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryChainMakerTransactionResponse()
@@ -3541,13 +3509,7 @@ func NewSendTransactionHandlerResponse() (response *SendTransactionHandlerRespon
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) SendTransactionHandler(request *SendTransactionHandlerRequest) (response *SendTransactionHandlerResponse, err error) {
-    if request == nil {
-        request = NewSendTransactionHandlerRequest()
-    }
-    
-    response = NewSendTransactionHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendTransactionHandlerWithContext(context.Background(), request)
 }
 
 // SendTransactionHandler
@@ -3601,6 +3563,11 @@ func (c *Client) SendTransactionHandlerWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSendTransactionHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendTransactionHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendTransactionHandlerResponse()
@@ -3633,13 +3600,7 @@ func NewSrvInvokeResponse() (response *SrvInvokeResponse) {
 //  FAILEDOPERATION_SERVICEFAILED = "FailedOperation.ServiceFailed"
 //  OPERATIONDENIED_NOTOWNER = "OperationDenied.NotOwner"
 func (c *Client) SrvInvoke(request *SrvInvokeRequest) (response *SrvInvokeResponse, err error) {
-    if request == nil {
-        request = NewSrvInvokeRequest()
-    }
-    
-    response = NewSrvInvokeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SrvInvokeWithContext(context.Background(), request)
 }
 
 // SrvInvoke
@@ -3653,6 +3614,11 @@ func (c *Client) SrvInvokeWithContext(ctx context.Context, request *SrvInvokeReq
     if request == nil {
         request = NewSrvInvokeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SrvInvoke require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSrvInvokeResponse()
@@ -3727,13 +3693,7 @@ func NewTransByDynamicContractHandlerResponse() (response *TransByDynamicContrac
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) TransByDynamicContractHandler(request *TransByDynamicContractHandlerRequest) (response *TransByDynamicContractHandlerResponse, err error) {
-    if request == nil {
-        request = NewTransByDynamicContractHandlerRequest()
-    }
-    
-    response = NewTransByDynamicContractHandlerResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransByDynamicContractHandlerWithContext(context.Background(), request)
 }
 
 // TransByDynamicContractHandler
@@ -3789,6 +3749,11 @@ func (c *Client) TransByDynamicContractHandlerWithContext(ctx context.Context, r
     if request == nil {
         request = NewTransByDynamicContractHandlerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransByDynamicContractHandler require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransByDynamicContractHandlerResponse()

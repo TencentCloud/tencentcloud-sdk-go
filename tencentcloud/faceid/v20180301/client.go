@@ -16,6 +16,7 @@ package v20180301
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,13 +77,7 @@ func NewBankCard2EVerificationResponse() (response *BankCard2EVerificationRespon
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) BankCard2EVerification(request *BankCard2EVerificationRequest) (response *BankCard2EVerificationResponse, err error) {
-    if request == nil {
-        request = NewBankCard2EVerificationRequest()
-    }
-    
-    response = NewBankCard2EVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.BankCard2EVerificationWithContext(context.Background(), request)
 }
 
 // BankCard2EVerification
@@ -103,6 +98,11 @@ func (c *Client) BankCard2EVerificationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBankCard2EVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BankCard2EVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBankCard2EVerificationResponse()
@@ -142,13 +142,7 @@ func NewBankCard4EVerificationResponse() (response *BankCard4EVerificationRespon
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) BankCard4EVerification(request *BankCard4EVerificationRequest) (response *BankCard4EVerificationResponse, err error) {
-    if request == nil {
-        request = NewBankCard4EVerificationRequest()
-    }
-    
-    response = NewBankCard4EVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.BankCard4EVerificationWithContext(context.Background(), request)
 }
 
 // BankCard4EVerification
@@ -169,6 +163,11 @@ func (c *Client) BankCard4EVerificationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBankCard4EVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BankCard4EVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBankCard4EVerificationResponse()
@@ -208,13 +207,7 @@ func NewBankCardVerificationResponse() (response *BankCardVerificationResponse) 
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) BankCardVerification(request *BankCardVerificationRequest) (response *BankCardVerificationResponse, err error) {
-    if request == nil {
-        request = NewBankCardVerificationRequest()
-    }
-    
-    response = NewBankCardVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.BankCardVerificationWithContext(context.Background(), request)
 }
 
 // BankCardVerification
@@ -235,6 +228,11 @@ func (c *Client) BankCardVerificationWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBankCardVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BankCardVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBankCardVerificationResponse()
@@ -272,13 +270,7 @@ func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationRe
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationRequest) (response *CheckBankCardInformationResponse, err error) {
-    if request == nil {
-        request = NewCheckBankCardInformationRequest()
-    }
-    
-    response = NewCheckBankCardInformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBankCardInformationWithContext(context.Background(), request)
 }
 
 // CheckBankCardInformation
@@ -297,6 +289,11 @@ func (c *Client) CheckBankCardInformationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCheckBankCardInformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBankCardInformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBankCardInformationResponse()
@@ -331,13 +328,7 @@ func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
 func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (response *CheckEidTokenStatusResponse, err error) {
-    if request == nil {
-        request = NewCheckEidTokenStatusRequest()
-    }
-    
-    response = NewCheckEidTokenStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckEidTokenStatusWithContext(context.Background(), request)
 }
 
 // CheckEidTokenStatus
@@ -353,6 +344,11 @@ func (c *Client) CheckEidTokenStatusWithContext(ctx context.Context, request *Ch
     if request == nil {
         request = NewCheckEidTokenStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckEidTokenStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckEidTokenStatusResponse()
@@ -414,13 +410,7 @@ func NewCheckIdCardInformationResponse() (response *CheckIdCardInformationRespon
 //  UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = "UnauthorizedOperation.ChargeStatusException"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckIdCardInformation(request *CheckIdCardInformationRequest) (response *CheckIdCardInformationResponse, err error) {
-    if request == nil {
-        request = NewCheckIdCardInformationRequest()
-    }
-    
-    response = NewCheckIdCardInformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckIdCardInformationWithContext(context.Background(), request)
 }
 
 // CheckIdCardInformation
@@ -463,6 +453,11 @@ func (c *Client) CheckIdCardInformationWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCheckIdCardInformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckIdCardInformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckIdCardInformationResponse()
@@ -501,13 +496,7 @@ func NewCheckIdNameDateResponse() (response *CheckIdNameDateResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckIdNameDate(request *CheckIdNameDateRequest) (response *CheckIdNameDateResponse, err error) {
-    if request == nil {
-        request = NewCheckIdNameDateRequest()
-    }
-    
-    response = NewCheckIdNameDateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckIdNameDateWithContext(context.Background(), request)
 }
 
 // CheckIdNameDate
@@ -527,6 +516,11 @@ func (c *Client) CheckIdNameDateWithContext(ctx context.Context, request *CheckI
     if request == nil {
         request = NewCheckIdNameDateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckIdNameDate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckIdNameDateResponse()
@@ -564,13 +558,7 @@ func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response *CheckPhoneAndNameResponse, err error) {
-    if request == nil {
-        request = NewCheckPhoneAndNameRequest()
-    }
-    
-    response = NewCheckPhoneAndNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckPhoneAndNameWithContext(context.Background(), request)
 }
 
 // CheckPhoneAndName
@@ -589,6 +577,11 @@ func (c *Client) CheckPhoneAndNameWithContext(ctx context.Context, request *Chec
     if request == nil {
         request = NewCheckPhoneAndNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckPhoneAndName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckPhoneAndNameResponse()
@@ -629,13 +622,7 @@ func NewDetectAuthResponse() (response *DetectAuthResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthResponse, err error) {
-    if request == nil {
-        request = NewDetectAuthRequest()
-    }
-    
-    response = NewDetectAuthResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectAuthWithContext(context.Background(), request)
 }
 
 // DetectAuth
@@ -657,6 +644,11 @@ func (c *Client) DetectAuthWithContext(ctx context.Context, request *DetectAuthR
     if request == nil {
         request = NewDetectAuthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectAuth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectAuthResponse()
@@ -713,13 +705,7 @@ func NewDetectReflectLivenessAndCompareResponse() (response *DetectReflectLivene
 //  INTERNALERROR_LIFEPHOTOPOORQUALITY = "InternalError.LifePhotoPoorQuality"
 //  INTERNALERROR_LIFEPHOTOSIZEERROR = "InternalError.LifePhotoSizeError"
 func (c *Client) DetectReflectLivenessAndCompare(request *DetectReflectLivenessAndCompareRequest) (response *DetectReflectLivenessAndCompareResponse, err error) {
-    if request == nil {
-        request = NewDetectReflectLivenessAndCompareRequest()
-    }
-    
-    response = NewDetectReflectLivenessAndCompareResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectReflectLivenessAndCompareWithContext(context.Background(), request)
 }
 
 // DetectReflectLivenessAndCompare
@@ -757,6 +743,11 @@ func (c *Client) DetectReflectLivenessAndCompareWithContext(ctx context.Context,
     if request == nil {
         request = NewDetectReflectLivenessAndCompareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectReflectLivenessAndCompare require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectReflectLivenessAndCompareResponse()
@@ -796,13 +787,7 @@ func NewEncryptedPhoneVerificationResponse() (response *EncryptedPhoneVerificati
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) EncryptedPhoneVerification(request *EncryptedPhoneVerificationRequest) (response *EncryptedPhoneVerificationResponse, err error) {
-    if request == nil {
-        request = NewEncryptedPhoneVerificationRequest()
-    }
-    
-    response = NewEncryptedPhoneVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.EncryptedPhoneVerificationWithContext(context.Background(), request)
 }
 
 // EncryptedPhoneVerification
@@ -823,6 +808,11 @@ func (c *Client) EncryptedPhoneVerificationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewEncryptedPhoneVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EncryptedPhoneVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEncryptedPhoneVerificationResponse()
@@ -860,13 +850,7 @@ func NewGetActionSequenceResponse() (response *GetActionSequenceResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetActionSequence(request *GetActionSequenceRequest) (response *GetActionSequenceResponse, err error) {
-    if request == nil {
-        request = NewGetActionSequenceRequest()
-    }
-    
-    response = NewGetActionSequenceResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetActionSequenceWithContext(context.Background(), request)
 }
 
 // GetActionSequence
@@ -885,6 +869,11 @@ func (c *Client) GetActionSequenceWithContext(ctx context.Context, request *GetA
     if request == nil {
         request = NewGetActionSequenceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetActionSequence require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetActionSequenceResponse()
@@ -923,13 +912,7 @@ func NewGetDetectInfoResponse() (response *GetDetectInfoResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetDetectInfo(request *GetDetectInfoRequest) (response *GetDetectInfoResponse, err error) {
-    if request == nil {
-        request = NewGetDetectInfoRequest()
-    }
-    
-    response = NewGetDetectInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDetectInfoWithContext(context.Background(), request)
 }
 
 // GetDetectInfo
@@ -949,6 +932,11 @@ func (c *Client) GetDetectInfoWithContext(ctx context.Context, request *GetDetec
     if request == nil {
         request = NewGetDetectInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDetectInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDetectInfoResponse()
@@ -989,13 +977,7 @@ func NewGetDetectInfoEnhancedResponse() (response *GetDetectInfoEnhancedResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetDetectInfoEnhanced(request *GetDetectInfoEnhancedRequest) (response *GetDetectInfoEnhancedResponse, err error) {
-    if request == nil {
-        request = NewGetDetectInfoEnhancedRequest()
-    }
-    
-    response = NewGetDetectInfoEnhancedResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDetectInfoEnhancedWithContext(context.Background(), request)
 }
 
 // GetDetectInfoEnhanced
@@ -1017,6 +999,11 @@ func (c *Client) GetDetectInfoEnhancedWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetDetectInfoEnhancedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDetectInfoEnhanced require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDetectInfoEnhancedResponse()
@@ -1057,13 +1044,7 @@ func NewGetEidResultResponse() (response *GetEidResultResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetEidResult(request *GetEidResultRequest) (response *GetEidResultResponse, err error) {
-    if request == nil {
-        request = NewGetEidResultRequest()
-    }
-    
-    response = NewGetEidResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetEidResultWithContext(context.Background(), request)
 }
 
 // GetEidResult
@@ -1085,6 +1066,11 @@ func (c *Client) GetEidResultWithContext(ctx context.Context, request *GetEidRes
     if request == nil {
         request = NewGetEidResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEidResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetEidResultResponse()
@@ -1125,13 +1111,7 @@ func NewGetEidTokenResponse() (response *GetEidTokenResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetEidToken(request *GetEidTokenRequest) (response *GetEidTokenResponse, err error) {
-    if request == nil {
-        request = NewGetEidTokenRequest()
-    }
-    
-    response = NewGetEidTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetEidTokenWithContext(context.Background(), request)
 }
 
 // GetEidToken
@@ -1153,6 +1133,11 @@ func (c *Client) GetEidTokenWithContext(ctx context.Context, request *GetEidToke
     if request == nil {
         request = NewGetEidTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEidToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetEidTokenResponse()
@@ -1187,13 +1172,7 @@ func NewGetFaceIdResultResponse() (response *GetFaceIdResultResponse) {
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetFaceIdResult(request *GetFaceIdResultRequest) (response *GetFaceIdResultResponse, err error) {
-    if request == nil {
-        request = NewGetFaceIdResultRequest()
-    }
-    
-    response = NewGetFaceIdResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetFaceIdResultWithContext(context.Background(), request)
 }
 
 // GetFaceIdResult
@@ -1209,6 +1188,11 @@ func (c *Client) GetFaceIdResultWithContext(ctx context.Context, request *GetFac
     if request == nil {
         request = NewGetFaceIdResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFaceIdResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetFaceIdResultResponse()
@@ -1243,13 +1227,7 @@ func NewGetFaceIdTokenResponse() (response *GetFaceIdTokenResponse) {
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetFaceIdToken(request *GetFaceIdTokenRequest) (response *GetFaceIdTokenResponse, err error) {
-    if request == nil {
-        request = NewGetFaceIdTokenRequest()
-    }
-    
-    response = NewGetFaceIdTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetFaceIdTokenWithContext(context.Background(), request)
 }
 
 // GetFaceIdToken
@@ -1265,6 +1243,11 @@ func (c *Client) GetFaceIdTokenWithContext(ctx context.Context, request *GetFace
     if request == nil {
         request = NewGetFaceIdTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFaceIdToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetFaceIdTokenResponse()
@@ -1302,13 +1285,7 @@ func NewGetLiveCodeResponse() (response *GetLiveCodeResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCodeResponse, err error) {
-    if request == nil {
-        request = NewGetLiveCodeRequest()
-    }
-    
-    response = NewGetLiveCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetLiveCodeWithContext(context.Background(), request)
 }
 
 // GetLiveCode
@@ -1327,6 +1304,11 @@ func (c *Client) GetLiveCodeWithContext(ctx context.Context, request *GetLiveCod
     if request == nil {
         request = NewGetLiveCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLiveCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetLiveCodeResponse()
@@ -1362,13 +1344,7 @@ func NewGetRealNameAuthResultResponse() (response *GetRealNameAuthResultResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetRealNameAuthResult(request *GetRealNameAuthResultRequest) (response *GetRealNameAuthResultResponse, err error) {
-    if request == nil {
-        request = NewGetRealNameAuthResultRequest()
-    }
-    
-    response = NewGetRealNameAuthResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRealNameAuthResultWithContext(context.Background(), request)
 }
 
 // GetRealNameAuthResult
@@ -1385,6 +1361,11 @@ func (c *Client) GetRealNameAuthResultWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetRealNameAuthResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRealNameAuthResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRealNameAuthResultResponse()
@@ -1422,13 +1403,7 @@ func NewGetRealNameAuthTokenResponse() (response *GetRealNameAuthTokenResponse) 
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetRealNameAuthToken(request *GetRealNameAuthTokenRequest) (response *GetRealNameAuthTokenResponse, err error) {
-    if request == nil {
-        request = NewGetRealNameAuthTokenRequest()
-    }
-    
-    response = NewGetRealNameAuthTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRealNameAuthTokenWithContext(context.Background(), request)
 }
 
 // GetRealNameAuthToken
@@ -1447,6 +1422,11 @@ func (c *Client) GetRealNameAuthTokenWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetRealNameAuthTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRealNameAuthToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRealNameAuthTokenResponse()
@@ -1479,13 +1459,7 @@ func NewGetWeChatBillDetailsResponse() (response *GetWeChatBillDetailsResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_RULEIDNOTEXIST = "InvalidParameterValue.RuleIdNotExist"
 func (c *Client) GetWeChatBillDetails(request *GetWeChatBillDetailsRequest) (response *GetWeChatBillDetailsResponse, err error) {
-    if request == nil {
-        request = NewGetWeChatBillDetailsRequest()
-    }
-    
-    response = NewGetWeChatBillDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetWeChatBillDetailsWithContext(context.Background(), request)
 }
 
 // GetWeChatBillDetails
@@ -1499,6 +1473,11 @@ func (c *Client) GetWeChatBillDetailsWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetWeChatBillDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetWeChatBillDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetWeChatBillDetailsResponse()
@@ -1545,13 +1524,7 @@ func NewIdCardOCRVerificationResponse() (response *IdCardOCRVerificationResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) IdCardOCRVerification(request *IdCardOCRVerificationRequest) (response *IdCardOCRVerificationResponse, err error) {
-    if request == nil {
-        request = NewIdCardOCRVerificationRequest()
-    }
-    
-    response = NewIdCardOCRVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.IdCardOCRVerificationWithContext(context.Background(), request)
 }
 
 // IdCardOCRVerification
@@ -1579,6 +1552,11 @@ func (c *Client) IdCardOCRVerificationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewIdCardOCRVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IdCardOCRVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIdCardOCRVerificationResponse()
@@ -1618,13 +1596,7 @@ func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) IdCardVerification(request *IdCardVerificationRequest) (response *IdCardVerificationResponse, err error) {
-    if request == nil {
-        request = NewIdCardVerificationRequest()
-    }
-    
-    response = NewIdCardVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.IdCardVerificationWithContext(context.Background(), request)
 }
 
 // IdCardVerification
@@ -1645,6 +1617,11 @@ func (c *Client) IdCardVerificationWithContext(ctx context.Context, request *IdC
     if request == nil {
         request = NewIdCardVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IdCardVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIdCardVerificationResponse()
@@ -1701,13 +1678,7 @@ func NewImageRecognitionResponse() (response *ImageRecognitionResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImageRecognition(request *ImageRecognitionRequest) (response *ImageRecognitionResponse, err error) {
-    if request == nil {
-        request = NewImageRecognitionRequest()
-    }
-    
-    response = NewImageRecognitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageRecognitionWithContext(context.Background(), request)
 }
 
 // ImageRecognition
@@ -1745,6 +1716,11 @@ func (c *Client) ImageRecognitionWithContext(ctx context.Context, request *Image
     if request == nil {
         request = NewImageRecognitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageRecognition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageRecognitionResponse()
@@ -1817,13 +1793,7 @@ func NewLivenessResponse() (response *LivenessResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) Liveness(request *LivenessRequest) (response *LivenessResponse, err error) {
-    if request == nil {
-        request = NewLivenessRequest()
-    }
-    
-    response = NewLivenessResponse()
-    err = c.Send(request, response)
-    return
+    return c.LivenessWithContext(context.Background(), request)
 }
 
 // Liveness
@@ -1877,6 +1847,11 @@ func (c *Client) LivenessWithContext(ctx context.Context, request *LivenessReque
     if request == nil {
         request = NewLivenessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Liveness require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLivenessResponse()
@@ -1958,13 +1933,7 @@ func NewLivenessCompareResponse() (response *LivenessCompareResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) LivenessCompare(request *LivenessCompareRequest) (response *LivenessCompareResponse, err error) {
-    if request == nil {
-        request = NewLivenessCompareRequest()
-    }
-    
-    response = NewLivenessCompareResponse()
-    err = c.Send(request, response)
-    return
+    return c.LivenessCompareWithContext(context.Background(), request)
 }
 
 // LivenessCompare
@@ -2027,6 +1996,11 @@ func (c *Client) LivenessCompareWithContext(ctx context.Context, request *Livene
     if request == nil {
         request = NewLivenessCompareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LivenessCompare require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLivenessCompareResponse()
@@ -2110,13 +2084,7 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) LivenessRecognition(request *LivenessRecognitionRequest) (response *LivenessRecognitionResponse, err error) {
-    if request == nil {
-        request = NewLivenessRecognitionRequest()
-    }
-    
-    response = NewLivenessRecognitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.LivenessRecognitionWithContext(context.Background(), request)
 }
 
 // LivenessRecognition
@@ -2181,6 +2149,11 @@ func (c *Client) LivenessRecognitionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewLivenessRecognitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LivenessRecognition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLivenessRecognitionResponse()
@@ -2219,13 +2192,7 @@ func NewMinorsVerificationResponse() (response *MinorsVerificationResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) MinorsVerification(request *MinorsVerificationRequest) (response *MinorsVerificationResponse, err error) {
-    if request == nil {
-        request = NewMinorsVerificationRequest()
-    }
-    
-    response = NewMinorsVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.MinorsVerificationWithContext(context.Background(), request)
 }
 
 // MinorsVerification
@@ -2245,6 +2212,11 @@ func (c *Client) MinorsVerificationWithContext(ctx context.Context, request *Min
     if request == nil {
         request = NewMinorsVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MinorsVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMinorsVerificationResponse()
@@ -2286,13 +2258,7 @@ func NewMobileNetworkTimeVerificationResponse() (response *MobileNetworkTimeVeri
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) MobileNetworkTimeVerification(request *MobileNetworkTimeVerificationRequest) (response *MobileNetworkTimeVerificationResponse, err error) {
-    if request == nil {
-        request = NewMobileNetworkTimeVerificationRequest()
-    }
-    
-    response = NewMobileNetworkTimeVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.MobileNetworkTimeVerificationWithContext(context.Background(), request)
 }
 
 // MobileNetworkTimeVerification
@@ -2315,6 +2281,11 @@ func (c *Client) MobileNetworkTimeVerificationWithContext(ctx context.Context, r
     if request == nil {
         request = NewMobileNetworkTimeVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MobileNetworkTimeVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMobileNetworkTimeVerificationResponse()
@@ -2354,13 +2325,7 @@ func NewMobileStatusResponse() (response *MobileStatusResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) MobileStatus(request *MobileStatusRequest) (response *MobileStatusResponse, err error) {
-    if request == nil {
-        request = NewMobileStatusRequest()
-    }
-    
-    response = NewMobileStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.MobileStatusWithContext(context.Background(), request)
 }
 
 // MobileStatus
@@ -2381,6 +2346,11 @@ func (c *Client) MobileStatusWithContext(ctx context.Context, request *MobileSta
     if request == nil {
         request = NewMobileStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MobileStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMobileStatusResponse()
@@ -2420,13 +2390,7 @@ func NewPhoneVerificationResponse() (response *PhoneVerificationResponse) {
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) PhoneVerification(request *PhoneVerificationRequest) (response *PhoneVerificationResponse, err error) {
-    if request == nil {
-        request = NewPhoneVerificationRequest()
-    }
-    
-    response = NewPhoneVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.PhoneVerificationWithContext(context.Background(), request)
 }
 
 // PhoneVerification
@@ -2447,6 +2411,11 @@ func (c *Client) PhoneVerificationWithContext(ctx context.Context, request *Phon
     if request == nil {
         request = NewPhoneVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PhoneVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPhoneVerificationResponse()
@@ -2486,13 +2455,7 @@ func NewPhoneVerificationCMCCResponse() (response *PhoneVerificationCMCCResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) PhoneVerificationCMCC(request *PhoneVerificationCMCCRequest) (response *PhoneVerificationCMCCResponse, err error) {
-    if request == nil {
-        request = NewPhoneVerificationCMCCRequest()
-    }
-    
-    response = NewPhoneVerificationCMCCResponse()
-    err = c.Send(request, response)
-    return
+    return c.PhoneVerificationCMCCWithContext(context.Background(), request)
 }
 
 // PhoneVerificationCMCC
@@ -2513,6 +2476,11 @@ func (c *Client) PhoneVerificationCMCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCMCCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PhoneVerificationCMCC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPhoneVerificationCMCCResponse()
@@ -2552,13 +2520,7 @@ func NewPhoneVerificationCTCCResponse() (response *PhoneVerificationCTCCResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) PhoneVerificationCTCC(request *PhoneVerificationCTCCRequest) (response *PhoneVerificationCTCCResponse, err error) {
-    if request == nil {
-        request = NewPhoneVerificationCTCCRequest()
-    }
-    
-    response = NewPhoneVerificationCTCCResponse()
-    err = c.Send(request, response)
-    return
+    return c.PhoneVerificationCTCCWithContext(context.Background(), request)
 }
 
 // PhoneVerificationCTCC
@@ -2579,6 +2541,11 @@ func (c *Client) PhoneVerificationCTCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCTCCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PhoneVerificationCTCC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPhoneVerificationCTCCResponse()
@@ -2618,13 +2585,7 @@ func NewPhoneVerificationCUCCResponse() (response *PhoneVerificationCUCCResponse
 //  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) PhoneVerificationCUCC(request *PhoneVerificationCUCCRequest) (response *PhoneVerificationCUCCResponse, err error) {
-    if request == nil {
-        request = NewPhoneVerificationCUCCRequest()
-    }
-    
-    response = NewPhoneVerificationCUCCResponse()
-    err = c.Send(request, response)
-    return
+    return c.PhoneVerificationCUCCWithContext(context.Background(), request)
 }
 
 // PhoneVerificationCUCC
@@ -2645,6 +2606,11 @@ func (c *Client) PhoneVerificationCUCCWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPhoneVerificationCUCCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PhoneVerificationCUCC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPhoneVerificationCUCCResponse()

@@ -16,6 +16,7 @@ package v20181011
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewCheckStaffChUserResponse() (response *CheckStaffChUserResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
 func (c *Client) CheckStaffChUser(request *CheckStaffChUserRequest) (response *CheckStaffChUserResponse, err error) {
-    if request == nil {
-        request = NewCheckStaffChUserRequest()
-    }
-    
-    response = NewCheckStaffChUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckStaffChUserWithContext(context.Background(), request)
 }
 
 // CheckStaffChUser
@@ -87,6 +82,11 @@ func (c *Client) CheckStaffChUserWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckStaffChUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckStaffChUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckStaffChUserResponse()
@@ -119,13 +119,7 @@ func NewCopyActivityChannelResponse() (response *CopyActivityChannelResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
 func (c *Client) CopyActivityChannel(request *CopyActivityChannelRequest) (response *CopyActivityChannelResponse, err error) {
-    if request == nil {
-        request = NewCopyActivityChannelRequest()
-    }
-    
-    response = NewCopyActivityChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CopyActivityChannelWithContext(context.Background(), request)
 }
 
 // CopyActivityChannel
@@ -139,6 +133,11 @@ func (c *Client) CopyActivityChannelWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewCopyActivityChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyActivityChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCopyActivityChannelResponse()
@@ -171,13 +170,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateProjectRequest()
-    }
-    
-    response = NewCreateProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProjectWithContext(context.Background(), request)
 }
 
 // CreateProject
@@ -191,6 +184,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
@@ -223,13 +221,7 @@ func NewCreateSubProjectResponse() (response *CreateSubProjectResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_CHANNEL = "ResourceNotFound.Channel"
 func (c *Client) CreateSubProject(request *CreateSubProjectRequest) (response *CreateSubProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateSubProjectRequest()
-    }
-    
-    response = NewCreateSubProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubProjectWithContext(context.Background(), request)
 }
 
 // CreateSubProject
@@ -243,6 +235,11 @@ func (c *Client) CreateSubProjectWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSubProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubProjectResponse()
@@ -273,13 +270,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PROJECTNOTALLOWEDTODELETE = "UnsupportedOperation.ProjectNotAllowedToDelete"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
-    if request == nil {
-        request = NewDeleteProjectRequest()
-    }
-    
-    response = NewDeleteProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProjectWithContext(context.Background(), request)
 }
 
 // DeleteProject
@@ -291,6 +282,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
@@ -321,13 +317,7 @@ func NewDescribeCustomerResponse() (response *DescribeCustomerResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCustomer(request *DescribeCustomerRequest) (response *DescribeCustomerResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomerRequest()
-    }
-    
-    response = NewDescribeCustomerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomerWithContext(context.Background(), request)
 }
 
 // DescribeCustomer
@@ -339,6 +329,11 @@ func (c *Client) DescribeCustomerWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCustomerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomerResponse()
@@ -369,13 +364,7 @@ func NewDescribeCustomersResponse() (response *DescribeCustomersResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCustomers(request *DescribeCustomersRequest) (response *DescribeCustomersResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomersRequest()
-    }
-    
-    response = NewDescribeCustomersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomersWithContext(context.Background(), request)
 }
 
 // DescribeCustomers
@@ -387,6 +376,11 @@ func (c *Client) DescribeCustomersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCustomersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomersResponse()
@@ -417,13 +411,7 @@ func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PROJECT = "ResourceNotFound.Project"
 func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectRequest()
-    }
-    
-    response = NewDescribeProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectWithContext(context.Background(), request)
 }
 
 // DescribeProject
@@ -435,6 +423,11 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectResponse()
@@ -465,13 +458,7 @@ func NewDescribeProjectStockResponse() (response *DescribeProjectStockResponse) 
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PROJECT = "ResourceNotFound.Project"
 func (c *Client) DescribeProjectStock(request *DescribeProjectStockRequest) (response *DescribeProjectStockResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectStockRequest()
-    }
-    
-    response = NewDescribeProjectStockResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectStockWithContext(context.Background(), request)
 }
 
 // DescribeProjectStock
@@ -483,6 +470,11 @@ func (c *Client) DescribeProjectStockWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeProjectStockRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectStock require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectStockResponse()
@@ -513,13 +505,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectsRequest()
-    }
-    
-    response = NewDescribeProjectsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectsWithContext(context.Background(), request)
 }
 
 // DescribeProjects
@@ -531,6 +517,11 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjects require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectsResponse()
@@ -562,13 +553,7 @@ func NewDescribeResourceTemplateHeadersResponse() (response *DescribeResourceTem
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
 func (c *Client) DescribeResourceTemplateHeaders(request *DescribeResourceTemplateHeadersRequest) (response *DescribeResourceTemplateHeadersResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTemplateHeadersRequest()
-    }
-    
-    response = NewDescribeResourceTemplateHeadersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTemplateHeadersWithContext(context.Background(), request)
 }
 
 // DescribeResourceTemplateHeaders
@@ -581,6 +566,11 @@ func (c *Client) DescribeResourceTemplateHeadersWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeResourceTemplateHeadersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTemplateHeaders require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTemplateHeadersResponse()
@@ -612,13 +602,7 @@ func NewDescribeSubProjectResponse() (response *DescribeSubProjectResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
 func (c *Client) DescribeSubProject(request *DescribeSubProjectRequest) (response *DescribeSubProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubProjectRequest()
-    }
-    
-    response = NewDescribeSubProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubProjectWithContext(context.Background(), request)
 }
 
 // DescribeSubProject
@@ -631,6 +615,11 @@ func (c *Client) DescribeSubProjectWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeSubProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubProjectResponse()
@@ -662,13 +651,7 @@ func NewExpireFlowResponse() (response *ExpireFlowResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 func (c *Client) ExpireFlow(request *ExpireFlowRequest) (response *ExpireFlowResponse, err error) {
-    if request == nil {
-        request = NewExpireFlowRequest()
-    }
-    
-    response = NewExpireFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExpireFlowWithContext(context.Background(), request)
 }
 
 // ExpireFlow
@@ -681,6 +664,11 @@ func (c *Client) ExpireFlowWithContext(ctx context.Context, request *ExpireFlowR
     if request == nil {
         request = NewExpireFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExpireFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExpireFlowResponse()
@@ -712,13 +700,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyProjectRequest()
-    }
-    
-    response = NewModifyProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProjectWithContext(context.Background(), request)
 }
 
 // ModifyProject
@@ -731,6 +713,11 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProjectResponse()
@@ -761,13 +748,7 @@ func NewOffLineProjectResponse() (response *OffLineProjectResponse) {
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_STATUSOFFLINEPROJECT = "UnsupportedOperation.StatusOffLineProject"
 func (c *Client) OffLineProject(request *OffLineProjectRequest) (response *OffLineProjectResponse, err error) {
-    if request == nil {
-        request = NewOffLineProjectRequest()
-    }
-    
-    response = NewOffLineProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.OffLineProjectWithContext(context.Background(), request)
 }
 
 // OffLineProject
@@ -779,6 +760,11 @@ func (c *Client) OffLineProjectWithContext(ctx context.Context, request *OffLine
     if request == nil {
         request = NewOffLineProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OffLineProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOffLineProjectResponse()
@@ -809,13 +795,7 @@ func NewReplenishProjectStockResponse() (response *ReplenishProjectStockResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTPRIZESTOCK = "FailedOperation.InsufficientPrizeStock"
 func (c *Client) ReplenishProjectStock(request *ReplenishProjectStockRequest) (response *ReplenishProjectStockResponse, err error) {
-    if request == nil {
-        request = NewReplenishProjectStockRequest()
-    }
-    
-    response = NewReplenishProjectStockResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplenishProjectStockWithContext(context.Background(), request)
 }
 
 // ReplenishProjectStock
@@ -827,6 +807,11 @@ func (c *Client) ReplenishProjectStockWithContext(ctx context.Context, request *
     if request == nil {
         request = NewReplenishProjectStockRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplenishProjectStock require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplenishProjectStockResponse()
@@ -858,13 +843,7 @@ func NewSendWxTouchTaskResponse() (response *SendWxTouchTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_THIRDSERVERERROR = "InternalError.ThirdServerError"
 func (c *Client) SendWxTouchTask(request *SendWxTouchTaskRequest) (response *SendWxTouchTaskResponse, err error) {
-    if request == nil {
-        request = NewSendWxTouchTaskRequest()
-    }
-    
-    response = NewSendWxTouchTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendWxTouchTaskWithContext(context.Background(), request)
 }
 
 // SendWxTouchTask
@@ -877,6 +856,11 @@ func (c *Client) SendWxTouchTaskWithContext(ctx context.Context, request *SendWx
     if request == nil {
         request = NewSendWxTouchTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendWxTouchTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendWxTouchTaskResponse()

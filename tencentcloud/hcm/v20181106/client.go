@@ -16,6 +16,7 @@ package v20181106
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -81,13 +82,7 @@ func NewEvaluationResponse() (response *EvaluationResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDIMAGEERROR = "InvalidParameterValue.InvalidImageError"
 //  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
 func (c *Client) Evaluation(request *EvaluationRequest) (response *EvaluationResponse, err error) {
-    if request == nil {
-        request = NewEvaluationRequest()
-    }
-    
-    response = NewEvaluationResponse()
-    err = c.Send(request, response)
-    return
+    return c.EvaluationWithContext(context.Background(), request)
 }
 
 // Evaluation
@@ -113,6 +108,11 @@ func (c *Client) EvaluationWithContext(ctx context.Context, request *EvaluationR
     if request == nil {
         request = NewEvaluationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Evaluation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEvaluationResponse()

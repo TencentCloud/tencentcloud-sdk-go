@@ -16,6 +16,7 @@ package v20201111
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
-    if request == nil {
-        request = NewCancelFlowRequest()
-    }
-    
-    response = NewCancelFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelFlowWithContext(context.Background(), request)
 }
 
 // CancelFlow
@@ -99,6 +94,11 @@ func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowR
     if request == nil {
         request = NewCancelFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelFlowResponse()
@@ -131,6 +131,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -142,13 +143,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
-    if request == nil {
-        request = NewCreateDocumentRequest()
-    }
-    
-    response = NewCreateDocumentResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDocumentWithContext(context.Background(), request)
 }
 
 // CreateDocument
@@ -159,6 +154,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -173,6 +169,11 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     if request == nil {
         request = NewCreateDocumentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDocument require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDocumentResponse()
@@ -215,13 +216,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowResponse, err error) {
-    if request == nil {
-        request = NewCreateFlowRequest()
-    }
-    
-    response = NewCreateFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFlowWithContext(context.Background(), request)
 }
 
 // CreateFlow
@@ -245,6 +240,11 @@ func (c *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowR
     if request == nil {
         request = NewCreateFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFlowResponse()
@@ -296,13 +296,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response *CreateFlowByFilesResponse, err error) {
-    if request == nil {
-        request = NewCreateFlowByFilesRequest()
-    }
-    
-    response = NewCreateFlowByFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFlowByFilesWithContext(context.Background(), request)
 }
 
 // CreateFlowByFiles
@@ -335,6 +329,11 @@ func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowByFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowByFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFlowByFilesResponse()
@@ -371,13 +370,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateSchemeUrlRequest()
-    }
-    
-    response = NewCreateSchemeUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSchemeUrlWithContext(context.Background(), request)
 }
 
 // CreateSchemeUrl
@@ -395,6 +388,11 @@ func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSchemeUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSchemeUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSchemeUrlResponse()
@@ -439,13 +437,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *DescribeFileUrlsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileUrlsRequest()
-    }
-    
-    response = NewDescribeFileUrlsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileUrlsWithContext(context.Background(), request)
 }
 
 // DescribeFileUrls
@@ -471,6 +463,11 @@ func (c *Client) DescribeFileUrlsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFileUrlsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileUrls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileUrlsResponse()
@@ -535,13 +532,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (response *DescribeFlowBriefsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowBriefsRequest()
-    }
-    
-    response = NewDescribeFlowBriefsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowBriefsWithContext(context.Background(), request)
 }
 
 // DescribeFlowBriefs
@@ -587,6 +578,11 @@ func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFlowBriefsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowBriefs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowBriefsResponse()
@@ -621,13 +617,7 @@ func NewDescribeThirdPartyAuthCodeResponse() (response *DescribeThirdPartyAuthCo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeThirdPartyAuthCode(request *DescribeThirdPartyAuthCodeRequest) (response *DescribeThirdPartyAuthCodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeThirdPartyAuthCodeRequest()
-    }
-    
-    response = NewDescribeThirdPartyAuthCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeThirdPartyAuthCodeWithContext(context.Background(), request)
 }
 
 // DescribeThirdPartyAuthCode
@@ -643,6 +633,11 @@ func (c *Client) DescribeThirdPartyAuthCodeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeThirdPartyAuthCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeThirdPartyAuthCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeThirdPartyAuthCodeResponse()
@@ -685,13 +680,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowResponse, err error) {
-    if request == nil {
-        request = NewStartFlowRequest()
-    }
-    
-    response = NewStartFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartFlowWithContext(context.Background(), request)
 }
 
 // StartFlow
@@ -715,6 +704,11 @@ func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowReq
     if request == nil {
         request = NewStartFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartFlowResponse()

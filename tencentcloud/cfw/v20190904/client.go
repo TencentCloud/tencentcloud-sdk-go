@@ -16,6 +16,7 @@ package v20190904
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewAddAcRuleResponse() (response *AddAcRuleResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddAcRule(request *AddAcRuleRequest) (response *AddAcRuleResponse, err error) {
-    if request == nil {
-        request = NewAddAcRuleRequest()
-    }
-    
-    response = NewAddAcRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddAcRuleWithContext(context.Background(), request)
 }
 
 // AddAcRule
@@ -119,6 +114,11 @@ func (c *Client) AddAcRuleWithContext(ctx context.Context, request *AddAcRuleReq
     if request == nil {
         request = NewAddAcRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAcRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddAcRuleResponse()
@@ -155,13 +155,7 @@ func NewAddEnterpriseSecurityGroupRulesResponse() (response *AddEnterpriseSecuri
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddEnterpriseSecurityGroupRules(request *AddEnterpriseSecurityGroupRulesRequest) (response *AddEnterpriseSecurityGroupRulesResponse, err error) {
-    if request == nil {
-        request = NewAddEnterpriseSecurityGroupRulesRequest()
-    }
-    
-    response = NewAddEnterpriseSecurityGroupRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEnterpriseSecurityGroupRulesWithContext(context.Background(), request)
 }
 
 // AddEnterpriseSecurityGroupRules
@@ -179,6 +173,11 @@ func (c *Client) AddEnterpriseSecurityGroupRulesWithContext(ctx context.Context,
     if request == nil {
         request = NewAddEnterpriseSecurityGroupRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEnterpriseSecurityGroupRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEnterpriseSecurityGroupRulesResponse()
@@ -211,13 +210,7 @@ func NewCreateAcRulesResponse() (response *CreateAcRulesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateAcRules(request *CreateAcRulesRequest) (response *CreateAcRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateAcRulesRequest()
-    }
-    
-    response = NewCreateAcRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAcRulesWithContext(context.Background(), request)
 }
 
 // CreateAcRules
@@ -231,6 +224,11 @@ func (c *Client) CreateAcRulesWithContext(ctx context.Context, request *CreateAc
     if request == nil {
         request = NewCreateAcRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAcRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAcRulesResponse()
@@ -263,13 +261,7 @@ func NewCreateChooseVpcsResponse() (response *CreateChooseVpcsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateChooseVpcs(request *CreateChooseVpcsRequest) (response *CreateChooseVpcsResponse, err error) {
-    if request == nil {
-        request = NewCreateChooseVpcsRequest()
-    }
-    
-    response = NewCreateChooseVpcsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateChooseVpcsWithContext(context.Background(), request)
 }
 
 // CreateChooseVpcs
@@ -283,6 +275,11 @@ func (c *Client) CreateChooseVpcsWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateChooseVpcsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChooseVpcs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateChooseVpcsResponse()
@@ -316,13 +313,7 @@ func NewCreateDatabaseWhiteListRulesResponse() (response *CreateDatabaseWhiteLis
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateDatabaseWhiteListRules(request *CreateDatabaseWhiteListRulesRequest) (response *CreateDatabaseWhiteListRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateDatabaseWhiteListRulesRequest()
-    }
-    
-    response = NewCreateDatabaseWhiteListRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDatabaseWhiteListRulesWithContext(context.Background(), request)
 }
 
 // CreateDatabaseWhiteListRules
@@ -337,6 +328,11 @@ func (c *Client) CreateDatabaseWhiteListRulesWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateDatabaseWhiteListRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDatabaseWhiteListRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDatabaseWhiteListRulesResponse()
@@ -384,13 +380,7 @@ func NewCreateNatFwInstanceResponse() (response *CreateNatFwInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNatFwInstance(request *CreateNatFwInstanceRequest) (response *CreateNatFwInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateNatFwInstanceRequest()
-    }
-    
-    response = NewCreateNatFwInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNatFwInstanceWithContext(context.Background(), request)
 }
 
 // CreateNatFwInstance
@@ -419,6 +409,11 @@ func (c *Client) CreateNatFwInstanceWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateNatFwInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNatFwInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNatFwInstanceResponse()
@@ -466,13 +461,7 @@ func NewCreateNatFwInstanceWithDomainResponse() (response *CreateNatFwInstanceWi
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNatFwInstanceWithDomain(request *CreateNatFwInstanceWithDomainRequest) (response *CreateNatFwInstanceWithDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateNatFwInstanceWithDomainRequest()
-    }
-    
-    response = NewCreateNatFwInstanceWithDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNatFwInstanceWithDomainWithContext(context.Background(), request)
 }
 
 // CreateNatFwInstanceWithDomain
@@ -501,6 +490,11 @@ func (c *Client) CreateNatFwInstanceWithDomainWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateNatFwInstanceWithDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNatFwInstanceWithDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNatFwInstanceWithDomainResponse()
@@ -534,13 +528,7 @@ func NewCreateSecurityGroupApiRulesResponse() (response *CreateSecurityGroupApiR
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSecurityGroupApiRules(request *CreateSecurityGroupApiRulesRequest) (response *CreateSecurityGroupApiRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityGroupApiRulesRequest()
-    }
-    
-    response = NewCreateSecurityGroupApiRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityGroupApiRulesWithContext(context.Background(), request)
 }
 
 // CreateSecurityGroupApiRules
@@ -555,6 +543,11 @@ func (c *Client) CreateSecurityGroupApiRulesWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateSecurityGroupApiRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityGroupApiRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityGroupApiRulesResponse()
@@ -591,13 +584,7 @@ func NewCreateSecurityGroupRulesResponse() (response *CreateSecurityGroupRulesRe
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSecurityGroupRules(request *CreateSecurityGroupRulesRequest) (response *CreateSecurityGroupRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityGroupRulesRequest()
-    }
-    
-    response = NewCreateSecurityGroupRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityGroupRulesWithContext(context.Background(), request)
 }
 
 // CreateSecurityGroupRules
@@ -615,6 +602,11 @@ func (c *Client) CreateSecurityGroupRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateSecurityGroupRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityGroupRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityGroupRulesResponse()
@@ -647,13 +639,7 @@ func NewDeleteAcRuleResponse() (response *DeleteAcRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAcRule(request *DeleteAcRuleRequest) (response *DeleteAcRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteAcRuleRequest()
-    }
-    
-    response = NewDeleteAcRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAcRuleWithContext(context.Background(), request)
 }
 
 // DeleteAcRule
@@ -667,6 +653,11 @@ func (c *Client) DeleteAcRuleWithContext(ctx context.Context, request *DeleteAcR
     if request == nil {
         request = NewDeleteAcRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAcRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAcRuleResponse()
@@ -700,13 +691,7 @@ func NewDeleteAllAccessControlRuleResponse() (response *DeleteAllAccessControlRu
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAllAccessControlRule(request *DeleteAllAccessControlRuleRequest) (response *DeleteAllAccessControlRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteAllAccessControlRuleRequest()
-    }
-    
-    response = NewDeleteAllAccessControlRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAllAccessControlRuleWithContext(context.Background(), request)
 }
 
 // DeleteAllAccessControlRule
@@ -721,6 +706,11 @@ func (c *Client) DeleteAllAccessControlRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAllAccessControlRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAllAccessControlRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAllAccessControlRuleResponse()
@@ -768,13 +758,7 @@ func NewDeleteNatFwInstanceResponse() (response *DeleteNatFwInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNatFwInstance(request *DeleteNatFwInstanceRequest) (response *DeleteNatFwInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteNatFwInstanceRequest()
-    }
-    
-    response = NewDeleteNatFwInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNatFwInstanceWithContext(context.Background(), request)
 }
 
 // DeleteNatFwInstance
@@ -803,6 +787,11 @@ func (c *Client) DeleteNatFwInstanceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteNatFwInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNatFwInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNatFwInstanceResponse()
@@ -850,13 +839,7 @@ func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (response *DeleteResourceGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteResourceGroupRequest()
-    }
-    
-    response = NewDeleteResourceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteResourceGroupWithContext(context.Background(), request)
 }
 
 // DeleteResourceGroup
@@ -885,6 +868,11 @@ func (c *Client) DeleteResourceGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteResourceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResourceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteResourceGroupResponse()
@@ -918,13 +906,7 @@ func NewDeleteSecurityGroupAllRuleResponse() (response *DeleteSecurityGroupAllRu
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecurityGroupAllRule(request *DeleteSecurityGroupAllRuleRequest) (response *DeleteSecurityGroupAllRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityGroupAllRuleRequest()
-    }
-    
-    response = NewDeleteSecurityGroupAllRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityGroupAllRuleWithContext(context.Background(), request)
 }
 
 // DeleteSecurityGroupAllRule
@@ -939,6 +921,11 @@ func (c *Client) DeleteSecurityGroupAllRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteSecurityGroupAllRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityGroupAllRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityGroupAllRuleResponse()
@@ -971,13 +958,7 @@ func NewDeleteSecurityGroupRuleResponse() (response *DeleteSecurityGroupRuleResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecurityGroupRule(request *DeleteSecurityGroupRuleRequest) (response *DeleteSecurityGroupRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityGroupRuleRequest()
-    }
-    
-    response = NewDeleteSecurityGroupRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityGroupRuleWithContext(context.Background(), request)
 }
 
 // DeleteSecurityGroupRule
@@ -991,6 +972,11 @@ func (c *Client) DeleteSecurityGroupRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteSecurityGroupRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityGroupRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityGroupRuleResponse()
@@ -1023,13 +1009,7 @@ func NewDeleteVpcInstanceResponse() (response *DeleteVpcInstanceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteVpcInstance(request *DeleteVpcInstanceRequest) (response *DeleteVpcInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpcInstanceRequest()
-    }
-    
-    response = NewDeleteVpcInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpcInstanceWithContext(context.Background(), request)
 }
 
 // DeleteVpcInstance
@@ -1043,6 +1023,11 @@ func (c *Client) DeleteVpcInstanceWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteVpcInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpcInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpcInstanceResponse()
@@ -1076,13 +1061,7 @@ func NewDescribeAcListsResponse() (response *DescribeAcListsResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAcLists(request *DescribeAcListsRequest) (response *DescribeAcListsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAcListsRequest()
-    }
-    
-    response = NewDescribeAcListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAcListsWithContext(context.Background(), request)
 }
 
 // DescribeAcLists
@@ -1097,6 +1076,11 @@ func (c *Client) DescribeAcListsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAcListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAcLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAcListsResponse()
@@ -1128,13 +1112,7 @@ func NewDescribeAddrTemplateListResponse() (response *DescribeAddrTemplateListRe
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAddrTemplateList(request *DescribeAddrTemplateListRequest) (response *DescribeAddrTemplateListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAddrTemplateListRequest()
-    }
-    
-    response = NewDescribeAddrTemplateListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAddrTemplateListWithContext(context.Background(), request)
 }
 
 // DescribeAddrTemplateList
@@ -1147,6 +1125,11 @@ func (c *Client) DescribeAddrTemplateListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAddrTemplateListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddrTemplateList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAddrTemplateListResponse()
@@ -1180,13 +1163,7 @@ func NewDescribeAssociatedInstanceListResponse() (response *DescribeAssociatedIn
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAssociatedInstanceList(request *DescribeAssociatedInstanceListRequest) (response *DescribeAssociatedInstanceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssociatedInstanceListRequest()
-    }
-    
-    response = NewDescribeAssociatedInstanceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssociatedInstanceListWithContext(context.Background(), request)
 }
 
 // DescribeAssociatedInstanceList
@@ -1201,6 +1178,11 @@ func (c *Client) DescribeAssociatedInstanceListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssociatedInstanceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssociatedInstanceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssociatedInstanceListResponse()
@@ -1248,13 +1230,7 @@ func NewDescribeBlockByIpTimesListResponse() (response *DescribeBlockByIpTimesLi
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBlockByIpTimesList(request *DescribeBlockByIpTimesListRequest) (response *DescribeBlockByIpTimesListResponse, err error) {
-    if request == nil {
-        request = NewDescribeBlockByIpTimesListRequest()
-    }
-    
-    response = NewDescribeBlockByIpTimesListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBlockByIpTimesListWithContext(context.Background(), request)
 }
 
 // DescribeBlockByIpTimesList
@@ -1283,6 +1259,11 @@ func (c *Client) DescribeBlockByIpTimesListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBlockByIpTimesListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockByIpTimesList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBlockByIpTimesListResponse()
@@ -1330,13 +1311,7 @@ func NewDescribeBlockStaticListResponse() (response *DescribeBlockStaticListResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBlockStaticList(request *DescribeBlockStaticListRequest) (response *DescribeBlockStaticListResponse, err error) {
-    if request == nil {
-        request = NewDescribeBlockStaticListRequest()
-    }
-    
-    response = NewDescribeBlockStaticListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBlockStaticListWithContext(context.Background(), request)
 }
 
 // DescribeBlockStaticList
@@ -1365,6 +1340,11 @@ func (c *Client) DescribeBlockStaticListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeBlockStaticListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockStaticList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBlockStaticListResponse()
@@ -1412,13 +1392,7 @@ func NewDescribeCfwEipsResponse() (response *DescribeCfwEipsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCfwEips(request *DescribeCfwEipsRequest) (response *DescribeCfwEipsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfwEipsRequest()
-    }
-    
-    response = NewDescribeCfwEipsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfwEipsWithContext(context.Background(), request)
 }
 
 // DescribeCfwEips
@@ -1447,6 +1421,11 @@ func (c *Client) DescribeCfwEipsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCfwEipsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwEips require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfwEipsResponse()
@@ -1494,13 +1473,7 @@ func NewDescribeEnterpriseSecurityGroupRuleResponse() (response *DescribeEnterpr
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEnterpriseSecurityGroupRule(request *DescribeEnterpriseSecurityGroupRuleRequest) (response *DescribeEnterpriseSecurityGroupRuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnterpriseSecurityGroupRuleRequest()
-    }
-    
-    response = NewDescribeEnterpriseSecurityGroupRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnterpriseSecurityGroupRuleWithContext(context.Background(), request)
 }
 
 // DescribeEnterpriseSecurityGroupRule
@@ -1529,6 +1502,11 @@ func (c *Client) DescribeEnterpriseSecurityGroupRuleWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeEnterpriseSecurityGroupRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnterpriseSecurityGroupRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnterpriseSecurityGroupRuleResponse()
@@ -1576,13 +1554,7 @@ func NewDescribeGuideScanInfoResponse() (response *DescribeGuideScanInfoResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGuideScanInfo(request *DescribeGuideScanInfoRequest) (response *DescribeGuideScanInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeGuideScanInfoRequest()
-    }
-    
-    response = NewDescribeGuideScanInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGuideScanInfoWithContext(context.Background(), request)
 }
 
 // DescribeGuideScanInfo
@@ -1611,6 +1583,11 @@ func (c *Client) DescribeGuideScanInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeGuideScanInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGuideScanInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGuideScanInfoResponse()
@@ -1658,13 +1635,7 @@ func NewDescribeNatFwInfoCountResponse() (response *DescribeNatFwInfoCountRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatFwInfoCount(request *DescribeNatFwInfoCountRequest) (response *DescribeNatFwInfoCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatFwInfoCountRequest()
-    }
-    
-    response = NewDescribeNatFwInfoCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatFwInfoCountWithContext(context.Background(), request)
 }
 
 // DescribeNatFwInfoCount
@@ -1693,6 +1664,11 @@ func (c *Client) DescribeNatFwInfoCountWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNatFwInfoCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwInfoCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatFwInfoCountResponse()
@@ -1740,13 +1716,7 @@ func NewDescribeNatFwInstanceResponse() (response *DescribeNatFwInstanceResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatFwInstance(request *DescribeNatFwInstanceRequest) (response *DescribeNatFwInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatFwInstanceRequest()
-    }
-    
-    response = NewDescribeNatFwInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatFwInstanceWithContext(context.Background(), request)
 }
 
 // DescribeNatFwInstance
@@ -1775,6 +1745,11 @@ func (c *Client) DescribeNatFwInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNatFwInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatFwInstanceResponse()
@@ -1822,13 +1797,7 @@ func NewDescribeNatFwInstanceWithRegionResponse() (response *DescribeNatFwInstan
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatFwInstanceWithRegion(request *DescribeNatFwInstanceWithRegionRequest) (response *DescribeNatFwInstanceWithRegionResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatFwInstanceWithRegionRequest()
-    }
-    
-    response = NewDescribeNatFwInstanceWithRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatFwInstanceWithRegionWithContext(context.Background(), request)
 }
 
 // DescribeNatFwInstanceWithRegion
@@ -1857,6 +1826,11 @@ func (c *Client) DescribeNatFwInstanceWithRegionWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeNatFwInstanceWithRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwInstanceWithRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatFwInstanceWithRegionResponse()
@@ -1904,13 +1878,7 @@ func NewDescribeNatFwInstancesInfoResponse() (response *DescribeNatFwInstancesIn
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatFwInstancesInfo(request *DescribeNatFwInstancesInfoRequest) (response *DescribeNatFwInstancesInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatFwInstancesInfoRequest()
-    }
-    
-    response = NewDescribeNatFwInstancesInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatFwInstancesInfoWithContext(context.Background(), request)
 }
 
 // DescribeNatFwInstancesInfo
@@ -1939,6 +1907,11 @@ func (c *Client) DescribeNatFwInstancesInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeNatFwInstancesInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwInstancesInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatFwInstancesInfoResponse()
@@ -1986,13 +1959,7 @@ func NewDescribeNatFwVpcDnsLstResponse() (response *DescribeNatFwVpcDnsLstRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatFwVpcDnsLst(request *DescribeNatFwVpcDnsLstRequest) (response *DescribeNatFwVpcDnsLstResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatFwVpcDnsLstRequest()
-    }
-    
-    response = NewDescribeNatFwVpcDnsLstResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatFwVpcDnsLstWithContext(context.Background(), request)
 }
 
 // DescribeNatFwVpcDnsLst
@@ -2021,6 +1988,11 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeNatFwVpcDnsLstRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatFwVpcDnsLst require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatFwVpcDnsLstResponse()
@@ -2054,13 +2026,7 @@ func NewDescribeNatRuleOverviewResponse() (response *DescribeNatRuleOverviewResp
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeNatRuleOverview(request *DescribeNatRuleOverviewRequest) (response *DescribeNatRuleOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatRuleOverviewRequest()
-    }
-    
-    response = NewDescribeNatRuleOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatRuleOverviewWithContext(context.Background(), request)
 }
 
 // DescribeNatRuleOverview
@@ -2075,6 +2041,11 @@ func (c *Client) DescribeNatRuleOverviewWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeNatRuleOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatRuleOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatRuleOverviewResponse()
@@ -2122,13 +2093,7 @@ func NewDescribeResourceGroupResponse() (response *DescribeResourceGroupResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceGroup(request *DescribeResourceGroupRequest) (response *DescribeResourceGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceGroupRequest()
-    }
-    
-    response = NewDescribeResourceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceGroupWithContext(context.Background(), request)
 }
 
 // DescribeResourceGroup
@@ -2157,6 +2122,11 @@ func (c *Client) DescribeResourceGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceGroupResponse()
@@ -2204,13 +2174,7 @@ func NewDescribeResourceGroupNewResponse() (response *DescribeResourceGroupNewRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceGroupNew(request *DescribeResourceGroupNewRequest) (response *DescribeResourceGroupNewResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceGroupNewRequest()
-    }
-    
-    response = NewDescribeResourceGroupNewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceGroupNewWithContext(context.Background(), request)
 }
 
 // DescribeResourceGroupNew
@@ -2239,6 +2203,11 @@ func (c *Client) DescribeResourceGroupNewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeResourceGroupNewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGroupNew require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceGroupNewResponse()
@@ -2272,13 +2241,7 @@ func NewDescribeRuleOverviewResponse() (response *DescribeRuleOverviewResponse) 
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRuleOverview(request *DescribeRuleOverviewRequest) (response *DescribeRuleOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleOverviewRequest()
-    }
-    
-    response = NewDescribeRuleOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRuleOverviewWithContext(context.Background(), request)
 }
 
 // DescribeRuleOverview
@@ -2293,6 +2256,11 @@ func (c *Client) DescribeRuleOverviewWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRuleOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRuleOverviewResponse()
@@ -2326,13 +2294,7 @@ func NewDescribeSecurityGroupListResponse() (response *DescribeSecurityGroupList
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSecurityGroupList(request *DescribeSecurityGroupListRequest) (response *DescribeSecurityGroupListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityGroupListRequest()
-    }
-    
-    response = NewDescribeSecurityGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityGroupListWithContext(context.Background(), request)
 }
 
 // DescribeSecurityGroupList
@@ -2347,6 +2309,11 @@ func (c *Client) DescribeSecurityGroupListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSecurityGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupListResponse()
@@ -2378,13 +2345,7 @@ func NewDescribeSourceAssetResponse() (response *DescribeSourceAssetResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSourceAsset(request *DescribeSourceAssetRequest) (response *DescribeSourceAssetResponse, err error) {
-    if request == nil {
-        request = NewDescribeSourceAssetRequest()
-    }
-    
-    response = NewDescribeSourceAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSourceAssetWithContext(context.Background(), request)
 }
 
 // DescribeSourceAsset
@@ -2397,6 +2358,11 @@ func (c *Client) DescribeSourceAssetWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSourceAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSourceAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSourceAssetResponse()
@@ -2428,13 +2394,7 @@ func NewDescribeSwitchListsResponse() (response *DescribeSwitchListsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSwitchLists(request *DescribeSwitchListsRequest) (response *DescribeSwitchListsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSwitchListsRequest()
-    }
-    
-    response = NewDescribeSwitchListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSwitchListsWithContext(context.Background(), request)
 }
 
 // DescribeSwitchLists
@@ -2447,6 +2407,11 @@ func (c *Client) DescribeSwitchListsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSwitchListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSwitchLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSwitchListsResponse()
@@ -2480,13 +2445,7 @@ func NewDescribeSyncAssetStatusResponse() (response *DescribeSyncAssetStatusResp
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSyncAssetStatus(request *DescribeSyncAssetStatusRequest) (response *DescribeSyncAssetStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeSyncAssetStatusRequest()
-    }
-    
-    response = NewDescribeSyncAssetStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSyncAssetStatusWithContext(context.Background(), request)
 }
 
 // DescribeSyncAssetStatus
@@ -2501,6 +2460,11 @@ func (c *Client) DescribeSyncAssetStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSyncAssetStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSyncAssetStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSyncAssetStatusResponse()
@@ -2548,13 +2512,7 @@ func NewDescribeTLogInfoResponse() (response *DescribeTLogInfoResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTLogInfo(request *DescribeTLogInfoRequest) (response *DescribeTLogInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeTLogInfoRequest()
-    }
-    
-    response = NewDescribeTLogInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTLogInfoWithContext(context.Background(), request)
 }
 
 // DescribeTLogInfo
@@ -2583,6 +2541,11 @@ func (c *Client) DescribeTLogInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTLogInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTLogInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTLogInfoResponse()
@@ -2630,13 +2593,7 @@ func NewDescribeTLogIpListResponse() (response *DescribeTLogIpListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTLogIpList(request *DescribeTLogIpListRequest) (response *DescribeTLogIpListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTLogIpListRequest()
-    }
-    
-    response = NewDescribeTLogIpListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTLogIpListWithContext(context.Background(), request)
 }
 
 // DescribeTLogIpList
@@ -2665,6 +2622,11 @@ func (c *Client) DescribeTLogIpListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTLogIpListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTLogIpList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTLogIpListResponse()
@@ -2698,13 +2660,7 @@ func NewDescribeTableStatusResponse() (response *DescribeTableStatusResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTableStatus(request *DescribeTableStatusRequest) (response *DescribeTableStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTableStatusRequest()
-    }
-    
-    response = NewDescribeTableStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTableStatusWithContext(context.Background(), request)
 }
 
 // DescribeTableStatus
@@ -2719,6 +2675,11 @@ func (c *Client) DescribeTableStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTableStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTableStatusResponse()
@@ -2766,13 +2727,7 @@ func NewDescribeUnHandleEventTabListResponse() (response *DescribeUnHandleEventT
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUnHandleEventTabList(request *DescribeUnHandleEventTabListRequest) (response *DescribeUnHandleEventTabListResponse, err error) {
-    if request == nil {
-        request = NewDescribeUnHandleEventTabListRequest()
-    }
-    
-    response = NewDescribeUnHandleEventTabListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUnHandleEventTabListWithContext(context.Background(), request)
 }
 
 // DescribeUnHandleEventTabList
@@ -2801,6 +2756,11 @@ func (c *Client) DescribeUnHandleEventTabListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUnHandleEventTabListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnHandleEventTabList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUnHandleEventTabListResponse()
@@ -2834,13 +2794,7 @@ func NewDescribeVpcRuleOverviewResponse() (response *DescribeVpcRuleOverviewResp
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpcRuleOverview(request *DescribeVpcRuleOverviewRequest) (response *DescribeVpcRuleOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcRuleOverviewRequest()
-    }
-    
-    response = NewDescribeVpcRuleOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcRuleOverviewWithContext(context.Background(), request)
 }
 
 // DescribeVpcRuleOverview
@@ -2855,6 +2809,11 @@ func (c *Client) DescribeVpcRuleOverviewWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeVpcRuleOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcRuleOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcRuleOverviewResponse()
@@ -2902,13 +2861,7 @@ func NewExpandCfwVerticalResponse() (response *ExpandCfwVerticalResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExpandCfwVertical(request *ExpandCfwVerticalRequest) (response *ExpandCfwVerticalResponse, err error) {
-    if request == nil {
-        request = NewExpandCfwVerticalRequest()
-    }
-    
-    response = NewExpandCfwVerticalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExpandCfwVerticalWithContext(context.Background(), request)
 }
 
 // ExpandCfwVertical
@@ -2937,6 +2890,11 @@ func (c *Client) ExpandCfwVerticalWithContext(ctx context.Context, request *Expa
     if request == nil {
         request = NewExpandCfwVerticalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExpandCfwVertical require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExpandCfwVerticalResponse()
@@ -2970,13 +2928,7 @@ func NewModifyAcRuleResponse() (response *ModifyAcRuleResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAcRule(request *ModifyAcRuleRequest) (response *ModifyAcRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyAcRuleRequest()
-    }
-    
-    response = NewModifyAcRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAcRuleWithContext(context.Background(), request)
 }
 
 // ModifyAcRule
@@ -2991,6 +2943,11 @@ func (c *Client) ModifyAcRuleWithContext(ctx context.Context, request *ModifyAcR
     if request == nil {
         request = NewModifyAcRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAcRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAcRuleResponse()
@@ -3023,13 +2980,7 @@ func NewModifyAllPublicIPSwitchStatusResponse() (response *ModifyAllPublicIPSwit
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyAllPublicIPSwitchStatus(request *ModifyAllPublicIPSwitchStatusRequest) (response *ModifyAllPublicIPSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllPublicIPSwitchStatusRequest()
-    }
-    
-    response = NewModifyAllPublicIPSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAllPublicIPSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyAllPublicIPSwitchStatus
@@ -3043,6 +2994,11 @@ func (c *Client) ModifyAllPublicIPSwitchStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyAllPublicIPSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllPublicIPSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAllPublicIPSwitchStatusResponse()
@@ -3076,13 +3032,7 @@ func NewModifyAllRuleStatusResponse() (response *ModifyAllRuleStatusResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAllRuleStatus(request *ModifyAllRuleStatusRequest) (response *ModifyAllRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllRuleStatusRequest()
-    }
-    
-    response = NewModifyAllRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAllRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifyAllRuleStatus
@@ -3097,6 +3047,11 @@ func (c *Client) ModifyAllRuleStatusWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyAllRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAllRuleStatusResponse()
@@ -3129,13 +3084,7 @@ func NewModifyAllSwitchStatusResponse() (response *ModifyAllSwitchStatusResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyAllSwitchStatus(request *ModifyAllSwitchStatusRequest) (response *ModifyAllSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllSwitchStatusRequest()
-    }
-    
-    response = NewModifyAllSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAllSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyAllSwitchStatus
@@ -3149,6 +3098,11 @@ func (c *Client) ModifyAllSwitchStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyAllSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAllSwitchStatusResponse()
@@ -3181,13 +3135,7 @@ func NewModifyAllVPCSwitchStatusResponse() (response *ModifyAllVPCSwitchStatusRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyAllVPCSwitchStatus(request *ModifyAllVPCSwitchStatusRequest) (response *ModifyAllVPCSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllVPCSwitchStatusRequest()
-    }
-    
-    response = NewModifyAllVPCSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAllVPCSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyAllVPCSwitchStatus
@@ -3201,6 +3149,11 @@ func (c *Client) ModifyAllVPCSwitchStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAllVPCSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllVPCSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAllVPCSwitchStatusResponse()
@@ -3233,13 +3186,7 @@ func NewModifyAssetScanResponse() (response *ModifyAssetScanResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyAssetScan(request *ModifyAssetScanRequest) (response *ModifyAssetScanResponse, err error) {
-    if request == nil {
-        request = NewModifyAssetScanRequest()
-    }
-    
-    response = NewModifyAssetScanResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAssetScanWithContext(context.Background(), request)
 }
 
 // ModifyAssetScan
@@ -3253,6 +3200,11 @@ func (c *Client) ModifyAssetScanWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAssetScanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetScan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAssetScanResponse()
@@ -3292,13 +3244,7 @@ func NewModifyBlockIgnoreListResponse() (response *ModifyBlockIgnoreListResponse
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyBlockIgnoreList(request *ModifyBlockIgnoreListRequest) (response *ModifyBlockIgnoreListResponse, err error) {
-    if request == nil {
-        request = NewModifyBlockIgnoreListRequest()
-    }
-    
-    response = NewModifyBlockIgnoreListResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBlockIgnoreListWithContext(context.Background(), request)
 }
 
 // ModifyBlockIgnoreList
@@ -3319,6 +3265,11 @@ func (c *Client) ModifyBlockIgnoreListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyBlockIgnoreListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlockIgnoreList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBlockIgnoreListResponse()
@@ -3366,13 +3317,7 @@ func NewModifyBlockTopResponse() (response *ModifyBlockTopResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyBlockTop(request *ModifyBlockTopRequest) (response *ModifyBlockTopResponse, err error) {
-    if request == nil {
-        request = NewModifyBlockTopRequest()
-    }
-    
-    response = NewModifyBlockTopResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBlockTopWithContext(context.Background(), request)
 }
 
 // ModifyBlockTop
@@ -3401,6 +3346,11 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     if request == nil {
         request = NewModifyBlockTopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlockTop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBlockTopResponse()
@@ -3431,13 +3381,7 @@ func NewModifyItemSwitchStatusResponse() (response *ModifyItemSwitchStatusRespon
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ModifyItemSwitchStatus(request *ModifyItemSwitchStatusRequest) (response *ModifyItemSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyItemSwitchStatusRequest()
-    }
-    
-    response = NewModifyItemSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyItemSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyItemSwitchStatus
@@ -3449,6 +3393,11 @@ func (c *Client) ModifyItemSwitchStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyItemSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyItemSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyItemSwitchStatusResponse()
@@ -3496,13 +3445,7 @@ func NewModifyNatFwReSelectResponse() (response *ModifyNatFwReSelectResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyNatFwReSelect(request *ModifyNatFwReSelectRequest) (response *ModifyNatFwReSelectResponse, err error) {
-    if request == nil {
-        request = NewModifyNatFwReSelectRequest()
-    }
-    
-    response = NewModifyNatFwReSelectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNatFwReSelectWithContext(context.Background(), request)
 }
 
 // ModifyNatFwReSelect
@@ -3531,6 +3474,11 @@ func (c *Client) ModifyNatFwReSelectWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyNatFwReSelectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatFwReSelect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNatFwReSelectResponse()
@@ -3578,13 +3526,7 @@ func NewModifyNatFwSwitchResponse() (response *ModifyNatFwSwitchResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyNatFwSwitch(request *ModifyNatFwSwitchRequest) (response *ModifyNatFwSwitchResponse, err error) {
-    if request == nil {
-        request = NewModifyNatFwSwitchRequest()
-    }
-    
-    response = NewModifyNatFwSwitchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNatFwSwitchWithContext(context.Background(), request)
 }
 
 // ModifyNatFwSwitch
@@ -3613,6 +3555,11 @@ func (c *Client) ModifyNatFwSwitchWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyNatFwSwitchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatFwSwitch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNatFwSwitchResponse()
@@ -3654,13 +3601,7 @@ func NewModifyNatFwVpcDnsSwitchResponse() (response *ModifyNatFwVpcDnsSwitchResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) ModifyNatFwVpcDnsSwitch(request *ModifyNatFwVpcDnsSwitchRequest) (response *ModifyNatFwVpcDnsSwitchResponse, err error) {
-    if request == nil {
-        request = NewModifyNatFwVpcDnsSwitchRequest()
-    }
-    
-    response = NewModifyNatFwVpcDnsSwitchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNatFwVpcDnsSwitchWithContext(context.Background(), request)
 }
 
 // ModifyNatFwVpcDnsSwitch
@@ -3683,6 +3624,11 @@ func (c *Client) ModifyNatFwVpcDnsSwitchWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyNatFwVpcDnsSwitchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatFwVpcDnsSwitch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNatFwVpcDnsSwitchResponse()
@@ -3715,13 +3661,7 @@ func NewModifyPublicIPSwitchStatusResponse() (response *ModifyPublicIPSwitchStat
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyPublicIPSwitchStatus(request *ModifyPublicIPSwitchStatusRequest) (response *ModifyPublicIPSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyPublicIPSwitchStatusRequest()
-    }
-    
-    response = NewModifyPublicIPSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPublicIPSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyPublicIPSwitchStatus
@@ -3735,6 +3675,11 @@ func (c *Client) ModifyPublicIPSwitchStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyPublicIPSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPublicIPSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPublicIPSwitchStatusResponse()
@@ -3784,13 +3729,7 @@ func NewModifyResourceGroupResponse() (response *ModifyResourceGroupResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (response *ModifyResourceGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyResourceGroupRequest()
-    }
-    
-    response = NewModifyResourceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyResourceGroupWithContext(context.Background(), request)
 }
 
 // ModifyResourceGroup
@@ -3821,6 +3760,11 @@ func (c *Client) ModifyResourceGroupWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyResourceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyResourceGroupResponse()
@@ -3854,13 +3798,7 @@ func NewModifyRunSyncAssetResponse() (response *ModifyRunSyncAssetResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRunSyncAsset(request *ModifyRunSyncAssetRequest) (response *ModifyRunSyncAssetResponse, err error) {
-    if request == nil {
-        request = NewModifyRunSyncAssetRequest()
-    }
-    
-    response = NewModifyRunSyncAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRunSyncAssetWithContext(context.Background(), request)
 }
 
 // ModifyRunSyncAsset
@@ -3875,6 +3813,11 @@ func (c *Client) ModifyRunSyncAssetWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRunSyncAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRunSyncAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRunSyncAssetResponse()
@@ -3908,13 +3851,7 @@ func NewModifySecurityGroupAllRuleStatusResponse() (response *ModifySecurityGrou
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySecurityGroupAllRuleStatus(request *ModifySecurityGroupAllRuleStatusRequest) (response *ModifySecurityGroupAllRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupAllRuleStatusRequest()
-    }
-    
-    response = NewModifySecurityGroupAllRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupAllRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupAllRuleStatus
@@ -3929,6 +3866,11 @@ func (c *Client) ModifySecurityGroupAllRuleStatusWithContext(ctx context.Context
     if request == nil {
         request = NewModifySecurityGroupAllRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupAllRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupAllRuleStatusResponse()
@@ -3962,13 +3904,7 @@ func NewModifySecurityGroupItemRuleStatusResponse() (response *ModifySecurityGro
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySecurityGroupItemRuleStatus(request *ModifySecurityGroupItemRuleStatusRequest) (response *ModifySecurityGroupItemRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupItemRuleStatusRequest()
-    }
-    
-    response = NewModifySecurityGroupItemRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupItemRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupItemRuleStatus
@@ -3983,6 +3919,11 @@ func (c *Client) ModifySecurityGroupItemRuleStatusWithContext(ctx context.Contex
     if request == nil {
         request = NewModifySecurityGroupItemRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupItemRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupItemRuleStatusResponse()
@@ -4017,13 +3958,7 @@ func NewModifySecurityGroupRuleResponse() (response *ModifySecurityGroupRuleResp
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) ModifySecurityGroupRule(request *ModifySecurityGroupRuleRequest) (response *ModifySecurityGroupRuleResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupRuleRequest()
-    }
-    
-    response = NewModifySecurityGroupRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupRuleWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupRule
@@ -4039,6 +3974,11 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifySecurityGroupRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupRuleResponse()
@@ -4071,13 +4011,7 @@ func NewModifySecurityGroupSequenceRulesResponse() (response *ModifySecurityGrou
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) ModifySecurityGroupSequenceRules(request *ModifySecurityGroupSequenceRulesRequest) (response *ModifySecurityGroupSequenceRulesResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupSequenceRulesRequest()
-    }
-    
-    response = NewModifySecurityGroupSequenceRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupSequenceRulesWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupSequenceRules
@@ -4091,6 +4025,11 @@ func (c *Client) ModifySecurityGroupSequenceRulesWithContext(ctx context.Context
     if request == nil {
         request = NewModifySecurityGroupSequenceRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupSequenceRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupSequenceRulesResponse()
@@ -4124,13 +4063,7 @@ func NewModifySequenceRulesResponse() (response *ModifySequenceRulesResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySequenceRules(request *ModifySequenceRulesRequest) (response *ModifySequenceRulesResponse, err error) {
-    if request == nil {
-        request = NewModifySequenceRulesRequest()
-    }
-    
-    response = NewModifySequenceRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySequenceRulesWithContext(context.Background(), request)
 }
 
 // ModifySequenceRules
@@ -4145,6 +4078,11 @@ func (c *Client) ModifySequenceRulesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySequenceRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySequenceRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySequenceRulesResponse()
@@ -4178,13 +4116,7 @@ func NewModifyTableStatusResponse() (response *ModifyTableStatusResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTableStatus(request *ModifyTableStatusRequest) (response *ModifyTableStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyTableStatusRequest()
-    }
-    
-    response = NewModifyTableStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableStatusWithContext(context.Background(), request)
 }
 
 // ModifyTableStatus
@@ -4199,6 +4131,11 @@ func (c *Client) ModifyTableStatusWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyTableStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableStatusResponse()
@@ -4231,13 +4168,7 @@ func NewModifyVPCSwitchStatusResponse() (response *ModifyVPCSwitchStatusResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyVPCSwitchStatus(request *ModifyVPCSwitchStatusRequest) (response *ModifyVPCSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyVPCSwitchStatusRequest()
-    }
-    
-    response = NewModifyVPCSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVPCSwitchStatusWithContext(context.Background(), request)
 }
 
 // ModifyVPCSwitchStatus
@@ -4251,6 +4182,11 @@ func (c *Client) ModifyVPCSwitchStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyVPCSwitchStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVPCSwitchStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVPCSwitchStatusResponse()
@@ -4298,13 +4234,7 @@ func NewRemoveAcRuleResponse() (response *RemoveAcRuleResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RemoveAcRule(request *RemoveAcRuleRequest) (response *RemoveAcRuleResponse, err error) {
-    if request == nil {
-        request = NewRemoveAcRuleRequest()
-    }
-    
-    response = NewRemoveAcRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveAcRuleWithContext(context.Background(), request)
 }
 
 // RemoveAcRule
@@ -4333,6 +4263,11 @@ func (c *Client) RemoveAcRuleWithContext(ctx context.Context, request *RemoveAcR
     if request == nil {
         request = NewRemoveAcRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveAcRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveAcRuleResponse()
@@ -4380,13 +4315,7 @@ func NewRemoveEnterpriseSecurityGroupRuleResponse() (response *RemoveEnterpriseS
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RemoveEnterpriseSecurityGroupRule(request *RemoveEnterpriseSecurityGroupRuleRequest) (response *RemoveEnterpriseSecurityGroupRuleResponse, err error) {
-    if request == nil {
-        request = NewRemoveEnterpriseSecurityGroupRuleRequest()
-    }
-    
-    response = NewRemoveEnterpriseSecurityGroupRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveEnterpriseSecurityGroupRuleWithContext(context.Background(), request)
 }
 
 // RemoveEnterpriseSecurityGroupRule
@@ -4415,6 +4344,11 @@ func (c *Client) RemoveEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     if request == nil {
         request = NewRemoveEnterpriseSecurityGroupRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveEnterpriseSecurityGroupRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveEnterpriseSecurityGroupRuleResponse()
@@ -4448,13 +4382,7 @@ func NewRunSyncAssetResponse() (response *RunSyncAssetResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RunSyncAsset(request *RunSyncAssetRequest) (response *RunSyncAssetResponse, err error) {
-    if request == nil {
-        request = NewRunSyncAssetRequest()
-    }
-    
-    response = NewRunSyncAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunSyncAssetWithContext(context.Background(), request)
 }
 
 // RunSyncAsset
@@ -4469,6 +4397,11 @@ func (c *Client) RunSyncAssetWithContext(ctx context.Context, request *RunSyncAs
     if request == nil {
         request = NewRunSyncAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunSyncAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunSyncAssetResponse()
@@ -4516,13 +4449,7 @@ func NewSetNatFwDnatRuleResponse() (response *SetNatFwDnatRuleResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetNatFwDnatRule(request *SetNatFwDnatRuleRequest) (response *SetNatFwDnatRuleResponse, err error) {
-    if request == nil {
-        request = NewSetNatFwDnatRuleRequest()
-    }
-    
-    response = NewSetNatFwDnatRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetNatFwDnatRuleWithContext(context.Background(), request)
 }
 
 // SetNatFwDnatRule
@@ -4551,6 +4478,11 @@ func (c *Client) SetNatFwDnatRuleWithContext(ctx context.Context, request *SetNa
     if request == nil {
         request = NewSetNatFwDnatRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetNatFwDnatRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetNatFwDnatRuleResponse()
@@ -4598,13 +4530,7 @@ func NewSetNatFwEipResponse() (response *SetNatFwEipResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetNatFwEip(request *SetNatFwEipRequest) (response *SetNatFwEipResponse, err error) {
-    if request == nil {
-        request = NewSetNatFwEipRequest()
-    }
-    
-    response = NewSetNatFwEipResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetNatFwEipWithContext(context.Background(), request)
 }
 
 // SetNatFwEip
@@ -4633,6 +4559,11 @@ func (c *Client) SetNatFwEipWithContext(ctx context.Context, request *SetNatFwEi
     if request == nil {
         request = NewSetNatFwEipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetNatFwEip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetNatFwEipResponse()
@@ -4680,13 +4611,7 @@ func NewStopSecurityGroupRuleDispatchResponse() (response *StopSecurityGroupRule
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopSecurityGroupRuleDispatch(request *StopSecurityGroupRuleDispatchRequest) (response *StopSecurityGroupRuleDispatchResponse, err error) {
-    if request == nil {
-        request = NewStopSecurityGroupRuleDispatchRequest()
-    }
-    
-    response = NewStopSecurityGroupRuleDispatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopSecurityGroupRuleDispatchWithContext(context.Background(), request)
 }
 
 // StopSecurityGroupRuleDispatch
@@ -4715,6 +4640,11 @@ func (c *Client) StopSecurityGroupRuleDispatchWithContext(ctx context.Context, r
     if request == nil {
         request = NewStopSecurityGroupRuleDispatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopSecurityGroupRuleDispatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopSecurityGroupRuleDispatchResponse()

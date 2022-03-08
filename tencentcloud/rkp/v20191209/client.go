@@ -16,6 +16,7 @@ package v20191209
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,13 +80,7 @@ func NewGetOpenIdResponse() (response *GetOpenIdResponse) {
 //  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) GetOpenId(request *GetOpenIdRequest) (response *GetOpenIdResponse, err error) {
-    if request == nil {
-        request = NewGetOpenIdRequest()
-    }
-    
-    response = NewGetOpenIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetOpenIdWithContext(context.Background(), request)
 }
 
 // GetOpenId
@@ -109,6 +104,11 @@ func (c *Client) GetOpenIdWithContext(ctx context.Context, request *GetOpenIdReq
     if request == nil {
         request = NewGetOpenIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOpenId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetOpenIdResponse()
@@ -149,13 +149,7 @@ func NewGetTokenResponse() (response *GetTokenResponse) {
 //  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) GetToken(request *GetTokenRequest) (response *GetTokenResponse, err error) {
-    if request == nil {
-        request = NewGetTokenRequest()
-    }
-    
-    response = NewGetTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTokenWithContext(context.Background(), request)
 }
 
 // GetToken
@@ -177,6 +171,11 @@ func (c *Client) GetTokenWithContext(ctx context.Context, request *GetTokenReque
     if request == nil {
         request = NewGetTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTokenResponse()
@@ -231,13 +230,7 @@ func NewQueryDevAndRiskResponse() (response *QueryDevAndRiskResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryDevAndRisk(request *QueryDevAndRiskRequest) (response *QueryDevAndRiskResponse, err error) {
-    if request == nil {
-        request = NewQueryDevAndRiskRequest()
-    }
-    
-    response = NewQueryDevAndRiskResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryDevAndRiskWithContext(context.Background(), request)
 }
 
 // QueryDevAndRisk
@@ -273,6 +266,11 @@ func (c *Client) QueryDevAndRiskWithContext(ctx context.Context, request *QueryD
     if request == nil {
         request = NewQueryDevAndRiskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryDevAndRisk require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryDevAndRiskResponse()

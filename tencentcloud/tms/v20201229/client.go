@@ -16,6 +16,7 @@ package v20201229
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -107,13 +108,7 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 //  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
-    if request == nil {
-        request = NewTextModerationRequest()
-    }
-    
-    response = NewTextModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextModerationWithContext(context.Background(), request)
 }
 
 // TextModeration
@@ -165,6 +160,11 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextModerationResponse()

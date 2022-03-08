@@ -319,7 +319,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_zh_dialect：多方言。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
-	// 识别声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模）。注意：录音识别会自动将音频转码为填写的识别声道数
+	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
 	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）

@@ -16,6 +16,7 @@ package v20190719
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -115,13 +116,7 @@ func NewCreateCfsFileSystemResponse() (response *CreateCfsFileSystemResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsFileSystem(request *CreateCfsFileSystemRequest) (response *CreateCfsFileSystemResponse, err error) {
-    if request == nil {
-        request = NewCreateCfsFileSystemRequest()
-    }
-    
-    response = NewCreateCfsFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCfsFileSystemWithContext(context.Background(), request)
 }
 
 // CreateCfsFileSystem
@@ -181,6 +176,11 @@ func (c *Client) CreateCfsFileSystemWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCfsFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCfsFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCfsFileSystemResponse()
@@ -219,13 +219,7 @@ func NewCreateCfsPGroupResponse() (response *CreateCfsPGroupResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsPGroup(request *CreateCfsPGroupRequest) (response *CreateCfsPGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateCfsPGroupRequest()
-    }
-    
-    response = NewCreateCfsPGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCfsPGroupWithContext(context.Background(), request)
 }
 
 // CreateCfsPGroup
@@ -245,6 +239,11 @@ func (c *Client) CreateCfsPGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateCfsPGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCfsPGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCfsPGroupResponse()
@@ -291,13 +290,7 @@ func NewCreateCfsRuleResponse() (response *CreateCfsRuleResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) CreateCfsRule(request *CreateCfsRuleRequest) (response *CreateCfsRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateCfsRuleRequest()
-    }
-    
-    response = NewCreateCfsRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCfsRuleWithContext(context.Background(), request)
 }
 
 // CreateCfsRule
@@ -325,6 +318,11 @@ func (c *Client) CreateCfsRuleWithContext(ctx context.Context, request *CreateCf
     if request == nil {
         request = NewCreateCfsRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCfsRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCfsRuleResponse()
@@ -367,13 +365,7 @@ func NewDeleteCfsFileSystemResponse() (response *DeleteCfsFileSystemResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsFileSystem(request *DeleteCfsFileSystemRequest) (response *DeleteCfsFileSystemResponse, err error) {
-    if request == nil {
-        request = NewDeleteCfsFileSystemRequest()
-    }
-    
-    response = NewDeleteCfsFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCfsFileSystemWithContext(context.Background(), request)
 }
 
 // DeleteCfsFileSystem
@@ -397,6 +389,11 @@ func (c *Client) DeleteCfsFileSystemWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteCfsFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCfsFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCfsFileSystemResponse()
@@ -436,13 +433,7 @@ func NewDeleteCfsPGroupResponse() (response *DeleteCfsPGroupResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsPGroup(request *DeleteCfsPGroupRequest) (response *DeleteCfsPGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteCfsPGroupRequest()
-    }
-    
-    response = NewDeleteCfsPGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCfsPGroupWithContext(context.Background(), request)
 }
 
 // DeleteCfsPGroup
@@ -463,6 +454,11 @@ func (c *Client) DeleteCfsPGroupWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteCfsPGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCfsPGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCfsPGroupResponse()
@@ -509,13 +505,7 @@ func NewDeleteCfsRuleResponse() (response *DeleteCfsRuleResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteCfsRule(request *DeleteCfsRuleRequest) (response *DeleteCfsRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteCfsRuleRequest()
-    }
-    
-    response = NewDeleteCfsRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCfsRuleWithContext(context.Background(), request)
 }
 
 // DeleteCfsRule
@@ -543,6 +533,11 @@ func (c *Client) DeleteCfsRuleWithContext(ctx context.Context, request *DeleteCf
     if request == nil {
         request = NewDeleteCfsRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCfsRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCfsRuleResponse()
@@ -583,13 +578,7 @@ func NewDeleteMountTargetResponse() (response *DeleteMountTargetResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DeleteMountTarget(request *DeleteMountTargetRequest) (response *DeleteMountTargetResponse, err error) {
-    if request == nil {
-        request = NewDeleteMountTargetRequest()
-    }
-    
-    response = NewDeleteMountTargetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMountTargetWithContext(context.Background(), request)
 }
 
 // DeleteMountTarget
@@ -611,6 +600,11 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteMountTargetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMountTarget require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMountTargetResponse()
@@ -644,13 +638,7 @@ func NewDescribeAvailableZoneInfoResponse() (response *DescribeAvailableZoneInfo
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeAvailableZoneInfo(request *DescribeAvailableZoneInfoRequest) (response *DescribeAvailableZoneInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeAvailableZoneInfoRequest()
-    }
-    
-    response = NewDescribeAvailableZoneInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAvailableZoneInfoWithContext(context.Background(), request)
 }
 
 // DescribeAvailableZoneInfo
@@ -665,6 +653,11 @@ func (c *Client) DescribeAvailableZoneInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAvailableZoneInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableZoneInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAvailableZoneInfoResponse()
@@ -701,13 +694,7 @@ func NewDescribeCfsFileSystemClientsResponse() (response *DescribeCfsFileSystemC
 //  RESOURCENOTFOUND_PGROUPNOTFOUND = "ResourceNotFound.PgroupNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCfsFileSystemClients(request *DescribeCfsFileSystemClientsRequest) (response *DescribeCfsFileSystemClientsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfsFileSystemClientsRequest()
-    }
-    
-    response = NewDescribeCfsFileSystemClientsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfsFileSystemClientsWithContext(context.Background(), request)
 }
 
 // DescribeCfsFileSystemClients
@@ -725,6 +712,11 @@ func (c *Client) DescribeCfsFileSystemClientsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCfsFileSystemClientsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfsFileSystemClients require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfsFileSystemClientsResponse()
@@ -766,13 +758,7 @@ func NewDescribeCfsFileSystemsResponse() (response *DescribeCfsFileSystemsRespon
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsFileSystems(request *DescribeCfsFileSystemsRequest) (response *DescribeCfsFileSystemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfsFileSystemsRequest()
-    }
-    
-    response = NewDescribeCfsFileSystemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfsFileSystemsWithContext(context.Background(), request)
 }
 
 // DescribeCfsFileSystems
@@ -795,6 +781,11 @@ func (c *Client) DescribeCfsFileSystemsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCfsFileSystemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfsFileSystems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfsFileSystemsResponse()
@@ -827,13 +818,7 @@ func NewDescribeCfsPGroupsResponse() (response *DescribeCfsPGroupsResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsPGroups(request *DescribeCfsPGroupsRequest) (response *DescribeCfsPGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfsPGroupsRequest()
-    }
-    
-    response = NewDescribeCfsPGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfsPGroupsWithContext(context.Background(), request)
 }
 
 // DescribeCfsPGroups
@@ -847,6 +832,11 @@ func (c *Client) DescribeCfsPGroupsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCfsPGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfsPGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfsPGroupsResponse()
@@ -881,13 +871,7 @@ func NewDescribeCfsRulesResponse() (response *DescribeCfsRulesResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsRules(request *DescribeCfsRulesRequest) (response *DescribeCfsRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfsRulesRequest()
-    }
-    
-    response = NewDescribeCfsRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfsRulesWithContext(context.Background(), request)
 }
 
 // DescribeCfsRules
@@ -903,6 +887,11 @@ func (c *Client) DescribeCfsRulesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCfsRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfsRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfsRulesResponse()
@@ -937,13 +926,7 @@ func NewDescribeCfsServiceStatusResponse() (response *DescribeCfsServiceStatusRe
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeCfsServiceStatus(request *DescribeCfsServiceStatusRequest) (response *DescribeCfsServiceStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeCfsServiceStatusRequest()
-    }
-    
-    response = NewDescribeCfsServiceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCfsServiceStatusWithContext(context.Background(), request)
 }
 
 // DescribeCfsServiceStatus
@@ -959,6 +942,11 @@ func (c *Client) DescribeCfsServiceStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCfsServiceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfsServiceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCfsServiceStatusResponse()
@@ -998,13 +986,7 @@ func NewDescribeMountTargetsResponse() (response *DescribeMountTargetsResponse) 
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) DescribeMountTargets(request *DescribeMountTargetsRequest) (response *DescribeMountTargetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMountTargetsRequest()
-    }
-    
-    response = NewDescribeMountTargetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMountTargetsWithContext(context.Background(), request)
 }
 
 // DescribeMountTargets
@@ -1025,6 +1007,11 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMountTargetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountTargets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMountTargetsResponse()
@@ -1059,13 +1046,7 @@ func NewSignUpCfsServiceResponse() (response *SignUpCfsServiceResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) SignUpCfsService(request *SignUpCfsServiceRequest) (response *SignUpCfsServiceResponse, err error) {
-    if request == nil {
-        request = NewSignUpCfsServiceRequest()
-    }
-    
-    response = NewSignUpCfsServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.SignUpCfsServiceWithContext(context.Background(), request)
 }
 
 // SignUpCfsService
@@ -1081,6 +1062,11 @@ func (c *Client) SignUpCfsServiceWithContext(ctx context.Context, request *SignU
     if request == nil {
         request = NewSignUpCfsServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SignUpCfsService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSignUpCfsServiceResponse()
@@ -1123,13 +1109,7 @@ func NewUpdateCfsFileSystemNameResponse() (response *UpdateCfsFileSystemNameResp
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemName(request *UpdateCfsFileSystemNameRequest) (response *UpdateCfsFileSystemNameResponse, err error) {
-    if request == nil {
-        request = NewUpdateCfsFileSystemNameRequest()
-    }
-    
-    response = NewUpdateCfsFileSystemNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCfsFileSystemNameWithContext(context.Background(), request)
 }
 
 // UpdateCfsFileSystemName
@@ -1153,6 +1133,11 @@ func (c *Client) UpdateCfsFileSystemNameWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateCfsFileSystemNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCfsFileSystemName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCfsFileSystemNameResponse()
@@ -1199,13 +1184,7 @@ func NewUpdateCfsFileSystemPGroupResponse() (response *UpdateCfsFileSystemPGroup
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemPGroup(request *UpdateCfsFileSystemPGroupRequest) (response *UpdateCfsFileSystemPGroupResponse, err error) {
-    if request == nil {
-        request = NewUpdateCfsFileSystemPGroupRequest()
-    }
-    
-    response = NewUpdateCfsFileSystemPGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCfsFileSystemPGroupWithContext(context.Background(), request)
 }
 
 // UpdateCfsFileSystemPGroup
@@ -1233,6 +1212,11 @@ func (c *Client) UpdateCfsFileSystemPGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateCfsFileSystemPGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCfsFileSystemPGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCfsFileSystemPGroupResponse()
@@ -1275,13 +1259,7 @@ func NewUpdateCfsFileSystemSizeLimitResponse() (response *UpdateCfsFileSystemSiz
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsFileSystemSizeLimit(request *UpdateCfsFileSystemSizeLimitRequest) (response *UpdateCfsFileSystemSizeLimitResponse, err error) {
-    if request == nil {
-        request = NewUpdateCfsFileSystemSizeLimitRequest()
-    }
-    
-    response = NewUpdateCfsFileSystemSizeLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCfsFileSystemSizeLimitWithContext(context.Background(), request)
 }
 
 // UpdateCfsFileSystemSizeLimit
@@ -1305,6 +1283,11 @@ func (c *Client) UpdateCfsFileSystemSizeLimitWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateCfsFileSystemSizeLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCfsFileSystemSizeLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCfsFileSystemSizeLimitResponse()
@@ -1348,13 +1331,7 @@ func NewUpdateCfsPGroupResponse() (response *UpdateCfsPGroupResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsPGroup(request *UpdateCfsPGroupRequest) (response *UpdateCfsPGroupResponse, err error) {
-    if request == nil {
-        request = NewUpdateCfsPGroupRequest()
-    }
-    
-    response = NewUpdateCfsPGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCfsPGroupWithContext(context.Background(), request)
 }
 
 // UpdateCfsPGroup
@@ -1379,6 +1356,11 @@ func (c *Client) UpdateCfsPGroupWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateCfsPGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCfsPGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCfsPGroupResponse()
@@ -1426,13 +1408,7 @@ func NewUpdateCfsRuleResponse() (response *UpdateCfsRuleResponse) {
 //  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
 //  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) UpdateCfsRule(request *UpdateCfsRuleRequest) (response *UpdateCfsRuleResponse, err error) {
-    if request == nil {
-        request = NewUpdateCfsRuleRequest()
-    }
-    
-    response = NewUpdateCfsRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCfsRuleWithContext(context.Background(), request)
 }
 
 // UpdateCfsRule
@@ -1461,6 +1437,11 @@ func (c *Client) UpdateCfsRuleWithContext(ctx context.Context, request *UpdateCf
     if request == nil {
         request = NewUpdateCfsRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCfsRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCfsRuleResponse()

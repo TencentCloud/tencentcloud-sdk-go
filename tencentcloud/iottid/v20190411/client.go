@@ -16,6 +16,7 @@ package v20190411
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewAuthTestTidResponse() (response *AuthTestTidResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) AuthTestTid(request *AuthTestTidRequest) (response *AuthTestTidResponse, err error) {
-    if request == nil {
-        request = NewAuthTestTidRequest()
-    }
-    
-    response = NewAuthTestTidResponse()
-    err = c.Send(request, response)
-    return
+    return c.AuthTestTidWithContext(context.Background(), request)
 }
 
 // AuthTestTid
@@ -93,6 +88,11 @@ func (c *Client) AuthTestTidWithContext(ctx context.Context, request *AuthTestTi
     if request == nil {
         request = NewAuthTestTidRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuthTestTid require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAuthTestTidResponse()
@@ -129,13 +129,7 @@ func NewBurnTidNotifyResponse() (response *BurnTidNotifyResponse) {
 //  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 //  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) BurnTidNotify(request *BurnTidNotifyRequest) (response *BurnTidNotifyResponse, err error) {
-    if request == nil {
-        request = NewBurnTidNotifyRequest()
-    }
-    
-    response = NewBurnTidNotifyResponse()
-    err = c.Send(request, response)
-    return
+    return c.BurnTidNotifyWithContext(context.Background(), request)
 }
 
 // BurnTidNotify
@@ -153,6 +147,11 @@ func (c *Client) BurnTidNotifyWithContext(ctx context.Context, request *BurnTidN
     if request == nil {
         request = NewBurnTidNotifyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BurnTidNotify require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBurnTidNotifyResponse()
@@ -188,13 +187,7 @@ func NewDeliverTidNotifyResponse() (response *DeliverTidNotifyResponse) {
 //  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
 //  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
-    if request == nil {
-        request = NewDeliverTidNotifyRequest()
-    }
-    
-    response = NewDeliverTidNotifyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeliverTidNotifyWithContext(context.Background(), request)
 }
 
 // DeliverTidNotify
@@ -211,6 +204,11 @@ func (c *Client) DeliverTidNotifyWithContext(ctx context.Context, request *Deliv
     if request == nil {
         request = NewDeliverTidNotifyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeliverTidNotify require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeliverTidNotifyResponse()
@@ -246,13 +244,7 @@ func NewDeliverTidsResponse() (response *DeliverTidsResponse) {
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 //  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) DeliverTids(request *DeliverTidsRequest) (response *DeliverTidsResponse, err error) {
-    if request == nil {
-        request = NewDeliverTidsRequest()
-    }
-    
-    response = NewDeliverTidsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeliverTidsWithContext(context.Background(), request)
 }
 
 // DeliverTids
@@ -269,6 +261,11 @@ func (c *Client) DeliverTidsWithContext(ctx context.Context, request *DeliverTid
     if request == nil {
         request = NewDeliverTidsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeliverTids require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeliverTidsResponse()
@@ -302,13 +299,7 @@ func NewDescribeAvailableLibCountResponse() (response *DescribeAvailableLibCount
 //  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) DescribeAvailableLibCount(request *DescribeAvailableLibCountRequest) (response *DescribeAvailableLibCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeAvailableLibCountRequest()
-    }
-    
-    response = NewDescribeAvailableLibCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAvailableLibCountWithContext(context.Background(), request)
 }
 
 // DescribeAvailableLibCount
@@ -323,6 +314,11 @@ func (c *Client) DescribeAvailableLibCountWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAvailableLibCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableLibCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAvailableLibCountResponse()
@@ -356,13 +352,7 @@ func NewDescribePermissionResponse() (response *DescribePermissionResponse) {
 //  INVALIDPARAMETERVALUE_APPID = "InvalidParameterValue.AppId"
 //  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 func (c *Client) DescribePermission(request *DescribePermissionRequest) (response *DescribePermissionResponse, err error) {
-    if request == nil {
-        request = NewDescribePermissionRequest()
-    }
-    
-    response = NewDescribePermissionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePermissionWithContext(context.Background(), request)
 }
 
 // DescribePermission
@@ -377,6 +367,11 @@ func (c *Client) DescribePermissionWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePermissionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePermission require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePermissionResponse()
@@ -412,13 +407,7 @@ func NewDownloadTidsResponse() (response *DownloadTidsResponse) {
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 //  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) DownloadTids(request *DownloadTidsRequest) (response *DownloadTidsResponse, err error) {
-    if request == nil {
-        request = NewDownloadTidsRequest()
-    }
-    
-    response = NewDownloadTidsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadTidsWithContext(context.Background(), request)
 }
 
 // DownloadTids
@@ -435,6 +424,11 @@ func (c *Client) DownloadTidsWithContext(ctx context.Context, request *DownloadT
     if request == nil {
         request = NewDownloadTidsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadTids require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadTidsResponse()
@@ -471,13 +465,7 @@ func NewUploadDeviceUniqueCodeResponse() (response *UploadDeviceUniqueCodeRespon
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 //  INVALIDPARAMETERVALUE_QUANTITY = "InvalidParameterValue.Quantity"
 func (c *Client) UploadDeviceUniqueCode(request *UploadDeviceUniqueCodeRequest) (response *UploadDeviceUniqueCodeResponse, err error) {
-    if request == nil {
-        request = NewUploadDeviceUniqueCodeRequest()
-    }
-    
-    response = NewUploadDeviceUniqueCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadDeviceUniqueCodeWithContext(context.Background(), request)
 }
 
 // UploadDeviceUniqueCode
@@ -495,6 +483,11 @@ func (c *Client) UploadDeviceUniqueCodeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUploadDeviceUniqueCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadDeviceUniqueCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadDeviceUniqueCodeResponse()
@@ -529,13 +522,7 @@ func NewVerifyChipBurnInfoResponse() (response *VerifyChipBurnInfoResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 //  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 func (c *Client) VerifyChipBurnInfo(request *VerifyChipBurnInfoRequest) (response *VerifyChipBurnInfoResponse, err error) {
-    if request == nil {
-        request = NewVerifyChipBurnInfoRequest()
-    }
-    
-    response = NewVerifyChipBurnInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyChipBurnInfoWithContext(context.Background(), request)
 }
 
 // VerifyChipBurnInfo
@@ -551,6 +538,11 @@ func (c *Client) VerifyChipBurnInfoWithContext(ctx context.Context, request *Ver
     if request == nil {
         request = NewVerifyChipBurnInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyChipBurnInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyChipBurnInfoResponse()

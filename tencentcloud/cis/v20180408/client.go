@@ -16,6 +16,7 @@ package v20180408
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewCreateContainerInstanceResponse() (response *CreateContainerInstanceResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateContainerInstance(request *CreateContainerInstanceRequest) (response *CreateContainerInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateContainerInstanceRequest()
-    }
-    
-    response = NewCreateContainerInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateContainerInstanceWithContext(context.Background(), request)
 }
 
 // CreateContainerInstance
@@ -87,6 +82,11 @@ func (c *Client) CreateContainerInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateContainerInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContainerInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateContainerInstanceResponse()
@@ -118,13 +118,7 @@ func NewDeleteContainerInstanceResponse() (response *DeleteContainerInstanceResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteContainerInstance(request *DeleteContainerInstanceRequest) (response *DeleteContainerInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteContainerInstanceRequest()
-    }
-    
-    response = NewDeleteContainerInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteContainerInstanceWithContext(context.Background(), request)
 }
 
 // DeleteContainerInstance
@@ -137,6 +131,11 @@ func (c *Client) DeleteContainerInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteContainerInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteContainerInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteContainerInstanceResponse()
@@ -168,13 +167,7 @@ func NewDescribeContainerInstanceResponse() (response *DescribeContainerInstance
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstance(request *DescribeContainerInstanceRequest) (response *DescribeContainerInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerInstanceRequest()
-    }
-    
-    response = NewDescribeContainerInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerInstanceWithContext(context.Background(), request)
 }
 
 // DescribeContainerInstance
@@ -187,6 +180,11 @@ func (c *Client) DescribeContainerInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeContainerInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerInstanceResponse()
@@ -218,13 +216,7 @@ func NewDescribeContainerInstanceEventsResponse() (response *DescribeContainerIn
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstanceEvents(request *DescribeContainerInstanceEventsRequest) (response *DescribeContainerInstanceEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerInstanceEventsRequest()
-    }
-    
-    response = NewDescribeContainerInstanceEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerInstanceEventsWithContext(context.Background(), request)
 }
 
 // DescribeContainerInstanceEvents
@@ -237,6 +229,11 @@ func (c *Client) DescribeContainerInstanceEventsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeContainerInstanceEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerInstanceEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerInstanceEventsResponse()
@@ -268,13 +265,7 @@ func NewDescribeContainerInstancesResponse() (response *DescribeContainerInstanc
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerInstances(request *DescribeContainerInstancesRequest) (response *DescribeContainerInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerInstancesRequest()
-    }
-    
-    response = NewDescribeContainerInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerInstancesWithContext(context.Background(), request)
 }
 
 // DescribeContainerInstances
@@ -287,6 +278,11 @@ func (c *Client) DescribeContainerInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeContainerInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerInstancesResponse()
@@ -318,13 +314,7 @@ func NewDescribeContainerLogResponse() (response *DescribeContainerLogResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerLog(request *DescribeContainerLogRequest) (response *DescribeContainerLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerLogRequest()
-    }
-    
-    response = NewDescribeContainerLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerLogWithContext(context.Background(), request)
 }
 
 // DescribeContainerLog
@@ -337,6 +327,11 @@ func (c *Client) DescribeContainerLogWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeContainerLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerLogResponse()
@@ -368,13 +363,7 @@ func NewInquiryPriceCreateCisResponse() (response *InquiryPriceCreateCisResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) InquiryPriceCreateCis(request *InquiryPriceCreateCisRequest) (response *InquiryPriceCreateCisResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceCreateCisRequest()
-    }
-    
-    response = NewInquiryPriceCreateCisResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceCreateCisWithContext(context.Background(), request)
 }
 
 // InquiryPriceCreateCis
@@ -387,6 +376,11 @@ func (c *Client) InquiryPriceCreateCisWithContext(ctx context.Context, request *
     if request == nil {
         request = NewInquiryPriceCreateCisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceCreateCis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceCreateCisResponse()

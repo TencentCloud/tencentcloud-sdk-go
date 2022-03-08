@@ -16,6 +16,7 @@ package v20180724
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -149,13 +150,7 @@ func NewInitOralProcessResponse() (response *InitOralProcessResponse) {
 //  RESOURCEUNAVAILABLE_NOCONVERSATIONFOUND = "ResourceUnavailable.NoConversationFound"
 //  RESOURCEUNAVAILABLE_NOINITBEFOREEVALUATION = "ResourceUnavailable.NoInitBeforeEvaluation"
 func (c *Client) InitOralProcess(request *InitOralProcessRequest) (response *InitOralProcessResponse, err error) {
-    if request == nil {
-        request = NewInitOralProcessRequest()
-    }
-    
-    response = NewInitOralProcessResponse()
-    err = c.Send(request, response)
-    return
+    return c.InitOralProcessWithContext(context.Background(), request)
 }
 
 // InitOralProcess
@@ -249,6 +244,11 @@ func (c *Client) InitOralProcessWithContext(ctx context.Context, request *InitOr
     if request == nil {
         request = NewInitOralProcessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InitOralProcess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInitOralProcessResponse()
@@ -349,13 +349,7 @@ func NewKeywordEvaluateResponse() (response *KeywordEvaluateResponse) {
 //  RESOURCEUNAVAILABLE_CONCURRENCYLIMIT = "ResourceUnavailable.ConcurrencyLimit"
 //  RESOURCEUNAVAILABLE_NOINITBEFOREEVALUATION = "ResourceUnavailable.NoInitBeforeEvaluation"
 func (c *Client) KeywordEvaluate(request *KeywordEvaluateRequest) (response *KeywordEvaluateResponse, err error) {
-    if request == nil {
-        request = NewKeywordEvaluateRequest()
-    }
-    
-    response = NewKeywordEvaluateResponse()
-    err = c.Send(request, response)
-    return
+    return c.KeywordEvaluateWithContext(context.Background(), request)
 }
 
 // KeywordEvaluate
@@ -437,6 +431,11 @@ func (c *Client) KeywordEvaluateWithContext(ctx context.Context, request *Keywor
     if request == nil {
         request = NewKeywordEvaluateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("KeywordEvaluate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewKeywordEvaluateResponse()
@@ -540,6 +539,7 @@ func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
 //  INVALIDPARAMETERVALUE_REFTEXTGRAMMARERROR = "InvalidParameterValue.RefTextGrammarError"
 //  INVALIDPARAMETERVALUE_REFTEXTLIMITEXCEEDED = "InvalidParameterValue.RefTextLimitExceeded"
 //  INVALIDPARAMETERVALUE_REFTEXTOOV = "InvalidParameterValue.RefTextOOV"
+//  INVALIDPARAMETERVALUE_REFTEXTPOLYPHONICLIMITEXCEEDED = "InvalidParameterValue.RefTextPolyphonicLimitExceeded"
 //  INVALIDPARAMETERVALUE_REFTXTEMPTY = "InvalidParameterValue.RefTxtEmpty"
 //  INVALIDPARAMETERVALUE_REFTXTTOOLANG = "InvalidParameterValue.RefTxtTooLang"
 //  INVALIDPARAMETERVALUE_SENSITIVEWORDS = "InvalidParameterValue.SensitiveWords"
@@ -565,13 +565,7 @@ func NewTransmitOralProcessResponse() (response *TransmitOralProcessResponse) {
 //  RESOURCEUNAVAILABLE_NOCONVERSATIONFOUND = "ResourceUnavailable.NoConversationFound"
 //  RESOURCEUNAVAILABLE_NOINITBEFOREEVALUATION = "ResourceUnavailable.NoInitBeforeEvaluation"
 func (c *Client) TransmitOralProcess(request *TransmitOralProcessRequest) (response *TransmitOralProcessResponse, err error) {
-    if request == nil {
-        request = NewTransmitOralProcessRequest()
-    }
-    
-    response = NewTransmitOralProcessResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransmitOralProcessWithContext(context.Background(), request)
 }
 
 // TransmitOralProcess
@@ -653,6 +647,7 @@ func (c *Client) TransmitOralProcess(request *TransmitOralProcessRequest) (respo
 //  INVALIDPARAMETERVALUE_REFTEXTGRAMMARERROR = "InvalidParameterValue.RefTextGrammarError"
 //  INVALIDPARAMETERVALUE_REFTEXTLIMITEXCEEDED = "InvalidParameterValue.RefTextLimitExceeded"
 //  INVALIDPARAMETERVALUE_REFTEXTOOV = "InvalidParameterValue.RefTextOOV"
+//  INVALIDPARAMETERVALUE_REFTEXTPOLYPHONICLIMITEXCEEDED = "InvalidParameterValue.RefTextPolyphonicLimitExceeded"
 //  INVALIDPARAMETERVALUE_REFTXTEMPTY = "InvalidParameterValue.RefTxtEmpty"
 //  INVALIDPARAMETERVALUE_REFTXTTOOLANG = "InvalidParameterValue.RefTxtTooLang"
 //  INVALIDPARAMETERVALUE_SENSITIVEWORDS = "InvalidParameterValue.SensitiveWords"
@@ -681,6 +676,11 @@ func (c *Client) TransmitOralProcessWithContext(ctx context.Context, request *Tr
     if request == nil {
         request = NewTransmitOralProcessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransmitOralProcess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransmitOralProcessResponse()
@@ -822,13 +822,7 @@ func NewTransmitOralProcessWithInitResponse() (response *TransmitOralProcessWith
 //  RESOURCEUNAVAILABLE_NOCONVERSATIONFOUND = "ResourceUnavailable.NoConversationFound"
 //  RESOURCEUNAVAILABLE_NOINITBEFOREEVALUATION = "ResourceUnavailable.NoInitBeforeEvaluation"
 func (c *Client) TransmitOralProcessWithInit(request *TransmitOralProcessWithInitRequest) (response *TransmitOralProcessWithInitResponse, err error) {
-    if request == nil {
-        request = NewTransmitOralProcessWithInitRequest()
-    }
-    
-    response = NewTransmitOralProcessWithInitResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransmitOralProcessWithInitWithContext(context.Background(), request)
 }
 
 // TransmitOralProcessWithInit
@@ -951,6 +945,11 @@ func (c *Client) TransmitOralProcessWithInitWithContext(ctx context.Context, req
     if request == nil {
         request = NewTransmitOralProcessWithInitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransmitOralProcessWithInit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransmitOralProcessWithInitResponse()

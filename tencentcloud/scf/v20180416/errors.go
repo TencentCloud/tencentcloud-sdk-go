@@ -545,6 +545,9 @@ const (
 	// 定时触发间隔小于最大限制。
 	LIMITEXCEEDED_PROVISIONTRIGGERINTERVAL = "LimitExceeded.ProvisionTriggerInterval"
 
+	// 配额超限。
+	LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
+
 	// 函数异步重试配置异步重试次数超过限制。
 	LIMITEXCEEDED_RETRYNUM = "LimitExceeded.RetryNum"
 
@@ -733,6 +736,9 @@ const (
 
 	// 资源还有别名绑定，不支持当前操作，请解绑别名后重试。
 	UNSUPPORTEDOPERATION_ALIASBIND = "UnsupportedOperation.AliasBind"
+
+	// 指定的配置AsyncRunEnable暂不支持，请修正后再试。
+	UNSUPPORTEDOPERATION_ASYNCRUNENABLE = "UnsupportedOperation.AsyncRunEnable"
 
 	// Cdn不支持。
 	UNSUPPORTEDOPERATION_CDN = "UnsupportedOperation.Cdn"

@@ -16,6 +16,7 @@ package v20180409
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewBindAlarmPolicyResponse() (response *BindAlarmPolicyResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindAlarmPolicy(request *BindAlarmPolicyRequest) (response *BindAlarmPolicyResponse, err error) {
-    if request == nil {
-        request = NewBindAlarmPolicyRequest()
-    }
-    
-    response = NewBindAlarmPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindAlarmPolicyWithContext(context.Background(), request)
 }
 
 // BindAlarmPolicy
@@ -89,6 +84,11 @@ func (c *Client) BindAlarmPolicyWithContext(ctx context.Context, request *BindAl
     if request == nil {
         request = NewBindAlarmPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindAlarmPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindAlarmPolicyResponse()
@@ -121,13 +121,7 @@ func NewCreateAgentGroupResponse() (response *CreateAgentGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAgentGroup(request *CreateAgentGroupRequest) (response *CreateAgentGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateAgentGroupRequest()
-    }
-    
-    response = NewCreateAgentGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAgentGroupWithContext(context.Background(), request)
 }
 
 // CreateAgentGroup
@@ -141,6 +135,11 @@ func (c *Client) CreateAgentGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAgentGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgentGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAgentGroupResponse()
@@ -181,13 +180,7 @@ func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *CreateProbeTasksResponse, err error) {
-    if request == nil {
-        request = NewCreateProbeTasksRequest()
-    }
-    
-    response = NewCreateProbeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProbeTasksWithContext(context.Background(), request)
 }
 
 // CreateProbeTasks
@@ -209,6 +202,11 @@ func (c *Client) CreateProbeTasksWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateProbeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProbeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProbeTasksResponse()
@@ -241,13 +239,7 @@ func NewCreateTaskExResponse() (response *CreateTaskExResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTaskEx(request *CreateTaskExRequest) (response *CreateTaskExResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskExRequest()
-    }
-    
-    response = NewCreateTaskExResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskExWithContext(context.Background(), request)
 }
 
 // CreateTaskEx
@@ -261,6 +253,11 @@ func (c *Client) CreateTaskExWithContext(ctx context.Context, request *CreateTas
     if request == nil {
         request = NewCreateTaskExRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskEx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskExResponse()
@@ -293,13 +290,7 @@ func NewDeleteAgentGroupResponse() (response *DeleteAgentGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAgentGroup(request *DeleteAgentGroupRequest) (response *DeleteAgentGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteAgentGroupRequest()
-    }
-    
-    response = NewDeleteAgentGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAgentGroupWithContext(context.Background(), request)
 }
 
 // DeleteAgentGroup
@@ -313,6 +304,11 @@ func (c *Client) DeleteAgentGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAgentGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgentGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAgentGroupResponse()
@@ -353,13 +349,7 @@ func NewDeleteProbeTaskResponse() (response *DeleteProbeTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteProbeTask(request *DeleteProbeTaskRequest) (response *DeleteProbeTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteProbeTaskRequest()
-    }
-    
-    response = NewDeleteProbeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProbeTaskWithContext(context.Background(), request)
 }
 
 // DeleteProbeTask
@@ -381,6 +371,11 @@ func (c *Client) DeleteProbeTaskWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteProbeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProbeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProbeTaskResponse()
@@ -413,13 +408,7 @@ func NewDeleteTasksResponse() (response *DeleteTasksResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTasks(request *DeleteTasksRequest) (response *DeleteTasksResponse, err error) {
-    if request == nil {
-        request = NewDeleteTasksRequest()
-    }
-    
-    response = NewDeleteTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTasksWithContext(context.Background(), request)
 }
 
 // DeleteTasks
@@ -433,6 +422,11 @@ func (c *Client) DeleteTasksWithContext(ctx context.Context, request *DeleteTask
     if request == nil {
         request = NewDeleteTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTasksResponse()
@@ -465,13 +459,7 @@ func NewDescribeAgentGroupsResponse() (response *DescribeAgentGroupsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgentGroups(request *DescribeAgentGroupsRequest) (response *DescribeAgentGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentGroupsRequest()
-    }
-    
-    response = NewDescribeAgentGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentGroupsWithContext(context.Background(), request)
 }
 
 // DescribeAgentGroups
@@ -485,6 +473,11 @@ func (c *Client) DescribeAgentGroupsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAgentGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentGroupsResponse()
@@ -517,13 +510,7 @@ func NewDescribeAgentsResponse() (response *DescribeAgentsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgents(request *DescribeAgentsRequest) (response *DescribeAgentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentsRequest()
-    }
-    
-    response = NewDescribeAgentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentsWithContext(context.Background(), request)
 }
 
 // DescribeAgents
@@ -537,6 +524,11 @@ func (c *Client) DescribeAgentsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAgentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentsResponse()
@@ -569,13 +561,7 @@ func NewDescribeAlarmTopicResponse() (response *DescribeAlarmTopicResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmTopic(request *DescribeAlarmTopicRequest) (response *DescribeAlarmTopicResponse, err error) {
-    if request == nil {
-        request = NewDescribeAlarmTopicRequest()
-    }
-    
-    response = NewDescribeAlarmTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAlarmTopicWithContext(context.Background(), request)
 }
 
 // DescribeAlarmTopic
@@ -589,6 +575,11 @@ func (c *Client) DescribeAlarmTopicWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAlarmTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAlarmTopicResponse()
@@ -620,13 +611,7 @@ func NewDescribeAlarmsResponse() (response *DescribeAlarmsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAlarms(request *DescribeAlarmsRequest) (response *DescribeAlarmsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAlarmsRequest()
-    }
-    
-    response = NewDescribeAlarmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAlarmsWithContext(context.Background(), request)
 }
 
 // DescribeAlarms
@@ -639,6 +624,11 @@ func (c *Client) DescribeAlarmsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAlarmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAlarmsResponse()
@@ -671,13 +661,7 @@ func NewDescribeAlarmsByTaskResponse() (response *DescribeAlarmsByTaskResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAlarmsByTask(request *DescribeAlarmsByTaskRequest) (response *DescribeAlarmsByTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeAlarmsByTaskRequest()
-    }
-    
-    response = NewDescribeAlarmsByTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAlarmsByTaskWithContext(context.Background(), request)
 }
 
 // DescribeAlarmsByTask
@@ -691,6 +675,11 @@ func (c *Client) DescribeAlarmsByTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAlarmsByTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmsByTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAlarmsByTaskResponse()
@@ -723,13 +712,7 @@ func NewDescribeCatLogsResponse() (response *DescribeCatLogsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCatLogs(request *DescribeCatLogsRequest) (response *DescribeCatLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCatLogsRequest()
-    }
-    
-    response = NewDescribeCatLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCatLogsWithContext(context.Background(), request)
 }
 
 // DescribeCatLogs
@@ -743,6 +726,11 @@ func (c *Client) DescribeCatLogsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCatLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCatLogsResponse()
@@ -780,13 +768,7 @@ func NewDescribeDetailedSingleProbeDataResponse() (response *DescribeDetailedSin
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeDetailedSingleProbeData(request *DescribeDetailedSingleProbeDataRequest) (response *DescribeDetailedSingleProbeDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDetailedSingleProbeDataRequest()
-    }
-    
-    response = NewDescribeDetailedSingleProbeDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDetailedSingleProbeDataWithContext(context.Background(), request)
 }
 
 // DescribeDetailedSingleProbeData
@@ -805,6 +787,11 @@ func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeDetailedSingleProbeDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDetailedSingleProbeData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDetailedSingleProbeDataResponse()
@@ -836,13 +823,7 @@ func NewDescribeProbeNodesResponse() (response *DescribeProbeNodesResponse) {
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProbeNodes(request *DescribeProbeNodesRequest) (response *DescribeProbeNodesResponse, err error) {
-    if request == nil {
-        request = NewDescribeProbeNodesRequest()
-    }
-    
-    response = NewDescribeProbeNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProbeNodesWithContext(context.Background(), request)
 }
 
 // DescribeProbeNodes
@@ -855,6 +836,11 @@ func (c *Client) DescribeProbeNodesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProbeNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProbeNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProbeNodesResponse()
@@ -892,13 +878,7 @@ func NewDescribeProbeTasksResponse() (response *DescribeProbeTasksResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProbeTasks(request *DescribeProbeTasksRequest) (response *DescribeProbeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeProbeTasksRequest()
-    }
-    
-    response = NewDescribeProbeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProbeTasksWithContext(context.Background(), request)
 }
 
 // DescribeProbeTasks
@@ -917,6 +897,11 @@ func (c *Client) DescribeProbeTasksWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeProbeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProbeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProbeTasksResponse()
@@ -949,13 +934,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeTaskDetail
@@ -969,6 +948,11 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
@@ -1001,13 +985,7 @@ func NewDescribeTasksByTypeResponse() (response *DescribeTasksByTypeResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTasksByType(request *DescribeTasksByTypeRequest) (response *DescribeTasksByTypeResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksByTypeRequest()
-    }
-    
-    response = NewDescribeTasksByTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksByTypeWithContext(context.Background(), request)
 }
 
 // DescribeTasksByType
@@ -1021,6 +999,11 @@ func (c *Client) DescribeTasksByTypeWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTasksByTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasksByType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksByTypeResponse()
@@ -1053,13 +1036,7 @@ func NewDescribeUserLimitResponse() (response *DescribeUserLimitResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeUserLimit(request *DescribeUserLimitRequest) (response *DescribeUserLimitResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserLimitRequest()
-    }
-    
-    response = NewDescribeUserLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserLimitWithContext(context.Background(), request)
 }
 
 // DescribeUserLimit
@@ -1073,6 +1050,11 @@ func (c *Client) DescribeUserLimitWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserLimitResponse()
@@ -1105,13 +1087,7 @@ func NewGetAvailRatioHistoryResponse() (response *GetAvailRatioHistoryResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetAvailRatioHistory(request *GetAvailRatioHistoryRequest) (response *GetAvailRatioHistoryResponse, err error) {
-    if request == nil {
-        request = NewGetAvailRatioHistoryRequest()
-    }
-    
-    response = NewGetAvailRatioHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAvailRatioHistoryWithContext(context.Background(), request)
 }
 
 // GetAvailRatioHistory
@@ -1125,6 +1101,11 @@ func (c *Client) GetAvailRatioHistoryWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetAvailRatioHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAvailRatioHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAvailRatioHistoryResponse()
@@ -1157,13 +1138,7 @@ func NewGetDailyAvailRatioResponse() (response *GetDailyAvailRatioResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetDailyAvailRatio(request *GetDailyAvailRatioRequest) (response *GetDailyAvailRatioResponse, err error) {
-    if request == nil {
-        request = NewGetDailyAvailRatioRequest()
-    }
-    
-    response = NewGetDailyAvailRatioResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDailyAvailRatioWithContext(context.Background(), request)
 }
 
 // GetDailyAvailRatio
@@ -1177,6 +1152,11 @@ func (c *Client) GetDailyAvailRatioWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetDailyAvailRatioRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDailyAvailRatio require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDailyAvailRatioResponse()
@@ -1209,13 +1189,7 @@ func NewGetRealAvailRatioResponse() (response *GetRealAvailRatioResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRealAvailRatio(request *GetRealAvailRatioRequest) (response *GetRealAvailRatioResponse, err error) {
-    if request == nil {
-        request = NewGetRealAvailRatioRequest()
-    }
-    
-    response = NewGetRealAvailRatioResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRealAvailRatioWithContext(context.Background(), request)
 }
 
 // GetRealAvailRatio
@@ -1229,6 +1203,11 @@ func (c *Client) GetRealAvailRatioWithContext(ctx context.Context, request *GetR
     if request == nil {
         request = NewGetRealAvailRatioRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRealAvailRatio require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRealAvailRatioResponse()
@@ -1261,13 +1240,7 @@ func NewGetRespTimeTrendExResponse() (response *GetRespTimeTrendExResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetRespTimeTrendEx(request *GetRespTimeTrendExRequest) (response *GetRespTimeTrendExResponse, err error) {
-    if request == nil {
-        request = NewGetRespTimeTrendExRequest()
-    }
-    
-    response = NewGetRespTimeTrendExResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRespTimeTrendExWithContext(context.Background(), request)
 }
 
 // GetRespTimeTrendEx
@@ -1281,6 +1254,11 @@ func (c *Client) GetRespTimeTrendExWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetRespTimeTrendExRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRespTimeTrendEx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRespTimeTrendExResponse()
@@ -1313,13 +1291,7 @@ func NewGetResultSummaryResponse() (response *GetResultSummaryResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetResultSummary(request *GetResultSummaryRequest) (response *GetResultSummaryResponse, err error) {
-    if request == nil {
-        request = NewGetResultSummaryRequest()
-    }
-    
-    response = NewGetResultSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetResultSummaryWithContext(context.Background(), request)
 }
 
 // GetResultSummary
@@ -1333,6 +1305,11 @@ func (c *Client) GetResultSummaryWithContext(ctx context.Context, request *GetRe
     if request == nil {
         request = NewGetResultSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetResultSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetResultSummaryResponse()
@@ -1365,13 +1342,7 @@ func NewGetReturnCodeHistoryResponse() (response *GetReturnCodeHistoryResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeHistory(request *GetReturnCodeHistoryRequest) (response *GetReturnCodeHistoryResponse, err error) {
-    if request == nil {
-        request = NewGetReturnCodeHistoryRequest()
-    }
-    
-    response = NewGetReturnCodeHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetReturnCodeHistoryWithContext(context.Background(), request)
 }
 
 // GetReturnCodeHistory
@@ -1385,6 +1356,11 @@ func (c *Client) GetReturnCodeHistoryWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetReturnCodeHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetReturnCodeHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetReturnCodeHistoryResponse()
@@ -1417,13 +1393,7 @@ func NewGetReturnCodeInfoResponse() (response *GetReturnCodeInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetReturnCodeInfo(request *GetReturnCodeInfoRequest) (response *GetReturnCodeInfoResponse, err error) {
-    if request == nil {
-        request = NewGetReturnCodeInfoRequest()
-    }
-    
-    response = NewGetReturnCodeInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetReturnCodeInfoWithContext(context.Background(), request)
 }
 
 // GetReturnCodeInfo
@@ -1437,6 +1407,11 @@ func (c *Client) GetReturnCodeInfoWithContext(ctx context.Context, request *GetR
     if request == nil {
         request = NewGetReturnCodeInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetReturnCodeInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetReturnCodeInfoResponse()
@@ -1468,13 +1443,7 @@ func NewGetTaskTotalNumberResponse() (response *GetTaskTotalNumberResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetTaskTotalNumber(request *GetTaskTotalNumberRequest) (response *GetTaskTotalNumberResponse, err error) {
-    if request == nil {
-        request = NewGetTaskTotalNumberRequest()
-    }
-    
-    response = NewGetTaskTotalNumberResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTaskTotalNumberWithContext(context.Background(), request)
 }
 
 // GetTaskTotalNumber
@@ -1487,6 +1456,11 @@ func (c *Client) GetTaskTotalNumberWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetTaskTotalNumberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskTotalNumber require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTaskTotalNumberResponse()
@@ -1519,13 +1493,7 @@ func NewModifyAgentGroupResponse() (response *ModifyAgentGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAgentGroup(request *ModifyAgentGroupRequest) (response *ModifyAgentGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyAgentGroupRequest()
-    }
-    
-    response = NewModifyAgentGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAgentGroupWithContext(context.Background(), request)
 }
 
 // ModifyAgentGroup
@@ -1539,6 +1507,11 @@ func (c *Client) ModifyAgentGroupWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAgentGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAgentGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAgentGroupResponse()
@@ -1571,13 +1544,7 @@ func NewModifyTaskExResponse() (response *ModifyTaskExResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTaskEx(request *ModifyTaskExRequest) (response *ModifyTaskExResponse, err error) {
-    if request == nil {
-        request = NewModifyTaskExRequest()
-    }
-    
-    response = NewModifyTaskExResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTaskExWithContext(context.Background(), request)
 }
 
 // ModifyTaskEx
@@ -1591,6 +1558,11 @@ func (c *Client) ModifyTaskExWithContext(ctx context.Context, request *ModifyTas
     if request == nil {
         request = NewModifyTaskExRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTaskEx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTaskExResponse()
@@ -1623,13 +1595,7 @@ func NewPauseTaskResponse() (response *PauseTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) PauseTask(request *PauseTaskRequest) (response *PauseTaskResponse, err error) {
-    if request == nil {
-        request = NewPauseTaskRequest()
-    }
-    
-    response = NewPauseTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.PauseTaskWithContext(context.Background(), request)
 }
 
 // PauseTask
@@ -1643,6 +1609,11 @@ func (c *Client) PauseTaskWithContext(ctx context.Context, request *PauseTaskReq
     if request == nil {
         request = NewPauseTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPauseTaskResponse()
@@ -1683,13 +1654,7 @@ func NewResumeProbeTaskResponse() (response *ResumeProbeTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ResumeProbeTask(request *ResumeProbeTaskRequest) (response *ResumeProbeTaskResponse, err error) {
-    if request == nil {
-        request = NewResumeProbeTaskRequest()
-    }
-    
-    response = NewResumeProbeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeProbeTaskWithContext(context.Background(), request)
 }
 
 // ResumeProbeTask
@@ -1711,6 +1676,11 @@ func (c *Client) ResumeProbeTaskWithContext(ctx context.Context, request *Resume
     if request == nil {
         request = NewResumeProbeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeProbeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeProbeTaskResponse()
@@ -1743,13 +1713,7 @@ func NewRunTaskResponse() (response *RunTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, err error) {
-    if request == nil {
-        request = NewRunTaskRequest()
-    }
-    
-    response = NewRunTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunTaskWithContext(context.Background(), request)
 }
 
 // RunTask
@@ -1763,6 +1727,11 @@ func (c *Client) RunTaskWithContext(ctx context.Context, request *RunTaskRequest
     if request == nil {
         request = NewRunTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunTaskResponse()
@@ -1802,13 +1771,7 @@ func NewSuspendProbeTaskResponse() (response *SuspendProbeTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) SuspendProbeTask(request *SuspendProbeTaskRequest) (response *SuspendProbeTaskResponse, err error) {
-    if request == nil {
-        request = NewSuspendProbeTaskRequest()
-    }
-    
-    response = NewSuspendProbeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SuspendProbeTaskWithContext(context.Background(), request)
 }
 
 // SuspendProbeTask
@@ -1829,6 +1792,11 @@ func (c *Client) SuspendProbeTaskWithContext(ctx context.Context, request *Suspe
     if request == nil {
         request = NewSuspendProbeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SuspendProbeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSuspendProbeTaskResponse()
@@ -1870,13 +1838,7 @@ func NewUpdateProbeTaskConfigurationListResponse() (response *UpdateProbeTaskCon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpdateProbeTaskConfigurationList(request *UpdateProbeTaskConfigurationListRequest) (response *UpdateProbeTaskConfigurationListResponse, err error) {
-    if request == nil {
-        request = NewUpdateProbeTaskConfigurationListRequest()
-    }
-    
-    response = NewUpdateProbeTaskConfigurationListResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateProbeTaskConfigurationListWithContext(context.Background(), request)
 }
 
 // UpdateProbeTaskConfigurationList
@@ -1899,6 +1861,11 @@ func (c *Client) UpdateProbeTaskConfigurationListWithContext(ctx context.Context
     if request == nil {
         request = NewUpdateProbeTaskConfigurationListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProbeTaskConfigurationList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateProbeTaskConfigurationListResponse()
@@ -1931,13 +1898,7 @@ func NewVerifyResultResponse() (response *VerifyResultResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) VerifyResult(request *VerifyResultRequest) (response *VerifyResultResponse, err error) {
-    if request == nil {
-        request = NewVerifyResultRequest()
-    }
-    
-    response = NewVerifyResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyResultWithContext(context.Background(), request)
 }
 
 // VerifyResult
@@ -1951,6 +1912,11 @@ func (c *Client) VerifyResultWithContext(ctx context.Context, request *VerifyRes
     if request == nil {
         request = NewVerifyResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyResultResponse()

@@ -16,6 +16,7 @@ package v20201210
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (response *CreateStructureTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateStructureTaskRequest()
-    }
-    
-    response = NewCreateStructureTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStructureTaskWithContext(context.Background(), request)
 }
 
 // CreateStructureTask
@@ -95,6 +90,11 @@ func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStructureTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStructureTaskResponse()
@@ -127,13 +127,7 @@ func NewDescribeStructCompareDataResponse() (response *DescribeStructCompareData
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataRequest) (response *DescribeStructCompareDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructCompareDataRequest()
-    }
-    
-    response = NewDescribeStructCompareDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructCompareDataWithContext(context.Background(), request)
 }
 
 // DescribeStructCompareData
@@ -147,6 +141,11 @@ func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructCompareData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructCompareDataResponse()
@@ -182,13 +181,7 @@ func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructureTaskResultRequest()
-    }
-    
-    response = NewDescribeStructureTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructureTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeStructureTaskResult
@@ -205,6 +198,11 @@ func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructureTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructureTaskResultResponse()

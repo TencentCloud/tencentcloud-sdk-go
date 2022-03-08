@@ -16,6 +16,7 @@ package v20190311
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewCreateBotResponse() (response *CreateBotResponse) {
 //  INTERNALERROR_MMSINTERNALERROR = "InternalError.MMSInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateBot(request *CreateBotRequest) (response *CreateBotResponse, err error) {
-    if request == nil {
-        request = NewCreateBotRequest()
-    }
-    
-    response = NewCreateBotResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBotWithContext(context.Background(), request)
 }
 
 // CreateBot
@@ -89,6 +84,11 @@ func (c *Client) CreateBotWithContext(ctx context.Context, request *CreateBotReq
     if request == nil {
         request = NewCreateBotRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBot require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBotResponse()
@@ -124,13 +124,7 @@ func NewResetResponse() (response *ResetResponse) {
 //  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) Reset(request *ResetRequest) (response *ResetResponse, err error) {
-    if request == nil {
-        request = NewResetRequest()
-    }
-    
-    response = NewResetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetWithContext(context.Background(), request)
 }
 
 // Reset
@@ -147,6 +141,11 @@ func (c *Client) ResetWithContext(ctx context.Context, request *ResetRequest) (r
     if request == nil {
         request = NewResetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Reset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetResponse()
@@ -183,13 +182,7 @@ func NewTextProcessResponse() (response *TextProcessResponse) {
 //  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextProcess(request *TextProcessRequest) (response *TextProcessResponse, err error) {
-    if request == nil {
-        request = NewTextProcessRequest()
-    }
-    
-    response = NewTextProcessResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextProcessWithContext(context.Background(), request)
 }
 
 // TextProcess
@@ -207,6 +200,11 @@ func (c *Client) TextProcessWithContext(ctx context.Context, request *TextProces
     if request == nil {
         request = NewTextProcessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextProcess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextProcessResponse()
@@ -243,13 +241,7 @@ func NewTextResetResponse() (response *TextResetResponse) {
 //  INTERNALERROR_NOAPPPRIVILEGE = "InternalError.NoAppPrivilege"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) TextReset(request *TextResetRequest) (response *TextResetResponse, err error) {
-    if request == nil {
-        request = NewTextResetRequest()
-    }
-    
-    response = NewTextResetResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextResetWithContext(context.Background(), request)
 }
 
 // TextReset
@@ -267,6 +259,11 @@ func (c *Client) TextResetWithContext(ctx context.Context, request *TextResetReq
     if request == nil {
         request = NewTextResetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextReset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextResetResponse()

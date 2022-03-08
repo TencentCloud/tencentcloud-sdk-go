@@ -16,6 +16,7 @@ package v20200918
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,13 +83,7 @@ func NewCreateCameraAlertsResponse() (response *CreateCameraAlertsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCameraAlerts(request *CreateCameraAlertsRequest) (response *CreateCameraAlertsResponse, err error) {
-    if request == nil {
-        request = NewCreateCameraAlertsRequest()
-    }
-    
-    response = NewCreateCameraAlertsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCameraAlertsWithContext(context.Background(), request)
 }
 
 // CreateCameraAlerts
@@ -115,6 +110,11 @@ func (c *Client) CreateCameraAlertsWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCameraAlertsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCameraAlerts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCameraAlertsResponse()
@@ -158,13 +158,7 @@ func NewCreateCameraStateResponse() (response *CreateCameraStateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCameraState(request *CreateCameraStateRequest) (response *CreateCameraStateResponse, err error) {
-    if request == nil {
-        request = NewCreateCameraStateRequest()
-    }
-    
-    response = NewCreateCameraStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCameraStateWithContext(context.Background(), request)
 }
 
 // CreateCameraState
@@ -189,6 +183,11 @@ func (c *Client) CreateCameraStateWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCameraStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCameraState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCameraStateResponse()
@@ -232,13 +231,7 @@ func NewCreateCaptureResponse() (response *CreateCaptureResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCapture(request *CreateCaptureRequest) (response *CreateCaptureResponse, err error) {
-    if request == nil {
-        request = NewCreateCaptureRequest()
-    }
-    
-    response = NewCreateCaptureResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCaptureWithContext(context.Background(), request)
 }
 
 // CreateCapture
@@ -263,6 +256,11 @@ func (c *Client) CreateCaptureWithContext(ctx context.Context, request *CreateCa
     if request == nil {
         request = NewCreateCaptureRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCapture require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCaptureResponse()
@@ -306,13 +304,7 @@ func NewCreateMultiBizAlertResponse() (response *CreateMultiBizAlertResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateMultiBizAlert(request *CreateMultiBizAlertRequest) (response *CreateMultiBizAlertResponse, err error) {
-    if request == nil {
-        request = NewCreateMultiBizAlertRequest()
-    }
-    
-    response = NewCreateMultiBizAlertResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMultiBizAlertWithContext(context.Background(), request)
 }
 
 // CreateMultiBizAlert
@@ -337,6 +329,11 @@ func (c *Client) CreateMultiBizAlertWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateMultiBizAlertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiBizAlert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMultiBizAlertResponse()
@@ -380,13 +377,7 @@ func NewCreateProgramStateResponse() (response *CreateProgramStateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProgramState(request *CreateProgramStateRequest) (response *CreateProgramStateResponse, err error) {
-    if request == nil {
-        request = NewCreateProgramStateRequest()
-    }
-    
-    response = NewCreateProgramStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProgramStateWithContext(context.Background(), request)
 }
 
 // CreateProgramState
@@ -411,6 +402,11 @@ func (c *Client) CreateProgramStateWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateProgramStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProgramState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProgramStateResponse()
@@ -454,13 +450,7 @@ func NewCreateServerStateResponse() (response *CreateServerStateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateServerState(request *CreateServerStateRequest) (response *CreateServerStateResponse, err error) {
-    if request == nil {
-        request = NewCreateServerStateRequest()
-    }
-    
-    response = NewCreateServerStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateServerStateWithContext(context.Background(), request)
 }
 
 // CreateServerState
@@ -485,6 +475,11 @@ func (c *Client) CreateServerStateWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateServerStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServerState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateServerStateResponse()
@@ -528,13 +523,7 @@ func NewDeleteMultiBizAlertResponse() (response *DeleteMultiBizAlertResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteMultiBizAlert(request *DeleteMultiBizAlertRequest) (response *DeleteMultiBizAlertResponse, err error) {
-    if request == nil {
-        request = NewDeleteMultiBizAlertRequest()
-    }
-    
-    response = NewDeleteMultiBizAlertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMultiBizAlertWithContext(context.Background(), request)
 }
 
 // DeleteMultiBizAlert
@@ -559,6 +548,11 @@ func (c *Client) DeleteMultiBizAlertWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteMultiBizAlertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMultiBizAlert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMultiBizAlertResponse()
@@ -602,13 +596,7 @@ func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteTaskRequest()
-    }
-    
-    response = NewDeleteTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTaskWithContext(context.Background(), request)
 }
 
 // DeleteTask
@@ -633,6 +621,11 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTaskResponse()
@@ -676,13 +669,7 @@ func NewDescribeCamerasResponse() (response *DescribeCamerasResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCameras(request *DescribeCamerasRequest) (response *DescribeCamerasResponse, err error) {
-    if request == nil {
-        request = NewDescribeCamerasRequest()
-    }
-    
-    response = NewDescribeCamerasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCamerasWithContext(context.Background(), request)
 }
 
 // DescribeCameras
@@ -707,6 +694,11 @@ func (c *Client) DescribeCamerasWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeCamerasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCameras require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCamerasResponse()
@@ -754,13 +746,7 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigRequest()
-    }
-    
-    response = NewDescribeConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigWithContext(context.Background(), request)
 }
 
 // DescribeConfig
@@ -789,6 +775,11 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigResponse()
@@ -832,13 +823,7 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeImage(request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRequest()
-    }
-    
-    response = NewDescribeImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageWithContext(context.Background(), request)
 }
 
 // DescribeImage
@@ -863,6 +848,11 @@ func (c *Client) DescribeImageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageResponse()
@@ -906,13 +896,7 @@ func NewDescribeMultiBizBaseImageResponse() (response *DescribeMultiBizBaseImage
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMultiBizBaseImage(request *DescribeMultiBizBaseImageRequest) (response *DescribeMultiBizBaseImageResponse, err error) {
-    if request == nil {
-        request = NewDescribeMultiBizBaseImageRequest()
-    }
-    
-    response = NewDescribeMultiBizBaseImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMultiBizBaseImageWithContext(context.Background(), request)
 }
 
 // DescribeMultiBizBaseImage
@@ -937,6 +921,11 @@ func (c *Client) DescribeMultiBizBaseImageWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMultiBizBaseImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiBizBaseImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMultiBizBaseImageResponse()
@@ -980,13 +969,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -1011,6 +994,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
@@ -1054,13 +1042,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
-    if request == nil {
-        request = NewDescribeZonesRequest()
-    }
-    
-    response = NewDescribeZonesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZonesWithContext(context.Background(), request)
 }
 
 // DescribeZones
@@ -1085,6 +1067,11 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZones require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZonesResponse()
@@ -1128,13 +1115,7 @@ func NewModifyMultiBizConfigResponse() (response *ModifyMultiBizConfigResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMultiBizConfig(request *ModifyMultiBizConfigRequest) (response *ModifyMultiBizConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyMultiBizConfigRequest()
-    }
-    
-    response = NewModifyMultiBizConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMultiBizConfigWithContext(context.Background(), request)
 }
 
 // ModifyMultiBizConfig
@@ -1159,6 +1140,11 @@ func (c *Client) ModifyMultiBizConfigWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyMultiBizConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMultiBizConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMultiBizConfigResponse()
@@ -1202,13 +1188,7 @@ func NewReportServiceRegisterResponse() (response *ReportServiceRegisterResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ReportServiceRegister(request *ReportServiceRegisterRequest) (response *ReportServiceRegisterResponse, err error) {
-    if request == nil {
-        request = NewReportServiceRegisterRequest()
-    }
-    
-    response = NewReportServiceRegisterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReportServiceRegisterWithContext(context.Background(), request)
 }
 
 // ReportServiceRegister
@@ -1233,6 +1213,11 @@ func (c *Client) ReportServiceRegisterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewReportServiceRegisterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportServiceRegister require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReportServiceRegisterResponse()
@@ -1276,13 +1261,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImageResponse, err error) {
-    if request == nil {
-        request = NewSearchImageRequest()
-    }
-    
-    response = NewSearchImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchImageWithContext(context.Background(), request)
 }
 
 // SearchImage
@@ -1307,6 +1286,11 @@ func (c *Client) SearchImageWithContext(ctx context.Context, request *SearchImag
     if request == nil {
         request = NewSearchImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchImageResponse()

@@ -16,6 +16,7 @@ package v20190422
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,14 +86,9 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
 //  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 //  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
-    if request == nil {
-        request = NewCreateJobRequest()
-    }
-    
-    response = NewCreateJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateJobWithContext(context.Background(), request)
 }
 
 // CreateJob
@@ -119,10 +115,16 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
 //  RESOURCEUNAVAILABLE_CLUSTER = "ResourceUnavailable.Cluster"
 //  RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = "ResourceUnavailable.ClusterGroupStatus"
 //  RESOURCEUNAVAILABLE_REQCUMEM = "ResourceUnavailable.ReqCuMem"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest) (response *CreateJobResponse, err error) {
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateJobResponse()
@@ -174,13 +176,7 @@ func NewCreateJobConfigResponse() (response *CreateJobConfigResponse) {
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"
 func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *CreateJobConfigResponse, err error) {
-    if request == nil {
-        request = NewCreateJobConfigRequest()
-    }
-    
-    response = NewCreateJobConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateJobConfigWithContext(context.Background(), request)
 }
 
 // CreateJobConfig
@@ -213,6 +209,11 @@ func (c *Client) CreateJobConfigWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateJobConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJobConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateJobConfigResponse()
@@ -253,13 +254,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 //  RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = "ResourceUnavailable.CheckResourceLocExists"
 //  RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = "ResourceUnavailable.ResourceLocNotExists"
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
-    if request == nil {
-        request = NewCreateResourceRequest()
-    }
-    
-    response = NewCreateResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateResourceWithContext(context.Background(), request)
 }
 
 // CreateResource
@@ -281,6 +276,11 @@ func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateR
     if request == nil {
         request = NewCreateResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateResourceResponse()
@@ -317,13 +317,7 @@ func NewCreateResourceConfigResponse() (response *CreateResourceConfigResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
 func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (response *CreateResourceConfigResponse, err error) {
-    if request == nil {
-        request = NewCreateResourceConfigRequest()
-    }
-    
-    response = NewCreateResourceConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateResourceConfigWithContext(context.Background(), request)
 }
 
 // CreateResourceConfig
@@ -341,6 +335,11 @@ func (c *Client) CreateResourceConfigWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateResourceConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResourceConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateResourceConfigResponse()
@@ -380,14 +379,9 @@ func NewDeleteResourceConfigsResponse() (response *DeleteResourceConfigsResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_BEUSEBYSOMEJOBCONFIG = "ResourceUnavailable.BeUseBySomeJobConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (response *DeleteResourceConfigsResponse, err error) {
-    if request == nil {
-        request = NewDeleteResourceConfigsRequest()
-    }
-    
-    response = NewDeleteResourceConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteResourceConfigsWithContext(context.Background(), request)
 }
 
 // DeleteResourceConfigs
@@ -405,10 +399,16 @@ func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (r
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_BEUSEBYSOMEJOBCONFIG = "ResourceUnavailable.BeUseBySomeJobConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DeleteResourceConfigsWithContext(ctx context.Context, request *DeleteResourceConfigsRequest) (response *DeleteResourceConfigsResponse, err error) {
     if request == nil {
         request = NewDeleteResourceConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResourceConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteResourceConfigsResponse()
@@ -445,14 +445,9 @@ func NewDeleteResourcesResponse() (response *DeleteResourcesResponse) {
 //  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *DeleteResourcesResponse, err error) {
-    if request == nil {
-        request = NewDeleteResourcesRequest()
-    }
-    
-    response = NewDeleteResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteResourcesWithContext(context.Background(), request)
 }
 
 // DeleteResources
@@ -467,10 +462,16 @@ func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *Del
 //  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DeleteResourcesWithContext(ctx context.Context, request *DeleteResourcesRequest) (response *DeleteResourcesResponse, err error) {
     if request == nil {
         request = NewDeleteResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteResourcesResponse()
@@ -504,13 +505,7 @@ func NewDeleteTableConfigResponse() (response *DeleteTableConfigResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 func (c *Client) DeleteTableConfig(request *DeleteTableConfigRequest) (response *DeleteTableConfigResponse, err error) {
-    if request == nil {
-        request = NewDeleteTableConfigRequest()
-    }
-    
-    response = NewDeleteTableConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTableConfigWithContext(context.Background(), request)
 }
 
 // DeleteTableConfig
@@ -525,6 +520,11 @@ func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteTableConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTableConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTableConfigResponse()
@@ -562,14 +562,9 @@ func NewDescribeJobConfigsResponse() (response *DescribeJobConfigsResponse) {
 //  INVALIDPARAMETER_MAXPARALLELISMTOOSMALL = "InvalidParameter.MaxParallelismTooSmall"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (response *DescribeJobConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobConfigsRequest()
-    }
-    
-    response = NewDescribeJobConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobConfigsWithContext(context.Background(), request)
 }
 
 // DescribeJobConfigs
@@ -585,10 +580,16 @@ func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (respons
 //  INVALIDPARAMETER_MAXPARALLELISMTOOSMALL = "InvalidParameter.MaxParallelismTooSmall"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *DescribeJobConfigsRequest) (response *DescribeJobConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeJobConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobConfigsResponse()
@@ -624,14 +625,9 @@ func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
 //  INTERNALERROR_DB = "InternalError.DB"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobsRequest()
-    }
-    
-    response = NewDescribeJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobsWithContext(context.Background(), request)
 }
 
 // DescribeJobs
@@ -645,10 +641,16 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
 //  INTERNALERROR_DB = "InternalError.DB"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobsResponse()
@@ -689,13 +691,7 @@ func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResp
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
 func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceConfigsRequest()
-    }
-    
-    response = NewDescribeResourceConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceConfigsWithContext(context.Background(), request)
 }
 
 // DescribeResourceConfigs
@@ -717,6 +713,11 @@ func (c *Client) DescribeResourceConfigsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeResourceConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceConfigsResponse()
@@ -752,13 +753,7 @@ func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelated
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceRelatedJobsRequest()
-    }
-    
-    response = NewDescribeResourceRelatedJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceRelatedJobsWithContext(context.Background(), request)
 }
 
 // DescribeResourceRelatedJobs
@@ -775,6 +770,11 @@ func (c *Client) DescribeResourceRelatedJobsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceRelatedJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceRelatedJobsResponse()
@@ -812,13 +812,7 @@ func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
 func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourcesRequest()
-    }
-    
-    response = NewDescribeResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourcesWithContext(context.Background(), request)
 }
 
 // DescribeResources
@@ -837,6 +831,11 @@ func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourcesResponse()
@@ -874,13 +873,7 @@ func NewDescribeSystemResourcesResponse() (response *DescribeSystemResourcesResp
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCEUNAVAILABLE_FAILEDTOBESCRIBERESOURCES = "ResourceUnavailable.FailedToBescribeResources"
 func (c *Client) DescribeSystemResources(request *DescribeSystemResourcesRequest) (response *DescribeSystemResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSystemResourcesRequest()
-    }
-    
-    response = NewDescribeSystemResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSystemResourcesWithContext(context.Background(), request)
 }
 
 // DescribeSystemResources
@@ -899,6 +892,11 @@ func (c *Client) DescribeSystemResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSystemResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSystemResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSystemResourcesResponse()
@@ -951,15 +949,10 @@ func NewRunJobsResponse() (response *RunJobsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_JOBRESOURCECONFIGNOTREADY = "ResourceUnavailable.JobResourceConfigNotReady"
 //  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSTARTMODE = "UnsupportedOperation.UnsupportedStartMode"
 func (c *Client) RunJobs(request *RunJobsRequest) (response *RunJobsResponse, err error) {
-    if request == nil {
-        request = NewRunJobsRequest()
-    }
-    
-    response = NewRunJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunJobsWithContext(context.Background(), request)
 }
 
 // RunJobs
@@ -990,11 +983,17 @@ func (c *Client) RunJobs(request *RunJobsRequest) (response *RunJobsResponse, er
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_JOBRESOURCECONFIGNOTREADY = "ResourceUnavailable.JobResourceConfigNotReady"
 //  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSTARTMODE = "UnsupportedOperation.UnsupportedStartMode"
 func (c *Client) RunJobsWithContext(ctx context.Context, request *RunJobsRequest) (response *RunJobsResponse, err error) {
     if request == nil {
         request = NewRunJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunJobsResponse()
@@ -1036,14 +1035,9 @@ func NewStopJobsResponse() (response *StopJobsResponse) {
 //  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
 //  RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse, err error) {
-    if request == nil {
-        request = NewStopJobsRequest()
-    }
-    
-    response = NewStopJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopJobsWithContext(context.Background(), request)
 }
 
 // StopJobs
@@ -1063,10 +1057,16 @@ func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse,
 //  RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = "ResourceUnavailable.NoRunningJobInstancesFoundForJobId"
 //  RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = "ResourceUnavailable.NotAllowedToBeStopOrPause"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) StopJobsWithContext(ctx context.Context, request *StopJobsRequest) (response *StopJobsResponse, err error) {
     if request == nil {
         request = NewStopJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopJobsResponse()

@@ -16,6 +16,7 @@ package v20180801
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,13 +86,7 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (response *AddDelayLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewAddDelayLiveStreamRequest()
-    }
-    
-    response = NewAddDelayLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddDelayLiveStreamWithContext(context.Background(), request)
 }
 
 // AddDelayLiveStream
@@ -121,6 +116,11 @@ func (c *Client) AddDelayLiveStreamWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddDelayLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDelayLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddDelayLiveStreamResponse()
@@ -178,13 +178,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLiveDomainResponse, err error) {
-    if request == nil {
-        request = NewAddLiveDomainRequest()
-    }
-    
-    response = NewAddLiveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddLiveDomainWithContext(context.Background(), request)
 }
 
 // AddLiveDomain
@@ -223,6 +217,11 @@ func (c *Client) AddLiveDomainWithContext(ctx context.Context, request *AddLiveD
     if request == nil {
         request = NewAddLiveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddLiveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddLiveDomainResponse()
@@ -259,13 +258,7 @@ func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_USERNOTFOUNT = "ResourceNotFound.UserNotFount"
 func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
-    if request == nil {
-        request = NewAddLiveWatermarkRequest()
-    }
-    
-    response = NewAddLiveWatermarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddLiveWatermarkWithContext(context.Background(), request)
 }
 
 // AddLiveWatermark
@@ -283,6 +276,11 @@ func (c *Client) AddLiveWatermarkWithContext(ctx context.Context, request *AddLi
     if request == nil {
         request = NewAddLiveWatermarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddLiveWatermark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddLiveWatermarkResponse()
@@ -322,13 +320,7 @@ func NewBindLiveDomainCertResponse() (response *BindLiveDomainCertResponse) {
 //  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
-    if request == nil {
-        request = NewBindLiveDomainCertRequest()
-    }
-    
-    response = NewBindLiveDomainCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindLiveDomainCertWithContext(context.Background(), request)
 }
 
 // BindLiveDomainCert
@@ -349,6 +341,11 @@ func (c *Client) BindLiveDomainCertWithContext(ctx context.Context, request *Bin
     if request == nil {
         request = NewBindLiveDomainCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindLiveDomainCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindLiveDomainCertResponse()
@@ -386,13 +383,7 @@ func NewCancelCommonMixStreamResponse() (response *CancelCommonMixStreamResponse
 //  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
 //  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
 func (c *Client) CancelCommonMixStream(request *CancelCommonMixStreamRequest) (response *CancelCommonMixStreamResponse, err error) {
-    if request == nil {
-        request = NewCancelCommonMixStreamRequest()
-    }
-    
-    response = NewCancelCommonMixStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelCommonMixStreamWithContext(context.Background(), request)
 }
 
 // CancelCommonMixStream
@@ -411,6 +402,11 @@ func (c *Client) CancelCommonMixStreamWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCancelCommonMixStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelCommonMixStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelCommonMixStreamResponse()
@@ -467,13 +463,7 @@ func NewCreateCommonMixStreamResponse() (response *CreateCommonMixStreamResponse
 //  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
 //  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
 func (c *Client) CreateCommonMixStream(request *CreateCommonMixStreamRequest) (response *CreateCommonMixStreamResponse, err error) {
-    if request == nil {
-        request = NewCreateCommonMixStreamRequest()
-    }
-    
-    response = NewCreateCommonMixStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCommonMixStreamWithContext(context.Background(), request)
 }
 
 // CreateCommonMixStream
@@ -511,6 +501,11 @@ func (c *Client) CreateCommonMixStreamWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateCommonMixStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCommonMixStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCommonMixStreamResponse()
@@ -549,13 +544,7 @@ func NewCreateLiveCallbackRuleResponse() (response *CreateLiveCallbackRuleRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackRule(request *CreateLiveCallbackRuleRequest) (response *CreateLiveCallbackRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveCallbackRuleRequest()
-    }
-    
-    response = NewCreateLiveCallbackRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveCallbackRuleWithContext(context.Background(), request)
 }
 
 // CreateLiveCallbackRule
@@ -575,6 +564,11 @@ func (c *Client) CreateLiveCallbackRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateLiveCallbackRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveCallbackRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveCallbackRuleResponse()
@@ -628,13 +622,7 @@ func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTempla
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveCallbackTemplateRequest()
-    }
-    
-    response = NewCreateLiveCallbackTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveCallbackTemplateWithContext(context.Background(), request)
 }
 
 // CreateLiveCallbackTemplate
@@ -669,6 +657,11 @@ func (c *Client) CreateLiveCallbackTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateLiveCallbackTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveCallbackTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveCallbackTemplateResponse()
@@ -713,13 +706,7 @@ func NewCreateLiveCertResponse() (response *CreateLiveCertResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *CreateLiveCertResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveCertRequest()
-    }
-    
-    response = NewCreateLiveCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveCertWithContext(context.Background(), request)
 }
 
 // CreateLiveCert
@@ -745,6 +732,11 @@ func (c *Client) CreateLiveCertWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateLiveCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveCertResponse()
@@ -801,13 +793,7 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskRequest) (response *CreateLivePullStreamTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateLivePullStreamTaskRequest()
-    }
-    
-    response = NewCreateLivePullStreamTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLivePullStreamTaskWithContext(context.Background(), request)
 }
 
 // CreateLivePullStreamTask
@@ -845,6 +831,11 @@ func (c *Client) CreateLivePullStreamTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateLivePullStreamTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLivePullStreamTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLivePullStreamTaskResponse()
@@ -914,13 +905,7 @@ func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  RESOURCEUNAVAILABLE_STREAMNOTEXIST = "ResourceUnavailable.StreamNotExist"
 func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveRecordRequest()
-    }
-    
-    response = NewCreateLiveRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveRecordWithContext(context.Background(), request)
 }
 
 // CreateLiveRecord
@@ -971,6 +956,11 @@ func (c *Client) CreateLiveRecordWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateLiveRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveRecordResponse()
@@ -1015,13 +1005,7 @@ func NewCreateLiveRecordRuleResponse() (response *CreateLiveRecordRuleResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateLiveRecordRule(request *CreateLiveRecordRuleRequest) (response *CreateLiveRecordRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveRecordRuleRequest()
-    }
-    
-    response = NewCreateLiveRecordRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveRecordRuleWithContext(context.Background(), request)
 }
 
 // CreateLiveRecordRule
@@ -1047,6 +1031,11 @@ func (c *Client) CreateLiveRecordRuleWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateLiveRecordRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveRecordRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveRecordRuleResponse()
@@ -1094,13 +1083,7 @@ func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveRecordTemplateRequest()
-    }
-    
-    response = NewCreateLiveRecordTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveRecordTemplateWithContext(context.Background(), request)
 }
 
 // CreateLiveRecordTemplate
@@ -1129,6 +1112,11 @@ func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateLiveRecordTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveRecordTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveRecordTemplateResponse()
@@ -1176,13 +1164,7 @@ func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveSnapshotRuleRequest()
-    }
-    
-    response = NewCreateLiveSnapshotRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveSnapshotRuleWithContext(context.Background(), request)
 }
 
 // CreateLiveSnapshotRule
@@ -1211,6 +1193,11 @@ func (c *Client) CreateLiveSnapshotRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateLiveSnapshotRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveSnapshotRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveSnapshotRuleResponse()
@@ -1257,13 +1244,7 @@ func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTempla
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateRequest) (response *CreateLiveSnapshotTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveSnapshotTemplateRequest()
-    }
-    
-    response = NewCreateLiveSnapshotTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveSnapshotTemplateWithContext(context.Background(), request)
 }
 
 // CreateLiveSnapshotTemplate
@@ -1291,6 +1272,11 @@ func (c *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateLiveSnapshotTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveSnapshotTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveSnapshotTemplateResponse()
@@ -1338,13 +1324,7 @@ func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveTranscodeRuleRequest()
-    }
-    
-    response = NewCreateLiveTranscodeRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveTranscodeRuleWithContext(context.Background(), request)
 }
 
 // CreateLiveTranscodeRule
@@ -1373,6 +1353,11 @@ func (c *Client) CreateLiveTranscodeRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateLiveTranscodeRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveTranscodeRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveTranscodeRuleResponse()
@@ -1421,13 +1406,7 @@ func NewCreateLiveTranscodeTemplateResponse() (response *CreateLiveTranscodeTemp
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplateRequest) (response *CreateLiveTranscodeTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveTranscodeTemplateRequest()
-    }
-    
-    response = NewCreateLiveTranscodeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveTranscodeTemplateWithContext(context.Background(), request)
 }
 
 // CreateLiveTranscodeTemplate
@@ -1457,6 +1436,11 @@ func (c *Client) CreateLiveTranscodeTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateLiveTranscodeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveTranscodeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveTranscodeTemplateResponse()
@@ -1501,13 +1485,7 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveWatermarkRuleRequest()
-    }
-    
-    response = NewCreateLiveWatermarkRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveWatermarkRuleWithContext(context.Background(), request)
 }
 
 // CreateLiveWatermarkRule
@@ -1533,6 +1511,11 @@ func (c *Client) CreateLiveWatermarkRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateLiveWatermarkRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveWatermarkRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveWatermarkRuleResponse()
@@ -1579,13 +1562,7 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
-    if request == nil {
-        request = NewCreatePullStreamConfigRequest()
-    }
-    
-    response = NewCreatePullStreamConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePullStreamConfigWithContext(context.Background(), request)
 }
 
 // CreatePullStreamConfig
@@ -1613,6 +1590,11 @@ func (c *Client) CreatePullStreamConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreatePullStreamConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePullStreamConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePullStreamConfigResponse()
@@ -1667,13 +1649,7 @@ func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateRecordTaskRequest()
-    }
-    
-    response = NewCreateRecordTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecordTaskWithContext(context.Background(), request)
 }
 
 // CreateRecordTask
@@ -1709,6 +1685,11 @@ func (c *Client) CreateRecordTaskWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRecordTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecordTaskResponse()
@@ -1756,13 +1737,7 @@ func NewCreateScreenshotTaskResponse() (response *CreateScreenshotTaskResponse) 
 //  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateScreenshotTask(request *CreateScreenshotTaskRequest) (response *CreateScreenshotTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateScreenshotTaskRequest()
-    }
-    
-    response = NewCreateScreenshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateScreenshotTaskWithContext(context.Background(), request)
 }
 
 // CreateScreenshotTask
@@ -1791,6 +1766,11 @@ func (c *Client) CreateScreenshotTaskWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateScreenshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScreenshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateScreenshotTaskResponse()
@@ -1826,13 +1806,7 @@ func NewDeleteLiveCallbackRuleResponse() (response *DeleteLiveCallbackRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveCallbackRuleRequest()
-    }
-    
-    response = NewDeleteLiveCallbackRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveCallbackRuleWithContext(context.Background(), request)
 }
 
 // DeleteLiveCallbackRule
@@ -1849,6 +1823,11 @@ func (c *Client) DeleteLiveCallbackRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteLiveCallbackRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveCallbackRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveCallbackRuleResponse()
@@ -1894,13 +1873,7 @@ func NewDeleteLiveCallbackTemplateResponse() (response *DeleteLiveCallbackTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveCallbackTemplate(request *DeleteLiveCallbackTemplateRequest) (response *DeleteLiveCallbackTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveCallbackTemplateRequest()
-    }
-    
-    response = NewDeleteLiveCallbackTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveCallbackTemplateWithContext(context.Background(), request)
 }
 
 // DeleteLiveCallbackTemplate
@@ -1927,6 +1900,11 @@ func (c *Client) DeleteLiveCallbackTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteLiveCallbackTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveCallbackTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveCallbackTemplateResponse()
@@ -1964,13 +1942,7 @@ func NewDeleteLiveCertResponse() (response *DeleteLiveCertResponse) {
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
 func (c *Client) DeleteLiveCert(request *DeleteLiveCertRequest) (response *DeleteLiveCertResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveCertRequest()
-    }
-    
-    response = NewDeleteLiveCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveCertWithContext(context.Background(), request)
 }
 
 // DeleteLiveCert
@@ -1989,6 +1961,11 @@ func (c *Client) DeleteLiveCertWithContext(ctx context.Context, request *DeleteL
     if request == nil {
         request = NewDeleteLiveCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveCertResponse()
@@ -2028,13 +2005,7 @@ func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *DeleteLiveDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveDomainRequest()
-    }
-    
-    response = NewDeleteLiveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveDomainWithContext(context.Background(), request)
 }
 
 // DeleteLiveDomain
@@ -2055,6 +2026,11 @@ func (c *Client) DeleteLiveDomainWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteLiveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveDomainResponse()
@@ -2096,13 +2072,7 @@ func NewDeleteLivePullStreamTaskResponse() (response *DeleteLivePullStreamTaskRe
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteLivePullStreamTask(request *DeleteLivePullStreamTaskRequest) (response *DeleteLivePullStreamTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteLivePullStreamTaskRequest()
-    }
-    
-    response = NewDeleteLivePullStreamTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLivePullStreamTaskWithContext(context.Background(), request)
 }
 
 // DeleteLivePullStreamTask
@@ -2125,6 +2095,11 @@ func (c *Client) DeleteLivePullStreamTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteLivePullStreamTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLivePullStreamTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLivePullStreamTaskResponse()
@@ -2163,13 +2138,7 @@ func NewDeleteLiveRecordResponse() (response *DeleteLiveRecordResponse) {
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
 func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveRecordRequest()
-    }
-    
-    response = NewDeleteLiveRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveRecordWithContext(context.Background(), request)
 }
 
 // DeleteLiveRecord
@@ -2189,6 +2158,11 @@ func (c *Client) DeleteLiveRecordWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteLiveRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveRecordResponse()
@@ -2232,13 +2206,7 @@ func NewDeleteLiveRecordRuleResponse() (response *DeleteLiveRecordRuleResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveRecordRule(request *DeleteLiveRecordRuleRequest) (response *DeleteLiveRecordRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveRecordRuleRequest()
-    }
-    
-    response = NewDeleteLiveRecordRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveRecordRuleWithContext(context.Background(), request)
 }
 
 // DeleteLiveRecordRule
@@ -2263,6 +2231,11 @@ func (c *Client) DeleteLiveRecordRuleWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLiveRecordRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveRecordRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveRecordRuleResponse()
@@ -2305,13 +2278,7 @@ func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveRecordTemplateRequest()
-    }
-    
-    response = NewDeleteLiveRecordTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveRecordTemplateWithContext(context.Background(), request)
 }
 
 // DeleteLiveRecordTemplate
@@ -2335,6 +2302,11 @@ func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteLiveRecordTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveRecordTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveRecordTemplateResponse()
@@ -2378,13 +2350,7 @@ func NewDeleteLiveSnapshotRuleResponse() (response *DeleteLiveSnapshotRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveSnapshotRule(request *DeleteLiveSnapshotRuleRequest) (response *DeleteLiveSnapshotRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveSnapshotRuleRequest()
-    }
-    
-    response = NewDeleteLiveSnapshotRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveSnapshotRuleWithContext(context.Background(), request)
 }
 
 // DeleteLiveSnapshotRule
@@ -2409,6 +2375,11 @@ func (c *Client) DeleteLiveSnapshotRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteLiveSnapshotRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveSnapshotRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveSnapshotRuleResponse()
@@ -2451,13 +2422,7 @@ func NewDeleteLiveSnapshotTemplateResponse() (response *DeleteLiveSnapshotTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveSnapshotTemplate(request *DeleteLiveSnapshotTemplateRequest) (response *DeleteLiveSnapshotTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveSnapshotTemplateRequest()
-    }
-    
-    response = NewDeleteLiveSnapshotTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveSnapshotTemplateWithContext(context.Background(), request)
 }
 
 // DeleteLiveSnapshotTemplate
@@ -2481,6 +2446,11 @@ func (c *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteLiveSnapshotTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveSnapshotTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveSnapshotTemplateResponse()
@@ -2526,13 +2496,7 @@ func NewDeleteLiveTranscodeRuleResponse() (response *DeleteLiveTranscodeRuleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveTranscodeRule(request *DeleteLiveTranscodeRuleRequest) (response *DeleteLiveTranscodeRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveTranscodeRuleRequest()
-    }
-    
-    response = NewDeleteLiveTranscodeRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveTranscodeRuleWithContext(context.Background(), request)
 }
 
 // DeleteLiveTranscodeRule
@@ -2559,6 +2523,11 @@ func (c *Client) DeleteLiveTranscodeRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteLiveTranscodeRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveTranscodeRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveTranscodeRuleResponse()
@@ -2603,13 +2572,7 @@ func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTemplateRequest) (response *DeleteLiveTranscodeTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveTranscodeTemplateRequest()
-    }
-    
-    response = NewDeleteLiveTranscodeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveTranscodeTemplateWithContext(context.Background(), request)
 }
 
 // DeleteLiveTranscodeTemplate
@@ -2635,6 +2598,11 @@ func (c *Client) DeleteLiveTranscodeTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteLiveTranscodeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveTranscodeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveTranscodeTemplateResponse()
@@ -2670,13 +2638,7 @@ func NewDeleteLiveWatermarkResponse() (response *DeleteLiveWatermarkResponse) {
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveWatermarkRequest()
-    }
-    
-    response = NewDeleteLiveWatermarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveWatermarkWithContext(context.Background(), request)
 }
 
 // DeleteLiveWatermark
@@ -2693,6 +2655,11 @@ func (c *Client) DeleteLiveWatermarkWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteLiveWatermarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveWatermark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveWatermarkResponse()
@@ -2736,13 +2703,7 @@ func NewDeleteLiveWatermarkRuleResponse() (response *DeleteLiveWatermarkRuleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest) (response *DeleteLiveWatermarkRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveWatermarkRuleRequest()
-    }
-    
-    response = NewDeleteLiveWatermarkRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveWatermarkRuleWithContext(context.Background(), request)
 }
 
 // DeleteLiveWatermarkRule
@@ -2767,6 +2728,11 @@ func (c *Client) DeleteLiveWatermarkRuleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteLiveWatermarkRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveWatermarkRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveWatermarkRuleResponse()
@@ -2803,13 +2769,7 @@ func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
-    if request == nil {
-        request = NewDeletePullStreamConfigRequest()
-    }
-    
-    response = NewDeletePullStreamConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePullStreamConfigWithContext(context.Background(), request)
 }
 
 // DeletePullStreamConfig
@@ -2827,6 +2787,11 @@ func (c *Client) DeletePullStreamConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeletePullStreamConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePullStreamConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePullStreamConfigResponse()
@@ -2862,13 +2827,7 @@ func NewDeleteRecordTaskResponse() (response *DeleteRecordTaskResponse) {
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRecordTask(request *DeleteRecordTaskRequest) (response *DeleteRecordTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteRecordTaskRequest()
-    }
-    
-    response = NewDeleteRecordTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRecordTaskWithContext(context.Background(), request)
 }
 
 // DeleteRecordTask
@@ -2885,6 +2844,11 @@ func (c *Client) DeleteRecordTaskWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRecordTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRecordTaskResponse()
@@ -2919,13 +2883,7 @@ func NewDeleteScreenshotTaskResponse() (response *DeleteScreenshotTaskResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScreenshotTask(request *DeleteScreenshotTaskRequest) (response *DeleteScreenshotTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteScreenshotTaskRequest()
-    }
-    
-    response = NewDeleteScreenshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteScreenshotTaskWithContext(context.Background(), request)
 }
 
 // DeleteScreenshotTask
@@ -2941,6 +2899,11 @@ func (c *Client) DeleteScreenshotTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteScreenshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScreenshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteScreenshotTaskResponse()
@@ -2974,13 +2937,7 @@ func NewDescribeAllStreamPlayInfoListResponse() (response *DescribeAllStreamPlay
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllStreamPlayInfoList(request *DescribeAllStreamPlayInfoListRequest) (response *DescribeAllStreamPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllStreamPlayInfoListRequest()
-    }
-    
-    response = NewDescribeAllStreamPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllStreamPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeAllStreamPlayInfoList
@@ -2995,6 +2952,11 @@ func (c *Client) DescribeAllStreamPlayInfoListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAllStreamPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllStreamPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllStreamPlayInfoListResponse()
@@ -3027,13 +2989,7 @@ func NewDescribeAreaBillBandwidthAndFluxListResponse() (response *DescribeAreaBi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAreaBillBandwidthAndFluxList(request *DescribeAreaBillBandwidthAndFluxListRequest) (response *DescribeAreaBillBandwidthAndFluxListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAreaBillBandwidthAndFluxListRequest()
-    }
-    
-    response = NewDescribeAreaBillBandwidthAndFluxListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAreaBillBandwidthAndFluxListWithContext(context.Background(), request)
 }
 
 // DescribeAreaBillBandwidthAndFluxList
@@ -3047,6 +3003,11 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAreaBillBandwidthAndFluxListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAreaBillBandwidthAndFluxList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAreaBillBandwidthAndFluxListResponse()
@@ -3079,13 +3040,7 @@ func NewDescribeBillBandwidthAndFluxListResponse() (response *DescribeBillBandwi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidthAndFluxListRequest) (response *DescribeBillBandwidthAndFluxListResponse, err error) {
-    if request == nil {
-        request = NewDescribeBillBandwidthAndFluxListRequest()
-    }
-    
-    response = NewDescribeBillBandwidthAndFluxListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBillBandwidthAndFluxListWithContext(context.Background(), request)
 }
 
 // DescribeBillBandwidthAndFluxList
@@ -3099,6 +3054,11 @@ func (c *Client) DescribeBillBandwidthAndFluxListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeBillBandwidthAndFluxListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillBandwidthAndFluxList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBillBandwidthAndFluxListResponse()
@@ -3131,13 +3091,7 @@ func NewDescribeCallbackRecordsListResponse() (response *DescribeCallbackRecords
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeCallbackRecordsList(request *DescribeCallbackRecordsListRequest) (response *DescribeCallbackRecordsListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallbackRecordsListRequest()
-    }
-    
-    response = NewDescribeCallbackRecordsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCallbackRecordsListWithContext(context.Background(), request)
 }
 
 // DescribeCallbackRecordsList
@@ -3151,6 +3105,11 @@ func (c *Client) DescribeCallbackRecordsListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCallbackRecordsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallbackRecordsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCallbackRecordsListResponse()
@@ -3184,13 +3143,7 @@ func NewDescribeConcurrentRecordStreamNumResponse() (response *DescribeConcurren
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRecordStreamNumRequest) (response *DescribeConcurrentRecordStreamNumResponse, err error) {
-    if request == nil {
-        request = NewDescribeConcurrentRecordStreamNumRequest()
-    }
-    
-    response = NewDescribeConcurrentRecordStreamNumResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConcurrentRecordStreamNumWithContext(context.Background(), request)
 }
 
 // DescribeConcurrentRecordStreamNum
@@ -3205,6 +3158,11 @@ func (c *Client) DescribeConcurrentRecordStreamNumWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeConcurrentRecordStreamNumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConcurrentRecordStreamNum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConcurrentRecordStreamNumResponse()
@@ -3238,13 +3196,7 @@ func NewDescribeDeliverBandwidthListResponse() (response *DescribeDeliverBandwid
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeliverBandwidthList(request *DescribeDeliverBandwidthListRequest) (response *DescribeDeliverBandwidthListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeliverBandwidthListRequest()
-    }
-    
-    response = NewDescribeDeliverBandwidthListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeliverBandwidthListWithContext(context.Background(), request)
 }
 
 // DescribeDeliverBandwidthList
@@ -3259,6 +3211,11 @@ func (c *Client) DescribeDeliverBandwidthListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDeliverBandwidthListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliverBandwidthList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeliverBandwidthListResponse()
@@ -3292,13 +3249,7 @@ func NewDescribeGroupProIspPlayInfoListResponse() (response *DescribeGroupProIsp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGroupProIspPlayInfoList(request *DescribeGroupProIspPlayInfoListRequest) (response *DescribeGroupProIspPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupProIspPlayInfoListRequest()
-    }
-    
-    response = NewDescribeGroupProIspPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupProIspPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeGroupProIspPlayInfoList
@@ -3313,6 +3264,11 @@ func (c *Client) DescribeGroupProIspPlayInfoListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeGroupProIspPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupProIspPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupProIspPlayInfoListResponse()
@@ -3347,13 +3303,7 @@ func NewDescribeHttpStatusInfoListResponse() (response *DescribeHttpStatusInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeHttpStatusInfoList(request *DescribeHttpStatusInfoListRequest) (response *DescribeHttpStatusInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeHttpStatusInfoListRequest()
-    }
-    
-    response = NewDescribeHttpStatusInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHttpStatusInfoListWithContext(context.Background(), request)
 }
 
 // DescribeHttpStatusInfoList
@@ -3369,6 +3319,11 @@ func (c *Client) DescribeHttpStatusInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeHttpStatusInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHttpStatusInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHttpStatusInfoListResponse()
@@ -3403,13 +3358,7 @@ func NewDescribeLiveCallbackRulesResponse() (response *DescribeLiveCallbackRules
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackRules(request *DescribeLiveCallbackRulesRequest) (response *DescribeLiveCallbackRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveCallbackRulesRequest()
-    }
-    
-    response = NewDescribeLiveCallbackRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveCallbackRulesWithContext(context.Background(), request)
 }
 
 // DescribeLiveCallbackRules
@@ -3425,6 +3374,11 @@ func (c *Client) DescribeLiveCallbackRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLiveCallbackRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCallbackRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveCallbackRulesResponse()
@@ -3472,13 +3426,7 @@ func NewDescribeLiveCallbackTemplateResponse() (response *DescribeLiveCallbackTe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveCallbackTemplate(request *DescribeLiveCallbackTemplateRequest) (response *DescribeLiveCallbackTemplateResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveCallbackTemplateRequest()
-    }
-    
-    response = NewDescribeLiveCallbackTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveCallbackTemplateWithContext(context.Background(), request)
 }
 
 // DescribeLiveCallbackTemplate
@@ -3507,6 +3455,11 @@ func (c *Client) DescribeLiveCallbackTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLiveCallbackTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCallbackTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveCallbackTemplateResponse()
@@ -3553,13 +3506,7 @@ func NewDescribeLiveCallbackTemplatesResponse() (response *DescribeLiveCallbackT
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackTemplates(request *DescribeLiveCallbackTemplatesRequest) (response *DescribeLiveCallbackTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveCallbackTemplatesRequest()
-    }
-    
-    response = NewDescribeLiveCallbackTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveCallbackTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeLiveCallbackTemplates
@@ -3587,6 +3534,11 @@ func (c *Client) DescribeLiveCallbackTemplatesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeLiveCallbackTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCallbackTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveCallbackTemplatesResponse()
@@ -3622,13 +3574,7 @@ func NewDescribeLiveCertResponse() (response *DescribeLiveCertResponse) {
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 func (c *Client) DescribeLiveCert(request *DescribeLiveCertRequest) (response *DescribeLiveCertResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveCertRequest()
-    }
-    
-    response = NewDescribeLiveCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveCertWithContext(context.Background(), request)
 }
 
 // DescribeLiveCert
@@ -3645,6 +3591,11 @@ func (c *Client) DescribeLiveCertWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeLiveCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveCertResponse()
@@ -3680,13 +3631,7 @@ func NewDescribeLiveCertsResponse() (response *DescribeLiveCertsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response *DescribeLiveCertsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveCertsRequest()
-    }
-    
-    response = NewDescribeLiveCertsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveCertsWithContext(context.Background(), request)
 }
 
 // DescribeLiveCerts
@@ -3703,6 +3648,11 @@ func (c *Client) DescribeLiveCertsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLiveCertsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveCerts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveCertsResponse()
@@ -3737,13 +3687,7 @@ func NewDescribeLiveDelayInfoListResponse() (response *DescribeLiveDelayInfoList
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListRequest) (response *DescribeLiveDelayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDelayInfoListRequest()
-    }
-    
-    response = NewDescribeLiveDelayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDelayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeLiveDelayInfoList
@@ -3759,6 +3703,11 @@ func (c *Client) DescribeLiveDelayInfoListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLiveDelayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDelayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDelayInfoListResponse()
@@ -3796,13 +3745,7 @@ func NewDescribeLiveDomainResponse() (response *DescribeLiveDomainResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainRequest()
-    }
-    
-    response = NewDescribeLiveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDomainWithContext(context.Background(), request)
 }
 
 // DescribeLiveDomain
@@ -3821,6 +3764,11 @@ func (c *Client) DescribeLiveDomainWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLiveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDomainResponse()
@@ -3856,13 +3804,7 @@ func NewDescribeLiveDomainCertResponse() (response *DescribeLiveDomainCertRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) (response *DescribeLiveDomainCertResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainCertRequest()
-    }
-    
-    response = NewDescribeLiveDomainCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDomainCertWithContext(context.Background(), request)
 }
 
 // DescribeLiveDomainCert
@@ -3879,6 +3821,11 @@ func (c *Client) DescribeLiveDomainCertWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLiveDomainCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomainCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDomainCertResponse()
@@ -3911,13 +3858,7 @@ func NewDescribeLiveDomainPlayInfoListResponse() (response *DescribeLiveDomainPl
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayInfoListRequest) (response *DescribeLiveDomainPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainPlayInfoListRequest()
-    }
-    
-    response = NewDescribeLiveDomainPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDomainPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeLiveDomainPlayInfoList
@@ -3931,6 +3872,11 @@ func (c *Client) DescribeLiveDomainPlayInfoListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLiveDomainPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomainPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDomainPlayInfoListResponse()
@@ -3970,13 +3916,7 @@ func NewDescribeLiveDomainRefererResponse() (response *DescribeLiveDomainReferer
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) DescribeLiveDomainReferer(request *DescribeLiveDomainRefererRequest) (response *DescribeLiveDomainRefererResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainRefererRequest()
-    }
-    
-    response = NewDescribeLiveDomainRefererResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDomainRefererWithContext(context.Background(), request)
 }
 
 // DescribeLiveDomainReferer
@@ -3997,6 +3937,11 @@ func (c *Client) DescribeLiveDomainRefererWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLiveDomainRefererRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomainReferer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDomainRefererResponse()
@@ -4031,13 +3976,7 @@ func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
 //  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveDomainsRequest()
-    }
-    
-    response = NewDescribeLiveDomainsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveDomainsWithContext(context.Background(), request)
 }
 
 // DescribeLiveDomains
@@ -4053,6 +3992,11 @@ func (c *Client) DescribeLiveDomainsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLiveDomainsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomains require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveDomainsResponse()
@@ -4092,13 +4036,7 @@ func NewDescribeLiveForbidStreamListResponse() (response *DescribeLiveForbidStre
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveForbidStreamListRequest()
-    }
-    
-    response = NewDescribeLiveForbidStreamListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveForbidStreamListWithContext(context.Background(), request)
 }
 
 // DescribeLiveForbidStreamList
@@ -4119,6 +4057,11 @@ func (c *Client) DescribeLiveForbidStreamListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLiveForbidStreamListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveForbidStreamList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveForbidStreamListResponse()
@@ -4154,13 +4097,7 @@ func NewDescribeLivePackageInfoResponse() (response *DescribeLivePackageInfoResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLivePackageInfo(request *DescribeLivePackageInfoRequest) (response *DescribeLivePackageInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeLivePackageInfoRequest()
-    }
-    
-    response = NewDescribeLivePackageInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLivePackageInfoWithContext(context.Background(), request)
 }
 
 // DescribeLivePackageInfo
@@ -4177,6 +4114,11 @@ func (c *Client) DescribeLivePackageInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLivePackageInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePackageInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLivePackageInfoResponse()
@@ -4214,13 +4156,7 @@ func NewDescribeLivePlayAuthKeyResponse() (response *DescribeLivePlayAuthKeyResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeLivePlayAuthKeyRequest()
-    }
-    
-    response = NewDescribeLivePlayAuthKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLivePlayAuthKeyWithContext(context.Background(), request)
 }
 
 // DescribeLivePlayAuthKey
@@ -4239,6 +4175,11 @@ func (c *Client) DescribeLivePlayAuthKeyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLivePlayAuthKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePlayAuthKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLivePlayAuthKeyResponse()
@@ -4274,13 +4215,7 @@ func NewDescribeLivePullStreamTasksResponse() (response *DescribeLivePullStreamT
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLivePullStreamTasks(request *DescribeLivePullStreamTasksRequest) (response *DescribeLivePullStreamTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeLivePullStreamTasksRequest()
-    }
-    
-    response = NewDescribeLivePullStreamTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLivePullStreamTasksWithContext(context.Background(), request)
 }
 
 // DescribeLivePullStreamTasks
@@ -4297,6 +4232,11 @@ func (c *Client) DescribeLivePullStreamTasksWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLivePullStreamTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePullStreamTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLivePullStreamTasksResponse()
@@ -4334,13 +4274,7 @@ func NewDescribeLivePushAuthKeyResponse() (response *DescribeLivePushAuthKeyResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 func (c *Client) DescribeLivePushAuthKey(request *DescribeLivePushAuthKeyRequest) (response *DescribeLivePushAuthKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeLivePushAuthKeyRequest()
-    }
-    
-    response = NewDescribeLivePushAuthKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLivePushAuthKeyWithContext(context.Background(), request)
 }
 
 // DescribeLivePushAuthKey
@@ -4359,6 +4293,11 @@ func (c *Client) DescribeLivePushAuthKeyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLivePushAuthKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePushAuthKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLivePushAuthKeyResponse()
@@ -4400,13 +4339,7 @@ func NewDescribeLiveRecordRulesResponse() (response *DescribeLiveRecordRulesResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveRecordRules(request *DescribeLiveRecordRulesRequest) (response *DescribeLiveRecordRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveRecordRulesRequest()
-    }
-    
-    response = NewDescribeLiveRecordRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveRecordRulesWithContext(context.Background(), request)
 }
 
 // DescribeLiveRecordRules
@@ -4429,6 +4362,11 @@ func (c *Client) DescribeLiveRecordRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLiveRecordRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordRulesResponse()
@@ -4471,13 +4409,7 @@ func NewDescribeLiveRecordTemplateResponse() (response *DescribeLiveRecordTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveRecordTemplate(request *DescribeLiveRecordTemplateRequest) (response *DescribeLiveRecordTemplateResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveRecordTemplateRequest()
-    }
-    
-    response = NewDescribeLiveRecordTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveRecordTemplateWithContext(context.Background(), request)
 }
 
 // DescribeLiveRecordTemplate
@@ -4501,6 +4433,11 @@ func (c *Client) DescribeLiveRecordTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeLiveRecordTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordTemplateResponse()
@@ -4542,13 +4479,7 @@ func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTempl
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveRecordTemplatesRequest()
-    }
-    
-    response = NewDescribeLiveRecordTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveRecordTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeLiveRecordTemplates
@@ -4571,6 +4502,11 @@ func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLiveRecordTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordTemplatesResponse()
@@ -4612,13 +4548,7 @@ func NewDescribeLiveSnapshotRulesResponse() (response *DescribeLiveSnapshotRules
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveSnapshotRules(request *DescribeLiveSnapshotRulesRequest) (response *DescribeLiveSnapshotRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveSnapshotRulesRequest()
-    }
-    
-    response = NewDescribeLiveSnapshotRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveSnapshotRulesWithContext(context.Background(), request)
 }
 
 // DescribeLiveSnapshotRules
@@ -4641,6 +4571,11 @@ func (c *Client) DescribeLiveSnapshotRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLiveSnapshotRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSnapshotRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveSnapshotRulesResponse()
@@ -4685,13 +4620,7 @@ func NewDescribeLiveSnapshotTemplateResponse() (response *DescribeLiveSnapshotTe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveSnapshotTemplate(request *DescribeLiveSnapshotTemplateRequest) (response *DescribeLiveSnapshotTemplateResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveSnapshotTemplateRequest()
-    }
-    
-    response = NewDescribeLiveSnapshotTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveSnapshotTemplateWithContext(context.Background(), request)
 }
 
 // DescribeLiveSnapshotTemplate
@@ -4717,6 +4646,11 @@ func (c *Client) DescribeLiveSnapshotTemplateWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLiveSnapshotTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSnapshotTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveSnapshotTemplateResponse()
@@ -4759,13 +4693,7 @@ func NewDescribeLiveSnapshotTemplatesResponse() (response *DescribeLiveSnapshotT
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemplatesRequest) (response *DescribeLiveSnapshotTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveSnapshotTemplatesRequest()
-    }
-    
-    response = NewDescribeLiveSnapshotTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveSnapshotTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeLiveSnapshotTemplates
@@ -4789,6 +4717,11 @@ func (c *Client) DescribeLiveSnapshotTemplatesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeLiveSnapshotTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveSnapshotTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveSnapshotTemplatesResponse()
@@ -4832,13 +4765,7 @@ func NewDescribeLiveStreamEventListResponse() (response *DescribeLiveStreamEvent
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamEventListRequest()
-    }
-    
-    response = NewDescribeLiveStreamEventListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamEventListWithContext(context.Background(), request)
 }
 
 // DescribeLiveStreamEventList
@@ -4863,6 +4790,11 @@ func (c *Client) DescribeLiveStreamEventListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeLiveStreamEventListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamEventList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamEventListResponse()
@@ -4914,13 +4846,7 @@ func NewDescribeLiveStreamOnlineListResponse() (response *DescribeLiveStreamOnli
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamOnlineListRequest()
-    }
-    
-    response = NewDescribeLiveStreamOnlineListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamOnlineListWithContext(context.Background(), request)
 }
 
 // DescribeLiveStreamOnlineList
@@ -4953,6 +4879,11 @@ func (c *Client) DescribeLiveStreamOnlineListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLiveStreamOnlineListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamOnlineList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamOnlineListResponse()
@@ -4999,13 +4930,7 @@ func NewDescribeLiveStreamPublishedListResponse() (response *DescribeLiveStreamP
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamPublishedList(request *DescribeLiveStreamPublishedListRequest) (response *DescribeLiveStreamPublishedListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamPublishedListRequest()
-    }
-    
-    response = NewDescribeLiveStreamPublishedListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamPublishedListWithContext(context.Background(), request)
 }
 
 // DescribeLiveStreamPublishedList
@@ -5033,6 +4958,11 @@ func (c *Client) DescribeLiveStreamPublishedListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeLiveStreamPublishedListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamPublishedList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamPublishedListResponse()
@@ -5070,13 +5000,7 @@ func NewDescribeLiveStreamPushInfoListResponse() (response *DescribeLiveStreamPu
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushInfoListRequest) (response *DescribeLiveStreamPushInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamPushInfoListRequest()
-    }
-    
-    response = NewDescribeLiveStreamPushInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamPushInfoListWithContext(context.Background(), request)
 }
 
 // DescribeLiveStreamPushInfoList
@@ -5095,6 +5019,11 @@ func (c *Client) DescribeLiveStreamPushInfoListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLiveStreamPushInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamPushInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamPushInfoListResponse()
@@ -5157,13 +5086,7 @@ func NewDescribeLiveStreamStateResponse() (response *DescribeLiveStreamStateResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest) (response *DescribeLiveStreamStateResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamStateRequest()
-    }
-    
-    response = NewDescribeLiveStreamStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamStateWithContext(context.Background(), request)
 }
 
 // DescribeLiveStreamState
@@ -5207,6 +5130,11 @@ func (c *Client) DescribeLiveStreamStateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLiveStreamStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamStateResponse()
@@ -5239,13 +5167,7 @@ func NewDescribeLiveTranscodeDetailInfoResponse() (response *DescribeLiveTransco
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeLiveTranscodeDetailInfo(request *DescribeLiveTranscodeDetailInfoRequest) (response *DescribeLiveTranscodeDetailInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveTranscodeDetailInfoRequest()
-    }
-    
-    response = NewDescribeLiveTranscodeDetailInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveTranscodeDetailInfoWithContext(context.Background(), request)
 }
 
 // DescribeLiveTranscodeDetailInfo
@@ -5259,6 +5181,11 @@ func (c *Client) DescribeLiveTranscodeDetailInfoWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeLiveTranscodeDetailInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTranscodeDetailInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeDetailInfoResponse()
@@ -5300,13 +5227,7 @@ func NewDescribeLiveTranscodeRulesResponse() (response *DescribeLiveTranscodeRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveTranscodeRules(request *DescribeLiveTranscodeRulesRequest) (response *DescribeLiveTranscodeRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveTranscodeRulesRequest()
-    }
-    
-    response = NewDescribeLiveTranscodeRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveTranscodeRulesWithContext(context.Background(), request)
 }
 
 // DescribeLiveTranscodeRules
@@ -5329,6 +5250,11 @@ func (c *Client) DescribeLiveTranscodeRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeLiveTranscodeRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTranscodeRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeRulesResponse()
@@ -5372,13 +5298,7 @@ func NewDescribeLiveTranscodeTemplateResponse() (response *DescribeLiveTranscode
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplate(request *DescribeLiveTranscodeTemplateRequest) (response *DescribeLiveTranscodeTemplateResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveTranscodeTemplateRequest()
-    }
-    
-    response = NewDescribeLiveTranscodeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveTranscodeTemplateWithContext(context.Background(), request)
 }
 
 // DescribeLiveTranscodeTemplate
@@ -5403,6 +5323,11 @@ func (c *Client) DescribeLiveTranscodeTemplateWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeLiveTranscodeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTranscodeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeTemplateResponse()
@@ -5445,13 +5370,7 @@ func NewDescribeLiveTranscodeTemplatesResponse() (response *DescribeLiveTranscod
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTemplatesRequest) (response *DescribeLiveTranscodeTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveTranscodeTemplatesRequest()
-    }
-    
-    response = NewDescribeLiveTranscodeTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveTranscodeTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeLiveTranscodeTemplates
@@ -5475,6 +5394,11 @@ func (c *Client) DescribeLiveTranscodeTemplatesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLiveTranscodeTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTranscodeTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeTemplatesResponse()
@@ -5513,13 +5437,7 @@ func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscod
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveTranscodeTotalInfoRequest()
-    }
-    
-    response = NewDescribeLiveTranscodeTotalInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveTranscodeTotalInfoWithContext(context.Background(), request)
 }
 
 // DescribeLiveTranscodeTotalInfo
@@ -5539,6 +5457,11 @@ func (c *Client) DescribeLiveTranscodeTotalInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLiveTranscodeTotalInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTranscodeTotalInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveTranscodeTotalInfoResponse()
@@ -5581,13 +5504,7 @@ func NewDescribeLiveWatermarkResponse() (response *DescribeLiveWatermarkResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveWatermark(request *DescribeLiveWatermarkRequest) (response *DescribeLiveWatermarkResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveWatermarkRequest()
-    }
-    
-    response = NewDescribeLiveWatermarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveWatermarkWithContext(context.Background(), request)
 }
 
 // DescribeLiveWatermark
@@ -5611,6 +5528,11 @@ func (c *Client) DescribeLiveWatermarkWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLiveWatermarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveWatermark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveWatermarkResponse()
@@ -5652,13 +5574,7 @@ func NewDescribeLiveWatermarkRulesResponse() (response *DescribeLiveWatermarkRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveWatermarkRules(request *DescribeLiveWatermarkRulesRequest) (response *DescribeLiveWatermarkRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveWatermarkRulesRequest()
-    }
-    
-    response = NewDescribeLiveWatermarkRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveWatermarkRulesWithContext(context.Background(), request)
 }
 
 // DescribeLiveWatermarkRules
@@ -5681,6 +5597,11 @@ func (c *Client) DescribeLiveWatermarkRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeLiveWatermarkRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveWatermarkRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveWatermarkRulesResponse()
@@ -5722,13 +5643,7 @@ func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveWatermarksRequest()
-    }
-    
-    response = NewDescribeLiveWatermarksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveWatermarksWithContext(context.Background(), request)
 }
 
 // DescribeLiveWatermarks
@@ -5751,6 +5666,11 @@ func (c *Client) DescribeLiveWatermarksWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLiveWatermarksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveWatermarks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveWatermarksResponse()
@@ -5788,13 +5708,7 @@ func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResp
 //  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest) (response *DescribeLogDownloadListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLogDownloadListRequest()
-    }
-    
-    response = NewDescribeLogDownloadListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLogDownloadListWithContext(context.Background(), request)
 }
 
 // DescribeLogDownloadList
@@ -5813,6 +5727,11 @@ func (c *Client) DescribeLogDownloadListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLogDownloadListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogDownloadList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLogDownloadListResponse()
@@ -5847,13 +5766,7 @@ func NewDescribePlayErrorCodeDetailInfoListResponse() (response *DescribePlayErr
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePlayErrorCodeDetailInfoList(request *DescribePlayErrorCodeDetailInfoListRequest) (response *DescribePlayErrorCodeDetailInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribePlayErrorCodeDetailInfoListRequest()
-    }
-    
-    response = NewDescribePlayErrorCodeDetailInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePlayErrorCodeDetailInfoListWithContext(context.Background(), request)
 }
 
 // DescribePlayErrorCodeDetailInfoList
@@ -5869,6 +5782,11 @@ func (c *Client) DescribePlayErrorCodeDetailInfoListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribePlayErrorCodeDetailInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlayErrorCodeDetailInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePlayErrorCodeDetailInfoListResponse()
@@ -5901,13 +5819,7 @@ func NewDescribePlayErrorCodeSumInfoListResponse() (response *DescribePlayErrorC
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePlayErrorCodeSumInfoList(request *DescribePlayErrorCodeSumInfoListRequest) (response *DescribePlayErrorCodeSumInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribePlayErrorCodeSumInfoListRequest()
-    }
-    
-    response = NewDescribePlayErrorCodeSumInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePlayErrorCodeSumInfoListWithContext(context.Background(), request)
 }
 
 // DescribePlayErrorCodeSumInfoList
@@ -5921,6 +5833,11 @@ func (c *Client) DescribePlayErrorCodeSumInfoListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribePlayErrorCodeSumInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlayErrorCodeSumInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePlayErrorCodeSumInfoListResponse()
@@ -5953,13 +5870,7 @@ func NewDescribeProIspPlaySumInfoListResponse() (response *DescribeProIspPlaySum
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeProIspPlaySumInfoList(request *DescribeProIspPlaySumInfoListRequest) (response *DescribeProIspPlaySumInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeProIspPlaySumInfoListRequest()
-    }
-    
-    response = NewDescribeProIspPlaySumInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProIspPlaySumInfoListWithContext(context.Background(), request)
 }
 
 // DescribeProIspPlaySumInfoList
@@ -5973,6 +5884,11 @@ func (c *Client) DescribeProIspPlaySumInfoListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProIspPlaySumInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProIspPlaySumInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProIspPlaySumInfoListResponse()
@@ -6010,13 +5926,7 @@ func NewDescribeProvinceIspPlayInfoListResponse() (response *DescribeProvinceIsp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPlayInfoListRequest) (response *DescribeProvinceIspPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeProvinceIspPlayInfoListRequest()
-    }
-    
-    response = NewDescribeProvinceIspPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProvinceIspPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeProvinceIspPlayInfoList
@@ -6035,6 +5945,11 @@ func (c *Client) DescribeProvinceIspPlayInfoListWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeProvinceIspPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProvinceIspPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProvinceIspPlayInfoListResponse()
@@ -6073,13 +5988,7 @@ func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigs
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribePullStreamConfigsRequest()
-    }
-    
-    response = NewDescribePullStreamConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePullStreamConfigsWithContext(context.Background(), request)
 }
 
 // DescribePullStreamConfigs
@@ -6099,6 +6008,11 @@ func (c *Client) DescribePullStreamConfigsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePullStreamConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePullStreamConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePullStreamConfigsResponse()
@@ -6133,13 +6047,7 @@ func NewDescribePushBandwidthAndFluxListResponse() (response *DescribePushBandwi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
-    if request == nil {
-        request = NewDescribePushBandwidthAndFluxListRequest()
-    }
-    
-    response = NewDescribePushBandwidthAndFluxListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePushBandwidthAndFluxListWithContext(context.Background(), request)
 }
 
 // DescribePushBandwidthAndFluxList
@@ -6155,6 +6063,11 @@ func (c *Client) DescribePushBandwidthAndFluxListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribePushBandwidthAndFluxListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePushBandwidthAndFluxList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePushBandwidthAndFluxListResponse()
@@ -6195,13 +6108,7 @@ func NewDescribeRecordTaskResponse() (response *DescribeRecordTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordTaskRequest()
-    }
-    
-    response = NewDescribeRecordTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordTaskWithContext(context.Background(), request)
 }
 
 // DescribeRecordTask
@@ -6223,6 +6130,11 @@ func (c *Client) DescribeRecordTaskWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordTaskResponse()
@@ -6257,13 +6169,7 @@ func NewDescribeScreenShotSheetNumListResponse() (response *DescribeScreenShotSh
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeScreenShotSheetNumList(request *DescribeScreenShotSheetNumListRequest) (response *DescribeScreenShotSheetNumListResponse, err error) {
-    if request == nil {
-        request = NewDescribeScreenShotSheetNumListRequest()
-    }
-    
-    response = NewDescribeScreenShotSheetNumListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScreenShotSheetNumListWithContext(context.Background(), request)
 }
 
 // DescribeScreenShotSheetNumList
@@ -6279,6 +6185,11 @@ func (c *Client) DescribeScreenShotSheetNumListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeScreenShotSheetNumListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScreenShotSheetNumList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScreenShotSheetNumListResponse()
@@ -6319,13 +6230,7 @@ func NewDescribeScreenshotTaskResponse() (response *DescribeScreenshotTaskRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScreenshotTask(request *DescribeScreenshotTaskRequest) (response *DescribeScreenshotTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeScreenshotTaskRequest()
-    }
-    
-    response = NewDescribeScreenshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScreenshotTaskWithContext(context.Background(), request)
 }
 
 // DescribeScreenshotTask
@@ -6347,6 +6252,11 @@ func (c *Client) DescribeScreenshotTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeScreenshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScreenshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScreenshotTaskResponse()
@@ -6380,13 +6290,7 @@ func NewDescribeStreamDayPlayInfoListResponse() (response *DescribeStreamDayPlay
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeStreamDayPlayInfoList(request *DescribeStreamDayPlayInfoListRequest) (response *DescribeStreamDayPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStreamDayPlayInfoListRequest()
-    }
-    
-    response = NewDescribeStreamDayPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStreamDayPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeStreamDayPlayInfoList
@@ -6401,6 +6305,11 @@ func (c *Client) DescribeStreamDayPlayInfoListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeStreamDayPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamDayPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStreamDayPlayInfoListResponse()
@@ -6437,13 +6346,7 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStreamPlayInfoListRequest()
-    }
-    
-    response = NewDescribeStreamPlayInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStreamPlayInfoListWithContext(context.Background(), request)
 }
 
 // DescribeStreamPlayInfoList
@@ -6461,6 +6364,11 @@ func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPlayInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStreamPlayInfoListResponse()
@@ -6493,13 +6401,7 @@ func NewDescribeStreamPushInfoListResponse() (response *DescribeStreamPushInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStreamPushInfoList(request *DescribeStreamPushInfoListRequest) (response *DescribeStreamPushInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStreamPushInfoListRequest()
-    }
-    
-    response = NewDescribeStreamPushInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStreamPushInfoListWithContext(context.Background(), request)
 }
 
 // DescribeStreamPushInfoList
@@ -6513,6 +6415,11 @@ func (c *Client) DescribeStreamPushInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStreamPushInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamPushInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStreamPushInfoListResponse()
@@ -6545,13 +6452,7 @@ func NewDescribeTopClientIpSumInfoListResponse() (response *DescribeTopClientIpS
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTopClientIpSumInfoList(request *DescribeTopClientIpSumInfoListRequest) (response *DescribeTopClientIpSumInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopClientIpSumInfoListRequest()
-    }
-    
-    response = NewDescribeTopClientIpSumInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopClientIpSumInfoListWithContext(context.Background(), request)
 }
 
 // DescribeTopClientIpSumInfoList
@@ -6565,6 +6466,11 @@ func (c *Client) DescribeTopClientIpSumInfoListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTopClientIpSumInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopClientIpSumInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopClientIpSumInfoListResponse()
@@ -6597,13 +6503,7 @@ func NewDescribeUploadStreamNumsResponse() (response *DescribeUploadStreamNumsRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsRequest) (response *DescribeUploadStreamNumsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUploadStreamNumsRequest()
-    }
-    
-    response = NewDescribeUploadStreamNumsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUploadStreamNumsWithContext(context.Background(), request)
 }
 
 // DescribeUploadStreamNums
@@ -6617,6 +6517,11 @@ func (c *Client) DescribeUploadStreamNumsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUploadStreamNumsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUploadStreamNums require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUploadStreamNumsResponse()
@@ -6650,13 +6555,7 @@ func NewDescribeVisitTopSumInfoListResponse() (response *DescribeVisitTopSumInfo
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeVisitTopSumInfoList(request *DescribeVisitTopSumInfoListRequest) (response *DescribeVisitTopSumInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeVisitTopSumInfoListRequest()
-    }
-    
-    response = NewDescribeVisitTopSumInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVisitTopSumInfoListWithContext(context.Background(), request)
 }
 
 // DescribeVisitTopSumInfoList
@@ -6671,6 +6570,11 @@ func (c *Client) DescribeVisitTopSumInfoListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVisitTopSumInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVisitTopSumInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVisitTopSumInfoListResponse()
@@ -6716,13 +6620,7 @@ func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
 //  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewDropLiveStreamRequest()
-    }
-    
-    response = NewDropLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DropLiveStreamWithContext(context.Background(), request)
 }
 
 // DropLiveStream
@@ -6749,6 +6647,11 @@ func (c *Client) DropLiveStreamWithContext(ctx context.Context, request *DropLiv
     if request == nil {
         request = NewDropLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DropLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDropLiveStreamResponse()
@@ -6787,13 +6690,7 @@ func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
-    if request == nil {
-        request = NewEnableLiveDomainRequest()
-    }
-    
-    response = NewEnableLiveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableLiveDomainWithContext(context.Background(), request)
 }
 
 // EnableLiveDomain
@@ -6813,6 +6710,11 @@ func (c *Client) EnableLiveDomainWithContext(ctx context.Context, request *Enabl
     if request == nil {
         request = NewEnableLiveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableLiveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableLiveDomainResponse()
@@ -6846,13 +6748,7 @@ func NewForbidLiveDomainResponse() (response *ForbidLiveDomainResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
-    if request == nil {
-        request = NewForbidLiveDomainRequest()
-    }
-    
-    response = NewForbidLiveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.ForbidLiveDomainWithContext(context.Background(), request)
 }
 
 // ForbidLiveDomain
@@ -6867,6 +6763,11 @@ func (c *Client) ForbidLiveDomainWithContext(ctx context.Context, request *Forbi
     if request == nil {
         request = NewForbidLiveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForbidLiveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewForbidLiveDomainResponse()
@@ -6911,13 +6812,7 @@ func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewForbidLiveStreamRequest()
-    }
-    
-    response = NewForbidLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ForbidLiveStreamWithContext(context.Background(), request)
 }
 
 // ForbidLiveStream
@@ -6943,6 +6838,11 @@ func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *Forbi
     if request == nil {
         request = NewForbidLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForbidLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewForbidLiveStreamResponse()
@@ -6991,13 +6891,7 @@ func NewModifyLiveCallbackTemplateResponse() (response *ModifyLiveCallbackTempla
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveCallbackTemplate(request *ModifyLiveCallbackTemplateRequest) (response *ModifyLiveCallbackTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveCallbackTemplateRequest()
-    }
-    
-    response = NewModifyLiveCallbackTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveCallbackTemplateWithContext(context.Background(), request)
 }
 
 // ModifyLiveCallbackTemplate
@@ -7027,6 +6921,11 @@ func (c *Client) ModifyLiveCallbackTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyLiveCallbackTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveCallbackTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveCallbackTemplateResponse()
@@ -7066,13 +6965,7 @@ func NewModifyLiveCertResponse() (response *ModifyLiveCertResponse) {
 //  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
 //  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
 func (c *Client) ModifyLiveCert(request *ModifyLiveCertRequest) (response *ModifyLiveCertResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveCertRequest()
-    }
-    
-    response = NewModifyLiveCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveCertWithContext(context.Background(), request)
 }
 
 // ModifyLiveCert
@@ -7093,6 +6986,11 @@ func (c *Client) ModifyLiveCertWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyLiveCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveCertResponse()
@@ -7130,13 +7028,7 @@ func NewModifyLiveDomainCertResponse() (response *ModifyLiveDomainCertResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 func (c *Client) ModifyLiveDomainCert(request *ModifyLiveDomainCertRequest) (response *ModifyLiveDomainCertResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveDomainCertRequest()
-    }
-    
-    response = NewModifyLiveDomainCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveDomainCertWithContext(context.Background(), request)
 }
 
 // ModifyLiveDomainCert
@@ -7155,6 +7047,11 @@ func (c *Client) ModifyLiveDomainCertWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLiveDomainCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveDomainCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveDomainCertResponse()
@@ -7194,13 +7091,7 @@ func NewModifyLiveDomainRefererResponse() (response *ModifyLiveDomainRefererResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) ModifyLiveDomainReferer(request *ModifyLiveDomainRefererRequest) (response *ModifyLiveDomainRefererResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveDomainRefererRequest()
-    }
-    
-    response = NewModifyLiveDomainRefererResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveDomainRefererWithContext(context.Background(), request)
 }
 
 // ModifyLiveDomainReferer
@@ -7221,6 +7112,11 @@ func (c *Client) ModifyLiveDomainRefererWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyLiveDomainRefererRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveDomainReferer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveDomainRefererResponse()
@@ -7256,13 +7152,7 @@ func NewModifyLivePlayAuthKeyResponse() (response *ModifyLivePlayAuthKeyResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (response *ModifyLivePlayAuthKeyResponse, err error) {
-    if request == nil {
-        request = NewModifyLivePlayAuthKeyRequest()
-    }
-    
-    response = NewModifyLivePlayAuthKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLivePlayAuthKeyWithContext(context.Background(), request)
 }
 
 // ModifyLivePlayAuthKey
@@ -7279,6 +7169,11 @@ func (c *Client) ModifyLivePlayAuthKeyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyLivePlayAuthKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLivePlayAuthKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLivePlayAuthKeyResponse()
@@ -7316,13 +7211,7 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
-    if request == nil {
-        request = NewModifyLivePlayDomainRequest()
-    }
-    
-    response = NewModifyLivePlayDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLivePlayDomainWithContext(context.Background(), request)
 }
 
 // ModifyLivePlayDomain
@@ -7341,6 +7230,11 @@ func (c *Client) ModifyLivePlayDomainWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLivePlayDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLivePlayDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLivePlayDomainResponse()
@@ -7385,13 +7279,7 @@ func NewModifyLivePullStreamTaskResponse() (response *ModifyLivePullStreamTaskRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyLivePullStreamTask(request *ModifyLivePullStreamTaskRequest) (response *ModifyLivePullStreamTaskResponse, err error) {
-    if request == nil {
-        request = NewModifyLivePullStreamTaskRequest()
-    }
-    
-    response = NewModifyLivePullStreamTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLivePullStreamTaskWithContext(context.Background(), request)
 }
 
 // ModifyLivePullStreamTask
@@ -7417,6 +7305,11 @@ func (c *Client) ModifyLivePullStreamTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyLivePullStreamTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLivePullStreamTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLivePullStreamTaskResponse()
@@ -7454,13 +7347,7 @@ func NewModifyLivePushAuthKeyResponse() (response *ModifyLivePushAuthKeyResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 func (c *Client) ModifyLivePushAuthKey(request *ModifyLivePushAuthKeyRequest) (response *ModifyLivePushAuthKeyResponse, err error) {
-    if request == nil {
-        request = NewModifyLivePushAuthKeyRequest()
-    }
-    
-    response = NewModifyLivePushAuthKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLivePushAuthKeyWithContext(context.Background(), request)
 }
 
 // ModifyLivePushAuthKey
@@ -7479,6 +7366,11 @@ func (c *Client) ModifyLivePushAuthKeyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyLivePushAuthKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLivePushAuthKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLivePushAuthKeyResponse()
@@ -7522,13 +7414,7 @@ func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveRecordTemplateRequest()
-    }
-    
-    response = NewModifyLiveRecordTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveRecordTemplateWithContext(context.Background(), request)
 }
 
 // ModifyLiveRecordTemplate
@@ -7553,6 +7439,11 @@ func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyLiveRecordTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveRecordTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveRecordTemplateResponse()
@@ -7596,13 +7487,7 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveSnapshotTemplateRequest()
-    }
-    
-    response = NewModifyLiveSnapshotTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveSnapshotTemplateWithContext(context.Background(), request)
 }
 
 // ModifyLiveSnapshotTemplate
@@ -7627,6 +7512,11 @@ func (c *Client) ModifyLiveSnapshotTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyLiveSnapshotTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveSnapshotTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveSnapshotTemplateResponse()
@@ -7670,13 +7560,7 @@ func NewModifyLiveTranscodeTemplateResponse() (response *ModifyLiveTranscodeTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplateRequest) (response *ModifyLiveTranscodeTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveTranscodeTemplateRequest()
-    }
-    
-    response = NewModifyLiveTranscodeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveTranscodeTemplateWithContext(context.Background(), request)
 }
 
 // ModifyLiveTranscodeTemplate
@@ -7701,6 +7585,11 @@ func (c *Client) ModifyLiveTranscodeTemplateWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyLiveTranscodeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveTranscodeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveTranscodeTemplateResponse()
@@ -7739,13 +7628,7 @@ func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyPullStreamConfigRequest()
-    }
-    
-    response = NewModifyPullStreamConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPullStreamConfigWithContext(context.Background(), request)
 }
 
 // ModifyPullStreamConfig
@@ -7765,6 +7648,11 @@ func (c *Client) ModifyPullStreamConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyPullStreamConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPullStreamConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPullStreamConfigResponse()
@@ -7802,13 +7690,7 @@ func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyPullStreamStatusRequest()
-    }
-    
-    response = NewModifyPullStreamStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPullStreamStatusWithContext(context.Background(), request)
 }
 
 // ModifyPullStreamStatus
@@ -7827,6 +7709,11 @@ func (c *Client) ModifyPullStreamStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyPullStreamStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPullStreamStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPullStreamStatusResponse()
@@ -7878,13 +7765,7 @@ func NewResumeDelayLiveStreamResponse() (response *ResumeDelayLiveStreamResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResumeDelayLiveStream(request *ResumeDelayLiveStreamRequest) (response *ResumeDelayLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewResumeDelayLiveStreamRequest()
-    }
-    
-    response = NewResumeDelayLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeDelayLiveStreamWithContext(context.Background(), request)
 }
 
 // ResumeDelayLiveStream
@@ -7917,6 +7798,11 @@ func (c *Client) ResumeDelayLiveStreamWithContext(ctx context.Context, request *
     if request == nil {
         request = NewResumeDelayLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeDelayLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeDelayLiveStreamResponse()
@@ -7961,13 +7847,7 @@ func NewResumeLiveStreamResponse() (response *ResumeLiveStreamResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *ResumeLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewResumeLiveStreamRequest()
-    }
-    
-    response = NewResumeLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeLiveStreamWithContext(context.Background(), request)
 }
 
 // ResumeLiveStream
@@ -7993,6 +7873,11 @@ func (c *Client) ResumeLiveStreamWithContext(ctx context.Context, request *Resum
     if request == nil {
         request = NewResumeLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeLiveStreamResponse()
@@ -8030,13 +7915,7 @@ func NewStopLiveRecordResponse() (response *StopLiveRecordResponse) {
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
 func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopLiveRecordResponse, err error) {
-    if request == nil {
-        request = NewStopLiveRecordRequest()
-    }
-    
-    response = NewStopLiveRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopLiveRecordWithContext(context.Background(), request)
 }
 
 // StopLiveRecord
@@ -8055,6 +7934,11 @@ func (c *Client) StopLiveRecordWithContext(ctx context.Context, request *StopLiv
     if request == nil {
         request = NewStopLiveRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopLiveRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopLiveRecordResponse()
@@ -8091,13 +7975,7 @@ func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
-    if request == nil {
-        request = NewStopRecordTaskRequest()
-    }
-    
-    response = NewStopRecordTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopRecordTaskWithContext(context.Background(), request)
 }
 
 // StopRecordTask
@@ -8115,6 +7993,11 @@ func (c *Client) StopRecordTaskWithContext(ctx context.Context, request *StopRec
     if request == nil {
         request = NewStopRecordTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopRecordTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopRecordTaskResponse()
@@ -8150,13 +8033,7 @@ func NewStopScreenshotTaskResponse() (response *StopScreenshotTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopScreenshotTask(request *StopScreenshotTaskRequest) (response *StopScreenshotTaskResponse, err error) {
-    if request == nil {
-        request = NewStopScreenshotTaskRequest()
-    }
-    
-    response = NewStopScreenshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopScreenshotTaskWithContext(context.Background(), request)
 }
 
 // StopScreenshotTask
@@ -8173,6 +8050,11 @@ func (c *Client) StopScreenshotTaskWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopScreenshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopScreenshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopScreenshotTaskResponse()
@@ -8206,13 +8088,7 @@ func NewUnBindLiveDomainCertResponse() (response *UnBindLiveDomainCertResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UnBindLiveDomainCert(request *UnBindLiveDomainCertRequest) (response *UnBindLiveDomainCertResponse, err error) {
-    if request == nil {
-        request = NewUnBindLiveDomainCertRequest()
-    }
-    
-    response = NewUnBindLiveDomainCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindLiveDomainCertWithContext(context.Background(), request)
 }
 
 // UnBindLiveDomainCert
@@ -8227,6 +8103,11 @@ func (c *Client) UnBindLiveDomainCertWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUnBindLiveDomainCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindLiveDomainCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindLiveDomainCertResponse()
@@ -8262,13 +8143,7 @@ func NewUpdateLiveWatermarkResponse() (response *UpdateLiveWatermarkResponse) {
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
-    if request == nil {
-        request = NewUpdateLiveWatermarkRequest()
-    }
-    
-    response = NewUpdateLiveWatermarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateLiveWatermarkWithContext(context.Background(), request)
 }
 
 // UpdateLiveWatermark
@@ -8285,6 +8160,11 @@ func (c *Client) UpdateLiveWatermarkWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateLiveWatermarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateLiveWatermark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateLiveWatermarkResponse()

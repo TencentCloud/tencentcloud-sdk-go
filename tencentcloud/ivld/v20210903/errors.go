@@ -248,6 +248,9 @@ const (
 	// 参数超过长度限制。
 	INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
 
+	// 输入URL域名无法解析。
+	INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
+
 	// 不支持的URL类型。
 	INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 

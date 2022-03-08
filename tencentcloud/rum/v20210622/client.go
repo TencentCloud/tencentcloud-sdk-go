@@ -16,6 +16,7 @@ package v20210622
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewCreateLogExportResponse() (response *CreateLogExportResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateLogExport(request *CreateLogExportRequest) (response *CreateLogExportResponse, err error) {
-    if request == nil {
-        request = NewCreateLogExportRequest()
-    }
-    
-    response = NewCreateLogExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLogExportWithContext(context.Background(), request)
 }
 
 // CreateLogExport
@@ -101,6 +96,11 @@ func (c *Client) CreateLogExportWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateLogExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLogExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLogExportResponse()
@@ -131,13 +131,7 @@ func NewCreateOfflineLogConfigResponse() (response *CreateOfflineLogConfigRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateOfflineLogConfig(request *CreateOfflineLogConfigRequest) (response *CreateOfflineLogConfigResponse, err error) {
-    if request == nil {
-        request = NewCreateOfflineLogConfigRequest()
-    }
-    
-    response = NewCreateOfflineLogConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOfflineLogConfigWithContext(context.Background(), request)
 }
 
 // CreateOfflineLogConfig
@@ -149,6 +143,11 @@ func (c *Client) CreateOfflineLogConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateOfflineLogConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOfflineLogConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOfflineLogConfigResponse()
@@ -187,13 +186,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateProjectRequest()
-    }
-    
-    response = NewCreateProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProjectWithContext(context.Background(), request)
 }
 
 // CreateProject
@@ -213,6 +206,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
@@ -263,13 +261,7 @@ func NewCreateReleaseFileResponse() (response *CreateReleaseFileResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateReleaseFile(request *CreateReleaseFileRequest) (response *CreateReleaseFileResponse, err error) {
-    if request == nil {
-        request = NewCreateReleaseFileRequest()
-    }
-    
-    response = NewCreateReleaseFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateReleaseFileWithContext(context.Background(), request)
 }
 
 // CreateReleaseFile
@@ -301,6 +293,11 @@ func (c *Client) CreateReleaseFileWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateReleaseFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReleaseFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateReleaseFileResponse()
@@ -350,13 +347,7 @@ func NewCreateStarProjectResponse() (response *CreateStarProjectResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateStarProject(request *CreateStarProjectRequest) (response *CreateStarProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateStarProjectRequest()
-    }
-    
-    response = NewCreateStarProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStarProjectWithContext(context.Background(), request)
 }
 
 // CreateStarProject
@@ -387,6 +378,11 @@ func (c *Client) CreateStarProjectWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateStarProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStarProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStarProjectResponse()
@@ -420,13 +416,7 @@ func NewCreateTawInstanceResponse() (response *CreateTawInstanceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTawInstance(request *CreateTawInstanceRequest) (response *CreateTawInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateTawInstanceRequest()
-    }
-    
-    response = NewCreateTawInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTawInstanceWithContext(context.Background(), request)
 }
 
 // CreateTawInstance
@@ -441,6 +431,11 @@ func (c *Client) CreateTawInstanceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTawInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTawInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTawInstanceResponse()
@@ -490,13 +485,7 @@ func NewCreateWhitelistResponse() (response *CreateWhitelistResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWhitelist(request *CreateWhitelistRequest) (response *CreateWhitelistResponse, err error) {
-    if request == nil {
-        request = NewCreateWhitelistRequest()
-    }
-    
-    response = NewCreateWhitelistResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWhitelistWithContext(context.Background(), request)
 }
 
 // CreateWhitelist
@@ -527,6 +516,11 @@ func (c *Client) CreateWhitelistWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateWhitelistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWhitelist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWhitelistResponse()
@@ -569,13 +563,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteInstanceRequest()
-    }
-    
-    response = NewDeleteInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInstanceWithContext(context.Background(), request)
 }
 
 // DeleteInstance
@@ -599,6 +587,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
@@ -649,13 +642,7 @@ func NewDeleteLogExportResponse() (response *DeleteLogExportResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteLogExport(request *DeleteLogExportRequest) (response *DeleteLogExportResponse, err error) {
-    if request == nil {
-        request = NewDeleteLogExportRequest()
-    }
-    
-    response = NewDeleteLogExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLogExportWithContext(context.Background(), request)
 }
 
 // DeleteLogExport
@@ -687,6 +674,11 @@ func (c *Client) DeleteLogExportWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteLogExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLogExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLogExportResponse()
@@ -737,13 +729,7 @@ func NewDeleteOfflineLogConfigResponse() (response *DeleteOfflineLogConfigRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOfflineLogConfig(request *DeleteOfflineLogConfigRequest) (response *DeleteOfflineLogConfigResponse, err error) {
-    if request == nil {
-        request = NewDeleteOfflineLogConfigRequest()
-    }
-    
-    response = NewDeleteOfflineLogConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOfflineLogConfigWithContext(context.Background(), request)
 }
 
 // DeleteOfflineLogConfig
@@ -775,6 +761,11 @@ func (c *Client) DeleteOfflineLogConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteOfflineLogConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOfflineLogConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOfflineLogConfigResponse()
@@ -825,13 +816,7 @@ func NewDeleteOfflineLogRecordResponse() (response *DeleteOfflineLogRecordRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOfflineLogRecord(request *DeleteOfflineLogRecordRequest) (response *DeleteOfflineLogRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteOfflineLogRecordRequest()
-    }
-    
-    response = NewDeleteOfflineLogRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOfflineLogRecordWithContext(context.Background(), request)
 }
 
 // DeleteOfflineLogRecord
@@ -863,6 +848,11 @@ func (c *Client) DeleteOfflineLogRecordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteOfflineLogRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOfflineLogRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOfflineLogRecordResponse()
@@ -893,13 +883,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
-    if request == nil {
-        request = NewDeleteProjectRequest()
-    }
-    
-    response = NewDeleteProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProjectWithContext(context.Background(), request)
 }
 
 // DeleteProject
@@ -911,6 +895,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
@@ -961,13 +950,7 @@ func NewDeleteReleaseFileResponse() (response *DeleteReleaseFileResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteReleaseFile(request *DeleteReleaseFileRequest) (response *DeleteReleaseFileResponse, err error) {
-    if request == nil {
-        request = NewDeleteReleaseFileRequest()
-    }
-    
-    response = NewDeleteReleaseFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteReleaseFileWithContext(context.Background(), request)
 }
 
 // DeleteReleaseFile
@@ -999,6 +982,11 @@ func (c *Client) DeleteReleaseFileWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteReleaseFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReleaseFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteReleaseFileResponse()
@@ -1048,13 +1036,7 @@ func NewDeleteStarProjectResponse() (response *DeleteStarProjectResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteStarProject(request *DeleteStarProjectRequest) (response *DeleteStarProjectResponse, err error) {
-    if request == nil {
-        request = NewDeleteStarProjectRequest()
-    }
-    
-    response = NewDeleteStarProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteStarProjectWithContext(context.Background(), request)
 }
 
 // DeleteStarProject
@@ -1085,6 +1067,11 @@ func (c *Client) DeleteStarProjectWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteStarProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStarProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteStarProjectResponse()
@@ -1134,13 +1121,7 @@ func NewDeleteWhitelistResponse() (response *DeleteWhitelistResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWhitelist(request *DeleteWhitelistRequest) (response *DeleteWhitelistResponse, err error) {
-    if request == nil {
-        request = NewDeleteWhitelistRequest()
-    }
-    
-    response = NewDeleteWhitelistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWhitelistWithContext(context.Background(), request)
 }
 
 // DeleteWhitelist
@@ -1171,6 +1152,11 @@ func (c *Client) DeleteWhitelistWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteWhitelistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWhitelist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWhitelistResponse()
@@ -1222,13 +1208,7 @@ func NewDescribeDataResponse() (response *DescribeDataResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeData(request *DescribeDataRequest) (response *DescribeDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataRequest()
-    }
-    
-    response = NewDescribeDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataWithContext(context.Background(), request)
 }
 
 // DescribeData
@@ -1261,6 +1241,11 @@ func (c *Client) DescribeDataWithContext(ctx context.Context, request *DescribeD
     if request == nil {
         request = NewDescribeDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataResponse()
@@ -1312,13 +1297,7 @@ func NewDescribeDataCustomUrlResponse() (response *DescribeDataCustomUrlResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataCustomUrl(request *DescribeDataCustomUrlRequest) (response *DescribeDataCustomUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataCustomUrlRequest()
-    }
-    
-    response = NewDescribeDataCustomUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataCustomUrlWithContext(context.Background(), request)
 }
 
 // DescribeDataCustomUrl
@@ -1351,6 +1330,11 @@ func (c *Client) DescribeDataCustomUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDataCustomUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataCustomUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataCustomUrlResponse()
@@ -1402,13 +1386,7 @@ func NewDescribeDataEventUrlResponse() (response *DescribeDataEventUrlResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataEventUrl(request *DescribeDataEventUrlRequest) (response *DescribeDataEventUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataEventUrlRequest()
-    }
-    
-    response = NewDescribeDataEventUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataEventUrlWithContext(context.Background(), request)
 }
 
 // DescribeDataEventUrl
@@ -1441,6 +1419,11 @@ func (c *Client) DescribeDataEventUrlWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDataEventUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataEventUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataEventUrlResponse()
@@ -1492,13 +1475,7 @@ func NewDescribeDataFetchProjectResponse() (response *DescribeDataFetchProjectRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataFetchProject(request *DescribeDataFetchProjectRequest) (response *DescribeDataFetchProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataFetchProjectRequest()
-    }
-    
-    response = NewDescribeDataFetchProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataFetchProjectWithContext(context.Background(), request)
 }
 
 // DescribeDataFetchProject
@@ -1531,6 +1508,11 @@ func (c *Client) DescribeDataFetchProjectWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDataFetchProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataFetchProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataFetchProjectResponse()
@@ -1582,13 +1564,7 @@ func NewDescribeDataFetchUrlResponse() (response *DescribeDataFetchUrlResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataFetchUrl(request *DescribeDataFetchUrlRequest) (response *DescribeDataFetchUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataFetchUrlRequest()
-    }
-    
-    response = NewDescribeDataFetchUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataFetchUrlWithContext(context.Background(), request)
 }
 
 // DescribeDataFetchUrl
@@ -1621,6 +1597,11 @@ func (c *Client) DescribeDataFetchUrlWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDataFetchUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataFetchUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataFetchUrlResponse()
@@ -1672,13 +1653,7 @@ func NewDescribeDataFetchUrlInfoResponse() (response *DescribeDataFetchUrlInfoRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataFetchUrlInfo(request *DescribeDataFetchUrlInfoRequest) (response *DescribeDataFetchUrlInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataFetchUrlInfoRequest()
-    }
-    
-    response = NewDescribeDataFetchUrlInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataFetchUrlInfoWithContext(context.Background(), request)
 }
 
 // DescribeDataFetchUrlInfo
@@ -1711,6 +1686,11 @@ func (c *Client) DescribeDataFetchUrlInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDataFetchUrlInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataFetchUrlInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataFetchUrlInfoResponse()
@@ -1762,13 +1742,7 @@ func NewDescribeDataLogUrlInfoResponse() (response *DescribeDataLogUrlInfoRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataLogUrlInfo(request *DescribeDataLogUrlInfoRequest) (response *DescribeDataLogUrlInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataLogUrlInfoRequest()
-    }
-    
-    response = NewDescribeDataLogUrlInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataLogUrlInfoWithContext(context.Background(), request)
 }
 
 // DescribeDataLogUrlInfo
@@ -1801,6 +1775,11 @@ func (c *Client) DescribeDataLogUrlInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDataLogUrlInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataLogUrlInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataLogUrlInfoResponse()
@@ -1851,13 +1830,7 @@ func NewDescribeDataLogUrlStatisticsResponse() (response *DescribeDataLogUrlStat
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataLogUrlStatistics(request *DescribeDataLogUrlStatisticsRequest) (response *DescribeDataLogUrlStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataLogUrlStatisticsRequest()
-    }
-    
-    response = NewDescribeDataLogUrlStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataLogUrlStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeDataLogUrlStatistics
@@ -1889,6 +1862,11 @@ func (c *Client) DescribeDataLogUrlStatisticsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDataLogUrlStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataLogUrlStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataLogUrlStatisticsResponse()
@@ -1940,13 +1918,7 @@ func NewDescribeDataPerformancePageResponse() (response *DescribeDataPerformance
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataPerformancePage(request *DescribeDataPerformancePageRequest) (response *DescribeDataPerformancePageResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataPerformancePageRequest()
-    }
-    
-    response = NewDescribeDataPerformancePageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataPerformancePageWithContext(context.Background(), request)
 }
 
 // DescribeDataPerformancePage
@@ -1979,6 +1951,11 @@ func (c *Client) DescribeDataPerformancePageWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDataPerformancePageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataPerformancePage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataPerformancePageResponse()
@@ -2029,13 +2006,7 @@ func NewDescribeDataPerformanceProjectResponse() (response *DescribeDataPerforma
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataPerformanceProject(request *DescribeDataPerformanceProjectRequest) (response *DescribeDataPerformanceProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataPerformanceProjectRequest()
-    }
-    
-    response = NewDescribeDataPerformanceProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataPerformanceProjectWithContext(context.Background(), request)
 }
 
 // DescribeDataPerformanceProject
@@ -2067,6 +2038,11 @@ func (c *Client) DescribeDataPerformanceProjectWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDataPerformanceProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataPerformanceProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataPerformanceProjectResponse()
@@ -2118,13 +2094,7 @@ func NewDescribeDataPvUrlInfoResponse() (response *DescribeDataPvUrlInfoResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataPvUrlInfo(request *DescribeDataPvUrlInfoRequest) (response *DescribeDataPvUrlInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataPvUrlInfoRequest()
-    }
-    
-    response = NewDescribeDataPvUrlInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataPvUrlInfoWithContext(context.Background(), request)
 }
 
 // DescribeDataPvUrlInfo
@@ -2157,6 +2127,11 @@ func (c *Client) DescribeDataPvUrlInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDataPvUrlInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataPvUrlInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataPvUrlInfoResponse()
@@ -2208,13 +2183,7 @@ func NewDescribeDataPvUrlStatisticsResponse() (response *DescribeDataPvUrlStatis
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataPvUrlStatistics(request *DescribeDataPvUrlStatisticsRequest) (response *DescribeDataPvUrlStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataPvUrlStatisticsRequest()
-    }
-    
-    response = NewDescribeDataPvUrlStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataPvUrlStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeDataPvUrlStatistics
@@ -2247,6 +2216,11 @@ func (c *Client) DescribeDataPvUrlStatisticsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDataPvUrlStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataPvUrlStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataPvUrlStatisticsResponse()
@@ -2298,13 +2272,7 @@ func NewDescribeDataReportCountResponse() (response *DescribeDataReportCountResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataReportCount(request *DescribeDataReportCountRequest) (response *DescribeDataReportCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataReportCountRequest()
-    }
-    
-    response = NewDescribeDataReportCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataReportCountWithContext(context.Background(), request)
 }
 
 // DescribeDataReportCount
@@ -2337,6 +2305,11 @@ func (c *Client) DescribeDataReportCountWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDataReportCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataReportCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataReportCountResponse()
@@ -2388,13 +2361,7 @@ func NewDescribeDataSetUrlStatisticsResponse() (response *DescribeDataSetUrlStat
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataSetUrlStatistics(request *DescribeDataSetUrlStatisticsRequest) (response *DescribeDataSetUrlStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataSetUrlStatisticsRequest()
-    }
-    
-    response = NewDescribeDataSetUrlStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataSetUrlStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeDataSetUrlStatistics
@@ -2427,6 +2394,11 @@ func (c *Client) DescribeDataSetUrlStatisticsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDataSetUrlStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSetUrlStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataSetUrlStatisticsResponse()
@@ -2478,13 +2450,7 @@ func NewDescribeDataStaticProjectResponse() (response *DescribeDataStaticProject
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataStaticProject(request *DescribeDataStaticProjectRequest) (response *DescribeDataStaticProjectResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataStaticProjectRequest()
-    }
-    
-    response = NewDescribeDataStaticProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataStaticProjectWithContext(context.Background(), request)
 }
 
 // DescribeDataStaticProject
@@ -2517,6 +2483,11 @@ func (c *Client) DescribeDataStaticProjectWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDataStaticProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataStaticProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataStaticProjectResponse()
@@ -2568,13 +2539,7 @@ func NewDescribeDataStaticResourceResponse() (response *DescribeDataStaticResour
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataStaticResource(request *DescribeDataStaticResourceRequest) (response *DescribeDataStaticResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataStaticResourceRequest()
-    }
-    
-    response = NewDescribeDataStaticResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataStaticResourceWithContext(context.Background(), request)
 }
 
 // DescribeDataStaticResource
@@ -2607,6 +2572,11 @@ func (c *Client) DescribeDataStaticResourceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDataStaticResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataStaticResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataStaticResourceResponse()
@@ -2658,13 +2628,7 @@ func NewDescribeDataStaticUrlResponse() (response *DescribeDataStaticUrlResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataStaticUrl(request *DescribeDataStaticUrlRequest) (response *DescribeDataStaticUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataStaticUrlRequest()
-    }
-    
-    response = NewDescribeDataStaticUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataStaticUrlWithContext(context.Background(), request)
 }
 
 // DescribeDataStaticUrl
@@ -2697,6 +2661,11 @@ func (c *Client) DescribeDataStaticUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDataStaticUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataStaticUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataStaticUrlResponse()
@@ -2750,13 +2719,7 @@ func NewDescribeDataWebVitalsPageResponse() (response *DescribeDataWebVitalsPage
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataWebVitalsPage(request *DescribeDataWebVitalsPageRequest) (response *DescribeDataWebVitalsPageResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataWebVitalsPageRequest()
-    }
-    
-    response = NewDescribeDataWebVitalsPageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataWebVitalsPageWithContext(context.Background(), request)
 }
 
 // DescribeDataWebVitalsPage
@@ -2791,6 +2754,11 @@ func (c *Client) DescribeDataWebVitalsPageWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDataWebVitalsPageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataWebVitalsPage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataWebVitalsPageResponse()
@@ -2840,13 +2808,7 @@ func NewDescribeErrorResponse() (response *DescribeErrorResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeError(request *DescribeErrorRequest) (response *DescribeErrorResponse, err error) {
-    if request == nil {
-        request = NewDescribeErrorRequest()
-    }
-    
-    response = NewDescribeErrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeErrorWithContext(context.Background(), request)
 }
 
 // DescribeError
@@ -2877,6 +2839,11 @@ func (c *Client) DescribeErrorWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeErrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeError require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeErrorResponse()
@@ -2916,13 +2883,7 @@ func NewDescribeLogExportsResponse() (response *DescribeLogExportsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogExports(request *DescribeLogExportsRequest) (response *DescribeLogExportsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLogExportsRequest()
-    }
-    
-    response = NewDescribeLogExportsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLogExportsWithContext(context.Background(), request)
 }
 
 // DescribeLogExports
@@ -2943,6 +2904,11 @@ func (c *Client) DescribeLogExportsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLogExportsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogExports require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLogExportsResponse()
@@ -2992,13 +2958,7 @@ func NewDescribeLogListResponse() (response *DescribeLogListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLogList(request *DescribeLogListRequest) (response *DescribeLogListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLogListRequest()
-    }
-    
-    response = NewDescribeLogListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLogListWithContext(context.Background(), request)
 }
 
 // DescribeLogList
@@ -3029,6 +2989,11 @@ func (c *Client) DescribeLogListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeLogListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLogListResponse()
@@ -3078,13 +3043,7 @@ func NewDescribeOfflineLogConfigsResponse() (response *DescribeOfflineLogConfigs
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineLogConfigs(request *DescribeOfflineLogConfigsRequest) (response *DescribeOfflineLogConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeOfflineLogConfigsRequest()
-    }
-    
-    response = NewDescribeOfflineLogConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOfflineLogConfigsWithContext(context.Background(), request)
 }
 
 // DescribeOfflineLogConfigs
@@ -3115,6 +3074,11 @@ func (c *Client) DescribeOfflineLogConfigsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOfflineLogConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineLogConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOfflineLogConfigsResponse()
@@ -3145,13 +3109,7 @@ func NewDescribeOfflineLogRecordsResponse() (response *DescribeOfflineLogRecords
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeOfflineLogRecords(request *DescribeOfflineLogRecordsRequest) (response *DescribeOfflineLogRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeOfflineLogRecordsRequest()
-    }
-    
-    response = NewDescribeOfflineLogRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOfflineLogRecordsWithContext(context.Background(), request)
 }
 
 // DescribeOfflineLogRecords
@@ -3163,6 +3121,11 @@ func (c *Client) DescribeOfflineLogRecordsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOfflineLogRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineLogRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOfflineLogRecordsResponse()
@@ -3193,13 +3156,7 @@ func NewDescribeOfflineLogsResponse() (response *DescribeOfflineLogsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeOfflineLogs(request *DescribeOfflineLogsRequest) (response *DescribeOfflineLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeOfflineLogsRequest()
-    }
-    
-    response = NewDescribeOfflineLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOfflineLogsWithContext(context.Background(), request)
 }
 
 // DescribeOfflineLogs
@@ -3211,6 +3168,11 @@ func (c *Client) DescribeOfflineLogsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeOfflineLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOfflineLogsResponse()
@@ -3262,13 +3224,7 @@ func NewDescribeProjectLimitsResponse() (response *DescribeProjectLimitsResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProjectLimits(request *DescribeProjectLimitsRequest) (response *DescribeProjectLimitsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectLimitsRequest()
-    }
-    
-    response = NewDescribeProjectLimitsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectLimitsWithContext(context.Background(), request)
 }
 
 // DescribeProjectLimits
@@ -3301,6 +3257,11 @@ func (c *Client) DescribeProjectLimitsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeProjectLimitsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectLimits require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectLimitsResponse()
@@ -3340,13 +3301,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectsRequest()
-    }
-    
-    response = NewDescribeProjectsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectsWithContext(context.Background(), request)
 }
 
 // DescribeProjects
@@ -3367,6 +3322,11 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjects require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectsResponse()
@@ -3416,13 +3376,7 @@ func NewDescribePvListResponse() (response *DescribePvListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePvList(request *DescribePvListRequest) (response *DescribePvListResponse, err error) {
-    if request == nil {
-        request = NewDescribePvListRequest()
-    }
-    
-    response = NewDescribePvListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePvListWithContext(context.Background(), request)
 }
 
 // DescribePvList
@@ -3453,6 +3407,11 @@ func (c *Client) DescribePvListWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePvListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePvList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePvListResponse()
@@ -3503,13 +3462,7 @@ func NewDescribeReleaseFileSignResponse() (response *DescribeReleaseFileSignResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeReleaseFileSign(request *DescribeReleaseFileSignRequest) (response *DescribeReleaseFileSignResponse, err error) {
-    if request == nil {
-        request = NewDescribeReleaseFileSignRequest()
-    }
-    
-    response = NewDescribeReleaseFileSignResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReleaseFileSignWithContext(context.Background(), request)
 }
 
 // DescribeReleaseFileSign
@@ -3541,6 +3494,11 @@ func (c *Client) DescribeReleaseFileSignWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeReleaseFileSignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReleaseFileSign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReleaseFileSignResponse()
@@ -3591,13 +3549,7 @@ func NewDescribeReleaseFilesResponse() (response *DescribeReleaseFilesResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeReleaseFiles(request *DescribeReleaseFilesRequest) (response *DescribeReleaseFilesResponse, err error) {
-    if request == nil {
-        request = NewDescribeReleaseFilesRequest()
-    }
-    
-    response = NewDescribeReleaseFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReleaseFilesWithContext(context.Background(), request)
 }
 
 // DescribeReleaseFiles
@@ -3629,6 +3581,11 @@ func (c *Client) DescribeReleaseFilesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeReleaseFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReleaseFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReleaseFilesResponse()
@@ -3678,13 +3635,7 @@ func NewDescribeScoresResponse() (response *DescribeScoresResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScores(request *DescribeScoresRequest) (response *DescribeScoresResponse, err error) {
-    if request == nil {
-        request = NewDescribeScoresRequest()
-    }
-    
-    response = NewDescribeScoresResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScoresWithContext(context.Background(), request)
 }
 
 // DescribeScores
@@ -3715,6 +3666,11 @@ func (c *Client) DescribeScoresWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeScoresRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScores require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScoresResponse()
@@ -3748,13 +3704,7 @@ func NewDescribeTawAreasResponse() (response *DescribeTawAreasResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTawAreas(request *DescribeTawAreasRequest) (response *DescribeTawAreasResponse, err error) {
-    if request == nil {
-        request = NewDescribeTawAreasRequest()
-    }
-    
-    response = NewDescribeTawAreasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTawAreasWithContext(context.Background(), request)
 }
 
 // DescribeTawAreas
@@ -3769,6 +3719,11 @@ func (c *Client) DescribeTawAreasWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTawAreasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTawAreas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTawAreasResponse()
@@ -3802,13 +3757,7 @@ func NewDescribeTawInstancesResponse() (response *DescribeTawInstancesResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTawInstances(request *DescribeTawInstancesRequest) (response *DescribeTawInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTawInstancesRequest()
-    }
-    
-    response = NewDescribeTawInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTawInstancesWithContext(context.Background(), request)
 }
 
 // DescribeTawInstances
@@ -3823,6 +3772,11 @@ func (c *Client) DescribeTawInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTawInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTawInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTawInstancesResponse()
@@ -3872,13 +3826,7 @@ func NewDescribeUvListResponse() (response *DescribeUvListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUvList(request *DescribeUvListRequest) (response *DescribeUvListResponse, err error) {
-    if request == nil {
-        request = NewDescribeUvListRequest()
-    }
-    
-    response = NewDescribeUvListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUvListWithContext(context.Background(), request)
 }
 
 // DescribeUvList
@@ -3909,6 +3857,11 @@ func (c *Client) DescribeUvListWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeUvListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUvList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUvListResponse()
@@ -3957,13 +3910,7 @@ func NewDescribeWhitelistsResponse() (response *DescribeWhitelistsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeWhitelists(request *DescribeWhitelistsRequest) (response *DescribeWhitelistsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhitelistsRequest()
-    }
-    
-    response = NewDescribeWhitelistsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhitelistsWithContext(context.Background(), request)
 }
 
 // DescribeWhitelists
@@ -3993,6 +3940,11 @@ func (c *Client) DescribeWhitelistsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeWhitelistsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhitelists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhitelistsResponse()
@@ -4034,13 +3986,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceRequest()
-    }
-    
-    response = NewModifyInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceWithContext(context.Background(), request)
 }
 
 // ModifyInstance
@@ -4063,6 +4009,11 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
@@ -4094,13 +4045,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyProjectRequest()
-    }
-    
-    response = NewModifyProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProjectWithContext(context.Background(), request)
 }
 
 // ModifyProject
@@ -4113,6 +4058,11 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProjectResponse()
@@ -4164,13 +4114,7 @@ func NewModifyProjectLimitResponse() (response *ModifyProjectLimitResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProjectLimit(request *ModifyProjectLimitRequest) (response *ModifyProjectLimitResponse, err error) {
-    if request == nil {
-        request = NewModifyProjectLimitRequest()
-    }
-    
-    response = NewModifyProjectLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProjectLimitWithContext(context.Background(), request)
 }
 
 // ModifyProjectLimit
@@ -4203,6 +4147,11 @@ func (c *Client) ModifyProjectLimitWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyProjectLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProjectLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProjectLimitResponse()
@@ -4245,13 +4194,7 @@ func NewResumeInstanceResponse() (response *ResumeInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResumeInstance(request *ResumeInstanceRequest) (response *ResumeInstanceResponse, err error) {
-    if request == nil {
-        request = NewResumeInstanceRequest()
-    }
-    
-    response = NewResumeInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeInstanceWithContext(context.Background(), request)
 }
 
 // ResumeInstance
@@ -4275,6 +4218,11 @@ func (c *Client) ResumeInstanceWithContext(ctx context.Context, request *ResumeI
     if request == nil {
         request = NewResumeInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeInstanceResponse()
@@ -4318,13 +4266,7 @@ func NewStopInstanceResponse() (response *StopInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopInstance(request *StopInstanceRequest) (response *StopInstanceResponse, err error) {
-    if request == nil {
-        request = NewStopInstanceRequest()
-    }
-    
-    response = NewStopInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopInstanceWithContext(context.Background(), request)
 }
 
 // StopInstance
@@ -4349,6 +4291,11 @@ func (c *Client) StopInstanceWithContext(ctx context.Context, request *StopInsta
     if request == nil {
         request = NewStopInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopInstanceResponse()

@@ -16,6 +16,7 @@ package v20190923
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -93,13 +94,7 @@ func NewCreateProductSecretResponse() (response *CreateProductSecretResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProductSecret(request *CreateProductSecretRequest) (response *CreateProductSecretResponse, err error) {
-    if request == nil {
-        request = NewCreateProductSecretRequest()
-    }
-    
-    response = NewCreateProductSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProductSecretWithContext(context.Background(), request)
 }
 
 // CreateProductSecret
@@ -137,6 +132,11 @@ func (c *Client) CreateProductSecretWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateProductSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProductSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProductSecretResponse()
@@ -183,13 +183,7 @@ func NewCreateSSHKeyPairSecretResponse() (response *CreateSSHKeyPairSecretRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSSHKeyPairSecret(request *CreateSSHKeyPairSecretRequest) (response *CreateSSHKeyPairSecretResponse, err error) {
-    if request == nil {
-        request = NewCreateSSHKeyPairSecretRequest()
-    }
-    
-    response = NewCreateSSHKeyPairSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSSHKeyPairSecretWithContext(context.Background(), request)
 }
 
 // CreateSSHKeyPairSecret
@@ -217,6 +211,11 @@ func (c *Client) CreateSSHKeyPairSecretWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateSSHKeyPairSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSSHKeyPairSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSSHKeyPairSecretResponse()
@@ -255,13 +254,7 @@ func NewCreateSecretResponse() (response *CreateSecretResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSecret(request *CreateSecretRequest) (response *CreateSecretResponse, err error) {
-    if request == nil {
-        request = NewCreateSecretRequest()
-    }
-    
-    response = NewCreateSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecretWithContext(context.Background(), request)
 }
 
 // CreateSecret
@@ -281,6 +274,11 @@ func (c *Client) CreateSecretWithContext(ctx context.Context, request *CreateSec
     if request == nil {
         request = NewCreateSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecretResponse()
@@ -317,13 +315,7 @@ func NewDeleteSecretResponse() (response *DeleteSecretResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEUNINITIALIZED = "ResourceUnavailable.ResourceUninitialized"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecret(request *DeleteSecretRequest) (response *DeleteSecretResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecretRequest()
-    }
-    
-    response = NewDeleteSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecretWithContext(context.Background(), request)
 }
 
 // DeleteSecret
@@ -341,6 +333,11 @@ func (c *Client) DeleteSecretWithContext(ctx context.Context, request *DeleteSec
     if request == nil {
         request = NewDeleteSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecretResponse()
@@ -379,13 +376,7 @@ func NewDeleteSecretVersionResponse() (response *DeleteSecretVersionResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEUNINITIALIZED = "ResourceUnavailable.ResourceUninitialized"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSecretVersion(request *DeleteSecretVersionRequest) (response *DeleteSecretVersionResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecretVersionRequest()
-    }
-    
-    response = NewDeleteSecretVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecretVersionWithContext(context.Background(), request)
 }
 
 // DeleteSecretVersion
@@ -405,6 +396,11 @@ func (c *Client) DeleteSecretVersionWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSecretVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecretVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecretVersionResponse()
@@ -463,13 +459,7 @@ func NewDescribeAsyncRequestInfoResponse() (response *DescribeAsyncRequestInfoRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAsyncRequestInfo(request *DescribeAsyncRequestInfoRequest) (response *DescribeAsyncRequestInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeAsyncRequestInfoRequest()
-    }
-    
-    response = NewDescribeAsyncRequestInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAsyncRequestInfoWithContext(context.Background(), request)
 }
 
 // DescribeAsyncRequestInfo
@@ -509,6 +499,11 @@ func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAsyncRequestInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsyncRequestInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAsyncRequestInfoResponse()
@@ -569,13 +564,7 @@ func NewDescribeRotationDetailResponse() (response *DescribeRotationDetailRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRotationDetail(request *DescribeRotationDetailRequest) (response *DescribeRotationDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeRotationDetailRequest()
-    }
-    
-    response = NewDescribeRotationDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRotationDetailWithContext(context.Background(), request)
 }
 
 // DescribeRotationDetail
@@ -617,6 +606,11 @@ func (c *Client) DescribeRotationDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRotationDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRotationDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRotationDetailResponse()
@@ -677,13 +671,7 @@ func NewDescribeRotationHistoryResponse() (response *DescribeRotationHistoryResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRotationHistory(request *DescribeRotationHistoryRequest) (response *DescribeRotationHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeRotationHistoryRequest()
-    }
-    
-    response = NewDescribeRotationHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRotationHistoryWithContext(context.Background(), request)
 }
 
 // DescribeRotationHistory
@@ -725,6 +713,11 @@ func (c *Client) DescribeRotationHistoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRotationHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRotationHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRotationHistoryResponse()
@@ -761,13 +754,7 @@ func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *DescribeSecretResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecretRequest()
-    }
-    
-    response = NewDescribeSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecretWithContext(context.Background(), request)
 }
 
 // DescribeSecret
@@ -785,6 +772,11 @@ func (c *Client) DescribeSecretWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecretResponse()
@@ -843,13 +835,7 @@ func NewDescribeSupportedProductsResponse() (response *DescribeSupportedProducts
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSupportedProducts(request *DescribeSupportedProductsRequest) (response *DescribeSupportedProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSupportedProductsRequest()
-    }
-    
-    response = NewDescribeSupportedProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSupportedProductsWithContext(context.Background(), request)
 }
 
 // DescribeSupportedProducts
@@ -889,6 +875,11 @@ func (c *Client) DescribeSupportedProductsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSupportedProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSupportedProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSupportedProductsResponse()
@@ -925,13 +916,7 @@ func NewDisableSecretResponse() (response *DisableSecretResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEUNINITIALIZED = "ResourceUnavailable.ResourceUninitialized"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisableSecret(request *DisableSecretRequest) (response *DisableSecretResponse, err error) {
-    if request == nil {
-        request = NewDisableSecretRequest()
-    }
-    
-    response = NewDisableSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableSecretWithContext(context.Background(), request)
 }
 
 // DisableSecret
@@ -949,6 +934,11 @@ func (c *Client) DisableSecretWithContext(ctx context.Context, request *DisableS
     if request == nil {
         request = NewDisableSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableSecretResponse()
@@ -985,13 +975,7 @@ func NewEnableSecretResponse() (response *EnableSecretResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEUNINITIALIZED = "ResourceUnavailable.ResourceUninitialized"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) EnableSecret(request *EnableSecretRequest) (response *EnableSecretResponse, err error) {
-    if request == nil {
-        request = NewEnableSecretRequest()
-    }
-    
-    response = NewEnableSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableSecretWithContext(context.Background(), request)
 }
 
 // EnableSecret
@@ -1009,6 +993,11 @@ func (c *Client) EnableSecretWithContext(ctx context.Context, request *EnableSec
     if request == nil {
         request = NewEnableSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableSecretResponse()
@@ -1040,13 +1029,7 @@ func NewGetRegionsResponse() (response *GetRegionsResponse) {
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsResponse, err error) {
-    if request == nil {
-        request = NewGetRegionsRequest()
-    }
-    
-    response = NewGetRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRegionsWithContext(context.Background(), request)
 }
 
 // GetRegions
@@ -1059,6 +1042,11 @@ func (c *Client) GetRegionsWithContext(ctx context.Context, request *GetRegionsR
     if request == nil {
         request = NewGetRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRegionsResponse()
@@ -1104,13 +1092,7 @@ func NewGetSSHKeyPairValueResponse() (response *GetSSHKeyPairValueResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetSSHKeyPairValue(request *GetSSHKeyPairValueRequest) (response *GetSSHKeyPairValueResponse, err error) {
-    if request == nil {
-        request = NewGetSSHKeyPairValueRequest()
-    }
-    
-    response = NewGetSSHKeyPairValueResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSSHKeyPairValueWithContext(context.Background(), request)
 }
 
 // GetSSHKeyPairValue
@@ -1137,6 +1119,11 @@ func (c *Client) GetSSHKeyPairValueWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetSSHKeyPairValueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSSHKeyPairValue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSSHKeyPairValueResponse()
@@ -1180,13 +1167,7 @@ func NewGetSecretValueResponse() (response *GetSecretValueResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEUNINITIALIZED = "ResourceUnavailable.ResourceUninitialized"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetSecretValue(request *GetSecretValueRequest) (response *GetSecretValueResponse, err error) {
-    if request == nil {
-        request = NewGetSecretValueRequest()
-    }
-    
-    response = NewGetSecretValueResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSecretValueWithContext(context.Background(), request)
 }
 
 // GetSecretValue
@@ -1211,6 +1192,11 @@ func (c *Client) GetSecretValueWithContext(ctx context.Context, request *GetSecr
     if request == nil {
         request = NewGetSecretValueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSecretValue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSecretValueResponse()
@@ -1242,13 +1228,7 @@ func NewGetServiceStatusResponse() (response *GetServiceStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
-    if request == nil {
-        request = NewGetServiceStatusRequest()
-    }
-    
-    response = NewGetServiceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetServiceStatusWithContext(context.Background(), request)
 }
 
 // GetServiceStatus
@@ -1261,6 +1241,11 @@ func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetSe
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetServiceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetServiceStatusResponse()
@@ -1296,13 +1281,7 @@ func NewListSecretVersionIdsResponse() (response *ListSecretVersionIdsResponse) 
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest) (response *ListSecretVersionIdsResponse, err error) {
-    if request == nil {
-        request = NewListSecretVersionIdsRequest()
-    }
-    
-    response = NewListSecretVersionIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListSecretVersionIdsWithContext(context.Background(), request)
 }
 
 // ListSecretVersionIds
@@ -1319,6 +1298,11 @@ func (c *Client) ListSecretVersionIdsWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListSecretVersionIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSecretVersionIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListSecretVersionIdsResponse()
@@ -1352,13 +1336,7 @@ func NewListSecretsResponse() (response *ListSecretsResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListSecrets(request *ListSecretsRequest) (response *ListSecretsResponse, err error) {
-    if request == nil {
-        request = NewListSecretsRequest()
-    }
-    
-    response = NewListSecretsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListSecretsWithContext(context.Background(), request)
 }
 
 // ListSecrets
@@ -1373,6 +1351,11 @@ func (c *Client) ListSecretsWithContext(ctx context.Context, request *ListSecret
     if request == nil {
         request = NewListSecretsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSecrets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListSecretsResponse()
@@ -1414,13 +1397,7 @@ func NewPutSecretValueResponse() (response *PutSecretValueResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PutSecretValue(request *PutSecretValueRequest) (response *PutSecretValueResponse, err error) {
-    if request == nil {
-        request = NewPutSecretValueRequest()
-    }
-    
-    response = NewPutSecretValueResponse()
-    err = c.Send(request, response)
-    return
+    return c.PutSecretValueWithContext(context.Background(), request)
 }
 
 // PutSecretValue
@@ -1443,6 +1420,11 @@ func (c *Client) PutSecretValueWithContext(ctx context.Context, request *PutSecr
     if request == nil {
         request = NewPutSecretValueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutSecretValue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPutSecretValueResponse()
@@ -1478,13 +1460,7 @@ func NewRestoreSecretResponse() (response *RestoreSecretResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RestoreSecret(request *RestoreSecretRequest) (response *RestoreSecretResponse, err error) {
-    if request == nil {
-        request = NewRestoreSecretRequest()
-    }
-    
-    response = NewRestoreSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.RestoreSecretWithContext(context.Background(), request)
 }
 
 // RestoreSecret
@@ -1501,6 +1477,11 @@ func (c *Client) RestoreSecretWithContext(ctx context.Context, request *RestoreS
     if request == nil {
         request = NewRestoreSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRestoreSecretResponse()
@@ -1562,13 +1543,7 @@ func NewRotateProductSecretResponse() (response *RotateProductSecretResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RotateProductSecret(request *RotateProductSecretRequest) (response *RotateProductSecretResponse, err error) {
-    if request == nil {
-        request = NewRotateProductSecretRequest()
-    }
-    
-    response = NewRotateProductSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.RotateProductSecretWithContext(context.Background(), request)
 }
 
 // RotateProductSecret
@@ -1611,6 +1586,11 @@ func (c *Client) RotateProductSecretWithContext(ctx context.Context, request *Ro
     if request == nil {
         request = NewRotateProductSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RotateProductSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRotateProductSecretResponse()
@@ -1645,13 +1625,7 @@ func NewUpdateDescriptionResponse() (response *UpdateDescriptionResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateDescription(request *UpdateDescriptionRequest) (response *UpdateDescriptionResponse, err error) {
-    if request == nil {
-        request = NewUpdateDescriptionRequest()
-    }
-    
-    response = NewUpdateDescriptionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDescriptionWithContext(context.Background(), request)
 }
 
 // UpdateDescription
@@ -1667,6 +1641,11 @@ func (c *Client) UpdateDescriptionWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateDescriptionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDescription require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDescriptionResponse()
@@ -1732,13 +1711,7 @@ func NewUpdateRotationStatusResponse() (response *UpdateRotationStatusResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRotationStatus(request *UpdateRotationStatusRequest) (response *UpdateRotationStatusResponse, err error) {
-    if request == nil {
-        request = NewUpdateRotationStatusRequest()
-    }
-    
-    response = NewUpdateRotationStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRotationStatusWithContext(context.Background(), request)
 }
 
 // UpdateRotationStatus
@@ -1785,6 +1758,11 @@ func (c *Client) UpdateRotationStatusWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateRotationStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRotationStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRotationStatusResponse()
@@ -1824,13 +1802,7 @@ func NewUpdateSecretResponse() (response *UpdateSecretResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateSecret(request *UpdateSecretRequest) (response *UpdateSecretResponse, err error) {
-    if request == nil {
-        request = NewUpdateSecretRequest()
-    }
-    
-    response = NewUpdateSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateSecretWithContext(context.Background(), request)
 }
 
 // UpdateSecret
@@ -1851,6 +1823,11 @@ func (c *Client) UpdateSecretWithContext(ctx context.Context, request *UpdateSec
     if request == nil {
         request = NewUpdateSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateSecretResponse()

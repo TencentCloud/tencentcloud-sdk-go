@@ -16,6 +16,7 @@ package v20190103
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -134,13 +135,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateInstanceRequest()
-    }
-    
-    response = NewCreateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInstanceWithContext(context.Background(), request)
 }
 
 // CreateInstance
@@ -219,6 +214,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInstanceResponse()
@@ -272,13 +272,7 @@ func NewDescribeClusterNodesResponse() (response *DescribeClusterNodesResponse) 
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (response *DescribeClusterNodesResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterNodesRequest()
-    }
-    
-    response = NewDescribeClusterNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterNodesWithContext(context.Background(), request)
 }
 
 // DescribeClusterNodes
@@ -313,6 +307,11 @@ func (c *Client) DescribeClusterNodesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeClusterNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterNodesResponse()
@@ -343,13 +342,7 @@ func NewDescribeCvmQuotaResponse() (response *DescribeCvmQuotaResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCvmQuota(request *DescribeCvmQuotaRequest) (response *DescribeCvmQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeCvmQuotaRequest()
-    }
-    
-    response = NewDescribeCvmQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCvmQuotaWithContext(context.Background(), request)
 }
 
 // DescribeCvmQuota
@@ -361,6 +354,11 @@ func (c *Client) DescribeCvmQuotaWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCvmQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCvmQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCvmQuotaResponse()
@@ -414,13 +412,7 @@ func NewDescribeInstanceRenewNodesResponse() (response *DescribeInstanceRenewNod
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstanceRenewNodes(request *DescribeInstanceRenewNodesRequest) (response *DescribeInstanceRenewNodesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceRenewNodesRequest()
-    }
-    
-    response = NewDescribeInstanceRenewNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceRenewNodesWithContext(context.Background(), request)
 }
 
 // DescribeInstanceRenewNodes
@@ -455,6 +447,11 @@ func (c *Client) DescribeInstanceRenewNodesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceRenewNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceRenewNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceRenewNodesResponse()
@@ -510,13 +507,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  RESOURCENOTFOUND_HARDWAREINFONOTFOUND = "ResourceNotFound.HardwareInfoNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -553,6 +544,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -584,13 +580,7 @@ func NewDescribeJobFlowResponse() (response *DescribeJobFlowResponse) {
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
 func (c *Client) DescribeJobFlow(request *DescribeJobFlowRequest) (response *DescribeJobFlowResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobFlowRequest()
-    }
-    
-    response = NewDescribeJobFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobFlowWithContext(context.Background(), request)
 }
 
 // DescribeJobFlow
@@ -603,6 +593,11 @@ func (c *Client) DescribeJobFlowWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeJobFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobFlowResponse()
@@ -658,13 +653,7 @@ func NewInquirePriceRenewEmrResponse() (response *InquirePriceRenewEmrResponse) 
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) InquirePriceRenewEmr(request *InquirePriceRenewEmrRequest) (response *InquirePriceRenewEmrResponse, err error) {
-    if request == nil {
-        request = NewInquirePriceRenewEmrRequest()
-    }
-    
-    response = NewInquirePriceRenewEmrResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquirePriceRenewEmrWithContext(context.Background(), request)
 }
 
 // InquirePriceRenewEmr
@@ -701,6 +690,11 @@ func (c *Client) InquirePriceRenewEmrWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewInquirePriceRenewEmrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceRenewEmr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquirePriceRenewEmrResponse()
@@ -770,13 +764,7 @@ func NewInquiryPriceCreateInstanceResponse() (response *InquiryPriceCreateInstan
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceRequest) (response *InquiryPriceCreateInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceCreateInstanceRequest()
-    }
-    
-    response = NewInquiryPriceCreateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceCreateInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceCreateInstance
@@ -827,6 +815,11 @@ func (c *Client) InquiryPriceCreateInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceCreateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceCreateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceCreateInstanceResponse()
@@ -883,13 +876,7 @@ func NewInquiryPriceRenewInstanceResponse() (response *InquiryPriceRenewInstance
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceRequest) (response *InquiryPriceRenewInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceRenewInstanceRequest()
-    }
-    
-    response = NewInquiryPriceRenewInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceRenewInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceRenewInstance
@@ -927,6 +914,11 @@ func (c *Client) InquiryPriceRenewInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewInquiryPriceRenewInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRenewInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceRenewInstanceResponse()
@@ -988,13 +980,7 @@ func NewInquiryPriceScaleOutInstanceResponse() (response *InquiryPriceScaleOutIn
 //  RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpec_NotDefaultSpec"
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
 func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInstanceRequest) (response *InquiryPriceScaleOutInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceScaleOutInstanceRequest()
-    }
-    
-    response = NewInquiryPriceScaleOutInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceScaleOutInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceScaleOutInstance
@@ -1037,6 +1023,11 @@ func (c *Client) InquiryPriceScaleOutInstanceWithContext(ctx context.Context, re
     if request == nil {
         request = NewInquiryPriceScaleOutInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceScaleOutInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceScaleOutInstanceResponse()
@@ -1093,13 +1084,7 @@ func NewInquiryPriceUpdateInstanceResponse() (response *InquiryPriceUpdateInstan
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) InquiryPriceUpdateInstance(request *InquiryPriceUpdateInstanceRequest) (response *InquiryPriceUpdateInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceUpdateInstanceRequest()
-    }
-    
-    response = NewInquiryPriceUpdateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceUpdateInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceUpdateInstance
@@ -1137,6 +1122,11 @@ func (c *Client) InquiryPriceUpdateInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceUpdateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceUpdateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceUpdateInstanceResponse()
@@ -1199,13 +1189,7 @@ func NewRunJobFlowResponse() (response *RunJobFlowResponse) {
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
 //  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
 func (c *Client) RunJobFlow(request *RunJobFlowRequest) (response *RunJobFlowResponse, err error) {
-    if request == nil {
-        request = NewRunJobFlowRequest()
-    }
-    
-    response = NewRunJobFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunJobFlowWithContext(context.Background(), request)
 }
 
 // RunJobFlow
@@ -1249,6 +1233,11 @@ func (c *Client) RunJobFlowWithContext(ctx context.Context, request *RunJobFlowR
     if request == nil {
         request = NewRunJobFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunJobFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunJobFlowResponse()
@@ -1326,13 +1315,7 @@ func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
 //  RESOURCESSOLDOUT_CBSSOLDOUT = "ResourcesSoldOut.CbsSoldOut"
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
 func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
-    if request == nil {
-        request = NewScaleOutInstanceRequest()
-    }
-    
-    response = NewScaleOutInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScaleOutInstanceWithContext(context.Background(), request)
 }
 
 // ScaleOutInstance
@@ -1391,6 +1374,11 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleOutInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleOutInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScaleOutInstanceResponse()
@@ -1485,13 +1473,7 @@ func NewSyncPodStateResponse() (response *SyncPodStateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SyncPodState(request *SyncPodStateRequest) (response *SyncPodStateResponse, err error) {
-    if request == nil {
-        request = NewSyncPodStateRequest()
-    }
-    
-    response = NewSyncPodStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncPodStateWithContext(context.Background(), request)
 }
 
 // SyncPodState
@@ -1567,6 +1549,11 @@ func (c *Client) SyncPodStateWithContext(ctx context.Context, request *SyncPodSt
     if request == nil {
         request = NewSyncPodStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncPodState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncPodStateResponse()
@@ -1606,13 +1593,7 @@ func NewTerminateInstanceResponse() (response *TerminateInstanceResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = "UnsupportedOperation.ServiceNotSupport"
 func (c *Client) TerminateInstance(request *TerminateInstanceRequest) (response *TerminateInstanceResponse, err error) {
-    if request == nil {
-        request = NewTerminateInstanceRequest()
-    }
-    
-    response = NewTerminateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateInstanceWithContext(context.Background(), request)
 }
 
 // TerminateInstance
@@ -1633,6 +1614,11 @@ func (c *Client) TerminateInstanceWithContext(ctx context.Context, request *Term
     if request == nil {
         request = NewTerminateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateInstanceResponse()
@@ -1690,13 +1676,7 @@ func NewTerminateTasksResponse() (response *TerminateTasksResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TerminateTasks(request *TerminateTasksRequest) (response *TerminateTasksResponse, err error) {
-    if request == nil {
-        request = NewTerminateTasksRequest()
-    }
-    
-    response = NewTerminateTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateTasksWithContext(context.Background(), request)
 }
 
 // TerminateTasks
@@ -1735,6 +1715,11 @@ func (c *Client) TerminateTasksWithContext(ctx context.Context, request *Termina
     if request == nil {
         request = NewTerminateTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateTasksResponse()

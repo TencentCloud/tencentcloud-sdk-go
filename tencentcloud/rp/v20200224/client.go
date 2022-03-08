@@ -16,6 +16,7 @@ package v20200224
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,13 +88,7 @@ func NewQueryRegisterProtectionResponse() (response *QueryRegisterProtectionResp
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryRegisterProtection(request *QueryRegisterProtectionRequest) (response *QueryRegisterProtectionResponse, err error) {
-    if request == nil {
-        request = NewQueryRegisterProtectionRequest()
-    }
-    
-    response = NewQueryRegisterProtectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryRegisterProtectionWithContext(context.Background(), request)
 }
 
 // QueryRegisterProtection
@@ -125,6 +120,11 @@ func (c *Client) QueryRegisterProtectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryRegisterProtectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryRegisterProtection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryRegisterProtectionResponse()

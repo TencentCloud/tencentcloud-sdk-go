@@ -16,6 +16,7 @@ package v20190121
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewAddCrowdPackInfoResponse() (response *AddCrowdPackInfoResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddCrowdPackInfo(request *AddCrowdPackInfoRequest) (response *AddCrowdPackInfoResponse, err error) {
-    if request == nil {
-        request = NewAddCrowdPackInfoRequest()
-    }
-    
-    response = NewAddCrowdPackInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddCrowdPackInfoWithContext(context.Background(), request)
 }
 
 // AddCrowdPackInfo
@@ -85,6 +80,11 @@ func (c *Client) AddCrowdPackInfoWithContext(ctx context.Context, request *AddCr
     if request == nil {
         request = NewAddCrowdPackInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCrowdPackInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddCrowdPackInfoResponse()
@@ -120,13 +120,7 @@ func NewAddSmsSignResponse() (response *AddSmsSignResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) AddSmsSign(request *AddSmsSignRequest) (response *AddSmsSignResponse, err error) {
-    if request == nil {
-        request = NewAddSmsSignRequest()
-    }
-    
-    response = NewAddSmsSignResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddSmsSignWithContext(context.Background(), request)
 }
 
 // AddSmsSign
@@ -143,6 +137,11 @@ func (c *Client) AddSmsSignWithContext(ctx context.Context, request *AddSmsSignR
     if request == nil {
         request = NewAddSmsSignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddSmsSign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddSmsSignResponse()
@@ -179,13 +178,7 @@ func NewAddSmsTemplateResponse() (response *AddSmsTemplateResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (response *AddSmsTemplateResponse, err error) {
-    if request == nil {
-        request = NewAddSmsTemplateRequest()
-    }
-    
-    response = NewAddSmsTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddSmsTemplateWithContext(context.Background(), request)
 }
 
 // AddSmsTemplate
@@ -203,6 +196,11 @@ func (c *Client) AddSmsTemplateWithContext(ctx context.Context, request *AddSmsT
     if request == nil {
         request = NewAddSmsTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddSmsTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddSmsTemplateResponse()
@@ -238,13 +236,7 @@ func NewCancelCampaignResponse() (response *CancelCampaignResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CancelCampaign(request *CancelCampaignRequest) (response *CancelCampaignResponse, err error) {
-    if request == nil {
-        request = NewCancelCampaignRequest()
-    }
-    
-    response = NewCancelCampaignResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelCampaignWithContext(context.Background(), request)
 }
 
 // CancelCampaign
@@ -261,6 +253,11 @@ func (c *Client) CancelCampaignWithContext(ctx context.Context, request *CancelC
     if request == nil {
         request = NewCancelCampaignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelCampaign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelCampaignResponse()
@@ -297,13 +294,7 @@ func NewCreateCampaignResponse() (response *CreateCampaignResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CreateCampaign(request *CreateCampaignRequest) (response *CreateCampaignResponse, err error) {
-    if request == nil {
-        request = NewCreateCampaignRequest()
-    }
-    
-    response = NewCreateCampaignResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCampaignWithContext(context.Background(), request)
 }
 
 // CreateCampaign
@@ -321,6 +312,11 @@ func (c *Client) CreateCampaignWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCampaignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCampaign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCampaignResponse()
@@ -356,13 +352,7 @@ func NewCreateMmsInstanceResponse() (response *CreateMmsInstanceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) CreateMmsInstance(request *CreateMmsInstanceRequest) (response *CreateMmsInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateMmsInstanceRequest()
-    }
-    
-    response = NewCreateMmsInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMmsInstanceWithContext(context.Background(), request)
 }
 
 // CreateMmsInstance
@@ -379,6 +369,11 @@ func (c *Client) CreateMmsInstanceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateMmsInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMmsInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMmsInstanceResponse()
@@ -413,13 +408,7 @@ func NewDelCrowdPackResponse() (response *DelCrowdPackResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DelCrowdPack(request *DelCrowdPackRequest) (response *DelCrowdPackResponse, err error) {
-    if request == nil {
-        request = NewDelCrowdPackRequest()
-    }
-    
-    response = NewDelCrowdPackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DelCrowdPackWithContext(context.Background(), request)
 }
 
 // DelCrowdPack
@@ -435,6 +424,11 @@ func (c *Client) DelCrowdPackWithContext(ctx context.Context, request *DelCrowdP
     if request == nil {
         request = NewDelCrowdPackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DelCrowdPack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDelCrowdPackResponse()
@@ -468,13 +462,7 @@ func NewDelTemplateResponse() (response *DelTemplateResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DelTemplate(request *DelTemplateRequest) (response *DelTemplateResponse, err error) {
-    if request == nil {
-        request = NewDelTemplateRequest()
-    }
-    
-    response = NewDelTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DelTemplateWithContext(context.Background(), request)
 }
 
 // DelTemplate
@@ -489,6 +477,11 @@ func (c *Client) DelTemplateWithContext(ctx context.Context, request *DelTemplat
     if request == nil {
         request = NewDelTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DelTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDelTemplateResponse()
@@ -524,13 +517,7 @@ func NewDeleteMmsInstanceResponse() (response *DeleteMmsInstanceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DeleteMmsInstance(request *DeleteMmsInstanceRequest) (response *DeleteMmsInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteMmsInstanceRequest()
-    }
-    
-    response = NewDeleteMmsInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMmsInstanceWithContext(context.Background(), request)
 }
 
 // DeleteMmsInstance
@@ -547,6 +534,11 @@ func (c *Client) DeleteMmsInstanceWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteMmsInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMmsInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMmsInstanceResponse()
@@ -581,13 +573,7 @@ func NewDescribeMmsInstanceInfoResponse() (response *DescribeMmsInstanceInfoResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMmsInstanceInfo(request *DescribeMmsInstanceInfoRequest) (response *DescribeMmsInstanceInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeMmsInstanceInfoRequest()
-    }
-    
-    response = NewDescribeMmsInstanceInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMmsInstanceInfoWithContext(context.Background(), request)
 }
 
 // DescribeMmsInstanceInfo
@@ -603,6 +589,11 @@ func (c *Client) DescribeMmsInstanceInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMmsInstanceInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMmsInstanceInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMmsInstanceInfoResponse()
@@ -637,13 +628,7 @@ func NewDescribeMmsInstanceListResponse() (response *DescribeMmsInstanceListResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMmsInstanceList(request *DescribeMmsInstanceListRequest) (response *DescribeMmsInstanceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeMmsInstanceListRequest()
-    }
-    
-    response = NewDescribeMmsInstanceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMmsInstanceListWithContext(context.Background(), request)
 }
 
 // DescribeMmsInstanceList
@@ -659,6 +644,11 @@ func (c *Client) DescribeMmsInstanceListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMmsInstanceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMmsInstanceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMmsInstanceListResponse()
@@ -694,13 +684,7 @@ func NewDescribeSmsCampaignStatisticsResponse() (response *DescribeSmsCampaignSt
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsCampaignStatistics(request *DescribeSmsCampaignStatisticsRequest) (response *DescribeSmsCampaignStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmsCampaignStatisticsRequest()
-    }
-    
-    response = NewDescribeSmsCampaignStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmsCampaignStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeSmsCampaignStatistics
@@ -717,6 +701,11 @@ func (c *Client) DescribeSmsCampaignStatisticsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSmsCampaignStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmsCampaignStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmsCampaignStatisticsResponse()
@@ -752,13 +741,7 @@ func NewDescribeSmsSignListResponse() (response *DescribeSmsSignListResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsSignList(request *DescribeSmsSignListRequest) (response *DescribeSmsSignListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmsSignListRequest()
-    }
-    
-    response = NewDescribeSmsSignListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmsSignListWithContext(context.Background(), request)
 }
 
 // DescribeSmsSignList
@@ -775,6 +758,11 @@ func (c *Client) DescribeSmsSignListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSmsSignListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmsSignList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmsSignListResponse()
@@ -810,13 +798,7 @@ func NewDescribeSmsTemplateListResponse() (response *DescribeSmsTemplateListResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) DescribeSmsTemplateList(request *DescribeSmsTemplateListRequest) (response *DescribeSmsTemplateListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmsTemplateListRequest()
-    }
-    
-    response = NewDescribeSmsTemplateListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmsTemplateListWithContext(context.Background(), request)
 }
 
 // DescribeSmsTemplateList
@@ -833,6 +815,11 @@ func (c *Client) DescribeSmsTemplateListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSmsTemplateListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmsTemplateList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmsTemplateListResponse()
@@ -867,13 +854,7 @@ func NewGetCrowdPackListResponse() (response *GetCrowdPackListResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetCrowdPackList(request *GetCrowdPackListRequest) (response *GetCrowdPackListResponse, err error) {
-    if request == nil {
-        request = NewGetCrowdPackListRequest()
-    }
-    
-    response = NewGetCrowdPackListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCrowdPackListWithContext(context.Background(), request)
 }
 
 // GetCrowdPackList
@@ -889,6 +870,11 @@ func (c *Client) GetCrowdPackListWithContext(ctx context.Context, request *GetCr
     if request == nil {
         request = NewGetCrowdPackListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCrowdPackList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCrowdPackListResponse()
@@ -923,13 +909,7 @@ func NewGetCrowdUploadInfoResponse() (response *GetCrowdUploadInfoResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetCrowdUploadInfo(request *GetCrowdUploadInfoRequest) (response *GetCrowdUploadInfoResponse, err error) {
-    if request == nil {
-        request = NewGetCrowdUploadInfoRequest()
-    }
-    
-    response = NewGetCrowdUploadInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCrowdUploadInfoWithContext(context.Background(), request)
 }
 
 // GetCrowdUploadInfo
@@ -945,6 +925,11 @@ func (c *Client) GetCrowdUploadInfoWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetCrowdUploadInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCrowdUploadInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCrowdUploadInfoResponse()
@@ -979,13 +964,7 @@ func NewGetSmsAmountInfoResponse() (response *GetSmsAmountInfoResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetSmsAmountInfo(request *GetSmsAmountInfoRequest) (response *GetSmsAmountInfoResponse, err error) {
-    if request == nil {
-        request = NewGetSmsAmountInfoRequest()
-    }
-    
-    response = NewGetSmsAmountInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSmsAmountInfoWithContext(context.Background(), request)
 }
 
 // GetSmsAmountInfo
@@ -1001,6 +980,11 @@ func (c *Client) GetSmsAmountInfoWithContext(ctx context.Context, request *GetSm
     if request == nil {
         request = NewGetSmsAmountInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSmsAmountInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSmsAmountInfoResponse()
@@ -1035,13 +1019,7 @@ func NewGetSmsCampaignStatusResponse() (response *GetSmsCampaignStatusResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetSmsCampaignStatus(request *GetSmsCampaignStatusRequest) (response *GetSmsCampaignStatusResponse, err error) {
-    if request == nil {
-        request = NewGetSmsCampaignStatusRequest()
-    }
-    
-    response = NewGetSmsCampaignStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSmsCampaignStatusWithContext(context.Background(), request)
 }
 
 // GetSmsCampaignStatus
@@ -1057,6 +1035,11 @@ func (c *Client) GetSmsCampaignStatusWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetSmsCampaignStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSmsCampaignStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSmsCampaignStatusResponse()
@@ -1106,13 +1089,7 @@ func NewModifySmsTemplateResponse() (response *ModifySmsTemplateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (response *ModifySmsTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifySmsTemplateRequest()
-    }
-    
-    response = NewModifySmsTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySmsTemplateWithContext(context.Background(), request)
 }
 
 // ModifySmsTemplate
@@ -1143,6 +1120,11 @@ func (c *Client) ModifySmsTemplateWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifySmsTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySmsTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySmsTemplateResponse()
@@ -1178,13 +1160,7 @@ func NewPushMmsContentResponse() (response *PushMmsContentResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) PushMmsContent(request *PushMmsContentRequest) (response *PushMmsContentResponse, err error) {
-    if request == nil {
-        request = NewPushMmsContentRequest()
-    }
-    
-    response = NewPushMmsContentResponse()
-    err = c.Send(request, response)
-    return
+    return c.PushMmsContentWithContext(context.Background(), request)
 }
 
 // PushMmsContent
@@ -1201,6 +1177,11 @@ func (c *Client) PushMmsContentWithContext(ctx context.Context, request *PushMms
     if request == nil {
         request = NewPushMmsContentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PushMmsContent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPushMmsContentResponse()
@@ -1236,13 +1217,7 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_ROLEFAILURE = "UnauthorizedOperation.RoleFailure"
 func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
-    if request == nil {
-        request = NewSendSmsRequest()
-    }
-    
-    response = NewSendSmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendSmsWithContext(context.Background(), request)
 }
 
 // SendSms
@@ -1259,6 +1234,11 @@ func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendSms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendSmsResponse()

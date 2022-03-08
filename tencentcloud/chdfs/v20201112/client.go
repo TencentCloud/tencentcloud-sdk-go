@@ -16,6 +16,7 @@ package v20201112
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewAssociateAccessGroupsResponse() (response *AssociateAccessGroupsResponse
 //  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssociateAccessGroups(request *AssociateAccessGroupsRequest) (response *AssociateAccessGroupsResponse, err error) {
-    if request == nil {
-        request = NewAssociateAccessGroupsRequest()
-    }
-    
-    response = NewAssociateAccessGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateAccessGroupsWithContext(context.Background(), request)
 }
 
 // AssociateAccessGroups
@@ -105,6 +100,11 @@ func (c *Client) AssociateAccessGroupsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAssociateAccessGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateAccessGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateAccessGroupsResponse()
@@ -147,13 +147,7 @@ func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response *CreateAccessGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateAccessGroupRequest()
-    }
-    
-    response = NewCreateAccessGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAccessGroupWithContext(context.Background(), request)
 }
 
 // CreateAccessGroup
@@ -177,6 +171,11 @@ func (c *Client) CreateAccessGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAccessGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAccessGroupResponse()
@@ -218,13 +217,7 @@ func NewCreateAccessRulesResponse() (response *CreateAccessRulesResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAccessRules(request *CreateAccessRulesRequest) (response *CreateAccessRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateAccessRulesRequest()
-    }
-    
-    response = NewCreateAccessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAccessRulesWithContext(context.Background(), request)
 }
 
 // CreateAccessRules
@@ -247,6 +240,11 @@ func (c *Client) CreateAccessRulesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAccessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAccessRulesResponse()
@@ -288,13 +286,7 @@ func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *CreateFileSystemResponse, err error) {
-    if request == nil {
-        request = NewCreateFileSystemRequest()
-    }
-    
-    response = NewCreateFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFileSystemWithContext(context.Background(), request)
 }
 
 // CreateFileSystem
@@ -317,6 +309,11 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFileSystemResponse()
@@ -359,13 +356,7 @@ func NewCreateLifeCycleRulesResponse() (response *CreateLifeCycleRulesResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateLifeCycleRules(request *CreateLifeCycleRulesRequest) (response *CreateLifeCycleRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateLifeCycleRulesRequest()
-    }
-    
-    response = NewCreateLifeCycleRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLifeCycleRulesWithContext(context.Background(), request)
 }
 
 // CreateLifeCycleRules
@@ -389,6 +380,11 @@ func (c *Client) CreateLifeCycleRulesWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateLifeCycleRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLifeCycleRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLifeCycleRulesResponse()
@@ -430,13 +426,7 @@ func NewCreateMountPointResponse() (response *CreateMountPointResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateMountPoint(request *CreateMountPointRequest) (response *CreateMountPointResponse, err error) {
-    if request == nil {
-        request = NewCreateMountPointRequest()
-    }
-    
-    response = NewCreateMountPointResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMountPointWithContext(context.Background(), request)
 }
 
 // CreateMountPoint
@@ -459,6 +449,11 @@ func (c *Client) CreateMountPointWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateMountPointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMountPoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMountPointResponse()
@@ -500,13 +495,7 @@ func NewCreateRestoreTasksResponse() (response *CreateRestoreTasksResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateRestoreTasks(request *CreateRestoreTasksRequest) (response *CreateRestoreTasksResponse, err error) {
-    if request == nil {
-        request = NewCreateRestoreTasksRequest()
-    }
-    
-    response = NewCreateRestoreTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRestoreTasksWithContext(context.Background(), request)
 }
 
 // CreateRestoreTasks
@@ -529,6 +518,11 @@ func (c *Client) CreateRestoreTasksWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRestoreTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRestoreTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRestoreTasksResponse()
@@ -567,13 +561,7 @@ func NewDeleteAccessGroupResponse() (response *DeleteAccessGroupResponse) {
 //  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) (response *DeleteAccessGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccessGroupRequest()
-    }
-    
-    response = NewDeleteAccessGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccessGroupWithContext(context.Background(), request)
 }
 
 // DeleteAccessGroup
@@ -593,6 +581,11 @@ func (c *Client) DeleteAccessGroupWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAccessGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccessGroupResponse()
@@ -629,13 +622,7 @@ func NewDeleteAccessRulesResponse() (response *DeleteAccessRulesResponse) {
 //  RESOURCENOTFOUND_ACCESSRULENOTEXISTS = "ResourceNotFound.AccessRuleNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteAccessRules(request *DeleteAccessRulesRequest) (response *DeleteAccessRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccessRulesRequest()
-    }
-    
-    response = NewDeleteAccessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccessRulesWithContext(context.Background(), request)
 }
 
 // DeleteAccessRules
@@ -653,6 +640,11 @@ func (c *Client) DeleteAccessRulesWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAccessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccessRulesResponse()
@@ -692,13 +684,7 @@ func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) (response *DeleteFileSystemResponse, err error) {
-    if request == nil {
-        request = NewDeleteFileSystemRequest()
-    }
-    
-    response = NewDeleteFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFileSystemWithContext(context.Background(), request)
 }
 
 // DeleteFileSystem
@@ -719,6 +705,11 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFileSystemResponse()
@@ -755,13 +746,7 @@ func NewDeleteLifeCycleRulesResponse() (response *DeleteLifeCycleRulesResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteLifeCycleRules(request *DeleteLifeCycleRulesRequest) (response *DeleteLifeCycleRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteLifeCycleRulesRequest()
-    }
-    
-    response = NewDeleteLifeCycleRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLifeCycleRulesWithContext(context.Background(), request)
 }
 
 // DeleteLifeCycleRules
@@ -779,6 +764,11 @@ func (c *Client) DeleteLifeCycleRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLifeCycleRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLifeCycleRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLifeCycleRulesResponse()
@@ -816,13 +806,7 @@ func NewDeleteMountPointResponse() (response *DeleteMountPointResponse) {
 //  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteMountPoint(request *DeleteMountPointRequest) (response *DeleteMountPointResponse, err error) {
-    if request == nil {
-        request = NewDeleteMountPointRequest()
-    }
-    
-    response = NewDeleteMountPointResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMountPointWithContext(context.Background(), request)
 }
 
 // DeleteMountPoint
@@ -841,6 +825,11 @@ func (c *Client) DeleteMountPointWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteMountPointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMountPoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMountPointResponse()
@@ -878,13 +867,7 @@ func NewDescribeAccessGroupResponse() (response *DescribeAccessGroupResponse) {
 //  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccessGroup(request *DescribeAccessGroupRequest) (response *DescribeAccessGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessGroupRequest()
-    }
-    
-    response = NewDescribeAccessGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessGroupWithContext(context.Background(), request)
 }
 
 // DescribeAccessGroup
@@ -903,6 +886,11 @@ func (c *Client) DescribeAccessGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAccessGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessGroupResponse()
@@ -940,13 +928,7 @@ func NewDescribeAccessGroupsResponse() (response *DescribeAccessGroupsResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) (response *DescribeAccessGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessGroupsRequest()
-    }
-    
-    response = NewDescribeAccessGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessGroupsWithContext(context.Background(), request)
 }
 
 // DescribeAccessGroups
@@ -965,6 +947,11 @@ func (c *Client) DescribeAccessGroupsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccessGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessGroupsResponse()
@@ -1002,13 +989,7 @@ func NewDescribeAccessRulesResponse() (response *DescribeAccessRulesResponse) {
 //  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccessRules(request *DescribeAccessRulesRequest) (response *DescribeAccessRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessRulesRequest()
-    }
-    
-    response = NewDescribeAccessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessRulesWithContext(context.Background(), request)
 }
 
 // DescribeAccessRules
@@ -1027,6 +1008,11 @@ func (c *Client) DescribeAccessRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAccessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessRulesResponse()
@@ -1065,13 +1051,7 @@ func NewDescribeFileSystemResponse() (response *DescribeFileSystemResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeFileSystem(request *DescribeFileSystemRequest) (response *DescribeFileSystemResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileSystemRequest()
-    }
-    
-    response = NewDescribeFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileSystemWithContext(context.Background(), request)
 }
 
 // DescribeFileSystem
@@ -1091,6 +1071,11 @@ func (c *Client) DescribeFileSystemWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileSystemResponse()
@@ -1126,13 +1111,7 @@ func NewDescribeFileSystemsResponse() (response *DescribeFileSystemsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (response *DescribeFileSystemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileSystemsRequest()
-    }
-    
-    response = NewDescribeFileSystemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileSystemsWithContext(context.Background(), request)
 }
 
 // DescribeFileSystems
@@ -1149,6 +1128,11 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFileSystemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileSystems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileSystemsResponse()
@@ -1188,13 +1172,7 @@ func NewDescribeLifeCycleRulesResponse() (response *DescribeLifeCycleRulesRespon
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLifeCycleRules(request *DescribeLifeCycleRulesRequest) (response *DescribeLifeCycleRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLifeCycleRulesRequest()
-    }
-    
-    response = NewDescribeLifeCycleRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLifeCycleRulesWithContext(context.Background(), request)
 }
 
 // DescribeLifeCycleRules
@@ -1215,6 +1193,11 @@ func (c *Client) DescribeLifeCycleRulesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLifeCycleRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLifeCycleRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLifeCycleRulesResponse()
@@ -1252,13 +1235,7 @@ func NewDescribeMountPointResponse() (response *DescribeMountPointResponse) {
 //  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMountPoint(request *DescribeMountPointRequest) (response *DescribeMountPointResponse, err error) {
-    if request == nil {
-        request = NewDescribeMountPointRequest()
-    }
-    
-    response = NewDescribeMountPointResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMountPointWithContext(context.Background(), request)
 }
 
 // DescribeMountPoint
@@ -1277,6 +1254,11 @@ func (c *Client) DescribeMountPointWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeMountPointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountPoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMountPointResponse()
@@ -1317,13 +1299,7 @@ func NewDescribeMountPointsResponse() (response *DescribeMountPointsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMountPoints(request *DescribeMountPointsRequest) (response *DescribeMountPointsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMountPointsRequest()
-    }
-    
-    response = NewDescribeMountPointsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMountPointsWithContext(context.Background(), request)
 }
 
 // DescribeMountPoints
@@ -1345,6 +1321,11 @@ func (c *Client) DescribeMountPointsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMountPointsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMountPoints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMountPointsResponse()
@@ -1383,13 +1364,7 @@ func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTagsRequest()
-    }
-    
-    response = NewDescribeResourceTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTagsWithContext(context.Background(), request)
 }
 
 // DescribeResourceTags
@@ -1409,6 +1384,11 @@ func (c *Client) DescribeResourceTagsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeResourceTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTagsResponse()
@@ -1447,13 +1427,7 @@ func NewDescribeRestoreTasksResponse() (response *DescribeRestoreTasksResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRestoreTasks(request *DescribeRestoreTasksRequest) (response *DescribeRestoreTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeRestoreTasksRequest()
-    }
-    
-    response = NewDescribeRestoreTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRestoreTasksWithContext(context.Background(), request)
 }
 
 // DescribeRestoreTasks
@@ -1473,6 +1447,11 @@ func (c *Client) DescribeRestoreTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRestoreTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRestoreTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRestoreTasksResponse()
@@ -1512,13 +1491,7 @@ func NewDisassociateAccessGroupsResponse() (response *DisassociateAccessGroupsRe
 //  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisassociateAccessGroups(request *DisassociateAccessGroupsRequest) (response *DisassociateAccessGroupsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateAccessGroupsRequest()
-    }
-    
-    response = NewDisassociateAccessGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateAccessGroupsWithContext(context.Background(), request)
 }
 
 // DisassociateAccessGroups
@@ -1539,6 +1512,11 @@ func (c *Client) DisassociateAccessGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDisassociateAccessGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateAccessGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateAccessGroupsResponse()
@@ -1578,13 +1556,7 @@ func NewModifyAccessGroupResponse() (response *ModifyAccessGroupResponse) {
 //  RESOURCENOTFOUND_ACCESSGROUPNOTEXISTS = "ResourceNotFound.AccessGroupNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) (response *ModifyAccessGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyAccessGroupRequest()
-    }
-    
-    response = NewModifyAccessGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccessGroupWithContext(context.Background(), request)
 }
 
 // ModifyAccessGroup
@@ -1605,6 +1577,11 @@ func (c *Client) ModifyAccessGroupWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAccessGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccessGroupResponse()
@@ -1642,13 +1619,7 @@ func NewModifyAccessRulesResponse() (response *ModifyAccessRulesResponse) {
 //  RESOURCENOTFOUND_ACCESSRULENOTEXISTS = "ResourceNotFound.AccessRuleNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyAccessRules(request *ModifyAccessRulesRequest) (response *ModifyAccessRulesResponse, err error) {
-    if request == nil {
-        request = NewModifyAccessRulesRequest()
-    }
-    
-    response = NewModifyAccessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccessRulesWithContext(context.Background(), request)
 }
 
 // ModifyAccessRules
@@ -1667,6 +1638,11 @@ func (c *Client) ModifyAccessRulesWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAccessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccessRulesResponse()
@@ -1709,13 +1685,7 @@ func NewModifyFileSystemResponse() (response *ModifyFileSystemResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyFileSystem(request *ModifyFileSystemRequest) (response *ModifyFileSystemResponse, err error) {
-    if request == nil {
-        request = NewModifyFileSystemRequest()
-    }
-    
-    response = NewModifyFileSystemResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyFileSystemWithContext(context.Background(), request)
 }
 
 // ModifyFileSystem
@@ -1739,6 +1709,11 @@ func (c *Client) ModifyFileSystemWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyFileSystemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFileSystem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyFileSystemResponse()
@@ -1776,13 +1751,7 @@ func NewModifyLifeCycleRulesResponse() (response *ModifyLifeCycleRulesResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyLifeCycleRules(request *ModifyLifeCycleRulesRequest) (response *ModifyLifeCycleRulesResponse, err error) {
-    if request == nil {
-        request = NewModifyLifeCycleRulesRequest()
-    }
-    
-    response = NewModifyLifeCycleRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLifeCycleRulesWithContext(context.Background(), request)
 }
 
 // ModifyLifeCycleRules
@@ -1801,6 +1770,11 @@ func (c *Client) ModifyLifeCycleRulesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLifeCycleRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLifeCycleRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLifeCycleRulesResponse()
@@ -1839,13 +1813,7 @@ func NewModifyMountPointResponse() (response *ModifyMountPointResponse) {
 //  RESOURCENOTFOUND_MOUNTPOINTNOTEXISTS = "ResourceNotFound.MountPointNotExists"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMountPoint(request *ModifyMountPointRequest) (response *ModifyMountPointResponse, err error) {
-    if request == nil {
-        request = NewModifyMountPointRequest()
-    }
-    
-    response = NewModifyMountPointResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMountPointWithContext(context.Background(), request)
 }
 
 // ModifyMountPoint
@@ -1865,6 +1833,11 @@ func (c *Client) ModifyMountPointWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyMountPointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMountPoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMountPointResponse()
@@ -1905,13 +1878,7 @@ func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyResourceTagsRequest()
-    }
-    
-    response = NewModifyResourceTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyResourceTagsWithContext(context.Background(), request)
 }
 
 // ModifyResourceTags
@@ -1933,6 +1900,11 @@ func (c *Client) ModifyResourceTagsWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyResourceTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyResourceTagsResponse()

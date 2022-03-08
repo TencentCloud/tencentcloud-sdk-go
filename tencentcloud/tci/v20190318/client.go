@@ -16,6 +16,7 @@ package v20190318
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewAIAssistantResponse() (response *AIAssistantResponse) {
 //  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
 //  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
 func (c *Client) AIAssistant(request *AIAssistantRequest) (response *AIAssistantResponse, err error) {
-    if request == nil {
-        request = NewAIAssistantRequest()
-    }
-    
-    response = NewAIAssistantResponse()
-    err = c.Send(request, response)
-    return
+    return c.AIAssistantWithContext(context.Background(), request)
 }
 
 // AIAssistant
@@ -93,6 +88,11 @@ func (c *Client) AIAssistantWithContext(ctx context.Context, request *AIAssistan
     if request == nil {
         request = NewAIAssistantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AIAssistant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAIAssistantResponse()
@@ -124,13 +124,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 //  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelTaskRequest()
-    }
-    
-    response = NewCancelTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelTaskWithContext(context.Background(), request)
 }
 
 // CancelTask
@@ -143,6 +137,11 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelTaskResponse()
@@ -174,13 +173,7 @@ func NewCheckFacePhotoResponse() (response *CheckFacePhotoResponse) {
 //  INVALIDPARAMETER_STATUSJOBFAILED = "InvalidParameter.StatusJobFailed"
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 func (c *Client) CheckFacePhoto(request *CheckFacePhotoRequest) (response *CheckFacePhotoResponse, err error) {
-    if request == nil {
-        request = NewCheckFacePhotoRequest()
-    }
-    
-    response = NewCheckFacePhotoResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckFacePhotoWithContext(context.Background(), request)
 }
 
 // CheckFacePhoto
@@ -193,6 +186,11 @@ func (c *Client) CheckFacePhotoWithContext(ctx context.Context, request *CheckFa
     if request == nil {
         request = NewCheckFacePhotoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckFacePhoto require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckFacePhotoResponse()
@@ -224,13 +222,7 @@ func NewCreateFaceResponse() (response *CreateFaceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceResponse, err error) {
-    if request == nil {
-        request = NewCreateFaceRequest()
-    }
-    
-    response = NewCreateFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFaceWithContext(context.Background(), request)
 }
 
 // CreateFace
@@ -243,6 +235,11 @@ func (c *Client) CreateFaceWithContext(ctx context.Context, request *CreateFaceR
     if request == nil {
         request = NewCreateFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFaceResponse()
@@ -274,13 +271,7 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
-    if request == nil {
-        request = NewCreateLibraryRequest()
-    }
-    
-    response = NewCreateLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLibraryWithContext(context.Background(), request)
 }
 
 // CreateLibrary
@@ -293,6 +284,11 @@ func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLibraryResponse()
@@ -324,13 +320,7 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
-    if request == nil {
-        request = NewCreatePersonRequest()
-    }
-    
-    response = NewCreatePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePersonWithContext(context.Background(), request)
 }
 
 // CreatePerson
@@ -343,6 +333,11 @@ func (c *Client) CreatePersonWithContext(ctx context.Context, request *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePersonResponse()
@@ -376,13 +371,7 @@ func NewCreateVocabResponse() (response *CreateVocabResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateVocab(request *CreateVocabRequest) (response *CreateVocabResponse, err error) {
-    if request == nil {
-        request = NewCreateVocabRequest()
-    }
-    
-    response = NewCreateVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVocabWithContext(context.Background(), request)
 }
 
 // CreateVocab
@@ -397,6 +386,11 @@ func (c *Client) CreateVocabWithContext(ctx context.Context, request *CreateVoca
     if request == nil {
         request = NewCreateVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVocabResponse()
@@ -430,13 +424,7 @@ func NewCreateVocabLibResponse() (response *CreateVocabLibResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateVocabLib(request *CreateVocabLibRequest) (response *CreateVocabLibResponse, err error) {
-    if request == nil {
-        request = NewCreateVocabLibRequest()
-    }
-    
-    response = NewCreateVocabLibResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVocabLibWithContext(context.Background(), request)
 }
 
 // CreateVocabLib
@@ -451,6 +439,11 @@ func (c *Client) CreateVocabLibWithContext(ctx context.Context, request *CreateV
     if request == nil {
         request = NewCreateVocabLibRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVocabLib require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVocabLibResponse()
@@ -483,13 +476,7 @@ func NewDeleteFaceResponse() (response *DeleteFaceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteFace(request *DeleteFaceRequest) (response *DeleteFaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteFaceRequest()
-    }
-    
-    response = NewDeleteFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFaceWithContext(context.Background(), request)
 }
 
 // DeleteFace
@@ -503,6 +490,11 @@ func (c *Client) DeleteFaceWithContext(ctx context.Context, request *DeleteFaceR
     if request == nil {
         request = NewDeleteFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFaceResponse()
@@ -535,13 +527,7 @@ func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
-    if request == nil {
-        request = NewDeleteLibraryRequest()
-    }
-    
-    response = NewDeleteLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLibraryWithContext(context.Background(), request)
 }
 
 // DeleteLibrary
@@ -555,6 +541,11 @@ func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLi
     if request == nil {
         request = NewDeleteLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLibraryResponse()
@@ -587,13 +578,7 @@ func NewDeletePersonResponse() (response *DeletePersonResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePersonResponse, err error) {
-    if request == nil {
-        request = NewDeletePersonRequest()
-    }
-    
-    response = NewDeletePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePersonWithContext(context.Background(), request)
 }
 
 // DeletePerson
@@ -607,6 +592,11 @@ func (c *Client) DeletePersonWithContext(ctx context.Context, request *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePersonResponse()
@@ -640,13 +630,7 @@ func NewDeleteVocabResponse() (response *DeleteVocabResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteVocab(request *DeleteVocabRequest) (response *DeleteVocabResponse, err error) {
-    if request == nil {
-        request = NewDeleteVocabRequest()
-    }
-    
-    response = NewDeleteVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVocabWithContext(context.Background(), request)
 }
 
 // DeleteVocab
@@ -661,6 +645,11 @@ func (c *Client) DeleteVocabWithContext(ctx context.Context, request *DeleteVoca
     if request == nil {
         request = NewDeleteVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVocabResponse()
@@ -694,13 +683,7 @@ func NewDeleteVocabLibResponse() (response *DeleteVocabLibResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteVocabLib(request *DeleteVocabLibRequest) (response *DeleteVocabLibResponse, err error) {
-    if request == nil {
-        request = NewDeleteVocabLibRequest()
-    }
-    
-    response = NewDeleteVocabLibResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVocabLibWithContext(context.Background(), request)
 }
 
 // DeleteVocabLib
@@ -715,6 +698,11 @@ func (c *Client) DeleteVocabLibWithContext(ctx context.Context, request *DeleteV
     if request == nil {
         request = NewDeleteVocabLibRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVocabLib require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVocabLibResponse()
@@ -748,13 +736,7 @@ func NewDescribeAITaskResultResponse() (response *DescribeAITaskResultResponse) 
 //  INVALIDPARAMETER_STATUSJOBUNFINISHED = "InvalidParameter.StatusJobUnfinished"
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 func (c *Client) DescribeAITaskResult(request *DescribeAITaskResultRequest) (response *DescribeAITaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeAITaskResultRequest()
-    }
-    
-    response = NewDescribeAITaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAITaskResultWithContext(context.Background(), request)
 }
 
 // DescribeAITaskResult
@@ -769,6 +751,11 @@ func (c *Client) DescribeAITaskResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAITaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAITaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAITaskResultResponse()
@@ -808,13 +795,7 @@ func NewDescribeAttendanceResultResponse() (response *DescribeAttendanceResultRe
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttendanceResult(request *DescribeAttendanceResultRequest) (response *DescribeAttendanceResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeAttendanceResultRequest()
-    }
-    
-    response = NewDescribeAttendanceResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAttendanceResultWithContext(context.Background(), request)
 }
 
 // DescribeAttendanceResult
@@ -835,6 +816,11 @@ func (c *Client) DescribeAttendanceResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAttendanceResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAttendanceResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAttendanceResultResponse()
@@ -867,13 +853,7 @@ func NewDescribeAudioTaskResponse() (response *DescribeAudioTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAudioTask(request *DescribeAudioTaskRequest) (response *DescribeAudioTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeAudioTaskRequest()
-    }
-    
-    response = NewDescribeAudioTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAudioTaskWithContext(context.Background(), request)
 }
 
 // DescribeAudioTask
@@ -887,6 +867,11 @@ func (c *Client) DescribeAudioTaskWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAudioTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAudioTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAudioTaskResponse()
@@ -919,13 +904,7 @@ func NewDescribeConversationTaskResponse() (response *DescribeConversationTaskRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeConversationTask(request *DescribeConversationTaskRequest) (response *DescribeConversationTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeConversationTaskRequest()
-    }
-    
-    response = NewDescribeConversationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConversationTaskWithContext(context.Background(), request)
 }
 
 // DescribeConversationTask
@@ -939,6 +918,11 @@ func (c *Client) DescribeConversationTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeConversationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConversationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConversationTaskResponse()
@@ -1023,13 +1007,7 @@ func NewDescribeHighlightResultResponse() (response *DescribeHighlightResultResp
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) DescribeHighlightResult(request *DescribeHighlightResultRequest) (response *DescribeHighlightResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeHighlightResultRequest()
-    }
-    
-    response = NewDescribeHighlightResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHighlightResultWithContext(context.Background(), request)
 }
 
 // DescribeHighlightResult
@@ -1095,6 +1073,11 @@ func (c *Client) DescribeHighlightResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeHighlightResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHighlightResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHighlightResultResponse()
@@ -1127,13 +1110,7 @@ func NewDescribeImageTaskResponse() (response *DescribeImageTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeImageTask(request *DescribeImageTaskRequest) (response *DescribeImageTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageTaskRequest()
-    }
-    
-    response = NewDescribeImageTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageTaskWithContext(context.Background(), request)
 }
 
 // DescribeImageTask
@@ -1147,6 +1124,11 @@ func (c *Client) DescribeImageTaskWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeImageTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageTaskResponse()
@@ -1179,13 +1161,7 @@ func NewDescribeImageTaskStatisticResponse() (response *DescribeImageTaskStatist
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeImageTaskStatistic(request *DescribeImageTaskStatisticRequest) (response *DescribeImageTaskStatisticResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageTaskStatisticRequest()
-    }
-    
-    response = NewDescribeImageTaskStatisticResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageTaskStatisticWithContext(context.Background(), request)
 }
 
 // DescribeImageTaskStatistic
@@ -1199,6 +1175,11 @@ func (c *Client) DescribeImageTaskStatisticWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeImageTaskStatisticRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageTaskStatistic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageTaskStatisticResponse()
@@ -1230,13 +1211,7 @@ func NewDescribeLibrariesResponse() (response *DescribeLibrariesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response *DescribeLibrariesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLibrariesRequest()
-    }
-    
-    response = NewDescribeLibrariesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLibrariesWithContext(context.Background(), request)
 }
 
 // DescribeLibraries
@@ -1249,6 +1224,11 @@ func (c *Client) DescribeLibrariesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLibrariesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLibraries require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLibrariesResponse()
@@ -1281,13 +1261,7 @@ func NewDescribePersonResponse() (response *DescribePersonResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePerson(request *DescribePersonRequest) (response *DescribePersonResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonRequest()
-    }
-    
-    response = NewDescribePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonWithContext(context.Background(), request)
 }
 
 // DescribePerson
@@ -1301,6 +1275,11 @@ func (c *Client) DescribePersonWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonResponse()
@@ -1333,13 +1312,7 @@ func NewDescribePersonsResponse() (response *DescribePersonsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePersons(request *DescribePersonsRequest) (response *DescribePersonsResponse, err error) {
-    if request == nil {
-        request = NewDescribePersonsRequest()
-    }
-    
-    response = NewDescribePersonsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePersonsWithContext(context.Background(), request)
 }
 
 // DescribePersons
@@ -1353,6 +1326,11 @@ func (c *Client) DescribePersonsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribePersonsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersons require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePersonsResponse()
@@ -1386,13 +1364,7 @@ func NewDescribeVocabResponse() (response *DescribeVocabResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVocab(request *DescribeVocabRequest) (response *DescribeVocabResponse, err error) {
-    if request == nil {
-        request = NewDescribeVocabRequest()
-    }
-    
-    response = NewDescribeVocabResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVocabWithContext(context.Background(), request)
 }
 
 // DescribeVocab
@@ -1407,6 +1379,11 @@ func (c *Client) DescribeVocabWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeVocabRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVocab require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVocabResponse()
@@ -1440,13 +1417,7 @@ func NewDescribeVocabLibResponse() (response *DescribeVocabLibResponse) {
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVocabLib(request *DescribeVocabLibRequest) (response *DescribeVocabLibResponse, err error) {
-    if request == nil {
-        request = NewDescribeVocabLibRequest()
-    }
-    
-    response = NewDescribeVocabLibResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVocabLibWithContext(context.Background(), request)
 }
 
 // DescribeVocabLib
@@ -1461,6 +1432,11 @@ func (c *Client) DescribeVocabLibWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeVocabLibRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVocabLib require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVocabLibResponse()
@@ -1493,13 +1469,7 @@ func NewModifyLibraryResponse() (response *ModifyLibraryResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLibrary(request *ModifyLibraryRequest) (response *ModifyLibraryResponse, err error) {
-    if request == nil {
-        request = NewModifyLibraryRequest()
-    }
-    
-    response = NewModifyLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLibraryWithContext(context.Background(), request)
 }
 
 // ModifyLibrary
@@ -1513,6 +1483,11 @@ func (c *Client) ModifyLibraryWithContext(ctx context.Context, request *ModifyLi
     if request == nil {
         request = NewModifyLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLibraryResponse()
@@ -1545,13 +1520,7 @@ func NewModifyPersonResponse() (response *ModifyPersonResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPerson(request *ModifyPersonRequest) (response *ModifyPersonResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonRequest()
-    }
-    
-    response = NewModifyPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonWithContext(context.Background(), request)
 }
 
 // ModifyPerson
@@ -1565,6 +1534,11 @@ func (c *Client) ModifyPersonWithContext(ctx context.Context, request *ModifyPer
     if request == nil {
         request = NewModifyPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonResponse()
@@ -1597,13 +1571,7 @@ func NewSubmitAudioTaskResponse() (response *SubmitAudioTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SubmitAudioTask(request *SubmitAudioTaskRequest) (response *SubmitAudioTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitAudioTaskRequest()
-    }
-    
-    response = NewSubmitAudioTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitAudioTaskWithContext(context.Background(), request)
 }
 
 // SubmitAudioTask
@@ -1617,6 +1585,11 @@ func (c *Client) SubmitAudioTaskWithContext(ctx context.Context, request *Submit
     if request == nil {
         request = NewSubmitAudioTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitAudioTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitAudioTaskResponse()
@@ -1682,13 +1655,7 @@ func NewSubmitCheckAttendanceTaskResponse() (response *SubmitCheckAttendanceTask
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SubmitCheckAttendanceTask(request *SubmitCheckAttendanceTaskRequest) (response *SubmitCheckAttendanceTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitCheckAttendanceTaskRequest()
-    }
-    
-    response = NewSubmitCheckAttendanceTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitCheckAttendanceTaskWithContext(context.Background(), request)
 }
 
 // SubmitCheckAttendanceTask
@@ -1735,6 +1702,11 @@ func (c *Client) SubmitCheckAttendanceTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSubmitCheckAttendanceTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitCheckAttendanceTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitCheckAttendanceTaskResponse()
@@ -1773,13 +1745,7 @@ func NewSubmitCheckAttendanceTaskPlusResponse() (response *SubmitCheckAttendance
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SubmitCheckAttendanceTaskPlus(request *SubmitCheckAttendanceTaskPlusRequest) (response *SubmitCheckAttendanceTaskPlusResponse, err error) {
-    if request == nil {
-        request = NewSubmitCheckAttendanceTaskPlusRequest()
-    }
-    
-    response = NewSubmitCheckAttendanceTaskPlusResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitCheckAttendanceTaskPlusWithContext(context.Background(), request)
 }
 
 // SubmitCheckAttendanceTaskPlus
@@ -1799,6 +1765,11 @@ func (c *Client) SubmitCheckAttendanceTaskPlusWithContext(ctx context.Context, r
     if request == nil {
         request = NewSubmitCheckAttendanceTaskPlusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitCheckAttendanceTaskPlus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitCheckAttendanceTaskPlusResponse()
@@ -1831,13 +1802,7 @@ func NewSubmitConversationTaskResponse() (response *SubmitConversationTaskRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SubmitConversationTask(request *SubmitConversationTaskRequest) (response *SubmitConversationTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitConversationTaskRequest()
-    }
-    
-    response = NewSubmitConversationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitConversationTaskWithContext(context.Background(), request)
 }
 
 // SubmitConversationTask
@@ -1851,6 +1816,11 @@ func (c *Client) SubmitConversationTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSubmitConversationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitConversationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitConversationTaskResponse()
@@ -1897,13 +1867,7 @@ func NewSubmitDoubleVideoHighlightsResponse() (response *SubmitDoubleVideoHighli
 //  INVALIDPARAMETER_PERSONNOTREGISTERED = "InvalidParameter.PersonNotRegistered"
 //  INVALIDPARAMETER_RESOURCENAMEDUPLICATE = "InvalidParameter.ResourceNameDuplicate"
 func (c *Client) SubmitDoubleVideoHighlights(request *SubmitDoubleVideoHighlightsRequest) (response *SubmitDoubleVideoHighlightsResponse, err error) {
-    if request == nil {
-        request = NewSubmitDoubleVideoHighlightsRequest()
-    }
-    
-    response = NewSubmitDoubleVideoHighlightsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitDoubleVideoHighlightsWithContext(context.Background(), request)
 }
 
 // SubmitDoubleVideoHighlights
@@ -1931,6 +1895,11 @@ func (c *Client) SubmitDoubleVideoHighlightsWithContext(ctx context.Context, req
     if request == nil {
         request = NewSubmitDoubleVideoHighlightsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitDoubleVideoHighlights require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitDoubleVideoHighlightsResponse()
@@ -2032,13 +2001,7 @@ func NewSubmitFullBodyClassTaskResponse() (response *SubmitFullBodyClassTaskResp
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitFullBodyClassTask(request *SubmitFullBodyClassTaskRequest) (response *SubmitFullBodyClassTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitFullBodyClassTaskRequest()
-    }
-    
-    response = NewSubmitFullBodyClassTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitFullBodyClassTaskWithContext(context.Background(), request)
 }
 
 // SubmitFullBodyClassTask
@@ -2121,6 +2084,11 @@ func (c *Client) SubmitFullBodyClassTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewSubmitFullBodyClassTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitFullBodyClassTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitFullBodyClassTaskResponse()
@@ -2203,13 +2171,7 @@ func NewSubmitHighlightsResponse() (response *SubmitHighlightsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitHighlights(request *SubmitHighlightsRequest) (response *SubmitHighlightsResponse, err error) {
-    if request == nil {
-        request = NewSubmitHighlightsRequest()
-    }
-    
-    response = NewSubmitHighlightsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitHighlightsWithContext(context.Background(), request)
 }
 
 // SubmitHighlights
@@ -2273,6 +2235,11 @@ func (c *Client) SubmitHighlightsWithContext(ctx context.Context, request *Submi
     if request == nil {
         request = NewSubmitHighlightsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitHighlights require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitHighlightsResponse()
@@ -2305,13 +2272,7 @@ func NewSubmitImageTaskResponse() (response *SubmitImageTaskResponse) {
 //  INVALIDPARAMETER_UNSUPPORTEDFILETYPEMOV = "InvalidParameter.UnsupportedFileTypeMov"
 //  INVALIDPARAMETER_UNSUPPORTEDVIDEOSIZE = "InvalidParameter.UnsupportedVideoSize"
 func (c *Client) SubmitImageTask(request *SubmitImageTaskRequest) (response *SubmitImageTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitImageTaskRequest()
-    }
-    
-    response = NewSubmitImageTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitImageTaskWithContext(context.Background(), request)
 }
 
 // SubmitImageTask
@@ -2325,6 +2286,11 @@ func (c *Client) SubmitImageTaskWithContext(ctx context.Context, request *Submit
     if request == nil {
         request = NewSubmitImageTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitImageTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitImageTaskResponse()
@@ -2425,13 +2391,7 @@ func NewSubmitImageTaskPlusResponse() (response *SubmitImageTaskPlusResponse) {
 //  RESOURCEUNAVAILABLE_CANNOTFINDSESSION = "ResourceUnavailable.CannotFindSession"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitImageTaskPlus(request *SubmitImageTaskPlusRequest) (response *SubmitImageTaskPlusResponse, err error) {
-    if request == nil {
-        request = NewSubmitImageTaskPlusRequest()
-    }
-    
-    response = NewSubmitImageTaskPlusResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitImageTaskPlusWithContext(context.Background(), request)
 }
 
 // SubmitImageTaskPlus
@@ -2513,6 +2473,11 @@ func (c *Client) SubmitImageTaskPlusWithContext(ctx context.Context, request *Su
     if request == nil {
         request = NewSubmitImageTaskPlusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitImageTaskPlus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitImageTaskPlusResponse()
@@ -2616,13 +2581,7 @@ func NewSubmitOneByOneClassTaskResponse() (response *SubmitOneByOneClassTaskResp
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitOneByOneClassTask(request *SubmitOneByOneClassTaskRequest) (response *SubmitOneByOneClassTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitOneByOneClassTaskRequest()
-    }
-    
-    response = NewSubmitOneByOneClassTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitOneByOneClassTaskWithContext(context.Background(), request)
 }
 
 // SubmitOneByOneClassTask
@@ -2707,6 +2666,11 @@ func (c *Client) SubmitOneByOneClassTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewSubmitOneByOneClassTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitOneByOneClassTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitOneByOneClassTaskResponse()
@@ -2809,13 +2773,7 @@ func NewSubmitOpenClassTaskResponse() (response *SubmitOpenClassTaskResponse) {
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitOpenClassTask(request *SubmitOpenClassTaskRequest) (response *SubmitOpenClassTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitOpenClassTaskRequest()
-    }
-    
-    response = NewSubmitOpenClassTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitOpenClassTaskWithContext(context.Background(), request)
 }
 
 // SubmitOpenClassTask
@@ -2899,6 +2857,11 @@ func (c *Client) SubmitOpenClassTaskWithContext(ctx context.Context, request *Su
     if request == nil {
         request = NewSubmitOpenClassTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitOpenClassTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitOpenClassTaskResponse()
@@ -3001,13 +2964,7 @@ func NewSubmitPartialBodyClassTaskResponse() (response *SubmitPartialBodyClassTa
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitPartialBodyClassTask(request *SubmitPartialBodyClassTaskRequest) (response *SubmitPartialBodyClassTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitPartialBodyClassTaskRequest()
-    }
-    
-    response = NewSubmitPartialBodyClassTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitPartialBodyClassTaskWithContext(context.Background(), request)
 }
 
 // SubmitPartialBodyClassTask
@@ -3091,6 +3048,11 @@ func (c *Client) SubmitPartialBodyClassTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSubmitPartialBodyClassTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitPartialBodyClassTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitPartialBodyClassTaskResponse()
@@ -3196,13 +3158,7 @@ func NewSubmitTraditionalClassTaskResponse() (response *SubmitTraditionalClassTa
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) SubmitTraditionalClassTask(request *SubmitTraditionalClassTaskRequest) (response *SubmitTraditionalClassTaskResponse, err error) {
-    if request == nil {
-        request = NewSubmitTraditionalClassTaskRequest()
-    }
-    
-    response = NewSubmitTraditionalClassTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitTraditionalClassTaskWithContext(context.Background(), request)
 }
 
 // SubmitTraditionalClassTask
@@ -3289,6 +3245,11 @@ func (c *Client) SubmitTraditionalClassTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSubmitTraditionalClassTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTraditionalClassTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitTraditionalClassTaskResponse()
@@ -3329,13 +3290,7 @@ func NewTransmitAudioStreamResponse() (response *TransmitAudioStreamResponse) {
 //  RESOURCENOTFOUND_HLJOBIDNOTFOUND = "ResourceNotFound.HLJobIdNotFound"
 //  RESOURCEUNAVAILABLE_STATUSQUERYSTREAMFAILED = "ResourceUnavailable.StatusQueryStreamFailed"
 func (c *Client) TransmitAudioStream(request *TransmitAudioStreamRequest) (response *TransmitAudioStreamResponse, err error) {
-    if request == nil {
-        request = NewTransmitAudioStreamRequest()
-    }
-    
-    response = NewTransmitAudioStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransmitAudioStreamWithContext(context.Background(), request)
 }
 
 // TransmitAudioStream
@@ -3357,6 +3312,11 @@ func (c *Client) TransmitAudioStreamWithContext(ctx context.Context, request *Tr
     if request == nil {
         request = NewTransmitAudioStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransmitAudioStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransmitAudioStreamResponse()

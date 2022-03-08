@@ -16,6 +16,7 @@ package v20200304
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewCancelFaceMorphJobResponse() (response *CancelFaceMorphJobResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) CancelFaceMorphJob(request *CancelFaceMorphJobRequest) (response *CancelFaceMorphJobResponse, err error) {
-    if request == nil {
-        request = NewCancelFaceMorphJobRequest()
-    }
-    
-    response = NewCancelFaceMorphJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelFaceMorphJobWithContext(context.Background(), request)
 }
 
 // CancelFaceMorphJob
@@ -101,6 +96,11 @@ func (c *Client) CancelFaceMorphJobWithContext(ctx context.Context, request *Can
     if request == nil {
         request = NewCancelFaceMorphJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelFaceMorphJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelFaceMorphJobResponse()
@@ -159,13 +159,7 @@ func NewChangeAgePicResponse() (response *ChangeAgePicResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ChangeAgePic(request *ChangeAgePicRequest) (response *ChangeAgePicResponse, err error) {
-    if request == nil {
-        request = NewChangeAgePicRequest()
-    }
-    
-    response = NewChangeAgePicResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeAgePicWithContext(context.Background(), request)
 }
 
 // ChangeAgePic
@@ -205,6 +199,11 @@ func (c *Client) ChangeAgePicWithContext(ctx context.Context, request *ChangeAge
     if request == nil {
         request = NewChangeAgePicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeAgePic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeAgePicResponse()
@@ -259,13 +258,7 @@ func NewFaceCartoonPicResponse() (response *FaceCartoonPicResponse) {
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) FaceCartoonPic(request *FaceCartoonPicRequest) (response *FaceCartoonPicResponse, err error) {
-    if request == nil {
-        request = NewFaceCartoonPicRequest()
-    }
-    
-    response = NewFaceCartoonPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.FaceCartoonPicWithContext(context.Background(), request)
 }
 
 // FaceCartoonPic
@@ -301,6 +294,11 @@ func (c *Client) FaceCartoonPicWithContext(ctx context.Context, request *FaceCar
     if request == nil {
         request = NewFaceCartoonPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FaceCartoonPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFaceCartoonPicResponse()
@@ -351,13 +349,7 @@ func NewMorphFaceResponse() (response *MorphFaceResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) MorphFace(request *MorphFaceRequest) (response *MorphFaceResponse, err error) {
-    if request == nil {
-        request = NewMorphFaceRequest()
-    }
-    
-    response = NewMorphFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.MorphFaceWithContext(context.Background(), request)
 }
 
 // MorphFace
@@ -389,6 +381,11 @@ func (c *Client) MorphFaceWithContext(ctx context.Context, request *MorphFaceReq
     if request == nil {
         request = NewMorphFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MorphFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMorphFaceResponse()
@@ -428,13 +425,7 @@ func NewQueryFaceMorphJobResponse() (response *QueryFaceMorphJobResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) QueryFaceMorphJob(request *QueryFaceMorphJobRequest) (response *QueryFaceMorphJobResponse, err error) {
-    if request == nil {
-        request = NewQueryFaceMorphJobRequest()
-    }
-    
-    response = NewQueryFaceMorphJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryFaceMorphJobWithContext(context.Background(), request)
 }
 
 // QueryFaceMorphJob
@@ -455,6 +446,11 @@ func (c *Client) QueryFaceMorphJobWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryFaceMorphJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFaceMorphJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryFaceMorphJobResponse()
@@ -512,13 +508,7 @@ func NewSwapGenderPicResponse() (response *SwapGenderPicResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SwapGenderPic(request *SwapGenderPicRequest) (response *SwapGenderPicResponse, err error) {
-    if request == nil {
-        request = NewSwapGenderPicRequest()
-    }
-    
-    response = NewSwapGenderPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.SwapGenderPicWithContext(context.Background(), request)
 }
 
 // SwapGenderPic
@@ -557,6 +547,11 @@ func (c *Client) SwapGenderPicWithContext(ctx context.Context, request *SwapGend
     if request == nil {
         request = NewSwapGenderPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwapGenderPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSwapGenderPicResponse()

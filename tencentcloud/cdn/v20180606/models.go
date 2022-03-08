@@ -1669,7 +1669,7 @@ type CreateClsLogTopicRequest struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 域名区域信息
@@ -2236,7 +2236,7 @@ type DeleteClsLogTopicRequest struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
@@ -5415,7 +5415,7 @@ type DisableClsLogTopicRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
@@ -5540,7 +5540,7 @@ type DomainFilter struct {
 	// - domain：域名。
 	// - resourceId：域名id。
 	// - status：域名状态，online，offline或processing。
-	// - serviceType：业务类型，web，download或media。
+	// - serviceType：业务类型，web，download，media，hybrid或dynamic。
 	// - projectId：项目ID。
 	// - domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
 	// - fullUrlCache：全路径缓存，on或off。
@@ -5706,7 +5706,7 @@ type EnableClsLogTopicRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
@@ -6214,7 +6214,7 @@ type KeyRule struct {
 type ListClsLogTopicsRequest struct {
 	*tchttp.BaseRequest
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
@@ -6277,7 +6277,7 @@ type ListClsTopicDomainsRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
@@ -6772,7 +6772,7 @@ type ListTopClsLogDataRequest struct {
 	// *.jpg 表示所有以.jpg结尾的请求
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 要查询的Top条数，最大值为100，默认为10
@@ -7292,7 +7292,7 @@ type ManageClsTopicDomainsRequest struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
@@ -8843,7 +8843,7 @@ type SearchClsLogRequest struct {
 	// 单次要返回的日志条数，单次返回的最大条数为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 接入渠道，默认值为cdn
+	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 需要查询的内容，详情请参考https://cloud.tencent.com/document/product/614/16982

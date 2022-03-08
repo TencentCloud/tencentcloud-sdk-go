@@ -16,6 +16,7 @@ package v20201229
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -86,13 +87,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelTaskRequest()
-    }
-    
-    response = NewCancelTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelTaskWithContext(context.Background(), request)
 }
 
 // CancelTask
@@ -123,6 +118,11 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelTaskResponse()
@@ -243,13 +243,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskRequest) (response *CreateVideoModerationTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateVideoModerationTaskRequest()
-    }
-    
-    response = NewCreateVideoModerationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVideoModerationTaskWithContext(context.Background(), request)
 }
 
 // CreateVideoModerationTask
@@ -351,6 +345,11 @@ func (c *Client) CreateVideoModerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateVideoModerationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoModerationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVideoModerationTaskResponse()
@@ -401,13 +400,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeTaskDetail
@@ -439,6 +432,11 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
@@ -490,13 +488,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -529,6 +521,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()

@@ -16,6 +16,7 @@ package v20190823
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -118,13 +119,7 @@ func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
 //  UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
 //  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 func (c *Client) CreateTtsTask(request *CreateTtsTaskRequest) (response *CreateTtsTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateTtsTaskRequest()
-    }
-    
-    response = NewCreateTtsTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTtsTaskWithContext(context.Background(), request)
 }
 
 // CreateTtsTask
@@ -187,6 +182,11 @@ func (c *Client) CreateTtsTaskWithContext(ctx context.Context, request *CreateTt
     if request == nil {
         request = NewCreateTtsTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTtsTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTtsTaskResponse()
@@ -261,13 +261,7 @@ func NewDescribeTtsTaskStatusResponse() (response *DescribeTtsTaskStatusResponse
 //  UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
 //  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 func (c *Client) DescribeTtsTaskStatus(request *DescribeTtsTaskStatusRequest) (response *DescribeTtsTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTtsTaskStatusRequest()
-    }
-    
-    response = NewDescribeTtsTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTtsTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTtsTaskStatus
@@ -323,6 +317,11 @@ func (c *Client) DescribeTtsTaskStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTtsTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTtsTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTtsTaskStatusResponse()
@@ -389,13 +388,7 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //  UNSUPPORTEDOPERATION_SERVERSTOPPED = "UnsupportedOperation.ServerStopped"
 //  UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoiceResponse, err error) {
-    if request == nil {
-        request = NewTextToVoiceRequest()
-    }
-    
-    response = NewTextToVoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextToVoiceWithContext(context.Background(), request)
 }
 
 // TextToVoice
@@ -443,6 +436,11 @@ func (c *Client) TextToVoiceWithContext(ctx context.Context, request *TextToVoic
     if request == nil {
         request = NewTextToVoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextToVoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextToVoiceResponse()

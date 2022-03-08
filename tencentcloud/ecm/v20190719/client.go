@@ -16,6 +16,7 @@ package v20190719
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -91,13 +92,7 @@ func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INVALIDPRIVATEIPADDRESSALREADYBINDEIP = "UnsupportedOperation.InvalidPrivateIpAddressAlreadyBindEip"
 func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response *AllocateAddressesResponse, err error) {
-    if request == nil {
-        request = NewAllocateAddressesRequest()
-    }
-    
-    response = NewAllocateAddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AllocateAddressesWithContext(context.Background(), request)
 }
 
 // AllocateAddresses
@@ -133,6 +128,11 @@ func (c *Client) AllocateAddressesWithContext(ctx context.Context, request *Allo
     if request == nil {
         request = NewAllocateAddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateAddresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAllocateAddressesResponse()
@@ -176,13 +176,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (response *AssignIpv6AddressesResponse, err error) {
-    if request == nil {
-        request = NewAssignIpv6AddressesRequest()
-    }
-    
-    response = NewAssignIpv6AddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssignIpv6AddressesWithContext(context.Background(), request)
 }
 
 // AssignIpv6Addresses
@@ -207,6 +201,11 @@ func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *As
     if request == nil {
         request = NewAssignIpv6AddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignIpv6Addresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssignIpv6AddressesResponse()
@@ -249,13 +248,7 @@ func NewAssignPrivateIpAddressesResponse() (response *AssignPrivateIpAddressesRe
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesRequest) (response *AssignPrivateIpAddressesResponse, err error) {
-    if request == nil {
-        request = NewAssignPrivateIpAddressesRequest()
-    }
-    
-    response = NewAssignPrivateIpAddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssignPrivateIpAddressesWithContext(context.Background(), request)
 }
 
 // AssignPrivateIpAddresses
@@ -279,6 +272,11 @@ func (c *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAssignPrivateIpAddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignPrivateIpAddresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssignPrivateIpAddressesResponse()
@@ -341,13 +339,7 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
 //  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *AssociateAddressResponse, err error) {
-    if request == nil {
-        request = NewAssociateAddressRequest()
-    }
-    
-    response = NewAssociateAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateAddressWithContext(context.Background(), request)
 }
 
 // AssociateAddress
@@ -391,6 +383,11 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
     if request == nil {
         request = NewAssociateAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateAddressResponse()
@@ -428,13 +425,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = "LimitExceeded.SecurityGroupInstanceLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewAssociateSecurityGroupsRequest()
-    }
-    
-    response = NewAssociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // AssociateSecurityGroups
@@ -453,6 +444,11 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateSecurityGroupsResponse()
@@ -504,13 +500,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
 //  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
 func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisksResponse, err error) {
-    if request == nil {
-        request = NewAttachDisksRequest()
-    }
-    
-    response = NewAttachDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachDisksWithContext(context.Background(), request)
 }
 
 // AttachDisks
@@ -543,6 +533,11 @@ func (c *Client) AttachDisksWithContext(ctx context.Context, request *AttachDisk
     if request == nil {
         request = NewAttachDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachDisksResponse()
@@ -591,13 +586,7 @@ func NewAttachNetworkInterfaceResponse() (response *AttachNetworkInterfaceRespon
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) (response *AttachNetworkInterfaceResponse, err error) {
-    if request == nil {
-        request = NewAttachNetworkInterfaceRequest()
-    }
-    
-    response = NewAttachNetworkInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachNetworkInterfaceWithContext(context.Background(), request)
 }
 
 // AttachNetworkInterface
@@ -627,6 +616,11 @@ func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAttachNetworkInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachNetworkInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachNetworkInterfaceResponse()
@@ -670,13 +664,7 @@ func NewBatchDeregisterTargetsResponse() (response *BatchDeregisterTargetsRespon
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchDeregisterTargets(request *BatchDeregisterTargetsRequest) (response *BatchDeregisterTargetsResponse, err error) {
-    if request == nil {
-        request = NewBatchDeregisterTargetsRequest()
-    }
-    
-    response = NewBatchDeregisterTargetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDeregisterTargetsWithContext(context.Background(), request)
 }
 
 // BatchDeregisterTargets
@@ -701,6 +689,11 @@ func (c *Client) BatchDeregisterTargetsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBatchDeregisterTargetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeregisterTargets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDeregisterTargetsResponse()
@@ -737,13 +730,7 @@ func NewBatchModifyTargetWeightResponse() (response *BatchModifyTargetWeightResp
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchModifyTargetWeight(request *BatchModifyTargetWeightRequest) (response *BatchModifyTargetWeightResponse, err error) {
-    if request == nil {
-        request = NewBatchModifyTargetWeightRequest()
-    }
-    
-    response = NewBatchModifyTargetWeightResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchModifyTargetWeightWithContext(context.Background(), request)
 }
 
 // BatchModifyTargetWeight
@@ -761,6 +748,11 @@ func (c *Client) BatchModifyTargetWeightWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchModifyTargetWeightRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchModifyTargetWeight require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchModifyTargetWeightResponse()
@@ -802,13 +794,7 @@ func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) 
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (response *BatchRegisterTargetsResponse, err error) {
-    if request == nil {
-        request = NewBatchRegisterTargetsRequest()
-    }
-    
-    response = NewBatchRegisterTargetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchRegisterTargetsWithContext(context.Background(), request)
 }
 
 // BatchRegisterTargets
@@ -831,6 +817,11 @@ func (c *Client) BatchRegisterTargetsWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBatchRegisterTargetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchRegisterTargets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchRegisterTargetsResponse()
@@ -880,13 +871,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 //  UNAUTHORIZEDOPERATION_NOTCERTIFICATION = "UnauthorizedOperation.NotCertification"
 //  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisksResponse, err error) {
-    if request == nil {
-        request = NewCreateDisksRequest()
-    }
-    
-    response = NewCreateDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDisksWithContext(context.Background(), request)
 }
 
 // CreateDisks
@@ -917,6 +902,11 @@ func (c *Client) CreateDisksWithContext(ctx context.Context, request *CreateDisk
     if request == nil {
         request = NewCreateDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDisksResponse()
@@ -956,13 +946,7 @@ func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVipResponse, err error) {
-    if request == nil {
-        request = NewCreateHaVipRequest()
-    }
-    
-    response = NewCreateHaVipResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHaVipWithContext(context.Background(), request)
 }
 
 // CreateHaVip
@@ -983,6 +967,11 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
     if request == nil {
         request = NewCreateHaVipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHaVip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHaVipResponse()
@@ -1026,13 +1015,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
-    if request == nil {
-        request = NewCreateImageRequest()
-    }
-    
-    response = NewCreateImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImageWithContext(context.Background(), request)
 }
 
 // CreateImage
@@ -1057,6 +1040,11 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
     if request == nil {
         request = NewCreateImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImageResponse()
@@ -1090,13 +1078,7 @@ func NewCreateKeyPairResponse() (response *CreateKeyPairResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
-    if request == nil {
-        request = NewCreateKeyPairRequest()
-    }
-    
-    response = NewCreateKeyPairResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateKeyPairWithContext(context.Background(), request)
 }
 
 // CreateKeyPair
@@ -1111,6 +1093,11 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKe
     if request == nil {
         request = NewCreateKeyPairRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKeyPair require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateKeyPairResponse()
@@ -1148,13 +1135,7 @@ func NewCreateListenerResponse() (response *CreateListenerResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateListener(request *CreateListenerRequest) (response *CreateListenerResponse, err error) {
-    if request == nil {
-        request = NewCreateListenerRequest()
-    }
-    
-    response = NewCreateListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateListenerWithContext(context.Background(), request)
 }
 
 // CreateListener
@@ -1173,6 +1154,11 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
     if request == nil {
         request = NewCreateListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateListener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateListenerResponse()
@@ -1223,13 +1209,7 @@ func NewCreateLoadBalancerResponse() (response *CreateLoadBalancerResponse) {
 //  RESOURCESSOLDOUT_LOADBALANCERSOLDOUT = "ResourcesSoldOut.LoadBalancerSoldOut"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (response *CreateLoadBalancerResponse, err error) {
-    if request == nil {
-        request = NewCreateLoadBalancerRequest()
-    }
-    
-    response = NewCreateLoadBalancerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLoadBalancerWithContext(context.Background(), request)
 }
 
 // CreateLoadBalancer
@@ -1261,6 +1241,11 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateLoadBalancerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoadBalancer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLoadBalancerResponse()
@@ -1312,13 +1297,7 @@ func NewCreateModuleResponse() (response *CreateModuleResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) CreateModule(request *CreateModuleRequest) (response *CreateModuleResponse, err error) {
-    if request == nil {
-        request = NewCreateModuleRequest()
-    }
-    
-    response = NewCreateModuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateModuleWithContext(context.Background(), request)
 }
 
 // CreateModule
@@ -1351,6 +1330,11 @@ func (c *Client) CreateModuleWithContext(ctx context.Context, request *CreateMod
     if request == nil {
         request = NewCreateModuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateModuleResponse()
@@ -1394,13 +1378,7 @@ func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (response *CreateNetworkInterfaceResponse, err error) {
-    if request == nil {
-        request = NewCreateNetworkInterfaceRequest()
-    }
-    
-    response = NewCreateNetworkInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNetworkInterfaceWithContext(context.Background(), request)
 }
 
 // CreateNetworkInterface
@@ -1425,6 +1403,11 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateNetworkInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNetworkInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNetworkInterfaceResponse()
@@ -1464,13 +1447,7 @@ func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *CreateRouteTableResponse, err error) {
-    if request == nil {
-        request = NewCreateRouteTableRequest()
-    }
-    
-    response = NewCreateRouteTableResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRouteTableWithContext(context.Background(), request)
 }
 
 // CreateRouteTable
@@ -1491,6 +1468,11 @@ func (c *Client) CreateRouteTableWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRouteTableRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRouteTable require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRouteTableResponse()
@@ -1534,13 +1516,7 @@ func NewCreateRoutesResponse() (response *CreateRoutesResponse) {
 //  UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) CreateRoutes(request *CreateRoutesRequest) (response *CreateRoutesResponse, err error) {
-    if request == nil {
-        request = NewCreateRoutesRequest()
-    }
-    
-    response = NewCreateRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRoutesWithContext(context.Background(), request)
 }
 
 // CreateRoutes
@@ -1565,6 +1541,11 @@ func (c *Client) CreateRoutesWithContext(ctx context.Context, request *CreateRou
     if request == nil {
         request = NewCreateRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRoutesResponse()
@@ -1602,13 +1583,7 @@ func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (response *CreateSecurityGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityGroupRequest()
-    }
-    
-    response = NewCreateSecurityGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityGroupWithContext(context.Background(), request)
 }
 
 // CreateSecurityGroup
@@ -1627,6 +1602,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSecurityGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityGroupResponse()
@@ -1696,13 +1676,7 @@ func NewCreateSecurityGroupPoliciesResponse() (response *CreateSecurityGroupPoli
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) CreateSecurityGroupPolicies(request *CreateSecurityGroupPoliciesRequest) (response *CreateSecurityGroupPoliciesResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityGroupPoliciesRequest()
-    }
-    
-    response = NewCreateSecurityGroupPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityGroupPoliciesWithContext(context.Background(), request)
 }
 
 // CreateSecurityGroupPolicies
@@ -1753,6 +1727,11 @@ func (c *Client) CreateSecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateSecurityGroupPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityGroupPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityGroupPoliciesResponse()
@@ -1794,13 +1773,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
-    if request == nil {
-        request = NewCreateSubnetRequest()
-    }
-    
-    response = NewCreateSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubnetWithContext(context.Background(), request)
 }
 
 // CreateSubnet
@@ -1823,6 +1796,11 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
     if request == nil {
         request = NewCreateSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubnetResponse()
@@ -1862,13 +1840,7 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
-    if request == nil {
-        request = NewCreateVpcRequest()
-    }
-    
-    response = NewCreateVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVpcWithContext(context.Background(), request)
 }
 
 // CreateVpc
@@ -1889,6 +1861,11 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
     if request == nil {
         request = NewCreateVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVpcResponse()
@@ -1925,13 +1902,7 @@ func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (response *DeleteHaVipResponse, err error) {
-    if request == nil {
-        request = NewDeleteHaVipRequest()
-    }
-    
-    response = NewDeleteHaVipResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteHaVipWithContext(context.Background(), request)
 }
 
 // DeleteHaVip
@@ -1949,6 +1920,11 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
     if request == nil {
         request = NewDeleteHaVipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHaVip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteHaVipResponse()
@@ -1985,13 +1961,7 @@ func NewDeleteImageResponse() (response *DeleteImageResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImageResponse, err error) {
-    if request == nil {
-        request = NewDeleteImageRequest()
-    }
-    
-    response = NewDeleteImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImageWithContext(context.Background(), request)
 }
 
 // DeleteImage
@@ -2009,6 +1979,11 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
     if request == nil {
         request = NewDeleteImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImageResponse()
@@ -2045,13 +2020,7 @@ func NewDeleteListenerResponse() (response *DeleteListenerResponse) {
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteListener(request *DeleteListenerRequest) (response *DeleteListenerResponse, err error) {
-    if request == nil {
-        request = NewDeleteListenerRequest()
-    }
-    
-    response = NewDeleteListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteListenerWithContext(context.Background(), request)
 }
 
 // DeleteListener
@@ -2069,6 +2038,11 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
     if request == nil {
         request = NewDeleteListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteListener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteListenerResponse()
@@ -2111,13 +2085,7 @@ func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (response *DeleteLoadBalancerResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoadBalancerRequest()
-    }
-    
-    response = NewDeleteLoadBalancerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoadBalancerWithContext(context.Background(), request)
 }
 
 // DeleteLoadBalancer
@@ -2141,6 +2109,11 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoadBalancer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoadBalancerResponse()
@@ -2174,13 +2147,7 @@ func NewDeleteLoadBalancerListenersResponse() (response *DeleteLoadBalancerListe
 //  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteLoadBalancerListeners(request *DeleteLoadBalancerListenersRequest) (response *DeleteLoadBalancerListenersResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoadBalancerListenersRequest()
-    }
-    
-    response = NewDeleteLoadBalancerListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoadBalancerListenersWithContext(context.Background(), request)
 }
 
 // DeleteLoadBalancerListeners
@@ -2195,6 +2162,11 @@ func (c *Client) DeleteLoadBalancerListenersWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteLoadBalancerListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoadBalancerListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoadBalancerListenersResponse()
@@ -2231,13 +2203,7 @@ func NewDeleteModuleResponse() (response *DeleteModuleResponse) {
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteModule(request *DeleteModuleRequest) (response *DeleteModuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteModuleRequest()
-    }
-    
-    response = NewDeleteModuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteModuleWithContext(context.Background(), request)
 }
 
 // DeleteModule
@@ -2255,6 +2221,11 @@ func (c *Client) DeleteModuleWithContext(ctx context.Context, request *DeleteMod
     if request == nil {
         request = NewDeleteModuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteModuleResponse()
@@ -2295,13 +2266,7 @@ func NewDeleteNetworkInterfaceResponse() (response *DeleteNetworkInterfaceRespon
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) (response *DeleteNetworkInterfaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteNetworkInterfaceRequest()
-    }
-    
-    response = NewDeleteNetworkInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNetworkInterfaceWithContext(context.Background(), request)
 }
 
 // DeleteNetworkInterface
@@ -2323,6 +2288,11 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteNetworkInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNetworkInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNetworkInterfaceResponse()
@@ -2358,13 +2328,7 @@ func NewDeleteRouteTableResponse() (response *DeleteRouteTableResponse) {
 //  UNSUPPORTEDOPERATION_DELDEFAULTROUTE = "UnsupportedOperation.DelDefaultRoute"
 //  UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = "UnsupportedOperation.DelRouteWithSubnet"
 func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (response *DeleteRouteTableResponse, err error) {
-    if request == nil {
-        request = NewDeleteRouteTableRequest()
-    }
-    
-    response = NewDeleteRouteTableResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRouteTableWithContext(context.Background(), request)
 }
 
 // DeleteRouteTable
@@ -2381,6 +2345,11 @@ func (c *Client) DeleteRouteTableWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRouteTableRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRouteTable require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRouteTableResponse()
@@ -2412,13 +2381,7 @@ func NewDeleteRoutesResponse() (response *DeleteRoutesResponse) {
 //  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRoutes(request *DeleteRoutesRequest) (response *DeleteRoutesResponse, err error) {
-    if request == nil {
-        request = NewDeleteRoutesRequest()
-    }
-    
-    response = NewDeleteRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRoutesWithContext(context.Background(), request)
 }
 
 // DeleteRoutes
@@ -2431,6 +2394,11 @@ func (c *Client) DeleteRoutesWithContext(ctx context.Context, request *DeleteRou
     if request == nil {
         request = NewDeleteRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRoutesResponse()
@@ -2470,13 +2438,7 @@ func NewDeleteSecurityGroupResponse() (response *DeleteSecurityGroupResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (response *DeleteSecurityGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityGroupRequest()
-    }
-    
-    response = NewDeleteSecurityGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityGroupWithContext(context.Background(), request)
 }
 
 // DeleteSecurityGroup
@@ -2497,6 +2459,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSecurityGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityGroupResponse()
@@ -2532,13 +2499,7 @@ func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoli
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityGroupPoliciesRequest()
-    }
-    
-    response = NewDeleteSecurityGroupPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityGroupPoliciesWithContext(context.Background(), request)
 }
 
 // DeleteSecurityGroupPolicies
@@ -2555,6 +2516,11 @@ func (c *Client) DeleteSecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteSecurityGroupPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityGroupPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityGroupPoliciesResponse()
@@ -2598,13 +2564,7 @@ func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
 //  UNSUPPORTEDOPERATION_SNAPHASSHARED = "UnsupportedOperation.SnapHasShared"
 //  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *DeleteSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewDeleteSnapshotsRequest()
-    }
-    
-    response = NewDeleteSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSnapshotsWithContext(context.Background(), request)
 }
 
 // DeleteSnapshots
@@ -2629,6 +2589,11 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSnapshotsResponse()
@@ -2669,13 +2634,7 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
-    if request == nil {
-        request = NewDeleteSubnetRequest()
-    }
-    
-    response = NewDeleteSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSubnetWithContext(context.Background(), request)
 }
 
 // DeleteSubnet
@@ -2697,6 +2656,11 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
     if request == nil {
         request = NewDeleteSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSubnetResponse()
@@ -2734,13 +2698,7 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpcRequest()
-    }
-    
-    response = NewDeleteVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpcWithContext(context.Background(), request)
 }
 
 // DeleteVpc
@@ -2759,6 +2717,11 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
     if request == nil {
         request = NewDeleteVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpcResponse()
@@ -2794,13 +2757,7 @@ func NewDescribeAddressQuotaResponse() (response *DescribeAddressQuotaResponse) 
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeAddressQuota(request *DescribeAddressQuotaRequest) (response *DescribeAddressQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeAddressQuotaRequest()
-    }
-    
-    response = NewDescribeAddressQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAddressQuotaWithContext(context.Background(), request)
 }
 
 // DescribeAddressQuota
@@ -2817,6 +2774,11 @@ func (c *Client) DescribeAddressQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAddressQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddressQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAddressQuotaResponse()
@@ -2854,13 +2816,7 @@ func NewDescribeAddressesResponse() (response *DescribeAddressesResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
 func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) (response *DescribeAddressesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAddressesRequest()
-    }
-    
-    response = NewDescribeAddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAddressesWithContext(context.Background(), request)
 }
 
 // DescribeAddresses
@@ -2879,6 +2835,11 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAddressesResponse()
@@ -2912,13 +2873,7 @@ func NewDescribeBaseOverviewResponse() (response *DescribeBaseOverviewResponse) 
 //  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeBaseOverview(request *DescribeBaseOverviewRequest) (response *DescribeBaseOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeBaseOverviewRequest()
-    }
-    
-    response = NewDescribeBaseOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBaseOverviewWithContext(context.Background(), request)
 }
 
 // DescribeBaseOverview
@@ -2933,6 +2888,11 @@ func (c *Client) DescribeBaseOverviewWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBaseOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaseOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBaseOverviewResponse()
@@ -2967,13 +2927,7 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 //  MISSINGPARAMETER_MISSINGBASECONFIGPARAMETER = "MissingParameter.MissingBaseConfigParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigRequest()
-    }
-    
-    response = NewDescribeConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigWithContext(context.Background(), request)
 }
 
 // DescribeConfig
@@ -2989,6 +2943,11 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigResponse()
@@ -3023,13 +2982,7 @@ func NewDescribeCustomImageTaskResponse() (response *DescribeCustomImageTaskResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCustomImageTask(request *DescribeCustomImageTaskRequest) (response *DescribeCustomImageTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomImageTaskRequest()
-    }
-    
-    response = NewDescribeCustomImageTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomImageTaskWithContext(context.Background(), request)
 }
 
 // DescribeCustomImageTask
@@ -3045,6 +2998,11 @@ func (c *Client) DescribeCustomImageTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCustomImageTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomImageTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomImageTaskResponse()
@@ -3079,13 +3037,7 @@ func NewDescribeDefaultSubnetResponse() (response *DescribeDefaultSubnetResponse
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeDefaultSubnet(request *DescribeDefaultSubnetRequest) (response *DescribeDefaultSubnetResponse, err error) {
-    if request == nil {
-        request = NewDescribeDefaultSubnetRequest()
-    }
-    
-    response = NewDescribeDefaultSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDefaultSubnetWithContext(context.Background(), request)
 }
 
 // DescribeDefaultSubnet
@@ -3101,6 +3053,11 @@ func (c *Client) DescribeDefaultSubnetWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDefaultSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDefaultSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDefaultSubnetResponse()
@@ -3140,13 +3097,7 @@ func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *DescribeDisksResponse, err error) {
-    if request == nil {
-        request = NewDescribeDisksRequest()
-    }
-    
-    response = NewDescribeDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDisksWithContext(context.Background(), request)
 }
 
 // DescribeDisks
@@ -3167,6 +3118,11 @@ func (c *Client) DescribeDisksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDisksResponse()
@@ -3202,13 +3158,7 @@ func NewDescribeHaVipsResponse() (response *DescribeHaVipsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *DescribeHaVipsResponse, err error) {
-    if request == nil {
-        request = NewDescribeHaVipsRequest()
-    }
-    
-    response = NewDescribeHaVipsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHaVipsWithContext(context.Background(), request)
 }
 
 // DescribeHaVips
@@ -3225,6 +3175,11 @@ func (c *Client) DescribeHaVipsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeHaVipsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHaVips require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHaVipsResponse()
@@ -3263,13 +3218,7 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
 //  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeImage(request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRequest()
-    }
-    
-    response = NewDescribeImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageWithContext(context.Background(), request)
 }
 
 // DescribeImage
@@ -3289,6 +3238,11 @@ func (c *Client) DescribeImageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageResponse()
@@ -3319,13 +3273,7 @@ func NewDescribeImportImageOsResponse() (response *DescribeImportImageOsResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
 func (c *Client) DescribeImportImageOs(request *DescribeImportImageOsRequest) (response *DescribeImportImageOsResponse, err error) {
-    if request == nil {
-        request = NewDescribeImportImageOsRequest()
-    }
-    
-    response = NewDescribeImportImageOsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImportImageOsWithContext(context.Background(), request)
 }
 
 // DescribeImportImageOs
@@ -3337,6 +3285,11 @@ func (c *Client) DescribeImportImageOsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImportImageOsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImportImageOs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImportImageOsResponse()
@@ -3370,13 +3323,7 @@ func NewDescribeInstanceTypeConfigResponse() (response *DescribeInstanceTypeConf
 //  MISSINGPARAMETER_MISSINGINSTANCETYPECONFIGPARAMETER = "MissingParameter.MissingInstanceTypeConfigParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstanceTypeConfig(request *DescribeInstanceTypeConfigRequest) (response *DescribeInstanceTypeConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceTypeConfigRequest()
-    }
-    
-    response = NewDescribeInstanceTypeConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceTypeConfigWithContext(context.Background(), request)
 }
 
 // DescribeInstanceTypeConfig
@@ -3391,6 +3338,11 @@ func (c *Client) DescribeInstanceTypeConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceTypeConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTypeConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceTypeConfigResponse()
@@ -3426,13 +3378,7 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceVncUrlRequest()
-    }
-    
-    response = NewDescribeInstanceVncUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceVncUrlWithContext(context.Background(), request)
 }
 
 // DescribeInstanceVncUrl
@@ -3449,6 +3395,11 @@ func (c *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceVncUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceVncUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceVncUrlResponse()
@@ -3488,13 +3439,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -3515,6 +3460,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -3549,13 +3499,7 @@ func NewDescribeInstancesDeniedActionsResponse() (response *DescribeInstancesDen
 //  MISSINGPARAMETER_MISSINGINSTANCESPARAMETER = "MissingParameter.MissingInstancesParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeInstancesDeniedActions(request *DescribeInstancesDeniedActionsRequest) (response *DescribeInstancesDeniedActionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesDeniedActionsRequest()
-    }
-    
-    response = NewDescribeInstancesDeniedActionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesDeniedActionsWithContext(context.Background(), request)
 }
 
 // DescribeInstancesDeniedActions
@@ -3571,6 +3515,11 @@ func (c *Client) DescribeInstancesDeniedActionsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeInstancesDeniedActionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesDeniedActions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesDeniedActionsResponse()
@@ -3606,13 +3555,7 @@ func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeListenersRequest()
-    }
-    
-    response = NewDescribeListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeListenersWithContext(context.Background(), request)
 }
 
 // DescribeListeners
@@ -3629,6 +3572,11 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeListenersResponse()
@@ -3662,13 +3610,7 @@ func NewDescribeLoadBalanceTaskStatusResponse() (response *DescribeLoadBalanceTa
 //  INVALIDPARAMETERVALUE_INVALIDPUBLICPARAM = "InvalidParameterValue.InvalidPublicParam"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeLoadBalanceTaskStatus(request *DescribeLoadBalanceTaskStatusRequest) (response *DescribeLoadBalanceTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalanceTaskStatusRequest()
-    }
-    
-    response = NewDescribeLoadBalanceTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoadBalanceTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeLoadBalanceTaskStatus
@@ -3683,6 +3625,11 @@ func (c *Client) DescribeLoadBalanceTaskStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeLoadBalanceTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadBalanceTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalanceTaskStatusResponse()
@@ -3722,13 +3669,7 @@ func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalancersRequest()
-    }
-    
-    response = NewDescribeLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoadBalancersWithContext(context.Background(), request)
 }
 
 // DescribeLoadBalancers
@@ -3749,6 +3690,11 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancersResponse()
@@ -3786,13 +3732,7 @@ func NewDescribeModuleResponse() (response *DescribeModuleResponse) {
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeModule(request *DescribeModuleRequest) (response *DescribeModuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeModuleRequest()
-    }
-    
-    response = NewDescribeModuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModuleWithContext(context.Background(), request)
 }
 
 // DescribeModule
@@ -3811,6 +3751,11 @@ func (c *Client) DescribeModuleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeModuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModuleResponse()
@@ -3846,13 +3791,7 @@ func NewDescribeModuleDetailResponse() (response *DescribeModuleDetailResponse) 
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeModuleDetail(request *DescribeModuleDetailRequest) (response *DescribeModuleDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeModuleDetailRequest()
-    }
-    
-    response = NewDescribeModuleDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModuleDetailWithContext(context.Background(), request)
 }
 
 // DescribeModuleDetail
@@ -3869,6 +3808,11 @@ func (c *Client) DescribeModuleDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeModuleDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModuleDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModuleDetailResponse()
@@ -3908,13 +3852,7 @@ func NewDescribeMonthPeakNetworkResponse() (response *DescribeMonthPeakNetworkRe
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMonthPeakNetwork(request *DescribeMonthPeakNetworkRequest) (response *DescribeMonthPeakNetworkResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonthPeakNetworkRequest()
-    }
-    
-    response = NewDescribeMonthPeakNetworkResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMonthPeakNetworkWithContext(context.Background(), request)
 }
 
 // DescribeMonthPeakNetwork
@@ -3935,6 +3873,11 @@ func (c *Client) DescribeMonthPeakNetworkWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMonthPeakNetworkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonthPeakNetwork require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMonthPeakNetworkResponse()
@@ -3976,13 +3919,7 @@ func NewDescribeNetworkInterfacesResponse() (response *DescribeNetworkInterfaces
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesRequest) (response *DescribeNetworkInterfacesResponse, err error) {
-    if request == nil {
-        request = NewDescribeNetworkInterfacesRequest()
-    }
-    
-    response = NewDescribeNetworkInterfacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNetworkInterfacesWithContext(context.Background(), request)
 }
 
 // DescribeNetworkInterfaces
@@ -4005,6 +3942,11 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeNetworkInterfacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkInterfaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNetworkInterfacesResponse()
@@ -4038,13 +3980,7 @@ func NewDescribeNodeResponse() (response *DescribeNodeResponse) {
 //  MISSINGPARAMETER_MISSINGNODEPARAMETER = "MissingParameter.MissingNodeParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeNode(request *DescribeNodeRequest) (response *DescribeNodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeNodeRequest()
-    }
-    
-    response = NewDescribeNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNodeWithContext(context.Background(), request)
 }
 
 // DescribeNode
@@ -4059,6 +3995,11 @@ func (c *Client) DescribeNodeWithContext(ctx context.Context, request *DescribeN
     if request == nil {
         request = NewDescribeNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNodeResponse()
@@ -4098,13 +4039,7 @@ func NewDescribePackingQuotaGroupResponse() (response *DescribePackingQuotaGroup
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackingQuotaGroup(request *DescribePackingQuotaGroupRequest) (response *DescribePackingQuotaGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribePackingQuotaGroupRequest()
-    }
-    
-    response = NewDescribePackingQuotaGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePackingQuotaGroupWithContext(context.Background(), request)
 }
 
 // DescribePackingQuotaGroup
@@ -4125,6 +4060,11 @@ func (c *Client) DescribePackingQuotaGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePackingQuotaGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackingQuotaGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePackingQuotaGroupResponse()
@@ -4159,13 +4099,7 @@ func NewDescribePeakBaseOverviewResponse() (response *DescribePeakBaseOverviewRe
 //  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribePeakBaseOverview(request *DescribePeakBaseOverviewRequest) (response *DescribePeakBaseOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribePeakBaseOverviewRequest()
-    }
-    
-    response = NewDescribePeakBaseOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePeakBaseOverviewWithContext(context.Background(), request)
 }
 
 // DescribePeakBaseOverview
@@ -4181,6 +4115,11 @@ func (c *Client) DescribePeakBaseOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePeakBaseOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePeakBaseOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePeakBaseOverviewResponse()
@@ -4216,13 +4155,7 @@ func NewDescribePeakNetworkOverviewResponse() (response *DescribePeakNetworkOver
 //  MISSINGPARAMETER_MISSINGOVERVIEWPARAMETER = "MissingParameter.MissingOverViewParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribePeakNetworkOverview(request *DescribePeakNetworkOverviewRequest) (response *DescribePeakNetworkOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribePeakNetworkOverviewRequest()
-    }
-    
-    response = NewDescribePeakNetworkOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePeakNetworkOverviewWithContext(context.Background(), request)
 }
 
 // DescribePeakNetworkOverview
@@ -4239,6 +4172,11 @@ func (c *Client) DescribePeakNetworkOverviewWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribePeakNetworkOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePeakNetworkOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePeakNetworkOverviewResponse()
@@ -4275,13 +4213,7 @@ func NewDescribePriceRunInstanceResponse() (response *DescribePriceRunInstanceRe
 //  INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKTYPE = "InvalidParameterValue.InvalidSystemDiskType"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribePriceRunInstance(request *DescribePriceRunInstanceRequest) (response *DescribePriceRunInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribePriceRunInstanceRequest()
-    }
-    
-    response = NewDescribePriceRunInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePriceRunInstanceWithContext(context.Background(), request)
 }
 
 // DescribePriceRunInstance
@@ -4299,6 +4231,11 @@ func (c *Client) DescribePriceRunInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePriceRunInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePriceRunInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePriceRunInstanceResponse()
@@ -4333,13 +4270,7 @@ func NewDescribeRouteConflictsResponse() (response *DescribeRouteConflictsRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) (response *DescribeRouteConflictsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRouteConflictsRequest()
-    }
-    
-    response = NewDescribeRouteConflictsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRouteConflictsWithContext(context.Background(), request)
 }
 
 // DescribeRouteConflicts
@@ -4355,6 +4286,11 @@ func (c *Client) DescribeRouteConflictsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRouteConflictsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRouteConflicts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRouteConflictsResponse()
@@ -4394,13 +4330,7 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (response *DescribeRouteTablesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRouteTablesRequest()
-    }
-    
-    response = NewDescribeRouteTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRouteTablesWithContext(context.Background(), request)
 }
 
 // DescribeRouteTables
@@ -4421,6 +4351,11 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRouteTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRouteTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRouteTablesResponse()
@@ -4456,13 +4391,7 @@ func NewDescribeSecurityGroupAssociationStatisticsResponse() (response *Describe
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityGroupAssociationStatistics(request *DescribeSecurityGroupAssociationStatisticsRequest) (response *DescribeSecurityGroupAssociationStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityGroupAssociationStatisticsRequest()
-    }
-    
-    response = NewDescribeSecurityGroupAssociationStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityGroupAssociationStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeSecurityGroupAssociationStatistics
@@ -4479,6 +4408,11 @@ func (c *Client) DescribeSecurityGroupAssociationStatisticsWithContext(ctx conte
     if request == nil {
         request = NewDescribeSecurityGroupAssociationStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupAssociationStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupAssociationStatisticsResponse()
@@ -4512,13 +4446,7 @@ func NewDescribeSecurityGroupLimitsResponse() (response *DescribeSecurityGroupLi
 //  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSecurityGroupLimits(request *DescribeSecurityGroupLimitsRequest) (response *DescribeSecurityGroupLimitsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityGroupLimitsRequest()
-    }
-    
-    response = NewDescribeSecurityGroupLimitsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityGroupLimitsWithContext(context.Background(), request)
 }
 
 // DescribeSecurityGroupLimits
@@ -4533,6 +4461,11 @@ func (c *Client) DescribeSecurityGroupLimitsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeSecurityGroupLimitsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupLimits require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupLimitsResponse()
@@ -4568,13 +4501,7 @@ func NewDescribeSecurityGroupPoliciesResponse() (response *DescribeSecurityGroup
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityGroupPolicies(request *DescribeSecurityGroupPoliciesRequest) (response *DescribeSecurityGroupPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityGroupPoliciesRequest()
-    }
-    
-    response = NewDescribeSecurityGroupPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityGroupPoliciesWithContext(context.Background(), request)
 }
 
 // DescribeSecurityGroupPolicies
@@ -4591,6 +4518,11 @@ func (c *Client) DescribeSecurityGroupPoliciesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeSecurityGroupPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupPoliciesResponse()
@@ -4628,13 +4560,7 @@ func NewDescribeSecurityGroupsResponse() (response *DescribeSecurityGroupsRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (response *DescribeSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityGroupsRequest()
-    }
-    
-    response = NewDescribeSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DescribeSecurityGroups
@@ -4653,6 +4579,11 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityGroupsResponse()
@@ -4692,13 +4623,7 @@ func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSnapshotsRequest()
-    }
-    
-    response = NewDescribeSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSnapshotsWithContext(context.Background(), request)
 }
 
 // DescribeSnapshots
@@ -4719,6 +4644,11 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSnapshotsResponse()
@@ -4760,13 +4690,7 @@ func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *DescribeSubnetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetsRequest()
-    }
-    
-    response = NewDescribeSubnetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetsWithContext(context.Background(), request)
 }
 
 // DescribeSubnets
@@ -4789,6 +4713,11 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSubnetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetsResponse()
@@ -4826,13 +4755,7 @@ func NewDescribeTargetHealthResponse() (response *DescribeTargetHealthResponse) 
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTargetHealth(request *DescribeTargetHealthRequest) (response *DescribeTargetHealthResponse, err error) {
-    if request == nil {
-        request = NewDescribeTargetHealthRequest()
-    }
-    
-    response = NewDescribeTargetHealthResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTargetHealthWithContext(context.Background(), request)
 }
 
 // DescribeTargetHealth
@@ -4851,6 +4774,11 @@ func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTargetHealthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTargetHealth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTargetHealthResponse()
@@ -4886,13 +4814,7 @@ func NewDescribeTargetsResponse() (response *DescribeTargetsResponse) {
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTargets(request *DescribeTargetsRequest) (response *DescribeTargetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTargetsRequest()
-    }
-    
-    response = NewDescribeTargetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTargetsWithContext(context.Background(), request)
 }
 
 // DescribeTargets
@@ -4909,6 +4831,11 @@ func (c *Client) DescribeTargetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTargetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTargets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTargetsResponse()
@@ -4946,13 +4873,7 @@ func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (response *DescribeTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskResultRequest()
-    }
-    
-    response = NewDescribeTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeTaskResult
@@ -4971,6 +4892,11 @@ func (c *Client) DescribeTaskResultWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResultResponse()
@@ -5003,13 +4929,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_TASKNOTFOUND = "InvalidParameterValue.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStatusRequest()
-    }
-    
-    response = NewDescribeTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTaskStatus
@@ -5023,6 +4943,11 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStatusResponse()
@@ -5063,13 +4988,7 @@ func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeVpcsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcsRequest()
-    }
-    
-    response = NewDescribeVpcsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcsWithContext(context.Background(), request)
 }
 
 // DescribeVpcs
@@ -5091,6 +5010,11 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVpcsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcsResponse()
@@ -5139,13 +5063,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
 //  UNSUPPORTEDOPERATION_INSTANCEIDNOTSUPPORTED = "UnsupportedOperation.InstanceIdNotSupported"
 func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
-    if request == nil {
-        request = NewDetachDisksRequest()
-    }
-    
-    response = NewDetachDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachDisksWithContext(context.Background(), request)
 }
 
 // DetachDisks
@@ -5175,6 +5093,11 @@ func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisk
     if request == nil {
         request = NewDetachDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachDisksResponse()
@@ -5214,13 +5137,7 @@ func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceRespon
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (response *DetachNetworkInterfaceResponse, err error) {
-    if request == nil {
-        request = NewDetachNetworkInterfaceRequest()
-    }
-    
-    response = NewDetachNetworkInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachNetworkInterfaceWithContext(context.Background(), request)
 }
 
 // DetachNetworkInterface
@@ -5241,6 +5158,11 @@ func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDetachNetworkInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachNetworkInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachNetworkInterfaceResponse()
@@ -5278,13 +5200,7 @@ func NewDisableRoutesResponse() (response *DisableRoutesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) DisableRoutes(request *DisableRoutesRequest) (response *DisableRoutesResponse, err error) {
-    if request == nil {
-        request = NewDisableRoutesRequest()
-    }
-    
-    response = NewDisableRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableRoutesWithContext(context.Background(), request)
 }
 
 // DisableRoutes
@@ -5303,6 +5219,11 @@ func (c *Client) DisableRoutesWithContext(ctx context.Context, request *DisableR
     if request == nil {
         request = NewDisableRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableRoutesResponse()
@@ -5353,13 +5274,7 @@ func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
 //  UNSUPPORTEDOPERATION_QUOTALIMITEXCEEDED = "UnsupportedOperation.QuotaLimitExceeded"
 //  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (response *DisassociateAddressResponse, err error) {
-    if request == nil {
-        request = NewDisassociateAddressRequest()
-    }
-    
-    response = NewDisassociateAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateAddressWithContext(context.Background(), request)
 }
 
 // DisassociateAddress
@@ -5391,6 +5306,11 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisassociateAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateAddressResponse()
@@ -5425,13 +5345,7 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateInstancesKeyPairsRequest()
-    }
-    
-    response = NewDisassociateInstancesKeyPairsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateInstancesKeyPairsWithContext(context.Background(), request)
 }
 
 // DisassociateInstancesKeyPairs
@@ -5447,6 +5361,11 @@ func (c *Client) DisassociateInstancesKeyPairsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDisassociateInstancesKeyPairsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateInstancesKeyPairs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateInstancesKeyPairsResponse()
@@ -5480,13 +5399,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceID"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateSecurityGroupsRequest()
-    }
-    
-    response = NewDisassociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DisassociateSecurityGroups
@@ -5501,6 +5414,11 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
@@ -5544,13 +5462,7 @@ func NewEnableRoutesResponse() (response *EnableRoutesResponse) {
 //  UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) EnableRoutes(request *EnableRoutesRequest) (response *EnableRoutesResponse, err error) {
-    if request == nil {
-        request = NewEnableRoutesRequest()
-    }
-    
-    response = NewEnableRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableRoutesWithContext(context.Background(), request)
 }
 
 // EnableRoutes
@@ -5575,6 +5487,11 @@ func (c *Client) EnableRoutesWithContext(ctx context.Context, request *EnableRou
     if request == nil {
         request = NewEnableRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableRoutesResponse()
@@ -5614,13 +5531,7 @@ func NewImportCustomImageResponse() (response *ImportCustomImageResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNAUTHORIZEDOPERATION_WINDOWSIMAGE = "UnauthorizedOperation.WindowsImage"
 func (c *Client) ImportCustomImage(request *ImportCustomImageRequest) (response *ImportCustomImageResponse, err error) {
-    if request == nil {
-        request = NewImportCustomImageRequest()
-    }
-    
-    response = NewImportCustomImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportCustomImageWithContext(context.Background(), request)
 }
 
 // ImportCustomImage
@@ -5641,6 +5552,11 @@ func (c *Client) ImportCustomImageWithContext(ctx context.Context, request *Impo
     if request == nil {
         request = NewImportCustomImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportCustomImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportCustomImageResponse()
@@ -5680,13 +5596,7 @@ func NewImportImageResponse() (response *ImportImageResponse) {
 //  RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = "ResourceInsufficient.InvaildPrivateImageNum"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
-    if request == nil {
-        request = NewImportImageRequest()
-    }
-    
-    response = NewImportImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportImageWithContext(context.Background(), request)
 }
 
 // ImportImage
@@ -5707,6 +5617,11 @@ func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImag
     if request == nil {
         request = NewImportImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportImageResponse()
@@ -5744,13 +5659,7 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
-    if request == nil {
-        request = NewMigrateNetworkInterfaceRequest()
-    }
-    
-    response = NewMigrateNetworkInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.MigrateNetworkInterfaceWithContext(context.Background(), request)
 }
 
 // MigrateNetworkInterface
@@ -5769,6 +5678,11 @@ func (c *Client) MigrateNetworkInterfaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigrateNetworkInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MigrateNetworkInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMigrateNetworkInterfaceResponse()
@@ -5810,13 +5724,7 @@ func NewMigratePrivateIpAddressResponse() (response *MigratePrivateIpAddressResp
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) MigratePrivateIpAddress(request *MigratePrivateIpAddressRequest) (response *MigratePrivateIpAddressResponse, err error) {
-    if request == nil {
-        request = NewMigratePrivateIpAddressRequest()
-    }
-    
-    response = NewMigratePrivateIpAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.MigratePrivateIpAddressWithContext(context.Background(), request)
 }
 
 // MigratePrivateIpAddress
@@ -5839,6 +5747,11 @@ func (c *Client) MigratePrivateIpAddressWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigratePrivateIpAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MigratePrivateIpAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMigratePrivateIpAddressResponse()
@@ -5880,13 +5793,7 @@ func NewModifyAddressAttributeResponse() (response *ModifyAddressAttributeRespon
 //  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
 //  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ModifyAddressAttribute(request *ModifyAddressAttributeRequest) (response *ModifyAddressAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyAddressAttributeRequest()
-    }
-    
-    response = NewModifyAddressAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAddressAttributeWithContext(context.Background(), request)
 }
 
 // ModifyAddressAttribute
@@ -5909,6 +5816,11 @@ func (c *Client) ModifyAddressAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyAddressAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAddressAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAddressAttributeResponse()
@@ -5949,13 +5861,7 @@ func NewModifyAddressesBandwidthResponse() (response *ModifyAddressesBandwidthRe
 //  UNSUPPORTEDOPERATION_ADDRESSIDNOTFOUND = "UnsupportedOperation.AddressIdNotFound"
 //  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ModifyAddressesBandwidth(request *ModifyAddressesBandwidthRequest) (response *ModifyAddressesBandwidthResponse, err error) {
-    if request == nil {
-        request = NewModifyAddressesBandwidthRequest()
-    }
-    
-    response = NewModifyAddressesBandwidthResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAddressesBandwidthWithContext(context.Background(), request)
 }
 
 // ModifyAddressesBandwidth
@@ -5977,6 +5883,11 @@ func (c *Client) ModifyAddressesBandwidthWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAddressesBandwidthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAddressesBandwidth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAddressesBandwidthResponse()
@@ -6011,13 +5922,7 @@ func NewModifyDefaultSubnetResponse() (response *ModifyDefaultSubnetResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyDefaultSubnet(request *ModifyDefaultSubnetRequest) (response *ModifyDefaultSubnetResponse, err error) {
-    if request == nil {
-        request = NewModifyDefaultSubnetRequest()
-    }
-    
-    response = NewModifyDefaultSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDefaultSubnetWithContext(context.Background(), request)
 }
 
 // ModifyDefaultSubnet
@@ -6033,6 +5938,11 @@ func (c *Client) ModifyDefaultSubnetWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDefaultSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDefaultSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDefaultSubnetResponse()
@@ -6067,13 +5977,7 @@ func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) 
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (response *ModifyHaVipAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyHaVipAttributeRequest()
-    }
-    
-    response = NewModifyHaVipAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyHaVipAttributeWithContext(context.Background(), request)
 }
 
 // ModifyHaVipAttribute
@@ -6089,6 +5993,11 @@ func (c *Client) ModifyHaVipAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyHaVipAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHaVipAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyHaVipAttributeResponse()
@@ -6126,13 +6035,7 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
 //  MISSINGPARAMETER_MISSINGIMAGEPARAMETER = "MissingParameter.MissingImageParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyImageAttributeRequest()
-    }
-    
-    response = NewModifyImageAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyImageAttributeWithContext(context.Background(), request)
 }
 
 // ModifyImageAttribute
@@ -6151,6 +6054,11 @@ func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyImageAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyImageAttributeResponse()
@@ -6189,13 +6097,7 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
 //  LIMITEXCEEDED_SECURITYGROUPINSTANCELIMITEXCEEDED = "LimitExceeded.SecurityGroupInstanceLimitExceeded"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeRequest) (response *ModifyInstancesAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesAttributeRequest()
-    }
-    
-    response = NewModifyInstancesAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesAttributeWithContext(context.Background(), request)
 }
 
 // ModifyInstancesAttribute
@@ -6215,6 +6117,11 @@ func (c *Client) ModifyInstancesAttributeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesAttributeResponse()
@@ -6251,13 +6158,7 @@ func NewModifyIpv6AddressesAttributeResponse() (response *ModifyIpv6AddressesAtt
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 func (c *Client) ModifyIpv6AddressesAttribute(request *ModifyIpv6AddressesAttributeRequest) (response *ModifyIpv6AddressesAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyIpv6AddressesAttributeRequest()
-    }
-    
-    response = NewModifyIpv6AddressesAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyIpv6AddressesAttributeWithContext(context.Background(), request)
 }
 
 // ModifyIpv6AddressesAttribute
@@ -6275,6 +6176,11 @@ func (c *Client) ModifyIpv6AddressesAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyIpv6AddressesAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIpv6AddressesAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyIpv6AddressesAttributeResponse()
@@ -6310,13 +6216,7 @@ func NewModifyListenerResponse() (response *ModifyListenerResponse) {
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyListener(request *ModifyListenerRequest) (response *ModifyListenerResponse, err error) {
-    if request == nil {
-        request = NewModifyListenerRequest()
-    }
-    
-    response = NewModifyListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyListenerWithContext(context.Background(), request)
 }
 
 // ModifyListener
@@ -6333,6 +6233,11 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
     if request == nil {
         request = NewModifyListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyListener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyListenerResponse()
@@ -6372,13 +6277,7 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttributesRequest) (response *ModifyLoadBalancerAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancerAttributesRequest()
-    }
-    
-    response = NewModifyLoadBalancerAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoadBalancerAttributesWithContext(context.Background(), request)
 }
 
 // ModifyLoadBalancerAttributes
@@ -6399,6 +6298,11 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyLoadBalancerAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoadBalancerAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancerAttributesResponse()
@@ -6440,13 +6344,7 @@ func NewModifyModuleConfigResponse() (response *ModifyModuleConfigResponse) {
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyModuleConfig(request *ModifyModuleConfigRequest) (response *ModifyModuleConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleConfigRequest()
-    }
-    
-    response = NewModifyModuleConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleConfigWithContext(context.Background(), request)
 }
 
 // ModifyModuleConfig
@@ -6469,6 +6367,11 @@ func (c *Client) ModifyModuleConfigWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyModuleConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleConfigResponse()
@@ -6502,13 +6405,7 @@ func NewModifyModuleDisableWanIpResponse() (response *ModifyModuleDisableWanIpRe
 //  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleDisableWanIp(request *ModifyModuleDisableWanIpRequest) (response *ModifyModuleDisableWanIpResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleDisableWanIpRequest()
-    }
-    
-    response = NewModifyModuleDisableWanIpResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleDisableWanIpWithContext(context.Background(), request)
 }
 
 // ModifyModuleDisableWanIp
@@ -6523,6 +6420,11 @@ func (c *Client) ModifyModuleDisableWanIpWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyModuleDisableWanIpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleDisableWanIp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleDisableWanIpResponse()
@@ -6561,13 +6463,7 @@ func NewModifyModuleImageResponse() (response *ModifyModuleImageResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) ModifyModuleImage(request *ModifyModuleImageRequest) (response *ModifyModuleImageResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleImageRequest()
-    }
-    
-    response = NewModifyModuleImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleImageWithContext(context.Background(), request)
 }
 
 // ModifyModuleImage
@@ -6587,6 +6483,11 @@ func (c *Client) ModifyModuleImageWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyModuleImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleImageResponse()
@@ -6621,13 +6522,7 @@ func NewModifyModuleIpDirectResponse() (response *ModifyModuleIpDirectResponse) 
 //  INVALIDPARAMETERVALUE_INVALIDMODULEID = "InvalidParameterValue.InvalidModuleID"
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleIpDirect(request *ModifyModuleIpDirectRequest) (response *ModifyModuleIpDirectResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleIpDirectRequest()
-    }
-    
-    response = NewModifyModuleIpDirectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleIpDirectWithContext(context.Background(), request)
 }
 
 // ModifyModuleIpDirect
@@ -6643,6 +6538,11 @@ func (c *Client) ModifyModuleIpDirectWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyModuleIpDirectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleIpDirect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleIpDirectResponse()
@@ -6678,13 +6578,7 @@ func NewModifyModuleNameResponse() (response *ModifyModuleNameResponse) {
 //  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 func (c *Client) ModifyModuleName(request *ModifyModuleNameRequest) (response *ModifyModuleNameResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleNameRequest()
-    }
-    
-    response = NewModifyModuleNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleNameWithContext(context.Background(), request)
 }
 
 // ModifyModuleName
@@ -6701,6 +6595,11 @@ func (c *Client) ModifyModuleNameWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyModuleNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleNameResponse()
@@ -6740,13 +6639,7 @@ func NewModifyModuleNetworkResponse() (response *ModifyModuleNetworkResponse) {
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyModuleNetwork(request *ModifyModuleNetworkRequest) (response *ModifyModuleNetworkResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleNetworkRequest()
-    }
-    
-    response = NewModifyModuleNetworkResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleNetworkWithContext(context.Background(), request)
 }
 
 // ModifyModuleNetwork
@@ -6767,6 +6660,11 @@ func (c *Client) ModifyModuleNetworkWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyModuleNetworkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleNetwork require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleNetworkResponse()
@@ -6804,13 +6702,7 @@ func NewModifyModuleSecurityGroupsResponse() (response *ModifyModuleSecurityGrou
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyModuleSecurityGroups(request *ModifyModuleSecurityGroupsRequest) (response *ModifyModuleSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewModifyModuleSecurityGroupsRequest()
-    }
-    
-    response = NewModifyModuleSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModuleSecurityGroupsWithContext(context.Background(), request)
 }
 
 // ModifyModuleSecurityGroups
@@ -6829,6 +6721,11 @@ func (c *Client) ModifyModuleSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyModuleSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModuleSecurityGroupsResponse()
@@ -6863,13 +6760,7 @@ func NewModifyPrivateIpAddressesAttributeResponse() (response *ModifyPrivateIpAd
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) ModifyPrivateIpAddressesAttribute(request *ModifyPrivateIpAddressesAttributeRequest) (response *ModifyPrivateIpAddressesAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyPrivateIpAddressesAttributeRequest()
-    }
-    
-    response = NewModifyPrivateIpAddressesAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPrivateIpAddressesAttributeWithContext(context.Background(), request)
 }
 
 // ModifyPrivateIpAddressesAttribute
@@ -6885,6 +6776,11 @@ func (c *Client) ModifyPrivateIpAddressesAttributeWithContext(ctx context.Contex
     if request == nil {
         request = NewModifyPrivateIpAddressesAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrivateIpAddressesAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPrivateIpAddressesAttributeResponse()
@@ -6918,13 +6814,7 @@ func NewModifyRouteTableAttributeResponse() (response *ModifyRouteTableAttribute
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRouteTableAttribute(request *ModifyRouteTableAttributeRequest) (response *ModifyRouteTableAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyRouteTableAttributeRequest()
-    }
-    
-    response = NewModifyRouteTableAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRouteTableAttributeWithContext(context.Background(), request)
 }
 
 // ModifyRouteTableAttribute
@@ -6939,6 +6829,11 @@ func (c *Client) ModifyRouteTableAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyRouteTableAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRouteTableAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRouteTableAttributeResponse()
@@ -6975,13 +6870,7 @@ func NewModifySecurityGroupAttributeResponse() (response *ModifySecurityGroupAtt
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttributeRequest) (response *ModifySecurityGroupAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupAttributeRequest()
-    }
-    
-    response = NewModifySecurityGroupAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupAttributeWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupAttribute
@@ -6999,6 +6888,11 @@ func (c *Client) ModifySecurityGroupAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifySecurityGroupAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupAttributeResponse()
@@ -7034,13 +6928,7 @@ func NewModifySecurityGroupPoliciesResponse() (response *ModifySecurityGroupPoli
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySecurityGroupPolicies(request *ModifySecurityGroupPoliciesRequest) (response *ModifySecurityGroupPoliciesResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupPoliciesRequest()
-    }
-    
-    response = NewModifySecurityGroupPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityGroupPoliciesWithContext(context.Background(), request)
 }
 
 // ModifySecurityGroupPolicies
@@ -7057,6 +6945,11 @@ func (c *Client) ModifySecurityGroupPoliciesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifySecurityGroupPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityGroupPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityGroupPoliciesResponse()
@@ -7097,13 +6990,7 @@ func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (response *ModifySubnetAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifySubnetAttributeRequest()
-    }
-    
-    response = NewModifySubnetAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubnetAttributeWithContext(context.Background(), request)
 }
 
 // ModifySubnetAttribute
@@ -7125,6 +7012,11 @@ func (c *Client) ModifySubnetAttributeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySubnetAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubnetAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubnetAttributeResponse()
@@ -7160,13 +7052,7 @@ func NewModifyTargetPortResponse() (response *ModifyTargetPortResponse) {
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyTargetPort(request *ModifyTargetPortRequest) (response *ModifyTargetPortResponse, err error) {
-    if request == nil {
-        request = NewModifyTargetPortRequest()
-    }
-    
-    response = NewModifyTargetPortResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTargetPortWithContext(context.Background(), request)
 }
 
 // ModifyTargetPort
@@ -7183,6 +7069,11 @@ func (c *Client) ModifyTargetPortWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTargetPortRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTargetPort require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTargetPortResponse()
@@ -7220,13 +7111,7 @@ func NewModifyTargetWeightResponse() (response *ModifyTargetWeightResponse) {
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyTargetWeight(request *ModifyTargetWeightRequest) (response *ModifyTargetWeightResponse, err error) {
-    if request == nil {
-        request = NewModifyTargetWeightRequest()
-    }
-    
-    response = NewModifyTargetWeightResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTargetWeightWithContext(context.Background(), request)
 }
 
 // ModifyTargetWeight
@@ -7245,6 +7130,11 @@ func (c *Client) ModifyTargetWeightWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyTargetWeightRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTargetWeight require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTargetWeightResponse()
@@ -7283,13 +7173,7 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyVpcAttributeRequest()
-    }
-    
-    response = NewModifyVpcAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVpcAttributeWithContext(context.Background(), request)
 }
 
 // ModifyVpcAttribute
@@ -7309,6 +7193,11 @@ func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyVpcAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVpcAttributeResponse()
@@ -7348,13 +7237,7 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = "ResourceUnavailable.InstanceNotRunning"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *RebootInstancesResponse, err error) {
-    if request == nil {
-        request = NewRebootInstancesRequest()
-    }
-    
-    response = NewRebootInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RebootInstancesWithContext(context.Background(), request)
 }
 
 // RebootInstances
@@ -7375,6 +7258,11 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     if request == nil {
         request = NewRebootInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRebootInstancesResponse()
@@ -7419,13 +7307,7 @@ func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
 //  UNSUPPORTEDOPERATION_MALFORMED = "UnsupportedOperation.Malformed"
 //  UNSUPPORTEDOPERATION_STATUSNOTPERMIT = "UnsupportedOperation.StatusNotPermit"
 func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
-    if request == nil {
-        request = NewReleaseAddressesRequest()
-    }
-    
-    response = NewReleaseAddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReleaseAddressesWithContext(context.Background(), request)
 }
 
 // ReleaseAddresses
@@ -7451,6 +7333,11 @@ func (c *Client) ReleaseAddressesWithContext(ctx context.Context, request *Relea
     if request == nil {
         request = NewReleaseAddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseAddresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReleaseAddressesResponse()
@@ -7486,13 +7373,7 @@ func NewReleaseIpv6AddressesResponse() (response *ReleaseIpv6AddressesResponse) 
 //  MISSINGPARAMETER_MISSINGMODULEPARAMETER = "MissingParameter.MissingModuleParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReleaseIpv6Addresses(request *ReleaseIpv6AddressesRequest) (response *ReleaseIpv6AddressesResponse, err error) {
-    if request == nil {
-        request = NewReleaseIpv6AddressesRequest()
-    }
-    
-    response = NewReleaseIpv6AddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReleaseIpv6AddressesWithContext(context.Background(), request)
 }
 
 // ReleaseIpv6Addresses
@@ -7509,6 +7390,11 @@ func (c *Client) ReleaseIpv6AddressesWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewReleaseIpv6AddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseIpv6Addresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReleaseIpv6AddressesResponse()
@@ -7550,13 +7436,7 @@ func NewRemovePrivateIpAddressesResponse() (response *RemovePrivateIpAddressesRe
 //  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) RemovePrivateIpAddresses(request *RemovePrivateIpAddressesRequest) (response *RemovePrivateIpAddressesResponse, err error) {
-    if request == nil {
-        request = NewRemovePrivateIpAddressesRequest()
-    }
-    
-    response = NewRemovePrivateIpAddressesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemovePrivateIpAddressesWithContext(context.Background(), request)
 }
 
 // RemovePrivateIpAddresses
@@ -7579,6 +7459,11 @@ func (c *Client) RemovePrivateIpAddressesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRemovePrivateIpAddressesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemovePrivateIpAddresses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemovePrivateIpAddressesResponse()
@@ -7615,13 +7500,7 @@ func NewReplaceRouteTableAssociationResponse() (response *ReplaceRouteTableAssoc
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) ReplaceRouteTableAssociation(request *ReplaceRouteTableAssociationRequest) (response *ReplaceRouteTableAssociationResponse, err error) {
-    if request == nil {
-        request = NewReplaceRouteTableAssociationRequest()
-    }
-    
-    response = NewReplaceRouteTableAssociationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceRouteTableAssociationWithContext(context.Background(), request)
 }
 
 // ReplaceRouteTableAssociation
@@ -7639,6 +7518,11 @@ func (c *Client) ReplaceRouteTableAssociationWithContext(ctx context.Context, re
     if request == nil {
         request = NewReplaceRouteTableAssociationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceRouteTableAssociation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceRouteTableAssociationResponse()
@@ -7679,13 +7563,7 @@ func NewReplaceRoutesResponse() (response *ReplaceRoutesResponse) {
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *ReplaceRoutesResponse, err error) {
-    if request == nil {
-        request = NewReplaceRoutesRequest()
-    }
-    
-    response = NewReplaceRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceRoutesWithContext(context.Background(), request)
 }
 
 // ReplaceRoutes
@@ -7707,6 +7585,11 @@ func (c *Client) ReplaceRoutesWithContext(ctx context.Context, request *ReplaceR
     if request == nil {
         request = NewReplaceRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceRoutesResponse()
@@ -7741,13 +7624,7 @@ func NewReplaceSecurityGroupPolicyResponse() (response *ReplaceSecurityGroupPoli
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyRequest) (response *ReplaceSecurityGroupPolicyResponse, err error) {
-    if request == nil {
-        request = NewReplaceSecurityGroupPolicyRequest()
-    }
-    
-    response = NewReplaceSecurityGroupPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceSecurityGroupPolicyWithContext(context.Background(), request)
 }
 
 // ReplaceSecurityGroupPolicy
@@ -7763,6 +7640,11 @@ func (c *Client) ReplaceSecurityGroupPolicyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewReplaceSecurityGroupPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceSecurityGroupPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceSecurityGroupPolicyResponse()
@@ -7804,13 +7686,7 @@ func NewResetInstancesResponse() (response *ResetInstancesResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstances(request *ResetInstancesRequest) (response *ResetInstancesResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesRequest()
-    }
-    
-    response = NewResetInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesWithContext(context.Background(), request)
 }
 
 // ResetInstances
@@ -7833,6 +7709,11 @@ func (c *Client) ResetInstancesWithContext(ctx context.Context, request *ResetIn
     if request == nil {
         request = NewResetInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesResponse()
@@ -7872,13 +7753,7 @@ func NewResetInstancesMaxBandwidthResponse() (response *ResetInstancesMaxBandwid
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstancesMaxBandwidth(request *ResetInstancesMaxBandwidthRequest) (response *ResetInstancesMaxBandwidthResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesMaxBandwidthRequest()
-    }
-    
-    response = NewResetInstancesMaxBandwidthResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesMaxBandwidthWithContext(context.Background(), request)
 }
 
 // ResetInstancesMaxBandwidth
@@ -7899,6 +7774,11 @@ func (c *Client) ResetInstancesMaxBandwidthWithContext(ctx context.Context, requ
     if request == nil {
         request = NewResetInstancesMaxBandwidthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesMaxBandwidth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesMaxBandwidthResponse()
@@ -7938,13 +7818,7 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
 //  INVALIDPARAMETERVALUE_PARAMETERVALUETOOLARGE = "InvalidParameterValue.ParameterValueTooLarge"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesPasswordRequest()
-    }
-    
-    response = NewResetInstancesPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesPasswordWithContext(context.Background(), request)
 }
 
 // ResetInstancesPassword
@@ -7965,6 +7839,11 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewResetInstancesPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesPasswordResponse()
@@ -8001,13 +7880,7 @@ func NewResetRoutesResponse() (response *ResetRoutesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutesResponse, err error) {
-    if request == nil {
-        request = NewResetRoutesRequest()
-    }
-    
-    response = NewResetRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetRoutesWithContext(context.Background(), request)
 }
 
 // ResetRoutes
@@ -8025,6 +7898,11 @@ func (c *Client) ResetRoutesWithContext(ctx context.Context, request *ResetRoute
     if request == nil {
         request = NewResetRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetRoutesResponse()
@@ -8111,13 +7989,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 //  UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTIMAGE = "UnsupportedOperation.InstanceTypeNotSupportImage"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
-    if request == nil {
-        request = NewRunInstancesRequest()
-    }
-    
-    response = NewRunInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunInstancesWithContext(context.Background(), request)
 }
 
 // RunInstances
@@ -8185,6 +8057,11 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     if request == nil {
         request = NewRunInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunInstancesResponse()
@@ -8225,13 +8102,7 @@ func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecuri
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityGroupsRequest) (response *SetLoadBalancerSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewSetLoadBalancerSecurityGroupsRequest()
-    }
-    
-    response = NewSetLoadBalancerSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetLoadBalancerSecurityGroupsWithContext(context.Background(), request)
 }
 
 // SetLoadBalancerSecurityGroups
@@ -8253,6 +8124,11 @@ func (c *Client) SetLoadBalancerSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewSetLoadBalancerSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetLoadBalancerSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetLoadBalancerSecurityGroupsResponse()
@@ -8293,13 +8169,7 @@ func NewSetSecurityGroupForLoadbalancersResponse() (response *SetSecurityGroupFo
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) SetSecurityGroupForLoadbalancers(request *SetSecurityGroupForLoadbalancersRequest) (response *SetSecurityGroupForLoadbalancersResponse, err error) {
-    if request == nil {
-        request = NewSetSecurityGroupForLoadbalancersRequest()
-    }
-    
-    response = NewSetSecurityGroupForLoadbalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetSecurityGroupForLoadbalancersWithContext(context.Background(), request)
 }
 
 // SetSecurityGroupForLoadbalancers
@@ -8321,6 +8191,11 @@ func (c *Client) SetSecurityGroupForLoadbalancersWithContext(ctx context.Context
     if request == nil {
         request = NewSetSecurityGroupForLoadbalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetSecurityGroupForLoadbalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetSecurityGroupForLoadbalancersResponse()
@@ -8359,13 +8234,7 @@ func NewStartInstancesResponse() (response *StartInstancesResponse) {
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) StartInstances(request *StartInstancesRequest) (response *StartInstancesResponse, err error) {
-    if request == nil {
-        request = NewStartInstancesRequest()
-    }
-    
-    response = NewStartInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartInstancesWithContext(context.Background(), request)
 }
 
 // StartInstances
@@ -8385,6 +8254,11 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
     if request == nil {
         request = NewStartInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartInstancesResponse()
@@ -8427,13 +8301,7 @@ func NewStopInstancesResponse() (response *StopInstancesResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCENOTRUNNING = "ResourceUnavailable.InstanceNotRunning"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopInstancesResponse, err error) {
-    if request == nil {
-        request = NewStopInstancesRequest()
-    }
-    
-    response = NewStopInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopInstancesWithContext(context.Background(), request)
 }
 
 // StopInstances
@@ -8457,6 +8325,11 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
     if request == nil {
         request = NewStopInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopInstancesResponse()
@@ -8504,13 +8377,7 @@ func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
 func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *TerminateDisksResponse, err error) {
-    if request == nil {
-        request = NewTerminateDisksRequest()
-    }
-    
-    response = NewTerminateDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateDisksWithContext(context.Background(), request)
 }
 
 // TerminateDisks
@@ -8539,6 +8406,11 @@ func (c *Client) TerminateDisksWithContext(ctx context.Context, request *Termina
     if request == nil {
         request = NewTerminateDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateDisksResponse()
@@ -8577,13 +8449,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
-    if request == nil {
-        request = NewTerminateInstancesRequest()
-    }
-    
-    response = NewTerminateInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateInstancesWithContext(context.Background(), request)
 }
 
 // TerminateInstances
@@ -8603,6 +8469,11 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     if request == nil {
         request = NewTerminateInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateInstancesResponse()

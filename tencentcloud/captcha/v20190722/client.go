@@ -16,6 +16,7 @@ package v20190722
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeCaptchaAppIdInfoResponse() (response *DescribeCaptchaAppIdInfoRe
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaAppIdInfo(request *DescribeCaptchaAppIdInfoRequest) (response *DescribeCaptchaAppIdInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaAppIdInfoRequest()
-    }
-    
-    response = NewDescribeCaptchaAppIdInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaAppIdInfoWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaAppIdInfo
@@ -91,6 +86,11 @@ func (c *Client) DescribeCaptchaAppIdInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCaptchaAppIdInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaAppIdInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaAppIdInfoResponse()
@@ -124,13 +124,7 @@ func NewDescribeCaptchaDataResponse() (response *DescribeCaptchaDataResponse) {
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaData(request *DescribeCaptchaDataRequest) (response *DescribeCaptchaDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaDataRequest()
-    }
-    
-    response = NewDescribeCaptchaDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaDataWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaData
@@ -145,6 +139,11 @@ func (c *Client) DescribeCaptchaDataWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCaptchaDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaDataResponse()
@@ -178,13 +177,7 @@ func NewDescribeCaptchaDataSumResponse() (response *DescribeCaptchaDataSumRespon
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaDataSum(request *DescribeCaptchaDataSumRequest) (response *DescribeCaptchaDataSumResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaDataSumRequest()
-    }
-    
-    response = NewDescribeCaptchaDataSumResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaDataSumWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaDataSum
@@ -199,6 +192,11 @@ func (c *Client) DescribeCaptchaDataSumWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCaptchaDataSumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaDataSum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaDataSumResponse()
@@ -232,13 +230,7 @@ func NewDescribeCaptchaMiniDataResponse() (response *DescribeCaptchaMiniDataResp
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniData(request *DescribeCaptchaMiniDataRequest) (response *DescribeCaptchaMiniDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaMiniDataRequest()
-    }
-    
-    response = NewDescribeCaptchaMiniDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaMiniDataWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaMiniData
@@ -253,6 +245,11 @@ func (c *Client) DescribeCaptchaMiniDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCaptchaMiniDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaMiniData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaMiniDataResponse()
@@ -286,13 +283,7 @@ func NewDescribeCaptchaMiniDataSumResponse() (response *DescribeCaptchaMiniDataS
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniDataSum(request *DescribeCaptchaMiniDataSumRequest) (response *DescribeCaptchaMiniDataSumResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaMiniDataSumRequest()
-    }
-    
-    response = NewDescribeCaptchaMiniDataSumResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaMiniDataSumWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaMiniDataSum
@@ -307,6 +298,11 @@ func (c *Client) DescribeCaptchaMiniDataSumWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCaptchaMiniDataSumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaMiniDataSum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaMiniDataSumResponse()
@@ -340,13 +336,7 @@ func NewDescribeCaptchaMiniOperDataResponse() (response *DescribeCaptchaMiniOper
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniOperData(request *DescribeCaptchaMiniOperDataRequest) (response *DescribeCaptchaMiniOperDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaMiniOperDataRequest()
-    }
-    
-    response = NewDescribeCaptchaMiniOperDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaMiniOperDataWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaMiniOperData
@@ -361,6 +351,11 @@ func (c *Client) DescribeCaptchaMiniOperDataWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCaptchaMiniOperDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaMiniOperData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaMiniOperDataResponse()
@@ -394,13 +389,7 @@ func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResult
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultRequest) (response *DescribeCaptchaMiniResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaMiniResultRequest()
-    }
-    
-    response = NewDescribeCaptchaMiniResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaMiniResultWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaMiniResult
@@ -415,6 +404,11 @@ func (c *Client) DescribeCaptchaMiniResultWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCaptchaMiniResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaMiniResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaMiniResultResponse()
@@ -448,13 +442,7 @@ func NewDescribeCaptchaMiniRiskResultResponse() (response *DescribeCaptchaMiniRi
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaMiniRiskResult(request *DescribeCaptchaMiniRiskResultRequest) (response *DescribeCaptchaMiniRiskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaMiniRiskResultRequest()
-    }
-    
-    response = NewDescribeCaptchaMiniRiskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaMiniRiskResultWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaMiniRiskResult
@@ -469,6 +457,11 @@ func (c *Client) DescribeCaptchaMiniRiskResultWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCaptchaMiniRiskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaMiniRiskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaMiniRiskResultResponse()
@@ -502,13 +495,7 @@ func NewDescribeCaptchaOperDataResponse() (response *DescribeCaptchaOperDataResp
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaOperData(request *DescribeCaptchaOperDataRequest) (response *DescribeCaptchaOperDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaOperDataRequest()
-    }
-    
-    response = NewDescribeCaptchaOperDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaOperDataWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaOperData
@@ -523,6 +510,11 @@ func (c *Client) DescribeCaptchaOperDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeCaptchaOperDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaOperData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaOperDataResponse()
@@ -556,13 +548,7 @@ func NewDescribeCaptchaResultResponse() (response *DescribeCaptchaResultResponse
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (response *DescribeCaptchaResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaResultRequest()
-    }
-    
-    response = NewDescribeCaptchaResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaResultWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaResult
@@ -577,6 +563,11 @@ func (c *Client) DescribeCaptchaResultWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCaptchaResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaResultResponse()
@@ -610,13 +601,7 @@ func NewDescribeCaptchaTicketDataResponse() (response *DescribeCaptchaTicketData
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaTicketData(request *DescribeCaptchaTicketDataRequest) (response *DescribeCaptchaTicketDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaTicketDataRequest()
-    }
-    
-    response = NewDescribeCaptchaTicketDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaTicketDataWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaTicketData
@@ -631,6 +616,11 @@ func (c *Client) DescribeCaptchaTicketDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCaptchaTicketDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaTicketData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaTicketDataResponse()
@@ -664,13 +654,7 @@ func NewDescribeCaptchaUserAllAppIdResponse() (response *DescribeCaptchaUserAllA
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) DescribeCaptchaUserAllAppId(request *DescribeCaptchaUserAllAppIdRequest) (response *DescribeCaptchaUserAllAppIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeCaptchaUserAllAppIdRequest()
-    }
-    
-    response = NewDescribeCaptchaUserAllAppIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCaptchaUserAllAppIdWithContext(context.Background(), request)
 }
 
 // DescribeCaptchaUserAllAppId
@@ -685,6 +669,11 @@ func (c *Client) DescribeCaptchaUserAllAppIdWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCaptchaUserAllAppIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCaptchaUserAllAppId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCaptchaUserAllAppIdResponse()
@@ -718,13 +707,7 @@ func NewUpdateCaptchaAppIdInfoResponse() (response *UpdateCaptchaAppIdInfoRespon
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) UpdateCaptchaAppIdInfo(request *UpdateCaptchaAppIdInfoRequest) (response *UpdateCaptchaAppIdInfoResponse, err error) {
-    if request == nil {
-        request = NewUpdateCaptchaAppIdInfoRequest()
-    }
-    
-    response = NewUpdateCaptchaAppIdInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCaptchaAppIdInfoWithContext(context.Background(), request)
 }
 
 // UpdateCaptchaAppIdInfo
@@ -739,6 +722,11 @@ func (c *Client) UpdateCaptchaAppIdInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateCaptchaAppIdInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCaptchaAppIdInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCaptchaAppIdInfoResponse()

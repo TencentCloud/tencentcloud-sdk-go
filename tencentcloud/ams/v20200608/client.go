@@ -16,6 +16,7 @@ package v20200608
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -82,13 +83,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelTaskRequest()
-    }
-    
-    response = NewCancelTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelTaskWithContext(context.Background(), request)
 }
 
 // CancelTask
@@ -115,6 +110,11 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelTaskResponse()
@@ -207,13 +207,7 @@ func NewCreateAudioModerationTaskResponse() (response *CreateAudioModerationTask
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskRequest) (response *CreateAudioModerationTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAudioModerationTaskRequest()
-    }
-    
-    response = NewCreateAudioModerationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAudioModerationTaskWithContext(context.Background(), request)
 }
 
 // CreateAudioModerationTask
@@ -287,6 +281,11 @@ func (c *Client) CreateAudioModerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateAudioModerationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAudioModerationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAudioModerationTaskResponse()
@@ -341,13 +340,7 @@ func NewCreateBizConfigResponse() (response *CreateBizConfigResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBizConfig(request *CreateBizConfigRequest) (response *CreateBizConfigResponse, err error) {
-    if request == nil {
-        request = NewCreateBizConfigRequest()
-    }
-    
-    response = NewCreateBizConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBizConfigWithContext(context.Background(), request)
 }
 
 // CreateBizConfig
@@ -383,6 +376,11 @@ func (c *Client) CreateBizConfigWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateBizConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBizConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBizConfigResponse()
@@ -415,13 +413,7 @@ func NewDescribeAmsListResponse() (response *DescribeAmsListResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAmsList(request *DescribeAmsListRequest) (response *DescribeAmsListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAmsListRequest()
-    }
-    
-    response = NewDescribeAmsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAmsListWithContext(context.Background(), request)
 }
 
 // DescribeAmsList
@@ -435,6 +427,11 @@ func (c *Client) DescribeAmsListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAmsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAmsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAmsListResponse()
@@ -468,13 +465,7 @@ func NewDescribeAudioStatResponse() (response *DescribeAudioStatResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAudioStat(request *DescribeAudioStatRequest) (response *DescribeAudioStatResponse, err error) {
-    if request == nil {
-        request = NewDescribeAudioStatRequest()
-    }
-    
-    response = NewDescribeAudioStatResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAudioStatWithContext(context.Background(), request)
 }
 
 // DescribeAudioStat
@@ -489,6 +480,11 @@ func (c *Client) DescribeAudioStatWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAudioStatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAudioStat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAudioStatResponse()
@@ -535,13 +531,7 @@ func NewDescribeBizConfigResponse() (response *DescribeBizConfigResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBizConfig(request *DescribeBizConfigRequest) (response *DescribeBizConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeBizConfigRequest()
-    }
-    
-    response = NewDescribeBizConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBizConfigWithContext(context.Background(), request)
 }
 
 // DescribeBizConfig
@@ -569,6 +559,11 @@ func (c *Client) DescribeBizConfigWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBizConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBizConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBizConfigResponse()
@@ -615,13 +610,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeTaskDetail
@@ -649,6 +638,11 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()

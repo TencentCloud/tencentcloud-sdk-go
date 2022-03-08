@@ -16,6 +16,7 @@ package v20180408
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateBindInstanceRequest()
-    }
-    
-    response = NewCreateBindInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBindInstanceWithContext(context.Background(), request)
 }
 
 // CreateBindInstance
@@ -91,6 +86,11 @@ func (c *Client) CreateBindInstanceWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateBindInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBindInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBindInstanceResponse()
@@ -123,13 +123,7 @@ func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResp
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateCosSecKeyInstanceRequest()
-    }
-    
-    response = NewCreateCosSecKeyInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCosSecKeyInstanceWithContext(context.Background(), request)
 }
 
 // CreateCosSecKeyInstance
@@ -143,6 +137,11 @@ func (c *Client) CreateCosSecKeyInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCosSecKeyInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCosSecKeyInstanceResponse()
@@ -179,13 +178,7 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest) (response *CreateResourceInstancesResponse, err error) {
-    if request == nil {
-        request = NewCreateResourceInstancesRequest()
-    }
-    
-    response = NewCreateResourceInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateResourceInstancesWithContext(context.Background(), request)
 }
 
 // CreateResourceInstances
@@ -203,6 +196,11 @@ func (c *Client) CreateResourceInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateResourceInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResourceInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateResourceInstancesResponse()
@@ -236,13 +234,7 @@ func NewCreateScanInstancesResponse() (response *CreateScanInstancesResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
 func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
-    if request == nil {
-        request = NewCreateScanInstancesRequest()
-    }
-    
-    response = NewCreateScanInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateScanInstancesWithContext(context.Background(), request)
 }
 
 // CreateScanInstances
@@ -257,6 +249,11 @@ func (c *Client) CreateScanInstancesWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateScanInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScanInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateScanInstancesResponse()
@@ -295,13 +292,7 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateShieldInstanceRequest()
-    }
-    
-    response = NewCreateShieldInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateShieldInstanceWithContext(context.Background(), request)
 }
 
 // CreateShieldInstance
@@ -321,6 +312,11 @@ func (c *Client) CreateShieldInstanceWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateShieldInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateShieldInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateShieldInstanceResponse()
@@ -355,13 +351,7 @@ func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceRe
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateShieldPlanInstanceRequest()
-    }
-    
-    response = NewCreateShieldPlanInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateShieldPlanInstanceWithContext(context.Background(), request)
 }
 
 // CreateShieldPlanInstance
@@ -377,6 +367,11 @@ func (c *Client) CreateShieldPlanInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateShieldPlanInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateShieldPlanInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateShieldPlanInstanceResponse()
@@ -409,13 +404,7 @@ func NewDeleteScanInstancesResponse() (response *DeleteScanInstancesResponse) {
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
-    if request == nil {
-        request = NewDeleteScanInstancesRequest()
-    }
-    
-    response = NewDeleteScanInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteScanInstancesWithContext(context.Background(), request)
 }
 
 // DeleteScanInstances
@@ -429,6 +418,11 @@ func (c *Client) DeleteScanInstancesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteScanInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScanInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteScanInstancesResponse()
@@ -462,13 +456,7 @@ func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse
 //  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
-    if request == nil {
-        request = NewDeleteShieldInstancesRequest()
-    }
-    
-    response = NewDeleteShieldInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteShieldInstancesWithContext(context.Background(), request)
 }
 
 // DeleteShieldInstances
@@ -483,6 +471,11 @@ func (c *Client) DeleteShieldInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteShieldInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteShieldInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteShieldInstancesResponse()
@@ -520,13 +513,7 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceInstancesRequest()
-    }
-    
-    response = NewDescribeResourceInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceInstancesWithContext(context.Background(), request)
 }
 
 // DescribeResourceInstances
@@ -545,6 +532,11 @@ func (c *Client) DescribeResourceInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceInstancesResponse()
@@ -584,13 +576,7 @@ func NewDescribeScanInstancesResponse() (response *DescribeScanInstancesResponse
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeScanInstancesRequest()
-    }
-    
-    response = NewDescribeScanInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScanInstancesWithContext(context.Background(), request)
 }
 
 // DescribeScanInstances
@@ -611,6 +597,11 @@ func (c *Client) DescribeScanInstancesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeScanInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScanInstancesResponse()
@@ -644,13 +635,7 @@ func NewDescribeScanResultsResponse() (response *DescribeScanResultsResponse) {
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
-    if request == nil {
-        request = NewDescribeScanResultsRequest()
-    }
-    
-    response = NewDescribeScanResultsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScanResultsWithContext(context.Background(), request)
 }
 
 // DescribeScanResults
@@ -665,6 +650,11 @@ func (c *Client) DescribeScanResultsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeScanResultsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanResults require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScanResultsResponse()
@@ -704,13 +694,7 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
 //  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeShieldInstancesRequest()
-    }
-    
-    response = NewDescribeShieldInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShieldInstancesWithContext(context.Background(), request)
 }
 
 // DescribeShieldInstances
@@ -731,6 +715,11 @@ func (c *Client) DescribeShieldInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeShieldInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShieldInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShieldInstancesResponse()
@@ -764,13 +753,7 @@ func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstan
 //  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeShieldPlanInstanceRequest()
-    }
-    
-    response = NewDescribeShieldPlanInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShieldPlanInstanceWithContext(context.Background(), request)
 }
 
 // DescribeShieldPlanInstance
@@ -785,6 +768,11 @@ func (c *Client) DescribeShieldPlanInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShieldPlanInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShieldPlanInstanceResponse()
@@ -817,13 +805,7 @@ func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) 
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeShieldResultRequest()
-    }
-    
-    response = NewDescribeShieldResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeShieldResultWithContext(context.Background(), request)
 }
 
 // DescribeShieldResult
@@ -837,6 +819,11 @@ func (c *Client) DescribeShieldResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeShieldResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeShieldResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeShieldResultResponse()
@@ -869,13 +856,7 @@ func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoIn
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
 func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserBaseInfoInstanceRequest()
-    }
-    
-    response = NewDescribeUserBaseInfoInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserBaseInfoInstanceWithContext(context.Background(), request)
 }
 
 // DescribeUserBaseInfoInstance
@@ -889,6 +870,11 @@ func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserBaseInfoInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserBaseInfoInstanceResponse()

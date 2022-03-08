@@ -16,6 +16,7 @@ package v20190916
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewBatchDescribeKTVMusicDetailsResponse() (response *BatchDescribeKTVMusicD
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) BatchDescribeKTVMusicDetails(request *BatchDescribeKTVMusicDetailsRequest) (response *BatchDescribeKTVMusicDetailsResponse, err error) {
-    if request == nil {
-        request = NewBatchDescribeKTVMusicDetailsRequest()
-    }
-    
-    response = NewBatchDescribeKTVMusicDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDescribeKTVMusicDetailsWithContext(context.Background(), request)
 }
 
 // BatchDescribeKTVMusicDetails
@@ -93,6 +88,11 @@ func (c *Client) BatchDescribeKTVMusicDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewBatchDescribeKTVMusicDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDescribeKTVMusicDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDescribeKTVMusicDetailsResponse()
@@ -129,13 +129,7 @@ func NewCreateKTVRobotResponse() (response *CreateKTVRobotResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateKTVRobot(request *CreateKTVRobotRequest) (response *CreateKTVRobotResponse, err error) {
-    if request == nil {
-        request = NewCreateKTVRobotRequest()
-    }
-    
-    response = NewCreateKTVRobotResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateKTVRobotWithContext(context.Background(), request)
 }
 
 // CreateKTVRobot
@@ -153,6 +147,11 @@ func (c *Client) CreateKTVRobotWithContext(ctx context.Context, request *CreateK
     if request == nil {
         request = NewCreateKTVRobotRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKTVRobot require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateKTVRobotResponse()
@@ -193,13 +192,7 @@ func NewDescribeAuthInfoResponse() (response *DescribeAuthInfoResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAuthInfo(request *DescribeAuthInfoRequest) (response *DescribeAuthInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeAuthInfoRequest()
-    }
-    
-    response = NewDescribeAuthInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAuthInfoWithContext(context.Background(), request)
 }
 
 // DescribeAuthInfo
@@ -221,6 +214,11 @@ func (c *Client) DescribeAuthInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAuthInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAuthInfoResponse()
@@ -256,13 +254,7 @@ func NewDescribeCloudMusicResponse() (response *DescribeCloudMusicResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCloudMusic(request *DescribeCloudMusicRequest) (response *DescribeCloudMusicResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudMusicRequest()
-    }
-    
-    response = NewDescribeCloudMusicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudMusicWithContext(context.Background(), request)
 }
 
 // DescribeCloudMusic
@@ -279,6 +271,11 @@ func (c *Client) DescribeCloudMusicWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCloudMusicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudMusic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudMusicResponse()
@@ -324,13 +321,7 @@ func NewDescribeCloudMusicPurchasedResponse() (response *DescribeCloudMusicPurch
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudMusicPurchased(request *DescribeCloudMusicPurchasedRequest) (response *DescribeCloudMusicPurchasedResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudMusicPurchasedRequest()
-    }
-    
-    response = NewDescribeCloudMusicPurchasedResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudMusicPurchasedWithContext(context.Background(), request)
 }
 
 // DescribeCloudMusicPurchased
@@ -357,6 +348,11 @@ func (c *Client) DescribeCloudMusicPurchasedWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudMusicPurchasedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudMusicPurchased require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudMusicPurchasedResponse()
@@ -389,13 +385,7 @@ func NewDescribeItemByIdResponse() (response *DescribeItemByIdResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeItemById(request *DescribeItemByIdRequest) (response *DescribeItemByIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeItemByIdRequest()
-    }
-    
-    response = NewDescribeItemByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeItemByIdWithContext(context.Background(), request)
 }
 
 // DescribeItemById
@@ -409,6 +399,11 @@ func (c *Client) DescribeItemByIdWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeItemByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeItemById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeItemByIdResponse()
@@ -444,13 +439,7 @@ func NewDescribeItemsResponse() (response *DescribeItemsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeItems(request *DescribeItemsRequest) (response *DescribeItemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeItemsRequest()
-    }
-    
-    response = NewDescribeItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeItemsWithContext(context.Background(), request)
 }
 
 // DescribeItems
@@ -467,6 +456,11 @@ func (c *Client) DescribeItemsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeItemsResponse()
@@ -501,13 +495,7 @@ func NewDescribeKTVMusicDetailResponse() (response *DescribeKTVMusicDetailRespon
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVMusicDetail(request *DescribeKTVMusicDetailRequest) (response *DescribeKTVMusicDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVMusicDetailRequest()
-    }
-    
-    response = NewDescribeKTVMusicDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVMusicDetailWithContext(context.Background(), request)
 }
 
 // DescribeKTVMusicDetail
@@ -523,6 +511,11 @@ func (c *Client) DescribeKTVMusicDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeKTVMusicDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMusicDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVMusicDetailResponse()
@@ -561,13 +554,7 @@ func NewDescribeKTVPlaylistDetailResponse() (response *DescribeKTVPlaylistDetail
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVPlaylistDetail(request *DescribeKTVPlaylistDetailRequest) (response *DescribeKTVPlaylistDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVPlaylistDetailRequest()
-    }
-    
-    response = NewDescribeKTVPlaylistDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVPlaylistDetailWithContext(context.Background(), request)
 }
 
 // DescribeKTVPlaylistDetail
@@ -587,6 +574,11 @@ func (c *Client) DescribeKTVPlaylistDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeKTVPlaylistDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVPlaylistDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVPlaylistDetailResponse()
@@ -626,13 +618,7 @@ func NewDescribeKTVPlaylistsResponse() (response *DescribeKTVPlaylistsResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVPlaylists(request *DescribeKTVPlaylistsRequest) (response *DescribeKTVPlaylistsResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVPlaylistsRequest()
-    }
-    
-    response = NewDescribeKTVPlaylistsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVPlaylistsWithContext(context.Background(), request)
 }
 
 // DescribeKTVPlaylists
@@ -653,6 +639,11 @@ func (c *Client) DescribeKTVPlaylistsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeKTVPlaylistsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVPlaylists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVPlaylistsResponse()
@@ -689,13 +680,7 @@ func NewDescribeKTVRobotsResponse() (response *DescribeKTVRobotsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeKTVRobots(request *DescribeKTVRobotsRequest) (response *DescribeKTVRobotsResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVRobotsRequest()
-    }
-    
-    response = NewDescribeKTVRobotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVRobotsWithContext(context.Background(), request)
 }
 
 // DescribeKTVRobots
@@ -713,6 +698,11 @@ func (c *Client) DescribeKTVRobotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeKTVRobotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVRobots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVRobotsResponse()
@@ -745,13 +735,7 @@ func NewDescribeKTVSingerCategoriesResponse() (response *DescribeKTVSingerCatego
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVSingerCategories(request *DescribeKTVSingerCategoriesRequest) (response *DescribeKTVSingerCategoriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVSingerCategoriesRequest()
-    }
-    
-    response = NewDescribeKTVSingerCategoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVSingerCategoriesWithContext(context.Background(), request)
 }
 
 // DescribeKTVSingerCategories
@@ -765,6 +749,11 @@ func (c *Client) DescribeKTVSingerCategoriesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeKTVSingerCategoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVSingerCategories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVSingerCategoriesResponse()
@@ -801,13 +790,7 @@ func NewDescribeKTVSingerMusicsResponse() (response *DescribeKTVSingerMusicsResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVSingerMusics(request *DescribeKTVSingerMusicsRequest) (response *DescribeKTVSingerMusicsResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVSingerMusicsRequest()
-    }
-    
-    response = NewDescribeKTVSingerMusicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVSingerMusicsWithContext(context.Background(), request)
 }
 
 // DescribeKTVSingerMusics
@@ -825,6 +808,11 @@ func (c *Client) DescribeKTVSingerMusicsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeKTVSingerMusicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVSingerMusics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVSingerMusicsResponse()
@@ -857,13 +845,7 @@ func NewDescribeKTVSingersResponse() (response *DescribeKTVSingersResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeKTVSingers(request *DescribeKTVSingersRequest) (response *DescribeKTVSingersResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVSingersRequest()
-    }
-    
-    response = NewDescribeKTVSingersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVSingersWithContext(context.Background(), request)
 }
 
 // DescribeKTVSingers
@@ -877,6 +859,11 @@ func (c *Client) DescribeKTVSingersWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeKTVSingersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVSingers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVSingersResponse()
@@ -909,13 +896,7 @@ func NewDescribeKTVTopListResponse() (response *DescribeKTVTopListResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeKTVTopList(request *DescribeKTVTopListRequest) (response *DescribeKTVTopListResponse, err error) {
-    if request == nil {
-        request = NewDescribeKTVTopListRequest()
-    }
-    
-    response = NewDescribeKTVTopListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKTVTopListWithContext(context.Background(), request)
 }
 
 // DescribeKTVTopList
@@ -929,6 +910,11 @@ func (c *Client) DescribeKTVTopListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeKTVTopListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVTopList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKTVTopListResponse()
@@ -961,13 +947,7 @@ func NewDescribeLyricResponse() (response *DescribeLyricResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLyric(request *DescribeLyricRequest) (response *DescribeLyricResponse, err error) {
-    if request == nil {
-        request = NewDescribeLyricRequest()
-    }
-    
-    response = NewDescribeLyricResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLyricWithContext(context.Background(), request)
 }
 
 // DescribeLyric
@@ -981,6 +961,11 @@ func (c *Client) DescribeLyricWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeLyricRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLyric require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLyricResponse()
@@ -1016,13 +1001,7 @@ func NewDescribeMusicResponse() (response *DescribeMusicResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMusic(request *DescribeMusicRequest) (response *DescribeMusicResponse, err error) {
-    if request == nil {
-        request = NewDescribeMusicRequest()
-    }
-    
-    response = NewDescribeMusicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMusicWithContext(context.Background(), request)
 }
 
 // DescribeMusic
@@ -1039,6 +1018,11 @@ func (c *Client) DescribeMusicWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeMusicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMusic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMusicResponse()
@@ -1076,13 +1060,7 @@ func NewDescribeMusicSaleStatusResponse() (response *DescribeMusicSaleStatusResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeMusicSaleStatus(request *DescribeMusicSaleStatusRequest) (response *DescribeMusicSaleStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeMusicSaleStatusRequest()
-    }
-    
-    response = NewDescribeMusicSaleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMusicSaleStatusWithContext(context.Background(), request)
 }
 
 // DescribeMusicSaleStatus
@@ -1101,6 +1079,11 @@ func (c *Client) DescribeMusicSaleStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMusicSaleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMusicSaleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMusicSaleStatusResponse()
@@ -1137,13 +1120,7 @@ func NewDescribePackageItemsResponse() (response *DescribePackageItemsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackageItems(request *DescribePackageItemsRequest) (response *DescribePackageItemsResponse, err error) {
-    if request == nil {
-        request = NewDescribePackageItemsRequest()
-    }
-    
-    response = NewDescribePackageItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePackageItemsWithContext(context.Background(), request)
 }
 
 // DescribePackageItems
@@ -1161,6 +1138,11 @@ func (c *Client) DescribePackageItemsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePackageItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackageItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePackageItemsResponse()
@@ -1197,13 +1179,7 @@ func NewDescribePackagesResponse() (response *DescribePackagesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
-    if request == nil {
-        request = NewDescribePackagesRequest()
-    }
-    
-    response = NewDescribePackagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePackagesWithContext(context.Background(), request)
 }
 
 // DescribePackages
@@ -1221,6 +1197,11 @@ func (c *Client) DescribePackagesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribePackagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePackagesResponse()
@@ -1260,13 +1241,7 @@ func NewDescribePkgOfflineMusicResponse() (response *DescribePkgOfflineMusicResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePkgOfflineMusic(request *DescribePkgOfflineMusicRequest) (response *DescribePkgOfflineMusicResponse, err error) {
-    if request == nil {
-        request = NewDescribePkgOfflineMusicRequest()
-    }
-    
-    response = NewDescribePkgOfflineMusicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePkgOfflineMusicWithContext(context.Background(), request)
 }
 
 // DescribePkgOfflineMusic
@@ -1287,6 +1262,11 @@ func (c *Client) DescribePkgOfflineMusicWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribePkgOfflineMusicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePkgOfflineMusic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePkgOfflineMusicResponse()
@@ -1322,13 +1302,7 @@ func NewDescribeStationsResponse() (response *DescribeStationsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeStations(request *DescribeStationsRequest) (response *DescribeStationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeStationsRequest()
-    }
-    
-    response = NewDescribeStationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStationsWithContext(context.Background(), request)
 }
 
 // DescribeStations
@@ -1345,6 +1319,11 @@ func (c *Client) DescribeStationsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeStationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStationsResponse()
@@ -1381,13 +1360,7 @@ func NewDestroyKTVRobotResponse() (response *DestroyKTVRobotResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DestroyKTVRobot(request *DestroyKTVRobotRequest) (response *DestroyKTVRobotResponse, err error) {
-    if request == nil {
-        request = NewDestroyKTVRobotRequest()
-    }
-    
-    response = NewDestroyKTVRobotResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyKTVRobotWithContext(context.Background(), request)
 }
 
 // DestroyKTVRobot
@@ -1405,6 +1378,11 @@ func (c *Client) DestroyKTVRobotWithContext(ctx context.Context, request *Destro
     if request == nil {
         request = NewDestroyKTVRobotRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyKTVRobot require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyKTVRobotResponse()
@@ -1444,13 +1422,7 @@ func NewModifyMusicOnShelvesResponse() (response *ModifyMusicOnShelvesResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMusicOnShelves(request *ModifyMusicOnShelvesRequest) (response *ModifyMusicOnShelvesResponse, err error) {
-    if request == nil {
-        request = NewModifyMusicOnShelvesRequest()
-    }
-    
-    response = NewModifyMusicOnShelvesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMusicOnShelvesWithContext(context.Background(), request)
 }
 
 // ModifyMusicOnShelves
@@ -1471,6 +1443,11 @@ func (c *Client) ModifyMusicOnShelvesWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyMusicOnShelvesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMusicOnShelves require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMusicOnShelvesResponse()
@@ -1510,13 +1487,7 @@ func NewPutMusicOnTheShelvesResponse() (response *PutMusicOnTheShelvesResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PutMusicOnTheShelves(request *PutMusicOnTheShelvesRequest) (response *PutMusicOnTheShelvesResponse, err error) {
-    if request == nil {
-        request = NewPutMusicOnTheShelvesRequest()
-    }
-    
-    response = NewPutMusicOnTheShelvesResponse()
-    err = c.Send(request, response)
-    return
+    return c.PutMusicOnTheShelvesWithContext(context.Background(), request)
 }
 
 // PutMusicOnTheShelves
@@ -1537,6 +1508,11 @@ func (c *Client) PutMusicOnTheShelvesWithContext(ctx context.Context, request *P
     if request == nil {
         request = NewPutMusicOnTheShelvesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutMusicOnTheShelves require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPutMusicOnTheShelvesResponse()
@@ -1569,13 +1545,7 @@ func NewReportDataResponse() (response *ReportDataResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReportData(request *ReportDataRequest) (response *ReportDataResponse, err error) {
-    if request == nil {
-        request = NewReportDataRequest()
-    }
-    
-    response = NewReportDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReportDataWithContext(context.Background(), request)
 }
 
 // ReportData
@@ -1589,6 +1559,11 @@ func (c *Client) ReportDataWithContext(ctx context.Context, request *ReportDataR
     if request == nil {
         request = NewReportDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReportDataResponse()
@@ -1622,13 +1597,7 @@ func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
-    if request == nil {
-        request = NewSearchKTVMusicsRequest()
-    }
-    
-    response = NewSearchKTVMusicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchKTVMusicsWithContext(context.Background(), request)
 }
 
 // SearchKTVMusics
@@ -1643,6 +1612,11 @@ func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchKTVMusicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchKTVMusics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchKTVMusicsResponse()
@@ -1679,13 +1653,7 @@ func NewSyncKTVRobotCommandResponse() (response *SyncKTVRobotCommandResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncKTVRobotCommand(request *SyncKTVRobotCommandRequest) (response *SyncKTVRobotCommandResponse, err error) {
-    if request == nil {
-        request = NewSyncKTVRobotCommandRequest()
-    }
-    
-    response = NewSyncKTVRobotCommandResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncKTVRobotCommandWithContext(context.Background(), request)
 }
 
 // SyncKTVRobotCommand
@@ -1703,6 +1671,11 @@ func (c *Client) SyncKTVRobotCommandWithContext(ctx context.Context, request *Sy
     if request == nil {
         request = NewSyncKTVRobotCommandRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncKTVRobotCommand require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncKTVRobotCommandResponse()
@@ -1742,13 +1715,7 @@ func NewTakeMusicOffShelvesResponse() (response *TakeMusicOffShelvesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TakeMusicOffShelves(request *TakeMusicOffShelvesRequest) (response *TakeMusicOffShelvesResponse, err error) {
-    if request == nil {
-        request = NewTakeMusicOffShelvesRequest()
-    }
-    
-    response = NewTakeMusicOffShelvesResponse()
-    err = c.Send(request, response)
-    return
+    return c.TakeMusicOffShelvesWithContext(context.Background(), request)
 }
 
 // TakeMusicOffShelves
@@ -1769,6 +1736,11 @@ func (c *Client) TakeMusicOffShelvesWithContext(ctx context.Context, request *Ta
     if request == nil {
         request = NewTakeMusicOffShelvesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TakeMusicOffShelves require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTakeMusicOffShelvesResponse()

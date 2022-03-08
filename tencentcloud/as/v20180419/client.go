@@ -16,6 +16,7 @@ package v20180419
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,13 +81,7 @@ func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESALREADYINAUTOSCALINGGROUP = "ResourceUnavailable.InstancesAlreadyInAutoScalingGroup"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *AttachInstancesResponse, err error) {
-    if request == nil {
-        request = NewAttachInstancesRequest()
-    }
-    
-    response = NewAttachInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachInstancesWithContext(context.Background(), request)
 }
 
 // AttachInstances
@@ -111,6 +106,11 @@ func (c *Client) AttachInstancesWithContext(ctx context.Context, request *Attach
     if request == nil {
         request = NewAttachInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachInstancesResponse()
@@ -140,11 +140,13 @@ func NewAttachLoadBalancersResponse() (response *AttachLoadBalancersResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR_CALLLBERROR = "InternalError.CallLbError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFORWARDLB = "InvalidParameterValue.DuplicatedForwardLb"
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
@@ -161,13 +163,7 @@ func NewAttachLoadBalancersResponse() (response *AttachLoadBalancersResponse) {
 //  RESOURCEUNAVAILABLE_LBVPCINCONSISTENT = "ResourceUnavailable.LbVpcInconsistent"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) AttachLoadBalancers(request *AttachLoadBalancersRequest) (response *AttachLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewAttachLoadBalancersRequest()
-    }
-    
-    response = NewAttachLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachLoadBalancersWithContext(context.Background(), request)
 }
 
 // AttachLoadBalancers
@@ -175,11 +171,13 @@ func (c *Client) AttachLoadBalancers(request *AttachLoadBalancersRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR_CALLLBERROR = "InternalError.CallLbError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFORWARDLB = "InvalidParameterValue.DuplicatedForwardLb"
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
@@ -199,6 +197,11 @@ func (c *Client) AttachLoadBalancersWithContext(ctx context.Context, request *At
     if request == nil {
         request = NewAttachLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachLoadBalancersResponse()
@@ -229,13 +232,7 @@ func NewClearLaunchConfigurationAttributesResponse() (response *ClearLaunchConfi
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 func (c *Client) ClearLaunchConfigurationAttributes(request *ClearLaunchConfigurationAttributesRequest) (response *ClearLaunchConfigurationAttributesResponse, err error) {
-    if request == nil {
-        request = NewClearLaunchConfigurationAttributesRequest()
-    }
-    
-    response = NewClearLaunchConfigurationAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearLaunchConfigurationAttributesWithContext(context.Background(), request)
 }
 
 // ClearLaunchConfigurationAttributes
@@ -247,6 +244,11 @@ func (c *Client) ClearLaunchConfigurationAttributesWithContext(ctx context.Conte
     if request == nil {
         request = NewClearLaunchConfigurationAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearLaunchConfigurationAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearLaunchConfigurationAttributesResponse()
@@ -289,13 +291,7 @@ func NewCompleteLifecycleActionResponse() (response *CompleteLifecycleActionResp
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 //  RESOURCEUNAVAILABLE_LIFECYCLEACTIONRESULTHASSET = "ResourceUnavailable.LifecycleActionResultHasSet"
 func (c *Client) CompleteLifecycleAction(request *CompleteLifecycleActionRequest) (response *CompleteLifecycleActionResponse, err error) {
-    if request == nil {
-        request = NewCompleteLifecycleActionRequest()
-    }
-    
-    response = NewCompleteLifecycleActionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CompleteLifecycleActionWithContext(context.Background(), request)
 }
 
 // CompleteLifecycleAction
@@ -319,6 +315,11 @@ func (c *Client) CompleteLifecycleActionWithContext(ctx context.Context, request
     if request == nil {
         request = NewCompleteLifecycleActionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CompleteLifecycleAction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCompleteLifecycleActionResponse()
@@ -388,13 +389,7 @@ func NewCreateAutoScalingGroupResponse() (response *CreateAutoScalingGroupRespon
 //  RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = "ResourceUnavailable.ProjectInconsistent"
 //  RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = "ResourceUnavailable.ZoneUnavailable"
 func (c *Client) CreateAutoScalingGroup(request *CreateAutoScalingGroupRequest) (response *CreateAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateAutoScalingGroupRequest()
-    }
-    
-    response = NewCreateAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // CreateAutoScalingGroup
@@ -445,6 +440,11 @@ func (c *Client) CreateAutoScalingGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAutoScalingGroupResponse()
@@ -500,13 +500,7 @@ func NewCreateAutoScalingGroupFromInstanceResponse() (response *CreateAutoScalin
 //  RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = "ResourceUnavailable.ProjectInconsistent"
 //  RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = "ResourceUnavailable.StoppedInstanceNotAllowAttach"
 func (c *Client) CreateAutoScalingGroupFromInstance(request *CreateAutoScalingGroupFromInstanceRequest) (response *CreateAutoScalingGroupFromInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateAutoScalingGroupFromInstanceRequest()
-    }
-    
-    response = NewCreateAutoScalingGroupFromInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAutoScalingGroupFromInstanceWithContext(context.Background(), request)
 }
 
 // CreateAutoScalingGroupFromInstance
@@ -543,6 +537,11 @@ func (c *Client) CreateAutoScalingGroupFromInstanceWithContext(ctx context.Conte
     if request == nil {
         request = NewCreateAutoScalingGroupFromInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoScalingGroupFromInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAutoScalingGroupFromInstanceResponse()
@@ -605,13 +604,7 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_INSTANCEMARKETOPTIONS = "MissingParameter.InstanceMarketOptions"
 func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationRequest) (response *CreateLaunchConfigurationResponse, err error) {
-    if request == nil {
-        request = NewCreateLaunchConfigurationRequest()
-    }
-    
-    response = NewCreateLaunchConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLaunchConfigurationWithContext(context.Background(), request)
 }
 
 // CreateLaunchConfiguration
@@ -655,6 +648,11 @@ func (c *Client) CreateLaunchConfigurationWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateLaunchConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLaunchConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLaunchConfigurationResponse()
@@ -737,13 +735,7 @@ func NewCreateLifecycleHookResponse() (response *CreateLifecycleHookResponse) {
 //  RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
 //  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 func (c *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (response *CreateLifecycleHookResponse, err error) {
-    if request == nil {
-        request = NewCreateLifecycleHookRequest()
-    }
-    
-    response = NewCreateLifecycleHookResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLifecycleHookWithContext(context.Background(), request)
 }
 
 // CreateLifecycleHook
@@ -807,6 +799,11 @@ func (c *Client) CreateLifecycleHookWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateLifecycleHookRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLifecycleHook require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLifecycleHookResponse()
@@ -904,13 +901,7 @@ func NewCreateNotificationConfigurationResponse() (response *CreateNotificationC
 //  RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
 //  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConfigurationRequest) (response *CreateNotificationConfigurationResponse, err error) {
-    if request == nil {
-        request = NewCreateNotificationConfigurationRequest()
-    }
-    
-    response = NewCreateNotificationConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNotificationConfigurationWithContext(context.Background(), request)
 }
 
 // CreateNotificationConfiguration
@@ -989,6 +980,11 @@ func (c *Client) CreateNotificationConfigurationWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateNotificationConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotificationConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNotificationConfigurationResponse()
@@ -1029,13 +1025,7 @@ func NewCreateScalingPolicyResponse() (response *CreateScalingPolicyResponse) {
 //  LIMITEXCEEDED_QUOTANOTENOUGH = "LimitExceeded.QuotaNotEnough"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) CreateScalingPolicy(request *CreateScalingPolicyRequest) (response *CreateScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateScalingPolicyRequest()
-    }
-    
-    response = NewCreateScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateScalingPolicyWithContext(context.Background(), request)
 }
 
 // CreateScalingPolicy
@@ -1057,6 +1047,11 @@ func (c *Client) CreateScalingPolicyWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateScalingPolicyResponse()
@@ -1103,13 +1098,7 @@ func NewCreateScheduledActionResponse() (response *CreateScheduledActionResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) CreateScheduledAction(request *CreateScheduledActionRequest) (response *CreateScheduledActionResponse, err error) {
-    if request == nil {
-        request = NewCreateScheduledActionRequest()
-    }
-    
-    response = NewCreateScheduledActionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateScheduledActionWithContext(context.Background(), request)
 }
 
 // CreateScheduledAction
@@ -1137,6 +1126,11 @@ func (c *Client) CreateScheduledActionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateScheduledActionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScheduledAction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateScheduledActionResponse()
@@ -1175,13 +1169,7 @@ func NewDeleteAutoScalingGroupResponse() (response *DeleteAutoScalingGroupRespon
 //  RESOURCEINUSE_INSTANCEINGROUP = "ResourceInUse.InstanceInGroup"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) DeleteAutoScalingGroup(request *DeleteAutoScalingGroupRequest) (response *DeleteAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteAutoScalingGroupRequest()
-    }
-    
-    response = NewDeleteAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // DeleteAutoScalingGroup
@@ -1201,6 +1189,11 @@ func (c *Client) DeleteAutoScalingGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAutoScalingGroupResponse()
@@ -1237,13 +1230,7 @@ func NewDeleteLaunchConfigurationResponse() (response *DeleteLaunchConfiguration
 //  RESOURCEINUSE_LAUNCHCONFIGURATIONIDINUSE = "ResourceInUse.LaunchConfigurationIdInUse"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
 func (c *Client) DeleteLaunchConfiguration(request *DeleteLaunchConfigurationRequest) (response *DeleteLaunchConfigurationResponse, err error) {
-    if request == nil {
-        request = NewDeleteLaunchConfigurationRequest()
-    }
-    
-    response = NewDeleteLaunchConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLaunchConfigurationWithContext(context.Background(), request)
 }
 
 // DeleteLaunchConfiguration
@@ -1261,6 +1248,11 @@ func (c *Client) DeleteLaunchConfigurationWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteLaunchConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLaunchConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLaunchConfigurationResponse()
@@ -1295,13 +1287,7 @@ func NewDeleteLifecycleHookResponse() (response *DeleteLifecycleHookResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 func (c *Client) DeleteLifecycleHook(request *DeleteLifecycleHookRequest) (response *DeleteLifecycleHookResponse, err error) {
-    if request == nil {
-        request = NewDeleteLifecycleHookRequest()
-    }
-    
-    response = NewDeleteLifecycleHookResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLifecycleHookWithContext(context.Background(), request)
 }
 
 // DeleteLifecycleHook
@@ -1317,6 +1303,11 @@ func (c *Client) DeleteLifecycleHookWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteLifecycleHookRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLifecycleHook require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLifecycleHookResponse()
@@ -1348,13 +1339,7 @@ func NewDeleteNotificationConfigurationResponse() (response *DeleteNotificationC
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = "ResourceNotFound.AutoScalingNotificationNotFound"
 func (c *Client) DeleteNotificationConfiguration(request *DeleteNotificationConfigurationRequest) (response *DeleteNotificationConfigurationResponse, err error) {
-    if request == nil {
-        request = NewDeleteNotificationConfigurationRequest()
-    }
-    
-    response = NewDeleteNotificationConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNotificationConfigurationWithContext(context.Background(), request)
 }
 
 // DeleteNotificationConfiguration
@@ -1367,6 +1352,11 @@ func (c *Client) DeleteNotificationConfigurationWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteNotificationConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotificationConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNotificationConfigurationResponse()
@@ -1398,13 +1388,7 @@ func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  RESOURCENOTFOUND_SCALINGPOLICYNOTFOUND = "ResourceNotFound.ScalingPolicyNotFound"
 func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteScalingPolicyRequest()
-    }
-    
-    response = NewDeleteScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteScalingPolicyWithContext(context.Background(), request)
 }
 
 // DeleteScalingPolicy
@@ -1417,6 +1401,11 @@ func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteScalingPolicyResponse()
@@ -1448,13 +1437,7 @@ func NewDeleteScheduledActionResponse() (response *DeleteScheduledActionResponse
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
 //  RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 func (c *Client) DeleteScheduledAction(request *DeleteScheduledActionRequest) (response *DeleteScheduledActionResponse, err error) {
-    if request == nil {
-        request = NewDeleteScheduledActionRequest()
-    }
-    
-    response = NewDeleteScheduledActionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteScheduledActionWithContext(context.Background(), request)
 }
 
 // DeleteScheduledAction
@@ -1467,6 +1450,11 @@ func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteScheduledActionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScheduledAction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteScheduledActionResponse()
@@ -1497,13 +1485,7 @@ func NewDescribeAccountLimitsResponse() (response *DescribeAccountLimitsResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeAccountLimits(request *DescribeAccountLimitsRequest) (response *DescribeAccountLimitsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountLimitsRequest()
-    }
-    
-    response = NewDescribeAccountLimitsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountLimitsWithContext(context.Background(), request)
 }
 
 // DescribeAccountLimits
@@ -1515,6 +1497,11 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAccountLimitsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountLimits require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountLimitsResponse()
@@ -1552,13 +1539,7 @@ func NewDescribeAutoScalingActivitiesResponse() (response *DescribeAutoScalingAc
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  LIMITEXCEEDED_FILTERVALUESTOOLONG = "LimitExceeded.FilterValuesTooLong"
 func (c *Client) DescribeAutoScalingActivities(request *DescribeAutoScalingActivitiesRequest) (response *DescribeAutoScalingActivitiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoScalingActivitiesRequest()
-    }
-    
-    response = NewDescribeAutoScalingActivitiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoScalingActivitiesWithContext(context.Background(), request)
 }
 
 // DescribeAutoScalingActivities
@@ -1577,6 +1558,11 @@ func (c *Client) DescribeAutoScalingActivitiesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAutoScalingActivitiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingActivities require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoScalingActivitiesResponse()
@@ -1608,13 +1594,7 @@ func NewDescribeAutoScalingAdvicesResponse() (response *DescribeAutoScalingAdvic
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeAutoScalingAdvices(request *DescribeAutoScalingAdvicesRequest) (response *DescribeAutoScalingAdvicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoScalingAdvicesRequest()
-    }
-    
-    response = NewDescribeAutoScalingAdvicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoScalingAdvicesWithContext(context.Background(), request)
 }
 
 // DescribeAutoScalingAdvices
@@ -1627,6 +1607,11 @@ func (c *Client) DescribeAutoScalingAdvicesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAutoScalingAdvicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingAdvices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoScalingAdvicesResponse()
@@ -1659,13 +1644,7 @@ func NewDescribeAutoScalingGroupLastActivitiesResponse() (response *DescribeAuto
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NORESOURCEPERMISSION = "InvalidParameterValue.NoResourcePermission"
 func (c *Client) DescribeAutoScalingGroupLastActivities(request *DescribeAutoScalingGroupLastActivitiesRequest) (response *DescribeAutoScalingGroupLastActivitiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoScalingGroupLastActivitiesRequest()
-    }
-    
-    response = NewDescribeAutoScalingGroupLastActivitiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoScalingGroupLastActivitiesWithContext(context.Background(), request)
 }
 
 // DescribeAutoScalingGroupLastActivities
@@ -1679,6 +1658,11 @@ func (c *Client) DescribeAutoScalingGroupLastActivitiesWithContext(ctx context.C
     if request == nil {
         request = NewDescribeAutoScalingGroupLastActivitiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingGroupLastActivities require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoScalingGroupLastActivitiesResponse()
@@ -1723,13 +1707,7 @@ func NewDescribeAutoScalingGroupsResponse() (response *DescribeAutoScalingGroups
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPERMISSION = "InvalidPermission"
 func (c *Client) DescribeAutoScalingGroups(request *DescribeAutoScalingGroupsRequest) (response *DescribeAutoScalingGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoScalingGroupsRequest()
-    }
-    
-    response = NewDescribeAutoScalingGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoScalingGroupsWithContext(context.Background(), request)
 }
 
 // DescribeAutoScalingGroups
@@ -1755,6 +1733,11 @@ func (c *Client) DescribeAutoScalingGroupsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAutoScalingGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoScalingGroupsResponse()
@@ -1797,13 +1780,7 @@ func NewDescribeAutoScalingInstancesResponse() (response *DescribeAutoScalingIns
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  LIMITEXCEEDED_FILTERVALUESTOOLONG = "LimitExceeded.FilterValuesTooLong"
 func (c *Client) DescribeAutoScalingInstances(request *DescribeAutoScalingInstancesRequest) (response *DescribeAutoScalingInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoScalingInstancesRequest()
-    }
-    
-    response = NewDescribeAutoScalingInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoScalingInstancesWithContext(context.Background(), request)
 }
 
 // DescribeAutoScalingInstances
@@ -1827,6 +1804,11 @@ func (c *Client) DescribeAutoScalingInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAutoScalingInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoScalingInstancesResponse()
@@ -1868,13 +1850,7 @@ func NewDescribeLaunchConfigurationsResponse() (response *DescribeLaunchConfigur
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 //  INVALIDPERMISSION = "InvalidPermission"
 func (c *Client) DescribeLaunchConfigurations(request *DescribeLaunchConfigurationsRequest) (response *DescribeLaunchConfigurationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLaunchConfigurationsRequest()
-    }
-    
-    response = NewDescribeLaunchConfigurationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLaunchConfigurationsWithContext(context.Background(), request)
 }
 
 // DescribeLaunchConfigurations
@@ -1897,6 +1873,11 @@ func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLaunchConfigurationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLaunchConfigurations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLaunchConfigurationsResponse()
@@ -1939,13 +1920,7 @@ func NewDescribeLifecycleHooksResponse() (response *DescribeLifecycleHooksRespon
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEHOOKID = "InvalidParameterValue.InvalidLifecycleHookId"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeLifecycleHooks(request *DescribeLifecycleHooksRequest) (response *DescribeLifecycleHooksResponse, err error) {
-    if request == nil {
-        request = NewDescribeLifecycleHooksRequest()
-    }
-    
-    response = NewDescribeLifecycleHooksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLifecycleHooksWithContext(context.Background(), request)
 }
 
 // DescribeLifecycleHooks
@@ -1969,6 +1944,11 @@ func (c *Client) DescribeLifecycleHooksWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeLifecycleHooksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLifecycleHooks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLifecycleHooksResponse()
@@ -2008,13 +1988,7 @@ func NewDescribeNotificationConfigurationsResponse() (response *DescribeNotifica
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 func (c *Client) DescribeNotificationConfigurations(request *DescribeNotificationConfigurationsRequest) (response *DescribeNotificationConfigurationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotificationConfigurationsRequest()
-    }
-    
-    response = NewDescribeNotificationConfigurationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotificationConfigurationsWithContext(context.Background(), request)
 }
 
 // DescribeNotificationConfigurations
@@ -2035,6 +2009,11 @@ func (c *Client) DescribeNotificationConfigurationsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeNotificationConfigurationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotificationConfigurations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotificationConfigurationsResponse()
@@ -2073,13 +2052,7 @@ func NewDescribePaiInstancesResponse() (response *DescribePaiInstancesResponse) 
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribePaiInstances(request *DescribePaiInstancesRequest) (response *DescribePaiInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribePaiInstancesRequest()
-    }
-    
-    response = NewDescribePaiInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePaiInstancesWithContext(context.Background(), request)
 }
 
 // DescribePaiInstances
@@ -2099,6 +2072,11 @@ func (c *Client) DescribePaiInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribePaiInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePaiInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePaiInstancesResponse()
@@ -2135,13 +2113,7 @@ func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResp
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest) (response *DescribeScalingPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeScalingPoliciesRequest()
-    }
-    
-    response = NewDescribeScalingPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScalingPoliciesWithContext(context.Background(), request)
 }
 
 // DescribeScalingPolicies
@@ -2159,6 +2131,11 @@ func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeScalingPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScalingPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScalingPoliciesResponse()
@@ -2201,13 +2178,7 @@ func NewDescribeScheduledActionsResponse() (response *DescribeScheduledActionsRe
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
 //  RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 func (c *Client) DescribeScheduledActions(request *DescribeScheduledActionsRequest) (response *DescribeScheduledActionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeScheduledActionsRequest()
-    }
-    
-    response = NewDescribeScheduledActionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScheduledActionsWithContext(context.Background(), request)
 }
 
 // DescribeScheduledActions
@@ -2231,6 +2202,11 @@ func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeScheduledActionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScheduledActions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScheduledActionsResponse()
@@ -2278,13 +2254,7 @@ func NewDetachInstancesResponse() (response *DetachInstancesResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCEINOPERATION = "ResourceUnavailable.InstanceInOperation"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) DetachInstances(request *DetachInstancesRequest) (response *DetachInstancesResponse, err error) {
-    if request == nil {
-        request = NewDetachInstancesRequest()
-    }
-    
-    response = NewDetachInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachInstancesWithContext(context.Background(), request)
 }
 
 // DetachInstances
@@ -2313,6 +2283,11 @@ func (c *Client) DetachInstancesWithContext(ctx context.Context, request *Detach
     if request == nil {
         request = NewDetachInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachInstancesResponse()
@@ -2363,13 +2338,7 @@ func NewDetachLoadBalancersResponse() (response *DetachLoadBalancersResponse) {
 //  RESOURCEUNAVAILABLE_LBVPCINCONSISTENT = "ResourceUnavailable.LbVpcInconsistent"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) DetachLoadBalancers(request *DetachLoadBalancersRequest) (response *DetachLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewDetachLoadBalancersRequest()
-    }
-    
-    response = NewDetachLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachLoadBalancersWithContext(context.Background(), request)
 }
 
 // DetachLoadBalancers
@@ -2401,6 +2370,11 @@ func (c *Client) DetachLoadBalancersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDetachLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachLoadBalancersResponse()
@@ -2433,13 +2407,7 @@ func NewDisableAutoScalingGroupResponse() (response *DisableAutoScalingGroupResp
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) DisableAutoScalingGroup(request *DisableAutoScalingGroupRequest) (response *DisableAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewDisableAutoScalingGroupRequest()
-    }
-    
-    response = NewDisableAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // DisableAutoScalingGroup
@@ -2453,6 +2421,11 @@ func (c *Client) DisableAutoScalingGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewDisableAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableAutoScalingGroupResponse()
@@ -2485,13 +2458,7 @@ func NewEnableAutoScalingGroupResponse() (response *EnableAutoScalingGroupRespon
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) EnableAutoScalingGroup(request *EnableAutoScalingGroupRequest) (response *EnableAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewEnableAutoScalingGroupRequest()
-    }
-    
-    response = NewEnableAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // EnableAutoScalingGroup
@@ -2505,6 +2472,11 @@ func (c *Client) EnableAutoScalingGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewEnableAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableAutoScalingGroupResponse()
@@ -2548,13 +2520,7 @@ func NewExecuteScalingPolicyResponse() (response *ExecuteScalingPolicyResponse) 
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPABNORMALSTATUS = "ResourceUnavailable.AutoScalingGroupAbnormalStatus"
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 func (c *Client) ExecuteScalingPolicy(request *ExecuteScalingPolicyRequest) (response *ExecuteScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewExecuteScalingPolicyRequest()
-    }
-    
-    response = NewExecuteScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExecuteScalingPolicyWithContext(context.Background(), request)
 }
 
 // ExecuteScalingPolicy
@@ -2579,6 +2545,11 @@ func (c *Client) ExecuteScalingPolicyWithContext(ctx context.Context, request *E
     if request == nil {
         request = NewExecuteScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecuteScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExecuteScalingPolicyResponse()
@@ -2636,13 +2607,7 @@ func NewModifyAutoScalingGroupResponse() (response *ModifyAutoScalingGroupRespon
 //  RESOURCEUNAVAILABLE_LAUNCHCONFIGURATIONSTATUSABNORMAL = "ResourceUnavailable.LaunchConfigurationStatusAbnormal"
 //  RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = "ResourceUnavailable.ProjectInconsistent"
 func (c *Client) ModifyAutoScalingGroup(request *ModifyAutoScalingGroupRequest) (response *ModifyAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyAutoScalingGroupRequest()
-    }
-    
-    response = NewModifyAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // ModifyAutoScalingGroup
@@ -2681,6 +2646,11 @@ func (c *Client) ModifyAutoScalingGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAutoScalingGroupResponse()
@@ -2719,13 +2689,7 @@ func NewModifyDesiredCapacityResponse() (response *ModifyDesiredCapacityResponse
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPABNORMALSTATUS = "ResourceUnavailable.AutoScalingGroupAbnormalStatus"
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPDISABLED = "ResourceUnavailable.AutoScalingGroupDisabled"
 func (c *Client) ModifyDesiredCapacity(request *ModifyDesiredCapacityRequest) (response *ModifyDesiredCapacityResponse, err error) {
-    if request == nil {
-        request = NewModifyDesiredCapacityRequest()
-    }
-    
-    response = NewModifyDesiredCapacityResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDesiredCapacityWithContext(context.Background(), request)
 }
 
 // ModifyDesiredCapacity
@@ -2745,6 +2709,11 @@ func (c *Client) ModifyDesiredCapacityWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyDesiredCapacityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDesiredCapacity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDesiredCapacityResponse()
@@ -2801,13 +2770,7 @@ func NewModifyLaunchConfigurationAttributesResponse() (response *ModifyLaunchCon
 //  MISSINGPARAMETER_INSCENARIO = "MissingParameter.InScenario"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
 func (c *Client) ModifyLaunchConfigurationAttributes(request *ModifyLaunchConfigurationAttributesRequest) (response *ModifyLaunchConfigurationAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyLaunchConfigurationAttributesRequest()
-    }
-    
-    response = NewModifyLaunchConfigurationAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLaunchConfigurationAttributesWithContext(context.Background(), request)
 }
 
 // ModifyLaunchConfigurationAttributes
@@ -2845,6 +2808,11 @@ func (c *Client) ModifyLaunchConfigurationAttributesWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyLaunchConfigurationAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLaunchConfigurationAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLaunchConfigurationAttributesResponse()
@@ -2895,13 +2863,7 @@ func NewModifyLoadBalancerTargetAttributesResponse() (response *ModifyLoadBalanc
 //  RESOURCEUNAVAILABLE_LBVPCINCONSISTENT = "ResourceUnavailable.LbVpcInconsistent"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) ModifyLoadBalancerTargetAttributes(request *ModifyLoadBalancerTargetAttributesRequest) (response *ModifyLoadBalancerTargetAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancerTargetAttributesRequest()
-    }
-    
-    response = NewModifyLoadBalancerTargetAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoadBalancerTargetAttributesWithContext(context.Background(), request)
 }
 
 // ModifyLoadBalancerTargetAttributes
@@ -2933,6 +2895,11 @@ func (c *Client) ModifyLoadBalancerTargetAttributesWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyLoadBalancerTargetAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoadBalancerTargetAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancerTargetAttributesResponse()
@@ -2989,13 +2956,7 @@ func NewModifyLoadBalancersResponse() (response *ModifyLoadBalancersResponse) {
 //  RESOURCEUNAVAILABLE_LBVPCINCONSISTENT = "ResourceUnavailable.LbVpcInconsistent"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) ModifyLoadBalancers(request *ModifyLoadBalancersRequest) (response *ModifyLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancersRequest()
-    }
-    
-    response = NewModifyLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoadBalancersWithContext(context.Background(), request)
 }
 
 // ModifyLoadBalancers
@@ -3033,6 +2994,11 @@ func (c *Client) ModifyLoadBalancersWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancersResponse()
@@ -3073,13 +3039,7 @@ func NewModifyNotificationConfigurationResponse() (response *ModifyNotificationC
 //  RESOURCENOTFOUND_TDMQCMQTOPICNOTFOUND = "ResourceNotFound.TDMQCMQTopicNotFound"
 //  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 func (c *Client) ModifyNotificationConfiguration(request *ModifyNotificationConfigurationRequest) (response *ModifyNotificationConfigurationResponse, err error) {
-    if request == nil {
-        request = NewModifyNotificationConfigurationRequest()
-    }
-    
-    response = NewModifyNotificationConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNotificationConfigurationWithContext(context.Background(), request)
 }
 
 // ModifyNotificationConfiguration
@@ -3101,6 +3061,11 @@ func (c *Client) ModifyNotificationConfigurationWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyNotificationConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotificationConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNotificationConfigurationResponse()
@@ -3136,13 +3101,7 @@ func NewModifyScalingPolicyResponse() (response *ModifyScalingPolicyResponse) {
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 //  RESOURCENOTFOUND_SCALINGPOLICYNOTFOUND = "ResourceNotFound.ScalingPolicyNotFound"
 func (c *Client) ModifyScalingPolicy(request *ModifyScalingPolicyRequest) (response *ModifyScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewModifyScalingPolicyRequest()
-    }
-    
-    response = NewModifyScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyScalingPolicyWithContext(context.Background(), request)
 }
 
 // ModifyScalingPolicy
@@ -3159,6 +3118,11 @@ func (c *Client) ModifyScalingPolicyWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyScalingPolicyResponse()
@@ -3203,13 +3167,7 @@ func NewModifyScheduledActionResponse() (response *ModifyScheduledActionResponse
 //  LIMITEXCEEDED_SCHEDULEDACTIONLIMITEXCEEDED = "LimitExceeded.ScheduledActionLimitExceeded"
 //  RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 func (c *Client) ModifyScheduledAction(request *ModifyScheduledActionRequest) (response *ModifyScheduledActionResponse, err error) {
-    if request == nil {
-        request = NewModifyScheduledActionRequest()
-    }
-    
-    response = NewModifyScheduledActionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyScheduledActionWithContext(context.Background(), request)
 }
 
 // ModifyScheduledAction
@@ -3235,6 +3193,11 @@ func (c *Client) ModifyScheduledActionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyScheduledActionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyScheduledAction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyScheduledActionResponse()
@@ -3265,13 +3228,7 @@ func NewPreviewPaiDomainNameResponse() (response *PreviewPaiDomainNameResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPAIDOMAINNAMETYPE = "InvalidParameterValue.InvalidPaiDomainNameType"
 func (c *Client) PreviewPaiDomainName(request *PreviewPaiDomainNameRequest) (response *PreviewPaiDomainNameResponse, err error) {
-    if request == nil {
-        request = NewPreviewPaiDomainNameRequest()
-    }
-    
-    response = NewPreviewPaiDomainNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.PreviewPaiDomainNameWithContext(context.Background(), request)
 }
 
 // PreviewPaiDomainName
@@ -3283,6 +3240,11 @@ func (c *Client) PreviewPaiDomainNameWithContext(ctx context.Context, request *P
     if request == nil {
         request = NewPreviewPaiDomainNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewPaiDomainName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPreviewPaiDomainNameResponse()
@@ -3328,13 +3290,7 @@ func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 //  RESOURCEUNAVAILABLE_INSTANCEINOPERATION = "ResourceUnavailable.InstanceInOperation"
 func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *RemoveInstancesResponse, err error) {
-    if request == nil {
-        request = NewRemoveInstancesRequest()
-    }
-    
-    response = NewRemoveInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveInstancesWithContext(context.Background(), request)
 }
 
 // RemoveInstances
@@ -3361,6 +3317,11 @@ func (c *Client) RemoveInstancesWithContext(ctx context.Context, request *Remove
     if request == nil {
         request = NewRemoveInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveInstancesResponse()
@@ -3406,13 +3367,7 @@ func NewScaleInInstancesResponse() (response *ScaleInInstancesResponse) {
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 func (c *Client) ScaleInInstances(request *ScaleInInstancesRequest) (response *ScaleInInstancesResponse, err error) {
-    if request == nil {
-        request = NewScaleInInstancesRequest()
-    }
-    
-    response = NewScaleInInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScaleInInstancesWithContext(context.Background(), request)
 }
 
 // ScaleInInstances
@@ -3439,6 +3394,11 @@ func (c *Client) ScaleInInstancesWithContext(ctx context.Context, request *Scale
     if request == nil {
         request = NewScaleInInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleInInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScaleInInstancesResponse()
@@ -3480,13 +3440,7 @@ func NewScaleOutInstancesResponse() (response *ScaleOutInstancesResponse) {
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 func (c *Client) ScaleOutInstances(request *ScaleOutInstancesRequest) (response *ScaleOutInstancesResponse, err error) {
-    if request == nil {
-        request = NewScaleOutInstancesRequest()
-    }
-    
-    response = NewScaleOutInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScaleOutInstancesWithContext(context.Background(), request)
 }
 
 // ScaleOutInstances
@@ -3509,6 +3463,11 @@ func (c *Client) ScaleOutInstancesWithContext(ctx context.Context, request *Scal
     if request == nil {
         request = NewScaleOutInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleOutInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScaleOutInstancesResponse()
@@ -3544,13 +3503,7 @@ func NewSetInstancesProtectionResponse() (response *SetInstancesProtectionRespon
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 //  RESOURCENOTFOUND_INSTANCESNOTINAUTOSCALINGGROUP = "ResourceNotFound.InstancesNotInAutoScalingGroup"
 func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) (response *SetInstancesProtectionResponse, err error) {
-    if request == nil {
-        request = NewSetInstancesProtectionRequest()
-    }
-    
-    response = NewSetInstancesProtectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetInstancesProtectionWithContext(context.Background(), request)
 }
 
 // SetInstancesProtection
@@ -3567,6 +3520,11 @@ func (c *Client) SetInstancesProtectionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewSetInstancesProtectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetInstancesProtection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetInstancesProtectionResponse()
@@ -3609,13 +3567,7 @@ func NewStartAutoScalingInstancesResponse() (response *StartAutoScalingInstances
 //  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) StartAutoScalingInstances(request *StartAutoScalingInstancesRequest) (response *StartAutoScalingInstancesResponse, err error) {
-    if request == nil {
-        request = NewStartAutoScalingInstancesRequest()
-    }
-    
-    response = NewStartAutoScalingInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartAutoScalingInstancesWithContext(context.Background(), request)
 }
 
 // StartAutoScalingInstances
@@ -3639,6 +3591,11 @@ func (c *Client) StartAutoScalingInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewStartAutoScalingInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartAutoScalingInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartAutoScalingInstancesResponse()
@@ -3689,13 +3646,7 @@ func NewStopAutoScalingInstancesResponse() (response *StopAutoScalingInstancesRe
 //  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTSTOPCHARGING = "ResourceUnavailable.InstanceNotSupportStopCharging"
 //  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
 func (c *Client) StopAutoScalingInstances(request *StopAutoScalingInstancesRequest) (response *StopAutoScalingInstancesResponse, err error) {
-    if request == nil {
-        request = NewStopAutoScalingInstancesRequest()
-    }
-    
-    response = NewStopAutoScalingInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopAutoScalingInstancesWithContext(context.Background(), request)
 }
 
 // StopAutoScalingInstances
@@ -3727,6 +3678,11 @@ func (c *Client) StopAutoScalingInstancesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewStopAutoScalingInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAutoScalingInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopAutoScalingInstancesResponse()
@@ -3785,13 +3741,7 @@ func NewUpgradeLaunchConfigurationResponse() (response *UpgradeLaunchConfigurati
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
 func (c *Client) UpgradeLaunchConfiguration(request *UpgradeLaunchConfigurationRequest) (response *UpgradeLaunchConfigurationResponse, err error) {
-    if request == nil {
-        request = NewUpgradeLaunchConfigurationRequest()
-    }
-    
-    response = NewUpgradeLaunchConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeLaunchConfigurationWithContext(context.Background(), request)
 }
 
 // UpgradeLaunchConfiguration
@@ -3831,6 +3781,11 @@ func (c *Client) UpgradeLaunchConfigurationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpgradeLaunchConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeLaunchConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeLaunchConfigurationResponse()
@@ -3876,13 +3831,7 @@ func NewUpgradeLifecycleHookResponse() (response *UpgradeLifecycleHookResponse) 
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 //  RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
 func (c *Client) UpgradeLifecycleHook(request *UpgradeLifecycleHookRequest) (response *UpgradeLifecycleHookResponse, err error) {
-    if request == nil {
-        request = NewUpgradeLifecycleHookRequest()
-    }
-    
-    response = NewUpgradeLifecycleHookResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeLifecycleHookWithContext(context.Background(), request)
 }
 
 // UpgradeLifecycleHook
@@ -3909,6 +3858,11 @@ func (c *Client) UpgradeLifecycleHookWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpgradeLifecycleHookRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeLifecycleHook require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeLifecycleHookResponse()

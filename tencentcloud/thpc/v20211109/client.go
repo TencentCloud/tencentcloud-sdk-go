@@ -16,6 +16,7 @@ package v20211109
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewBindAutoScalingGroupResponse() (response *BindAutoScalingGroupResponse) 
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
-    if request == nil {
-        request = NewBindAutoScalingGroupRequest()
-    }
-    
-    response = NewBindAutoScalingGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindAutoScalingGroupWithContext(context.Background(), request)
 }
 
 // BindAutoScalingGroup
@@ -89,6 +84,11 @@ func (c *Client) BindAutoScalingGroupWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBindAutoScalingGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindAutoScalingGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindAutoScalingGroupResponse()
@@ -124,13 +124,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateClusterRequest()
-    }
-    
-    response = NewCreateClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClusterWithContext(context.Background(), request)
 }
 
 // CreateCluster
@@ -147,6 +141,11 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClusterResponse()
@@ -179,13 +178,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
-    if request == nil {
-        request = NewDeleteClusterRequest()
-    }
-    
-    response = NewDeleteClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteClusterWithContext(context.Background(), request)
 }
 
 // DeleteCluster
@@ -199,6 +192,11 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteClusterResponse()
@@ -229,13 +227,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeClustersRequest()
-    }
-    
-    response = NewDescribeClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClustersWithContext(context.Background(), request)
 }
 
 // DescribeClusters
@@ -247,6 +239,11 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()

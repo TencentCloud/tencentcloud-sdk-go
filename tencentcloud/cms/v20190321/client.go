@@ -16,6 +16,7 @@ package v20190321
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewCreateFileSampleResponse() (response *CreateFileSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
-    if request == nil {
-        request = NewCreateFileSampleRequest()
-    }
-    
-    response = NewCreateFileSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFileSampleWithContext(context.Background(), request)
 }
 
 // CreateFileSample
@@ -93,6 +88,11 @@ func (c *Client) CreateFileSampleWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFileSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFileSampleResponse()
@@ -127,13 +127,7 @@ func NewCreateTextSampleResponse() (response *CreateTextSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
-    if request == nil {
-        request = NewCreateTextSampleRequest()
-    }
-    
-    response = NewCreateTextSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTextSampleWithContext(context.Background(), request)
 }
 
 // CreateTextSample
@@ -149,6 +143,11 @@ func (c *Client) CreateTextSampleWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTextSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTextSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTextSampleResponse()
@@ -183,13 +182,7 @@ func NewDeleteFileSampleResponse() (response *DeleteFileSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
-    if request == nil {
-        request = NewDeleteFileSampleRequest()
-    }
-    
-    response = NewDeleteFileSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFileSampleWithContext(context.Background(), request)
 }
 
 // DeleteFileSample
@@ -205,6 +198,11 @@ func (c *Client) DeleteFileSampleWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteFileSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFileSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFileSampleResponse()
@@ -239,13 +237,7 @@ func NewDeleteTextSampleResponse() (response *DeleteTextSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
-    if request == nil {
-        request = NewDeleteTextSampleRequest()
-    }
-    
-    response = NewDeleteTextSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTextSampleWithContext(context.Background(), request)
 }
 
 // DeleteTextSample
@@ -261,6 +253,11 @@ func (c *Client) DeleteTextSampleWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteTextSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTextSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTextSampleResponse()
@@ -295,13 +292,7 @@ func NewDescribeFileSampleResponse() (response *DescribeFileSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileSampleRequest()
-    }
-    
-    response = NewDescribeFileSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileSampleWithContext(context.Background(), request)
 }
 
 // DescribeFileSample
@@ -317,6 +308,11 @@ func (c *Client) DescribeFileSampleWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeFileSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileSampleResponse()
@@ -351,13 +347,7 @@ func NewDescribeTextSampleResponse() (response *DescribeTextSampleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTextSampleRequest()
-    }
-    
-    response = NewDescribeTextSampleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTextSampleWithContext(context.Background(), request)
 }
 
 // DescribeTextSample
@@ -373,6 +363,11 @@ func (c *Client) DescribeTextSampleWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTextSampleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTextSample require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTextSampleResponse()
@@ -414,13 +409,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
-    if request == nil {
-        request = NewImageModerationRequest()
-    }
-    
-    response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageModerationWithContext(context.Background(), request)
 }
 
 // ImageModeration
@@ -443,6 +432,11 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageModerationResponse()
@@ -488,13 +482,7 @@ func NewManualReviewResponse() (response *ManualReviewResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDTITLE = "InvalidParameterValue.InvalidTitle"
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 func (c *Client) ManualReview(request *ManualReviewRequest) (response *ManualReviewResponse, err error) {
-    if request == nil {
-        request = NewManualReviewRequest()
-    }
-    
-    response = NewManualReviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManualReviewWithContext(context.Background(), request)
 }
 
 // ManualReview
@@ -521,6 +509,11 @@ func (c *Client) ManualReviewWithContext(ctx context.Context, request *ManualRev
     if request == nil {
         request = NewManualReviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManualReview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManualReviewResponse()
@@ -556,13 +549,7 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) TextModeration(request *TextModerationRequest) (response *TextModerationResponse, err error) {
-    if request == nil {
-        request = NewTextModerationRequest()
-    }
-    
-    response = NewTextModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextModerationWithContext(context.Background(), request)
 }
 
 // TextModeration
@@ -579,6 +566,11 @@ func (c *Client) TextModerationWithContext(ctx context.Context, request *TextMod
     if request == nil {
         request = NewTextModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextModerationResponse()

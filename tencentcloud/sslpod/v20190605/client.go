@@ -16,6 +16,7 @@ package v20190605
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,13 +80,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 //  LIMITEXCEEDED_MONITOREXCEEDED = "LimitExceeded.MonitorExceeded"
 //  RESOURCENOTFOUND_PRODUCT = "ResourceNotFound.Product"
 func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainRequest()
-    }
-    
-    response = NewCreateDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainWithContext(context.Background(), request)
 }
 
 // CreateDomain
@@ -109,6 +104,11 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
     if request == nil {
         request = NewCreateDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainResponse()
@@ -140,13 +140,7 @@ func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteDomainRequest()
-    }
-    
-    response = NewDeleteDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDomainWithContext(context.Background(), request)
 }
 
 // DeleteDomain
@@ -159,6 +153,11 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDomainResponse()
@@ -189,13 +188,7 @@ func NewDescribeDashboardResponse() (response *DescribeDashboardResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response *DescribeDashboardResponse, err error) {
-    if request == nil {
-        request = NewDescribeDashboardRequest()
-    }
-    
-    response = NewDescribeDashboardResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDashboardWithContext(context.Background(), request)
 }
 
 // DescribeDashboard
@@ -207,6 +200,11 @@ func (c *Client) DescribeDashboardWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeDashboardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDashboard require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDashboardResponse()
@@ -238,13 +236,7 @@ func NewDescribeDomainCertsResponse() (response *DescribeDomainCertsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDomainCerts(request *DescribeDomainCertsRequest) (response *DescribeDomainCertsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainCertsRequest()
-    }
-    
-    response = NewDescribeDomainCertsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainCertsWithContext(context.Background(), request)
 }
 
 // DescribeDomainCerts
@@ -257,6 +249,11 @@ func (c *Client) DescribeDomainCertsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDomainCertsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainCerts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainCertsResponse()
@@ -287,13 +284,7 @@ func NewDescribeDomainTagsResponse() (response *DescribeDomainTagsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeDomainTags(request *DescribeDomainTagsRequest) (response *DescribeDomainTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainTagsRequest()
-    }
-    
-    response = NewDescribeDomainTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainTagsWithContext(context.Background(), request)
 }
 
 // DescribeDomainTags
@@ -305,6 +296,11 @@ func (c *Client) DescribeDomainTagsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDomainTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainTagsResponse()
@@ -335,13 +331,7 @@ func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDSEARCHTYPE = "InvalidParameterValue.InvalidSearchType"
 func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainsRequest()
-    }
-    
-    response = NewDescribeDomainsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainsWithContext(context.Background(), request)
 }
 
 // DescribeDomains
@@ -353,6 +343,11 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDomainsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomains require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainsResponse()
@@ -383,13 +378,7 @@ func NewDescribeNoticeInfoResponse() (response *DescribeNoticeInfoResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeNoticeInfo(request *DescribeNoticeInfoRequest) (response *DescribeNoticeInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeNoticeInfoRequest()
-    }
-    
-    response = NewDescribeNoticeInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNoticeInfoWithContext(context.Background(), request)
 }
 
 // DescribeNoticeInfo
@@ -401,6 +390,11 @@ func (c *Client) DescribeNoticeInfoWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNoticeInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNoticeInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNoticeInfoResponse()
@@ -434,13 +428,7 @@ func NewModifyDomainTagsResponse() (response *ModifyDomainTagsResponse) {
 //  INVALIDPARAMETER_TOOMANYTAG = "InvalidParameter.TooManyTag"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyDomainTags(request *ModifyDomainTagsRequest) (response *ModifyDomainTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainTagsRequest()
-    }
-    
-    response = NewModifyDomainTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainTagsWithContext(context.Background(), request)
 }
 
 // ModifyDomainTags
@@ -455,6 +443,11 @@ func (c *Client) ModifyDomainTagsWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDomainTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainTagsResponse()
@@ -487,13 +480,7 @@ func NewRefreshDomainResponse() (response *RefreshDomainResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) RefreshDomain(request *RefreshDomainRequest) (response *RefreshDomainResponse, err error) {
-    if request == nil {
-        request = NewRefreshDomainRequest()
-    }
-    
-    response = NewRefreshDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefreshDomainWithContext(context.Background(), request)
 }
 
 // RefreshDomain
@@ -507,6 +494,11 @@ func (c *Client) RefreshDomainWithContext(ctx context.Context, request *RefreshD
     if request == nil {
         request = NewRefreshDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefreshDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefreshDomainResponse()
@@ -539,13 +531,7 @@ func NewResolveDomainResponse() (response *ResolveDomainResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
 func (c *Client) ResolveDomain(request *ResolveDomainRequest) (response *ResolveDomainResponse, err error) {
-    if request == nil {
-        request = NewResolveDomainRequest()
-    }
-    
-    response = NewResolveDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResolveDomainWithContext(context.Background(), request)
 }
 
 // ResolveDomain
@@ -559,6 +545,11 @@ func (c *Client) ResolveDomainWithContext(ctx context.Context, request *ResolveD
     if request == nil {
         request = NewResolveDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResolveDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResolveDomainResponse()

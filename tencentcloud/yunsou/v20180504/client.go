@@ -16,6 +16,7 @@ package v20180504
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewDataManipulationResponse() (response *DataManipulationResponse) {
 // DataManipulation
 // 上传云搜数据的API接口
 func (c *Client) DataManipulation(request *DataManipulationRequest) (response *DataManipulationResponse, err error) {
-    if request == nil {
-        request = NewDataManipulationRequest()
-    }
-    
-    response = NewDataManipulationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DataManipulationWithContext(context.Background(), request)
 }
 
 // DataManipulation
@@ -79,6 +74,11 @@ func (c *Client) DataManipulationWithContext(ctx context.Context, request *DataM
     if request == nil {
         request = NewDataManipulationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DataManipulation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDataManipulationResponse()
@@ -106,13 +106,7 @@ func NewDataSearchResponse() (response *DataSearchResponse) {
 // DataSearch
 // 用于检索云搜中的数据
 func (c *Client) DataSearch(request *DataSearchRequest) (response *DataSearchResponse, err error) {
-    if request == nil {
-        request = NewDataSearchRequest()
-    }
-    
-    response = NewDataSearchResponse()
-    err = c.Send(request, response)
-    return
+    return c.DataSearchWithContext(context.Background(), request)
 }
 
 // DataSearch
@@ -121,6 +115,11 @@ func (c *Client) DataSearchWithContext(ctx context.Context, request *DataSearchR
     if request == nil {
         request = NewDataSearchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DataSearch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDataSearchResponse()

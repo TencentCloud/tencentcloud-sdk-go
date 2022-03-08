@@ -16,6 +16,7 @@ package v20191213
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -96,13 +97,7 @@ func NewBeautifyPicResponse() (response *BeautifyPicResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BeautifyPic(request *BeautifyPicRequest) (response *BeautifyPicResponse, err error) {
-    if request == nil {
-        request = NewBeautifyPicRequest()
-    }
-    
-    response = NewBeautifyPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.BeautifyPicWithContext(context.Background(), request)
 }
 
 // BeautifyPic
@@ -143,6 +138,11 @@ func (c *Client) BeautifyPicWithContext(ctx context.Context, request *BeautifyPi
     if request == nil {
         request = NewBeautifyPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BeautifyPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBeautifyPicResponse()
@@ -179,13 +179,7 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
-    if request == nil {
-        request = NewBeautifyVideoRequest()
-    }
-    
-    response = NewBeautifyVideoResponse()
-    err = c.Send(request, response)
-    return
+    return c.BeautifyVideoWithContext(context.Background(), request)
 }
 
 // BeautifyVideo
@@ -203,6 +197,11 @@ func (c *Client) BeautifyVideoWithContext(ctx context.Context, request *Beautify
     if request == nil {
         request = NewBeautifyVideoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BeautifyVideo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBeautifyVideoResponse()
@@ -237,13 +236,7 @@ func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobRespon
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
-    if request == nil {
-        request = NewCancelBeautifyVideoJobRequest()
-    }
-    
-    response = NewCancelBeautifyVideoJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelBeautifyVideoJobWithContext(context.Background(), request)
 }
 
 // CancelBeautifyVideoJob
@@ -259,6 +252,11 @@ func (c *Client) CancelBeautifyVideoJobWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCancelBeautifyVideoJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelBeautifyVideoJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelBeautifyVideoJobResponse()
@@ -305,13 +303,7 @@ func NewCreateModelResponse() (response *CreateModelResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModelResponse, err error) {
-    if request == nil {
-        request = NewCreateModelRequest()
-    }
-    
-    response = NewCreateModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateModelWithContext(context.Background(), request)
 }
 
 // CreateModel
@@ -339,6 +331,11 @@ func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateMode
     if request == nil {
         request = NewCreateModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateModelResponse()
@@ -373,13 +370,7 @@ func NewDeleteModelResponse() (response *DeleteModelResponse) {
 //  INVALIDPARAMETERVALUE_MODELIDNOTFOUND = "InvalidParameterValue.ModelIdNotFound"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
-    if request == nil {
-        request = NewDeleteModelRequest()
-    }
-    
-    response = NewDeleteModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteModelWithContext(context.Background(), request)
 }
 
 // DeleteModel
@@ -395,6 +386,11 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteMode
     if request == nil {
         request = NewDeleteModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteModelResponse()
@@ -429,13 +425,7 @@ func NewGetModelListResponse() (response *GetModelListResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) GetModelList(request *GetModelListRequest) (response *GetModelListResponse, err error) {
-    if request == nil {
-        request = NewGetModelListRequest()
-    }
-    
-    response = NewGetModelListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetModelListWithContext(context.Background(), request)
 }
 
 // GetModelList
@@ -451,6 +441,11 @@ func (c *Client) GetModelListWithContext(ctx context.Context, request *GetModelL
     if request == nil {
         request = NewGetModelListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetModelListResponse()
@@ -487,13 +482,7 @@ func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse
 //  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
-    if request == nil {
-        request = NewQueryBeautifyVideoJobRequest()
-    }
-    
-    response = NewQueryBeautifyVideoJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBeautifyVideoJobWithContext(context.Background(), request)
 }
 
 // QueryBeautifyVideoJob
@@ -511,6 +500,11 @@ func (c *Client) QueryBeautifyVideoJobWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryBeautifyVideoJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBeautifyVideoJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBeautifyVideoJobResponse()
@@ -554,13 +548,7 @@ func NewStyleImageResponse() (response *StyleImageResponse) {
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageResponse, err error) {
-    if request == nil {
-        request = NewStyleImageRequest()
-    }
-    
-    response = NewStyleImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.StyleImageWithContext(context.Background(), request)
 }
 
 // StyleImage
@@ -585,6 +573,11 @@ func (c *Client) StyleImageWithContext(ctx context.Context, request *StyleImageR
     if request == nil {
         request = NewStyleImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StyleImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStyleImageResponse()
@@ -628,13 +621,7 @@ func NewStyleImageProResponse() (response *StyleImageProResponse) {
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
-    if request == nil {
-        request = NewStyleImageProRequest()
-    }
-    
-    response = NewStyleImageProResponse()
-    err = c.Send(request, response)
-    return
+    return c.StyleImageProWithContext(context.Background(), request)
 }
 
 // StyleImagePro
@@ -659,6 +646,11 @@ func (c *Client) StyleImageProWithContext(ctx context.Context, request *StyleIma
     if request == nil {
         request = NewStyleImageProRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StyleImagePro require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStyleImageProResponse()
@@ -734,13 +726,7 @@ func NewTryLipstickPicResponse() (response *TryLipstickPicResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TryLipstickPic(request *TryLipstickPicRequest) (response *TryLipstickPicResponse, err error) {
-    if request == nil {
-        request = NewTryLipstickPicRequest()
-    }
-    
-    response = NewTryLipstickPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.TryLipstickPicWithContext(context.Background(), request)
 }
 
 // TryLipstickPic
@@ -797,6 +783,11 @@ func (c *Client) TryLipstickPicWithContext(ctx context.Context, request *TryLips
     if request == nil {
         request = NewTryLipstickPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TryLipstickPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTryLipstickPicResponse()

@@ -16,6 +16,7 @@ package v20200224
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,13 +88,7 @@ func NewQueryLoginProtectionResponse() (response *QueryLoginProtectionResponse) 
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryLoginProtection(request *QueryLoginProtectionRequest) (response *QueryLoginProtectionResponse, err error) {
-    if request == nil {
-        request = NewQueryLoginProtectionRequest()
-    }
-    
-    response = NewQueryLoginProtectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryLoginProtectionWithContext(context.Background(), request)
 }
 
 // QueryLoginProtection
@@ -125,6 +120,11 @@ func (c *Client) QueryLoginProtectionWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryLoginProtectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryLoginProtection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryLoginProtectionResponse()

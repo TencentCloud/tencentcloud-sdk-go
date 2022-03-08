@@ -16,6 +16,7 @@ package v20180319
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewDeregisterMigrationTaskResponse() (response *DeregisterMigrationTaskResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeregisterMigrationTask(request *DeregisterMigrationTaskRequest) (response *DeregisterMigrationTaskResponse, err error) {
-    if request == nil {
-        request = NewDeregisterMigrationTaskRequest()
-    }
-    
-    response = NewDeregisterMigrationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeregisterMigrationTaskWithContext(context.Background(), request)
 }
 
 // DeregisterMigrationTask
@@ -87,6 +82,11 @@ func (c *Client) DeregisterMigrationTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeregisterMigrationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeregisterMigrationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeregisterMigrationTaskResponse()
@@ -117,13 +117,7 @@ func NewDescribeMigrationTaskResponse() (response *DescribeMigrationTaskResponse
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeMigrationTask(request *DescribeMigrationTaskRequest) (response *DescribeMigrationTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeMigrationTaskRequest()
-    }
-    
-    response = NewDescribeMigrationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMigrationTaskWithContext(context.Background(), request)
 }
 
 // DescribeMigrationTask
@@ -135,6 +129,11 @@ func (c *Client) DescribeMigrationTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMigrationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigrationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMigrationTaskResponse()
@@ -165,13 +164,7 @@ func NewListMigrationProjectResponse() (response *ListMigrationProjectResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationProject(request *ListMigrationProjectRequest) (response *ListMigrationProjectResponse, err error) {
-    if request == nil {
-        request = NewListMigrationProjectRequest()
-    }
-    
-    response = NewListMigrationProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListMigrationProjectWithContext(context.Background(), request)
 }
 
 // ListMigrationProject
@@ -183,6 +176,11 @@ func (c *Client) ListMigrationProjectWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListMigrationProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListMigrationProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListMigrationProjectResponse()
@@ -213,13 +211,7 @@ func NewListMigrationTaskResponse() (response *ListMigrationTaskResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListMigrationTask(request *ListMigrationTaskRequest) (response *ListMigrationTaskResponse, err error) {
-    if request == nil {
-        request = NewListMigrationTaskRequest()
-    }
-    
-    response = NewListMigrationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListMigrationTaskWithContext(context.Background(), request)
 }
 
 // ListMigrationTask
@@ -231,6 +223,11 @@ func (c *Client) ListMigrationTaskWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListMigrationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListMigrationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListMigrationTaskResponse()
@@ -262,13 +259,7 @@ func NewModifyMigrationTaskBelongToProjectResponse() (response *ModifyMigrationT
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyMigrationTaskBelongToProject(request *ModifyMigrationTaskBelongToProjectRequest) (response *ModifyMigrationTaskBelongToProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyMigrationTaskBelongToProjectRequest()
-    }
-    
-    response = NewModifyMigrationTaskBelongToProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMigrationTaskBelongToProjectWithContext(context.Background(), request)
 }
 
 // ModifyMigrationTaskBelongToProject
@@ -281,6 +272,11 @@ func (c *Client) ModifyMigrationTaskBelongToProjectWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyMigrationTaskBelongToProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMigrationTaskBelongToProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMigrationTaskBelongToProjectResponse()
@@ -311,13 +307,7 @@ func NewModifyMigrationTaskStatusResponse() (response *ModifyMigrationTaskStatus
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyMigrationTaskStatus(request *ModifyMigrationTaskStatusRequest) (response *ModifyMigrationTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyMigrationTaskStatusRequest()
-    }
-    
-    response = NewModifyMigrationTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMigrationTaskStatusWithContext(context.Background(), request)
 }
 
 // ModifyMigrationTaskStatus
@@ -329,6 +319,11 @@ func (c *Client) ModifyMigrationTaskStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyMigrationTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMigrationTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMigrationTaskStatusResponse()
@@ -360,13 +355,7 @@ func NewRegisterMigrationTaskResponse() (response *RegisterMigrationTaskResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RegisterMigrationTask(request *RegisterMigrationTaskRequest) (response *RegisterMigrationTaskResponse, err error) {
-    if request == nil {
-        request = NewRegisterMigrationTaskRequest()
-    }
-    
-    response = NewRegisterMigrationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterMigrationTaskWithContext(context.Background(), request)
 }
 
 // RegisterMigrationTask
@@ -379,6 +368,11 @@ func (c *Client) RegisterMigrationTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewRegisterMigrationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterMigrationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterMigrationTaskResponse()

@@ -16,6 +16,7 @@ package v20180321
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,13 +86,7 @@ func NewImageTranslateResponse() (response *ImageTranslateResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
 func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *ImageTranslateResponse, err error) {
-    if request == nil {
-        request = NewImageTranslateRequest()
-    }
-    
-    response = NewImageTranslateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageTranslateWithContext(context.Background(), request)
 }
 
 // ImageTranslate
@@ -121,6 +116,11 @@ func (c *Client) ImageTranslateWithContext(ctx context.Context, request *ImageTr
     if request == nil {
         request = NewImageTranslateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageTranslate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageTranslateResponse()
@@ -168,13 +168,7 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
 func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *LanguageDetectResponse, err error) {
-    if request == nil {
-        request = NewLanguageDetectRequest()
-    }
-    
-    response = NewLanguageDetectResponse()
-    err = c.Send(request, response)
-    return
+    return c.LanguageDetectWithContext(context.Background(), request)
 }
 
 // LanguageDetect
@@ -203,6 +197,11 @@ func (c *Client) LanguageDetectWithContext(ctx context.Context, request *Languag
     if request == nil {
         request = NewLanguageDetectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LanguageDetect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLanguageDetectResponse()
@@ -258,13 +257,7 @@ func NewSpeechTranslateResponse() (response *SpeechTranslateResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
 func (c *Client) SpeechTranslate(request *SpeechTranslateRequest) (response *SpeechTranslateResponse, err error) {
-    if request == nil {
-        request = NewSpeechTranslateRequest()
-    }
-    
-    response = NewSpeechTranslateResponse()
-    err = c.Send(request, response)
-    return
+    return c.SpeechTranslateWithContext(context.Background(), request)
 }
 
 // SpeechTranslate
@@ -301,6 +294,11 @@ func (c *Client) SpeechTranslateWithContext(ctx context.Context, request *Speech
     if request == nil {
         request = NewSpeechTranslateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SpeechTranslate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSpeechTranslateResponse()
@@ -350,13 +348,7 @@ func NewTextTranslateResponse() (response *TextTranslateResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
 func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTranslateResponse, err error) {
-    if request == nil {
-        request = NewTextTranslateRequest()
-    }
-    
-    response = NewTextTranslateResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextTranslateWithContext(context.Background(), request)
 }
 
 // TextTranslate
@@ -387,6 +379,11 @@ func (c *Client) TextTranslateWithContext(ctx context.Context, request *TextTran
     if request == nil {
         request = NewTextTranslateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextTranslate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextTranslateResponse()
@@ -433,13 +430,7 @@ func NewTextTranslateBatchResponse() (response *TextTranslateBatchResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
 func (c *Client) TextTranslateBatch(request *TextTranslateBatchRequest) (response *TextTranslateBatchResponse, err error) {
-    if request == nil {
-        request = NewTextTranslateBatchRequest()
-    }
-    
-    response = NewTextTranslateBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextTranslateBatchWithContext(context.Background(), request)
 }
 
 // TextTranslateBatch
@@ -467,6 +458,11 @@ func (c *Client) TextTranslateBatchWithContext(ctx context.Context, request *Tex
     if request == nil {
         request = NewTextTranslateBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextTranslateBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextTranslateBatchResponse()

@@ -16,6 +16,7 @@ package v20200902
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -90,13 +91,7 @@ func NewSendCodeVoiceResponse() (response *SendCodeVoiceResponse) {
 //  UNAUTHORIZEDOPERATION_VOICESDKAPPIDVERIFYFAIL = "UnauthorizedOperation.VoiceSdkAppidVerifyFail"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendCodeVoice(request *SendCodeVoiceRequest) (response *SendCodeVoiceResponse, err error) {
-    if request == nil {
-        request = NewSendCodeVoiceRequest()
-    }
-    
-    response = NewSendCodeVoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendCodeVoiceWithContext(context.Background(), request)
 }
 
 // SendCodeVoice
@@ -131,6 +126,11 @@ func (c *Client) SendCodeVoiceWithContext(ctx context.Context, request *SendCode
     if request == nil {
         request = NewSendCodeVoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendCodeVoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendCodeVoiceResponse()
@@ -184,13 +184,7 @@ func NewSendTtsVoiceResponse() (response *SendTtsVoiceResponse) {
 //  UNAUTHORIZEDOPERATION_VOICESDKAPPIDVERIFYFAIL = "UnauthorizedOperation.VoiceSdkAppidVerifyFail"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendTtsVoice(request *SendTtsVoiceRequest) (response *SendTtsVoiceResponse, err error) {
-    if request == nil {
-        request = NewSendTtsVoiceRequest()
-    }
-    
-    response = NewSendTtsVoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendTtsVoiceWithContext(context.Background(), request)
 }
 
 // SendTtsVoice
@@ -225,6 +219,11 @@ func (c *Client) SendTtsVoiceWithContext(ctx context.Context, request *SendTtsVo
     if request == nil {
         request = NewSendTtsVoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendTtsVoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendTtsVoiceResponse()

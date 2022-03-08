@@ -16,6 +16,7 @@ package v20190823
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewClearTablesResponse() (response *ClearTablesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ClearTables(request *ClearTablesRequest) (response *ClearTablesResponse, err error) {
-    if request == nil {
-        request = NewClearTablesRequest()
-    }
-    
-    response = NewClearTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearTablesWithContext(context.Background(), request)
 }
 
 // ClearTables
@@ -95,6 +90,11 @@ func (c *Client) ClearTablesWithContext(ctx context.Context, request *ClearTable
     if request == nil {
         request = NewClearTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearTablesResponse()
@@ -129,13 +129,7 @@ func NewCompareIdlFilesResponse() (response *CompareIdlFilesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CompareIdlFiles(request *CompareIdlFilesRequest) (response *CompareIdlFilesResponse, err error) {
-    if request == nil {
-        request = NewCompareIdlFilesRequest()
-    }
-    
-    response = NewCompareIdlFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CompareIdlFilesWithContext(context.Background(), request)
 }
 
 // CompareIdlFiles
@@ -151,6 +145,11 @@ func (c *Client) CompareIdlFilesWithContext(ctx context.Context, request *Compar
     if request == nil {
         request = NewCompareIdlFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CompareIdlFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCompareIdlFilesResponse()
@@ -185,13 +184,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBackupResponse, err error) {
-    if request == nil {
-        request = NewCreateBackupRequest()
-    }
-    
-    response = NewCreateBackupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBackupWithContext(context.Background(), request)
 }
 
 // CreateBackup
@@ -207,6 +200,11 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
     if request == nil {
         request = NewCreateBackupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBackup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBackupResponse()
@@ -245,13 +243,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_DUPLICATECLUSTERNAME = "ResourceUnavailable.DuplicateClusterName"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateClusterRequest()
-    }
-    
-    response = NewCreateClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClusterWithContext(context.Background(), request)
 }
 
 // CreateCluster
@@ -271,6 +263,11 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClusterResponse()
@@ -309,13 +306,7 @@ func NewCreateSnapshotsResponse() (response *CreateSnapshotsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateSnapshots(request *CreateSnapshotsRequest) (response *CreateSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewCreateSnapshotsRequest()
-    }
-    
-    response = NewCreateSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSnapshotsWithContext(context.Background(), request)
 }
 
 // CreateSnapshots
@@ -335,6 +326,11 @@ func (c *Client) CreateSnapshotsWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSnapshotsResponse()
@@ -371,13 +367,7 @@ func NewCreateTableGroupResponse() (response *CreateTableGroupResponse) {
 //  RESOURCEUNAVAILABLE_DUPLICATETABLEGROUPNAME = "ResourceUnavailable.DuplicateTableGroupName"
 //  RESOURCEUNAVAILABLE_NOAVAILABLETABLEGROUP = "ResourceUnavailable.NoAvailableTableGroup"
 func (c *Client) CreateTableGroup(request *CreateTableGroupRequest) (response *CreateTableGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateTableGroupRequest()
-    }
-    
-    response = NewCreateTableGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTableGroupWithContext(context.Background(), request)
 }
 
 // CreateTableGroup
@@ -395,6 +385,11 @@ func (c *Client) CreateTableGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateTableGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTableGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTableGroupResponse()
@@ -433,13 +428,7 @@ func NewCreateTablesResponse() (response *CreateTablesResponse) {
 //  RESOURCEINSUFFICIENT_BALANCEERROR = "ResourceInsufficient.BalanceError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTables(request *CreateTablesRequest) (response *CreateTablesResponse, err error) {
-    if request == nil {
-        request = NewCreateTablesRequest()
-    }
-    
-    response = NewCreateTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTablesWithContext(context.Background(), request)
 }
 
 // CreateTables
@@ -459,6 +448,11 @@ func (c *Client) CreateTablesWithContext(ctx context.Context, request *CreateTab
     if request == nil {
         request = NewCreateTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTablesResponse()
@@ -492,13 +486,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
-    if request == nil {
-        request = NewDeleteClusterRequest()
-    }
-    
-    response = NewDeleteClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteClusterWithContext(context.Background(), request)
 }
 
 // DeleteCluster
@@ -513,6 +501,11 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteClusterResponse()
@@ -549,13 +542,7 @@ func NewDeleteIdlFilesResponse() (response *DeleteIdlFilesResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteIdlFiles(request *DeleteIdlFilesRequest) (response *DeleteIdlFilesResponse, err error) {
-    if request == nil {
-        request = NewDeleteIdlFilesRequest()
-    }
-    
-    response = NewDeleteIdlFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteIdlFilesWithContext(context.Background(), request)
 }
 
 // DeleteIdlFiles
@@ -573,6 +560,11 @@ func (c *Client) DeleteIdlFilesWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteIdlFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIdlFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteIdlFilesResponse()
@@ -611,13 +603,7 @@ func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *DeleteSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewDeleteSnapshotsRequest()
-    }
-    
-    response = NewDeleteSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSnapshotsWithContext(context.Background(), request)
 }
 
 // DeleteSnapshots
@@ -637,6 +623,11 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSnapshotsResponse()
@@ -672,13 +663,7 @@ func NewDeleteTableDataFlowResponse() (response *DeleteTableDataFlowResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTableDataFlow(request *DeleteTableDataFlowRequest) (response *DeleteTableDataFlowResponse, err error) {
-    if request == nil {
-        request = NewDeleteTableDataFlowRequest()
-    }
-    
-    response = NewDeleteTableDataFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTableDataFlowWithContext(context.Background(), request)
 }
 
 // DeleteTableDataFlow
@@ -695,6 +680,11 @@ func (c *Client) DeleteTableDataFlowWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTableDataFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTableDataFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTableDataFlowResponse()
@@ -727,13 +717,7 @@ func NewDeleteTableGroupResponse() (response *DeleteTableGroupResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTableGroup(request *DeleteTableGroupRequest) (response *DeleteTableGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteTableGroupRequest()
-    }
-    
-    response = NewDeleteTableGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTableGroupWithContext(context.Background(), request)
 }
 
 // DeleteTableGroup
@@ -747,6 +731,11 @@ func (c *Client) DeleteTableGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteTableGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTableGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTableGroupResponse()
@@ -782,13 +771,7 @@ func NewDeleteTableIndexResponse() (response *DeleteTableIndexResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTableIndex(request *DeleteTableIndexRequest) (response *DeleteTableIndexResponse, err error) {
-    if request == nil {
-        request = NewDeleteTableIndexRequest()
-    }
-    
-    response = NewDeleteTableIndexResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTableIndexWithContext(context.Background(), request)
 }
 
 // DeleteTableIndex
@@ -805,6 +788,11 @@ func (c *Client) DeleteTableIndexWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteTableIndexRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTableIndex require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTableIndexResponse()
@@ -840,13 +828,7 @@ func NewDeleteTablesResponse() (response *DeleteTablesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTables(request *DeleteTablesRequest) (response *DeleteTablesResponse, err error) {
-    if request == nil {
-        request = NewDeleteTablesRequest()
-    }
-    
-    response = NewDeleteTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTablesWithContext(context.Background(), request)
 }
 
 // DeleteTables
@@ -863,6 +845,11 @@ func (c *Client) DeleteTablesWithContext(ctx context.Context, request *DeleteTab
     if request == nil {
         request = NewDeleteTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTablesResponse()
@@ -898,13 +885,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationsRequest()
-    }
-    
-    response = NewDescribeApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationsWithContext(context.Background(), request)
 }
 
 // DescribeApplications
@@ -921,6 +902,11 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationsResponse()
@@ -955,13 +941,7 @@ func NewDescribeClusterTagsResponse() (response *DescribeClusterTagsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeClusterTags(request *DescribeClusterTagsRequest) (response *DescribeClusterTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterTagsRequest()
-    }
-    
-    response = NewDescribeClusterTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterTagsWithContext(context.Background(), request)
 }
 
 // DescribeClusterTags
@@ -977,6 +957,11 @@ func (c *Client) DescribeClusterTagsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeClusterTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterTagsResponse()
@@ -1010,13 +995,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeClustersRequest()
-    }
-    
-    response = NewDescribeClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClustersWithContext(context.Background(), request)
 }
 
 // DescribeClusters
@@ -1031,6 +1010,11 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
@@ -1064,13 +1048,7 @@ func NewDescribeIdlFileInfosResponse() (response *DescribeIdlFileInfosResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeIdlFileInfos(request *DescribeIdlFileInfosRequest) (response *DescribeIdlFileInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeIdlFileInfosRequest()
-    }
-    
-    response = NewDescribeIdlFileInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIdlFileInfosWithContext(context.Background(), request)
 }
 
 // DescribeIdlFileInfos
@@ -1085,6 +1063,11 @@ func (c *Client) DescribeIdlFileInfosWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeIdlFileInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIdlFileInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIdlFileInfosResponse()
@@ -1118,13 +1101,7 @@ func NewDescribeMachineResponse() (response *DescribeMachineResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeMachine(request *DescribeMachineRequest) (response *DescribeMachineResponse, err error) {
-    if request == nil {
-        request = NewDescribeMachineRequest()
-    }
-    
-    response = NewDescribeMachineResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMachineWithContext(context.Background(), request)
 }
 
 // DescribeMachine
@@ -1139,6 +1116,11 @@ func (c *Client) DescribeMachineWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeMachineRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMachine require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMachineResponse()
@@ -1169,13 +1151,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionsRequest()
-    }
-    
-    response = NewDescribeRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionsWithContext(context.Background(), request)
 }
 
 // DescribeRegions
@@ -1187,6 +1163,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
@@ -1224,13 +1205,7 @@ func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDAPPNAME = "InvalidParameterValue.InvalidAppName"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSnapshotsRequest()
-    }
-    
-    response = NewDescribeSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSnapshotsWithContext(context.Background(), request)
 }
 
 // DescribeSnapshots
@@ -1249,6 +1224,11 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSnapshotsResponse()
@@ -1283,13 +1263,7 @@ func NewDescribeTableGroupTagsResponse() (response *DescribeTableGroupTagsRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTableGroupTags(request *DescribeTableGroupTagsRequest) (response *DescribeTableGroupTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTableGroupTagsRequest()
-    }
-    
-    response = NewDescribeTableGroupTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTableGroupTagsWithContext(context.Background(), request)
 }
 
 // DescribeTableGroupTags
@@ -1305,6 +1279,11 @@ func (c *Client) DescribeTableGroupTagsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTableGroupTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableGroupTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTableGroupTagsResponse()
@@ -1340,13 +1319,7 @@ func NewDescribeTableGroupsResponse() (response *DescribeTableGroupsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTableGroups(request *DescribeTableGroupsRequest) (response *DescribeTableGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTableGroupsRequest()
-    }
-    
-    response = NewDescribeTableGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTableGroupsWithContext(context.Background(), request)
 }
 
 // DescribeTableGroups
@@ -1363,6 +1336,11 @@ func (c *Client) DescribeTableGroupsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTableGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTableGroupsResponse()
@@ -1397,13 +1375,7 @@ func NewDescribeTableTagsResponse() (response *DescribeTableTagsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTableTags(request *DescribeTableTagsRequest) (response *DescribeTableTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTableTagsRequest()
-    }
-    
-    response = NewDescribeTableTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTableTagsWithContext(context.Background(), request)
 }
 
 // DescribeTableTags
@@ -1419,6 +1391,11 @@ func (c *Client) DescribeTableTagsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTableTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTableTagsResponse()
@@ -1454,13 +1431,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTablesRequest()
-    }
-    
-    response = NewDescribeTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTablesWithContext(context.Background(), request)
 }
 
 // DescribeTables
@@ -1477,6 +1448,11 @@ func (c *Client) DescribeTablesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTablesResponse()
@@ -1511,13 +1487,7 @@ func NewDescribeTablesInRecycleResponse() (response *DescribeTablesInRecycleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTablesInRecycle(request *DescribeTablesInRecycleRequest) (response *DescribeTablesInRecycleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTablesInRecycleRequest()
-    }
-    
-    response = NewDescribeTablesInRecycleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTablesInRecycleWithContext(context.Background(), request)
 }
 
 // DescribeTablesInRecycle
@@ -1533,6 +1503,11 @@ func (c *Client) DescribeTablesInRecycleWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTablesInRecycleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTablesInRecycle require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTablesInRecycleResponse()
@@ -1564,13 +1539,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -1583,6 +1552,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
@@ -1613,13 +1587,7 @@ func NewDescribeUinInWhitelistResponse() (response *DescribeUinInWhitelistRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeUinInWhitelist(request *DescribeUinInWhitelistRequest) (response *DescribeUinInWhitelistResponse, err error) {
-    if request == nil {
-        request = NewDescribeUinInWhitelistRequest()
-    }
-    
-    response = NewDescribeUinInWhitelistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUinInWhitelistWithContext(context.Background(), request)
 }
 
 // DescribeUinInWhitelist
@@ -1631,6 +1599,11 @@ func (c *Client) DescribeUinInWhitelistWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUinInWhitelistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUinInWhitelist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUinInWhitelistResponse()
@@ -1665,13 +1638,7 @@ func NewDisableRestProxyResponse() (response *DisableRestProxyResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableRestProxy(request *DisableRestProxyRequest) (response *DisableRestProxyResponse, err error) {
-    if request == nil {
-        request = NewDisableRestProxyRequest()
-    }
-    
-    response = NewDisableRestProxyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableRestProxyWithContext(context.Background(), request)
 }
 
 // DisableRestProxy
@@ -1687,6 +1654,11 @@ func (c *Client) DisableRestProxyWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableRestProxyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableRestProxy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableRestProxyResponse()
@@ -1721,13 +1693,7 @@ func NewEnableRestProxyResponse() (response *EnableRestProxyResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EnableRestProxy(request *EnableRestProxyRequest) (response *EnableRestProxyResponse, err error) {
-    if request == nil {
-        request = NewEnableRestProxyRequest()
-    }
-    
-    response = NewEnableRestProxyResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableRestProxyWithContext(context.Background(), request)
 }
 
 // EnableRestProxy
@@ -1743,6 +1709,11 @@ func (c *Client) EnableRestProxyWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableRestProxyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableRestProxy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableRestProxyResponse()
@@ -1782,13 +1753,7 @@ func NewImportSnapshotsResponse() (response *ImportSnapshotsResponse) {
 //  RESOURCEINSUFFICIENT_BALANCEERROR = "ResourceInsufficient.BalanceError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ImportSnapshots(request *ImportSnapshotsRequest) (response *ImportSnapshotsResponse, err error) {
-    if request == nil {
-        request = NewImportSnapshotsRequest()
-    }
-    
-    response = NewImportSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportSnapshotsWithContext(context.Background(), request)
 }
 
 // ImportSnapshots
@@ -1809,6 +1774,11 @@ func (c *Client) ImportSnapshotsWithContext(ctx context.Context, request *Import
     if request == nil {
         request = NewImportSnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportSnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportSnapshotsResponse()
@@ -1847,13 +1817,7 @@ func NewMergeTablesDataResponse() (response *MergeTablesDataResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) MergeTablesData(request *MergeTablesDataRequest) (response *MergeTablesDataResponse, err error) {
-    if request == nil {
-        request = NewMergeTablesDataRequest()
-    }
-    
-    response = NewMergeTablesDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.MergeTablesDataWithContext(context.Background(), request)
 }
 
 // MergeTablesData
@@ -1873,6 +1837,11 @@ func (c *Client) MergeTablesDataWithContext(ctx context.Context, request *MergeT
     if request == nil {
         request = NewMergeTablesDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MergeTablesData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMergeTablesDataResponse()
@@ -1911,13 +1880,7 @@ func NewModifyCensorshipResponse() (response *ModifyCensorshipResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyCensorship(request *ModifyCensorshipRequest) (response *ModifyCensorshipResponse, err error) {
-    if request == nil {
-        request = NewModifyCensorshipRequest()
-    }
-    
-    response = NewModifyCensorshipResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCensorshipWithContext(context.Background(), request)
 }
 
 // ModifyCensorship
@@ -1937,6 +1900,11 @@ func (c *Client) ModifyCensorshipWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyCensorshipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCensorship require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCensorshipResponse()
@@ -1972,13 +1940,7 @@ func NewModifyClusterMachineResponse() (response *ModifyClusterMachineResponse) 
 //  RESOURCEINSUFFICIENT_NOAVAILABLEAPP = "ResourceInsufficient.NoAvailableApp"
 //  RESOURCEINSUFFICIENT_NOAVAILABLECLUSTER = "ResourceInsufficient.NoAvailableCluster"
 func (c *Client) ModifyClusterMachine(request *ModifyClusterMachineRequest) (response *ModifyClusterMachineResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterMachineRequest()
-    }
-    
-    response = NewModifyClusterMachineResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterMachineWithContext(context.Background(), request)
 }
 
 // ModifyClusterMachine
@@ -1995,6 +1957,11 @@ func (c *Client) ModifyClusterMachineWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyClusterMachineRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterMachine require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterMachineResponse()
@@ -2031,13 +1998,7 @@ func NewModifyClusterNameResponse() (response *ModifyClusterNameResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_DUPLICATECLUSTERNAME = "ResourceUnavailable.DuplicateClusterName"
 func (c *Client) ModifyClusterName(request *ModifyClusterNameRequest) (response *ModifyClusterNameResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterNameRequest()
-    }
-    
-    response = NewModifyClusterNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterNameWithContext(context.Background(), request)
 }
 
 // ModifyClusterName
@@ -2055,6 +2016,11 @@ func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterNameResponse()
@@ -2093,13 +2059,7 @@ func NewModifyClusterPasswordResponse() (response *ModifyClusterPasswordResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyClusterPassword(request *ModifyClusterPasswordRequest) (response *ModifyClusterPasswordResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterPasswordRequest()
-    }
-    
-    response = NewModifyClusterPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterPasswordWithContext(context.Background(), request)
 }
 
 // ModifyClusterPassword
@@ -2119,6 +2079,11 @@ func (c *Client) ModifyClusterPasswordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyClusterPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterPasswordResponse()
@@ -2154,13 +2119,7 @@ func NewModifyClusterTagsResponse() (response *ModifyClusterTagsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyClusterTags(request *ModifyClusterTagsRequest) (response *ModifyClusterTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterTagsRequest()
-    }
-    
-    response = NewModifyClusterTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterTagsWithContext(context.Background(), request)
 }
 
 // ModifyClusterTags
@@ -2177,6 +2136,11 @@ func (c *Client) ModifyClusterTagsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyClusterTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterTagsResponse()
@@ -2215,13 +2179,7 @@ func NewModifySnapshotsResponse() (response *ModifySnapshotsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySnapshots(request *ModifySnapshotsRequest) (response *ModifySnapshotsResponse, err error) {
-    if request == nil {
-        request = NewModifySnapshotsRequest()
-    }
-    
-    response = NewModifySnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySnapshotsWithContext(context.Background(), request)
 }
 
 // ModifySnapshots
@@ -2241,6 +2199,11 @@ func (c *Client) ModifySnapshotsWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifySnapshotsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySnapshots require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySnapshotsResponse()
@@ -2275,13 +2238,7 @@ func NewModifyTableGroupNameResponse() (response *ModifyTableGroupNameResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_DUPLICATETABLEGROUPNAME = "ResourceUnavailable.DuplicateTableGroupName"
 func (c *Client) ModifyTableGroupName(request *ModifyTableGroupNameRequest) (response *ModifyTableGroupNameResponse, err error) {
-    if request == nil {
-        request = NewModifyTableGroupNameRequest()
-    }
-    
-    response = NewModifyTableGroupNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableGroupNameWithContext(context.Background(), request)
 }
 
 // ModifyTableGroupName
@@ -2297,6 +2254,11 @@ func (c *Client) ModifyTableGroupNameWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTableGroupNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableGroupName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableGroupNameResponse()
@@ -2332,13 +2294,7 @@ func NewModifyTableGroupTagsResponse() (response *ModifyTableGroupTagsResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTableGroupTags(request *ModifyTableGroupTagsRequest) (response *ModifyTableGroupTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyTableGroupTagsRequest()
-    }
-    
-    response = NewModifyTableGroupTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableGroupTagsWithContext(context.Background(), request)
 }
 
 // ModifyTableGroupTags
@@ -2355,6 +2311,11 @@ func (c *Client) ModifyTableGroupTagsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTableGroupTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableGroupTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableGroupTagsResponse()
@@ -2390,13 +2351,7 @@ func NewModifyTableMemosResponse() (response *ModifyTableMemosResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTableMemos(request *ModifyTableMemosRequest) (response *ModifyTableMemosResponse, err error) {
-    if request == nil {
-        request = NewModifyTableMemosRequest()
-    }
-    
-    response = NewModifyTableMemosResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableMemosWithContext(context.Background(), request)
 }
 
 // ModifyTableMemos
@@ -2413,6 +2368,11 @@ func (c *Client) ModifyTableMemosWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTableMemosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableMemos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableMemosResponse()
@@ -2449,13 +2409,7 @@ func NewModifyTableQuotasResponse() (response *ModifyTableQuotasResponse) {
 //  RESOURCEINSUFFICIENT_BALANCEERROR = "ResourceInsufficient.BalanceError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTableQuotas(request *ModifyTableQuotasRequest) (response *ModifyTableQuotasResponse, err error) {
-    if request == nil {
-        request = NewModifyTableQuotasRequest()
-    }
-    
-    response = NewModifyTableQuotasResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableQuotasWithContext(context.Background(), request)
 }
 
 // ModifyTableQuotas
@@ -2473,6 +2427,11 @@ func (c *Client) ModifyTableQuotasWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyTableQuotasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableQuotas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableQuotasResponse()
@@ -2509,13 +2468,7 @@ func NewModifyTableTagsResponse() (response *ModifyTableTagsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTableTags(request *ModifyTableTagsRequest) (response *ModifyTableTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyTableTagsRequest()
-    }
-    
-    response = NewModifyTableTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTableTagsWithContext(context.Background(), request)
 }
 
 // ModifyTableTags
@@ -2533,6 +2486,11 @@ func (c *Client) ModifyTableTagsWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyTableTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTableTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTableTagsResponse()
@@ -2569,13 +2527,7 @@ func NewModifyTablesResponse() (response *ModifyTablesResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyTables(request *ModifyTablesRequest) (response *ModifyTablesResponse, err error) {
-    if request == nil {
-        request = NewModifyTablesRequest()
-    }
-    
-    response = NewModifyTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTablesWithContext(context.Background(), request)
 }
 
 // ModifyTables
@@ -2593,6 +2545,11 @@ func (c *Client) ModifyTablesWithContext(ctx context.Context, request *ModifyTab
     if request == nil {
         request = NewModifyTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTablesResponse()
@@ -2628,13 +2585,7 @@ func NewRecoverRecycleTablesResponse() (response *RecoverRecycleTablesResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RecoverRecycleTables(request *RecoverRecycleTablesRequest) (response *RecoverRecycleTablesResponse, err error) {
-    if request == nil {
-        request = NewRecoverRecycleTablesRequest()
-    }
-    
-    response = NewRecoverRecycleTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecoverRecycleTablesWithContext(context.Background(), request)
 }
 
 // RecoverRecycleTables
@@ -2651,6 +2602,11 @@ func (c *Client) RecoverRecycleTablesWithContext(ctx context.Context, request *R
     if request == nil {
         request = NewRecoverRecycleTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecoverRecycleTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecoverRecycleTablesResponse()
@@ -2687,13 +2643,7 @@ func NewRollbackTablesResponse() (response *RollbackTablesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RollbackTables(request *RollbackTablesRequest) (response *RollbackTablesResponse, err error) {
-    if request == nil {
-        request = NewRollbackTablesRequest()
-    }
-    
-    response = NewRollbackTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RollbackTablesWithContext(context.Background(), request)
 }
 
 // RollbackTables
@@ -2711,6 +2661,11 @@ func (c *Client) RollbackTablesWithContext(ctx context.Context, request *Rollbac
     if request == nil {
         request = NewRollbackTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRollbackTablesResponse()
@@ -2748,13 +2703,7 @@ func NewSetTableDataFlowResponse() (response *SetTableDataFlowResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTableDataFlow(request *SetTableDataFlowRequest) (response *SetTableDataFlowResponse, err error) {
-    if request == nil {
-        request = NewSetTableDataFlowRequest()
-    }
-    
-    response = NewSetTableDataFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTableDataFlowWithContext(context.Background(), request)
 }
 
 // SetTableDataFlow
@@ -2773,6 +2722,11 @@ func (c *Client) SetTableDataFlowWithContext(ctx context.Context, request *SetTa
     if request == nil {
         request = NewSetTableDataFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTableDataFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTableDataFlowResponse()
@@ -2809,13 +2763,7 @@ func NewSetTableIndexResponse() (response *SetTableIndexResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTableIndex(request *SetTableIndexRequest) (response *SetTableIndexResponse, err error) {
-    if request == nil {
-        request = NewSetTableIndexRequest()
-    }
-    
-    response = NewSetTableIndexResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTableIndexWithContext(context.Background(), request)
 }
 
 // SetTableIndex
@@ -2833,6 +2781,11 @@ func (c *Client) SetTableIndexWithContext(ctx context.Context, request *SetTable
     if request == nil {
         request = NewSetTableIndexRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTableIndex require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTableIndexResponse()
@@ -2870,13 +2823,7 @@ func NewUpdateApplyResponse() (response *UpdateApplyResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateApply(request *UpdateApplyRequest) (response *UpdateApplyResponse, err error) {
-    if request == nil {
-        request = NewUpdateApplyRequest()
-    }
-    
-    response = NewUpdateApplyResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateApplyWithContext(context.Background(), request)
 }
 
 // UpdateApply
@@ -2895,6 +2842,11 @@ func (c *Client) UpdateApplyWithContext(ctx context.Context, request *UpdateAppl
     if request == nil {
         request = NewUpdateApplyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApply require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateApplyResponse()
@@ -2929,13 +2881,7 @@ func NewVerifyIdlFilesResponse() (response *VerifyIdlFilesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) VerifyIdlFiles(request *VerifyIdlFilesRequest) (response *VerifyIdlFilesResponse, err error) {
-    if request == nil {
-        request = NewVerifyIdlFilesRequest()
-    }
-    
-    response = NewVerifyIdlFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyIdlFilesWithContext(context.Background(), request)
 }
 
 // VerifyIdlFiles
@@ -2951,6 +2897,11 @@ func (c *Client) VerifyIdlFilesWithContext(ctx context.Context, request *VerifyI
     if request == nil {
         request = NewVerifyIdlFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyIdlFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyIdlFilesResponse()

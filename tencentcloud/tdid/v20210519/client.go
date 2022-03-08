@@ -16,6 +16,7 @@ package v20210519
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,13 +74,7 @@ func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *CreateCredentialResponse, err error) {
-    if request == nil {
-        request = NewCreateCredentialRequest()
-    }
-    
-    response = NewCreateCredentialResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCredentialWithContext(context.Background(), request)
 }
 
 // CreateCredential
@@ -97,6 +92,11 @@ func (c *Client) CreateCredentialWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCredentialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCredential require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCredentialResponse()
@@ -139,13 +139,7 @@ func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredential
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialRequest) (response *CreateSelectiveCredentialResponse, err error) {
-    if request == nil {
-        request = NewCreateSelectiveCredentialRequest()
-    }
-    
-    response = NewCreateSelectiveCredentialResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSelectiveCredentialWithContext(context.Background(), request)
 }
 
 // CreateSelectiveCredential
@@ -169,6 +163,11 @@ func (c *Client) CreateSelectiveCredentialWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateSelectiveCredentialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSelectiveCredential require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSelectiveCredentialResponse()
@@ -209,13 +208,7 @@ func NewCreateTDidResponse() (response *CreateTDidResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 func (c *Client) CreateTDid(request *CreateTDidRequest) (response *CreateTDidResponse, err error) {
-    if request == nil {
-        request = NewCreateTDidRequest()
-    }
-    
-    response = NewCreateTDidResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTDidWithContext(context.Background(), request)
 }
 
 // CreateTDid
@@ -237,6 +230,11 @@ func (c *Client) CreateTDidWithContext(ctx context.Context, request *CreateTDidR
     if request == nil {
         request = NewCreateTDidRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDid require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTDidResponse()
@@ -279,13 +277,7 @@ func NewCreateTDidByPublicKeyResponse() (response *CreateTDidByPublicKeyResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTDidByPublicKey(request *CreateTDidByPublicKeyRequest) (response *CreateTDidByPublicKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateTDidByPublicKeyRequest()
-    }
-    
-    response = NewCreateTDidByPublicKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTDidByPublicKeyWithContext(context.Background(), request)
 }
 
 // CreateTDidByPublicKey
@@ -309,6 +301,11 @@ func (c *Client) CreateTDidByPublicKeyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateTDidByPublicKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTDidByPublicKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTDidByPublicKeyResponse()
@@ -351,13 +348,7 @@ func NewGetAuthorityIssuerResponse() (response *GetAuthorityIssuerResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetAuthorityIssuer(request *GetAuthorityIssuerRequest) (response *GetAuthorityIssuerResponse, err error) {
-    if request == nil {
-        request = NewGetAuthorityIssuerRequest()
-    }
-    
-    response = NewGetAuthorityIssuerResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAuthorityIssuerWithContext(context.Background(), request)
 }
 
 // GetAuthorityIssuer
@@ -381,6 +372,11 @@ func (c *Client) GetAuthorityIssuerWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetAuthorityIssuerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAuthorityIssuer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAuthorityIssuerResponse()
@@ -423,13 +419,7 @@ func NewGetDidDocumentResponse() (response *GetDidDocumentResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetDidDocument(request *GetDidDocumentRequest) (response *GetDidDocumentResponse, err error) {
-    if request == nil {
-        request = NewGetDidDocumentRequest()
-    }
-    
-    response = NewGetDidDocumentResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDidDocumentWithContext(context.Background(), request)
 }
 
 // GetDidDocument
@@ -453,6 +443,11 @@ func (c *Client) GetDidDocumentWithContext(ctx context.Context, request *GetDidD
     if request == nil {
         request = NewGetDidDocumentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDidDocument require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDidDocumentResponse()
@@ -495,13 +490,7 @@ func NewSetCredentialStatusResponse() (response *SetCredentialStatusResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetCredentialStatus(request *SetCredentialStatusRequest) (response *SetCredentialStatusResponse, err error) {
-    if request == nil {
-        request = NewSetCredentialStatusRequest()
-    }
-    
-    response = NewSetCredentialStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetCredentialStatusWithContext(context.Background(), request)
 }
 
 // SetCredentialStatus
@@ -525,6 +514,11 @@ func (c *Client) SetCredentialStatusWithContext(ctx context.Context, request *Se
     if request == nil {
         request = NewSetCredentialStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetCredentialStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetCredentialStatusResponse()
@@ -567,13 +561,7 @@ func NewVerifyCredentialResponse() (response *VerifyCredentialResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) VerifyCredential(request *VerifyCredentialRequest) (response *VerifyCredentialResponse, err error) {
-    if request == nil {
-        request = NewVerifyCredentialRequest()
-    }
-    
-    response = NewVerifyCredentialResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyCredentialWithContext(context.Background(), request)
 }
 
 // VerifyCredential
@@ -597,6 +585,11 @@ func (c *Client) VerifyCredentialWithContext(ctx context.Context, request *Verif
     if request == nil {
         request = NewVerifyCredentialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyCredential require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyCredentialResponse()

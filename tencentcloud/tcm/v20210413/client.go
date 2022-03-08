@@ -16,6 +16,7 @@ package v20210413
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewDescribeMeshResponse() (response *DescribeMeshResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeMesh(request *DescribeMeshRequest) (response *DescribeMeshResponse, err error) {
-    if request == nil {
-        request = NewDescribeMeshRequest()
-    }
-    
-    response = NewDescribeMeshResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMeshWithContext(context.Background(), request)
 }
 
 // DescribeMesh
@@ -93,6 +88,11 @@ func (c *Client) DescribeMeshWithContext(ctx context.Context, request *DescribeM
     if request == nil {
         request = NewDescribeMeshRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMesh require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMeshResponse()
@@ -126,13 +126,7 @@ func NewDescribeMeshListResponse() (response *DescribeMeshListResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeMeshList(request *DescribeMeshListRequest) (response *DescribeMeshListResponse, err error) {
-    if request == nil {
-        request = NewDescribeMeshListRequest()
-    }
-    
-    response = NewDescribeMeshListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMeshListWithContext(context.Background(), request)
 }
 
 // DescribeMeshList
@@ -147,6 +141,11 @@ func (c *Client) DescribeMeshListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMeshListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMeshList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMeshListResponse()

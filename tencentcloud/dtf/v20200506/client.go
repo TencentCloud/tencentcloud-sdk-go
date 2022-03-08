@@ -16,6 +16,7 @@ package v20200506
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewDescribeTransactionsResponse() (response *DescribeTransactionsResponse) 
 //  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeTransactions(request *DescribeTransactionsRequest) (response *DescribeTransactionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTransactionsRequest()
-    }
-    
-    response = NewDescribeTransactionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTransactionsWithContext(context.Background(), request)
 }
 
 // DescribeTransactions
@@ -87,6 +82,11 @@ func (c *Client) DescribeTransactionsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTransactionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTransactions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTransactionsResponse()

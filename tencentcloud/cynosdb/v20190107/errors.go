@@ -44,6 +44,9 @@ const (
 	// 操作失败{{1}}，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 
+	// 规格信息{{1}}查询失败。
+	FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
+
 	// 创建并支付订单失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_TRADECREATEORDERERROR = "FailedOperation.TradeCreateOrderError"
 
@@ -187,6 +190,9 @@ const (
 
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
+
+	// Serverless不支持该版本{{1}}。
+	OPERATIONDENIED_VERSIONNOTSUPPORTERROR = "OperationDenied.VersionNotSupportError"
 
 	// 集群{{1}}不存在。
 	RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"

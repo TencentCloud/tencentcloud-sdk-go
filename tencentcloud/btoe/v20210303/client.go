@@ -16,6 +16,7 @@ package v20210303
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,13 +81,7 @@ func NewCreateAudioDepositResponse() (response *CreateAudioDepositResponse) {
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateAudioDeposit(request *CreateAudioDepositRequest) (response *CreateAudioDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateAudioDepositRequest()
-    }
-    
-    response = NewCreateAudioDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAudioDepositWithContext(context.Background(), request)
 }
 
 // CreateAudioDeposit
@@ -111,6 +106,11 @@ func (c *Client) CreateAudioDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAudioDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAudioDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAudioDepositResponse()
@@ -156,13 +156,7 @@ func NewCreateDataDepositResponse() (response *CreateDataDepositResponse) {
 //  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateDataDeposit(request *CreateDataDepositRequest) (response *CreateDataDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateDataDepositRequest()
-    }
-    
-    response = NewCreateDataDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDataDepositWithContext(context.Background(), request)
 }
 
 // CreateDataDeposit
@@ -189,6 +183,11 @@ func (c *Client) CreateDataDepositWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDataDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDataDepositResponse()
@@ -234,13 +233,7 @@ func NewCreateDocDepositResponse() (response *CreateDocDepositResponse) {
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateDocDeposit(request *CreateDocDepositRequest) (response *CreateDocDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateDocDepositRequest()
-    }
-    
-    response = NewCreateDocDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDocDepositWithContext(context.Background(), request)
 }
 
 // CreateDocDeposit
@@ -267,6 +260,11 @@ func (c *Client) CreateDocDepositWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateDocDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDocDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDocDepositResponse()
@@ -307,13 +305,7 @@ func NewCreateHashDepositResponse() (response *CreateHashDepositResponse) {
 //  INVALIDPARAMETERVALUE_HASHNOMATCH = "InvalidParameterValue.HashNoMatch"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDeposit(request *CreateHashDepositRequest) (response *CreateHashDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateHashDepositRequest()
-    }
-    
-    response = NewCreateHashDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHashDepositWithContext(context.Background(), request)
 }
 
 // CreateHashDeposit
@@ -335,6 +327,11 @@ func (c *Client) CreateHashDepositWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateHashDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHashDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHashDepositResponse()
@@ -374,13 +371,7 @@ func NewCreateHashDepositNoCertResponse() (response *CreateHashDepositNoCertResp
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDepositNoCert(request *CreateHashDepositNoCertRequest) (response *CreateHashDepositNoCertResponse, err error) {
-    if request == nil {
-        request = NewCreateHashDepositNoCertRequest()
-    }
-    
-    response = NewCreateHashDepositNoCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHashDepositNoCertWithContext(context.Background(), request)
 }
 
 // CreateHashDepositNoCert
@@ -401,6 +392,11 @@ func (c *Client) CreateHashDepositNoCertWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateHashDepositNoCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHashDepositNoCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHashDepositNoCertResponse()
@@ -440,13 +436,7 @@ func NewCreateHashDepositNoSealResponse() (response *CreateHashDepositNoSealResp
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateHashDepositNoSeal(request *CreateHashDepositNoSealRequest) (response *CreateHashDepositNoSealResponse, err error) {
-    if request == nil {
-        request = NewCreateHashDepositNoSealRequest()
-    }
-    
-    response = NewCreateHashDepositNoSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHashDepositNoSealWithContext(context.Background(), request)
 }
 
 // CreateHashDepositNoSeal
@@ -467,6 +457,11 @@ func (c *Client) CreateHashDepositNoSealWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateHashDepositNoSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHashDepositNoSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHashDepositNoSealResponse()
@@ -512,13 +507,7 @@ func NewCreateImageDepositResponse() (response *CreateImageDepositResponse) {
 //  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateImageDeposit(request *CreateImageDepositRequest) (response *CreateImageDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateImageDepositRequest()
-    }
-    
-    response = NewCreateImageDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImageDepositWithContext(context.Background(), request)
 }
 
 // CreateImageDeposit
@@ -545,6 +534,11 @@ func (c *Client) CreateImageDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateImageDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImageDepositResponse()
@@ -591,13 +585,7 @@ func NewCreateVideoDepositResponse() (response *CreateVideoDepositResponse) {
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 func (c *Client) CreateVideoDeposit(request *CreateVideoDepositRequest) (response *CreateVideoDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateVideoDepositRequest()
-    }
-    
-    response = NewCreateVideoDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVideoDepositWithContext(context.Background(), request)
 }
 
 // CreateVideoDeposit
@@ -625,6 +613,11 @@ func (c *Client) CreateVideoDepositWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateVideoDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVideoDepositResponse()
@@ -666,13 +659,7 @@ func NewCreateWebpageDepositResponse() (response *CreateWebpageDepositResponse) 
 //  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateWebpageDeposit(request *CreateWebpageDepositRequest) (response *CreateWebpageDepositResponse, err error) {
-    if request == nil {
-        request = NewCreateWebpageDepositRequest()
-    }
-    
-    response = NewCreateWebpageDepositResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWebpageDepositWithContext(context.Background(), request)
 }
 
 // CreateWebpageDeposit
@@ -695,6 +682,11 @@ func (c *Client) CreateWebpageDepositWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateWebpageDepositRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWebpageDeposit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWebpageDepositResponse()
@@ -734,13 +726,7 @@ func NewGetDepositCertResponse() (response *GetDepositCertResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetDepositCert(request *GetDepositCertRequest) (response *GetDepositCertResponse, err error) {
-    if request == nil {
-        request = NewGetDepositCertRequest()
-    }
-    
-    response = NewGetDepositCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDepositCertWithContext(context.Background(), request)
 }
 
 // GetDepositCert
@@ -761,6 +747,11 @@ func (c *Client) GetDepositCertWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDepositCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDepositCertResponse()
@@ -814,13 +805,7 @@ func NewGetDepositFileResponse() (response *GetDepositFileResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 func (c *Client) GetDepositFile(request *GetDepositFileRequest) (response *GetDepositFileResponse, err error) {
-    if request == nil {
-        request = NewGetDepositFileRequest()
-    }
-    
-    response = NewGetDepositFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDepositFileWithContext(context.Background(), request)
 }
 
 // GetDepositFile
@@ -855,6 +840,11 @@ func (c *Client) GetDepositFileWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDepositFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDepositFileResponse()
@@ -899,13 +889,7 @@ func NewGetDepositInfoResponse() (response *GetDepositInfoResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetDepositInfo(request *GetDepositInfoRequest) (response *GetDepositInfoResponse, err error) {
-    if request == nil {
-        request = NewGetDepositInfoRequest()
-    }
-    
-    response = NewGetDepositInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDepositInfoWithContext(context.Background(), request)
 }
 
 // GetDepositInfo
@@ -931,6 +915,11 @@ func (c *Client) GetDepositInfoWithContext(ctx context.Context, request *GetDepo
     if request == nil {
         request = NewGetDepositInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDepositInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDepositInfoResponse()

@@ -16,6 +16,7 @@ package v20190416
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
-    if request == nil {
-        request = NewCreateJobRequest()
-    }
-    
-    response = NewCreateJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateJobWithContext(context.Background(), request)
 }
 
 // CreateJob
@@ -95,6 +90,11 @@ func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobReq
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateJobResponse()
@@ -131,13 +131,7 @@ func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRsgAsGroup(request *CreateRsgAsGroupRequest) (response *CreateRsgAsGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateRsgAsGroupRequest()
-    }
-    
-    response = NewCreateRsgAsGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRsgAsGroupWithContext(context.Background(), request)
 }
 
 // CreateRsgAsGroup
@@ -155,6 +149,11 @@ func (c *Client) CreateRsgAsGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRsgAsGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRsgAsGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRsgAsGroupResponse()
@@ -190,13 +189,7 @@ func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRuntime(request *CreateRuntimeRequest) (response *CreateRuntimeResponse, err error) {
-    if request == nil {
-        request = NewCreateRuntimeRequest()
-    }
-    
-    response = NewCreateRuntimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRuntimeWithContext(context.Background(), request)
 }
 
 // CreateRuntime
@@ -213,6 +206,11 @@ func (c *Client) CreateRuntimeWithContext(ctx context.Context, request *CreateRu
     if request == nil {
         request = NewCreateRuntimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRuntime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRuntimeResponse()
@@ -248,13 +246,7 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
-    if request == nil {
-        request = NewCreateServiceRequest()
-    }
-    
-    response = NewCreateServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateServiceWithContext(context.Background(), request)
 }
 
 // CreateService
@@ -271,6 +263,11 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateServiceResponse()
@@ -306,13 +303,7 @@ func NewCreateServiceConfigResponse() (response *CreateServiceConfigResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (response *CreateServiceConfigResponse, err error) {
-    if request == nil {
-        request = NewCreateServiceConfigRequest()
-    }
-    
-    response = NewCreateServiceConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateServiceConfigWithContext(context.Background(), request)
 }
 
 // CreateServiceConfig
@@ -329,6 +320,11 @@ func (c *Client) CreateServiceConfigWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateServiceConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServiceConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateServiceConfigResponse()
@@ -363,13 +359,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteInstanceRequest()
-    }
-    
-    response = NewDeleteInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInstanceWithContext(context.Background(), request)
 }
 
 // DeleteInstance
@@ -385,6 +375,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
@@ -417,13 +412,7 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
-    if request == nil {
-        request = NewDeleteJobRequest()
-    }
-    
-    response = NewDeleteJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteJobWithContext(context.Background(), request)
 }
 
 // DeleteJob
@@ -437,6 +426,11 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobReq
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteJobResponse()
@@ -469,13 +463,7 @@ func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (response *DeleteResourceGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteResourceGroupRequest()
-    }
-    
-    response = NewDeleteResourceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteResourceGroupWithContext(context.Background(), request)
 }
 
 // DeleteResourceGroup
@@ -489,6 +477,11 @@ func (c *Client) DeleteResourceGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteResourceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResourceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteResourceGroupResponse()
@@ -522,13 +515,7 @@ func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRsgAsGroup(request *DeleteRsgAsGroupRequest) (response *DeleteRsgAsGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteRsgAsGroupRequest()
-    }
-    
-    response = NewDeleteRsgAsGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRsgAsGroupWithContext(context.Background(), request)
 }
 
 // DeleteRsgAsGroup
@@ -543,6 +530,11 @@ func (c *Client) DeleteRsgAsGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRsgAsGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRsgAsGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRsgAsGroupResponse()
@@ -578,13 +570,7 @@ func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRuntime(request *DeleteRuntimeRequest) (response *DeleteRuntimeResponse, err error) {
-    if request == nil {
-        request = NewDeleteRuntimeRequest()
-    }
-    
-    response = NewDeleteRuntimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRuntimeWithContext(context.Background(), request)
 }
 
 // DeleteRuntime
@@ -601,6 +587,11 @@ func (c *Client) DeleteRuntimeWithContext(ctx context.Context, request *DeleteRu
     if request == nil {
         request = NewDeleteRuntimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRuntime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRuntimeResponse()
@@ -635,13 +626,7 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
-    if request == nil {
-        request = NewDeleteServiceRequest()
-    }
-    
-    response = NewDeleteServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteServiceWithContext(context.Background(), request)
 }
 
 // DeleteService
@@ -657,6 +642,11 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteSe
     if request == nil {
         request = NewDeleteServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteServiceResponse()
@@ -691,13 +681,7 @@ func NewDeleteServiceConfigResponse() (response *DeleteServiceConfigResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteServiceConfig(request *DeleteServiceConfigRequest) (response *DeleteServiceConfigResponse, err error) {
-    if request == nil {
-        request = NewDeleteServiceConfigRequest()
-    }
-    
-    response = NewDeleteServiceConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteServiceConfigWithContext(context.Background(), request)
 }
 
 // DeleteServiceConfig
@@ -713,6 +697,11 @@ func (c *Client) DeleteServiceConfigWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteServiceConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteServiceConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteServiceConfigResponse()
@@ -746,13 +735,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -767,6 +750,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -800,13 +788,7 @@ func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) (response *DescribeResourceGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceGroupsRequest()
-    }
-    
-    response = NewDescribeResourceGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceGroupsWithContext(context.Background(), request)
 }
 
 // DescribeResourceGroups
@@ -821,6 +803,11 @@ func (c *Client) DescribeResourceGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeResourceGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceGroupsResponse()
@@ -855,13 +842,7 @@ func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActi
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroupActivities(request *DescribeRsgAsGroupActivitiesRequest) (response *DescribeRsgAsGroupActivitiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRsgAsGroupActivitiesRequest()
-    }
-    
-    response = NewDescribeRsgAsGroupActivitiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRsgAsGroupActivitiesWithContext(context.Background(), request)
 }
 
 // DescribeRsgAsGroupActivities
@@ -877,6 +858,11 @@ func (c *Client) DescribeRsgAsGroupActivitiesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRsgAsGroupActivitiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRsgAsGroupActivities require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRsgAsGroupActivitiesResponse()
@@ -911,13 +897,7 @@ func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRsgAsGroups(request *DescribeRsgAsGroupsRequest) (response *DescribeRsgAsGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRsgAsGroupsRequest()
-    }
-    
-    response = NewDescribeRsgAsGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRsgAsGroupsWithContext(context.Background(), request)
 }
 
 // DescribeRsgAsGroups
@@ -933,6 +913,11 @@ func (c *Client) DescribeRsgAsGroupsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRsgAsGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRsgAsGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRsgAsGroupsResponse()
@@ -967,13 +952,7 @@ func NewDescribeRuntimesResponse() (response *DescribeRuntimesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRuntimes(request *DescribeRuntimesRequest) (response *DescribeRuntimesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuntimesRequest()
-    }
-    
-    response = NewDescribeRuntimesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRuntimesWithContext(context.Background(), request)
 }
 
 // DescribeRuntimes
@@ -989,6 +968,11 @@ func (c *Client) DescribeRuntimesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRuntimesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuntimes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRuntimesResponse()
@@ -1023,13 +1007,7 @@ func NewDescribeServiceConfigsResponse() (response *DescribeServiceConfigsRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServiceConfigs(request *DescribeServiceConfigsRequest) (response *DescribeServiceConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceConfigsRequest()
-    }
-    
-    response = NewDescribeServiceConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceConfigsWithContext(context.Background(), request)
 }
 
 // DescribeServiceConfigs
@@ -1045,6 +1023,11 @@ func (c *Client) DescribeServiceConfigsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeServiceConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceConfigsResponse()
@@ -1080,13 +1063,7 @@ func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *DescribeServicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeServicesRequest()
-    }
-    
-    response = NewDescribeServicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServicesWithContext(context.Background(), request)
 }
 
 // DescribeServices
@@ -1103,6 +1080,11 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeServicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServicesResponse()
@@ -1137,13 +1119,7 @@ func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DisableRsgAsGroup(request *DisableRsgAsGroupRequest) (response *DisableRsgAsGroupResponse, err error) {
-    if request == nil {
-        request = NewDisableRsgAsGroupRequest()
-    }
-    
-    response = NewDisableRsgAsGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableRsgAsGroupWithContext(context.Background(), request)
 }
 
 // DisableRsgAsGroup
@@ -1159,6 +1135,11 @@ func (c *Client) DisableRsgAsGroupWithContext(ctx context.Context, request *Disa
     if request == nil {
         request = NewDisableRsgAsGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableRsgAsGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableRsgAsGroupResponse()
@@ -1193,13 +1174,7 @@ func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRsgAsGroup(request *EnableRsgAsGroupRequest) (response *EnableRsgAsGroupResponse, err error) {
-    if request == nil {
-        request = NewEnableRsgAsGroupRequest()
-    }
-    
-    response = NewEnableRsgAsGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableRsgAsGroupWithContext(context.Background(), request)
 }
 
 // EnableRsgAsGroup
@@ -1215,6 +1190,11 @@ func (c *Client) EnableRsgAsGroupWithContext(ctx context.Context, request *Enabl
     if request == nil {
         request = NewEnableRsgAsGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableRsgAsGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableRsgAsGroupResponse()
@@ -1250,13 +1230,7 @@ func NewExposeServiceResponse() (response *ExposeServiceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ExposeService(request *ExposeServiceRequest) (response *ExposeServiceResponse, err error) {
-    if request == nil {
-        request = NewExposeServiceRequest()
-    }
-    
-    response = NewExposeServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExposeServiceWithContext(context.Background(), request)
 }
 
 // ExposeService
@@ -1273,6 +1247,11 @@ func (c *Client) ExposeServiceWithContext(ctx context.Context, request *ExposeSe
     if request == nil {
         request = NewExposeServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExposeService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExposeServiceResponse()
@@ -1307,13 +1286,7 @@ func NewUpdateJobResponse() (response *UpdateJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobResponse, err error) {
-    if request == nil {
-        request = NewUpdateJobRequest()
-    }
-    
-    response = NewUpdateJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateJobWithContext(context.Background(), request)
 }
 
 // UpdateJob
@@ -1329,6 +1302,11 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJobReq
     if request == nil {
         request = NewUpdateJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateJobResponse()
@@ -1363,13 +1341,7 @@ func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRsgAsGroup(request *UpdateRsgAsGroupRequest) (response *UpdateRsgAsGroupResponse, err error) {
-    if request == nil {
-        request = NewUpdateRsgAsGroupRequest()
-    }
-    
-    response = NewUpdateRsgAsGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRsgAsGroupWithContext(context.Background(), request)
 }
 
 // UpdateRsgAsGroup
@@ -1385,6 +1357,11 @@ func (c *Client) UpdateRsgAsGroupWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateRsgAsGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRsgAsGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRsgAsGroupResponse()
@@ -1419,13 +1396,7 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateServiceResponse, err error) {
-    if request == nil {
-        request = NewUpdateServiceRequest()
-    }
-    
-    response = NewUpdateServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateServiceWithContext(context.Background(), request)
 }
 
 // UpdateService
@@ -1441,6 +1412,11 @@ func (c *Client) UpdateServiceWithContext(ctx context.Context, request *UpdateSe
     if request == nil {
         request = NewUpdateServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateServiceResponse()

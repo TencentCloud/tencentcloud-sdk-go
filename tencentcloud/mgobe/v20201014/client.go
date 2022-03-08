@@ -16,6 +16,7 @@ package v20201014
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewChangeRoomPlayerProfileResponse() (response *ChangeRoomPlayerProfileResp
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) ChangeRoomPlayerProfile(request *ChangeRoomPlayerProfileRequest) (response *ChangeRoomPlayerProfileResponse, err error) {
-    if request == nil {
-        request = NewChangeRoomPlayerProfileRequest()
-    }
-    
-    response = NewChangeRoomPlayerProfileResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeRoomPlayerProfileWithContext(context.Background(), request)
 }
 
 // ChangeRoomPlayerProfile
@@ -119,6 +114,11 @@ func (c *Client) ChangeRoomPlayerProfileWithContext(ctx context.Context, request
     if request == nil {
         request = NewChangeRoomPlayerProfileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeRoomPlayerProfile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeRoomPlayerProfileResponse()
@@ -458,13 +458,7 @@ func NewChangeRoomPlayerStatusResponse() (response *ChangeRoomPlayerStatusRespon
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) ChangeRoomPlayerStatus(request *ChangeRoomPlayerStatusRequest) (response *ChangeRoomPlayerStatusResponse, err error) {
-    if request == nil {
-        request = NewChangeRoomPlayerStatusRequest()
-    }
-    
-    response = NewChangeRoomPlayerStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeRoomPlayerStatusWithContext(context.Background(), request)
 }
 
 // ChangeRoomPlayerStatus
@@ -785,6 +779,11 @@ func (c *Client) ChangeRoomPlayerStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewChangeRoomPlayerStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeRoomPlayerStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeRoomPlayerStatusResponse()
@@ -1125,13 +1124,7 @@ func NewDescribePlayerResponse() (response *DescribePlayerResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) DescribePlayer(request *DescribePlayerRequest) (response *DescribePlayerResponse, err error) {
-    if request == nil {
-        request = NewDescribePlayerRequest()
-    }
-    
-    response = NewDescribePlayerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePlayerWithContext(context.Background(), request)
 }
 
 // DescribePlayer
@@ -1453,6 +1446,11 @@ func (c *Client) DescribePlayerWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePlayerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlayer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePlayerResponse()
@@ -1793,13 +1791,7 @@ func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) DescribeRoom(request *DescribeRoomRequest) (response *DescribeRoomResponse, err error) {
-    if request == nil {
-        request = NewDescribeRoomRequest()
-    }
-    
-    response = NewDescribeRoomResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRoomWithContext(context.Background(), request)
 }
 
 // DescribeRoom
@@ -2121,6 +2113,11 @@ func (c *Client) DescribeRoomWithContext(ctx context.Context, request *DescribeR
     if request == nil {
         request = NewDescribeRoomRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoom require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRoomResponse()
@@ -2460,13 +2457,7 @@ func NewDismissRoomResponse() (response *DismissRoomResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) DismissRoom(request *DismissRoomRequest) (response *DismissRoomResponse, err error) {
-    if request == nil {
-        request = NewDismissRoomRequest()
-    }
-    
-    response = NewDismissRoomResponse()
-    err = c.Send(request, response)
-    return
+    return c.DismissRoomWithContext(context.Background(), request)
 }
 
 // DismissRoom
@@ -2787,6 +2778,11 @@ func (c *Client) DismissRoomWithContext(ctx context.Context, request *DismissRoo
     if request == nil {
         request = NewDismissRoomRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DismissRoom require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDismissRoomResponse()
@@ -3126,13 +3122,7 @@ func NewModifyRoomResponse() (response *ModifyRoomResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomResponse, err error) {
-    if request == nil {
-        request = NewModifyRoomRequest()
-    }
-    
-    response = NewModifyRoomResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRoomWithContext(context.Background(), request)
 }
 
 // ModifyRoom
@@ -3453,6 +3443,11 @@ func (c *Client) ModifyRoomWithContext(ctx context.Context, request *ModifyRoomR
     if request == nil {
         request = NewModifyRoomRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoom require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRoomResponse()
@@ -3792,13 +3787,7 @@ func NewRemoveRoomPlayerResponse() (response *RemoveRoomPlayerResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TAGKEYDUPLICATE = "UnsupportedOperation.TagKeyDuplicate"
 func (c *Client) RemoveRoomPlayer(request *RemoveRoomPlayerRequest) (response *RemoveRoomPlayerResponse, err error) {
-    if request == nil {
-        request = NewRemoveRoomPlayerRequest()
-    }
-    
-    response = NewRemoveRoomPlayerResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveRoomPlayerWithContext(context.Background(), request)
 }
 
 // RemoveRoomPlayer
@@ -4119,6 +4108,11 @@ func (c *Client) RemoveRoomPlayerWithContext(ctx context.Context, request *Remov
     if request == nil {
         request = NewRemoveRoomPlayerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveRoomPlayer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveRoomPlayerResponse()

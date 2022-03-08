@@ -16,6 +16,7 @@ package v20180412
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,13 +81,7 @@ func NewAddReplicationInstanceResponse() (response *AddReplicationInstanceRespon
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) AddReplicationInstance(request *AddReplicationInstanceRequest) (response *AddReplicationInstanceResponse, err error) {
-    if request == nil {
-        request = NewAddReplicationInstanceRequest()
-    }
-    
-    response = NewAddReplicationInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddReplicationInstanceWithContext(context.Background(), request)
 }
 
 // AddReplicationInstance
@@ -111,6 +106,11 @@ func (c *Client) AddReplicationInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewAddReplicationInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddReplicationInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddReplicationInstanceResponse()
@@ -153,13 +153,7 @@ func NewApplyParamsTemplateResponse() (response *ApplyParamsTemplateResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) ApplyParamsTemplate(request *ApplyParamsTemplateRequest) (response *ApplyParamsTemplateResponse, err error) {
-    if request == nil {
-        request = NewApplyParamsTemplateRequest()
-    }
-    
-    response = NewApplyParamsTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyParamsTemplateWithContext(context.Background(), request)
 }
 
 // ApplyParamsTemplate
@@ -183,6 +177,11 @@ func (c *Client) ApplyParamsTemplateWithContext(ctx context.Context, request *Ap
     if request == nil {
         request = NewApplyParamsTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyParamsTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyParamsTemplateResponse()
@@ -217,13 +216,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
 //  FAILEDOPERATION_UPDATESECURITYGROUPSFAILED = "FailedOperation.UpdateSecurityGroupsFailed"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewAssociateSecurityGroupsRequest()
-    }
-    
-    response = NewAssociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // AssociateSecurityGroups
@@ -239,6 +232,11 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateSecurityGroupsResponse()
@@ -278,13 +276,7 @@ func NewChangeReplicaToMasterResponse() (response *ChangeReplicaToMasterResponse
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) ChangeReplicaToMaster(request *ChangeReplicaToMasterRequest) (response *ChangeReplicaToMasterResponse, err error) {
-    if request == nil {
-        request = NewChangeReplicaToMasterRequest()
-    }
-    
-    response = NewChangeReplicaToMasterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChangeReplicaToMasterWithContext(context.Background(), request)
 }
 
 // ChangeReplicaToMaster
@@ -305,6 +297,11 @@ func (c *Client) ChangeReplicaToMasterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewChangeReplicaToMasterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeReplicaToMaster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChangeReplicaToMasterResponse()
@@ -339,13 +336,7 @@ func NewCleanUpInstanceResponse() (response *CleanUpInstanceResponse) {
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) CleanUpInstance(request *CleanUpInstanceRequest) (response *CleanUpInstanceResponse, err error) {
-    if request == nil {
-        request = NewCleanUpInstanceRequest()
-    }
-    
-    response = NewCleanUpInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CleanUpInstanceWithContext(context.Background(), request)
 }
 
 // CleanUpInstance
@@ -361,6 +352,11 @@ func (c *Client) CleanUpInstanceWithContext(ctx context.Context, request *CleanU
     if request == nil {
         request = NewCleanUpInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CleanUpInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCleanUpInstanceResponse()
@@ -396,13 +392,7 @@ func NewClearInstanceResponse() (response *ClearInstanceResponse) {
 //  INVALIDPARAMETERVALUE_PASSWORDERROR = "InvalidParameterValue.PasswordError"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) ClearInstance(request *ClearInstanceRequest) (response *ClearInstanceResponse, err error) {
-    if request == nil {
-        request = NewClearInstanceRequest()
-    }
-    
-    response = NewClearInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearInstanceWithContext(context.Background(), request)
 }
 
 // ClearInstance
@@ -419,6 +409,11 @@ func (c *Client) ClearInstanceWithContext(ctx context.Context, request *ClearIns
     if request == nil {
         request = NewClearInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearInstanceResponse()
@@ -452,13 +447,7 @@ func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (response *CreateInstanceAccountResponse, err error) {
-    if request == nil {
-        request = NewCreateInstanceAccountRequest()
-    }
-    
-    response = NewCreateInstanceAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInstanceAccountWithContext(context.Background(), request)
 }
 
 // CreateInstanceAccount
@@ -473,6 +462,11 @@ func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateInstanceAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstanceAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInstanceAccountResponse()
@@ -529,13 +523,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *CreateInstancesResponse, err error) {
-    if request == nil {
-        request = NewCreateInstancesRequest()
-    }
-    
-    response = NewCreateInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInstancesWithContext(context.Background(), request)
 }
 
 // CreateInstances
@@ -573,6 +561,11 @@ func (c *Client) CreateInstancesWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInstancesResponse()
@@ -606,13 +599,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (response *CreateParamTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateParamTemplateRequest()
-    }
-    
-    response = NewCreateParamTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateParamTemplateWithContext(context.Background(), request)
 }
 
 // CreateParamTemplate
@@ -627,6 +614,11 @@ func (c *Client) CreateParamTemplateWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateParamTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateParamTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateParamTemplateResponse()
@@ -668,13 +660,7 @@ func NewCreateReplicationGroupResponse() (response *CreateReplicationGroupRespon
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) CreateReplicationGroup(request *CreateReplicationGroupRequest) (response *CreateReplicationGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateReplicationGroupRequest()
-    }
-    
-    response = NewCreateReplicationGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateReplicationGroupWithContext(context.Background(), request)
 }
 
 // CreateReplicationGroup
@@ -697,6 +683,11 @@ func (c *Client) CreateReplicationGroupWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateReplicationGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReplicationGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateReplicationGroupResponse()
@@ -731,13 +722,7 @@ func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) (response *DeleteInstanceAccountResponse, err error) {
-    if request == nil {
-        request = NewDeleteInstanceAccountRequest()
-    }
-    
-    response = NewDeleteInstanceAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInstanceAccountWithContext(context.Background(), request)
 }
 
 // DeleteInstanceAccount
@@ -753,6 +738,11 @@ func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteInstanceAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstanceAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInstanceAccountResponse()
@@ -786,13 +776,7 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (response *DeleteParamTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteParamTemplateRequest()
-    }
-    
-    response = NewDeleteParamTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteParamTemplateWithContext(context.Background(), request)
 }
 
 // DeleteParamTemplate
@@ -807,6 +791,11 @@ func (c *Client) DeleteParamTemplateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteParamTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteParamTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteParamTemplateResponse()
@@ -845,13 +834,7 @@ func NewDeleteReplicationInstanceResponse() (response *DeleteReplicationInstance
 //  UNSUPPORTEDOPERATION_INSPECTION = "UnsupportedOperation.Inspection"
 //  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
 func (c *Client) DeleteReplicationInstance(request *DeleteReplicationInstanceRequest) (response *DeleteReplicationInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteReplicationInstanceRequest()
-    }
-    
-    response = NewDeleteReplicationInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteReplicationInstanceWithContext(context.Background(), request)
 }
 
 // DeleteReplicationInstance
@@ -871,6 +854,11 @@ func (c *Client) DeleteReplicationInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteReplicationInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReplicationInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteReplicationInstanceResponse()
@@ -906,13 +894,7 @@ func NewDescribeAutoBackupConfigResponse() (response *DescribeAutoBackupConfigRe
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeAutoBackupConfig(request *DescribeAutoBackupConfigRequest) (response *DescribeAutoBackupConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoBackupConfigRequest()
-    }
-    
-    response = NewDescribeAutoBackupConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoBackupConfigWithContext(context.Background(), request)
 }
 
 // DescribeAutoBackupConfig
@@ -929,6 +911,11 @@ func (c *Client) DescribeAutoBackupConfigWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAutoBackupConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoBackupConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoBackupConfigResponse()
@@ -969,13 +956,7 @@ func NewDescribeBackupUrlResponse() (response *DescribeBackupUrlResponse) {
 //  UNSUPPORTEDOPERATION_ISAUTORENEWERROR = "UnsupportedOperation.IsAutoRenewError"
 //  UNSUPPORTEDOPERATION_ONLYCLUSTERINSTANCECANEXPORTBACKUP = "UnsupportedOperation.OnlyClusterInstanceCanExportBackup"
 func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response *DescribeBackupUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeBackupUrlRequest()
-    }
-    
-    response = NewDescribeBackupUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBackupUrlWithContext(context.Background(), request)
 }
 
 // DescribeBackupUrl
@@ -997,6 +978,11 @@ func (c *Client) DescribeBackupUrlWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBackupUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBackupUrlResponse()
@@ -1032,13 +1018,7 @@ func NewDescribeCommonDBInstancesResponse() (response *DescribeCommonDBInstances
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeCommonDBInstances(request *DescribeCommonDBInstancesRequest) (response *DescribeCommonDBInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCommonDBInstancesRequest()
-    }
-    
-    response = NewDescribeCommonDBInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCommonDBInstancesWithContext(context.Background(), request)
 }
 
 // DescribeCommonDBInstances
@@ -1055,6 +1035,11 @@ func (c *Client) DescribeCommonDBInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCommonDBInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCommonDBInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCommonDBInstancesResponse()
@@ -1096,13 +1081,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsRequest) (response *DescribeDBSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBSecurityGroupsRequest()
-    }
-    
-    response = NewDescribeDBSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DescribeDBSecurityGroups
@@ -1125,6 +1104,11 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeDBSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBSecurityGroupsResponse()
@@ -1158,13 +1142,7 @@ func NewDescribeInstanceAccountResponse() (response *DescribeInstanceAccountResp
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest) (response *DescribeInstanceAccountResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceAccountRequest()
-    }
-    
-    response = NewDescribeInstanceAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceAccountWithContext(context.Background(), request)
 }
 
 // DescribeInstanceAccount
@@ -1179,6 +1157,11 @@ func (c *Client) DescribeInstanceAccountWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstanceAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceAccountResponse()
@@ -1214,13 +1197,7 @@ func NewDescribeInstanceBackupsResponse() (response *DescribeInstanceBackupsResp
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeInstanceBackups(request *DescribeInstanceBackupsRequest) (response *DescribeInstanceBackupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceBackupsRequest()
-    }
-    
-    response = NewDescribeInstanceBackupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceBackupsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceBackups
@@ -1237,6 +1214,11 @@ func (c *Client) DescribeInstanceBackupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstanceBackupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceBackups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceBackupsResponse()
@@ -1268,13 +1250,7 @@ func NewDescribeInstanceDTSInfoResponse() (response *DescribeInstanceDTSInfoResp
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeInstanceDTSInfo(request *DescribeInstanceDTSInfoRequest) (response *DescribeInstanceDTSInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceDTSInfoRequest()
-    }
-    
-    response = NewDescribeInstanceDTSInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceDTSInfoWithContext(context.Background(), request)
 }
 
 // DescribeInstanceDTSInfo
@@ -1287,6 +1263,11 @@ func (c *Client) DescribeInstanceDTSInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstanceDTSInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceDTSInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceDTSInfoResponse()
@@ -1319,13 +1300,7 @@ func NewDescribeInstanceDealDetailResponse() (response *DescribeInstanceDealDeta
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCEUNAVAILABLE_INSTANCECONFERROR = "ResourceUnavailable.InstanceConfError"
 func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailRequest) (response *DescribeInstanceDealDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceDealDetailRequest()
-    }
-    
-    response = NewDescribeInstanceDealDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceDealDetailWithContext(context.Background(), request)
 }
 
 // DescribeInstanceDealDetail
@@ -1339,6 +1314,11 @@ func (c *Client) DescribeInstanceDealDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceDealDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceDealDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceDealDetailResponse()
@@ -1369,13 +1349,7 @@ func NewDescribeInstanceMonitorBigKeyResponse() (response *DescribeInstanceMonit
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorBigKey(request *DescribeInstanceMonitorBigKeyRequest) (response *DescribeInstanceMonitorBigKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorBigKeyRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorBigKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorBigKeyWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorBigKey
@@ -1387,6 +1361,11 @@ func (c *Client) DescribeInstanceMonitorBigKeyWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorBigKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorBigKeyResponse()
@@ -1417,13 +1396,7 @@ func NewDescribeInstanceMonitorBigKeySizeDistResponse() (response *DescribeInsta
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorBigKeySizeDist(request *DescribeInstanceMonitorBigKeySizeDistRequest) (response *DescribeInstanceMonitorBigKeySizeDistResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorBigKeySizeDistRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorBigKeySizeDistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorBigKeySizeDistWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorBigKeySizeDist
@@ -1435,6 +1408,11 @@ func (c *Client) DescribeInstanceMonitorBigKeySizeDistWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeySizeDistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorBigKeySizeDist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorBigKeySizeDistResponse()
@@ -1465,13 +1443,7 @@ func NewDescribeInstanceMonitorBigKeyTypeDistResponse() (response *DescribeInsta
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorBigKeyTypeDist(request *DescribeInstanceMonitorBigKeyTypeDistRequest) (response *DescribeInstanceMonitorBigKeyTypeDistResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorBigKeyTypeDistRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorBigKeyTypeDistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorBigKeyTypeDistWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorBigKeyTypeDist
@@ -1483,6 +1455,11 @@ func (c *Client) DescribeInstanceMonitorBigKeyTypeDistWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeInstanceMonitorBigKeyTypeDistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorBigKeyTypeDist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorBigKeyTypeDistResponse()
@@ -1513,13 +1490,7 @@ func NewDescribeInstanceMonitorHotKeyResponse() (response *DescribeInstanceMonit
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorHotKey(request *DescribeInstanceMonitorHotKeyRequest) (response *DescribeInstanceMonitorHotKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorHotKeyRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorHotKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorHotKeyWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorHotKey
@@ -1531,6 +1502,11 @@ func (c *Client) DescribeInstanceMonitorHotKeyWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceMonitorHotKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorHotKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorHotKeyResponse()
@@ -1561,13 +1537,7 @@ func NewDescribeInstanceMonitorSIPResponse() (response *DescribeInstanceMonitorS
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorSIP(request *DescribeInstanceMonitorSIPRequest) (response *DescribeInstanceMonitorSIPResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorSIPRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorSIPResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorSIPWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorSIP
@@ -1579,6 +1549,11 @@ func (c *Client) DescribeInstanceMonitorSIPWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceMonitorSIPRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorSIP require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorSIPResponse()
@@ -1609,13 +1584,7 @@ func NewDescribeInstanceMonitorTookDistResponse() (response *DescribeInstanceMon
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorTookDist(request *DescribeInstanceMonitorTookDistRequest) (response *DescribeInstanceMonitorTookDistResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorTookDistRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorTookDistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorTookDistWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorTookDist
@@ -1627,6 +1596,11 @@ func (c *Client) DescribeInstanceMonitorTookDistWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeInstanceMonitorTookDistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorTookDist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorTookDistResponse()
@@ -1657,13 +1631,7 @@ func NewDescribeInstanceMonitorTopNCmdResponse() (response *DescribeInstanceMoni
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorTopNCmd(request *DescribeInstanceMonitorTopNCmdRequest) (response *DescribeInstanceMonitorTopNCmdResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorTopNCmdRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorTopNCmdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorTopNCmdWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorTopNCmd
@@ -1675,6 +1643,11 @@ func (c *Client) DescribeInstanceMonitorTopNCmdWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeInstanceMonitorTopNCmdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorTopNCmd require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorTopNCmdResponse()
@@ -1705,13 +1678,7 @@ func NewDescribeInstanceMonitorTopNCmdTookResponse() (response *DescribeInstance
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
 func (c *Client) DescribeInstanceMonitorTopNCmdTook(request *DescribeInstanceMonitorTopNCmdTookRequest) (response *DescribeInstanceMonitorTopNCmdTookResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceMonitorTopNCmdTookRequest()
-    }
-    
-    response = NewDescribeInstanceMonitorTopNCmdTookResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceMonitorTopNCmdTookWithContext(context.Background(), request)
 }
 
 // DescribeInstanceMonitorTopNCmdTook
@@ -1723,6 +1690,11 @@ func (c *Client) DescribeInstanceMonitorTopNCmdTookWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeInstanceMonitorTopNCmdTookRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMonitorTopNCmdTook require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceMonitorTopNCmdTookResponse()
@@ -1756,13 +1728,7 @@ func NewDescribeInstanceNodeInfoResponse() (response *DescribeInstanceNodeInfoRe
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 func (c *Client) DescribeInstanceNodeInfo(request *DescribeInstanceNodeInfoRequest) (response *DescribeInstanceNodeInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceNodeInfoRequest()
-    }
-    
-    response = NewDescribeInstanceNodeInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceNodeInfoWithContext(context.Background(), request)
 }
 
 // DescribeInstanceNodeInfo
@@ -1777,6 +1743,11 @@ func (c *Client) DescribeInstanceNodeInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceNodeInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceNodeInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceNodeInfoResponse()
@@ -1814,13 +1785,7 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 //  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
 func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceParamRecordsRequest()
-    }
-    
-    response = NewDescribeInstanceParamRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceParamRecordsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceParamRecords
@@ -1839,6 +1804,11 @@ func (c *Client) DescribeInstanceParamRecordsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInstanceParamRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceParamRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceParamRecordsResponse()
@@ -1880,13 +1850,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 //  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
 func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) (response *DescribeInstanceParamsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceParamsRequest()
-    }
-    
-    response = NewDescribeInstanceParamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceParamsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceParams
@@ -1909,6 +1873,11 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceParamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceParams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceParamsResponse()
@@ -1946,13 +1915,7 @@ func NewDescribeInstanceSecurityGroupResponse() (response *DescribeInstanceSecur
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DescribeInstanceSecurityGroup(request *DescribeInstanceSecurityGroupRequest) (response *DescribeInstanceSecurityGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceSecurityGroupRequest()
-    }
-    
-    response = NewDescribeInstanceSecurityGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceSecurityGroupWithContext(context.Background(), request)
 }
 
 // DescribeInstanceSecurityGroup
@@ -1971,6 +1934,11 @@ func (c *Client) DescribeInstanceSecurityGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceSecurityGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSecurityGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceSecurityGroupResponse()
@@ -2003,13 +1971,7 @@ func NewDescribeInstanceShardsResponse() (response *DescribeInstanceShardsRespon
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
 func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) (response *DescribeInstanceShardsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceShardsRequest()
-    }
-    
-    response = NewDescribeInstanceShardsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceShardsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceShards
@@ -2023,6 +1985,11 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceShardsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceShards require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceShardsResponse()
@@ -2061,13 +2028,7 @@ func NewDescribeInstanceZoneInfoResponse() (response *DescribeInstanceZoneInfoRe
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeInstanceZoneInfo(request *DescribeInstanceZoneInfoRequest) (response *DescribeInstanceZoneInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceZoneInfoRequest()
-    }
-    
-    response = NewDescribeInstanceZoneInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceZoneInfoWithContext(context.Background(), request)
 }
 
 // DescribeInstanceZoneInfo
@@ -2087,6 +2048,11 @@ func (c *Client) DescribeInstanceZoneInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInstanceZoneInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceZoneInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceZoneInfoResponse()
@@ -2124,13 +2090,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -2149,6 +2109,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -2182,13 +2147,7 @@ func NewDescribeMaintenanceWindowResponse() (response *DescribeMaintenanceWindow
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 //  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
 func (c *Client) DescribeMaintenanceWindow(request *DescribeMaintenanceWindowRequest) (response *DescribeMaintenanceWindowResponse, err error) {
-    if request == nil {
-        request = NewDescribeMaintenanceWindowRequest()
-    }
-    
-    response = NewDescribeMaintenanceWindowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMaintenanceWindowWithContext(context.Background(), request)
 }
 
 // DescribeMaintenanceWindow
@@ -2203,6 +2162,11 @@ func (c *Client) DescribeMaintenanceWindowWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMaintenanceWindowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaintenanceWindow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMaintenanceWindowResponse()
@@ -2238,13 +2202,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 //  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
 func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoRequest) (response *DescribeParamTemplateInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeParamTemplateInfoRequest()
-    }
-    
-    response = NewDescribeParamTemplateInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeParamTemplateInfoWithContext(context.Background(), request)
 }
 
 // DescribeParamTemplateInfo
@@ -2261,6 +2219,11 @@ func (c *Client) DescribeParamTemplateInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeParamTemplateInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParamTemplateInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeParamTemplateInfoResponse()
@@ -2291,16 +2254,11 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeParamTemplatesRequest()
-    }
-    
-    response = NewDescribeParamTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeParamTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeParamTemplates
@@ -2309,12 +2267,18 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DescribeParamTemplatesWithContext(ctx context.Context, request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeParamTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParamTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeParamTemplatesResponse()
@@ -2349,13 +2313,7 @@ func NewDescribeProductInfoResponse() (response *DescribeProductInfoResponse) {
 //  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeProductInfo(request *DescribeProductInfoRequest) (response *DescribeProductInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductInfoRequest()
-    }
-    
-    response = NewDescribeProductInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductInfoWithContext(context.Background(), request)
 }
 
 // DescribeProductInfo
@@ -2371,6 +2329,11 @@ func (c *Client) DescribeProductInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductInfoResponse()
@@ -2409,13 +2372,7 @@ func NewDescribeProjectSecurityGroupResponse() (response *DescribeProjectSecurit
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DescribeProjectSecurityGroup(request *DescribeProjectSecurityGroupRequest) (response *DescribeProjectSecurityGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectSecurityGroupRequest()
-    }
-    
-    response = NewDescribeProjectSecurityGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectSecurityGroupWithContext(context.Background(), request)
 }
 
 // DescribeProjectSecurityGroup
@@ -2435,6 +2392,11 @@ func (c *Client) DescribeProjectSecurityGroupWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeProjectSecurityGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectSecurityGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectSecurityGroupResponse()
@@ -2470,13 +2432,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 //  FAILEDOPERATION_DTSSTATUSABNORMAL = "FailedOperation.DtsStatusAbnormal"
 //  FAILEDOPERATION_FLOWNOTEXISTS = "FailedOperation.FlowNotExists"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectSecurityGroupsRequest()
-    }
-    
-    response = NewDescribeProjectSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DescribeProjectSecurityGroups
@@ -2493,6 +2449,11 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjectSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectSecurityGroupsResponse()
@@ -2529,13 +2490,7 @@ func NewDescribeProxySlowLogResponse() (response *DescribeProxySlowLogResponse) 
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) DescribeProxySlowLog(request *DescribeProxySlowLogRequest) (response *DescribeProxySlowLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxySlowLogRequest()
-    }
-    
-    response = NewDescribeProxySlowLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxySlowLogWithContext(context.Background(), request)
 }
 
 // DescribeProxySlowLog
@@ -2553,6 +2508,11 @@ func (c *Client) DescribeProxySlowLogWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeProxySlowLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxySlowLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxySlowLogResponse()
@@ -2589,13 +2549,7 @@ func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *DescribeSlowLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogRequest()
-    }
-    
-    response = NewDescribeSlowLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSlowLogWithContext(context.Background(), request)
 }
 
 // DescribeSlowLog
@@ -2613,6 +2567,11 @@ func (c *Client) DescribeSlowLogWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSlowLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogResponse()
@@ -2645,13 +2604,7 @@ func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskInfoRequest()
-    }
-    
-    response = NewDescribeTaskInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskInfoWithContext(context.Background(), request)
 }
 
 // DescribeTaskInfo
@@ -2665,6 +2618,11 @@ func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskInfoResponse()
@@ -2698,13 +2656,7 @@ func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *DescribeTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskListRequest()
-    }
-    
-    response = NewDescribeTaskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskListWithContext(context.Background(), request)
 }
 
 // DescribeTaskList
@@ -2719,6 +2671,11 @@ func (c *Client) DescribeTaskListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskListResponse()
@@ -2750,13 +2707,7 @@ func NewDescribeTendisSlowLogResponse() (response *DescribeTendisSlowLogResponse
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeTendisSlowLog(request *DescribeTendisSlowLogRequest) (response *DescribeTendisSlowLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeTendisSlowLogRequest()
-    }
-    
-    response = NewDescribeTendisSlowLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTendisSlowLogWithContext(context.Background(), request)
 }
 
 // DescribeTendisSlowLog
@@ -2769,6 +2720,11 @@ func (c *Client) DescribeTendisSlowLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTendisSlowLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTendisSlowLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTendisSlowLogResponse()
@@ -2809,13 +2765,7 @@ func NewDestroyPostpaidInstanceResponse() (response *DestroyPostpaidInstanceResp
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) DestroyPostpaidInstance(request *DestroyPostpaidInstanceRequest) (response *DestroyPostpaidInstanceResponse, err error) {
-    if request == nil {
-        request = NewDestroyPostpaidInstanceRequest()
-    }
-    
-    response = NewDestroyPostpaidInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyPostpaidInstanceWithContext(context.Background(), request)
 }
 
 // DestroyPostpaidInstance
@@ -2837,6 +2787,11 @@ func (c *Client) DestroyPostpaidInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDestroyPostpaidInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPostpaidInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyPostpaidInstanceResponse()
@@ -2879,13 +2834,7 @@ func NewDestroyPrepaidInstanceResponse() (response *DestroyPrepaidInstanceRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) DestroyPrepaidInstance(request *DestroyPrepaidInstanceRequest) (response *DestroyPrepaidInstanceResponse, err error) {
-    if request == nil {
-        request = NewDestroyPrepaidInstanceRequest()
-    }
-    
-    response = NewDestroyPrepaidInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyPrepaidInstanceWithContext(context.Background(), request)
 }
 
 // DestroyPrepaidInstance
@@ -2909,6 +2858,11 @@ func (c *Client) DestroyPrepaidInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDestroyPrepaidInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPrepaidInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyPrepaidInstanceResponse()
@@ -2944,13 +2898,7 @@ func NewDisableReplicaReadonlyResponse() (response *DisableReplicaReadonlyRespon
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCEUNAVAILABLE_CALLOSSERROR = "ResourceUnavailable.CallOssError"
 func (c *Client) DisableReplicaReadonly(request *DisableReplicaReadonlyRequest) (response *DisableReplicaReadonlyResponse, err error) {
-    if request == nil {
-        request = NewDisableReplicaReadonlyRequest()
-    }
-    
-    response = NewDisableReplicaReadonlyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableReplicaReadonlyWithContext(context.Background(), request)
 }
 
 // DisableReplicaReadonly
@@ -2967,6 +2915,11 @@ func (c *Client) DisableReplicaReadonlyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDisableReplicaReadonlyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableReplicaReadonly require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableReplicaReadonlyResponse()
@@ -3001,13 +2954,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  FAILEDOPERATION_DISASSOCIATESECURITYGROUPSFAILED = "FailedOperation.DisassociateSecurityGroupsFailed"
 //  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateSecurityGroupsRequest()
-    }
-    
-    response = NewDisassociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DisassociateSecurityGroups
@@ -3023,6 +2970,11 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
@@ -3059,13 +3011,7 @@ func NewEnableReplicaReadonlyResponse() (response *EnableReplicaReadonlyResponse
 //  RESOURCEUNAVAILABLE_CALLOSSERROR = "ResourceUnavailable.CallOssError"
 //  RESOURCEUNAVAILABLE_INSTANCECONFERROR = "ResourceUnavailable.InstanceConfError"
 func (c *Client) EnableReplicaReadonly(request *EnableReplicaReadonlyRequest) (response *EnableReplicaReadonlyResponse, err error) {
-    if request == nil {
-        request = NewEnableReplicaReadonlyRequest()
-    }
-    
-    response = NewEnableReplicaReadonlyResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableReplicaReadonlyWithContext(context.Background(), request)
 }
 
 // EnableReplicaReadonly
@@ -3083,6 +3029,11 @@ func (c *Client) EnableReplicaReadonlyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewEnableReplicaReadonlyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableReplicaReadonly require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableReplicaReadonlyResponse()
@@ -3117,13 +3068,7 @@ func NewInquiryPriceCreateInstanceResponse() (response *InquiryPriceCreateInstan
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) InquiryPriceCreateInstance(request *InquiryPriceCreateInstanceRequest) (response *InquiryPriceCreateInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceCreateInstanceRequest()
-    }
-    
-    response = NewInquiryPriceCreateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceCreateInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceCreateInstance
@@ -3139,6 +3084,11 @@ func (c *Client) InquiryPriceCreateInstanceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceCreateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceCreateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceCreateInstanceResponse()
@@ -3176,13 +3126,7 @@ func NewInquiryPriceRenewInstanceResponse() (response *InquiryPriceRenewInstance
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCEDELETED = "ResourceUnavailable.InstanceDeleted"
 func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceRequest) (response *InquiryPriceRenewInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceRenewInstanceRequest()
-    }
-    
-    response = NewInquiryPriceRenewInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceRenewInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceRenewInstance
@@ -3201,6 +3145,11 @@ func (c *Client) InquiryPriceRenewInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewInquiryPriceRenewInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRenewInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceRenewInstanceResponse()
@@ -3236,13 +3185,7 @@ func NewInquiryPriceUpgradeInstanceResponse() (response *InquiryPriceUpgradeInst
 //  RESOURCEUNAVAILABLE_INSTANCESTATEERROR = "ResourceUnavailable.InstanceStateError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) InquiryPriceUpgradeInstance(request *InquiryPriceUpgradeInstanceRequest) (response *InquiryPriceUpgradeInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceUpgradeInstanceRequest()
-    }
-    
-    response = NewInquiryPriceUpgradeInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceUpgradeInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceUpgradeInstance
@@ -3259,6 +3202,11 @@ func (c *Client) InquiryPriceUpgradeInstanceWithContext(ctx context.Context, req
     if request == nil {
         request = NewInquiryPriceUpgradeInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceUpgradeInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceUpgradeInstanceResponse()
@@ -3302,13 +3250,7 @@ func NewKillMasterGroupResponse() (response *KillMasterGroupResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCENOTSUPPORTOPERATION = "ResourceUnavailable.InstanceNotSupportOperation"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *KillMasterGroupResponse, err error) {
-    if request == nil {
-        request = NewKillMasterGroupRequest()
-    }
-    
-    response = NewKillMasterGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.KillMasterGroupWithContext(context.Background(), request)
 }
 
 // KillMasterGroup
@@ -3333,6 +3275,11 @@ func (c *Client) KillMasterGroupWithContext(ctx context.Context, request *KillMa
     if request == nil {
         request = NewKillMasterGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("KillMasterGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewKillMasterGroupResponse()
@@ -3372,13 +3319,7 @@ func NewManualBackupInstanceResponse() (response *ManualBackupInstanceResponse) 
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) ManualBackupInstance(request *ManualBackupInstanceRequest) (response *ManualBackupInstanceResponse, err error) {
-    if request == nil {
-        request = NewManualBackupInstanceRequest()
-    }
-    
-    response = NewManualBackupInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManualBackupInstanceWithContext(context.Background(), request)
 }
 
 // ManualBackupInstance
@@ -3399,6 +3340,11 @@ func (c *Client) ManualBackupInstanceWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewManualBackupInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManualBackupInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManualBackupInstanceResponse()
@@ -3438,13 +3384,7 @@ func NewModfiyInstancePasswordResponse() (response *ModfiyInstancePasswordRespon
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) ModfiyInstancePassword(request *ModfiyInstancePasswordRequest) (response *ModfiyInstancePasswordResponse, err error) {
-    if request == nil {
-        request = NewModfiyInstancePasswordRequest()
-    }
-    
-    response = NewModfiyInstancePasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModfiyInstancePasswordWithContext(context.Background(), request)
 }
 
 // ModfiyInstancePassword
@@ -3465,6 +3405,11 @@ func (c *Client) ModfiyInstancePasswordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModfiyInstancePasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModfiyInstancePassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModfiyInstancePasswordResponse()
@@ -3503,13 +3448,7 @@ func NewModifyAutoBackupConfigResponse() (response *ModifyAutoBackupConfigRespon
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) (response *ModifyAutoBackupConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyAutoBackupConfigRequest()
-    }
-    
-    response = NewModifyAutoBackupConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAutoBackupConfigWithContext(context.Background(), request)
 }
 
 // ModifyAutoBackupConfig
@@ -3529,6 +3468,11 @@ func (c *Client) ModifyAutoBackupConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyAutoBackupConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoBackupConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAutoBackupConfigResponse()
@@ -3559,13 +3503,7 @@ func NewModifyConnectionConfigResponse() (response *ModifyConnectionConfigRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) ModifyConnectionConfig(request *ModifyConnectionConfigRequest) (response *ModifyConnectionConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyConnectionConfigRequest()
-    }
-    
-    response = NewModifyConnectionConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyConnectionConfigWithContext(context.Background(), request)
 }
 
 // ModifyConnectionConfig
@@ -3577,6 +3515,11 @@ func (c *Client) ModifyConnectionConfigWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyConnectionConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConnectionConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyConnectionConfigResponse()
@@ -3615,13 +3558,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 //  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
 //  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewModifyDBInstanceSecurityGroupsRequest()
-    }
-    
-    response = NewModifyDBInstanceSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
 }
 
 // ModifyDBInstanceSecurityGroups
@@ -3641,6 +3578,11 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceSecurityGroupsResponse()
@@ -3678,13 +3620,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 //  UNSUPPORTEDOPERATION_ISAUTORENEWERROR = "UnsupportedOperation.IsAutoRenewError"
 //  UNSUPPORTEDOPERATION_ONLYCLUSTERINSTANCECANEXPORTBACKUP = "UnsupportedOperation.OnlyClusterInstanceCanExportBackup"
 func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceRequest()
-    }
-    
-    response = NewModifyInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceWithContext(context.Background(), request)
 }
 
 // ModifyInstance
@@ -3703,6 +3639,11 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
@@ -3737,13 +3678,7 @@ func NewModifyInstanceAccountResponse() (response *ModifyInstanceAccountResponse
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) ModifyInstanceAccount(request *ModifyInstanceAccountRequest) (response *ModifyInstanceAccountResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceAccountRequest()
-    }
-    
-    response = NewModifyInstanceAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceAccountWithContext(context.Background(), request)
 }
 
 // ModifyInstanceAccount
@@ -3759,6 +3694,11 @@ func (c *Client) ModifyInstanceAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyInstanceAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceAccountResponse()
@@ -3801,13 +3741,7 @@ func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) 
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (response *ModifyInstanceParamsResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceParamsRequest()
-    }
-    
-    response = NewModifyInstanceParamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceParamsWithContext(context.Background(), request)
 }
 
 // ModifyInstanceParams
@@ -3831,6 +3765,11 @@ func (c *Client) ModifyInstanceParamsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyInstanceParamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceParams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceParamsResponse()
@@ -3865,13 +3804,7 @@ func NewModifyMaintenanceWindowResponse() (response *ModifyMaintenanceWindowResp
 //  UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = "UnsupportedOperation.ClusterInstanceAccessedDeny"
 //  UNSUPPORTEDOPERATION_ISAUTORENEWERROR = "UnsupportedOperation.IsAutoRenewError"
 func (c *Client) ModifyMaintenanceWindow(request *ModifyMaintenanceWindowRequest) (response *ModifyMaintenanceWindowResponse, err error) {
-    if request == nil {
-        request = NewModifyMaintenanceWindowRequest()
-    }
-    
-    response = NewModifyMaintenanceWindowResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMaintenanceWindowWithContext(context.Background(), request)
 }
 
 // ModifyMaintenanceWindow
@@ -3887,6 +3820,11 @@ func (c *Client) ModifyMaintenanceWindowWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyMaintenanceWindowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMaintenanceWindow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMaintenanceWindowResponse()
@@ -3925,13 +3863,7 @@ func NewModifyNetworkConfigResponse() (response *ModifyNetworkConfigResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) ModifyNetworkConfig(request *ModifyNetworkConfigRequest) (response *ModifyNetworkConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyNetworkConfigRequest()
-    }
-    
-    response = NewModifyNetworkConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNetworkConfigWithContext(context.Background(), request)
 }
 
 // ModifyNetworkConfig
@@ -3951,6 +3883,11 @@ func (c *Client) ModifyNetworkConfigWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyNetworkConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetworkConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNetworkConfigResponse()
@@ -3984,13 +3921,7 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (response *ModifyParamTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyParamTemplateRequest()
-    }
-    
-    response = NewModifyParamTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyParamTemplateWithContext(context.Background(), request)
 }
 
 // ModifyParamTemplate
@@ -4005,6 +3936,11 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyParamTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyParamTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyParamTemplateResponse()
@@ -4043,13 +3979,7 @@ func NewRenewInstanceResponse() (response *RenewInstanceResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTBALANCENOTENOUGH = "ResourceUnavailable.AccountBalanceNotEnough"
 //  RESOURCEUNAVAILABLE_INSTANCEDELETED = "ResourceUnavailable.InstanceDeleted"
 func (c *Client) RenewInstance(request *RenewInstanceRequest) (response *RenewInstanceResponse, err error) {
-    if request == nil {
-        request = NewRenewInstanceRequest()
-    }
-    
-    response = NewRenewInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewInstanceWithContext(context.Background(), request)
 }
 
 // RenewInstance
@@ -4069,6 +3999,11 @@ func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewIns
     if request == nil {
         request = NewRenewInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewInstanceResponse()
@@ -4098,6 +4033,7 @@ func NewResetPasswordResponse() (response *ResetPasswordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -4106,13 +4042,7 @@ func NewResetPasswordResponse() (response *ResetPasswordResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) ResetPassword(request *ResetPasswordRequest) (response *ResetPasswordResponse, err error) {
-    if request == nil {
-        request = NewResetPasswordRequest()
-    }
-    
-    response = NewResetPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetPasswordWithContext(context.Background(), request)
 }
 
 // ResetPassword
@@ -4120,6 +4050,7 @@ func (c *Client) ResetPassword(request *ResetPasswordRequest) (response *ResetPa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -4131,6 +4062,11 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
     if request == nil {
         request = NewResetPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetPasswordResponse()
@@ -4172,13 +4108,7 @@ func NewRestoreInstanceResponse() (response *RestoreInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *RestoreInstanceResponse, err error) {
-    if request == nil {
-        request = NewRestoreInstanceRequest()
-    }
-    
-    response = NewRestoreInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RestoreInstanceWithContext(context.Background(), request)
 }
 
 // RestoreInstance
@@ -4201,6 +4131,11 @@ func (c *Client) RestoreInstanceWithContext(ctx context.Context, request *Restor
     if request == nil {
         request = NewRestoreInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRestoreInstanceResponse()
@@ -4237,13 +4172,7 @@ func NewStartupInstanceResponse() (response *StartupInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCELOCKEDERROR = "ResourceUnavailable.InstanceLockedError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) StartupInstance(request *StartupInstanceRequest) (response *StartupInstanceResponse, err error) {
-    if request == nil {
-        request = NewStartupInstanceRequest()
-    }
-    
-    response = NewStartupInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartupInstanceWithContext(context.Background(), request)
 }
 
 // StartupInstance
@@ -4261,6 +4190,11 @@ func (c *Client) StartupInstanceWithContext(ctx context.Context, request *Startu
     if request == nil {
         request = NewStartupInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartupInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartupInstanceResponse()
@@ -4298,13 +4232,7 @@ func NewSwitchInstanceVipResponse() (response *SwitchInstanceVipResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATEERROR = "ResourceUnavailable.InstanceStateError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 func (c *Client) SwitchInstanceVip(request *SwitchInstanceVipRequest) (response *SwitchInstanceVipResponse, err error) {
-    if request == nil {
-        request = NewSwitchInstanceVipRequest()
-    }
-    
-    response = NewSwitchInstanceVipResponse()
-    err = c.Send(request, response)
-    return
+    return c.SwitchInstanceVipWithContext(context.Background(), request)
 }
 
 // SwitchInstanceVip
@@ -4323,6 +4251,11 @@ func (c *Client) SwitchInstanceVipWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchInstanceVipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchInstanceVip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSwitchInstanceVipResponse()
@@ -4363,13 +4296,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *UpgradeInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpgradeInstanceRequest()
-    }
-    
-    response = NewUpgradeInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeInstanceWithContext(context.Background(), request)
 }
 
 // UpgradeInstance
@@ -4391,6 +4318,11 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     if request == nil {
         request = NewUpgradeInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeInstanceResponse()
@@ -4424,13 +4356,7 @@ func NewUpgradeInstanceVersionResponse() (response *UpgradeInstanceVersionRespon
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
 func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) (response *UpgradeInstanceVersionResponse, err error) {
-    if request == nil {
-        request = NewUpgradeInstanceVersionRequest()
-    }
-    
-    response = NewUpgradeInstanceVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeInstanceVersionWithContext(context.Background(), request)
 }
 
 // UpgradeInstanceVersion
@@ -4445,6 +4371,11 @@ func (c *Client) UpgradeInstanceVersionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpgradeInstanceVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeInstanceVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeInstanceVersionResponse()
@@ -4476,13 +4407,7 @@ func NewUpgradeVersionToMultiAvailabilityZonesResponse() (response *UpgradeVersi
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) UpgradeVersionToMultiAvailabilityZones(request *UpgradeVersionToMultiAvailabilityZonesRequest) (response *UpgradeVersionToMultiAvailabilityZonesResponse, err error) {
-    if request == nil {
-        request = NewUpgradeVersionToMultiAvailabilityZonesRequest()
-    }
-    
-    response = NewUpgradeVersionToMultiAvailabilityZonesResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeVersionToMultiAvailabilityZonesWithContext(context.Background(), request)
 }
 
 // UpgradeVersionToMultiAvailabilityZones
@@ -4495,6 +4420,11 @@ func (c *Client) UpgradeVersionToMultiAvailabilityZonesWithContext(ctx context.C
     if request == nil {
         request = NewUpgradeVersionToMultiAvailabilityZonesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeVersionToMultiAvailabilityZones require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeVersionToMultiAvailabilityZonesResponse()

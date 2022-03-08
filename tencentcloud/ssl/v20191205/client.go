@@ -16,6 +16,7 @@ package v20191205
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -89,13 +90,7 @@ func NewApplyCertificateResponse() (response *ApplyCertificateResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
 func (c *Client) ApplyCertificate(request *ApplyCertificateRequest) (response *ApplyCertificateResponse, err error) {
-    if request == nil {
-        request = NewApplyCertificateRequest()
-    }
-    
-    response = NewApplyCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyCertificateWithContext(context.Background(), request)
 }
 
 // ApplyCertificate
@@ -129,6 +124,11 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
     if request == nil {
         request = NewApplyCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyCertificateResponse()
@@ -166,13 +166,7 @@ func NewCancelCertificateOrderResponse() (response *CancelCertificateOrderRespon
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
 func (c *Client) CancelCertificateOrder(request *CancelCertificateOrderRequest) (response *CancelCertificateOrderResponse, err error) {
-    if request == nil {
-        request = NewCancelCertificateOrderRequest()
-    }
-    
-    response = NewCancelCertificateOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelCertificateOrderWithContext(context.Background(), request)
 }
 
 // CancelCertificateOrder
@@ -191,6 +185,11 @@ func (c *Client) CancelCertificateOrderWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCancelCertificateOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelCertificateOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelCertificateOrderResponse()
@@ -221,13 +220,7 @@ func NewCheckCertificateChainResponse() (response *CheckCertificateChainResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
 func (c *Client) CheckCertificateChain(request *CheckCertificateChainRequest) (response *CheckCertificateChainResponse, err error) {
-    if request == nil {
-        request = NewCheckCertificateChainRequest()
-    }
-    
-    response = NewCheckCertificateChainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckCertificateChainWithContext(context.Background(), request)
 }
 
 // CheckCertificateChain
@@ -239,6 +232,11 @@ func (c *Client) CheckCertificateChainWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCheckCertificateChainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckCertificateChain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckCertificateChainResponse()
@@ -278,13 +276,7 @@ func NewCommitCertificateInformationResponse() (response *CommitCertificateInfor
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDRESPONSEERROR = "InternalError.BackendResponseError"
 func (c *Client) CommitCertificateInformation(request *CommitCertificateInformationRequest) (response *CommitCertificateInformationResponse, err error) {
-    if request == nil {
-        request = NewCommitCertificateInformationRequest()
-    }
-    
-    response = NewCommitCertificateInformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CommitCertificateInformationWithContext(context.Background(), request)
 }
 
 // CommitCertificateInformation
@@ -305,6 +297,11 @@ func (c *Client) CommitCertificateInformationWithContext(ctx context.Context, re
     if request == nil {
         request = NewCommitCertificateInformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommitCertificateInformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCommitCertificateInformationResponse()
@@ -337,13 +334,7 @@ func NewCompleteCertificateResponse() (response *CompleteCertificateResponse) {
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  INTERNALERROR = "InternalError"
 func (c *Client) CompleteCertificate(request *CompleteCertificateRequest) (response *CompleteCertificateResponse, err error) {
-    if request == nil {
-        request = NewCompleteCertificateRequest()
-    }
-    
-    response = NewCompleteCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CompleteCertificateWithContext(context.Background(), request)
 }
 
 // CompleteCertificate
@@ -357,6 +348,11 @@ func (c *Client) CompleteCertificateWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewCompleteCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CompleteCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCompleteCertificateResponse()
@@ -394,13 +390,7 @@ func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response *CreateCertificateResponse, err error) {
-    if request == nil {
-        request = NewCreateCertificateRequest()
-    }
-    
-    response = NewCreateCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCertificateWithContext(context.Background(), request)
 }
 
 // CreateCertificate
@@ -419,6 +409,11 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCertificateResponse()
@@ -466,13 +461,7 @@ func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
-    if request == nil {
-        request = NewDeleteCertificateRequest()
-    }
-    
-    response = NewDeleteCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCertificateWithContext(context.Background(), request)
 }
 
 // DeleteCertificate
@@ -501,6 +490,11 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCertificateResponse()
@@ -534,13 +528,7 @@ func NewDeleteManagerResponse() (response *DeleteManagerResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) DeleteManager(request *DeleteManagerRequest) (response *DeleteManagerResponse, err error) {
-    if request == nil {
-        request = NewDeleteManagerRequest()
-    }
-    
-    response = NewDeleteManagerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteManagerWithContext(context.Background(), request)
 }
 
 // DeleteManager
@@ -555,6 +543,11 @@ func (c *Client) DeleteManagerWithContext(ctx context.Context, request *DeleteMa
     if request == nil {
         request = NewDeleteManagerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteManager require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteManagerResponse()
@@ -603,13 +596,7 @@ func NewDescribeCertificateResponse() (response *DescribeCertificateResponse) {
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificate(request *DescribeCertificateRequest) (response *DescribeCertificateResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificateRequest()
-    }
-    
-    response = NewDescribeCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificateWithContext(context.Background(), request)
 }
 
 // DescribeCertificate
@@ -639,6 +626,11 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificateResponse()
@@ -676,13 +668,7 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificateDetailRequest()
-    }
-    
-    response = NewDescribeCertificateDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificateDetailWithContext(context.Background(), request)
 }
 
 // DescribeCertificateDetail
@@ -701,6 +687,11 @@ func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCertificateDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificateDetailResponse()
@@ -735,13 +726,7 @@ func NewDescribeCertificateOperateLogsResponse() (response *DescribeCertificateO
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCertificateOperateLogs(request *DescribeCertificateOperateLogsRequest) (response *DescribeCertificateOperateLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificateOperateLogsRequest()
-    }
-    
-    response = NewDescribeCertificateOperateLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificateOperateLogsWithContext(context.Background(), request)
 }
 
 // DescribeCertificateOperateLogs
@@ -757,6 +742,11 @@ func (c *Client) DescribeCertificateOperateLogsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeCertificateOperateLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateOperateLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificateOperateLogsResponse()
@@ -804,13 +794,7 @@ func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) 
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (response *DescribeCertificatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificatesRequest()
-    }
-    
-    response = NewDescribeCertificatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificatesWithContext(context.Background(), request)
 }
 
 // DescribeCertificates
@@ -839,6 +823,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCertificatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificatesResponse()
@@ -875,13 +864,7 @@ func NewDescribeDeployedResourcesResponse() (response *DescribeDeployedResources
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeDeployedResources(request *DescribeDeployedResourcesRequest) (response *DescribeDeployedResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeployedResourcesRequest()
-    }
-    
-    response = NewDescribeDeployedResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeployedResourcesWithContext(context.Background(), request)
 }
 
 // DescribeDeployedResources
@@ -899,6 +882,11 @@ func (c *Client) DescribeDeployedResourcesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeployedResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeployedResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeployedResourcesResponse()
@@ -932,13 +920,7 @@ func NewDescribeManagerDetailResponse() (response *DescribeManagerDetailResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) DescribeManagerDetail(request *DescribeManagerDetailRequest) (response *DescribeManagerDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeManagerDetailRequest()
-    }
-    
-    response = NewDescribeManagerDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeManagerDetailWithContext(context.Background(), request)
 }
 
 // DescribeManagerDetail
@@ -953,6 +935,11 @@ func (c *Client) DescribeManagerDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeManagerDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeManagerDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeManagerDetailResponse()
@@ -984,13 +971,7 @@ func NewDescribeManagersResponse() (response *DescribeManagersResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeManagers(request *DescribeManagersRequest) (response *DescribeManagersResponse, err error) {
-    if request == nil {
-        request = NewDescribeManagersRequest()
-    }
-    
-    response = NewDescribeManagersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeManagersWithContext(context.Background(), request)
 }
 
 // DescribeManagers
@@ -1003,6 +984,11 @@ func (c *Client) DescribeManagersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeManagersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeManagers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeManagersResponse()
@@ -1049,13 +1035,7 @@ func NewDownloadCertificateResponse() (response *DownloadCertificateResponse) {
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DownloadCertificate(request *DownloadCertificateRequest) (response *DownloadCertificateResponse, err error) {
-    if request == nil {
-        request = NewDownloadCertificateRequest()
-    }
-    
-    response = NewDownloadCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadCertificateWithContext(context.Background(), request)
 }
 
 // DownloadCertificate
@@ -1083,6 +1063,11 @@ func (c *Client) DownloadCertificateWithContext(ctx context.Context, request *Do
     if request == nil {
         request = NewDownloadCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadCertificateResponse()
@@ -1119,13 +1104,7 @@ func NewModifyCertificateAliasResponse() (response *ModifyCertificateAliasRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyCertificateAlias(request *ModifyCertificateAliasRequest) (response *ModifyCertificateAliasResponse, err error) {
-    if request == nil {
-        request = NewModifyCertificateAliasRequest()
-    }
-    
-    response = NewModifyCertificateAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCertificateAliasWithContext(context.Background(), request)
 }
 
 // ModifyCertificateAlias
@@ -1143,6 +1122,11 @@ func (c *Client) ModifyCertificateAliasWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCertificateAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificateAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCertificateAliasResponse()
@@ -1177,13 +1161,7 @@ func NewModifyCertificateProjectResponse() (response *ModifyCertificateProjectRe
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyCertificateProject(request *ModifyCertificateProjectRequest) (response *ModifyCertificateProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyCertificateProjectRequest()
-    }
-    
-    response = NewModifyCertificateProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCertificateProjectWithContext(context.Background(), request)
 }
 
 // ModifyCertificateProject
@@ -1199,6 +1177,11 @@ func (c *Client) ModifyCertificateProjectWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyCertificateProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificateProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCertificateProjectResponse()
@@ -1245,13 +1228,7 @@ func NewReplaceCertificateResponse() (response *ReplaceCertificateResponse) {
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ReplaceCertificate(request *ReplaceCertificateRequest) (response *ReplaceCertificateResponse, err error) {
-    if request == nil {
-        request = NewReplaceCertificateRequest()
-    }
-    
-    response = NewReplaceCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceCertificateWithContext(context.Background(), request)
 }
 
 // ReplaceCertificate
@@ -1279,6 +1256,11 @@ func (c *Client) ReplaceCertificateWithContext(ctx context.Context, request *Rep
     if request == nil {
         request = NewReplaceCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceCertificateResponse()
@@ -1316,13 +1298,7 @@ func NewRevokeCertificateResponse() (response *RevokeCertificateResponse) {
 //  FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
 //  INTERNALERROR = "InternalError"
 func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response *RevokeCertificateResponse, err error) {
-    if request == nil {
-        request = NewRevokeCertificateRequest()
-    }
-    
-    response = NewRevokeCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevokeCertificateWithContext(context.Background(), request)
 }
 
 // RevokeCertificate
@@ -1341,6 +1317,11 @@ func (c *Client) RevokeCertificateWithContext(ctx context.Context, request *Revo
     if request == nil {
         request = NewRevokeCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevokeCertificateResponse()
@@ -1374,13 +1355,7 @@ func NewSubmitAuditManagerResponse() (response *SubmitAuditManagerResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) SubmitAuditManager(request *SubmitAuditManagerRequest) (response *SubmitAuditManagerResponse, err error) {
-    if request == nil {
-        request = NewSubmitAuditManagerRequest()
-    }
-    
-    response = NewSubmitAuditManagerResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitAuditManagerWithContext(context.Background(), request)
 }
 
 // SubmitAuditManager
@@ -1395,6 +1370,11 @@ func (c *Client) SubmitAuditManagerWithContext(ctx context.Context, request *Sub
     if request == nil {
         request = NewSubmitAuditManagerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitAuditManager require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitAuditManagerResponse()
@@ -1432,13 +1412,7 @@ func NewSubmitCertificateInformationResponse() (response *SubmitCertificateInfor
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
 func (c *Client) SubmitCertificateInformation(request *SubmitCertificateInformationRequest) (response *SubmitCertificateInformationResponse, err error) {
-    if request == nil {
-        request = NewSubmitCertificateInformationRequest()
-    }
-    
-    response = NewSubmitCertificateInformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitCertificateInformationWithContext(context.Background(), request)
 }
 
 // SubmitCertificateInformation
@@ -1457,6 +1431,11 @@ func (c *Client) SubmitCertificateInformationWithContext(ctx context.Context, re
     if request == nil {
         request = NewSubmitCertificateInformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitCertificateInformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitCertificateInformationResponse()
@@ -1507,13 +1486,7 @@ func NewUploadCertificateResponse() (response *UploadCertificateResponse) {
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
 func (c *Client) UploadCertificate(request *UploadCertificateRequest) (response *UploadCertificateResponse, err error) {
-    if request == nil {
-        request = NewUploadCertificateRequest()
-    }
-    
-    response = NewUploadCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadCertificateWithContext(context.Background(), request)
 }
 
 // UploadCertificate
@@ -1545,6 +1518,11 @@ func (c *Client) UploadCertificateWithContext(ctx context.Context, request *Uplo
     if request == nil {
         request = NewUploadCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadCertificateResponse()
@@ -1585,13 +1563,7 @@ func NewUploadConfirmLetterResponse() (response *UploadConfirmLetterResponse) {
 //  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) UploadConfirmLetter(request *UploadConfirmLetterRequest) (response *UploadConfirmLetterResponse, err error) {
-    if request == nil {
-        request = NewUploadConfirmLetterRequest()
-    }
-    
-    response = NewUploadConfirmLetterResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadConfirmLetterWithContext(context.Background(), request)
 }
 
 // UploadConfirmLetter
@@ -1613,6 +1585,11 @@ func (c *Client) UploadConfirmLetterWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUploadConfirmLetterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadConfirmLetter require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadConfirmLetterResponse()
@@ -1657,13 +1634,7 @@ func NewUploadRevokeLetterResponse() (response *UploadRevokeLetterResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UploadRevokeLetter(request *UploadRevokeLetterRequest) (response *UploadRevokeLetterResponse, err error) {
-    if request == nil {
-        request = NewUploadRevokeLetterRequest()
-    }
-    
-    response = NewUploadRevokeLetterResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadRevokeLetterWithContext(context.Background(), request)
 }
 
 // UploadRevokeLetter
@@ -1689,6 +1660,11 @@ func (c *Client) UploadRevokeLetterWithContext(ctx context.Context, request *Upl
     if request == nil {
         request = NewUploadRevokeLetterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadRevokeLetter require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadRevokeLetterResponse()
@@ -1722,13 +1698,7 @@ func NewVerifyManagerResponse() (response *VerifyManagerResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
 func (c *Client) VerifyManager(request *VerifyManagerRequest) (response *VerifyManagerResponse, err error) {
-    if request == nil {
-        request = NewVerifyManagerRequest()
-    }
-    
-    response = NewVerifyManagerResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyManagerWithContext(context.Background(), request)
 }
 
 // VerifyManager
@@ -1743,6 +1713,11 @@ func (c *Client) VerifyManagerWithContext(ctx context.Context, request *VerifyMa
     if request == nil {
         request = NewVerifyManagerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyManager require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyManagerResponse()

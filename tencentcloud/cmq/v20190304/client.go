@@ -16,6 +16,7 @@ package v20190304
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,13 +77,7 @@ func NewClearQueueResponse() (response *ClearQueueResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ClearQueue(request *ClearQueueRequest) (response *ClearQueueResponse, err error) {
-    if request == nil {
-        request = NewClearQueueRequest()
-    }
-    
-    response = NewClearQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearQueueWithContext(context.Background(), request)
 }
 
 // ClearQueue
@@ -103,6 +98,11 @@ func (c *Client) ClearQueueWithContext(ctx context.Context, request *ClearQueueR
     if request == nil {
         request = NewClearQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearQueueResponse()
@@ -142,13 +142,7 @@ func NewClearSubscriptionFilterTagsResponse() (response *ClearSubscriptionFilter
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ClearSubscriptionFilterTags(request *ClearSubscriptionFilterTagsRequest) (response *ClearSubscriptionFilterTagsResponse, err error) {
-    if request == nil {
-        request = NewClearSubscriptionFilterTagsRequest()
-    }
-    
-    response = NewClearSubscriptionFilterTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearSubscriptionFilterTagsWithContext(context.Background(), request)
 }
 
 // ClearSubscriptionFilterTags
@@ -169,6 +163,11 @@ func (c *Client) ClearSubscriptionFilterTagsWithContext(ctx context.Context, req
     if request == nil {
         request = NewClearSubscriptionFilterTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearSubscriptionFilterTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearSubscriptionFilterTagsResponse()
@@ -204,13 +203,7 @@ func NewCreateQueueResponse() (response *CreateQueueResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateQueue(request *CreateQueueRequest) (response *CreateQueueResponse, err error) {
-    if request == nil {
-        request = NewCreateQueueRequest()
-    }
-    
-    response = NewCreateQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateQueueWithContext(context.Background(), request)
 }
 
 // CreateQueue
@@ -227,6 +220,11 @@ func (c *Client) CreateQueueWithContext(ctx context.Context, request *CreateQueu
     if request == nil {
         request = NewCreateQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateQueueResponse()
@@ -266,13 +264,7 @@ func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *CreateSubscribeResponse, err error) {
-    if request == nil {
-        request = NewCreateSubscribeRequest()
-    }
-    
-    response = NewCreateSubscribeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubscribeWithContext(context.Background(), request)
 }
 
 // CreateSubscribe
@@ -293,6 +285,11 @@ func (c *Client) CreateSubscribeWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSubscribeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubscribe require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubscribeResponse()
@@ -331,13 +328,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicRequest()
-    }
-    
-    response = NewCreateTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicWithContext(context.Background(), request)
 }
 
 // CreateTopic
@@ -357,6 +348,11 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicResponse()
@@ -392,13 +388,7 @@ func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueueResponse, err error) {
-    if request == nil {
-        request = NewDeleteQueueRequest()
-    }
-    
-    response = NewDeleteQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteQueueWithContext(context.Background(), request)
 }
 
 // DeleteQueue
@@ -415,6 +405,11 @@ func (c *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueu
     if request == nil {
         request = NewDeleteQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteQueueResponse()
@@ -453,13 +448,7 @@ func NewDeleteSubscribeResponse() (response *DeleteSubscribeResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSubscribe(request *DeleteSubscribeRequest) (response *DeleteSubscribeResponse, err error) {
-    if request == nil {
-        request = NewDeleteSubscribeRequest()
-    }
-    
-    response = NewDeleteSubscribeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSubscribeWithContext(context.Background(), request)
 }
 
 // DeleteSubscribe
@@ -479,6 +468,11 @@ func (c *Client) DeleteSubscribeWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteSubscribeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSubscribe require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSubscribeResponse()
@@ -517,13 +511,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicRequest()
-    }
-    
-    response = NewDeleteTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicWithContext(context.Background(), request)
 }
 
 // DeleteTopic
@@ -543,6 +531,11 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicResponse()
@@ -581,13 +574,7 @@ func NewDescribeDeadLetterSourceQueuesResponse() (response *DescribeDeadLetterSo
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeadLetterSourceQueues(request *DescribeDeadLetterSourceQueuesRequest) (response *DescribeDeadLetterSourceQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeadLetterSourceQueuesRequest()
-    }
-    
-    response = NewDescribeDeadLetterSourceQueuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeadLetterSourceQueuesWithContext(context.Background(), request)
 }
 
 // DescribeDeadLetterSourceQueues
@@ -607,6 +594,11 @@ func (c *Client) DescribeDeadLetterSourceQueuesWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeDeadLetterSourceQueuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeadLetterSourceQueues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeadLetterSourceQueuesResponse()
@@ -645,13 +637,7 @@ func NewDescribeQueueDetailResponse() (response *DescribeQueueDetailResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeQueueDetail(request *DescribeQueueDetailRequest) (response *DescribeQueueDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeQueueDetailRequest()
-    }
-    
-    response = NewDescribeQueueDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQueueDetailWithContext(context.Background(), request)
 }
 
 // DescribeQueueDetail
@@ -671,6 +657,11 @@ func (c *Client) DescribeQueueDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeQueueDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQueueDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQueueDetailResponse()
@@ -710,13 +701,7 @@ func NewDescribeSubscriptionDetailResponse() (response *DescribeSubscriptionDeta
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSubscriptionDetail(request *DescribeSubscriptionDetailRequest) (response *DescribeSubscriptionDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubscriptionDetailRequest()
-    }
-    
-    response = NewDescribeSubscriptionDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubscriptionDetailWithContext(context.Background(), request)
 }
 
 // DescribeSubscriptionDetail
@@ -737,6 +722,11 @@ func (c *Client) DescribeSubscriptionDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSubscriptionDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubscriptionDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubscriptionDetailResponse()
@@ -776,13 +766,7 @@ func NewDescribeTopicDetailResponse() (response *DescribeTopicDetailResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTopicDetail(request *DescribeTopicDetailRequest) (response *DescribeTopicDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopicDetailRequest()
-    }
-    
-    response = NewDescribeTopicDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopicDetailWithContext(context.Background(), request)
 }
 
 // DescribeTopicDetail
@@ -803,6 +787,11 @@ func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTopicDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopicDetailResponse()
@@ -842,13 +831,7 @@ func NewModifyQueueAttributeResponse() (response *ModifyQueueAttributeResponse) 
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyQueueAttribute(request *ModifyQueueAttributeRequest) (response *ModifyQueueAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyQueueAttributeRequest()
-    }
-    
-    response = NewModifyQueueAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyQueueAttributeWithContext(context.Background(), request)
 }
 
 // ModifyQueueAttribute
@@ -869,6 +852,11 @@ func (c *Client) ModifyQueueAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyQueueAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyQueueAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyQueueAttributeResponse()
@@ -908,13 +896,7 @@ func NewModifySubscriptionAttributeResponse() (response *ModifySubscriptionAttri
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubscriptionAttribute(request *ModifySubscriptionAttributeRequest) (response *ModifySubscriptionAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifySubscriptionAttributeRequest()
-    }
-    
-    response = NewModifySubscriptionAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubscriptionAttributeWithContext(context.Background(), request)
 }
 
 // ModifySubscriptionAttribute
@@ -935,6 +917,11 @@ func (c *Client) ModifySubscriptionAttributeWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifySubscriptionAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubscriptionAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubscriptionAttributeResponse()
@@ -973,13 +960,7 @@ func NewModifyTopicAttributeResponse() (response *ModifyTopicAttributeResponse) 
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTopicAttribute(request *ModifyTopicAttributeRequest) (response *ModifyTopicAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyTopicAttributeRequest()
-    }
-    
-    response = NewModifyTopicAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTopicAttributeWithContext(context.Background(), request)
 }
 
 // ModifyTopicAttribute
@@ -999,6 +980,11 @@ func (c *Client) ModifyTopicAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyTopicAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTopicAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTopicAttributeResponse()
@@ -1037,13 +1023,7 @@ func NewRewindQueueResponse() (response *RewindQueueResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RewindQueue(request *RewindQueueRequest) (response *RewindQueueResponse, err error) {
-    if request == nil {
-        request = NewRewindQueueRequest()
-    }
-    
-    response = NewRewindQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.RewindQueueWithContext(context.Background(), request)
 }
 
 // RewindQueue
@@ -1063,6 +1043,11 @@ func (c *Client) RewindQueueWithContext(ctx context.Context, request *RewindQueu
     if request == nil {
         request = NewRewindQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RewindQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRewindQueueResponse()
@@ -1102,13 +1087,7 @@ func NewUnbindDeadLetterResponse() (response *UnbindDeadLetterResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UnbindDeadLetter(request *UnbindDeadLetterRequest) (response *UnbindDeadLetterResponse, err error) {
-    if request == nil {
-        request = NewUnbindDeadLetterRequest()
-    }
-    
-    response = NewUnbindDeadLetterResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindDeadLetterWithContext(context.Background(), request)
 }
 
 // UnbindDeadLetter
@@ -1129,6 +1108,11 @@ func (c *Client) UnbindDeadLetterWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindDeadLetterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindDeadLetter require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindDeadLetterResponse()

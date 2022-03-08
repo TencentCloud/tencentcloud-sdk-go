@@ -16,6 +16,7 @@ package v20190307
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewDescribeAppResponse() (response *DescribeAppResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeApp(request *DescribeAppRequest) (response *DescribeAppResponse, err error) {
-    if request == nil {
-        request = NewDescribeAppRequest()
-    }
-    
-    response = NewDescribeAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAppWithContext(context.Background(), request)
 }
 
 // DescribeApp
@@ -89,6 +84,11 @@ func (c *Client) DescribeAppWithContext(ctx context.Context, request *DescribeAp
     if request == nil {
         request = NewDescribeAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAppResponse()
@@ -121,13 +121,7 @@ func NewDescribeCardResponse() (response *DescribeCardResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCard(request *DescribeCardRequest) (response *DescribeCardResponse, err error) {
-    if request == nil {
-        request = NewDescribeCardRequest()
-    }
-    
-    response = NewDescribeCardResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCardWithContext(context.Background(), request)
 }
 
 // DescribeCard
@@ -141,6 +135,11 @@ func (c *Client) DescribeCardWithContext(ctx context.Context, request *DescribeC
     if request == nil {
         request = NewDescribeCardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCard require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCardResponse()
@@ -171,13 +170,7 @@ func NewDescribeCardsResponse() (response *DescribeCardsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCards(request *DescribeCardsRequest) (response *DescribeCardsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCardsRequest()
-    }
-    
-    response = NewDescribeCardsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCardsWithContext(context.Background(), request)
 }
 
 // DescribeCards
@@ -189,6 +182,11 @@ func (c *Client) DescribeCardsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeCardsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCards require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCardsResponse()
@@ -222,13 +220,7 @@ func NewModifyUserCardRemarkResponse() (response *ModifyUserCardRemarkResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyUserCardRemark(request *ModifyUserCardRemarkRequest) (response *ModifyUserCardRemarkResponse, err error) {
-    if request == nil {
-        request = NewModifyUserCardRemarkRequest()
-    }
-    
-    response = NewModifyUserCardRemarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserCardRemarkWithContext(context.Background(), request)
 }
 
 // ModifyUserCardRemark
@@ -243,6 +235,11 @@ func (c *Client) ModifyUserCardRemarkWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyUserCardRemarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserCardRemark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserCardRemarkResponse()
@@ -286,13 +283,7 @@ func NewRenewCardsResponse() (response *RenewCardsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPNOTFOUND = "ResourceNotFound.AppNotFound"
 func (c *Client) RenewCards(request *RenewCardsRequest) (response *RenewCardsResponse, err error) {
-    if request == nil {
-        request = NewRenewCardsRequest()
-    }
-    
-    response = NewRenewCardsResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewCardsWithContext(context.Background(), request)
 }
 
 // RenewCards
@@ -317,6 +308,11 @@ func (c *Client) RenewCardsWithContext(ctx context.Context, request *RenewCardsR
     if request == nil {
         request = NewRenewCardsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewCards require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewCardsResponse()
@@ -349,13 +345,7 @@ func NewSendMultiSmsResponse() (response *SendMultiSmsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendMultiSms(request *SendMultiSmsRequest) (response *SendMultiSmsResponse, err error) {
-    if request == nil {
-        request = NewSendMultiSmsRequest()
-    }
-    
-    response = NewSendMultiSmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendMultiSmsWithContext(context.Background(), request)
 }
 
 // SendMultiSms
@@ -369,6 +359,11 @@ func (c *Client) SendMultiSmsWithContext(ctx context.Context, request *SendMulti
     if request == nil {
         request = NewSendMultiSmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendMultiSms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendMultiSmsResponse()
@@ -401,13 +396,7 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
-    if request == nil {
-        request = NewSendSmsRequest()
-    }
-    
-    response = NewSendSmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendSmsWithContext(context.Background(), request)
 }
 
 // SendSms
@@ -421,6 +410,11 @@ func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest
     if request == nil {
         request = NewSendSmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendSms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendSmsResponse()

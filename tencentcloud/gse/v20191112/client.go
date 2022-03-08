@@ -16,6 +16,7 @@ package v20191112
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewAttachCcnInstancesResponse() (response *AttachCcnInstancesResponse) {
 //  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (response *AttachCcnInstancesResponse, err error) {
-    if request == nil {
-        request = NewAttachCcnInstancesRequest()
-    }
-    
-    response = NewAttachCcnInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachCcnInstancesWithContext(context.Background(), request)
 }
 
 // AttachCcnInstances
@@ -119,6 +114,11 @@ func (c *Client) AttachCcnInstancesWithContext(ctx context.Context, request *Att
     if request == nil {
         request = NewAttachCcnInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachCcnInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachCcnInstancesResponse()
@@ -166,13 +166,7 @@ func NewCopyFleetResponse() (response *CopyFleetResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CopyFleet(request *CopyFleetRequest) (response *CopyFleetResponse, err error) {
-    if request == nil {
-        request = NewCopyFleetRequest()
-    }
-    
-    response = NewCopyFleetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CopyFleetWithContext(context.Background(), request)
 }
 
 // CopyFleet
@@ -201,6 +195,11 @@ func (c *Client) CopyFleetWithContext(ctx context.Context, request *CopyFleetReq
     if request == nil {
         request = NewCopyFleetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyFleet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCopyFleetResponse()
@@ -235,13 +234,7 @@ func NewCreateAliasResponse() (response *CreateAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) CreateAlias(request *CreateAliasRequest) (response *CreateAliasResponse, err error) {
-    if request == nil {
-        request = NewCreateAliasRequest()
-    }
-    
-    response = NewCreateAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAliasWithContext(context.Background(), request)
 }
 
 // CreateAlias
@@ -257,6 +250,11 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, request *CreateAlia
     if request == nil {
         request = NewCreateAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAliasResponse()
@@ -319,13 +317,7 @@ func NewCreateAssetResponse() (response *CreateAssetResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) CreateAsset(request *CreateAssetRequest) (response *CreateAssetResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetRequest()
-    }
-    
-    response = NewCreateAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetWithContext(context.Background(), request)
 }
 
 // CreateAsset
@@ -369,6 +361,11 @@ func (c *Client) CreateAssetWithContext(ctx context.Context, request *CreateAsse
     if request == nil {
         request = NewCreateAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetResponse()
@@ -415,13 +412,7 @@ func NewCreateAssetWithImageResponse() (response *CreateAssetWithImageResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAssetWithImage(request *CreateAssetWithImageRequest) (response *CreateAssetWithImageResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetWithImageRequest()
-    }
-    
-    response = NewCreateAssetWithImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetWithImageWithContext(context.Background(), request)
 }
 
 // CreateAssetWithImage
@@ -449,6 +440,11 @@ func (c *Client) CreateAssetWithImageWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateAssetWithImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetWithImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetWithImageResponse()
@@ -494,13 +490,7 @@ func NewCreateFleetResponse() (response *CreateFleetResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFleet(request *CreateFleetRequest) (response *CreateFleetResponse, err error) {
-    if request == nil {
-        request = NewCreateFleetRequest()
-    }
-    
-    response = NewCreateFleetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFleetWithContext(context.Background(), request)
 }
 
 // CreateFleet
@@ -527,6 +517,11 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, request *CreateFlee
     if request == nil {
         request = NewCreateFleetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFleet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFleetResponse()
@@ -566,13 +561,7 @@ func NewCreateGameServerSessionResponse() (response *CreateGameServerSessionResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest) (response *CreateGameServerSessionResponse, err error) {
-    if request == nil {
-        request = NewCreateGameServerSessionRequest()
-    }
-    
-    response = NewCreateGameServerSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGameServerSessionWithContext(context.Background(), request)
 }
 
 // CreateGameServerSession
@@ -593,6 +582,11 @@ func (c *Client) CreateGameServerSessionWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateGameServerSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGameServerSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGameServerSessionResponse()
@@ -631,13 +625,7 @@ func NewCreateGameServerSessionQueueResponse() (response *CreateGameServerSessio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) CreateGameServerSessionQueue(request *CreateGameServerSessionQueueRequest) (response *CreateGameServerSessionQueueResponse, err error) {
-    if request == nil {
-        request = NewCreateGameServerSessionQueueRequest()
-    }
-    
-    response = NewCreateGameServerSessionQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGameServerSessionQueueWithContext(context.Background(), request)
 }
 
 // CreateGameServerSessionQueue
@@ -657,6 +645,11 @@ func (c *Client) CreateGameServerSessionQueueWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateGameServerSessionQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGameServerSessionQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGameServerSessionQueueResponse()
@@ -690,13 +683,7 @@ func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DeleteAlias(request *DeleteAliasRequest) (response *DeleteAliasResponse, err error) {
-    if request == nil {
-        request = NewDeleteAliasRequest()
-    }
-    
-    response = NewDeleteAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAliasWithContext(context.Background(), request)
 }
 
 // DeleteAlias
@@ -711,6 +698,11 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, request *DeleteAlia
     if request == nil {
         request = NewDeleteAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAliasResponse()
@@ -748,13 +740,7 @@ func NewDeleteAssetResponse() (response *DeleteAssetResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAsset(request *DeleteAssetRequest) (response *DeleteAssetResponse, err error) {
-    if request == nil {
-        request = NewDeleteAssetRequest()
-    }
-    
-    response = NewDeleteAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAssetWithContext(context.Background(), request)
 }
 
 // DeleteAsset
@@ -773,6 +759,11 @@ func (c *Client) DeleteAssetWithContext(ctx context.Context, request *DeleteAsse
     if request == nil {
         request = NewDeleteAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAssetResponse()
@@ -815,13 +806,7 @@ func NewDeleteFleetResponse() (response *DeleteFleetResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteFleet(request *DeleteFleetRequest) (response *DeleteFleetResponse, err error) {
-    if request == nil {
-        request = NewDeleteFleetRequest()
-    }
-    
-    response = NewDeleteFleetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFleetWithContext(context.Background(), request)
 }
 
 // DeleteFleet
@@ -845,6 +830,11 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, request *DeleteFlee
     if request == nil {
         request = NewDeleteFleetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFleet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFleetResponse()
@@ -878,13 +868,7 @@ func NewDeleteGameServerSessionQueueResponse() (response *DeleteGameServerSessio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DeleteGameServerSessionQueue(request *DeleteGameServerSessionQueueRequest) (response *DeleteGameServerSessionQueueResponse, err error) {
-    if request == nil {
-        request = NewDeleteGameServerSessionQueueRequest()
-    }
-    
-    response = NewDeleteGameServerSessionQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteGameServerSessionQueueWithContext(context.Background(), request)
 }
 
 // DeleteGameServerSessionQueue
@@ -899,6 +883,11 @@ func (c *Client) DeleteGameServerSessionQueueWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteGameServerSessionQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGameServerSessionQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteGameServerSessionQueueResponse()
@@ -938,13 +927,7 @@ func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteScalingPolicyRequest()
-    }
-    
-    response = NewDeleteScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteScalingPolicyWithContext(context.Background(), request)
 }
 
 // DeleteScalingPolicy
@@ -965,6 +948,11 @@ func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteScalingPolicyResponse()
@@ -1001,13 +989,7 @@ func NewDeleteTimerScalingPolicyResponse() (response *DeleteTimerScalingPolicyRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DeleteTimerScalingPolicy(request *DeleteTimerScalingPolicyRequest) (response *DeleteTimerScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteTimerScalingPolicyRequest()
-    }
-    
-    response = NewDeleteTimerScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTimerScalingPolicyWithContext(context.Background(), request)
 }
 
 // DeleteTimerScalingPolicy
@@ -1025,6 +1007,11 @@ func (c *Client) DeleteTimerScalingPolicyWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteTimerScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTimerScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTimerScalingPolicyResponse()
@@ -1058,13 +1045,7 @@ func NewDescribeAliasResponse() (response *DescribeAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeAlias(request *DescribeAliasRequest) (response *DescribeAliasResponse, err error) {
-    if request == nil {
-        request = NewDescribeAliasRequest()
-    }
-    
-    response = NewDescribeAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAliasWithContext(context.Background(), request)
 }
 
 // DescribeAlias
@@ -1079,6 +1060,11 @@ func (c *Client) DescribeAliasWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAliasResponse()
@@ -1114,13 +1100,7 @@ func NewDescribeAssetResponse() (response *DescribeAssetResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeAsset(request *DescribeAssetRequest) (response *DescribeAssetResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetRequest()
-    }
-    
-    response = NewDescribeAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetWithContext(context.Background(), request)
 }
 
 // DescribeAsset
@@ -1137,6 +1117,11 @@ func (c *Client) DescribeAssetWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetResponse()
@@ -1172,13 +1157,7 @@ func NewDescribeAssetSystemsResponse() (response *DescribeAssetSystemsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeAssetSystems(request *DescribeAssetSystemsRequest) (response *DescribeAssetSystemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetSystemsRequest()
-    }
-    
-    response = NewDescribeAssetSystemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetSystemsWithContext(context.Background(), request)
 }
 
 // DescribeAssetSystems
@@ -1195,6 +1174,11 @@ func (c *Client) DescribeAssetSystemsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAssetSystemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSystems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetSystemsResponse()
@@ -1231,13 +1215,7 @@ func NewDescribeAssetsResponse() (response *DescribeAssetsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeAssets(request *DescribeAssetsRequest) (response *DescribeAssetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetsRequest()
-    }
-    
-    response = NewDescribeAssetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetsWithContext(context.Background(), request)
 }
 
 // DescribeAssets
@@ -1255,6 +1233,11 @@ func (c *Client) DescribeAssetsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeAssetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetsResponse()
@@ -1303,13 +1286,7 @@ func NewDescribeCcnInstancesResponse() (response *DescribeCcnInstancesResponse) 
 //  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) DescribeCcnInstances(request *DescribeCcnInstancesRequest) (response *DescribeCcnInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCcnInstancesRequest()
-    }
-    
-    response = NewDescribeCcnInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCcnInstancesWithContext(context.Background(), request)
 }
 
 // DescribeCcnInstances
@@ -1339,6 +1316,11 @@ func (c *Client) DescribeCcnInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCcnInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCcnInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCcnInstancesResponse()
@@ -1373,13 +1355,7 @@ func NewDescribeFleetAttributesResponse() (response *DescribeFleetAttributesResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeFleetAttributes(request *DescribeFleetAttributesRequest) (response *DescribeFleetAttributesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetAttributesRequest()
-    }
-    
-    response = NewDescribeFleetAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetAttributesWithContext(context.Background(), request)
 }
 
 // DescribeFleetAttributes
@@ -1395,6 +1371,11 @@ func (c *Client) DescribeFleetAttributesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeFleetAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetAttributesResponse()
@@ -1432,13 +1413,7 @@ func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeFleetCapacity(request *DescribeFleetCapacityRequest) (response *DescribeFleetCapacityResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetCapacityRequest()
-    }
-    
-    response = NewDescribeFleetCapacityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetCapacityWithContext(context.Background(), request)
 }
 
 // DescribeFleetCapacity
@@ -1457,6 +1432,11 @@ func (c *Client) DescribeFleetCapacityWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFleetCapacityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetCapacity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetCapacityResponse()
@@ -1492,13 +1472,7 @@ func NewDescribeFleetEventsResponse() (response *DescribeFleetEventsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeFleetEvents(request *DescribeFleetEventsRequest) (response *DescribeFleetEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetEventsRequest()
-    }
-    
-    response = NewDescribeFleetEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetEventsWithContext(context.Background(), request)
 }
 
 // DescribeFleetEvents
@@ -1515,6 +1489,11 @@ func (c *Client) DescribeFleetEventsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFleetEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetEventsResponse()
@@ -1552,13 +1531,7 @@ func NewDescribeFleetPortSettingsResponse() (response *DescribeFleetPortSettings
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetPortSettings(request *DescribeFleetPortSettingsRequest) (response *DescribeFleetPortSettingsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetPortSettingsRequest()
-    }
-    
-    response = NewDescribeFleetPortSettingsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetPortSettingsWithContext(context.Background(), request)
 }
 
 // DescribeFleetPortSettings
@@ -1577,6 +1550,11 @@ func (c *Client) DescribeFleetPortSettingsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeFleetPortSettingsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetPortSettings require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetPortSettingsResponse()
@@ -1613,13 +1591,7 @@ func NewDescribeFleetRelatedResourcesResponse() (response *DescribeFleetRelatedR
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetRelatedResources(request *DescribeFleetRelatedResourcesRequest) (response *DescribeFleetRelatedResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetRelatedResourcesRequest()
-    }
-    
-    response = NewDescribeFleetRelatedResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetRelatedResourcesWithContext(context.Background(), request)
 }
 
 // DescribeFleetRelatedResources
@@ -1637,6 +1609,11 @@ func (c *Client) DescribeFleetRelatedResourcesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeFleetRelatedResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetRelatedResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetRelatedResourcesResponse()
@@ -1679,13 +1656,7 @@ func NewDescribeFleetStatisticDetailsResponse() (response *DescribeFleetStatisti
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetStatisticDetails(request *DescribeFleetStatisticDetailsRequest) (response *DescribeFleetStatisticDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetStatisticDetailsRequest()
-    }
-    
-    response = NewDescribeFleetStatisticDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetStatisticDetailsWithContext(context.Background(), request)
 }
 
 // DescribeFleetStatisticDetails
@@ -1709,6 +1680,11 @@ func (c *Client) DescribeFleetStatisticDetailsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeFleetStatisticDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetStatisticDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetStatisticDetailsResponse()
@@ -1750,13 +1726,7 @@ func NewDescribeFleetStatisticFlowsResponse() (response *DescribeFleetStatisticF
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetStatisticFlows(request *DescribeFleetStatisticFlowsRequest) (response *DescribeFleetStatisticFlowsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetStatisticFlowsRequest()
-    }
-    
-    response = NewDescribeFleetStatisticFlowsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetStatisticFlowsWithContext(context.Background(), request)
 }
 
 // DescribeFleetStatisticFlows
@@ -1779,6 +1749,11 @@ func (c *Client) DescribeFleetStatisticFlowsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFleetStatisticFlowsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetStatisticFlows require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetStatisticFlowsResponse()
@@ -1818,13 +1793,7 @@ func NewDescribeFleetStatisticSummaryResponse() (response *DescribeFleetStatisti
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetStatisticSummary(request *DescribeFleetStatisticSummaryRequest) (response *DescribeFleetStatisticSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetStatisticSummaryRequest()
-    }
-    
-    response = NewDescribeFleetStatisticSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetStatisticSummaryWithContext(context.Background(), request)
 }
 
 // DescribeFleetStatisticSummary
@@ -1845,6 +1814,11 @@ func (c *Client) DescribeFleetStatisticSummaryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeFleetStatisticSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetStatisticSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetStatisticSummaryResponse()
@@ -1888,13 +1862,7 @@ func NewDescribeFleetUtilizationResponse() (response *DescribeFleetUtilizationRe
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFleetUtilization(request *DescribeFleetUtilizationRequest) (response *DescribeFleetUtilizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeFleetUtilizationRequest()
-    }
-    
-    response = NewDescribeFleetUtilizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFleetUtilizationWithContext(context.Background(), request)
 }
 
 // DescribeFleetUtilization
@@ -1919,6 +1887,11 @@ func (c *Client) DescribeFleetUtilizationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeFleetUtilizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFleetUtilization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFleetUtilizationResponse()
@@ -1956,13 +1929,7 @@ func NewDescribeGameServerSessionDetailsResponse() (response *DescribeGameServer
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeGameServerSessionDetails(request *DescribeGameServerSessionDetailsRequest) (response *DescribeGameServerSessionDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeGameServerSessionDetailsRequest()
-    }
-    
-    response = NewDescribeGameServerSessionDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGameServerSessionDetailsWithContext(context.Background(), request)
 }
 
 // DescribeGameServerSessionDetails
@@ -1981,6 +1948,11 @@ func (c *Client) DescribeGameServerSessionDetailsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeGameServerSessionDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGameServerSessionDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGameServerSessionDetailsResponse()
@@ -2015,13 +1987,7 @@ func NewDescribeGameServerSessionPlacementResponse() (response *DescribeGameServ
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeGameServerSessionPlacement(request *DescribeGameServerSessionPlacementRequest) (response *DescribeGameServerSessionPlacementResponse, err error) {
-    if request == nil {
-        request = NewDescribeGameServerSessionPlacementRequest()
-    }
-    
-    response = NewDescribeGameServerSessionPlacementResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGameServerSessionPlacementWithContext(context.Background(), request)
 }
 
 // DescribeGameServerSessionPlacement
@@ -2037,6 +2003,11 @@ func (c *Client) DescribeGameServerSessionPlacementWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeGameServerSessionPlacementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGameServerSessionPlacement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGameServerSessionPlacementResponse()
@@ -2072,13 +2043,7 @@ func NewDescribeGameServerSessionQueuesResponse() (response *DescribeGameServerS
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeGameServerSessionQueues(request *DescribeGameServerSessionQueuesRequest) (response *DescribeGameServerSessionQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeGameServerSessionQueuesRequest()
-    }
-    
-    response = NewDescribeGameServerSessionQueuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGameServerSessionQueuesWithContext(context.Background(), request)
 }
 
 // DescribeGameServerSessionQueues
@@ -2095,6 +2060,11 @@ func (c *Client) DescribeGameServerSessionQueuesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeGameServerSessionQueuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGameServerSessionQueues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGameServerSessionQueuesResponse()
@@ -2132,13 +2102,7 @@ func NewDescribeGameServerSessionsResponse() (response *DescribeGameServerSessio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeGameServerSessions(request *DescribeGameServerSessionsRequest) (response *DescribeGameServerSessionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeGameServerSessionsRequest()
-    }
-    
-    response = NewDescribeGameServerSessionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGameServerSessionsWithContext(context.Background(), request)
 }
 
 // DescribeGameServerSessions
@@ -2157,6 +2121,11 @@ func (c *Client) DescribeGameServerSessionsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeGameServerSessionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGameServerSessions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGameServerSessionsResponse()
@@ -2191,13 +2160,7 @@ func NewDescribeInstanceLimitResponse() (response *DescribeInstanceLimitResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeInstanceLimit(request *DescribeInstanceLimitRequest) (response *DescribeInstanceLimitResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceLimitRequest()
-    }
-    
-    response = NewDescribeInstanceLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceLimitWithContext(context.Background(), request)
 }
 
 // DescribeInstanceLimit
@@ -2213,6 +2176,11 @@ func (c *Client) DescribeInstanceLimitWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceLimitResponse()
@@ -2247,13 +2215,7 @@ func NewDescribeInstanceTypesResponse() (response *DescribeInstanceTypesResponse
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstanceTypes(request *DescribeInstanceTypesRequest) (response *DescribeInstanceTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceTypesRequest()
-    }
-    
-    response = NewDescribeInstanceTypesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceTypesWithContext(context.Background(), request)
 }
 
 // DescribeInstanceTypes
@@ -2269,6 +2231,11 @@ func (c *Client) DescribeInstanceTypesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceTypesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTypes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceTypesResponse()
@@ -2304,13 +2271,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -2327,6 +2288,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -2362,13 +2328,7 @@ func NewDescribeInstancesExtendResponse() (response *DescribeInstancesExtendResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeInstancesExtend(request *DescribeInstancesExtendRequest) (response *DescribeInstancesExtendResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesExtendRequest()
-    }
-    
-    response = NewDescribeInstancesExtendResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesExtendWithContext(context.Background(), request)
 }
 
 // DescribeInstancesExtend
@@ -2385,6 +2345,11 @@ func (c *Client) DescribeInstancesExtendWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstancesExtendRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesExtend require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesExtendResponse()
@@ -2421,13 +2386,7 @@ func NewDescribePlayerSessionsResponse() (response *DescribePlayerSessionsRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribePlayerSessions(request *DescribePlayerSessionsRequest) (response *DescribePlayerSessionsResponse, err error) {
-    if request == nil {
-        request = NewDescribePlayerSessionsRequest()
-    }
-    
-    response = NewDescribePlayerSessionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePlayerSessionsWithContext(context.Background(), request)
 }
 
 // DescribePlayerSessions
@@ -2445,6 +2404,11 @@ func (c *Client) DescribePlayerSessionsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePlayerSessionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlayerSessions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePlayerSessionsResponse()
@@ -2487,13 +2451,7 @@ func NewDescribeRuntimeConfigurationResponse() (response *DescribeRuntimeConfigu
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRuntimeConfiguration(request *DescribeRuntimeConfigurationRequest) (response *DescribeRuntimeConfigurationResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuntimeConfigurationRequest()
-    }
-    
-    response = NewDescribeRuntimeConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRuntimeConfigurationWithContext(context.Background(), request)
 }
 
 // DescribeRuntimeConfiguration
@@ -2517,6 +2475,11 @@ func (c *Client) DescribeRuntimeConfigurationWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRuntimeConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuntimeConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRuntimeConfigurationResponse()
@@ -2552,13 +2515,7 @@ func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest) (response *DescribeScalingPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeScalingPoliciesRequest()
-    }
-    
-    response = NewDescribeScalingPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScalingPoliciesWithContext(context.Background(), request)
 }
 
 // DescribeScalingPolicies
@@ -2575,6 +2532,11 @@ func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeScalingPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScalingPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScalingPoliciesResponse()
@@ -2612,13 +2574,7 @@ func NewDescribeTimerScalingPoliciesResponse() (response *DescribeTimerScalingPo
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) DescribeTimerScalingPolicies(request *DescribeTimerScalingPoliciesRequest) (response *DescribeTimerScalingPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTimerScalingPoliciesRequest()
-    }
-    
-    response = NewDescribeTimerScalingPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTimerScalingPoliciesWithContext(context.Background(), request)
 }
 
 // DescribeTimerScalingPolicies
@@ -2637,6 +2593,11 @@ func (c *Client) DescribeTimerScalingPoliciesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeTimerScalingPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimerScalingPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTimerScalingPoliciesResponse()
@@ -2679,13 +2640,7 @@ func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserQuotaRequest()
-    }
-    
-    response = NewDescribeUserQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserQuotaWithContext(context.Background(), request)
 }
 
 // DescribeUserQuota
@@ -2709,6 +2664,11 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserQuotaResponse()
@@ -2751,13 +2711,7 @@ func NewDescribeUserQuotasResponse() (response *DescribeUserQuotasResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserQuotas(request *DescribeUserQuotasRequest) (response *DescribeUserQuotasResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserQuotasRequest()
-    }
-    
-    response = NewDescribeUserQuotasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserQuotasWithContext(context.Background(), request)
 }
 
 // DescribeUserQuotas
@@ -2781,6 +2735,11 @@ func (c *Client) DescribeUserQuotasWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeUserQuotasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserQuotas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserQuotasResponse()
@@ -2828,13 +2787,7 @@ func NewDetachCcnInstancesResponse() (response *DetachCcnInstancesResponse) {
 //  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
 //  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (response *DetachCcnInstancesResponse, err error) {
-    if request == nil {
-        request = NewDetachCcnInstancesRequest()
-    }
-    
-    response = NewDetachCcnInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachCcnInstancesWithContext(context.Background(), request)
 }
 
 // DetachCcnInstances
@@ -2863,6 +2816,11 @@ func (c *Client) DetachCcnInstancesWithContext(ctx context.Context, request *Det
     if request == nil {
         request = NewDetachCcnInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachCcnInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachCcnInstancesResponse()
@@ -2896,13 +2854,7 @@ func NewEndGameServerSessionAndProcessResponse() (response *EndGameServerSession
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) EndGameServerSessionAndProcess(request *EndGameServerSessionAndProcessRequest) (response *EndGameServerSessionAndProcessResponse, err error) {
-    if request == nil {
-        request = NewEndGameServerSessionAndProcessRequest()
-    }
-    
-    response = NewEndGameServerSessionAndProcessResponse()
-    err = c.Send(request, response)
-    return
+    return c.EndGameServerSessionAndProcessWithContext(context.Background(), request)
 }
 
 // EndGameServerSessionAndProcess
@@ -2917,6 +2869,11 @@ func (c *Client) EndGameServerSessionAndProcessWithContext(ctx context.Context, 
     if request == nil {
         request = NewEndGameServerSessionAndProcessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EndGameServerSessionAndProcess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEndGameServerSessionAndProcessResponse()
@@ -2953,13 +2910,7 @@ func NewGetGameServerInstanceLogUrlResponse() (response *GetGameServerInstanceLo
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetGameServerInstanceLogUrl(request *GetGameServerInstanceLogUrlRequest) (response *GetGameServerInstanceLogUrlResponse, err error) {
-    if request == nil {
-        request = NewGetGameServerInstanceLogUrlRequest()
-    }
-    
-    response = NewGetGameServerInstanceLogUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGameServerInstanceLogUrlWithContext(context.Background(), request)
 }
 
 // GetGameServerInstanceLogUrl
@@ -2977,6 +2928,11 @@ func (c *Client) GetGameServerInstanceLogUrlWithContext(ctx context.Context, req
     if request == nil {
         request = NewGetGameServerInstanceLogUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGameServerInstanceLogUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGameServerInstanceLogUrlResponse()
@@ -3013,13 +2969,7 @@ func NewGetGameServerSessionLogUrlResponse() (response *GetGameServerSessionLogU
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetGameServerSessionLogUrl(request *GetGameServerSessionLogUrlRequest) (response *GetGameServerSessionLogUrlResponse, err error) {
-    if request == nil {
-        request = NewGetGameServerSessionLogUrlRequest()
-    }
-    
-    response = NewGetGameServerSessionLogUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGameServerSessionLogUrlWithContext(context.Background(), request)
 }
 
 // GetGameServerSessionLogUrl
@@ -3037,6 +2987,11 @@ func (c *Client) GetGameServerSessionLogUrlWithContext(ctx context.Context, requ
     if request == nil {
         request = NewGetGameServerSessionLogUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGameServerSessionLogUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGameServerSessionLogUrlResponse()
@@ -3079,13 +3034,7 @@ func NewGetInstanceAccessResponse() (response *GetInstanceAccessResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetInstanceAccess(request *GetInstanceAccessRequest) (response *GetInstanceAccessResponse, err error) {
-    if request == nil {
-        request = NewGetInstanceAccessRequest()
-    }
-    
-    response = NewGetInstanceAccessResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetInstanceAccessWithContext(context.Background(), request)
 }
 
 // GetInstanceAccess
@@ -3109,6 +3058,11 @@ func (c *Client) GetInstanceAccessWithContext(ctx context.Context, request *GetI
     if request == nil {
         request = NewGetInstanceAccessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetInstanceAccess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetInstanceAccessResponse()
@@ -3144,13 +3098,7 @@ func NewGetUploadCredentialsResponse() (response *GetUploadCredentialsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetUploadCredentials(request *GetUploadCredentialsRequest) (response *GetUploadCredentialsResponse, err error) {
-    if request == nil {
-        request = NewGetUploadCredentialsRequest()
-    }
-    
-    response = NewGetUploadCredentialsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUploadCredentialsWithContext(context.Background(), request)
 }
 
 // GetUploadCredentials
@@ -3167,6 +3115,11 @@ func (c *Client) GetUploadCredentialsWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetUploadCredentialsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUploadCredentials require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUploadCredentialsResponse()
@@ -3198,13 +3151,7 @@ func NewGetUploadFederationTokenResponse() (response *GetUploadFederationTokenRe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetUploadFederationToken(request *GetUploadFederationTokenRequest) (response *GetUploadFederationTokenResponse, err error) {
-    if request == nil {
-        request = NewGetUploadFederationTokenRequest()
-    }
-    
-    response = NewGetUploadFederationTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUploadFederationTokenWithContext(context.Background(), request)
 }
 
 // GetUploadFederationToken
@@ -3217,6 +3164,11 @@ func (c *Client) GetUploadFederationTokenWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGetUploadFederationTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUploadFederationToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUploadFederationTokenResponse()
@@ -3256,13 +3208,7 @@ func NewJoinGameServerSessionResponse() (response *JoinGameServerSessionResponse
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (response *JoinGameServerSessionResponse, err error) {
-    if request == nil {
-        request = NewJoinGameServerSessionRequest()
-    }
-    
-    response = NewJoinGameServerSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.JoinGameServerSessionWithContext(context.Background(), request)
 }
 
 // JoinGameServerSession
@@ -3283,6 +3229,11 @@ func (c *Client) JoinGameServerSessionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewJoinGameServerSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("JoinGameServerSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewJoinGameServerSessionResponse()
@@ -3321,13 +3272,7 @@ func NewJoinGameServerSessionBatchResponse() (response *JoinGameServerSessionBat
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) JoinGameServerSessionBatch(request *JoinGameServerSessionBatchRequest) (response *JoinGameServerSessionBatchResponse, err error) {
-    if request == nil {
-        request = NewJoinGameServerSessionBatchRequest()
-    }
-    
-    response = NewJoinGameServerSessionBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.JoinGameServerSessionBatchWithContext(context.Background(), request)
 }
 
 // JoinGameServerSessionBatch
@@ -3347,6 +3292,11 @@ func (c *Client) JoinGameServerSessionBatchWithContext(ctx context.Context, requ
     if request == nil {
         request = NewJoinGameServerSessionBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("JoinGameServerSessionBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewJoinGameServerSessionBatchResponse()
@@ -3381,13 +3331,7 @@ func NewListAliasesResponse() (response *ListAliasesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliasesResponse, err error) {
-    if request == nil {
-        request = NewListAliasesRequest()
-    }
-    
-    response = NewListAliasesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAliasesWithContext(context.Background(), request)
 }
 
 // ListAliases
@@ -3403,6 +3347,11 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, request *ListAliase
     if request == nil {
         request = NewListAliasesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAliases require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAliasesResponse()
@@ -3446,13 +3395,7 @@ func NewListFleetsResponse() (response *ListFleetsResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ListFleets(request *ListFleetsRequest) (response *ListFleetsResponse, err error) {
-    if request == nil {
-        request = NewListFleetsRequest()
-    }
-    
-    response = NewListFleetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListFleetsWithContext(context.Background(), request)
 }
 
 // ListFleets
@@ -3477,6 +3420,11 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, request *ListFleetsR
     if request == nil {
         request = NewListFleetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFleets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListFleetsResponse()
@@ -3708,13 +3656,7 @@ func NewPutScalingPolicyResponse() (response *PutScalingPolicyResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *PutScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewPutScalingPolicyRequest()
-    }
-    
-    response = NewPutScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.PutScalingPolicyWithContext(context.Background(), request)
 }
 
 // PutScalingPolicy
@@ -3927,6 +3869,11 @@ func (c *Client) PutScalingPolicyWithContext(ctx context.Context, request *PutSc
     if request == nil {
         request = NewPutScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPutScalingPolicyResponse()
@@ -3968,13 +3915,7 @@ func NewPutTimerScalingPolicyResponse() (response *PutTimerScalingPolicyResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) PutTimerScalingPolicy(request *PutTimerScalingPolicyRequest) (response *PutTimerScalingPolicyResponse, err error) {
-    if request == nil {
-        request = NewPutTimerScalingPolicyRequest()
-    }
-    
-    response = NewPutTimerScalingPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.PutTimerScalingPolicyWithContext(context.Background(), request)
 }
 
 // PutTimerScalingPolicy
@@ -3997,6 +3938,11 @@ func (c *Client) PutTimerScalingPolicyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewPutTimerScalingPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutTimerScalingPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPutTimerScalingPolicyResponse()
@@ -4031,13 +3977,7 @@ func NewResolveAliasResponse() (response *ResolveAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) ResolveAlias(request *ResolveAliasRequest) (response *ResolveAliasResponse, err error) {
-    if request == nil {
-        request = NewResolveAliasRequest()
-    }
-    
-    response = NewResolveAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResolveAliasWithContext(context.Background(), request)
 }
 
 // ResolveAlias
@@ -4053,6 +3993,11 @@ func (c *Client) ResolveAliasWithContext(ctx context.Context, request *ResolveAl
     if request == nil {
         request = NewResolveAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResolveAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResolveAliasResponse()
@@ -4089,13 +4034,7 @@ func NewSearchGameServerSessionsResponse() (response *SearchGameServerSessionsRe
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsRequest) (response *SearchGameServerSessionsResponse, err error) {
-    if request == nil {
-        request = NewSearchGameServerSessionsRequest()
-    }
-    
-    response = NewSearchGameServerSessionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchGameServerSessionsWithContext(context.Background(), request)
 }
 
 // SearchGameServerSessions
@@ -4113,6 +4052,11 @@ func (c *Client) SearchGameServerSessionsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSearchGameServerSessionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchGameServerSessions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchGameServerSessionsResponse()
@@ -4154,13 +4098,7 @@ func NewSetServerReservedResponse() (response *SetServerReservedResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) SetServerReserved(request *SetServerReservedRequest) (response *SetServerReservedResponse, err error) {
-    if request == nil {
-        request = NewSetServerReservedRequest()
-    }
-    
-    response = NewSetServerReservedResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetServerReservedWithContext(context.Background(), request)
 }
 
 // SetServerReserved
@@ -4183,6 +4121,11 @@ func (c *Client) SetServerReservedWithContext(ctx context.Context, request *SetS
     if request == nil {
         request = NewSetServerReservedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetServerReserved require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetServerReservedResponse()
@@ -4225,13 +4168,7 @@ func NewSetServerWeightResponse() (response *SetServerWeightResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetServerWeight(request *SetServerWeightRequest) (response *SetServerWeightResponse, err error) {
-    if request == nil {
-        request = NewSetServerWeightRequest()
-    }
-    
-    response = NewSetServerWeightResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetServerWeightWithContext(context.Background(), request)
 }
 
 // SetServerWeight
@@ -4255,6 +4192,11 @@ func (c *Client) SetServerWeightWithContext(ctx context.Context, request *SetSer
     if request == nil {
         request = NewSetServerWeightRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetServerWeight require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetServerWeightResponse()
@@ -4292,13 +4234,7 @@ func NewStartFleetActionsResponse() (response *StartFleetActionsResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartFleetActions(request *StartFleetActionsRequest) (response *StartFleetActionsResponse, err error) {
-    if request == nil {
-        request = NewStartFleetActionsRequest()
-    }
-    
-    response = NewStartFleetActionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartFleetActionsWithContext(context.Background(), request)
 }
 
 // StartFleetActions
@@ -4317,6 +4253,11 @@ func (c *Client) StartFleetActionsWithContext(ctx context.Context, request *Star
     if request == nil {
         request = NewStartFleetActionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartFleetActions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartFleetActionsResponse()
@@ -4353,13 +4294,7 @@ func NewStartGameServerSessionPlacementResponse() (response *StartGameServerSess
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) StartGameServerSessionPlacement(request *StartGameServerSessionPlacementRequest) (response *StartGameServerSessionPlacementResponse, err error) {
-    if request == nil {
-        request = NewStartGameServerSessionPlacementRequest()
-    }
-    
-    response = NewStartGameServerSessionPlacementResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartGameServerSessionPlacementWithContext(context.Background(), request)
 }
 
 // StartGameServerSessionPlacement
@@ -4377,6 +4312,11 @@ func (c *Client) StartGameServerSessionPlacementWithContext(ctx context.Context,
     if request == nil {
         request = NewStartGameServerSessionPlacementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartGameServerSessionPlacement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartGameServerSessionPlacementResponse()
@@ -4414,13 +4354,7 @@ func NewStopFleetActionsResponse() (response *StopFleetActionsResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopFleetActions(request *StopFleetActionsRequest) (response *StopFleetActionsResponse, err error) {
-    if request == nil {
-        request = NewStopFleetActionsRequest()
-    }
-    
-    response = NewStopFleetActionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopFleetActionsWithContext(context.Background(), request)
 }
 
 // StopFleetActions
@@ -4439,6 +4373,11 @@ func (c *Client) StopFleetActionsWithContext(ctx context.Context, request *StopF
     if request == nil {
         request = NewStopFleetActionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopFleetActions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopFleetActionsResponse()
@@ -4472,13 +4411,7 @@ func NewStopGameServerSessionPlacementResponse() (response *StopGameServerSessio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) StopGameServerSessionPlacement(request *StopGameServerSessionPlacementRequest) (response *StopGameServerSessionPlacementResponse, err error) {
-    if request == nil {
-        request = NewStopGameServerSessionPlacementRequest()
-    }
-    
-    response = NewStopGameServerSessionPlacementResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopGameServerSessionPlacementWithContext(context.Background(), request)
 }
 
 // StopGameServerSessionPlacement
@@ -4493,6 +4426,11 @@ func (c *Client) StopGameServerSessionPlacementWithContext(ctx context.Context, 
     if request == nil {
         request = NewStopGameServerSessionPlacementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopGameServerSessionPlacement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopGameServerSessionPlacementResponse()
@@ -4526,13 +4464,7 @@ func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
-    if request == nil {
-        request = NewUpdateAliasRequest()
-    }
-    
-    response = NewUpdateAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAliasWithContext(context.Background(), request)
 }
 
 // UpdateAlias
@@ -4547,6 +4479,11 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     if request == nil {
         request = NewUpdateAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAliasResponse()
@@ -4582,13 +4519,7 @@ func NewUpdateAssetResponse() (response *UpdateAssetResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateAsset(request *UpdateAssetRequest) (response *UpdateAssetResponse, err error) {
-    if request == nil {
-        request = NewUpdateAssetRequest()
-    }
-    
-    response = NewUpdateAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAssetWithContext(context.Background(), request)
 }
 
 // UpdateAsset
@@ -4605,6 +4536,11 @@ func (c *Client) UpdateAssetWithContext(ctx context.Context, request *UpdateAsse
     if request == nil {
         request = NewUpdateAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAssetResponse()
@@ -4640,13 +4576,7 @@ func NewUpdateBucketAccelerateOptResponse() (response *UpdateBucketAccelerateOpt
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UpdateBucketAccelerateOpt(request *UpdateBucketAccelerateOptRequest) (response *UpdateBucketAccelerateOptResponse, err error) {
-    if request == nil {
-        request = NewUpdateBucketAccelerateOptRequest()
-    }
-    
-    response = NewUpdateBucketAccelerateOptResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateBucketAccelerateOptWithContext(context.Background(), request)
 }
 
 // UpdateBucketAccelerateOpt
@@ -4663,6 +4593,11 @@ func (c *Client) UpdateBucketAccelerateOptWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUpdateBucketAccelerateOptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateBucketAccelerateOpt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateBucketAccelerateOptResponse()
@@ -4699,13 +4634,7 @@ func NewUpdateBucketCORSOptResponse() (response *UpdateBucketCORSOptResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateBucketCORSOpt(request *UpdateBucketCORSOptRequest) (response *UpdateBucketCORSOptResponse, err error) {
-    if request == nil {
-        request = NewUpdateBucketCORSOptRequest()
-    }
-    
-    response = NewUpdateBucketCORSOptResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateBucketCORSOptWithContext(context.Background(), request)
 }
 
 // UpdateBucketCORSOpt
@@ -4723,6 +4652,11 @@ func (c *Client) UpdateBucketCORSOptWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateBucketCORSOptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateBucketCORSOpt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateBucketCORSOptResponse()
@@ -4765,13 +4699,7 @@ func NewUpdateFleetAttributesResponse() (response *UpdateFleetAttributesResponse
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFleetAttributes(request *UpdateFleetAttributesRequest) (response *UpdateFleetAttributesResponse, err error) {
-    if request == nil {
-        request = NewUpdateFleetAttributesRequest()
-    }
-    
-    response = NewUpdateFleetAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateFleetAttributesWithContext(context.Background(), request)
 }
 
 // UpdateFleetAttributes
@@ -4795,6 +4723,11 @@ func (c *Client) UpdateFleetAttributesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewUpdateFleetAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFleetAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateFleetAttributesResponse()
@@ -4833,13 +4766,7 @@ func NewUpdateFleetCapacityResponse() (response *UpdateFleetCapacityResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateFleetCapacity(request *UpdateFleetCapacityRequest) (response *UpdateFleetCapacityResponse, err error) {
-    if request == nil {
-        request = NewUpdateFleetCapacityRequest()
-    }
-    
-    response = NewUpdateFleetCapacityResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateFleetCapacityWithContext(context.Background(), request)
 }
 
 // UpdateFleetCapacity
@@ -4859,6 +4786,11 @@ func (c *Client) UpdateFleetCapacityWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateFleetCapacityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFleetCapacity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateFleetCapacityResponse()
@@ -4901,13 +4833,7 @@ func NewUpdateFleetNameResponse() (response *UpdateFleetNameResponse) {
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFleetName(request *UpdateFleetNameRequest) (response *UpdateFleetNameResponse, err error) {
-    if request == nil {
-        request = NewUpdateFleetNameRequest()
-    }
-    
-    response = NewUpdateFleetNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateFleetNameWithContext(context.Background(), request)
 }
 
 // UpdateFleetName
@@ -4931,6 +4857,11 @@ func (c *Client) UpdateFleetNameWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateFleetNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFleetName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateFleetNameResponse()
@@ -4973,13 +4904,7 @@ func NewUpdateFleetPortSettingsResponse() (response *UpdateFleetPortSettingsResp
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateFleetPortSettings(request *UpdateFleetPortSettingsRequest) (response *UpdateFleetPortSettingsResponse, err error) {
-    if request == nil {
-        request = NewUpdateFleetPortSettingsRequest()
-    }
-    
-    response = NewUpdateFleetPortSettingsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateFleetPortSettingsWithContext(context.Background(), request)
 }
 
 // UpdateFleetPortSettings
@@ -5003,6 +4928,11 @@ func (c *Client) UpdateFleetPortSettingsWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateFleetPortSettingsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFleetPortSettings require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateFleetPortSettingsResponse()
@@ -5038,13 +4968,7 @@ func NewUpdateGameServerSessionResponse() (response *UpdateGameServerSessionResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateGameServerSession(request *UpdateGameServerSessionRequest) (response *UpdateGameServerSessionResponse, err error) {
-    if request == nil {
-        request = NewUpdateGameServerSessionRequest()
-    }
-    
-    response = NewUpdateGameServerSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateGameServerSessionWithContext(context.Background(), request)
 }
 
 // UpdateGameServerSession
@@ -5061,6 +4985,11 @@ func (c *Client) UpdateGameServerSessionWithContext(ctx context.Context, request
     if request == nil {
         request = NewUpdateGameServerSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateGameServerSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateGameServerSessionResponse()
@@ -5098,13 +5027,7 @@ func NewUpdateGameServerSessionQueueResponse() (response *UpdateGameServerSessio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) UpdateGameServerSessionQueue(request *UpdateGameServerSessionQueueRequest) (response *UpdateGameServerSessionQueueResponse, err error) {
-    if request == nil {
-        request = NewUpdateGameServerSessionQueueRequest()
-    }
-    
-    response = NewUpdateGameServerSessionQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateGameServerSessionQueueWithContext(context.Background(), request)
 }
 
 // UpdateGameServerSessionQueue
@@ -5123,6 +5046,11 @@ func (c *Client) UpdateGameServerSessionQueueWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpdateGameServerSessionQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateGameServerSessionQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateGameServerSessionQueueResponse()
@@ -5165,13 +5093,7 @@ func NewUpdateRuntimeConfigurationResponse() (response *UpdateRuntimeConfigurati
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateRuntimeConfiguration(request *UpdateRuntimeConfigurationRequest) (response *UpdateRuntimeConfigurationResponse, err error) {
-    if request == nil {
-        request = NewUpdateRuntimeConfigurationRequest()
-    }
-    
-    response = NewUpdateRuntimeConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRuntimeConfigurationWithContext(context.Background(), request)
 }
 
 // UpdateRuntimeConfiguration
@@ -5195,6 +5117,11 @@ func (c *Client) UpdateRuntimeConfigurationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateRuntimeConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRuntimeConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRuntimeConfigurationResponse()

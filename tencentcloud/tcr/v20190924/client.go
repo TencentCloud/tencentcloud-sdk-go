@@ -16,6 +16,7 @@ package v20190924
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewBatchDeleteImagePersonalResponse() (response *BatchDeleteImagePersonalRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) BatchDeleteImagePersonal(request *BatchDeleteImagePersonalRequest) (response *BatchDeleteImagePersonalResponse, err error) {
-    if request == nil {
-        request = NewBatchDeleteImagePersonalRequest()
-    }
-    
-    response = NewBatchDeleteImagePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDeleteImagePersonalWithContext(context.Background(), request)
 }
 
 // BatchDeleteImagePersonal
@@ -91,6 +86,11 @@ func (c *Client) BatchDeleteImagePersonalWithContext(ctx context.Context, reques
     if request == nil {
         request = NewBatchDeleteImagePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteImagePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDeleteImagePersonalResponse()
@@ -123,13 +123,7 @@ func NewBatchDeleteRepositoryPersonalResponse() (response *BatchDeleteRepository
 //  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
-    if request == nil {
-        request = NewBatchDeleteRepositoryPersonalRequest()
-    }
-    
-    response = NewBatchDeleteRepositoryPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDeleteRepositoryPersonalWithContext(context.Background(), request)
 }
 
 // BatchDeleteRepositoryPersonal
@@ -143,6 +137,11 @@ func (c *Client) BatchDeleteRepositoryPersonalWithContext(ctx context.Context, r
     if request == nil {
         request = NewBatchDeleteRepositoryPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteRepositoryPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDeleteRepositoryPersonalResponse()
@@ -187,13 +186,7 @@ func NewCheckInstanceResponse() (response *CheckInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckInstance(request *CheckInstanceRequest) (response *CheckInstanceResponse, err error) {
-    if request == nil {
-        request = NewCheckInstanceRequest()
-    }
-    
-    response = NewCheckInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckInstanceWithContext(context.Background(), request)
 }
 
 // CheckInstance
@@ -219,6 +212,11 @@ func (c *Client) CheckInstanceWithContext(ctx context.Context, request *CheckIns
     if request == nil {
         request = NewCheckInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckInstanceResponse()
@@ -263,13 +261,7 @@ func NewCheckInstanceNameResponse() (response *CheckInstanceNameResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckInstanceName(request *CheckInstanceNameRequest) (response *CheckInstanceNameResponse, err error) {
-    if request == nil {
-        request = NewCheckInstanceNameRequest()
-    }
-    
-    response = NewCheckInstanceNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckInstanceNameWithContext(context.Background(), request)
 }
 
 // CheckInstanceName
@@ -295,6 +287,11 @@ func (c *Client) CheckInstanceNameWithContext(ctx context.Context, request *Chec
     if request == nil {
         request = NewCheckInstanceNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckInstanceName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckInstanceNameResponse()
@@ -331,13 +328,7 @@ func NewCreateApplicationTriggerPersonalResponse() (response *CreateApplicationT
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) CreateApplicationTriggerPersonal(request *CreateApplicationTriggerPersonalRequest) (response *CreateApplicationTriggerPersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateApplicationTriggerPersonalRequest()
-    }
-    
-    response = NewCreateApplicationTriggerPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApplicationTriggerPersonalWithContext(context.Background(), request)
 }
 
 // CreateApplicationTriggerPersonal
@@ -355,6 +346,11 @@ func (c *Client) CreateApplicationTriggerPersonalWithContext(ctx context.Context
     if request == nil {
         request = NewCreateApplicationTriggerPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplicationTriggerPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApplicationTriggerPersonalResponse()
@@ -388,13 +384,7 @@ func NewCreateImageLifecyclePersonalResponse() (response *CreateImageLifecyclePe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) CreateImageLifecyclePersonal(request *CreateImageLifecyclePersonalRequest) (response *CreateImageLifecyclePersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateImageLifecyclePersonalRequest()
-    }
-    
-    response = NewCreateImageLifecyclePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImageLifecyclePersonalWithContext(context.Background(), request)
 }
 
 // CreateImageLifecyclePersonal
@@ -409,6 +399,11 @@ func (c *Client) CreateImageLifecyclePersonalWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateImageLifecyclePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageLifecyclePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImageLifecyclePersonalResponse()
@@ -444,13 +439,7 @@ func NewCreateImmutableTagRulesResponse() (response *CreateImmutableTagRulesResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 func (c *Client) CreateImmutableTagRules(request *CreateImmutableTagRulesRequest) (response *CreateImmutableTagRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateImmutableTagRulesRequest()
-    }
-    
-    response = NewCreateImmutableTagRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImmutableTagRulesWithContext(context.Background(), request)
 }
 
 // CreateImmutableTagRules
@@ -467,6 +456,11 @@ func (c *Client) CreateImmutableTagRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateImmutableTagRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImmutableTagRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImmutableTagRulesResponse()
@@ -513,13 +507,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateInstanceRequest()
-    }
-    
-    response = NewCreateInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInstanceWithContext(context.Background(), request)
 }
 
 // CreateInstance
@@ -547,6 +535,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     if request == nil {
         request = NewCreateInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInstanceResponse()
@@ -584,13 +577,7 @@ func NewCreateInstanceTokenResponse() (response *CreateInstanceTokenResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstanceToken(request *CreateInstanceTokenRequest) (response *CreateInstanceTokenResponse, err error) {
-    if request == nil {
-        request = NewCreateInstanceTokenRequest()
-    }
-    
-    response = NewCreateInstanceTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInstanceTokenWithContext(context.Background(), request)
 }
 
 // CreateInstanceToken
@@ -609,6 +596,11 @@ func (c *Client) CreateInstanceTokenWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateInstanceTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstanceToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInstanceTokenResponse()
@@ -650,13 +642,7 @@ func NewCreateInternalEndpointDnsResponse() (response *CreateInternalEndpointDns
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
-    if request == nil {
-        request = NewCreateInternalEndpointDnsRequest()
-    }
-    
-    response = NewCreateInternalEndpointDnsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInternalEndpointDnsWithContext(context.Background(), request)
 }
 
 // CreateInternalEndpointDns
@@ -679,6 +665,11 @@ func (c *Client) CreateInternalEndpointDnsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateInternalEndpointDnsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInternalEndpointDns require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInternalEndpointDnsResponse()
@@ -715,13 +706,7 @@ func NewCreateMultipleSecurityPolicyResponse() (response *CreateMultipleSecurity
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPolicyRequest) (response *CreateMultipleSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateMultipleSecurityPolicyRequest()
-    }
-    
-    response = NewCreateMultipleSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMultipleSecurityPolicyWithContext(context.Background(), request)
 }
 
 // CreateMultipleSecurityPolicy
@@ -739,6 +724,11 @@ func (c *Client) CreateMultipleSecurityPolicyWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateMultipleSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultipleSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMultipleSecurityPolicyResponse()
@@ -779,13 +769,7 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
-    if request == nil {
-        request = NewCreateNamespaceRequest()
-    }
-    
-    response = NewCreateNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNamespaceWithContext(context.Background(), request)
 }
 
 // CreateNamespace
@@ -807,6 +791,11 @@ func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNamespaceResponse()
@@ -842,13 +831,7 @@ func NewCreateNamespacePersonalResponse() (response *CreateNamespacePersonalResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest) (response *CreateNamespacePersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateNamespacePersonalRequest()
-    }
-    
-    response = NewCreateNamespacePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNamespacePersonalWithContext(context.Background(), request)
 }
 
 // CreateNamespacePersonal
@@ -865,6 +848,11 @@ func (c *Client) CreateNamespacePersonalWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateNamespacePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNamespacePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNamespacePersonalResponse()
@@ -906,13 +894,7 @@ func NewCreateReplicationInstanceResponse() (response *CreateReplicationInstance
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateReplicationInstance(request *CreateReplicationInstanceRequest) (response *CreateReplicationInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateReplicationInstanceRequest()
-    }
-    
-    response = NewCreateReplicationInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateReplicationInstanceWithContext(context.Background(), request)
 }
 
 // CreateReplicationInstance
@@ -935,6 +917,11 @@ func (c *Client) CreateReplicationInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateReplicationInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReplicationInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateReplicationInstanceResponse()
@@ -974,13 +961,7 @@ func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *CreateRepositoryResponse, err error) {
-    if request == nil {
-        request = NewCreateRepositoryRequest()
-    }
-    
-    response = NewCreateRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRepositoryWithContext(context.Background(), request)
 }
 
 // CreateRepository
@@ -1001,6 +982,11 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRepositoryResponse()
@@ -1035,13 +1021,7 @@ func NewCreateRepositoryPersonalResponse() (response *CreateRepositoryPersonalRe
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateRepositoryPersonal(request *CreateRepositoryPersonalRequest) (response *CreateRepositoryPersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateRepositoryPersonalRequest()
-    }
-    
-    response = NewCreateRepositoryPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRepositoryPersonalWithContext(context.Background(), request)
 }
 
 // CreateRepositoryPersonal
@@ -1057,6 +1037,11 @@ func (c *Client) CreateRepositoryPersonalWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateRepositoryPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRepositoryPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRepositoryPersonalResponse()
@@ -1094,13 +1079,7 @@ func NewCreateSecurityPolicyResponse() (response *CreateSecurityPolicyResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (response *CreateSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityPolicyRequest()
-    }
-    
-    response = NewCreateSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityPolicyWithContext(context.Background(), request)
 }
 
 // CreateSecurityPolicy
@@ -1119,6 +1098,11 @@ func (c *Client) CreateSecurityPolicyWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityPolicyResponse()
@@ -1160,13 +1144,7 @@ func NewCreateTagRetentionExecutionResponse() (response *CreateTagRetentionExecu
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTagRetentionExecution(request *CreateTagRetentionExecutionRequest) (response *CreateTagRetentionExecutionResponse, err error) {
-    if request == nil {
-        request = NewCreateTagRetentionExecutionRequest()
-    }
-    
-    response = NewCreateTagRetentionExecutionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTagRetentionExecutionWithContext(context.Background(), request)
 }
 
 // CreateTagRetentionExecution
@@ -1189,6 +1167,11 @@ func (c *Client) CreateTagRetentionExecutionWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateTagRetentionExecutionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTagRetentionExecution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTagRetentionExecutionResponse()
@@ -1231,13 +1214,7 @@ func NewCreateTagRetentionRuleResponse() (response *CreateTagRetentionRuleRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTagRetentionRule(request *CreateTagRetentionRuleRequest) (response *CreateTagRetentionRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateTagRetentionRuleRequest()
-    }
-    
-    response = NewCreateTagRetentionRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTagRetentionRuleWithContext(context.Background(), request)
 }
 
 // CreateTagRetentionRule
@@ -1261,6 +1238,11 @@ func (c *Client) CreateTagRetentionRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateTagRetentionRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTagRetentionRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTagRetentionRuleResponse()
@@ -1293,13 +1275,7 @@ func NewCreateUserPersonalResponse() (response *CreateUserPersonalResponse) {
 //  INVALIDPARAMETER_ERRUSEREXIST = "InvalidParameter.ErrUserExist"
 //  MISSINGPARAMETER_MISSINGPARAMETER = "MissingParameter.MissingParameter"
 func (c *Client) CreateUserPersonal(request *CreateUserPersonalRequest) (response *CreateUserPersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateUserPersonalRequest()
-    }
-    
-    response = NewCreateUserPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserPersonalWithContext(context.Background(), request)
 }
 
 // CreateUserPersonal
@@ -1313,6 +1289,11 @@ func (c *Client) CreateUserPersonalWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateUserPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserPersonalResponse()
@@ -1349,13 +1330,7 @@ func NewCreateWebhookTriggerResponse() (response *CreateWebhookTriggerResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) CreateWebhookTrigger(request *CreateWebhookTriggerRequest) (response *CreateWebhookTriggerResponse, err error) {
-    if request == nil {
-        request = NewCreateWebhookTriggerRequest()
-    }
-    
-    response = NewCreateWebhookTriggerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWebhookTriggerWithContext(context.Background(), request)
 }
 
 // CreateWebhookTrigger
@@ -1373,6 +1348,11 @@ func (c *Client) CreateWebhookTriggerWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateWebhookTriggerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWebhookTrigger require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWebhookTriggerResponse()
@@ -1405,13 +1385,7 @@ func NewDeleteApplicationTriggerPersonalResponse() (response *DeleteApplicationT
 //  RESOURCENOTFOUND_ERRNOTRIGGER = "ResourceNotFound.ErrNoTrigger"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DeleteApplicationTriggerPersonal(request *DeleteApplicationTriggerPersonalRequest) (response *DeleteApplicationTriggerPersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteApplicationTriggerPersonalRequest()
-    }
-    
-    response = NewDeleteApplicationTriggerPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteApplicationTriggerPersonalWithContext(context.Background(), request)
 }
 
 // DeleteApplicationTriggerPersonal
@@ -1425,6 +1399,11 @@ func (c *Client) DeleteApplicationTriggerPersonalWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteApplicationTriggerPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplicationTriggerPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteApplicationTriggerPersonalResponse()
@@ -1465,13 +1444,7 @@ func NewDeleteImageResponse() (response *DeleteImageResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteImage(request *DeleteImageRequest) (response *DeleteImageResponse, err error) {
-    if request == nil {
-        request = NewDeleteImageRequest()
-    }
-    
-    response = NewDeleteImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImageWithContext(context.Background(), request)
 }
 
 // DeleteImage
@@ -1493,6 +1466,11 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
     if request == nil {
         request = NewDeleteImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImageResponse()
@@ -1523,13 +1501,7 @@ func NewDeleteImageLifecycleGlobalPersonalResponse() (response *DeleteImageLifec
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteImageLifecycleGlobalPersonal(request *DeleteImageLifecycleGlobalPersonalRequest) (response *DeleteImageLifecycleGlobalPersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteImageLifecycleGlobalPersonalRequest()
-    }
-    
-    response = NewDeleteImageLifecycleGlobalPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImageLifecycleGlobalPersonalWithContext(context.Background(), request)
 }
 
 // DeleteImageLifecycleGlobalPersonal
@@ -1541,6 +1513,11 @@ func (c *Client) DeleteImageLifecycleGlobalPersonalWithContext(ctx context.Conte
     if request == nil {
         request = NewDeleteImageLifecycleGlobalPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageLifecycleGlobalPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImageLifecycleGlobalPersonalResponse()
@@ -1573,13 +1550,7 @@ func NewDeleteImageLifecyclePersonalResponse() (response *DeleteImageLifecyclePe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DeleteImageLifecyclePersonal(request *DeleteImageLifecyclePersonalRequest) (response *DeleteImageLifecyclePersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteImageLifecyclePersonalRequest()
-    }
-    
-    response = NewDeleteImageLifecyclePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImageLifecyclePersonalWithContext(context.Background(), request)
 }
 
 // DeleteImageLifecyclePersonal
@@ -1593,6 +1564,11 @@ func (c *Client) DeleteImageLifecyclePersonalWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteImageLifecyclePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageLifecyclePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImageLifecyclePersonalResponse()
@@ -1626,13 +1602,7 @@ func NewDeleteImagePersonalResponse() (response *DeleteImagePersonalResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DeleteImagePersonal(request *DeleteImagePersonalRequest) (response *DeleteImagePersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteImagePersonalRequest()
-    }
-    
-    response = NewDeleteImagePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImagePersonalWithContext(context.Background(), request)
 }
 
 // DeleteImagePersonal
@@ -1647,6 +1617,11 @@ func (c *Client) DeleteImagePersonalWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteImagePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImagePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImagePersonalResponse()
@@ -1681,13 +1656,7 @@ func NewDeleteImmutableTagRulesResponse() (response *DeleteImmutableTagRulesResp
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteImmutableTagRules(request *DeleteImmutableTagRulesRequest) (response *DeleteImmutableTagRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteImmutableTagRulesRequest()
-    }
-    
-    response = NewDeleteImmutableTagRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImmutableTagRulesWithContext(context.Background(), request)
 }
 
 // DeleteImmutableTagRules
@@ -1703,6 +1672,11 @@ func (c *Client) DeleteImmutableTagRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteImmutableTagRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImmutableTagRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImmutableTagRulesResponse()
@@ -1741,13 +1715,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteInstanceRequest()
-    }
-    
-    response = NewDeleteInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInstanceWithContext(context.Background(), request)
 }
 
 // DeleteInstance
@@ -1767,6 +1735,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     if request == nil {
         request = NewDeleteInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
@@ -1803,13 +1776,7 @@ func NewDeleteInstanceTokenResponse() (response *DeleteInstanceTokenResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInstanceToken(request *DeleteInstanceTokenRequest) (response *DeleteInstanceTokenResponse, err error) {
-    if request == nil {
-        request = NewDeleteInstanceTokenRequest()
-    }
-    
-    response = NewDeleteInstanceTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInstanceTokenWithContext(context.Background(), request)
 }
 
 // DeleteInstanceToken
@@ -1827,6 +1794,11 @@ func (c *Client) DeleteInstanceTokenWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteInstanceTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstanceToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInstanceTokenResponse()
@@ -1867,13 +1839,7 @@ func NewDeleteInternalEndpointDnsResponse() (response *DeleteInternalEndpointDns
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInternalEndpointDns(request *DeleteInternalEndpointDnsRequest) (response *DeleteInternalEndpointDnsResponse, err error) {
-    if request == nil {
-        request = NewDeleteInternalEndpointDnsRequest()
-    }
-    
-    response = NewDeleteInternalEndpointDnsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInternalEndpointDnsWithContext(context.Background(), request)
 }
 
 // DeleteInternalEndpointDns
@@ -1895,6 +1861,11 @@ func (c *Client) DeleteInternalEndpointDnsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteInternalEndpointDnsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInternalEndpointDns require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInternalEndpointDnsResponse()
@@ -1931,13 +1902,7 @@ func NewDeleteMultipleSecurityPolicyResponse() (response *DeleteMultipleSecurity
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteMultipleSecurityPolicy(request *DeleteMultipleSecurityPolicyRequest) (response *DeleteMultipleSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteMultipleSecurityPolicyRequest()
-    }
-    
-    response = NewDeleteMultipleSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMultipleSecurityPolicyWithContext(context.Background(), request)
 }
 
 // DeleteMultipleSecurityPolicy
@@ -1955,6 +1920,11 @@ func (c *Client) DeleteMultipleSecurityPolicyWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteMultipleSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMultipleSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMultipleSecurityPolicyResponse()
@@ -1995,13 +1965,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteNamespaceRequest()
-    }
-    
-    response = NewDeleteNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNamespaceWithContext(context.Background(), request)
 }
 
 // DeleteNamespace
@@ -2023,6 +1987,11 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNamespaceResponse()
@@ -2057,13 +2026,7 @@ func NewDeleteNamespacePersonalResponse() (response *DeleteNamespacePersonalResp
 //  RESOURCENOTFOUND_ERRNONAMESPACE = "ResourceNotFound.ErrNoNamespace"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DeleteNamespacePersonal(request *DeleteNamespacePersonalRequest) (response *DeleteNamespacePersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteNamespacePersonalRequest()
-    }
-    
-    response = NewDeleteNamespacePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNamespacePersonalWithContext(context.Background(), request)
 }
 
 // DeleteNamespacePersonal
@@ -2079,6 +2042,11 @@ func (c *Client) DeleteNamespacePersonalWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteNamespacePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNamespacePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNamespacePersonalResponse()
@@ -2119,13 +2087,7 @@ func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *DeleteRepositoryResponse, err error) {
-    if request == nil {
-        request = NewDeleteRepositoryRequest()
-    }
-    
-    response = NewDeleteRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRepositoryWithContext(context.Background(), request)
 }
 
 // DeleteRepository
@@ -2147,6 +2109,11 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRepositoryResponse()
@@ -2180,13 +2147,7 @@ func NewDeleteRepositoryPersonalResponse() (response *DeleteRepositoryPersonalRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DeleteRepositoryPersonal(request *DeleteRepositoryPersonalRequest) (response *DeleteRepositoryPersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteRepositoryPersonalRequest()
-    }
-    
-    response = NewDeleteRepositoryPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRepositoryPersonalWithContext(context.Background(), request)
 }
 
 // DeleteRepositoryPersonal
@@ -2201,6 +2162,11 @@ func (c *Client) DeleteRepositoryPersonalWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteRepositoryPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRepositoryPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRepositoryPersonalResponse()
@@ -2238,13 +2204,7 @@ func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityPolicyRequest()
-    }
-    
-    response = NewDeleteSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityPolicyWithContext(context.Background(), request)
 }
 
 // DeleteSecurityPolicy
@@ -2263,6 +2223,11 @@ func (c *Client) DeleteSecurityPolicyWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityPolicyResponse()
@@ -2305,13 +2270,7 @@ func NewDeleteTagRetentionRuleResponse() (response *DeleteTagRetentionRuleRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTagRetentionRule(request *DeleteTagRetentionRuleRequest) (response *DeleteTagRetentionRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteTagRetentionRuleRequest()
-    }
-    
-    response = NewDeleteTagRetentionRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTagRetentionRuleWithContext(context.Background(), request)
 }
 
 // DeleteTagRetentionRule
@@ -2335,6 +2294,11 @@ func (c *Client) DeleteTagRetentionRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteTagRetentionRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTagRetentionRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTagRetentionRuleResponse()
@@ -2371,13 +2335,7 @@ func NewDeleteWebhookTriggerResponse() (response *DeleteWebhookTriggerResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (response *DeleteWebhookTriggerResponse, err error) {
-    if request == nil {
-        request = NewDeleteWebhookTriggerRequest()
-    }
-    
-    response = NewDeleteWebhookTriggerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWebhookTriggerWithContext(context.Background(), request)
 }
 
 // DeleteWebhookTrigger
@@ -2395,6 +2353,11 @@ func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteWebhookTriggerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWebhookTrigger require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWebhookTriggerResponse()
@@ -2426,13 +2389,7 @@ func NewDescribeApplicationTriggerLogPersonalResponse() (response *DescribeAppli
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DescribeApplicationTriggerLogPersonal(request *DescribeApplicationTriggerLogPersonalRequest) (response *DescribeApplicationTriggerLogPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationTriggerLogPersonalRequest()
-    }
-    
-    response = NewDescribeApplicationTriggerLogPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationTriggerLogPersonalWithContext(context.Background(), request)
 }
 
 // DescribeApplicationTriggerLogPersonal
@@ -2445,6 +2402,11 @@ func (c *Client) DescribeApplicationTriggerLogPersonalWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeApplicationTriggerLogPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationTriggerLogPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationTriggerLogPersonalResponse()
@@ -2477,13 +2439,7 @@ func NewDescribeApplicationTriggerPersonalResponse() (response *DescribeApplicat
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DescribeApplicationTriggerPersonal(request *DescribeApplicationTriggerPersonalRequest) (response *DescribeApplicationTriggerPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationTriggerPersonalRequest()
-    }
-    
-    response = NewDescribeApplicationTriggerPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationTriggerPersonalWithContext(context.Background(), request)
 }
 
 // DescribeApplicationTriggerPersonal
@@ -2497,6 +2453,11 @@ func (c *Client) DescribeApplicationTriggerPersonalWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeApplicationTriggerPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationTriggerPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationTriggerPersonalResponse()
@@ -2530,13 +2491,7 @@ func NewDescribeChartDownloadInfoResponse() (response *DescribeChartDownloadInfo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeChartDownloadInfo(request *DescribeChartDownloadInfoRequest) (response *DescribeChartDownloadInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeChartDownloadInfoRequest()
-    }
-    
-    response = NewDescribeChartDownloadInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChartDownloadInfoWithContext(context.Background(), request)
 }
 
 // DescribeChartDownloadInfo
@@ -2551,6 +2506,11 @@ func (c *Client) DescribeChartDownloadInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeChartDownloadInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChartDownloadInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChartDownloadInfoResponse()
@@ -2587,13 +2547,7 @@ func NewDescribeExternalEndpointStatusResponse() (response *DescribeExternalEndp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeExternalEndpointStatus(request *DescribeExternalEndpointStatusRequest) (response *DescribeExternalEndpointStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeExternalEndpointStatusRequest()
-    }
-    
-    response = NewDescribeExternalEndpointStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExternalEndpointStatusWithContext(context.Background(), request)
 }
 
 // DescribeExternalEndpointStatus
@@ -2611,6 +2565,11 @@ func (c *Client) DescribeExternalEndpointStatusWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeExternalEndpointStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalEndpointStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExternalEndpointStatusResponse()
@@ -2642,13 +2601,7 @@ func NewDescribeFavorRepositoryPersonalResponse() (response *DescribeFavorReposi
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFavorRepositoryPersonal(request *DescribeFavorRepositoryPersonalRequest) (response *DescribeFavorRepositoryPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeFavorRepositoryPersonalRequest()
-    }
-    
-    response = NewDescribeFavorRepositoryPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFavorRepositoryPersonalWithContext(context.Background(), request)
 }
 
 // DescribeFavorRepositoryPersonal
@@ -2661,6 +2614,11 @@ func (c *Client) DescribeFavorRepositoryPersonalWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeFavorRepositoryPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFavorRepositoryPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFavorRepositoryPersonalResponse()
@@ -2694,13 +2652,7 @@ func NewDescribeImageFilterPersonalResponse() (response *DescribeImageFilterPers
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DescribeImageFilterPersonal(request *DescribeImageFilterPersonalRequest) (response *DescribeImageFilterPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageFilterPersonalRequest()
-    }
-    
-    response = NewDescribeImageFilterPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageFilterPersonalWithContext(context.Background(), request)
 }
 
 // DescribeImageFilterPersonal
@@ -2715,6 +2667,11 @@ func (c *Client) DescribeImageFilterPersonalWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeImageFilterPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageFilterPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageFilterPersonalResponse()
@@ -2745,13 +2702,7 @@ func NewDescribeImageLifecycleGlobalPersonalResponse() (response *DescribeImageL
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeImageLifecycleGlobalPersonal(request *DescribeImageLifecycleGlobalPersonalRequest) (response *DescribeImageLifecycleGlobalPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageLifecycleGlobalPersonalRequest()
-    }
-    
-    response = NewDescribeImageLifecycleGlobalPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageLifecycleGlobalPersonalWithContext(context.Background(), request)
 }
 
 // DescribeImageLifecycleGlobalPersonal
@@ -2763,6 +2714,11 @@ func (c *Client) DescribeImageLifecycleGlobalPersonalWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeImageLifecycleGlobalPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageLifecycleGlobalPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageLifecycleGlobalPersonalResponse()
@@ -2794,13 +2750,7 @@ func NewDescribeImageLifecyclePersonalResponse() (response *DescribeImageLifecyc
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeImageLifecyclePersonal(request *DescribeImageLifecyclePersonalRequest) (response *DescribeImageLifecyclePersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageLifecyclePersonalRequest()
-    }
-    
-    response = NewDescribeImageLifecyclePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageLifecyclePersonalWithContext(context.Background(), request)
 }
 
 // DescribeImageLifecyclePersonal
@@ -2813,6 +2763,11 @@ func (c *Client) DescribeImageLifecyclePersonalWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeImageLifecyclePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageLifecyclePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageLifecyclePersonalResponse()
@@ -2854,13 +2809,7 @@ func NewDescribeImageManifestsResponse() (response *DescribeImageManifestsRespon
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeImageManifests(request *DescribeImageManifestsRequest) (response *DescribeImageManifestsResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageManifestsRequest()
-    }
-    
-    response = NewDescribeImageManifestsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageManifestsWithContext(context.Background(), request)
 }
 
 // DescribeImageManifests
@@ -2883,6 +2832,11 @@ func (c *Client) DescribeImageManifestsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeImageManifestsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageManifests require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageManifestsResponse()
@@ -2916,13 +2870,7 @@ func NewDescribeImagePersonalResponse() (response *DescribeImagePersonalResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DescribeImagePersonal(request *DescribeImagePersonalRequest) (response *DescribeImagePersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeImagePersonalRequest()
-    }
-    
-    response = NewDescribeImagePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImagePersonalWithContext(context.Background(), request)
 }
 
 // DescribeImagePersonal
@@ -2937,6 +2885,11 @@ func (c *Client) DescribeImagePersonalWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImagePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImagePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImagePersonalResponse()
@@ -2977,13 +2930,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeImagesRequest()
-    }
-    
-    response = NewDescribeImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImagesWithContext(context.Background(), request)
 }
 
 // DescribeImages
@@ -3005,6 +2952,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImagesResponse()
@@ -3041,13 +2993,7 @@ func NewDescribeImmutableTagRulesResponse() (response *DescribeImmutableTagRules
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeImmutableTagRules(request *DescribeImmutableTagRulesRequest) (response *DescribeImmutableTagRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeImmutableTagRulesRequest()
-    }
-    
-    response = NewDescribeImmutableTagRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImmutableTagRulesWithContext(context.Background(), request)
 }
 
 // DescribeImmutableTagRules
@@ -3065,6 +3011,11 @@ func (c *Client) DescribeImmutableTagRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeImmutableTagRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImmutableTagRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImmutableTagRulesResponse()
@@ -3101,13 +3052,7 @@ func NewDescribeInstanceStatusResponse() (response *DescribeInstanceStatusRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequest) (response *DescribeInstanceStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceStatusRequest()
-    }
-    
-    response = NewDescribeInstanceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceStatusWithContext(context.Background(), request)
 }
 
 // DescribeInstanceStatus
@@ -3125,6 +3070,11 @@ func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceStatusResponse()
@@ -3160,13 +3110,7 @@ func NewDescribeInstanceTokenResponse() (response *DescribeInstanceTokenResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstanceToken(request *DescribeInstanceTokenRequest) (response *DescribeInstanceTokenResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceTokenRequest()
-    }
-    
-    response = NewDescribeInstanceTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceTokenWithContext(context.Background(), request)
 }
 
 // DescribeInstanceToken
@@ -3183,6 +3127,11 @@ func (c *Client) DescribeInstanceTokenWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeInstanceTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceTokenResponse()
@@ -3221,13 +3170,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -3247,6 +3190,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -3287,13 +3235,7 @@ func NewDescribeInternalEndpointDnsStatusResponse() (response *DescribeInternalE
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInternalEndpointDnsStatus(request *DescribeInternalEndpointDnsStatusRequest) (response *DescribeInternalEndpointDnsStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternalEndpointDnsStatusRequest()
-    }
-    
-    response = NewDescribeInternalEndpointDnsStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternalEndpointDnsStatusWithContext(context.Background(), request)
 }
 
 // DescribeInternalEndpointDnsStatus
@@ -3315,6 +3257,11 @@ func (c *Client) DescribeInternalEndpointDnsStatusWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInternalEndpointDnsStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternalEndpointDnsStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternalEndpointDnsStatusResponse()
@@ -3351,13 +3298,7 @@ func NewDescribeInternalEndpointsResponse() (response *DescribeInternalEndpoints
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInternalEndpoints(request *DescribeInternalEndpointsRequest) (response *DescribeInternalEndpointsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternalEndpointsRequest()
-    }
-    
-    response = NewDescribeInternalEndpointsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternalEndpointsWithContext(context.Background(), request)
 }
 
 // DescribeInternalEndpoints
@@ -3375,6 +3316,11 @@ func (c *Client) DescribeInternalEndpointsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeInternalEndpointsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternalEndpoints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternalEndpointsResponse()
@@ -3407,13 +3353,7 @@ func NewDescribeNamespacePersonalResponse() (response *DescribeNamespacePersonal
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DescribeNamespacePersonal(request *DescribeNamespacePersonalRequest) (response *DescribeNamespacePersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespacePersonalRequest()
-    }
-    
-    response = NewDescribeNamespacePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespacePersonalWithContext(context.Background(), request)
 }
 
 // DescribeNamespacePersonal
@@ -3427,6 +3367,11 @@ func (c *Client) DescribeNamespacePersonalWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeNamespacePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespacePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespacePersonalResponse()
@@ -3467,13 +3412,7 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespacesRequest()
-    }
-    
-    response = NewDescribeNamespacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespacesWithContext(context.Background(), request)
 }
 
 // DescribeNamespaces
@@ -3495,6 +3434,11 @@ func (c *Client) DescribeNamespacesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNamespacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespacesResponse()
@@ -3531,13 +3475,7 @@ func NewDescribeReplicationInstanceCreateTasksResponse() (response *DescribeRepl
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeReplicationInstanceCreateTasks(request *DescribeReplicationInstanceCreateTasksRequest) (response *DescribeReplicationInstanceCreateTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeReplicationInstanceCreateTasksRequest()
-    }
-    
-    response = NewDescribeReplicationInstanceCreateTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReplicationInstanceCreateTasksWithContext(context.Background(), request)
 }
 
 // DescribeReplicationInstanceCreateTasks
@@ -3555,6 +3493,11 @@ func (c *Client) DescribeReplicationInstanceCreateTasksWithContext(ctx context.C
     if request == nil {
         request = NewDescribeReplicationInstanceCreateTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationInstanceCreateTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReplicationInstanceCreateTasksResponse()
@@ -3591,13 +3534,7 @@ func NewDescribeReplicationInstanceSyncStatusResponse() (response *DescribeRepli
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeReplicationInstanceSyncStatus(request *DescribeReplicationInstanceSyncStatusRequest) (response *DescribeReplicationInstanceSyncStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeReplicationInstanceSyncStatusRequest()
-    }
-    
-    response = NewDescribeReplicationInstanceSyncStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReplicationInstanceSyncStatusWithContext(context.Background(), request)
 }
 
 // DescribeReplicationInstanceSyncStatus
@@ -3615,6 +3552,11 @@ func (c *Client) DescribeReplicationInstanceSyncStatusWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeReplicationInstanceSyncStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationInstanceSyncStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReplicationInstanceSyncStatusResponse()
@@ -3653,13 +3595,7 @@ func NewDescribeReplicationInstancesResponse() (response *DescribeReplicationIns
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeReplicationInstances(request *DescribeReplicationInstancesRequest) (response *DescribeReplicationInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeReplicationInstancesRequest()
-    }
-    
-    response = NewDescribeReplicationInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReplicationInstancesWithContext(context.Background(), request)
 }
 
 // DescribeReplicationInstances
@@ -3679,6 +3615,11 @@ func (c *Client) DescribeReplicationInstancesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeReplicationInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReplicationInstancesResponse()
@@ -3719,13 +3660,7 @@ func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (response *DescribeRepositoriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRepositoriesRequest()
-    }
-    
-    response = NewDescribeRepositoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRepositoriesWithContext(context.Background(), request)
 }
 
 // DescribeRepositories
@@ -3747,6 +3682,11 @@ func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRepositoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRepositories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRepositoriesResponse()
@@ -3779,13 +3719,7 @@ func NewDescribeRepositoryFilterPersonalResponse() (response *DescribeRepository
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DescribeRepositoryFilterPersonal(request *DescribeRepositoryFilterPersonalRequest) (response *DescribeRepositoryFilterPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeRepositoryFilterPersonalRequest()
-    }
-    
-    response = NewDescribeRepositoryFilterPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRepositoryFilterPersonalWithContext(context.Background(), request)
 }
 
 // DescribeRepositoryFilterPersonal
@@ -3799,6 +3733,11 @@ func (c *Client) DescribeRepositoryFilterPersonalWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeRepositoryFilterPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRepositoryFilterPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryFilterPersonalResponse()
@@ -3831,13 +3770,7 @@ func NewDescribeRepositoryOwnerPersonalResponse() (response *DescribeRepositoryO
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) DescribeRepositoryOwnerPersonal(request *DescribeRepositoryOwnerPersonalRequest) (response *DescribeRepositoryOwnerPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeRepositoryOwnerPersonalRequest()
-    }
-    
-    response = NewDescribeRepositoryOwnerPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRepositoryOwnerPersonalWithContext(context.Background(), request)
 }
 
 // DescribeRepositoryOwnerPersonal
@@ -3851,6 +3784,11 @@ func (c *Client) DescribeRepositoryOwnerPersonalWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeRepositoryOwnerPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRepositoryOwnerPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryOwnerPersonalResponse()
@@ -3883,13 +3821,7 @@ func NewDescribeRepositoryPersonalResponse() (response *DescribeRepositoryPerson
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) DescribeRepositoryPersonal(request *DescribeRepositoryPersonalRequest) (response *DescribeRepositoryPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeRepositoryPersonalRequest()
-    }
-    
-    response = NewDescribeRepositoryPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRepositoryPersonalWithContext(context.Background(), request)
 }
 
 // DescribeRepositoryPersonal
@@ -3903,6 +3835,11 @@ func (c *Client) DescribeRepositoryPersonalWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRepositoryPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRepositoryPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRepositoryPersonalResponse()
@@ -3939,13 +3876,7 @@ func NewDescribeSecurityPoliciesResponse() (response *DescribeSecurityPoliciesRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecurityPolicies(request *DescribeSecurityPoliciesRequest) (response *DescribeSecurityPoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityPoliciesRequest()
-    }
-    
-    response = NewDescribeSecurityPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityPoliciesWithContext(context.Background(), request)
 }
 
 // DescribeSecurityPolicies
@@ -3963,6 +3894,11 @@ func (c *Client) DescribeSecurityPoliciesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSecurityPoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityPoliciesResponse()
@@ -4004,13 +3940,7 @@ func NewDescribeTagRetentionExecutionResponse() (response *DescribeTagRetentionE
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTagRetentionExecution(request *DescribeTagRetentionExecutionRequest) (response *DescribeTagRetentionExecutionResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagRetentionExecutionRequest()
-    }
-    
-    response = NewDescribeTagRetentionExecutionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagRetentionExecutionWithContext(context.Background(), request)
 }
 
 // DescribeTagRetentionExecution
@@ -4033,6 +3963,11 @@ func (c *Client) DescribeTagRetentionExecutionWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeTagRetentionExecutionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagRetentionExecution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagRetentionExecutionResponse()
@@ -4074,13 +4009,7 @@ func NewDescribeTagRetentionExecutionTaskResponse() (response *DescribeTagRetent
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTagRetentionExecutionTask(request *DescribeTagRetentionExecutionTaskRequest) (response *DescribeTagRetentionExecutionTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagRetentionExecutionTaskRequest()
-    }
-    
-    response = NewDescribeTagRetentionExecutionTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagRetentionExecutionTaskWithContext(context.Background(), request)
 }
 
 // DescribeTagRetentionExecutionTask
@@ -4103,6 +4032,11 @@ func (c *Client) DescribeTagRetentionExecutionTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeTagRetentionExecutionTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagRetentionExecutionTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagRetentionExecutionTaskResponse()
@@ -4145,13 +4079,7 @@ func NewDescribeTagRetentionRulesResponse() (response *DescribeTagRetentionRules
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTagRetentionRules(request *DescribeTagRetentionRulesRequest) (response *DescribeTagRetentionRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagRetentionRulesRequest()
-    }
-    
-    response = NewDescribeTagRetentionRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagRetentionRulesWithContext(context.Background(), request)
 }
 
 // DescribeTagRetentionRules
@@ -4175,6 +4103,11 @@ func (c *Client) DescribeTagRetentionRulesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTagRetentionRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagRetentionRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagRetentionRulesResponse()
@@ -4205,13 +4138,7 @@ func NewDescribeUserQuotaPersonalResponse() (response *DescribeUserQuotaPersonal
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeUserQuotaPersonal(request *DescribeUserQuotaPersonalRequest) (response *DescribeUserQuotaPersonalResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserQuotaPersonalRequest()
-    }
-    
-    response = NewDescribeUserQuotaPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserQuotaPersonalWithContext(context.Background(), request)
 }
 
 // DescribeUserQuotaPersonal
@@ -4223,6 +4150,11 @@ func (c *Client) DescribeUserQuotaPersonalWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeUserQuotaPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserQuotaPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserQuotaPersonalResponse()
@@ -4260,13 +4192,7 @@ func NewDescribeWebhookTriggerResponse() (response *DescribeWebhookTriggerRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
-    if request == nil {
-        request = NewDescribeWebhookTriggerRequest()
-    }
-    
-    response = NewDescribeWebhookTriggerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWebhookTriggerWithContext(context.Background(), request)
 }
 
 // DescribeWebhookTrigger
@@ -4285,6 +4211,11 @@ func (c *Client) DescribeWebhookTriggerWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeWebhookTriggerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebhookTrigger require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWebhookTriggerResponse()
@@ -4321,13 +4252,7 @@ func NewDescribeWebhookTriggerLogResponse() (response *DescribeWebhookTriggerLog
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeWebhookTriggerLog(request *DescribeWebhookTriggerLogRequest) (response *DescribeWebhookTriggerLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeWebhookTriggerLogRequest()
-    }
-    
-    response = NewDescribeWebhookTriggerLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWebhookTriggerLogWithContext(context.Background(), request)
 }
 
 // DescribeWebhookTriggerLog
@@ -4345,6 +4270,11 @@ func (c *Client) DescribeWebhookTriggerLogWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeWebhookTriggerLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebhookTriggerLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWebhookTriggerLogResponse()
@@ -4378,13 +4308,7 @@ func NewDownloadHelmChartResponse() (response *DownloadHelmChartResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DownloadHelmChart(request *DownloadHelmChartRequest) (response *DownloadHelmChartResponse, err error) {
-    if request == nil {
-        request = NewDownloadHelmChartRequest()
-    }
-    
-    response = NewDownloadHelmChartResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadHelmChartWithContext(context.Background(), request)
 }
 
 // DownloadHelmChart
@@ -4399,6 +4323,11 @@ func (c *Client) DownloadHelmChartWithContext(ctx context.Context, request *Down
     if request == nil {
         request = NewDownloadHelmChartRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadHelmChart require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadHelmChartResponse()
@@ -4432,13 +4361,7 @@ func NewDuplicateImagePersonalResponse() (response *DuplicateImagePersonalRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOTAG = "ResourceNotFound.ErrNoTag"
 func (c *Client) DuplicateImagePersonal(request *DuplicateImagePersonalRequest) (response *DuplicateImagePersonalResponse, err error) {
-    if request == nil {
-        request = NewDuplicateImagePersonalRequest()
-    }
-    
-    response = NewDuplicateImagePersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DuplicateImagePersonalWithContext(context.Background(), request)
 }
 
 // DuplicateImagePersonal
@@ -4453,6 +4376,11 @@ func (c *Client) DuplicateImagePersonalWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDuplicateImagePersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DuplicateImagePersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDuplicateImagePersonalResponse()
@@ -4489,13 +4417,7 @@ func NewManageExternalEndpointResponse() (response *ManageExternalEndpointRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageExternalEndpoint(request *ManageExternalEndpointRequest) (response *ManageExternalEndpointResponse, err error) {
-    if request == nil {
-        request = NewManageExternalEndpointRequest()
-    }
-    
-    response = NewManageExternalEndpointResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageExternalEndpointWithContext(context.Background(), request)
 }
 
 // ManageExternalEndpoint
@@ -4513,6 +4435,11 @@ func (c *Client) ManageExternalEndpointWithContext(ctx context.Context, request 
     if request == nil {
         request = NewManageExternalEndpointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageExternalEndpoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageExternalEndpointResponse()
@@ -4543,13 +4470,7 @@ func NewManageImageLifecycleGlobalPersonalResponse() (response *ManageImageLifec
 // 可能返回的错误码:
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ManageImageLifecycleGlobalPersonal(request *ManageImageLifecycleGlobalPersonalRequest) (response *ManageImageLifecycleGlobalPersonalResponse, err error) {
-    if request == nil {
-        request = NewManageImageLifecycleGlobalPersonalRequest()
-    }
-    
-    response = NewManageImageLifecycleGlobalPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageImageLifecycleGlobalPersonalWithContext(context.Background(), request)
 }
 
 // ManageImageLifecycleGlobalPersonal
@@ -4561,6 +4482,11 @@ func (c *Client) ManageImageLifecycleGlobalPersonalWithContext(ctx context.Conte
     if request == nil {
         request = NewManageImageLifecycleGlobalPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageImageLifecycleGlobalPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageImageLifecycleGlobalPersonalResponse()
@@ -4602,13 +4528,7 @@ func NewManageInternalEndpointResponse() (response *ManageInternalEndpointRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageInternalEndpoint(request *ManageInternalEndpointRequest) (response *ManageInternalEndpointResponse, err error) {
-    if request == nil {
-        request = NewManageInternalEndpointRequest()
-    }
-    
-    response = NewManageInternalEndpointResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageInternalEndpointWithContext(context.Background(), request)
 }
 
 // ManageInternalEndpoint
@@ -4631,6 +4551,11 @@ func (c *Client) ManageInternalEndpointWithContext(ctx context.Context, request 
     if request == nil {
         request = NewManageInternalEndpointRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageInternalEndpoint require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageInternalEndpointResponse()
@@ -4674,13 +4599,7 @@ func NewManageReplicationResponse() (response *ManageReplicationResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ManageReplication(request *ManageReplicationRequest) (response *ManageReplicationResponse, err error) {
-    if request == nil {
-        request = NewManageReplicationRequest()
-    }
-    
-    response = NewManageReplicationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageReplicationWithContext(context.Background(), request)
 }
 
 // ManageReplication
@@ -4705,6 +4624,11 @@ func (c *Client) ManageReplicationWithContext(ctx context.Context, request *Mana
     if request == nil {
         request = NewManageReplicationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageReplication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageReplicationResponse()
@@ -4739,13 +4663,7 @@ func NewModifyApplicationTriggerPersonalResponse() (response *ModifyApplicationT
 //  RESOURCENOTFOUND_ERRNOTRIGGER = "ResourceNotFound.ErrNoTrigger"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) ModifyApplicationTriggerPersonal(request *ModifyApplicationTriggerPersonalRequest) (response *ModifyApplicationTriggerPersonalResponse, err error) {
-    if request == nil {
-        request = NewModifyApplicationTriggerPersonalRequest()
-    }
-    
-    response = NewModifyApplicationTriggerPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApplicationTriggerPersonalWithContext(context.Background(), request)
 }
 
 // ModifyApplicationTriggerPersonal
@@ -4761,6 +4679,11 @@ func (c *Client) ModifyApplicationTriggerPersonalWithContext(ctx context.Context
     if request == nil {
         request = NewModifyApplicationTriggerPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationTriggerPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApplicationTriggerPersonalResponse()
@@ -4796,13 +4719,7 @@ func NewModifyImmutableTagRulesResponse() (response *ModifyImmutableTagRulesResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 func (c *Client) ModifyImmutableTagRules(request *ModifyImmutableTagRulesRequest) (response *ModifyImmutableTagRulesResponse, err error) {
-    if request == nil {
-        request = NewModifyImmutableTagRulesRequest()
-    }
-    
-    response = NewModifyImmutableTagRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyImmutableTagRulesWithContext(context.Background(), request)
 }
 
 // ModifyImmutableTagRules
@@ -4819,6 +4736,11 @@ func (c *Client) ModifyImmutableTagRulesWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyImmutableTagRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImmutableTagRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyImmutableTagRulesResponse()
@@ -4858,13 +4780,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceRequest()
-    }
-    
-    response = NewModifyInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceWithContext(context.Background(), request)
 }
 
 // ModifyInstance
@@ -4885,6 +4801,11 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     if request == nil {
         request = NewModifyInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
@@ -4921,13 +4842,7 @@ func NewModifyInstanceTokenResponse() (response *ModifyInstanceTokenResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyInstanceToken(request *ModifyInstanceTokenRequest) (response *ModifyInstanceTokenResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceTokenRequest()
-    }
-    
-    response = NewModifyInstanceTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceTokenWithContext(context.Background(), request)
 }
 
 // ModifyInstanceToken
@@ -4945,6 +4860,11 @@ func (c *Client) ModifyInstanceTokenWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyInstanceTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceTokenResponse()
@@ -4986,13 +4906,7 @@ func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
-    if request == nil {
-        request = NewModifyNamespaceRequest()
-    }
-    
-    response = NewModifyNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNamespaceWithContext(context.Background(), request)
 }
 
 // ModifyNamespace
@@ -5015,6 +4929,11 @@ func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNamespaceResponse()
@@ -5053,13 +4972,7 @@ func NewModifyRepositoryResponse() (response *ModifyRepositoryResponse) {
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {
-    if request == nil {
-        request = NewModifyRepositoryRequest()
-    }
-    
-    response = NewModifyRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRepositoryWithContext(context.Background(), request)
 }
 
 // ModifyRepository
@@ -5079,6 +4992,11 @@ func (c *Client) ModifyRepositoryWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRepositoryResponse()
@@ -5112,13 +5030,7 @@ func NewModifyRepositoryAccessPersonalResponse() (response *ModifyRepositoryAcce
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) ModifyRepositoryAccessPersonal(request *ModifyRepositoryAccessPersonalRequest) (response *ModifyRepositoryAccessPersonalResponse, err error) {
-    if request == nil {
-        request = NewModifyRepositoryAccessPersonalRequest()
-    }
-    
-    response = NewModifyRepositoryAccessPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRepositoryAccessPersonalWithContext(context.Background(), request)
 }
 
 // ModifyRepositoryAccessPersonal
@@ -5133,6 +5045,11 @@ func (c *Client) ModifyRepositoryAccessPersonalWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyRepositoryAccessPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRepositoryAccessPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRepositoryAccessPersonalResponse()
@@ -5166,13 +5083,7 @@ func NewModifyRepositoryInfoPersonalResponse() (response *ModifyRepositoryInfoPe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 func (c *Client) ModifyRepositoryInfoPersonal(request *ModifyRepositoryInfoPersonalRequest) (response *ModifyRepositoryInfoPersonalResponse, err error) {
-    if request == nil {
-        request = NewModifyRepositoryInfoPersonalRequest()
-    }
-    
-    response = NewModifyRepositoryInfoPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRepositoryInfoPersonalWithContext(context.Background(), request)
 }
 
 // ModifyRepositoryInfoPersonal
@@ -5187,6 +5098,11 @@ func (c *Client) ModifyRepositoryInfoPersonalWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyRepositoryInfoPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRepositoryInfoPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRepositoryInfoPersonalResponse()
@@ -5223,13 +5139,7 @@ func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityPolicyRequest()
-    }
-    
-    response = NewModifySecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityPolicyWithContext(context.Background(), request)
 }
 
 // ModifySecurityPolicy
@@ -5247,6 +5157,11 @@ func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifySecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityPolicyResponse()
@@ -5289,13 +5204,7 @@ func NewModifyTagRetentionRuleResponse() (response *ModifyTagRetentionRuleRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyTagRetentionRule(request *ModifyTagRetentionRuleRequest) (response *ModifyTagRetentionRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyTagRetentionRuleRequest()
-    }
-    
-    response = NewModifyTagRetentionRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTagRetentionRuleWithContext(context.Background(), request)
 }
 
 // ModifyTagRetentionRule
@@ -5319,6 +5228,11 @@ func (c *Client) ModifyTagRetentionRuleWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyTagRetentionRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTagRetentionRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTagRetentionRuleResponse()
@@ -5351,13 +5265,7 @@ func NewModifyUserPasswordPersonalResponse() (response *ModifyUserPasswordPerson
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
 func (c *Client) ModifyUserPasswordPersonal(request *ModifyUserPasswordPersonalRequest) (response *ModifyUserPasswordPersonalResponse, err error) {
-    if request == nil {
-        request = NewModifyUserPasswordPersonalRequest()
-    }
-    
-    response = NewModifyUserPasswordPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserPasswordPersonalWithContext(context.Background(), request)
 }
 
 // ModifyUserPasswordPersonal
@@ -5371,6 +5279,11 @@ func (c *Client) ModifyUserPasswordPersonalWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyUserPasswordPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserPasswordPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserPasswordPersonalResponse()
@@ -5407,13 +5320,7 @@ func NewModifyWebhookTriggerResponse() (response *ModifyWebhookTriggerResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (response *ModifyWebhookTriggerResponse, err error) {
-    if request == nil {
-        request = NewModifyWebhookTriggerRequest()
-    }
-    
-    response = NewModifyWebhookTriggerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyWebhookTriggerWithContext(context.Background(), request)
 }
 
 // ModifyWebhookTrigger
@@ -5431,6 +5338,11 @@ func (c *Client) ModifyWebhookTriggerWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyWebhookTriggerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWebhookTrigger require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyWebhookTriggerResponse()
@@ -5475,13 +5387,7 @@ func NewRenewInstanceResponse() (response *RenewInstanceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RenewInstance(request *RenewInstanceRequest) (response *RenewInstanceResponse, err error) {
-    if request == nil {
-        request = NewRenewInstanceRequest()
-    }
-    
-    response = NewRenewInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewInstanceWithContext(context.Background(), request)
 }
 
 // RenewInstance
@@ -5507,6 +5413,11 @@ func (c *Client) RenewInstanceWithContext(ctx context.Context, request *RenewIns
     if request == nil {
         request = NewRenewInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewInstanceResponse()
@@ -5538,13 +5449,7 @@ func NewValidateNamespaceExistPersonalResponse() (response *ValidateNamespaceExi
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ValidateNamespaceExistPersonal(request *ValidateNamespaceExistPersonalRequest) (response *ValidateNamespaceExistPersonalResponse, err error) {
-    if request == nil {
-        request = NewValidateNamespaceExistPersonalRequest()
-    }
-    
-    response = NewValidateNamespaceExistPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ValidateNamespaceExistPersonalWithContext(context.Background(), request)
 }
 
 // ValidateNamespaceExistPersonal
@@ -5557,6 +5462,11 @@ func (c *Client) ValidateNamespaceExistPersonalWithContext(ctx context.Context, 
     if request == nil {
         request = NewValidateNamespaceExistPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ValidateNamespaceExistPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewValidateNamespaceExistPersonalResponse()
@@ -5589,13 +5499,7 @@ func NewValidateRepositoryExistPersonalResponse() (response *ValidateRepositoryE
 //  INVALIDPARAMETER_ERRNSMISMATCH = "InvalidParameter.ErrNSMisMatch"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ValidateRepositoryExistPersonal(request *ValidateRepositoryExistPersonalRequest) (response *ValidateRepositoryExistPersonalResponse, err error) {
-    if request == nil {
-        request = NewValidateRepositoryExistPersonalRequest()
-    }
-    
-    response = NewValidateRepositoryExistPersonalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ValidateRepositoryExistPersonalWithContext(context.Background(), request)
 }
 
 // ValidateRepositoryExistPersonal
@@ -5609,6 +5513,11 @@ func (c *Client) ValidateRepositoryExistPersonalWithContext(ctx context.Context,
     if request == nil {
         request = NewValidateRepositoryExistPersonalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ValidateRepositoryExistPersonal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewValidateRepositoryExistPersonalResponse()

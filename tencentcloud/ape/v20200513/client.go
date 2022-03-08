@@ -16,6 +16,7 @@ package v20200513
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewBatchDescribeOrderCertificateResponse() (response *BatchDescribeOrderCer
 //  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
 //  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 func (c *Client) BatchDescribeOrderCertificate(request *BatchDescribeOrderCertificateRequest) (response *BatchDescribeOrderCertificateResponse, err error) {
-    if request == nil {
-        request = NewBatchDescribeOrderCertificateRequest()
-    }
-    
-    response = NewBatchDescribeOrderCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDescribeOrderCertificateWithContext(context.Background(), request)
 }
 
 // BatchDescribeOrderCertificate
@@ -93,6 +88,11 @@ func (c *Client) BatchDescribeOrderCertificateWithContext(ctx context.Context, r
     if request == nil {
         request = NewBatchDescribeOrderCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDescribeOrderCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDescribeOrderCertificateResponse()
@@ -128,13 +128,7 @@ func NewBatchDescribeOrderImageResponse() (response *BatchDescribeOrderImageResp
 //  RESOURCENOTFOUND_SENSITIVEIMAGE = "ResourceNotFound.SensitiveImage"
 //  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 func (c *Client) BatchDescribeOrderImage(request *BatchDescribeOrderImageRequest) (response *BatchDescribeOrderImageResponse, err error) {
-    if request == nil {
-        request = NewBatchDescribeOrderImageRequest()
-    }
-    
-    response = NewBatchDescribeOrderImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchDescribeOrderImageWithContext(context.Background(), request)
 }
 
 // BatchDescribeOrderImage
@@ -151,6 +145,11 @@ func (c *Client) BatchDescribeOrderImageWithContext(ctx context.Context, request
     if request == nil {
         request = NewBatchDescribeOrderImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDescribeOrderImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchDescribeOrderImageResponse()
@@ -185,13 +184,7 @@ func NewCreateOrderAndDownloadsResponse() (response *CreateOrderAndDownloadsResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateOrderAndDownloads(request *CreateOrderAndDownloadsRequest) (response *CreateOrderAndDownloadsResponse, err error) {
-    if request == nil {
-        request = NewCreateOrderAndDownloadsRequest()
-    }
-    
-    response = NewCreateOrderAndDownloadsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrderAndDownloadsWithContext(context.Background(), request)
 }
 
 // CreateOrderAndDownloads
@@ -207,6 +200,11 @@ func (c *Client) CreateOrderAndDownloadsWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateOrderAndDownloadsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrderAndDownloads require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrderAndDownloadsResponse()
@@ -244,13 +242,7 @@ func NewCreateOrderAndPayResponse() (response *CreateOrderAndPayResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOrderAndPay(request *CreateOrderAndPayRequest) (response *CreateOrderAndPayResponse, err error) {
-    if request == nil {
-        request = NewCreateOrderAndPayRequest()
-    }
-    
-    response = NewCreateOrderAndPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrderAndPayWithContext(context.Background(), request)
 }
 
 // CreateOrderAndPay
@@ -269,6 +261,11 @@ func (c *Client) CreateOrderAndPayWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateOrderAndPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrderAndPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrderAndPayResponse()
@@ -301,13 +298,7 @@ func NewDescribeAuthUsersResponse() (response *DescribeAuthUsersResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeAuthUsers(request *DescribeAuthUsersRequest) (response *DescribeAuthUsersResponse, err error) {
-    if request == nil {
-        request = NewDescribeAuthUsersRequest()
-    }
-    
-    response = NewDescribeAuthUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAuthUsersWithContext(context.Background(), request)
 }
 
 // DescribeAuthUsers
@@ -321,6 +312,11 @@ func (c *Client) DescribeAuthUsersWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAuthUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAuthUsersResponse()
@@ -352,13 +348,7 @@ func NewDescribeDownloadInfosResponse() (response *DescribeDownloadInfosResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDownloadInfos(request *DescribeDownloadInfosRequest) (response *DescribeDownloadInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeDownloadInfosRequest()
-    }
-    
-    response = NewDescribeDownloadInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDownloadInfosWithContext(context.Background(), request)
 }
 
 // DescribeDownloadInfos
@@ -371,6 +361,11 @@ func (c *Client) DescribeDownloadInfosWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDownloadInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDownloadInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDownloadInfosResponse()
@@ -408,13 +403,7 @@ func NewDescribeImageResponse() (response *DescribeImageResponse) {
 //  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeImage(request *DescribeImageRequest) (response *DescribeImageResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRequest()
-    }
-    
-    response = NewDescribeImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageWithContext(context.Background(), request)
 }
 
 // DescribeImage
@@ -433,6 +422,11 @@ func (c *Client) DescribeImageWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageResponse()
@@ -468,13 +462,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //  RESOURCENOTFOUND_SENSITIVESEARCH = "ResourceNotFound.SensitiveSearch"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeImagesRequest()
-    }
-    
-    response = NewDescribeImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImagesWithContext(context.Background(), request)
 }
 
 // DescribeImages
@@ -491,6 +479,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImagesResponse()

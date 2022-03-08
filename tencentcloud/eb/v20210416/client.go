@@ -16,6 +16,7 @@ package v20210416
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewCheckRuleResponse() (response *CheckRuleResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleResponse, err error) {
-    if request == nil {
-        request = NewCheckRuleRequest()
-    }
-    
-    response = NewCheckRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckRuleWithContext(context.Background(), request)
 }
 
 // CheckRule
@@ -91,6 +86,11 @@ func (c *Client) CheckRuleWithContext(ctx context.Context, request *CheckRuleReq
     if request == nil {
         request = NewCheckRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckRuleResponse()
@@ -124,13 +124,7 @@ func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CheckTransformation(request *CheckTransformationRequest) (response *CheckTransformationResponse, err error) {
-    if request == nil {
-        request = NewCheckTransformationRequest()
-    }
-    
-    response = NewCheckTransformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckTransformationWithContext(context.Background(), request)
 }
 
 // CheckTransformation
@@ -145,6 +139,11 @@ func (c *Client) CheckTransformationWithContext(ctx context.Context, request *Ch
     if request == nil {
         request = NewCheckTransformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckTransformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckTransformationResponse()
@@ -195,13 +194,7 @@ func NewCreateConnectionResponse() (response *CreateConnectionResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
 func (c *Client) CreateConnection(request *CreateConnectionRequest) (response *CreateConnectionResponse, err error) {
-    if request == nil {
-        request = NewCreateConnectionRequest()
-    }
-    
-    response = NewCreateConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateConnectionWithContext(context.Background(), request)
 }
 
 // CreateConnection
@@ -233,6 +226,11 @@ func (c *Client) CreateConnectionWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateConnectionResponse()
@@ -269,13 +267,7 @@ func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
 //  RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
 func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *CreateEventBusResponse, err error) {
-    if request == nil {
-        request = NewCreateEventBusRequest()
-    }
-    
-    response = NewCreateEventBusResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEventBusWithContext(context.Background(), request)
 }
 
 // CreateEventBus
@@ -293,6 +285,11 @@ func (c *Client) CreateEventBusWithContext(ctx context.Context, request *CreateE
     if request == nil {
         request = NewCreateEventBusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEventBus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEventBusResponse()
@@ -328,13 +325,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  LIMITEXCEEDED_RULE = "LimitExceeded.Rule"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateRuleRequest()
-    }
-    
-    response = NewCreateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRuleWithContext(context.Background(), request)
 }
 
 // CreateRule
@@ -351,6 +342,11 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRuleResponse()
@@ -409,13 +405,7 @@ func NewCreateTargetResponse() (response *CreateTargetResponse) {
 //  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 //  RESOURCEUNAVAILABLE_TARGET = "ResourceUnavailable.Target"
 func (c *Client) CreateTarget(request *CreateTargetRequest) (response *CreateTargetResponse, err error) {
-    if request == nil {
-        request = NewCreateTargetRequest()
-    }
-    
-    response = NewCreateTargetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTargetWithContext(context.Background(), request)
 }
 
 // CreateTarget
@@ -455,6 +445,11 @@ func (c *Client) CreateTargetWithContext(ctx context.Context, request *CreateTar
     if request == nil {
         request = NewCreateTargetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTarget require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTargetResponse()
@@ -513,13 +508,7 @@ func NewCreateTransformationResponse() (response *CreateTransformationResponse) 
 //  RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"
 //  RESOURCEUNAVAILABLE_TARGET = "ResourceUnavailable.Target"
 func (c *Client) CreateTransformation(request *CreateTransformationRequest) (response *CreateTransformationResponse, err error) {
-    if request == nil {
-        request = NewCreateTransformationRequest()
-    }
-    
-    response = NewCreateTransformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTransformationWithContext(context.Background(), request)
 }
 
 // CreateTransformation
@@ -559,6 +548,11 @@ func (c *Client) CreateTransformationWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateTransformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTransformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTransformationResponse()
@@ -598,13 +592,7 @@ func NewDeleteConnectionResponse() (response *DeleteConnectionResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DeleteConnection(request *DeleteConnectionRequest) (response *DeleteConnectionResponse, err error) {
-    if request == nil {
-        request = NewDeleteConnectionRequest()
-    }
-    
-    response = NewDeleteConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteConnectionWithContext(context.Background(), request)
 }
 
 // DeleteConnection
@@ -625,6 +613,11 @@ func (c *Client) DeleteConnectionWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteConnectionResponse()
@@ -658,13 +651,7 @@ func NewDeleteEventBusResponse() (response *DeleteEventBusResponse) {
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) DeleteEventBus(request *DeleteEventBusRequest) (response *DeleteEventBusResponse, err error) {
-    if request == nil {
-        request = NewDeleteEventBusRequest()
-    }
-    
-    response = NewDeleteEventBusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEventBusWithContext(context.Background(), request)
 }
 
 // DeleteEventBus
@@ -679,6 +666,11 @@ func (c *Client) DeleteEventBusWithContext(ctx context.Context, request *DeleteE
     if request == nil {
         request = NewDeleteEventBusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEventBus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEventBusResponse()
@@ -713,13 +705,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteRuleRequest()
-    }
-    
-    response = NewDeleteRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRuleWithContext(context.Background(), request)
 }
 
 // DeleteRule
@@ -735,6 +721,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRuleResponse()
@@ -773,13 +764,7 @@ func NewDeleteTargetResponse() (response *DeleteTargetResponse) {
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTarget(request *DeleteTargetRequest) (response *DeleteTargetResponse, err error) {
-    if request == nil {
-        request = NewDeleteTargetRequest()
-    }
-    
-    response = NewDeleteTargetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTargetWithContext(context.Background(), request)
 }
 
 // DeleteTarget
@@ -799,6 +784,11 @@ func (c *Client) DeleteTargetWithContext(ctx context.Context, request *DeleteTar
     if request == nil {
         request = NewDeleteTargetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTarget require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTargetResponse()
@@ -837,13 +827,7 @@ func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) 
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
-    if request == nil {
-        request = NewDeleteTransformationRequest()
-    }
-    
-    response = NewDeleteTransformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTransformationWithContext(context.Background(), request)
 }
 
 // DeleteTransformation
@@ -863,6 +847,11 @@ func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteTransformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTransformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTransformationResponse()
@@ -894,13 +883,7 @@ func NewGetEventBusResponse() (response *GetEventBusResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) GetEventBus(request *GetEventBusRequest) (response *GetEventBusResponse, err error) {
-    if request == nil {
-        request = NewGetEventBusRequest()
-    }
-    
-    response = NewGetEventBusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetEventBusWithContext(context.Background(), request)
 }
 
 // GetEventBus
@@ -913,6 +896,11 @@ func (c *Client) GetEventBusWithContext(ctx context.Context, request *GetEventBu
     if request == nil {
         request = NewGetEventBusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEventBus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetEventBusResponse()
@@ -947,13 +935,7 @@ func NewGetRuleResponse() (response *GetRuleResponse) {
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) GetRule(request *GetRuleRequest) (response *GetRuleResponse, err error) {
-    if request == nil {
-        request = NewGetRuleRequest()
-    }
-    
-    response = NewGetRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRuleWithContext(context.Background(), request)
 }
 
 // GetRule
@@ -969,6 +951,11 @@ func (c *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRequest
     if request == nil {
         request = NewGetRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRuleResponse()
@@ -999,13 +986,7 @@ func NewGetTransformationResponse() (response *GetTransformationResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 func (c *Client) GetTransformation(request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
-    if request == nil {
-        request = NewGetTransformationRequest()
-    }
-    
-    response = NewGetTransformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTransformationWithContext(context.Background(), request)
 }
 
 // GetTransformation
@@ -1017,6 +998,11 @@ func (c *Client) GetTransformationWithContext(ctx context.Context, request *GetT
     if request == nil {
         request = NewGetTransformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTransformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTransformationResponse()
@@ -1052,13 +1038,7 @@ func NewListConnectionsResponse() (response *ListConnectionsResponse) {
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListConnections(request *ListConnectionsRequest) (response *ListConnectionsResponse, err error) {
-    if request == nil {
-        request = NewListConnectionsRequest()
-    }
-    
-    response = NewListConnectionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListConnectionsWithContext(context.Background(), request)
 }
 
 // ListConnections
@@ -1075,6 +1055,11 @@ func (c *Client) ListConnectionsWithContext(ctx context.Context, request *ListCo
     if request == nil {
         request = NewListConnectionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListConnections require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListConnectionsResponse()
@@ -1111,13 +1096,7 @@ func NewListEventBusesResponse() (response *ListEventBusesResponse) {
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListEventBuses(request *ListEventBusesRequest) (response *ListEventBusesResponse, err error) {
-    if request == nil {
-        request = NewListEventBusesRequest()
-    }
-    
-    response = NewListEventBusesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEventBusesWithContext(context.Background(), request)
 }
 
 // ListEventBuses
@@ -1135,6 +1114,11 @@ func (c *Client) ListEventBusesWithContext(ctx context.Context, request *ListEve
     if request == nil {
         request = NewListEventBusesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEventBuses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEventBusesResponse()
@@ -1167,13 +1151,7 @@ func NewListRulesResponse() (response *ListRulesResponse) {
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListRules(request *ListRulesRequest) (response *ListRulesResponse, err error) {
-    if request == nil {
-        request = NewListRulesRequest()
-    }
-    
-    response = NewListRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListRulesWithContext(context.Background(), request)
 }
 
 // ListRules
@@ -1187,6 +1165,11 @@ func (c *Client) ListRulesWithContext(ctx context.Context, request *ListRulesReq
     if request == nil {
         request = NewListRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListRulesResponse()
@@ -1225,13 +1208,7 @@ func NewListTargetsResponse() (response *ListTargetsResponse) {
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) ListTargets(request *ListTargetsRequest) (response *ListTargetsResponse, err error) {
-    if request == nil {
-        request = NewListTargetsRequest()
-    }
-    
-    response = NewListTargetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListTargetsWithContext(context.Background(), request)
 }
 
 // ListTargets
@@ -1251,6 +1228,11 @@ func (c *Client) ListTargetsWithContext(ctx context.Context, request *ListTarget
     if request == nil {
         request = NewListTargetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTargets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListTargetsResponse()
@@ -1287,13 +1269,7 @@ func NewPublishEventResponse() (response *PublishEventResponse) {
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PublishEvent(request *PublishEventRequest) (response *PublishEventResponse, err error) {
-    if request == nil {
-        request = NewPublishEventRequest()
-    }
-    
-    response = NewPublishEventResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishEventWithContext(context.Background(), request)
 }
 
 // PublishEvent
@@ -1311,6 +1287,11 @@ func (c *Client) PublishEventWithContext(ctx context.Context, request *PublishEv
     if request == nil {
         request = NewPublishEventRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishEvent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishEventResponse()
@@ -1348,13 +1329,7 @@ func NewPutEventsResponse() (response *PutEventsResponse) {
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
 func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsResponse, err error) {
-    if request == nil {
-        request = NewPutEventsRequest()
-    }
-    
-    response = NewPutEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.PutEventsWithContext(context.Background(), request)
 }
 
 // PutEvents
@@ -1373,6 +1348,11 @@ func (c *Client) PutEventsWithContext(ctx context.Context, request *PutEventsReq
     if request == nil {
         request = NewPutEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PutEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPutEventsResponse()
@@ -1405,13 +1385,7 @@ func NewUpdateConnectionResponse() (response *UpdateConnectionResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  RESOURCENOTFOUND_CONNECTION = "ResourceNotFound.Connection"
 func (c *Client) UpdateConnection(request *UpdateConnectionRequest) (response *UpdateConnectionResponse, err error) {
-    if request == nil {
-        request = NewUpdateConnectionRequest()
-    }
-    
-    response = NewUpdateConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateConnectionWithContext(context.Background(), request)
 }
 
 // UpdateConnection
@@ -1425,6 +1399,11 @@ func (c *Client) UpdateConnectionWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateConnectionResponse()
@@ -1458,13 +1437,7 @@ func NewUpdateEventBusResponse() (response *UpdateEventBusResponse) {
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) UpdateEventBus(request *UpdateEventBusRequest) (response *UpdateEventBusResponse, err error) {
-    if request == nil {
-        request = NewUpdateEventBusRequest()
-    }
-    
-    response = NewUpdateEventBusResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateEventBusWithContext(context.Background(), request)
 }
 
 // UpdateEventBus
@@ -1479,6 +1452,11 @@ func (c *Client) UpdateEventBusWithContext(ctx context.Context, request *UpdateE
     if request == nil {
         request = NewUpdateEventBusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEventBus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateEventBusResponse()
@@ -1515,13 +1493,7 @@ func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleResponse, err error) {
-    if request == nil {
-        request = NewUpdateRuleRequest()
-    }
-    
-    response = NewUpdateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRuleWithContext(context.Background(), request)
 }
 
 // UpdateRule
@@ -1539,6 +1511,11 @@ func (c *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleR
     if request == nil {
         request = NewUpdateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRuleResponse()
@@ -1579,13 +1556,7 @@ func NewUpdateTargetResponse() (response *UpdateTargetResponse) {
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) UpdateTarget(request *UpdateTargetRequest) (response *UpdateTargetResponse, err error) {
-    if request == nil {
-        request = NewUpdateTargetRequest()
-    }
-    
-    response = NewUpdateTargetResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateTargetWithContext(context.Background(), request)
 }
 
 // UpdateTarget
@@ -1607,6 +1578,11 @@ func (c *Client) UpdateTargetWithContext(ctx context.Context, request *UpdateTar
     if request == nil {
         request = NewUpdateTargetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTarget require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateTargetResponse()
@@ -1647,13 +1623,7 @@ func NewUpdateTransformationResponse() (response *UpdateTransformationResponse) 
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) UpdateTransformation(request *UpdateTransformationRequest) (response *UpdateTransformationResponse, err error) {
-    if request == nil {
-        request = NewUpdateTransformationRequest()
-    }
-    
-    response = NewUpdateTransformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateTransformationWithContext(context.Background(), request)
 }
 
 // UpdateTransformation
@@ -1675,6 +1645,11 @@ func (c *Client) UpdateTransformationWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateTransformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTransformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateTransformationResponse()

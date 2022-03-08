@@ -16,6 +16,7 @@ package v20210903
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -89,13 +90,7 @@ func NewAddCustomPersonImageResponse() (response *AddCustomPersonImageResponse) 
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) AddCustomPersonImage(request *AddCustomPersonImageRequest) (response *AddCustomPersonImageResponse, err error) {
-    if request == nil {
-        request = NewAddCustomPersonImageRequest()
-    }
-    
-    response = NewAddCustomPersonImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddCustomPersonImageWithContext(context.Background(), request)
 }
 
 // AddCustomPersonImage
@@ -129,6 +124,11 @@ func (c *Client) AddCustomPersonImageWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAddCustomPersonImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCustomPersonImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddCustomPersonImageResponse()
@@ -174,13 +174,7 @@ func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) 
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomCategoryRequest()
-    }
-    
-    response = NewCreateCustomCategoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomCategoryWithContext(context.Background(), request)
 }
 
 // CreateCustomCategory
@@ -207,6 +201,11 @@ func (c *Client) CreateCustomCategoryWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCustomCategoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomCategory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomCategoryResponse()
@@ -265,13 +264,7 @@ func NewCreateCustomGroupResponse() (response *CreateCustomGroupResponse) {
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomGroup(request *CreateCustomGroupRequest) (response *CreateCustomGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomGroupRequest()
-    }
-    
-    response = NewCreateCustomGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomGroupWithContext(context.Background(), request)
 }
 
 // CreateCustomGroup
@@ -311,6 +304,11 @@ func (c *Client) CreateCustomGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCustomGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomGroupResponse()
@@ -373,13 +371,7 @@ func NewCreateCustomPersonResponse() (response *CreateCustomPersonResponse) {
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomPerson(request *CreateCustomPersonRequest) (response *CreateCustomPersonResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomPersonRequest()
-    }
-    
-    response = NewCreateCustomPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomPersonWithContext(context.Background(), request)
 }
 
 // CreateCustomPerson
@@ -423,6 +415,11 @@ func (c *Client) CreateCustomPersonWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCustomPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomPersonResponse()
@@ -460,13 +457,7 @@ func NewCreateDefaultCategoriesResponse() (response *CreateDefaultCategoriesResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateDefaultCategories(request *CreateDefaultCategoriesRequest) (response *CreateDefaultCategoriesResponse, err error) {
-    if request == nil {
-        request = NewCreateDefaultCategoriesRequest()
-    }
-    
-    response = NewCreateDefaultCategoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDefaultCategoriesWithContext(context.Background(), request)
 }
 
 // CreateDefaultCategories
@@ -485,6 +476,11 @@ func (c *Client) CreateDefaultCategoriesWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateDefaultCategoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDefaultCategories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDefaultCategoriesResponse()
@@ -533,17 +529,13 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskRequest()
-    }
-    
-    response = NewCreateTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskWithContext(context.Background(), request)
 }
 
 // CreateTask
@@ -570,13 +562,20 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
+//  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskResponse()
@@ -616,13 +615,7 @@ func NewDeleteCustomCategoryResponse() (response *DeleteCustomCategoryResponse) 
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DeleteCustomCategory(request *DeleteCustomCategoryRequest) (response *DeleteCustomCategoryResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomCategoryRequest()
-    }
-    
-    response = NewDeleteCustomCategoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomCategoryWithContext(context.Background(), request)
 }
 
 // DeleteCustomCategory
@@ -643,6 +636,11 @@ func (c *Client) DeleteCustomCategoryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteCustomCategoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomCategory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomCategoryResponse()
@@ -680,13 +678,7 @@ func NewDeleteCustomPersonResponse() (response *DeleteCustomPersonResponse) {
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DeleteCustomPerson(request *DeleteCustomPersonRequest) (response *DeleteCustomPersonResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomPersonRequest()
-    }
-    
-    response = NewDeleteCustomPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomPersonWithContext(context.Background(), request)
 }
 
 // DeleteCustomPerson
@@ -705,6 +697,11 @@ func (c *Client) DeleteCustomPersonWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCustomPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomPersonResponse()
@@ -745,13 +742,7 @@ func NewDeleteCustomPersonImageResponse() (response *DeleteCustomPersonImageResp
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DeleteCustomPersonImage(request *DeleteCustomPersonImageRequest) (response *DeleteCustomPersonImageResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomPersonImageRequest()
-    }
-    
-    response = NewDeleteCustomPersonImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomPersonImageWithContext(context.Background(), request)
 }
 
 // DeleteCustomPersonImage
@@ -773,6 +764,11 @@ func (c *Client) DeleteCustomPersonImageWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteCustomPersonImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomPersonImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomPersonImageResponse()
@@ -817,13 +813,7 @@ func NewDeleteMediaResponse() (response *DeleteMediaResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_MEDIANOTACCESSIBLE = "UnsupportedOperation.MediaNotAccessible"
 func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMediaResponse, err error) {
-    if request == nil {
-        request = NewDeleteMediaRequest()
-    }
-    
-    response = NewDeleteMediaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMediaWithContext(context.Background(), request)
 }
 
 // DeleteMedia
@@ -849,6 +839,11 @@ func (c *Client) DeleteMediaWithContext(ctx context.Context, request *DeleteMedi
     if request == nil {
         request = NewDeleteMediaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMedia require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMediaResponse()
@@ -893,13 +888,7 @@ func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNSUPPORTEDOPERATION_TASKNOTACCESSIBLE = "UnsupportedOperation.TaskNotAccessible"
 func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
-    if request == nil {
-        request = NewDeleteTaskRequest()
-    }
-    
-    response = NewDeleteTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTaskWithContext(context.Background(), request)
 }
 
 // DeleteTask
@@ -925,6 +914,11 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskR
     if request == nil {
         request = NewDeleteTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTaskResponse()
@@ -960,13 +954,7 @@ func NewDescribeCustomCategoriesResponse() (response *DescribeCustomCategoriesRe
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomCategories(request *DescribeCustomCategoriesRequest) (response *DescribeCustomCategoriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomCategoriesRequest()
-    }
-    
-    response = NewDescribeCustomCategoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomCategoriesWithContext(context.Background(), request)
 }
 
 // DescribeCustomCategories
@@ -983,6 +971,11 @@ func (c *Client) DescribeCustomCategoriesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCustomCategoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomCategories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomCategoriesResponse()
@@ -1020,13 +1013,7 @@ func NewDescribeCustomGroupResponse() (response *DescribeCustomGroupResponse) {
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomGroup(request *DescribeCustomGroupRequest) (response *DescribeCustomGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomGroupRequest()
-    }
-    
-    response = NewDescribeCustomGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomGroupWithContext(context.Background(), request)
 }
 
 // DescribeCustomGroup
@@ -1045,6 +1032,11 @@ func (c *Client) DescribeCustomGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCustomGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomGroupResponse()
@@ -1082,13 +1074,7 @@ func NewDescribeCustomPersonDetailResponse() (response *DescribeCustomPersonDeta
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomPersonDetail(request *DescribeCustomPersonDetailRequest) (response *DescribeCustomPersonDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomPersonDetailRequest()
-    }
-    
-    response = NewDescribeCustomPersonDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomPersonDetailWithContext(context.Background(), request)
 }
 
 // DescribeCustomPersonDetail
@@ -1107,6 +1093,11 @@ func (c *Client) DescribeCustomPersonDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCustomPersonDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomPersonDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomPersonDetailResponse()
@@ -1153,13 +1144,7 @@ func NewDescribeCustomPersonsResponse() (response *DescribeCustomPersonsResponse
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeCustomPersons(request *DescribeCustomPersonsRequest) (response *DescribeCustomPersonsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomPersonsRequest()
-    }
-    
-    response = NewDescribeCustomPersonsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomPersonsWithContext(context.Background(), request)
 }
 
 // DescribeCustomPersons
@@ -1187,6 +1172,11 @@ func (c *Client) DescribeCustomPersonsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCustomPersonsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomPersons require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomPersonsResponse()
@@ -1229,13 +1219,7 @@ func NewDescribeMediaResponse() (response *DescribeMediaResponse) {
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
 func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *DescribeMediaResponse, err error) {
-    if request == nil {
-        request = NewDescribeMediaRequest()
-    }
-    
-    response = NewDescribeMediaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMediaWithContext(context.Background(), request)
 }
 
 // DescribeMedia
@@ -1259,6 +1243,11 @@ func (c *Client) DescribeMediaWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeMediaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMedia require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMediaResponse()
@@ -1315,13 +1304,7 @@ func NewDescribeMediasResponse() (response *DescribeMediasResponse) {
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeMedias(request *DescribeMediasRequest) (response *DescribeMediasResponse, err error) {
-    if request == nil {
-        request = NewDescribeMediasRequest()
-    }
-    
-    response = NewDescribeMediasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMediasWithContext(context.Background(), request)
 }
 
 // DescribeMedias
@@ -1359,6 +1342,11 @@ func (c *Client) DescribeMediasWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeMediasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMedias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMediasResponse()
@@ -1396,18 +1384,13 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskRequest()
-    }
-    
-    response = NewDescribeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskWithContext(context.Background(), request)
 }
 
 // DescribeTask
@@ -1423,6 +1406,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 //  AUTHFAILURE_USERINVALIDSTATUS = "AuthFailure.UserInvalidStatus"
 //  AUTHFAILURE_USERNOTFOUND = "AuthFailure.UserNotFound"
 //  AUTHFAILURE_USERSTOPARREAR = "AuthFailure.UserStopArrear"
+//  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
@@ -1431,6 +1415,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResponse()
@@ -1469,13 +1458,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeTaskDetail
@@ -1495,6 +1478,11 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
@@ -1540,13 +1528,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -1573,6 +1555,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
@@ -1687,6 +1674,7 @@ func NewImportMediaResponse() (response *ImportMediaResponse) {
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  LIMITEXCEEDED_USAGELIMITEXCEEDED = "LimitExceeded.UsageLimitExceeded"
 //  REQUESTLIMITEXCEEDED_BATCHIMPORTOVERFLOW = "RequestLimitExceeded.BatchImportOverflow"
@@ -1700,13 +1688,7 @@ func NewImportMediaResponse() (response *ImportMediaResponse) {
 //  UNSUPPORTEDOPERATION_MEDIANOTACCESSIBLE = "UnsupportedOperation.MediaNotAccessible"
 //  UNSUPPORTEDOPERATION_TASKNOTACCESSIBLE = "UnsupportedOperation.TaskNotAccessible"
 func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMediaResponse, err error) {
-    if request == nil {
-        request = NewImportMediaRequest()
-    }
-    
-    response = NewImportMediaResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportMediaWithContext(context.Background(), request)
 }
 
 // ImportMedia
@@ -1799,6 +1781,7 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
 //  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  LIMITEXCEEDED_USAGELIMITEXCEEDED = "LimitExceeded.UsageLimitExceeded"
 //  REQUESTLIMITEXCEEDED_BATCHIMPORTOVERFLOW = "RequestLimitExceeded.BatchImportOverflow"
@@ -1815,6 +1798,11 @@ func (c *Client) ImportMediaWithContext(ctx context.Context, request *ImportMedi
     if request == nil {
         request = NewImportMediaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportMedia require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportMediaResponse()
@@ -1922,16 +1910,11 @@ func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *ModifyCallbackResponse, err error) {
-    if request == nil {
-        request = NewModifyCallbackRequest()
-    }
-    
-    response = NewModifyCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCallbackWithContext(context.Background(), request)
 }
 
 // ModifyCallback
@@ -2017,12 +2000,18 @@ func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *Modif
 //  INVALIDPARAMETER_INVALIDURL = "InvalidParameter.InvalidURL"
 //  INVALIDPARAMETER_NAMETOOLONG = "InvalidParameter.NameTooLong"
 //  INVALIDPARAMETER_PARAMTOOLONG = "InvalidParameter.ParamTooLong"
+//  INVALIDPARAMETER_URLNOTRESOLVED = "InvalidParameter.URLNotResolved"
 //  INVALIDPARAMETER_UNSUPPORTURL = "InvalidParameter.UnsupportURL"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) ModifyCallbackWithContext(ctx context.Context, request *ModifyCallbackRequest) (response *ModifyCallbackResponse, err error) {
     if request == nil {
         request = NewModifyCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCallbackResponse()
@@ -2060,13 +2049,7 @@ func NewQueryCallbackResponse() (response *QueryCallbackResponse) {
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) QueryCallback(request *QueryCallbackRequest) (response *QueryCallbackResponse, err error) {
-    if request == nil {
-        request = NewQueryCallbackRequest()
-    }
-    
-    response = NewQueryCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCallbackWithContext(context.Background(), request)
 }
 
 // QueryCallback
@@ -2085,6 +2068,11 @@ func (c *Client) QueryCallbackWithContext(ctx context.Context, request *QueryCal
     if request == nil {
         request = NewQueryCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCallbackResponse()
@@ -2133,13 +2121,7 @@ func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) 
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
-    if request == nil {
-        request = NewUpdateCustomCategoryRequest()
-    }
-    
-    response = NewUpdateCustomCategoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCustomCategoryWithContext(context.Background(), request)
 }
 
 // UpdateCustomCategory
@@ -2169,6 +2151,11 @@ func (c *Client) UpdateCustomCategoryWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateCustomCategoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCustomCategory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCustomCategoryResponse()
@@ -2209,13 +2196,7 @@ func NewUpdateCustomPersonResponse() (response *UpdateCustomPersonResponse) {
 //  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomPerson(request *UpdateCustomPersonRequest) (response *UpdateCustomPersonResponse, err error) {
-    if request == nil {
-        request = NewUpdateCustomPersonRequest()
-    }
-    
-    response = NewUpdateCustomPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCustomPersonWithContext(context.Background(), request)
 }
 
 // UpdateCustomPerson
@@ -2237,6 +2218,11 @@ func (c *Client) UpdateCustomPersonWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateCustomPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCustomPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCustomPersonResponse()

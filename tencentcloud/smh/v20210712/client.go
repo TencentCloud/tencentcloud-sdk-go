@@ -16,6 +16,7 @@ package v20210712
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
-    if request == nil {
-        request = NewCreateLibraryRequest()
-    }
-    
-    response = NewCreateLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLibraryWithContext(context.Background(), request)
 }
 
 // CreateLibrary
@@ -101,6 +96,11 @@ func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLibraryResponse()
@@ -133,13 +133,7 @@ func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
 //  RESOURCEINUSE_MULTISPACE = "ResourceInUse.MultiSpace"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
 func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
-    if request == nil {
-        request = NewDeleteLibraryRequest()
-    }
-    
-    response = NewDeleteLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLibraryWithContext(context.Background(), request)
 }
 
 // DeleteLibrary
@@ -153,6 +147,11 @@ func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLi
     if request == nil {
         request = NewDeleteLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLibraryResponse()
@@ -184,13 +183,7 @@ func NewDescribeLibrariesResponse() (response *DescribeLibrariesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeLibraries(request *DescribeLibrariesRequest) (response *DescribeLibrariesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLibrariesRequest()
-    }
-    
-    response = NewDescribeLibrariesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLibrariesWithContext(context.Background(), request)
 }
 
 // DescribeLibraries
@@ -203,6 +196,11 @@ func (c *Client) DescribeLibrariesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLibrariesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLibraries require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLibrariesResponse()
@@ -234,13 +232,7 @@ func NewDescribeLibrarySecretResponse() (response *DescribeLibrarySecretResponse
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
 func (c *Client) DescribeLibrarySecret(request *DescribeLibrarySecretRequest) (response *DescribeLibrarySecretResponse, err error) {
-    if request == nil {
-        request = NewDescribeLibrarySecretRequest()
-    }
-    
-    response = NewDescribeLibrarySecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLibrarySecretWithContext(context.Background(), request)
 }
 
 // DescribeLibrarySecret
@@ -253,6 +245,11 @@ func (c *Client) DescribeLibrarySecretWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLibrarySecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLibrarySecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLibrarySecretResponse()
@@ -284,13 +281,7 @@ func NewDescribeOfficialInstancesResponse() (response *DescribeOfficialInstances
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeOfficialInstances(request *DescribeOfficialInstancesRequest) (response *DescribeOfficialInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeOfficialInstancesRequest()
-    }
-    
-    response = NewDescribeOfficialInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOfficialInstancesWithContext(context.Background(), request)
 }
 
 // DescribeOfficialInstances
@@ -303,6 +294,11 @@ func (c *Client) DescribeOfficialInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeOfficialInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfficialInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOfficialInstancesResponse()
@@ -333,13 +329,7 @@ func NewDescribeOfficialOverviewResponse() (response *DescribeOfficialOverviewRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeOfficialOverview(request *DescribeOfficialOverviewRequest) (response *DescribeOfficialOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeOfficialOverviewRequest()
-    }
-    
-    response = NewDescribeOfficialOverviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOfficialOverviewWithContext(context.Background(), request)
 }
 
 // DescribeOfficialOverview
@@ -351,6 +341,11 @@ func (c *Client) DescribeOfficialOverviewWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeOfficialOverviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfficialOverview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOfficialOverviewResponse()
@@ -382,13 +377,7 @@ func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest) (response *DescribeTrafficPackagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrafficPackagesRequest()
-    }
-    
-    response = NewDescribeTrafficPackagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrafficPackagesWithContext(context.Background(), request)
 }
 
 // DescribeTrafficPackages
@@ -401,6 +390,11 @@ func (c *Client) DescribeTrafficPackagesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTrafficPackagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficPackages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrafficPackagesResponse()
@@ -433,13 +427,7 @@ func NewModifyLibraryResponse() (response *ModifyLibraryResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
 func (c *Client) ModifyLibrary(request *ModifyLibraryRequest) (response *ModifyLibraryResponse, err error) {
-    if request == nil {
-        request = NewModifyLibraryRequest()
-    }
-    
-    response = NewModifyLibraryResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLibraryWithContext(context.Background(), request)
 }
 
 // ModifyLibrary
@@ -453,6 +441,11 @@ func (c *Client) ModifyLibraryWithContext(ctx context.Context, request *ModifyLi
     if request == nil {
         request = NewModifyLibraryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLibrary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLibraryResponse()
@@ -489,13 +482,7 @@ func NewSendSmsCodeResponse() (response *SendSmsCodeResponse) {
 //  RESOURCENOTFOUND_OFFICIALINSTANCE = "ResourceNotFound.OfficialInstance"
 //  UNSUPPORTEDOPERATION_PURPOSE = "UnsupportedOperation.Purpose"
 func (c *Client) SendSmsCode(request *SendSmsCodeRequest) (response *SendSmsCodeResponse, err error) {
-    if request == nil {
-        request = NewSendSmsCodeRequest()
-    }
-    
-    response = NewSendSmsCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendSmsCodeWithContext(context.Background(), request)
 }
 
 // SendSmsCode
@@ -513,6 +500,11 @@ func (c *Client) SendSmsCodeWithContext(ctx context.Context, request *SendSmsCod
     if request == nil {
         request = NewSendSmsCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendSmsCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendSmsCodeResponse()
@@ -549,13 +541,7 @@ func NewVerifySmsCodeResponse() (response *VerifySmsCodeResponse) {
 //  UNAUTHORIZEDOPERATION_SMSCODEEXCEEDED = "UnauthorizedOperation.SmsCodeExceeded"
 //  UNSUPPORTEDOPERATION_PURPOSE = "UnsupportedOperation.Purpose"
 func (c *Client) VerifySmsCode(request *VerifySmsCodeRequest) (response *VerifySmsCodeResponse, err error) {
-    if request == nil {
-        request = NewVerifySmsCodeRequest()
-    }
-    
-    response = NewVerifySmsCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifySmsCodeWithContext(context.Background(), request)
 }
 
 // VerifySmsCode
@@ -573,6 +559,11 @@ func (c *Client) VerifySmsCodeWithContext(ctx context.Context, request *VerifySm
     if request == nil {
         request = NewVerifySmsCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifySmsCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifySmsCodeResponse()

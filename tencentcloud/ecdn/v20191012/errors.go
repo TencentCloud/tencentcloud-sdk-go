@@ -203,6 +203,9 @@ const (
 	// ECDN 子账号cam未授权。
 	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 
+	// 操作过于频繁，请稍后重试 。
+	UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+
 	// ECDN 子账号项目未授权。
 	UNAUTHORIZEDOPERATION_PROJECTNOPERMISSION = "UnauthorizedOperation.ProjectNoPermission"
 

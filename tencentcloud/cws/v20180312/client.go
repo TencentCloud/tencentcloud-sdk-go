@@ -16,6 +16,7 @@ package v20180312
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewCreateMonitorsResponse() (response *CreateMonitorsResponse) {
 //  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateMonitors(request *CreateMonitorsRequest) (response *CreateMonitorsResponse, err error) {
-    if request == nil {
-        request = NewCreateMonitorsRequest()
-    }
-    
-    response = NewCreateMonitorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMonitorsWithContext(context.Background(), request)
 }
 
 // CreateMonitors
@@ -93,6 +88,11 @@ func (c *Client) CreateMonitorsWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMonitorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMonitors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMonitorsResponse()
@@ -125,13 +125,7 @@ func NewCreateSitesResponse() (response *CreateSitesResponse) {
 //  INVALIDPARAMETER_DUPLICATE = "InvalidParameter.Duplicate"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 func (c *Client) CreateSites(request *CreateSitesRequest) (response *CreateSitesResponse, err error) {
-    if request == nil {
-        request = NewCreateSitesRequest()
-    }
-    
-    response = NewCreateSitesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSitesWithContext(context.Background(), request)
 }
 
 // CreateSites
@@ -145,6 +139,11 @@ func (c *Client) CreateSitesWithContext(ctx context.Context, request *CreateSite
     if request == nil {
         request = NewCreateSitesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSites require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSitesResponse()
@@ -178,13 +177,7 @@ func NewCreateSitesScansResponse() (response *CreateSitesScansResponse) {
 //  LIMITEXCEEDED_SCANQUOTA = "LimitExceeded.ScanQuota"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateSitesScans(request *CreateSitesScansRequest) (response *CreateSitesScansResponse, err error) {
-    if request == nil {
-        request = NewCreateSitesScansRequest()
-    }
-    
-    response = NewCreateSitesScansResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSitesScansWithContext(context.Background(), request)
 }
 
 // CreateSitesScans
@@ -199,6 +192,11 @@ func (c *Client) CreateSitesScansWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSitesScansRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSitesScans require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSitesScansResponse()
@@ -233,13 +231,7 @@ func NewCreateVulsMisinformationResponse() (response *CreateVulsMisinformationRe
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateVulsMisinformation(request *CreateVulsMisinformationRequest) (response *CreateVulsMisinformationResponse, err error) {
-    if request == nil {
-        request = NewCreateVulsMisinformationRequest()
-    }
-    
-    response = NewCreateVulsMisinformationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVulsMisinformationWithContext(context.Background(), request)
 }
 
 // CreateVulsMisinformation
@@ -255,6 +247,11 @@ func (c *Client) CreateVulsMisinformationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateVulsMisinformationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulsMisinformation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVulsMisinformationResponse()
@@ -286,13 +283,7 @@ func NewCreateVulsReportResponse() (response *CreateVulsReportResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) CreateVulsReport(request *CreateVulsReportRequest) (response *CreateVulsReportResponse, err error) {
-    if request == nil {
-        request = NewCreateVulsReportRequest()
-    }
-    
-    response = NewCreateVulsReportResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVulsReportWithContext(context.Background(), request)
 }
 
 // CreateVulsReport
@@ -305,6 +296,11 @@ func (c *Client) CreateVulsReportWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateVulsReportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVulsReport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVulsReportResponse()
@@ -337,13 +333,7 @@ func NewDeleteMonitorsResponse() (response *DeleteMonitorsResponse) {
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DeleteMonitors(request *DeleteMonitorsRequest) (response *DeleteMonitorsResponse, err error) {
-    if request == nil {
-        request = NewDeleteMonitorsRequest()
-    }
-    
-    response = NewDeleteMonitorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMonitorsWithContext(context.Background(), request)
 }
 
 // DeleteMonitors
@@ -357,6 +347,11 @@ func (c *Client) DeleteMonitorsWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMonitorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMonitors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMonitorsResponse()
@@ -389,13 +384,7 @@ func NewDeleteSitesResponse() (response *DeleteSitesResponse) {
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSitesResponse, err error) {
-    if request == nil {
-        request = NewDeleteSitesRequest()
-    }
-    
-    response = NewDeleteSitesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSitesWithContext(context.Background(), request)
 }
 
 // DeleteSites
@@ -409,6 +398,11 @@ func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSite
     if request == nil {
         request = NewDeleteSitesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSites require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSitesResponse()
@@ -439,13 +433,7 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigRequest()
-    }
-    
-    response = NewDescribeConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigWithContext(context.Background(), request)
 }
 
 // DescribeConfig
@@ -457,6 +445,11 @@ func (c *Client) DescribeConfigWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigResponse()
@@ -489,13 +482,7 @@ func NewDescribeMonitorsResponse() (response *DescribeMonitorsResponse) {
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeMonitors(request *DescribeMonitorsRequest) (response *DescribeMonitorsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonitorsRequest()
-    }
-    
-    response = NewDescribeMonitorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMonitorsWithContext(context.Background(), request)
 }
 
 // DescribeMonitors
@@ -509,6 +496,11 @@ func (c *Client) DescribeMonitorsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeMonitorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMonitorsResponse()
@@ -539,13 +531,7 @@ func NewDescribeSiteQuotaResponse() (response *DescribeSiteQuotaResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeSiteQuota(request *DescribeSiteQuotaRequest) (response *DescribeSiteQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeSiteQuotaRequest()
-    }
-    
-    response = NewDescribeSiteQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSiteQuotaWithContext(context.Background(), request)
 }
 
 // DescribeSiteQuota
@@ -557,6 +543,11 @@ func (c *Client) DescribeSiteQuotaWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSiteQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSiteQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSiteQuotaResponse()
@@ -589,13 +580,7 @@ func NewDescribeSitesResponse() (response *DescribeSitesResponse) {
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *DescribeSitesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSitesRequest()
-    }
-    
-    response = NewDescribeSitesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSitesWithContext(context.Background(), request)
 }
 
 // DescribeSites
@@ -609,6 +594,11 @@ func (c *Client) DescribeSitesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeSitesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSites require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSitesResponse()
@@ -641,13 +631,7 @@ func NewDescribeSitesVerificationResponse() (response *DescribeSitesVerification
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) DescribeSitesVerification(request *DescribeSitesVerificationRequest) (response *DescribeSitesVerificationResponse, err error) {
-    if request == nil {
-        request = NewDescribeSitesVerificationRequest()
-    }
-    
-    response = NewDescribeSitesVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSitesVerificationWithContext(context.Background(), request)
 }
 
 // DescribeSitesVerification
@@ -661,6 +645,11 @@ func (c *Client) DescribeSitesVerificationWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSitesVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSitesVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSitesVerificationResponse()
@@ -694,13 +683,7 @@ func NewDescribeVulsResponse() (response *DescribeVulsResponse) {
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVuls(request *DescribeVulsRequest) (response *DescribeVulsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVulsRequest()
-    }
-    
-    response = NewDescribeVulsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVulsWithContext(context.Background(), request)
 }
 
 // DescribeVuls
@@ -715,6 +698,11 @@ func (c *Client) DescribeVulsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVulsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVuls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVulsResponse()
@@ -745,13 +733,7 @@ func NewDescribeVulsNumberResponse() (response *DescribeVulsNumberResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeVulsNumber(request *DescribeVulsNumberRequest) (response *DescribeVulsNumberResponse, err error) {
-    if request == nil {
-        request = NewDescribeVulsNumberRequest()
-    }
-    
-    response = NewDescribeVulsNumberResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVulsNumberWithContext(context.Background(), request)
 }
 
 // DescribeVulsNumber
@@ -763,6 +745,11 @@ func (c *Client) DescribeVulsNumberWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeVulsNumberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulsNumber require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVulsNumberResponse()
@@ -793,13 +780,7 @@ func NewDescribeVulsNumberTimelineResponse() (response *DescribeVulsNumberTimeli
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeVulsNumberTimeline(request *DescribeVulsNumberTimelineRequest) (response *DescribeVulsNumberTimelineResponse, err error) {
-    if request == nil {
-        request = NewDescribeVulsNumberTimelineRequest()
-    }
-    
-    response = NewDescribeVulsNumberTimelineResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVulsNumberTimelineWithContext(context.Background(), request)
 }
 
 // DescribeVulsNumberTimeline
@@ -811,6 +792,11 @@ func (c *Client) DescribeVulsNumberTimelineWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVulsNumberTimelineRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulsNumberTimeline require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVulsNumberTimelineResponse()
@@ -841,13 +827,7 @@ func NewModifyConfigAttributeResponse() (response *ModifyConfigAttributeResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyConfigAttribute(request *ModifyConfigAttributeRequest) (response *ModifyConfigAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyConfigAttributeRequest()
-    }
-    
-    response = NewModifyConfigAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyConfigAttributeWithContext(context.Background(), request)
 }
 
 // ModifyConfigAttribute
@@ -859,6 +839,11 @@ func (c *Client) ModifyConfigAttributeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyConfigAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyConfigAttributeResponse()
@@ -892,13 +877,7 @@ func NewModifyMonitorAttributeResponse() (response *ModifyMonitorAttributeRespon
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 //  LIMITEXCEEDED_MONITORQUOTA = "LimitExceeded.MonitorQuota"
 func (c *Client) ModifyMonitorAttribute(request *ModifyMonitorAttributeRequest) (response *ModifyMonitorAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyMonitorAttributeRequest()
-    }
-    
-    response = NewModifyMonitorAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMonitorAttributeWithContext(context.Background(), request)
 }
 
 // ModifyMonitorAttribute
@@ -913,6 +892,11 @@ func (c *Client) ModifyMonitorAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyMonitorAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMonitorAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMonitorAttributeResponse()
@@ -945,13 +929,7 @@ func NewModifySiteAttributeResponse() (response *ModifySiteAttributeResponse) {
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySiteAttribute(request *ModifySiteAttributeRequest) (response *ModifySiteAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifySiteAttributeRequest()
-    }
-    
-    response = NewModifySiteAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySiteAttributeWithContext(context.Background(), request)
 }
 
 // ModifySiteAttribute
@@ -965,6 +943,11 @@ func (c *Client) ModifySiteAttributeWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifySiteAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySiteAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySiteAttributeResponse()
@@ -997,13 +980,7 @@ func NewVerifySitesResponse() (response *VerifySitesResponse) {
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
 func (c *Client) VerifySites(request *VerifySitesRequest) (response *VerifySitesResponse, err error) {
-    if request == nil {
-        request = NewVerifySitesRequest()
-    }
-    
-    response = NewVerifySitesResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifySitesWithContext(context.Background(), request)
 }
 
 // VerifySites
@@ -1017,6 +994,11 @@ func (c *Client) VerifySitesWithContext(ctx context.Context, request *VerifySite
     if request == nil {
         request = NewVerifySitesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifySites require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifySitesResponse()

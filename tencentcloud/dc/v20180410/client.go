@@ -16,6 +16,7 @@ package v20180410
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewAcceptDirectConnectTunnelResponse() (response *AcceptDirectConnectTunnel
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) AcceptDirectConnectTunnel(request *AcceptDirectConnectTunnelRequest) (response *AcceptDirectConnectTunnelResponse, err error) {
-    if request == nil {
-        request = NewAcceptDirectConnectTunnelRequest()
-    }
-    
-    response = NewAcceptDirectConnectTunnelResponse()
-    err = c.Send(request, response)
-    return
+    return c.AcceptDirectConnectTunnelWithContext(context.Background(), request)
 }
 
 // AcceptDirectConnectTunnel
@@ -95,6 +90,11 @@ func (c *Client) AcceptDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewAcceptDirectConnectTunnelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcceptDirectConnectTunnel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAcceptDirectConnectTunnelResponse()
@@ -125,13 +125,7 @@ func NewApplyInternetAddressResponse() (response *ApplyInternetAddressResponse) 
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) ApplyInternetAddress(request *ApplyInternetAddressRequest) (response *ApplyInternetAddressResponse, err error) {
-    if request == nil {
-        request = NewApplyInternetAddressRequest()
-    }
-    
-    response = NewApplyInternetAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyInternetAddressWithContext(context.Background(), request)
 }
 
 // ApplyInternetAddress
@@ -143,6 +137,11 @@ func (c *Client) ApplyInternetAddressWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewApplyInternetAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyInternetAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyInternetAddressResponse()
@@ -184,13 +183,7 @@ func NewCreateDirectConnectResponse() (response *CreateDirectConnectResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDirectConnect(request *CreateDirectConnectRequest) (response *CreateDirectConnectResponse, err error) {
-    if request == nil {
-        request = NewCreateDirectConnectRequest()
-    }
-    
-    response = NewCreateDirectConnectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDirectConnectWithContext(context.Background(), request)
 }
 
 // CreateDirectConnect
@@ -213,6 +206,11 @@ func (c *Client) CreateDirectConnectWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateDirectConnectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDirectConnect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDirectConnectResponse()
@@ -258,13 +256,7 @@ func NewCreateDirectConnectTunnelResponse() (response *CreateDirectConnectTunnel
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_CROSSBORDERDIRECTCONNECTTUNNEL = "UnsupportedOperation.CrossBorderDirectConnectTunnel"
 func (c *Client) CreateDirectConnectTunnel(request *CreateDirectConnectTunnelRequest) (response *CreateDirectConnectTunnelResponse, err error) {
-    if request == nil {
-        request = NewCreateDirectConnectTunnelRequest()
-    }
-    
-    response = NewCreateDirectConnectTunnelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDirectConnectTunnelWithContext(context.Background(), request)
 }
 
 // CreateDirectConnectTunnel
@@ -291,6 +283,11 @@ func (c *Client) CreateDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDirectConnectTunnelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDirectConnectTunnel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDirectConnectTunnelResponse()
@@ -331,13 +328,7 @@ func NewDeleteDirectConnectResponse() (response *DeleteDirectConnectResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) DeleteDirectConnect(request *DeleteDirectConnectRequest) (response *DeleteDirectConnectResponse, err error) {
-    if request == nil {
-        request = NewDeleteDirectConnectRequest()
-    }
-    
-    response = NewDeleteDirectConnectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDirectConnectWithContext(context.Background(), request)
 }
 
 // DeleteDirectConnect
@@ -359,6 +350,11 @@ func (c *Client) DeleteDirectConnectWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteDirectConnectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDirectConnect require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDirectConnectResponse()
@@ -394,13 +390,7 @@ func NewDeleteDirectConnectTunnelResponse() (response *DeleteDirectConnectTunnel
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) DeleteDirectConnectTunnel(request *DeleteDirectConnectTunnelRequest) (response *DeleteDirectConnectTunnelResponse, err error) {
-    if request == nil {
-        request = NewDeleteDirectConnectTunnelRequest()
-    }
-    
-    response = NewDeleteDirectConnectTunnelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDirectConnectTunnelWithContext(context.Background(), request)
 }
 
 // DeleteDirectConnectTunnel
@@ -417,6 +407,11 @@ func (c *Client) DeleteDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteDirectConnectTunnelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDirectConnectTunnel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDirectConnectTunnelResponse()
@@ -454,13 +449,7 @@ func NewDescribeAccessPointsResponse() (response *DescribeAccessPointsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessPoints(request *DescribeAccessPointsRequest) (response *DescribeAccessPointsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessPointsRequest()
-    }
-    
-    response = NewDescribeAccessPointsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessPointsWithContext(context.Background(), request)
 }
 
 // DescribeAccessPoints
@@ -479,6 +468,11 @@ func (c *Client) DescribeAccessPointsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccessPointsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessPoints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessPointsResponse()
@@ -511,13 +505,7 @@ func NewDescribeDirectConnectTunnelExtraResponse() (response *DescribeDirectConn
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 func (c *Client) DescribeDirectConnectTunnelExtra(request *DescribeDirectConnectTunnelExtraRequest) (response *DescribeDirectConnectTunnelExtraResponse, err error) {
-    if request == nil {
-        request = NewDescribeDirectConnectTunnelExtraRequest()
-    }
-    
-    response = NewDescribeDirectConnectTunnelExtraResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDirectConnectTunnelExtraWithContext(context.Background(), request)
 }
 
 // DescribeDirectConnectTunnelExtra
@@ -531,6 +519,11 @@ func (c *Client) DescribeDirectConnectTunnelExtraWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDirectConnectTunnelExtraRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDirectConnectTunnelExtra require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDirectConnectTunnelExtraResponse()
@@ -565,13 +558,7 @@ func NewDescribeDirectConnectTunnelsResponse() (response *DescribeDirectConnectT
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 func (c *Client) DescribeDirectConnectTunnels(request *DescribeDirectConnectTunnelsRequest) (response *DescribeDirectConnectTunnelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDirectConnectTunnelsRequest()
-    }
-    
-    response = NewDescribeDirectConnectTunnelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDirectConnectTunnelsWithContext(context.Background(), request)
 }
 
 // DescribeDirectConnectTunnels
@@ -587,6 +574,11 @@ func (c *Client) DescribeDirectConnectTunnelsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDirectConnectTunnelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDirectConnectTunnels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDirectConnectTunnelsResponse()
@@ -622,13 +614,7 @@ func NewDescribeDirectConnectsResponse() (response *DescribeDirectConnectsRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) (response *DescribeDirectConnectsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDirectConnectsRequest()
-    }
-    
-    response = NewDescribeDirectConnectsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDirectConnectsWithContext(context.Background(), request)
 }
 
 // DescribeDirectConnects
@@ -645,6 +631,11 @@ func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDirectConnectsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDirectConnects require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDirectConnectsResponse()
@@ -680,13 +671,7 @@ func NewDescribeInternetAddressResponse() (response *DescribeInternetAddressResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInternetAddress(request *DescribeInternetAddressRequest) (response *DescribeInternetAddressResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternetAddressRequest()
-    }
-    
-    response = NewDescribeInternetAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternetAddressWithContext(context.Background(), request)
 }
 
 // DescribeInternetAddress
@@ -703,6 +688,11 @@ func (c *Client) DescribeInternetAddressWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInternetAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternetAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternetAddressResponse()
@@ -738,13 +728,7 @@ func NewDescribeInternetAddressQuotaResponse() (response *DescribeInternetAddres
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInternetAddressQuota(request *DescribeInternetAddressQuotaRequest) (response *DescribeInternetAddressQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternetAddressQuotaRequest()
-    }
-    
-    response = NewDescribeInternetAddressQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternetAddressQuotaWithContext(context.Background(), request)
 }
 
 // DescribeInternetAddressQuota
@@ -761,6 +745,11 @@ func (c *Client) DescribeInternetAddressQuotaWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeInternetAddressQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternetAddressQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternetAddressQuotaResponse()
@@ -796,13 +785,7 @@ func NewDescribeInternetAddressStatisticsResponse() (response *DescribeInternetA
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInternetAddressStatistics(request *DescribeInternetAddressStatisticsRequest) (response *DescribeInternetAddressStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternetAddressStatisticsRequest()
-    }
-    
-    response = NewDescribeInternetAddressStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternetAddressStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeInternetAddressStatistics
@@ -819,6 +802,11 @@ func (c *Client) DescribeInternetAddressStatisticsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInternetAddressStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternetAddressStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternetAddressStatisticsResponse()
@@ -852,13 +840,7 @@ func NewDescribePublicDirectConnectTunnelRoutesResponse() (response *DescribePub
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublicDirectConnectTunnelRoutesRequest) (response *DescribePublicDirectConnectTunnelRoutesResponse, err error) {
-    if request == nil {
-        request = NewDescribePublicDirectConnectTunnelRoutesRequest()
-    }
-    
-    response = NewDescribePublicDirectConnectTunnelRoutesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePublicDirectConnectTunnelRoutesWithContext(context.Background(), request)
 }
 
 // DescribePublicDirectConnectTunnelRoutes
@@ -873,6 +855,11 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutesWithContext(ctx context.
     if request == nil {
         request = NewDescribePublicDirectConnectTunnelRoutesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicDirectConnectTunnelRoutes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePublicDirectConnectTunnelRoutesResponse()
@@ -906,13 +893,7 @@ func NewDisableInternetAddressResponse() (response *DisableInternetAddressRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 func (c *Client) DisableInternetAddress(request *DisableInternetAddressRequest) (response *DisableInternetAddressResponse, err error) {
-    if request == nil {
-        request = NewDisableInternetAddressRequest()
-    }
-    
-    response = NewDisableInternetAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableInternetAddressWithContext(context.Background(), request)
 }
 
 // DisableInternetAddress
@@ -927,6 +908,11 @@ func (c *Client) DisableInternetAddressWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDisableInternetAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableInternetAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableInternetAddressResponse()
@@ -960,13 +946,7 @@ func NewEnableInternetAddressResponse() (response *EnableInternetAddressResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 func (c *Client) EnableInternetAddress(request *EnableInternetAddressRequest) (response *EnableInternetAddressResponse, err error) {
-    if request == nil {
-        request = NewEnableInternetAddressRequest()
-    }
-    
-    response = NewEnableInternetAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableInternetAddressWithContext(context.Background(), request)
 }
 
 // EnableInternetAddress
@@ -981,6 +961,11 @@ func (c *Client) EnableInternetAddressWithContext(ctx context.Context, request *
     if request == nil {
         request = NewEnableInternetAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableInternetAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableInternetAddressResponse()
@@ -1018,13 +1003,7 @@ func NewModifyDirectConnectAttributeResponse() (response *ModifyDirectConnectAtt
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDirectConnectAttribute(request *ModifyDirectConnectAttributeRequest) (response *ModifyDirectConnectAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyDirectConnectAttributeRequest()
-    }
-    
-    response = NewModifyDirectConnectAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDirectConnectAttributeWithContext(context.Background(), request)
 }
 
 // ModifyDirectConnectAttribute
@@ -1043,6 +1022,11 @@ func (c *Client) ModifyDirectConnectAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyDirectConnectAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDirectConnectAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDirectConnectAttributeResponse()
@@ -1078,13 +1062,7 @@ func NewModifyDirectConnectTunnelAttributeResponse() (response *ModifyDirectConn
 //  RESOURCENOTFOUND_DIRECTCONNECTTUNNELIDISNOTEXIST = "ResourceNotFound.DirectConnectTunnelIdIsNotExist"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) ModifyDirectConnectTunnelAttribute(request *ModifyDirectConnectTunnelAttributeRequest) (response *ModifyDirectConnectTunnelAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyDirectConnectTunnelAttributeRequest()
-    }
-    
-    response = NewModifyDirectConnectTunnelAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDirectConnectTunnelAttributeWithContext(context.Background(), request)
 }
 
 // ModifyDirectConnectTunnelAttribute
@@ -1101,6 +1079,11 @@ func (c *Client) ModifyDirectConnectTunnelAttributeWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyDirectConnectTunnelAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDirectConnectTunnelAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDirectConnectTunnelAttributeResponse()
@@ -1140,13 +1123,7 @@ func NewModifyDirectConnectTunnelExtraResponse() (response *ModifyDirectConnectT
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDirectConnectTunnelExtra(request *ModifyDirectConnectTunnelExtraRequest) (response *ModifyDirectConnectTunnelExtraResponse, err error) {
-    if request == nil {
-        request = NewModifyDirectConnectTunnelExtraRequest()
-    }
-    
-    response = NewModifyDirectConnectTunnelExtraResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDirectConnectTunnelExtraWithContext(context.Background(), request)
 }
 
 // ModifyDirectConnectTunnelExtra
@@ -1167,6 +1144,11 @@ func (c *Client) ModifyDirectConnectTunnelExtraWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyDirectConnectTunnelExtraRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDirectConnectTunnelExtra require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDirectConnectTunnelExtraResponse()
@@ -1201,13 +1183,7 @@ func NewRejectDirectConnectTunnelResponse() (response *RejectDirectConnectTunnel
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) RejectDirectConnectTunnel(request *RejectDirectConnectTunnelRequest) (response *RejectDirectConnectTunnelResponse, err error) {
-    if request == nil {
-        request = NewRejectDirectConnectTunnelRequest()
-    }
-    
-    response = NewRejectDirectConnectTunnelResponse()
-    err = c.Send(request, response)
-    return
+    return c.RejectDirectConnectTunnelWithContext(context.Background(), request)
 }
 
 // RejectDirectConnectTunnel
@@ -1223,6 +1199,11 @@ func (c *Client) RejectDirectConnectTunnelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewRejectDirectConnectTunnelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RejectDirectConnectTunnel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRejectDirectConnectTunnelResponse()
@@ -1257,13 +1238,7 @@ func NewReleaseInternetAddressResponse() (response *ReleaseInternetAddressRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_STATECONFLICT = "UnsupportedOperation.StateConfLict"
 func (c *Client) ReleaseInternetAddress(request *ReleaseInternetAddressRequest) (response *ReleaseInternetAddressResponse, err error) {
-    if request == nil {
-        request = NewReleaseInternetAddressRequest()
-    }
-    
-    response = NewReleaseInternetAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReleaseInternetAddressWithContext(context.Background(), request)
 }
 
 // ReleaseInternetAddress
@@ -1279,6 +1254,11 @@ func (c *Client) ReleaseInternetAddressWithContext(ctx context.Context, request 
     if request == nil {
         request = NewReleaseInternetAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseInternetAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReleaseInternetAddressResponse()

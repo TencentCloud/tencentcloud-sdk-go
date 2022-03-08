@@ -16,6 +16,7 @@ package v20180226
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,13 +74,7 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobResponse, err error) {
-    if request == nil {
-        request = NewCreateJobRequest()
-    }
-    
-    response = NewCreateJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateJobWithContext(context.Background(), request)
 }
 
 // CreateJob
@@ -97,6 +92,11 @@ func (c *Client) CreateJobWithContext(ctx context.Context, request *CreateJobReq
     if request == nil {
         request = NewCreateJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateJobResponse()
@@ -147,13 +147,7 @@ func NewCreateModelResponse() (response *CreateModelResponse) {
 //  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) CreateModel(request *CreateModelRequest) (response *CreateModelResponse, err error) {
-    if request == nil {
-        request = NewCreateModelRequest()
-    }
-    
-    response = NewCreateModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateModelWithContext(context.Background(), request)
 }
 
 // CreateModel
@@ -185,6 +179,11 @@ func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateMode
     if request == nil {
         request = NewCreateModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateModelResponse()
@@ -217,13 +216,7 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
-    if request == nil {
-        request = NewDeleteJobRequest()
-    }
-    
-    response = NewDeleteJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteJobWithContext(context.Background(), request)
 }
 
 // DeleteJob
@@ -237,6 +230,11 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobReq
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteJobResponse()
@@ -276,13 +274,7 @@ func NewDeleteModelResponse() (response *DeleteModelResponse) {
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
-    if request == nil {
-        request = NewDeleteModelRequest()
-    }
-    
-    response = NewDeleteModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteModelWithContext(context.Background(), request)
 }
 
 // DeleteModel
@@ -303,6 +295,11 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteMode
     if request == nil {
         request = NewDeleteModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteModelResponse()
@@ -339,13 +336,7 @@ func NewDescribeJobResponse() (response *DescribeJobResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) DescribeJob(request *DescribeJobRequest) (response *DescribeJobResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobRequest()
-    }
-    
-    response = NewDescribeJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobWithContext(context.Background(), request)
 }
 
 // DescribeJob
@@ -363,6 +354,11 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, request *DescribeJo
     if request == nil {
         request = NewDescribeJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobResponse()
@@ -400,13 +396,7 @@ func NewDescribeModelResponse() (response *DescribeModelResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) DescribeModel(request *DescribeModelRequest) (response *DescribeModelResponse, err error) {
-    if request == nil {
-        request = NewDescribeModelRequest()
-    }
-    
-    response = NewDescribeModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModelWithContext(context.Background(), request)
 }
 
 // DescribeModel
@@ -425,6 +415,11 @@ func (c *Client) DescribeModelWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModelResponse()
@@ -459,13 +454,7 @@ func NewInstallAgentResponse() (response *InstallAgentResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) InstallAgent(request *InstallAgentRequest) (response *InstallAgentResponse, err error) {
-    if request == nil {
-        request = NewInstallAgentRequest()
-    }
-    
-    response = NewInstallAgentResponse()
-    err = c.Send(request, response)
-    return
+    return c.InstallAgentWithContext(context.Background(), request)
 }
 
 // InstallAgent
@@ -481,6 +470,11 @@ func (c *Client) InstallAgentWithContext(ctx context.Context, request *InstallAg
     if request == nil {
         request = NewInstallAgentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallAgent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInstallAgentResponse()
@@ -516,13 +510,7 @@ func NewListJobsResponse() (response *ListJobsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) ListJobs(request *ListJobsRequest) (response *ListJobsResponse, err error) {
-    if request == nil {
-        request = NewListJobsRequest()
-    }
-    
-    response = NewListJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListJobsWithContext(context.Background(), request)
 }
 
 // ListJobs
@@ -539,6 +527,11 @@ func (c *Client) ListJobsWithContext(ctx context.Context, request *ListJobsReque
     if request == nil {
         request = NewListJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListJobsResponse()
@@ -580,13 +573,7 @@ func NewListModelsResponse() (response *ListModelsResponse) {
 //  UNAUTHORIZEDOPERATION_REGION = "UnauthorizedOperation.Region"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) ListModels(request *ListModelsRequest) (response *ListModelsResponse, err error) {
-    if request == nil {
-        request = NewListModelsRequest()
-    }
-    
-    response = NewListModelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListModelsWithContext(context.Background(), request)
 }
 
 // ListModels
@@ -609,6 +596,11 @@ func (c *Client) ListModelsWithContext(ctx context.Context, request *ListModelsR
     if request == nil {
         request = NewListModelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListModels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListModelsResponse()
@@ -645,13 +637,7 @@ func NewQueryLogsResponse() (response *QueryLogsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDVERSION = "UnsupportedOperation.UnsupportedVersion"
 func (c *Client) QueryLogs(request *QueryLogsRequest) (response *QueryLogsResponse, err error) {
-    if request == nil {
-        request = NewQueryLogsRequest()
-    }
-    
-    response = NewQueryLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryLogsWithContext(context.Background(), request)
 }
 
 // QueryLogs
@@ -669,6 +655,11 @@ func (c *Client) QueryLogsWithContext(ctx context.Context, request *QueryLogsReq
     if request == nil {
         request = NewQueryLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryLogsResponse()

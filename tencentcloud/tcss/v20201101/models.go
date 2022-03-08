@@ -11026,6 +11026,9 @@ type ImagesInfo struct {
 
 	// 是否授权，1是0否
 	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+
+	// 组件个数
+	ComponentCnt *uint64 `json:"ComponentCnt,omitempty" name:"ComponentCnt"`
 }
 
 type ImagesVul struct {

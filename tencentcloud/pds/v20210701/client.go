@@ -16,6 +16,7 @@ package v20210701
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewDescribeNewUserAcquisitionResponse() (response *DescribeNewUserAcquisiti
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeNewUserAcquisition(request *DescribeNewUserAcquisitionRequest) (response *DescribeNewUserAcquisitionResponse, err error) {
-    if request == nil {
-        request = NewDescribeNewUserAcquisitionRequest()
-    }
-    
-    response = NewDescribeNewUserAcquisitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNewUserAcquisitionWithContext(context.Background(), request)
 }
 
 // DescribeNewUserAcquisition
@@ -105,6 +100,11 @@ func (c *Client) DescribeNewUserAcquisitionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeNewUserAcquisitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNewUserAcquisition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNewUserAcquisitionResponse()
@@ -145,13 +145,7 @@ func NewDescribeStockEstimationResponse() (response *DescribeStockEstimationResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeStockEstimation(request *DescribeStockEstimationRequest) (response *DescribeStockEstimationResponse, err error) {
-    if request == nil {
-        request = NewDescribeStockEstimationRequest()
-    }
-    
-    response = NewDescribeStockEstimationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStockEstimationWithContext(context.Background(), request)
 }
 
 // DescribeStockEstimation
@@ -173,6 +167,11 @@ func (c *Client) DescribeStockEstimationWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeStockEstimationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStockEstimation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStockEstimationResponse()

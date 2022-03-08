@@ -16,6 +16,7 @@ package v20181201
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,13 +74,7 @@ func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) 
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
-    if request == nil {
-        request = NewDescribeMaterialListRequest()
-    }
-    
-    response = NewDescribeMaterialListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMaterialListWithContext(context.Background(), request)
 }
 
 // DescribeMaterialList
@@ -97,6 +92,11 @@ func (c *Client) DescribeMaterialListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMaterialListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaterialList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMaterialListResponse()
@@ -167,13 +167,7 @@ func NewFaceFusionResponse() (response *FaceFusionResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionResponse, err error) {
-    if request == nil {
-        request = NewFaceFusionRequest()
-    }
-    
-    response = NewFaceFusionResponse()
-    err = c.Send(request, response)
-    return
+    return c.FaceFusionWithContext(context.Background(), request)
 }
 
 // FaceFusion
@@ -225,6 +219,11 @@ func (c *Client) FaceFusionWithContext(ctx context.Context, request *FaceFusionR
     if request == nil {
         request = NewFaceFusionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FaceFusion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFaceFusionResponse()
@@ -292,13 +291,7 @@ func NewFaceFusionLiteResponse() (response *FaceFusionLiteResponse) {
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
 //  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 func (c *Client) FaceFusionLite(request *FaceFusionLiteRequest) (response *FaceFusionLiteResponse, err error) {
-    if request == nil {
-        request = NewFaceFusionLiteRequest()
-    }
-    
-    response = NewFaceFusionLiteResponse()
-    err = c.Send(request, response)
-    return
+    return c.FaceFusionLiteWithContext(context.Background(), request)
 }
 
 // FaceFusionLite
@@ -347,6 +340,11 @@ func (c *Client) FaceFusionLiteWithContext(ctx context.Context, request *FaceFus
     if request == nil {
         request = NewFaceFusionLiteRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FaceFusionLite require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFaceFusionLiteResponse()
@@ -419,13 +417,7 @@ func NewFuseFaceResponse() (response *FuseFaceResponse) {
 //  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FuseFace(request *FuseFaceRequest) (response *FuseFaceResponse, err error) {
-    if request == nil {
-        request = NewFuseFaceRequest()
-    }
-    
-    response = NewFuseFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.FuseFaceWithContext(context.Background(), request)
 }
 
 // FuseFace
@@ -479,6 +471,11 @@ func (c *Client) FuseFaceWithContext(ctx context.Context, request *FuseFaceReque
     if request == nil {
         request = NewFuseFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FuseFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFuseFaceResponse()

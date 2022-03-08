@@ -16,6 +16,7 @@ package v20190328
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -112,13 +113,7 @@ func NewDescribeBRIResponse() (response *DescribeBRIResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeBRI(request *DescribeBRIRequest) (response *DescribeBRIResponse, err error) {
-    if request == nil {
-        request = NewDescribeBRIRequest()
-    }
-    
-    response = NewDescribeBRIResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBRIWithContext(context.Background(), request)
 }
 
 // DescribeBRI
@@ -175,6 +170,11 @@ func (c *Client) DescribeBRIWithContext(ctx context.Context, request *DescribeBR
     if request == nil {
         request = NewDescribeBRIRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBRI require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBRIResponse()

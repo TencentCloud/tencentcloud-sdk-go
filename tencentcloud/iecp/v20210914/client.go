@@ -16,6 +16,7 @@ package v20210914
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,13 +80,7 @@ func NewApplyMarketComponentResponse() (response *ApplyMarketComponentResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ApplyMarketComponent(request *ApplyMarketComponentRequest) (response *ApplyMarketComponentResponse, err error) {
-    if request == nil {
-        request = NewApplyMarketComponentRequest()
-    }
-    
-    response = NewApplyMarketComponentResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyMarketComponentWithContext(context.Background(), request)
 }
 
 // ApplyMarketComponent
@@ -109,6 +104,11 @@ func (c *Client) ApplyMarketComponentWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewApplyMarketComponentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyMarketComponent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyMarketComponentResponse()
@@ -151,13 +151,7 @@ func NewCreateApplicationVisualizationResponse() (response *CreateApplicationVis
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateApplicationVisualization(request *CreateApplicationVisualizationRequest) (response *CreateApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewCreateApplicationVisualizationRequest()
-    }
-    
-    response = NewCreateApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // CreateApplicationVisualization
@@ -181,6 +175,11 @@ func (c *Client) CreateApplicationVisualizationWithContext(ctx context.Context, 
     if request == nil {
         request = NewCreateApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApplicationVisualizationResponse()
@@ -223,13 +222,7 @@ func NewCreateConfigMapResponse() (response *CreateConfigMapResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateConfigMap(request *CreateConfigMapRequest) (response *CreateConfigMapResponse, err error) {
-    if request == nil {
-        request = NewCreateConfigMapRequest()
-    }
-    
-    response = NewCreateConfigMapResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateConfigMapWithContext(context.Background(), request)
 }
 
 // CreateConfigMap
@@ -253,6 +246,11 @@ func (c *Client) CreateConfigMapWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateConfigMapRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigMap require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateConfigMapResponse()
@@ -296,13 +294,7 @@ func NewCreateEdgeNodeResponse() (response *CreateEdgeNodeResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeNode(request *CreateEdgeNodeRequest) (response *CreateEdgeNodeResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeNodeRequest()
-    }
-    
-    response = NewCreateEdgeNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeNodeWithContext(context.Background(), request)
 }
 
 // CreateEdgeNode
@@ -327,6 +319,11 @@ func (c *Client) CreateEdgeNodeWithContext(ctx context.Context, request *CreateE
     if request == nil {
         request = NewCreateEdgeNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeNodeResponse()
@@ -369,13 +366,7 @@ func NewCreateEdgeNodeGroupResponse() (response *CreateEdgeNodeGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeNodeGroup(request *CreateEdgeNodeGroupRequest) (response *CreateEdgeNodeGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeNodeGroupRequest()
-    }
-    
-    response = NewCreateEdgeNodeGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeNodeGroupWithContext(context.Background(), request)
 }
 
 // CreateEdgeNodeGroup
@@ -399,6 +390,11 @@ func (c *Client) CreateEdgeNodeGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateEdgeNodeGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeNodeGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeNodeGroupResponse()
@@ -441,13 +437,7 @@ func NewCreateEdgeNodeUnitTemplateResponse() (response *CreateEdgeNodeUnitTempla
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeNodeUnitTemplate(request *CreateEdgeNodeUnitTemplateRequest) (response *CreateEdgeNodeUnitTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeNodeUnitTemplateRequest()
-    }
-    
-    response = NewCreateEdgeNodeUnitTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeNodeUnitTemplateWithContext(context.Background(), request)
 }
 
 // CreateEdgeNodeUnitTemplate
@@ -471,6 +461,11 @@ func (c *Client) CreateEdgeNodeUnitTemplateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateEdgeNodeUnitTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeNodeUnitTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeNodeUnitTemplateResponse()
@@ -513,13 +508,7 @@ func NewCreateEdgeUnitApplicationVisualizationResponse() (response *CreateEdgeUn
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeUnitApplicationVisualization(request *CreateEdgeUnitApplicationVisualizationRequest) (response *CreateEdgeUnitApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeUnitApplicationVisualizationRequest()
-    }
-    
-    response = NewCreateEdgeUnitApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeUnitApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // CreateEdgeUnitApplicationVisualization
@@ -543,6 +532,11 @@ func (c *Client) CreateEdgeUnitApplicationVisualizationWithContext(ctx context.C
     if request == nil {
         request = NewCreateEdgeUnitApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeUnitApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeUnitApplicationVisualizationResponse()
@@ -585,13 +579,7 @@ func NewCreateEdgeUnitApplicationYamlResponse() (response *CreateEdgeUnitApplica
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeUnitApplicationYaml(request *CreateEdgeUnitApplicationYamlRequest) (response *CreateEdgeUnitApplicationYamlResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeUnitApplicationYamlRequest()
-    }
-    
-    response = NewCreateEdgeUnitApplicationYamlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeUnitApplicationYamlWithContext(context.Background(), request)
 }
 
 // CreateEdgeUnitApplicationYaml
@@ -615,6 +603,11 @@ func (c *Client) CreateEdgeUnitApplicationYamlWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateEdgeUnitApplicationYamlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeUnitApplicationYaml require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeUnitApplicationYamlResponse()
@@ -664,13 +657,7 @@ func NewCreateEdgeUnitCloudResponse() (response *CreateEdgeUnitCloudResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateEdgeUnitCloud(request *CreateEdgeUnitCloudRequest) (response *CreateEdgeUnitCloudResponse, err error) {
-    if request == nil {
-        request = NewCreateEdgeUnitCloudRequest()
-    }
-    
-    response = NewCreateEdgeUnitCloudResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEdgeUnitCloudWithContext(context.Background(), request)
 }
 
 // CreateEdgeUnitCloud
@@ -701,6 +688,11 @@ func (c *Client) CreateEdgeUnitCloudWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateEdgeUnitCloudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeUnitCloud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEdgeUnitCloudResponse()
@@ -743,13 +735,7 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
-    if request == nil {
-        request = NewCreateNamespaceRequest()
-    }
-    
-    response = NewCreateNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNamespaceWithContext(context.Background(), request)
 }
 
 // CreateNamespace
@@ -773,6 +759,11 @@ func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNamespaceResponse()
@@ -815,13 +806,7 @@ func NewCreateSecretResponse() (response *CreateSecretResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSecret(request *CreateSecretRequest) (response *CreateSecretResponse, err error) {
-    if request == nil {
-        request = NewCreateSecretRequest()
-    }
-    
-    response = NewCreateSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecretWithContext(context.Background(), request)
 }
 
 // CreateSecret
@@ -845,6 +830,11 @@ func (c *Client) CreateSecretWithContext(ctx context.Context, request *CreateSec
     if request == nil {
         request = NewCreateSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecretResponse()
@@ -887,13 +877,7 @@ func NewCreateUpdateNodeUnitResponse() (response *CreateUpdateNodeUnitResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUpdateNodeUnit(request *CreateUpdateNodeUnitRequest) (response *CreateUpdateNodeUnitResponse, err error) {
-    if request == nil {
-        request = NewCreateUpdateNodeUnitRequest()
-    }
-    
-    response = NewCreateUpdateNodeUnitResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUpdateNodeUnitWithContext(context.Background(), request)
 }
 
 // CreateUpdateNodeUnit
@@ -917,6 +901,11 @@ func (c *Client) CreateUpdateNodeUnitWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateUpdateNodeUnitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUpdateNodeUnit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUpdateNodeUnitResponse()
@@ -966,13 +955,7 @@ func NewDeleteApplicationsResponse() (response *DeleteApplicationsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteApplications(request *DeleteApplicationsRequest) (response *DeleteApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDeleteApplicationsRequest()
-    }
-    
-    response = NewDeleteApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteApplicationsWithContext(context.Background(), request)
 }
 
 // DeleteApplications
@@ -1003,6 +986,11 @@ func (c *Client) DeleteApplicationsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteApplicationsResponse()
@@ -1045,13 +1033,7 @@ func NewDeleteConfigMapResponse() (response *DeleteConfigMapResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteConfigMap(request *DeleteConfigMapRequest) (response *DeleteConfigMapResponse, err error) {
-    if request == nil {
-        request = NewDeleteConfigMapRequest()
-    }
-    
-    response = NewDeleteConfigMapResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteConfigMapWithContext(context.Background(), request)
 }
 
 // DeleteConfigMap
@@ -1075,6 +1057,11 @@ func (c *Client) DeleteConfigMapWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteConfigMapRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigMap require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteConfigMapResponse()
@@ -1117,13 +1104,7 @@ func NewDeleteEdgeNodeGroupResponse() (response *DeleteEdgeNodeGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeNodeGroup(request *DeleteEdgeNodeGroupRequest) (response *DeleteEdgeNodeGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeNodeGroupRequest()
-    }
-    
-    response = NewDeleteEdgeNodeGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeNodeGroupWithContext(context.Background(), request)
 }
 
 // DeleteEdgeNodeGroup
@@ -1147,6 +1128,11 @@ func (c *Client) DeleteEdgeNodeGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteEdgeNodeGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeNodeGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeNodeGroupResponse()
@@ -1189,13 +1175,7 @@ func NewDeleteEdgeNodeUnitTemplatesResponse() (response *DeleteEdgeNodeUnitTempl
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeNodeUnitTemplates(request *DeleteEdgeNodeUnitTemplatesRequest) (response *DeleteEdgeNodeUnitTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeNodeUnitTemplatesRequest()
-    }
-    
-    response = NewDeleteEdgeNodeUnitTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeNodeUnitTemplatesWithContext(context.Background(), request)
 }
 
 // DeleteEdgeNodeUnitTemplates
@@ -1219,6 +1199,11 @@ func (c *Client) DeleteEdgeNodeUnitTemplatesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteEdgeNodeUnitTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeNodeUnitTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeNodeUnitTemplatesResponse()
@@ -1261,13 +1246,7 @@ func NewDeleteEdgeNodesResponse() (response *DeleteEdgeNodesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeNodes(request *DeleteEdgeNodesRequest) (response *DeleteEdgeNodesResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeNodesRequest()
-    }
-    
-    response = NewDeleteEdgeNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeNodesWithContext(context.Background(), request)
 }
 
 // DeleteEdgeNodes
@@ -1291,6 +1270,11 @@ func (c *Client) DeleteEdgeNodesWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteEdgeNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeNodesResponse()
@@ -1333,13 +1317,7 @@ func NewDeleteEdgeUnitApplicationsResponse() (response *DeleteEdgeUnitApplicatio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeUnitApplications(request *DeleteEdgeUnitApplicationsRequest) (response *DeleteEdgeUnitApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeUnitApplicationsRequest()
-    }
-    
-    response = NewDeleteEdgeUnitApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeUnitApplicationsWithContext(context.Background(), request)
 }
 
 // DeleteEdgeUnitApplications
@@ -1363,6 +1341,11 @@ func (c *Client) DeleteEdgeUnitApplicationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteEdgeUnitApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeUnitApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitApplicationsResponse()
@@ -1412,13 +1395,7 @@ func NewDeleteEdgeUnitCloudResponse() (response *DeleteEdgeUnitCloudResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeUnitCloud(request *DeleteEdgeUnitCloudRequest) (response *DeleteEdgeUnitCloudResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeUnitCloudRequest()
-    }
-    
-    response = NewDeleteEdgeUnitCloudResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeUnitCloudWithContext(context.Background(), request)
 }
 
 // DeleteEdgeUnitCloud
@@ -1449,6 +1426,11 @@ func (c *Client) DeleteEdgeUnitCloudWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteEdgeUnitCloudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeUnitCloud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitCloudResponse()
@@ -1491,13 +1473,7 @@ func NewDeleteEdgeUnitDeployGridItemResponse() (response *DeleteEdgeUnitDeployGr
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeUnitDeployGridItem(request *DeleteEdgeUnitDeployGridItemRequest) (response *DeleteEdgeUnitDeployGridItemResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeUnitDeployGridItemRequest()
-    }
-    
-    response = NewDeleteEdgeUnitDeployGridItemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeUnitDeployGridItemWithContext(context.Background(), request)
 }
 
 // DeleteEdgeUnitDeployGridItem
@@ -1521,6 +1497,11 @@ func (c *Client) DeleteEdgeUnitDeployGridItemWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteEdgeUnitDeployGridItemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeUnitDeployGridItem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitDeployGridItemResponse()
@@ -1563,13 +1544,7 @@ func NewDeleteEdgeUnitPodResponse() (response *DeleteEdgeUnitPodResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteEdgeUnitPod(request *DeleteEdgeUnitPodRequest) (response *DeleteEdgeUnitPodResponse, err error) {
-    if request == nil {
-        request = NewDeleteEdgeUnitPodRequest()
-    }
-    
-    response = NewDeleteEdgeUnitPodResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEdgeUnitPodWithContext(context.Background(), request)
 }
 
 // DeleteEdgeUnitPod
@@ -1593,6 +1568,11 @@ func (c *Client) DeleteEdgeUnitPodWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteEdgeUnitPodRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeUnitPod require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEdgeUnitPodResponse()
@@ -1635,13 +1615,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *DeleteNamespaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteNamespaceRequest()
-    }
-    
-    response = NewDeleteNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNamespaceWithContext(context.Background(), request)
 }
 
 // DeleteNamespace
@@ -1665,6 +1639,11 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNamespaceResponse()
@@ -1707,13 +1686,7 @@ func NewDeleteNodeUnitResponse() (response *DeleteNodeUnitResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNodeUnit(request *DeleteNodeUnitRequest) (response *DeleteNodeUnitResponse, err error) {
-    if request == nil {
-        request = NewDeleteNodeUnitRequest()
-    }
-    
-    response = NewDeleteNodeUnitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNodeUnitWithContext(context.Background(), request)
 }
 
 // DeleteNodeUnit
@@ -1737,6 +1710,11 @@ func (c *Client) DeleteNodeUnitWithContext(ctx context.Context, request *DeleteN
     if request == nil {
         request = NewDeleteNodeUnitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNodeUnit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNodeUnitResponse()
@@ -1779,13 +1757,7 @@ func NewDeleteSecretResponse() (response *DeleteSecretResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecret(request *DeleteSecretRequest) (response *DeleteSecretResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecretRequest()
-    }
-    
-    response = NewDeleteSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecretWithContext(context.Background(), request)
 }
 
 // DeleteSecret
@@ -1809,6 +1781,11 @@ func (c *Client) DeleteSecretWithContext(ctx context.Context, request *DeleteSec
     if request == nil {
         request = NewDeleteSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecretResponse()
@@ -1851,13 +1828,7 @@ func NewDescribeApplicationVisualizationResponse() (response *DescribeApplicatio
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeApplicationVisualization(request *DescribeApplicationVisualizationRequest) (response *DescribeApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationVisualizationRequest()
-    }
-    
-    response = NewDescribeApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // DescribeApplicationVisualization
@@ -1881,6 +1852,11 @@ func (c *Client) DescribeApplicationVisualizationWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationVisualizationResponse()
@@ -1929,13 +1905,7 @@ func NewDescribeApplicationYamlResponse() (response *DescribeApplicationYamlResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeApplicationYaml(request *DescribeApplicationYamlRequest) (response *DescribeApplicationYamlResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationYamlRequest()
-    }
-    
-    response = NewDescribeApplicationYamlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationYamlWithContext(context.Background(), request)
 }
 
 // DescribeApplicationYaml
@@ -1965,6 +1935,11 @@ func (c *Client) DescribeApplicationYamlWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeApplicationYamlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationYaml require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationYamlResponse()
@@ -2007,13 +1982,7 @@ func NewDescribeApplicationYamlErrorResponse() (response *DescribeApplicationYam
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeApplicationYamlError(request *DescribeApplicationYamlErrorRequest) (response *DescribeApplicationYamlErrorResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationYamlErrorRequest()
-    }
-    
-    response = NewDescribeApplicationYamlErrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationYamlErrorWithContext(context.Background(), request)
 }
 
 // DescribeApplicationYamlError
@@ -2037,6 +2006,11 @@ func (c *Client) DescribeApplicationYamlErrorWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApplicationYamlErrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationYamlError require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationYamlErrorResponse()
@@ -2086,13 +2060,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationsRequest()
-    }
-    
-    response = NewDescribeApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationsWithContext(context.Background(), request)
 }
 
 // DescribeApplications
@@ -2123,6 +2091,11 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationsResponse()
@@ -2165,13 +2138,7 @@ func NewDescribeConfigMapResponse() (response *DescribeConfigMapResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (response *DescribeConfigMapResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigMapRequest()
-    }
-    
-    response = NewDescribeConfigMapResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigMapWithContext(context.Background(), request)
 }
 
 // DescribeConfigMap
@@ -2195,6 +2162,11 @@ func (c *Client) DescribeConfigMapWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeConfigMapRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigMap require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigMapResponse()
@@ -2237,13 +2209,7 @@ func NewDescribeConfigMapYamlErrorResponse() (response *DescribeConfigMapYamlErr
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigMapYamlError(request *DescribeConfigMapYamlErrorRequest) (response *DescribeConfigMapYamlErrorResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigMapYamlErrorRequest()
-    }
-    
-    response = NewDescribeConfigMapYamlErrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigMapYamlErrorWithContext(context.Background(), request)
 }
 
 // DescribeConfigMapYamlError
@@ -2267,6 +2233,11 @@ func (c *Client) DescribeConfigMapYamlErrorWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeConfigMapYamlErrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigMapYamlError require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigMapYamlErrorResponse()
@@ -2309,13 +2280,7 @@ func NewDescribeConfigMapsResponse() (response *DescribeConfigMapsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeConfigMaps(request *DescribeConfigMapsRequest) (response *DescribeConfigMapsResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigMapsRequest()
-    }
-    
-    response = NewDescribeConfigMapsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigMapsWithContext(context.Background(), request)
 }
 
 // DescribeConfigMaps
@@ -2339,6 +2304,11 @@ func (c *Client) DescribeConfigMapsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeConfigMapsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigMaps require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigMapsResponse()
@@ -2381,13 +2351,7 @@ func NewDescribeEdgeAgentNodeInstallerResponse() (response *DescribeEdgeAgentNod
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeAgentNodeInstaller(request *DescribeEdgeAgentNodeInstallerRequest) (response *DescribeEdgeAgentNodeInstallerResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeAgentNodeInstallerRequest()
-    }
-    
-    response = NewDescribeEdgeAgentNodeInstallerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeAgentNodeInstallerWithContext(context.Background(), request)
 }
 
 // DescribeEdgeAgentNodeInstaller
@@ -2411,6 +2375,11 @@ func (c *Client) DescribeEdgeAgentNodeInstallerWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeEdgeAgentNodeInstallerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeAgentNodeInstaller require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeAgentNodeInstallerResponse()
@@ -2455,13 +2424,7 @@ func NewDescribeEdgeDefaultVpcResponse() (response *DescribeEdgeDefaultVpcRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeDefaultVpc(request *DescribeEdgeDefaultVpcRequest) (response *DescribeEdgeDefaultVpcResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeDefaultVpcRequest()
-    }
-    
-    response = NewDescribeEdgeDefaultVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeDefaultVpcWithContext(context.Background(), request)
 }
 
 // DescribeEdgeDefaultVpc
@@ -2487,6 +2450,11 @@ func (c *Client) DescribeEdgeDefaultVpcWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEdgeDefaultVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeDefaultVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeDefaultVpcResponse()
@@ -2529,13 +2497,7 @@ func NewDescribeEdgeNodeResponse() (response *DescribeEdgeNodeResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeNode(request *DescribeEdgeNodeRequest) (response *DescribeEdgeNodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeNodeRequest()
-    }
-    
-    response = NewDescribeEdgeNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeNodeWithContext(context.Background(), request)
 }
 
 // DescribeEdgeNode
@@ -2559,6 +2521,11 @@ func (c *Client) DescribeEdgeNodeWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEdgeNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeNodeResponse()
@@ -2601,13 +2568,7 @@ func NewDescribeEdgeNodePodContainersResponse() (response *DescribeEdgeNodePodCo
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeNodePodContainers(request *DescribeEdgeNodePodContainersRequest) (response *DescribeEdgeNodePodContainersResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeNodePodContainersRequest()
-    }
-    
-    response = NewDescribeEdgeNodePodContainersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeNodePodContainersWithContext(context.Background(), request)
 }
 
 // DescribeEdgeNodePodContainers
@@ -2631,6 +2592,11 @@ func (c *Client) DescribeEdgeNodePodContainersWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEdgeNodePodContainersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeNodePodContainers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeNodePodContainersResponse()
@@ -2673,13 +2639,7 @@ func NewDescribeEdgeNodePodsResponse() (response *DescribeEdgeNodePodsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeNodePods(request *DescribeEdgeNodePodsRequest) (response *DescribeEdgeNodePodsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeNodePodsRequest()
-    }
-    
-    response = NewDescribeEdgeNodePodsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeNodePodsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeNodePods
@@ -2703,6 +2663,11 @@ func (c *Client) DescribeEdgeNodePodsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEdgeNodePodsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeNodePods require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeNodePodsResponse()
@@ -2745,13 +2710,7 @@ func NewDescribeEdgeNodesResponse() (response *DescribeEdgeNodesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeNodes(request *DescribeEdgeNodesRequest) (response *DescribeEdgeNodesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeNodesRequest()
-    }
-    
-    response = NewDescribeEdgeNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeNodesWithContext(context.Background(), request)
 }
 
 // DescribeEdgeNodes
@@ -2775,6 +2734,11 @@ func (c *Client) DescribeEdgeNodesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeEdgeNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeNodesResponse()
@@ -2817,13 +2781,7 @@ func NewDescribeEdgeOperationLogsResponse() (response *DescribeEdgeOperationLogs
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeOperationLogs(request *DescribeEdgeOperationLogsRequest) (response *DescribeEdgeOperationLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeOperationLogsRequest()
-    }
-    
-    response = NewDescribeEdgeOperationLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeOperationLogsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeOperationLogs
@@ -2847,6 +2805,11 @@ func (c *Client) DescribeEdgeOperationLogsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEdgeOperationLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeOperationLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeOperationLogsResponse()
@@ -2889,13 +2852,7 @@ func NewDescribeEdgePodResponse() (response *DescribeEdgePodResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgePod(request *DescribeEdgePodRequest) (response *DescribeEdgePodResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgePodRequest()
-    }
-    
-    response = NewDescribeEdgePodResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgePodWithContext(context.Background(), request)
 }
 
 // DescribeEdgePod
@@ -2919,6 +2876,11 @@ func (c *Client) DescribeEdgePodWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeEdgePodRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgePod require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgePodResponse()
@@ -2961,13 +2923,7 @@ func NewDescribeEdgeUnitApplicationEventsResponse() (response *DescribeEdgeUnitA
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationEvents(request *DescribeEdgeUnitApplicationEventsRequest) (response *DescribeEdgeUnitApplicationEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationEventsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationEventsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationEvents
@@ -2991,6 +2947,11 @@ func (c *Client) DescribeEdgeUnitApplicationEventsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeEdgeUnitApplicationEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationEventsResponse()
@@ -3033,13 +2994,7 @@ func NewDescribeEdgeUnitApplicationLogsResponse() (response *DescribeEdgeUnitApp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationLogs(request *DescribeEdgeUnitApplicationLogsRequest) (response *DescribeEdgeUnitApplicationLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationLogsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationLogsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationLogs
@@ -3063,6 +3018,11 @@ func (c *Client) DescribeEdgeUnitApplicationLogsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeEdgeUnitApplicationLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationLogsResponse()
@@ -3105,13 +3065,7 @@ func NewDescribeEdgeUnitApplicationPodContainersResponse() (response *DescribeEd
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationPodContainers(request *DescribeEdgeUnitApplicationPodContainersRequest) (response *DescribeEdgeUnitApplicationPodContainersResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationPodContainersRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationPodContainersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationPodContainersWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationPodContainers
@@ -3135,6 +3089,11 @@ func (c *Client) DescribeEdgeUnitApplicationPodContainersWithContext(ctx context
     if request == nil {
         request = NewDescribeEdgeUnitApplicationPodContainersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationPodContainers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationPodContainersResponse()
@@ -3177,13 +3136,7 @@ func NewDescribeEdgeUnitApplicationPodsResponse() (response *DescribeEdgeUnitApp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationPods(request *DescribeEdgeUnitApplicationPodsRequest) (response *DescribeEdgeUnitApplicationPodsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationPodsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationPodsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationPodsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationPods
@@ -3207,6 +3160,11 @@ func (c *Client) DescribeEdgeUnitApplicationPodsWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeEdgeUnitApplicationPodsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationPods require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationPodsResponse()
@@ -3249,13 +3207,7 @@ func NewDescribeEdgeUnitApplicationVisualizationResponse() (response *DescribeEd
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationVisualization(request *DescribeEdgeUnitApplicationVisualizationRequest) (response *DescribeEdgeUnitApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationVisualizationRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationVisualization
@@ -3279,6 +3231,11 @@ func (c *Client) DescribeEdgeUnitApplicationVisualizationWithContext(ctx context
     if request == nil {
         request = NewDescribeEdgeUnitApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationVisualizationResponse()
@@ -3321,13 +3278,7 @@ func NewDescribeEdgeUnitApplicationYamlResponse() (response *DescribeEdgeUnitApp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationYaml(request *DescribeEdgeUnitApplicationYamlRequest) (response *DescribeEdgeUnitApplicationYamlResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationYamlRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationYamlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationYamlWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationYaml
@@ -3351,6 +3302,11 @@ func (c *Client) DescribeEdgeUnitApplicationYamlWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeEdgeUnitApplicationYamlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationYaml require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationYamlResponse()
@@ -3393,13 +3349,7 @@ func NewDescribeEdgeUnitApplicationYamlErrorResponse() (response *DescribeEdgeUn
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplicationYamlError(request *DescribeEdgeUnitApplicationYamlErrorRequest) (response *DescribeEdgeUnitApplicationYamlErrorResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationYamlErrorRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationYamlErrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationYamlErrorWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplicationYamlError
@@ -3423,6 +3373,11 @@ func (c *Client) DescribeEdgeUnitApplicationYamlErrorWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeEdgeUnitApplicationYamlErrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplicationYamlError require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationYamlErrorResponse()
@@ -3465,13 +3420,7 @@ func NewDescribeEdgeUnitApplicationsResponse() (response *DescribeEdgeUnitApplic
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitApplications(request *DescribeEdgeUnitApplicationsRequest) (response *DescribeEdgeUnitApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitApplicationsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitApplicationsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitApplications
@@ -3495,6 +3444,11 @@ func (c *Client) DescribeEdgeUnitApplicationsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeEdgeUnitApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitApplicationsResponse()
@@ -3544,13 +3498,7 @@ func NewDescribeEdgeUnitCloudResponse() (response *DescribeEdgeUnitCloudResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitCloud(request *DescribeEdgeUnitCloudRequest) (response *DescribeEdgeUnitCloudResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitCloudRequest()
-    }
-    
-    response = NewDescribeEdgeUnitCloudResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitCloudWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitCloud
@@ -3581,6 +3529,11 @@ func (c *Client) DescribeEdgeUnitCloudWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeEdgeUnitCloudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitCloud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitCloudResponse()
@@ -3623,13 +3576,7 @@ func NewDescribeEdgeUnitDeployGridResponse() (response *DescribeEdgeUnitDeployGr
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitDeployGrid(request *DescribeEdgeUnitDeployGridRequest) (response *DescribeEdgeUnitDeployGridResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitDeployGridRequest()
-    }
-    
-    response = NewDescribeEdgeUnitDeployGridResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitDeployGridWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitDeployGrid
@@ -3653,6 +3600,11 @@ func (c *Client) DescribeEdgeUnitDeployGridWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEdgeUnitDeployGridRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitDeployGrid require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitDeployGridResponse()
@@ -3695,13 +3647,7 @@ func NewDescribeEdgeUnitDeployGridItemResponse() (response *DescribeEdgeUnitDepl
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitDeployGridItem(request *DescribeEdgeUnitDeployGridItemRequest) (response *DescribeEdgeUnitDeployGridItemResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitDeployGridItemRequest()
-    }
-    
-    response = NewDescribeEdgeUnitDeployGridItemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitDeployGridItemWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitDeployGridItem
@@ -3725,6 +3671,11 @@ func (c *Client) DescribeEdgeUnitDeployGridItemWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeEdgeUnitDeployGridItemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitDeployGridItem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitDeployGridItemResponse()
@@ -3767,13 +3718,7 @@ func NewDescribeEdgeUnitDeployGridItemYamlResponse() (response *DescribeEdgeUnit
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitDeployGridItemYaml(request *DescribeEdgeUnitDeployGridItemYamlRequest) (response *DescribeEdgeUnitDeployGridItemYamlResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitDeployGridItemYamlRequest()
-    }
-    
-    response = NewDescribeEdgeUnitDeployGridItemYamlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitDeployGridItemYamlWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitDeployGridItemYaml
@@ -3797,6 +3742,11 @@ func (c *Client) DescribeEdgeUnitDeployGridItemYamlWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeEdgeUnitDeployGridItemYamlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitDeployGridItemYaml require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitDeployGridItemYamlResponse()
@@ -3839,13 +3789,7 @@ func NewDescribeEdgeUnitExtraResponse() (response *DescribeEdgeUnitExtraResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitExtra(request *DescribeEdgeUnitExtraRequest) (response *DescribeEdgeUnitExtraResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitExtraRequest()
-    }
-    
-    response = NewDescribeEdgeUnitExtraResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitExtraWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitExtra
@@ -3869,6 +3813,11 @@ func (c *Client) DescribeEdgeUnitExtraWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeEdgeUnitExtraRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitExtra require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitExtraResponse()
@@ -3911,13 +3860,7 @@ func NewDescribeEdgeUnitGridEventsResponse() (response *DescribeEdgeUnitGridEven
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitGridEvents(request *DescribeEdgeUnitGridEventsRequest) (response *DescribeEdgeUnitGridEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitGridEventsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitGridEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitGridEventsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitGridEvents
@@ -3941,6 +3884,11 @@ func (c *Client) DescribeEdgeUnitGridEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEdgeUnitGridEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitGridEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitGridEventsResponse()
@@ -3983,13 +3931,7 @@ func NewDescribeEdgeUnitGridPodsResponse() (response *DescribeEdgeUnitGridPodsRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitGridPods(request *DescribeEdgeUnitGridPodsRequest) (response *DescribeEdgeUnitGridPodsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitGridPodsRequest()
-    }
-    
-    response = NewDescribeEdgeUnitGridPodsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitGridPodsWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitGridPods
@@ -4013,6 +3955,11 @@ func (c *Client) DescribeEdgeUnitGridPodsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEdgeUnitGridPodsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitGridPods require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitGridPodsResponse()
@@ -4055,13 +4002,7 @@ func NewDescribeEdgeUnitMonitorStatusResponse() (response *DescribeEdgeUnitMonit
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitMonitorStatus(request *DescribeEdgeUnitMonitorStatusRequest) (response *DescribeEdgeUnitMonitorStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitMonitorStatusRequest()
-    }
-    
-    response = NewDescribeEdgeUnitMonitorStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitMonitorStatusWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitMonitorStatus
@@ -4085,6 +4026,11 @@ func (c *Client) DescribeEdgeUnitMonitorStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEdgeUnitMonitorStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitMonitorStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitMonitorStatusResponse()
@@ -4134,13 +4080,7 @@ func NewDescribeEdgeUnitNodeGroupResponse() (response *DescribeEdgeUnitNodeGroup
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitNodeGroup(request *DescribeEdgeUnitNodeGroupRequest) (response *DescribeEdgeUnitNodeGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitNodeGroupRequest()
-    }
-    
-    response = NewDescribeEdgeUnitNodeGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitNodeGroupWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitNodeGroup
@@ -4171,6 +4111,11 @@ func (c *Client) DescribeEdgeUnitNodeGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEdgeUnitNodeGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitNodeGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitNodeGroupResponse()
@@ -4213,13 +4158,7 @@ func NewDescribeEdgeUnitNodeUnitTemplatesResponse() (response *DescribeEdgeUnitN
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitNodeUnitTemplates(request *DescribeEdgeUnitNodeUnitTemplatesRequest) (response *DescribeEdgeUnitNodeUnitTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitNodeUnitTemplatesRequest()
-    }
-    
-    response = NewDescribeEdgeUnitNodeUnitTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitNodeUnitTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitNodeUnitTemplates
@@ -4243,6 +4182,11 @@ func (c *Client) DescribeEdgeUnitNodeUnitTemplatesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeEdgeUnitNodeUnitTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitNodeUnitTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitNodeUnitTemplatesResponse()
@@ -4291,13 +4235,7 @@ func NewDescribeEdgeUnitsCloudResponse() (response *DescribeEdgeUnitsCloudRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeEdgeUnitsCloud(request *DescribeEdgeUnitsCloudRequest) (response *DescribeEdgeUnitsCloudResponse, err error) {
-    if request == nil {
-        request = NewDescribeEdgeUnitsCloudRequest()
-    }
-    
-    response = NewDescribeEdgeUnitsCloudResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEdgeUnitsCloudWithContext(context.Background(), request)
 }
 
 // DescribeEdgeUnitsCloud
@@ -4327,6 +4265,11 @@ func (c *Client) DescribeEdgeUnitsCloudWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEdgeUnitsCloudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeUnitsCloud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEdgeUnitsCloudResponse()
@@ -4369,13 +4312,7 @@ func NewDescribeMonitorMetricsResponse() (response *DescribeMonitorMetricsRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMonitorMetrics(request *DescribeMonitorMetricsRequest) (response *DescribeMonitorMetricsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonitorMetricsRequest()
-    }
-    
-    response = NewDescribeMonitorMetricsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMonitorMetricsWithContext(context.Background(), request)
 }
 
 // DescribeMonitorMetrics
@@ -4399,6 +4336,11 @@ func (c *Client) DescribeMonitorMetricsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMonitorMetricsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitorMetrics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMonitorMetricsResponse()
@@ -4441,13 +4383,7 @@ func NewDescribeNamespaceResponse() (response *DescribeNamespaceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNamespace(request *DescribeNamespaceRequest) (response *DescribeNamespaceResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespaceRequest()
-    }
-    
-    response = NewDescribeNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespaceWithContext(context.Background(), request)
 }
 
 // DescribeNamespace
@@ -4471,6 +4407,11 @@ func (c *Client) DescribeNamespaceWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespaceResponse()
@@ -4513,13 +4454,7 @@ func NewDescribeNamespaceResourcesResponse() (response *DescribeNamespaceResourc
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNamespaceResources(request *DescribeNamespaceResourcesRequest) (response *DescribeNamespaceResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespaceResourcesRequest()
-    }
-    
-    response = NewDescribeNamespaceResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespaceResourcesWithContext(context.Background(), request)
 }
 
 // DescribeNamespaceResources
@@ -4543,6 +4478,11 @@ func (c *Client) DescribeNamespaceResourcesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeNamespaceResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespaceResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespaceResourcesResponse()
@@ -4585,13 +4525,7 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (response *DescribeNamespacesResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespacesRequest()
-    }
-    
-    response = NewDescribeNamespacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespacesWithContext(context.Background(), request)
 }
 
 // DescribeNamespaces
@@ -4615,6 +4549,11 @@ func (c *Client) DescribeNamespacesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNamespacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespacesResponse()
@@ -4657,13 +4596,7 @@ func NewDescribeNodeUnitResponse() (response *DescribeNodeUnitResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNodeUnit(request *DescribeNodeUnitRequest) (response *DescribeNodeUnitResponse, err error) {
-    if request == nil {
-        request = NewDescribeNodeUnitRequest()
-    }
-    
-    response = NewDescribeNodeUnitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNodeUnitWithContext(context.Background(), request)
 }
 
 // DescribeNodeUnit
@@ -4687,6 +4620,11 @@ func (c *Client) DescribeNodeUnitWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeNodeUnitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeUnit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNodeUnitResponse()
@@ -4729,13 +4667,7 @@ func NewDescribeNodeUnitTemplateOnNodeGroupResponse() (response *DescribeNodeUni
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNodeUnitTemplateOnNodeGroup(request *DescribeNodeUnitTemplateOnNodeGroupRequest) (response *DescribeNodeUnitTemplateOnNodeGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeNodeUnitTemplateOnNodeGroupRequest()
-    }
-    
-    response = NewDescribeNodeUnitTemplateOnNodeGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNodeUnitTemplateOnNodeGroupWithContext(context.Background(), request)
 }
 
 // DescribeNodeUnitTemplateOnNodeGroup
@@ -4759,6 +4691,11 @@ func (c *Client) DescribeNodeUnitTemplateOnNodeGroupWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeNodeUnitTemplateOnNodeGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeUnitTemplateOnNodeGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNodeUnitTemplateOnNodeGroupResponse()
@@ -4801,13 +4738,7 @@ func NewDescribeSecretResponse() (response *DescribeSecretResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecret(request *DescribeSecretRequest) (response *DescribeSecretResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecretRequest()
-    }
-    
-    response = NewDescribeSecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecretWithContext(context.Background(), request)
 }
 
 // DescribeSecret
@@ -4831,6 +4762,11 @@ func (c *Client) DescribeSecretWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecretResponse()
@@ -4873,13 +4809,7 @@ func NewDescribeSecretYamlErrorResponse() (response *DescribeSecretYamlErrorResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecretYamlError(request *DescribeSecretYamlErrorRequest) (response *DescribeSecretYamlErrorResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecretYamlErrorRequest()
-    }
-    
-    response = NewDescribeSecretYamlErrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecretYamlErrorWithContext(context.Background(), request)
 }
 
 // DescribeSecretYamlError
@@ -4903,6 +4833,11 @@ func (c *Client) DescribeSecretYamlErrorWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSecretYamlErrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecretYamlError require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecretYamlErrorResponse()
@@ -4945,13 +4880,7 @@ func NewDescribeSecretsResponse() (response *DescribeSecretsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecrets(request *DescribeSecretsRequest) (response *DescribeSecretsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecretsRequest()
-    }
-    
-    response = NewDescribeSecretsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecretsWithContext(context.Background(), request)
 }
 
 // DescribeSecrets
@@ -4975,6 +4904,11 @@ func (c *Client) DescribeSecretsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSecretsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecrets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecretsResponse()
@@ -5017,13 +4951,7 @@ func NewGetMarketComponentResponse() (response *GetMarketComponentResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetMarketComponent(request *GetMarketComponentRequest) (response *GetMarketComponentResponse, err error) {
-    if request == nil {
-        request = NewGetMarketComponentRequest()
-    }
-    
-    response = NewGetMarketComponentResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetMarketComponentWithContext(context.Background(), request)
 }
 
 // GetMarketComponent
@@ -5047,6 +4975,11 @@ func (c *Client) GetMarketComponentWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetMarketComponentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMarketComponent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetMarketComponentResponse()
@@ -5089,13 +5022,7 @@ func NewGetMarketComponentListResponse() (response *GetMarketComponentListRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetMarketComponentList(request *GetMarketComponentListRequest) (response *GetMarketComponentListResponse, err error) {
-    if request == nil {
-        request = NewGetMarketComponentListRequest()
-    }
-    
-    response = NewGetMarketComponentListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetMarketComponentListWithContext(context.Background(), request)
 }
 
 // GetMarketComponentList
@@ -5119,6 +5046,11 @@ func (c *Client) GetMarketComponentListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetMarketComponentListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMarketComponentList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetMarketComponentListResponse()
@@ -5168,13 +5100,7 @@ func NewModifyApplicationBasicInfoResponse() (response *ModifyApplicationBasicIn
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyApplicationBasicInfo(request *ModifyApplicationBasicInfoRequest) (response *ModifyApplicationBasicInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyApplicationBasicInfoRequest()
-    }
-    
-    response = NewModifyApplicationBasicInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApplicationBasicInfoWithContext(context.Background(), request)
 }
 
 // ModifyApplicationBasicInfo
@@ -5205,6 +5131,11 @@ func (c *Client) ModifyApplicationBasicInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyApplicationBasicInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationBasicInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApplicationBasicInfoResponse()
@@ -5247,13 +5178,7 @@ func NewModifyApplicationVisualizationResponse() (response *ModifyApplicationVis
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyApplicationVisualization(request *ModifyApplicationVisualizationRequest) (response *ModifyApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewModifyApplicationVisualizationRequest()
-    }
-    
-    response = NewModifyApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // ModifyApplicationVisualization
@@ -5277,6 +5202,11 @@ func (c *Client) ModifyApplicationVisualizationWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApplicationVisualizationResponse()
@@ -5319,13 +5249,7 @@ func NewModifyConfigMapResponse() (response *ModifyConfigMapResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyConfigMap(request *ModifyConfigMapRequest) (response *ModifyConfigMapResponse, err error) {
-    if request == nil {
-        request = NewModifyConfigMapRequest()
-    }
-    
-    response = NewModifyConfigMapResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyConfigMapWithContext(context.Background(), request)
 }
 
 // ModifyConfigMap
@@ -5349,6 +5273,11 @@ func (c *Client) ModifyConfigMapWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyConfigMapRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigMap require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyConfigMapResponse()
@@ -5391,13 +5320,7 @@ func NewModifyEdgeNodeLabelsResponse() (response *ModifyEdgeNodeLabelsResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeNodeLabels(request *ModifyEdgeNodeLabelsRequest) (response *ModifyEdgeNodeLabelsResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeNodeLabelsRequest()
-    }
-    
-    response = NewModifyEdgeNodeLabelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeNodeLabelsWithContext(context.Background(), request)
 }
 
 // ModifyEdgeNodeLabels
@@ -5421,6 +5344,11 @@ func (c *Client) ModifyEdgeNodeLabelsWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyEdgeNodeLabelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeNodeLabels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeNodeLabelsResponse()
@@ -5470,13 +5398,7 @@ func NewModifyEdgeUnitResponse() (response *ModifyEdgeUnitResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnit(request *ModifyEdgeUnitRequest) (response *ModifyEdgeUnitResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeUnitRequest()
-    }
-    
-    response = NewModifyEdgeUnitResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeUnitWithContext(context.Background(), request)
 }
 
 // ModifyEdgeUnit
@@ -5507,6 +5429,11 @@ func (c *Client) ModifyEdgeUnitWithContext(ctx context.Context, request *ModifyE
     if request == nil {
         request = NewModifyEdgeUnitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitResponse()
@@ -5549,13 +5476,7 @@ func NewModifyEdgeUnitApplicationBasicInfoResponse() (response *ModifyEdgeUnitAp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitApplicationBasicInfo(request *ModifyEdgeUnitApplicationBasicInfoRequest) (response *ModifyEdgeUnitApplicationBasicInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeUnitApplicationBasicInfoRequest()
-    }
-    
-    response = NewModifyEdgeUnitApplicationBasicInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeUnitApplicationBasicInfoWithContext(context.Background(), request)
 }
 
 // ModifyEdgeUnitApplicationBasicInfo
@@ -5579,6 +5500,11 @@ func (c *Client) ModifyEdgeUnitApplicationBasicInfoWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyEdgeUnitApplicationBasicInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnitApplicationBasicInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationBasicInfoResponse()
@@ -5621,13 +5547,7 @@ func NewModifyEdgeUnitApplicationVisualizationResponse() (response *ModifyEdgeUn
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitApplicationVisualization(request *ModifyEdgeUnitApplicationVisualizationRequest) (response *ModifyEdgeUnitApplicationVisualizationResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeUnitApplicationVisualizationRequest()
-    }
-    
-    response = NewModifyEdgeUnitApplicationVisualizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeUnitApplicationVisualizationWithContext(context.Background(), request)
 }
 
 // ModifyEdgeUnitApplicationVisualization
@@ -5651,6 +5571,11 @@ func (c *Client) ModifyEdgeUnitApplicationVisualizationWithContext(ctx context.C
     if request == nil {
         request = NewModifyEdgeUnitApplicationVisualizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnitApplicationVisualization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationVisualizationResponse()
@@ -5693,13 +5618,7 @@ func NewModifyEdgeUnitApplicationYamlResponse() (response *ModifyEdgeUnitApplica
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitApplicationYaml(request *ModifyEdgeUnitApplicationYamlRequest) (response *ModifyEdgeUnitApplicationYamlResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeUnitApplicationYamlRequest()
-    }
-    
-    response = NewModifyEdgeUnitApplicationYamlResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeUnitApplicationYamlWithContext(context.Background(), request)
 }
 
 // ModifyEdgeUnitApplicationYaml
@@ -5723,6 +5642,11 @@ func (c *Client) ModifyEdgeUnitApplicationYamlWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyEdgeUnitApplicationYamlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnitApplicationYaml require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationYamlResponse()
@@ -5765,13 +5689,7 @@ func NewModifyEdgeUnitDeployGridItemResponse() (response *ModifyEdgeUnitDeployGr
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitDeployGridItem(request *ModifyEdgeUnitDeployGridItemRequest) (response *ModifyEdgeUnitDeployGridItemResponse, err error) {
-    if request == nil {
-        request = NewModifyEdgeUnitDeployGridItemRequest()
-    }
-    
-    response = NewModifyEdgeUnitDeployGridItemResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEdgeUnitDeployGridItemWithContext(context.Background(), request)
 }
 
 // ModifyEdgeUnitDeployGridItem
@@ -5795,6 +5713,11 @@ func (c *Client) ModifyEdgeUnitDeployGridItemWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyEdgeUnitDeployGridItemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnitDeployGridItem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitDeployGridItemResponse()
@@ -5837,13 +5760,7 @@ func NewModifyNodeUnitTemplateResponse() (response *ModifyNodeUnitTemplateRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyNodeUnitTemplate(request *ModifyNodeUnitTemplateRequest) (response *ModifyNodeUnitTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyNodeUnitTemplateRequest()
-    }
-    
-    response = NewModifyNodeUnitTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyNodeUnitTemplateWithContext(context.Background(), request)
 }
 
 // ModifyNodeUnitTemplate
@@ -5867,6 +5784,11 @@ func (c *Client) ModifyNodeUnitTemplateWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyNodeUnitTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNodeUnitTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyNodeUnitTemplateResponse()
@@ -5909,13 +5831,7 @@ func NewModifySecretResponse() (response *ModifySecretResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifySecret(request *ModifySecretRequest) (response *ModifySecretResponse, err error) {
-    if request == nil {
-        request = NewModifySecretRequest()
-    }
-    
-    response = NewModifySecretResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecretWithContext(context.Background(), request)
 }
 
 // ModifySecret
@@ -5939,6 +5855,11 @@ func (c *Client) ModifySecretWithContext(ctx context.Context, request *ModifySec
     if request == nil {
         request = NewModifySecretRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecret require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecretResponse()
@@ -5981,13 +5902,7 @@ func NewRedeployEdgeUnitApplicationResponse() (response *RedeployEdgeUnitApplica
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RedeployEdgeUnitApplication(request *RedeployEdgeUnitApplicationRequest) (response *RedeployEdgeUnitApplicationResponse, err error) {
-    if request == nil {
-        request = NewRedeployEdgeUnitApplicationRequest()
-    }
-    
-    response = NewRedeployEdgeUnitApplicationResponse()
-    err = c.Send(request, response)
-    return
+    return c.RedeployEdgeUnitApplicationWithContext(context.Background(), request)
 }
 
 // RedeployEdgeUnitApplication
@@ -6011,6 +5926,11 @@ func (c *Client) RedeployEdgeUnitApplicationWithContext(ctx context.Context, req
     if request == nil {
         request = NewRedeployEdgeUnitApplicationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RedeployEdgeUnitApplication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRedeployEdgeUnitApplicationResponse()

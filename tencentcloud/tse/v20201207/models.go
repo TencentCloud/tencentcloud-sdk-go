@@ -206,6 +206,15 @@ type EnvInfo struct {
 
 	// config-server公网访问地址
 	ConfigInternetServiceIp *string `json:"ConfigInternetServiceIp,omitempty" name:"ConfigInternetServiceIp"`
+
+	// 规格ID
+	SpecId *string `json:"SpecId,omitempty" name:"SpecId"`
+
+	// 环境的节点数
+	EnvReplica *int64 `json:"EnvReplica,omitempty" name:"EnvReplica"`
+
+	// 环境运行的节点数
+	RunningCount *int64 `json:"RunningCount,omitempty" name:"RunningCount"`
 }
 
 type Filter struct {

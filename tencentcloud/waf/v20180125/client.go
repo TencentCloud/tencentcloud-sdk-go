@@ -16,6 +16,7 @@ package v20180125
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCustomRuleResponse, err error) {
-    if request == nil {
-        request = NewAddCustomRuleRequest()
-    }
-    
-    response = NewAddCustomRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddCustomRuleWithContext(context.Background(), request)
 }
 
 // AddCustomRule
@@ -85,6 +80,11 @@ func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCusto
     if request == nil {
         request = NewAddCustomRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCustomRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddCustomRuleResponse()
@@ -134,13 +134,7 @@ func NewCreateAccessExportResponse() (response *CreateAccessExportResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAccessExport(request *CreateAccessExportRequest) (response *CreateAccessExportResponse, err error) {
-    if request == nil {
-        request = NewCreateAccessExportRequest()
-    }
-    
-    response = NewCreateAccessExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAccessExportWithContext(context.Background(), request)
 }
 
 // CreateAccessExport
@@ -171,6 +165,11 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAccessExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAccessExportResponse()
@@ -201,13 +200,7 @@ func NewCreateAttackDownloadTaskResponse() (response *CreateAttackDownloadTaskRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) CreateAttackDownloadTask(request *CreateAttackDownloadTaskRequest) (response *CreateAttackDownloadTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAttackDownloadTaskRequest()
-    }
-    
-    response = NewCreateAttackDownloadTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAttackDownloadTaskWithContext(context.Background(), request)
 }
 
 // CreateAttackDownloadTask
@@ -219,6 +212,11 @@ func (c *Client) CreateAttackDownloadTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAttackDownloadTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAttackDownloadTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAttackDownloadTaskResponse()
@@ -268,13 +266,7 @@ func NewDeleteAccessExportResponse() (response *DeleteAccessExportResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAccessExport(request *DeleteAccessExportRequest) (response *DeleteAccessExportResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccessExportRequest()
-    }
-    
-    response = NewDeleteAccessExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccessExportWithContext(context.Background(), request)
 }
 
 // DeleteAccessExport
@@ -305,6 +297,11 @@ func (c *Client) DeleteAccessExportWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAccessExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccessExportResponse()
@@ -336,13 +333,7 @@ func NewDeleteAttackDownloadRecordResponse() (response *DeleteAttackDownloadReco
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordRequest) (response *DeleteAttackDownloadRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteAttackDownloadRecordRequest()
-    }
-    
-    response = NewDeleteAttackDownloadRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAttackDownloadRecordWithContext(context.Background(), request)
 }
 
 // DeleteAttackDownloadRecord
@@ -355,6 +346,11 @@ func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAttackDownloadRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAttackDownloadRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAttackDownloadRecordResponse()
@@ -385,13 +381,7 @@ func NewDeleteDownloadRecordResponse() (response *DeleteDownloadRecordResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteDownloadRecord(request *DeleteDownloadRecordRequest) (response *DeleteDownloadRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteDownloadRecordRequest()
-    }
-    
-    response = NewDeleteDownloadRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDownloadRecordWithContext(context.Background(), request)
 }
 
 // DeleteDownloadRecord
@@ -403,6 +393,11 @@ func (c *Client) DeleteDownloadRecordWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteDownloadRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDownloadRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDownloadRecordResponse()
@@ -433,13 +428,7 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
-    if request == nil {
-        request = NewDeleteSessionRequest()
-    }
-    
-    response = NewDeleteSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSessionWithContext(context.Background(), request)
 }
 
 // DeleteSession
@@ -451,6 +440,11 @@ func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSe
     if request == nil {
         request = NewDeleteSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSessionResponse()
@@ -500,13 +494,7 @@ func NewDescribeAccessExportsResponse() (response *DescribeAccessExportsResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessExports(request *DescribeAccessExportsRequest) (response *DescribeAccessExportsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessExportsRequest()
-    }
-    
-    response = NewDescribeAccessExportsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessExportsWithContext(context.Background(), request)
 }
 
 // DescribeAccessExports
@@ -537,6 +525,11 @@ func (c *Client) DescribeAccessExportsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAccessExportsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessExports require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessExportsResponse()
@@ -586,13 +579,7 @@ func NewDescribeAccessFastAnalysisResponse() (response *DescribeAccessFastAnalys
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessFastAnalysis(request *DescribeAccessFastAnalysisRequest) (response *DescribeAccessFastAnalysisResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessFastAnalysisRequest()
-    }
-    
-    response = NewDescribeAccessFastAnalysisResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessFastAnalysisWithContext(context.Background(), request)
 }
 
 // DescribeAccessFastAnalysis
@@ -623,6 +610,11 @@ func (c *Client) DescribeAccessFastAnalysisWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAccessFastAnalysisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessFastAnalysis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessFastAnalysisResponse()
@@ -672,13 +664,7 @@ func NewDescribeAccessIndexResponse() (response *DescribeAccessIndexResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAccessIndex(request *DescribeAccessIndexRequest) (response *DescribeAccessIndexResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessIndexRequest()
-    }
-    
-    response = NewDescribeAccessIndexResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessIndexWithContext(context.Background(), request)
 }
 
 // DescribeAccessIndex
@@ -709,6 +695,11 @@ func (c *Client) DescribeAccessIndexWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAccessIndexRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessIndex require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessIndexResponse()
@@ -739,13 +730,7 @@ func NewDescribeCustomRulesResponse() (response *DescribeCustomRulesResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomRulesRequest()
-    }
-    
-    response = NewDescribeCustomRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomRulesWithContext(context.Background(), request)
 }
 
 // DescribeCustomRules
@@ -757,6 +742,11 @@ func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCustomRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomRulesResponse()
@@ -790,13 +780,7 @@ func NewDescribeFlowTrendResponse() (response *DescribeFlowTrendResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowTrendRequest()
-    }
-    
-    response = NewDescribeFlowTrendResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowTrendWithContext(context.Background(), request)
 }
 
 // DescribeFlowTrend
@@ -811,6 +795,11 @@ func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFlowTrendRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowTrend require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowTrendResponse()
@@ -855,13 +844,7 @@ func NewDescribeUserClbWafRegionsResponse() (response *DescribeUserClbWafRegions
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeUserClbWafRegions(request *DescribeUserClbWafRegionsRequest) (response *DescribeUserClbWafRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserClbWafRegionsRequest()
-    }
-    
-    response = NewDescribeUserClbWafRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserClbWafRegionsWithContext(context.Background(), request)
 }
 
 // DescribeUserClbWafRegions
@@ -887,6 +870,11 @@ func (c *Client) DescribeUserClbWafRegionsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeUserClbWafRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserClbWafRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserClbWafRegionsResponse()
@@ -936,13 +924,7 @@ func NewModifyAccessPeriodResponse() (response *ModifyAccessPeriodResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (response *ModifyAccessPeriodResponse, err error) {
-    if request == nil {
-        request = NewModifyAccessPeriodRequest()
-    }
-    
-    response = NewModifyAccessPeriodResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccessPeriodWithContext(context.Background(), request)
 }
 
 // ModifyAccessPeriod
@@ -973,6 +955,11 @@ func (c *Client) ModifyAccessPeriodWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAccessPeriodRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessPeriod require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccessPeriodResponse()
@@ -1003,13 +990,7 @@ func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyCustomRuleStatusRequest()
-    }
-    
-    response = NewModifyCustomRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCustomRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifyCustomRuleStatus
@@ -1021,6 +1002,11 @@ func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCustomRuleStatusResponse()
@@ -1070,13 +1056,7 @@ func NewSearchAccessLogResponse() (response *SearchAccessLogResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchAccessLog(request *SearchAccessLogRequest) (response *SearchAccessLogResponse, err error) {
-    if request == nil {
-        request = NewSearchAccessLogRequest()
-    }
-    
-    response = NewSearchAccessLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchAccessLogWithContext(context.Background(), request)
 }
 
 // SearchAccessLog
@@ -1107,6 +1087,11 @@ func (c *Client) SearchAccessLogWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchAccessLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchAccessLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchAccessLogResponse()

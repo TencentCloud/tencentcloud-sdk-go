@@ -16,6 +16,7 @@ package v20200727
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewDescribeInvocationResultResponse() (response *DescribeInvocationResultRe
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETER_REQUESTPARSEERROR = "InvalidParameter.RequestParseError"
 func (c *Client) DescribeInvocationResult(request *DescribeInvocationResultRequest) (response *DescribeInvocationResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeInvocationResultRequest()
-    }
-    
-    response = NewDescribeInvocationResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInvocationResultWithContext(context.Background(), request)
 }
 
 // DescribeInvocationResult
@@ -95,6 +90,11 @@ func (c *Client) DescribeInvocationResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeInvocationResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInvocationResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInvocationResultResponse()
@@ -134,13 +134,7 @@ func NewInvokeServiceResponse() (response *InvokeServiceResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETER_REQUESTPARSEERROR = "InvalidParameter.RequestParseError"
 func (c *Client) InvokeService(request *InvokeServiceRequest) (response *InvokeServiceResponse, err error) {
-    if request == nil {
-        request = NewInvokeServiceRequest()
-    }
-    
-    response = NewInvokeServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InvokeServiceWithContext(context.Background(), request)
 }
 
 // InvokeService
@@ -161,6 +155,11 @@ func (c *Client) InvokeServiceWithContext(ctx context.Context, request *InvokeSe
     if request == nil {
         request = NewInvokeServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInvokeServiceResponse()

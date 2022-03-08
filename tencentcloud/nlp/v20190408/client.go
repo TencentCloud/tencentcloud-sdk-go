@@ -16,6 +16,7 @@ package v20190408
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewAutoSummarizationResponse() (response *AutoSummarizationResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) AutoSummarization(request *AutoSummarizationRequest) (response *AutoSummarizationResponse, err error) {
-    if request == nil {
-        request = NewAutoSummarizationRequest()
-    }
-    
-    response = NewAutoSummarizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.AutoSummarizationWithContext(context.Background(), request)
 }
 
 // AutoSummarization
@@ -101,6 +96,11 @@ func (c *Client) AutoSummarizationWithContext(ctx context.Context, request *Auto
     if request == nil {
         request = NewAutoSummarizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AutoSummarization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAutoSummarizationResponse()
@@ -139,13 +139,7 @@ func NewChatBotResponse() (response *ChatBotResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) ChatBot(request *ChatBotRequest) (response *ChatBotResponse, err error) {
-    if request == nil {
-        request = NewChatBotRequest()
-    }
-    
-    response = NewChatBotResponse()
-    err = c.Send(request, response)
-    return
+    return c.ChatBotWithContext(context.Background(), request)
 }
 
 // ChatBot
@@ -165,6 +159,11 @@ func (c *Client) ChatBotWithContext(ctx context.Context, request *ChatBotRequest
     if request == nil {
         request = NewChatBotRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChatBot require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewChatBotResponse()
@@ -213,13 +212,7 @@ func NewCreateDictResponse() (response *CreateDictResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) CreateDict(request *CreateDictRequest) (response *CreateDictResponse, err error) {
-    if request == nil {
-        request = NewCreateDictRequest()
-    }
-    
-    response = NewCreateDictResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDictWithContext(context.Background(), request)
 }
 
 // CreateDict
@@ -249,6 +242,11 @@ func (c *Client) CreateDictWithContext(ctx context.Context, request *CreateDictR
     if request == nil {
         request = NewCreateDictRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDict require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDictResponse()
@@ -282,13 +280,7 @@ func NewCreateWordItemsResponse() (response *CreateWordItemsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 func (c *Client) CreateWordItems(request *CreateWordItemsRequest) (response *CreateWordItemsResponse, err error) {
-    if request == nil {
-        request = NewCreateWordItemsRequest()
-    }
-    
-    response = NewCreateWordItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWordItemsWithContext(context.Background(), request)
 }
 
 // CreateWordItems
@@ -303,6 +295,11 @@ func (c *Client) CreateWordItemsWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateWordItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWordItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWordItemsResponse()
@@ -336,13 +333,7 @@ func NewDeleteDictResponse() (response *DeleteDictResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 func (c *Client) DeleteDict(request *DeleteDictRequest) (response *DeleteDictResponse, err error) {
-    if request == nil {
-        request = NewDeleteDictRequest()
-    }
-    
-    response = NewDeleteDictResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDictWithContext(context.Background(), request)
 }
 
 // DeleteDict
@@ -357,6 +348,11 @@ func (c *Client) DeleteDictWithContext(ctx context.Context, request *DeleteDictR
     if request == nil {
         request = NewDeleteDictRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDict require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDictResponse()
@@ -390,13 +386,7 @@ func NewDeleteWordItemsResponse() (response *DeleteWordItemsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 func (c *Client) DeleteWordItems(request *DeleteWordItemsRequest) (response *DeleteWordItemsResponse, err error) {
-    if request == nil {
-        request = NewDeleteWordItemsRequest()
-    }
-    
-    response = NewDeleteWordItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWordItemsWithContext(context.Background(), request)
 }
 
 // DeleteWordItems
@@ -411,6 +401,11 @@ func (c *Client) DeleteWordItemsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteWordItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWordItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWordItemsResponse()
@@ -445,13 +440,7 @@ func NewDependencyParsingResponse() (response *DependencyParsingResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) DependencyParsing(request *DependencyParsingRequest) (response *DependencyParsingResponse, err error) {
-    if request == nil {
-        request = NewDependencyParsingRequest()
-    }
-    
-    response = NewDependencyParsingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DependencyParsingWithContext(context.Background(), request)
 }
 
 // DependencyParsing
@@ -467,6 +456,11 @@ func (c *Client) DependencyParsingWithContext(ctx context.Context, request *Depe
     if request == nil {
         request = NewDependencyParsingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DependencyParsing require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDependencyParsingResponse()
@@ -502,13 +496,7 @@ func NewDescribeDictResponse() (response *DescribeDictResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DescribeDict(request *DescribeDictRequest) (response *DescribeDictResponse, err error) {
-    if request == nil {
-        request = NewDescribeDictRequest()
-    }
-    
-    response = NewDescribeDictResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDictWithContext(context.Background(), request)
 }
 
 // DescribeDict
@@ -525,6 +513,11 @@ func (c *Client) DescribeDictWithContext(ctx context.Context, request *DescribeD
     if request == nil {
         request = NewDescribeDictRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDict require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDictResponse()
@@ -561,13 +554,7 @@ func NewDescribeDictsResponse() (response *DescribeDictsResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DescribeDicts(request *DescribeDictsRequest) (response *DescribeDictsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDictsRequest()
-    }
-    
-    response = NewDescribeDictsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDictsWithContext(context.Background(), request)
 }
 
 // DescribeDicts
@@ -585,6 +572,11 @@ func (c *Client) DescribeDictsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeDictsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDicts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDictsResponse()
@@ -636,13 +628,7 @@ func NewDescribeEntityResponse() (response *DescribeEntityResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEntity(request *DescribeEntityRequest) (response *DescribeEntityResponse, err error) {
-    if request == nil {
-        request = NewDescribeEntityRequest()
-    }
-    
-    response = NewDescribeEntityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEntityWithContext(context.Background(), request)
 }
 
 // DescribeEntity
@@ -675,6 +661,11 @@ func (c *Client) DescribeEntityWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEntityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEntity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEntityResponse()
@@ -725,13 +716,7 @@ func NewDescribeRelationResponse() (response *DescribeRelationResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRelation(request *DescribeRelationRequest) (response *DescribeRelationResponse, err error) {
-    if request == nil {
-        request = NewDescribeRelationRequest()
-    }
-    
-    response = NewDescribeRelationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRelationWithContext(context.Background(), request)
 }
 
 // DescribeRelation
@@ -763,6 +748,11 @@ func (c *Client) DescribeRelationWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRelationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRelationResponse()
@@ -812,13 +802,7 @@ func NewDescribeTripleResponse() (response *DescribeTripleResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTriple(request *DescribeTripleRequest) (response *DescribeTripleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTripleRequest()
-    }
-    
-    response = NewDescribeTripleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTripleWithContext(context.Background(), request)
 }
 
 // DescribeTriple
@@ -849,6 +833,11 @@ func (c *Client) DescribeTripleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTripleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTriple require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTripleResponse()
@@ -885,13 +874,7 @@ func NewDescribeWordItemsResponse() (response *DescribeWordItemsResponse) {
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWordItemsRequest()
-    }
-    
-    response = NewDescribeWordItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWordItemsWithContext(context.Background(), request)
 }
 
 // DescribeWordItems
@@ -909,6 +892,11 @@ func (c *Client) DescribeWordItemsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeWordItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWordItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWordItemsResponse()
@@ -948,13 +936,7 @@ func NewKeywordsExtractionResponse() (response *KeywordsExtractionResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) KeywordsExtraction(request *KeywordsExtractionRequest) (response *KeywordsExtractionResponse, err error) {
-    if request == nil {
-        request = NewKeywordsExtractionRequest()
-    }
-    
-    response = NewKeywordsExtractionResponse()
-    err = c.Send(request, response)
-    return
+    return c.KeywordsExtractionWithContext(context.Background(), request)
 }
 
 // KeywordsExtraction
@@ -975,6 +957,11 @@ func (c *Client) KeywordsExtractionWithContext(ctx context.Context, request *Key
     if request == nil {
         request = NewKeywordsExtractionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("KeywordsExtraction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewKeywordsExtractionResponse()
@@ -1028,13 +1015,7 @@ func NewLexicalAnalysisResponse() (response *LexicalAnalysisResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) LexicalAnalysis(request *LexicalAnalysisRequest) (response *LexicalAnalysisResponse, err error) {
-    if request == nil {
-        request = NewLexicalAnalysisRequest()
-    }
-    
-    response = NewLexicalAnalysisResponse()
-    err = c.Send(request, response)
-    return
+    return c.LexicalAnalysisWithContext(context.Background(), request)
 }
 
 // LexicalAnalysis
@@ -1069,6 +1050,11 @@ func (c *Client) LexicalAnalysisWithContext(ctx context.Context, request *Lexica
     if request == nil {
         request = NewLexicalAnalysisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LexicalAnalysis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLexicalAnalysisResponse()
@@ -1103,13 +1089,7 @@ func NewSearchWordItemsResponse() (response *SearchWordItemsResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 func (c *Client) SearchWordItems(request *SearchWordItemsRequest) (response *SearchWordItemsResponse, err error) {
-    if request == nil {
-        request = NewSearchWordItemsRequest()
-    }
-    
-    response = NewSearchWordItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchWordItemsWithContext(context.Background(), request)
 }
 
 // SearchWordItems
@@ -1125,6 +1105,11 @@ func (c *Client) SearchWordItemsWithContext(ctx context.Context, request *Search
     if request == nil {
         request = NewSearchWordItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchWordItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchWordItemsResponse()
@@ -1166,13 +1151,7 @@ func NewSentenceEmbeddingResponse() (response *SentenceEmbeddingResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) SentenceEmbedding(request *SentenceEmbeddingRequest) (response *SentenceEmbeddingResponse, err error) {
-    if request == nil {
-        request = NewSentenceEmbeddingRequest()
-    }
-    
-    response = NewSentenceEmbeddingResponse()
-    err = c.Send(request, response)
-    return
+    return c.SentenceEmbeddingWithContext(context.Background(), request)
 }
 
 // SentenceEmbedding
@@ -1195,6 +1174,11 @@ func (c *Client) SentenceEmbeddingWithContext(ctx context.Context, request *Sent
     if request == nil {
         request = NewSentenceEmbeddingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SentenceEmbedding require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSentenceEmbeddingResponse()
@@ -1237,13 +1221,7 @@ func NewSentimentAnalysisResponse() (response *SentimentAnalysisResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) SentimentAnalysis(request *SentimentAnalysisRequest) (response *SentimentAnalysisResponse, err error) {
-    if request == nil {
-        request = NewSentimentAnalysisRequest()
-    }
-    
-    response = NewSentimentAnalysisResponse()
-    err = c.Send(request, response)
-    return
+    return c.SentimentAnalysisWithContext(context.Background(), request)
 }
 
 // SentimentAnalysis
@@ -1267,6 +1245,11 @@ func (c *Client) SentimentAnalysisWithContext(ctx context.Context, request *Sent
     if request == nil {
         request = NewSentimentAnalysisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SentimentAnalysis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSentimentAnalysisResponse()
@@ -1304,13 +1287,7 @@ func NewSimilarWordsResponse() (response *SimilarWordsResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) SimilarWords(request *SimilarWordsRequest) (response *SimilarWordsResponse, err error) {
-    if request == nil {
-        request = NewSimilarWordsRequest()
-    }
-    
-    response = NewSimilarWordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SimilarWordsWithContext(context.Background(), request)
 }
 
 // SimilarWords
@@ -1329,6 +1306,11 @@ func (c *Client) SimilarWordsWithContext(ctx context.Context, request *SimilarWo
     if request == nil {
         request = NewSimilarWordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SimilarWords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSimilarWordsResponse()
@@ -1382,13 +1364,7 @@ func NewTextClassificationResponse() (response *TextClassificationResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) TextClassification(request *TextClassificationRequest) (response *TextClassificationResponse, err error) {
-    if request == nil {
-        request = NewTextClassificationRequest()
-    }
-    
-    response = NewTextClassificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextClassificationWithContext(context.Background(), request)
 }
 
 // TextClassification
@@ -1423,6 +1399,11 @@ func (c *Client) TextClassificationWithContext(ctx context.Context, request *Tex
     if request == nil {
         request = NewTextClassificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextClassification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextClassificationResponse()
@@ -1462,13 +1443,7 @@ func NewTextCorrectionResponse() (response *TextCorrectionResponse) {
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) TextCorrection(request *TextCorrectionRequest) (response *TextCorrectionResponse, err error) {
-    if request == nil {
-        request = NewTextCorrectionRequest()
-    }
-    
-    response = NewTextCorrectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextCorrectionWithContext(context.Background(), request)
 }
 
 // TextCorrection
@@ -1489,6 +1464,11 @@ func (c *Client) TextCorrectionWithContext(ctx context.Context, request *TextCor
     if request == nil {
         request = NewTextCorrectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextCorrection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextCorrectionResponse()
@@ -1536,13 +1516,7 @@ func NewTextSimilarityResponse() (response *TextSimilarityResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) TextSimilarity(request *TextSimilarityRequest) (response *TextSimilarityResponse, err error) {
-    if request == nil {
-        request = NewTextSimilarityRequest()
-    }
-    
-    response = NewTextSimilarityResponse()
-    err = c.Send(request, response)
-    return
+    return c.TextSimilarityWithContext(context.Background(), request)
 }
 
 // TextSimilarity
@@ -1571,6 +1545,11 @@ func (c *Client) TextSimilarityWithContext(ctx context.Context, request *TextSim
     if request == nil {
         request = NewTextSimilarityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextSimilarity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTextSimilarityResponse()
@@ -1605,13 +1584,7 @@ func NewUpdateDictResponse() (response *UpdateDictResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) UpdateDict(request *UpdateDictRequest) (response *UpdateDictResponse, err error) {
-    if request == nil {
-        request = NewUpdateDictRequest()
-    }
-    
-    response = NewUpdateDictResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDictWithContext(context.Background(), request)
 }
 
 // UpdateDict
@@ -1627,6 +1600,11 @@ func (c *Client) UpdateDictWithContext(ctx context.Context, request *UpdateDictR
     if request == nil {
         request = NewUpdateDictRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDict require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDictResponse()
@@ -1680,13 +1658,7 @@ func NewWordEmbeddingResponse() (response *WordEmbeddingResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) WordEmbedding(request *WordEmbeddingRequest) (response *WordEmbeddingResponse, err error) {
-    if request == nil {
-        request = NewWordEmbeddingRequest()
-    }
-    
-    response = NewWordEmbeddingResponse()
-    err = c.Send(request, response)
-    return
+    return c.WordEmbeddingWithContext(context.Background(), request)
 }
 
 // WordEmbedding
@@ -1721,6 +1693,11 @@ func (c *Client) WordEmbeddingWithContext(ctx context.Context, request *WordEmbe
     if request == nil {
         request = NewWordEmbeddingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WordEmbedding require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewWordEmbeddingResponse()
@@ -1756,13 +1733,7 @@ func NewWordSimilarityResponse() (response *WordSimilarityResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) WordSimilarity(request *WordSimilarityRequest) (response *WordSimilarityResponse, err error) {
-    if request == nil {
-        request = NewWordSimilarityRequest()
-    }
-    
-    response = NewWordSimilarityResponse()
-    err = c.Send(request, response)
-    return
+    return c.WordSimilarityWithContext(context.Background(), request)
 }
 
 // WordSimilarity
@@ -1779,6 +1750,11 @@ func (c *Client) WordSimilarityWithContext(ctx context.Context, request *WordSim
     if request == nil {
         request = NewWordSimilarityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WordSimilarity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewWordSimilarityResponse()

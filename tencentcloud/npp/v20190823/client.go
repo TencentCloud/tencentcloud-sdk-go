@@ -16,6 +16,7 @@ package v20190823
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewCreateCallBackResponse() (response *CreateCallBackResponse) {
 // CreateCallBack
 // 回拨呼叫请求
 func (c *Client) CreateCallBack(request *CreateCallBackRequest) (response *CreateCallBackResponse, err error) {
-    if request == nil {
-        request = NewCreateCallBackRequest()
-    }
-    
-    response = NewCreateCallBackResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCallBackWithContext(context.Background(), request)
 }
 
 // CreateCallBack
@@ -79,6 +74,11 @@ func (c *Client) CreateCallBackWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCallBackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCallBack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCallBackResponse()
@@ -106,13 +106,7 @@ func NewDelVirtualNumResponse() (response *DelVirtualNumResponse) {
 // DelVirtualNum
 // 直拨解绑中间号
 func (c *Client) DelVirtualNum(request *DelVirtualNumRequest) (response *DelVirtualNumResponse, err error) {
-    if request == nil {
-        request = NewDelVirtualNumRequest()
-    }
-    
-    response = NewDelVirtualNumResponse()
-    err = c.Send(request, response)
-    return
+    return c.DelVirtualNumWithContext(context.Background(), request)
 }
 
 // DelVirtualNum
@@ -121,6 +115,11 @@ func (c *Client) DelVirtualNumWithContext(ctx context.Context, request *DelVirtu
     if request == nil {
         request = NewDelVirtualNumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DelVirtualNum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDelVirtualNumResponse()
@@ -148,13 +147,7 @@ func NewDeleteCallBackResponse() (response *DeleteCallBackResponse) {
 // DeleteCallBack
 // 回拨呼叫取消
 func (c *Client) DeleteCallBack(request *DeleteCallBackRequest) (response *DeleteCallBackResponse, err error) {
-    if request == nil {
-        request = NewDeleteCallBackRequest()
-    }
-    
-    response = NewDeleteCallBackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCallBackWithContext(context.Background(), request)
 }
 
 // DeleteCallBack
@@ -163,6 +156,11 @@ func (c *Client) DeleteCallBackWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCallBackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCallBack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCallBackResponse()
@@ -190,13 +188,7 @@ func NewDescribeCallBackCdrResponse() (response *DescribeCallBackCdrResponse) {
 // DescribeCallBackCdr
 // 回拨话单获取接口
 func (c *Client) DescribeCallBackCdr(request *DescribeCallBackCdrRequest) (response *DescribeCallBackCdrResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallBackCdrRequest()
-    }
-    
-    response = NewDescribeCallBackCdrResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCallBackCdrWithContext(context.Background(), request)
 }
 
 // DescribeCallBackCdr
@@ -205,6 +197,11 @@ func (c *Client) DescribeCallBackCdrWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeCallBackCdrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallBackCdr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCallBackCdrResponse()
@@ -232,13 +229,7 @@ func NewDescribeCallBackStatusResponse() (response *DescribeCallBackStatusRespon
 // DescribeCallBackStatus
 // 回拨通话状态获取
 func (c *Client) DescribeCallBackStatus(request *DescribeCallBackStatusRequest) (response *DescribeCallBackStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallBackStatusRequest()
-    }
-    
-    response = NewDescribeCallBackStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCallBackStatusWithContext(context.Background(), request)
 }
 
 // DescribeCallBackStatus
@@ -247,6 +238,11 @@ func (c *Client) DescribeCallBackStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCallBackStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallBackStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCallBackStatusResponse()
@@ -274,13 +270,7 @@ func NewDescribeCallerDisplayListResponse() (response *DescribeCallerDisplayList
 // DescribeCallerDisplayList
 // 回拨拉取主叫显号号码集合
 func (c *Client) DescribeCallerDisplayList(request *DescribeCallerDisplayListRequest) (response *DescribeCallerDisplayListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallerDisplayListRequest()
-    }
-    
-    response = NewDescribeCallerDisplayListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCallerDisplayListWithContext(context.Background(), request)
 }
 
 // DescribeCallerDisplayList
@@ -289,6 +279,11 @@ func (c *Client) DescribeCallerDisplayListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCallerDisplayListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallerDisplayList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCallerDisplayListResponse()
@@ -316,13 +311,7 @@ func NewGet400CdrResponse() (response *Get400CdrResponse) {
 // Get400Cdr
 // 直拨话单获取接口
 func (c *Client) Get400Cdr(request *Get400CdrRequest) (response *Get400CdrResponse, err error) {
-    if request == nil {
-        request = NewGet400CdrRequest()
-    }
-    
-    response = NewGet400CdrResponse()
-    err = c.Send(request, response)
-    return
+    return c.Get400CdrWithContext(context.Background(), request)
 }
 
 // Get400Cdr
@@ -331,6 +320,11 @@ func (c *Client) Get400CdrWithContext(ctx context.Context, request *Get400CdrReq
     if request == nil {
         request = NewGet400CdrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Get400Cdr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGet400CdrResponse()
@@ -358,13 +352,7 @@ func NewGetVirtualNumResponse() (response *GetVirtualNumResponse) {
 // GetVirtualNum
 // 直拨获取中间号（App 使用方发起）
 func (c *Client) GetVirtualNum(request *GetVirtualNumRequest) (response *GetVirtualNumResponse, err error) {
-    if request == nil {
-        request = NewGetVirtualNumRequest()
-    }
-    
-    response = NewGetVirtualNumResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetVirtualNumWithContext(context.Background(), request)
 }
 
 // GetVirtualNum
@@ -373,6 +361,11 @@ func (c *Client) GetVirtualNumWithContext(ctx context.Context, request *GetVirtu
     if request == nil {
         request = NewGetVirtualNumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVirtualNum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetVirtualNumResponse()

@@ -16,6 +16,7 @@ package v20200210
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewBindStaffSkillGroupListResponse() (response *BindStaffSkillGroupListResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest) (response *BindStaffSkillGroupListResponse, err error) {
-    if request == nil {
-        request = NewBindStaffSkillGroupListRequest()
-    }
-    
-    response = NewBindStaffSkillGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindStaffSkillGroupListWithContext(context.Background(), request)
 }
 
 // BindStaffSkillGroupList
@@ -91,6 +86,11 @@ func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request
     if request == nil {
         request = NewBindStaffSkillGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindStaffSkillGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindStaffSkillGroupListResponse()
@@ -124,13 +124,7 @@ func NewCreateAutoCalloutTaskResponse() (response *CreateAutoCalloutTaskResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateAutoCalloutTask(request *CreateAutoCalloutTaskRequest) (response *CreateAutoCalloutTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAutoCalloutTaskRequest()
-    }
-    
-    response = NewCreateAutoCalloutTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAutoCalloutTaskWithContext(context.Background(), request)
 }
 
 // CreateAutoCalloutTask
@@ -145,6 +139,11 @@ func (c *Client) CreateAutoCalloutTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateAutoCalloutTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoCalloutTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAutoCalloutTaskResponse()
@@ -179,13 +178,7 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
-    if request == nil {
-        request = NewCreateCallOutSessionRequest()
-    }
-    
-    response = NewCreateCallOutSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCallOutSessionWithContext(context.Background(), request)
 }
 
 // CreateCallOutSession
@@ -201,6 +194,11 @@ func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCallOutSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCallOutSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCallOutSessionResponse()
@@ -235,13 +233,7 @@ func NewCreateSDKLoginTokenResponse() (response *CreateSDKLoginTokenResponse) {
 //  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CreateSDKLoginToken(request *CreateSDKLoginTokenRequest) (response *CreateSDKLoginTokenResponse, err error) {
-    if request == nil {
-        request = NewCreateSDKLoginTokenRequest()
-    }
-    
-    response = NewCreateSDKLoginTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSDKLoginTokenWithContext(context.Background(), request)
 }
 
 // CreateSDKLoginToken
@@ -257,6 +249,11 @@ func (c *Client) CreateSDKLoginTokenWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSDKLoginTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSDKLoginToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSDKLoginTokenResponse()
@@ -293,13 +290,7 @@ func NewCreateStaffResponse() (response *CreateStaffResponse) {
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateStaff(request *CreateStaffRequest) (response *CreateStaffResponse, err error) {
-    if request == nil {
-        request = NewCreateStaffRequest()
-    }
-    
-    response = NewCreateStaffResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStaffWithContext(context.Background(), request)
 }
 
 // CreateStaff
@@ -317,6 +308,11 @@ func (c *Client) CreateStaffWithContext(ctx context.Context, request *CreateStaf
     if request == nil {
         request = NewCreateStaffRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStaff require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStaffResponse()
@@ -350,13 +346,7 @@ func NewCreateUserSigResponse() (response *CreateUserSigResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) CreateUserSig(request *CreateUserSigRequest) (response *CreateUserSigResponse, err error) {
-    if request == nil {
-        request = NewCreateUserSigRequest()
-    }
-    
-    response = NewCreateUserSigResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserSigWithContext(context.Background(), request)
 }
 
 // CreateUserSig
@@ -371,6 +361,11 @@ func (c *Client) CreateUserSigWithContext(ctx context.Context, request *CreateUs
     if request == nil {
         request = NewCreateUserSigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserSig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserSigResponse()
@@ -402,13 +397,7 @@ func NewDeleteStaffResponse() (response *DeleteStaffResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaffResponse, err error) {
-    if request == nil {
-        request = NewDeleteStaffRequest()
-    }
-    
-    response = NewDeleteStaffResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteStaffWithContext(context.Background(), request)
 }
 
 // DeleteStaff
@@ -421,6 +410,11 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     if request == nil {
         request = NewDeleteStaffRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStaff require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteStaffResponse()
@@ -453,13 +447,7 @@ func NewDescribeAutoCalloutTaskResponse() (response *DescribeAutoCalloutTaskResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeAutoCalloutTask(request *DescribeAutoCalloutTaskRequest) (response *DescribeAutoCalloutTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoCalloutTaskRequest()
-    }
-    
-    response = NewDescribeAutoCalloutTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoCalloutTaskWithContext(context.Background(), request)
 }
 
 // DescribeAutoCalloutTask
@@ -473,6 +461,11 @@ func (c *Client) DescribeAutoCalloutTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAutoCalloutTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoCalloutTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoCalloutTaskResponse()
@@ -505,13 +498,7 @@ func NewDescribeAutoCalloutTasksResponse() (response *DescribeAutoCalloutTasksRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeAutoCalloutTasks(request *DescribeAutoCalloutTasksRequest) (response *DescribeAutoCalloutTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeAutoCalloutTasksRequest()
-    }
-    
-    response = NewDescribeAutoCalloutTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAutoCalloutTasksWithContext(context.Background(), request)
 }
 
 // DescribeAutoCalloutTasks
@@ -525,6 +512,11 @@ func (c *Client) DescribeAutoCalloutTasksWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAutoCalloutTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoCalloutTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAutoCalloutTasksResponse()
@@ -559,13 +551,7 @@ func NewDescribeCCCBuyInfoListResponse() (response *DescribeCCCBuyInfoListRespon
 //  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeCCCBuyInfoList(request *DescribeCCCBuyInfoListRequest) (response *DescribeCCCBuyInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCCCBuyInfoListRequest()
-    }
-    
-    response = NewDescribeCCCBuyInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCCCBuyInfoListWithContext(context.Background(), request)
 }
 
 // DescribeCCCBuyInfoList
@@ -581,6 +567,11 @@ func (c *Client) DescribeCCCBuyInfoListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCCCBuyInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCCCBuyInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCCCBuyInfoListResponse()
@@ -615,13 +606,7 @@ func NewDescribeCallInMetricsResponse() (response *DescribeCallInMetricsResponse
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeCallInMetrics(request *DescribeCallInMetricsRequest) (response *DescribeCallInMetricsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallInMetricsRequest()
-    }
-    
-    response = NewDescribeCallInMetricsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCallInMetricsWithContext(context.Background(), request)
 }
 
 // DescribeCallInMetrics
@@ -637,6 +622,11 @@ func (c *Client) DescribeCallInMetricsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCallInMetricsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCallInMetrics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCallInMetricsResponse()
@@ -671,13 +661,7 @@ func NewDescribeChatMessagesResponse() (response *DescribeChatMessagesResponse) 
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 func (c *Client) DescribeChatMessages(request *DescribeChatMessagesRequest) (response *DescribeChatMessagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeChatMessagesRequest()
-    }
-    
-    response = NewDescribeChatMessagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChatMessagesWithContext(context.Background(), request)
 }
 
 // DescribeChatMessages
@@ -693,6 +677,11 @@ func (c *Client) DescribeChatMessagesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeChatMessagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChatMessages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChatMessagesResponse()
@@ -723,14 +712,9 @@ func NewDescribeIMCdrsResponse() (response *DescribeIMCdrsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *DescribeIMCdrsResponse, err error) {
-    if request == nil {
-        request = NewDescribeIMCdrsRequest()
-    }
-    
-    response = NewDescribeIMCdrsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIMCdrsWithContext(context.Background(), request)
 }
 
 // DescribeIMCdrs
@@ -739,10 +723,16 @@ func (c *Client) DescribeIMCdrs(request *DescribeIMCdrsRequest) (response *Descr
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeIMCdrsWithContext(ctx context.Context, request *DescribeIMCdrsRequest) (response *DescribeIMCdrsResponse, err error) {
     if request == nil {
         request = NewDescribeIMCdrsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIMCdrs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIMCdrsResponse()
@@ -774,13 +764,7 @@ func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSes
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
 func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {
-    if request == nil {
-        request = NewDescribePSTNActiveSessionListRequest()
-    }
-    
-    response = NewDescribePSTNActiveSessionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePSTNActiveSessionListWithContext(context.Background(), request)
 }
 
 // DescribePSTNActiveSessionList
@@ -793,6 +777,11 @@ func (c *Client) DescribePSTNActiveSessionListWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribePSTNActiveSessionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePSTNActiveSessionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePSTNActiveSessionListResponse()
@@ -830,13 +819,7 @@ func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSeatUserListRequest()
-    }
-    
-    response = NewDescribeSeatUserListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSeatUserListWithContext(context.Background(), request)
 }
 
 // DescribeSeatUserList
@@ -855,6 +838,11 @@ func (c *Client) DescribeSeatUserListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSeatUserListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSeatUserList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSeatUserListResponse()
@@ -889,13 +877,7 @@ func NewDescribeSkillGroupInfoListResponse() (response *DescribeSkillGroupInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeSkillGroupInfoList(request *DescribeSkillGroupInfoListRequest) (response *DescribeSkillGroupInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSkillGroupInfoListRequest()
-    }
-    
-    response = NewDescribeSkillGroupInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSkillGroupInfoListWithContext(context.Background(), request)
 }
 
 // DescribeSkillGroupInfoList
@@ -911,6 +893,11 @@ func (c *Client) DescribeSkillGroupInfoListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSkillGroupInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSkillGroupInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSkillGroupInfoListResponse()
@@ -944,13 +931,7 @@ func NewDescribeStaffInfoListResponse() (response *DescribeStaffInfoListResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeStaffInfoList(request *DescribeStaffInfoListRequest) (response *DescribeStaffInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeStaffInfoListRequest()
-    }
-    
-    response = NewDescribeStaffInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStaffInfoListWithContext(context.Background(), request)
 }
 
 // DescribeStaffInfoList
@@ -965,6 +946,11 @@ func (c *Client) DescribeStaffInfoListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeStaffInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStaffInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStaffInfoListResponse()
@@ -998,13 +984,7 @@ func NewDescribeStaffStatusMetricsResponse() (response *DescribeStaffStatusMetri
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 func (c *Client) DescribeStaffStatusMetrics(request *DescribeStaffStatusMetricsRequest) (response *DescribeStaffStatusMetricsResponse, err error) {
-    if request == nil {
-        request = NewDescribeStaffStatusMetricsRequest()
-    }
-    
-    response = NewDescribeStaffStatusMetricsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStaffStatusMetricsWithContext(context.Background(), request)
 }
 
 // DescribeStaffStatusMetrics
@@ -1019,6 +999,11 @@ func (c *Client) DescribeStaffStatusMetricsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeStaffStatusMetricsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStaffStatusMetrics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStaffStatusMetricsResponse()
@@ -1052,13 +1037,7 @@ func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (response *DescribeTelCallInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeTelCallInfoRequest()
-    }
-    
-    response = NewDescribeTelCallInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTelCallInfoWithContext(context.Background(), request)
 }
 
 // DescribeTelCallInfo
@@ -1073,6 +1052,11 @@ func (c *Client) DescribeTelCallInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTelCallInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTelCallInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTelCallInfoResponse()
@@ -1107,13 +1091,7 @@ func NewDescribeTelCdrResponse() (response *DescribeTelCdrResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelCdr(request *DescribeTelCdrRequest) (response *DescribeTelCdrResponse, err error) {
-    if request == nil {
-        request = NewDescribeTelCdrRequest()
-    }
-    
-    response = NewDescribeTelCdrResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTelCdrWithContext(context.Background(), request)
 }
 
 // DescribeTelCdr
@@ -1129,6 +1107,11 @@ func (c *Client) DescribeTelCdrWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTelCdrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTelCdr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTelCdrResponse()
@@ -1161,13 +1144,7 @@ func NewDescribeTelSessionResponse() (response *DescribeTelSessionResponse) {
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeTelSession(request *DescribeTelSessionRequest) (response *DescribeTelSessionResponse, err error) {
-    if request == nil {
-        request = NewDescribeTelSessionRequest()
-    }
-    
-    response = NewDescribeTelSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTelSessionWithContext(context.Background(), request)
 }
 
 // DescribeTelSession
@@ -1181,6 +1158,11 @@ func (c *Client) DescribeTelSessionWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTelSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTelSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTelSessionResponse()
@@ -1214,13 +1196,7 @@ func NewStopAutoCalloutTaskResponse() (response *StopAutoCalloutTaskResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopAutoCalloutTask(request *StopAutoCalloutTaskRequest) (response *StopAutoCalloutTaskResponse, err error) {
-    if request == nil {
-        request = NewStopAutoCalloutTaskRequest()
-    }
-    
-    response = NewStopAutoCalloutTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopAutoCalloutTaskWithContext(context.Background(), request)
 }
 
 // StopAutoCalloutTask
@@ -1235,6 +1211,11 @@ func (c *Client) StopAutoCalloutTaskWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStopAutoCalloutTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopAutoCalloutTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopAutoCalloutTaskResponse()
@@ -1268,13 +1249,7 @@ func NewUnbindStaffSkillGroupListResponse() (response *UnbindStaffSkillGroupList
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) UnbindStaffSkillGroupList(request *UnbindStaffSkillGroupListRequest) (response *UnbindStaffSkillGroupListResponse, err error) {
-    if request == nil {
-        request = NewUnbindStaffSkillGroupListRequest()
-    }
-    
-    response = NewUnbindStaffSkillGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindStaffSkillGroupListWithContext(context.Background(), request)
 }
 
 // UnbindStaffSkillGroupList
@@ -1289,6 +1264,11 @@ func (c *Client) UnbindStaffSkillGroupListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewUnbindStaffSkillGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindStaffSkillGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindStaffSkillGroupListResponse()

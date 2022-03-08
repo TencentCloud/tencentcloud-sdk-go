@@ -16,6 +16,7 @@ package v20200210
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -100,13 +101,7 @@ func NewDetectFraudKOLResponse() (response *DetectFraudKOLResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) DetectFraudKOL(request *DetectFraudKOLRequest) (response *DetectFraudKOLResponse, err error) {
-    if request == nil {
-        request = NewDetectFraudKOLRequest()
-    }
-    
-    response = NewDetectFraudKOLResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectFraudKOLWithContext(context.Background(), request)
 }
 
 // DetectFraudKOL
@@ -151,6 +146,11 @@ func (c *Client) DetectFraudKOLWithContext(ctx context.Context, request *DetectF
     if request == nil {
         request = NewDetectFraudKOLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectFraudKOL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectFraudKOLResponse()
@@ -214,13 +214,7 @@ func NewEnhanceTaDegreeResponse() (response *EnhanceTaDegreeResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) EnhanceTaDegree(request *EnhanceTaDegreeRequest) (response *EnhanceTaDegreeResponse, err error) {
-    if request == nil {
-        request = NewEnhanceTaDegreeRequest()
-    }
-    
-    response = NewEnhanceTaDegreeResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnhanceTaDegreeWithContext(context.Background(), request)
 }
 
 // EnhanceTaDegree
@@ -265,6 +259,11 @@ func (c *Client) EnhanceTaDegreeWithContext(ctx context.Context, request *Enhanc
     if request == nil {
         request = NewEnhanceTaDegreeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnhanceTaDegree require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnhanceTaDegreeResponse()
@@ -328,13 +327,7 @@ func NewRecognizeCustomizedAudienceResponse() (response *RecognizeCustomizedAudi
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) RecognizeCustomizedAudience(request *RecognizeCustomizedAudienceRequest) (response *RecognizeCustomizedAudienceResponse, err error) {
-    if request == nil {
-        request = NewRecognizeCustomizedAudienceRequest()
-    }
-    
-    response = NewRecognizeCustomizedAudienceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeCustomizedAudienceWithContext(context.Background(), request)
 }
 
 // RecognizeCustomizedAudience
@@ -379,6 +372,11 @@ func (c *Client) RecognizeCustomizedAudienceWithContext(ctx context.Context, req
     if request == nil {
         request = NewRecognizeCustomizedAudienceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeCustomizedAudience require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeCustomizedAudienceResponse()
@@ -430,13 +428,7 @@ func NewRecognizeEffectiveFlowResponse() (response *RecognizeEffectiveFlowRespon
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RecognizeEffectiveFlow(request *RecognizeEffectiveFlowRequest) (response *RecognizeEffectiveFlowResponse, err error) {
-    if request == nil {
-        request = NewRecognizeEffectiveFlowRequest()
-    }
-    
-    response = NewRecognizeEffectiveFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeEffectiveFlowWithContext(context.Background(), request)
 }
 
 // RecognizeEffectiveFlow
@@ -469,6 +461,11 @@ func (c *Client) RecognizeEffectiveFlowWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRecognizeEffectiveFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeEffectiveFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeEffectiveFlowResponse()
@@ -532,13 +529,7 @@ func NewRecognizePreciseTargetAudienceResponse() (response *RecognizePreciseTarg
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) RecognizePreciseTargetAudience(request *RecognizePreciseTargetAudienceRequest) (response *RecognizePreciseTargetAudienceResponse, err error) {
-    if request == nil {
-        request = NewRecognizePreciseTargetAudienceRequest()
-    }
-    
-    response = NewRecognizePreciseTargetAudienceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizePreciseTargetAudienceWithContext(context.Background(), request)
 }
 
 // RecognizePreciseTargetAudience
@@ -583,6 +574,11 @@ func (c *Client) RecognizePreciseTargetAudienceWithContext(ctx context.Context, 
     if request == nil {
         request = NewRecognizePreciseTargetAudienceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizePreciseTargetAudience require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizePreciseTargetAudienceResponse()
@@ -664,13 +660,7 @@ func NewRecognizeTargetAudienceResponse() (response *RecognizeTargetAudienceResp
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RecognizeTargetAudience(request *RecognizeTargetAudienceRequest) (response *RecognizeTargetAudienceResponse, err error) {
-    if request == nil {
-        request = NewRecognizeTargetAudienceRequest()
-    }
-    
-    response = NewRecognizeTargetAudienceResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeTargetAudienceWithContext(context.Background(), request)
 }
 
 // RecognizeTargetAudience
@@ -733,6 +723,11 @@ func (c *Client) RecognizeTargetAudienceWithContext(ctx context.Context, request
     if request == nil {
         request = NewRecognizeTargetAudienceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeTargetAudience require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeTargetAudienceResponse()
@@ -796,13 +791,7 @@ func NewSendTrafficSecuritySmsMessageResponse() (response *SendTrafficSecuritySm
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) SendTrafficSecuritySmsMessage(request *SendTrafficSecuritySmsMessageRequest) (response *SendTrafficSecuritySmsMessageResponse, err error) {
-    if request == nil {
-        request = NewSendTrafficSecuritySmsMessageRequest()
-    }
-    
-    response = NewSendTrafficSecuritySmsMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendTrafficSecuritySmsMessageWithContext(context.Background(), request)
 }
 
 // SendTrafficSecuritySmsMessage
@@ -847,6 +836,11 @@ func (c *Client) SendTrafficSecuritySmsMessageWithContext(ctx context.Context, r
     if request == nil {
         request = NewSendTrafficSecuritySmsMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendTrafficSecuritySmsMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendTrafficSecuritySmsMessageResponse()

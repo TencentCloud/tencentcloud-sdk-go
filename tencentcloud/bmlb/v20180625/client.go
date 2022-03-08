@@ -16,6 +16,7 @@ package v20180625
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewBindL4BackendsResponse() (response *BindL4BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindL4Backends(request *BindL4BackendsRequest) (response *BindL4BackendsResponse, err error) {
-    if request == nil {
-        request = NewBindL4BackendsRequest()
-    }
-    
-    response = NewBindL4BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindL4BackendsWithContext(context.Background(), request)
 }
 
 // BindL4Backends
@@ -93,6 +88,11 @@ func (c *Client) BindL4BackendsWithContext(ctx context.Context, request *BindL4B
     if request == nil {
         request = NewBindL4BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindL4Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindL4BackendsResponse()
@@ -127,13 +127,7 @@ func NewBindL7BackendsResponse() (response *BindL7BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindL7Backends(request *BindL7BackendsRequest) (response *BindL7BackendsResponse, err error) {
-    if request == nil {
-        request = NewBindL7BackendsRequest()
-    }
-    
-    response = NewBindL7BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindL7BackendsWithContext(context.Background(), request)
 }
 
 // BindL7Backends
@@ -149,6 +143,11 @@ func (c *Client) BindL7BackendsWithContext(ctx context.Context, request *BindL7B
     if request == nil {
         request = NewBindL7BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindL7Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindL7BackendsResponse()
@@ -183,13 +182,7 @@ func NewBindTrafficMirrorListenersResponse() (response *BindTrafficMirrorListene
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindTrafficMirrorListeners(request *BindTrafficMirrorListenersRequest) (response *BindTrafficMirrorListenersResponse, err error) {
-    if request == nil {
-        request = NewBindTrafficMirrorListenersRequest()
-    }
-    
-    response = NewBindTrafficMirrorListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindTrafficMirrorListenersWithContext(context.Background(), request)
 }
 
 // BindTrafficMirrorListeners
@@ -205,6 +198,11 @@ func (c *Client) BindTrafficMirrorListenersWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBindTrafficMirrorListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindTrafficMirrorListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindTrafficMirrorListenersResponse()
@@ -239,13 +237,7 @@ func NewBindTrafficMirrorReceiversResponse() (response *BindTrafficMirrorReceive
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindTrafficMirrorReceivers(request *BindTrafficMirrorReceiversRequest) (response *BindTrafficMirrorReceiversResponse, err error) {
-    if request == nil {
-        request = NewBindTrafficMirrorReceiversRequest()
-    }
-    
-    response = NewBindTrafficMirrorReceiversResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindTrafficMirrorReceiversWithContext(context.Background(), request)
 }
 
 // BindTrafficMirrorReceivers
@@ -261,6 +253,11 @@ func (c *Client) BindTrafficMirrorReceiversWithContext(ctx context.Context, requ
     if request == nil {
         request = NewBindTrafficMirrorReceiversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindTrafficMirrorReceivers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindTrafficMirrorReceiversResponse()
@@ -295,13 +292,7 @@ func NewCreateL4ListenersResponse() (response *CreateL4ListenersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL4Listeners(request *CreateL4ListenersRequest) (response *CreateL4ListenersResponse, err error) {
-    if request == nil {
-        request = NewCreateL4ListenersRequest()
-    }
-    
-    response = NewCreateL4ListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateL4ListenersWithContext(context.Background(), request)
 }
 
 // CreateL4Listeners
@@ -317,6 +308,11 @@ func (c *Client) CreateL4ListenersWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateL4ListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateL4Listeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateL4ListenersResponse()
@@ -351,13 +347,7 @@ func NewCreateL7ListenersResponse() (response *CreateL7ListenersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL7Listeners(request *CreateL7ListenersRequest) (response *CreateL7ListenersResponse, err error) {
-    if request == nil {
-        request = NewCreateL7ListenersRequest()
-    }
-    
-    response = NewCreateL7ListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateL7ListenersWithContext(context.Background(), request)
 }
 
 // CreateL7Listeners
@@ -373,6 +363,11 @@ func (c *Client) CreateL7ListenersWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateL7ListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateL7Listeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateL7ListenersResponse()
@@ -407,13 +402,7 @@ func NewCreateL7RulesResponse() (response *CreateL7RulesResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateL7Rules(request *CreateL7RulesRequest) (response *CreateL7RulesResponse, err error) {
-    if request == nil {
-        request = NewCreateL7RulesRequest()
-    }
-    
-    response = NewCreateL7RulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateL7RulesWithContext(context.Background(), request)
 }
 
 // CreateL7Rules
@@ -429,6 +418,11 @@ func (c *Client) CreateL7RulesWithContext(ctx context.Context, request *CreateL7
     if request == nil {
         request = NewCreateL7RulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateL7Rules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateL7RulesResponse()
@@ -463,13 +457,7 @@ func NewCreateLoadBalancersResponse() (response *CreateLoadBalancersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLoadBalancers(request *CreateLoadBalancersRequest) (response *CreateLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewCreateLoadBalancersRequest()
-    }
-    
-    response = NewCreateLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLoadBalancersWithContext(context.Background(), request)
 }
 
 // CreateLoadBalancers
@@ -485,6 +473,11 @@ func (c *Client) CreateLoadBalancersWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLoadBalancersResponse()
@@ -519,13 +512,7 @@ func NewCreateTrafficMirrorResponse() (response *CreateTrafficMirrorResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTrafficMirror(request *CreateTrafficMirrorRequest) (response *CreateTrafficMirrorResponse, err error) {
-    if request == nil {
-        request = NewCreateTrafficMirrorRequest()
-    }
-    
-    response = NewCreateTrafficMirrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTrafficMirrorWithContext(context.Background(), request)
 }
 
 // CreateTrafficMirror
@@ -541,6 +528,11 @@ func (c *Client) CreateTrafficMirrorWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateTrafficMirrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrafficMirror require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTrafficMirrorResponse()
@@ -575,13 +567,7 @@ func NewDeleteL7DomainsResponse() (response *DeleteL7DomainsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteL7Domains(request *DeleteL7DomainsRequest) (response *DeleteL7DomainsResponse, err error) {
-    if request == nil {
-        request = NewDeleteL7DomainsRequest()
-    }
-    
-    response = NewDeleteL7DomainsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteL7DomainsWithContext(context.Background(), request)
 }
 
 // DeleteL7Domains
@@ -597,6 +583,11 @@ func (c *Client) DeleteL7DomainsWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteL7DomainsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteL7Domains require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteL7DomainsResponse()
@@ -631,13 +622,7 @@ func NewDeleteL7RulesResponse() (response *DeleteL7RulesResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteL7Rules(request *DeleteL7RulesRequest) (response *DeleteL7RulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteL7RulesRequest()
-    }
-    
-    response = NewDeleteL7RulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteL7RulesWithContext(context.Background(), request)
 }
 
 // DeleteL7Rules
@@ -653,6 +638,11 @@ func (c *Client) DeleteL7RulesWithContext(ctx context.Context, request *DeleteL7
     if request == nil {
         request = NewDeleteL7RulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteL7Rules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteL7RulesResponse()
@@ -687,13 +677,7 @@ func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteListeners(request *DeleteListenersRequest) (response *DeleteListenersResponse, err error) {
-    if request == nil {
-        request = NewDeleteListenersRequest()
-    }
-    
-    response = NewDeleteListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteListenersWithContext(context.Background(), request)
 }
 
 // DeleteListeners
@@ -709,6 +693,11 @@ func (c *Client) DeleteListenersWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteListenersResponse()
@@ -743,13 +732,7 @@ func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (response *DeleteLoadBalancerResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoadBalancerRequest()
-    }
-    
-    response = NewDeleteLoadBalancerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoadBalancerWithContext(context.Background(), request)
 }
 
 // DeleteLoadBalancer
@@ -765,6 +748,11 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteLoadBalancerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoadBalancer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoadBalancerResponse()
@@ -799,13 +787,7 @@ func NewDeleteTrafficMirrorResponse() (response *DeleteTrafficMirrorResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteTrafficMirror(request *DeleteTrafficMirrorRequest) (response *DeleteTrafficMirrorResponse, err error) {
-    if request == nil {
-        request = NewDeleteTrafficMirrorRequest()
-    }
-    
-    response = NewDeleteTrafficMirrorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTrafficMirrorWithContext(context.Background(), request)
 }
 
 // DeleteTrafficMirror
@@ -821,6 +803,11 @@ func (c *Client) DeleteTrafficMirrorWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTrafficMirrorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrafficMirror require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTrafficMirrorResponse()
@@ -855,13 +842,7 @@ func NewDescribeCertDetailResponse() (response *DescribeCertDetailResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCertDetail(request *DescribeCertDetailRequest) (response *DescribeCertDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertDetailRequest()
-    }
-    
-    response = NewDescribeCertDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertDetailWithContext(context.Background(), request)
 }
 
 // DescribeCertDetail
@@ -877,6 +858,11 @@ func (c *Client) DescribeCertDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeCertDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertDetailResponse()
@@ -911,13 +897,7 @@ func NewDescribeDevicesBindInfoResponse() (response *DescribeDevicesBindInfoResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDevicesBindInfo(request *DescribeDevicesBindInfoRequest) (response *DescribeDevicesBindInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicesBindInfoRequest()
-    }
-    
-    response = NewDescribeDevicesBindInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicesBindInfoWithContext(context.Background(), request)
 }
 
 // DescribeDevicesBindInfo
@@ -933,6 +913,11 @@ func (c *Client) DescribeDevicesBindInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicesBindInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicesBindInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicesBindInfoResponse()
@@ -967,13 +952,7 @@ func NewDescribeL4BackendsResponse() (response *DescribeL4BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4Backends(request *DescribeL4BackendsRequest) (response *DescribeL4BackendsResponse, err error) {
-    if request == nil {
-        request = NewDescribeL4BackendsRequest()
-    }
-    
-    response = NewDescribeL4BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL4BackendsWithContext(context.Background(), request)
 }
 
 // DescribeL4Backends
@@ -989,6 +968,11 @@ func (c *Client) DescribeL4BackendsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeL4BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL4Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL4BackendsResponse()
@@ -1023,13 +1007,7 @@ func NewDescribeL4ListenerInfoResponse() (response *DescribeL4ListenerInfoRespon
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4ListenerInfo(request *DescribeL4ListenerInfoRequest) (response *DescribeL4ListenerInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeL4ListenerInfoRequest()
-    }
-    
-    response = NewDescribeL4ListenerInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL4ListenerInfoWithContext(context.Background(), request)
 }
 
 // DescribeL4ListenerInfo
@@ -1045,6 +1023,11 @@ func (c *Client) DescribeL4ListenerInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL4ListenerInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL4ListenerInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL4ListenerInfoResponse()
@@ -1079,13 +1062,7 @@ func NewDescribeL4ListenersResponse() (response *DescribeL4ListenersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL4Listeners(request *DescribeL4ListenersRequest) (response *DescribeL4ListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeL4ListenersRequest()
-    }
-    
-    response = NewDescribeL4ListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL4ListenersWithContext(context.Background(), request)
 }
 
 // DescribeL4Listeners
@@ -1101,6 +1078,11 @@ func (c *Client) DescribeL4ListenersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeL4ListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL4Listeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL4ListenersResponse()
@@ -1135,13 +1117,7 @@ func NewDescribeL7BackendsResponse() (response *DescribeL7BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Backends(request *DescribeL7BackendsRequest) (response *DescribeL7BackendsResponse, err error) {
-    if request == nil {
-        request = NewDescribeL7BackendsRequest()
-    }
-    
-    response = NewDescribeL7BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL7BackendsWithContext(context.Background(), request)
 }
 
 // DescribeL7Backends
@@ -1157,6 +1133,11 @@ func (c *Client) DescribeL7BackendsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeL7BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL7Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL7BackendsResponse()
@@ -1191,13 +1172,7 @@ func NewDescribeL7ListenerInfoResponse() (response *DescribeL7ListenerInfoRespon
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7ListenerInfo(request *DescribeL7ListenerInfoRequest) (response *DescribeL7ListenerInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeL7ListenerInfoRequest()
-    }
-    
-    response = NewDescribeL7ListenerInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL7ListenerInfoWithContext(context.Background(), request)
 }
 
 // DescribeL7ListenerInfo
@@ -1213,6 +1188,11 @@ func (c *Client) DescribeL7ListenerInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeL7ListenerInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL7ListenerInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL7ListenerInfoResponse()
@@ -1247,13 +1227,7 @@ func NewDescribeL7ListenersResponse() (response *DescribeL7ListenersResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Listeners(request *DescribeL7ListenersRequest) (response *DescribeL7ListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeL7ListenersRequest()
-    }
-    
-    response = NewDescribeL7ListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL7ListenersWithContext(context.Background(), request)
 }
 
 // DescribeL7Listeners
@@ -1269,6 +1243,11 @@ func (c *Client) DescribeL7ListenersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeL7ListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL7Listeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL7ListenersResponse()
@@ -1303,13 +1282,7 @@ func NewDescribeL7ListenersExResponse() (response *DescribeL7ListenersExResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7ListenersEx(request *DescribeL7ListenersExRequest) (response *DescribeL7ListenersExResponse, err error) {
-    if request == nil {
-        request = NewDescribeL7ListenersExRequest()
-    }
-    
-    response = NewDescribeL7ListenersExResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL7ListenersExWithContext(context.Background(), request)
 }
 
 // DescribeL7ListenersEx
@@ -1325,6 +1298,11 @@ func (c *Client) DescribeL7ListenersExWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeL7ListenersExRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL7ListenersEx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL7ListenersExResponse()
@@ -1359,13 +1337,7 @@ func NewDescribeL7RulesResponse() (response *DescribeL7RulesResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeL7Rules(request *DescribeL7RulesRequest) (response *DescribeL7RulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeL7RulesRequest()
-    }
-    
-    response = NewDescribeL7RulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeL7RulesWithContext(context.Background(), request)
 }
 
 // DescribeL7Rules
@@ -1381,6 +1353,11 @@ func (c *Client) DescribeL7RulesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeL7RulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeL7Rules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeL7RulesResponse()
@@ -1415,13 +1392,7 @@ func NewDescribeLoadBalancerPortInfoResponse() (response *DescribeLoadBalancerPo
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancerPortInfo(request *DescribeLoadBalancerPortInfoRequest) (response *DescribeLoadBalancerPortInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalancerPortInfoRequest()
-    }
-    
-    response = NewDescribeLoadBalancerPortInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoadBalancerPortInfoWithContext(context.Background(), request)
 }
 
 // DescribeLoadBalancerPortInfo
@@ -1437,6 +1408,11 @@ func (c *Client) DescribeLoadBalancerPortInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeLoadBalancerPortInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadBalancerPortInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancerPortInfoResponse()
@@ -1471,13 +1447,7 @@ func NewDescribeLoadBalancerTaskResultResponse() (response *DescribeLoadBalancer
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancerTaskResult(request *DescribeLoadBalancerTaskResultRequest) (response *DescribeLoadBalancerTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalancerTaskResultRequest()
-    }
-    
-    response = NewDescribeLoadBalancerTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoadBalancerTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeLoadBalancerTaskResult
@@ -1493,6 +1463,11 @@ func (c *Client) DescribeLoadBalancerTaskResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLoadBalancerTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadBalancerTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancerTaskResultResponse()
@@ -1527,13 +1502,7 @@ func NewDescribeLoadBalancersResponse() (response *DescribeLoadBalancersResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (response *DescribeLoadBalancersResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalancersRequest()
-    }
-    
-    response = NewDescribeLoadBalancersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoadBalancersWithContext(context.Background(), request)
 }
 
 // DescribeLoadBalancers
@@ -1549,6 +1518,11 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLoadBalancersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoadBalancers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancersResponse()
@@ -1583,13 +1557,7 @@ func NewDescribeTrafficMirrorListenersResponse() (response *DescribeTrafficMirro
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorListeners(request *DescribeTrafficMirrorListenersRequest) (response *DescribeTrafficMirrorListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrafficMirrorListenersRequest()
-    }
-    
-    response = NewDescribeTrafficMirrorListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrafficMirrorListenersWithContext(context.Background(), request)
 }
 
 // DescribeTrafficMirrorListeners
@@ -1605,6 +1573,11 @@ func (c *Client) DescribeTrafficMirrorListenersWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTrafficMirrorListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrorListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrafficMirrorListenersResponse()
@@ -1639,13 +1612,7 @@ func NewDescribeTrafficMirrorReceiverHealthStatusResponse() (response *DescribeT
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorReceiverHealthStatus(request *DescribeTrafficMirrorReceiverHealthStatusRequest) (response *DescribeTrafficMirrorReceiverHealthStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrafficMirrorReceiverHealthStatusRequest()
-    }
-    
-    response = NewDescribeTrafficMirrorReceiverHealthStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrafficMirrorReceiverHealthStatusWithContext(context.Background(), request)
 }
 
 // DescribeTrafficMirrorReceiverHealthStatus
@@ -1661,6 +1628,11 @@ func (c *Client) DescribeTrafficMirrorReceiverHealthStatusWithContext(ctx contex
     if request == nil {
         request = NewDescribeTrafficMirrorReceiverHealthStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrorReceiverHealthStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrafficMirrorReceiverHealthStatusResponse()
@@ -1695,13 +1667,7 @@ func NewDescribeTrafficMirrorReceiversResponse() (response *DescribeTrafficMirro
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrorReceivers(request *DescribeTrafficMirrorReceiversRequest) (response *DescribeTrafficMirrorReceiversResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrafficMirrorReceiversRequest()
-    }
-    
-    response = NewDescribeTrafficMirrorReceiversResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrafficMirrorReceiversWithContext(context.Background(), request)
 }
 
 // DescribeTrafficMirrorReceivers
@@ -1717,6 +1683,11 @@ func (c *Client) DescribeTrafficMirrorReceiversWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeTrafficMirrorReceiversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrorReceivers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrafficMirrorReceiversResponse()
@@ -1751,13 +1722,7 @@ func NewDescribeTrafficMirrorsResponse() (response *DescribeTrafficMirrorsRespon
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrafficMirrors(request *DescribeTrafficMirrorsRequest) (response *DescribeTrafficMirrorsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrafficMirrorsRequest()
-    }
-    
-    response = NewDescribeTrafficMirrorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrafficMirrorsWithContext(context.Background(), request)
 }
 
 // DescribeTrafficMirrors
@@ -1773,6 +1738,11 @@ func (c *Client) DescribeTrafficMirrorsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTrafficMirrorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrafficMirrorsResponse()
@@ -1807,13 +1777,7 @@ func NewModifyL4BackendPortResponse() (response *ModifyL4BackendPortResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendPort(request *ModifyL4BackendPortRequest) (response *ModifyL4BackendPortResponse, err error) {
-    if request == nil {
-        request = NewModifyL4BackendPortRequest()
-    }
-    
-    response = NewModifyL4BackendPortResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL4BackendPortWithContext(context.Background(), request)
 }
 
 // ModifyL4BackendPort
@@ -1829,6 +1793,11 @@ func (c *Client) ModifyL4BackendPortWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyL4BackendPortRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4BackendPort require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL4BackendPortResponse()
@@ -1863,13 +1832,7 @@ func NewModifyL4BackendProbePortResponse() (response *ModifyL4BackendProbePortRe
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendProbePort(request *ModifyL4BackendProbePortRequest) (response *ModifyL4BackendProbePortResponse, err error) {
-    if request == nil {
-        request = NewModifyL4BackendProbePortRequest()
-    }
-    
-    response = NewModifyL4BackendProbePortResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL4BackendProbePortWithContext(context.Background(), request)
 }
 
 // ModifyL4BackendProbePort
@@ -1885,6 +1848,11 @@ func (c *Client) ModifyL4BackendProbePortWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyL4BackendProbePortRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4BackendProbePort require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL4BackendProbePortResponse()
@@ -1919,13 +1887,7 @@ func NewModifyL4BackendWeightResponse() (response *ModifyL4BackendWeightResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4BackendWeight(request *ModifyL4BackendWeightRequest) (response *ModifyL4BackendWeightResponse, err error) {
-    if request == nil {
-        request = NewModifyL4BackendWeightRequest()
-    }
-    
-    response = NewModifyL4BackendWeightResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL4BackendWeightWithContext(context.Background(), request)
 }
 
 // ModifyL4BackendWeight
@@ -1941,6 +1903,11 @@ func (c *Client) ModifyL4BackendWeightWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyL4BackendWeightRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4BackendWeight require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL4BackendWeightResponse()
@@ -1975,13 +1942,7 @@ func NewModifyL4ListenerResponse() (response *ModifyL4ListenerResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL4Listener(request *ModifyL4ListenerRequest) (response *ModifyL4ListenerResponse, err error) {
-    if request == nil {
-        request = NewModifyL4ListenerRequest()
-    }
-    
-    response = NewModifyL4ListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL4ListenerWithContext(context.Background(), request)
 }
 
 // ModifyL4Listener
@@ -1997,6 +1958,11 @@ func (c *Client) ModifyL4ListenerWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyL4ListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL4Listener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL4ListenerResponse()
@@ -2031,13 +1997,7 @@ func NewModifyL7BackendPortResponse() (response *ModifyL7BackendPortResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7BackendPort(request *ModifyL7BackendPortRequest) (response *ModifyL7BackendPortResponse, err error) {
-    if request == nil {
-        request = NewModifyL7BackendPortRequest()
-    }
-    
-    response = NewModifyL7BackendPortResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL7BackendPortWithContext(context.Background(), request)
 }
 
 // ModifyL7BackendPort
@@ -2053,6 +2013,11 @@ func (c *Client) ModifyL7BackendPortWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyL7BackendPortRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL7BackendPort require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL7BackendPortResponse()
@@ -2087,13 +2052,7 @@ func NewModifyL7BackendWeightResponse() (response *ModifyL7BackendWeightResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7BackendWeight(request *ModifyL7BackendWeightRequest) (response *ModifyL7BackendWeightResponse, err error) {
-    if request == nil {
-        request = NewModifyL7BackendWeightRequest()
-    }
-    
-    response = NewModifyL7BackendWeightResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL7BackendWeightWithContext(context.Background(), request)
 }
 
 // ModifyL7BackendWeight
@@ -2109,6 +2068,11 @@ func (c *Client) ModifyL7BackendWeightWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyL7BackendWeightRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL7BackendWeight require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL7BackendWeightResponse()
@@ -2143,13 +2107,7 @@ func NewModifyL7ListenerResponse() (response *ModifyL7ListenerResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7Listener(request *ModifyL7ListenerRequest) (response *ModifyL7ListenerResponse, err error) {
-    if request == nil {
-        request = NewModifyL7ListenerRequest()
-    }
-    
-    response = NewModifyL7ListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL7ListenerWithContext(context.Background(), request)
 }
 
 // ModifyL7Listener
@@ -2165,6 +2123,11 @@ func (c *Client) ModifyL7ListenerWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyL7ListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL7Listener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL7ListenerResponse()
@@ -2199,13 +2162,7 @@ func NewModifyL7LocationsResponse() (response *ModifyL7LocationsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyL7Locations(request *ModifyL7LocationsRequest) (response *ModifyL7LocationsResponse, err error) {
-    if request == nil {
-        request = NewModifyL7LocationsRequest()
-    }
-    
-    response = NewModifyL7LocationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyL7LocationsWithContext(context.Background(), request)
 }
 
 // ModifyL7Locations
@@ -2221,6 +2178,11 @@ func (c *Client) ModifyL7LocationsWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyL7LocationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL7Locations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyL7LocationsResponse()
@@ -2255,13 +2217,7 @@ func NewModifyLoadBalancerResponse() (response *ModifyLoadBalancerResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLoadBalancer(request *ModifyLoadBalancerRequest) (response *ModifyLoadBalancerResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancerRequest()
-    }
-    
-    response = NewModifyLoadBalancerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoadBalancerWithContext(context.Background(), request)
 }
 
 // ModifyLoadBalancer
@@ -2277,6 +2233,11 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyLoadBalancerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoadBalancer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancerResponse()
@@ -2311,13 +2272,7 @@ func NewModifyLoadBalancerChargeModeResponse() (response *ModifyLoadBalancerChar
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLoadBalancerChargeMode(request *ModifyLoadBalancerChargeModeRequest) (response *ModifyLoadBalancerChargeModeResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancerChargeModeRequest()
-    }
-    
-    response = NewModifyLoadBalancerChargeModeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLoadBalancerChargeModeWithContext(context.Background(), request)
 }
 
 // ModifyLoadBalancerChargeMode
@@ -2333,6 +2288,11 @@ func (c *Client) ModifyLoadBalancerChargeModeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyLoadBalancerChargeModeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLoadBalancerChargeMode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancerChargeModeResponse()
@@ -2367,13 +2327,7 @@ func NewReplaceCertResponse() (response *ReplaceCertResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReplaceCert(request *ReplaceCertRequest) (response *ReplaceCertResponse, err error) {
-    if request == nil {
-        request = NewReplaceCertRequest()
-    }
-    
-    response = NewReplaceCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceCertWithContext(context.Background(), request)
 }
 
 // ReplaceCert
@@ -2389,6 +2343,11 @@ func (c *Client) ReplaceCertWithContext(ctx context.Context, request *ReplaceCer
     if request == nil {
         request = NewReplaceCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceCertResponse()
@@ -2423,13 +2382,7 @@ func NewSetTrafficMirrorAliasResponse() (response *SetTrafficMirrorAliasResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTrafficMirrorAlias(request *SetTrafficMirrorAliasRequest) (response *SetTrafficMirrorAliasResponse, err error) {
-    if request == nil {
-        request = NewSetTrafficMirrorAliasRequest()
-    }
-    
-    response = NewSetTrafficMirrorAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTrafficMirrorAliasWithContext(context.Background(), request)
 }
 
 // SetTrafficMirrorAlias
@@ -2445,6 +2398,11 @@ func (c *Client) SetTrafficMirrorAliasWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSetTrafficMirrorAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTrafficMirrorAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTrafficMirrorAliasResponse()
@@ -2479,13 +2437,7 @@ func NewSetTrafficMirrorHealthSwitchResponse() (response *SetTrafficMirrorHealth
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTrafficMirrorHealthSwitch(request *SetTrafficMirrorHealthSwitchRequest) (response *SetTrafficMirrorHealthSwitchResponse, err error) {
-    if request == nil {
-        request = NewSetTrafficMirrorHealthSwitchRequest()
-    }
-    
-    response = NewSetTrafficMirrorHealthSwitchResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTrafficMirrorHealthSwitchWithContext(context.Background(), request)
 }
 
 // SetTrafficMirrorHealthSwitch
@@ -2501,6 +2453,11 @@ func (c *Client) SetTrafficMirrorHealthSwitchWithContext(ctx context.Context, re
     if request == nil {
         request = NewSetTrafficMirrorHealthSwitchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTrafficMirrorHealthSwitch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTrafficMirrorHealthSwitchResponse()
@@ -2535,13 +2492,7 @@ func NewUnbindL4BackendsResponse() (response *UnbindL4BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindL4Backends(request *UnbindL4BackendsRequest) (response *UnbindL4BackendsResponse, err error) {
-    if request == nil {
-        request = NewUnbindL4BackendsRequest()
-    }
-    
-    response = NewUnbindL4BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindL4BackendsWithContext(context.Background(), request)
 }
 
 // UnbindL4Backends
@@ -2557,6 +2508,11 @@ func (c *Client) UnbindL4BackendsWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindL4BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindL4Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindL4BackendsResponse()
@@ -2591,13 +2547,7 @@ func NewUnbindL7BackendsResponse() (response *UnbindL7BackendsResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindL7Backends(request *UnbindL7BackendsRequest) (response *UnbindL7BackendsResponse, err error) {
-    if request == nil {
-        request = NewUnbindL7BackendsRequest()
-    }
-    
-    response = NewUnbindL7BackendsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindL7BackendsWithContext(context.Background(), request)
 }
 
 // UnbindL7Backends
@@ -2613,6 +2563,11 @@ func (c *Client) UnbindL7BackendsWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindL7BackendsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindL7Backends require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindL7BackendsResponse()
@@ -2647,13 +2602,7 @@ func NewUnbindTrafficMirrorListenersResponse() (response *UnbindTrafficMirrorLis
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindTrafficMirrorListeners(request *UnbindTrafficMirrorListenersRequest) (response *UnbindTrafficMirrorListenersResponse, err error) {
-    if request == nil {
-        request = NewUnbindTrafficMirrorListenersRequest()
-    }
-    
-    response = NewUnbindTrafficMirrorListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindTrafficMirrorListenersWithContext(context.Background(), request)
 }
 
 // UnbindTrafficMirrorListeners
@@ -2669,6 +2618,11 @@ func (c *Client) UnbindTrafficMirrorListenersWithContext(ctx context.Context, re
     if request == nil {
         request = NewUnbindTrafficMirrorListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindTrafficMirrorListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindTrafficMirrorListenersResponse()
@@ -2703,13 +2657,7 @@ func NewUnbindTrafficMirrorReceiversResponse() (response *UnbindTrafficMirrorRec
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindTrafficMirrorReceivers(request *UnbindTrafficMirrorReceiversRequest) (response *UnbindTrafficMirrorReceiversResponse, err error) {
-    if request == nil {
-        request = NewUnbindTrafficMirrorReceiversRequest()
-    }
-    
-    response = NewUnbindTrafficMirrorReceiversResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindTrafficMirrorReceiversWithContext(context.Background(), request)
 }
 
 // UnbindTrafficMirrorReceivers
@@ -2725,6 +2673,11 @@ func (c *Client) UnbindTrafficMirrorReceiversWithContext(ctx context.Context, re
     if request == nil {
         request = NewUnbindTrafficMirrorReceiversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindTrafficMirrorReceivers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindTrafficMirrorReceiversResponse()
@@ -2759,13 +2712,7 @@ func NewUploadCertResponse() (response *UploadCertResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UploadCert(request *UploadCertRequest) (response *UploadCertResponse, err error) {
-    if request == nil {
-        request = NewUploadCertRequest()
-    }
-    
-    response = NewUploadCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadCertWithContext(context.Background(), request)
 }
 
 // UploadCert
@@ -2781,6 +2728,11 @@ func (c *Client) UploadCertWithContext(ctx context.Context, request *UploadCertR
     if request == nil {
         request = NewUploadCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadCertResponse()

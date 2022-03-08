@@ -16,6 +16,7 @@ package v20190318
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewDescribeSdkAppidResponse() (response *DescribeSdkAppidResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeSdkAppid(request *DescribeSdkAppidRequest) (response *DescribeSdkAppidResponse, err error) {
-    if request == nil {
-        request = NewDescribeSdkAppidRequest()
-    }
-    
-    response = NewDescribeSdkAppidResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSdkAppidWithContext(context.Background(), request)
 }
 
 // DescribeSdkAppid
@@ -89,6 +84,11 @@ func (c *Client) DescribeSdkAppidWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeSdkAppidRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSdkAppid require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSdkAppidResponse()

@@ -16,6 +16,7 @@ package v20191022
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewCreateCodeRepositoryResponse() (response *CreateCodeRepositoryResponse) 
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateCodeRepository(request *CreateCodeRepositoryRequest) (response *CreateCodeRepositoryResponse, err error) {
-    if request == nil {
-        request = NewCreateCodeRepositoryRequest()
-    }
-    
-    response = NewCreateCodeRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCodeRepositoryWithContext(context.Background(), request)
 }
 
 // CreateCodeRepository
@@ -105,6 +100,11 @@ func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCodeRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCodeRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCodeRepositoryResponse()
@@ -151,13 +151,7 @@ func NewCreateNotebookInstanceResponse() (response *CreateNotebookInstanceRespon
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateNotebookInstance(request *CreateNotebookInstanceRequest) (response *CreateNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateNotebookInstanceRequest()
-    }
-    
-    response = NewCreateNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNotebookInstanceWithContext(context.Background(), request)
 }
 
 // CreateNotebookInstance
@@ -185,6 +179,11 @@ func (c *Client) CreateNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNotebookInstanceResponse()
@@ -220,13 +219,7 @@ func NewCreateNotebookLifecycleScriptResponse() (response *CreateNotebookLifecyc
 //  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 //  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 func (c *Client) CreateNotebookLifecycleScript(request *CreateNotebookLifecycleScriptRequest) (response *CreateNotebookLifecycleScriptResponse, err error) {
-    if request == nil {
-        request = NewCreateNotebookLifecycleScriptRequest()
-    }
-    
-    response = NewCreateNotebookLifecycleScriptResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNotebookLifecycleScriptWithContext(context.Background(), request)
 }
 
 // CreateNotebookLifecycleScript
@@ -243,6 +236,11 @@ func (c *Client) CreateNotebookLifecycleScriptWithContext(ctx context.Context, r
     if request == nil {
         request = NewCreateNotebookLifecycleScriptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookLifecycleScript require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNotebookLifecycleScriptResponse()
@@ -278,13 +276,7 @@ func NewCreatePresignedNotebookInstanceUrlResponse() (response *CreatePresignedN
 //  RESOURCEUNAVAILABLE_NOTALIVE = "ResourceUnavailable.NotAlive"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreatePresignedNotebookInstanceUrl(request *CreatePresignedNotebookInstanceUrlRequest) (response *CreatePresignedNotebookInstanceUrlResponse, err error) {
-    if request == nil {
-        request = NewCreatePresignedNotebookInstanceUrlRequest()
-    }
-    
-    response = NewCreatePresignedNotebookInstanceUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePresignedNotebookInstanceUrlWithContext(context.Background(), request)
 }
 
 // CreatePresignedNotebookInstanceUrl
@@ -301,6 +293,11 @@ func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Conte
     if request == nil {
         request = NewCreatePresignedNotebookInstanceUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePresignedNotebookInstanceUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePresignedNotebookInstanceUrlResponse()
@@ -348,13 +345,7 @@ func NewCreateTrainingJobResponse() (response *CreateTrainingJobResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (response *CreateTrainingJobResponse, err error) {
-    if request == nil {
-        request = NewCreateTrainingJobRequest()
-    }
-    
-    response = NewCreateTrainingJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTrainingJobWithContext(context.Background(), request)
 }
 
 // CreateTrainingJob
@@ -383,6 +374,11 @@ func (c *Client) CreateTrainingJobWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTrainingJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrainingJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTrainingJobResponse()
@@ -420,13 +416,7 @@ func NewDeleteCodeRepositoryResponse() (response *DeleteCodeRepositoryResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DeleteCodeRepository(request *DeleteCodeRepositoryRequest) (response *DeleteCodeRepositoryResponse, err error) {
-    if request == nil {
-        request = NewDeleteCodeRepositoryRequest()
-    }
-    
-    response = NewDeleteCodeRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCodeRepositoryWithContext(context.Background(), request)
 }
 
 // DeleteCodeRepository
@@ -445,6 +435,11 @@ func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteCodeRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCodeRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCodeRepositoryResponse()
@@ -479,13 +474,7 @@ func NewDeleteNotebookInstanceResponse() (response *DeleteNotebookInstanceRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNotebookInstance(request *DeleteNotebookInstanceRequest) (response *DeleteNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewDeleteNotebookInstanceRequest()
-    }
-    
-    response = NewDeleteNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNotebookInstanceWithContext(context.Background(), request)
 }
 
 // DeleteNotebookInstance
@@ -501,6 +490,11 @@ func (c *Client) DeleteNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNotebookInstanceResponse()
@@ -536,13 +530,7 @@ func NewDeleteNotebookLifecycleScriptResponse() (response *DeleteNotebookLifecyc
 //  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNotebookLifecycleScript(request *DeleteNotebookLifecycleScriptRequest) (response *DeleteNotebookLifecycleScriptResponse, err error) {
-    if request == nil {
-        request = NewDeleteNotebookLifecycleScriptRequest()
-    }
-    
-    response = NewDeleteNotebookLifecycleScriptResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNotebookLifecycleScriptWithContext(context.Background(), request)
 }
 
 // DeleteNotebookLifecycleScript
@@ -559,6 +547,11 @@ func (c *Client) DeleteNotebookLifecycleScriptWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteNotebookLifecycleScriptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotebookLifecycleScript require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNotebookLifecycleScriptResponse()
@@ -595,13 +588,7 @@ func NewDescribeCodeRepositoriesResponse() (response *DescribeCodeRepositoriesRe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepositories(request *DescribeCodeRepositoriesRequest) (response *DescribeCodeRepositoriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCodeRepositoriesRequest()
-    }
-    
-    response = NewDescribeCodeRepositoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCodeRepositoriesWithContext(context.Background(), request)
 }
 
 // DescribeCodeRepositories
@@ -619,6 +606,11 @@ func (c *Client) DescribeCodeRepositoriesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCodeRepositoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodeRepositories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCodeRepositoriesResponse()
@@ -655,13 +647,7 @@ func NewDescribeCodeRepositoryResponse() (response *DescribeCodeRepositoryRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) (response *DescribeCodeRepositoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeCodeRepositoryRequest()
-    }
-    
-    response = NewDescribeCodeRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCodeRepositoryWithContext(context.Background(), request)
 }
 
 // DescribeCodeRepository
@@ -679,6 +665,11 @@ func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCodeRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodeRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCodeRepositoryResponse()
@@ -715,13 +706,7 @@ func NewDescribeNotebookInstanceResponse() (response *DescribeNotebookInstanceRe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeNotebookInstance(request *DescribeNotebookInstanceRequest) (response *DescribeNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotebookInstanceRequest()
-    }
-    
-    response = NewDescribeNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotebookInstanceWithContext(context.Background(), request)
 }
 
 // DescribeNotebookInstance
@@ -739,6 +724,11 @@ func (c *Client) DescribeNotebookInstanceWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotebookInstanceResponse()
@@ -773,13 +763,7 @@ func NewDescribeNotebookInstancesResponse() (response *DescribeNotebookInstances
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeNotebookInstances(request *DescribeNotebookInstancesRequest) (response *DescribeNotebookInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotebookInstancesRequest()
-    }
-    
-    response = NewDescribeNotebookInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotebookInstancesWithContext(context.Background(), request)
 }
 
 // DescribeNotebookInstances
@@ -795,6 +779,11 @@ func (c *Client) DescribeNotebookInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeNotebookInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotebookInstancesResponse()
@@ -828,13 +817,7 @@ func NewDescribeNotebookLifecycleScriptResponse() (response *DescribeNotebookLif
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNotebookLifecycleScript(request *DescribeNotebookLifecycleScriptRequest) (response *DescribeNotebookLifecycleScriptResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotebookLifecycleScriptRequest()
-    }
-    
-    response = NewDescribeNotebookLifecycleScriptResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotebookLifecycleScriptWithContext(context.Background(), request)
 }
 
 // DescribeNotebookLifecycleScript
@@ -849,6 +832,11 @@ func (c *Client) DescribeNotebookLifecycleScriptWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookLifecycleScript require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotebookLifecycleScriptResponse()
@@ -882,13 +870,7 @@ func NewDescribeNotebookLifecycleScriptsResponse() (response *DescribeNotebookLi
 //  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNotebookLifecycleScripts(request *DescribeNotebookLifecycleScriptsRequest) (response *DescribeNotebookLifecycleScriptsResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotebookLifecycleScriptsRequest()
-    }
-    
-    response = NewDescribeNotebookLifecycleScriptsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotebookLifecycleScriptsWithContext(context.Background(), request)
 }
 
 // DescribeNotebookLifecycleScripts
@@ -903,6 +885,11 @@ func (c *Client) DescribeNotebookLifecycleScriptsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeNotebookLifecycleScriptsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookLifecycleScripts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotebookLifecycleScriptsResponse()
@@ -933,13 +920,7 @@ func NewDescribeNotebookSummaryResponse() (response *DescribeNotebookSummaryResp
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeNotebookSummary(request *DescribeNotebookSummaryRequest) (response *DescribeNotebookSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeNotebookSummaryRequest()
-    }
-    
-    response = NewDescribeNotebookSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNotebookSummaryWithContext(context.Background(), request)
 }
 
 // DescribeNotebookSummary
@@ -951,6 +932,11 @@ func (c *Client) DescribeNotebookSummaryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeNotebookSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNotebookSummaryResponse()
@@ -984,13 +970,7 @@ func NewDescribeTrainingJobResponse() (response *DescribeTrainingJobResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTrainingJob(request *DescribeTrainingJobRequest) (response *DescribeTrainingJobResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrainingJobRequest()
-    }
-    
-    response = NewDescribeTrainingJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrainingJobWithContext(context.Background(), request)
 }
 
 // DescribeTrainingJob
@@ -1005,6 +985,11 @@ func (c *Client) DescribeTrainingJobWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTrainingJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrainingJobResponse()
@@ -1038,13 +1023,7 @@ func NewDescribeTrainingJobsResponse() (response *DescribeTrainingJobsResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTrainingJobs(request *DescribeTrainingJobsRequest) (response *DescribeTrainingJobsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTrainingJobsRequest()
-    }
-    
-    response = NewDescribeTrainingJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTrainingJobsWithContext(context.Background(), request)
 }
 
 // DescribeTrainingJobs
@@ -1059,6 +1038,11 @@ func (c *Client) DescribeTrainingJobsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTrainingJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrainingJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTrainingJobsResponse()
@@ -1092,13 +1076,7 @@ func NewStartNotebookInstanceResponse() (response *StartNotebookInstanceResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) StartNotebookInstance(request *StartNotebookInstanceRequest) (response *StartNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewStartNotebookInstanceRequest()
-    }
-    
-    response = NewStartNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartNotebookInstanceWithContext(context.Background(), request)
 }
 
 // StartNotebookInstance
@@ -1113,6 +1091,11 @@ func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStartNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartNotebookInstanceResponse()
@@ -1147,13 +1130,7 @@ func NewStopNotebookInstanceResponse() (response *StopNotebookInstanceResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopNotebookInstance(request *StopNotebookInstanceRequest) (response *StopNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewStopNotebookInstanceRequest()
-    }
-    
-    response = NewStopNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopNotebookInstanceWithContext(context.Background(), request)
 }
 
 // StopNotebookInstance
@@ -1169,6 +1146,11 @@ func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopNotebookInstanceResponse()
@@ -1201,13 +1183,7 @@ func NewStopTrainingJobResponse() (response *StopTrainingJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopTrainingJob(request *StopTrainingJobRequest) (response *StopTrainingJobResponse, err error) {
-    if request == nil {
-        request = NewStopTrainingJobRequest()
-    }
-    
-    response = NewStopTrainingJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopTrainingJobWithContext(context.Background(), request)
 }
 
 // StopTrainingJob
@@ -1221,6 +1197,11 @@ func (c *Client) StopTrainingJobWithContext(ctx context.Context, request *StopTr
     if request == nil {
         request = NewStopTrainingJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopTrainingJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopTrainingJobResponse()
@@ -1258,13 +1239,7 @@ func NewUpdateCodeRepositoryResponse() (response *UpdateCodeRepositoryResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) UpdateCodeRepository(request *UpdateCodeRepositoryRequest) (response *UpdateCodeRepositoryResponse, err error) {
-    if request == nil {
-        request = NewUpdateCodeRepositoryRequest()
-    }
-    
-    response = NewUpdateCodeRepositoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateCodeRepositoryWithContext(context.Background(), request)
 }
 
 // UpdateCodeRepository
@@ -1283,6 +1258,11 @@ func (c *Client) UpdateCodeRepositoryWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateCodeRepositoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCodeRepository require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateCodeRepositoryResponse()
@@ -1326,13 +1306,7 @@ func NewUpdateNotebookInstanceResponse() (response *UpdateNotebookInstanceRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) UpdateNotebookInstance(request *UpdateNotebookInstanceRequest) (response *UpdateNotebookInstanceResponse, err error) {
-    if request == nil {
-        request = NewUpdateNotebookInstanceRequest()
-    }
-    
-    response = NewUpdateNotebookInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateNotebookInstanceWithContext(context.Background(), request)
 }
 
 // UpdateNotebookInstance
@@ -1357,6 +1331,11 @@ func (c *Client) UpdateNotebookInstanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateNotebookInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateNotebookInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateNotebookInstanceResponse()
@@ -1391,13 +1370,7 @@ func NewUpdateNotebookLifecycleScriptResponse() (response *UpdateNotebookLifecyc
 //  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateNotebookLifecycleScript(request *UpdateNotebookLifecycleScriptRequest) (response *UpdateNotebookLifecycleScriptResponse, err error) {
-    if request == nil {
-        request = NewUpdateNotebookLifecycleScriptRequest()
-    }
-    
-    response = NewUpdateNotebookLifecycleScriptResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateNotebookLifecycleScriptWithContext(context.Background(), request)
 }
 
 // UpdateNotebookLifecycleScript
@@ -1413,6 +1386,11 @@ func (c *Client) UpdateNotebookLifecycleScriptWithContext(ctx context.Context, r
     if request == nil {
         request = NewUpdateNotebookLifecycleScriptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateNotebookLifecycleScript require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateNotebookLifecycleScriptResponse()

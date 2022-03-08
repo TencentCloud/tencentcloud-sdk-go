@@ -16,6 +16,7 @@ package v20181127
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewDescribeVideoTaskResponse() (response *DescribeVideoTaskResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 func (c *Client) DescribeVideoTask(request *DescribeVideoTaskRequest) (response *DescribeVideoTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoTaskRequest()
-    }
-    
-    response = NewDescribeVideoTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoTaskWithContext(context.Background(), request)
 }
 
 // DescribeVideoTask
@@ -85,6 +80,11 @@ func (c *Client) DescribeVideoTaskWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVideoTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoTaskResponse()
@@ -121,13 +121,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
-    if request == nil {
-        request = NewImageModerationRequest()
-    }
-    
-    response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageModerationWithContext(context.Background(), request)
 }
 
 // ImageModeration
@@ -145,6 +139,11 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageModerationResponse()
@@ -176,13 +175,7 @@ func NewVideoModerationResponse() (response *VideoModerationResponse) {
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 func (c *Client) VideoModeration(request *VideoModerationRequest) (response *VideoModerationResponse, err error) {
-    if request == nil {
-        request = NewVideoModerationRequest()
-    }
-    
-    response = NewVideoModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.VideoModerationWithContext(context.Background(), request)
 }
 
 // VideoModeration
@@ -195,6 +188,11 @@ func (c *Client) VideoModerationWithContext(ctx context.Context, request *VideoM
     if request == nil {
         request = NewVideoModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VideoModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVideoModerationResponse()

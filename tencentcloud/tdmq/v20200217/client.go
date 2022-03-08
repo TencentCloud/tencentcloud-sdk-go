@@ -16,6 +16,7 @@ package v20200217
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,13 +77,7 @@ func NewAcknowledgeMessageResponse() (response *AcknowledgeMessageResponse) {
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) AcknowledgeMessage(request *AcknowledgeMessageRequest) (response *AcknowledgeMessageResponse, err error) {
-    if request == nil {
-        request = NewAcknowledgeMessageRequest()
-    }
-    
-    response = NewAcknowledgeMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.AcknowledgeMessageWithContext(context.Background(), request)
 }
 
 // AcknowledgeMessage
@@ -103,6 +98,11 @@ func (c *Client) AcknowledgeMessageWithContext(ctx context.Context, request *Ack
     if request == nil {
         request = NewAcknowledgeMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcknowledgeMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAcknowledgeMessageResponse()
@@ -133,13 +133,7 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
-    if request == nil {
-        request = NewClearCmqQueueRequest()
-    }
-    
-    response = NewClearCmqQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearCmqQueueWithContext(context.Background(), request)
 }
 
 // ClearCmqQueue
@@ -151,6 +145,11 @@ func (c *Client) ClearCmqQueueWithContext(ctx context.Context, request *ClearCmq
     if request == nil {
         request = NewClearCmqQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearCmqQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearCmqQueueResponse()
@@ -181,13 +180,7 @@ func NewClearCmqSubscriptionFilterTagsResponse() (response *ClearCmqSubscription
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ClearCmqSubscriptionFilterTags(request *ClearCmqSubscriptionFilterTagsRequest) (response *ClearCmqSubscriptionFilterTagsResponse, err error) {
-    if request == nil {
-        request = NewClearCmqSubscriptionFilterTagsRequest()
-    }
-    
-    response = NewClearCmqSubscriptionFilterTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ClearCmqSubscriptionFilterTagsWithContext(context.Background(), request)
 }
 
 // ClearCmqSubscriptionFilterTags
@@ -199,6 +192,11 @@ func (c *Client) ClearCmqSubscriptionFilterTagsWithContext(ctx context.Context, 
     if request == nil {
         request = NewClearCmqSubscriptionFilterTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClearCmqSubscriptionFilterTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewClearCmqSubscriptionFilterTagsResponse()
@@ -236,13 +234,7 @@ func NewCreateAMQPClusterResponse() (response *CreateAMQPClusterResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response *CreateAMQPClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateAMQPClusterRequest()
-    }
-    
-    response = NewCreateAMQPClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAMQPClusterWithContext(context.Background(), request)
 }
 
 // CreateAMQPCluster
@@ -261,6 +253,11 @@ func (c *Client) CreateAMQPClusterWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAMQPClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAMQPCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAMQPClusterResponse()
@@ -296,13 +293,7 @@ func NewCreateAMQPExchangeResponse() (response *CreateAMQPExchangeResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAMQPExchange(request *CreateAMQPExchangeRequest) (response *CreateAMQPExchangeResponse, err error) {
-    if request == nil {
-        request = NewCreateAMQPExchangeRequest()
-    }
-    
-    response = NewCreateAMQPExchangeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAMQPExchangeWithContext(context.Background(), request)
 }
 
 // CreateAMQPExchange
@@ -319,6 +310,11 @@ func (c *Client) CreateAMQPExchangeWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAMQPExchangeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAMQPExchange require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAMQPExchangeResponse()
@@ -354,13 +350,7 @@ func NewCreateAMQPQueueResponse() (response *CreateAMQPQueueResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAMQPQueue(request *CreateAMQPQueueRequest) (response *CreateAMQPQueueResponse, err error) {
-    if request == nil {
-        request = NewCreateAMQPQueueRequest()
-    }
-    
-    response = NewCreateAMQPQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAMQPQueueWithContext(context.Background(), request)
 }
 
 // CreateAMQPQueue
@@ -377,6 +367,11 @@ func (c *Client) CreateAMQPQueueWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateAMQPQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAMQPQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAMQPQueueResponse()
@@ -412,13 +407,7 @@ func NewCreateAMQPRouteRelationResponse() (response *CreateAMQPRouteRelationResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAMQPRouteRelation(request *CreateAMQPRouteRelationRequest) (response *CreateAMQPRouteRelationResponse, err error) {
-    if request == nil {
-        request = NewCreateAMQPRouteRelationRequest()
-    }
-    
-    response = NewCreateAMQPRouteRelationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAMQPRouteRelationWithContext(context.Background(), request)
 }
 
 // CreateAMQPRouteRelation
@@ -435,6 +424,11 @@ func (c *Client) CreateAMQPRouteRelationWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateAMQPRouteRelationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAMQPRouteRelation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAMQPRouteRelationResponse()
@@ -471,13 +465,7 @@ func NewCreateAMQPVHostResponse() (response *CreateAMQPVHostResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAMQPVHost(request *CreateAMQPVHostRequest) (response *CreateAMQPVHostResponse, err error) {
-    if request == nil {
-        request = NewCreateAMQPVHostRequest()
-    }
-    
-    response = NewCreateAMQPVHostResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAMQPVHostWithContext(context.Background(), request)
 }
 
 // CreateAMQPVHost
@@ -495,6 +483,11 @@ func (c *Client) CreateAMQPVHostWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateAMQPVHostRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAMQPVHost require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAMQPVHostResponse()
@@ -533,13 +526,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateClusterRequest()
-    }
-    
-    response = NewCreateClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClusterWithContext(context.Background(), request)
 }
 
 // CreateCluster
@@ -559,6 +546,11 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     if request == nil {
         request = NewCreateClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClusterResponse()
@@ -595,14 +587,9 @@ func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
 //  RESOURCEINUSE_QUEUE = "ResourceInUse.Queue"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
-    if request == nil {
-        request = NewCreateCmqQueueRequest()
-    }
-    
-    response = NewCreateCmqQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCmqQueueWithContext(context.Background(), request)
 }
 
 // CreateCmqQueue
@@ -617,10 +604,16 @@ func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *Creat
 //  RESOURCEINUSE_QUEUE = "ResourceInUse.Queue"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqQueueWithContext(ctx context.Context, request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     if request == nil {
         request = NewCreateCmqQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCmqQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCmqQueueResponse()
@@ -652,13 +645,7 @@ func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
 func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
-    if request == nil {
-        request = NewCreateCmqSubscribeRequest()
-    }
-    
-    response = NewCreateCmqSubscribeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCmqSubscribeWithContext(context.Background(), request)
 }
 
 // CreateCmqSubscribe
@@ -671,6 +658,11 @@ func (c *Client) CreateCmqSubscribeWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCmqSubscribeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCmqSubscribe require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCmqSubscribeResponse()
@@ -704,13 +696,7 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
-    if request == nil {
-        request = NewCreateCmqTopicRequest()
-    }
-    
-    response = NewCreateCmqTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCmqTopicWithContext(context.Background(), request)
 }
 
 // CreateCmqTopic
@@ -725,6 +711,11 @@ func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateC
     if request == nil {
         request = NewCreateCmqTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCmqTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCmqTopicResponse()
@@ -767,13 +758,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
-    if request == nil {
-        request = NewCreateEnvironmentRequest()
-    }
-    
-    response = NewCreateEnvironmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEnvironmentWithContext(context.Background(), request)
 }
 
 // CreateEnvironment
@@ -797,6 +782,11 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEnvironmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnvironment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEnvironmentResponse()
@@ -836,13 +826,7 @@ func NewCreateEnvironmentRoleResponse() (response *CreateEnvironmentRoleResponse
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) CreateEnvironmentRole(request *CreateEnvironmentRoleRequest) (response *CreateEnvironmentRoleResponse, err error) {
-    if request == nil {
-        request = NewCreateEnvironmentRoleRequest()
-    }
-    
-    response = NewCreateEnvironmentRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEnvironmentRoleWithContext(context.Background(), request)
 }
 
 // CreateEnvironmentRole
@@ -863,6 +847,11 @@ func (c *Client) CreateEnvironmentRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateEnvironmentRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnvironmentRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEnvironmentRoleResponse()
@@ -901,13 +890,7 @@ func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateRocketMQClusterRequest()
-    }
-    
-    response = NewCreateRocketMQClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRocketMQClusterWithContext(context.Background(), request)
 }
 
 // CreateRocketMQCluster
@@ -927,6 +910,11 @@ func (c *Client) CreateRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateRocketMQClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRocketMQClusterResponse()
@@ -962,13 +950,7 @@ func NewCreateRocketMQGroupResponse() (response *CreateRocketMQGroupResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (response *CreateRocketMQGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateRocketMQGroupRequest()
-    }
-    
-    response = NewCreateRocketMQGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRocketMQGroupWithContext(context.Background(), request)
 }
 
 // CreateRocketMQGroup
@@ -985,6 +967,11 @@ func (c *Client) CreateRocketMQGroupWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRocketMQGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRocketMQGroupResponse()
@@ -1022,13 +1009,7 @@ func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResp
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest) (response *CreateRocketMQNamespaceResponse, err error) {
-    if request == nil {
-        request = NewCreateRocketMQNamespaceRequest()
-    }
-    
-    response = NewCreateRocketMQNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRocketMQNamespaceWithContext(context.Background(), request)
 }
 
 // CreateRocketMQNamespace
@@ -1047,6 +1028,11 @@ func (c *Client) CreateRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateRocketMQNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRocketMQNamespaceResponse()
@@ -1084,13 +1070,7 @@ func NewCreateRocketMQTopicResponse() (response *CreateRocketMQTopicResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (response *CreateRocketMQTopicResponse, err error) {
-    if request == nil {
-        request = NewCreateRocketMQTopicRequest()
-    }
-    
-    response = NewCreateRocketMQTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRocketMQTopicWithContext(context.Background(), request)
 }
 
 // CreateRocketMQTopic
@@ -1109,6 +1089,11 @@ func (c *Client) CreateRocketMQTopicWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRocketMQTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRocketMQTopicResponse()
@@ -1149,13 +1134,7 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
-    if request == nil {
-        request = NewCreateRoleRequest()
-    }
-    
-    response = NewCreateRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRoleWithContext(context.Background(), request)
 }
 
 // CreateRole
@@ -1177,6 +1156,11 @@ func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleR
     if request == nil {
         request = NewCreateRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRoleResponse()
@@ -1219,13 +1203,7 @@ func NewCreateSubscriptionResponse() (response *CreateSubscriptionResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) CreateSubscription(request *CreateSubscriptionRequest) (response *CreateSubscriptionResponse, err error) {
-    if request == nil {
-        request = NewCreateSubscriptionRequest()
-    }
-    
-    response = NewCreateSubscriptionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubscriptionWithContext(context.Background(), request)
 }
 
 // CreateSubscription
@@ -1249,6 +1227,11 @@ func (c *Client) CreateSubscriptionWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateSubscriptionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubscription require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubscriptionResponse()
@@ -1290,13 +1273,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicRequest()
-    }
-    
-    response = NewCreateTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicWithContext(context.Background(), request)
 }
 
 // CreateTopic
@@ -1319,6 +1296,11 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     if request == nil {
         request = NewCreateTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicResponse()
@@ -1352,13 +1334,7 @@ func NewDeleteAMQPClusterResponse() (response *DeleteAMQPClusterResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAMQPCluster(request *DeleteAMQPClusterRequest) (response *DeleteAMQPClusterResponse, err error) {
-    if request == nil {
-        request = NewDeleteAMQPClusterRequest()
-    }
-    
-    response = NewDeleteAMQPClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAMQPClusterWithContext(context.Background(), request)
 }
 
 // DeleteAMQPCluster
@@ -1373,6 +1349,11 @@ func (c *Client) DeleteAMQPClusterWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteAMQPClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAMQPCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAMQPClusterResponse()
@@ -1407,13 +1388,7 @@ func NewDeleteAMQPExchangeResponse() (response *DeleteAMQPExchangeResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAMQPExchange(request *DeleteAMQPExchangeRequest) (response *DeleteAMQPExchangeResponse, err error) {
-    if request == nil {
-        request = NewDeleteAMQPExchangeRequest()
-    }
-    
-    response = NewDeleteAMQPExchangeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAMQPExchangeWithContext(context.Background(), request)
 }
 
 // DeleteAMQPExchange
@@ -1429,6 +1404,11 @@ func (c *Client) DeleteAMQPExchangeWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAMQPExchangeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAMQPExchange require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAMQPExchangeResponse()
@@ -1463,13 +1443,7 @@ func NewDeleteAMQPQueueResponse() (response *DeleteAMQPQueueResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAMQPQueue(request *DeleteAMQPQueueRequest) (response *DeleteAMQPQueueResponse, err error) {
-    if request == nil {
-        request = NewDeleteAMQPQueueRequest()
-    }
-    
-    response = NewDeleteAMQPQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAMQPQueueWithContext(context.Background(), request)
 }
 
 // DeleteAMQPQueue
@@ -1485,6 +1459,11 @@ func (c *Client) DeleteAMQPQueueWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteAMQPQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAMQPQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAMQPQueueResponse()
@@ -1518,13 +1497,7 @@ func NewDeleteAMQPRouteRelationResponse() (response *DeleteAMQPRouteRelationResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAMQPRouteRelation(request *DeleteAMQPRouteRelationRequest) (response *DeleteAMQPRouteRelationResponse, err error) {
-    if request == nil {
-        request = NewDeleteAMQPRouteRelationRequest()
-    }
-    
-    response = NewDeleteAMQPRouteRelationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAMQPRouteRelationWithContext(context.Background(), request)
 }
 
 // DeleteAMQPRouteRelation
@@ -1539,6 +1512,11 @@ func (c *Client) DeleteAMQPRouteRelationWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteAMQPRouteRelationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAMQPRouteRelation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAMQPRouteRelationResponse()
@@ -1573,13 +1551,7 @@ func NewDeleteAMQPVHostResponse() (response *DeleteAMQPVHostResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAMQPVHost(request *DeleteAMQPVHostRequest) (response *DeleteAMQPVHostResponse, err error) {
-    if request == nil {
-        request = NewDeleteAMQPVHostRequest()
-    }
-    
-    response = NewDeleteAMQPVHostResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAMQPVHostWithContext(context.Background(), request)
 }
 
 // DeleteAMQPVHost
@@ -1595,6 +1567,11 @@ func (c *Client) DeleteAMQPVHostWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteAMQPVHostRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAMQPVHost require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAMQPVHostResponse()
@@ -1631,13 +1608,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
-    if request == nil {
-        request = NewDeleteClusterRequest()
-    }
-    
-    response = NewDeleteClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteClusterWithContext(context.Background(), request)
 }
 
 // DeleteCluster
@@ -1655,6 +1626,11 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     if request == nil {
         request = NewDeleteClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteClusterResponse()
@@ -1686,13 +1662,7 @@ func NewDeleteCmqQueueResponse() (response *DeleteCmqQueueResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
 func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *DeleteCmqQueueResponse, err error) {
-    if request == nil {
-        request = NewDeleteCmqQueueRequest()
-    }
-    
-    response = NewDeleteCmqQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCmqQueueWithContext(context.Background(), request)
 }
 
 // DeleteCmqQueue
@@ -1705,6 +1675,11 @@ func (c *Client) DeleteCmqQueueWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCmqQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCmqQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCmqQueueResponse()
@@ -1736,13 +1711,7 @@ func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
 func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
-    if request == nil {
-        request = NewDeleteCmqSubscribeRequest()
-    }
-    
-    response = NewDeleteCmqSubscribeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCmqSubscribeWithContext(context.Background(), request)
 }
 
 // DeleteCmqSubscribe
@@ -1755,6 +1724,11 @@ func (c *Client) DeleteCmqSubscribeWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCmqSubscribe require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCmqSubscribeResponse()
@@ -1785,13 +1759,7 @@ func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
-    if request == nil {
-        request = NewDeleteCmqTopicRequest()
-    }
-    
-    response = NewDeleteCmqTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCmqTopicWithContext(context.Background(), request)
 }
 
 // DeleteCmqTopic
@@ -1803,6 +1771,11 @@ func (c *Client) DeleteCmqTopicWithContext(ctx context.Context, request *DeleteC
     if request == nil {
         request = NewDeleteCmqTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCmqTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCmqTopicResponse()
@@ -1838,13 +1811,7 @@ func NewDeleteEnvironmentRolesResponse() (response *DeleteEnvironmentRolesRespon
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
 func (c *Client) DeleteEnvironmentRoles(request *DeleteEnvironmentRolesRequest) (response *DeleteEnvironmentRolesResponse, err error) {
-    if request == nil {
-        request = NewDeleteEnvironmentRolesRequest()
-    }
-    
-    response = NewDeleteEnvironmentRolesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEnvironmentRolesWithContext(context.Background(), request)
 }
 
 // DeleteEnvironmentRoles
@@ -1861,6 +1828,11 @@ func (c *Client) DeleteEnvironmentRolesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteEnvironmentRolesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnvironmentRoles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEnvironmentRolesResponse()
@@ -1902,13 +1874,7 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (response *DeleteEnvironmentsResponse, err error) {
-    if request == nil {
-        request = NewDeleteEnvironmentsRequest()
-    }
-    
-    response = NewDeleteEnvironmentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEnvironmentsWithContext(context.Background(), request)
 }
 
 // DeleteEnvironments
@@ -1931,6 +1897,11 @@ func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteEnvironmentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnvironments require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEnvironmentsResponse()
@@ -1966,13 +1937,7 @@ func NewDeleteRocketMQClusterResponse() (response *DeleteRocketMQClusterResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteRocketMQCluster(request *DeleteRocketMQClusterRequest) (response *DeleteRocketMQClusterResponse, err error) {
-    if request == nil {
-        request = NewDeleteRocketMQClusterRequest()
-    }
-    
-    response = NewDeleteRocketMQClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRocketMQClusterWithContext(context.Background(), request)
 }
 
 // DeleteRocketMQCluster
@@ -1989,6 +1954,11 @@ func (c *Client) DeleteRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteRocketMQClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRocketMQClusterResponse()
@@ -2024,13 +1994,7 @@ func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteRocketMQGroupRequest()
-    }
-    
-    response = NewDeleteRocketMQGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRocketMQGroupWithContext(context.Background(), request)
 }
 
 // DeleteRocketMQGroup
@@ -2047,6 +2011,11 @@ func (c *Client) DeleteRocketMQGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRocketMQGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRocketMQGroupResponse()
@@ -2081,13 +2050,7 @@ func NewDeleteRocketMQNamespaceResponse() (response *DeleteRocketMQNamespaceResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRocketMQNamespace(request *DeleteRocketMQNamespaceRequest) (response *DeleteRocketMQNamespaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteRocketMQNamespaceRequest()
-    }
-    
-    response = NewDeleteRocketMQNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRocketMQNamespaceWithContext(context.Background(), request)
 }
 
 // DeleteRocketMQNamespace
@@ -2103,6 +2066,11 @@ func (c *Client) DeleteRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteRocketMQNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRocketMQNamespaceResponse()
@@ -2136,13 +2104,7 @@ func NewDeleteRocketMQTopicResponse() (response *DeleteRocketMQTopicResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRocketMQTopic(request *DeleteRocketMQTopicRequest) (response *DeleteRocketMQTopicResponse, err error) {
-    if request == nil {
-        request = NewDeleteRocketMQTopicRequest()
-    }
-    
-    response = NewDeleteRocketMQTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRocketMQTopicWithContext(context.Background(), request)
 }
 
 // DeleteRocketMQTopic
@@ -2157,6 +2119,11 @@ func (c *Client) DeleteRocketMQTopicWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRocketMQTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRocketMQTopicResponse()
@@ -2194,13 +2161,7 @@ func NewDeleteRolesResponse() (response *DeleteRolesResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteRoles(request *DeleteRolesRequest) (response *DeleteRolesResponse, err error) {
-    if request == nil {
-        request = NewDeleteRolesRequest()
-    }
-    
-    response = NewDeleteRolesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRolesWithContext(context.Background(), request)
 }
 
 // DeleteRoles
@@ -2219,6 +2180,11 @@ func (c *Client) DeleteRolesWithContext(ctx context.Context, request *DeleteRole
     if request == nil {
         request = NewDeleteRolesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRolesResponse()
@@ -2260,13 +2226,7 @@ func NewDeleteSubscriptionsResponse() (response *DeleteSubscriptionsResponse) {
 //  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteSubscriptions(request *DeleteSubscriptionsRequest) (response *DeleteSubscriptionsResponse, err error) {
-    if request == nil {
-        request = NewDeleteSubscriptionsRequest()
-    }
-    
-    response = NewDeleteSubscriptionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSubscriptionsWithContext(context.Background(), request)
 }
 
 // DeleteSubscriptions
@@ -2289,6 +2249,11 @@ func (c *Client) DeleteSubscriptionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSubscriptionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSubscriptions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSubscriptionsResponse()
@@ -2328,13 +2293,7 @@ func NewDeleteTopicsResponse() (response *DeleteTopicsResponse) {
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTopicsResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicsRequest()
-    }
-    
-    response = NewDeleteTopicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicsWithContext(context.Background(), request)
 }
 
 // DeleteTopics
@@ -2355,6 +2314,11 @@ func (c *Client) DeleteTopicsWithContext(ctx context.Context, request *DeleteTop
     if request == nil {
         request = NewDeleteTopicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicsResponse()
@@ -2388,13 +2352,7 @@ func NewDescribeAMQPClusterResponse() (response *DescribeAMQPClusterResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPCluster(request *DescribeAMQPClusterRequest) (response *DescribeAMQPClusterResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPClusterRequest()
-    }
-    
-    response = NewDescribeAMQPClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPClusterWithContext(context.Background(), request)
 }
 
 // DescribeAMQPCluster
@@ -2409,6 +2367,11 @@ func (c *Client) DescribeAMQPClusterWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAMQPClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPClusterResponse()
@@ -2442,13 +2405,7 @@ func NewDescribeAMQPClustersResponse() (response *DescribeAMQPClustersResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (response *DescribeAMQPClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPClustersRequest()
-    }
-    
-    response = NewDescribeAMQPClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPClustersWithContext(context.Background(), request)
 }
 
 // DescribeAMQPClusters
@@ -2463,6 +2420,11 @@ func (c *Client) DescribeAMQPClustersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAMQPClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPClustersResponse()
@@ -2498,13 +2460,7 @@ func NewDescribeAMQPCreateQuotaResponse() (response *DescribeAMQPCreateQuotaResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPCreateQuota(request *DescribeAMQPCreateQuotaRequest) (response *DescribeAMQPCreateQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPCreateQuotaRequest()
-    }
-    
-    response = NewDescribeAMQPCreateQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPCreateQuotaWithContext(context.Background(), request)
 }
 
 // DescribeAMQPCreateQuota
@@ -2521,6 +2477,11 @@ func (c *Client) DescribeAMQPCreateQuotaWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAMQPCreateQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPCreateQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPCreateQuotaResponse()
@@ -2554,13 +2515,7 @@ func NewDescribeAMQPExchangesResponse() (response *DescribeAMQPExchangesResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (response *DescribeAMQPExchangesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPExchangesRequest()
-    }
-    
-    response = NewDescribeAMQPExchangesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPExchangesWithContext(context.Background(), request)
 }
 
 // DescribeAMQPExchanges
@@ -2575,6 +2530,11 @@ func (c *Client) DescribeAMQPExchangesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAMQPExchangesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPExchanges require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPExchangesResponse()
@@ -2608,13 +2568,7 @@ func NewDescribeAMQPQueuesResponse() (response *DescribeAMQPQueuesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPQueues(request *DescribeAMQPQueuesRequest) (response *DescribeAMQPQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPQueuesRequest()
-    }
-    
-    response = NewDescribeAMQPQueuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPQueuesWithContext(context.Background(), request)
 }
 
 // DescribeAMQPQueues
@@ -2629,6 +2583,11 @@ func (c *Client) DescribeAMQPQueuesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAMQPQueuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPQueues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPQueuesResponse()
@@ -2662,13 +2621,7 @@ func NewDescribeAMQPRouteRelationsResponse() (response *DescribeAMQPRouteRelatio
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPRouteRelations(request *DescribeAMQPRouteRelationsRequest) (response *DescribeAMQPRouteRelationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPRouteRelationsRequest()
-    }
-    
-    response = NewDescribeAMQPRouteRelationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPRouteRelationsWithContext(context.Background(), request)
 }
 
 // DescribeAMQPRouteRelations
@@ -2683,6 +2636,11 @@ func (c *Client) DescribeAMQPRouteRelationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAMQPRouteRelationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPRouteRelations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPRouteRelationsResponse()
@@ -2716,13 +2674,7 @@ func NewDescribeAMQPVHostsResponse() (response *DescribeAMQPVHostsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPVHosts(request *DescribeAMQPVHostsRequest) (response *DescribeAMQPVHostsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAMQPVHostsRequest()
-    }
-    
-    response = NewDescribeAMQPVHostsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAMQPVHostsWithContext(context.Background(), request)
 }
 
 // DescribeAMQPVHosts
@@ -2737,6 +2689,11 @@ func (c *Client) DescribeAMQPVHostsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAMQPVHostsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAMQPVHosts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAMQPVHostsResponse()
@@ -2770,13 +2727,7 @@ func NewDescribeAllTenantsResponse() (response *DescribeAllTenantsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAllTenants(request *DescribeAllTenantsRequest) (response *DescribeAllTenantsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllTenantsRequest()
-    }
-    
-    response = NewDescribeAllTenantsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllTenantsWithContext(context.Background(), request)
 }
 
 // DescribeAllTenants
@@ -2791,6 +2742,11 @@ func (c *Client) DescribeAllTenantsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAllTenantsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllTenants require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllTenantsResponse()
@@ -2827,13 +2783,7 @@ func NewDescribeBindClustersResponse() (response *DescribeBindClustersResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBindClusters(request *DescribeBindClustersRequest) (response *DescribeBindClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindClustersRequest()
-    }
-    
-    response = NewDescribeBindClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindClustersWithContext(context.Background(), request)
 }
 
 // DescribeBindClusters
@@ -2851,6 +2801,11 @@ func (c *Client) DescribeBindClustersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeBindClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindClustersResponse()
@@ -2885,14 +2840,9 @@ func NewDescribeBindVpcsResponse() (response *DescribeBindVpcsResponse) {
 //  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeBindVpcs(request *DescribeBindVpcsRequest) (response *DescribeBindVpcsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindVpcsRequest()
-    }
-    
-    response = NewDescribeBindVpcsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindVpcsWithContext(context.Background(), request)
 }
 
 // DescribeBindVpcs
@@ -2905,10 +2855,16 @@ func (c *Client) DescribeBindVpcs(request *DescribeBindVpcsRequest) (response *D
 //  INVALIDPARAMETERVALUE_NEEDMOREPARAMS = "InvalidParameterValue.NeedMoreParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeBindVpcsWithContext(ctx context.Context, request *DescribeBindVpcsRequest) (response *DescribeBindVpcsResponse, err error) {
     if request == nil {
         request = NewDescribeBindVpcsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindVpcs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindVpcsResponse()
@@ -2939,13 +2895,7 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterDetailRequest()
-    }
-    
-    response = NewDescribeClusterDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterDetailWithContext(context.Background(), request)
 }
 
 // DescribeClusterDetail
@@ -2957,6 +2907,11 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterDetailResponse()
@@ -2987,13 +2942,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeClustersRequest()
-    }
-    
-    response = NewDescribeClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClustersWithContext(context.Background(), request)
 }
 
 // DescribeClusters
@@ -3005,6 +2954,11 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
@@ -3035,13 +2989,7 @@ func NewDescribeCmqDeadLetterSourceQueuesResponse() (response *DescribeCmqDeadLe
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeCmqDeadLetterSourceQueues(request *DescribeCmqDeadLetterSourceQueuesRequest) (response *DescribeCmqDeadLetterSourceQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqDeadLetterSourceQueuesRequest()
-    }
-    
-    response = NewDescribeCmqDeadLetterSourceQueuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqDeadLetterSourceQueuesWithContext(context.Background(), request)
 }
 
 // DescribeCmqDeadLetterSourceQueues
@@ -3053,6 +3001,11 @@ func (c *Client) DescribeCmqDeadLetterSourceQueuesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeCmqDeadLetterSourceQueuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqDeadLetterSourceQueues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqDeadLetterSourceQueuesResponse()
@@ -3084,13 +3037,7 @@ func NewDescribeCmqQueueDetailResponse() (response *DescribeCmqQueueDetailRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCmqQueueDetail(request *DescribeCmqQueueDetailRequest) (response *DescribeCmqQueueDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqQueueDetailRequest()
-    }
-    
-    response = NewDescribeCmqQueueDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqQueueDetailWithContext(context.Background(), request)
 }
 
 // DescribeCmqQueueDetail
@@ -3103,6 +3050,11 @@ func (c *Client) DescribeCmqQueueDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCmqQueueDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqQueueDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqQueueDetailResponse()
@@ -3133,13 +3085,7 @@ func NewDescribeCmqQueuesResponse() (response *DescribeCmqQueuesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCmqQueues(request *DescribeCmqQueuesRequest) (response *DescribeCmqQueuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqQueuesRequest()
-    }
-    
-    response = NewDescribeCmqQueuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqQueuesWithContext(context.Background(), request)
 }
 
 // DescribeCmqQueues
@@ -3151,6 +3097,11 @@ func (c *Client) DescribeCmqQueuesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCmqQueuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqQueues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqQueuesResponse()
@@ -3181,13 +3132,7 @@ func NewDescribeCmqSubscriptionDetailResponse() (response *DescribeCmqSubscripti
 // 可能返回的错误码:
 //  FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
 func (c *Client) DescribeCmqSubscriptionDetail(request *DescribeCmqSubscriptionDetailRequest) (response *DescribeCmqSubscriptionDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqSubscriptionDetailRequest()
-    }
-    
-    response = NewDescribeCmqSubscriptionDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqSubscriptionDetailWithContext(context.Background(), request)
 }
 
 // DescribeCmqSubscriptionDetail
@@ -3199,6 +3144,11 @@ func (c *Client) DescribeCmqSubscriptionDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCmqSubscriptionDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqSubscriptionDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqSubscriptionDetailResponse()
@@ -3231,13 +3181,7 @@ func NewDescribeCmqTopicDetailResponse() (response *DescribeCmqTopicDetailRespon
 //  FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) (response *DescribeCmqTopicDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqTopicDetailRequest()
-    }
-    
-    response = NewDescribeCmqTopicDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqTopicDetailWithContext(context.Background(), request)
 }
 
 // DescribeCmqTopicDetail
@@ -3251,6 +3195,11 @@ func (c *Client) DescribeCmqTopicDetailWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeCmqTopicDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqTopicDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqTopicDetailResponse()
@@ -3282,13 +3231,7 @@ func NewDescribeCmqTopicsResponse() (response *DescribeCmqTopicsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
 func (c *Client) DescribeCmqTopics(request *DescribeCmqTopicsRequest) (response *DescribeCmqTopicsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCmqTopicsRequest()
-    }
-    
-    response = NewDescribeCmqTopicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCmqTopicsWithContext(context.Background(), request)
 }
 
 // DescribeCmqTopics
@@ -3301,6 +3244,11 @@ func (c *Client) DescribeCmqTopicsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCmqTopicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmqTopics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCmqTopicsResponse()
@@ -3339,13 +3287,7 @@ func NewDescribeEnvironmentAttributesResponse() (response *DescribeEnvironmentAt
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DescribeEnvironmentAttributes(request *DescribeEnvironmentAttributesRequest) (response *DescribeEnvironmentAttributesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvironmentAttributesRequest()
-    }
-    
-    response = NewDescribeEnvironmentAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvironmentAttributesWithContext(context.Background(), request)
 }
 
 // DescribeEnvironmentAttributes
@@ -3365,6 +3307,11 @@ func (c *Client) DescribeEnvironmentAttributesWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEnvironmentAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironmentAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvironmentAttributesResponse()
@@ -3401,13 +3348,7 @@ func NewDescribeEnvironmentRolesResponse() (response *DescribeEnvironmentRolesRe
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DescribeEnvironmentRoles(request *DescribeEnvironmentRolesRequest) (response *DescribeEnvironmentRolesResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvironmentRolesRequest()
-    }
-    
-    response = NewDescribeEnvironmentRolesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvironmentRolesWithContext(context.Background(), request)
 }
 
 // DescribeEnvironmentRoles
@@ -3425,6 +3366,11 @@ func (c *Client) DescribeEnvironmentRolesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEnvironmentRolesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironmentRoles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvironmentRolesResponse()
@@ -3459,13 +3405,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvironmentsRequest()
-    }
-    
-    response = NewDescribeEnvironmentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvironmentsWithContext(context.Background(), request)
 }
 
 // DescribeEnvironments
@@ -3481,6 +3421,11 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironments require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvironmentsResponse()
@@ -3515,13 +3460,7 @@ func NewDescribeNamespaceBundlesOptResponse() (response *DescribeNamespaceBundle
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeNamespaceBundlesOpt(request *DescribeNamespaceBundlesOptRequest) (response *DescribeNamespaceBundlesOptResponse, err error) {
-    if request == nil {
-        request = NewDescribeNamespaceBundlesOptRequest()
-    }
-    
-    response = NewDescribeNamespaceBundlesOptResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNamespaceBundlesOptWithContext(context.Background(), request)
 }
 
 // DescribeNamespaceBundlesOpt
@@ -3537,6 +3476,11 @@ func (c *Client) DescribeNamespaceBundlesOptWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeNamespaceBundlesOptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNamespaceBundlesOpt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNamespaceBundlesOptResponse()
@@ -3571,13 +3515,7 @@ func NewDescribeNodeHealthOptResponse() (response *DescribeNodeHealthOptResponse
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (response *DescribeNodeHealthOptResponse, err error) {
-    if request == nil {
-        request = NewDescribeNodeHealthOptRequest()
-    }
-    
-    response = NewDescribeNodeHealthOptResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNodeHealthOptWithContext(context.Background(), request)
 }
 
 // DescribeNodeHealthOpt
@@ -3593,6 +3531,11 @@ func (c *Client) DescribeNodeHealthOptWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeNodeHealthOptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeHealthOpt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNodeHealthOptResponse()
@@ -3623,13 +3566,7 @@ func NewDescribePublisherSummaryResponse() (response *DescribePublisherSummaryRe
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublisherSummary(request *DescribePublisherSummaryRequest) (response *DescribePublisherSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribePublisherSummaryRequest()
-    }
-    
-    response = NewDescribePublisherSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePublisherSummaryWithContext(context.Background(), request)
 }
 
 // DescribePublisherSummary
@@ -3641,6 +3578,11 @@ func (c *Client) DescribePublisherSummaryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribePublisherSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublisherSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePublisherSummaryResponse()
@@ -3671,13 +3613,7 @@ func NewDescribePublishersResponse() (response *DescribePublishersResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublishers(request *DescribePublishersRequest) (response *DescribePublishersResponse, err error) {
-    if request == nil {
-        request = NewDescribePublishersRequest()
-    }
-    
-    response = NewDescribePublishersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePublishersWithContext(context.Background(), request)
 }
 
 // DescribePublishers
@@ -3689,6 +3625,11 @@ func (c *Client) DescribePublishersWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePublishersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublishers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePublishersResponse()
@@ -3723,13 +3664,7 @@ func NewDescribeRocketMQClusterResponse() (response *DescribeRocketMQClusterResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRocketMQCluster(request *DescribeRocketMQClusterRequest) (response *DescribeRocketMQClusterResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQClusterRequest()
-    }
-    
-    response = NewDescribeRocketMQClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRocketMQClusterWithContext(context.Background(), request)
 }
 
 // DescribeRocketMQCluster
@@ -3745,6 +3680,11 @@ func (c *Client) DescribeRocketMQClusterWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRocketMQClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQClusterResponse()
@@ -3778,13 +3718,7 @@ func NewDescribeRocketMQClustersResponse() (response *DescribeRocketMQClustersRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRocketMQClusters(request *DescribeRocketMQClustersRequest) (response *DescribeRocketMQClustersResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQClustersRequest()
-    }
-    
-    response = NewDescribeRocketMQClustersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRocketMQClustersWithContext(context.Background(), request)
 }
 
 // DescribeRocketMQClusters
@@ -3799,6 +3733,11 @@ func (c *Client) DescribeRocketMQClustersWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRocketMQClustersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQClusters require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQClustersResponse()
@@ -3832,13 +3771,7 @@ func NewDescribeRocketMQGroupsResponse() (response *DescribeRocketMQGroupsRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRocketMQGroups(request *DescribeRocketMQGroupsRequest) (response *DescribeRocketMQGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQGroupsRequest()
-    }
-    
-    response = NewDescribeRocketMQGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRocketMQGroupsWithContext(context.Background(), request)
 }
 
 // DescribeRocketMQGroups
@@ -3853,6 +3786,11 @@ func (c *Client) DescribeRocketMQGroupsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRocketMQGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQGroupsResponse()
@@ -3887,13 +3825,7 @@ func NewDescribeRocketMQNamespacesResponse() (response *DescribeRocketMQNamespac
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRocketMQNamespaces(request *DescribeRocketMQNamespacesRequest) (response *DescribeRocketMQNamespacesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQNamespacesRequest()
-    }
-    
-    response = NewDescribeRocketMQNamespacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRocketMQNamespacesWithContext(context.Background(), request)
 }
 
 // DescribeRocketMQNamespaces
@@ -3909,6 +3841,11 @@ func (c *Client) DescribeRocketMQNamespacesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRocketMQNamespacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQNamespaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQNamespacesResponse()
@@ -3943,13 +3880,7 @@ func NewDescribeRocketMQTopicsResponse() (response *DescribeRocketMQTopicsRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) (response *DescribeRocketMQTopicsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRocketMQTopicsRequest()
-    }
-    
-    response = NewDescribeRocketMQTopicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRocketMQTopicsWithContext(context.Background(), request)
 }
 
 // DescribeRocketMQTopics
@@ -3965,6 +3896,11 @@ func (c *Client) DescribeRocketMQTopicsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRocketMQTopicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQTopics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRocketMQTopicsResponse()
@@ -4000,13 +3936,7 @@ func NewDescribeRolesResponse() (response *DescribeRolesResponse) {
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRoles(request *DescribeRolesRequest) (response *DescribeRolesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRolesRequest()
-    }
-    
-    response = NewDescribeRolesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRolesWithContext(context.Background(), request)
 }
 
 // DescribeRoles
@@ -4023,6 +3953,11 @@ func (c *Client) DescribeRolesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRolesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRolesResponse()
@@ -4062,13 +3997,7 @@ func NewDescribeSubscriptionsResponse() (response *DescribeSubscriptionsResponse
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribeSubscriptions(request *DescribeSubscriptionsRequest) (response *DescribeSubscriptionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubscriptionsRequest()
-    }
-    
-    response = NewDescribeSubscriptionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubscriptionsWithContext(context.Background(), request)
 }
 
 // DescribeSubscriptions
@@ -4089,6 +4018,11 @@ func (c *Client) DescribeSubscriptionsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSubscriptionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubscriptions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubscriptionsResponse()
@@ -4125,13 +4059,7 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *DescribeTopicsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopicsRequest()
-    }
-    
-    response = NewDescribeTopicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopicsWithContext(context.Background(), request)
 }
 
 // DescribeTopics
@@ -4149,6 +4077,11 @@ func (c *Client) DescribeTopicsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTopicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopicsResponse()
@@ -4185,13 +4118,7 @@ func NewModifyAMQPClusterResponse() (response *ModifyAMQPClusterResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAMQPCluster(request *ModifyAMQPClusterRequest) (response *ModifyAMQPClusterResponse, err error) {
-    if request == nil {
-        request = NewModifyAMQPClusterRequest()
-    }
-    
-    response = NewModifyAMQPClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAMQPClusterWithContext(context.Background(), request)
 }
 
 // ModifyAMQPCluster
@@ -4209,6 +4136,11 @@ func (c *Client) ModifyAMQPClusterWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyAMQPClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAMQPCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAMQPClusterResponse()
@@ -4244,13 +4176,7 @@ func NewModifyAMQPExchangeResponse() (response *ModifyAMQPExchangeResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAMQPExchange(request *ModifyAMQPExchangeRequest) (response *ModifyAMQPExchangeResponse, err error) {
-    if request == nil {
-        request = NewModifyAMQPExchangeRequest()
-    }
-    
-    response = NewModifyAMQPExchangeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAMQPExchangeWithContext(context.Background(), request)
 }
 
 // ModifyAMQPExchange
@@ -4267,6 +4193,11 @@ func (c *Client) ModifyAMQPExchangeWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAMQPExchangeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAMQPExchange require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAMQPExchangeResponse()
@@ -4301,13 +4232,7 @@ func NewModifyAMQPQueueResponse() (response *ModifyAMQPQueueResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAMQPQueue(request *ModifyAMQPQueueRequest) (response *ModifyAMQPQueueResponse, err error) {
-    if request == nil {
-        request = NewModifyAMQPQueueRequest()
-    }
-    
-    response = NewModifyAMQPQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAMQPQueueWithContext(context.Background(), request)
 }
 
 // ModifyAMQPQueue
@@ -4323,6 +4248,11 @@ func (c *Client) ModifyAMQPQueueWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAMQPQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAMQPQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAMQPQueueResponse()
@@ -4359,13 +4289,7 @@ func NewModifyAMQPVHostResponse() (response *ModifyAMQPVHostResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAMQPVHost(request *ModifyAMQPVHostRequest) (response *ModifyAMQPVHostResponse, err error) {
-    if request == nil {
-        request = NewModifyAMQPVHostRequest()
-    }
-    
-    response = NewModifyAMQPVHostResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAMQPVHostWithContext(context.Background(), request)
 }
 
 // ModifyAMQPVHost
@@ -4383,6 +4307,11 @@ func (c *Client) ModifyAMQPVHostWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAMQPVHostRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAMQPVHost require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAMQPVHostResponse()
@@ -4415,13 +4344,7 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
-    if request == nil {
-        request = NewModifyClusterRequest()
-    }
-    
-    response = NewModifyClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyClusterWithContext(context.Background(), request)
 }
 
 // ModifyCluster
@@ -4435,6 +4358,11 @@ func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyCl
     if request == nil {
         request = NewModifyClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyClusterResponse()
@@ -4468,13 +4396,7 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyCmqQueueAttributeRequest()
-    }
-    
-    response = NewModifyCmqQueueAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCmqQueueAttributeWithContext(context.Background(), request)
 }
 
 // ModifyCmqQueueAttribute
@@ -4489,6 +4411,11 @@ func (c *Client) ModifyCmqQueueAttributeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCmqQueueAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCmqQueueAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCmqQueueAttributeResponse()
@@ -4519,13 +4446,7 @@ func NewModifyCmqSubscriptionAttributeResponse() (response *ModifyCmqSubscriptio
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCmqSubscriptionAttribute(request *ModifyCmqSubscriptionAttributeRequest) (response *ModifyCmqSubscriptionAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyCmqSubscriptionAttributeRequest()
-    }
-    
-    response = NewModifyCmqSubscriptionAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCmqSubscriptionAttributeWithContext(context.Background(), request)
 }
 
 // ModifyCmqSubscriptionAttribute
@@ -4537,6 +4458,11 @@ func (c *Client) ModifyCmqSubscriptionAttributeWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyCmqSubscriptionAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCmqSubscriptionAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCmqSubscriptionAttributeResponse()
@@ -4567,13 +4493,7 @@ func NewModifyCmqTopicAttributeResponse() (response *ModifyCmqTopicAttributeResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyCmqTopicAttribute(request *ModifyCmqTopicAttributeRequest) (response *ModifyCmqTopicAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyCmqTopicAttributeRequest()
-    }
-    
-    response = NewModifyCmqTopicAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCmqTopicAttributeWithContext(context.Background(), request)
 }
 
 // ModifyCmqTopicAttribute
@@ -4585,6 +4505,11 @@ func (c *Client) ModifyCmqTopicAttributeWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyCmqTopicAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCmqTopicAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCmqTopicAttributeResponse()
@@ -4627,13 +4552,7 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttributesRequest) (response *ModifyEnvironmentAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyEnvironmentAttributesRequest()
-    }
-    
-    response = NewModifyEnvironmentAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEnvironmentAttributesWithContext(context.Background(), request)
 }
 
 // ModifyEnvironmentAttributes
@@ -4657,6 +4576,11 @@ func (c *Client) ModifyEnvironmentAttributesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyEnvironmentAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnvironmentAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEnvironmentAttributesResponse()
@@ -4691,13 +4615,7 @@ func NewModifyEnvironmentRoleResponse() (response *ModifyEnvironmentRoleResponse
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
 func (c *Client) ModifyEnvironmentRole(request *ModifyEnvironmentRoleRequest) (response *ModifyEnvironmentRoleResponse, err error) {
-    if request == nil {
-        request = NewModifyEnvironmentRoleRequest()
-    }
-    
-    response = NewModifyEnvironmentRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEnvironmentRoleWithContext(context.Background(), request)
 }
 
 // ModifyEnvironmentRole
@@ -4713,6 +4631,11 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyEnvironmentRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnvironmentRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEnvironmentRoleResponse()
@@ -4749,13 +4672,7 @@ func NewModifyRocketMQClusterResponse() (response *ModifyRocketMQClusterResponse
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQCluster(request *ModifyRocketMQClusterRequest) (response *ModifyRocketMQClusterResponse, err error) {
-    if request == nil {
-        request = NewModifyRocketMQClusterRequest()
-    }
-    
-    response = NewModifyRocketMQClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRocketMQClusterWithContext(context.Background(), request)
 }
 
 // ModifyRocketMQCluster
@@ -4773,6 +4690,11 @@ func (c *Client) ModifyRocketMQClusterWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyRocketMQClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRocketMQClusterResponse()
@@ -4806,13 +4728,7 @@ func NewModifyRocketMQGroupResponse() (response *ModifyRocketMQGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQGroup(request *ModifyRocketMQGroupRequest) (response *ModifyRocketMQGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyRocketMQGroupRequest()
-    }
-    
-    response = NewModifyRocketMQGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRocketMQGroupWithContext(context.Background(), request)
 }
 
 // ModifyRocketMQGroup
@@ -4827,6 +4743,11 @@ func (c *Client) ModifyRocketMQGroupWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRocketMQGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRocketMQGroupResponse()
@@ -4863,13 +4784,7 @@ func NewModifyRocketMQNamespaceResponse() (response *ModifyRocketMQNamespaceResp
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest) (response *ModifyRocketMQNamespaceResponse, err error) {
-    if request == nil {
-        request = NewModifyRocketMQNamespaceRequest()
-    }
-    
-    response = NewModifyRocketMQNamespaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRocketMQNamespaceWithContext(context.Background(), request)
 }
 
 // ModifyRocketMQNamespace
@@ -4887,6 +4802,11 @@ func (c *Client) ModifyRocketMQNamespaceWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyRocketMQNamespaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQNamespace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRocketMQNamespaceResponse()
@@ -4921,13 +4841,7 @@ func NewModifyRocketMQTopicResponse() (response *ModifyRocketMQTopicResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (response *ModifyRocketMQTopicResponse, err error) {
-    if request == nil {
-        request = NewModifyRocketMQTopicRequest()
-    }
-    
-    response = NewModifyRocketMQTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRocketMQTopicWithContext(context.Background(), request)
 }
 
 // ModifyRocketMQTopic
@@ -4943,6 +4857,11 @@ func (c *Client) ModifyRocketMQTopicWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRocketMQTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRocketMQTopicResponse()
@@ -4978,13 +4897,7 @@ func NewModifyRoleResponse() (response *ModifyRoleResponse) {
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
-    if request == nil {
-        request = NewModifyRoleRequest()
-    }
-    
-    response = NewModifyRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRoleWithContext(context.Background(), request)
 }
 
 // ModifyRole
@@ -5001,6 +4914,11 @@ func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleR
     if request == nil {
         request = NewModifyRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRoleResponse()
@@ -5038,13 +4956,7 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
-    if request == nil {
-        request = NewModifyTopicRequest()
-    }
-    
-    response = NewModifyTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTopicWithContext(context.Background(), request)
 }
 
 // ModifyTopic
@@ -5063,6 +4975,11 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     if request == nil {
         request = NewModifyTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTopicResponse()
@@ -5093,13 +5010,7 @@ func NewPublishCmqMsgResponse() (response *PublishCmqMsgResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) PublishCmqMsg(request *PublishCmqMsgRequest) (response *PublishCmqMsgResponse, err error) {
-    if request == nil {
-        request = NewPublishCmqMsgRequest()
-    }
-    
-    response = NewPublishCmqMsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishCmqMsgWithContext(context.Background(), request)
 }
 
 // PublishCmqMsg
@@ -5111,6 +5022,11 @@ func (c *Client) PublishCmqMsgWithContext(ctx context.Context, request *PublishC
     if request == nil {
         request = NewPublishCmqMsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishCmqMsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishCmqMsgResponse()
@@ -5151,13 +5067,7 @@ func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) ReceiveMessage(request *ReceiveMessageRequest) (response *ReceiveMessageResponse, err error) {
-    if request == nil {
-        request = NewReceiveMessageRequest()
-    }
-    
-    response = NewReceiveMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReceiveMessageWithContext(context.Background(), request)
 }
 
 // ReceiveMessage
@@ -5179,6 +5089,11 @@ func (c *Client) ReceiveMessageWithContext(ctx context.Context, request *Receive
     if request == nil {
         request = NewReceiveMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReceiveMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReceiveMessageResponse()
@@ -5216,14 +5131,9 @@ func NewResetMsgSubOffsetByTimestampResponse() (response *ResetMsgSubOffsetByTim
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimestampRequest) (response *ResetMsgSubOffsetByTimestampResponse, err error) {
-    if request == nil {
-        request = NewResetMsgSubOffsetByTimestampRequest()
-    }
-    
-    response = NewResetMsgSubOffsetByTimestampResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetMsgSubOffsetByTimestampWithContext(context.Background(), request)
 }
 
 // ResetMsgSubOffsetByTimestamp
@@ -5239,10 +5149,16 @@ func (c *Client) ResetMsgSubOffsetByTimestamp(request *ResetMsgSubOffsetByTimest
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_SUBSCRIPTION = "ResourceNotFound.Subscription"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) ResetMsgSubOffsetByTimestampWithContext(ctx context.Context, request *ResetMsgSubOffsetByTimestampRequest) (response *ResetMsgSubOffsetByTimestampResponse, err error) {
     if request == nil {
         request = NewResetMsgSubOffsetByTimestampRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetMsgSubOffsetByTimestamp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetMsgSubOffsetByTimestampResponse()
@@ -5273,13 +5189,7 @@ func NewRewindCmqQueueResponse() (response *RewindCmqQueueResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *RewindCmqQueueResponse, err error) {
-    if request == nil {
-        request = NewRewindCmqQueueRequest()
-    }
-    
-    response = NewRewindCmqQueueResponse()
-    err = c.Send(request, response)
-    return
+    return c.RewindCmqQueueWithContext(context.Background(), request)
 }
 
 // RewindCmqQueue
@@ -5291,6 +5201,11 @@ func (c *Client) RewindCmqQueueWithContext(ctx context.Context, request *RewindC
     if request == nil {
         request = NewRewindCmqQueueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RewindCmqQueue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRewindCmqQueueResponse()
@@ -5335,13 +5250,7 @@ func NewSendBatchMessagesResponse() (response *SendBatchMessagesResponse) {
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) SendBatchMessages(request *SendBatchMessagesRequest) (response *SendBatchMessagesResponse, err error) {
-    if request == nil {
-        request = NewSendBatchMessagesRequest()
-    }
-    
-    response = NewSendBatchMessagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendBatchMessagesWithContext(context.Background(), request)
 }
 
 // SendBatchMessages
@@ -5367,6 +5276,11 @@ func (c *Client) SendBatchMessagesWithContext(ctx context.Context, request *Send
     if request == nil {
         request = NewSendBatchMessagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendBatchMessages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendBatchMessagesResponse()
@@ -5397,13 +5311,7 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
-    if request == nil {
-        request = NewSendCmqMsgRequest()
-    }
-    
-    response = NewSendCmqMsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendCmqMsgWithContext(context.Background(), request)
 }
 
 // SendCmqMsg
@@ -5415,6 +5323,11 @@ func (c *Client) SendCmqMsgWithContext(ctx context.Context, request *SendCmqMsgR
     if request == nil {
         request = NewSendCmqMsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendCmqMsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendCmqMsgResponse()
@@ -5455,13 +5368,7 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
 //  INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 //  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
 func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessagesResponse, err error) {
-    if request == nil {
-        request = NewSendMessagesRequest()
-    }
-    
-    response = NewSendMessagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendMessagesWithContext(context.Background(), request)
 }
 
 // SendMessages
@@ -5483,6 +5390,11 @@ func (c *Client) SendMessagesWithContext(ctx context.Context, request *SendMessa
     if request == nil {
         request = NewSendMessagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendMessages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendMessagesResponse()
@@ -5521,13 +5433,7 @@ func NewSendMsgResponse() (response *SendMsgResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, err error) {
-    if request == nil {
-        request = NewSendMsgRequest()
-    }
-    
-    response = NewSendMsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendMsgWithContext(context.Background(), request)
 }
 
 // SendMsg
@@ -5547,6 +5453,11 @@ func (c *Client) SendMsgWithContext(ctx context.Context, request *SendMsgRequest
     if request == nil {
         request = NewSendMsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendMsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendMsgResponse()
@@ -5577,13 +5488,7 @@ func NewUnbindCmqDeadLetterResponse() (response *UnbindCmqDeadLetterResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) UnbindCmqDeadLetter(request *UnbindCmqDeadLetterRequest) (response *UnbindCmqDeadLetterResponse, err error) {
-    if request == nil {
-        request = NewUnbindCmqDeadLetterRequest()
-    }
-    
-    response = NewUnbindCmqDeadLetterResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindCmqDeadLetterWithContext(context.Background(), request)
 }
 
 // UnbindCmqDeadLetter
@@ -5595,6 +5500,11 @@ func (c *Client) UnbindCmqDeadLetterWithContext(ctx context.Context, request *Un
     if request == nil {
         request = NewUnbindCmqDeadLetterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindCmqDeadLetter require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindCmqDeadLetterResponse()

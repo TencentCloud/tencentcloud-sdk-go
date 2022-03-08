@@ -16,6 +16,7 @@ package v20180711
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -89,13 +90,7 @@ func NewCreateAgeDetectTaskResponse() (response *CreateAgeDetectTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAgeDetectTask(request *CreateAgeDetectTaskRequest) (response *CreateAgeDetectTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAgeDetectTaskRequest()
-    }
-    
-    response = NewCreateAgeDetectTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAgeDetectTaskWithContext(context.Background(), request)
 }
 
 // CreateAgeDetectTask
@@ -129,6 +124,11 @@ func (c *Client) CreateAgeDetectTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateAgeDetectTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgeDetectTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAgeDetectTaskResponse()
@@ -169,13 +169,7 @@ func NewCreateAppResponse() (response *CreateAppResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppResponse, err error) {
-    if request == nil {
-        request = NewCreateAppRequest()
-    }
-    
-    response = NewCreateAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAppWithContext(context.Background(), request)
 }
 
 // CreateApp
@@ -197,6 +191,11 @@ func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppReq
     if request == nil {
         request = NewCreateAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAppResponse()
@@ -229,13 +228,7 @@ func NewDescribeAgeDetectTaskResponse() (response *DescribeAgeDetectTaskResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAgeDetectTask(request *DescribeAgeDetectTaskRequest) (response *DescribeAgeDetectTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgeDetectTaskRequest()
-    }
-    
-    response = NewDescribeAgeDetectTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgeDetectTaskWithContext(context.Background(), request)
 }
 
 // DescribeAgeDetectTask
@@ -249,6 +242,11 @@ func (c *Client) DescribeAgeDetectTaskWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAgeDetectTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgeDetectTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgeDetectTaskResponse()
@@ -288,13 +286,7 @@ func NewDescribeAppStatisticsResponse() (response *DescribeAppStatisticsResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAppStatistics(request *DescribeAppStatisticsRequest) (response *DescribeAppStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAppStatisticsRequest()
-    }
-    
-    response = NewDescribeAppStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAppStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeAppStatistics
@@ -315,6 +307,11 @@ func (c *Client) DescribeAppStatisticsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAppStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAppStatisticsResponse()
@@ -349,13 +346,7 @@ func NewDescribeApplicationDataResponse() (response *DescribeApplicationDataResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeApplicationData(request *DescribeApplicationDataRequest) (response *DescribeApplicationDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationDataRequest()
-    }
-    
-    response = NewDescribeApplicationDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationDataWithContext(context.Background(), request)
 }
 
 // DescribeApplicationData
@@ -371,6 +362,11 @@ func (c *Client) DescribeApplicationDataWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeApplicationDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationDataResponse()
@@ -405,13 +401,7 @@ func NewDescribeFilterResultResponse() (response *DescribeFilterResultResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilterResult(request *DescribeFilterResultRequest) (response *DescribeFilterResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeFilterResultRequest()
-    }
-    
-    response = NewDescribeFilterResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFilterResultWithContext(context.Background(), request)
 }
 
 // DescribeFilterResult
@@ -427,6 +417,11 @@ func (c *Client) DescribeFilterResultWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFilterResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFilterResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFilterResultResponse()
@@ -461,13 +456,7 @@ func NewDescribeFilterResultListResponse() (response *DescribeFilterResultListRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFilterResultList(request *DescribeFilterResultListRequest) (response *DescribeFilterResultListResponse, err error) {
-    if request == nil {
-        request = NewDescribeFilterResultListRequest()
-    }
-    
-    response = NewDescribeFilterResultListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFilterResultListWithContext(context.Background(), request)
 }
 
 // DescribeFilterResultList
@@ -483,6 +472,11 @@ func (c *Client) DescribeFilterResultListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeFilterResultListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFilterResultList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFilterResultListResponse()
@@ -513,13 +507,7 @@ func NewDescribeRealtimeScanConfigResponse() (response *DescribeRealtimeScanConf
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeRealtimeScanConfig(request *DescribeRealtimeScanConfigRequest) (response *DescribeRealtimeScanConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeRealtimeScanConfigRequest()
-    }
-    
-    response = NewDescribeRealtimeScanConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRealtimeScanConfigWithContext(context.Background(), request)
 }
 
 // DescribeRealtimeScanConfig
@@ -531,6 +519,11 @@ func (c *Client) DescribeRealtimeScanConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRealtimeScanConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRealtimeScanConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRealtimeScanConfigResponse()
@@ -564,13 +557,7 @@ func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *DescribeRoomInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeRoomInfoRequest()
-    }
-    
-    response = NewDescribeRoomInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRoomInfoWithContext(context.Background(), request)
 }
 
 // DescribeRoomInfo
@@ -585,6 +572,11 @@ func (c *Client) DescribeRoomInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRoomInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoomInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRoomInfoResponse()
@@ -626,13 +618,7 @@ func NewDescribeScanResultListResponse() (response *DescribeScanResultListRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanResultList(request *DescribeScanResultListRequest) (response *DescribeScanResultListResponse, err error) {
-    if request == nil {
-        request = NewDescribeScanResultListRequest()
-    }
-    
-    response = NewDescribeScanResultListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScanResultListWithContext(context.Background(), request)
 }
 
 // DescribeScanResultList
@@ -655,6 +641,11 @@ func (c *Client) DescribeScanResultListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeScanResultListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanResultList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScanResultListResponse()
@@ -703,13 +694,7 @@ func NewDescribeUserInAndOutTimeResponse() (response *DescribeUserInAndOutTimeRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserInAndOutTime(request *DescribeUserInAndOutTimeRequest) (response *DescribeUserInAndOutTimeResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserInAndOutTimeRequest()
-    }
-    
-    response = NewDescribeUserInAndOutTimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserInAndOutTimeWithContext(context.Background(), request)
 }
 
 // DescribeUserInAndOutTime
@@ -739,6 +724,11 @@ func (c *Client) DescribeUserInAndOutTimeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUserInAndOutTimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserInAndOutTime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserInAndOutTimeResponse()
@@ -778,13 +768,7 @@ func NewModifyAppStatusResponse() (response *ModifyAppStatusResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAppStatus(request *ModifyAppStatusRequest) (response *ModifyAppStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAppStatusRequest()
-    }
-    
-    response = NewModifyAppStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAppStatusWithContext(context.Background(), request)
 }
 
 // ModifyAppStatus
@@ -805,6 +789,11 @@ func (c *Client) ModifyAppStatusWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyAppStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAppStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAppStatusResponse()
@@ -838,13 +827,7 @@ func NewModifyRoomInfoResponse() (response *ModifyRoomInfoResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyRoomInfo(request *ModifyRoomInfoRequest) (response *ModifyRoomInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyRoomInfoRequest()
-    }
-    
-    response = NewModifyRoomInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRoomInfoWithContext(context.Background(), request)
 }
 
 // ModifyRoomInfo
@@ -859,6 +842,11 @@ func (c *Client) ModifyRoomInfoWithContext(ctx context.Context, request *ModifyR
     if request == nil {
         request = NewModifyRoomInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoomInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRoomInfoResponse()
@@ -1167,13 +1155,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceResponse, err error) {
-    if request == nil {
-        request = NewScanVoiceRequest()
-    }
-    
-    response = NewScanVoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanVoiceWithContext(context.Background(), request)
 }
 
 // ScanVoice
@@ -1463,6 +1445,11 @@ func (c *Client) ScanVoiceWithContext(ctx context.Context, request *ScanVoiceReq
     if request == nil {
         request = NewScanVoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanVoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanVoiceResponse()
@@ -1503,13 +1490,7 @@ func NewUpdateScanRoomsResponse() (response *UpdateScanRoomsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateScanRooms(request *UpdateScanRoomsRequest) (response *UpdateScanRoomsResponse, err error) {
-    if request == nil {
-        request = NewUpdateScanRoomsRequest()
-    }
-    
-    response = NewUpdateScanRoomsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateScanRoomsWithContext(context.Background(), request)
 }
 
 // UpdateScanRooms
@@ -1531,6 +1512,11 @@ func (c *Client) UpdateScanRoomsWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateScanRoomsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateScanRooms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateScanRoomsResponse()
@@ -1571,13 +1557,7 @@ func NewUpdateScanUsersResponse() (response *UpdateScanUsersResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateScanUsers(request *UpdateScanUsersRequest) (response *UpdateScanUsersResponse, err error) {
-    if request == nil {
-        request = NewUpdateScanUsersRequest()
-    }
-    
-    response = NewUpdateScanUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateScanUsersWithContext(context.Background(), request)
 }
 
 // UpdateScanUsers
@@ -1599,6 +1579,11 @@ func (c *Client) UpdateScanUsersWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateScanUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateScanUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateScanUsersResponse()
@@ -1637,13 +1622,7 @@ func NewVoiceFilterResponse() (response *VoiceFilterResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) VoiceFilter(request *VoiceFilterRequest) (response *VoiceFilterResponse, err error) {
-    if request == nil {
-        request = NewVoiceFilterRequest()
-    }
-    
-    response = NewVoiceFilterResponse()
-    err = c.Send(request, response)
-    return
+    return c.VoiceFilterWithContext(context.Background(), request)
 }
 
 // VoiceFilter
@@ -1663,6 +1642,11 @@ func (c *Client) VoiceFilterWithContext(ctx context.Context, request *VoiceFilte
     if request == nil {
         request = NewVoiceFilterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoiceFilter require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVoiceFilterResponse()

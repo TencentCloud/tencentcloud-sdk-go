@@ -16,6 +16,7 @@ package v20190529
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,13 +86,7 @@ func NewAssessQualityResponse() (response *AssessQualityResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) AssessQuality(request *AssessQualityRequest) (response *AssessQualityResponse, err error) {
-    if request == nil {
-        request = NewAssessQualityRequest()
-    }
-    
-    response = NewAssessQualityResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssessQualityWithContext(context.Background(), request)
 }
 
 // AssessQuality
@@ -121,6 +116,11 @@ func (c *Client) AssessQualityWithContext(ctx context.Context, request *AssessQu
     if request == nil {
         request = NewAssessQualityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssessQuality require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssessQualityResponse()
@@ -166,13 +166,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateGroupRequest()
-    }
-    
-    response = NewCreateGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGroupWithContext(context.Background(), request)
 }
 
 // CreateGroup
@@ -199,6 +193,11 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGroupResponse()
@@ -254,13 +253,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  INVALIDPARAMETERVALUE_TAGSVALUESIZEEXCEED = "InvalidParameterValue.TagsValueSizeExceed"
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
-    if request == nil {
-        request = NewCreateImageRequest()
-    }
-    
-    response = NewCreateImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImageWithContext(context.Background(), request)
 }
 
 // CreateImage
@@ -297,6 +290,11 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
     if request == nil {
         request = NewCreateImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImageResponse()
@@ -348,13 +346,7 @@ func NewCropImageResponse() (response *CropImageResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CropImage(request *CropImageRequest) (response *CropImageResponse, err error) {
-    if request == nil {
-        request = NewCropImageRequest()
-    }
-    
-    response = NewCropImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CropImageWithContext(context.Background(), request)
 }
 
 // CropImage
@@ -387,6 +379,11 @@ func (c *Client) CropImageWithContext(ctx context.Context, request *CropImageReq
     if request == nil {
         request = NewCropImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CropImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCropImageResponse()
@@ -428,13 +425,7 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 //  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
 //  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
 func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
-    if request == nil {
-        request = NewDeleteImagesRequest()
-    }
-    
-    response = NewDeleteImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImagesWithContext(context.Background(), request)
 }
 
 // DeleteImages
@@ -457,6 +448,11 @@ func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteIma
     if request == nil {
         request = NewDeleteImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImagesResponse()
@@ -494,13 +490,7 @@ func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
 //  INVALIDPARAMETERVALUE_IMAGEGROUPIDTOOLONG = "InvalidParameterValue.ImageGroupIdTooLong"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *DescribeGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupsRequest()
-    }
-    
-    response = NewDescribeGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupsWithContext(context.Background(), request)
 }
 
 // DescribeGroups
@@ -519,6 +509,11 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupsResponse()
@@ -560,13 +555,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //  INVALIDPARAMETERVALUE_PICNAMETOOLONG = "InvalidParameterValue.PicNameTooLong"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeImagesRequest()
-    }
-    
-    response = NewDescribeImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImagesWithContext(context.Background(), request)
 }
 
 // DescribeImages
@@ -589,6 +578,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImagesResponse()
@@ -641,13 +635,7 @@ func NewDetectCelebrityResponse() (response *DetectCelebrityResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DetectCelebrity(request *DetectCelebrityRequest) (response *DetectCelebrityResponse, err error) {
-    if request == nil {
-        request = NewDetectCelebrityRequest()
-    }
-    
-    response = NewDetectCelebrityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectCelebrityWithContext(context.Background(), request)
 }
 
 // DetectCelebrity
@@ -681,6 +669,11 @@ func (c *Client) DetectCelebrityWithContext(ctx context.Context, request *Detect
     if request == nil {
         request = NewDetectCelebrityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectCelebrity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectCelebrityResponse()
@@ -722,6 +715,7 @@ func NewDetectDisgustResponse() (response *DetectDisgustResponse) {
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 //  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -731,13 +725,7 @@ func NewDetectDisgustResponse() (response *DetectDisgustResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DetectDisgust(request *DetectDisgustRequest) (response *DetectDisgustResponse, err error) {
-    if request == nil {
-        request = NewDetectDisgustRequest()
-    }
-    
-    response = NewDetectDisgustResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectDisgustWithContext(context.Background(), request)
 }
 
 // DetectDisgust
@@ -757,6 +745,7 @@ func (c *Client) DetectDisgust(request *DetectDisgustRequest) (response *DetectD
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 //  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -769,6 +758,11 @@ func (c *Client) DetectDisgustWithContext(ctx context.Context, request *DetectDi
     if request == nil {
         request = NewDetectDisgustRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectDisgust require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectDisgustResponse()
@@ -854,13 +848,7 @@ func NewDetectLabelResponse() (response *DetectLabelResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabelResponse, err error) {
-    if request == nil {
-        request = NewDetectLabelRequest()
-    }
-    
-    response = NewDetectLabelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectLabelWithContext(context.Background(), request)
 }
 
 // DetectLabel
@@ -927,6 +915,11 @@ func (c *Client) DetectLabelWithContext(ctx context.Context, request *DetectLabe
     if request == nil {
         request = NewDetectLabelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectLabel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectLabelResponse()
@@ -967,6 +960,7 @@ func NewDetectLabelBetaResponse() (response *DetectLabelBetaResponse) {
 //  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
 //  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
@@ -975,13 +969,7 @@ func NewDetectLabelBetaResponse() (response *DetectLabelBetaResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DetectLabelBeta(request *DetectLabelBetaRequest) (response *DetectLabelBetaResponse, err error) {
-    if request == nil {
-        request = NewDetectLabelBetaRequest()
-    }
-    
-    response = NewDetectLabelBetaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectLabelBetaWithContext(context.Background(), request)
 }
 
 // DetectLabelBeta
@@ -1000,6 +988,7 @@ func (c *Client) DetectLabelBeta(request *DetectLabelBetaRequest) (response *Det
 //  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
 //  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
@@ -1011,6 +1000,11 @@ func (c *Client) DetectLabelBetaWithContext(ctx context.Context, request *Detect
     if request == nil {
         request = NewDetectLabelBetaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectLabelBeta require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectLabelBetaResponse()
@@ -1052,19 +1046,14 @@ func NewDetectMisbehaviorResponse() (response *DetectMisbehaviorResponse) {
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DetectMisbehavior(request *DetectMisbehaviorRequest) (response *DetectMisbehaviorResponse, err error) {
-    if request == nil {
-        request = NewDetectMisbehaviorRequest()
-    }
-    
-    response = NewDetectMisbehaviorResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectMisbehaviorWithContext(context.Background(), request)
 }
 
 // DetectMisbehavior
@@ -1084,6 +1073,7 @@ func (c *Client) DetectMisbehavior(request *DetectMisbehaviorRequest) (response 
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
@@ -1093,6 +1083,11 @@ func (c *Client) DetectMisbehaviorWithContext(ctx context.Context, request *Dete
     if request == nil {
         request = NewDetectMisbehaviorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectMisbehavior require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectMisbehaviorResponse()
@@ -1141,13 +1136,7 @@ func NewDetectProductResponse() (response *DetectProductResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DetectProduct(request *DetectProductRequest) (response *DetectProductResponse, err error) {
-    if request == nil {
-        request = NewDetectProductRequest()
-    }
-    
-    response = NewDetectProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectProductWithContext(context.Background(), request)
 }
 
 // DetectProduct
@@ -1177,6 +1166,11 @@ func (c *Client) DetectProductWithContext(ctx context.Context, request *DetectPr
     if request == nil {
         request = NewDetectProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectProductResponse()
@@ -1228,13 +1222,7 @@ func NewDetectProductBetaResponse() (response *DetectProductBetaResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) DetectProductBeta(request *DetectProductBetaRequest) (response *DetectProductBetaResponse, err error) {
-    if request == nil {
-        request = NewDetectProductBetaRequest()
-    }
-    
-    response = NewDetectProductBetaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectProductBetaWithContext(context.Background(), request)
 }
 
 // DetectProductBeta
@@ -1267,6 +1255,11 @@ func (c *Client) DetectProductBetaWithContext(ctx context.Context, request *Dete
     if request == nil {
         request = NewDetectProductBetaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectProductBeta require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectProductBetaResponse()
@@ -1319,13 +1312,7 @@ func NewEnhanceImageResponse() (response *EnhanceImageResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnhanceImage(request *EnhanceImageRequest) (response *EnhanceImageResponse, err error) {
-    if request == nil {
-        request = NewEnhanceImageRequest()
-    }
-    
-    response = NewEnhanceImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnhanceImageWithContext(context.Background(), request)
 }
 
 // EnhanceImage
@@ -1359,6 +1346,11 @@ func (c *Client) EnhanceImageWithContext(ctx context.Context, request *EnhanceIm
     if request == nil {
         request = NewEnhanceImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnhanceImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnhanceImageResponse()
@@ -1410,13 +1402,7 @@ func NewRecognizeCarResponse() (response *RecognizeCarResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeCar(request *RecognizeCarRequest) (response *RecognizeCarResponse, err error) {
-    if request == nil {
-        request = NewRecognizeCarRequest()
-    }
-    
-    response = NewRecognizeCarResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeCarWithContext(context.Background(), request)
 }
 
 // RecognizeCar
@@ -1449,6 +1435,11 @@ func (c *Client) RecognizeCarWithContext(ctx context.Context, request *Recognize
     if request == nil {
         request = NewRecognizeCarRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeCar require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeCarResponse()
@@ -1499,13 +1490,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImageResponse, err error) {
-    if request == nil {
-        request = NewSearchImageRequest()
-    }
-    
-    response = NewSearchImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchImageWithContext(context.Background(), request)
 }
 
 // SearchImage
@@ -1537,6 +1522,11 @@ func (c *Client) SearchImageWithContext(ctx context.Context, request *SearchImag
     if request == nil {
         request = NewSearchImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchImageResponse()

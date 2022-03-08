@@ -16,6 +16,7 @@ package v20200226
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -107,13 +108,7 @@ func NewGetAntiFraudVipResponse() (response *GetAntiFraudVipResponse) {
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetAntiFraudVip(request *GetAntiFraudVipRequest) (response *GetAntiFraudVipResponse, err error) {
-    if request == nil {
-        request = NewGetAntiFraudVipRequest()
-    }
-    
-    response = NewGetAntiFraudVipResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAntiFraudVipWithContext(context.Background(), request)
 }
 
 // GetAntiFraudVip
@@ -165,6 +160,11 @@ func (c *Client) GetAntiFraudVipWithContext(ctx context.Context, request *GetAnt
     if request == nil {
         request = NewGetAntiFraudVipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAntiFraudVip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAntiFraudVipResponse()
@@ -218,13 +218,7 @@ func NewQueryAntiFraudVipResponse() (response *QueryAntiFraudVipResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryAntiFraudVip(request *QueryAntiFraudVipRequest) (response *QueryAntiFraudVipResponse, err error) {
-    if request == nil {
-        request = NewQueryAntiFraudVipRequest()
-    }
-    
-    response = NewQueryAntiFraudVipResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAntiFraudVipWithContext(context.Background(), request)
 }
 
 // QueryAntiFraudVip
@@ -259,6 +253,11 @@ func (c *Client) QueryAntiFraudVipWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryAntiFraudVipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAntiFraudVip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAntiFraudVipResponse()

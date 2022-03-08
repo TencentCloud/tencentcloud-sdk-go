@@ -16,6 +16,7 @@ package v20201127
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewGetTaskDetailResponse() (response *GetTaskDetailResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetTaskDetail(request *GetTaskDetailRequest) (response *GetTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewGetTaskDetailRequest()
-    }
-    
-    response = NewGetTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTaskDetailWithContext(context.Background(), request)
 }
 
 // GetTaskDetail
@@ -105,6 +100,11 @@ func (c *Client) GetTaskDetailWithContext(ctx context.Context, request *GetTaskD
     if request == nil {
         request = NewGetTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTaskDetailResponse()
@@ -142,13 +142,7 @@ func NewGetTaskListResponse() (response *GetTaskListResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetTaskList(request *GetTaskListRequest) (response *GetTaskListResponse, err error) {
-    if request == nil {
-        request = NewGetTaskListRequest()
-    }
-    
-    response = NewGetTaskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTaskListWithContext(context.Background(), request)
 }
 
 // GetTaskList
@@ -167,6 +161,11 @@ func (c *Client) GetTaskListWithContext(ctx context.Context, request *GetTaskLis
     if request == nil {
         request = NewGetTaskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTaskListResponse()
@@ -205,13 +204,7 @@ func NewPredictRatingResponse() (response *PredictRatingResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PredictRating(request *PredictRatingRequest) (response *PredictRatingResponse, err error) {
-    if request == nil {
-        request = NewPredictRatingRequest()
-    }
-    
-    response = NewPredictRatingResponse()
-    err = c.Send(request, response)
-    return
+    return c.PredictRatingWithContext(context.Background(), request)
 }
 
 // PredictRating
@@ -231,6 +224,11 @@ func (c *Client) PredictRatingWithContext(ctx context.Context, request *PredictR
     if request == nil {
         request = NewPredictRatingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PredictRating require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPredictRatingResponse()
@@ -264,13 +262,7 @@ func NewQueryCallDetailsResponse() (response *QueryCallDetailsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryCallDetails(request *QueryCallDetailsRequest) (response *QueryCallDetailsResponse, err error) {
-    if request == nil {
-        request = NewQueryCallDetailsRequest()
-    }
-    
-    response = NewQueryCallDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCallDetailsWithContext(context.Background(), request)
 }
 
 // QueryCallDetails
@@ -285,6 +277,11 @@ func (c *Client) QueryCallDetailsWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryCallDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCallDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCallDetailsResponse()
@@ -317,13 +314,7 @@ func NewQueryCallStatResponse() (response *QueryCallStatResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryCallStat(request *QueryCallStatRequest) (response *QueryCallStatResponse, err error) {
-    if request == nil {
-        request = NewQueryCallStatRequest()
-    }
-    
-    response = NewQueryCallStatResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCallStatWithContext(context.Background(), request)
 }
 
 // QueryCallStat
@@ -337,6 +328,11 @@ func (c *Client) QueryCallStatWithContext(ctx context.Context, request *QueryCal
     if request == nil {
         request = NewQueryCallStatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCallStat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCallStatResponse()
@@ -369,13 +365,7 @@ func NewQueryGeneralStatResponse() (response *QueryGeneralStatResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryGeneralStat(request *QueryGeneralStatRequest) (response *QueryGeneralStatResponse, err error) {
-    if request == nil {
-        request = NewQueryGeneralStatRequest()
-    }
-    
-    response = NewQueryGeneralStatResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryGeneralStatWithContext(context.Background(), request)
 }
 
 // QueryGeneralStat
@@ -389,6 +379,11 @@ func (c *Client) QueryGeneralStatWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryGeneralStatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryGeneralStat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryGeneralStatResponse()
@@ -427,13 +422,7 @@ func NewUploadIdResponse() (response *UploadIdResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UploadId(request *UploadIdRequest) (response *UploadIdResponse, err error) {
-    if request == nil {
-        request = NewUploadIdRequest()
-    }
-    
-    response = NewUploadIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadIdWithContext(context.Background(), request)
 }
 
 // UploadId
@@ -453,6 +442,11 @@ func (c *Client) UploadIdWithContext(ctx context.Context, request *UploadIdReque
     if request == nil {
         request = NewUploadIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadIdResponse()

@@ -16,6 +16,7 @@ package v20180426
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewDeleteCertResponse() (response *DeleteCertResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) DeleteCert(request *DeleteCertRequest) (response *DeleteCertResponse, err error) {
-    if request == nil {
-        request = NewDeleteCertRequest()
-    }
-    
-    response = NewDeleteCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCertWithContext(context.Background(), request)
 }
 
 // DeleteCert
@@ -93,6 +88,11 @@ func (c *Client) DeleteCertWithContext(ctx context.Context, request *DeleteCertR
     if request == nil {
         request = NewDeleteCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCertResponse()
@@ -126,13 +126,7 @@ func NewDescribeCertListResponse() (response *DescribeCertListResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) DescribeCertList(request *DescribeCertListRequest) (response *DescribeCertListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertListRequest()
-    }
-    
-    response = NewDescribeCertListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertListWithContext(context.Background(), request)
 }
 
 // DescribeCertList
@@ -147,6 +141,11 @@ func (c *Client) DescribeCertListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCertListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertListResponse()
@@ -183,13 +182,7 @@ func NewUploadCertResponse() (response *UploadCertResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_REPTYPEISINVALID = "InvalidParameter.RepTypeIsInvalid"
 func (c *Client) UploadCert(request *UploadCertRequest) (response *UploadCertResponse, err error) {
-    if request == nil {
-        request = NewUploadCertRequest()
-    }
-    
-    response = NewUploadCertResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadCertWithContext(context.Background(), request)
 }
 
 // UploadCert
@@ -207,6 +200,11 @@ func (c *Client) UploadCertWithContext(ctx context.Context, request *UploadCertR
     if request == nil {
         request = NewUploadCertRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadCert require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadCertResponse()

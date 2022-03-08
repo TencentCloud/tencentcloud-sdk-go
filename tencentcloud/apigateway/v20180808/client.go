@@ -16,6 +16,7 @@ package v20180808
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,6 +70,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_DUPLICATEPLUGINCONFIG = "InvalidParameter.DuplicatePluginConfig"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -79,13 +81,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  UNSUPPORTEDOPERATION_ATTACHPLUGIN = "UnsupportedOperation.AttachPlugin"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
 func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPluginResponse, err error) {
-    if request == nil {
-        request = NewAttachPluginRequest()
-    }
-    
-    response = NewAttachPluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachPluginWithContext(context.Background(), request)
 }
 
 // AttachPlugin
@@ -96,6 +92,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_DUPLICATEPLUGINCONFIG = "InvalidParameter.DuplicatePluginConfig"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -109,6 +106,11 @@ func (c *Client) AttachPluginWithContext(ctx context.Context, request *AttachPlu
     if request == nil {
         request = NewAttachPluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachPlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachPluginResponse()
@@ -149,13 +151,7 @@ func NewBindApiAppResponse() (response *BindApiAppResponse) {
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
 func (c *Client) BindApiApp(request *BindApiAppRequest) (response *BindApiAppResponse, err error) {
-    if request == nil {
-        request = NewBindApiAppRequest()
-    }
-    
-    response = NewBindApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindApiAppWithContext(context.Background(), request)
 }
 
 // BindApiApp
@@ -177,6 +173,11 @@ func (c *Client) BindApiAppWithContext(ctx context.Context, request *BindApiAppR
     if request == nil {
         request = NewBindApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindApiAppResponse()
@@ -219,13 +220,7 @@ func NewBindEnvironmentResponse() (response *BindEnvironmentResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
 func (c *Client) BindEnvironment(request *BindEnvironmentRequest) (response *BindEnvironmentResponse, err error) {
-    if request == nil {
-        request = NewBindEnvironmentRequest()
-    }
-    
-    response = NewBindEnvironmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindEnvironmentWithContext(context.Background(), request)
 }
 
 // BindEnvironment
@@ -249,6 +244,11 @@ func (c *Client) BindEnvironmentWithContext(ctx context.Context, request *BindEn
     if request == nil {
         request = NewBindEnvironmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindEnvironment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindEnvironmentResponse()
@@ -284,13 +284,7 @@ func NewBindIPStrategyResponse() (response *BindIPStrategyResponse) {
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) BindIPStrategy(request *BindIPStrategyRequest) (response *BindIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewBindIPStrategyRequest()
-    }
-    
-    response = NewBindIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindIPStrategyWithContext(context.Background(), request)
 }
 
 // BindIPStrategy
@@ -307,6 +301,11 @@ func (c *Client) BindIPStrategyWithContext(ctx context.Context, request *BindIPS
     if request == nil {
         request = NewBindIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindIPStrategyResponse()
@@ -347,13 +346,7 @@ func NewBindSecretIdsResponse() (response *BindSecretIdsResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDAPIKEY = "UnsupportedOperation.UnsupportedBindApiKey"
 func (c *Client) BindSecretIds(request *BindSecretIdsRequest) (response *BindSecretIdsResponse, err error) {
-    if request == nil {
-        request = NewBindSecretIdsRequest()
-    }
-    
-    response = NewBindSecretIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindSecretIdsWithContext(context.Background(), request)
 }
 
 // BindSecretIds
@@ -375,6 +368,11 @@ func (c *Client) BindSecretIdsWithContext(ctx context.Context, request *BindSecr
     if request == nil {
         request = NewBindSecretIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindSecretIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindSecretIdsResponse()
@@ -440,13 +438,7 @@ func NewBindSubDomainResponse() (response *BindSubDomainResponse) {
 //  UNSUPPORTEDOPERATION_FORCEHTTPS = "UnsupportedOperation.ForceHttps"
 //  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
 func (c *Client) BindSubDomain(request *BindSubDomainRequest) (response *BindSubDomainResponse, err error) {
-    if request == nil {
-        request = NewBindSubDomainRequest()
-    }
-    
-    response = NewBindSubDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindSubDomainWithContext(context.Background(), request)
 }
 
 // BindSubDomain
@@ -493,6 +485,11 @@ func (c *Client) BindSubDomainWithContext(ctx context.Context, request *BindSubD
     if request == nil {
         request = NewBindSubDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindSubDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindSubDomainResponse()
@@ -528,13 +525,7 @@ func NewBuildAPIDocResponse() (response *BuildAPIDocResponse) {
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) BuildAPIDoc(request *BuildAPIDocRequest) (response *BuildAPIDocResponse, err error) {
-    if request == nil {
-        request = NewBuildAPIDocRequest()
-    }
-    
-    response = NewBuildAPIDocResponse()
-    err = c.Send(request, response)
-    return
+    return c.BuildAPIDocWithContext(context.Background(), request)
 }
 
 // BuildAPIDoc
@@ -551,6 +542,11 @@ func (c *Client) BuildAPIDocWithContext(ctx context.Context, request *BuildAPIDo
     if request == nil {
         request = NewBuildAPIDocRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuildAPIDoc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBuildAPIDocResponse()
@@ -604,13 +600,7 @@ func NewCreateAPIDocResponse() (response *CreateAPIDocResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateAPIDoc(request *CreateAPIDocRequest) (response *CreateAPIDocResponse, err error) {
-    if request == nil {
-        request = NewCreateAPIDocRequest()
-    }
-    
-    response = NewCreateAPIDocResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAPIDocWithContext(context.Background(), request)
 }
 
 // CreateAPIDoc
@@ -645,6 +635,11 @@ func (c *Client) CreateAPIDocWithContext(ctx context.Context, request *CreateAPI
     if request == nil {
         request = NewCreateAPIDocRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAPIDoc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAPIDocResponse()
@@ -674,6 +669,7 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_EIAMERROR = "FailedOperation.EIAMError"
 //  FAILEDOPERATION_EBERROR = "FailedOperation.EbError"
 //  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_SCFERROR = "FailedOperation.ScfError"
@@ -719,13 +715,7 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = "UnsupportedOperation.UnsupportedNetType"
 func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiResponse, err error) {
-    if request == nil {
-        request = NewCreateApiRequest()
-    }
-    
-    response = NewCreateApiResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApiWithContext(context.Background(), request)
 }
 
 // CreateApi
@@ -733,6 +723,7 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_EIAMERROR = "FailedOperation.EIAMError"
 //  FAILEDOPERATION_EBERROR = "FailedOperation.EbError"
 //  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_SCFERROR = "FailedOperation.ScfError"
@@ -781,6 +772,11 @@ func (c *Client) CreateApiWithContext(ctx context.Context, request *CreateApiReq
     if request == nil {
         request = NewCreateApiRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApi require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApiResponse()
@@ -810,19 +806,14 @@ func NewCreateApiAppResponse() (response *CreateApiAppResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  FAILEDOPERATION_TAGBINDSERVICEERROR = "FailedOperation.TagBindServiceError"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_APIAPPCOUNTLIMITEXCEEDED = "LimitExceeded.ApiAppCountLimitExceeded"
 //  LIMITEXCEEDED_APIKEYCOUNTLIMITEXCEEDED = "LimitExceeded.ApiKeyCountLimitExceeded"
 func (c *Client) CreateApiApp(request *CreateApiAppRequest) (response *CreateApiAppResponse, err error) {
-    if request == nil {
-        request = NewCreateApiAppRequest()
-    }
-    
-    response = NewCreateApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApiAppWithContext(context.Background(), request)
 }
 
 // CreateApiApp
@@ -830,6 +821,7 @@ func (c *Client) CreateApiApp(request *CreateApiAppRequest) (response *CreateApi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCESSKEYEXIST = "FailedOperation.AccessKeyExist"
+//  FAILEDOPERATION_TAGBINDSERVICEERROR = "FailedOperation.TagBindServiceError"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -839,6 +831,11 @@ func (c *Client) CreateApiAppWithContext(ctx context.Context, request *CreateApi
     if request == nil {
         request = NewCreateApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApiAppResponse()
@@ -872,13 +869,7 @@ func NewCreateApiKeyResponse() (response *CreateApiKeyResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_APIKEYCOUNTLIMITEXCEEDED = "LimitExceeded.ApiKeyCountLimitExceeded"
 func (c *Client) CreateApiKey(request *CreateApiKeyRequest) (response *CreateApiKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateApiKeyRequest()
-    }
-    
-    response = NewCreateApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApiKeyWithContext(context.Background(), request)
 }
 
 // CreateApiKey
@@ -893,6 +884,11 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, request *CreateApi
     if request == nil {
         request = NewCreateApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApiKeyResponse()
@@ -925,13 +921,7 @@ func NewCreateIPStrategyResponse() (response *CreateIPStrategyResponse) {
 //  LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = "LimitExceeded.IpStrategyLimitExceeded"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *CreateIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewCreateIPStrategyRequest()
-    }
-    
-    response = NewCreateIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateIPStrategyWithContext(context.Background(), request)
 }
 
 // CreateIPStrategy
@@ -945,6 +935,11 @@ func (c *Client) CreateIPStrategyWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateIPStrategyResponse()
@@ -1000,13 +995,7 @@ func NewCreatePluginResponse() (response *CreatePluginResponse) {
 //  MISSINGPARAMETER_PLUGINCONFIG = "MissingParameter.PluginConfig"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePluginResponse, err error) {
-    if request == nil {
-        request = NewCreatePluginRequest()
-    }
-    
-    response = NewCreatePluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePluginWithContext(context.Background(), request)
 }
 
 // CreatePlugin
@@ -1043,6 +1032,11 @@ func (c *Client) CreatePluginWithContext(ctx context.Context, request *CreatePlu
     if request == nil {
         request = NewCreatePluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePluginResponse()
@@ -1099,13 +1093,7 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
 //  UNAUTHORIZEDOPERATION_UNCERTIFIEDUSER = "UnauthorizedOperation.UncertifiedUser"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateServiceResponse, err error) {
-    if request == nil {
-        request = NewCreateServiceRequest()
-    }
-    
-    response = NewCreateServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateServiceWithContext(context.Background(), request)
 }
 
 // CreateService
@@ -1143,6 +1131,11 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateServiceResponse()
@@ -1191,13 +1184,7 @@ func NewCreateUpstreamResponse() (response *CreateUpstreamResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUpstream(request *CreateUpstreamRequest) (response *CreateUpstreamResponse, err error) {
-    if request == nil {
-        request = NewCreateUpstreamRequest()
-    }
-    
-    response = NewCreateUpstreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUpstreamWithContext(context.Background(), request)
 }
 
 // CreateUpstream
@@ -1227,6 +1214,11 @@ func (c *Client) CreateUpstreamWithContext(ctx context.Context, request *CreateU
     if request == nil {
         request = NewCreateUpstreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUpstream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUpstreamResponse()
@@ -1261,13 +1253,7 @@ func NewCreateUsagePlanResponse() (response *CreateUsagePlanResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  LIMITEXCEEDED_USAGEPLANLIMITEXCEEDED = "LimitExceeded.UsagePlanLimitExceeded"
 func (c *Client) CreateUsagePlan(request *CreateUsagePlanRequest) (response *CreateUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewCreateUsagePlanRequest()
-    }
-    
-    response = NewCreateUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUsagePlanWithContext(context.Background(), request)
 }
 
 // CreateUsagePlan
@@ -1283,6 +1269,11 @@ func (c *Client) CreateUsagePlanWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUsagePlanResponse()
@@ -1329,13 +1320,7 @@ func NewDeleteAPIDocResponse() (response *DeleteAPIDocResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAPIDoc(request *DeleteAPIDocRequest) (response *DeleteAPIDocResponse, err error) {
-    if request == nil {
-        request = NewDeleteAPIDocRequest()
-    }
-    
-    response = NewDeleteAPIDocResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAPIDocWithContext(context.Background(), request)
 }
 
 // DeleteAPIDoc
@@ -1363,6 +1348,11 @@ func (c *Client) DeleteAPIDocWithContext(ctx context.Context, request *DeleteAPI
     if request == nil {
         request = NewDeleteAPIDocRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAPIDoc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAPIDocResponse()
@@ -1416,13 +1406,7 @@ func NewDeleteApiResponse() (response *DeleteApiResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 func (c *Client) DeleteApi(request *DeleteApiRequest) (response *DeleteApiResponse, err error) {
-    if request == nil {
-        request = NewDeleteApiRequest()
-    }
-    
-    response = NewDeleteApiResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteApiWithContext(context.Background(), request)
 }
 
 // DeleteApi
@@ -1457,6 +1441,11 @@ func (c *Client) DeleteApiWithContext(ctx context.Context, request *DeleteApiReq
     if request == nil {
         request = NewDeleteApiRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApi require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteApiResponse()
@@ -1498,13 +1487,7 @@ func NewDeleteApiAppResponse() (response *DeleteApiAppResponse) {
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 func (c *Client) DeleteApiApp(request *DeleteApiAppRequest) (response *DeleteApiAppResponse, err error) {
-    if request == nil {
-        request = NewDeleteApiAppRequest()
-    }
-    
-    response = NewDeleteApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteApiAppWithContext(context.Background(), request)
 }
 
 // DeleteApiApp
@@ -1527,6 +1510,11 @@ func (c *Client) DeleteApiAppWithContext(ctx context.Context, request *DeleteApi
     if request == nil {
         request = NewDeleteApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteApiAppResponse()
@@ -1560,13 +1548,7 @@ func NewDeleteApiKeyResponse() (response *DeleteApiKeyResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 //  UNSUPPORTEDOPERATION_RESOURCEISINUSE = "UnsupportedOperation.ResourceIsInUse"
 func (c *Client) DeleteApiKey(request *DeleteApiKeyRequest) (response *DeleteApiKeyResponse, err error) {
-    if request == nil {
-        request = NewDeleteApiKeyRequest()
-    }
-    
-    response = NewDeleteApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteApiKeyWithContext(context.Background(), request)
 }
 
 // DeleteApiKey
@@ -1581,6 +1563,11 @@ func (c *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApi
     if request == nil {
         request = NewDeleteApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteApiKeyResponse()
@@ -1611,13 +1598,7 @@ func NewDeleteIPStrategyResponse() (response *DeleteIPStrategyResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 func (c *Client) DeleteIPStrategy(request *DeleteIPStrategyRequest) (response *DeleteIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewDeleteIPStrategyRequest()
-    }
-    
-    response = NewDeleteIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteIPStrategyWithContext(context.Background(), request)
 }
 
 // DeleteIPStrategy
@@ -1629,6 +1610,11 @@ func (c *Client) DeleteIPStrategyWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteIPStrategyResponse()
@@ -1662,13 +1648,7 @@ func NewDeletePluginResponse() (response *DeletePluginResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePluginResponse, err error) {
-    if request == nil {
-        request = NewDeletePluginRequest()
-    }
-    
-    response = NewDeletePluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePluginWithContext(context.Background(), request)
 }
 
 // DeletePlugin
@@ -1683,6 +1663,11 @@ func (c *Client) DeletePluginWithContext(ctx context.Context, request *DeletePlu
     if request == nil {
         request = NewDeletePluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePluginResponse()
@@ -1720,13 +1705,7 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"
 func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
-    if request == nil {
-        request = NewDeleteServiceRequest()
-    }
-    
-    response = NewDeleteServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteServiceWithContext(context.Background(), request)
 }
 
 // DeleteService
@@ -1745,6 +1724,11 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteSe
     if request == nil {
         request = NewDeleteServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteServiceResponse()
@@ -1780,13 +1764,7 @@ func NewDeleteServiceSubDomainMappingResponse() (response *DeleteServiceSubDomai
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
 func (c *Client) DeleteServiceSubDomainMapping(request *DeleteServiceSubDomainMappingRequest) (response *DeleteServiceSubDomainMappingResponse, err error) {
-    if request == nil {
-        request = NewDeleteServiceSubDomainMappingRequest()
-    }
-    
-    response = NewDeleteServiceSubDomainMappingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteServiceSubDomainMappingWithContext(context.Background(), request)
 }
 
 // DeleteServiceSubDomainMapping
@@ -1803,6 +1781,11 @@ func (c *Client) DeleteServiceSubDomainMappingWithContext(ctx context.Context, r
     if request == nil {
         request = NewDeleteServiceSubDomainMappingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteServiceSubDomainMapping require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteServiceSubDomainMappingResponse()
@@ -1843,13 +1826,7 @@ func NewDeleteUpstreamResponse() (response *DeleteUpstreamResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEUPSTREAM = "UnsupportedOperation.UnsupportedDeleteUpstream"
 func (c *Client) DeleteUpstream(request *DeleteUpstreamRequest) (response *DeleteUpstreamResponse, err error) {
-    if request == nil {
-        request = NewDeleteUpstreamRequest()
-    }
-    
-    response = NewDeleteUpstreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUpstreamWithContext(context.Background(), request)
 }
 
 // DeleteUpstream
@@ -1871,6 +1848,11 @@ func (c *Client) DeleteUpstreamWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUpstreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUpstream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUpstreamResponse()
@@ -1903,13 +1885,7 @@ func NewDeleteUsagePlanResponse() (response *DeleteUsagePlanResponse) {
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_USAGEPLANINUSE = "UnsupportedOperation.UsagePlanInUse"
 func (c *Client) DeleteUsagePlan(request *DeleteUsagePlanRequest) (response *DeleteUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewDeleteUsagePlanRequest()
-    }
-    
-    response = NewDeleteUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUsagePlanWithContext(context.Background(), request)
 }
 
 // DeleteUsagePlan
@@ -1923,6 +1899,11 @@ func (c *Client) DeleteUsagePlanWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUsagePlanResponse()
@@ -1959,13 +1940,7 @@ func NewDemoteServiceUsagePlanResponse() (response *DemoteServiceUsagePlanRespon
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_NOUSAGEPLANENV = "UnsupportedOperation.NoUsagePlanEnv"
 func (c *Client) DemoteServiceUsagePlan(request *DemoteServiceUsagePlanRequest) (response *DemoteServiceUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewDemoteServiceUsagePlanRequest()
-    }
-    
-    response = NewDemoteServiceUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DemoteServiceUsagePlanWithContext(context.Background(), request)
 }
 
 // DemoteServiceUsagePlan
@@ -1983,6 +1958,11 @@ func (c *Client) DemoteServiceUsagePlanWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDemoteServiceUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DemoteServiceUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDemoteServiceUsagePlanResponse()
@@ -2016,13 +1996,7 @@ func NewDescribeAPIDocDetailResponse() (response *DescribeAPIDocDetailResponse) 
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeAPIDocDetail(request *DescribeAPIDocDetailRequest) (response *DescribeAPIDocDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAPIDocDetailRequest()
-    }
-    
-    response = NewDescribeAPIDocDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAPIDocDetailWithContext(context.Background(), request)
 }
 
 // DescribeAPIDocDetail
@@ -2037,6 +2011,11 @@ func (c *Client) DescribeAPIDocDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAPIDocDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAPIDocDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAPIDocDetailResponse()
@@ -2077,13 +2056,7 @@ func NewDescribeAPIDocsResponse() (response *DescribeAPIDocsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeAPIDocs(request *DescribeAPIDocsRequest) (response *DescribeAPIDocsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAPIDocsRequest()
-    }
-    
-    response = NewDescribeAPIDocsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAPIDocsWithContext(context.Background(), request)
 }
 
 // DescribeAPIDocs
@@ -2105,6 +2078,11 @@ func (c *Client) DescribeAPIDocsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAPIDocsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAPIDocs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAPIDocsResponse()
@@ -2137,13 +2115,7 @@ func NewDescribeAllPluginApisResponse() (response *DescribeAllPluginApisResponse
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeAllPluginApis(request *DescribeAllPluginApisRequest) (response *DescribeAllPluginApisResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllPluginApisRequest()
-    }
-    
-    response = NewDescribeAllPluginApisResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllPluginApisWithContext(context.Background(), request)
 }
 
 // DescribeAllPluginApis
@@ -2157,6 +2129,11 @@ func (c *Client) DescribeAllPluginApisWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAllPluginApisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllPluginApis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllPluginApisResponse()
@@ -2197,13 +2174,7 @@ func NewDescribeApiResponse() (response *DescribeApiResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeApi(request *DescribeApiRequest) (response *DescribeApiResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiRequest()
-    }
-    
-    response = NewDescribeApiResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiWithContext(context.Background(), request)
 }
 
 // DescribeApi
@@ -2225,6 +2196,11 @@ func (c *Client) DescribeApiWithContext(ctx context.Context, request *DescribeAp
     if request == nil {
         request = NewDescribeApiRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApi require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiResponse()
@@ -2257,13 +2233,7 @@ func NewDescribeApiAppResponse() (response *DescribeApiAppResponse) {
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *DescribeApiAppResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiAppRequest()
-    }
-    
-    response = NewDescribeApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiAppWithContext(context.Background(), request)
 }
 
 // DescribeApiApp
@@ -2277,6 +2247,11 @@ func (c *Client) DescribeApiAppWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiAppResponse()
@@ -2308,13 +2283,7 @@ func NewDescribeApiAppBindApisStatusResponse() (response *DescribeApiAppBindApis
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiAppBindApisStatusRequest()
-    }
-    
-    response = NewDescribeApiAppBindApisStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiAppBindApisStatusWithContext(context.Background(), request)
 }
 
 // DescribeApiAppBindApisStatus
@@ -2327,6 +2296,11 @@ func (c *Client) DescribeApiAppBindApisStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApiAppBindApisStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiAppBindApisStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiAppBindApisStatusResponse()
@@ -2358,13 +2332,7 @@ func NewDescribeApiAppsStatusResponse() (response *DescribeApiAppsStatusResponse
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiAppsStatusRequest()
-    }
-    
-    response = NewDescribeApiAppsStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiAppsStatusWithContext(context.Background(), request)
 }
 
 // DescribeApiAppsStatus
@@ -2377,6 +2345,11 @@ func (c *Client) DescribeApiAppsStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeApiAppsStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiAppsStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiAppsStatusResponse()
@@ -2407,13 +2380,7 @@ func NewDescribeApiBindApiAppsStatusResponse() (response *DescribeApiBindApiApps
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 func (c *Client) DescribeApiBindApiAppsStatus(request *DescribeApiBindApiAppsStatusRequest) (response *DescribeApiBindApiAppsStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiBindApiAppsStatusRequest()
-    }
-    
-    response = NewDescribeApiBindApiAppsStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiBindApiAppsStatusWithContext(context.Background(), request)
 }
 
 // DescribeApiBindApiAppsStatus
@@ -2425,6 +2392,11 @@ func (c *Client) DescribeApiBindApiAppsStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeApiBindApiAppsStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiBindApiAppsStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiBindApiAppsStatusResponse()
@@ -2458,13 +2430,7 @@ func NewDescribeApiEnvironmentStrategyResponse() (response *DescribeApiEnvironme
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeApiEnvironmentStrategy(request *DescribeApiEnvironmentStrategyRequest) (response *DescribeApiEnvironmentStrategyResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiEnvironmentStrategyRequest()
-    }
-    
-    response = NewDescribeApiEnvironmentStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiEnvironmentStrategyWithContext(context.Background(), request)
 }
 
 // DescribeApiEnvironmentStrategy
@@ -2479,6 +2445,11 @@ func (c *Client) DescribeApiEnvironmentStrategyWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeApiEnvironmentStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiEnvironmentStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiEnvironmentStrategyResponse()
@@ -2515,13 +2486,7 @@ func NewDescribeApiForApiAppResponse() (response *DescribeApiForApiAppResponse) 
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeApiForApiApp(request *DescribeApiForApiAppRequest) (response *DescribeApiForApiAppResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiForApiAppRequest()
-    }
-    
-    response = NewDescribeApiForApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiForApiAppWithContext(context.Background(), request)
 }
 
 // DescribeApiForApiApp
@@ -2539,6 +2504,11 @@ func (c *Client) DescribeApiForApiAppWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApiForApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiForApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiForApiAppResponse()
@@ -2571,13 +2541,7 @@ func NewDescribeApiKeyResponse() (response *DescribeApiKeyResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 func (c *Client) DescribeApiKey(request *DescribeApiKeyRequest) (response *DescribeApiKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiKeyRequest()
-    }
-    
-    response = NewDescribeApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiKeyWithContext(context.Background(), request)
 }
 
 // DescribeApiKey
@@ -2591,6 +2555,11 @@ func (c *Client) DescribeApiKeyWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiKeyResponse()
@@ -2623,13 +2592,7 @@ func NewDescribeApiKeysStatusResponse() (response *DescribeApiKeysStatusResponse
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (response *DescribeApiKeysStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiKeysStatusRequest()
-    }
-    
-    response = NewDescribeApiKeysStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiKeysStatusWithContext(context.Background(), request)
 }
 
 // DescribeApiKeysStatus
@@ -2643,6 +2606,11 @@ func (c *Client) DescribeApiKeysStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeApiKeysStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiKeysStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiKeysStatusResponse()
@@ -2677,13 +2645,7 @@ func NewDescribeApiUsagePlanResponse() (response *DescribeApiUsagePlanResponse) 
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeApiUsagePlan(request *DescribeApiUsagePlanRequest) (response *DescribeApiUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewDescribeApiUsagePlanRequest()
-    }
-    
-    response = NewDescribeApiUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApiUsagePlanWithContext(context.Background(), request)
 }
 
 // DescribeApiUsagePlan
@@ -2699,6 +2661,11 @@ func (c *Client) DescribeApiUsagePlanWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApiUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApiUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApiUsagePlanResponse()
@@ -2734,13 +2701,7 @@ func NewDescribeApisStatusResponse() (response *DescribeApisStatusResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeApisStatus(request *DescribeApisStatusRequest) (response *DescribeApisStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeApisStatusRequest()
-    }
-    
-    response = NewDescribeApisStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApisStatusWithContext(context.Background(), request)
 }
 
 // DescribeApisStatus
@@ -2757,6 +2718,11 @@ func (c *Client) DescribeApisStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeApisStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApisStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApisStatusResponse()
@@ -2795,13 +2761,7 @@ func NewDescribeExclusiveInstanceDetailResponse() (response *DescribeExclusiveIn
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) DescribeExclusiveInstanceDetail(request *DescribeExclusiveInstanceDetailRequest) (response *DescribeExclusiveInstanceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeExclusiveInstanceDetailRequest()
-    }
-    
-    response = NewDescribeExclusiveInstanceDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExclusiveInstanceDetailWithContext(context.Background(), request)
 }
 
 // DescribeExclusiveInstanceDetail
@@ -2821,6 +2781,11 @@ func (c *Client) DescribeExclusiveInstanceDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeExclusiveInstanceDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExclusiveInstanceDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExclusiveInstanceDetailResponse()
@@ -2861,13 +2826,7 @@ func NewDescribeExclusiveInstancesResponse() (response *DescribeExclusiveInstanc
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeExclusiveInstances(request *DescribeExclusiveInstancesRequest) (response *DescribeExclusiveInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeExclusiveInstancesRequest()
-    }
-    
-    response = NewDescribeExclusiveInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExclusiveInstancesWithContext(context.Background(), request)
 }
 
 // DescribeExclusiveInstances
@@ -2889,6 +2848,11 @@ func (c *Client) DescribeExclusiveInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeExclusiveInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExclusiveInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExclusiveInstancesResponse()
@@ -2921,13 +2885,7 @@ func NewDescribeIPStrategyResponse() (response *DescribeIPStrategyResponse) {
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeIPStrategy(request *DescribeIPStrategyRequest) (response *DescribeIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewDescribeIPStrategyRequest()
-    }
-    
-    response = NewDescribeIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIPStrategyWithContext(context.Background(), request)
 }
 
 // DescribeIPStrategy
@@ -2941,6 +2899,11 @@ func (c *Client) DescribeIPStrategyWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIPStrategyResponse()
@@ -2971,13 +2934,7 @@ func NewDescribeIPStrategyApisStatusResponse() (response *DescribeIPStrategyApis
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 func (c *Client) DescribeIPStrategyApisStatus(request *DescribeIPStrategyApisStatusRequest) (response *DescribeIPStrategyApisStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeIPStrategyApisStatusRequest()
-    }
-    
-    response = NewDescribeIPStrategyApisStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIPStrategyApisStatusWithContext(context.Background(), request)
 }
 
 // DescribeIPStrategyApisStatus
@@ -2989,6 +2946,11 @@ func (c *Client) DescribeIPStrategyApisStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeIPStrategyApisStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPStrategyApisStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIPStrategyApisStatusResponse()
@@ -3021,13 +2983,7 @@ func NewDescribeIPStrategysStatusResponse() (response *DescribeIPStrategysStatus
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeIPStrategysStatus(request *DescribeIPStrategysStatusRequest) (response *DescribeIPStrategysStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeIPStrategysStatusRequest()
-    }
-    
-    response = NewDescribeIPStrategysStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIPStrategysStatusWithContext(context.Background(), request)
 }
 
 // DescribeIPStrategysStatus
@@ -3041,6 +2997,11 @@ func (c *Client) DescribeIPStrategysStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeIPStrategysStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPStrategysStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIPStrategysStatusResponse()
@@ -3072,13 +3033,7 @@ func NewDescribeLogSearchResponse() (response *DescribeLogSearchResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
 func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
-    if request == nil {
-        request = NewDescribeLogSearchRequest()
-    }
-    
-    response = NewDescribeLogSearchResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLogSearchWithContext(context.Background(), request)
 }
 
 // DescribeLogSearch
@@ -3091,6 +3046,11 @@ func (c *Client) DescribeLogSearchWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeLogSearchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogSearch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLogSearchResponse()
@@ -3123,13 +3083,7 @@ func NewDescribePluginResponse() (response *DescribePluginResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribePlugin(request *DescribePluginRequest) (response *DescribePluginResponse, err error) {
-    if request == nil {
-        request = NewDescribePluginRequest()
-    }
-    
-    response = NewDescribePluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePluginWithContext(context.Background(), request)
 }
 
 // DescribePlugin
@@ -3143,6 +3097,11 @@ func (c *Client) DescribePluginWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribePluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePluginResponse()
@@ -3176,13 +3135,7 @@ func NewDescribePluginApisResponse() (response *DescribePluginApisResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribePluginApis(request *DescribePluginApisRequest) (response *DescribePluginApisResponse, err error) {
-    if request == nil {
-        request = NewDescribePluginApisRequest()
-    }
-    
-    response = NewDescribePluginApisResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePluginApisWithContext(context.Background(), request)
 }
 
 // DescribePluginApis
@@ -3197,6 +3150,11 @@ func (c *Client) DescribePluginApisWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePluginApisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePluginApis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePluginApisResponse()
@@ -3231,13 +3189,7 @@ func NewDescribePluginsResponse() (response *DescribePluginsResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribePlugins(request *DescribePluginsRequest) (response *DescribePluginsResponse, err error) {
-    if request == nil {
-        request = NewDescribePluginsRequest()
-    }
-    
-    response = NewDescribePluginsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePluginsWithContext(context.Background(), request)
 }
 
 // DescribePlugins
@@ -3253,6 +3205,11 @@ func (c *Client) DescribePluginsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribePluginsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlugins require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePluginsResponse()
@@ -3290,13 +3247,7 @@ func NewDescribeServiceResponse() (response *DescribeServiceResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeService(request *DescribeServiceRequest) (response *DescribeServiceResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceRequest()
-    }
-    
-    response = NewDescribeServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceWithContext(context.Background(), request)
 }
 
 // DescribeService
@@ -3315,6 +3266,11 @@ func (c *Client) DescribeServiceWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceResponse()
@@ -3346,13 +3302,7 @@ func NewDescribeServiceEnvironmentListResponse() (response *DescribeServiceEnvir
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceEnvironmentList(request *DescribeServiceEnvironmentListRequest) (response *DescribeServiceEnvironmentListResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceEnvironmentListRequest()
-    }
-    
-    response = NewDescribeServiceEnvironmentListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceEnvironmentListWithContext(context.Background(), request)
 }
 
 // DescribeServiceEnvironmentList
@@ -3365,6 +3315,11 @@ func (c *Client) DescribeServiceEnvironmentListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeServiceEnvironmentListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceEnvironmentList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceEnvironmentListResponse()
@@ -3397,13 +3352,7 @@ func NewDescribeServiceEnvironmentReleaseHistoryResponse() (response *DescribeSe
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceEnvironmentReleaseHistory(request *DescribeServiceEnvironmentReleaseHistoryRequest) (response *DescribeServiceEnvironmentReleaseHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceEnvironmentReleaseHistoryRequest()
-    }
-    
-    response = NewDescribeServiceEnvironmentReleaseHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceEnvironmentReleaseHistoryWithContext(context.Background(), request)
 }
 
 // DescribeServiceEnvironmentReleaseHistory
@@ -3417,6 +3366,11 @@ func (c *Client) DescribeServiceEnvironmentReleaseHistoryWithContext(ctx context
     if request == nil {
         request = NewDescribeServiceEnvironmentReleaseHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceEnvironmentReleaseHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceEnvironmentReleaseHistoryResponse()
@@ -3447,13 +3401,7 @@ func NewDescribeServiceEnvironmentStrategyResponse() (response *DescribeServiceE
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceEnvironmentStrategy(request *DescribeServiceEnvironmentStrategyRequest) (response *DescribeServiceEnvironmentStrategyResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceEnvironmentStrategyRequest()
-    }
-    
-    response = NewDescribeServiceEnvironmentStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceEnvironmentStrategyWithContext(context.Background(), request)
 }
 
 // DescribeServiceEnvironmentStrategy
@@ -3465,6 +3413,11 @@ func (c *Client) DescribeServiceEnvironmentStrategyWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeServiceEnvironmentStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceEnvironmentStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceEnvironmentStrategyResponse()
@@ -3496,13 +3449,7 @@ func NewDescribeServiceForApiAppResponse() (response *DescribeServiceForApiAppRe
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceForApiApp(request *DescribeServiceForApiAppRequest) (response *DescribeServiceForApiAppResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceForApiAppRequest()
-    }
-    
-    response = NewDescribeServiceForApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceForApiAppWithContext(context.Background(), request)
 }
 
 // DescribeServiceForApiApp
@@ -3515,6 +3462,11 @@ func (c *Client) DescribeServiceForApiAppWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServiceForApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceForApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceForApiAppResponse()
@@ -3547,13 +3499,7 @@ func NewDescribeServiceReleaseVersionResponse() (response *DescribeServiceReleas
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceReleaseVersion(request *DescribeServiceReleaseVersionRequest) (response *DescribeServiceReleaseVersionResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceReleaseVersionRequest()
-    }
-    
-    response = NewDescribeServiceReleaseVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceReleaseVersionWithContext(context.Background(), request)
 }
 
 // DescribeServiceReleaseVersion
@@ -3567,6 +3513,11 @@ func (c *Client) DescribeServiceReleaseVersionWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeServiceReleaseVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceReleaseVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceReleaseVersionResponse()
@@ -3601,13 +3552,7 @@ func NewDescribeServiceSubDomainMappingsResponse() (response *DescribeServiceSub
 //  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 func (c *Client) DescribeServiceSubDomainMappings(request *DescribeServiceSubDomainMappingsRequest) (response *DescribeServiceSubDomainMappingsResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceSubDomainMappingsRequest()
-    }
-    
-    response = NewDescribeServiceSubDomainMappingsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceSubDomainMappingsWithContext(context.Background(), request)
 }
 
 // DescribeServiceSubDomainMappings
@@ -3623,6 +3568,11 @@ func (c *Client) DescribeServiceSubDomainMappingsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeServiceSubDomainMappingsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceSubDomainMappings require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceSubDomainMappingsResponse()
@@ -3659,13 +3609,7 @@ func NewDescribeServiceSubDomainsResponse() (response *DescribeServiceSubDomains
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceSubDomains(request *DescribeServiceSubDomainsRequest) (response *DescribeServiceSubDomainsResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceSubDomainsRequest()
-    }
-    
-    response = NewDescribeServiceSubDomainsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceSubDomainsWithContext(context.Background(), request)
 }
 
 // DescribeServiceSubDomains
@@ -3683,6 +3627,11 @@ func (c *Client) DescribeServiceSubDomainsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeServiceSubDomainsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceSubDomains require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceSubDomainsResponse()
@@ -3716,13 +3665,7 @@ func NewDescribeServiceUsagePlanResponse() (response *DescribeServiceUsagePlanRe
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceUsagePlan(request *DescribeServiceUsagePlanRequest) (response *DescribeServiceUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewDescribeServiceUsagePlanRequest()
-    }
-    
-    response = NewDescribeServiceUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServiceUsagePlanWithContext(context.Background(), request)
 }
 
 // DescribeServiceUsagePlan
@@ -3737,6 +3680,11 @@ func (c *Client) DescribeServiceUsagePlanWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeServiceUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServiceUsagePlanResponse()
@@ -3786,13 +3734,7 @@ func NewDescribeServicesStatusResponse() (response *DescribeServicesStatusRespon
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) (response *DescribeServicesStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeServicesStatusRequest()
-    }
-    
-    response = NewDescribeServicesStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeServicesStatusWithContext(context.Background(), request)
 }
 
 // DescribeServicesStatus
@@ -3823,6 +3765,11 @@ func (c *Client) DescribeServicesStatusWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeServicesStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServicesStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeServicesStatusResponse()
@@ -3862,13 +3809,7 @@ func NewDescribeUpstreamBindApisResponse() (response *DescribeUpstreamBindApisRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUpstreamBindApis(request *DescribeUpstreamBindApisRequest) (response *DescribeUpstreamBindApisResponse, err error) {
-    if request == nil {
-        request = NewDescribeUpstreamBindApisRequest()
-    }
-    
-    response = NewDescribeUpstreamBindApisResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUpstreamBindApisWithContext(context.Background(), request)
 }
 
 // DescribeUpstreamBindApis
@@ -3889,6 +3830,11 @@ func (c *Client) DescribeUpstreamBindApisWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUpstreamBindApisRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpstreamBindApis require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUpstreamBindApisResponse()
@@ -3928,13 +3874,7 @@ func NewDescribeUpstreamsResponse() (response *DescribeUpstreamsResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response *DescribeUpstreamsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUpstreamsRequest()
-    }
-    
-    response = NewDescribeUpstreamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUpstreamsWithContext(context.Background(), request)
 }
 
 // DescribeUpstreams
@@ -3955,6 +3895,11 @@ func (c *Client) DescribeUpstreamsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUpstreamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUpstreams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUpstreamsResponse()
@@ -3986,13 +3931,7 @@ func NewDescribeUsagePlanResponse() (response *DescribeUsagePlanResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 func (c *Client) DescribeUsagePlan(request *DescribeUsagePlanRequest) (response *DescribeUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsagePlanRequest()
-    }
-    
-    response = NewDescribeUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsagePlanWithContext(context.Background(), request)
 }
 
 // DescribeUsagePlan
@@ -4005,6 +3944,11 @@ func (c *Client) DescribeUsagePlanWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsagePlanResponse()
@@ -4038,13 +3982,7 @@ func NewDescribeUsagePlanEnvironmentsResponse() (response *DescribeUsagePlanEnvi
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 func (c *Client) DescribeUsagePlanEnvironments(request *DescribeUsagePlanEnvironmentsRequest) (response *DescribeUsagePlanEnvironmentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsagePlanEnvironmentsRequest()
-    }
-    
-    response = NewDescribeUsagePlanEnvironmentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsagePlanEnvironmentsWithContext(context.Background(), request)
 }
 
 // DescribeUsagePlanEnvironments
@@ -4059,6 +3997,11 @@ func (c *Client) DescribeUsagePlanEnvironmentsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeUsagePlanEnvironmentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsagePlanEnvironments require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsagePlanEnvironmentsResponse()
@@ -4092,13 +4035,7 @@ func NewDescribeUsagePlanSecretIdsResponse() (response *DescribeUsagePlanSecretI
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 func (c *Client) DescribeUsagePlanSecretIds(request *DescribeUsagePlanSecretIdsRequest) (response *DescribeUsagePlanSecretIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsagePlanSecretIdsRequest()
-    }
-    
-    response = NewDescribeUsagePlanSecretIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsagePlanSecretIdsWithContext(context.Background(), request)
 }
 
 // DescribeUsagePlanSecretIds
@@ -4113,6 +4050,11 @@ func (c *Client) DescribeUsagePlanSecretIdsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeUsagePlanSecretIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsagePlanSecretIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsagePlanSecretIdsResponse()
@@ -4144,13 +4086,7 @@ func NewDescribeUsagePlansStatusResponse() (response *DescribeUsagePlansStatusRe
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 func (c *Client) DescribeUsagePlansStatus(request *DescribeUsagePlansStatusRequest) (response *DescribeUsagePlansStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsagePlansStatusRequest()
-    }
-    
-    response = NewDescribeUsagePlansStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsagePlansStatusWithContext(context.Background(), request)
 }
 
 // DescribeUsagePlansStatus
@@ -4163,6 +4099,11 @@ func (c *Client) DescribeUsagePlansStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUsagePlansStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsagePlansStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsagePlansStatusResponse()
@@ -4198,13 +4139,7 @@ func NewDetachPluginResponse() (response *DetachPluginResponse) {
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPluginResponse, err error) {
-    if request == nil {
-        request = NewDetachPluginRequest()
-    }
-    
-    response = NewDetachPluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachPluginWithContext(context.Background(), request)
 }
 
 // DetachPlugin
@@ -4221,6 +4156,11 @@ func (c *Client) DetachPluginWithContext(ctx context.Context, request *DetachPlu
     if request == nil {
         request = NewDetachPluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachPlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachPluginResponse()
@@ -4254,13 +4194,7 @@ func NewDisableApiKeyResponse() (response *DisableApiKeyResponse) {
 //  UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUPDATEAPIKEY = "UnsupportedOperation.UnsupportedUpdateApiKey"
 func (c *Client) DisableApiKey(request *DisableApiKeyRequest) (response *DisableApiKeyResponse, err error) {
-    if request == nil {
-        request = NewDisableApiKeyRequest()
-    }
-    
-    response = NewDisableApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableApiKeyWithContext(context.Background(), request)
 }
 
 // DisableApiKey
@@ -4275,6 +4209,11 @@ func (c *Client) DisableApiKeyWithContext(ctx context.Context, request *DisableA
     if request == nil {
         request = NewDisableApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableApiKeyResponse()
@@ -4307,13 +4246,7 @@ func NewEnableApiKeyResponse() (response *EnableApiKeyResponse) {
 //  UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUPDATEAPIKEY = "UnsupportedOperation.UnsupportedUpdateApiKey"
 func (c *Client) EnableApiKey(request *EnableApiKeyRequest) (response *EnableApiKeyResponse, err error) {
-    if request == nil {
-        request = NewEnableApiKeyRequest()
-    }
-    
-    response = NewEnableApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableApiKeyWithContext(context.Background(), request)
 }
 
 // EnableApiKey
@@ -4327,6 +4260,11 @@ func (c *Client) EnableApiKeyWithContext(ctx context.Context, request *EnableApi
     if request == nil {
         request = NewEnableApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableApiKeyResponse()
@@ -4360,13 +4298,7 @@ func NewGenerateApiDocumentResponse() (response *GenerateApiDocumentResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDGENLANGUAGE = "InvalidParameterValue.InvalidGenLanguage"
 //  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
 func (c *Client) GenerateApiDocument(request *GenerateApiDocumentRequest) (response *GenerateApiDocumentResponse, err error) {
-    if request == nil {
-        request = NewGenerateApiDocumentRequest()
-    }
-    
-    response = NewGenerateApiDocumentResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateApiDocumentWithContext(context.Background(), request)
 }
 
 // GenerateApiDocument
@@ -4381,6 +4313,11 @@ func (c *Client) GenerateApiDocumentWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGenerateApiDocumentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateApiDocument require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateApiDocumentResponse()
@@ -4417,13 +4354,7 @@ func NewModifyAPIDocResponse() (response *ModifyAPIDocResponse) {
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) ModifyAPIDoc(request *ModifyAPIDocRequest) (response *ModifyAPIDocResponse, err error) {
-    if request == nil {
-        request = NewModifyAPIDocRequest()
-    }
-    
-    response = NewModifyAPIDocResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAPIDocWithContext(context.Background(), request)
 }
 
 // ModifyAPIDoc
@@ -4441,6 +4372,11 @@ func (c *Client) ModifyAPIDocWithContext(ctx context.Context, request *ModifyAPI
     if request == nil {
         request = NewModifyAPIDocRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAPIDoc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAPIDocResponse()
@@ -4498,6 +4434,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEPARAM = "InvalidParameterValue.InvalidServiceParam"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICETYPE = "InvalidParameterValue.InvalidServiceType"
+//  INVALIDPARAMETERVALUE_INVALIDUPSTREAM = "InvalidParameterValue.InvalidUpstream"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidUrl"
 //  INVALIDPARAMETERVALUE_INVALIDWSMETHOD = "InvalidParameterValue.InvalidWSMethod"
 //  INVALIDPARAMETERVALUE_LENGTHEXCEEDED = "InvalidParameterValue.LengthExceeded"
@@ -4515,13 +4452,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 //  UNSUPPORTEDOPERATION_MODIFYPROTOCOL = "UnsupportedOperation.ModifyProtocol"
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiResponse, err error) {
-    if request == nil {
-        request = NewModifyApiRequest()
-    }
-    
-    response = NewModifyApiResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApiWithContext(context.Background(), request)
 }
 
 // ModifyApi
@@ -4557,6 +4488,7 @@ func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiRespon
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICEPARAM = "InvalidParameterValue.InvalidServiceParam"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICETYPE = "InvalidParameterValue.InvalidServiceType"
+//  INVALIDPARAMETERVALUE_INVALIDUPSTREAM = "InvalidParameterValue.InvalidUpstream"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidUrl"
 //  INVALIDPARAMETERVALUE_INVALIDWSMETHOD = "InvalidParameterValue.InvalidWSMethod"
 //  INVALIDPARAMETERVALUE_LENGTHEXCEEDED = "InvalidParameterValue.LengthExceeded"
@@ -4577,6 +4509,11 @@ func (c *Client) ModifyApiWithContext(ctx context.Context, request *ModifyApiReq
     if request == nil {
         request = NewModifyApiRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApi require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApiResponse()
@@ -4619,13 +4556,7 @@ func NewModifyApiAppResponse() (response *ModifyApiAppResponse) {
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 func (c *Client) ModifyApiApp(request *ModifyApiAppRequest) (response *ModifyApiAppResponse, err error) {
-    if request == nil {
-        request = NewModifyApiAppRequest()
-    }
-    
-    response = NewModifyApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApiAppWithContext(context.Background(), request)
 }
 
 // ModifyApiApp
@@ -4649,6 +4580,11 @@ func (c *Client) ModifyApiAppWithContext(ctx context.Context, request *ModifyApi
     if request == nil {
         request = NewModifyApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApiAppResponse()
@@ -4682,13 +4618,7 @@ func NewModifyApiEnvironmentStrategyResponse() (response *ModifyApiEnvironmentSt
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 func (c *Client) ModifyApiEnvironmentStrategy(request *ModifyApiEnvironmentStrategyRequest) (response *ModifyApiEnvironmentStrategyResponse, err error) {
-    if request == nil {
-        request = NewModifyApiEnvironmentStrategyRequest()
-    }
-    
-    response = NewModifyApiEnvironmentStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApiEnvironmentStrategyWithContext(context.Background(), request)
 }
 
 // ModifyApiEnvironmentStrategy
@@ -4703,6 +4633,11 @@ func (c *Client) ModifyApiEnvironmentStrategyWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyApiEnvironmentStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiEnvironmentStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApiEnvironmentStrategyResponse()
@@ -4737,13 +4672,7 @@ func NewModifyApiIncrementResponse() (response *ModifyApiIncrementResponse) {
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) ModifyApiIncrement(request *ModifyApiIncrementRequest) (response *ModifyApiIncrementResponse, err error) {
-    if request == nil {
-        request = NewModifyApiIncrementRequest()
-    }
-    
-    response = NewModifyApiIncrementResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApiIncrementWithContext(context.Background(), request)
 }
 
 // ModifyApiIncrement
@@ -4759,6 +4688,11 @@ func (c *Client) ModifyApiIncrementWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyApiIncrementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiIncrement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApiIncrementResponse()
@@ -4801,13 +4735,7 @@ func NewModifyExclusiveInstanceResponse() (response *ModifyExclusiveInstanceResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest) (response *ModifyExclusiveInstanceResponse, err error) {
-    if request == nil {
-        request = NewModifyExclusiveInstanceRequest()
-    }
-    
-    response = NewModifyExclusiveInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyExclusiveInstanceWithContext(context.Background(), request)
 }
 
 // ModifyExclusiveInstance
@@ -4831,6 +4759,11 @@ func (c *Client) ModifyExclusiveInstanceWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyExclusiveInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyExclusiveInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyExclusiveInstanceResponse()
@@ -4862,13 +4795,7 @@ func NewModifyIPStrategyResponse() (response *ModifyIPStrategyResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 func (c *Client) ModifyIPStrategy(request *ModifyIPStrategyRequest) (response *ModifyIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewModifyIPStrategyRequest()
-    }
-    
-    response = NewModifyIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyIPStrategyWithContext(context.Background(), request)
 }
 
 // ModifyIPStrategy
@@ -4881,6 +4808,11 @@ func (c *Client) ModifyIPStrategyWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyIPStrategyResponse()
@@ -4938,13 +4870,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPluginResponse, err error) {
-    if request == nil {
-        request = NewModifyPluginRequest()
-    }
-    
-    response = NewModifyPluginResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPluginWithContext(context.Background(), request)
 }
 
 // ModifyPlugin
@@ -4983,6 +4909,11 @@ func (c *Client) ModifyPluginWithContext(ctx context.Context, request *ModifyPlu
     if request == nil {
         request = NewModifyPluginRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPlugin require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPluginResponse()
@@ -5020,13 +4951,7 @@ func NewModifyServiceResponse() (response *ModifyServiceResponse) {
 //  UNSUPPORTEDOPERATION_MODIFYNETTYPE = "UnsupportedOperation.ModifyNetType"
 //  UNSUPPORTEDOPERATION_REDUCENETTYPES = "UnsupportedOperation.ReduceNetTypes"
 func (c *Client) ModifyService(request *ModifyServiceRequest) (response *ModifyServiceResponse, err error) {
-    if request == nil {
-        request = NewModifyServiceRequest()
-    }
-    
-    response = NewModifyServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyServiceWithContext(context.Background(), request)
 }
 
 // ModifyService
@@ -5045,6 +4970,11 @@ func (c *Client) ModifyServiceWithContext(ctx context.Context, request *ModifySe
     if request == nil {
         request = NewModifyServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyServiceResponse()
@@ -5078,13 +5008,7 @@ func NewModifyServiceEnvironmentStrategyResponse() (response *ModifyServiceEnvir
 //  INVALIDPARAMETERVALUE_INVALIDREQUESTPARAMETERS = "InvalidParameterValue.InvalidRequestParameters"
 //  INVALIDPARAMETERVALUE_RANGEEXCEEDED = "InvalidParameterValue.RangeExceeded"
 func (c *Client) ModifyServiceEnvironmentStrategy(request *ModifyServiceEnvironmentStrategyRequest) (response *ModifyServiceEnvironmentStrategyResponse, err error) {
-    if request == nil {
-        request = NewModifyServiceEnvironmentStrategyRequest()
-    }
-    
-    response = NewModifyServiceEnvironmentStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyServiceEnvironmentStrategyWithContext(context.Background(), request)
 }
 
 // ModifyServiceEnvironmentStrategy
@@ -5099,6 +5023,11 @@ func (c *Client) ModifyServiceEnvironmentStrategyWithContext(ctx context.Context
     if request == nil {
         request = NewModifyServiceEnvironmentStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyServiceEnvironmentStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyServiceEnvironmentStrategyResponse()
@@ -5141,13 +5070,7 @@ func NewModifySubDomainResponse() (response *ModifySubDomainResponse) {
 //  UNSUPPORTEDOPERATION_FORCEHTTPS = "UnsupportedOperation.ForceHttps"
 //  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
 func (c *Client) ModifySubDomain(request *ModifySubDomainRequest) (response *ModifySubDomainResponse, err error) {
-    if request == nil {
-        request = NewModifySubDomainRequest()
-    }
-    
-    response = NewModifySubDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubDomainWithContext(context.Background(), request)
 }
 
 // ModifySubDomain
@@ -5171,6 +5094,11 @@ func (c *Client) ModifySubDomainWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifySubDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubDomainResponse()
@@ -5214,13 +5142,7 @@ func NewModifyUpstreamResponse() (response *ModifyUpstreamResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyUpstream(request *ModifyUpstreamRequest) (response *ModifyUpstreamResponse, err error) {
-    if request == nil {
-        request = NewModifyUpstreamRequest()
-    }
-    
-    response = NewModifyUpstreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUpstreamWithContext(context.Background(), request)
 }
 
 // ModifyUpstream
@@ -5245,6 +5167,11 @@ func (c *Client) ModifyUpstreamWithContext(ctx context.Context, request *ModifyU
     if request == nil {
         request = NewModifyUpstreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUpstream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUpstreamResponse()
@@ -5277,13 +5204,7 @@ func NewModifyUsagePlanResponse() (response *ModifyUsagePlanResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 func (c *Client) ModifyUsagePlan(request *ModifyUsagePlanRequest) (response *ModifyUsagePlanResponse, err error) {
-    if request == nil {
-        request = NewModifyUsagePlanRequest()
-    }
-    
-    response = NewModifyUsagePlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUsagePlanWithContext(context.Background(), request)
 }
 
 // ModifyUsagePlan
@@ -5297,6 +5218,11 @@ func (c *Client) ModifyUsagePlanWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyUsagePlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUsagePlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUsagePlanResponse()
@@ -5337,13 +5263,7 @@ func NewReleaseServiceResponse() (response *ReleaseServiceResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReleaseService(request *ReleaseServiceRequest) (response *ReleaseServiceResponse, err error) {
-    if request == nil {
-        request = NewReleaseServiceRequest()
-    }
-    
-    response = NewReleaseServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReleaseServiceWithContext(context.Background(), request)
 }
 
 // ReleaseService
@@ -5365,6 +5285,11 @@ func (c *Client) ReleaseServiceWithContext(ctx context.Context, request *Release
     if request == nil {
         request = NewReleaseServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReleaseServiceResponse()
@@ -5397,13 +5322,7 @@ func NewResetAPIDocPasswordResponse() (response *ResetAPIDocPasswordResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDAPIDOC = "ResourceNotFound.InvalidApiDoc"
 func (c *Client) ResetAPIDocPassword(request *ResetAPIDocPasswordRequest) (response *ResetAPIDocPasswordResponse, err error) {
-    if request == nil {
-        request = NewResetAPIDocPasswordRequest()
-    }
-    
-    response = NewResetAPIDocPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetAPIDocPasswordWithContext(context.Background(), request)
 }
 
 // ResetAPIDocPassword
@@ -5417,6 +5336,11 @@ func (c *Client) ResetAPIDocPasswordWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResetAPIDocPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetAPIDocPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetAPIDocPasswordResponse()
@@ -5454,13 +5378,7 @@ func NewUnBindEnvironmentResponse() (response *UnBindEnvironmentResponse) {
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
 func (c *Client) UnBindEnvironment(request *UnBindEnvironmentRequest) (response *UnBindEnvironmentResponse, err error) {
-    if request == nil {
-        request = NewUnBindEnvironmentRequest()
-    }
-    
-    response = NewUnBindEnvironmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindEnvironmentWithContext(context.Background(), request)
 }
 
 // UnBindEnvironment
@@ -5479,6 +5397,11 @@ func (c *Client) UnBindEnvironmentWithContext(ctx context.Context, request *UnBi
     if request == nil {
         request = NewUnBindEnvironmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindEnvironment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindEnvironmentResponse()
@@ -5509,13 +5432,7 @@ func NewUnBindIPStrategyResponse() (response *UnBindIPStrategyResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 func (c *Client) UnBindIPStrategy(request *UnBindIPStrategyRequest) (response *UnBindIPStrategyResponse, err error) {
-    if request == nil {
-        request = NewUnBindIPStrategyRequest()
-    }
-    
-    response = NewUnBindIPStrategyResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindIPStrategyWithContext(context.Background(), request)
 }
 
 // UnBindIPStrategy
@@ -5527,6 +5444,11 @@ func (c *Client) UnBindIPStrategyWithContext(ctx context.Context, request *UnBin
     if request == nil {
         request = NewUnBindIPStrategyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindIPStrategy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindIPStrategyResponse()
@@ -5559,13 +5481,7 @@ func NewUnBindSecretIdsResponse() (response *UnBindSecretIdsResponse) {
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 func (c *Client) UnBindSecretIds(request *UnBindSecretIdsRequest) (response *UnBindSecretIdsResponse, err error) {
-    if request == nil {
-        request = NewUnBindSecretIdsRequest()
-    }
-    
-    response = NewUnBindSecretIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindSecretIdsWithContext(context.Background(), request)
 }
 
 // UnBindSecretIds
@@ -5579,6 +5495,11 @@ func (c *Client) UnBindSecretIdsWithContext(ctx context.Context, request *UnBind
     if request == nil {
         request = NewUnBindSecretIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindSecretIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindSecretIdsResponse()
@@ -5615,15 +5536,10 @@ func NewUnBindSubDomainResponse() (response *UnBindSubDomainResponse) {
 //  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
 //  FAILEDOPERATION_SUBDOMAINFORMATERROR = "FailedOperation.SubDomainFormatError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 func (c *Client) UnBindSubDomain(request *UnBindSubDomainRequest) (response *UnBindSubDomainResponse, err error) {
-    if request == nil {
-        request = NewUnBindSubDomainRequest()
-    }
-    
-    response = NewUnBindSubDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindSubDomainWithContext(context.Background(), request)
 }
 
 // UnBindSubDomain
@@ -5638,11 +5554,17 @@ func (c *Client) UnBindSubDomain(request *UnBindSubDomainRequest) (response *UnB
 //  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
 //  FAILEDOPERATION_SUBDOMAINFORMATERROR = "FailedOperation.SubDomainFormatError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
 func (c *Client) UnBindSubDomainWithContext(ctx context.Context, request *UnBindSubDomainRequest) (response *UnBindSubDomainResponse, err error) {
     if request == nil {
         request = NewUnBindSubDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindSubDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindSubDomainResponse()
@@ -5674,6 +5596,7 @@ func NewUnReleaseServiceResponse() (response *UnReleaseServiceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
@@ -5681,13 +5604,7 @@ func NewUnReleaseServiceResponse() (response *UnReleaseServiceResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UnReleaseService(request *UnReleaseServiceRequest) (response *UnReleaseServiceResponse, err error) {
-    if request == nil {
-        request = NewUnReleaseServiceRequest()
-    }
-    
-    response = NewUnReleaseServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnReleaseServiceWithContext(context.Background(), request)
 }
 
 // UnReleaseService
@@ -5697,6 +5614,7 @@ func (c *Client) UnReleaseService(request *UnReleaseServiceRequest) (response *U
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
@@ -5707,6 +5625,11 @@ func (c *Client) UnReleaseServiceWithContext(ctx context.Context, request *UnRel
     if request == nil {
         request = NewUnReleaseServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnReleaseService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnReleaseServiceResponse()
@@ -5745,13 +5668,7 @@ func NewUnbindApiAppResponse() (response *UnbindApiAppResponse) {
 //  UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = "UnsupportedOperation.ResourceUnassociated"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
 func (c *Client) UnbindApiApp(request *UnbindApiAppRequest) (response *UnbindApiAppResponse, err error) {
-    if request == nil {
-        request = NewUnbindApiAppRequest()
-    }
-    
-    response = NewUnbindApiAppResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindApiAppWithContext(context.Background(), request)
 }
 
 // UnbindApiApp
@@ -5771,6 +5688,11 @@ func (c *Client) UnbindApiAppWithContext(ctx context.Context, request *UnbindApi
     if request == nil {
         request = NewUnbindApiAppRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindApiApp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindApiAppResponse()
@@ -5813,13 +5735,7 @@ func NewUpdateApiAppKeyResponse() (response *UpdateApiAppKeyResponse) {
 //  UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETEAPI = "UnsupportedOperation.UnsupportedDeleteApi"
 func (c *Client) UpdateApiAppKey(request *UpdateApiAppKeyRequest) (response *UpdateApiAppKeyResponse, err error) {
-    if request == nil {
-        request = NewUpdateApiAppKeyRequest()
-    }
-    
-    response = NewUpdateApiAppKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateApiAppKeyWithContext(context.Background(), request)
 }
 
 // UpdateApiAppKey
@@ -5843,6 +5759,11 @@ func (c *Client) UpdateApiAppKeyWithContext(ctx context.Context, request *Update
     if request == nil {
         request = NewUpdateApiAppKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApiAppKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateApiAppKeyResponse()
@@ -5874,13 +5795,7 @@ func NewUpdateApiKeyResponse() (response *UpdateApiKeyResponse) {
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"
 func (c *Client) UpdateApiKey(request *UpdateApiKeyRequest) (response *UpdateApiKeyResponse, err error) {
-    if request == nil {
-        request = NewUpdateApiKeyRequest()
-    }
-    
-    response = NewUpdateApiKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateApiKeyWithContext(context.Background(), request)
 }
 
 // UpdateApiKey
@@ -5893,6 +5808,11 @@ func (c *Client) UpdateApiKeyWithContext(ctx context.Context, request *UpdateApi
     if request == nil {
         request = NewUpdateApiKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateApiKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateApiKeyResponse()
@@ -5929,13 +5849,7 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSERVICETRADE = "UnsupportedOperation.InvalidServiceTrade"
 func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateServiceResponse, err error) {
-    if request == nil {
-        request = NewUpdateServiceRequest()
-    }
-    
-    response = NewUpdateServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateServiceWithContext(context.Background(), request)
 }
 
 // UpdateService
@@ -5953,6 +5867,11 @@ func (c *Client) UpdateServiceWithContext(ctx context.Context, request *UpdateSe
     if request == nil {
         request = NewUpdateServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateServiceResponse()

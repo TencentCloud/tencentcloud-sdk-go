@@ -16,6 +16,7 @@ package v20191010
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewFlowProductRemindResponse() (response *FlowProductRemindResponse) {
 // FlowProductRemind
 // 计量商品用量提醒，用于服务商调用云服务，云服务向客户发送提醒信息
 func (c *Client) FlowProductRemind(request *FlowProductRemindRequest) (response *FlowProductRemindResponse, err error) {
-    if request == nil {
-        request = NewFlowProductRemindRequest()
-    }
-    
-    response = NewFlowProductRemindResponse()
-    err = c.Send(request, response)
-    return
+    return c.FlowProductRemindWithContext(context.Background(), request)
 }
 
 // FlowProductRemind
@@ -79,6 +74,11 @@ func (c *Client) FlowProductRemindWithContext(ctx context.Context, request *Flow
     if request == nil {
         request = NewFlowProductRemindRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FlowProductRemind require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFlowProductRemindResponse()
@@ -111,13 +111,7 @@ func NewGetUsagePlanUsageAmountResponse() (response *GetUsagePlanUsageAmountResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest) (response *GetUsagePlanUsageAmountResponse, err error) {
-    if request == nil {
-        request = NewGetUsagePlanUsageAmountRequest()
-    }
-    
-    response = NewGetUsagePlanUsageAmountResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUsagePlanUsageAmountWithContext(context.Background(), request)
 }
 
 // GetUsagePlanUsageAmount
@@ -131,6 +125,11 @@ func (c *Client) GetUsagePlanUsageAmountWithContext(ctx context.Context, request
     if request == nil {
         request = NewGetUsagePlanUsageAmountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUsagePlanUsageAmount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUsagePlanUsageAmountResponse()

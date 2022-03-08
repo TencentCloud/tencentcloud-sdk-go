@@ -16,6 +16,7 @@ package v20181213
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -95,13 +96,7 @@ func NewCorrectMultiImageResponse() (response *CorrectMultiImageResponse) {
 //  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
 //  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) CorrectMultiImage(request *CorrectMultiImageRequest) (response *CorrectMultiImageResponse, err error) {
-    if request == nil {
-        request = NewCorrectMultiImageRequest()
-    }
-    
-    response = NewCorrectMultiImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CorrectMultiImageWithContext(context.Background(), request)
 }
 
 // CorrectMultiImage
@@ -141,6 +136,11 @@ func (c *Client) CorrectMultiImageWithContext(ctx context.Context, request *Corr
     if request == nil {
         request = NewCorrectMultiImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CorrectMultiImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCorrectMultiImageResponse()
@@ -194,13 +194,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
 //  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskRequest()
-    }
-    
-    response = NewDescribeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskWithContext(context.Background(), request)
 }
 
 // DescribeTask
@@ -235,6 +229,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResponse()
@@ -270,13 +269,7 @@ func NewECCResponse() (response *ECCResponse) {
 //  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
 //  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
 func (c *Client) ECC(request *ECCRequest) (response *ECCResponse, err error) {
-    if request == nil {
-        request = NewECCRequest()
-    }
-    
-    response = NewECCResponse()
-    err = c.Send(request, response)
-    return
+    return c.ECCWithContext(context.Background(), request)
 }
 
 // ECC
@@ -293,6 +286,11 @@ func (c *Client) ECCWithContext(ctx context.Context, request *ECCRequest) (respo
     if request == nil {
         request = NewECCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ECC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewECCResponse()
@@ -351,13 +349,7 @@ func NewEHOCRResponse() (response *EHOCRResponse) {
 //  UNAUTHORIZEDOPERATION_LICENSEINVALIDFORBIDDENACCESSERROR = "UnauthorizedOperation.LicenseInvalidForbiddenAccessError"
 //  UNAUTHORIZEDOPERATION_SERVERNAMEUNAUTHORIZEDINERROR = "UnauthorizedOperation.ServerNameUnauthorizedInError"
 func (c *Client) EHOCR(request *EHOCRRequest) (response *EHOCRResponse, err error) {
-    if request == nil {
-        request = NewEHOCRRequest()
-    }
-    
-    response = NewEHOCRResponse()
-    err = c.Send(request, response)
-    return
+    return c.EHOCRWithContext(context.Background(), request)
 }
 
 // EHOCR
@@ -397,6 +389,11 @@ func (c *Client) EHOCRWithContext(ctx context.Context, request *EHOCRRequest) (r
     if request == nil {
         request = NewEHOCRRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EHOCR require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEHOCRResponse()

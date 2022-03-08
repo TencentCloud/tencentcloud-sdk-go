@@ -16,6 +16,7 @@ package v20200324
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -97,13 +98,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateGroupRequest()
-    }
-    
-    response = NewCreateGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGroupWithContext(context.Background(), request)
 }
 
 // CreateGroup
@@ -145,6 +140,11 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGroupResponse()
@@ -213,13 +213,7 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
-    if request == nil {
-        request = NewCreatePersonRequest()
-    }
-    
-    response = NewCreatePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePersonWithContext(context.Background(), request)
 }
 
 // CreatePerson
@@ -269,6 +263,11 @@ func (c *Client) CreatePersonWithContext(ctx context.Context, request *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePersonResponse()
@@ -309,13 +308,7 @@ func NewCreateSegmentationTaskResponse() (response *CreateSegmentationTaskRespon
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) CreateSegmentationTask(request *CreateSegmentationTaskRequest) (response *CreateSegmentationTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateSegmentationTaskRequest()
-    }
-    
-    response = NewCreateSegmentationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSegmentationTaskWithContext(context.Background(), request)
 }
 
 // CreateSegmentationTask
@@ -337,6 +330,11 @@ func (c *Client) CreateSegmentationTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateSegmentationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSegmentationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSegmentationTaskResponse()
@@ -398,13 +396,7 @@ func NewCreateTraceResponse() (response *CreateTraceResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CreateTrace(request *CreateTraceRequest) (response *CreateTraceResponse, err error) {
-    if request == nil {
-        request = NewCreateTraceRequest()
-    }
-    
-    response = NewCreateTraceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTraceWithContext(context.Background(), request)
 }
 
 // CreateTrace
@@ -447,6 +439,11 @@ func (c *Client) CreateTraceWithContext(ctx context.Context, request *CreateTrac
     if request == nil {
         request = NewCreateTraceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTraceResponse()
@@ -488,13 +485,7 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteGroupRequest()
-    }
-    
-    response = NewDeleteGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteGroupWithContext(context.Background(), request)
 }
 
 // DeleteGroup
@@ -517,6 +508,11 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteGroupResponse()
@@ -556,13 +552,7 @@ func NewDeletePersonResponse() (response *DeletePersonResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePersonResponse, err error) {
-    if request == nil {
-        request = NewDeletePersonRequest()
-    }
-    
-    response = NewDeletePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePersonWithContext(context.Background(), request)
 }
 
 // DeletePerson
@@ -583,6 +573,11 @@ func (c *Client) DeletePersonWithContext(ctx context.Context, request *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePersonResponse()
@@ -619,13 +614,7 @@ func NewDescribeSegmentationTaskResponse() (response *DescribeSegmentationTaskRe
 //  FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) DescribeSegmentationTask(request *DescribeSegmentationTaskRequest) (response *DescribeSegmentationTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeSegmentationTaskRequest()
-    }
-    
-    response = NewDescribeSegmentationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSegmentationTaskWithContext(context.Background(), request)
 }
 
 // DescribeSegmentationTask
@@ -643,6 +632,11 @@ func (c *Client) DescribeSegmentationTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSegmentationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSegmentationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSegmentationTaskResponse()
@@ -692,13 +686,7 @@ func NewDetectBodyResponse() (response *DetectBodyResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DetectBody(request *DetectBodyRequest) (response *DetectBodyResponse, err error) {
-    if request == nil {
-        request = NewDetectBodyRequest()
-    }
-    
-    response = NewDetectBodyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectBodyWithContext(context.Background(), request)
 }
 
 // DetectBody
@@ -729,6 +717,11 @@ func (c *Client) DetectBodyWithContext(ctx context.Context, request *DetectBodyR
     if request == nil {
         request = NewDetectBodyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectBody require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectBodyResponse()
@@ -779,13 +772,7 @@ func NewDetectBodyJointsResponse() (response *DetectBodyJointsResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DetectBodyJoints(request *DetectBodyJointsRequest) (response *DetectBodyJointsResponse, err error) {
-    if request == nil {
-        request = NewDetectBodyJointsRequest()
-    }
-    
-    response = NewDetectBodyJointsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectBodyJointsWithContext(context.Background(), request)
 }
 
 // DetectBodyJoints
@@ -817,6 +804,11 @@ func (c *Client) DetectBodyJointsWithContext(ctx context.Context, request *Detec
     if request == nil {
         request = NewDetectBodyJointsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectBodyJoints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectBodyJointsResponse()
@@ -857,13 +849,7 @@ func NewGetGroupListResponse() (response *GetGroupListResponse) {
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupListResponse, err error) {
-    if request == nil {
-        request = NewGetGroupListRequest()
-    }
-    
-    response = NewGetGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGroupListWithContext(context.Background(), request)
 }
 
 // GetGroupList
@@ -885,6 +871,11 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGroupListResponse()
@@ -927,13 +918,7 @@ func NewGetPersonListResponse() (response *GetPersonListResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPersonListResponse, err error) {
-    if request == nil {
-        request = NewGetPersonListRequest()
-    }
-    
-    response = NewGetPersonListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPersonListWithContext(context.Background(), request)
 }
 
 // GetPersonList
@@ -957,6 +942,11 @@ func (c *Client) GetPersonListWithContext(ctx context.Context, request *GetPerso
     if request == nil {
         request = NewGetPersonListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPersonList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPersonListResponse()
@@ -996,13 +986,7 @@ func NewGetSummaryInfoResponse() (response *GetSummaryInfoResponse) {
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetSummaryInfo(request *GetSummaryInfoRequest) (response *GetSummaryInfoResponse, err error) {
-    if request == nil {
-        request = NewGetSummaryInfoRequest()
-    }
-    
-    response = NewGetSummaryInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSummaryInfoWithContext(context.Background(), request)
 }
 
 // GetSummaryInfo
@@ -1023,6 +1007,11 @@ func (c *Client) GetSummaryInfoWithContext(ctx context.Context, request *GetSumm
     if request == nil {
         request = NewGetSummaryInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSummaryInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSummaryInfoResponse()
@@ -1065,13 +1054,7 @@ func NewModifyGroupResponse() (response *ModifyGroupResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyGroupRequest()
-    }
-    
-    response = NewModifyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyGroupWithContext(context.Background(), request)
 }
 
 // ModifyGroup
@@ -1095,6 +1078,11 @@ func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGrou
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyGroupResponse()
@@ -1134,13 +1122,7 @@ func NewModifyPersonInfoResponse() (response *ModifyPersonInfoResponse) {
 //  INVALIDPARAMETERVALUE_PERSONNAMETOOLONG = "InvalidParameterValue.PersonNameTooLong"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) ModifyPersonInfo(request *ModifyPersonInfoRequest) (response *ModifyPersonInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonInfoRequest()
-    }
-    
-    response = NewModifyPersonInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonInfoWithContext(context.Background(), request)
 }
 
 // ModifyPersonInfo
@@ -1161,6 +1143,11 @@ func (c *Client) ModifyPersonInfoWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyPersonInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonInfoResponse()
@@ -1225,13 +1212,7 @@ func NewSearchTraceResponse() (response *SearchTraceResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SearchTrace(request *SearchTraceRequest) (response *SearchTraceResponse, err error) {
-    if request == nil {
-        request = NewSearchTraceRequest()
-    }
-    
-    response = NewSearchTraceResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchTraceWithContext(context.Background(), request)
 }
 
 // SearchTrace
@@ -1277,6 +1258,11 @@ func (c *Client) SearchTraceWithContext(ctx context.Context, request *SearchTrac
     if request == nil {
         request = NewSearchTraceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchTrace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchTraceResponse()
@@ -1328,13 +1314,7 @@ func NewSegmentCustomizedPortraitPicResponse() (response *SegmentCustomizedPortr
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SegmentCustomizedPortraitPic(request *SegmentCustomizedPortraitPicRequest) (response *SegmentCustomizedPortraitPicResponse, err error) {
-    if request == nil {
-        request = NewSegmentCustomizedPortraitPicRequest()
-    }
-    
-    response = NewSegmentCustomizedPortraitPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.SegmentCustomizedPortraitPicWithContext(context.Background(), request)
 }
 
 // SegmentCustomizedPortraitPic
@@ -1367,6 +1347,11 @@ func (c *Client) SegmentCustomizedPortraitPicWithContext(ctx context.Context, re
     if request == nil {
         request = NewSegmentCustomizedPortraitPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SegmentCustomizedPortraitPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSegmentCustomizedPortraitPicResponse()
@@ -1418,13 +1403,7 @@ func NewSegmentPortraitPicResponse() (response *SegmentPortraitPicResponse) {
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SegmentPortraitPic(request *SegmentPortraitPicRequest) (response *SegmentPortraitPicResponse, err error) {
-    if request == nil {
-        request = NewSegmentPortraitPicRequest()
-    }
-    
-    response = NewSegmentPortraitPicResponse()
-    err = c.Send(request, response)
-    return
+    return c.SegmentPortraitPicWithContext(context.Background(), request)
 }
 
 // SegmentPortraitPic
@@ -1457,6 +1436,11 @@ func (c *Client) SegmentPortraitPicWithContext(ctx context.Context, request *Seg
     if request == nil {
         request = NewSegmentPortraitPicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SegmentPortraitPic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSegmentPortraitPicResponse()
@@ -1490,13 +1474,7 @@ func NewTerminateSegmentationTaskResponse() (response *TerminateSegmentationTask
 //  FAILEDOPERATION_TERMINATETASKFAILED = "FailedOperation.TerminateTaskFailed"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 func (c *Client) TerminateSegmentationTask(request *TerminateSegmentationTaskRequest) (response *TerminateSegmentationTaskResponse, err error) {
-    if request == nil {
-        request = NewTerminateSegmentationTaskRequest()
-    }
-    
-    response = NewTerminateSegmentationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateSegmentationTaskWithContext(context.Background(), request)
 }
 
 // TerminateSegmentationTask
@@ -1511,6 +1489,11 @@ func (c *Client) TerminateSegmentationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewTerminateSegmentationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateSegmentationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateSegmentationTaskResponse()

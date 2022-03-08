@@ -16,6 +16,7 @@ package v20200924
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewDescribeAgentShellResponse() (response *DescribeAgentShellResponse) {
 // DescribeAgentShell
 // 获取服务接入信息
 func (c *Client) DescribeAgentShell(request *DescribeAgentShellRequest) (response *DescribeAgentShellResponse, err error) {
-    if request == nil {
-        request = NewDescribeAgentShellRequest()
-    }
-    
-    response = NewDescribeAgentShellResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAgentShellWithContext(context.Background(), request)
 }
 
 // DescribeAgentShell
@@ -79,6 +74,11 @@ func (c *Client) DescribeAgentShellWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAgentShellRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentShell require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAgentShellResponse()

@@ -16,6 +16,7 @@ package v20180608
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewBindEnvGatewayResponse() (response *BindEnvGatewayResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) BindEnvGateway(request *BindEnvGatewayRequest) (response *BindEnvGatewayResponse, err error) {
-    if request == nil {
-        request = NewBindEnvGatewayRequest()
-    }
-    
-    response = NewBindEnvGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindEnvGatewayWithContext(context.Background(), request)
 }
 
 // BindEnvGateway
@@ -93,6 +88,11 @@ func (c *Client) BindEnvGatewayWithContext(ctx context.Context, request *BindEnv
     if request == nil {
         request = NewBindEnvGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindEnvGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindEnvGatewayResponse()
@@ -126,13 +126,7 @@ func NewCheckTcbServiceResponse() (response *CheckTcbServiceResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) CheckTcbService(request *CheckTcbServiceRequest) (response *CheckTcbServiceResponse, err error) {
-    if request == nil {
-        request = NewCheckTcbServiceRequest()
-    }
-    
-    response = NewCheckTcbServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckTcbServiceWithContext(context.Background(), request)
 }
 
 // CheckTcbService
@@ -147,6 +141,11 @@ func (c *Client) CheckTcbServiceWithContext(ctx context.Context, request *CheckT
     if request == nil {
         request = NewCheckTcbServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckTcbService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckTcbServiceResponse()
@@ -179,13 +178,7 @@ func NewCommonServiceAPIResponse() (response *CommonServiceAPIResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 func (c *Client) CommonServiceAPI(request *CommonServiceAPIRequest) (response *CommonServiceAPIResponse, err error) {
-    if request == nil {
-        request = NewCommonServiceAPIRequest()
-    }
-    
-    response = NewCommonServiceAPIResponse()
-    err = c.Send(request, response)
-    return
+    return c.CommonServiceAPIWithContext(context.Background(), request)
 }
 
 // CommonServiceAPI
@@ -199,6 +192,11 @@ func (c *Client) CommonServiceAPIWithContext(ctx context.Context, request *Commo
     if request == nil {
         request = NewCommonServiceAPIRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommonServiceAPI require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCommonServiceAPIResponse()
@@ -235,13 +233,7 @@ func NewCreateAndDeployCloudBaseProjectResponse() (response *CreateAndDeployClou
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = "UnauthorizedOperation.CodeOAuthUnauthorized"
 func (c *Client) CreateAndDeployCloudBaseProject(request *CreateAndDeployCloudBaseProjectRequest) (response *CreateAndDeployCloudBaseProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateAndDeployCloudBaseProjectRequest()
-    }
-    
-    response = NewCreateAndDeployCloudBaseProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAndDeployCloudBaseProjectWithContext(context.Background(), request)
 }
 
 // CreateAndDeployCloudBaseProject
@@ -259,6 +251,11 @@ func (c *Client) CreateAndDeployCloudBaseProjectWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateAndDeployCloudBaseProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndDeployCloudBaseProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAndDeployCloudBaseProjectResponse()
@@ -294,13 +291,7 @@ func NewCreateAuthDomainResponse() (response *CreateAuthDomainResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateAuthDomain(request *CreateAuthDomainRequest) (response *CreateAuthDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateAuthDomainRequest()
-    }
-    
-    response = NewCreateAuthDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAuthDomainWithContext(context.Background(), request)
 }
 
 // CreateAuthDomain
@@ -317,6 +308,11 @@ func (c *Client) CreateAuthDomainWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAuthDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuthDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAuthDomainResponse()
@@ -350,13 +346,7 @@ func NewCreateCloudBaseRunResourceResponse() (response *CreateCloudBaseRunResour
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 func (c *Client) CreateCloudBaseRunResource(request *CreateCloudBaseRunResourceRequest) (response *CreateCloudBaseRunResourceResponse, err error) {
-    if request == nil {
-        request = NewCreateCloudBaseRunResourceRequest()
-    }
-    
-    response = NewCreateCloudBaseRunResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCloudBaseRunResourceWithContext(context.Background(), request)
 }
 
 // CreateCloudBaseRunResource
@@ -371,6 +361,11 @@ func (c *Client) CreateCloudBaseRunResourceWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateCloudBaseRunResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudBaseRunResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCloudBaseRunResourceResponse()
@@ -405,13 +400,7 @@ func NewCreateCloudBaseRunServerVersionResponse() (response *CreateCloudBaseRunS
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
-    if request == nil {
-        request = NewCreateCloudBaseRunServerVersionRequest()
-    }
-    
-    response = NewCreateCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
 
 // CreateCloudBaseRunServerVersion
@@ -427,6 +416,11 @@ func (c *Client) CreateCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateCloudBaseRunServerVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudBaseRunServerVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCloudBaseRunServerVersionResponse()
@@ -464,13 +458,7 @@ func NewCreateHostingDomainResponse() (response *CreateHostingDomainResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateHostingDomain(request *CreateHostingDomainRequest) (response *CreateHostingDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateHostingDomainRequest()
-    }
-    
-    response = NewCreateHostingDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHostingDomainWithContext(context.Background(), request)
 }
 
 // CreateHostingDomain
@@ -489,6 +477,11 @@ func (c *Client) CreateHostingDomainWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateHostingDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHostingDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHostingDomainResponse()
@@ -523,13 +516,7 @@ func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
 func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (response *CreatePostpayPackageResponse, err error) {
-    if request == nil {
-        request = NewCreatePostpayPackageRequest()
-    }
-    
-    response = NewCreatePostpayPackageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePostpayPackageWithContext(context.Background(), request)
 }
 
 // CreatePostpayPackage
@@ -545,6 +532,11 @@ func (c *Client) CreatePostpayPackageWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreatePostpayPackageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePostpayPackage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePostpayPackageResponse()
@@ -583,13 +575,7 @@ func NewCreateStandaloneGatewayResponse() (response *CreateStandaloneGatewayResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) CreateStandaloneGateway(request *CreateStandaloneGatewayRequest) (response *CreateStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewCreateStandaloneGatewayRequest()
-    }
-    
-    response = NewCreateStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStandaloneGatewayWithContext(context.Background(), request)
 }
 
 // CreateStandaloneGateway
@@ -609,6 +595,11 @@ func (c *Client) CreateStandaloneGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateStandaloneGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStandaloneGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStandaloneGatewayResponse()
@@ -641,13 +632,7 @@ func NewCreateStaticStoreResponse() (response *CreateStaticStoreResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateStaticStore(request *CreateStaticStoreRequest) (response *CreateStaticStoreResponse, err error) {
-    if request == nil {
-        request = NewCreateStaticStoreRequest()
-    }
-    
-    response = NewCreateStaticStoreResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStaticStoreWithContext(context.Background(), request)
 }
 
 // CreateStaticStore
@@ -661,6 +646,11 @@ func (c *Client) CreateStaticStoreWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateStaticStoreRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStaticStore require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStaticStoreResponse()
@@ -700,13 +690,7 @@ func NewCreateWxCloudBaseRunEnvResponse() (response *CreateWxCloudBaseRunEnvResp
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateWxCloudBaseRunEnv(request *CreateWxCloudBaseRunEnvRequest) (response *CreateWxCloudBaseRunEnvResponse, err error) {
-    if request == nil {
-        request = NewCreateWxCloudBaseRunEnvRequest()
-    }
-    
-    response = NewCreateWxCloudBaseRunEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWxCloudBaseRunEnvWithContext(context.Background(), request)
 }
 
 // CreateWxCloudBaseRunEnv
@@ -727,6 +711,11 @@ func (c *Client) CreateWxCloudBaseRunEnvWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateWxCloudBaseRunEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWxCloudBaseRunEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWxCloudBaseRunEnvResponse()
@@ -766,13 +755,7 @@ func NewCreateWxCloudBaseRunServerDBClusterResponse() (response *CreateWxCloudBa
 //  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
 //  UNSUPPORTEDOPERATION_TASKEXISTED = "UnsupportedOperation.TaskExisted"
 func (c *Client) CreateWxCloudBaseRunServerDBCluster(request *CreateWxCloudBaseRunServerDBClusterRequest) (response *CreateWxCloudBaseRunServerDBClusterResponse, err error) {
-    if request == nil {
-        request = NewCreateWxCloudBaseRunServerDBClusterRequest()
-    }
-    
-    response = NewCreateWxCloudBaseRunServerDBClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWxCloudBaseRunServerDBClusterWithContext(context.Background(), request)
 }
 
 // CreateWxCloudBaseRunServerDBCluster
@@ -793,6 +776,11 @@ func (c *Client) CreateWxCloudBaseRunServerDBClusterWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateWxCloudBaseRunServerDBClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWxCloudBaseRunServerDBCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWxCloudBaseRunServerDBClusterResponse()
@@ -825,13 +813,7 @@ func NewDeleteCloudBaseProjectLatestVersionResponse() (response *DeleteCloudBase
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DeleteCloudBaseProjectLatestVersion(request *DeleteCloudBaseProjectLatestVersionRequest) (response *DeleteCloudBaseProjectLatestVersionResponse, err error) {
-    if request == nil {
-        request = NewDeleteCloudBaseProjectLatestVersionRequest()
-    }
-    
-    response = NewDeleteCloudBaseProjectLatestVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCloudBaseProjectLatestVersionWithContext(context.Background(), request)
 }
 
 // DeleteCloudBaseProjectLatestVersion
@@ -845,6 +827,11 @@ func (c *Client) DeleteCloudBaseProjectLatestVersionWithContext(ctx context.Cont
     if request == nil {
         request = NewDeleteCloudBaseProjectLatestVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudBaseProjectLatestVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCloudBaseProjectLatestVersionResponse()
@@ -879,13 +866,7 @@ func NewDeleteCloudBaseRunServerVersionResponse() (response *DeleteCloudBaseRunS
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 func (c *Client) DeleteCloudBaseRunServerVersion(request *DeleteCloudBaseRunServerVersionRequest) (response *DeleteCloudBaseRunServerVersionResponse, err error) {
-    if request == nil {
-        request = NewDeleteCloudBaseRunServerVersionRequest()
-    }
-    
-    response = NewDeleteCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
 
 // DeleteCloudBaseRunServerVersion
@@ -901,6 +882,11 @@ func (c *Client) DeleteCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewDeleteCloudBaseRunServerVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudBaseRunServerVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCloudBaseRunServerVersionResponse()
@@ -933,13 +919,7 @@ func NewDeleteEndUserResponse() (response *DeleteEndUserResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
-    if request == nil {
-        request = NewDeleteEndUserRequest()
-    }
-    
-    response = NewDeleteEndUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEndUserWithContext(context.Background(), request)
 }
 
 // DeleteEndUser
@@ -953,6 +933,11 @@ func (c *Client) DeleteEndUserWithContext(ctx context.Context, request *DeleteEn
     if request == nil {
         request = NewDeleteEndUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEndUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEndUserResponse()
@@ -987,13 +972,7 @@ func NewDeleteWxGatewayRouteResponse() (response *DeleteWxGatewayRouteResponse) 
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (response *DeleteWxGatewayRouteResponse, err error) {
-    if request == nil {
-        request = NewDeleteWxGatewayRouteRequest()
-    }
-    
-    response = NewDeleteWxGatewayRouteResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWxGatewayRouteWithContext(context.Background(), request)
 }
 
 // DeleteWxGatewayRoute
@@ -1009,6 +988,11 @@ func (c *Client) DeleteWxGatewayRouteWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteWxGatewayRouteRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWxGatewayRoute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWxGatewayRouteResponse()
@@ -1042,13 +1026,7 @@ func NewDescribeActivityInfoResponse() (response *DescribeActivityInfoResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeActivityInfo(request *DescribeActivityInfoRequest) (response *DescribeActivityInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeActivityInfoRequest()
-    }
-    
-    response = NewDescribeActivityInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeActivityInfoWithContext(context.Background(), request)
 }
 
 // DescribeActivityInfo
@@ -1063,6 +1041,11 @@ func (c *Client) DescribeActivityInfoWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeActivityInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActivityInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeActivityInfoResponse()
@@ -1096,13 +1079,7 @@ func NewDescribeActivityRecordResponse() (response *DescribeActivityRecordRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeActivityRecord(request *DescribeActivityRecordRequest) (response *DescribeActivityRecordResponse, err error) {
-    if request == nil {
-        request = NewDescribeActivityRecordRequest()
-    }
-    
-    response = NewDescribeActivityRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeActivityRecordWithContext(context.Background(), request)
 }
 
 // DescribeActivityRecord
@@ -1117,6 +1094,11 @@ func (c *Client) DescribeActivityRecordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeActivityRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActivityRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeActivityRecordResponse()
@@ -1149,13 +1131,7 @@ func NewDescribeAuthDomainsResponse() (response *DescribeAuthDomainsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeAuthDomains(request *DescribeAuthDomainsRequest) (response *DescribeAuthDomainsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAuthDomainsRequest()
-    }
-    
-    response = NewDescribeAuthDomainsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAuthDomainsWithContext(context.Background(), request)
 }
 
 // DescribeAuthDomains
@@ -1169,6 +1145,11 @@ func (c *Client) DescribeAuthDomainsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAuthDomainsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthDomains require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAuthDomainsResponse()
@@ -1201,13 +1182,7 @@ func NewDescribeCloudBaseBuildServiceResponse() (response *DescribeCloudBaseBuil
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildServiceRequest) (response *DescribeCloudBaseBuildServiceResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseBuildServiceRequest()
-    }
-    
-    response = NewDescribeCloudBaseBuildServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseBuildServiceWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseBuildService
@@ -1221,6 +1196,11 @@ func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCloudBaseBuildServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseBuildService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseBuildServiceResponse()
@@ -1254,13 +1234,7 @@ func NewDescribeCloudBaseProjectLatestVersionListResponse() (response *DescribeC
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseProjectLatestVersionList(request *DescribeCloudBaseProjectLatestVersionListRequest) (response *DescribeCloudBaseProjectLatestVersionListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseProjectLatestVersionListRequest()
-    }
-    
-    response = NewDescribeCloudBaseProjectLatestVersionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseProjectLatestVersionListWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseProjectLatestVersionList
@@ -1275,6 +1249,11 @@ func (c *Client) DescribeCloudBaseProjectLatestVersionListWithContext(ctx contex
     if request == nil {
         request = NewDescribeCloudBaseProjectLatestVersionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseProjectLatestVersionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseProjectLatestVersionListResponse()
@@ -1305,13 +1284,7 @@ func NewDescribeCloudBaseProjectVersionListResponse() (response *DescribeCloudBa
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseProjectVersionList(request *DescribeCloudBaseProjectVersionListRequest) (response *DescribeCloudBaseProjectVersionListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseProjectVersionListRequest()
-    }
-    
-    response = NewDescribeCloudBaseProjectVersionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseProjectVersionListWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseProjectVersionList
@@ -1323,6 +1296,11 @@ func (c *Client) DescribeCloudBaseProjectVersionListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudBaseProjectVersionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseProjectVersionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseProjectVersionListResponse()
@@ -1354,13 +1332,7 @@ func NewDescribeCloudBaseRunAllVpcsResponse() (response *DescribeCloudBaseRunAll
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseRunAllVpcs(request *DescribeCloudBaseRunAllVpcsRequest) (response *DescribeCloudBaseRunAllVpcsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunAllVpcsRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunAllVpcsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunAllVpcsWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunAllVpcs
@@ -1373,6 +1345,11 @@ func (c *Client) DescribeCloudBaseRunAllVpcsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunAllVpcsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunAllVpcs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunAllVpcsResponse()
@@ -1406,13 +1383,7 @@ func NewDescribeCloudBaseRunConfForGateWayResponse() (response *DescribeCloudBas
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseRunConfForGateWay(request *DescribeCloudBaseRunConfForGateWayRequest) (response *DescribeCloudBaseRunConfForGateWayResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunConfForGateWayRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunConfForGateWayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunConfForGateWayWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunConfForGateWay
@@ -1427,6 +1398,11 @@ func (c *Client) DescribeCloudBaseRunConfForGateWayWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudBaseRunConfForGateWayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunConfForGateWay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunConfForGateWayResponse()
@@ -1461,13 +1437,7 @@ func NewDescribeCloudBaseRunOneClickTaskExternalResponse() (response *DescribeCl
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunOneClickTaskExternal(request *DescribeCloudBaseRunOneClickTaskExternalRequest) (response *DescribeCloudBaseRunOneClickTaskExternalResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunOneClickTaskExternalRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunOneClickTaskExternalResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunOneClickTaskExternalWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunOneClickTaskExternal
@@ -1483,6 +1453,11 @@ func (c *Client) DescribeCloudBaseRunOneClickTaskExternalWithContext(ctx context
     if request == nil {
         request = NewDescribeCloudBaseRunOneClickTaskExternalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunOneClickTaskExternal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunOneClickTaskExternalResponse()
@@ -1514,13 +1489,7 @@ func NewDescribeCloudBaseRunOperationTypesResponse() (response *DescribeCloudBas
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRunOperationTypesRequest) (response *DescribeCloudBaseRunOperationTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunOperationTypesRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunOperationTypesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunOperationTypesWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunOperationTypes
@@ -1533,6 +1502,11 @@ func (c *Client) DescribeCloudBaseRunOperationTypesWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCloudBaseRunOperationTypesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunOperationTypes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunOperationTypesResponse()
@@ -1567,13 +1541,7 @@ func NewDescribeCloudBaseRunPodListResponse() (response *DescribeCloudBaseRunPod
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodListRequest) (response *DescribeCloudBaseRunPodListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunPodListRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunPodListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunPodListWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunPodList
@@ -1589,6 +1557,11 @@ func (c *Client) DescribeCloudBaseRunPodListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunPodListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunPodList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunPodListResponse()
@@ -1620,13 +1593,7 @@ func NewDescribeCloudBaseRunResourceResponse() (response *DescribeCloudBaseRunRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseRunResource(request *DescribeCloudBaseRunResourceRequest) (response *DescribeCloudBaseRunResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunResourceRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunResourceWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunResource
@@ -1639,6 +1606,11 @@ func (c *Client) DescribeCloudBaseRunResourceWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCloudBaseRunResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunResourceResponse()
@@ -1670,13 +1642,7 @@ func NewDescribeCloudBaseRunResourceForExtendResponse() (response *DescribeCloud
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCloudBaseRunResourceForExtend(request *DescribeCloudBaseRunResourceForExtendRequest) (response *DescribeCloudBaseRunResourceForExtendResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunResourceForExtendRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunResourceForExtendResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunResourceForExtendWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunResourceForExtend
@@ -1689,6 +1655,11 @@ func (c *Client) DescribeCloudBaseRunResourceForExtendWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeCloudBaseRunResourceForExtendRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunResourceForExtend require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunResourceForExtendResponse()
@@ -1721,13 +1692,7 @@ func NewDescribeCloudBaseRunServerResponse() (response *DescribeCloudBaseRunServ
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerRequest) (response *DescribeCloudBaseRunServerResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunServerRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunServerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunServerWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunServer
@@ -1741,6 +1706,11 @@ func (c *Client) DescribeCloudBaseRunServerWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCloudBaseRunServerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunServer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunServerResponse()
@@ -1774,13 +1744,7 @@ func NewDescribeCloudBaseRunServerDomainNameResponse() (response *DescribeCloudB
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) DescribeCloudBaseRunServerDomainName(request *DescribeCloudBaseRunServerDomainNameRequest) (response *DescribeCloudBaseRunServerDomainNameResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunServerDomainNameRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunServerDomainNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunServerDomainNameWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunServerDomainName
@@ -1795,6 +1759,11 @@ func (c *Client) DescribeCloudBaseRunServerDomainNameWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeCloudBaseRunServerDomainNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunServerDomainName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunServerDomainNameResponse()
@@ -1829,13 +1798,7 @@ func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBase
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunServerVersionRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunServerVersion
@@ -1851,6 +1814,11 @@ func (c *Client) DescribeCloudBaseRunServerVersionWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeCloudBaseRunServerVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunServerVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunServerVersionResponse()
@@ -1885,13 +1853,7 @@ func NewDescribeCloudBaseRunVersionResponse() (response *DescribeCloudBaseRunVer
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 func (c *Client) DescribeCloudBaseRunVersion(request *DescribeCloudBaseRunVersionRequest) (response *DescribeCloudBaseRunVersionResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunVersionRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunVersionWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunVersion
@@ -1907,6 +1869,11 @@ func (c *Client) DescribeCloudBaseRunVersionWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunVersionResponse()
@@ -1940,13 +1907,7 @@ func NewDescribeCloudBaseRunVersionRsByConditionResponse() (response *DescribeCl
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeCloudBaseRunVersionRsByCondition(request *DescribeCloudBaseRunVersionRsByConditionRequest) (response *DescribeCloudBaseRunVersionRsByConditionResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunVersionRsByConditionRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunVersionRsByConditionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunVersionRsByConditionWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunVersionRsByCondition
@@ -1961,6 +1922,11 @@ func (c *Client) DescribeCloudBaseRunVersionRsByConditionWithContext(ctx context
     if request == nil {
         request = NewDescribeCloudBaseRunVersionRsByConditionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunVersionRsByCondition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunVersionRsByConditionResponse()
@@ -1994,13 +1960,7 @@ func NewDescribeCloudBaseRunVersionSnapshotResponse() (response *DescribeCloudBa
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 func (c *Client) DescribeCloudBaseRunVersionSnapshot(request *DescribeCloudBaseRunVersionSnapshotRequest) (response *DescribeCloudBaseRunVersionSnapshotResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudBaseRunVersionSnapshotRequest()
-    }
-    
-    response = NewDescribeCloudBaseRunVersionSnapshotResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudBaseRunVersionSnapshotWithContext(context.Background(), request)
 }
 
 // DescribeCloudBaseRunVersionSnapshot
@@ -2015,6 +1975,11 @@ func (c *Client) DescribeCloudBaseRunVersionSnapshotWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeCloudBaseRunVersionSnapshotRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudBaseRunVersionSnapshot require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudBaseRunVersionSnapshotResponse()
@@ -2051,13 +2016,7 @@ func NewDescribeCurveDataResponse() (response *DescribeCurveDataResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCurveData(request *DescribeCurveDataRequest) (response *DescribeCurveDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCurveDataRequest()
-    }
-    
-    response = NewDescribeCurveDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCurveDataWithContext(context.Background(), request)
 }
 
 // DescribeCurveData
@@ -2075,6 +2034,11 @@ func (c *Client) DescribeCurveDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCurveDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCurveData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCurveDataResponse()
@@ -2108,13 +2072,7 @@ func NewDescribeDatabaseACLResponse() (response *DescribeDatabaseACLResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeDatabaseACL(request *DescribeDatabaseACLRequest) (response *DescribeDatabaseACLResponse, err error) {
-    if request == nil {
-        request = NewDescribeDatabaseACLRequest()
-    }
-    
-    response = NewDescribeDatabaseACLResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDatabaseACLWithContext(context.Background(), request)
 }
 
 // DescribeDatabaseACL
@@ -2129,6 +2087,11 @@ func (c *Client) DescribeDatabaseACLWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDatabaseACLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatabaseACL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDatabaseACLResponse()
@@ -2163,13 +2126,7 @@ func NewDescribeDownloadFileResponse() (response *DescribeDownloadFileResponse) 
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDownloadFile(request *DescribeDownloadFileRequest) (response *DescribeDownloadFileResponse, err error) {
-    if request == nil {
-        request = NewDescribeDownloadFileRequest()
-    }
-    
-    response = NewDescribeDownloadFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDownloadFileWithContext(context.Background(), request)
 }
 
 // DescribeDownloadFile
@@ -2185,6 +2142,11 @@ func (c *Client) DescribeDownloadFileWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDownloadFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDownloadFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDownloadFileResponse()
@@ -2223,13 +2185,7 @@ func NewDescribeEndUserLoginStatisticResponse() (response *DescribeEndUserLoginS
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEndUserLoginStatistic(request *DescribeEndUserLoginStatisticRequest) (response *DescribeEndUserLoginStatisticResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUserLoginStatisticRequest()
-    }
-    
-    response = NewDescribeEndUserLoginStatisticResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEndUserLoginStatisticWithContext(context.Background(), request)
 }
 
 // DescribeEndUserLoginStatistic
@@ -2249,6 +2205,11 @@ func (c *Client) DescribeEndUserLoginStatisticWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeEndUserLoginStatisticRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEndUserLoginStatistic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEndUserLoginStatisticResponse()
@@ -2287,13 +2248,7 @@ func NewDescribeEndUserStatisticResponse() (response *DescribeEndUserStatisticRe
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEndUserStatistic(request *DescribeEndUserStatisticRequest) (response *DescribeEndUserStatisticResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUserStatisticRequest()
-    }
-    
-    response = NewDescribeEndUserStatisticResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEndUserStatisticWithContext(context.Background(), request)
 }
 
 // DescribeEndUserStatistic
@@ -2313,6 +2268,11 @@ func (c *Client) DescribeEndUserStatisticWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeEndUserStatisticRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEndUserStatistic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEndUserStatisticResponse()
@@ -2345,13 +2305,7 @@ func NewDescribeEndUsersResponse() (response *DescribeEndUsersResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeEndUsers(request *DescribeEndUsersRequest) (response *DescribeEndUsersResponse, err error) {
-    if request == nil {
-        request = NewDescribeEndUsersRequest()
-    }
-    
-    response = NewDescribeEndUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEndUsersWithContext(context.Background(), request)
 }
 
 // DescribeEndUsers
@@ -2365,6 +2319,11 @@ func (c *Client) DescribeEndUsersWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEndUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEndUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEndUsersResponse()
@@ -2402,13 +2361,7 @@ func NewDescribeEnvDealRegionResponse() (response *DescribeEnvDealRegionResponse
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeEnvDealRegion(request *DescribeEnvDealRegionRequest) (response *DescribeEnvDealRegionResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvDealRegionRequest()
-    }
-    
-    response = NewDescribeEnvDealRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvDealRegionWithContext(context.Background(), request)
 }
 
 // DescribeEnvDealRegion
@@ -2427,6 +2380,11 @@ func (c *Client) DescribeEnvDealRegionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeEnvDealRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvDealRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvDealRegionResponse()
@@ -2461,13 +2419,7 @@ func NewDescribeEnvFreeQuotaResponse() (response *DescribeEnvFreeQuotaResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeEnvFreeQuota(request *DescribeEnvFreeQuotaRequest) (response *DescribeEnvFreeQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvFreeQuotaRequest()
-    }
-    
-    response = NewDescribeEnvFreeQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvFreeQuotaWithContext(context.Background(), request)
 }
 
 // DescribeEnvFreeQuota
@@ -2483,6 +2435,11 @@ func (c *Client) DescribeEnvFreeQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeEnvFreeQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvFreeQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvFreeQuotaResponse()
@@ -2516,13 +2473,7 @@ func NewDescribeEnvLimitResponse() (response *DescribeEnvLimitResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeEnvLimit(request *DescribeEnvLimitRequest) (response *DescribeEnvLimitResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvLimitRequest()
-    }
-    
-    response = NewDescribeEnvLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvLimitWithContext(context.Background(), request)
 }
 
 // DescribeEnvLimit
@@ -2537,6 +2488,11 @@ func (c *Client) DescribeEnvLimitWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEnvLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvLimitResponse()
@@ -2570,13 +2526,7 @@ func NewDescribeEnvPostpaidDeductResponse() (response *DescribeEnvPostpaidDeduct
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeEnvPostpaidDeduct(request *DescribeEnvPostpaidDeductRequest) (response *DescribeEnvPostpaidDeductResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvPostpaidDeductRequest()
-    }
-    
-    response = NewDescribeEnvPostpaidDeductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvPostpaidDeductWithContext(context.Background(), request)
 }
 
 // DescribeEnvPostpaidDeduct
@@ -2591,6 +2541,11 @@ func (c *Client) DescribeEnvPostpaidDeductWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEnvPostpaidDeductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvPostpaidDeduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvPostpaidDeductResponse()
@@ -2628,13 +2583,7 @@ func NewDescribeEnvsResponse() (response *DescribeEnvsResponse) {
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND_USERNOTEXISTS = "ResourceNotFound.UserNotExists"
 func (c *Client) DescribeEnvs(request *DescribeEnvsRequest) (response *DescribeEnvsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEnvsRequest()
-    }
-    
-    response = NewDescribeEnvsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEnvsWithContext(context.Background(), request)
 }
 
 // DescribeEnvs
@@ -2653,6 +2602,11 @@ func (c *Client) DescribeEnvsWithContext(ctx context.Context, request *DescribeE
     if request == nil {
         request = NewDescribeEnvsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEnvsResponse()
@@ -2684,13 +2638,7 @@ func NewDescribeExtensionUploadInfoResponse() (response *DescribeExtensionUpload
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeExtensionUploadInfo(request *DescribeExtensionUploadInfoRequest) (response *DescribeExtensionUploadInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeExtensionUploadInfoRequest()
-    }
-    
-    response = NewDescribeExtensionUploadInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExtensionUploadInfoWithContext(context.Background(), request)
 }
 
 // DescribeExtensionUploadInfo
@@ -2703,6 +2651,11 @@ func (c *Client) DescribeExtensionUploadInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeExtensionUploadInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtensionUploadInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExtensionUploadInfoResponse()
@@ -2737,13 +2690,7 @@ func NewDescribeExtraPkgBillingInfoResponse() (response *DescribeExtraPkgBilling
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeExtraPkgBillingInfo(request *DescribeExtraPkgBillingInfoRequest) (response *DescribeExtraPkgBillingInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeExtraPkgBillingInfoRequest()
-    }
-    
-    response = NewDescribeExtraPkgBillingInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExtraPkgBillingInfoWithContext(context.Background(), request)
 }
 
 // DescribeExtraPkgBillingInfo
@@ -2759,6 +2706,11 @@ func (c *Client) DescribeExtraPkgBillingInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeExtraPkgBillingInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtraPkgBillingInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExtraPkgBillingInfoResponse()
@@ -2795,13 +2747,7 @@ func NewDescribeHostingDomainTaskResponse() (response *DescribeHostingDomainTask
 //  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeHostingDomainTask(request *DescribeHostingDomainTaskRequest) (response *DescribeHostingDomainTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeHostingDomainTaskRequest()
-    }
-    
-    response = NewDescribeHostingDomainTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHostingDomainTaskWithContext(context.Background(), request)
 }
 
 // DescribeHostingDomainTask
@@ -2819,6 +2765,11 @@ func (c *Client) DescribeHostingDomainTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeHostingDomainTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostingDomainTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHostingDomainTaskResponse()
@@ -2852,13 +2803,7 @@ func NewDescribePostpayFreeQuotasResponse() (response *DescribePostpayFreeQuotas
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribePostpayFreeQuotas(request *DescribePostpayFreeQuotasRequest) (response *DescribePostpayFreeQuotasResponse, err error) {
-    if request == nil {
-        request = NewDescribePostpayFreeQuotasRequest()
-    }
-    
-    response = NewDescribePostpayFreeQuotasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePostpayFreeQuotasWithContext(context.Background(), request)
 }
 
 // DescribePostpayFreeQuotas
@@ -2873,6 +2818,11 @@ func (c *Client) DescribePostpayFreeQuotasWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePostpayFreeQuotasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostpayFreeQuotas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePostpayFreeQuotasResponse()
@@ -2912,13 +2862,7 @@ func NewDescribePostpayPackageFreeQuotasResponse() (response *DescribePostpayPac
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePostpayPackageFreeQuotas(request *DescribePostpayPackageFreeQuotasRequest) (response *DescribePostpayPackageFreeQuotasResponse, err error) {
-    if request == nil {
-        request = NewDescribePostpayPackageFreeQuotasRequest()
-    }
-    
-    response = NewDescribePostpayPackageFreeQuotasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePostpayPackageFreeQuotasWithContext(context.Background(), request)
 }
 
 // DescribePostpayPackageFreeQuotas
@@ -2939,6 +2883,11 @@ func (c *Client) DescribePostpayPackageFreeQuotasWithContext(ctx context.Context
     if request == nil {
         request = NewDescribePostpayPackageFreeQuotasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostpayPackageFreeQuotas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePostpayPackageFreeQuotasResponse()
@@ -2975,13 +2924,7 @@ func NewDescribeQuotaDataResponse() (response *DescribeQuotaDataResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeQuotaData(request *DescribeQuotaDataRequest) (response *DescribeQuotaDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeQuotaDataRequest()
-    }
-    
-    response = NewDescribeQuotaDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQuotaDataWithContext(context.Background(), request)
 }
 
 // DescribeQuotaData
@@ -2999,6 +2942,11 @@ func (c *Client) DescribeQuotaDataWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeQuotaDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQuotaData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQuotaDataResponse()
@@ -3038,13 +2986,7 @@ func NewDescribeSmsQuotasResponse() (response *DescribeSmsQuotasResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeSmsQuotas(request *DescribeSmsQuotasRequest) (response *DescribeSmsQuotasResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmsQuotasRequest()
-    }
-    
-    response = NewDescribeSmsQuotasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmsQuotasWithContext(context.Background(), request)
 }
 
 // DescribeSmsQuotas
@@ -3065,6 +3007,11 @@ func (c *Client) DescribeSmsQuotasWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSmsQuotasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmsQuotas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmsQuotasResponse()
@@ -3098,13 +3045,7 @@ func NewDescribeSpecialCostItemsResponse() (response *DescribeSpecialCostItemsRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeSpecialCostItems(request *DescribeSpecialCostItemsRequest) (response *DescribeSpecialCostItemsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSpecialCostItemsRequest()
-    }
-    
-    response = NewDescribeSpecialCostItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSpecialCostItemsWithContext(context.Background(), request)
 }
 
 // DescribeSpecialCostItems
@@ -3119,6 +3060,11 @@ func (c *Client) DescribeSpecialCostItemsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSpecialCostItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpecialCostItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSpecialCostItemsResponse()
@@ -3156,13 +3102,7 @@ func NewDescribeStandaloneGatewayResponse() (response *DescribeStandaloneGateway
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeStandaloneGateway(request *DescribeStandaloneGatewayRequest) (response *DescribeStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewDescribeStandaloneGatewayRequest()
-    }
-    
-    response = NewDescribeStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStandaloneGatewayWithContext(context.Background(), request)
 }
 
 // DescribeStandaloneGateway
@@ -3181,6 +3121,11 @@ func (c *Client) DescribeStandaloneGatewayWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStandaloneGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStandaloneGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStandaloneGatewayResponse()
@@ -3217,13 +3162,7 @@ func NewDescribeStandaloneGatewayPackageResponse() (response *DescribeStandalone
 //  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 func (c *Client) DescribeStandaloneGatewayPackage(request *DescribeStandaloneGatewayPackageRequest) (response *DescribeStandaloneGatewayPackageResponse, err error) {
-    if request == nil {
-        request = NewDescribeStandaloneGatewayPackageRequest()
-    }
-    
-    response = NewDescribeStandaloneGatewayPackageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStandaloneGatewayPackageWithContext(context.Background(), request)
 }
 
 // DescribeStandaloneGatewayPackage
@@ -3241,6 +3180,11 @@ func (c *Client) DescribeStandaloneGatewayPackageWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeStandaloneGatewayPackageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStandaloneGatewayPackage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStandaloneGatewayPackageResponse()
@@ -3274,13 +3218,7 @@ func NewDescribeUserActivityInfoResponse() (response *DescribeUserActivityInfoRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DescribeUserActivityInfo(request *DescribeUserActivityInfoRequest) (response *DescribeUserActivityInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserActivityInfoRequest()
-    }
-    
-    response = NewDescribeUserActivityInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserActivityInfoWithContext(context.Background(), request)
 }
 
 // DescribeUserActivityInfo
@@ -3295,6 +3233,11 @@ func (c *Client) DescribeUserActivityInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeUserActivityInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserActivityInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserActivityInfoResponse()
@@ -3333,13 +3276,7 @@ func NewDescribeWxCloudBaseRunEnvsResponse() (response *DescribeWxCloudBaseRunEn
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWxCloudBaseRunEnvs(request *DescribeWxCloudBaseRunEnvsRequest) (response *DescribeWxCloudBaseRunEnvsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWxCloudBaseRunEnvsRequest()
-    }
-    
-    response = NewDescribeWxCloudBaseRunEnvsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWxCloudBaseRunEnvsWithContext(context.Background(), request)
 }
 
 // DescribeWxCloudBaseRunEnvs
@@ -3359,6 +3296,11 @@ func (c *Client) DescribeWxCloudBaseRunEnvsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWxCloudBaseRunEnvsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWxCloudBaseRunEnvs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWxCloudBaseRunEnvsResponse()
@@ -3397,13 +3339,7 @@ func NewDescribeWxCloudBaseRunSubNetsResponse() (response *DescribeWxCloudBaseRu
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWxCloudBaseRunSubNets(request *DescribeWxCloudBaseRunSubNetsRequest) (response *DescribeWxCloudBaseRunSubNetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWxCloudBaseRunSubNetsRequest()
-    }
-    
-    response = NewDescribeWxCloudBaseRunSubNetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWxCloudBaseRunSubNetsWithContext(context.Background(), request)
 }
 
 // DescribeWxCloudBaseRunSubNets
@@ -3423,6 +3359,11 @@ func (c *Client) DescribeWxCloudBaseRunSubNetsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeWxCloudBaseRunSubNetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWxCloudBaseRunSubNets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWxCloudBaseRunSubNetsResponse()
@@ -3460,13 +3401,7 @@ func NewDestroyEnvResponse() (response *DestroyEnvResponse) {
 //  RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DestroyEnv(request *DestroyEnvRequest) (response *DestroyEnvResponse, err error) {
-    if request == nil {
-        request = NewDestroyEnvRequest()
-    }
-    
-    response = NewDestroyEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyEnvWithContext(context.Background(), request)
 }
 
 // DestroyEnv
@@ -3485,6 +3420,11 @@ func (c *Client) DestroyEnvWithContext(ctx context.Context, request *DestroyEnvR
     if request == nil {
         request = NewDestroyEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyEnvResponse()
@@ -3520,13 +3460,7 @@ func NewDestroyStandaloneGatewayResponse() (response *DestroyStandaloneGatewayRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DestroyStandaloneGateway(request *DestroyStandaloneGatewayRequest) (response *DestroyStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewDestroyStandaloneGatewayRequest()
-    }
-    
-    response = NewDestroyStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyStandaloneGatewayWithContext(context.Background(), request)
 }
 
 // DestroyStandaloneGateway
@@ -3543,6 +3477,11 @@ func (c *Client) DestroyStandaloneGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDestroyStandaloneGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyStandaloneGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyStandaloneGatewayResponse()
@@ -3574,13 +3513,7 @@ func NewDestroyStaticStoreResponse() (response *DestroyStaticStoreResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DestroyStaticStore(request *DestroyStaticStoreRequest) (response *DestroyStaticStoreResponse, err error) {
-    if request == nil {
-        request = NewDestroyStaticStoreRequest()
-    }
-    
-    response = NewDestroyStaticStoreResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyStaticStoreWithContext(context.Background(), request)
 }
 
 // DestroyStaticStore
@@ -3593,6 +3526,11 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDestroyStaticStoreRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyStaticStore require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyStaticStoreResponse()
@@ -3629,13 +3567,7 @@ func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunSe
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEUNAVAILABLE_CDNFREEZED = "ResourceUnavailable.CDNFreezed"
 func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServerRequest) (response *EstablishCloudBaseRunServerResponse, err error) {
-    if request == nil {
-        request = NewEstablishCloudBaseRunServerRequest()
-    }
-    
-    response = NewEstablishCloudBaseRunServerResponse()
-    err = c.Send(request, response)
-    return
+    return c.EstablishCloudBaseRunServerWithContext(context.Background(), request)
 }
 
 // EstablishCloudBaseRunServer
@@ -3653,6 +3585,11 @@ func (c *Client) EstablishCloudBaseRunServerWithContext(ctx context.Context, req
     if request == nil {
         request = NewEstablishCloudBaseRunServerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EstablishCloudBaseRunServer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEstablishCloudBaseRunServerResponse()
@@ -3689,13 +3626,7 @@ func NewEstablishWxGatewayRouteResponse() (response *EstablishWxGatewayRouteResp
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EstablishWxGatewayRoute(request *EstablishWxGatewayRouteRequest) (response *EstablishWxGatewayRouteResponse, err error) {
-    if request == nil {
-        request = NewEstablishWxGatewayRouteRequest()
-    }
-    
-    response = NewEstablishWxGatewayRouteResponse()
-    err = c.Send(request, response)
-    return
+    return c.EstablishWxGatewayRouteWithContext(context.Background(), request)
 }
 
 // EstablishWxGatewayRoute
@@ -3713,6 +3644,11 @@ func (c *Client) EstablishWxGatewayRouteWithContext(ctx context.Context, request
     if request == nil {
         request = NewEstablishWxGatewayRouteRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EstablishWxGatewayRoute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEstablishWxGatewayRouteResponse()
@@ -3745,13 +3681,7 @@ func NewModifyCloudBaseRunServerFlowConfResponse() (response *ModifyCloudBaseRun
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 func (c *Client) ModifyCloudBaseRunServerFlowConf(request *ModifyCloudBaseRunServerFlowConfRequest) (response *ModifyCloudBaseRunServerFlowConfResponse, err error) {
-    if request == nil {
-        request = NewModifyCloudBaseRunServerFlowConfRequest()
-    }
-    
-    response = NewModifyCloudBaseRunServerFlowConfResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCloudBaseRunServerFlowConfWithContext(context.Background(), request)
 }
 
 // ModifyCloudBaseRunServerFlowConf
@@ -3765,6 +3695,11 @@ func (c *Client) ModifyCloudBaseRunServerFlowConfWithContext(ctx context.Context
     if request == nil {
         request = NewModifyCloudBaseRunServerFlowConfRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudBaseRunServerFlowConf require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCloudBaseRunServerFlowConfResponse()
@@ -3798,13 +3733,7 @@ func NewModifyCloudBaseRunServerVersionResponse() (response *ModifyCloudBaseRunS
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyCloudBaseRunServerVersion(request *ModifyCloudBaseRunServerVersionRequest) (response *ModifyCloudBaseRunServerVersionResponse, err error) {
-    if request == nil {
-        request = NewModifyCloudBaseRunServerVersionRequest()
-    }
-    
-    response = NewModifyCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
 
 // ModifyCloudBaseRunServerVersion
@@ -3819,6 +3748,11 @@ func (c *Client) ModifyCloudBaseRunServerVersionWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyCloudBaseRunServerVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudBaseRunServerVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCloudBaseRunServerVersionResponse()
@@ -3852,13 +3786,7 @@ func NewModifyDatabaseACLResponse() (response *ModifyDatabaseACLResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response *ModifyDatabaseACLResponse, err error) {
-    if request == nil {
-        request = NewModifyDatabaseACLRequest()
-    }
-    
-    response = NewModifyDatabaseACLResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDatabaseACLWithContext(context.Background(), request)
 }
 
 // ModifyDatabaseACL
@@ -3873,6 +3801,11 @@ func (c *Client) ModifyDatabaseACLWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDatabaseACLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDatabaseACL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDatabaseACLResponse()
@@ -3906,13 +3839,7 @@ func NewModifyEndUserResponse() (response *ModifyEndUserResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) ModifyEndUser(request *ModifyEndUserRequest) (response *ModifyEndUserResponse, err error) {
-    if request == nil {
-        request = NewModifyEndUserRequest()
-    }
-    
-    response = NewModifyEndUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEndUserWithContext(context.Background(), request)
 }
 
 // ModifyEndUser
@@ -3927,6 +3854,11 @@ func (c *Client) ModifyEndUserWithContext(ctx context.Context, request *ModifyEn
     if request == nil {
         request = NewModifyEndUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEndUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEndUserResponse()
@@ -3961,13 +3893,7 @@ func NewModifyEnvResponse() (response *ModifyEnvResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) ModifyEnv(request *ModifyEnvRequest) (response *ModifyEnvResponse, err error) {
-    if request == nil {
-        request = NewModifyEnvRequest()
-    }
-    
-    response = NewModifyEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEnvWithContext(context.Background(), request)
 }
 
 // ModifyEnv
@@ -3983,6 +3909,11 @@ func (c *Client) ModifyEnvWithContext(ctx context.Context, request *ModifyEnvReq
     if request == nil {
         request = NewModifyEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEnvResponse()
@@ -4018,13 +3949,7 @@ func NewReinstateEnvResponse() (response *ReinstateEnvResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReinstateEnv(request *ReinstateEnvRequest) (response *ReinstateEnvResponse, err error) {
-    if request == nil {
-        request = NewReinstateEnvRequest()
-    }
-    
-    response = NewReinstateEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReinstateEnvWithContext(context.Background(), request)
 }
 
 // ReinstateEnv
@@ -4041,6 +3966,11 @@ func (c *Client) ReinstateEnvWithContext(ctx context.Context, request *Reinstate
     if request == nil {
         request = NewReinstateEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReinstateEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReinstateEnvResponse()
@@ -4075,13 +4005,7 @@ func NewReplaceActivityRecordResponse() (response *ReplaceActivityRecordResponse
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ReplaceActivityRecord(request *ReplaceActivityRecordRequest) (response *ReplaceActivityRecordResponse, err error) {
-    if request == nil {
-        request = NewReplaceActivityRecordRequest()
-    }
-    
-    response = NewReplaceActivityRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceActivityRecordWithContext(context.Background(), request)
 }
 
 // ReplaceActivityRecord
@@ -4097,6 +4021,11 @@ func (c *Client) ReplaceActivityRecordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewReplaceActivityRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceActivityRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceActivityRecordResponse()
@@ -4129,13 +4058,7 @@ func NewRollUpdateCloudBaseRunServerVersionResponse() (response *RollUpdateCloud
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 func (c *Client) RollUpdateCloudBaseRunServerVersion(request *RollUpdateCloudBaseRunServerVersionRequest) (response *RollUpdateCloudBaseRunServerVersionResponse, err error) {
-    if request == nil {
-        request = NewRollUpdateCloudBaseRunServerVersionRequest()
-    }
-    
-    response = NewRollUpdateCloudBaseRunServerVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RollUpdateCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
 
 // RollUpdateCloudBaseRunServerVersion
@@ -4149,6 +4072,11 @@ func (c *Client) RollUpdateCloudBaseRunServerVersionWithContext(ctx context.Cont
     if request == nil {
         request = NewRollUpdateCloudBaseRunServerVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollUpdateCloudBaseRunServerVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRollUpdateCloudBaseRunServerVersionResponse()
@@ -4182,13 +4110,7 @@ func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchClsLogResponse, err error) {
-    if request == nil {
-        request = NewSearchClsLogRequest()
-    }
-    
-    response = NewSearchClsLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchClsLogWithContext(context.Background(), request)
 }
 
 // SearchClsLog
@@ -4203,6 +4125,11 @@ func (c *Client) SearchClsLogWithContext(ctx context.Context, request *SearchCls
     if request == nil {
         request = NewSearchClsLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchClsLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchClsLogResponse()
@@ -4240,13 +4167,7 @@ func NewTurnOffStandaloneGatewayResponse() (response *TurnOffStandaloneGatewayRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) TurnOffStandaloneGateway(request *TurnOffStandaloneGatewayRequest) (response *TurnOffStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewTurnOffStandaloneGatewayRequest()
-    }
-    
-    response = NewTurnOffStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.TurnOffStandaloneGatewayWithContext(context.Background(), request)
 }
 
 // TurnOffStandaloneGateway
@@ -4265,6 +4186,11 @@ func (c *Client) TurnOffStandaloneGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewTurnOffStandaloneGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TurnOffStandaloneGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTurnOffStandaloneGatewayResponse()
@@ -4301,13 +4227,7 @@ func NewTurnOnStandaloneGatewayResponse() (response *TurnOnStandaloneGatewayResp
 //  INVALIDPARAMETER_ACTION = "InvalidParameter.Action"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) TurnOnStandaloneGateway(request *TurnOnStandaloneGatewayRequest) (response *TurnOnStandaloneGatewayResponse, err error) {
-    if request == nil {
-        request = NewTurnOnStandaloneGatewayRequest()
-    }
-    
-    response = NewTurnOnStandaloneGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.TurnOnStandaloneGatewayWithContext(context.Background(), request)
 }
 
 // TurnOnStandaloneGateway
@@ -4325,6 +4245,11 @@ func (c *Client) TurnOnStandaloneGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewTurnOnStandaloneGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TurnOnStandaloneGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTurnOnStandaloneGatewayResponse()

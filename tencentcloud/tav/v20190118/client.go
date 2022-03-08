@@ -16,6 +16,7 @@ package v20190118
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewGetLocalEngineResponse() (response *GetLocalEngineResponse) {
 // GetLocalEngine
 // 获取TAV本地引擎
 func (c *Client) GetLocalEngine(request *GetLocalEngineRequest) (response *GetLocalEngineResponse, err error) {
-    if request == nil {
-        request = NewGetLocalEngineRequest()
-    }
-    
-    response = NewGetLocalEngineResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetLocalEngineWithContext(context.Background(), request)
 }
 
 // GetLocalEngine
@@ -79,6 +74,11 @@ func (c *Client) GetLocalEngineWithContext(ctx context.Context, request *GetLoca
     if request == nil {
         request = NewGetLocalEngineRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLocalEngine require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetLocalEngineResponse()
@@ -106,13 +106,7 @@ func NewGetScanResultResponse() (response *GetScanResultResponse) {
 // GetScanResult
 // tav文件上传扫描结果查询
 func (c *Client) GetScanResult(request *GetScanResultRequest) (response *GetScanResultResponse, err error) {
-    if request == nil {
-        request = NewGetScanResultRequest()
-    }
-    
-    response = NewGetScanResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetScanResultWithContext(context.Background(), request)
 }
 
 // GetScanResult
@@ -121,6 +115,11 @@ func (c *Client) GetScanResultWithContext(ctx context.Context, request *GetScanR
     if request == nil {
         request = NewGetScanResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetScanResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetScanResultResponse()
@@ -148,13 +147,7 @@ func NewScanFileResponse() (response *ScanFileResponse) {
 // ScanFile
 // tav文件上传扫描
 func (c *Client) ScanFile(request *ScanFileRequest) (response *ScanFileResponse, err error) {
-    if request == nil {
-        request = NewScanFileRequest()
-    }
-    
-    response = NewScanFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanFileWithContext(context.Background(), request)
 }
 
 // ScanFile
@@ -163,6 +156,11 @@ func (c *Client) ScanFileWithContext(ctx context.Context, request *ScanFileReque
     if request == nil {
         request = NewScanFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanFileResponse()
@@ -190,13 +188,7 @@ func NewScanFileHashResponse() (response *ScanFileHashResponse) {
 // ScanFileHash
 // 通过文件哈希值获取文件黑白属性
 func (c *Client) ScanFileHash(request *ScanFileHashRequest) (response *ScanFileHashResponse, err error) {
-    if request == nil {
-        request = NewScanFileHashRequest()
-    }
-    
-    response = NewScanFileHashResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanFileHashWithContext(context.Background(), request)
 }
 
 // ScanFileHash
@@ -205,6 +197,11 @@ func (c *Client) ScanFileHashWithContext(ctx context.Context, request *ScanFileH
     if request == nil {
         request = NewScanFileHashRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanFileHash require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanFileHashResponse()

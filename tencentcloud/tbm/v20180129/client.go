@@ -16,6 +16,7 @@ package v20180129
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeBrandCommentCountResponse() (response *DescribeBrandCommentCount
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandCommentCount(request *DescribeBrandCommentCountRequest) (response *DescribeBrandCommentCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandCommentCountRequest()
-    }
-    
-    response = NewDescribeBrandCommentCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandCommentCountWithContext(context.Background(), request)
 }
 
 // DescribeBrandCommentCount
@@ -91,6 +86,11 @@ func (c *Client) DescribeBrandCommentCountWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBrandCommentCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandCommentCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandCommentCountResponse()
@@ -125,13 +125,7 @@ func NewDescribeBrandExposureResponse() (response *DescribeBrandExposureResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandExposure(request *DescribeBrandExposureRequest) (response *DescribeBrandExposureResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandExposureRequest()
-    }
-    
-    response = NewDescribeBrandExposureResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandExposureWithContext(context.Background(), request)
 }
 
 // DescribeBrandExposure
@@ -147,6 +141,11 @@ func (c *Client) DescribeBrandExposureWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeBrandExposureRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandExposure require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandExposureResponse()
@@ -181,13 +180,7 @@ func NewDescribeBrandMediaReportResponse() (response *DescribeBrandMediaReportRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandMediaReport(request *DescribeBrandMediaReportRequest) (response *DescribeBrandMediaReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandMediaReportRequest()
-    }
-    
-    response = NewDescribeBrandMediaReportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandMediaReportWithContext(context.Background(), request)
 }
 
 // DescribeBrandMediaReport
@@ -203,6 +196,11 @@ func (c *Client) DescribeBrandMediaReportWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBrandMediaReportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandMediaReport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandMediaReportResponse()
@@ -235,13 +233,7 @@ func NewDescribeBrandNegCommentsResponse() (response *DescribeBrandNegCommentsRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandNegComments(request *DescribeBrandNegCommentsRequest) (response *DescribeBrandNegCommentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandNegCommentsRequest()
-    }
-    
-    response = NewDescribeBrandNegCommentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandNegCommentsWithContext(context.Background(), request)
 }
 
 // DescribeBrandNegComments
@@ -255,6 +247,11 @@ func (c *Client) DescribeBrandNegCommentsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBrandNegCommentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandNegComments require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandNegCommentsResponse()
@@ -287,13 +284,7 @@ func NewDescribeBrandPosCommentsResponse() (response *DescribeBrandPosCommentsRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandPosComments(request *DescribeBrandPosCommentsRequest) (response *DescribeBrandPosCommentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandPosCommentsRequest()
-    }
-    
-    response = NewDescribeBrandPosCommentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandPosCommentsWithContext(context.Background(), request)
 }
 
 // DescribeBrandPosComments
@@ -307,6 +298,11 @@ func (c *Client) DescribeBrandPosCommentsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBrandPosCommentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandPosComments require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandPosCommentsResponse()
@@ -341,13 +337,7 @@ func NewDescribeBrandSocialOpinionResponse() (response *DescribeBrandSocialOpini
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandSocialOpinion(request *DescribeBrandSocialOpinionRequest) (response *DescribeBrandSocialOpinionResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandSocialOpinionRequest()
-    }
-    
-    response = NewDescribeBrandSocialOpinionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandSocialOpinionWithContext(context.Background(), request)
 }
 
 // DescribeBrandSocialOpinion
@@ -363,6 +353,11 @@ func (c *Client) DescribeBrandSocialOpinionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeBrandSocialOpinionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandSocialOpinion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandSocialOpinionResponse()
@@ -397,13 +392,7 @@ func NewDescribeBrandSocialReportResponse() (response *DescribeBrandSocialReport
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeBrandSocialReport(request *DescribeBrandSocialReportRequest) (response *DescribeBrandSocialReportResponse, err error) {
-    if request == nil {
-        request = NewDescribeBrandSocialReportRequest()
-    }
-    
-    response = NewDescribeBrandSocialReportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBrandSocialReportWithContext(context.Background(), request)
 }
 
 // DescribeBrandSocialReport
@@ -419,6 +408,11 @@ func (c *Client) DescribeBrandSocialReportWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBrandSocialReportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBrandSocialReport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBrandSocialReportResponse()
@@ -453,13 +447,7 @@ func NewDescribeIndustryNewsResponse() (response *DescribeIndustryNewsResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeIndustryNews(request *DescribeIndustryNewsRequest) (response *DescribeIndustryNewsResponse, err error) {
-    if request == nil {
-        request = NewDescribeIndustryNewsRequest()
-    }
-    
-    response = NewDescribeIndustryNewsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIndustryNewsWithContext(context.Background(), request)
 }
 
 // DescribeIndustryNews
@@ -475,6 +463,11 @@ func (c *Client) DescribeIndustryNewsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeIndustryNewsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIndustryNews require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIndustryNewsResponse()
@@ -509,13 +502,7 @@ func NewDescribeUserPortraitResponse() (response *DescribeUserPortraitResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUserPortrait(request *DescribeUserPortraitRequest) (response *DescribeUserPortraitResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserPortraitRequest()
-    }
-    
-    response = NewDescribeUserPortraitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserPortraitWithContext(context.Background(), request)
 }
 
 // DescribeUserPortrait
@@ -531,6 +518,11 @@ func (c *Client) DescribeUserPortraitWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserPortraitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserPortrait require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserPortraitResponse()

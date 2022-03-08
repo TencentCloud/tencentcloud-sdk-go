@@ -98,6 +98,9 @@ const (
 	// 账号余额不足，无法执行SQL任务。
 	RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 
+	// 无权限授权策略。
+	RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
+
 	// 无法修改主账号。
 	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 )

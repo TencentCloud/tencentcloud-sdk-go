@@ -16,6 +16,7 @@ package v20191118
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
-    if request == nil {
-        request = NewCreateSessionRequest()
-    }
-    
-    response = NewCreateSessionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSessionWithContext(context.Background(), request)
 }
 
 // CreateSession
@@ -107,6 +102,11 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     if request == nil {
         request = NewCreateSessionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSession require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSessionResponse()
@@ -139,13 +139,7 @@ func NewDescribeInstancesCountResponse() (response *DescribeInstancesCountRespon
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) (response *DescribeInstancesCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesCountRequest()
-    }
-    
-    response = NewDescribeInstancesCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesCountWithContext(context.Background(), request)
 }
 
 // DescribeInstancesCount
@@ -159,6 +153,11 @@ func (c *Client) DescribeInstancesCountWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstancesCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesCountResponse()
@@ -195,13 +194,7 @@ func NewSaveGameArchiveResponse() (response *SaveGameArchiveResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *SaveGameArchiveResponse, err error) {
-    if request == nil {
-        request = NewSaveGameArchiveRequest()
-    }
-    
-    response = NewSaveGameArchiveResponse()
-    err = c.Send(request, response)
-    return
+    return c.SaveGameArchiveWithContext(context.Background(), request)
 }
 
 // SaveGameArchive
@@ -219,6 +212,11 @@ func (c *Client) SaveGameArchiveWithContext(ctx context.Context, request *SaveGa
     if request == nil {
         request = NewSaveGameArchiveRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaveGameArchive require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSaveGameArchiveResponse()
@@ -254,13 +252,7 @@ func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
 func (c *Client) StartPublishStream(request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
-    if request == nil {
-        request = NewStartPublishStreamRequest()
-    }
-    
-    response = NewStartPublishStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartPublishStreamWithContext(context.Background(), request)
 }
 
 // StartPublishStream
@@ -277,6 +269,11 @@ func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *Sta
     if request == nil {
         request = NewStartPublishStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPublishStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartPublishStreamResponse()
@@ -310,13 +307,7 @@ func NewStopGameResponse() (response *StopGameResponse) {
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  RESOURCEUNAVAILABLE_ACCESSFAILED = "ResourceUnavailable.AccessFailed"
 func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse, err error) {
-    if request == nil {
-        request = NewStopGameRequest()
-    }
-    
-    response = NewStopGameResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopGameWithContext(context.Background(), request)
 }
 
 // StopGame
@@ -331,6 +322,11 @@ func (c *Client) StopGameWithContext(ctx context.Context, request *StopGameReque
     if request == nil {
         request = NewStopGameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopGame require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopGameResponse()
@@ -366,13 +362,7 @@ func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
 func (c *Client) StopPublishStream(request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
-    if request == nil {
-        request = NewStopPublishStreamRequest()
-    }
-    
-    response = NewStopPublishStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopPublishStreamWithContext(context.Background(), request)
 }
 
 // StopPublishStream
@@ -389,6 +379,11 @@ func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopPublishStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopPublishStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopPublishStreamResponse()
@@ -425,13 +420,7 @@ func NewSwitchGameArchiveResponse() (response *SwitchGameArchiveResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response *SwitchGameArchiveResponse, err error) {
-    if request == nil {
-        request = NewSwitchGameArchiveRequest()
-    }
-    
-    response = NewSwitchGameArchiveResponse()
-    err = c.Send(request, response)
-    return
+    return c.SwitchGameArchiveWithContext(context.Background(), request)
 }
 
 // SwitchGameArchive
@@ -449,6 +438,11 @@ func (c *Client) SwitchGameArchiveWithContext(ctx context.Context, request *Swit
     if request == nil {
         request = NewSwitchGameArchiveRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchGameArchive require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSwitchGameArchiveResponse()
@@ -485,13 +479,7 @@ func NewTrylockWorkerResponse() (response *TrylockWorkerResponse) {
 //  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *TrylockWorkerResponse, err error) {
-    if request == nil {
-        request = NewTrylockWorkerRequest()
-    }
-    
-    response = NewTrylockWorkerResponse()
-    err = c.Send(request, response)
-    return
+    return c.TrylockWorkerWithContext(context.Background(), request)
 }
 
 // TrylockWorker
@@ -509,6 +497,11 @@ func (c *Client) TrylockWorkerWithContext(ctx context.Context, request *TrylockW
     if request == nil {
         request = NewTrylockWorkerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TrylockWorker require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTrylockWorkerResponse()

@@ -16,6 +16,7 @@ package v20210420
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewAddAccountToAccountGroupResponse() (response *AddAccountToAccountGroupRe
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddAccountToAccountGroup(request *AddAccountToAccountGroupRequest) (response *AddAccountToAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewAddAccountToAccountGroupRequest()
-    }
-    
-    response = NewAddAccountToAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddAccountToAccountGroupWithContext(context.Background(), request)
 }
 
 // AddAccountToAccountGroup
@@ -101,6 +96,11 @@ func (c *Client) AddAccountToAccountGroupWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAddAccountToAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAccountToAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddAccountToAccountGroupResponse()
@@ -136,13 +136,7 @@ func NewAddUserToUserGroupResponse() (response *AddUserToUserGroupResponse) {
 //  FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = "FailedOperation.UserAlreadyExistedInUserGroup"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) AddUserToUserGroup(request *AddUserToUserGroupRequest) (response *AddUserToUserGroupResponse, err error) {
-    if request == nil {
-        request = NewAddUserToUserGroupRequest()
-    }
-    
-    response = NewAddUserToUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddUserToUserGroupWithContext(context.Background(), request)
 }
 
 // AddUserToUserGroup
@@ -159,6 +153,11 @@ func (c *Client) AddUserToUserGroupWithContext(ctx context.Context, request *Add
     if request == nil {
         request = NewAddUserToUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddUserToUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddUserToUserGroupResponse()
@@ -192,13 +191,7 @@ func NewCreateAccountGroupResponse() (response *CreateAccountGroupResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAccountGroup(request *CreateAccountGroupRequest) (response *CreateAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateAccountGroupRequest()
-    }
-    
-    response = NewCreateAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAccountGroupWithContext(context.Background(), request)
 }
 
 // CreateAccountGroup
@@ -213,6 +206,11 @@ func (c *Client) CreateAccountGroupWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAccountGroupResponse()
@@ -247,13 +245,7 @@ func NewCreateAppAccountResponse() (response *CreateAppAccountResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateAppAccount(request *CreateAppAccountRequest) (response *CreateAppAccountResponse, err error) {
-    if request == nil {
-        request = NewCreateAppAccountRequest()
-    }
-    
-    response = NewCreateAppAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAppAccountWithContext(context.Background(), request)
 }
 
 // CreateAppAccount
@@ -269,6 +261,11 @@ func (c *Client) CreateAppAccountWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAppAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAppAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAppAccountResponse()
@@ -307,13 +304,7 @@ func NewCreateOrgNodeResponse() (response *CreateOrgNodeResponse) {
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 //  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) CreateOrgNode(request *CreateOrgNodeRequest) (response *CreateOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewCreateOrgNodeRequest()
-    }
-    
-    response = NewCreateOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrgNodeWithContext(context.Background(), request)
 }
 
 // CreateOrgNode
@@ -333,6 +324,11 @@ func (c *Client) CreateOrgNodeWithContext(ctx context.Context, request *CreateOr
     if request == nil {
         request = NewCreateOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrgNodeResponse()
@@ -376,13 +372,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 //  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
-    if request == nil {
-        request = NewCreateUserRequest()
-    }
-    
-    response = NewCreateUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserWithContext(context.Background(), request)
 }
 
 // CreateUser
@@ -407,6 +397,11 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserResponse()
@@ -439,13 +434,7 @@ func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateUserGroupRequest()
-    }
-    
-    response = NewCreateUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserGroupWithContext(context.Background(), request)
 }
 
 // CreateUserGroup
@@ -459,6 +448,11 @@ func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserGroupResponse()
@@ -494,13 +488,7 @@ func NewDeleteAccountGroupResponse() (response *DeleteAccountGroupResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAccountGroup(request *DeleteAccountGroupRequest) (response *DeleteAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccountGroupRequest()
-    }
-    
-    response = NewDeleteAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccountGroupWithContext(context.Background(), request)
 }
 
 // DeleteAccountGroup
@@ -517,6 +505,11 @@ func (c *Client) DeleteAccountGroupWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccountGroupResponse()
@@ -552,13 +545,7 @@ func NewDeleteAppAccountResponse() (response *DeleteAppAccountResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteAppAccount(request *DeleteAppAccountRequest) (response *DeleteAppAccountResponse, err error) {
-    if request == nil {
-        request = NewDeleteAppAccountRequest()
-    }
-    
-    response = NewDeleteAppAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAppAccountWithContext(context.Background(), request)
 }
 
 // DeleteAppAccount
@@ -575,6 +562,11 @@ func (c *Client) DeleteAppAccountWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAppAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAppAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAppAccountResponse()
@@ -613,13 +605,7 @@ func NewDeleteOrgNodeResponse() (response *DeleteOrgNodeResponse) {
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteOrgNode(request *DeleteOrgNodeRequest) (response *DeleteOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewDeleteOrgNodeRequest()
-    }
-    
-    response = NewDeleteOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOrgNodeWithContext(context.Background(), request)
 }
 
 // DeleteOrgNode
@@ -639,6 +625,11 @@ func (c *Client) DeleteOrgNodeWithContext(ctx context.Context, request *DeleteOr
     if request == nil {
         request = NewDeleteOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOrgNodeResponse()
@@ -673,13 +664,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
-    if request == nil {
-        request = NewDeleteUserRequest()
-    }
-    
-    response = NewDeleteUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUserWithContext(context.Background(), request)
 }
 
 // DeleteUser
@@ -695,6 +680,11 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     if request == nil {
         request = NewDeleteUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUserResponse()
@@ -729,13 +719,7 @@ func NewDeleteUserGroupResponse() (response *DeleteUserGroupResponse) {
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUserGroup(request *DeleteUserGroupRequest) (response *DeleteUserGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteUserGroupRequest()
-    }
-    
-    response = NewDeleteUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUserGroupWithContext(context.Background(), request)
 }
 
 // DeleteUserGroup
@@ -751,6 +735,11 @@ func (c *Client) DeleteUserGroupWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUserGroupResponse()
@@ -783,13 +772,7 @@ func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsersResponse, err error) {
-    if request == nil {
-        request = NewDeleteUsersRequest()
-    }
-    
-    response = NewDeleteUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUsersWithContext(context.Background(), request)
 }
 
 // DeleteUsers
@@ -803,6 +786,11 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     if request == nil {
         request = NewDeleteUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUsersResponse()
@@ -835,13 +823,7 @@ func NewDescribeAccountGroupResponse() (response *DescribeAccountGroupResponse) 
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAccountGroup(request *DescribeAccountGroupRequest) (response *DescribeAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountGroupRequest()
-    }
-    
-    response = NewDescribeAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountGroupWithContext(context.Background(), request)
 }
 
 // DescribeAccountGroup
@@ -855,6 +837,11 @@ func (c *Client) DescribeAccountGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountGroupResponse()
@@ -888,13 +875,7 @@ func NewDescribeAppAccountResponse() (response *DescribeAppAccountResponse) {
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {
-    if request == nil {
-        request = NewDescribeAppAccountRequest()
-    }
-    
-    response = NewDescribeAppAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAppAccountWithContext(context.Background(), request)
 }
 
 // DescribeAppAccount
@@ -909,6 +890,11 @@ func (c *Client) DescribeAppAccountWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAppAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAppAccountResponse()
@@ -941,13 +927,7 @@ func NewDescribeApplicationResponse() (response *DescribeApplicationResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeApplication(request *DescribeApplicationRequest) (response *DescribeApplicationResponse, err error) {
-    if request == nil {
-        request = NewDescribeApplicationRequest()
-    }
-    
-    response = NewDescribeApplicationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApplicationWithContext(context.Background(), request)
 }
 
 // DescribeApplication
@@ -961,6 +941,11 @@ func (c *Client) DescribeApplicationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeApplicationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApplicationResponse()
@@ -995,13 +980,7 @@ func NewDescribeOrgNodeResponse() (response *DescribeOrgNodeResponse) {
 //  FAILEDOPERATION_ORGNODEIDNOTEXIST = "FailedOperation.OrgNodeIdNotExist"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgNode(request *DescribeOrgNodeRequest) (response *DescribeOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeOrgNodeRequest()
-    }
-    
-    response = NewDescribeOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOrgNodeWithContext(context.Background(), request)
 }
 
 // DescribeOrgNode
@@ -1017,6 +996,11 @@ func (c *Client) DescribeOrgNodeWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOrgNodeResponse()
@@ -1050,13 +1034,7 @@ func NewDescribeOrgResourcesAuthorizationResponse() (response *DescribeOrgResour
 //  FAILEDOPERATION_ORGNODENOTEXIST = "FailedOperation.OrgNodeNotExist"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeOrgResourcesAuthorization(request *DescribeOrgResourcesAuthorizationRequest) (response *DescribeOrgResourcesAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeOrgResourcesAuthorizationRequest()
-    }
-    
-    response = NewDescribeOrgResourcesAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOrgResourcesAuthorizationWithContext(context.Background(), request)
 }
 
 // DescribeOrgResourcesAuthorization
@@ -1071,6 +1049,11 @@ func (c *Client) DescribeOrgResourcesAuthorizationWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeOrgResourcesAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrgResourcesAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOrgResourcesAuthorizationResponse()
@@ -1104,13 +1087,7 @@ func NewDescribePublicKeyResponse() (response *DescribePublicKeyResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribePublicKey(request *DescribePublicKeyRequest) (response *DescribePublicKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribePublicKeyRequest()
-    }
-    
-    response = NewDescribePublicKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePublicKeyWithContext(context.Background(), request)
 }
 
 // DescribePublicKey
@@ -1125,6 +1102,11 @@ func (c *Client) DescribePublicKeyWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePublicKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePublicKeyResponse()
@@ -1157,13 +1139,7 @@ func NewDescribeUserGroupResponse() (response *DescribeUserGroupResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroup(request *DescribeUserGroupRequest) (response *DescribeUserGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserGroupRequest()
-    }
-    
-    response = NewDescribeUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserGroupWithContext(context.Background(), request)
 }
 
 // DescribeUserGroup
@@ -1177,6 +1153,11 @@ func (c *Client) DescribeUserGroupWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserGroupResponse()
@@ -1210,13 +1191,7 @@ func NewDescribeUserGroupResourcesAuthorizationResponse() (response *DescribeUse
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserGroupResourcesAuthorization(request *DescribeUserGroupResourcesAuthorizationRequest) (response *DescribeUserGroupResourcesAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserGroupResourcesAuthorizationRequest()
-    }
-    
-    response = NewDescribeUserGroupResourcesAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserGroupResourcesAuthorizationWithContext(context.Background(), request)
 }
 
 // DescribeUserGroupResourcesAuthorization
@@ -1231,6 +1206,11 @@ func (c *Client) DescribeUserGroupResourcesAuthorizationWithContext(ctx context.
     if request == nil {
         request = NewDescribeUserGroupResourcesAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserGroupResourcesAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserGroupResourcesAuthorizationResponse()
@@ -1267,13 +1247,7 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 //  INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = "InvalidParameterValue.UserIdCanNotBeEmpty"
 //  INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = "InvalidParameterValue.UserNameCanNotBeEmpty"
 func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserInfoRequest()
-    }
-    
-    response = NewDescribeUserInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserInfoWithContext(context.Background(), request)
 }
 
 // DescribeUserInfo
@@ -1291,6 +1265,11 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserInfoResponse()
@@ -1324,13 +1303,7 @@ func NewDescribeUserResourcesAuthorizationResponse() (response *DescribeUserReso
 //  FAILEDOPERATION_PERSONNOTFOUND = "FailedOperation.PersonNotFound"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserResourcesAuthorization(request *DescribeUserResourcesAuthorizationRequest) (response *DescribeUserResourcesAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserResourcesAuthorizationRequest()
-    }
-    
-    response = NewDescribeUserResourcesAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserResourcesAuthorizationWithContext(context.Background(), request)
 }
 
 // DescribeUserResourcesAuthorization
@@ -1345,6 +1318,11 @@ func (c *Client) DescribeUserResourcesAuthorizationWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeUserResourcesAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserResourcesAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserResourcesAuthorizationResponse()
@@ -1379,13 +1357,7 @@ func NewDescribeUserThirdPartyAccountInfoResponse() (response *DescribeUserThird
 //  INVALIDPARAMETER_USERNAMEISNULL = "InvalidParameter.UserNameIsNull"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeUserThirdPartyAccountInfo(request *DescribeUserThirdPartyAccountInfoRequest) (response *DescribeUserThirdPartyAccountInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserThirdPartyAccountInfoRequest()
-    }
-    
-    response = NewDescribeUserThirdPartyAccountInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserThirdPartyAccountInfoWithContext(context.Background(), request)
 }
 
 // DescribeUserThirdPartyAccountInfo
@@ -1401,6 +1373,11 @@ func (c *Client) DescribeUserThirdPartyAccountInfoWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeUserThirdPartyAccountInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserThirdPartyAccountInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserThirdPartyAccountInfoResponse()
@@ -1434,13 +1411,7 @@ func NewListAccountInAccountGroupResponse() (response *ListAccountInAccountGroup
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAccountInAccountGroup(request *ListAccountInAccountGroupRequest) (response *ListAccountInAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewListAccountInAccountGroupRequest()
-    }
-    
-    response = NewListAccountInAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAccountInAccountGroupWithContext(context.Background(), request)
 }
 
 // ListAccountInAccountGroup
@@ -1455,6 +1426,11 @@ func (c *Client) ListAccountInAccountGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewListAccountInAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAccountInAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAccountInAccountGroupResponse()
@@ -1490,13 +1466,7 @@ func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthor
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
-    if request == nil {
-        request = NewListApplicationAuthorizationsRequest()
-    }
-    
-    response = NewListApplicationAuthorizationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListApplicationAuthorizationsWithContext(context.Background(), request)
 }
 
 // ListApplicationAuthorizations
@@ -1513,6 +1483,11 @@ func (c *Client) ListApplicationAuthorizationsWithContext(ctx context.Context, r
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListApplicationAuthorizations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListApplicationAuthorizationsResponse()
@@ -1547,13 +1522,7 @@ func NewListApplicationsResponse() (response *ListApplicationsResponse) {
 //  INVALIDPARAMETER_TIMEFORMATILLEGAL = "InvalidParameter.TimeFormatIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListApplications(request *ListApplicationsRequest) (response *ListApplicationsResponse, err error) {
-    if request == nil {
-        request = NewListApplicationsRequest()
-    }
-    
-    response = NewListApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListApplicationsWithContext(context.Background(), request)
 }
 
 // ListApplications
@@ -1569,6 +1538,11 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, request *ListA
     if request == nil {
         request = NewListApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListApplicationsResponse()
@@ -1602,13 +1576,7 @@ func NewListAuthorizedApplicationsToOrgNodeResponse() (response *ListAuthorizedA
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToOrgNode(request *ListAuthorizedApplicationsToOrgNodeRequest) (response *ListAuthorizedApplicationsToOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewListAuthorizedApplicationsToOrgNodeRequest()
-    }
-    
-    response = NewListAuthorizedApplicationsToOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAuthorizedApplicationsToOrgNodeWithContext(context.Background(), request)
 }
 
 // ListAuthorizedApplicationsToOrgNode
@@ -1623,6 +1591,11 @@ func (c *Client) ListAuthorizedApplicationsToOrgNodeWithContext(ctx context.Cont
     if request == nil {
         request = NewListAuthorizedApplicationsToOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAuthorizedApplicationsToOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAuthorizedApplicationsToOrgNodeResponse()
@@ -1659,13 +1632,7 @@ func NewListAuthorizedApplicationsToUserResponse() (response *ListAuthorizedAppl
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUser(request *ListAuthorizedApplicationsToUserRequest) (response *ListAuthorizedApplicationsToUserResponse, err error) {
-    if request == nil {
-        request = NewListAuthorizedApplicationsToUserRequest()
-    }
-    
-    response = NewListAuthorizedApplicationsToUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAuthorizedApplicationsToUserWithContext(context.Background(), request)
 }
 
 // ListAuthorizedApplicationsToUser
@@ -1683,6 +1650,11 @@ func (c *Client) ListAuthorizedApplicationsToUserWithContext(ctx context.Context
     if request == nil {
         request = NewListAuthorizedApplicationsToUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAuthorizedApplicationsToUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAuthorizedApplicationsToUserResponse()
@@ -1717,13 +1689,7 @@ func NewListAuthorizedApplicationsToUserGroupResponse() (response *ListAuthorize
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListAuthorizedApplicationsToUserGroup(request *ListAuthorizedApplicationsToUserGroupRequest) (response *ListAuthorizedApplicationsToUserGroupResponse, err error) {
-    if request == nil {
-        request = NewListAuthorizedApplicationsToUserGroupRequest()
-    }
-    
-    response = NewListAuthorizedApplicationsToUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAuthorizedApplicationsToUserGroupWithContext(context.Background(), request)
 }
 
 // ListAuthorizedApplicationsToUserGroup
@@ -1739,6 +1705,11 @@ func (c *Client) ListAuthorizedApplicationsToUserGroupWithContext(ctx context.Co
     if request == nil {
         request = NewListAuthorizedApplicationsToUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAuthorizedApplicationsToUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAuthorizedApplicationsToUserGroupResponse()
@@ -1770,13 +1741,7 @@ func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
-    if request == nil {
-        request = NewListUserGroupsRequest()
-    }
-    
-    response = NewListUserGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListUserGroupsWithContext(context.Background(), request)
 }
 
 // ListUserGroups
@@ -1789,6 +1754,11 @@ func (c *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUse
     if request == nil {
         request = NewListUserGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUserGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListUserGroupsResponse()
@@ -1823,13 +1793,7 @@ func NewListUserGroupsOfUserResponse() (response *ListUserGroupsOfUserResponse) 
 //  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUserGroupsOfUser(request *ListUserGroupsOfUserRequest) (response *ListUserGroupsOfUserResponse, err error) {
-    if request == nil {
-        request = NewListUserGroupsOfUserRequest()
-    }
-    
-    response = NewListUserGroupsOfUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListUserGroupsOfUserWithContext(context.Background(), request)
 }
 
 // ListUserGroupsOfUser
@@ -1845,6 +1809,11 @@ func (c *Client) ListUserGroupsOfUserWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListUserGroupsOfUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUserGroupsOfUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListUserGroupsOfUserResponse()
@@ -1880,13 +1849,7 @@ func NewListUsersResponse() (response *ListUsersResponse) {
 //  INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = "InvalidParameter.UserInfoSortKeyIsIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
-    if request == nil {
-        request = NewListUsersRequest()
-    }
-    
-    response = NewListUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListUsersWithContext(context.Background(), request)
 }
 
 // ListUsers
@@ -1903,6 +1866,11 @@ func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersReq
     if request == nil {
         request = NewListUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListUsersResponse()
@@ -1938,13 +1906,7 @@ func NewListUsersInOrgNodeResponse() (response *ListUsersInOrgNodeResponse) {
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInOrgNode(request *ListUsersInOrgNodeRequest) (response *ListUsersInOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewListUsersInOrgNodeRequest()
-    }
-    
-    response = NewListUsersInOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListUsersInOrgNodeWithContext(context.Background(), request)
 }
 
 // ListUsersInOrgNode
@@ -1961,6 +1923,11 @@ func (c *Client) ListUsersInOrgNodeWithContext(ctx context.Context, request *Lis
     if request == nil {
         request = NewListUsersInOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUsersInOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListUsersInOrgNodeResponse()
@@ -1995,13 +1962,7 @@ func NewListUsersInUserGroupResponse() (response *ListUsersInUserGroupResponse) 
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (response *ListUsersInUserGroupResponse, err error) {
-    if request == nil {
-        request = NewListUsersInUserGroupRequest()
-    }
-    
-    response = NewListUsersInUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListUsersInUserGroupWithContext(context.Background(), request)
 }
 
 // ListUsersInUserGroup
@@ -2017,6 +1978,11 @@ func (c *Client) ListUsersInUserGroupWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListUsersInUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListUsersInUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListUsersInUserGroupResponse()
@@ -2052,13 +2018,7 @@ func NewModifyAccountGroupResponse() (response *ModifyAccountGroupResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAccountGroup(request *ModifyAccountGroupRequest) (response *ModifyAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyAccountGroupRequest()
-    }
-    
-    response = NewModifyAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccountGroupWithContext(context.Background(), request)
 }
 
 // ModifyAccountGroup
@@ -2075,6 +2035,11 @@ func (c *Client) ModifyAccountGroupWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccountGroupResponse()
@@ -2109,13 +2074,7 @@ func NewModifyAppAccountResponse() (response *ModifyAppAccountResponse) {
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyAppAccount(request *ModifyAppAccountRequest) (response *ModifyAppAccountResponse, err error) {
-    if request == nil {
-        request = NewModifyAppAccountRequest()
-    }
-    
-    response = NewModifyAppAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAppAccountWithContext(context.Background(), request)
 }
 
 // ModifyAppAccount
@@ -2131,6 +2090,11 @@ func (c *Client) ModifyAppAccountWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAppAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAppAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAppAccountResponse()
@@ -2164,13 +2128,7 @@ func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
 //  INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = "InvalidParameter.AppDisplayNameExisted"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
-    if request == nil {
-        request = NewModifyApplicationRequest()
-    }
-    
-    response = NewModifyApplicationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyApplicationWithContext(context.Background(), request)
 }
 
 // ModifyApplication
@@ -2185,6 +2143,11 @@ func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyApplicationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyApplicationResponse()
@@ -2239,13 +2202,7 @@ func NewModifyUserInfoResponse() (response *ModifyUserInfoResponse) {
 //  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 //  LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
 func (c *Client) ModifyUserInfo(request *ModifyUserInfoRequest) (response *ModifyUserInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyUserInfoRequest()
-    }
-    
-    response = NewModifyUserInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserInfoWithContext(context.Background(), request)
 }
 
 // ModifyUserInfo
@@ -2281,6 +2238,11 @@ func (c *Client) ModifyUserInfoWithContext(ctx context.Context, request *ModifyU
     if request == nil {
         request = NewModifyUserInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserInfoResponse()
@@ -2317,13 +2279,7 @@ func NewRemoveAccountFromAccountGroupResponse() (response *RemoveAccountFromAcco
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveAccountFromAccountGroup(request *RemoveAccountFromAccountGroupRequest) (response *RemoveAccountFromAccountGroupResponse, err error) {
-    if request == nil {
-        request = NewRemoveAccountFromAccountGroupRequest()
-    }
-    
-    response = NewRemoveAccountFromAccountGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveAccountFromAccountGroupWithContext(context.Background(), request)
 }
 
 // RemoveAccountFromAccountGroup
@@ -2341,6 +2297,11 @@ func (c *Client) RemoveAccountFromAccountGroupWithContext(ctx context.Context, r
     if request == nil {
         request = NewRemoveAccountFromAccountGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveAccountFromAccountGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveAccountFromAccountGroupResponse()
@@ -2377,13 +2338,7 @@ func NewRemoveUserFromUserGroupResponse() (response *RemoveUserFromUserGroupResp
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) RemoveUserFromUserGroup(request *RemoveUserFromUserGroupRequest) (response *RemoveUserFromUserGroupResponse, err error) {
-    if request == nil {
-        request = NewRemoveUserFromUserGroupRequest()
-    }
-    
-    response = NewRemoveUserFromUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveUserFromUserGroupWithContext(context.Background(), request)
 }
 
 // RemoveUserFromUserGroup
@@ -2401,6 +2356,11 @@ func (c *Client) RemoveUserFromUserGroupWithContext(ctx context.Context, request
     if request == nil {
         request = NewRemoveUserFromUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveUserFromUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveUserFromUserGroupResponse()
@@ -2437,13 +2397,7 @@ func NewUpdateOrgNodeResponse() (response *UpdateOrgNodeResponse) {
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 //  LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = "LimitExceeded.ParameterLengthLimitExceeded"
 func (c *Client) UpdateOrgNode(request *UpdateOrgNodeRequest) (response *UpdateOrgNodeResponse, err error) {
-    if request == nil {
-        request = NewUpdateOrgNodeRequest()
-    }
-    
-    response = NewUpdateOrgNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateOrgNodeWithContext(context.Background(), request)
 }
 
 // UpdateOrgNode
@@ -2461,6 +2415,11 @@ func (c *Client) UpdateOrgNodeWithContext(ctx context.Context, request *UpdateOr
     if request == nil {
         request = NewUpdateOrgNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOrgNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateOrgNodeResponse()

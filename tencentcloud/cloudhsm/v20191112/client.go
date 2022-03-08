@@ -16,6 +16,7 @@ package v20191112
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeHSMBySubnetIdResponse() (response *DescribeHSMBySubnetIdResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHSMBySubnetId(request *DescribeHSMBySubnetIdRequest) (response *DescribeHSMBySubnetIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeHSMBySubnetIdRequest()
-    }
-    
-    response = NewDescribeHSMBySubnetIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHSMBySubnetIdWithContext(context.Background(), request)
 }
 
 // DescribeHSMBySubnetId
@@ -91,6 +86,11 @@ func (c *Client) DescribeHSMBySubnetIdWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeHSMBySubnetIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHSMBySubnetId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHSMBySubnetIdResponse()
@@ -124,13 +124,7 @@ func NewDescribeHSMByVpcIdResponse() (response *DescribeHSMByVpcIdResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHSMByVpcId(request *DescribeHSMByVpcIdRequest) (response *DescribeHSMByVpcIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeHSMByVpcIdRequest()
-    }
-    
-    response = NewDescribeHSMByVpcIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHSMByVpcIdWithContext(context.Background(), request)
 }
 
 // DescribeHSMByVpcId
@@ -145,6 +139,11 @@ func (c *Client) DescribeHSMByVpcIdWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeHSMByVpcIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHSMByVpcId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHSMByVpcIdResponse()
@@ -178,13 +177,7 @@ func NewDescribeSubnetResponse() (response *DescribeSubnetResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSubnet(request *DescribeSubnetRequest) (response *DescribeSubnetResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetRequest()
-    }
-    
-    response = NewDescribeSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetWithContext(context.Background(), request)
 }
 
 // DescribeSubnet
@@ -199,6 +192,11 @@ func (c *Client) DescribeSubnetWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetResponse()
@@ -231,13 +229,7 @@ func NewDescribeSupportedHsmResponse() (response *DescribeSupportedHsmResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSupportedHsm(request *DescribeSupportedHsmRequest) (response *DescribeSupportedHsmResponse, err error) {
-    if request == nil {
-        request = NewDescribeSupportedHsmRequest()
-    }
-    
-    response = NewDescribeSupportedHsmResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSupportedHsmWithContext(context.Background(), request)
 }
 
 // DescribeSupportedHsm
@@ -251,6 +243,11 @@ func (c *Client) DescribeSupportedHsmWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSupportedHsmRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSupportedHsm require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSupportedHsmResponse()
@@ -284,13 +281,7 @@ func NewDescribeUsgResponse() (response *DescribeUsgResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUsg(request *DescribeUsgRequest) (response *DescribeUsgResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsgRequest()
-    }
-    
-    response = NewDescribeUsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsgWithContext(context.Background(), request)
 }
 
 // DescribeUsg
@@ -305,6 +296,11 @@ func (c *Client) DescribeUsgWithContext(ctx context.Context, request *DescribeUs
     if request == nil {
         request = NewDescribeUsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsgResponse()
@@ -338,13 +334,7 @@ func NewDescribeUsgRuleResponse() (response *DescribeUsgRuleResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUsgRule(request *DescribeUsgRuleRequest) (response *DescribeUsgRuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsgRuleRequest()
-    }
-    
-    response = NewDescribeUsgRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsgRuleWithContext(context.Background(), request)
 }
 
 // DescribeUsgRule
@@ -359,6 +349,11 @@ func (c *Client) DescribeUsgRuleWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeUsgRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsgRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsgRuleResponse()
@@ -392,13 +387,7 @@ func NewDescribeVpcResponse() (response *DescribeVpcResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpc(request *DescribeVpcRequest) (response *DescribeVpcResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcRequest()
-    }
-    
-    response = NewDescribeVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcWithContext(context.Background(), request)
 }
 
 // DescribeVpc
@@ -413,6 +402,11 @@ func (c *Client) DescribeVpcWithContext(ctx context.Context, request *DescribeVp
     if request == nil {
         request = NewDescribeVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcResponse()
@@ -446,13 +440,7 @@ func NewDescribeVsmAttributesResponse() (response *DescribeVsmAttributesResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVsmAttributes(request *DescribeVsmAttributesRequest) (response *DescribeVsmAttributesResponse, err error) {
-    if request == nil {
-        request = NewDescribeVsmAttributesRequest()
-    }
-    
-    response = NewDescribeVsmAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVsmAttributesWithContext(context.Background(), request)
 }
 
 // DescribeVsmAttributes
@@ -467,6 +455,11 @@ func (c *Client) DescribeVsmAttributesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVsmAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVsmAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVsmAttributesResponse()
@@ -500,13 +493,7 @@ func NewDescribeVsmsResponse() (response *DescribeVsmsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVsms(request *DescribeVsmsRequest) (response *DescribeVsmsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVsmsRequest()
-    }
-    
-    response = NewDescribeVsmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVsmsWithContext(context.Background(), request)
 }
 
 // DescribeVsms
@@ -521,6 +508,11 @@ func (c *Client) DescribeVsmsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVsmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVsms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVsmsResponse()
@@ -554,13 +546,7 @@ func NewInquiryPriceBuyVsmResponse() (response *InquiryPriceBuyVsmResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) InquiryPriceBuyVsm(request *InquiryPriceBuyVsmRequest) (response *InquiryPriceBuyVsmResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceBuyVsmRequest()
-    }
-    
-    response = NewInquiryPriceBuyVsmResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceBuyVsmWithContext(context.Background(), request)
 }
 
 // InquiryPriceBuyVsm
@@ -575,6 +561,11 @@ func (c *Client) InquiryPriceBuyVsmWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquiryPriceBuyVsmRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceBuyVsm require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceBuyVsmResponse()
@@ -608,13 +599,7 @@ func NewModifyVsmAttributesResponse() (response *ModifyVsmAttributesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVsmAttributes(request *ModifyVsmAttributesRequest) (response *ModifyVsmAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyVsmAttributesRequest()
-    }
-    
-    response = NewModifyVsmAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVsmAttributesWithContext(context.Background(), request)
 }
 
 // ModifyVsmAttributes
@@ -629,6 +614,11 @@ func (c *Client) ModifyVsmAttributesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyVsmAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVsmAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVsmAttributesResponse()

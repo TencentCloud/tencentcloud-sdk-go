@@ -16,6 +16,7 @@ package v20190118
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewArchiveKeyResponse() (response *ArchiveKeyResponse) {
 //  UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) ArchiveKey(request *ArchiveKeyRequest) (response *ArchiveKeyResponse, err error) {
-    if request == nil {
-        request = NewArchiveKeyRequest()
-    }
-    
-    response = NewArchiveKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ArchiveKeyWithContext(context.Background(), request)
 }
 
 // ArchiveKey
@@ -101,6 +96,11 @@ func (c *Client) ArchiveKeyWithContext(ctx context.Context, request *ArchiveKeyR
     if request == nil {
         request = NewArchiveKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ArchiveKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewArchiveKeyResponse()
@@ -138,13 +138,7 @@ func NewAsymmetricRsaDecryptResponse() (response *AsymmetricRsaDecryptResponse) 
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AsymmetricRsaDecrypt(request *AsymmetricRsaDecryptRequest) (response *AsymmetricRsaDecryptResponse, err error) {
-    if request == nil {
-        request = NewAsymmetricRsaDecryptRequest()
-    }
-    
-    response = NewAsymmetricRsaDecryptResponse()
-    err = c.Send(request, response)
-    return
+    return c.AsymmetricRsaDecryptWithContext(context.Background(), request)
 }
 
 // AsymmetricRsaDecrypt
@@ -163,6 +157,11 @@ func (c *Client) AsymmetricRsaDecryptWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAsymmetricRsaDecryptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AsymmetricRsaDecrypt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAsymmetricRsaDecryptResponse()
@@ -201,13 +200,7 @@ func NewAsymmetricSm2DecryptResponse() (response *AsymmetricSm2DecryptResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) AsymmetricSm2Decrypt(request *AsymmetricSm2DecryptRequest) (response *AsymmetricSm2DecryptResponse, err error) {
-    if request == nil {
-        request = NewAsymmetricSm2DecryptRequest()
-    }
-    
-    response = NewAsymmetricSm2DecryptResponse()
-    err = c.Send(request, response)
-    return
+    return c.AsymmetricSm2DecryptWithContext(context.Background(), request)
 }
 
 // AsymmetricSm2Decrypt
@@ -227,6 +220,11 @@ func (c *Client) AsymmetricSm2DecryptWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAsymmetricSm2DecryptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AsymmetricSm2Decrypt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAsymmetricSm2DecryptResponse()
@@ -263,13 +261,7 @@ func NewBindCloudResourceResponse() (response *BindCloudResourceResponse) {
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) BindCloudResource(request *BindCloudResourceRequest) (response *BindCloudResourceResponse, err error) {
-    if request == nil {
-        request = NewBindCloudResourceRequest()
-    }
-    
-    response = NewBindCloudResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindCloudResourceWithContext(context.Background(), request)
 }
 
 // BindCloudResource
@@ -287,6 +279,11 @@ func (c *Client) BindCloudResourceWithContext(ctx context.Context, request *Bind
     if request == nil {
         request = NewBindCloudResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCloudResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindCloudResourceResponse()
@@ -324,13 +321,7 @@ func NewCancelKeyArchiveResponse() (response *CancelKeyArchiveResponse) {
 //  UNSUPPORTEDOPERATION_NOTUSERCREATEDCMK = "UnsupportedOperation.NotUserCreatedCmk"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) CancelKeyArchive(request *CancelKeyArchiveRequest) (response *CancelKeyArchiveResponse, err error) {
-    if request == nil {
-        request = NewCancelKeyArchiveRequest()
-    }
-    
-    response = NewCancelKeyArchiveResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelKeyArchiveWithContext(context.Background(), request)
 }
 
 // CancelKeyArchive
@@ -349,6 +340,11 @@ func (c *Client) CancelKeyArchiveWithContext(ctx context.Context, request *Cance
     if request == nil {
         request = NewCancelKeyArchiveRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelKeyArchive require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelKeyArchiveResponse()
@@ -384,13 +380,7 @@ func NewCancelKeyDeletionResponse() (response *CancelKeyDeletionResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (response *CancelKeyDeletionResponse, err error) {
-    if request == nil {
-        request = NewCancelKeyDeletionRequest()
-    }
-    
-    response = NewCancelKeyDeletionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelKeyDeletionWithContext(context.Background(), request)
 }
 
 // CancelKeyDeletion
@@ -407,6 +397,11 @@ func (c *Client) CancelKeyDeletionWithContext(ctx context.Context, request *Canc
     if request == nil {
         request = NewCancelKeyDeletionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelKeyDeletion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelKeyDeletionResponse()
@@ -448,13 +443,7 @@ func NewCreateKeyResponse() (response *CreateKeyResponse) {
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = "UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion"
 func (c *Client) CreateKey(request *CreateKeyRequest) (response *CreateKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateKeyRequest()
-    }
-    
-    response = NewCreateKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateKeyWithContext(context.Background(), request)
 }
 
 // CreateKey
@@ -477,6 +466,11 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
     if request == nil {
         request = NewCreateKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateKeyResponse()
@@ -515,13 +509,7 @@ func NewCreateWhiteBoxKeyResponse() (response *CreateWhiteBoxKeyResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateWhiteBoxKey(request *CreateWhiteBoxKeyRequest) (response *CreateWhiteBoxKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateWhiteBoxKeyRequest()
-    }
-    
-    response = NewCreateWhiteBoxKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWhiteBoxKeyWithContext(context.Background(), request)
 }
 
 // CreateWhiteBoxKey
@@ -541,6 +529,11 @@ func (c *Client) CreateWhiteBoxKeyWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateWhiteBoxKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWhiteBoxKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWhiteBoxKeyResponse()
@@ -577,13 +570,7 @@ func NewDecryptResponse() (response *DecryptResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) Decrypt(request *DecryptRequest) (response *DecryptResponse, err error) {
-    if request == nil {
-        request = NewDecryptRequest()
-    }
-    
-    response = NewDecryptResponse()
-    err = c.Send(request, response)
-    return
+    return c.DecryptWithContext(context.Background(), request)
 }
 
 // Decrypt
@@ -601,6 +588,11 @@ func (c *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest
     if request == nil {
         request = NewDecryptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Decrypt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDecryptResponse()
@@ -638,13 +630,7 @@ func NewDeleteImportedKeyMaterialResponse() (response *DeleteImportedKeyMaterial
 //  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) DeleteImportedKeyMaterial(request *DeleteImportedKeyMaterialRequest) (response *DeleteImportedKeyMaterialResponse, err error) {
-    if request == nil {
-        request = NewDeleteImportedKeyMaterialRequest()
-    }
-    
-    response = NewDeleteImportedKeyMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImportedKeyMaterialWithContext(context.Background(), request)
 }
 
 // DeleteImportedKeyMaterial
@@ -663,6 +649,11 @@ func (c *Client) DeleteImportedKeyMaterialWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteImportedKeyMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImportedKeyMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImportedKeyMaterialResponse()
@@ -698,13 +689,7 @@ func NewDeleteWhiteBoxKeyResponse() (response *DeleteWhiteBoxKeyResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteWhiteBoxKey(request *DeleteWhiteBoxKeyRequest) (response *DeleteWhiteBoxKeyResponse, err error) {
-    if request == nil {
-        request = NewDeleteWhiteBoxKeyRequest()
-    }
-    
-    response = NewDeleteWhiteBoxKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWhiteBoxKeyWithContext(context.Background(), request)
 }
 
 // DeleteWhiteBoxKey
@@ -721,6 +706,11 @@ func (c *Client) DeleteWhiteBoxKeyWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteWhiteBoxKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWhiteBoxKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWhiteBoxKeyResponse()
@@ -755,13 +745,7 @@ func NewDescribeKeyResponse() (response *DescribeKeyResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeKey(request *DescribeKeyRequest) (response *DescribeKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeKeyRequest()
-    }
-    
-    response = NewDescribeKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKeyWithContext(context.Background(), request)
 }
 
 // DescribeKey
@@ -777,6 +761,11 @@ func (c *Client) DescribeKeyWithContext(ctx context.Context, request *DescribeKe
     if request == nil {
         request = NewDescribeKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKeyResponse()
@@ -812,13 +801,7 @@ func NewDescribeKeysResponse() (response *DescribeKeysResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeKeysRequest()
-    }
-    
-    response = NewDescribeKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKeysWithContext(context.Background(), request)
 }
 
 // DescribeKeys
@@ -835,6 +818,11 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKeysResponse()
@@ -869,13 +857,7 @@ func NewDescribeWhiteBoxDecryptKeyResponse() (response *DescribeWhiteBoxDecryptK
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeWhiteBoxDecryptKey(request *DescribeWhiteBoxDecryptKeyRequest) (response *DescribeWhiteBoxDecryptKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteBoxDecryptKeyRequest()
-    }
-    
-    response = NewDescribeWhiteBoxDecryptKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteBoxDecryptKeyWithContext(context.Background(), request)
 }
 
 // DescribeWhiteBoxDecryptKey
@@ -891,6 +873,11 @@ func (c *Client) DescribeWhiteBoxDecryptKeyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWhiteBoxDecryptKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoxDecryptKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxDecryptKeyResponse()
@@ -924,13 +911,7 @@ func NewDescribeWhiteBoxDeviceFingerprintsResponse() (response *DescribeWhiteBox
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeWhiteBoxDeviceFingerprints(request *DescribeWhiteBoxDeviceFingerprintsRequest) (response *DescribeWhiteBoxDeviceFingerprintsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
-    }
-    
-    response = NewDescribeWhiteBoxDeviceFingerprintsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteBoxDeviceFingerprintsWithContext(context.Background(), request)
 }
 
 // DescribeWhiteBoxDeviceFingerprints
@@ -945,6 +926,11 @@ func (c *Client) DescribeWhiteBoxDeviceFingerprintsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeWhiteBoxDeviceFingerprintsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoxDeviceFingerprints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxDeviceFingerprintsResponse()
@@ -979,13 +965,7 @@ func NewDescribeWhiteBoxKeyResponse() (response *DescribeWhiteBoxKeyResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeWhiteBoxKey(request *DescribeWhiteBoxKeyRequest) (response *DescribeWhiteBoxKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteBoxKeyRequest()
-    }
-    
-    response = NewDescribeWhiteBoxKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteBoxKeyWithContext(context.Background(), request)
 }
 
 // DescribeWhiteBoxKey
@@ -1001,6 +981,11 @@ func (c *Client) DescribeWhiteBoxKeyWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeWhiteBoxKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoxKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxKeyResponse()
@@ -1034,13 +1019,7 @@ func NewDescribeWhiteBoxKeyDetailsResponse() (response *DescribeWhiteBoxKeyDetai
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeWhiteBoxKeyDetails(request *DescribeWhiteBoxKeyDetailsRequest) (response *DescribeWhiteBoxKeyDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteBoxKeyDetailsRequest()
-    }
-    
-    response = NewDescribeWhiteBoxKeyDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteBoxKeyDetailsWithContext(context.Background(), request)
 }
 
 // DescribeWhiteBoxKeyDetails
@@ -1055,6 +1034,11 @@ func (c *Client) DescribeWhiteBoxKeyDetailsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeWhiteBoxKeyDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoxKeyDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxKeyDetailsResponse()
@@ -1087,13 +1071,7 @@ func NewDescribeWhiteBoxServiceStatusResponse() (response *DescribeWhiteBoxServi
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeWhiteBoxServiceStatus(request *DescribeWhiteBoxServiceStatusRequest) (response *DescribeWhiteBoxServiceStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteBoxServiceStatusRequest()
-    }
-    
-    response = NewDescribeWhiteBoxServiceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteBoxServiceStatusWithContext(context.Background(), request)
 }
 
 // DescribeWhiteBoxServiceStatus
@@ -1107,6 +1085,11 @@ func (c *Client) DescribeWhiteBoxServiceStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeWhiteBoxServiceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoxServiceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteBoxServiceStatusResponse()
@@ -1144,13 +1127,7 @@ func NewDisableKeyResponse() (response *DisableKeyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) DisableKey(request *DisableKeyRequest) (response *DisableKeyResponse, err error) {
-    if request == nil {
-        request = NewDisableKeyRequest()
-    }
-    
-    response = NewDisableKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableKeyWithContext(context.Background(), request)
 }
 
 // DisableKey
@@ -1169,6 +1146,11 @@ func (c *Client) DisableKeyWithContext(ctx context.Context, request *DisableKeyR
     if request == nil {
         request = NewDisableKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableKeyResponse()
@@ -1203,13 +1185,7 @@ func NewDisableKeyRotationResponse() (response *DisableKeyRotationResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisableKeyRotation(request *DisableKeyRotationRequest) (response *DisableKeyRotationResponse, err error) {
-    if request == nil {
-        request = NewDisableKeyRotationRequest()
-    }
-    
-    response = NewDisableKeyRotationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableKeyRotationWithContext(context.Background(), request)
 }
 
 // DisableKeyRotation
@@ -1225,6 +1201,11 @@ func (c *Client) DisableKeyRotationWithContext(ctx context.Context, request *Dis
     if request == nil {
         request = NewDisableKeyRotationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableKeyRotation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableKeyRotationResponse()
@@ -1263,13 +1244,7 @@ func NewDisableKeysResponse() (response *DisableKeysResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) DisableKeys(request *DisableKeysRequest) (response *DisableKeysResponse, err error) {
-    if request == nil {
-        request = NewDisableKeysRequest()
-    }
-    
-    response = NewDisableKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableKeysWithContext(context.Background(), request)
 }
 
 // DisableKeys
@@ -1289,6 +1264,11 @@ func (c *Client) DisableKeysWithContext(ctx context.Context, request *DisableKey
     if request == nil {
         request = NewDisableKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableKeysResponse()
@@ -1323,13 +1303,7 @@ func NewDisableWhiteBoxKeyResponse() (response *DisableWhiteBoxKeyResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisableWhiteBoxKey(request *DisableWhiteBoxKeyRequest) (response *DisableWhiteBoxKeyResponse, err error) {
-    if request == nil {
-        request = NewDisableWhiteBoxKeyRequest()
-    }
-    
-    response = NewDisableWhiteBoxKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableWhiteBoxKeyWithContext(context.Background(), request)
 }
 
 // DisableWhiteBoxKey
@@ -1345,6 +1319,11 @@ func (c *Client) DisableWhiteBoxKeyWithContext(ctx context.Context, request *Dis
     if request == nil {
         request = NewDisableWhiteBoxKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableWhiteBoxKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableWhiteBoxKeyResponse()
@@ -1381,13 +1360,7 @@ func NewDisableWhiteBoxKeysResponse() (response *DisableWhiteBoxKeysResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DisableWhiteBoxKeys(request *DisableWhiteBoxKeysRequest) (response *DisableWhiteBoxKeysResponse, err error) {
-    if request == nil {
-        request = NewDisableWhiteBoxKeysRequest()
-    }
-    
-    response = NewDisableWhiteBoxKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableWhiteBoxKeysWithContext(context.Background(), request)
 }
 
 // DisableWhiteBoxKeys
@@ -1405,6 +1378,11 @@ func (c *Client) DisableWhiteBoxKeysWithContext(ctx context.Context, request *Di
     if request == nil {
         request = NewDisableWhiteBoxKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableWhiteBoxKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableWhiteBoxKeysResponse()
@@ -1441,13 +1419,7 @@ func NewEnableKeyResponse() (response *EnableKeyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) EnableKey(request *EnableKeyRequest) (response *EnableKeyResponse, err error) {
-    if request == nil {
-        request = NewEnableKeyRequest()
-    }
-    
-    response = NewEnableKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableKeyWithContext(context.Background(), request)
 }
 
 // EnableKey
@@ -1465,6 +1437,11 @@ func (c *Client) EnableKeyWithContext(ctx context.Context, request *EnableKeyReq
     if request == nil {
         request = NewEnableKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableKeyResponse()
@@ -1502,13 +1479,7 @@ func NewEnableKeyRotationResponse() (response *EnableKeyRotationResponse) {
 //  UNSUPPORTEDOPERATION_EXTERNALCMKCANNOTROTATE = "UnsupportedOperation.ExternalCmkCanNotRotate"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) EnableKeyRotation(request *EnableKeyRotationRequest) (response *EnableKeyRotationResponse, err error) {
-    if request == nil {
-        request = NewEnableKeyRotationRequest()
-    }
-    
-    response = NewEnableKeyRotationResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableKeyRotationWithContext(context.Background(), request)
 }
 
 // EnableKeyRotation
@@ -1527,6 +1498,11 @@ func (c *Client) EnableKeyRotationWithContext(ctx context.Context, request *Enab
     if request == nil {
         request = NewEnableKeyRotationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableKeyRotation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableKeyRotationResponse()
@@ -1564,13 +1540,7 @@ func NewEnableKeysResponse() (response *EnableKeysResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) EnableKeys(request *EnableKeysRequest) (response *EnableKeysResponse, err error) {
-    if request == nil {
-        request = NewEnableKeysRequest()
-    }
-    
-    response = NewEnableKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableKeysWithContext(context.Background(), request)
 }
 
 // EnableKeys
@@ -1589,6 +1559,11 @@ func (c *Client) EnableKeysWithContext(ctx context.Context, request *EnableKeysR
     if request == nil {
         request = NewEnableKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableKeysResponse()
@@ -1623,13 +1598,7 @@ func NewEnableWhiteBoxKeyResponse() (response *EnableWhiteBoxKeyResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) EnableWhiteBoxKey(request *EnableWhiteBoxKeyRequest) (response *EnableWhiteBoxKeyResponse, err error) {
-    if request == nil {
-        request = NewEnableWhiteBoxKeyRequest()
-    }
-    
-    response = NewEnableWhiteBoxKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableWhiteBoxKeyWithContext(context.Background(), request)
 }
 
 // EnableWhiteBoxKey
@@ -1645,6 +1614,11 @@ func (c *Client) EnableWhiteBoxKeyWithContext(ctx context.Context, request *Enab
     if request == nil {
         request = NewEnableWhiteBoxKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableWhiteBoxKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableWhiteBoxKeyResponse()
@@ -1681,13 +1655,7 @@ func NewEnableWhiteBoxKeysResponse() (response *EnableWhiteBoxKeysResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) EnableWhiteBoxKeys(request *EnableWhiteBoxKeysRequest) (response *EnableWhiteBoxKeysResponse, err error) {
-    if request == nil {
-        request = NewEnableWhiteBoxKeysRequest()
-    }
-    
-    response = NewEnableWhiteBoxKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableWhiteBoxKeysWithContext(context.Background(), request)
 }
 
 // EnableWhiteBoxKeys
@@ -1705,6 +1673,11 @@ func (c *Client) EnableWhiteBoxKeysWithContext(ctx context.Context, request *Ena
     if request == nil {
         request = NewEnableWhiteBoxKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableWhiteBoxKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableWhiteBoxKeysResponse()
@@ -1742,13 +1715,7 @@ func NewEncryptResponse() (response *EncryptResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) Encrypt(request *EncryptRequest) (response *EncryptResponse, err error) {
-    if request == nil {
-        request = NewEncryptRequest()
-    }
-    
-    response = NewEncryptResponse()
-    err = c.Send(request, response)
-    return
+    return c.EncryptWithContext(context.Background(), request)
 }
 
 // Encrypt
@@ -1767,6 +1734,11 @@ func (c *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest
     if request == nil {
         request = NewEncryptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Encrypt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEncryptResponse()
@@ -1803,13 +1775,7 @@ func NewEncryptByWhiteBoxResponse() (response *EncryptByWhiteBoxResponse) {
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) EncryptByWhiteBox(request *EncryptByWhiteBoxRequest) (response *EncryptByWhiteBoxResponse, err error) {
-    if request == nil {
-        request = NewEncryptByWhiteBoxRequest()
-    }
-    
-    response = NewEncryptByWhiteBoxResponse()
-    err = c.Send(request, response)
-    return
+    return c.EncryptByWhiteBoxWithContext(context.Background(), request)
 }
 
 // EncryptByWhiteBox
@@ -1827,6 +1793,11 @@ func (c *Client) EncryptByWhiteBoxWithContext(ctx context.Context, request *Encr
     if request == nil {
         request = NewEncryptByWhiteBoxRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EncryptByWhiteBox require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEncryptByWhiteBoxResponse()
@@ -1864,13 +1835,7 @@ func NewGenerateDataKeyResponse() (response *GenerateDataKeyResponse) {
 //  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GenerateDataKey(request *GenerateDataKeyRequest) (response *GenerateDataKeyResponse, err error) {
-    if request == nil {
-        request = NewGenerateDataKeyRequest()
-    }
-    
-    response = NewGenerateDataKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateDataKeyWithContext(context.Background(), request)
 }
 
 // GenerateDataKey
@@ -1889,6 +1854,11 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, request *Genera
     if request == nil {
         request = NewGenerateDataKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateDataKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateDataKeyResponse()
@@ -1921,13 +1891,7 @@ func NewGenerateRandomResponse() (response *GenerateRandomResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GenerateRandom(request *GenerateRandomRequest) (response *GenerateRandomResponse, err error) {
-    if request == nil {
-        request = NewGenerateRandomRequest()
-    }
-    
-    response = NewGenerateRandomResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateRandomWithContext(context.Background(), request)
 }
 
 // GenerateRandom
@@ -1941,6 +1905,11 @@ func (c *Client) GenerateRandomWithContext(ctx context.Context, request *Generat
     if request == nil {
         request = NewGenerateRandomRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateRandom require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateRandomResponse()
@@ -1975,13 +1944,7 @@ func NewGetKeyRotationStatusResponse() (response *GetKeyRotationStatusResponse) 
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetKeyRotationStatus(request *GetKeyRotationStatusRequest) (response *GetKeyRotationStatusResponse, err error) {
-    if request == nil {
-        request = NewGetKeyRotationStatusRequest()
-    }
-    
-    response = NewGetKeyRotationStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetKeyRotationStatusWithContext(context.Background(), request)
 }
 
 // GetKeyRotationStatus
@@ -1997,6 +1960,11 @@ func (c *Client) GetKeyRotationStatusWithContext(ctx context.Context, request *G
     if request == nil {
         request = NewGetKeyRotationStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetKeyRotationStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetKeyRotationStatusResponse()
@@ -2032,13 +2000,7 @@ func NewGetParametersForImportResponse() (response *GetParametersForImportRespon
 //  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) GetParametersForImport(request *GetParametersForImportRequest) (response *GetParametersForImportResponse, err error) {
-    if request == nil {
-        request = NewGetParametersForImportRequest()
-    }
-    
-    response = NewGetParametersForImportResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetParametersForImportWithContext(context.Background(), request)
 }
 
 // GetParametersForImport
@@ -2055,6 +2017,11 @@ func (c *Client) GetParametersForImportWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetParametersForImportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetParametersForImport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetParametersForImportResponse()
@@ -2090,13 +2057,7 @@ func NewGetPublicKeyResponse() (response *GetPublicKeyResponse) {
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublicKeyResponse, err error) {
-    if request == nil {
-        request = NewGetPublicKeyRequest()
-    }
-    
-    response = NewGetPublicKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPublicKeyWithContext(context.Background(), request)
 }
 
 // GetPublicKey
@@ -2113,6 +2074,11 @@ func (c *Client) GetPublicKeyWithContext(ctx context.Context, request *GetPublic
     if request == nil {
         request = NewGetPublicKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPublicKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPublicKeyResponse()
@@ -2143,13 +2109,7 @@ func NewGetRegionsResponse() (response *GetRegionsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) GetRegions(request *GetRegionsRequest) (response *GetRegionsResponse, err error) {
-    if request == nil {
-        request = NewGetRegionsRequest()
-    }
-    
-    response = NewGetRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRegionsWithContext(context.Background(), request)
 }
 
 // GetRegions
@@ -2161,6 +2121,11 @@ func (c *Client) GetRegionsWithContext(ctx context.Context, request *GetRegionsR
     if request == nil {
         request = NewGetRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRegionsResponse()
@@ -2192,13 +2157,7 @@ func NewGetServiceStatusResponse() (response *GetServiceStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
-    if request == nil {
-        request = NewGetServiceStatusRequest()
-    }
-    
-    response = NewGetServiceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetServiceStatusWithContext(context.Background(), request)
 }
 
 // GetServiceStatus
@@ -2211,6 +2170,11 @@ func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetSe
     if request == nil {
         request = NewGetServiceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetServiceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetServiceStatusResponse()
@@ -2251,13 +2215,7 @@ func NewImportKeyMaterialResponse() (response *ImportKeyMaterialResponse) {
 //  UNSUPPORTEDOPERATION_NOTEXTERNALCMK = "UnsupportedOperation.NotExternalCmk"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (response *ImportKeyMaterialResponse, err error) {
-    if request == nil {
-        request = NewImportKeyMaterialRequest()
-    }
-    
-    response = NewImportKeyMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportKeyMaterialWithContext(context.Background(), request)
 }
 
 // ImportKeyMaterial
@@ -2279,6 +2237,11 @@ func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, request *Impo
     if request == nil {
         request = NewImportKeyMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportKeyMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportKeyMaterialResponse()
@@ -2310,13 +2273,7 @@ func NewListAlgorithmsResponse() (response *ListAlgorithmsResponse) {
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListAlgorithms(request *ListAlgorithmsRequest) (response *ListAlgorithmsResponse, err error) {
-    if request == nil {
-        request = NewListAlgorithmsRequest()
-    }
-    
-    response = NewListAlgorithmsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAlgorithmsWithContext(context.Background(), request)
 }
 
 // ListAlgorithms
@@ -2329,6 +2286,11 @@ func (c *Client) ListAlgorithmsWithContext(ctx context.Context, request *ListAlg
     if request == nil {
         request = NewListAlgorithmsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAlgorithms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAlgorithmsResponse()
@@ -2361,13 +2323,7 @@ func NewListKeyDetailResponse() (response *ListKeyDetailResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListKeyDetail(request *ListKeyDetailRequest) (response *ListKeyDetailResponse, err error) {
-    if request == nil {
-        request = NewListKeyDetailRequest()
-    }
-    
-    response = NewListKeyDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListKeyDetailWithContext(context.Background(), request)
 }
 
 // ListKeyDetail
@@ -2381,6 +2337,11 @@ func (c *Client) ListKeyDetailWithContext(ctx context.Context, request *ListKeyD
     if request == nil {
         request = NewListKeyDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListKeyDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListKeyDetailResponse()
@@ -2413,13 +2374,7 @@ func NewListKeysResponse() (response *ListKeysResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListKeys(request *ListKeysRequest) (response *ListKeysResponse, err error) {
-    if request == nil {
-        request = NewListKeysRequest()
-    }
-    
-    response = NewListKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListKeysWithContext(context.Background(), request)
 }
 
 // ListKeys
@@ -2433,6 +2388,11 @@ func (c *Client) ListKeysWithContext(ctx context.Context, request *ListKeysReque
     if request == nil {
         request = NewListKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListKeysResponse()
@@ -2469,13 +2429,7 @@ func NewOverwriteWhiteBoxDeviceFingerprintsResponse() (response *OverwriteWhiteB
 //  RESOURCEUNAVAILABLE_NOTPURCHASED = "ResourceUnavailable.NotPurchased"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) OverwriteWhiteBoxDeviceFingerprints(request *OverwriteWhiteBoxDeviceFingerprintsRequest) (response *OverwriteWhiteBoxDeviceFingerprintsResponse, err error) {
-    if request == nil {
-        request = NewOverwriteWhiteBoxDeviceFingerprintsRequest()
-    }
-    
-    response = NewOverwriteWhiteBoxDeviceFingerprintsResponse()
-    err = c.Send(request, response)
-    return
+    return c.OverwriteWhiteBoxDeviceFingerprintsWithContext(context.Background(), request)
 }
 
 // OverwriteWhiteBoxDeviceFingerprints
@@ -2493,6 +2447,11 @@ func (c *Client) OverwriteWhiteBoxDeviceFingerprintsWithContext(ctx context.Cont
     if request == nil {
         request = NewOverwriteWhiteBoxDeviceFingerprintsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OverwriteWhiteBoxDeviceFingerprints require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOverwriteWhiteBoxDeviceFingerprintsResponse()
@@ -2529,13 +2488,7 @@ func NewReEncryptResponse() (response *ReEncryptResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReEncrypt(request *ReEncryptRequest) (response *ReEncryptResponse, err error) {
-    if request == nil {
-        request = NewReEncryptRequest()
-    }
-    
-    response = NewReEncryptResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReEncryptWithContext(context.Background(), request)
 }
 
 // ReEncrypt
@@ -2553,6 +2506,11 @@ func (c *Client) ReEncryptWithContext(ctx context.Context, request *ReEncryptReq
     if request == nil {
         request = NewReEncryptRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReEncrypt require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReEncryptResponse()
@@ -2591,13 +2549,7 @@ func NewScheduleKeyDeletionResponse() (response *ScheduleKeyDeletionResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (response *ScheduleKeyDeletionResponse, err error) {
-    if request == nil {
-        request = NewScheduleKeyDeletionRequest()
-    }
-    
-    response = NewScheduleKeyDeletionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScheduleKeyDeletionWithContext(context.Background(), request)
 }
 
 // ScheduleKeyDeletion
@@ -2617,6 +2569,11 @@ func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, request *Sc
     if request == nil {
         request = NewScheduleKeyDeletionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScheduleKeyDeletion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScheduleKeyDeletionResponse()
@@ -2655,13 +2612,7 @@ func NewSignByAsymmetricKeyResponse() (response *SignByAsymmetricKeyResponse) {
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 func (c *Client) SignByAsymmetricKey(request *SignByAsymmetricKeyRequest) (response *SignByAsymmetricKeyResponse, err error) {
-    if request == nil {
-        request = NewSignByAsymmetricKeyRequest()
-    }
-    
-    response = NewSignByAsymmetricKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.SignByAsymmetricKeyWithContext(context.Background(), request)
 }
 
 // SignByAsymmetricKey
@@ -2681,6 +2632,11 @@ func (c *Client) SignByAsymmetricKeyWithContext(ctx context.Context, request *Si
     if request == nil {
         request = NewSignByAsymmetricKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SignByAsymmetricKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSignByAsymmetricKeyResponse()
@@ -2717,13 +2673,7 @@ func NewUnbindCloudResourceResponse() (response *UnbindCloudResourceResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) UnbindCloudResource(request *UnbindCloudResourceRequest) (response *UnbindCloudResourceResponse, err error) {
-    if request == nil {
-        request = NewUnbindCloudResourceRequest()
-    }
-    
-    response = NewUnbindCloudResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindCloudResourceWithContext(context.Background(), request)
 }
 
 // UnbindCloudResource
@@ -2741,6 +2691,11 @@ func (c *Client) UnbindCloudResourceWithContext(ctx context.Context, request *Un
     if request == nil {
         request = NewUnbindCloudResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindCloudResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindCloudResourceResponse()
@@ -2778,13 +2733,7 @@ func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAliasResponse, err error) {
-    if request == nil {
-        request = NewUpdateAliasRequest()
-    }
-    
-    response = NewUpdateAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAliasWithContext(context.Background(), request)
 }
 
 // UpdateAlias
@@ -2803,6 +2752,11 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     if request == nil {
         request = NewUpdateAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAliasResponse()
@@ -2838,13 +2792,7 @@ func NewUpdateKeyDescriptionResponse() (response *UpdateKeyDescriptionResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = "UnsupportedOperation.ServiceTemporaryUnavailable"
 func (c *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest) (response *UpdateKeyDescriptionResponse, err error) {
-    if request == nil {
-        request = NewUpdateKeyDescriptionRequest()
-    }
-    
-    response = NewUpdateKeyDescriptionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateKeyDescriptionWithContext(context.Background(), request)
 }
 
 // UpdateKeyDescription
@@ -2861,6 +2809,11 @@ func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateKeyDescriptionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateKeyDescription require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateKeyDescriptionResponse()
@@ -2896,13 +2849,7 @@ func NewVerifyByAsymmetricKeyResponse() (response *VerifyByAsymmetricKeyResponse
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
 func (c *Client) VerifyByAsymmetricKey(request *VerifyByAsymmetricKeyRequest) (response *VerifyByAsymmetricKeyResponse, err error) {
-    if request == nil {
-        request = NewVerifyByAsymmetricKeyRequest()
-    }
-    
-    response = NewVerifyByAsymmetricKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyByAsymmetricKeyWithContext(context.Background(), request)
 }
 
 // VerifyByAsymmetricKey
@@ -2919,6 +2866,11 @@ func (c *Client) VerifyByAsymmetricKeyWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifyByAsymmetricKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyByAsymmetricKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyByAsymmetricKeyResponse()

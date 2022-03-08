@@ -324,19 +324,19 @@ type ContentInfo struct {
 type CreateAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 
-	// 告警模板名称。
+	// 通知渠道组名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 告警模板的类型。可选值：
-	// <br><li> Trigger - 告警触发
-	// <br><li> Recovery - 告警恢复
-	// <br><li> All - 告警触发和告警恢复
+	// 通知类型。可选值：
+	// <li> Trigger - 告警触发
+	// <li> Recovery - 告警恢复
+	// <li> All - 告警触发和告警恢复
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 告警模板接收者信息。
+	// 通知接收对象。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
 
-	// 告警模板回调信息。
+	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
 }
 
@@ -1042,7 +1042,7 @@ type CsvInfo struct {
 type DeleteAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 
-	// 告警通知模板
+	// 通知渠道组ID
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitempty" name:"AlarmNoticeId"`
 }
 
@@ -1552,34 +1552,21 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 type DescribeAlarmNoticesRequest struct {
 	*tchttp.BaseRequest
 
-	// <br><li> name
-	// 
-	// 按照【告警通知模板名称】进行过滤。
+	// <li> name
+	// 按照【通知渠道组名称】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
-	// 
-	// <br><li> alarmNoticeId
-	// 
-	// 按照【告警通知模板ID】进行过滤。
+	// <li> alarmNoticeId
+	// 按照【通知渠道组ID】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
-	// 
-	// <br><li> uid
-	// 
+	// <li> uid
 	// 按照【接收用户ID】进行过滤。
-	// 
 	// 类型：String
-	// 
 	// 必选：否
-	// 
-	// <br><li> groupId
-	// 
-	// 按照【用户组ID】进行过滤。
-	// 
+	// <li> groupId
+	// 按照【接收用户组ID】进行过滤。
 	// 类型：String
-	// 
 	// 必选：否
 	// 
 	// 每次请求的Filters的上限为10，Filter.Values的上限为5。
@@ -2606,7 +2593,7 @@ func (r *DescribeShippersResponse) FromJsonString(s string) error {
 type DescribeTopicsRequest struct {
 	*tchttp.BaseRequest
 
-	// <br><li> topicName按照【日志主题名称】进行过滤。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。使用请参考示例2。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（实时存储），cold（离线存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// <br><li> topicName按照【日志主题名称】进行过滤。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（实时存储），cold（低频存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页的偏移量，默认值为0。
@@ -3131,22 +3118,22 @@ func (r *MergePartitionResponse) FromJsonString(s string) error {
 type ModifyAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 
-	// 告警通知模板ID。
+	// 通知渠道组ID。
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitempty" name:"AlarmNoticeId"`
 
-	// 告警模板名称。
+	// 通知渠道组名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 告警模板的类型。可选值：
-	// <br><li> Trigger - 告警触发
-	// <br><li> Recovery - 告警恢复
-	// <br><li> All - 告警触发和告警恢复
+	// 通知类型。可选值：
+	// <li> Trigger - 告警触发
+	// <li> Recovery - 告警恢复
+	// <li> All - 告警触发和告警恢复
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 告警模板接收者信息。
+	// 通知接收对象。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
 
-	// 告警模板回调信息。
+	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
 }
 
@@ -4286,22 +4273,24 @@ type WebCallback struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 回调的类型。可选值：
-	// <br><li> WeCom
-	// <br><li> Http
+	// <li> WeCom
+	// <li> Http
 	CallbackType *string `json:"CallbackType,omitempty" name:"CallbackType"`
 
 	// 回调方法。可选值：
-	// <br><li> POST
-	// <br><li> PUT
+	// <li> POST
+	// <li> PUT
 	// 默认值为POST。CallbackType为Http时为必选。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitempty" name:"Method"`
 
 	// 请求头。
+	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求头。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 
-	// 请求内容。CallbackType为Http时为必选。
+	// 请求内容。
+	// 注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitempty" name:"Body"`
 

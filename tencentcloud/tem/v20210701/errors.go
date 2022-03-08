@@ -56,6 +56,9 @@ const (
 	// 环境创建失败，达到上限。
 	INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
 
+	// 环境资源创建失败，达到上限。
+	INVALIDPARAMETERVALUE_NAMESPACERESOURCEREACHMAXIMUM = "InvalidParameterValue.NamespaceResourceReachMaximum"
+
 	// 应用存在正在运行的实例。
 	INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"
 

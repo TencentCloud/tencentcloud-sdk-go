@@ -16,6 +16,7 @@ package v20190926
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewMarketingValueJudgementResponse() (response *MarketingValueJudgementResp
 //  INVALIDPARAMETERVALUE_INVALIDIP = "InvalidParameterValue.InvalidIp"
 //  INVALIDPARAMETERVALUE_INVALIDMOBILENUMBER = "InvalidParameterValue.InvalidMobileNumber"
 func (c *Client) MarketingValueJudgement(request *MarketingValueJudgementRequest) (response *MarketingValueJudgementResponse, err error) {
-    if request == nil {
-        request = NewMarketingValueJudgementRequest()
-    }
-    
-    response = NewMarketingValueJudgementResponse()
-    err = c.Send(request, response)
-    return
+    return c.MarketingValueJudgementWithContext(context.Background(), request)
 }
 
 // MarketingValueJudgement
@@ -101,6 +96,11 @@ func (c *Client) MarketingValueJudgementWithContext(ctx context.Context, request
     if request == nil {
         request = NewMarketingValueJudgementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MarketingValueJudgement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMarketingValueJudgementResponse()

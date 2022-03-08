@@ -16,6 +16,7 @@ package v20200417
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,13 +86,7 @@ func NewRecognizeProductResponse() (response *RecognizeProductResponse) {
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) RecognizeProduct(request *RecognizeProductRequest) (response *RecognizeProductResponse, err error) {
-    if request == nil {
-        request = NewRecognizeProductRequest()
-    }
-    
-    response = NewRecognizeProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecognizeProductWithContext(context.Background(), request)
 }
 
 // RecognizeProduct
@@ -121,6 +116,11 @@ func (c *Client) RecognizeProductWithContext(ctx context.Context, request *Recog
     if request == nil {
         request = NewRecognizeProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecognizeProductResponse()

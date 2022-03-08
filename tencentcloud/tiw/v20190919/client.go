@@ -16,6 +16,7 @@ package v20190919
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewCreateSnapshotTaskResponse() (response *CreateSnapshotTaskResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateSnapshotTask(request *CreateSnapshotTaskRequest) (response *CreateSnapshotTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateSnapshotTaskRequest()
-    }
-    
-    response = NewCreateSnapshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSnapshotTaskWithContext(context.Background(), request)
 }
 
 // CreateSnapshotTask
@@ -99,6 +94,11 @@ func (c *Client) CreateSnapshotTaskWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateSnapshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSnapshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSnapshotTaskResponse()
@@ -138,13 +138,7 @@ func NewCreateTranscodeResponse() (response *CreateTranscodeResponse) {
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateTranscode(request *CreateTranscodeRequest) (response *CreateTranscodeResponse, err error) {
-    if request == nil {
-        request = NewCreateTranscodeRequest()
-    }
-    
-    response = NewCreateTranscodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTranscodeWithContext(context.Background(), request)
 }
 
 // CreateTranscode
@@ -165,6 +159,11 @@ func (c *Client) CreateTranscodeWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateTranscodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTranscode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTranscodeResponse()
@@ -204,13 +203,7 @@ func NewCreateVideoGenerationTaskResponse() (response *CreateVideoGenerationTask
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateVideoGenerationTask(request *CreateVideoGenerationTaskRequest) (response *CreateVideoGenerationTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateVideoGenerationTaskRequest()
-    }
-    
-    response = NewCreateVideoGenerationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVideoGenerationTaskWithContext(context.Background(), request)
 }
 
 // CreateVideoGenerationTask
@@ -231,6 +224,11 @@ func (c *Client) CreateVideoGenerationTaskWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateVideoGenerationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoGenerationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVideoGenerationTaskResponse()
@@ -267,13 +265,7 @@ func NewDescribeOnlineRecordResponse() (response *DescribeOnlineRecordResponse) 
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeOnlineRecord(request *DescribeOnlineRecordRequest) (response *DescribeOnlineRecordResponse, err error) {
-    if request == nil {
-        request = NewDescribeOnlineRecordRequest()
-    }
-    
-    response = NewDescribeOnlineRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOnlineRecordWithContext(context.Background(), request)
 }
 
 // DescribeOnlineRecord
@@ -291,6 +283,11 @@ func (c *Client) DescribeOnlineRecordWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeOnlineRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOnlineRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOnlineRecordResponse()
@@ -326,13 +323,7 @@ func NewDescribeOnlineRecordCallbackResponse() (response *DescribeOnlineRecordCa
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeOnlineRecordCallback(request *DescribeOnlineRecordCallbackRequest) (response *DescribeOnlineRecordCallbackResponse, err error) {
-    if request == nil {
-        request = NewDescribeOnlineRecordCallbackRequest()
-    }
-    
-    response = NewDescribeOnlineRecordCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOnlineRecordCallbackWithContext(context.Background(), request)
 }
 
 // DescribeOnlineRecordCallback
@@ -349,6 +340,11 @@ func (c *Client) DescribeOnlineRecordCallbackWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeOnlineRecordCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOnlineRecordCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOnlineRecordCallbackResponse()
@@ -383,13 +379,7 @@ func NewDescribeQualityMetricsResponse() (response *DescribeQualityMetricsRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeQualityMetrics(request *DescribeQualityMetricsRequest) (response *DescribeQualityMetricsResponse, err error) {
-    if request == nil {
-        request = NewDescribeQualityMetricsRequest()
-    }
-    
-    response = NewDescribeQualityMetricsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQualityMetricsWithContext(context.Background(), request)
 }
 
 // DescribeQualityMetrics
@@ -405,6 +395,11 @@ func (c *Client) DescribeQualityMetricsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeQualityMetricsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityMetrics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQualityMetricsResponse()
@@ -445,13 +440,7 @@ func NewDescribeSnapshotTaskResponse() (response *DescribeSnapshotTaskResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSnapshotTask(request *DescribeSnapshotTaskRequest) (response *DescribeSnapshotTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeSnapshotTaskRequest()
-    }
-    
-    response = NewDescribeSnapshotTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSnapshotTaskWithContext(context.Background(), request)
 }
 
 // DescribeSnapshotTask
@@ -473,6 +462,11 @@ func (c *Client) DescribeSnapshotTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSnapshotTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSnapshotTaskResponse()
@@ -514,13 +508,7 @@ func NewDescribeTIWDailyUsageResponse() (response *DescribeTIWDailyUsageResponse
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeTIWDailyUsage(request *DescribeTIWDailyUsageRequest) (response *DescribeTIWDailyUsageResponse, err error) {
-    if request == nil {
-        request = NewDescribeTIWDailyUsageRequest()
-    }
-    
-    response = NewDescribeTIWDailyUsageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTIWDailyUsageWithContext(context.Background(), request)
 }
 
 // DescribeTIWDailyUsage
@@ -543,6 +531,11 @@ func (c *Client) DescribeTIWDailyUsageWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTIWDailyUsageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTIWDailyUsage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTIWDailyUsageResponse()
@@ -588,13 +581,7 @@ func NewDescribeTranscodeResponse() (response *DescribeTranscodeResponse) {
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeTranscode(request *DescribeTranscodeRequest) (response *DescribeTranscodeResponse, err error) {
-    if request == nil {
-        request = NewDescribeTranscodeRequest()
-    }
-    
-    response = NewDescribeTranscodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTranscodeWithContext(context.Background(), request)
 }
 
 // DescribeTranscode
@@ -621,6 +608,11 @@ func (c *Client) DescribeTranscodeWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTranscodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTranscode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTranscodeResponse()
@@ -656,13 +648,7 @@ func NewDescribeTranscodeCallbackResponse() (response *DescribeTranscodeCallback
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeTranscodeCallback(request *DescribeTranscodeCallbackRequest) (response *DescribeTranscodeCallbackResponse, err error) {
-    if request == nil {
-        request = NewDescribeTranscodeCallbackRequest()
-    }
-    
-    response = NewDescribeTranscodeCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTranscodeCallbackWithContext(context.Background(), request)
 }
 
 // DescribeTranscodeCallback
@@ -679,6 +665,11 @@ func (c *Client) DescribeTranscodeCallbackWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTranscodeCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTranscodeCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTranscodeCallbackResponse()
@@ -715,13 +706,7 @@ func NewDescribeVideoGenerationTaskResponse() (response *DescribeVideoGeneration
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeVideoGenerationTask(request *DescribeVideoGenerationTaskRequest) (response *DescribeVideoGenerationTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoGenerationTaskRequest()
-    }
-    
-    response = NewDescribeVideoGenerationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoGenerationTaskWithContext(context.Background(), request)
 }
 
 // DescribeVideoGenerationTask
@@ -739,6 +724,11 @@ func (c *Client) DescribeVideoGenerationTaskWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVideoGenerationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoGenerationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoGenerationTaskResponse()
@@ -774,13 +764,7 @@ func NewDescribeVideoGenerationTaskCallbackResponse() (response *DescribeVideoGe
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeVideoGenerationTaskCallback(request *DescribeVideoGenerationTaskCallbackRequest) (response *DescribeVideoGenerationTaskCallbackResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoGenerationTaskCallbackRequest()
-    }
-    
-    response = NewDescribeVideoGenerationTaskCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoGenerationTaskCallbackWithContext(context.Background(), request)
 }
 
 // DescribeVideoGenerationTaskCallback
@@ -797,6 +781,11 @@ func (c *Client) DescribeVideoGenerationTaskCallbackWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeVideoGenerationTaskCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoGenerationTaskCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoGenerationTaskCallbackResponse()
@@ -833,13 +822,7 @@ func NewDescribeWhiteboardPushResponse() (response *DescribeWhiteboardPushRespon
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeWhiteboardPush(request *DescribeWhiteboardPushRequest) (response *DescribeWhiteboardPushResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteboardPushRequest()
-    }
-    
-    response = NewDescribeWhiteboardPushResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteboardPushWithContext(context.Background(), request)
 }
 
 // DescribeWhiteboardPush
@@ -857,6 +840,11 @@ func (c *Client) DescribeWhiteboardPushWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeWhiteboardPushRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteboardPush require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteboardPushResponse()
@@ -892,13 +880,7 @@ func NewDescribeWhiteboardPushCallbackResponse() (response *DescribeWhiteboardPu
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) DescribeWhiteboardPushCallback(request *DescribeWhiteboardPushCallbackRequest) (response *DescribeWhiteboardPushCallbackResponse, err error) {
-    if request == nil {
-        request = NewDescribeWhiteboardPushCallbackRequest()
-    }
-    
-    response = NewDescribeWhiteboardPushCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWhiteboardPushCallbackWithContext(context.Background(), request)
 }
 
 // DescribeWhiteboardPushCallback
@@ -915,6 +897,11 @@ func (c *Client) DescribeWhiteboardPushCallbackWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeWhiteboardPushCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteboardPushCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWhiteboardPushCallbackResponse()
@@ -952,13 +939,7 @@ func NewPauseOnlineRecordResponse() (response *PauseOnlineRecordResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDTASKSTATUS = "UnsupportedOperation.InvalidTaskStatus"
 //  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) PauseOnlineRecord(request *PauseOnlineRecordRequest) (response *PauseOnlineRecordResponse, err error) {
-    if request == nil {
-        request = NewPauseOnlineRecordRequest()
-    }
-    
-    response = NewPauseOnlineRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.PauseOnlineRecordWithContext(context.Background(), request)
 }
 
 // PauseOnlineRecord
@@ -977,6 +958,11 @@ func (c *Client) PauseOnlineRecordWithContext(ctx context.Context, request *Paus
     if request == nil {
         request = NewPauseOnlineRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseOnlineRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPauseOnlineRecordResponse()
@@ -1014,13 +1000,7 @@ func NewResumeOnlineRecordResponse() (response *ResumeOnlineRecordResponse) {
 //  UNSUPPORTEDOPERATION_INVALIDTASKSTATUS = "UnsupportedOperation.InvalidTaskStatus"
 //  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) ResumeOnlineRecord(request *ResumeOnlineRecordRequest) (response *ResumeOnlineRecordResponse, err error) {
-    if request == nil {
-        request = NewResumeOnlineRecordRequest()
-    }
-    
-    response = NewResumeOnlineRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResumeOnlineRecordWithContext(context.Background(), request)
 }
 
 // ResumeOnlineRecord
@@ -1039,6 +1019,11 @@ func (c *Client) ResumeOnlineRecordWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewResumeOnlineRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResumeOnlineRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResumeOnlineRecordResponse()
@@ -1074,13 +1059,7 @@ func NewSetOnlineRecordCallbackResponse() (response *SetOnlineRecordCallbackResp
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetOnlineRecordCallback(request *SetOnlineRecordCallbackRequest) (response *SetOnlineRecordCallbackResponse, err error) {
-    if request == nil {
-        request = NewSetOnlineRecordCallbackRequest()
-    }
-    
-    response = NewSetOnlineRecordCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetOnlineRecordCallbackWithContext(context.Background(), request)
 }
 
 // SetOnlineRecordCallback
@@ -1097,6 +1076,11 @@ func (c *Client) SetOnlineRecordCallbackWithContext(ctx context.Context, request
     if request == nil {
         request = NewSetOnlineRecordCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetOnlineRecordCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetOnlineRecordCallbackResponse()
@@ -1132,13 +1116,7 @@ func NewSetOnlineRecordCallbackKeyResponse() (response *SetOnlineRecordCallbackK
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetOnlineRecordCallbackKey(request *SetOnlineRecordCallbackKeyRequest) (response *SetOnlineRecordCallbackKeyResponse, err error) {
-    if request == nil {
-        request = NewSetOnlineRecordCallbackKeyRequest()
-    }
-    
-    response = NewSetOnlineRecordCallbackKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetOnlineRecordCallbackKeyWithContext(context.Background(), request)
 }
 
 // SetOnlineRecordCallbackKey
@@ -1155,6 +1133,11 @@ func (c *Client) SetOnlineRecordCallbackKeyWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSetOnlineRecordCallbackKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetOnlineRecordCallbackKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetOnlineRecordCallbackKeyResponse()
@@ -1190,13 +1173,7 @@ func NewSetTranscodeCallbackResponse() (response *SetTranscodeCallbackResponse) 
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetTranscodeCallback(request *SetTranscodeCallbackRequest) (response *SetTranscodeCallbackResponse, err error) {
-    if request == nil {
-        request = NewSetTranscodeCallbackRequest()
-    }
-    
-    response = NewSetTranscodeCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTranscodeCallbackWithContext(context.Background(), request)
 }
 
 // SetTranscodeCallback
@@ -1213,6 +1190,11 @@ func (c *Client) SetTranscodeCallbackWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewSetTranscodeCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTranscodeCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTranscodeCallbackResponse()
@@ -1248,13 +1230,7 @@ func NewSetTranscodeCallbackKeyResponse() (response *SetTranscodeCallbackKeyResp
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetTranscodeCallbackKey(request *SetTranscodeCallbackKeyRequest) (response *SetTranscodeCallbackKeyResponse, err error) {
-    if request == nil {
-        request = NewSetTranscodeCallbackKeyRequest()
-    }
-    
-    response = NewSetTranscodeCallbackKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetTranscodeCallbackKeyWithContext(context.Background(), request)
 }
 
 // SetTranscodeCallbackKey
@@ -1271,6 +1247,11 @@ func (c *Client) SetTranscodeCallbackKeyWithContext(ctx context.Context, request
     if request == nil {
         request = NewSetTranscodeCallbackKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetTranscodeCallbackKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetTranscodeCallbackKeyResponse()
@@ -1306,13 +1287,7 @@ func NewSetVideoGenerationTaskCallbackResponse() (response *SetVideoGenerationTa
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetVideoGenerationTaskCallback(request *SetVideoGenerationTaskCallbackRequest) (response *SetVideoGenerationTaskCallbackResponse, err error) {
-    if request == nil {
-        request = NewSetVideoGenerationTaskCallbackRequest()
-    }
-    
-    response = NewSetVideoGenerationTaskCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetVideoGenerationTaskCallbackWithContext(context.Background(), request)
 }
 
 // SetVideoGenerationTaskCallback
@@ -1329,6 +1304,11 @@ func (c *Client) SetVideoGenerationTaskCallbackWithContext(ctx context.Context, 
     if request == nil {
         request = NewSetVideoGenerationTaskCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVideoGenerationTaskCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetVideoGenerationTaskCallbackResponse()
@@ -1364,13 +1344,7 @@ func NewSetVideoGenerationTaskCallbackKeyResponse() (response *SetVideoGeneratio
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetVideoGenerationTaskCallbackKey(request *SetVideoGenerationTaskCallbackKeyRequest) (response *SetVideoGenerationTaskCallbackKeyResponse, err error) {
-    if request == nil {
-        request = NewSetVideoGenerationTaskCallbackKeyRequest()
-    }
-    
-    response = NewSetVideoGenerationTaskCallbackKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetVideoGenerationTaskCallbackKeyWithContext(context.Background(), request)
 }
 
 // SetVideoGenerationTaskCallbackKey
@@ -1387,6 +1361,11 @@ func (c *Client) SetVideoGenerationTaskCallbackKeyWithContext(ctx context.Contex
     if request == nil {
         request = NewSetVideoGenerationTaskCallbackKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVideoGenerationTaskCallbackKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetVideoGenerationTaskCallbackKeyResponse()
@@ -1422,13 +1401,7 @@ func NewSetWhiteboardPushCallbackResponse() (response *SetWhiteboardPushCallback
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetWhiteboardPushCallback(request *SetWhiteboardPushCallbackRequest) (response *SetWhiteboardPushCallbackResponse, err error) {
-    if request == nil {
-        request = NewSetWhiteboardPushCallbackRequest()
-    }
-    
-    response = NewSetWhiteboardPushCallbackResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetWhiteboardPushCallbackWithContext(context.Background(), request)
 }
 
 // SetWhiteboardPushCallback
@@ -1445,6 +1418,11 @@ func (c *Client) SetWhiteboardPushCallbackWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSetWhiteboardPushCallbackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetWhiteboardPushCallback require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetWhiteboardPushCallbackResponse()
@@ -1480,13 +1458,7 @@ func NewSetWhiteboardPushCallbackKeyResponse() (response *SetWhiteboardPushCallb
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) SetWhiteboardPushCallbackKey(request *SetWhiteboardPushCallbackKeyRequest) (response *SetWhiteboardPushCallbackKeyResponse, err error) {
-    if request == nil {
-        request = NewSetWhiteboardPushCallbackKeyRequest()
-    }
-    
-    response = NewSetWhiteboardPushCallbackKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetWhiteboardPushCallbackKeyWithContext(context.Background(), request)
 }
 
 // SetWhiteboardPushCallbackKey
@@ -1503,6 +1475,11 @@ func (c *Client) SetWhiteboardPushCallbackKeyWithContext(ctx context.Context, re
     if request == nil {
         request = NewSetWhiteboardPushCallbackKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetWhiteboardPushCallbackKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetWhiteboardPushCallbackKeyResponse()
@@ -1542,13 +1519,7 @@ func NewStartOnlineRecordResponse() (response *StartOnlineRecordResponse) {
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartOnlineRecord(request *StartOnlineRecordRequest) (response *StartOnlineRecordResponse, err error) {
-    if request == nil {
-        request = NewStartOnlineRecordRequest()
-    }
-    
-    response = NewStartOnlineRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartOnlineRecordWithContext(context.Background(), request)
 }
 
 // StartOnlineRecord
@@ -1569,6 +1540,11 @@ func (c *Client) StartOnlineRecordWithContext(ctx context.Context, request *Star
     if request == nil {
         request = NewStartOnlineRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartOnlineRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartOnlineRecordResponse()
@@ -1608,13 +1584,7 @@ func NewStartWhiteboardPushResponse() (response *StartWhiteboardPushResponse) {
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartWhiteboardPush(request *StartWhiteboardPushRequest) (response *StartWhiteboardPushResponse, err error) {
-    if request == nil {
-        request = NewStartWhiteboardPushRequest()
-    }
-    
-    response = NewStartWhiteboardPushResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartWhiteboardPushWithContext(context.Background(), request)
 }
 
 // StartWhiteboardPush
@@ -1635,6 +1605,11 @@ func (c *Client) StartWhiteboardPushWithContext(ctx context.Context, request *St
     if request == nil {
         request = NewStartWhiteboardPushRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartWhiteboardPush require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartWhiteboardPushResponse()
@@ -1671,13 +1646,7 @@ func NewStopOnlineRecordResponse() (response *StopOnlineRecordResponse) {
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 //  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) StopOnlineRecord(request *StopOnlineRecordRequest) (response *StopOnlineRecordResponse, err error) {
-    if request == nil {
-        request = NewStopOnlineRecordRequest()
-    }
-    
-    response = NewStopOnlineRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopOnlineRecordWithContext(context.Background(), request)
 }
 
 // StopOnlineRecord
@@ -1695,6 +1664,11 @@ func (c *Client) StopOnlineRecordWithContext(ctx context.Context, request *StopO
     if request == nil {
         request = NewStopOnlineRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopOnlineRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopOnlineRecordResponse()
@@ -1731,13 +1705,7 @@ func NewStopWhiteboardPushResponse() (response *StopWhiteboardPushResponse) {
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 //  UNSUPPORTEDOPERATION_TASKHASALREADYSTOPPED = "UnsupportedOperation.TaskHasAlreadyStopped"
 func (c *Client) StopWhiteboardPush(request *StopWhiteboardPushRequest) (response *StopWhiteboardPushResponse, err error) {
-    if request == nil {
-        request = NewStopWhiteboardPushRequest()
-    }
-    
-    response = NewStopWhiteboardPushResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopWhiteboardPushWithContext(context.Background(), request)
 }
 
 // StopWhiteboardPush
@@ -1755,6 +1723,11 @@ func (c *Client) StopWhiteboardPushWithContext(ctx context.Context, request *Sto
     if request == nil {
         request = NewStopWhiteboardPushRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopWhiteboardPush require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopWhiteboardPushResponse()

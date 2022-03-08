@@ -16,6 +16,7 @@ package v20200720
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewCreateWeappQRUrlResponse() (response *CreateWeappQRUrlResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) CreateWeappQRUrl(request *CreateWeappQRUrlRequest) (response *CreateWeappQRUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateWeappQRUrlRequest()
-    }
-    
-    response = NewCreateWeappQRUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateWeappQRUrlWithContext(context.Background(), request)
 }
 
 // CreateWeappQRUrl
@@ -89,6 +84,11 @@ func (c *Client) CreateWeappQRUrlWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateWeappQRUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWeappQRUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateWeappQRUrlResponse()
@@ -121,13 +121,7 @@ func NewDescribeGetAuthInfoResponse() (response *DescribeGetAuthInfoResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeGetAuthInfo(request *DescribeGetAuthInfoRequest) (response *DescribeGetAuthInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeGetAuthInfoRequest()
-    }
-    
-    response = NewDescribeGetAuthInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGetAuthInfoWithContext(context.Background(), request)
 }
 
 // DescribeGetAuthInfo
@@ -141,6 +135,11 @@ func (c *Client) DescribeGetAuthInfoWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeGetAuthInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGetAuthInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGetAuthInfoResponse()
@@ -175,13 +174,7 @@ func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
-    if request == nil {
-        request = NewSyncIcpOrderWebInfoRequest()
-    }
-    
-    response = NewSyncIcpOrderWebInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncIcpOrderWebInfoWithContext(context.Background(), request)
 }
 
 // SyncIcpOrderWebInfo
@@ -197,6 +190,11 @@ func (c *Client) SyncIcpOrderWebInfoWithContext(ctx context.Context, request *Sy
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncIcpOrderWebInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncIcpOrderWebInfoResponse()

@@ -16,6 +16,7 @@ package v20210408
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewAddSubStructureTasksResponse() (response *AddSubStructureTasksResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) AddSubStructureTasks(request *AddSubStructureTasksRequest) (response *AddSubStructureTasksResponse, err error) {
-    if request == nil {
-        request = NewAddSubStructureTasksRequest()
-    }
-    
-    response = NewAddSubStructureTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddSubStructureTasksWithContext(context.Background(), request)
 }
 
 // AddSubStructureTasks
@@ -91,6 +86,11 @@ func (c *Client) AddSubStructureTasksWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAddSubStructureTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddSubStructureTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddSubStructureTasksResponse()
@@ -127,13 +127,7 @@ func NewCreateAutoClassifyStructureTaskResponse() (response *CreateAutoClassifyS
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateAutoClassifyStructureTask(request *CreateAutoClassifyStructureTaskRequest) (response *CreateAutoClassifyStructureTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAutoClassifyStructureTaskRequest()
-    }
-    
-    response = NewCreateAutoClassifyStructureTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAutoClassifyStructureTaskWithContext(context.Background(), request)
 }
 
 // CreateAutoClassifyStructureTask
@@ -151,6 +145,11 @@ func (c *Client) CreateAutoClassifyStructureTaskWithContext(ctx context.Context,
     if request == nil {
         request = NewCreateAutoClassifyStructureTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAutoClassifyStructureTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAutoClassifyStructureTaskResponse()
@@ -187,13 +186,7 @@ func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (response *CreateStructureTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateStructureTaskRequest()
-    }
-    
-    response = NewCreateStructureTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStructureTaskWithContext(context.Background(), request)
 }
 
 // CreateStructureTask
@@ -211,6 +204,11 @@ func (c *Client) CreateStructureTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateStructureTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStructureTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStructureTaskResponse()
@@ -247,13 +245,7 @@ func NewCreateUnderwriteTaskByIdResponse() (response *CreateUnderwriteTaskByIdRe
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateUnderwriteTaskById(request *CreateUnderwriteTaskByIdRequest) (response *CreateUnderwriteTaskByIdResponse, err error) {
-    if request == nil {
-        request = NewCreateUnderwriteTaskByIdRequest()
-    }
-    
-    response = NewCreateUnderwriteTaskByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUnderwriteTaskByIdWithContext(context.Background(), request)
 }
 
 // CreateUnderwriteTaskById
@@ -271,6 +263,11 @@ func (c *Client) CreateUnderwriteTaskByIdWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateUnderwriteTaskByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUnderwriteTaskById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUnderwriteTaskByIdResponse()
@@ -305,13 +302,7 @@ func NewDescribeMachineUnderwriteResponse() (response *DescribeMachineUnderwrite
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeMachineUnderwrite(request *DescribeMachineUnderwriteRequest) (response *DescribeMachineUnderwriteResponse, err error) {
-    if request == nil {
-        request = NewDescribeMachineUnderwriteRequest()
-    }
-    
-    response = NewDescribeMachineUnderwriteResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMachineUnderwriteWithContext(context.Background(), request)
 }
 
 // DescribeMachineUnderwrite
@@ -327,6 +318,11 @@ func (c *Client) DescribeMachineUnderwriteWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMachineUnderwriteRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMachineUnderwrite require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMachineUnderwriteResponse()
@@ -361,13 +357,7 @@ func NewDescribeQualityScoreResponse() (response *DescribeQualityScoreResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeQualityScore(request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
-    if request == nil {
-        request = NewDescribeQualityScoreRequest()
-    }
-    
-    response = NewDescribeQualityScoreResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQualityScoreWithContext(context.Background(), request)
 }
 
 // DescribeQualityScore
@@ -383,6 +373,11 @@ func (c *Client) DescribeQualityScoreWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeQualityScoreRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityScore require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQualityScoreResponse()
@@ -414,13 +409,7 @@ func NewDescribeReportClassifyResponse() (response *DescribeReportClassifyRespon
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReportClassify(request *DescribeReportClassifyRequest) (response *DescribeReportClassifyResponse, err error) {
-    if request == nil {
-        request = NewDescribeReportClassifyRequest()
-    }
-    
-    response = NewDescribeReportClassifyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReportClassifyWithContext(context.Background(), request)
 }
 
 // DescribeReportClassify
@@ -433,6 +422,11 @@ func (c *Client) DescribeReportClassifyWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeReportClassifyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReportClassify require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReportClassifyResponse()
@@ -465,13 +459,7 @@ func NewDescribeStructCompareDataResponse() (response *DescribeStructCompareData
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStructCompareData(request *DescribeStructCompareDataRequest) (response *DescribeStructCompareDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructCompareDataRequest()
-    }
-    
-    response = NewDescribeStructCompareDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructCompareDataWithContext(context.Background(), request)
 }
 
 // DescribeStructCompareData
@@ -485,6 +473,11 @@ func (c *Client) DescribeStructCompareDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeStructCompareDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructCompareData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructCompareDataResponse()
@@ -517,13 +510,7 @@ func NewDescribeStructureDifferenceResponse() (response *DescribeStructureDiffer
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStructureDifference(request *DescribeStructureDifferenceRequest) (response *DescribeStructureDifferenceResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructureDifferenceRequest()
-    }
-    
-    response = NewDescribeStructureDifferenceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructureDifferenceWithContext(context.Background(), request)
 }
 
 // DescribeStructureDifference
@@ -537,6 +524,11 @@ func (c *Client) DescribeStructureDifferenceWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureDifferenceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructureDifference require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructureDifferenceResponse()
@@ -573,13 +565,7 @@ func NewDescribeStructureResultResponse() (response *DescribeStructureResultResp
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest) (response *DescribeStructureResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructureResultRequest()
-    }
-    
-    response = NewDescribeStructureResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructureResultWithContext(context.Background(), request)
 }
 
 // DescribeStructureResult
@@ -597,6 +583,11 @@ func (c *Client) DescribeStructureResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeStructureResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructureResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructureResultResponse()
@@ -632,13 +623,7 @@ func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeStructureTaskResultRequest()
-    }
-    
-    response = NewDescribeStructureTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStructureTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeStructureTaskResult
@@ -655,6 +640,11 @@ func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStructureTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStructureTaskResultResponse()
@@ -690,13 +680,7 @@ func NewDescribeUnderwriteTaskResponse() (response *DescribeUnderwriteTaskRespon
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeUnderwriteTask(request *DescribeUnderwriteTaskRequest) (response *DescribeUnderwriteTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeUnderwriteTaskRequest()
-    }
-    
-    response = NewDescribeUnderwriteTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUnderwriteTaskWithContext(context.Background(), request)
 }
 
 // DescribeUnderwriteTask
@@ -713,6 +697,11 @@ func (c *Client) DescribeUnderwriteTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeUnderwriteTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnderwriteTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUnderwriteTaskResponse()
@@ -749,13 +738,7 @@ func NewUploadMedicalFileResponse() (response *UploadMedicalFileResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) UploadMedicalFile(request *UploadMedicalFileRequest) (response *UploadMedicalFileResponse, err error) {
-    if request == nil {
-        request = NewUploadMedicalFileRequest()
-    }
-    
-    response = NewUploadMedicalFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadMedicalFileWithContext(context.Background(), request)
 }
 
 // UploadMedicalFile
@@ -773,6 +756,11 @@ func (c *Client) UploadMedicalFileWithContext(ctx context.Context, request *Uplo
     if request == nil {
         request = NewUploadMedicalFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadMedicalFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadMedicalFileResponse()

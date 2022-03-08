@@ -16,6 +16,7 @@ package v20170312
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -76,13 +77,7 @@ func NewAllocateHostsResponse() (response *AllocateHostsResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  RESOURCEINSUFFICIENT_ZONESOLDOUTFORSPECIFIEDINSTANCE = "ResourceInsufficient.ZoneSoldOutForSpecifiedInstance"
 func (c *Client) AllocateHosts(request *AllocateHostsRequest) (response *AllocateHostsResponse, err error) {
-    if request == nil {
-        request = NewAllocateHostsRequest()
-    }
-    
-    response = NewAllocateHostsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AllocateHostsWithContext(context.Background(), request)
 }
 
 // AllocateHosts
@@ -103,6 +98,11 @@ func (c *Client) AllocateHostsWithContext(ctx context.Context, request *Allocate
     if request == nil {
         request = NewAllocateHostsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateHosts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAllocateHostsResponse()
@@ -163,13 +163,7 @@ func NewAssociateInstancesKeyPairsResponse() (response *AssociateInstancesKeyPai
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsRequest) (response *AssociateInstancesKeyPairsResponse, err error) {
-    if request == nil {
-        request = NewAssociateInstancesKeyPairsRequest()
-    }
-    
-    response = NewAssociateInstancesKeyPairsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateInstancesKeyPairsWithContext(context.Background(), request)
 }
 
 // AssociateInstancesKeyPairs
@@ -211,6 +205,11 @@ func (c *Client) AssociateInstancesKeyPairsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewAssociateInstancesKeyPairsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateInstancesKeyPairs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateInstancesKeyPairsResponse()
@@ -256,13 +255,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
 //  UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewAssociateSecurityGroupsRequest()
-    }
-    
-    response = NewAssociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // AssociateSecurityGroups
@@ -289,6 +282,11 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     if request == nil {
         request = NewAssociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateSecurityGroupsResponse()
@@ -320,13 +318,7 @@ func NewCreateDisasterRecoverGroupResponse() (response *CreateDisasterRecoverGro
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 func (c *Client) CreateDisasterRecoverGroup(request *CreateDisasterRecoverGroupRequest) (response *CreateDisasterRecoverGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateDisasterRecoverGroupRequest()
-    }
-    
-    response = NewCreateDisasterRecoverGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDisasterRecoverGroupWithContext(context.Background(), request)
 }
 
 // CreateDisasterRecoverGroup
@@ -339,6 +331,11 @@ func (c *Client) CreateDisasterRecoverGroupWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDisasterRecoverGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDisasterRecoverGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDisasterRecoverGroupResponse()
@@ -402,13 +399,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImageResponse, err error) {
-    if request == nil {
-        request = NewCreateImageRequest()
-    }
-    
-    response = NewCreateImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateImageWithContext(context.Background(), request)
 }
 
 // CreateImage
@@ -453,6 +444,11 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
     if request == nil {
         request = NewCreateImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateImageResponse()
@@ -501,13 +497,7 @@ func NewCreateKeyPairResponse() (response *CreateKeyPairResponse) {
 //  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
-    if request == nil {
-        request = NewCreateKeyPairRequest()
-    }
-    
-    response = NewCreateKeyPairResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateKeyPairWithContext(context.Background(), request)
 }
 
 // CreateKeyPair
@@ -537,6 +527,11 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKe
     if request == nil {
         request = NewCreateKeyPairRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKeyPair require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateKeyPairResponse()
@@ -614,6 +609,7 @@ func NewCreateLaunchTemplateResponse() (response *CreateLaunchTemplateResponse) 
 //  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
 //  INVALIDPARAMETERVALUE_SUBNETNOTEXIST = "InvalidParameterValue.SubnetNotExist"
 //  INVALIDPARAMETERVALUE_THREADPERCOREVALUE = "InvalidParameterValue.ThreadPerCoreValue"
+//  INVALIDPARAMETERVALUE_VPCIDNOTEXIST = "InvalidParameterValue.VpcIdNotExist"
 //  INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = "InvalidParameterValue.VpcIdZoneIdNotMatch"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
 //  INVALIDPASSWORD = "InvalidPassword"
@@ -650,13 +646,7 @@ func NewCreateLaunchTemplateResponse() (response *CreateLaunchTemplateResponse) 
 //  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) CreateLaunchTemplate(request *CreateLaunchTemplateRequest) (response *CreateLaunchTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateLaunchTemplateRequest()
-    }
-    
-    response = NewCreateLaunchTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLaunchTemplateWithContext(context.Background(), request)
 }
 
 // CreateLaunchTemplate
@@ -712,6 +702,7 @@ func (c *Client) CreateLaunchTemplate(request *CreateLaunchTemplateRequest) (res
 //  INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
 //  INVALIDPARAMETERVALUE_SUBNETNOTEXIST = "InvalidParameterValue.SubnetNotExist"
 //  INVALIDPARAMETERVALUE_THREADPERCOREVALUE = "InvalidParameterValue.ThreadPerCoreValue"
+//  INVALIDPARAMETERVALUE_VPCIDNOTEXIST = "InvalidParameterValue.VpcIdNotExist"
 //  INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = "InvalidParameterValue.VpcIdZoneIdNotMatch"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
 //  INVALIDPASSWORD = "InvalidPassword"
@@ -751,6 +742,11 @@ func (c *Client) CreateLaunchTemplateWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateLaunchTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLaunchTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLaunchTemplateResponse()
@@ -853,13 +849,7 @@ func NewCreateLaunchTemplateVersionResponse() (response *CreateLaunchTemplateVer
 //  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) CreateLaunchTemplateVersion(request *CreateLaunchTemplateVersionRequest) (response *CreateLaunchTemplateVersionResponse, err error) {
-    if request == nil {
-        request = NewCreateLaunchTemplateVersionRequest()
-    }
-    
-    response = NewCreateLaunchTemplateVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLaunchTemplateVersionWithContext(context.Background(), request)
 }
 
 // CreateLaunchTemplateVersion
@@ -943,6 +933,11 @@ func (c *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateLaunchTemplateVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLaunchTemplateVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLaunchTemplateVersionResponse()
@@ -976,13 +971,7 @@ func NewDeleteDisasterRecoverGroupsResponse() (response *DeleteDisasterRecoverGr
 //  RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
 //  RESOURCENOTFOUND_INVALIDPLACEMENTSET = "ResourceNotFound.InvalidPlacementSet"
 func (c *Client) DeleteDisasterRecoverGroups(request *DeleteDisasterRecoverGroupsRequest) (response *DeleteDisasterRecoverGroupsResponse, err error) {
-    if request == nil {
-        request = NewDeleteDisasterRecoverGroupsRequest()
-    }
-    
-    response = NewDeleteDisasterRecoverGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDisasterRecoverGroupsWithContext(context.Background(), request)
 }
 
 // DeleteDisasterRecoverGroups
@@ -997,6 +986,11 @@ func (c *Client) DeleteDisasterRecoverGroupsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteDisasterRecoverGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDisasterRecoverGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDisasterRecoverGroupsResponse()
@@ -1041,13 +1035,7 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteImagesResponse, err error) {
-    if request == nil {
-        request = NewDeleteImagesRequest()
-    }
-    
-    response = NewDeleteImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteImagesWithContext(context.Background(), request)
 }
 
 // DeleteImages
@@ -1073,6 +1061,11 @@ func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteIma
     if request == nil {
         request = NewDeleteImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteImagesResponse()
@@ -1116,13 +1109,7 @@ func NewDeleteKeyPairsResponse() (response *DeleteKeyPairsResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *DeleteKeyPairsResponse, err error) {
-    if request == nil {
-        request = NewDeleteKeyPairsRequest()
-    }
-    
-    response = NewDeleteKeyPairsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteKeyPairsWithContext(context.Background(), request)
 }
 
 // DeleteKeyPairs
@@ -1147,6 +1134,11 @@ func (c *Client) DeleteKeyPairsWithContext(ctx context.Context, request *DeleteK
     if request == nil {
         request = NewDeleteKeyPairsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteKeyPairs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteKeyPairsResponse()
@@ -1183,13 +1175,7 @@ func NewDeleteLaunchTemplateResponse() (response *DeleteLaunchTemplateResponse) 
 //  INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDNOTEXISTED = "InvalidParameterValue.LaunchTemplateIdNotExisted"
 //  INVALIDPARAMETERVALUE_LAUNCHTEMPLATENOTFOUND = "InvalidParameterValue.LaunchTemplateNotFound"
 func (c *Client) DeleteLaunchTemplate(request *DeleteLaunchTemplateRequest) (response *DeleteLaunchTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteLaunchTemplateRequest()
-    }
-    
-    response = NewDeleteLaunchTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLaunchTemplateWithContext(context.Background(), request)
 }
 
 // DeleteLaunchTemplate
@@ -1207,6 +1193,11 @@ func (c *Client) DeleteLaunchTemplateWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLaunchTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLaunchTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLaunchTemplateResponse()
@@ -1246,13 +1237,7 @@ func NewDeleteLaunchTemplateVersionsResponse() (response *DeleteLaunchTemplateVe
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteLaunchTemplateVersions(request *DeleteLaunchTemplateVersionsRequest) (response *DeleteLaunchTemplateVersionsResponse, err error) {
-    if request == nil {
-        request = NewDeleteLaunchTemplateVersionsRequest()
-    }
-    
-    response = NewDeleteLaunchTemplateVersionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLaunchTemplateVersionsWithContext(context.Background(), request)
 }
 
 // DeleteLaunchTemplateVersions
@@ -1273,6 +1258,11 @@ func (c *Client) DeleteLaunchTemplateVersionsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteLaunchTemplateVersionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLaunchTemplateVersions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLaunchTemplateVersionsResponse()
@@ -1305,13 +1295,7 @@ func NewDescribeAccountQuotaResponse() (response *DescribeAccountQuotaResponse) 
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeAccountQuota(request *DescribeAccountQuotaRequest) (response *DescribeAccountQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountQuotaRequest()
-    }
-    
-    response = NewDescribeAccountQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountQuotaWithContext(context.Background(), request)
 }
 
 // DescribeAccountQuota
@@ -1325,6 +1309,11 @@ func (c *Client) DescribeAccountQuotaWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAccountQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountQuotaResponse()
@@ -1357,13 +1346,7 @@ func NewDescribeDisasterRecoverGroupQuotaResponse() (response *DescribeDisasterR
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeDisasterRecoverGroupQuotaRequest()
-    }
-    
-    response = NewDescribeDisasterRecoverGroupQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDisasterRecoverGroupQuotaWithContext(context.Background(), request)
 }
 
 // DescribeDisasterRecoverGroupQuota
@@ -1377,6 +1360,11 @@ func (c *Client) DescribeDisasterRecoverGroupQuotaWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeDisasterRecoverGroupQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDisasterRecoverGroupQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDisasterRecoverGroupQuotaResponse()
@@ -1407,13 +1395,7 @@ func NewDescribeDisasterRecoverGroupsResponse() (response *DescribeDisasterRecov
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = "InvalidParameterValue.DisasterRecoverGroupIdMalformed"
 func (c *Client) DescribeDisasterRecoverGroups(request *DescribeDisasterRecoverGroupsRequest) (response *DescribeDisasterRecoverGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDisasterRecoverGroupsRequest()
-    }
-    
-    response = NewDescribeDisasterRecoverGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDisasterRecoverGroupsWithContext(context.Background(), request)
 }
 
 // DescribeDisasterRecoverGroups
@@ -1425,6 +1407,11 @@ func (c *Client) DescribeDisasterRecoverGroupsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeDisasterRecoverGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDisasterRecoverGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDisasterRecoverGroupsResponse()
@@ -1459,13 +1446,7 @@ func NewDescribeHostsResponse() (response *DescribeHostsResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHosts(request *DescribeHostsRequest) (response *DescribeHostsResponse, err error) {
-    if request == nil {
-        request = NewDescribeHostsRequest()
-    }
-    
-    response = NewDescribeHostsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHostsWithContext(context.Background(), request)
 }
 
 // DescribeHosts
@@ -1481,6 +1462,11 @@ func (c *Client) DescribeHostsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeHostsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHosts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHostsResponse()
@@ -1515,13 +1501,7 @@ func NewDescribeImageQuotaResponse() (response *DescribeImageQuotaResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeImageQuota(request *DescribeImageQuotaRequest) (response *DescribeImageQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageQuotaRequest()
-    }
-    
-    response = NewDescribeImageQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageQuotaWithContext(context.Background(), request)
 }
 
 // DescribeImageQuota
@@ -1537,6 +1517,11 @@ func (c *Client) DescribeImageQuotaWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeImageQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageQuotaResponse()
@@ -1572,13 +1557,7 @@ func NewDescribeImageSharePermissionResponse() (response *DescribeImageSharePerm
 //  OVERQUOTA = "OverQuota"
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 func (c *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (response *DescribeImageSharePermissionResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageSharePermissionRequest()
-    }
-    
-    response = NewDescribeImageSharePermissionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageSharePermissionWithContext(context.Background(), request)
 }
 
 // DescribeImageSharePermission
@@ -1595,6 +1574,11 @@ func (c *Client) DescribeImageSharePermissionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeImageSharePermissionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageSharePermission require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageSharePermissionResponse()
@@ -1639,13 +1623,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *DescribeImagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeImagesRequest()
-    }
-    
-    response = NewDescribeImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImagesWithContext(context.Background(), request)
 }
 
 // DescribeImages
@@ -1671,6 +1649,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImagesResponse()
@@ -1709,13 +1692,7 @@ func NewDescribeImportImageOsResponse() (response *DescribeImportImageOsResponse
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeImportImageOs(request *DescribeImportImageOsRequest) (response *DescribeImportImageOsResponse, err error) {
-    if request == nil {
-        request = NewDescribeImportImageOsRequest()
-    }
-    
-    response = NewDescribeImportImageOsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImportImageOsWithContext(context.Background(), request)
 }
 
 // DescribeImportImageOs
@@ -1735,6 +1712,11 @@ func (c *Client) DescribeImportImageOsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeImportImageOsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImportImageOs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImportImageOsResponse()
@@ -1767,13 +1749,7 @@ func NewDescribeInstanceFamilyConfigsResponse() (response *DescribeInstanceFamil
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 func (c *Client) DescribeInstanceFamilyConfigs(request *DescribeInstanceFamilyConfigsRequest) (response *DescribeInstanceFamilyConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceFamilyConfigsRequest()
-    }
-    
-    response = NewDescribeInstanceFamilyConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceFamilyConfigsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceFamilyConfigs
@@ -1787,6 +1763,11 @@ func (c *Client) DescribeInstanceFamilyConfigsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstanceFamilyConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceFamilyConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceFamilyConfigsResponse()
@@ -1828,13 +1809,7 @@ func NewDescribeInstanceInternetBandwidthConfigsResponse() (response *DescribeIn
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInstanceInternetBandwidthConfigsRequest) (response *DescribeInstanceInternetBandwidthConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceInternetBandwidthConfigsRequest()
-    }
-    
-    response = NewDescribeInstanceInternetBandwidthConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceInternetBandwidthConfigsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceInternetBandwidthConfigs
@@ -1857,6 +1832,11 @@ func (c *Client) DescribeInstanceInternetBandwidthConfigsWithContext(ctx context
     if request == nil {
         request = NewDescribeInstanceInternetBandwidthConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceInternetBandwidthConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceInternetBandwidthConfigsResponse()
@@ -1898,13 +1878,7 @@ func NewDescribeInstanceTypeConfigsResponse() (response *DescribeInstanceTypeCon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeInstanceTypeConfigs(request *DescribeInstanceTypeConfigsRequest) (response *DescribeInstanceTypeConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceTypeConfigsRequest()
-    }
-    
-    response = NewDescribeInstanceTypeConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceTypeConfigsWithContext(context.Background(), request)
 }
 
 // DescribeInstanceTypeConfigs
@@ -1927,6 +1901,11 @@ func (c *Client) DescribeInstanceTypeConfigsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeInstanceTypeConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceTypeConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceTypeConfigsResponse()
@@ -2005,13 +1984,7 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) (response *DescribeInstanceVncUrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceVncUrlRequest()
-    }
-    
-    response = NewDescribeInstanceVncUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceVncUrlWithContext(context.Background(), request)
 }
 
 // DescribeInstanceVncUrl
@@ -2071,6 +2044,11 @@ func (c *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeInstanceVncUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceVncUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceVncUrlResponse()
@@ -2132,13 +2110,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesRequest()
-    }
-    
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
 // DescribeInstances
@@ -2181,6 +2153,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesResponse()
@@ -2216,13 +2193,7 @@ func NewDescribeInstancesModificationResponse() (response *DescribeInstancesModi
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = "UnsupportedOperation.UnsupportedChangeInstanceFamily"
 func (c *Client) DescribeInstancesModification(request *DescribeInstancesModificationRequest) (response *DescribeInstancesModificationResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesModificationRequest()
-    }
-    
-    response = NewDescribeInstancesModificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesModificationWithContext(context.Background(), request)
 }
 
 // DescribeInstancesModification
@@ -2239,6 +2210,11 @@ func (c *Client) DescribeInstancesModificationWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeInstancesModificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesModification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesModificationResponse()
@@ -2274,13 +2250,7 @@ func NewDescribeInstancesOperationLimitResponse() (response *DescribeInstancesOp
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 func (c *Client) DescribeInstancesOperationLimit(request *DescribeInstancesOperationLimitRequest) (response *DescribeInstancesOperationLimitResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesOperationLimitRequest()
-    }
-    
-    response = NewDescribeInstancesOperationLimitResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesOperationLimitWithContext(context.Background(), request)
 }
 
 // DescribeInstancesOperationLimit
@@ -2297,6 +2267,11 @@ func (c *Client) DescribeInstancesOperationLimitWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeInstancesOperationLimitRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesOperationLimit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesOperationLimitResponse()
@@ -2337,13 +2312,7 @@ func NewDescribeInstancesStatusResponse() (response *DescribeInstancesStatusResp
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInstancesStatus(request *DescribeInstancesStatusRequest) (response *DescribeInstancesStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstancesStatusRequest()
-    }
-    
-    response = NewDescribeInstancesStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstancesStatusWithContext(context.Background(), request)
 }
 
 // DescribeInstancesStatus
@@ -2365,6 +2334,11 @@ func (c *Client) DescribeInstancesStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeInstancesStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstancesStatusResponse()
@@ -2399,13 +2373,7 @@ func NewDescribeInternetChargeTypeConfigsResponse() (response *DescribeInternetC
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInternetChargeTypeConfigs(request *DescribeInternetChargeTypeConfigsRequest) (response *DescribeInternetChargeTypeConfigsResponse, err error) {
-    if request == nil {
-        request = NewDescribeInternetChargeTypeConfigsRequest()
-    }
-    
-    response = NewDescribeInternetChargeTypeConfigsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInternetChargeTypeConfigsWithContext(context.Background(), request)
 }
 
 // DescribeInternetChargeTypeConfigs
@@ -2421,6 +2389,11 @@ func (c *Client) DescribeInternetChargeTypeConfigsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeInternetChargeTypeConfigsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInternetChargeTypeConfigs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInternetChargeTypeConfigsResponse()
@@ -2464,13 +2437,7 @@ func NewDescribeKeyPairsResponse() (response *DescribeKeyPairsResponse) {
 //  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
 //  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
 func (c *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (response *DescribeKeyPairsResponse, err error) {
-    if request == nil {
-        request = NewDescribeKeyPairsRequest()
-    }
-    
-    response = NewDescribeKeyPairsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKeyPairsWithContext(context.Background(), request)
 }
 
 // DescribeKeyPairs
@@ -2495,6 +2462,11 @@ func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeKeyPairsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKeyPairs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKeyPairsResponse()
@@ -2542,13 +2514,7 @@ func NewDescribeLaunchTemplateVersionsResponse() (response *DescribeLaunchTempla
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemplateVersionsRequest) (response *DescribeLaunchTemplateVersionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLaunchTemplateVersionsRequest()
-    }
-    
-    response = NewDescribeLaunchTemplateVersionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLaunchTemplateVersionsWithContext(context.Background(), request)
 }
 
 // DescribeLaunchTemplateVersions
@@ -2577,6 +2543,11 @@ func (c *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeLaunchTemplateVersionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLaunchTemplateVersions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLaunchTemplateVersionsResponse()
@@ -2615,13 +2586,7 @@ func NewDescribeLaunchTemplatesResponse() (response *DescribeLaunchTemplatesResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLaunchTemplates(request *DescribeLaunchTemplatesRequest) (response *DescribeLaunchTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeLaunchTemplatesRequest()
-    }
-    
-    response = NewDescribeLaunchTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLaunchTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeLaunchTemplates
@@ -2641,6 +2606,11 @@ func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLaunchTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLaunchTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLaunchTemplatesResponse()
@@ -2679,13 +2649,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionsRequest()
-    }
-    
-    response = NewDescribeRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionsWithContext(context.Background(), request)
 }
 
 // DescribeRegions
@@ -2705,6 +2669,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
@@ -2742,13 +2711,7 @@ func NewDescribeReservedInstancesResponse() (response *DescribeReservedInstances
 //  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 //  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstances(request *DescribeReservedInstancesRequest) (response *DescribeReservedInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeReservedInstancesRequest()
-    }
-    
-    response = NewDescribeReservedInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReservedInstancesWithContext(context.Background(), request)
 }
 
 // DescribeReservedInstances
@@ -2767,6 +2730,11 @@ func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeReservedInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReservedInstancesResponse()
@@ -2800,13 +2768,7 @@ func NewDescribeReservedInstancesConfigInfosResponse() (response *DescribeReserv
 //  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 //  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstancesConfigInfos(request *DescribeReservedInstancesConfigInfosRequest) (response *DescribeReservedInstancesConfigInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeReservedInstancesConfigInfosRequest()
-    }
-    
-    response = NewDescribeReservedInstancesConfigInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReservedInstancesConfigInfosWithContext(context.Background(), request)
 }
 
 // DescribeReservedInstancesConfigInfos
@@ -2821,6 +2783,11 @@ func (c *Client) DescribeReservedInstancesConfigInfosWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeReservedInstancesConfigInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedInstancesConfigInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReservedInstancesConfigInfosResponse()
@@ -2858,13 +2825,7 @@ func NewDescribeReservedInstancesOfferingsResponse() (response *DescribeReserved
 //  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 //  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 func (c *Client) DescribeReservedInstancesOfferings(request *DescribeReservedInstancesOfferingsRequest) (response *DescribeReservedInstancesOfferingsResponse, err error) {
-    if request == nil {
-        request = NewDescribeReservedInstancesOfferingsRequest()
-    }
-    
-    response = NewDescribeReservedInstancesOfferingsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReservedInstancesOfferingsWithContext(context.Background(), request)
 }
 
 // DescribeReservedInstancesOfferings
@@ -2883,6 +2844,11 @@ func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeReservedInstancesOfferingsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedInstancesOfferings require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReservedInstancesOfferingsResponse()
@@ -2923,13 +2889,7 @@ func NewDescribeZoneInstanceConfigInfosResponse() (response *DescribeZoneInstanc
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
 func (c *Client) DescribeZoneInstanceConfigInfos(request *DescribeZoneInstanceConfigInfosRequest) (response *DescribeZoneInstanceConfigInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeZoneInstanceConfigInfosRequest()
-    }
-    
-    response = NewDescribeZoneInstanceConfigInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZoneInstanceConfigInfosWithContext(context.Background(), request)
 }
 
 // DescribeZoneInstanceConfigInfos
@@ -2951,6 +2911,11 @@ func (c *Client) DescribeZoneInstanceConfigInfosWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeZoneInstanceConfigInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneInstanceConfigInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZoneInstanceConfigInfosResponse()
@@ -2991,13 +2956,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
-    if request == nil {
-        request = NewDescribeZonesRequest()
-    }
-    
-    response = NewDescribeZonesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeZonesWithContext(context.Background(), request)
 }
 
 // DescribeZones
@@ -3019,6 +2978,11 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeZonesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZones require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeZonesResponse()
@@ -3076,13 +3040,7 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKeyPairsRequest) (response *DisassociateInstancesKeyPairsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateInstancesKeyPairsRequest()
-    }
-    
-    response = NewDisassociateInstancesKeyPairsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateInstancesKeyPairsWithContext(context.Background(), request)
 }
 
 // DisassociateInstancesKeyPairs
@@ -3121,6 +3079,11 @@ func (c *Client) DisassociateInstancesKeyPairsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDisassociateInstancesKeyPairsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateInstancesKeyPairs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateInstancesKeyPairsResponse()
@@ -3161,13 +3124,7 @@ func NewDisassociateSecurityGroupsResponse() (response *DisassociateSecurityGrou
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  SECGROUPACTIONFAILURE = "SecGroupActionFailure"
 func (c *Client) DisassociateSecurityGroups(request *DisassociateSecurityGroupsRequest) (response *DisassociateSecurityGroupsResponse, err error) {
-    if request == nil {
-        request = NewDisassociateSecurityGroupsRequest()
-    }
-    
-    response = NewDisassociateSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisassociateSecurityGroupsWithContext(context.Background(), request)
 }
 
 // DisassociateSecurityGroups
@@ -3189,6 +3146,11 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDisassociateSecurityGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateSecurityGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
@@ -3226,13 +3188,7 @@ func NewImportImageResponse() (response *ImportImageResponse) {
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = "RegionAbilityLimit.UnsupportedToImportImage"
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
-    if request == nil {
-        request = NewImportImageRequest()
-    }
-    
-    response = NewImportImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportImageWithContext(context.Background(), request)
 }
 
 // ImportImage
@@ -3251,6 +3207,11 @@ func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImag
     if request == nil {
         request = NewImportImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportImageResponse()
@@ -3299,13 +3260,7 @@ func NewImportKeyPairResponse() (response *ImportKeyPairResponse) {
 //  INVALIDPUBLICKEY_MALFORMED = "InvalidPublicKey.Malformed"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportKeyPairResponse, err error) {
-    if request == nil {
-        request = NewImportKeyPairRequest()
-    }
-    
-    response = NewImportKeyPairResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportKeyPairWithContext(context.Background(), request)
 }
 
 // ImportKeyPair
@@ -3335,6 +3290,11 @@ func (c *Client) ImportKeyPairWithContext(ctx context.Context, request *ImportKe
     if request == nil {
         request = NewImportKeyPairRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportKeyPair require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportKeyPairResponse()
@@ -3367,13 +3327,7 @@ func NewInquirePricePurchaseReservedInstancesOfferingResponse() (response *Inqui
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 func (c *Client) InquirePricePurchaseReservedInstancesOffering(request *InquirePricePurchaseReservedInstancesOfferingRequest) (response *InquirePricePurchaseReservedInstancesOfferingResponse, err error) {
-    if request == nil {
-        request = NewInquirePricePurchaseReservedInstancesOfferingRequest()
-    }
-    
-    response = NewInquirePricePurchaseReservedInstancesOfferingResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquirePricePurchaseReservedInstancesOfferingWithContext(context.Background(), request)
 }
 
 // InquirePricePurchaseReservedInstancesOffering
@@ -3387,6 +3341,11 @@ func (c *Client) InquirePricePurchaseReservedInstancesOfferingWithContext(ctx co
     if request == nil {
         request = NewInquirePricePurchaseReservedInstancesOfferingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePricePurchaseReservedInstancesOffering require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquirePricePurchaseReservedInstancesOfferingResponse()
@@ -3436,13 +3395,7 @@ func NewInquiryPriceModifyInstancesChargeTypeResponse() (response *InquiryPriceM
 //  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 func (c *Client) InquiryPriceModifyInstancesChargeType(request *InquiryPriceModifyInstancesChargeTypeRequest) (response *InquiryPriceModifyInstancesChargeTypeResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceModifyInstancesChargeTypeRequest()
-    }
-    
-    response = NewInquiryPriceModifyInstancesChargeTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceModifyInstancesChargeTypeWithContext(context.Background(), request)
 }
 
 // InquiryPriceModifyInstancesChargeType
@@ -3473,6 +3426,11 @@ func (c *Client) InquiryPriceModifyInstancesChargeTypeWithContext(ctx context.Co
     if request == nil {
         request = NewInquiryPriceModifyInstancesChargeTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceModifyInstancesChargeType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceModifyInstancesChargeTypeResponse()
@@ -3520,13 +3478,7 @@ func NewInquiryPriceRenewInstancesResponse() (response *InquiryPriceRenewInstanc
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 func (c *Client) InquiryPriceRenewInstances(request *InquiryPriceRenewInstancesRequest) (response *InquiryPriceRenewInstancesResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceRenewInstancesRequest()
-    }
-    
-    response = NewInquiryPriceRenewInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceRenewInstancesWithContext(context.Background(), request)
 }
 
 // InquiryPriceRenewInstances
@@ -3555,6 +3507,11 @@ func (c *Client) InquiryPriceRenewInstancesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewInquiryPriceRenewInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRenewInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceRenewInstancesResponse()
@@ -3607,13 +3564,7 @@ func NewInquiryPriceResetInstanceResponse() (response *InquiryPriceResetInstance
 //  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
 //  UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
 func (c *Client) InquiryPriceResetInstance(request *InquiryPriceResetInstanceRequest) (response *InquiryPriceResetInstanceResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceResetInstanceRequest()
-    }
-    
-    response = NewInquiryPriceResetInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceResetInstanceWithContext(context.Background(), request)
 }
 
 // InquiryPriceResetInstance
@@ -3647,6 +3598,11 @@ func (c *Client) InquiryPriceResetInstanceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewInquiryPriceResetInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceResetInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceResetInstanceResponse()
@@ -3705,13 +3661,7 @@ func NewInquiryPriceResetInstancesInternetMaxBandwidthResponse() (response *Inqu
 //  INVALIDPERMISSION = "InvalidPermission"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) InquiryPriceResetInstancesInternetMaxBandwidth(request *InquiryPriceResetInstancesInternetMaxBandwidthRequest) (response *InquiryPriceResetInstancesInternetMaxBandwidthResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceResetInstancesInternetMaxBandwidthRequest()
-    }
-    
-    response = NewInquiryPriceResetInstancesInternetMaxBandwidthResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceResetInstancesInternetMaxBandwidthWithContext(context.Background(), request)
 }
 
 // InquiryPriceResetInstancesInternetMaxBandwidth
@@ -3751,6 +3701,11 @@ func (c *Client) InquiryPriceResetInstancesInternetMaxBandwidthWithContext(ctx c
     if request == nil {
         request = NewInquiryPriceResetInstancesInternetMaxBandwidthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceResetInstancesInternetMaxBandwidth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceResetInstancesInternetMaxBandwidthResponse()
@@ -3811,13 +3766,7 @@ func NewInquiryPriceResetInstancesTypeResponse() (response *InquiryPriceResetIns
 //  UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = "UnsupportedOperation.LocalDataDiskChangeInstanceFamily"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = "UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3"
 func (c *Client) InquiryPriceResetInstancesType(request *InquiryPriceResetInstancesTypeRequest) (response *InquiryPriceResetInstancesTypeResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceResetInstancesTypeRequest()
-    }
-    
-    response = NewInquiryPriceResetInstancesTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceResetInstancesTypeWithContext(context.Background(), request)
 }
 
 // InquiryPriceResetInstancesType
@@ -3859,6 +3808,11 @@ func (c *Client) InquiryPriceResetInstancesTypeWithContext(ctx context.Context, 
     if request == nil {
         request = NewInquiryPriceResetInstancesTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceResetInstancesType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceResetInstancesTypeResponse()
@@ -3908,13 +3862,7 @@ func NewInquiryPriceResizeInstanceDisksResponse() (response *InquiryPriceResizeI
 //  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
 //  UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = "UnsupportedOperation.LocalDiskMigratingToCloudDisk"
 func (c *Client) InquiryPriceResizeInstanceDisks(request *InquiryPriceResizeInstanceDisksRequest) (response *InquiryPriceResizeInstanceDisksResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceResizeInstanceDisksRequest()
-    }
-    
-    response = NewInquiryPriceResizeInstanceDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceResizeInstanceDisksWithContext(context.Background(), request)
 }
 
 // InquiryPriceResizeInstanceDisks
@@ -3945,6 +3893,11 @@ func (c *Client) InquiryPriceResizeInstanceDisksWithContext(ctx context.Context,
     if request == nil {
         request = NewInquiryPriceResizeInstanceDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceResizeInstanceDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceResizeInstanceDisksResponse()
@@ -4024,17 +3977,13 @@ func NewInquiryPriceRunInstancesResponse() (response *InquiryPriceRunInstancesRe
 //  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
+//  UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = "UnsupportedOperation.InvalidRegionDiskEncrypt"
 //  UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = "UnsupportedOperation.NoInstanceTypeSupportSpot"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = "UnsupportedOperation.NotSupportImportInstancesActionTimer"
 //  UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = "UnsupportedOperation.OnlyForPrepaidAccount"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"
 func (c *Client) InquiryPriceRunInstances(request *InquiryPriceRunInstancesRequest) (response *InquiryPriceRunInstancesResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceRunInstancesRequest()
-    }
-    
-    response = NewInquiryPriceRunInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceRunInstancesWithContext(context.Background(), request)
 }
 
 // InquiryPriceRunInstances
@@ -4092,13 +4041,20 @@ func (c *Client) InquiryPriceRunInstances(request *InquiryPriceRunInstancesReque
 //  RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
+//  UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = "UnsupportedOperation.InvalidRegionDiskEncrypt"
 //  UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = "UnsupportedOperation.NoInstanceTypeSupportSpot"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = "UnsupportedOperation.NotSupportImportInstancesActionTimer"
 //  UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = "UnsupportedOperation.OnlyForPrepaidAccount"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = "UnsupportedOperation.UnsupportedInternationalUser"
 func (c *Client) InquiryPriceRunInstancesWithContext(ctx context.Context, request *InquiryPriceRunInstancesRequest) (response *InquiryPriceRunInstancesResponse, err error) {
     if request == nil {
         request = NewInquiryPriceRunInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRunInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceRunInstancesResponse()
@@ -4147,13 +4103,7 @@ func NewInquiryPriceTerminateInstancesResponse() (response *InquiryPriceTerminat
 //  UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = "UnsupportedOperation.InstanceMixedPricingModel"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) InquiryPriceTerminateInstances(request *InquiryPriceTerminateInstancesRequest) (response *InquiryPriceTerminateInstancesResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceTerminateInstancesRequest()
-    }
-    
-    response = NewInquiryPriceTerminateInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceTerminateInstancesWithContext(context.Background(), request)
 }
 
 // InquiryPriceTerminateInstances
@@ -4183,6 +4133,11 @@ func (c *Client) InquiryPriceTerminateInstancesWithContext(ctx context.Context, 
     if request == nil {
         request = NewInquiryPriceTerminateInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceTerminateInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceTerminateInstancesResponse()
@@ -4214,13 +4169,7 @@ func NewModifyDisasterRecoverGroupAttributeResponse() (response *ModifyDisasterR
 //  RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
 //  RESOURCENOTFOUND_INVALIDPLACEMENTSET = "ResourceNotFound.InvalidPlacementSet"
 func (c *Client) ModifyDisasterRecoverGroupAttribute(request *ModifyDisasterRecoverGroupAttributeRequest) (response *ModifyDisasterRecoverGroupAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyDisasterRecoverGroupAttributeRequest()
-    }
-    
-    response = NewModifyDisasterRecoverGroupAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDisasterRecoverGroupAttributeWithContext(context.Background(), request)
 }
 
 // ModifyDisasterRecoverGroupAttribute
@@ -4233,6 +4182,11 @@ func (c *Client) ModifyDisasterRecoverGroupAttributeWithContext(ctx context.Cont
     if request == nil {
         request = NewModifyDisasterRecoverGroupAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDisasterRecoverGroupAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDisasterRecoverGroupAttributeResponse()
@@ -4265,13 +4219,7 @@ func NewModifyHostsAttributeResponse() (response *ModifyHostsAttributeResponse) 
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
 func (c *Client) ModifyHostsAttribute(request *ModifyHostsAttributeRequest) (response *ModifyHostsAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyHostsAttributeRequest()
-    }
-    
-    response = NewModifyHostsAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyHostsAttributeWithContext(context.Background(), request)
 }
 
 // ModifyHostsAttribute
@@ -4285,6 +4233,11 @@ func (c *Client) ModifyHostsAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyHostsAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHostsAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyHostsAttributeResponse()
@@ -4324,13 +4277,7 @@ func NewModifyImageAttributeResponse() (response *ModifyImageAttributeResponse) 
 //  INVALIDPARAMETER_VALUETOOLARGE = "InvalidParameter.ValueTooLarge"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 func (c *Client) ModifyImageAttribute(request *ModifyImageAttributeRequest) (response *ModifyImageAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyImageAttributeRequest()
-    }
-    
-    response = NewModifyImageAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyImageAttributeWithContext(context.Background(), request)
 }
 
 // ModifyImageAttribute
@@ -4351,6 +4298,11 @@ func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyImageAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyImageAttributeResponse()
@@ -4405,13 +4357,7 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
 //  OVERQUOTA = "OverQuota"
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
-    if request == nil {
-        request = NewModifyImageSharePermissionRequest()
-    }
-    
-    response = NewModifyImageSharePermissionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyImageSharePermissionWithContext(context.Background(), request)
 }
 
 // ModifyImageSharePermission
@@ -4447,6 +4393,11 @@ func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyImageSharePermissionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyImageSharePermission require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyImageSharePermissionResponse()
@@ -4497,13 +4448,7 @@ func NewModifyInstanceDiskTypeResponse() (response *ModifyInstanceDiskTypeRespon
 //  RESOURCEINSUFFICIENT_CLOUDDISKSOLDOUT = "ResourceInsufficient.CloudDiskSoldOut"
 //  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
 func (c *Client) ModifyInstanceDiskType(request *ModifyInstanceDiskTypeRequest) (response *ModifyInstanceDiskTypeResponse, err error) {
-    if request == nil {
-        request = NewModifyInstanceDiskTypeRequest()
-    }
-    
-    response = NewModifyInstanceDiskTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstanceDiskTypeWithContext(context.Background(), request)
 }
 
 // ModifyInstanceDiskType
@@ -4535,6 +4480,11 @@ func (c *Client) ModifyInstanceDiskTypeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyInstanceDiskTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceDiskType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstanceDiskTypeResponse()
@@ -4609,13 +4559,7 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeRequest) (response *ModifyInstancesAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesAttributeRequest()
-    }
-    
-    response = NewModifyInstancesAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesAttributeWithContext(context.Background(), request)
 }
 
 // ModifyInstancesAttribute
@@ -4671,6 +4615,11 @@ func (c *Client) ModifyInstancesAttributeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInstancesAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesAttributeResponse()
@@ -4726,13 +4675,7 @@ func NewModifyInstancesChargeTypeResponse() (response *ModifyInstancesChargeType
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) ModifyInstancesChargeType(request *ModifyInstancesChargeTypeRequest) (response *ModifyInstancesChargeTypeResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesChargeTypeRequest()
-    }
-    
-    response = NewModifyInstancesChargeTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesChargeTypeWithContext(context.Background(), request)
 }
 
 // ModifyInstancesChargeType
@@ -4769,6 +4712,11 @@ func (c *Client) ModifyInstancesChargeTypeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyInstancesChargeTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesChargeType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesChargeTypeResponse()
@@ -4821,13 +4769,7 @@ func NewModifyInstancesProjectResponse() (response *ModifyInstancesProjectRespon
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
 func (c *Client) ModifyInstancesProject(request *ModifyInstancesProjectRequest) (response *ModifyInstancesProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesProjectRequest()
-    }
-    
-    response = NewModifyInstancesProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesProjectWithContext(context.Background(), request)
 }
 
 // ModifyInstancesProject
@@ -4861,6 +4803,11 @@ func (c *Client) ModifyInstancesProjectWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyInstancesProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesProjectResponse()
@@ -4918,13 +4865,7 @@ func NewModifyInstancesRenewFlagResponse() (response *ModifyInstancesRenewFlagRe
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
 //  UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = "UnsupportedOperation.UnderwritingInstanceTypeOnlySupportAutoRenew"
 func (c *Client) ModifyInstancesRenewFlag(request *ModifyInstancesRenewFlagRequest) (response *ModifyInstancesRenewFlagResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesRenewFlagRequest()
-    }
-    
-    response = NewModifyInstancesRenewFlagResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesRenewFlagWithContext(context.Background(), request)
 }
 
 // ModifyInstancesRenewFlag
@@ -4963,6 +4904,11 @@ func (c *Client) ModifyInstancesRenewFlagWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyInstancesRenewFlagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesRenewFlag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesRenewFlagResponse()
@@ -5029,13 +4975,7 @@ func NewModifyInstancesVpcAttributeResponse() (response *ModifyInstancesVpcAttri
 //  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ModifyInstancesVpcAttribute(request *ModifyInstancesVpcAttributeRequest) (response *ModifyInstancesVpcAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyInstancesVpcAttributeRequest()
-    }
-    
-    response = NewModifyInstancesVpcAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyInstancesVpcAttributeWithContext(context.Background(), request)
 }
 
 // ModifyInstancesVpcAttribute
@@ -5083,6 +5023,11 @@ func (c *Client) ModifyInstancesVpcAttributeWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyInstancesVpcAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesVpcAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyInstancesVpcAttributeResponse()
@@ -5127,13 +5072,7 @@ func NewModifyKeyPairAttributeResponse() (response *ModifyKeyPairAttributeRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyKeyPairAttribute(request *ModifyKeyPairAttributeRequest) (response *ModifyKeyPairAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyKeyPairAttributeRequest()
-    }
-    
-    response = NewModifyKeyPairAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyKeyPairAttributeWithContext(context.Background(), request)
 }
 
 // ModifyKeyPairAttribute
@@ -5159,6 +5098,11 @@ func (c *Client) ModifyKeyPairAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyKeyPairAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKeyPairAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyKeyPairAttributeResponse()
@@ -5198,13 +5142,7 @@ func NewModifyLaunchTemplateDefaultVersionResponse() (response *ModifyLaunchTemp
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyLaunchTemplateDefaultVersion(request *ModifyLaunchTemplateDefaultVersionRequest) (response *ModifyLaunchTemplateDefaultVersionResponse, err error) {
-    if request == nil {
-        request = NewModifyLaunchTemplateDefaultVersionRequest()
-    }
-    
-    response = NewModifyLaunchTemplateDefaultVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLaunchTemplateDefaultVersionWithContext(context.Background(), request)
 }
 
 // ModifyLaunchTemplateDefaultVersion
@@ -5225,6 +5163,11 @@ func (c *Client) ModifyLaunchTemplateDefaultVersionWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyLaunchTemplateDefaultVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLaunchTemplateDefaultVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLaunchTemplateDefaultVersionResponse()
@@ -5257,17 +5200,13 @@ func NewProgramFpgaImageResponse() (response *ProgramFpgaImageResponse) {
 // * 支持对单个实例的多块FPGA卡同时烧录FPGA镜像，DBDFs参数为空时，默认对指定实例的所有FPGA卡进行烧录。
 //
 // 可能返回的错误码:
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNSUPPORTEDOPERATION_NOTFPGAINSTANCE = "UnsupportedOperation.NotFpgaInstance"
 func (c *Client) ProgramFpgaImage(request *ProgramFpgaImageRequest) (response *ProgramFpgaImageResponse, err error) {
-    if request == nil {
-        request = NewProgramFpgaImageRequest()
-    }
-    
-    response = NewProgramFpgaImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ProgramFpgaImageWithContext(context.Background(), request)
 }
 
 // ProgramFpgaImage
@@ -5278,6 +5217,8 @@ func (c *Client) ProgramFpgaImage(request *ProgramFpgaImageRequest) (response *P
 // * 支持对单个实例的多块FPGA卡同时烧录FPGA镜像，DBDFs参数为空时，默认对指定实例的所有FPGA卡进行烧录。
 //
 // 可能返回的错误码:
+//  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  UNSUPPORTEDOPERATION_NOTFPGAINSTANCE = "UnsupportedOperation.NotFpgaInstance"
@@ -5285,6 +5226,11 @@ func (c *Client) ProgramFpgaImageWithContext(ctx context.Context, request *Progr
     if request == nil {
         request = NewProgramFpgaImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProgramFpgaImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewProgramFpgaImageResponse()
@@ -5322,13 +5268,7 @@ func NewPurchaseReservedInstancesOfferingResponse() (response *PurchaseReservedI
 //  UNSUPPORTEDOPERATION_RESERVEDINSTANCEINVISIBLEFORUSER = "UnsupportedOperation.ReservedInstanceInvisibleForUser"
 //  UNSUPPORTEDOPERATION_RESERVEDINSTANCEOUTOFQUATA = "UnsupportedOperation.ReservedInstanceOutofQuata"
 func (c *Client) PurchaseReservedInstancesOffering(request *PurchaseReservedInstancesOfferingRequest) (response *PurchaseReservedInstancesOfferingResponse, err error) {
-    if request == nil {
-        request = NewPurchaseReservedInstancesOfferingRequest()
-    }
-    
-    response = NewPurchaseReservedInstancesOfferingResponse()
-    err = c.Send(request, response)
-    return
+    return c.PurchaseReservedInstancesOfferingWithContext(context.Background(), request)
 }
 
 // PurchaseReservedInstancesOffering
@@ -5347,6 +5287,11 @@ func (c *Client) PurchaseReservedInstancesOfferingWithContext(ctx context.Contex
     if request == nil {
         request = NewPurchaseReservedInstancesOfferingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PurchaseReservedInstancesOffering require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPurchaseReservedInstancesOfferingResponse()
@@ -5414,13 +5359,7 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *RebootInstancesResponse, err error) {
-    if request == nil {
-        request = NewRebootInstancesRequest()
-    }
-    
-    response = NewRebootInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RebootInstancesWithContext(context.Background(), request)
 }
 
 // RebootInstances
@@ -5469,6 +5408,11 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     if request == nil {
         request = NewRebootInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRebootInstancesResponse()
@@ -5510,13 +5454,7 @@ func NewRenewHostsResponse() (response *RenewHostsResponse) {
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
 //  INVALIDPERIOD = "InvalidPeriod"
 func (c *Client) RenewHosts(request *RenewHostsRequest) (response *RenewHostsResponse, err error) {
-    if request == nil {
-        request = NewRenewHostsRequest()
-    }
-    
-    response = NewRenewHostsResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewHostsWithContext(context.Background(), request)
 }
 
 // RenewHosts
@@ -5539,6 +5477,11 @@ func (c *Client) RenewHostsWithContext(ctx context.Context, request *RenewHostsR
     if request == nil {
         request = NewRenewHostsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewHosts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewHostsResponse()
@@ -5595,13 +5538,7 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPING = "UnsupportedOperation.InstanceStateStopping"
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *RenewInstancesResponse, err error) {
-    if request == nil {
-        request = NewRenewInstancesRequest()
-    }
-    
-    response = NewRenewInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewInstancesWithContext(context.Background(), request)
 }
 
 // RenewInstances
@@ -5639,6 +5576,11 @@ func (c *Client) RenewInstancesWithContext(ctx context.Context, request *RenewIn
     if request == nil {
         request = NewRenewInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewInstancesResponse()
@@ -5734,13 +5676,7 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //  UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetInstanceResponse, err error) {
-    if request == nil {
-        request = NewResetInstanceRequest()
-    }
-    
-    response = NewResetInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstanceWithContext(context.Background(), request)
 }
 
 // ResetInstance
@@ -5817,6 +5753,11 @@ func (c *Client) ResetInstanceWithContext(ctx context.Context, request *ResetIns
     if request == nil {
         request = NewResetInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstanceResponse()
@@ -5888,13 +5829,7 @@ func NewResetInstancesInternetMaxBandwidthResponse() (response *ResetInstancesIn
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstancesInternetMaxBandwidth(request *ResetInstancesInternetMaxBandwidthRequest) (response *ResetInstancesInternetMaxBandwidthResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesInternetMaxBandwidthRequest()
-    }
-    
-    response = NewResetInstancesInternetMaxBandwidthResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesInternetMaxBandwidthWithContext(context.Background(), request)
 }
 
 // ResetInstancesInternetMaxBandwidth
@@ -5947,6 +5882,11 @@ func (c *Client) ResetInstancesInternetMaxBandwidthWithContext(ctx context.Conte
     if request == nil {
         request = NewResetInstancesInternetMaxBandwidthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesInternetMaxBandwidth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesInternetMaxBandwidthResponse()
@@ -6013,13 +5953,7 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesPasswordRequest()
-    }
-    
-    response = NewResetInstancesPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesPasswordWithContext(context.Background(), request)
 }
 
 // ResetInstancesPassword
@@ -6067,6 +6001,11 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewResetInstancesPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesPasswordResponse()
@@ -6147,13 +6086,7 @@ func NewResetInstancesTypeResponse() (response *ResetInstancesTypeResponse) {
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILYTOSA3 = "UnsupportedOperation.UnsupportedChangeInstanceFamilyToSA3"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCETOTHISINSTANCEFAMILY = "UnsupportedOperation.UnsupportedChangeInstanceToThisInstanceFamily"
 func (c *Client) ResetInstancesType(request *ResetInstancesTypeRequest) (response *ResetInstancesTypeResponse, err error) {
-    if request == nil {
-        request = NewResetInstancesTypeRequest()
-    }
-    
-    response = NewResetInstancesTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetInstancesTypeWithContext(context.Background(), request)
 }
 
 // ResetInstancesType
@@ -6215,6 +6148,11 @@ func (c *Client) ResetInstancesTypeWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewResetInstancesTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetInstancesTypeResponse()
@@ -6269,6 +6207,7 @@ func NewResizeInstanceDisksResponse() (response *ResizeInstanceDisksResponse) {
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 //  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
 //  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = "UnsupportedOperation.InstanceStateStopped"
@@ -6276,13 +6215,7 @@ func NewResizeInstanceDisksResponse() (response *ResizeInstanceDisksResponse) {
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) ResizeInstanceDisks(request *ResizeInstanceDisksRequest) (response *ResizeInstanceDisksResponse, err error) {
-    if request == nil {
-        request = NewResizeInstanceDisksRequest()
-    }
-    
-    response = NewResizeInstanceDisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResizeInstanceDisksWithContext(context.Background(), request)
 }
 
 // ResizeInstanceDisks
@@ -6315,6 +6248,7 @@ func (c *Client) ResizeInstanceDisks(request *ResizeInstanceDisksRequest) (respo
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 //  UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = "UnsupportedOperation.InstanceStateCorrupted"
+//  UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = "UnsupportedOperation.InstanceStateExitRescueMode"
 //  UNSUPPORTEDOPERATION_INSTANCESTATERUNNING = "UnsupportedOperation.InstanceStateRunning"
 //  UNSUPPORTEDOPERATION_INSTANCESTATESHUTDOWN = "UnsupportedOperation.InstanceStateShutdown"
 //  UNSUPPORTEDOPERATION_INSTANCESTATESTOPPED = "UnsupportedOperation.InstanceStateStopped"
@@ -6325,6 +6259,11 @@ func (c *Client) ResizeInstanceDisksWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResizeInstanceDisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResizeInstanceDisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResizeInstanceDisksResponse()
@@ -6371,6 +6310,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
 //  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
 //  FAILEDOPERATION_NOAVAILABLEIPADDRESSCOUNTINSUBNET = "FailedOperation.NoAvailableIpAddressCountInSubnet"
+//  FAILEDOPERATION_PROMOTIONALREGIONRESTRICTION = "FailedOperation.PromotionalRegionRestriction"
 //  FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
 //  FAILEDOPERATION_SNAPSHOTSIZELARGERTHANDATASIZE = "FailedOperation.SnapshotSizeLargerThanDataSize"
 //  FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = "FailedOperation.SnapshotSizeLessThanDataSize"
@@ -6477,13 +6417,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
-    if request == nil {
-        request = NewRunInstancesRequest()
-    }
-    
-    response = NewRunInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunInstancesWithContext(context.Background(), request)
 }
 
 // RunInstances
@@ -6508,6 +6442,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
 //  FAILEDOPERATION_INQUIRYPRICEFAILED = "FailedOperation.InquiryPriceFailed"
 //  FAILEDOPERATION_NOAVAILABLEIPADDRESSCOUNTINSUBNET = "FailedOperation.NoAvailableIpAddressCountInSubnet"
+//  FAILEDOPERATION_PROMOTIONALREGIONRESTRICTION = "FailedOperation.PromotionalRegionRestriction"
 //  FAILEDOPERATION_SECURITYGROUPACTIONFAILED = "FailedOperation.SecurityGroupActionFailed"
 //  FAILEDOPERATION_SNAPSHOTSIZELARGERTHANDATASIZE = "FailedOperation.SnapshotSizeLargerThanDataSize"
 //  FAILEDOPERATION_SNAPSHOTSIZELESSTHANDATASIZE = "FailedOperation.SnapshotSizeLessThanDataSize"
@@ -6617,6 +6552,11 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
     if request == nil {
         request = NewRunInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunInstancesResponse()
@@ -6680,13 +6620,7 @@ func NewStartInstancesResponse() (response *StartInstancesResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = "UnsupportedOperation.InstanceStateTerminated"
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 func (c *Client) StartInstances(request *StartInstancesRequest) (response *StartInstancesResponse, err error) {
-    if request == nil {
-        request = NewStartInstancesRequest()
-    }
-    
-    response = NewStartInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartInstancesWithContext(context.Background(), request)
 }
 
 // StartInstances
@@ -6731,6 +6665,11 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
     if request == nil {
         request = NewStartInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartInstancesResponse()
@@ -6800,13 +6739,7 @@ func NewStopInstancesResponse() (response *StopInstancesResponse) {
 //  UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
 //  UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
 func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopInstancesResponse, err error) {
-    if request == nil {
-        request = NewStopInstancesRequest()
-    }
-    
-    response = NewStopInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopInstancesWithContext(context.Background(), request)
 }
 
 // StopInstances
@@ -6857,6 +6790,11 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
     if request == nil {
         request = NewStopInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopInstancesResponse()
@@ -6907,13 +6845,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 //  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
-    if request == nil {
-        request = NewSyncImagesRequest()
-    }
-    
-    response = NewSyncImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncImagesWithContext(context.Background(), request)
 }
 
 // SyncImages
@@ -6945,6 +6877,11 @@ func (c *Client) SyncImagesWithContext(ctx context.Context, request *SyncImagesR
     if request == nil {
         request = NewSyncImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncImagesResponse()
@@ -6999,6 +6936,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
@@ -7019,13 +6957,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 //  UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
 //  UNSUPPORTEDOPERATION_USERLIMITOPERATIONEXCEEDQUOTA = "UnsupportedOperation.UserLimitOperationExceedQuota"
 func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (response *TerminateInstancesResponse, err error) {
-    if request == nil {
-        request = NewTerminateInstancesRequest()
-    }
-    
-    response = NewTerminateInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateInstancesWithContext(context.Background(), request)
 }
 
 // TerminateInstances
@@ -7058,6 +6990,7 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
 //  MISSINGPARAMETER = "MissingParameter"
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 //  UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
@@ -7081,6 +7014,11 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     if request == nil {
         request = NewTerminateInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateInstancesResponse()

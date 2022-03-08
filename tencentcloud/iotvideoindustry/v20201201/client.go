@@ -16,6 +16,7 @@ package v20201201
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewBindGroupDevicesResponse() (response *BindGroupDevicesResponse) {
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_DEVICENOTFOUND = "UnsupportedOperation.DeviceNotFound"
 func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *BindGroupDevicesResponse, err error) {
-    if request == nil {
-        request = NewBindGroupDevicesRequest()
-    }
-    
-    response = NewBindGroupDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindGroupDevicesWithContext(context.Background(), request)
 }
 
 // BindGroupDevices
@@ -85,6 +80,11 @@ func (c *Client) BindGroupDevicesWithContext(ctx context.Context, request *BindG
     if request == nil {
         request = NewBindGroupDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindGroupDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindGroupDevicesResponse()
@@ -118,13 +118,7 @@ func NewControlChannelLocalRecordResponse() (response *ControlChannelLocalRecord
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 func (c *Client) ControlChannelLocalRecord(request *ControlChannelLocalRecordRequest) (response *ControlChannelLocalRecordResponse, err error) {
-    if request == nil {
-        request = NewControlChannelLocalRecordRequest()
-    }
-    
-    response = NewControlChannelLocalRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlChannelLocalRecordWithContext(context.Background(), request)
 }
 
 // ControlChannelLocalRecord
@@ -139,6 +133,11 @@ func (c *Client) ControlChannelLocalRecordWithContext(ctx context.Context, reque
     if request == nil {
         request = NewControlChannelLocalRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlChannelLocalRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlChannelLocalRecordResponse()
@@ -171,13 +170,7 @@ func NewControlChannelPTZResponse() (response *ControlChannelPTZResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlChannelPTZ(request *ControlChannelPTZRequest) (response *ControlChannelPTZResponse, err error) {
-    if request == nil {
-        request = NewControlChannelPTZRequest()
-    }
-    
-    response = NewControlChannelPTZResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlChannelPTZWithContext(context.Background(), request)
 }
 
 // ControlChannelPTZ
@@ -191,6 +184,11 @@ func (c *Client) ControlChannelPTZWithContext(ctx context.Context, request *Cont
     if request == nil {
         request = NewControlChannelPTZRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlChannelPTZ require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlChannelPTZResponse()
@@ -224,13 +222,7 @@ func NewControlDevicePTZResponse() (response *ControlDevicePTZResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) ControlDevicePTZ(request *ControlDevicePTZRequest) (response *ControlDevicePTZResponse, err error) {
-    if request == nil {
-        request = NewControlDevicePTZRequest()
-    }
-    
-    response = NewControlDevicePTZResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlDevicePTZWithContext(context.Background(), request)
 }
 
 // ControlDevicePTZ
@@ -245,6 +237,11 @@ func (c *Client) ControlDevicePTZWithContext(ctx context.Context, request *Contr
     if request == nil {
         request = NewControlDevicePTZRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlDevicePTZ require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlDevicePTZResponse()
@@ -273,28 +270,25 @@ func NewControlHomePositionResponse() (response *ControlHomePositionResponse) {
 // 看守位控制
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlHomePosition(request *ControlHomePositionRequest) (response *ControlHomePositionResponse, err error) {
-    if request == nil {
-        request = NewControlHomePositionRequest()
-    }
-    
-    response = NewControlHomePositionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlHomePositionWithContext(context.Background(), request)
 }
 
 // ControlHomePosition
 // 看守位控制
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlHomePositionWithContext(ctx context.Context, request *ControlHomePositionRequest) (response *ControlHomePositionResponse, err error) {
     if request == nil {
         request = NewControlHomePositionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlHomePosition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlHomePositionResponse()
@@ -325,13 +319,7 @@ func NewControlPresetResponse() (response *ControlPresetResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 func (c *Client) ControlPreset(request *ControlPresetRequest) (response *ControlPresetResponse, err error) {
-    if request == nil {
-        request = NewControlPresetRequest()
-    }
-    
-    response = NewControlPresetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlPresetWithContext(context.Background(), request)
 }
 
 // ControlPreset
@@ -343,6 +331,11 @@ func (c *Client) ControlPresetWithContext(ctx context.Context, request *ControlP
     if request == nil {
         request = NewControlPresetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlPreset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlPresetResponse()
@@ -375,13 +368,7 @@ func NewControlRecordStreamResponse() (response *ControlRecordStreamResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (response *ControlRecordStreamResponse, err error) {
-    if request == nil {
-        request = NewControlRecordStreamRequest()
-    }
-    
-    response = NewControlRecordStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlRecordStreamWithContext(context.Background(), request)
 }
 
 // ControlRecordStream
@@ -395,6 +382,11 @@ func (c *Client) ControlRecordStreamWithContext(ctx context.Context, request *Co
     if request == nil {
         request = NewControlRecordStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlRecordStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlRecordStreamResponse()
@@ -429,13 +421,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateDeviceRequest()
-    }
-    
-    response = NewCreateDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDeviceWithContext(context.Background(), request)
 }
 
 // CreateDevice
@@ -451,6 +437,11 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDeviceResponse()
@@ -483,13 +474,7 @@ func NewCreateDeviceGroupResponse() (response *CreateDeviceGroupResponse) {
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
 //  UNSUPPORTEDOPERATION_GROUPPARENTIDNOTEXIST = "UnsupportedOperation.GroupParentidNotExist"
 func (c *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (response *CreateDeviceGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateDeviceGroupRequest()
-    }
-    
-    response = NewCreateDeviceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDeviceGroupWithContext(context.Background(), request)
 }
 
 // CreateDeviceGroup
@@ -503,6 +488,11 @@ func (c *Client) CreateDeviceGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDeviceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDeviceGroupResponse()
@@ -595,13 +585,7 @@ func NewCreateLiveChannelResponse() (response *CreateLiveChannelResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) CreateLiveChannel(request *CreateLiveChannelRequest) (response *CreateLiveChannelResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveChannelRequest()
-    }
-    
-    response = NewCreateLiveChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveChannelWithContext(context.Background(), request)
 }
 
 // CreateLiveChannel
@@ -675,6 +659,11 @@ func (c *Client) CreateLiveChannelWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateLiveChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveChannelResponse()
@@ -767,13 +756,7 @@ func NewCreateLiveRecordPlanResponse() (response *CreateLiveRecordPlanResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) CreateLiveRecordPlan(request *CreateLiveRecordPlanRequest) (response *CreateLiveRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewCreateLiveRecordPlanRequest()
-    }
-    
-    response = NewCreateLiveRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLiveRecordPlanWithContext(context.Background(), request)
 }
 
 // CreateLiveRecordPlan
@@ -847,6 +830,11 @@ func (c *Client) CreateLiveRecordPlanWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateLiveRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLiveRecordPlanResponse()
@@ -939,13 +927,7 @@ func NewCreateMessageForwardResponse() (response *CreateMessageForwardResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) CreateMessageForward(request *CreateMessageForwardRequest) (response *CreateMessageForwardResponse, err error) {
-    if request == nil {
-        request = NewCreateMessageForwardRequest()
-    }
-    
-    response = NewCreateMessageForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMessageForwardWithContext(context.Background(), request)
 }
 
 // CreateMessageForward
@@ -1019,6 +1001,11 @@ func (c *Client) CreateMessageForwardWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateMessageForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMessageForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMessageForwardResponse()
@@ -1055,13 +1042,7 @@ func NewCreateRecordPlanResponse() (response *CreateRecordPlanResponse) {
 //  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordPlan(request *CreateRecordPlanRequest) (response *CreateRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewCreateRecordPlanRequest()
-    }
-    
-    response = NewCreateRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecordPlanWithContext(context.Background(), request)
 }
 
 // CreateRecordPlan
@@ -1079,6 +1060,11 @@ func (c *Client) CreateRecordPlanWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecordPlanResponse()
@@ -1113,13 +1099,7 @@ func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
 //  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
-    if request == nil {
-        request = NewCreateRecordingPlanRequest()
-    }
-    
-    response = NewCreateRecordingPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecordingPlanWithContext(context.Background(), request)
 }
 
 // CreateRecordingPlan
@@ -1135,6 +1115,11 @@ func (c *Client) CreateRecordingPlanWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRecordingPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordingPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecordingPlanResponse()
@@ -1165,13 +1150,7 @@ func NewCreateSceneResponse() (response *CreateSceneResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 func (c *Client) CreateScene(request *CreateSceneRequest) (response *CreateSceneResponse, err error) {
-    if request == nil {
-        request = NewCreateSceneRequest()
-    }
-    
-    response = NewCreateSceneResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSceneWithContext(context.Background(), request)
 }
 
 // CreateScene
@@ -1183,6 +1162,11 @@ func (c *Client) CreateSceneWithContext(ctx context.Context, request *CreateScen
     if request == nil {
         request = NewCreateSceneRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScene require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSceneResponse()
@@ -1214,13 +1198,7 @@ func NewCreateTimeTemplateResponse() (response *CreateTimeTemplateResponse) {
 //  INVALIDPARAMETERVALUE_TEMPLATESPECEMPTY = "InvalidParameterValue.TemplateSpecEmpty"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateTimeTemplate(request *CreateTimeTemplateRequest) (response *CreateTimeTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateTimeTemplateRequest()
-    }
-    
-    response = NewCreateTimeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTimeTemplateWithContext(context.Background(), request)
 }
 
 // CreateTimeTemplate
@@ -1233,6 +1211,11 @@ func (c *Client) CreateTimeTemplateWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTimeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTimeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTimeTemplateResponse()
@@ -1265,13 +1248,7 @@ func NewDeleteChannelResponse() (response *DeleteChannelResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
 func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
-    if request == nil {
-        request = NewDeleteChannelRequest()
-    }
-    
-    response = NewDeleteChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteChannelWithContext(context.Background(), request)
 }
 
 // DeleteChannel
@@ -1285,6 +1262,11 @@ func (c *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteCh
     if request == nil {
         request = NewDeleteChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteChannelResponse()
@@ -1315,13 +1297,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -1333,6 +1309,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -1364,13 +1345,7 @@ func NewDeleteDeviceGroupResponse() (response *DeleteDeviceGroupResponse) {
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  UNSUPPORTEDOPERATION_SUBGRPEXIST = "UnsupportedOperation.SubgrpExist"
 func (c *Client) DeleteDeviceGroup(request *DeleteDeviceGroupRequest) (response *DeleteDeviceGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceGroupRequest()
-    }
-    
-    response = NewDeleteDeviceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceGroupWithContext(context.Background(), request)
 }
 
 // DeleteDeviceGroup
@@ -1383,6 +1358,11 @@ func (c *Client) DeleteDeviceGroupWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteDeviceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceGroupResponse()
@@ -1475,13 +1455,7 @@ func NewDeleteLiveChannelResponse() (response *DeleteLiveChannelResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DeleteLiveChannel(request *DeleteLiveChannelRequest) (response *DeleteLiveChannelResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveChannelRequest()
-    }
-    
-    response = NewDeleteLiveChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveChannelWithContext(context.Background(), request)
 }
 
 // DeleteLiveChannel
@@ -1555,6 +1529,11 @@ func (c *Client) DeleteLiveChannelWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteLiveChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveChannelResponse()
@@ -1647,13 +1626,7 @@ func NewDeleteLiveRecordPlanResponse() (response *DeleteLiveRecordPlanResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DeleteLiveRecordPlan(request *DeleteLiveRecordPlanRequest) (response *DeleteLiveRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveRecordPlanRequest()
-    }
-    
-    response = NewDeleteLiveRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveRecordPlanWithContext(context.Background(), request)
 }
 
 // DeleteLiveRecordPlan
@@ -1727,6 +1700,11 @@ func (c *Client) DeleteLiveRecordPlanWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteLiveRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveRecordPlanResponse()
@@ -1819,13 +1797,7 @@ func NewDeleteLiveVideoListResponse() (response *DeleteLiveVideoListResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DeleteLiveVideoList(request *DeleteLiveVideoListRequest) (response *DeleteLiveVideoListResponse, err error) {
-    if request == nil {
-        request = NewDeleteLiveVideoListRequest()
-    }
-    
-    response = NewDeleteLiveVideoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLiveVideoListWithContext(context.Background(), request)
 }
 
 // DeleteLiveVideoList
@@ -1899,6 +1871,11 @@ func (c *Client) DeleteLiveVideoListWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteLiveVideoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveVideoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLiveVideoListResponse()
@@ -1991,13 +1968,7 @@ func NewDeleteMessageForwardResponse() (response *DeleteMessageForwardResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DeleteMessageForward(request *DeleteMessageForwardRequest) (response *DeleteMessageForwardResponse, err error) {
-    if request == nil {
-        request = NewDeleteMessageForwardRequest()
-    }
-    
-    response = NewDeleteMessageForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMessageForwardWithContext(context.Background(), request)
 }
 
 // DeleteMessageForward
@@ -2071,6 +2042,11 @@ func (c *Client) DeleteMessageForwardWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteMessageForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMessageForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMessageForwardResponse()
@@ -2105,13 +2081,7 @@ func NewDeleteRecordPlanResponse() (response *DeleteRecordPlanResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PLANNOTEXIST = "ResourceNotFound.PlanNotExist"
 func (c *Client) DeleteRecordPlan(request *DeleteRecordPlanRequest) (response *DeleteRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewDeleteRecordPlanRequest()
-    }
-    
-    response = NewDeleteRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRecordPlanWithContext(context.Background(), request)
 }
 
 // DeleteRecordPlan
@@ -2127,6 +2097,11 @@ func (c *Client) DeleteRecordPlanWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRecordPlanResponse()
@@ -2159,13 +2134,7 @@ func NewDeleteRecordingPlanResponse() (response *DeleteRecordingPlanResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PLANNOTEXIST = "ResourceNotFound.PlanNotExist"
 func (c *Client) DeleteRecordingPlan(request *DeleteRecordingPlanRequest) (response *DeleteRecordingPlanResponse, err error) {
-    if request == nil {
-        request = NewDeleteRecordingPlanRequest()
-    }
-    
-    response = NewDeleteRecordingPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRecordingPlanWithContext(context.Background(), request)
 }
 
 // DeleteRecordingPlan
@@ -2179,6 +2148,11 @@ func (c *Client) DeleteRecordingPlanWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteRecordingPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordingPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRecordingPlanResponse()
@@ -2271,13 +2245,7 @@ func NewDeleteSceneResponse() (response *DeleteSceneResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DeleteScene(request *DeleteSceneRequest) (response *DeleteSceneResponse, err error) {
-    if request == nil {
-        request = NewDeleteSceneRequest()
-    }
-    
-    response = NewDeleteSceneResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSceneWithContext(context.Background(), request)
 }
 
 // DeleteScene
@@ -2351,6 +2319,11 @@ func (c *Client) DeleteSceneWithContext(ctx context.Context, request *DeleteScen
     if request == nil {
         request = NewDeleteSceneRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScene require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSceneResponse()
@@ -2382,13 +2355,7 @@ func NewDeleteTimeTemplateResponse() (response *DeleteTimeTemplateResponse) {
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteTimeTemplate(request *DeleteTimeTemplateRequest) (response *DeleteTimeTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteTimeTemplateRequest()
-    }
-    
-    response = NewDeleteTimeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTimeTemplateWithContext(context.Background(), request)
 }
 
 // DeleteTimeTemplate
@@ -2401,6 +2368,11 @@ func (c *Client) DeleteTimeTemplateWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteTimeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTimeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTimeTemplateResponse()
@@ -2432,13 +2404,7 @@ func NewDeleteVideoListResponse() (response *DeleteVideoListResponse) {
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteVideoList(request *DeleteVideoListRequest) (response *DeleteVideoListResponse, err error) {
-    if request == nil {
-        request = NewDeleteVideoListRequest()
-    }
-    
-    response = NewDeleteVideoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVideoListWithContext(context.Background(), request)
 }
 
 // DeleteVideoList
@@ -2451,6 +2417,11 @@ func (c *Client) DeleteVideoListWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteVideoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVideoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVideoListResponse()
@@ -2482,13 +2453,7 @@ func NewDeleteWarningResponse() (response *DeleteWarningResponse) {
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteWarning(request *DeleteWarningRequest) (response *DeleteWarningResponse, err error) {
-    if request == nil {
-        request = NewDeleteWarningRequest()
-    }
-    
-    response = NewDeleteWarningResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteWarningWithContext(context.Background(), request)
 }
 
 // DeleteWarning
@@ -2501,6 +2466,11 @@ func (c *Client) DeleteWarningWithContext(ctx context.Context, request *DeleteWa
     if request == nil {
         request = NewDeleteWarningRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWarning require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteWarningResponse()
@@ -2593,13 +2563,7 @@ func NewDescribeAbnormalEventsResponse() (response *DescribeAbnormalEventsRespon
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeAbnormalEvents(request *DescribeAbnormalEventsRequest) (response *DescribeAbnormalEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalEventsRequest()
-    }
-    
-    response = NewDescribeAbnormalEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalEventsWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalEvents
@@ -2673,6 +2637,11 @@ func (c *Client) DescribeAbnormalEventsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAbnormalEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalEventsResponse()
@@ -2767,13 +2736,7 @@ func NewDescribeAllDeviceListResponse() (response *DescribeAllDeviceListResponse
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeAllDeviceList(request *DescribeAllDeviceListRequest) (response *DescribeAllDeviceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllDeviceListRequest()
-    }
-    
-    response = NewDescribeAllDeviceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllDeviceListWithContext(context.Background(), request)
 }
 
 // DescribeAllDeviceList
@@ -2849,6 +2812,11 @@ func (c *Client) DescribeAllDeviceListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAllDeviceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllDeviceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllDeviceListResponse()
@@ -2952,13 +2920,7 @@ func NewDescribeBindSceneChannelsResponse() (response *DescribeBindSceneChannels
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeBindSceneChannels(request *DescribeBindSceneChannelsRequest) (response *DescribeBindSceneChannelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindSceneChannelsRequest()
-    }
-    
-    response = NewDescribeBindSceneChannelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindSceneChannelsWithContext(context.Background(), request)
 }
 
 // DescribeBindSceneChannels
@@ -3043,6 +3005,11 @@ func (c *Client) DescribeBindSceneChannelsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeBindSceneChannelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindSceneChannels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindSceneChannelsResponse()
@@ -3146,13 +3113,7 @@ func NewDescribeBindSceneDevicesResponse() (response *DescribeBindSceneDevicesRe
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeBindSceneDevices(request *DescribeBindSceneDevicesRequest) (response *DescribeBindSceneDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeBindSceneDevicesRequest()
-    }
-    
-    response = NewDescribeBindSceneDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBindSceneDevicesWithContext(context.Background(), request)
 }
 
 // DescribeBindSceneDevices
@@ -3237,6 +3198,11 @@ func (c *Client) DescribeBindSceneDevicesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeBindSceneDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBindSceneDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBindSceneDevicesResponse()
@@ -3272,13 +3238,7 @@ func NewDescribeChannelLiveStreamURLResponse() (response *DescribeChannelLiveStr
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelLiveStreamURL(request *DescribeChannelLiveStreamURLRequest) (response *DescribeChannelLiveStreamURLResponse, err error) {
-    if request == nil {
-        request = NewDescribeChannelLiveStreamURLRequest()
-    }
-    
-    response = NewDescribeChannelLiveStreamURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChannelLiveStreamURLWithContext(context.Background(), request)
 }
 
 // DescribeChannelLiveStreamURL
@@ -3295,6 +3255,11 @@ func (c *Client) DescribeChannelLiveStreamURLWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeChannelLiveStreamURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelLiveStreamURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChannelLiveStreamURLResponse()
@@ -3330,13 +3295,7 @@ func NewDescribeChannelLocalRecordURLResponse() (response *DescribeChannelLocalR
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelLocalRecordURL(request *DescribeChannelLocalRecordURLRequest) (response *DescribeChannelLocalRecordURLResponse, err error) {
-    if request == nil {
-        request = NewDescribeChannelLocalRecordURLRequest()
-    }
-    
-    response = NewDescribeChannelLocalRecordURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChannelLocalRecordURLWithContext(context.Background(), request)
 }
 
 // DescribeChannelLocalRecordURL
@@ -3353,6 +3312,11 @@ func (c *Client) DescribeChannelLocalRecordURLWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeChannelLocalRecordURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelLocalRecordURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChannelLocalRecordURLResponse()
@@ -3387,13 +3351,7 @@ func NewDescribeChannelStreamURLResponse() (response *DescribeChannelStreamURLRe
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLRequest) (response *DescribeChannelStreamURLResponse, err error) {
-    if request == nil {
-        request = NewDescribeChannelStreamURLRequest()
-    }
-    
-    response = NewDescribeChannelStreamURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChannelStreamURLWithContext(context.Background(), request)
 }
 
 // DescribeChannelStreamURL
@@ -3409,6 +3367,11 @@ func (c *Client) DescribeChannelStreamURLWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeChannelStreamURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelStreamURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChannelStreamURLResponse()
@@ -3439,13 +3402,7 @@ func NewDescribeChannelsResponse() (response *DescribeChannelsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeChannels(request *DescribeChannelsRequest) (response *DescribeChannelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeChannelsRequest()
-    }
-    
-    response = NewDescribeChannelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChannelsWithContext(context.Background(), request)
 }
 
 // DescribeChannels
@@ -3457,6 +3414,11 @@ func (c *Client) DescribeChannelsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeChannelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChannelsResponse()
@@ -3549,13 +3511,7 @@ func NewDescribeChannelsByLiveRecordPlanResponse() (response *DescribeChannelsBy
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeChannelsByLiveRecordPlan(request *DescribeChannelsByLiveRecordPlanRequest) (response *DescribeChannelsByLiveRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewDescribeChannelsByLiveRecordPlanRequest()
-    }
-    
-    response = NewDescribeChannelsByLiveRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChannelsByLiveRecordPlanWithContext(context.Background(), request)
 }
 
 // DescribeChannelsByLiveRecordPlan
@@ -3629,6 +3585,11 @@ func (c *Client) DescribeChannelsByLiveRecordPlanWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeChannelsByLiveRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelsByLiveRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChannelsByLiveRecordPlanResponse()
@@ -3721,13 +3682,7 @@ func NewDescribeCurrentDeviceDataResponse() (response *DescribeCurrentDeviceData
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeCurrentDeviceData(request *DescribeCurrentDeviceDataRequest) (response *DescribeCurrentDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeCurrentDeviceDataRequest()
-    }
-    
-    response = NewDescribeCurrentDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCurrentDeviceDataWithContext(context.Background(), request)
 }
 
 // DescribeCurrentDeviceData
@@ -3801,6 +3756,11 @@ func (c *Client) DescribeCurrentDeviceDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCurrentDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCurrentDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCurrentDeviceDataResponse()
@@ -3831,13 +3791,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceRequest()
-    }
-    
-    response = NewDescribeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceWithContext(context.Background(), request)
 }
 
 // DescribeDevice
@@ -3849,6 +3803,11 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
@@ -3941,13 +3900,7 @@ func NewDescribeDeviceEventResponse() (response *DescribeDeviceEventResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeDeviceEvent(request *DescribeDeviceEventRequest) (response *DescribeDeviceEventResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceEventRequest()
-    }
-    
-    response = NewDescribeDeviceEventResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceEventWithContext(context.Background(), request)
 }
 
 // DescribeDeviceEvent
@@ -4021,6 +3974,11 @@ func (c *Client) DescribeDeviceEventWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDeviceEventRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceEvent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceEventResponse()
@@ -4113,13 +4071,7 @@ func NewDescribeDeviceGroupResponse() (response *DescribeDeviceGroupResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeDeviceGroup(request *DescribeDeviceGroupRequest) (response *DescribeDeviceGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceGroupRequest()
-    }
-    
-    response = NewDescribeDeviceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceGroupWithContext(context.Background(), request)
 }
 
 // DescribeDeviceGroup
@@ -4193,6 +4145,11 @@ func (c *Client) DescribeDeviceGroupWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDeviceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceGroupResponse()
@@ -4285,13 +4242,7 @@ func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeDeviceList(request *DescribeDeviceListRequest) (response *DescribeDeviceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceListRequest()
-    }
-    
-    response = NewDescribeDeviceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceListWithContext(context.Background(), request)
 }
 
 // DescribeDeviceList
@@ -4365,6 +4316,11 @@ func (c *Client) DescribeDeviceListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceListResponse()
@@ -4458,13 +4414,7 @@ func NewDescribeDeviceMonitorDataResponse() (response *DescribeDeviceMonitorData
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeDeviceMonitorData(request *DescribeDeviceMonitorDataRequest) (response *DescribeDeviceMonitorDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceMonitorDataRequest()
-    }
-    
-    response = NewDescribeDeviceMonitorDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceMonitorDataWithContext(context.Background(), request)
 }
 
 // DescribeDeviceMonitorData
@@ -4539,6 +4489,11 @@ func (c *Client) DescribeDeviceMonitorDataWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeviceMonitorDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceMonitorData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceMonitorDataResponse()
@@ -4569,13 +4524,7 @@ func NewDescribeDevicePassWordResponse() (response *DescribeDevicePassWordRespon
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeDevicePassWord(request *DescribeDevicePassWordRequest) (response *DescribeDevicePassWordResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicePassWordRequest()
-    }
-    
-    response = NewDescribeDevicePassWordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicePassWordWithContext(context.Background(), request)
 }
 
 // DescribeDevicePassWord
@@ -4587,6 +4536,11 @@ func (c *Client) DescribeDevicePassWordWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDevicePassWordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePassWord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicePassWordResponse()
@@ -4625,13 +4579,7 @@ func NewDescribeDeviceStreamsResponse() (response *DescribeDeviceStreamsResponse
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeDeviceStreams(request *DescribeDeviceStreamsRequest) (response *DescribeDeviceStreamsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceStreamsRequest()
-    }
-    
-    response = NewDescribeDeviceStreamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceStreamsWithContext(context.Background(), request)
 }
 
 // DescribeDeviceStreams
@@ -4651,6 +4599,11 @@ func (c *Client) DescribeDeviceStreamsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeviceStreamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceStreams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceStreamsResponse()
@@ -4681,13 +4634,7 @@ func NewDescribeGroupByIdResponse() (response *DescribeGroupByIdResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeGroupById(request *DescribeGroupByIdRequest) (response *DescribeGroupByIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupByIdRequest()
-    }
-    
-    response = NewDescribeGroupByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupByIdWithContext(context.Background(), request)
 }
 
 // DescribeGroupById
@@ -4699,6 +4646,11 @@ func (c *Client) DescribeGroupByIdWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeGroupByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupByIdResponse()
@@ -4729,13 +4681,7 @@ func NewDescribeGroupByPathResponse() (response *DescribeGroupByPathResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeGroupByPath(request *DescribeGroupByPathRequest) (response *DescribeGroupByPathResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupByPathRequest()
-    }
-    
-    response = NewDescribeGroupByPathResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupByPathWithContext(context.Background(), request)
 }
 
 // DescribeGroupByPath
@@ -4747,6 +4693,11 @@ func (c *Client) DescribeGroupByPathWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeGroupByPathRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupByPath require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupByPathResponse()
@@ -4777,13 +4728,7 @@ func NewDescribeGroupDevicesResponse() (response *DescribeGroupDevicesResponse) 
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeGroupDevices(request *DescribeGroupDevicesRequest) (response *DescribeGroupDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupDevicesRequest()
-    }
-    
-    response = NewDescribeGroupDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupDevicesWithContext(context.Background(), request)
 }
 
 // DescribeGroupDevices
@@ -4795,6 +4740,11 @@ func (c *Client) DescribeGroupDevicesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeGroupDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupDevicesResponse()
@@ -4825,13 +4775,7 @@ func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *DescribeGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupsRequest()
-    }
-    
-    response = NewDescribeGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupsWithContext(context.Background(), request)
 }
 
 // DescribeGroups
@@ -4843,6 +4787,11 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupsResponse()
@@ -4875,13 +4824,7 @@ func NewDescribeIPCChannelsResponse() (response *DescribeIPCChannelsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DescribeIPCChannels(request *DescribeIPCChannelsRequest) (response *DescribeIPCChannelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeIPCChannelsRequest()
-    }
-    
-    response = NewDescribeIPCChannelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeIPCChannelsWithContext(context.Background(), request)
 }
 
 // DescribeIPCChannels
@@ -4895,6 +4838,11 @@ func (c *Client) DescribeIPCChannelsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeIPCChannelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPCChannels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeIPCChannelsResponse()
@@ -4987,13 +4935,7 @@ func NewDescribeLiveChannelResponse() (response *DescribeLiveChannelResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveChannel(request *DescribeLiveChannelRequest) (response *DescribeLiveChannelResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveChannelRequest()
-    }
-    
-    response = NewDescribeLiveChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveChannelWithContext(context.Background(), request)
 }
 
 // DescribeLiveChannel
@@ -5067,6 +5009,11 @@ func (c *Client) DescribeLiveChannelWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLiveChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveChannelResponse()
@@ -5159,13 +5106,7 @@ func NewDescribeLiveChannelListResponse() (response *DescribeLiveChannelListResp
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveChannelList(request *DescribeLiveChannelListRequest) (response *DescribeLiveChannelListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveChannelListRequest()
-    }
-    
-    response = NewDescribeLiveChannelListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveChannelListWithContext(context.Background(), request)
 }
 
 // DescribeLiveChannelList
@@ -5239,6 +5180,11 @@ func (c *Client) DescribeLiveChannelListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeLiveChannelListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveChannelList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveChannelListResponse()
@@ -5331,13 +5277,7 @@ func NewDescribeLiveRecordPlanByIdResponse() (response *DescribeLiveRecordPlanBy
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveRecordPlanById(request *DescribeLiveRecordPlanByIdRequest) (response *DescribeLiveRecordPlanByIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveRecordPlanByIdRequest()
-    }
-    
-    response = NewDescribeLiveRecordPlanByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveRecordPlanByIdWithContext(context.Background(), request)
 }
 
 // DescribeLiveRecordPlanById
@@ -5411,6 +5351,11 @@ func (c *Client) DescribeLiveRecordPlanByIdWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeLiveRecordPlanByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordPlanById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordPlanByIdResponse()
@@ -5503,13 +5448,7 @@ func NewDescribeLiveRecordPlanIdsResponse() (response *DescribeLiveRecordPlanIds
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveRecordPlanIds(request *DescribeLiveRecordPlanIdsRequest) (response *DescribeLiveRecordPlanIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveRecordPlanIdsRequest()
-    }
-    
-    response = NewDescribeLiveRecordPlanIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveRecordPlanIdsWithContext(context.Background(), request)
 }
 
 // DescribeLiveRecordPlanIds
@@ -5583,6 +5522,11 @@ func (c *Client) DescribeLiveRecordPlanIdsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLiveRecordPlanIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveRecordPlanIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveRecordPlanIdsResponse()
@@ -5675,13 +5619,7 @@ func NewDescribeLiveStreamResponse() (response *DescribeLiveStreamResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveStream(request *DescribeLiveStreamRequest) (response *DescribeLiveStreamResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveStreamRequest()
-    }
-    
-    response = NewDescribeLiveStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveStreamWithContext(context.Background(), request)
 }
 
 // DescribeLiveStream
@@ -5755,6 +5693,11 @@ func (c *Client) DescribeLiveStreamWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLiveStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamResponse()
@@ -5847,13 +5790,7 @@ func NewDescribeLiveVideoListResponse() (response *DescribeLiveVideoListResponse
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeLiveVideoList(request *DescribeLiveVideoListRequest) (response *DescribeLiveVideoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLiveVideoListRequest()
-    }
-    
-    response = NewDescribeLiveVideoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLiveVideoListWithContext(context.Background(), request)
 }
 
 // DescribeLiveVideoList
@@ -5927,6 +5864,11 @@ func (c *Client) DescribeLiveVideoListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeLiveVideoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveVideoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLiveVideoListResponse()
@@ -6019,13 +5961,7 @@ func NewDescribeMessageForwardResponse() (response *DescribeMessageForwardRespon
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeMessageForward(request *DescribeMessageForwardRequest) (response *DescribeMessageForwardResponse, err error) {
-    if request == nil {
-        request = NewDescribeMessageForwardRequest()
-    }
-    
-    response = NewDescribeMessageForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMessageForwardWithContext(context.Background(), request)
 }
 
 // DescribeMessageForward
@@ -6099,6 +6035,11 @@ func (c *Client) DescribeMessageForwardWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeMessageForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMessageForwardResponse()
@@ -6191,13 +6132,7 @@ func NewDescribeMessageForwardsResponse() (response *DescribeMessageForwardsResp
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeMessageForwards(request *DescribeMessageForwardsRequest) (response *DescribeMessageForwardsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMessageForwardsRequest()
-    }
-    
-    response = NewDescribeMessageForwardsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMessageForwardsWithContext(context.Background(), request)
 }
 
 // DescribeMessageForwards
@@ -6271,6 +6206,11 @@ func (c *Client) DescribeMessageForwardsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeMessageForwardsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageForwards require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMessageForwardsResponse()
@@ -6363,13 +6303,7 @@ func NewDescribeMonitorDataByDateResponse() (response *DescribeMonitorDataByDate
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeMonitorDataByDate(request *DescribeMonitorDataByDateRequest) (response *DescribeMonitorDataByDateResponse, err error) {
-    if request == nil {
-        request = NewDescribeMonitorDataByDateRequest()
-    }
-    
-    response = NewDescribeMonitorDataByDateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMonitorDataByDateWithContext(context.Background(), request)
 }
 
 // DescribeMonitorDataByDate
@@ -6443,6 +6377,11 @@ func (c *Client) DescribeMonitorDataByDateWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeMonitorDataByDateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitorDataByDate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMonitorDataByDateResponse()
@@ -6535,13 +6474,7 @@ func NewDescribePresetListResponse() (response *DescribePresetListResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribePresetList(request *DescribePresetListRequest) (response *DescribePresetListResponse, err error) {
-    if request == nil {
-        request = NewDescribePresetListRequest()
-    }
-    
-    response = NewDescribePresetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePresetListWithContext(context.Background(), request)
 }
 
 // DescribePresetList
@@ -6615,6 +6548,11 @@ func (c *Client) DescribePresetListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribePresetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePresetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePresetListResponse()
@@ -6645,13 +6583,7 @@ func NewDescribeRecordDatesByChannelResponse() (response *DescribeRecordDatesByC
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeRecordDatesByChannel(request *DescribeRecordDatesByChannelRequest) (response *DescribeRecordDatesByChannelResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordDatesByChannelRequest()
-    }
-    
-    response = NewDescribeRecordDatesByChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordDatesByChannelWithContext(context.Background(), request)
 }
 
 // DescribeRecordDatesByChannel
@@ -6663,6 +6595,11 @@ func (c *Client) DescribeRecordDatesByChannelWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRecordDatesByChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordDatesByChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordDatesByChannelResponse()
@@ -6755,13 +6692,7 @@ func NewDescribeRecordDatesByLiveResponse() (response *DescribeRecordDatesByLive
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeRecordDatesByLive(request *DescribeRecordDatesByLiveRequest) (response *DescribeRecordDatesByLiveResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordDatesByLiveRequest()
-    }
-    
-    response = NewDescribeRecordDatesByLiveResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordDatesByLiveWithContext(context.Background(), request)
 }
 
 // DescribeRecordDatesByLive
@@ -6835,6 +6766,11 @@ func (c *Client) DescribeRecordDatesByLiveWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRecordDatesByLiveRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordDatesByLive require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordDatesByLiveResponse()
@@ -6879,13 +6815,7 @@ func NewDescribeRecordStreamResponse() (response *DescribeRecordStreamResponse) 
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeRecordStream(request *DescribeRecordStreamRequest) (response *DescribeRecordStreamResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordStreamRequest()
-    }
-    
-    response = NewDescribeRecordStreamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordStreamWithContext(context.Background(), request)
 }
 
 // DescribeRecordStream
@@ -6911,6 +6841,11 @@ func (c *Client) DescribeRecordStreamWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeRecordStreamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordStream require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordStreamResponse()
@@ -6945,13 +6880,7 @@ func NewDescribeRecordingPlanByIdResponse() (response *DescribeRecordingPlanById
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeRecordingPlanById(request *DescribeRecordingPlanByIdRequest) (response *DescribeRecordingPlanByIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordingPlanByIdRequest()
-    }
-    
-    response = NewDescribeRecordingPlanByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordingPlanByIdWithContext(context.Background(), request)
 }
 
 // DescribeRecordingPlanById
@@ -6967,6 +6896,11 @@ func (c *Client) DescribeRecordingPlanByIdWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRecordingPlanByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordingPlanById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordingPlanByIdResponse()
@@ -7001,13 +6935,7 @@ func NewDescribeRecordingPlansResponse() (response *DescribeRecordingPlansRespon
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeRecordingPlans(request *DescribeRecordingPlansRequest) (response *DescribeRecordingPlansResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordingPlansRequest()
-    }
-    
-    response = NewDescribeRecordingPlansResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordingPlansWithContext(context.Background(), request)
 }
 
 // DescribeRecordingPlans
@@ -7023,6 +6951,11 @@ func (c *Client) DescribeRecordingPlansWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRecordingPlansRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordingPlans require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordingPlansResponse()
@@ -7057,13 +6990,7 @@ func NewDescribeSIPServerResponse() (response *DescribeSIPServerResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeSIPServer(request *DescribeSIPServerRequest) (response *DescribeSIPServerResponse, err error) {
-    if request == nil {
-        request = NewDescribeSIPServerRequest()
-    }
-    
-    response = NewDescribeSIPServerResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSIPServerWithContext(context.Background(), request)
 }
 
 // DescribeSIPServer
@@ -7079,6 +7006,11 @@ func (c *Client) DescribeSIPServerWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSIPServerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSIPServer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSIPServerResponse()
@@ -7171,13 +7103,7 @@ func NewDescribeSceneResponse() (response *DescribeSceneResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeScene(request *DescribeSceneRequest) (response *DescribeSceneResponse, err error) {
-    if request == nil {
-        request = NewDescribeSceneRequest()
-    }
-    
-    response = NewDescribeSceneResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSceneWithContext(context.Background(), request)
 }
 
 // DescribeScene
@@ -7251,6 +7177,11 @@ func (c *Client) DescribeSceneWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeSceneRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScene require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSceneResponse()
@@ -7343,13 +7274,7 @@ func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
-    if request == nil {
-        request = NewDescribeScenesRequest()
-    }
-    
-    response = NewDescribeScenesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeScenesWithContext(context.Background(), request)
 }
 
 // DescribeScenes
@@ -7423,6 +7348,11 @@ func (c *Client) DescribeScenesWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeScenesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScenes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeScenesResponse()
@@ -7515,13 +7445,7 @@ func NewDescribeStatisticDetailsResponse() (response *DescribeStatisticDetailsRe
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeStatisticDetails(request *DescribeStatisticDetailsRequest) (response *DescribeStatisticDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeStatisticDetailsRequest()
-    }
-    
-    response = NewDescribeStatisticDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStatisticDetailsWithContext(context.Background(), request)
 }
 
 // DescribeStatisticDetails
@@ -7595,6 +7519,11 @@ func (c *Client) DescribeStatisticDetailsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeStatisticDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStatisticDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStatisticDetailsResponse()
@@ -7687,13 +7616,7 @@ func NewDescribeStatisticSummaryResponse() (response *DescribeStatisticSummaryRe
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeStatisticSummary(request *DescribeStatisticSummaryRequest) (response *DescribeStatisticSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeStatisticSummaryRequest()
-    }
-    
-    response = NewDescribeStatisticSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStatisticSummaryWithContext(context.Background(), request)
 }
 
 // DescribeStatisticSummary
@@ -7767,6 +7690,11 @@ func (c *Client) DescribeStatisticSummaryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeStatisticSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStatisticSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStatisticSummaryResponse()
@@ -7859,13 +7787,7 @@ func NewDescribeSubGroupsResponse() (response *DescribeSubGroupsResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeSubGroups(request *DescribeSubGroupsRequest) (response *DescribeSubGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubGroupsRequest()
-    }
-    
-    response = NewDescribeSubGroupsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubGroupsWithContext(context.Background(), request)
 }
 
 // DescribeSubGroups
@@ -7939,6 +7861,11 @@ func (c *Client) DescribeSubGroupsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeSubGroupsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubGroups require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubGroupsResponse()
@@ -8031,13 +7958,7 @@ func NewDescribeSubscriptionStatusResponse() (response *DescribeSubscriptionStat
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeSubscriptionStatus(request *DescribeSubscriptionStatusRequest) (response *DescribeSubscriptionStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubscriptionStatusRequest()
-    }
-    
-    response = NewDescribeSubscriptionStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubscriptionStatusWithContext(context.Background(), request)
 }
 
 // DescribeSubscriptionStatus
@@ -8111,6 +8032,11 @@ func (c *Client) DescribeSubscriptionStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSubscriptionStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubscriptionStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubscriptionStatusResponse()
@@ -8141,13 +8067,7 @@ func NewDescribeVideoListResponse() (response *DescribeVideoListResponse) {
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) DescribeVideoList(request *DescribeVideoListRequest) (response *DescribeVideoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoListRequest()
-    }
-    
-    response = NewDescribeVideoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoListWithContext(context.Background(), request)
 }
 
 // DescribeVideoList
@@ -8159,6 +8079,11 @@ func (c *Client) DescribeVideoListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVideoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoListResponse()
@@ -8190,13 +8115,7 @@ func NewDescribeVideoListByChannelResponse() (response *DescribeVideoListByChann
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeVideoListByChannel(request *DescribeVideoListByChannelRequest) (response *DescribeVideoListByChannelResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoListByChannelRequest()
-    }
-    
-    response = NewDescribeVideoListByChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoListByChannelWithContext(context.Background(), request)
 }
 
 // DescribeVideoListByChannel
@@ -8209,6 +8128,11 @@ func (c *Client) DescribeVideoListByChannelWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVideoListByChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoListByChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoListByChannelResponse()
@@ -8240,13 +8164,7 @@ func NewDescribeWarnModResponse() (response *DescribeWarnModResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarnMod(request *DescribeWarnModRequest) (response *DescribeWarnModResponse, err error) {
-    if request == nil {
-        request = NewDescribeWarnModRequest()
-    }
-    
-    response = NewDescribeWarnModResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWarnModWithContext(context.Background(), request)
 }
 
 // DescribeWarnMod
@@ -8259,6 +8177,11 @@ func (c *Client) DescribeWarnModWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeWarnModRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWarnMod require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWarnModResponse()
@@ -8290,13 +8213,7 @@ func NewDescribeWarningsResponse() (response *DescribeWarningsResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarnings(request *DescribeWarningsRequest) (response *DescribeWarningsResponse, err error) {
-    if request == nil {
-        request = NewDescribeWarningsRequest()
-    }
-    
-    response = NewDescribeWarningsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWarningsWithContext(context.Background(), request)
 }
 
 // DescribeWarnings
@@ -8309,6 +8226,11 @@ func (c *Client) DescribeWarningsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeWarningsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWarnings require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWarningsResponse()
@@ -8340,13 +8262,7 @@ func NewDescribeXP2PDataResponse() (response *DescribeXP2PDataResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeXP2PData(request *DescribeXP2PDataRequest) (response *DescribeXP2PDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeXP2PDataRequest()
-    }
-    
-    response = NewDescribeXP2PDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeXP2PDataWithContext(context.Background(), request)
 }
 
 // DescribeXP2PData
@@ -8359,6 +8275,11 @@ func (c *Client) DescribeXP2PDataWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeXP2PDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeXP2PData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeXP2PDataResponse()
@@ -8391,13 +8312,7 @@ func NewGetRecordDatesByDevResponse() (response *GetRecordDatesByDevResponse) {
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) GetRecordDatesByDev(request *GetRecordDatesByDevRequest) (response *GetRecordDatesByDevResponse, err error) {
-    if request == nil {
-        request = NewGetRecordDatesByDevRequest()
-    }
-    
-    response = NewGetRecordDatesByDevResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRecordDatesByDevWithContext(context.Background(), request)
 }
 
 // GetRecordDatesByDev
@@ -8411,6 +8326,11 @@ func (c *Client) GetRecordDatesByDevWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetRecordDatesByDevRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecordDatesByDev require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRecordDatesByDevResponse()
@@ -8475,13 +8395,7 @@ func NewGetRecordPlanByDevResponse() (response *GetRecordPlanByDevResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) GetRecordPlanByDev(request *GetRecordPlanByDevRequest) (response *GetRecordPlanByDevResponse, err error) {
-    if request == nil {
-        request = NewGetRecordPlanByDevRequest()
-    }
-    
-    response = NewGetRecordPlanByDevResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRecordPlanByDevWithContext(context.Background(), request)
 }
 
 // GetRecordPlanByDev
@@ -8527,6 +8441,11 @@ func (c *Client) GetRecordPlanByDevWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetRecordPlanByDevRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecordPlanByDev require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRecordPlanByDevResponse()
@@ -8593,13 +8512,7 @@ func NewGetRecordPlanByIdResponse() (response *GetRecordPlanByIdResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) GetRecordPlanById(request *GetRecordPlanByIdRequest) (response *GetRecordPlanByIdResponse, err error) {
-    if request == nil {
-        request = NewGetRecordPlanByIdRequest()
-    }
-    
-    response = NewGetRecordPlanByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRecordPlanByIdWithContext(context.Background(), request)
 }
 
 // GetRecordPlanById
@@ -8647,6 +8560,11 @@ func (c *Client) GetRecordPlanByIdWithContext(ctx context.Context, request *GetR
     if request == nil {
         request = NewGetRecordPlanByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecordPlanById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRecordPlanByIdResponse()
@@ -8713,13 +8631,7 @@ func NewGetRecordPlansResponse() (response *GetRecordPlansResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 func (c *Client) GetRecordPlans(request *GetRecordPlansRequest) (response *GetRecordPlansResponse, err error) {
-    if request == nil {
-        request = NewGetRecordPlansRequest()
-    }
-    
-    response = NewGetRecordPlansResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRecordPlansWithContext(context.Background(), request)
 }
 
 // GetRecordPlans
@@ -8767,6 +8679,11 @@ func (c *Client) GetRecordPlansWithContext(ctx context.Context, request *GetReco
     if request == nil {
         request = NewGetRecordPlansRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRecordPlans require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRecordPlansResponse()
@@ -8798,13 +8715,7 @@ func NewGetTimeTemplateByIdResponse() (response *GetTimeTemplateByIdResponse) {
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) GetTimeTemplateById(request *GetTimeTemplateByIdRequest) (response *GetTimeTemplateByIdResponse, err error) {
-    if request == nil {
-        request = NewGetTimeTemplateByIdRequest()
-    }
-    
-    response = NewGetTimeTemplateByIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTimeTemplateByIdWithContext(context.Background(), request)
 }
 
 // GetTimeTemplateById
@@ -8817,6 +8728,11 @@ func (c *Client) GetTimeTemplateByIdWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetTimeTemplateByIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTimeTemplateById require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTimeTemplateByIdResponse()
@@ -8848,13 +8764,7 @@ func NewGetTimeTemplatesResponse() (response *GetTimeTemplatesResponse) {
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) GetTimeTemplates(request *GetTimeTemplatesRequest) (response *GetTimeTemplatesResponse, err error) {
-    if request == nil {
-        request = NewGetTimeTemplatesRequest()
-    }
-    
-    response = NewGetTimeTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTimeTemplatesWithContext(context.Background(), request)
 }
 
 // GetTimeTemplates
@@ -8867,6 +8777,11 @@ func (c *Client) GetTimeTemplatesWithContext(ctx context.Context, request *GetTi
     if request == nil {
         request = NewGetTimeTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTimeTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTimeTemplatesResponse()
@@ -8901,13 +8816,7 @@ func NewGetVideoListByConResponse() (response *GetVideoListByConResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) GetVideoListByCon(request *GetVideoListByConRequest) (response *GetVideoListByConResponse, err error) {
-    if request == nil {
-        request = NewGetVideoListByConRequest()
-    }
-    
-    response = NewGetVideoListByConResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetVideoListByConWithContext(context.Background(), request)
 }
 
 // GetVideoListByCon
@@ -8923,6 +8832,11 @@ func (c *Client) GetVideoListByConWithContext(ctx context.Context, request *GetV
     if request == nil {
         request = NewGetVideoListByConRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVideoListByCon require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetVideoListByConResponse()
@@ -8955,13 +8869,7 @@ func NewModifyBindPlanLiveChannelResponse() (response *ModifyBindPlanLiveChannel
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) ModifyBindPlanLiveChannel(request *ModifyBindPlanLiveChannelRequest) (response *ModifyBindPlanLiveChannelResponse, err error) {
-    if request == nil {
-        request = NewModifyBindPlanLiveChannelRequest()
-    }
-    
-    response = NewModifyBindPlanLiveChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBindPlanLiveChannelWithContext(context.Background(), request)
 }
 
 // ModifyBindPlanLiveChannel
@@ -8975,6 +8883,11 @@ func (c *Client) ModifyBindPlanLiveChannelWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyBindPlanLiveChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBindPlanLiveChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBindPlanLiveChannelResponse()
@@ -9006,13 +8919,7 @@ func NewModifyBindRecordingPlanResponse() (response *ModifyBindRecordingPlanResp
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindRecordingPlan(request *ModifyBindRecordingPlanRequest) (response *ModifyBindRecordingPlanResponse, err error) {
-    if request == nil {
-        request = NewModifyBindRecordingPlanRequest()
-    }
-    
-    response = NewModifyBindRecordingPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBindRecordingPlanWithContext(context.Background(), request)
 }
 
 // ModifyBindRecordingPlan
@@ -9025,6 +8932,11 @@ func (c *Client) ModifyBindRecordingPlanWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyBindRecordingPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBindRecordingPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBindRecordingPlanResponse()
@@ -9056,13 +8968,7 @@ func NewModifyBindSceneChannelsResponse() (response *ModifyBindSceneChannelsResp
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindSceneChannels(request *ModifyBindSceneChannelsRequest) (response *ModifyBindSceneChannelsResponse, err error) {
-    if request == nil {
-        request = NewModifyBindSceneChannelsRequest()
-    }
-    
-    response = NewModifyBindSceneChannelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBindSceneChannelsWithContext(context.Background(), request)
 }
 
 // ModifyBindSceneChannels
@@ -9075,6 +8981,11 @@ func (c *Client) ModifyBindSceneChannelsWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyBindSceneChannelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBindSceneChannels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBindSceneChannelsResponse()
@@ -9167,13 +9078,7 @@ func NewModifyBindSceneDeviceResponse() (response *ModifyBindSceneDeviceResponse
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyBindSceneDevice(request *ModifyBindSceneDeviceRequest) (response *ModifyBindSceneDeviceResponse, err error) {
-    if request == nil {
-        request = NewModifyBindSceneDeviceRequest()
-    }
-    
-    response = NewModifyBindSceneDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBindSceneDeviceWithContext(context.Background(), request)
 }
 
 // ModifyBindSceneDevice
@@ -9247,6 +9152,11 @@ func (c *Client) ModifyBindSceneDeviceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyBindSceneDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBindSceneDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBindSceneDeviceResponse()
@@ -9278,13 +9188,7 @@ func NewModifyDeviceDataResponse() (response *ModifyDeviceDataResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 func (c *Client) ModifyDeviceData(request *ModifyDeviceDataRequest) (response *ModifyDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceDataRequest()
-    }
-    
-    response = NewModifyDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceDataWithContext(context.Background(), request)
 }
 
 // ModifyDeviceData
@@ -9297,6 +9201,11 @@ func (c *Client) ModifyDeviceDataWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceDataResponse()
@@ -9389,13 +9298,7 @@ func NewModifyLiveChannelResponse() (response *ModifyLiveChannelResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyLiveChannel(request *ModifyLiveChannelRequest) (response *ModifyLiveChannelResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveChannelRequest()
-    }
-    
-    response = NewModifyLiveChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveChannelWithContext(context.Background(), request)
 }
 
 // ModifyLiveChannel
@@ -9469,6 +9372,11 @@ func (c *Client) ModifyLiveChannelWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyLiveChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveChannelResponse()
@@ -9561,13 +9469,7 @@ func NewModifyLiveRecordPlanResponse() (response *ModifyLiveRecordPlanResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyLiveRecordPlan(request *ModifyLiveRecordPlanRequest) (response *ModifyLiveRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveRecordPlanRequest()
-    }
-    
-    response = NewModifyLiveRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveRecordPlanWithContext(context.Background(), request)
 }
 
 // ModifyLiveRecordPlan
@@ -9641,6 +9543,11 @@ func (c *Client) ModifyLiveRecordPlanWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyLiveRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveRecordPlanResponse()
@@ -9733,13 +9640,7 @@ func NewModifyLiveVideoResponse() (response *ModifyLiveVideoResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyLiveVideo(request *ModifyLiveVideoRequest) (response *ModifyLiveVideoResponse, err error) {
-    if request == nil {
-        request = NewModifyLiveVideoRequest()
-    }
-    
-    response = NewModifyLiveVideoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLiveVideoWithContext(context.Background(), request)
 }
 
 // ModifyLiveVideo
@@ -9813,6 +9714,11 @@ func (c *Client) ModifyLiveVideoWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyLiveVideoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveVideo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLiveVideoResponse()
@@ -9905,13 +9811,7 @@ func NewModifyMessageForwardResponse() (response *ModifyMessageForwardResponse) 
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyMessageForward(request *ModifyMessageForwardRequest) (response *ModifyMessageForwardResponse, err error) {
-    if request == nil {
-        request = NewModifyMessageForwardRequest()
-    }
-    
-    response = NewModifyMessageForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMessageForwardWithContext(context.Background(), request)
 }
 
 // ModifyMessageForward
@@ -9985,6 +9885,11 @@ func (c *Client) ModifyMessageForwardWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyMessageForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMessageForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMessageForwardResponse()
@@ -10015,13 +9920,7 @@ func NewModifyPresetResponse() (response *ModifyPresetResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPreset(request *ModifyPresetRequest) (response *ModifyPresetResponse, err error) {
-    if request == nil {
-        request = NewModifyPresetRequest()
-    }
-    
-    response = NewModifyPresetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPresetWithContext(context.Background(), request)
 }
 
 // ModifyPreset
@@ -10033,6 +9932,11 @@ func (c *Client) ModifyPresetWithContext(ctx context.Context, request *ModifyPre
     if request == nil {
         request = NewModifyPresetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPreset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPresetResponse()
@@ -10063,13 +9967,7 @@ func NewModifyRecordingPlanResponse() (response *ModifyRecordingPlanResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRecordingPlan(request *ModifyRecordingPlanRequest) (response *ModifyRecordingPlanResponse, err error) {
-    if request == nil {
-        request = NewModifyRecordingPlanRequest()
-    }
-    
-    response = NewModifyRecordingPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRecordingPlanWithContext(context.Background(), request)
 }
 
 // ModifyRecordingPlan
@@ -10081,6 +9979,11 @@ func (c *Client) ModifyRecordingPlanWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRecordingPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordingPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRecordingPlanResponse()
@@ -10173,13 +10076,7 @@ func NewModifySceneResponse() (response *ModifySceneResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyScene(request *ModifySceneRequest) (response *ModifySceneResponse, err error) {
-    if request == nil {
-        request = NewModifySceneRequest()
-    }
-    
-    response = NewModifySceneResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySceneWithContext(context.Background(), request)
 }
 
 // ModifyScene
@@ -10253,6 +10150,11 @@ func (c *Client) ModifySceneWithContext(ctx context.Context, request *ModifyScen
     if request == nil {
         request = NewModifySceneRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyScene require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySceneResponse()
@@ -10345,13 +10247,7 @@ func NewModifySubscriptionStatusResponse() (response *ModifySubscriptionStatusRe
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifySubscriptionStatus(request *ModifySubscriptionStatusRequest) (response *ModifySubscriptionStatusResponse, err error) {
-    if request == nil {
-        request = NewModifySubscriptionStatusRequest()
-    }
-    
-    response = NewModifySubscriptionStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubscriptionStatusWithContext(context.Background(), request)
 }
 
 // ModifySubscriptionStatus
@@ -10425,6 +10321,11 @@ func (c *Client) ModifySubscriptionStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifySubscriptionStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubscriptionStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubscriptionStatusResponse()
@@ -10517,13 +10418,7 @@ func NewModifyVideoInfoResponse() (response *ModifyVideoInfoResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ModifyVideoInfo(request *ModifyVideoInfoRequest) (response *ModifyVideoInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyVideoInfoRequest()
-    }
-    
-    response = NewModifyVideoInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVideoInfoWithContext(context.Background(), request)
 }
 
 // ModifyVideoInfo
@@ -10597,6 +10492,11 @@ func (c *Client) ModifyVideoInfoWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyVideoInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVideoInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVideoInfoResponse()
@@ -10689,13 +10589,7 @@ func NewResetWarningResponse() (response *ResetWarningResponse) {
 //  UNSUPPORTEDOPERATION_TEMPLATEPRESET = "UnsupportedOperation.TemplatePreset"
 //  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) ResetWarning(request *ResetWarningRequest) (response *ResetWarningResponse, err error) {
-    if request == nil {
-        request = NewResetWarningRequest()
-    }
-    
-    response = NewResetWarningResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetWarningWithContext(context.Background(), request)
 }
 
 // ResetWarning
@@ -10769,6 +10663,11 @@ func (c *Client) ResetWarningWithContext(ctx context.Context, request *ResetWarn
     if request == nil {
         request = NewResetWarningRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetWarning require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetWarningResponse()
@@ -10801,13 +10700,7 @@ func NewUpdateDeviceGroupResponse() (response *UpdateDeviceGroupResponse) {
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
 func (c *Client) UpdateDeviceGroup(request *UpdateDeviceGroupRequest) (response *UpdateDeviceGroupResponse, err error) {
-    if request == nil {
-        request = NewUpdateDeviceGroupRequest()
-    }
-    
-    response = NewUpdateDeviceGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDeviceGroupWithContext(context.Background(), request)
 }
 
 // UpdateDeviceGroup
@@ -10821,6 +10714,11 @@ func (c *Client) UpdateDeviceGroupWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateDeviceGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDeviceGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDeviceGroupResponse()
@@ -10851,13 +10749,7 @@ func NewUpdateDevicePassWordResponse() (response *UpdateDevicePassWordResponse) 
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) UpdateDevicePassWord(request *UpdateDevicePassWordRequest) (response *UpdateDevicePassWordResponse, err error) {
-    if request == nil {
-        request = NewUpdateDevicePassWordRequest()
-    }
-    
-    response = NewUpdateDevicePassWordResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDevicePassWordWithContext(context.Background(), request)
 }
 
 // UpdateDevicePassWord
@@ -10869,6 +10761,11 @@ func (c *Client) UpdateDevicePassWordWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateDevicePassWordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDevicePassWord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDevicePassWordResponse()
@@ -10904,13 +10801,7 @@ func NewUpdateRecordPlanResponse() (response *UpdateRecordPlanResponse) {
 //  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) UpdateRecordPlan(request *UpdateRecordPlanRequest) (response *UpdateRecordPlanResponse, err error) {
-    if request == nil {
-        request = NewUpdateRecordPlanRequest()
-    }
-    
-    response = NewUpdateRecordPlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRecordPlanWithContext(context.Background(), request)
 }
 
 // UpdateRecordPlan
@@ -10927,6 +10818,11 @@ func (c *Client) UpdateRecordPlanWithContext(ctx context.Context, request *Updat
     if request == nil {
         request = NewUpdateRecordPlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRecordPlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRecordPlanResponse()
@@ -10959,13 +10855,7 @@ func NewUpdateTimeTemplateResponse() (response *UpdateTimeTemplateResponse) {
 //  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) UpdateTimeTemplate(request *UpdateTimeTemplateRequest) (response *UpdateTimeTemplateResponse, err error) {
-    if request == nil {
-        request = NewUpdateTimeTemplateRequest()
-    }
-    
-    response = NewUpdateTimeTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateTimeTemplateWithContext(context.Background(), request)
 }
 
 // UpdateTimeTemplate
@@ -10979,6 +10869,11 @@ func (c *Client) UpdateTimeTemplateWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateTimeTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTimeTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateTimeTemplateResponse()

@@ -16,6 +16,7 @@ package v20201215
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -69,13 +70,7 @@ func NewApplyAIModelResponse() (response *ApplyAIModelResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ApplyAIModel(request *ApplyAIModelRequest) (response *ApplyAIModelResponse, err error) {
-    if request == nil {
-        request = NewApplyAIModelRequest()
-    }
-    
-    response = NewApplyAIModelResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyAIModelWithContext(context.Background(), request)
 }
 
 // ApplyAIModel
@@ -89,6 +84,11 @@ func (c *Client) ApplyAIModelWithContext(ctx context.Context, request *ApplyAIMo
     if request == nil {
         request = NewApplyAIModelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyAIModel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyAIModelResponse()
@@ -121,13 +121,7 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
-    if request == nil {
-        request = NewBatchUpdateFirmwareRequest()
-    }
-    
-    response = NewBatchUpdateFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchUpdateFirmwareWithContext(context.Background(), request)
 }
 
 // BatchUpdateFirmware
@@ -141,6 +135,11 @@ func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *Ba
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchUpdateFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchUpdateFirmwareResponse()
@@ -173,13 +172,7 @@ func NewBindCloudStorageUserResponse() (response *BindCloudStorageUserResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindCloudStorageUser(request *BindCloudStorageUserRequest) (response *BindCloudStorageUserResponse, err error) {
-    if request == nil {
-        request = NewBindCloudStorageUserRequest()
-    }
-    
-    response = NewBindCloudStorageUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindCloudStorageUserWithContext(context.Background(), request)
 }
 
 // BindCloudStorageUser
@@ -193,6 +186,11 @@ func (c *Client) BindCloudStorageUserWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBindCloudStorageUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindCloudStorageUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindCloudStorageUserResponse()
@@ -225,13 +223,7 @@ func NewCancelAIModelApplicationResponse() (response *CancelAIModelApplicationRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CancelAIModelApplication(request *CancelAIModelApplicationRequest) (response *CancelAIModelApplicationResponse, err error) {
-    if request == nil {
-        request = NewCancelAIModelApplicationRequest()
-    }
-    
-    response = NewCancelAIModelApplicationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelAIModelApplicationWithContext(context.Background(), request)
 }
 
 // CancelAIModelApplication
@@ -245,6 +237,11 @@ func (c *Client) CancelAIModelApplicationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelAIModelApplicationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelAIModelApplication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelAIModelApplicationResponse()
@@ -277,13 +274,7 @@ func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskRe
 //  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
 //  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelDeviceFirmwareTaskRequest()
-    }
-    
-    response = NewCancelDeviceFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelDeviceFirmwareTaskWithContext(context.Background(), request)
 }
 
 // CancelDeviceFirmwareTask
@@ -297,6 +288,11 @@ func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelDeviceFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelDeviceFirmwareTaskResponse()
@@ -329,13 +325,7 @@ func NewCheckForwardAuthResponse() (response *CheckForwardAuthResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CheckForwardAuth(request *CheckForwardAuthRequest) (response *CheckForwardAuthResponse, err error) {
-    if request == nil {
-        request = NewCheckForwardAuthRequest()
-    }
-    
-    response = NewCheckForwardAuthResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckForwardAuthWithContext(context.Background(), request)
 }
 
 // CheckForwardAuth
@@ -349,6 +339,11 @@ func (c *Client) CheckForwardAuthWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckForwardAuthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckForwardAuth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckForwardAuthResponse()
@@ -381,13 +376,7 @@ func NewControlDeviceDataResponse() (response *ControlDeviceDataResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response *ControlDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewControlDeviceDataRequest()
-    }
-    
-    response = NewControlDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ControlDeviceDataWithContext(context.Background(), request)
 }
 
 // ControlDeviceData
@@ -401,6 +390,11 @@ func (c *Client) ControlDeviceDataWithContext(ctx context.Context, request *Cont
     if request == nil {
         request = NewControlDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewControlDeviceDataResponse()
@@ -433,13 +427,7 @@ func NewCreateAIDetectionResponse() (response *CreateAIDetectionResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAIDetection(request *CreateAIDetectionRequest) (response *CreateAIDetectionResponse, err error) {
-    if request == nil {
-        request = NewCreateAIDetectionRequest()
-    }
-    
-    response = NewCreateAIDetectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAIDetectionWithContext(context.Background(), request)
 }
 
 // CreateAIDetection
@@ -453,6 +441,11 @@ func (c *Client) CreateAIDetectionWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateAIDetectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAIDetection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAIDetectionResponse()
@@ -485,13 +478,7 @@ func NewCreateBatchResponse() (response *CreateBatchResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBatch(request *CreateBatchRequest) (response *CreateBatchResponse, err error) {
-    if request == nil {
-        request = NewCreateBatchRequest()
-    }
-    
-    response = NewCreateBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBatchWithContext(context.Background(), request)
 }
 
 // CreateBatch
@@ -505,6 +492,11 @@ func (c *Client) CreateBatchWithContext(ctx context.Context, request *CreateBatc
     if request == nil {
         request = NewCreateBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBatchResponse()
@@ -537,13 +529,7 @@ func NewCreateCOSCredentialsResponse() (response *CreateCOSCredentialsResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCOSCredentials(request *CreateCOSCredentialsRequest) (response *CreateCOSCredentialsResponse, err error) {
-    if request == nil {
-        request = NewCreateCOSCredentialsRequest()
-    }
-    
-    response = NewCreateCOSCredentialsResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCOSCredentialsWithContext(context.Background(), request)
 }
 
 // CreateCOSCredentials
@@ -557,6 +543,11 @@ func (c *Client) CreateCOSCredentialsWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCOSCredentialsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCOSCredentials require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCOSCredentialsResponse()
@@ -589,13 +580,7 @@ func NewCreateCloudStorageResponse() (response *CreateCloudStorageResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCloudStorage(request *CreateCloudStorageRequest) (response *CreateCloudStorageResponse, err error) {
-    if request == nil {
-        request = NewCreateCloudStorageRequest()
-    }
-    
-    response = NewCreateCloudStorageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCloudStorageWithContext(context.Background(), request)
 }
 
 // CreateCloudStorage
@@ -609,6 +594,11 @@ func (c *Client) CreateCloudStorageWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCloudStorageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudStorage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCloudStorageResponse()
@@ -641,13 +631,7 @@ func NewCreateDataForwardResponse() (response *CreateDataForwardResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDataForward(request *CreateDataForwardRequest) (response *CreateDataForwardResponse, err error) {
-    if request == nil {
-        request = NewCreateDataForwardRequest()
-    }
-    
-    response = NewCreateDataForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDataForwardWithContext(context.Background(), request)
 }
 
 // CreateDataForward
@@ -661,6 +645,11 @@ func (c *Client) CreateDataForwardWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDataForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDataForwardResponse()
@@ -693,13 +682,7 @@ func NewCreateForwardRuleResponse() (response *CreateForwardRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateForwardRule(request *CreateForwardRuleRequest) (response *CreateForwardRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateForwardRuleRequest()
-    }
-    
-    response = NewCreateForwardRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateForwardRuleWithContext(context.Background(), request)
 }
 
 // CreateForwardRule
@@ -713,6 +696,11 @@ func (c *Client) CreateForwardRuleWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateForwardRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateForwardRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateForwardRuleResponse()
@@ -746,13 +734,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
-    if request == nil {
-        request = NewCreateProductRequest()
-    }
-    
-    response = NewCreateProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProductWithContext(context.Background(), request)
 }
 
 // CreateProduct
@@ -767,6 +749,11 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProductResponse()
@@ -798,13 +785,7 @@ func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskFileUrlRequest()
-    }
-    
-    response = NewCreateTaskFileUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskFileUrlWithContext(context.Background(), request)
 }
 
 // CreateTaskFileUrl
@@ -817,6 +798,11 @@ func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskFileUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskFileUrlResponse()
@@ -849,13 +835,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -869,6 +849,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -901,13 +886,7 @@ func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
-    if request == nil {
-        request = NewDeleteFirmwareRequest()
-    }
-    
-    response = NewDeleteFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFirmwareWithContext(context.Background(), request)
 }
 
 // DeleteFirmware
@@ -921,6 +900,11 @@ func (c *Client) DeleteFirmwareWithContext(ctx context.Context, request *DeleteF
     if request == nil {
         request = NewDeleteFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFirmwareResponse()
@@ -953,13 +937,7 @@ func NewDeleteForwardRuleResponse() (response *DeleteForwardRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteForwardRule(request *DeleteForwardRuleRequest) (response *DeleteForwardRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteForwardRuleRequest()
-    }
-    
-    response = NewDeleteForwardRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteForwardRuleWithContext(context.Background(), request)
 }
 
 // DeleteForwardRule
@@ -973,6 +951,11 @@ func (c *Client) DeleteForwardRuleWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteForwardRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteForwardRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteForwardRuleResponse()
@@ -1005,13 +988,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
-    if request == nil {
-        request = NewDeleteProductRequest()
-    }
-    
-    response = NewDeleteProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProductWithContext(context.Background(), request)
 }
 
 // DeleteProduct
@@ -1025,6 +1002,11 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
@@ -1057,13 +1039,7 @@ func NewDescribeAIModelApplicationsResponse() (response *DescribeAIModelApplicat
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIModelApplications(request *DescribeAIModelApplicationsRequest) (response *DescribeAIModelApplicationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAIModelApplicationsRequest()
-    }
-    
-    response = NewDescribeAIModelApplicationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAIModelApplicationsWithContext(context.Background(), request)
 }
 
 // DescribeAIModelApplications
@@ -1077,6 +1053,11 @@ func (c *Client) DescribeAIModelApplicationsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAIModelApplicationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIModelApplications require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAIModelApplicationsResponse()
@@ -1109,13 +1090,7 @@ func NewDescribeAIModelChannelResponse() (response *DescribeAIModelChannelRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIModelChannel(request *DescribeAIModelChannelRequest) (response *DescribeAIModelChannelResponse, err error) {
-    if request == nil {
-        request = NewDescribeAIModelChannelRequest()
-    }
-    
-    response = NewDescribeAIModelChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAIModelChannelWithContext(context.Background(), request)
 }
 
 // DescribeAIModelChannel
@@ -1129,6 +1104,11 @@ func (c *Client) DescribeAIModelChannelWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAIModelChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIModelChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAIModelChannelResponse()
@@ -1161,13 +1141,7 @@ func NewDescribeAIModelUsageResponse() (response *DescribeAIModelUsageResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIModelUsage(request *DescribeAIModelUsageRequest) (response *DescribeAIModelUsageResponse, err error) {
-    if request == nil {
-        request = NewDescribeAIModelUsageRequest()
-    }
-    
-    response = NewDescribeAIModelUsageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAIModelUsageWithContext(context.Background(), request)
 }
 
 // DescribeAIModelUsage
@@ -1181,6 +1155,11 @@ func (c *Client) DescribeAIModelUsageWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAIModelUsageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIModelUsage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAIModelUsageResponse()
@@ -1213,13 +1192,7 @@ func NewDescribeAIModelsResponse() (response *DescribeAIModelsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAIModels(request *DescribeAIModelsRequest) (response *DescribeAIModelsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAIModelsRequest()
-    }
-    
-    response = NewDescribeAIModelsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAIModelsWithContext(context.Background(), request)
 }
 
 // DescribeAIModels
@@ -1233,6 +1206,11 @@ func (c *Client) DescribeAIModelsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAIModelsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAIModels require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAIModelsResponse()
@@ -1265,13 +1243,7 @@ func NewDescribeBalanceResponse() (response *DescribeBalanceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBalance(request *DescribeBalanceRequest) (response *DescribeBalanceResponse, err error) {
-    if request == nil {
-        request = NewDescribeBalanceRequest()
-    }
-    
-    response = NewDescribeBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBalanceWithContext(context.Background(), request)
 }
 
 // DescribeBalance
@@ -1285,6 +1257,11 @@ func (c *Client) DescribeBalanceWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBalanceResponse()
@@ -1317,13 +1294,7 @@ func NewDescribeBalanceTransactionsResponse() (response *DescribeBalanceTransact
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBalanceTransactions(request *DescribeBalanceTransactionsRequest) (response *DescribeBalanceTransactionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBalanceTransactionsRequest()
-    }
-    
-    response = NewDescribeBalanceTransactionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBalanceTransactionsWithContext(context.Background(), request)
 }
 
 // DescribeBalanceTransactions
@@ -1337,6 +1308,11 @@ func (c *Client) DescribeBalanceTransactionsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeBalanceTransactionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBalanceTransactions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBalanceTransactionsResponse()
@@ -1369,13 +1345,7 @@ func NewDescribeBatchResponse() (response *DescribeBatchResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBatch(request *DescribeBatchRequest) (response *DescribeBatchResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchRequest()
-    }
-    
-    response = NewDescribeBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchWithContext(context.Background(), request)
 }
 
 // DescribeBatch
@@ -1389,6 +1359,11 @@ func (c *Client) DescribeBatchWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchResponse()
@@ -1421,13 +1396,7 @@ func NewDescribeBatchsResponse() (response *DescribeBatchsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBatchs(request *DescribeBatchsRequest) (response *DescribeBatchsResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchsRequest()
-    }
-    
-    response = NewDescribeBatchsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchsWithContext(context.Background(), request)
 }
 
 // DescribeBatchs
@@ -1441,6 +1410,11 @@ func (c *Client) DescribeBatchsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeBatchsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchsResponse()
@@ -1473,13 +1447,7 @@ func NewDescribeCategoryResponse() (response *DescribeCategoryResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCategory(request *DescribeCategoryRequest) (response *DescribeCategoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeCategoryRequest()
-    }
-    
-    response = NewDescribeCategoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCategoryWithContext(context.Background(), request)
 }
 
 // DescribeCategory
@@ -1493,6 +1461,11 @@ func (c *Client) DescribeCategoryWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeCategoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCategory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCategoryResponse()
@@ -1524,13 +1497,7 @@ func NewDescribeCloudStorageResponse() (response *DescribeCloudStorageResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorage(request *DescribeCloudStorageRequest) (response *DescribeCloudStorageResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageRequest()
-    }
-    
-    response = NewDescribeCloudStorageResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorage
@@ -1543,6 +1510,11 @@ func (c *Client) DescribeCloudStorageWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCloudStorageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageResponse()
@@ -1575,13 +1547,7 @@ func NewDescribeCloudStorageDateResponse() (response *DescribeCloudStorageDateRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageDate(request *DescribeCloudStorageDateRequest) (response *DescribeCloudStorageDateResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageDateRequest()
-    }
-    
-    response = NewDescribeCloudStorageDateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageDateWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorageDate
@@ -1595,6 +1561,11 @@ func (c *Client) DescribeCloudStorageDateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCloudStorageDateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageDate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageDateResponse()
@@ -1627,13 +1598,7 @@ func NewDescribeCloudStorageEventsResponse() (response *DescribeCloudStorageEven
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageEvents(request *DescribeCloudStorageEventsRequest) (response *DescribeCloudStorageEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageEventsRequest()
-    }
-    
-    response = NewDescribeCloudStorageEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageEventsWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorageEvents
@@ -1647,6 +1612,11 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCloudStorageEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageEventsResponse()
@@ -1679,13 +1649,7 @@ func NewDescribeCloudStorageThumbnailResponse() (response *DescribeCloudStorageT
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageThumbnail(request *DescribeCloudStorageThumbnailRequest) (response *DescribeCloudStorageThumbnailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageThumbnailRequest()
-    }
-    
-    response = NewDescribeCloudStorageThumbnailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageThumbnailWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorageThumbnail
@@ -1699,6 +1663,11 @@ func (c *Client) DescribeCloudStorageThumbnailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCloudStorageThumbnailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageThumbnail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageThumbnailResponse()
@@ -1731,13 +1700,7 @@ func NewDescribeCloudStorageTimeResponse() (response *DescribeCloudStorageTimeRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageTime(request *DescribeCloudStorageTimeRequest) (response *DescribeCloudStorageTimeResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageTimeRequest()
-    }
-    
-    response = NewDescribeCloudStorageTimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageTimeWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorageTime
@@ -1751,6 +1714,11 @@ func (c *Client) DescribeCloudStorageTimeWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCloudStorageTimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageTime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageTimeResponse()
@@ -1783,13 +1751,7 @@ func NewDescribeCloudStorageUsersResponse() (response *DescribeCloudStorageUsers
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudStorageUsers(request *DescribeCloudStorageUsersRequest) (response *DescribeCloudStorageUsersResponse, err error) {
-    if request == nil {
-        request = NewDescribeCloudStorageUsersRequest()
-    }
-    
-    response = NewDescribeCloudStorageUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCloudStorageUsersWithContext(context.Background(), request)
 }
 
 // DescribeCloudStorageUsers
@@ -1803,6 +1765,11 @@ func (c *Client) DescribeCloudStorageUsersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCloudStorageUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCloudStorageUsersResponse()
@@ -1835,13 +1802,7 @@ func NewDescribeDataForwardListResponse() (response *DescribeDataForwardListResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDataForwardList(request *DescribeDataForwardListRequest) (response *DescribeDataForwardListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataForwardListRequest()
-    }
-    
-    response = NewDescribeDataForwardListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataForwardListWithContext(context.Background(), request)
 }
 
 // DescribeDataForwardList
@@ -1855,6 +1816,11 @@ func (c *Client) DescribeDataForwardListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDataForwardListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataForwardList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataForwardListResponse()
@@ -1887,13 +1853,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceRequest()
-    }
-    
-    response = NewDescribeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceWithContext(context.Background(), request)
 }
 
 // DescribeDevice
@@ -1907,6 +1867,11 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
@@ -1939,13 +1904,7 @@ func NewDescribeDeviceActionHistoryResponse() (response *DescribeDeviceActionHis
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceActionHistory(request *DescribeDeviceActionHistoryRequest) (response *DescribeDeviceActionHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceActionHistoryRequest()
-    }
-    
-    response = NewDescribeDeviceActionHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceActionHistoryWithContext(context.Background(), request)
 }
 
 // DescribeDeviceActionHistory
@@ -1959,6 +1918,11 @@ func (c *Client) DescribeDeviceActionHistoryWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDeviceActionHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceActionHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceActionHistoryResponse()
@@ -1991,13 +1955,7 @@ func NewDescribeDeviceCommLogResponse() (response *DescribeDeviceCommLogResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceCommLog(request *DescribeDeviceCommLogRequest) (response *DescribeDeviceCommLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceCommLogRequest()
-    }
-    
-    response = NewDescribeDeviceCommLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceCommLogWithContext(context.Background(), request)
 }
 
 // DescribeDeviceCommLog
@@ -2011,6 +1969,11 @@ func (c *Client) DescribeDeviceCommLogWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDeviceCommLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceCommLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceCommLogResponse()
@@ -2043,13 +2006,7 @@ func NewDescribeDeviceDataResponse() (response *DescribeDeviceDataResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceDataRequest()
-    }
-    
-    response = NewDescribeDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceDataWithContext(context.Background(), request)
 }
 
 // DescribeDeviceData
@@ -2063,6 +2020,11 @@ func (c *Client) DescribeDeviceDataWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceDataResponse()
@@ -2095,13 +2057,7 @@ func NewDescribeDeviceDataHistoryResponse() (response *DescribeDeviceDataHistory
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceDataHistoryRequest()
-    }
-    
-    response = NewDescribeDeviceDataHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceDataHistoryWithContext(context.Background(), request)
 }
 
 // DescribeDeviceDataHistory
@@ -2115,6 +2071,11 @@ func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceDataHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceDataHistoryResponse()
@@ -2147,13 +2108,7 @@ func NewDescribeDeviceEventHistoryResponse() (response *DescribeDeviceEventHisto
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceEventHistory(request *DescribeDeviceEventHistoryRequest) (response *DescribeDeviceEventHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceEventHistoryRequest()
-    }
-    
-    response = NewDescribeDeviceEventHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceEventHistoryWithContext(context.Background(), request)
 }
 
 // DescribeDeviceEventHistory
@@ -2167,6 +2122,11 @@ func (c *Client) DescribeDeviceEventHistoryWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceEventHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceEventHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceEventHistoryResponse()
@@ -2199,13 +2159,7 @@ func NewDescribeDeviceStatusLogResponse() (response *DescribeDeviceStatusLogResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceStatusLog(request *DescribeDeviceStatusLogRequest) (response *DescribeDeviceStatusLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceStatusLogRequest()
-    }
-    
-    response = NewDescribeDeviceStatusLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceStatusLogWithContext(context.Background(), request)
 }
 
 // DescribeDeviceStatusLog
@@ -2219,6 +2173,11 @@ func (c *Client) DescribeDeviceStatusLogWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceStatusLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceStatusLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceStatusLogResponse()
@@ -2251,13 +2210,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicesRequest()
-    }
-    
-    response = NewDescribeDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicesWithContext(context.Background(), request)
 }
 
 // DescribeDevices
@@ -2271,6 +2224,11 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
@@ -2301,13 +2259,7 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareRequest()
-    }
-    
-    response = NewDescribeFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareWithContext(context.Background(), request)
 }
 
 // DescribeFirmware
@@ -2319,6 +2271,11 @@ func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareResponse()
@@ -2349,13 +2306,7 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTask
@@ -2367,6 +2318,11 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
@@ -2399,13 +2355,7 @@ func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDev
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskDevicesRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskDevicesWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskDevices
@@ -2419,6 +2369,11 @@ func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskDevicesResponse()
@@ -2451,13 +2406,7 @@ func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTa
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskDistributionRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskDistributionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskDistributionWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskDistribution
@@ -2471,6 +2420,11 @@ func (c *Client) DescribeFirmwareTaskDistributionWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskDistribution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskDistributionResponse()
@@ -2503,13 +2457,7 @@ func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTask
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskStatisticsRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskStatistics
@@ -2523,6 +2471,11 @@ func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskStatisticsResponse()
@@ -2555,13 +2508,7 @@ func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTasksRequest()
-    }
-    
-    response = NewDescribeFirmwareTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTasksWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTasks
@@ -2575,6 +2522,11 @@ func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTasksResponse()
@@ -2607,13 +2559,7 @@ func NewDescribeForwardRuleResponse() (response *DescribeForwardRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeForwardRule(request *DescribeForwardRuleRequest) (response *DescribeForwardRuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeForwardRuleRequest()
-    }
-    
-    response = NewDescribeForwardRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeForwardRuleWithContext(context.Background(), request)
 }
 
 // DescribeForwardRule
@@ -2627,6 +2573,11 @@ func (c *Client) DescribeForwardRuleWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeForwardRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeForwardRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeForwardRuleResponse()
@@ -2659,13 +2610,7 @@ func NewDescribeModelDefinitionResponse() (response *DescribeModelDefinitionResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeModelDefinition(request *DescribeModelDefinitionRequest) (response *DescribeModelDefinitionResponse, err error) {
-    if request == nil {
-        request = NewDescribeModelDefinitionRequest()
-    }
-    
-    response = NewDescribeModelDefinitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeModelDefinitionWithContext(context.Background(), request)
 }
 
 // DescribeModelDefinition
@@ -2679,6 +2624,11 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeModelDefinitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelDefinition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeModelDefinitionResponse()
@@ -2711,13 +2661,7 @@ func NewDescribeProductResponse() (response *DescribeProductResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductRequest()
-    }
-    
-    response = NewDescribeProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductWithContext(context.Background(), request)
 }
 
 // DescribeProduct
@@ -2731,6 +2675,11 @@ func (c *Client) DescribeProductWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductResponse()
@@ -2763,13 +2712,7 @@ func NewDescribeProductDynamicRegisterResponse() (response *DescribeProductDynam
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProductDynamicRegister(request *DescribeProductDynamicRegisterRequest) (response *DescribeProductDynamicRegisterResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductDynamicRegisterRequest()
-    }
-    
-    response = NewDescribeProductDynamicRegisterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductDynamicRegisterWithContext(context.Background(), request)
 }
 
 // DescribeProductDynamicRegister
@@ -2783,6 +2726,11 @@ func (c *Client) DescribeProductDynamicRegisterWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeProductDynamicRegisterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductDynamicRegister require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductDynamicRegisterResponse()
@@ -2815,13 +2763,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductsRequest()
-    }
-    
-    response = NewDescribeProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductsWithContext(context.Background(), request)
 }
 
 // DescribeProducts
@@ -2835,6 +2777,11 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductsResponse()
@@ -2867,13 +2814,7 @@ func NewDescribeSDKLogResponse() (response *DescribeSDKLogResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSDKLog(request *DescribeSDKLogRequest) (response *DescribeSDKLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeSDKLogRequest()
-    }
-    
-    response = NewDescribeSDKLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSDKLogWithContext(context.Background(), request)
 }
 
 // DescribeSDKLog
@@ -2887,6 +2828,11 @@ func (c *Client) DescribeSDKLogWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeSDKLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSDKLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSDKLogResponse()
@@ -2917,13 +2863,7 @@ func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
-    if request == nil {
-        request = NewEditFirmwareRequest()
-    }
-    
-    response = NewEditFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.EditFirmwareWithContext(context.Background(), request)
 }
 
 // EditFirmware
@@ -2935,6 +2875,11 @@ func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EditFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEditFirmwareResponse()
@@ -2967,13 +2912,7 @@ func NewGenerateSignedVideoURLResponse() (response *GenerateSignedVideoURLRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GenerateSignedVideoURL(request *GenerateSignedVideoURLRequest) (response *GenerateSignedVideoURLResponse, err error) {
-    if request == nil {
-        request = NewGenerateSignedVideoURLRequest()
-    }
-    
-    response = NewGenerateSignedVideoURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateSignedVideoURLWithContext(context.Background(), request)
 }
 
 // GenerateSignedVideoURL
@@ -2987,6 +2926,11 @@ func (c *Client) GenerateSignedVideoURLWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGenerateSignedVideoURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateSignedVideoURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateSignedVideoURLResponse()
@@ -3019,13 +2963,7 @@ func NewGetAllFirmwareVersionResponse() (response *GetAllFirmwareVersionResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetAllFirmwareVersion(request *GetAllFirmwareVersionRequest) (response *GetAllFirmwareVersionResponse, err error) {
-    if request == nil {
-        request = NewGetAllFirmwareVersionRequest()
-    }
-    
-    response = NewGetAllFirmwareVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAllFirmwareVersionWithContext(context.Background(), request)
 }
 
 // GetAllFirmwareVersion
@@ -3039,6 +2977,11 @@ func (c *Client) GetAllFirmwareVersionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetAllFirmwareVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAllFirmwareVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAllFirmwareVersionResponse()
@@ -3070,13 +3013,7 @@ func NewGetFirmwareURLResponse() (response *GetFirmwareURLResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetFirmwareURL(request *GetFirmwareURLRequest) (response *GetFirmwareURLResponse, err error) {
-    if request == nil {
-        request = NewGetFirmwareURLRequest()
-    }
-    
-    response = NewGetFirmwareURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetFirmwareURLWithContext(context.Background(), request)
 }
 
 // GetFirmwareURL
@@ -3089,6 +3026,11 @@ func (c *Client) GetFirmwareURLWithContext(ctx context.Context, request *GetFirm
     if request == nil {
         request = NewGetFirmwareURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFirmwareURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetFirmwareURLResponse()
@@ -3121,13 +3063,7 @@ func NewImportModelDefinitionResponse() (response *ImportModelDefinitionResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImportModelDefinition(request *ImportModelDefinitionRequest) (response *ImportModelDefinitionResponse, err error) {
-    if request == nil {
-        request = NewImportModelDefinitionRequest()
-    }
-    
-    response = NewImportModelDefinitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportModelDefinitionWithContext(context.Background(), request)
 }
 
 // ImportModelDefinition
@@ -3141,6 +3077,11 @@ func (c *Client) ImportModelDefinitionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewImportModelDefinitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportModelDefinition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportModelDefinitionResponse()
@@ -3173,13 +3114,7 @@ func NewInheritCloudStorageUserResponse() (response *InheritCloudStorageUserResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) InheritCloudStorageUser(request *InheritCloudStorageUserRequest) (response *InheritCloudStorageUserResponse, err error) {
-    if request == nil {
-        request = NewInheritCloudStorageUserRequest()
-    }
-    
-    response = NewInheritCloudStorageUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.InheritCloudStorageUserWithContext(context.Background(), request)
 }
 
 // InheritCloudStorageUser
@@ -3193,6 +3128,11 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     if request == nil {
         request = NewInheritCloudStorageUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InheritCloudStorageUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInheritCloudStorageUserResponse()
@@ -3225,13 +3165,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
-    if request == nil {
-        request = NewListFirmwaresRequest()
-    }
-    
-    response = NewListFirmwaresResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListFirmwaresWithContext(context.Background(), request)
 }
 
 // ListFirmwares
@@ -3245,6 +3179,11 @@ func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirm
     if request == nil {
         request = NewListFirmwaresRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFirmwares require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListFirmwaresResponse()
@@ -3277,13 +3216,7 @@ func NewModifyDataForwardResponse() (response *ModifyDataForwardResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDataForward(request *ModifyDataForwardRequest) (response *ModifyDataForwardResponse, err error) {
-    if request == nil {
-        request = NewModifyDataForwardRequest()
-    }
-    
-    response = NewModifyDataForwardResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDataForwardWithContext(context.Background(), request)
 }
 
 // ModifyDataForward
@@ -3297,6 +3230,11 @@ func (c *Client) ModifyDataForwardWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDataForwardRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataForward require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDataForwardResponse()
@@ -3329,13 +3267,7 @@ func NewModifyDataForwardStatusResponse() (response *ModifyDataForwardStatusResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDataForwardStatus(request *ModifyDataForwardStatusRequest) (response *ModifyDataForwardStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyDataForwardStatusRequest()
-    }
-    
-    response = NewModifyDataForwardStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDataForwardStatusWithContext(context.Background(), request)
 }
 
 // ModifyDataForwardStatus
@@ -3349,6 +3281,11 @@ func (c *Client) ModifyDataForwardStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyDataForwardStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataForwardStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDataForwardStatusResponse()
@@ -3381,13 +3318,7 @@ func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceRequest()
-    }
-    
-    response = NewModifyDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceWithContext(context.Background(), request)
 }
 
 // ModifyDevice
@@ -3401,6 +3332,11 @@ func (c *Client) ModifyDeviceWithContext(ctx context.Context, request *ModifyDev
     if request == nil {
         request = NewModifyDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceResponse()
@@ -3433,13 +3369,7 @@ func NewModifyDeviceLogLevelResponse() (response *ModifyDeviceLogLevelResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDeviceLogLevel(request *ModifyDeviceLogLevelRequest) (response *ModifyDeviceLogLevelResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceLogLevelRequest()
-    }
-    
-    response = NewModifyDeviceLogLevelResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceLogLevelWithContext(context.Background(), request)
 }
 
 // ModifyDeviceLogLevel
@@ -3453,6 +3383,11 @@ func (c *Client) ModifyDeviceLogLevelWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyDeviceLogLevelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceLogLevel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceLogLevelResponse()
@@ -3485,13 +3420,7 @@ func NewModifyForwardRuleResponse() (response *ModifyForwardRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyForwardRule(request *ModifyForwardRuleRequest) (response *ModifyForwardRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyForwardRuleRequest()
-    }
-    
-    response = NewModifyForwardRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyForwardRuleWithContext(context.Background(), request)
 }
 
 // ModifyForwardRule
@@ -3505,6 +3434,11 @@ func (c *Client) ModifyForwardRuleWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyForwardRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyForwardRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyForwardRuleResponse()
@@ -3537,13 +3471,7 @@ func NewModifyModelDefinitionResponse() (response *ModifyModelDefinitionResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyModelDefinition(request *ModifyModelDefinitionRequest) (response *ModifyModelDefinitionResponse, err error) {
-    if request == nil {
-        request = NewModifyModelDefinitionRequest()
-    }
-    
-    response = NewModifyModelDefinitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyModelDefinitionWithContext(context.Background(), request)
 }
 
 // ModifyModelDefinition
@@ -3557,6 +3485,11 @@ func (c *Client) ModifyModelDefinitionWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyModelDefinitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelDefinition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyModelDefinitionResponse()
@@ -3589,13 +3522,7 @@ func NewModifyProductResponse() (response *ModifyProductResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProduct(request *ModifyProductRequest) (response *ModifyProductResponse, err error) {
-    if request == nil {
-        request = NewModifyProductRequest()
-    }
-    
-    response = NewModifyProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProductWithContext(context.Background(), request)
 }
 
 // ModifyProduct
@@ -3609,6 +3536,11 @@ func (c *Client) ModifyProductWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProductResponse()
@@ -3641,13 +3573,7 @@ func NewModifyProductDynamicRegisterResponse() (response *ModifyProductDynamicRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyProductDynamicRegister(request *ModifyProductDynamicRegisterRequest) (response *ModifyProductDynamicRegisterResponse, err error) {
-    if request == nil {
-        request = NewModifyProductDynamicRegisterRequest()
-    }
-    
-    response = NewModifyProductDynamicRegisterResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProductDynamicRegisterWithContext(context.Background(), request)
 }
 
 // ModifyProductDynamicRegister
@@ -3661,6 +3587,11 @@ func (c *Client) ModifyProductDynamicRegisterWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyProductDynamicRegisterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProductDynamicRegister require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProductDynamicRegisterResponse()
@@ -3693,13 +3624,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishMessageRequest()
-    }
-    
-    response = NewPublishMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishMessageWithContext(context.Background(), request)
 }
 
 // PublishMessage
@@ -3713,6 +3638,11 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishMessageResponse()
@@ -3745,13 +3675,7 @@ func NewReportAliveDeviceResponse() (response *ReportAliveDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ReportAliveDevice(request *ReportAliveDeviceRequest) (response *ReportAliveDeviceResponse, err error) {
-    if request == nil {
-        request = NewReportAliveDeviceRequest()
-    }
-    
-    response = NewReportAliveDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReportAliveDeviceWithContext(context.Background(), request)
 }
 
 // ReportAliveDevice
@@ -3765,6 +3689,11 @@ func (c *Client) ReportAliveDeviceWithContext(ctx context.Context, request *Repo
     if request == nil {
         request = NewReportAliveDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportAliveDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReportAliveDeviceResponse()
@@ -3797,13 +3726,7 @@ func NewResetCloudStorageResponse() (response *ResetCloudStorageResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResetCloudStorage(request *ResetCloudStorageRequest) (response *ResetCloudStorageResponse, err error) {
-    if request == nil {
-        request = NewResetCloudStorageRequest()
-    }
-    
-    response = NewResetCloudStorageResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetCloudStorageWithContext(context.Background(), request)
 }
 
 // ResetCloudStorage
@@ -3817,6 +3740,11 @@ func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *Rese
     if request == nil {
         request = NewResetCloudStorageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetCloudStorage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetCloudStorageResponse()
@@ -3851,13 +3779,7 @@ func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewRetryDeviceFirmwareTaskRequest()
-    }
-    
-    response = NewRetryDeviceFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.RetryDeviceFirmwareTaskWithContext(context.Background(), request)
 }
 
 // RetryDeviceFirmwareTask
@@ -3873,6 +3795,11 @@ func (c *Client) RetryDeviceFirmwareTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryDeviceFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRetryDeviceFirmwareTaskResponse()
@@ -3905,13 +3832,7 @@ func NewSetForwardAuthResponse() (response *SetForwardAuthResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetForwardAuth(request *SetForwardAuthRequest) (response *SetForwardAuthResponse, err error) {
-    if request == nil {
-        request = NewSetForwardAuthRequest()
-    }
-    
-    response = NewSetForwardAuthResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetForwardAuthWithContext(context.Background(), request)
 }
 
 // SetForwardAuth
@@ -3925,6 +3846,11 @@ func (c *Client) SetForwardAuthWithContext(ctx context.Context, request *SetForw
     if request == nil {
         request = NewSetForwardAuthRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetForwardAuth require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetForwardAuthResponse()
@@ -3957,13 +3883,7 @@ func NewTransferCloudStorageResponse() (response *TransferCloudStorageResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TransferCloudStorage(request *TransferCloudStorageRequest) (response *TransferCloudStorageResponse, err error) {
-    if request == nil {
-        request = NewTransferCloudStorageRequest()
-    }
-    
-    response = NewTransferCloudStorageResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransferCloudStorageWithContext(context.Background(), request)
 }
 
 // TransferCloudStorage
@@ -3977,6 +3897,11 @@ func (c *Client) TransferCloudStorageWithContext(ctx context.Context, request *T
     if request == nil {
         request = NewTransferCloudStorageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferCloudStorage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransferCloudStorageResponse()
@@ -4009,13 +3934,7 @@ func NewUpdateAIModelChannelResponse() (response *UpdateAIModelChannelResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateAIModelChannel(request *UpdateAIModelChannelRequest) (response *UpdateAIModelChannelResponse, err error) {
-    if request == nil {
-        request = NewUpdateAIModelChannelRequest()
-    }
-    
-    response = NewUpdateAIModelChannelResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAIModelChannelWithContext(context.Background(), request)
 }
 
 // UpdateAIModelChannel
@@ -4029,6 +3948,11 @@ func (c *Client) UpdateAIModelChannelWithContext(ctx context.Context, request *U
     if request == nil {
         request = NewUpdateAIModelChannelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAIModelChannel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAIModelChannelResponse()
@@ -4061,13 +3985,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
-    if request == nil {
-        request = NewUploadFirmwareRequest()
-    }
-    
-    response = NewUploadFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFirmwareWithContext(context.Background(), request)
 }
 
 // UploadFirmware
@@ -4081,6 +3999,11 @@ func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadF
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFirmwareResponse()
@@ -4113,13 +4036,7 @@ func NewWakeUpDeviceResponse() (response *WakeUpDeviceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) WakeUpDevice(request *WakeUpDeviceRequest) (response *WakeUpDeviceResponse, err error) {
-    if request == nil {
-        request = NewWakeUpDeviceRequest()
-    }
-    
-    response = NewWakeUpDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.WakeUpDeviceWithContext(context.Background(), request)
 }
 
 // WakeUpDevice
@@ -4133,6 +4050,11 @@ func (c *Client) WakeUpDeviceWithContext(ctx context.Context, request *WakeUpDev
     if request == nil {
         request = NewWakeUpDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WakeUpDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewWakeUpDeviceResponse()

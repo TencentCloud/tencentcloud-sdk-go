@@ -16,6 +16,7 @@ package v20201229
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -168,13 +169,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
-    if request == nil {
-        request = NewImageModerationRequest()
-    }
-    
-    response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageModerationWithContext(context.Background(), request)
 }
 
 // ImageModeration
@@ -287,6 +282,11 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageModerationResponse()

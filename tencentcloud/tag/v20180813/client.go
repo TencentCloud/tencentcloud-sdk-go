@@ -16,6 +16,7 @@ package v20180813
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewAddResourceTagResponse() (response *AddResourceTagResponse) {
 //  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
 //  RESOURCEINUSE_TAGKEYATTACHED = "ResourceInUse.TagKeyAttached"
 func (c *Client) AddResourceTag(request *AddResourceTagRequest) (response *AddResourceTagResponse, err error) {
-    if request == nil {
-        request = NewAddResourceTagRequest()
-    }
-    
-    response = NewAddResourceTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddResourceTagWithContext(context.Background(), request)
 }
 
 // AddResourceTag
@@ -107,6 +102,11 @@ func (c *Client) AddResourceTagWithContext(ctx context.Context, request *AddReso
     if request == nil {
         request = NewAddResourceTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddResourceTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddResourceTagResponse()
@@ -155,13 +155,7 @@ func NewAttachResourcesTagResponse() (response *AttachResourcesTagResponse) {
 //  RESOURCEINUSE_TAGKEYATTACHED = "ResourceInUse.TagKeyAttached"
 //  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) AttachResourcesTag(request *AttachResourcesTagRequest) (response *AttachResourcesTagResponse, err error) {
-    if request == nil {
-        request = NewAttachResourcesTagRequest()
-    }
-    
-    response = NewAttachResourcesTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachResourcesTagWithContext(context.Background(), request)
 }
 
 // AttachResourcesTag
@@ -191,6 +185,11 @@ func (c *Client) AttachResourcesTagWithContext(ctx context.Context, request *Att
     if request == nil {
         request = NewAttachResourcesTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachResourcesTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachResourcesTagResponse()
@@ -232,13 +231,7 @@ func NewCreateTagResponse() (response *CreateTagResponse) {
 //  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
 //  RESOURCEINUSE_TAGDUPLICATE = "ResourceInUse.TagDuplicate"
 func (c *Client) CreateTag(request *CreateTagRequest) (response *CreateTagResponse, err error) {
-    if request == nil {
-        request = NewCreateTagRequest()
-    }
-    
-    response = NewCreateTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTagWithContext(context.Background(), request)
 }
 
 // CreateTag
@@ -261,6 +254,11 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
     if request == nil {
         request = NewCreateTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTagResponse()
@@ -297,13 +295,7 @@ func NewDeleteResourceTagResponse() (response *DeleteResourceTagResponse) {
 //  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) DeleteResourceTag(request *DeleteResourceTagRequest) (response *DeleteResourceTagResponse, err error) {
-    if request == nil {
-        request = NewDeleteResourceTagRequest()
-    }
-    
-    response = NewDeleteResourceTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteResourceTagWithContext(context.Background(), request)
 }
 
 // DeleteResourceTag
@@ -321,6 +313,11 @@ func (c *Client) DeleteResourceTagWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteResourceTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResourceTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteResourceTagResponse()
@@ -356,13 +353,7 @@ func NewDeleteTagResponse() (response *DeleteTagResponse) {
 //  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
 //  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) DeleteTag(request *DeleteTagRequest) (response *DeleteTagResponse, err error) {
-    if request == nil {
-        request = NewDeleteTagRequest()
-    }
-    
-    response = NewDeleteTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTagWithContext(context.Background(), request)
 }
 
 // DeleteTag
@@ -379,6 +370,11 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
     if request == nil {
         request = NewDeleteTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTagResponse()
@@ -409,13 +405,7 @@ func NewDescribeResourceTagsResponse() (response *DescribeResourceTagsResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeResourceTags(request *DescribeResourceTagsRequest) (response *DescribeResourceTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTagsRequest()
-    }
-    
-    response = NewDescribeResourceTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTagsWithContext(context.Background(), request)
 }
 
 // DescribeResourceTags
@@ -427,6 +417,11 @@ func (c *Client) DescribeResourceTagsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeResourceTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTagsResponse()
@@ -462,13 +457,7 @@ func NewDescribeResourceTagsByResourceIdsResponse() (response *DescribeResourceT
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTagsByResourceIdsRequest) (response *DescribeResourceTagsByResourceIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTagsByResourceIdsRequest()
-    }
-    
-    response = NewDescribeResourceTagsByResourceIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTagsByResourceIdsWithContext(context.Background(), request)
 }
 
 // DescribeResourceTagsByResourceIds
@@ -485,6 +474,11 @@ func (c *Client) DescribeResourceTagsByResourceIdsWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeResourceTagsByResourceIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTagsByResourceIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTagsByResourceIdsResponse()
@@ -520,13 +514,7 @@ func NewDescribeResourceTagsByResourceIdsSeqResponse() (response *DescribeResour
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourceTagsByResourceIdsSeq(request *DescribeResourceTagsByResourceIdsSeqRequest) (response *DescribeResourceTagsByResourceIdsSeqResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTagsByResourceIdsSeqRequest()
-    }
-    
-    response = NewDescribeResourceTagsByResourceIdsSeqResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTagsByResourceIdsSeqWithContext(context.Background(), request)
 }
 
 // DescribeResourceTagsByResourceIdsSeq
@@ -543,6 +531,11 @@ func (c *Client) DescribeResourceTagsByResourceIdsSeqWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeResourceTagsByResourceIdsSeqRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTagsByResourceIdsSeq require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTagsByResourceIdsSeqResponse()
@@ -580,13 +573,7 @@ func NewDescribeResourceTagsByTagKeysResponse() (response *DescribeResourceTagsB
 //  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
 //  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
 func (c *Client) DescribeResourceTagsByTagKeys(request *DescribeResourceTagsByTagKeysRequest) (response *DescribeResourceTagsByTagKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTagsByTagKeysRequest()
-    }
-    
-    response = NewDescribeResourceTagsByTagKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTagsByTagKeysWithContext(context.Background(), request)
 }
 
 // DescribeResourceTagsByTagKeys
@@ -605,6 +592,11 @@ func (c *Client) DescribeResourceTagsByTagKeysWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeResourceTagsByTagKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTagsByTagKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTagsByTagKeysResponse()
@@ -638,13 +630,7 @@ func NewDescribeResourcesByTagsResponse() (response *DescribeResourcesByTagsResp
 //  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest) (response *DescribeResourcesByTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourcesByTagsRequest()
-    }
-    
-    response = NewDescribeResourcesByTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourcesByTagsWithContext(context.Background(), request)
 }
 
 // DescribeResourcesByTags
@@ -659,6 +645,11 @@ func (c *Client) DescribeResourcesByTagsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeResourcesByTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcesByTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourcesByTagsResponse()
@@ -692,13 +683,7 @@ func NewDescribeResourcesByTagsUnionResponse() (response *DescribeResourcesByTag
 //  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeResourcesByTagsUnion(request *DescribeResourcesByTagsUnionRequest) (response *DescribeResourcesByTagsUnionResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourcesByTagsUnionRequest()
-    }
-    
-    response = NewDescribeResourcesByTagsUnionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourcesByTagsUnionWithContext(context.Background(), request)
 }
 
 // DescribeResourcesByTagsUnion
@@ -713,6 +698,11 @@ func (c *Client) DescribeResourcesByTagsUnionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeResourcesByTagsUnionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcesByTagsUnion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourcesByTagsUnionResponse()
@@ -744,13 +734,7 @@ func NewDescribeTagKeysResponse() (response *DescribeTagKeysResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (response *DescribeTagKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagKeysRequest()
-    }
-    
-    response = NewDescribeTagKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagKeysWithContext(context.Background(), request)
 }
 
 // DescribeTagKeys
@@ -763,6 +747,11 @@ func (c *Client) DescribeTagKeysWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTagKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagKeysResponse()
@@ -794,13 +783,7 @@ func NewDescribeTagValuesResponse() (response *DescribeTagValuesResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagValues(request *DescribeTagValuesRequest) (response *DescribeTagValuesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagValuesRequest()
-    }
-    
-    response = NewDescribeTagValuesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagValuesWithContext(context.Background(), request)
 }
 
 // DescribeTagValues
@@ -813,6 +796,11 @@ func (c *Client) DescribeTagValuesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeTagValuesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagValues require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagValuesResponse()
@@ -844,13 +832,7 @@ func NewDescribeTagValuesSeqResponse() (response *DescribeTagValuesSeqResponse) 
 //  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagValuesSeq(request *DescribeTagValuesSeqRequest) (response *DescribeTagValuesSeqResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagValuesSeqRequest()
-    }
-    
-    response = NewDescribeTagValuesSeqResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagValuesSeqWithContext(context.Background(), request)
 }
 
 // DescribeTagValuesSeq
@@ -863,6 +845,11 @@ func (c *Client) DescribeTagValuesSeqWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTagValuesSeqRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagValuesSeq require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagValuesSeqResponse()
@@ -894,13 +881,7 @@ func NewDescribeTagsResponse() (response *DescribeTagsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTags(request *DescribeTagsRequest) (response *DescribeTagsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagsRequest()
-    }
-    
-    response = NewDescribeTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagsWithContext(context.Background(), request)
 }
 
 // DescribeTags
@@ -913,6 +894,11 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagsResponse()
@@ -944,13 +930,7 @@ func NewDescribeTagsSeqResponse() (response *DescribeTagsSeqResponse) {
 //  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagsSeq(request *DescribeTagsSeqRequest) (response *DescribeTagsSeqResponse, err error) {
-    if request == nil {
-        request = NewDescribeTagsSeqRequest()
-    }
-    
-    response = NewDescribeTagsSeqResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTagsSeqWithContext(context.Background(), request)
 }
 
 // DescribeTagsSeq
@@ -963,6 +943,11 @@ func (c *Client) DescribeTagsSeqWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeTagsSeqRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagsSeq require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTagsSeqResponse()
@@ -1004,13 +989,7 @@ func NewDetachResourcesTagResponse() (response *DetachResourcesTagResponse) {
 //  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) DetachResourcesTag(request *DetachResourcesTagRequest) (response *DetachResourcesTagResponse, err error) {
-    if request == nil {
-        request = NewDetachResourcesTagRequest()
-    }
-    
-    response = NewDetachResourcesTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachResourcesTagWithContext(context.Background(), request)
 }
 
 // DetachResourcesTag
@@ -1033,6 +1012,11 @@ func (c *Client) DetachResourcesTagWithContext(ctx context.Context, request *Det
     if request == nil {
         request = NewDetachResourcesTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachResourcesTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachResourcesTagResponse()
@@ -1075,13 +1059,7 @@ func NewModifyResourceTagsResponse() (response *ModifyResourceTagsResponse) {
 //  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
 //  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
 func (c *Client) ModifyResourceTags(request *ModifyResourceTagsRequest) (response *ModifyResourceTagsResponse, err error) {
-    if request == nil {
-        request = NewModifyResourceTagsRequest()
-    }
-    
-    response = NewModifyResourceTagsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyResourceTagsWithContext(context.Background(), request)
 }
 
 // ModifyResourceTags
@@ -1105,6 +1083,11 @@ func (c *Client) ModifyResourceTagsWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyResourceTagsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceTags require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyResourceTagsResponse()
@@ -1150,13 +1133,7 @@ func NewModifyResourcesTagValueResponse() (response *ModifyResourcesTagValueResp
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 //  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
 func (c *Client) ModifyResourcesTagValue(request *ModifyResourcesTagValueRequest) (response *ModifyResourcesTagValueResponse, err error) {
-    if request == nil {
-        request = NewModifyResourcesTagValueRequest()
-    }
-    
-    response = NewModifyResourcesTagValueResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyResourcesTagValueWithContext(context.Background(), request)
 }
 
 // ModifyResourcesTagValue
@@ -1183,6 +1160,11 @@ func (c *Client) ModifyResourcesTagValueWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyResourcesTagValueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcesTagValue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyResourcesTagValueResponse()
@@ -1219,13 +1201,7 @@ func NewUpdateResourceTagValueResponse() (response *UpdateResourceTagValueRespon
 //  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
 //  RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 func (c *Client) UpdateResourceTagValue(request *UpdateResourceTagValueRequest) (response *UpdateResourceTagValueResponse, err error) {
-    if request == nil {
-        request = NewUpdateResourceTagValueRequest()
-    }
-    
-    response = NewUpdateResourceTagValueResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateResourceTagValueWithContext(context.Background(), request)
 }
 
 // UpdateResourceTagValue
@@ -1243,6 +1219,11 @@ func (c *Client) UpdateResourceTagValueWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateResourceTagValueRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateResourceTagValue require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateResourceTagValueResponse()

@@ -16,6 +16,7 @@ package v20200224
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -93,13 +94,7 @@ func NewManageMarketingRiskResponse() (response *ManageMarketingRiskResponse) {
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) ManageMarketingRisk(request *ManageMarketingRiskRequest) (response *ManageMarketingRiskResponse, err error) {
-    if request == nil {
-        request = NewManageMarketingRiskRequest()
-    }
-    
-    response = NewManageMarketingRiskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ManageMarketingRiskWithContext(context.Background(), request)
 }
 
 // ManageMarketingRisk
@@ -137,6 +132,11 @@ func (c *Client) ManageMarketingRiskWithContext(ctx context.Context, request *Ma
     if request == nil {
         request = NewManageMarketingRiskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ManageMarketingRisk require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewManageMarketingRiskResponse()
@@ -187,13 +187,7 @@ func NewQueryActivityAntiRushResponse() (response *QueryActivityAntiRushResponse
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryActivityAntiRush(request *QueryActivityAntiRushRequest) (response *QueryActivityAntiRushResponse, err error) {
-    if request == nil {
-        request = NewQueryActivityAntiRushRequest()
-    }
-    
-    response = NewQueryActivityAntiRushResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryActivityAntiRushWithContext(context.Background(), request)
 }
 
 // QueryActivityAntiRush
@@ -225,6 +219,11 @@ func (c *Client) QueryActivityAntiRushWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryActivityAntiRushRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryActivityAntiRush require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryActivityAntiRushResponse()
@@ -281,13 +280,7 @@ func NewQueryActivityAntiRushAdvancedResponse() (response *QueryActivityAntiRush
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 func (c *Client) QueryActivityAntiRushAdvanced(request *QueryActivityAntiRushAdvancedRequest) (response *QueryActivityAntiRushAdvancedResponse, err error) {
-    if request == nil {
-        request = NewQueryActivityAntiRushAdvancedRequest()
-    }
-    
-    response = NewQueryActivityAntiRushAdvancedResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryActivityAntiRushAdvancedWithContext(context.Background(), request)
 }
 
 // QueryActivityAntiRushAdvanced
@@ -325,6 +318,11 @@ func (c *Client) QueryActivityAntiRushAdvancedWithContext(ctx context.Context, r
     if request == nil {
         request = NewQueryActivityAntiRushAdvancedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryActivityAntiRushAdvanced require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryActivityAntiRushAdvancedResponse()

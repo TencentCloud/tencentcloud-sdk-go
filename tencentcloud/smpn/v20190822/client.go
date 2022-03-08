@@ -16,6 +16,7 @@ package v20190822
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewCreateSmpnEpaResponse() (response *CreateSmpnEpaResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSmpnEpa(request *CreateSmpnEpaRequest) (response *CreateSmpnEpaResponse, err error) {
-    if request == nil {
-        request = NewCreateSmpnEpaRequest()
-    }
-    
-    response = NewCreateSmpnEpaResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSmpnEpaWithContext(context.Background(), request)
 }
 
 // CreateSmpnEpa
@@ -93,6 +88,11 @@ func (c *Client) CreateSmpnEpaWithContext(ctx context.Context, request *CreateSm
     if request == nil {
         request = NewCreateSmpnEpaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSmpnEpa require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSmpnEpaResponse()
@@ -126,13 +126,7 @@ func NewDescribeSmpnChpResponse() (response *DescribeSmpnChpResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnChp(request *DescribeSmpnChpRequest) (response *DescribeSmpnChpResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmpnChpRequest()
-    }
-    
-    response = NewDescribeSmpnChpResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmpnChpWithContext(context.Background(), request)
 }
 
 // DescribeSmpnChp
@@ -147,6 +141,11 @@ func (c *Client) DescribeSmpnChpWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSmpnChpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmpnChp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmpnChpResponse()
@@ -180,13 +179,7 @@ func NewDescribeSmpnFnrResponse() (response *DescribeSmpnFnrResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnFnr(request *DescribeSmpnFnrRequest) (response *DescribeSmpnFnrResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmpnFnrRequest()
-    }
-    
-    response = NewDescribeSmpnFnrResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmpnFnrWithContext(context.Background(), request)
 }
 
 // DescribeSmpnFnr
@@ -201,6 +194,11 @@ func (c *Client) DescribeSmpnFnrWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSmpnFnrRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmpnFnr require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmpnFnrResponse()
@@ -234,13 +232,7 @@ func NewDescribeSmpnMhmResponse() (response *DescribeSmpnMhmResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmpnMhm(request *DescribeSmpnMhmRequest) (response *DescribeSmpnMhmResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmpnMhmRequest()
-    }
-    
-    response = NewDescribeSmpnMhmResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmpnMhmWithContext(context.Background(), request)
 }
 
 // DescribeSmpnMhm
@@ -255,6 +247,11 @@ func (c *Client) DescribeSmpnMhmWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSmpnMhmRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmpnMhm require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmpnMhmResponse()
@@ -287,13 +284,7 @@ func NewDescribeSmpnMrlResponse() (response *DescribeSmpnMrlResponse) {
 //  INVALIDPARAMETER_PHONENUMBER = "InvalidParameter.PhoneNumber"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSmpnMrl(request *DescribeSmpnMrlRequest) (response *DescribeSmpnMrlResponse, err error) {
-    if request == nil {
-        request = NewDescribeSmpnMrlRequest()
-    }
-    
-    response = NewDescribeSmpnMrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSmpnMrlWithContext(context.Background(), request)
 }
 
 // DescribeSmpnMrl
@@ -307,6 +298,11 @@ func (c *Client) DescribeSmpnMrlWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSmpnMrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmpnMrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSmpnMrlResponse()

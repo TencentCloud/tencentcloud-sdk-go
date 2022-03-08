@@ -16,6 +16,7 @@ package v20200721
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeStrategiesResponse() (response *DescribeStrategiesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeStrategies(request *DescribeStrategiesRequest) (response *DescribeStrategiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeStrategiesRequest()
-    }
-    
-    response = NewDescribeStrategiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStrategiesWithContext(context.Background(), request)
 }
 
 // DescribeStrategies
@@ -91,6 +86,11 @@ func (c *Client) DescribeStrategiesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeStrategiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStrategies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStrategiesResponse()
@@ -127,13 +127,7 @@ func NewDescribeTaskStrategyRisksResponse() (response *DescribeTaskStrategyRisks
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskStrategyRisks(request *DescribeTaskStrategyRisksRequest) (response *DescribeTaskStrategyRisksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStrategyRisksRequest()
-    }
-    
-    response = NewDescribeTaskStrategyRisksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStrategyRisksWithContext(context.Background(), request)
 }
 
 // DescribeTaskStrategyRisks
@@ -151,6 +145,11 @@ func (c *Client) DescribeTaskStrategyRisksWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTaskStrategyRisksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStrategyRisks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStrategyRisksResponse()

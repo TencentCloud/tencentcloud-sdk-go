@@ -16,6 +16,7 @@ package v20180423
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewAttachCamRoleResponse() (response *AttachCamRoleResponse) {
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AttachCamRole(request *AttachCamRoleRequest) (response *AttachCamRoleResponse, err error) {
-    if request == nil {
-        request = NewAttachCamRoleRequest()
-    }
-    
-    response = NewAttachCamRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachCamRoleWithContext(context.Background(), request)
 }
 
 // AttachCamRole
@@ -85,6 +80,11 @@ func (c *Client) AttachCamRoleWithContext(ctx context.Context, request *AttachCa
     if request == nil {
         request = NewAttachCamRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachCamRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachCamRoleResponse()
@@ -120,13 +120,7 @@ func NewBindPsaTagResponse() (response *BindPsaTagResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BindPsaTag(request *BindPsaTagRequest) (response *BindPsaTagResponse, err error) {
-    if request == nil {
-        request = NewBindPsaTagRequest()
-    }
-    
-    response = NewBindPsaTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindPsaTagWithContext(context.Background(), request)
 }
 
 // BindPsaTag
@@ -143,6 +137,11 @@ func (c *Client) BindPsaTagWithContext(ctx context.Context, request *BindPsaTagR
     if request == nil {
         request = NewBindPsaTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindPsaTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindPsaTagResponse()
@@ -180,13 +179,7 @@ func NewBuyDevicesResponse() (response *BuyDevicesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_FUNDINSUFFICIENT = "UnsupportedOperation.FundInsufficient"
 func (c *Client) BuyDevices(request *BuyDevicesRequest) (response *BuyDevicesResponse, err error) {
-    if request == nil {
-        request = NewBuyDevicesRequest()
-    }
-    
-    response = NewBuyDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.BuyDevicesWithContext(context.Background(), request)
 }
 
 // BuyDevices
@@ -205,6 +198,11 @@ func (c *Client) BuyDevicesWithContext(ctx context.Context, request *BuyDevicesR
     if request == nil {
         request = NewBuyDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuyDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBuyDevicesResponse()
@@ -242,13 +240,7 @@ func NewCreateCustomImageResponse() (response *CreateCustomImageResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCustomImage(request *CreateCustomImageRequest) (response *CreateCustomImageResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomImageRequest()
-    }
-    
-    response = NewCreateCustomImageResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomImageWithContext(context.Background(), request)
 }
 
 // CreateCustomImage
@@ -267,6 +259,11 @@ func (c *Client) CreateCustomImageWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCustomImageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomImage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomImageResponse()
@@ -300,13 +297,7 @@ func NewCreatePsaRegulationResponse() (response *CreatePsaRegulationResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreatePsaRegulation(request *CreatePsaRegulationRequest) (response *CreatePsaRegulationResponse, err error) {
-    if request == nil {
-        request = NewCreatePsaRegulationRequest()
-    }
-    
-    response = NewCreatePsaRegulationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePsaRegulationWithContext(context.Background(), request)
 }
 
 // CreatePsaRegulation
@@ -321,6 +312,11 @@ func (c *Client) CreatePsaRegulationWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreatePsaRegulationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePsaRegulation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePsaRegulationResponse()
@@ -353,13 +349,7 @@ func NewCreateSpotDeviceResponse() (response *CreateSpotDeviceResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) CreateSpotDevice(request *CreateSpotDeviceRequest) (response *CreateSpotDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateSpotDeviceRequest()
-    }
-    
-    response = NewCreateSpotDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSpotDeviceWithContext(context.Background(), request)
 }
 
 // CreateSpotDevice
@@ -373,6 +363,11 @@ func (c *Client) CreateSpotDeviceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateSpotDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSpotDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSpotDeviceResponse()
@@ -407,13 +402,7 @@ func NewCreateUserCmdResponse() (response *CreateUserCmdResponse) {
 //  LIMITEXCEEDED_USERCMDCOUNT = "LimitExceeded.UserCmdCount"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateUserCmd(request *CreateUserCmdRequest) (response *CreateUserCmdResponse, err error) {
-    if request == nil {
-        request = NewCreateUserCmdRequest()
-    }
-    
-    response = NewCreateUserCmdResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserCmdWithContext(context.Background(), request)
 }
 
 // CreateUserCmd
@@ -429,6 +418,11 @@ func (c *Client) CreateUserCmdWithContext(ctx context.Context, request *CreateUs
     if request == nil {
         request = NewCreateUserCmdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserCmd require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserCmdResponse()
@@ -463,13 +457,7 @@ func NewDeleteCustomImagesResponse() (response *DeleteCustomImagesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteCustomImages(request *DeleteCustomImagesRequest) (response *DeleteCustomImagesResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomImagesRequest()
-    }
-    
-    response = NewDeleteCustomImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomImagesWithContext(context.Background(), request)
 }
 
 // DeleteCustomImages
@@ -485,6 +473,11 @@ func (c *Client) DeleteCustomImagesWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteCustomImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomImagesResponse()
@@ -517,13 +510,7 @@ func NewDeletePsaRegulationResponse() (response *DeletePsaRegulationResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeletePsaRegulation(request *DeletePsaRegulationRequest) (response *DeletePsaRegulationResponse, err error) {
-    if request == nil {
-        request = NewDeletePsaRegulationRequest()
-    }
-    
-    response = NewDeletePsaRegulationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePsaRegulationWithContext(context.Background(), request)
 }
 
 // DeletePsaRegulation
@@ -537,6 +524,11 @@ func (c *Client) DeletePsaRegulationWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeletePsaRegulationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePsaRegulation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePsaRegulationResponse()
@@ -569,13 +561,7 @@ func NewDeleteUserCmdsResponse() (response *DeleteUserCmdsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteUserCmds(request *DeleteUserCmdsRequest) (response *DeleteUserCmdsResponse, err error) {
-    if request == nil {
-        request = NewDeleteUserCmdsRequest()
-    }
-    
-    response = NewDeleteUserCmdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteUserCmdsWithContext(context.Background(), request)
 }
 
 // DeleteUserCmds
@@ -589,6 +575,11 @@ func (c *Client) DeleteUserCmdsWithContext(ctx context.Context, request *DeleteU
     if request == nil {
         request = NewDeleteUserCmdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserCmds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteUserCmdsResponse()
@@ -621,13 +612,7 @@ func NewDescribeCustomImageProcessResponse() (response *DescribeCustomImageProce
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeCustomImageProcess(request *DescribeCustomImageProcessRequest) (response *DescribeCustomImageProcessResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomImageProcessRequest()
-    }
-    
-    response = NewDescribeCustomImageProcessResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomImageProcessWithContext(context.Background(), request)
 }
 
 // DescribeCustomImageProcess
@@ -641,6 +626,11 @@ func (c *Client) DescribeCustomImageProcessWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCustomImageProcessRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomImageProcess require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomImageProcessResponse()
@@ -675,13 +665,7 @@ func NewDescribeCustomImagesResponse() (response *DescribeCustomImagesResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeCustomImages(request *DescribeCustomImagesRequest) (response *DescribeCustomImagesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomImagesRequest()
-    }
-    
-    response = NewDescribeCustomImagesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomImagesWithContext(context.Background(), request)
 }
 
 // DescribeCustomImages
@@ -697,6 +681,11 @@ func (c *Client) DescribeCustomImagesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCustomImagesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomImages require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomImagesResponse()
@@ -731,13 +720,7 @@ func NewDescribeDeviceClassResponse() (response *DescribeDeviceClassResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeviceClass(request *DescribeDeviceClassRequest) (response *DescribeDeviceClassResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceClassRequest()
-    }
-    
-    response = NewDescribeDeviceClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceClassWithContext(context.Background(), request)
 }
 
 // DescribeDeviceClass
@@ -753,6 +736,11 @@ func (c *Client) DescribeDeviceClassWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDeviceClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceClassResponse()
@@ -784,13 +772,7 @@ func NewDescribeDeviceClassPartitionResponse() (response *DescribeDeviceClassPar
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDeviceClassPartition(request *DescribeDeviceClassPartitionRequest) (response *DescribeDeviceClassPartitionResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceClassPartitionRequest()
-    }
-    
-    response = NewDescribeDeviceClassPartitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceClassPartitionWithContext(context.Background(), request)
 }
 
 // DescribeDeviceClassPartition
@@ -803,6 +785,11 @@ func (c *Client) DescribeDeviceClassPartitionWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeDeviceClassPartitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceClassPartition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceClassPartitionResponse()
@@ -835,13 +822,7 @@ func NewDescribeDeviceHardwareInfoResponse() (response *DescribeDeviceHardwareIn
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeviceHardwareInfo(request *DescribeDeviceHardwareInfoRequest) (response *DescribeDeviceHardwareInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceHardwareInfoRequest()
-    }
-    
-    response = NewDescribeDeviceHardwareInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceHardwareInfoWithContext(context.Background(), request)
 }
 
 // DescribeDeviceHardwareInfo
@@ -855,6 +836,11 @@ func (c *Client) DescribeDeviceHardwareInfoWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceHardwareInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceHardwareInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceHardwareInfoResponse()
@@ -886,13 +872,7 @@ func NewDescribeDeviceInventoryResponse() (response *DescribeDeviceInventoryResp
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDeviceInventory(request *DescribeDeviceInventoryRequest) (response *DescribeDeviceInventoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceInventoryRequest()
-    }
-    
-    response = NewDescribeDeviceInventoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceInventoryWithContext(context.Background(), request)
 }
 
 // DescribeDeviceInventory
@@ -905,6 +885,11 @@ func (c *Client) DescribeDeviceInventoryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceInventoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceInventory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceInventoryResponse()
@@ -937,13 +922,7 @@ func NewDescribeDeviceOperationLogResponse() (response *DescribeDeviceOperationL
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeviceOperationLog(request *DescribeDeviceOperationLogRequest) (response *DescribeDeviceOperationLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceOperationLogRequest()
-    }
-    
-    response = NewDescribeDeviceOperationLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceOperationLogWithContext(context.Background(), request)
 }
 
 // DescribeDeviceOperationLog
@@ -957,6 +936,11 @@ func (c *Client) DescribeDeviceOperationLogWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeDeviceOperationLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceOperationLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceOperationLogResponse()
@@ -989,13 +973,7 @@ func NewDescribeDevicePartitionResponse() (response *DescribeDevicePartitionResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDevicePartition(request *DescribeDevicePartitionRequest) (response *DescribeDevicePartitionResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicePartitionRequest()
-    }
-    
-    response = NewDescribeDevicePartitionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicePartitionWithContext(context.Background(), request)
 }
 
 // DescribeDevicePartition
@@ -1009,6 +987,11 @@ func (c *Client) DescribeDevicePartitionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicePartitionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePartition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicePartitionResponse()
@@ -1039,13 +1022,7 @@ func NewDescribeDevicePositionResponse() (response *DescribeDevicePositionRespon
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDevicePosition(request *DescribeDevicePositionRequest) (response *DescribeDevicePositionResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicePositionRequest()
-    }
-    
-    response = NewDescribeDevicePositionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicePositionWithContext(context.Background(), request)
 }
 
 // DescribeDevicePosition
@@ -1057,6 +1034,11 @@ func (c *Client) DescribeDevicePositionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDevicePositionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePosition require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicePositionResponse()
@@ -1089,13 +1071,7 @@ func NewDescribeDevicePriceInfoResponse() (response *DescribeDevicePriceInfoResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDevicePriceInfo(request *DescribeDevicePriceInfoRequest) (response *DescribeDevicePriceInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicePriceInfoRequest()
-    }
-    
-    response = NewDescribeDevicePriceInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicePriceInfoWithContext(context.Background(), request)
 }
 
 // DescribeDevicePriceInfo
@@ -1109,6 +1085,11 @@ func (c *Client) DescribeDevicePriceInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDevicePriceInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePriceInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicePriceInfoResponse()
@@ -1141,13 +1122,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicesRequest()
-    }
-    
-    response = NewDescribeDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicesWithContext(context.Background(), request)
 }
 
 // DescribeDevices
@@ -1161,6 +1136,11 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
@@ -1193,13 +1173,7 @@ func NewDescribeHardwareSpecificationResponse() (response *DescribeHardwareSpeci
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHardwareSpecification(request *DescribeHardwareSpecificationRequest) (response *DescribeHardwareSpecificationResponse, err error) {
-    if request == nil {
-        request = NewDescribeHardwareSpecificationRequest()
-    }
-    
-    response = NewDescribeHardwareSpecificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHardwareSpecificationWithContext(context.Background(), request)
 }
 
 // DescribeHardwareSpecification
@@ -1213,6 +1187,11 @@ func (c *Client) DescribeHardwareSpecificationWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeHardwareSpecificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHardwareSpecification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHardwareSpecificationResponse()
@@ -1246,13 +1225,7 @@ func NewDescribeHostedDeviceOutBandInfoResponse() (response *DescribeHostedDevic
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeHostedDeviceOutBandInfo(request *DescribeHostedDeviceOutBandInfoRequest) (response *DescribeHostedDeviceOutBandInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeHostedDeviceOutBandInfoRequest()
-    }
-    
-    response = NewDescribeHostedDeviceOutBandInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHostedDeviceOutBandInfoWithContext(context.Background(), request)
 }
 
 // DescribeHostedDeviceOutBandInfo
@@ -1267,6 +1240,11 @@ func (c *Client) DescribeHostedDeviceOutBandInfoWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeHostedDeviceOutBandInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostedDeviceOutBandInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHostedDeviceOutBandInfoResponse()
@@ -1299,13 +1277,7 @@ func NewDescribeOperationResultResponse() (response *DescribeOperationResultResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeOperationResult(request *DescribeOperationResultRequest) (response *DescribeOperationResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeOperationResultRequest()
-    }
-    
-    response = NewDescribeOperationResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOperationResultWithContext(context.Background(), request)
 }
 
 // DescribeOperationResult
@@ -1319,6 +1291,11 @@ func (c *Client) DescribeOperationResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeOperationResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOperationResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOperationResultResponse()
@@ -1350,13 +1327,7 @@ func NewDescribeOsInfoResponse() (response *DescribeOsInfoResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeOsInfo(request *DescribeOsInfoRequest) (response *DescribeOsInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeOsInfoRequest()
-    }
-    
-    response = NewDescribeOsInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOsInfoWithContext(context.Background(), request)
 }
 
 // DescribeOsInfo
@@ -1369,6 +1340,11 @@ func (c *Client) DescribeOsInfoWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeOsInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOsInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOsInfoResponse()
@@ -1401,13 +1377,7 @@ func NewDescribePsaRegulationsResponse() (response *DescribePsaRegulationsRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePsaRegulations(request *DescribePsaRegulationsRequest) (response *DescribePsaRegulationsResponse, err error) {
-    if request == nil {
-        request = NewDescribePsaRegulationsRequest()
-    }
-    
-    response = NewDescribePsaRegulationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePsaRegulationsWithContext(context.Background(), request)
 }
 
 // DescribePsaRegulations
@@ -1421,6 +1391,11 @@ func (c *Client) DescribePsaRegulationsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribePsaRegulationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePsaRegulations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePsaRegulationsResponse()
@@ -1453,13 +1428,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionsRequest()
-    }
-    
-    response = NewDescribeRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionsWithContext(context.Background(), request)
 }
 
 // DescribeRegions
@@ -1473,6 +1442,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
@@ -1505,13 +1479,7 @@ func NewDescribeRepairTaskConstantResponse() (response *DescribeRepairTaskConsta
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRepairTaskConstant(request *DescribeRepairTaskConstantRequest) (response *DescribeRepairTaskConstantResponse, err error) {
-    if request == nil {
-        request = NewDescribeRepairTaskConstantRequest()
-    }
-    
-    response = NewDescribeRepairTaskConstantResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRepairTaskConstantWithContext(context.Background(), request)
 }
 
 // DescribeRepairTaskConstant
@@ -1525,6 +1493,11 @@ func (c *Client) DescribeRepairTaskConstantWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeRepairTaskConstantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRepairTaskConstant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRepairTaskConstantResponse()
@@ -1573,13 +1546,7 @@ func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskInfoRequest()
-    }
-    
-    response = NewDescribeTaskInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskInfoWithContext(context.Background(), request)
 }
 
 // DescribeTaskInfo
@@ -1609,6 +1576,11 @@ func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskInfoResponse()
@@ -1641,13 +1613,7 @@ func NewDescribeTaskOperationLogResponse() (response *DescribeTaskOperationLogRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskOperationLog(request *DescribeTaskOperationLogRequest) (response *DescribeTaskOperationLogResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskOperationLogRequest()
-    }
-    
-    response = NewDescribeTaskOperationLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskOperationLogWithContext(context.Background(), request)
 }
 
 // DescribeTaskOperationLog
@@ -1661,6 +1627,11 @@ func (c *Client) DescribeTaskOperationLogWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeTaskOperationLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskOperationLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskOperationLogResponse()
@@ -1693,13 +1664,7 @@ func NewDescribeUserCmdTaskInfoResponse() (response *DescribeUserCmdTaskInfoResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUserCmdTaskInfo(request *DescribeUserCmdTaskInfoRequest) (response *DescribeUserCmdTaskInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserCmdTaskInfoRequest()
-    }
-    
-    response = NewDescribeUserCmdTaskInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserCmdTaskInfoWithContext(context.Background(), request)
 }
 
 // DescribeUserCmdTaskInfo
@@ -1713,6 +1678,11 @@ func (c *Client) DescribeUserCmdTaskInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeUserCmdTaskInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCmdTaskInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserCmdTaskInfoResponse()
@@ -1745,13 +1715,7 @@ func NewDescribeUserCmdTasksResponse() (response *DescribeUserCmdTasksResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUserCmdTasks(request *DescribeUserCmdTasksRequest) (response *DescribeUserCmdTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserCmdTasksRequest()
-    }
-    
-    response = NewDescribeUserCmdTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserCmdTasksWithContext(context.Background(), request)
 }
 
 // DescribeUserCmdTasks
@@ -1765,6 +1729,11 @@ func (c *Client) DescribeUserCmdTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUserCmdTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCmdTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserCmdTasksResponse()
@@ -1798,13 +1767,7 @@ func NewDescribeUserCmdsResponse() (response *DescribeUserCmdsResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCmds(request *DescribeUserCmdsRequest) (response *DescribeUserCmdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserCmdsRequest()
-    }
-    
-    response = NewDescribeUserCmdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserCmdsWithContext(context.Background(), request)
 }
 
 // DescribeUserCmds
@@ -1819,6 +1782,11 @@ func (c *Client) DescribeUserCmdsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeUserCmdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCmds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserCmdsResponse()
@@ -1849,13 +1817,7 @@ func NewDetachCamRoleResponse() (response *DetachCamRoleResponse) {
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DetachCamRole(request *DetachCamRoleRequest) (response *DetachCamRoleResponse, err error) {
-    if request == nil {
-        request = NewDetachCamRoleRequest()
-    }
-    
-    response = NewDetachCamRoleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachCamRoleWithContext(context.Background(), request)
 }
 
 // DetachCamRole
@@ -1867,6 +1829,11 @@ func (c *Client) DetachCamRoleWithContext(ctx context.Context, request *DetachCa
     if request == nil {
         request = NewDetachCamRoleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachCamRole require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachCamRoleResponse()
@@ -1899,13 +1866,7 @@ func NewModifyCustomImageAttributeResponse() (response *ModifyCustomImageAttribu
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyCustomImageAttribute(request *ModifyCustomImageAttributeRequest) (response *ModifyCustomImageAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyCustomImageAttributeRequest()
-    }
-    
-    response = NewModifyCustomImageAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCustomImageAttributeWithContext(context.Background(), request)
 }
 
 // ModifyCustomImageAttribute
@@ -1919,6 +1880,11 @@ func (c *Client) ModifyCustomImageAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyCustomImageAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomImageAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCustomImageAttributeResponse()
@@ -1951,13 +1917,7 @@ func NewModifyDeviceAliasesResponse() (response *ModifyDeviceAliasesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyDeviceAliases(request *ModifyDeviceAliasesRequest) (response *ModifyDeviceAliasesResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceAliasesRequest()
-    }
-    
-    response = NewModifyDeviceAliasesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceAliasesWithContext(context.Background(), request)
 }
 
 // ModifyDeviceAliases
@@ -1971,6 +1931,11 @@ func (c *Client) ModifyDeviceAliasesWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyDeviceAliasesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceAliases require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceAliasesResponse()
@@ -2003,13 +1968,7 @@ func NewModifyDeviceAutoRenewFlagResponse() (response *ModifyDeviceAutoRenewFlag
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyDeviceAutoRenewFlag(request *ModifyDeviceAutoRenewFlagRequest) (response *ModifyDeviceAutoRenewFlagResponse, err error) {
-    if request == nil {
-        request = NewModifyDeviceAutoRenewFlagRequest()
-    }
-    
-    response = NewModifyDeviceAutoRenewFlagResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDeviceAutoRenewFlagWithContext(context.Background(), request)
 }
 
 // ModifyDeviceAutoRenewFlag
@@ -2023,6 +1982,11 @@ func (c *Client) ModifyDeviceAutoRenewFlagWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyDeviceAutoRenewFlagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceAutoRenewFlag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDeviceAutoRenewFlagResponse()
@@ -2059,13 +2023,7 @@ func NewModifyLanIpResponse() (response *ModifyLanIpResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
 func (c *Client) ModifyLanIp(request *ModifyLanIpRequest) (response *ModifyLanIpResponse, err error) {
-    if request == nil {
-        request = NewModifyLanIpRequest()
-    }
-    
-    response = NewModifyLanIpResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyLanIpWithContext(context.Background(), request)
 }
 
 // ModifyLanIp
@@ -2083,6 +2041,11 @@ func (c *Client) ModifyLanIpWithContext(ctx context.Context, request *ModifyLanI
     if request == nil {
         request = NewModifyLanIpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLanIp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyLanIpResponse()
@@ -2116,13 +2079,7 @@ func NewModifyPayModePre2PostResponse() (response *ModifyPayModePre2PostResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyPayModePre2Post(request *ModifyPayModePre2PostRequest) (response *ModifyPayModePre2PostResponse, err error) {
-    if request == nil {
-        request = NewModifyPayModePre2PostRequest()
-    }
-    
-    response = NewModifyPayModePre2PostResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPayModePre2PostWithContext(context.Background(), request)
 }
 
 // ModifyPayModePre2Post
@@ -2137,6 +2094,11 @@ func (c *Client) ModifyPayModePre2PostWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyPayModePre2PostRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPayModePre2Post require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPayModePre2PostResponse()
@@ -2169,13 +2131,7 @@ func NewModifyPsaRegulationResponse() (response *ModifyPsaRegulationResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyPsaRegulation(request *ModifyPsaRegulationRequest) (response *ModifyPsaRegulationResponse, err error) {
-    if request == nil {
-        request = NewModifyPsaRegulationRequest()
-    }
-    
-    response = NewModifyPsaRegulationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPsaRegulationWithContext(context.Background(), request)
 }
 
 // ModifyPsaRegulation
@@ -2189,6 +2145,11 @@ func (c *Client) ModifyPsaRegulationWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyPsaRegulationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPsaRegulation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPsaRegulationResponse()
@@ -2223,13 +2184,7 @@ func NewModifyUserCmdResponse() (response *ModifyUserCmdResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyUserCmd(request *ModifyUserCmdRequest) (response *ModifyUserCmdResponse, err error) {
-    if request == nil {
-        request = NewModifyUserCmdRequest()
-    }
-    
-    response = NewModifyUserCmdResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserCmdWithContext(context.Background(), request)
 }
 
 // ModifyUserCmd
@@ -2245,6 +2200,11 @@ func (c *Client) ModifyUserCmdWithContext(ctx context.Context, request *ModifyUs
     if request == nil {
         request = NewModifyUserCmdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserCmd require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserCmdResponse()
@@ -2277,13 +2237,7 @@ func NewOfflineDevicesResponse() (response *OfflineDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) OfflineDevices(request *OfflineDevicesRequest) (response *OfflineDevicesResponse, err error) {
-    if request == nil {
-        request = NewOfflineDevicesRequest()
-    }
-    
-    response = NewOfflineDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.OfflineDevicesWithContext(context.Background(), request)
 }
 
 // OfflineDevices
@@ -2297,6 +2251,11 @@ func (c *Client) OfflineDevicesWithContext(ctx context.Context, request *Offline
     if request == nil {
         request = NewOfflineDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OfflineDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOfflineDevicesResponse()
@@ -2329,13 +2288,7 @@ func NewRebootDevicesResponse() (response *RebootDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RebootDevices(request *RebootDevicesRequest) (response *RebootDevicesResponse, err error) {
-    if request == nil {
-        request = NewRebootDevicesRequest()
-    }
-    
-    response = NewRebootDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RebootDevicesWithContext(context.Background(), request)
 }
 
 // RebootDevices
@@ -2349,6 +2302,11 @@ func (c *Client) RebootDevicesWithContext(ctx context.Context, request *RebootDe
     if request == nil {
         request = NewRebootDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRebootDevicesResponse()
@@ -2380,13 +2338,7 @@ func NewRecoverDevicesResponse() (response *RecoverDevicesResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) RecoverDevices(request *RecoverDevicesRequest) (response *RecoverDevicesResponse, err error) {
-    if request == nil {
-        request = NewRecoverDevicesRequest()
-    }
-    
-    response = NewRecoverDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.RecoverDevicesWithContext(context.Background(), request)
 }
 
 // RecoverDevices
@@ -2399,6 +2351,11 @@ func (c *Client) RecoverDevicesWithContext(ctx context.Context, request *Recover
     if request == nil {
         request = NewRecoverDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecoverDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRecoverDevicesResponse()
@@ -2432,13 +2389,7 @@ func NewReloadDeviceOsResponse() (response *ReloadDeviceOsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ReloadDeviceOs(request *ReloadDeviceOsRequest) (response *ReloadDeviceOsResponse, err error) {
-    if request == nil {
-        request = NewReloadDeviceOsRequest()
-    }
-    
-    response = NewReloadDeviceOsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReloadDeviceOsWithContext(context.Background(), request)
 }
 
 // ReloadDeviceOs
@@ -2453,6 +2404,11 @@ func (c *Client) ReloadDeviceOsWithContext(ctx context.Context, request *ReloadD
     if request == nil {
         request = NewReloadDeviceOsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReloadDeviceOs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReloadDeviceOsResponse()
@@ -2529,13 +2485,7 @@ func NewRepairTaskControlResponse() (response *RepairTaskControlResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RepairTaskControl(request *RepairTaskControlRequest) (response *RepairTaskControlResponse, err error) {
-    if request == nil {
-        request = NewRepairTaskControlRequest()
-    }
-    
-    response = NewRepairTaskControlResponse()
-    err = c.Send(request, response)
-    return
+    return c.RepairTaskControlWithContext(context.Background(), request)
 }
 
 // RepairTaskControl
@@ -2593,6 +2543,11 @@ func (c *Client) RepairTaskControlWithContext(ctx context.Context, request *Repa
     if request == nil {
         request = NewRepairTaskControlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RepairTaskControl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRepairTaskControlResponse()
@@ -2626,13 +2581,7 @@ func NewResetDevicePasswordResponse() (response *ResetDevicePasswordResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ResetDevicePassword(request *ResetDevicePasswordRequest) (response *ResetDevicePasswordResponse, err error) {
-    if request == nil {
-        request = NewResetDevicePasswordRequest()
-    }
-    
-    response = NewResetDevicePasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetDevicePasswordWithContext(context.Background(), request)
 }
 
 // ResetDevicePassword
@@ -2647,6 +2596,11 @@ func (c *Client) ResetDevicePasswordWithContext(ctx context.Context, request *Re
     if request == nil {
         request = NewResetDevicePasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDevicePassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetDevicePasswordResponse()
@@ -2678,13 +2632,7 @@ func NewReturnDevicesResponse() (response *ReturnDevicesResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ReturnDevices(request *ReturnDevicesRequest) (response *ReturnDevicesResponse, err error) {
-    if request == nil {
-        request = NewReturnDevicesRequest()
-    }
-    
-    response = NewReturnDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReturnDevicesWithContext(context.Background(), request)
 }
 
 // ReturnDevices
@@ -2697,6 +2645,11 @@ func (c *Client) ReturnDevicesWithContext(ctx context.Context, request *ReturnDe
     if request == nil {
         request = NewReturnDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReturnDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReturnDevicesResponse()
@@ -2729,13 +2682,7 @@ func NewRunUserCmdResponse() (response *RunUserCmdResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RunUserCmd(request *RunUserCmdRequest) (response *RunUserCmdResponse, err error) {
-    if request == nil {
-        request = NewRunUserCmdRequest()
-    }
-    
-    response = NewRunUserCmdResponse()
-    err = c.Send(request, response)
-    return
+    return c.RunUserCmdWithContext(context.Background(), request)
 }
 
 // RunUserCmd
@@ -2749,6 +2696,11 @@ func (c *Client) RunUserCmdWithContext(ctx context.Context, request *RunUserCmdR
     if request == nil {
         request = NewRunUserCmdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunUserCmd require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRunUserCmdResponse()
@@ -2782,13 +2734,7 @@ func NewSetOutBandVpnAuthPasswordResponse() (response *SetOutBandVpnAuthPassword
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetOutBandVpnAuthPassword(request *SetOutBandVpnAuthPasswordRequest) (response *SetOutBandVpnAuthPasswordResponse, err error) {
-    if request == nil {
-        request = NewSetOutBandVpnAuthPasswordRequest()
-    }
-    
-    response = NewSetOutBandVpnAuthPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetOutBandVpnAuthPasswordWithContext(context.Background(), request)
 }
 
 // SetOutBandVpnAuthPassword
@@ -2803,6 +2749,11 @@ func (c *Client) SetOutBandVpnAuthPasswordWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSetOutBandVpnAuthPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetOutBandVpnAuthPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetOutBandVpnAuthPasswordResponse()
@@ -2835,13 +2786,7 @@ func NewShutdownDevicesResponse() (response *ShutdownDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ShutdownDevices(request *ShutdownDevicesRequest) (response *ShutdownDevicesResponse, err error) {
-    if request == nil {
-        request = NewShutdownDevicesRequest()
-    }
-    
-    response = NewShutdownDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ShutdownDevicesWithContext(context.Background(), request)
 }
 
 // ShutdownDevices
@@ -2855,6 +2800,11 @@ func (c *Client) ShutdownDevicesWithContext(ctx context.Context, request *Shutdo
     if request == nil {
         request = NewShutdownDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ShutdownDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewShutdownDevicesResponse()
@@ -2887,13 +2837,7 @@ func NewStartDevicesResponse() (response *StartDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) StartDevices(request *StartDevicesRequest) (response *StartDevicesResponse, err error) {
-    if request == nil {
-        request = NewStartDevicesRequest()
-    }
-    
-    response = NewStartDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartDevicesWithContext(context.Background(), request)
 }
 
 // StartDevices
@@ -2907,6 +2851,11 @@ func (c *Client) StartDevicesWithContext(ctx context.Context, request *StartDevi
     if request == nil {
         request = NewStartDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartDevicesResponse()
@@ -2939,13 +2888,7 @@ func NewUnbindPsaTagResponse() (response *UnbindPsaTagResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) UnbindPsaTag(request *UnbindPsaTagRequest) (response *UnbindPsaTagResponse, err error) {
-    if request == nil {
-        request = NewUnbindPsaTagRequest()
-    }
-    
-    response = NewUnbindPsaTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindPsaTagWithContext(context.Background(), request)
 }
 
 // UnbindPsaTag
@@ -2959,6 +2902,11 @@ func (c *Client) UnbindPsaTagWithContext(ctx context.Context, request *UnbindPsa
     if request == nil {
         request = NewUnbindPsaTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindPsaTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindPsaTagResponse()

@@ -16,6 +16,7 @@ package v20191029
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -72,13 +73,7 @@ func NewAddTeamMemberResponse() (response *AddTeamMemberResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeamMemberResponse, err error) {
-    if request == nil {
-        request = NewAddTeamMemberRequest()
-    }
-    
-    response = NewAddTeamMemberResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddTeamMemberWithContext(context.Background(), request)
 }
 
 // AddTeamMember
@@ -95,6 +90,11 @@ func (c *Client) AddTeamMemberWithContext(ctx context.Context, request *AddTeamM
     if request == nil {
         request = NewAddTeamMemberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddTeamMember require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddTeamMemberResponse()
@@ -130,13 +130,7 @@ func NewCopyProjectResponse() (response *CopyProjectResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProjectResponse, err error) {
-    if request == nil {
-        request = NewCopyProjectRequest()
-    }
-    
-    response = NewCopyProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CopyProjectWithContext(context.Background(), request)
 }
 
 // CopyProject
@@ -153,6 +147,11 @@ func (c *Client) CopyProjectWithContext(ctx context.Context, request *CopyProjec
     if request == nil {
         request = NewCopyProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCopyProjectResponse()
@@ -190,13 +189,7 @@ func NewCreateClassResponse() (response *CreateClassResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClassResponse, err error) {
-    if request == nil {
-        request = NewCreateClassRequest()
-    }
-    
-    response = NewCreateClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClassWithContext(context.Background(), request)
 }
 
 // CreateClass
@@ -215,6 +208,11 @@ func (c *Client) CreateClassWithContext(ctx context.Context, request *CreateClas
     if request == nil {
         request = NewCreateClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClassResponse()
@@ -256,13 +254,7 @@ func NewCreateLinkResponse() (response *CreateLinkResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkResponse, err error) {
-    if request == nil {
-        request = NewCreateLinkRequest()
-    }
-    
-    response = NewCreateLinkResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLinkWithContext(context.Background(), request)
 }
 
 // CreateLink
@@ -285,6 +277,11 @@ func (c *Client) CreateLinkWithContext(ctx context.Context, request *CreateLinkR
     if request == nil {
         request = NewCreateLinkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLink require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLinkResponse()
@@ -345,13 +342,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
-    if request == nil {
-        request = NewCreateProjectRequest()
-    }
-    
-    response = NewCreateProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProjectWithContext(context.Background(), request)
 }
 
 // CreateProject
@@ -393,6 +384,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
@@ -429,13 +425,7 @@ func NewCreateTeamResponse() (response *CreateTeamResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateTeam(request *CreateTeamRequest) (response *CreateTeamResponse, err error) {
-    if request == nil {
-        request = NewCreateTeamRequest()
-    }
-    
-    response = NewCreateTeamResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTeamWithContext(context.Background(), request)
 }
 
 // CreateTeam
@@ -453,6 +443,11 @@ func (c *Client) CreateTeamWithContext(ctx context.Context, request *CreateTeamR
     if request == nil {
         request = NewCreateTeamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTeam require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTeamResponse()
@@ -484,13 +479,7 @@ func NewCreateVideoEncodingPresetResponse() (response *CreateVideoEncodingPreset
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateVideoEncodingPreset(request *CreateVideoEncodingPresetRequest) (response *CreateVideoEncodingPresetResponse, err error) {
-    if request == nil {
-        request = NewCreateVideoEncodingPresetRequest()
-    }
-    
-    response = NewCreateVideoEncodingPresetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVideoEncodingPresetWithContext(context.Background(), request)
 }
 
 // CreateVideoEncodingPreset
@@ -503,6 +492,11 @@ func (c *Client) CreateVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateVideoEncodingPresetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoEncodingPreset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVideoEncodingPresetResponse()
@@ -542,13 +536,7 @@ func NewDeleteClassResponse() (response *DeleteClassResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClassResponse, err error) {
-    if request == nil {
-        request = NewDeleteClassRequest()
-    }
-    
-    response = NewDeleteClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteClassWithContext(context.Background(), request)
 }
 
 // DeleteClass
@@ -569,6 +557,11 @@ func (c *Client) DeleteClassWithContext(ctx context.Context, request *DeleteClas
     if request == nil {
         request = NewDeleteClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteClassResponse()
@@ -600,13 +593,7 @@ func NewDeleteLoginStatusResponse() (response *DeleteLoginStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteLoginStatus(request *DeleteLoginStatusRequest) (response *DeleteLoginStatusResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoginStatusRequest()
-    }
-    
-    response = NewDeleteLoginStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoginStatusWithContext(context.Background(), request)
 }
 
 // DeleteLoginStatus
@@ -619,6 +606,11 @@ func (c *Client) DeleteLoginStatusWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteLoginStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoginStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoginStatusResponse()
@@ -653,13 +645,7 @@ func NewDeleteMaterialResponse() (response *DeleteMaterialResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteMaterial(request *DeleteMaterialRequest) (response *DeleteMaterialResponse, err error) {
-    if request == nil {
-        request = NewDeleteMaterialRequest()
-    }
-    
-    response = NewDeleteMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMaterialWithContext(context.Background(), request)
 }
 
 // DeleteMaterial
@@ -675,6 +661,11 @@ func (c *Client) DeleteMaterialWithContext(ctx context.Context, request *DeleteM
     if request == nil {
         request = NewDeleteMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMaterialResponse()
@@ -711,13 +702,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
-    if request == nil {
-        request = NewDeleteProjectRequest()
-    }
-    
-    response = NewDeleteProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProjectWithContext(context.Background(), request)
 }
 
 // DeleteProject
@@ -735,6 +720,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProjectResponse()
@@ -773,13 +763,7 @@ func NewDeleteTeamResponse() (response *DeleteTeamResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteTeam(request *DeleteTeamRequest) (response *DeleteTeamResponse, err error) {
-    if request == nil {
-        request = NewDeleteTeamRequest()
-    }
-    
-    response = NewDeleteTeamResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTeamWithContext(context.Background(), request)
 }
 
 // DeleteTeam
@@ -799,6 +783,11 @@ func (c *Client) DeleteTeamWithContext(ctx context.Context, request *DeleteTeamR
     if request == nil {
         request = NewDeleteTeamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTeam require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTeamResponse()
@@ -832,13 +821,7 @@ func NewDeleteTeamMembersResponse() (response *DeleteTeamMembersResponse) {
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response *DeleteTeamMembersResponse, err error) {
-    if request == nil {
-        request = NewDeleteTeamMembersRequest()
-    }
-    
-    response = NewDeleteTeamMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTeamMembersWithContext(context.Background(), request)
 }
 
 // DeleteTeamMembers
@@ -853,6 +836,11 @@ func (c *Client) DeleteTeamMembersWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteTeamMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTeamMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTeamMembersResponse()
@@ -884,13 +872,7 @@ func NewDeleteVideoEncodingPresetResponse() (response *DeleteVideoEncodingPreset
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteVideoEncodingPreset(request *DeleteVideoEncodingPresetRequest) (response *DeleteVideoEncodingPresetResponse, err error) {
-    if request == nil {
-        request = NewDeleteVideoEncodingPresetRequest()
-    }
-    
-    response = NewDeleteVideoEncodingPresetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVideoEncodingPresetWithContext(context.Background(), request)
 }
 
 // DeleteVideoEncodingPreset
@@ -903,6 +885,11 @@ func (c *Client) DeleteVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteVideoEncodingPresetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVideoEncodingPreset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVideoEncodingPresetResponse()
@@ -946,13 +933,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 //  RESOURCENOTFOUND_PLATFORMNOTFOUND = "ResourceNotFound.PlatformNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *DescribeAccountsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccountsRequest()
-    }
-    
-    response = NewDescribeAccountsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccountsWithContext(context.Background(), request)
 }
 
 // DescribeAccounts
@@ -977,6 +958,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeAccountsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccounts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccountsResponse()
@@ -1011,13 +997,7 @@ func NewDescribeClassResponse() (response *DescribeClassResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClass(request *DescribeClassRequest) (response *DescribeClassResponse, err error) {
-    if request == nil {
-        request = NewDescribeClassRequest()
-    }
-    
-    response = NewDescribeClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClassWithContext(context.Background(), request)
 }
 
 // DescribeClass
@@ -1033,6 +1013,11 @@ func (c *Client) DescribeClassWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClassResponse()
@@ -1068,13 +1053,7 @@ func NewDescribeJoinTeamsResponse() (response *DescribeJoinTeamsResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeJoinTeams(request *DescribeJoinTeamsRequest) (response *DescribeJoinTeamsResponse, err error) {
-    if request == nil {
-        request = NewDescribeJoinTeamsRequest()
-    }
-    
-    response = NewDescribeJoinTeamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJoinTeamsWithContext(context.Background(), request)
 }
 
 // DescribeJoinTeams
@@ -1091,6 +1070,11 @@ func (c *Client) DescribeJoinTeamsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeJoinTeamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJoinTeams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJoinTeamsResponse()
@@ -1123,13 +1107,7 @@ func NewDescribeLoginStatusResponse() (response *DescribeLoginStatusResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLoginStatus(request *DescribeLoginStatusRequest) (response *DescribeLoginStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoginStatusRequest()
-    }
-    
-    response = NewDescribeLoginStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoginStatusWithContext(context.Background(), request)
 }
 
 // DescribeLoginStatus
@@ -1143,6 +1121,11 @@ func (c *Client) DescribeLoginStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeLoginStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoginStatusResponse()
@@ -1178,13 +1161,7 @@ func NewDescribeMaterialsResponse() (response *DescribeMaterialsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response *DescribeMaterialsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMaterialsRequest()
-    }
-    
-    response = NewDescribeMaterialsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMaterialsWithContext(context.Background(), request)
 }
 
 // DescribeMaterials
@@ -1201,6 +1178,11 @@ func (c *Client) DescribeMaterialsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeMaterialsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaterials require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMaterialsResponse()
@@ -1242,13 +1224,7 @@ func NewDescribePlatformsResponse() (response *DescribePlatformsResponse) {
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribePlatforms(request *DescribePlatformsRequest) (response *DescribePlatformsResponse, err error) {
-    if request == nil {
-        request = NewDescribePlatformsRequest()
-    }
-    
-    response = NewDescribePlatformsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePlatformsWithContext(context.Background(), request)
 }
 
 // DescribePlatforms
@@ -1271,6 +1247,11 @@ func (c *Client) DescribePlatformsWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribePlatformsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatforms require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePlatformsResponse()
@@ -1312,13 +1293,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProjectsRequest()
-    }
-    
-    response = NewDescribeProjectsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProjectsWithContext(context.Background(), request)
 }
 
 // DescribeProjects
@@ -1341,6 +1316,11 @@ func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProjectsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProjects require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProjectsResponse()
@@ -1376,13 +1356,7 @@ func NewDescribeResourceAuthorizationResponse() (response *DescribeResourceAutho
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceAuthorization(request *DescribeResourceAuthorizationRequest) (response *DescribeResourceAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceAuthorizationRequest()
-    }
-    
-    response = NewDescribeResourceAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceAuthorizationWithContext(context.Background(), request)
 }
 
 // DescribeResourceAuthorization
@@ -1399,6 +1373,11 @@ func (c *Client) DescribeResourceAuthorizationWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeResourceAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceAuthorizationResponse()
@@ -1431,13 +1410,7 @@ func NewDescribeSharedSpaceResponse() (response *DescribeSharedSpaceResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSharedSpace(request *DescribeSharedSpaceRequest) (response *DescribeSharedSpaceResponse, err error) {
-    if request == nil {
-        request = NewDescribeSharedSpaceRequest()
-    }
-    
-    response = NewDescribeSharedSpaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSharedSpaceWithContext(context.Background(), request)
 }
 
 // DescribeSharedSpace
@@ -1451,6 +1424,11 @@ func (c *Client) DescribeSharedSpaceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeSharedSpaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSpace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSharedSpaceResponse()
@@ -1489,13 +1467,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskDetailRequest()
-    }
-    
-    response = NewDescribeTaskDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
 
 // DescribeTaskDetail
@@ -1515,6 +1487,11 @@ func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskDetailResponse()
@@ -1548,13 +1525,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -1569,6 +1540,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
@@ -1607,13 +1583,7 @@ func NewDescribeTeamMembersResponse() (response *DescribeTeamMembersResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeamMembers(request *DescribeTeamMembersRequest) (response *DescribeTeamMembersResponse, err error) {
-    if request == nil {
-        request = NewDescribeTeamMembersRequest()
-    }
-    
-    response = NewDescribeTeamMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTeamMembersWithContext(context.Background(), request)
 }
 
 // DescribeTeamMembers
@@ -1633,6 +1603,11 @@ func (c *Client) DescribeTeamMembersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeTeamMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTeamMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTeamMembersResponse()
@@ -1669,13 +1644,7 @@ func NewDescribeTeamsResponse() (response *DescribeTeamsResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *DescribeTeamsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTeamsRequest()
-    }
-    
-    response = NewDescribeTeamsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTeamsWithContext(context.Background(), request)
 }
 
 // DescribeTeams
@@ -1693,6 +1662,11 @@ func (c *Client) DescribeTeamsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTeamsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTeams require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTeamsResponse()
@@ -1723,14 +1697,9 @@ func NewDescribeVideoEncodingPresetsResponse() (response *DescribeVideoEncodingP
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoEncodingPresetsRequest()
-    }
-    
-    response = NewDescribeVideoEncodingPresetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVideoEncodingPresetsWithContext(context.Background(), request)
 }
 
 // DescribeVideoEncodingPresets
@@ -1739,10 +1708,16 @@ func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPres
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 func (c *Client) DescribeVideoEncodingPresetsWithContext(ctx context.Context, request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
     if request == nil {
         request = NewDescribeVideoEncodingPresetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoEncodingPresets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVideoEncodingPresetsResponse()
@@ -1790,13 +1765,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackDataRequest) (response *ExportVideoByEditorTrackDataResponse, err error) {
-    if request == nil {
-        request = NewExportVideoByEditorTrackDataRequest()
-    }
-    
-    response = NewExportVideoByEditorTrackDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportVideoByEditorTrackDataWithContext(context.Background(), request)
 }
 
 // ExportVideoByEditorTrackData
@@ -1825,6 +1794,11 @@ func (c *Client) ExportVideoByEditorTrackDataWithContext(ctx context.Context, re
     if request == nil {
         request = NewExportVideoByEditorTrackDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportVideoByEditorTrackData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportVideoByEditorTrackDataResponse()
@@ -1874,13 +1848,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
-    if request == nil {
-        request = NewExportVideoByTemplateRequest()
-    }
-    
-    response = NewExportVideoByTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportVideoByTemplateWithContext(context.Background(), request)
 }
 
 // ExportVideoByTemplate
@@ -1911,6 +1879,11 @@ func (c *Client) ExportVideoByTemplateWithContext(ctx context.Context, request *
     if request == nil {
         request = NewExportVideoByTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportVideoByTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportVideoByTemplateResponse()
@@ -1948,13 +1921,7 @@ func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVid
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoSegmentationDataRequest) (response *ExportVideoByVideoSegmentationDataResponse, err error) {
-    if request == nil {
-        request = NewExportVideoByVideoSegmentationDataRequest()
-    }
-    
-    response = NewExportVideoByVideoSegmentationDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportVideoByVideoSegmentationDataWithContext(context.Background(), request)
 }
 
 // ExportVideoByVideoSegmentationData
@@ -1973,6 +1940,11 @@ func (c *Client) ExportVideoByVideoSegmentationDataWithContext(ctx context.Conte
     if request == nil {
         request = NewExportVideoByVideoSegmentationDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportVideoByVideoSegmentationData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportVideoByVideoSegmentationDataResponse()
@@ -2020,13 +1992,7 @@ func NewExportVideoEditProjectResponse() (response *ExportVideoEditProjectRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ExportVideoEditProject(request *ExportVideoEditProjectRequest) (response *ExportVideoEditProjectResponse, err error) {
-    if request == nil {
-        request = NewExportVideoEditProjectRequest()
-    }
-    
-    response = NewExportVideoEditProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportVideoEditProjectWithContext(context.Background(), request)
 }
 
 // ExportVideoEditProject
@@ -2055,6 +2021,11 @@ func (c *Client) ExportVideoEditProjectWithContext(ctx context.Context, request 
     if request == nil {
         request = NewExportVideoEditProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportVideoEditProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportVideoEditProjectResponse()
@@ -2092,13 +2063,7 @@ func NewFlattenListMediaResponse() (response *FlattenListMediaResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) FlattenListMedia(request *FlattenListMediaRequest) (response *FlattenListMediaResponse, err error) {
-    if request == nil {
-        request = NewFlattenListMediaRequest()
-    }
-    
-    response = NewFlattenListMediaResponse()
-    err = c.Send(request, response)
-    return
+    return c.FlattenListMediaWithContext(context.Background(), request)
 }
 
 // FlattenListMedia
@@ -2117,6 +2082,11 @@ func (c *Client) FlattenListMediaWithContext(ctx context.Context, request *Flatt
     if request == nil {
         request = NewFlattenListMediaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FlattenListMedia require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewFlattenListMediaResponse()
@@ -2156,13 +2126,7 @@ func NewGenerateVideoSegmentationSchemeByAiResponse() (response *GenerateVideoSe
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) GenerateVideoSegmentationSchemeByAi(request *GenerateVideoSegmentationSchemeByAiRequest) (response *GenerateVideoSegmentationSchemeByAiResponse, err error) {
-    if request == nil {
-        request = NewGenerateVideoSegmentationSchemeByAiRequest()
-    }
-    
-    response = NewGenerateVideoSegmentationSchemeByAiResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateVideoSegmentationSchemeByAiWithContext(context.Background(), request)
 }
 
 // GenerateVideoSegmentationSchemeByAi
@@ -2183,6 +2147,11 @@ func (c *Client) GenerateVideoSegmentationSchemeByAiWithContext(ctx context.Cont
     if request == nil {
         request = NewGenerateVideoSegmentationSchemeByAiRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateVideoSegmentationSchemeByAi require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateVideoSegmentationSchemeByAiResponse()
@@ -2217,13 +2186,7 @@ func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizati
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationRequest) (response *GrantResourceAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewGrantResourceAuthorizationRequest()
-    }
-    
-    response = NewGrantResourceAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.GrantResourceAuthorizationWithContext(context.Background(), request)
 }
 
 // GrantResourceAuthorization
@@ -2239,6 +2202,11 @@ func (c *Client) GrantResourceAuthorizationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewGrantResourceAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GrantResourceAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGrantResourceAuthorizationResponse()
@@ -2312,13 +2280,7 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
 func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
-    if request == nil {
-        request = NewHandleStreamConnectProjectRequest()
-    }
-    
-    response = NewHandleStreamConnectProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.HandleStreamConnectProjectWithContext(context.Background(), request)
 }
 
 // HandleStreamConnectProject
@@ -2373,6 +2335,11 @@ func (c *Client) HandleStreamConnectProjectWithContext(ctx context.Context, requ
     if request == nil {
         request = NewHandleStreamConnectProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HandleStreamConnectProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewHandleStreamConnectProjectResponse()
@@ -2420,13 +2387,7 @@ func NewImportMaterialResponse() (response *ImportMaterialResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMaterial(request *ImportMaterialRequest) (response *ImportMaterialResponse, err error) {
-    if request == nil {
-        request = NewImportMaterialRequest()
-    }
-    
-    response = NewImportMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportMaterialWithContext(context.Background(), request)
 }
 
 // ImportMaterial
@@ -2455,6 +2416,11 @@ func (c *Client) ImportMaterialWithContext(ctx context.Context, request *ImportM
     if request == nil {
         request = NewImportMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportMaterialResponse()
@@ -2500,13 +2466,7 @@ func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) 
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (response *ImportMediaToProjectResponse, err error) {
-    if request == nil {
-        request = NewImportMediaToProjectRequest()
-    }
-    
-    response = NewImportMediaToProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImportMediaToProjectWithContext(context.Background(), request)
 }
 
 // ImportMediaToProject
@@ -2533,6 +2493,11 @@ func (c *Client) ImportMediaToProjectWithContext(ctx context.Context, request *I
     if request == nil {
         request = NewImportMediaToProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportMediaToProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImportMediaToProjectResponse()
@@ -2572,13 +2537,7 @@ func NewListMediaResponse() (response *ListMediaResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaResponse, err error) {
-    if request == nil {
-        request = NewListMediaRequest()
-    }
-    
-    response = NewListMediaResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListMediaWithContext(context.Background(), request)
 }
 
 // ListMedia
@@ -2599,6 +2558,11 @@ func (c *Client) ListMediaWithContext(ctx context.Context, request *ListMediaReq
     if request == nil {
         request = NewListMediaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListMedia require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListMediaResponse()
@@ -2634,13 +2598,7 @@ func NewModifyMaterialResponse() (response *ModifyMaterialResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {
-    if request == nil {
-        request = NewModifyMaterialRequest()
-    }
-    
-    response = NewModifyMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMaterialWithContext(context.Background(), request)
 }
 
 // ModifyMaterial
@@ -2657,6 +2615,11 @@ func (c *Client) ModifyMaterialWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMaterialResponse()
@@ -2696,13 +2659,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyProjectRequest()
-    }
-    
-    response = NewModifyProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProjectWithContext(context.Background(), request)
 }
 
 // ModifyProject
@@ -2723,6 +2680,11 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     if request == nil {
         request = NewModifyProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProjectResponse()
@@ -2760,13 +2722,7 @@ func NewModifyTeamResponse() (response *ModifyTeamResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeam(request *ModifyTeamRequest) (response *ModifyTeamResponse, err error) {
-    if request == nil {
-        request = NewModifyTeamRequest()
-    }
-    
-    response = NewModifyTeamResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTeamWithContext(context.Background(), request)
 }
 
 // ModifyTeam
@@ -2785,6 +2741,11 @@ func (c *Client) ModifyTeamWithContext(ctx context.Context, request *ModifyTeamR
     if request == nil {
         request = NewModifyTeamRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTeam require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTeamResponse()
@@ -2822,13 +2783,7 @@ func NewModifyTeamMemberResponse() (response *ModifyTeamMemberResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *ModifyTeamMemberResponse, err error) {
-    if request == nil {
-        request = NewModifyTeamMemberRequest()
-    }
-    
-    response = NewModifyTeamMemberResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTeamMemberWithContext(context.Background(), request)
 }
 
 // ModifyTeamMember
@@ -2847,6 +2802,11 @@ func (c *Client) ModifyTeamMemberWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyTeamMemberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTeamMember require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTeamMemberResponse()
@@ -2884,13 +2844,7 @@ func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPreset
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
-    if request == nil {
-        request = NewModifyVideoEncodingPresetRequest()
-    }
-    
-    response = NewModifyVideoEncodingPresetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVideoEncodingPresetWithContext(context.Background(), request)
 }
 
 // ModifyVideoEncodingPreset
@@ -2909,6 +2863,11 @@ func (c *Client) ModifyVideoEncodingPresetWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVideoEncodingPresetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVideoEncodingPreset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVideoEncodingPresetResponse()
@@ -2951,13 +2910,7 @@ func NewMoveClassResponse() (response *MoveClassResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassResponse, err error) {
-    if request == nil {
-        request = NewMoveClassRequest()
-    }
-    
-    response = NewMoveClassResponse()
-    err = c.Send(request, response)
-    return
+    return c.MoveClassWithContext(context.Background(), request)
 }
 
 // MoveClass
@@ -2981,6 +2934,11 @@ func (c *Client) MoveClassWithContext(ctx context.Context, request *MoveClassReq
     if request == nil {
         request = NewMoveClassRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MoveClass require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMoveClassResponse()
@@ -3026,13 +2984,7 @@ func NewMoveResourceResponse() (response *MoveResourceResponse) {
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResourceResponse, err error) {
-    if request == nil {
-        request = NewMoveResourceRequest()
-    }
-    
-    response = NewMoveResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.MoveResourceWithContext(context.Background(), request)
 }
 
 // MoveResource
@@ -3059,6 +3011,11 @@ func (c *Client) MoveResourceWithContext(ctx context.Context, request *MoveResou
     if request == nil {
         request = NewMoveResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MoveResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMoveResourceResponse()
@@ -3092,13 +3049,7 @@ func NewParseEventResponse() (response *ParseEventResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
 func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventResponse, err error) {
-    if request == nil {
-        request = NewParseEventRequest()
-    }
-    
-    response = NewParseEventResponse()
-    err = c.Send(request, response)
-    return
+    return c.ParseEventWithContext(context.Background(), request)
 }
 
 // ParseEvent
@@ -3113,6 +3064,11 @@ func (c *Client) ParseEventWithContext(ctx context.Context, request *ParseEventR
     if request == nil {
         request = NewParseEventRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ParseEvent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewParseEventResponse()
@@ -3146,13 +3102,7 @@ func NewRevokeResourceAuthorizationResponse() (response *RevokeResourceAuthoriza
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RevokeResourceAuthorization(request *RevokeResourceAuthorizationRequest) (response *RevokeResourceAuthorizationResponse, err error) {
-    if request == nil {
-        request = NewRevokeResourceAuthorizationRequest()
-    }
-    
-    response = NewRevokeResourceAuthorizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevokeResourceAuthorizationWithContext(context.Background(), request)
 }
 
 // RevokeResourceAuthorization
@@ -3167,6 +3117,11 @@ func (c *Client) RevokeResourceAuthorizationWithContext(ctx context.Context, req
     if request == nil {
         request = NewRevokeResourceAuthorizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeResourceAuthorization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevokeResourceAuthorizationResponse()
@@ -3205,13 +3160,7 @@ func NewSearchMaterialResponse() (response *SearchMaterialResponse) {
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SearchMaterial(request *SearchMaterialRequest) (response *SearchMaterialResponse, err error) {
-    if request == nil {
-        request = NewSearchMaterialRequest()
-    }
-    
-    response = NewSearchMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchMaterialWithContext(context.Background(), request)
 }
 
 // SearchMaterial
@@ -3231,6 +3180,11 @@ func (c *Client) SearchMaterialWithContext(ctx context.Context, request *SearchM
     if request == nil {
         request = NewSearchMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchMaterialResponse()

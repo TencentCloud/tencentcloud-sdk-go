@@ -16,6 +16,7 @@ package v20180523
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewCheckVcodeResponse() (response *CheckVcodeResponse) {
 //  RESOURCENOTFOUND_CONTRACTPROJECTCODENOTFOUND = "ResourceNotFound.ContractProjectCodeNotFound"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CheckVcode(request *CheckVcodeRequest) (response *CheckVcodeResponse, err error) {
-    if request == nil {
-        request = NewCheckVcodeRequest()
-    }
-    
-    response = NewCheckVcodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckVcodeWithContext(context.Background(), request)
 }
 
 // CheckVcode
@@ -119,6 +114,11 @@ func (c *Client) CheckVcodeWithContext(ctx context.Context, request *CheckVcodeR
     if request == nil {
         request = NewCheckVcodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckVcode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckVcodeResponse()
@@ -163,13 +163,7 @@ func NewCreateContractByUploadResponse() (response *CreateContractByUploadRespon
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 //  RESOURCEUNAVAILABLE_CONTRACTSIGNERUNAVAILABLE = "ResourceUnavailable.ContractSignerUnavailable"
 func (c *Client) CreateContractByUpload(request *CreateContractByUploadRequest) (response *CreateContractByUploadResponse, err error) {
-    if request == nil {
-        request = NewCreateContractByUploadRequest()
-    }
-    
-    response = NewCreateContractByUploadResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateContractByUploadWithContext(context.Background(), request)
 }
 
 // CreateContractByUpload
@@ -195,6 +189,11 @@ func (c *Client) CreateContractByUploadWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateContractByUploadRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContractByUpload require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateContractByUploadResponse()
@@ -243,13 +242,7 @@ func NewCreateEnterpriseAccountResponse() (response *CreateEnterpriseAccountResp
 //  RESOURCEINUSE_ENTERPRISEACCOUNTALREADYEXIST = "ResourceInUse.EnterpriseAccountAlreadyExist"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CreateEnterpriseAccount(request *CreateEnterpriseAccountRequest) (response *CreateEnterpriseAccountResponse, err error) {
-    if request == nil {
-        request = NewCreateEnterpriseAccountRequest()
-    }
-    
-    response = NewCreateEnterpriseAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEnterpriseAccountWithContext(context.Background(), request)
 }
 
 // CreateEnterpriseAccount
@@ -279,6 +272,11 @@ func (c *Client) CreateEnterpriseAccountWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateEnterpriseAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnterpriseAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEnterpriseAccountResponse()
@@ -322,13 +320,7 @@ func NewCreatePersonalAccountResponse() (response *CreatePersonalAccountResponse
 //  RESOURCEINUSE_PERSONACCOUNTALREADYEXIST = "ResourceInUse.PersonAccountAlreadyExist"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) CreatePersonalAccount(request *CreatePersonalAccountRequest) (response *CreatePersonalAccountResponse, err error) {
-    if request == nil {
-        request = NewCreatePersonalAccountRequest()
-    }
-    
-    response = NewCreatePersonalAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePersonalAccountWithContext(context.Background(), request)
 }
 
 // CreatePersonalAccount
@@ -353,6 +345,11 @@ func (c *Client) CreatePersonalAccountWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreatePersonalAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePersonalAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePersonalAccountResponse()
@@ -399,13 +396,7 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTUNAVAILABLE = "ResourceUnavailable.AccountUnavailable"
 //  RESOURCEUNAVAILABLE_DOWNLOADSEALERROR = "ResourceUnavailable.DownloadSealError"
 func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
-    if request == nil {
-        request = NewCreateSealRequest()
-    }
-    
-    response = NewCreateSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSealWithContext(context.Background(), request)
 }
 
 // CreateSeal
@@ -433,6 +424,11 @@ func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealR
     if request == nil {
         request = NewCreateSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSealResponse()
@@ -469,13 +465,7 @@ func NewDeleteAccountResponse() (response *DeleteAccountResponse) {
 //  RESOURCENOTFOUND_ACCOUNTNOTFOUND = "ResourceNotFound.AccountNotFound"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) DeleteAccount(request *DeleteAccountRequest) (response *DeleteAccountResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccountRequest()
-    }
-    
-    response = NewDeleteAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccountWithContext(context.Background(), request)
 }
 
 // DeleteAccount
@@ -493,6 +483,11 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
     if request == nil {
         request = NewDeleteAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccountResponse()
@@ -533,13 +528,7 @@ func NewDeleteSealResponse() (response *DeleteSealResponse) {
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTUNAVAILABLE = "ResourceUnavailable.AccountUnavailable"
 func (c *Client) DeleteSeal(request *DeleteSealRequest) (response *DeleteSealResponse, err error) {
-    if request == nil {
-        request = NewDeleteSealRequest()
-    }
-    
-    response = NewDeleteSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSealWithContext(context.Background(), request)
 }
 
 // DeleteSeal
@@ -561,6 +550,11 @@ func (c *Client) DeleteSealWithContext(ctx context.Context, request *DeleteSealR
     if request == nil {
         request = NewDeleteSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSealResponse()
@@ -596,13 +590,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStatusRequest()
-    }
-    
-    response = NewDescribeTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTaskStatus
@@ -619,6 +607,11 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStatusResponse()
@@ -655,13 +648,7 @@ func NewDownloadContractResponse() (response *DownloadContractResponse) {
 //  RESOURCENOTFOUND_CONTRACTNOTFOUND = "ResourceNotFound.ContractNotFound"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) DownloadContract(request *DownloadContractRequest) (response *DownloadContractResponse, err error) {
-    if request == nil {
-        request = NewDownloadContractRequest()
-    }
-    
-    response = NewDownloadContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadContractWithContext(context.Background(), request)
 }
 
 // DownloadContract
@@ -679,6 +666,11 @@ func (c *Client) DownloadContractWithContext(ctx context.Context, request *Downl
     if request == nil {
         request = NewDownloadContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadContractResponse()
@@ -722,13 +714,7 @@ func NewSendVcodeResponse() (response *SendVcodeResponse) {
 //  RESOURCENOTFOUND_CONTRACTPROJECTCODENOTFOUND = "ResourceNotFound.ContractProjectCodeNotFound"
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 func (c *Client) SendVcode(request *SendVcodeRequest) (response *SendVcodeResponse, err error) {
-    if request == nil {
-        request = NewSendVcodeRequest()
-    }
-    
-    response = NewSendVcodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendVcodeWithContext(context.Background(), request)
 }
 
 // SendVcode
@@ -753,6 +739,11 @@ func (c *Client) SendVcodeWithContext(ctx context.Context, request *SendVcodeReq
     if request == nil {
         request = NewSendVcodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendVcode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendVcodeResponse()
@@ -808,13 +799,7 @@ func NewSignContractByCoordinateResponse() (response *SignContractByCoordinateRe
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 //  RESOURCEUNAVAILABLE_SUBPLATUNAVAILABLE = "ResourceUnavailable.SubplatUnavailable"
 func (c *Client) SignContractByCoordinate(request *SignContractByCoordinateRequest) (response *SignContractByCoordinateResponse, err error) {
-    if request == nil {
-        request = NewSignContractByCoordinateRequest()
-    }
-    
-    response = NewSignContractByCoordinateResponse()
-    err = c.Send(request, response)
-    return
+    return c.SignContractByCoordinateWithContext(context.Background(), request)
 }
 
 // SignContractByCoordinate
@@ -851,6 +836,11 @@ func (c *Client) SignContractByCoordinateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewSignContractByCoordinateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SignContractByCoordinate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSignContractByCoordinateResponse()
@@ -906,13 +896,7 @@ func NewSignContractByKeywordResponse() (response *SignContractByKeywordResponse
 //  RESOURCENOTFOUND_SUBPLATIDNOTFOUND = "ResourceNotFound.SubplatIdNotFound"
 //  RESOURCEUNAVAILABLE_SUBPLATUNAVAILABLE = "ResourceUnavailable.SubplatUnavailable"
 func (c *Client) SignContractByKeyword(request *SignContractByKeywordRequest) (response *SignContractByKeywordResponse, err error) {
-    if request == nil {
-        request = NewSignContractByKeywordRequest()
-    }
-    
-    response = NewSignContractByKeywordResponse()
-    err = c.Send(request, response)
-    return
+    return c.SignContractByKeywordWithContext(context.Background(), request)
 }
 
 // SignContractByKeyword
@@ -949,6 +933,11 @@ func (c *Client) SignContractByKeywordWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSignContractByKeywordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SignContractByKeyword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSignContractByKeywordResponse()

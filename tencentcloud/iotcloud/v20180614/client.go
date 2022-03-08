@@ -16,6 +16,7 @@ package v20180614
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
-    if request == nil {
-        request = NewBatchUpdateFirmwareRequest()
-    }
-    
-    response = NewBatchUpdateFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchUpdateFirmwareWithContext(context.Background(), request)
 }
 
 // BatchUpdateFirmware
@@ -91,6 +86,11 @@ func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *Ba
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchUpdateFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchUpdateFirmwareResponse()
@@ -129,13 +129,7 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 //  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevicesResponse, err error) {
-    if request == nil {
-        request = NewBindDevicesRequest()
-    }
-    
-    response = NewBindDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindDevicesWithContext(context.Background(), request)
 }
 
 // BindDevices
@@ -155,6 +149,11 @@ func (c *Client) BindDevicesWithContext(ctx context.Context, request *BindDevice
     if request == nil {
         request = NewBindDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindDevicesResponse()
@@ -187,13 +186,7 @@ func NewCancelDeviceFirmwareTaskResponse() (response *CancelDeviceFirmwareTaskRe
 //  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
 //  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) CancelDeviceFirmwareTask(request *CancelDeviceFirmwareTaskRequest) (response *CancelDeviceFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelDeviceFirmwareTaskRequest()
-    }
-    
-    response = NewCancelDeviceFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelDeviceFirmwareTaskWithContext(context.Background(), request)
 }
 
 // CancelDeviceFirmwareTask
@@ -207,6 +200,11 @@ func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCancelDeviceFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelDeviceFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelDeviceFirmwareTaskResponse()
@@ -240,13 +238,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
-    if request == nil {
-        request = NewCancelTaskRequest()
-    }
-    
-    response = NewCancelTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelTaskWithContext(context.Background(), request)
 }
 
 // CancelTask
@@ -261,6 +253,11 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     if request == nil {
         request = NewCancelTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelTaskResponse()
@@ -302,13 +299,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
 //  UNSUPPORTEDOPERATION_SUITETOKENNOCREATE = "UnsupportedOperation.SuiteTokenNoCreate"
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateDeviceRequest()
-    }
-    
-    response = NewCreateDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDeviceWithContext(context.Background(), request)
 }
 
 // CreateDevice
@@ -331,6 +322,11 @@ func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDev
     if request == nil {
         request = NewCreateDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDeviceResponse()
@@ -362,13 +358,7 @@ func NewCreateLoraDeviceResponse() (response *CreateLoraDeviceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 func (c *Client) CreateLoraDevice(request *CreateLoraDeviceRequest) (response *CreateLoraDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateLoraDeviceRequest()
-    }
-    
-    response = NewCreateLoraDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLoraDeviceWithContext(context.Background(), request)
 }
 
 // CreateLoraDevice
@@ -381,6 +371,11 @@ func (c *Client) CreateLoraDeviceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateLoraDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLoraDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLoraDeviceResponse()
@@ -413,13 +408,7 @@ func NewCreateMultiDeviceResponse() (response *CreateMultiDeviceResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateMultiDevice(request *CreateMultiDeviceRequest) (response *CreateMultiDeviceResponse, err error) {
-    if request == nil {
-        request = NewCreateMultiDeviceRequest()
-    }
-    
-    response = NewCreateMultiDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMultiDeviceWithContext(context.Background(), request)
 }
 
 // CreateMultiDevice
@@ -433,6 +422,11 @@ func (c *Client) CreateMultiDeviceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateMultiDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMultiDeviceResponse()
@@ -466,13 +460,7 @@ func NewCreateMultiDevicesTaskResponse() (response *CreateMultiDevicesTaskRespon
 //  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) (response *CreateMultiDevicesTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateMultiDevicesTaskRequest()
-    }
-    
-    response = NewCreateMultiDevicesTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMultiDevicesTaskWithContext(context.Background(), request)
 }
 
 // CreateMultiDevicesTask
@@ -487,6 +475,11 @@ func (c *Client) CreateMultiDevicesTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMultiDevicesTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiDevicesTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMultiDevicesTaskResponse()
@@ -524,13 +517,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
 //  RESOURCENOTFOUND_THINGMODELNOTEXIST = "ResourceNotFound.ThingModelNotExist"
 //  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
 func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
-    if request == nil {
-        request = NewCreateProductRequest()
-    }
-    
-    response = NewCreateProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProductWithContext(context.Background(), request)
 }
 
 // CreateProduct
@@ -549,6 +536,11 @@ func (c *Client) CreateProductWithContext(ctx context.Context, request *CreatePr
     if request == nil {
         request = NewCreateProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProductResponse()
@@ -582,13 +574,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  LIMITEXCEEDED_PENGINGORPROCESSINGTASKSEXCEEDLIMIT = "LimitExceeded.PengingOrProcessingTasksExceedLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskRequest()
-    }
-    
-    response = NewCreateTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskWithContext(context.Background(), request)
 }
 
 // CreateTask
@@ -603,6 +589,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
     if request == nil {
         request = NewCreateTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskResponse()
@@ -634,13 +625,7 @@ func NewCreateTaskFileUrlResponse() (response *CreateTaskFileUrlResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateTaskFileUrl(request *CreateTaskFileUrlRequest) (response *CreateTaskFileUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskFileUrlRequest()
-    }
-    
-    response = NewCreateTaskFileUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskFileUrlWithContext(context.Background(), request)
 }
 
 // CreateTaskFileUrl
@@ -653,6 +638,11 @@ func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTaskFileUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskFileUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskFileUrlResponse()
@@ -688,13 +678,7 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
 //  LIMITEXCEEDED_TOPICPOLICYEXCEEDLIMIT = "LimitExceeded.TopicPolicyExceedLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicPolicyRequest()
-    }
-    
-    response = NewCreateTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicPolicyWithContext(context.Background(), request)
 }
 
 // CreateTopicPolicy
@@ -711,6 +695,11 @@ func (c *Client) CreateTopicPolicyWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicPolicyResponse()
@@ -750,13 +739,7 @@ func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = "InvalidParameterValue.TopicRuleAlreadyExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *CreateTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateTopicRuleRequest()
-    }
-    
-    response = NewCreateTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTopicRuleWithContext(context.Background(), request)
 }
 
 // CreateTopicRule
@@ -777,6 +760,11 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTopicRuleResponse()
@@ -813,13 +801,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -837,6 +819,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -871,13 +858,7 @@ func NewDeleteDeviceResourceResponse() (response *DeleteDeviceResourceResponse) 
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
 func (c *Client) DeleteDeviceResource(request *DeleteDeviceResourceRequest) (response *DeleteDeviceResourceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceResourceRequest()
-    }
-    
-    response = NewDeleteDeviceResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceResourceWithContext(context.Background(), request)
 }
 
 // DeleteDeviceResource
@@ -893,6 +874,11 @@ func (c *Client) DeleteDeviceResourceWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteDeviceResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResourceResponse()
@@ -924,13 +910,7 @@ func NewDeleteLoraDeviceResponse() (response *DeleteLoraDeviceResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteLoraDevice(request *DeleteLoraDeviceRequest) (response *DeleteLoraDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoraDeviceRequest()
-    }
-    
-    response = NewDeleteLoraDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteLoraDeviceWithContext(context.Background(), request)
 }
 
 // DeleteLoraDevice
@@ -943,6 +923,11 @@ func (c *Client) DeleteLoraDeviceWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteLoraDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLoraDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteLoraDeviceResponse()
@@ -979,13 +964,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
 //  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
 //  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
-    if request == nil {
-        request = NewDeleteProductRequest()
-    }
-    
-    response = NewDeleteProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProductWithContext(context.Background(), request)
 }
 
 // DeleteProduct
@@ -1003,6 +982,11 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
@@ -1035,13 +1019,7 @@ func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *DeleteTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicRuleRequest()
-    }
-    
-    response = NewDeleteTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicRuleWithContext(context.Background(), request)
 }
 
 // DeleteTopicRule
@@ -1055,6 +1033,11 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicRuleResponse()
@@ -1087,13 +1070,7 @@ func NewDescribeAllDevicesResponse() (response *DescribeAllDevicesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DescribeAllDevices(request *DescribeAllDevicesRequest) (response *DescribeAllDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllDevicesRequest()
-    }
-    
-    response = NewDescribeAllDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllDevicesWithContext(context.Background(), request)
 }
 
 // DescribeAllDevices
@@ -1107,6 +1084,11 @@ func (c *Client) DescribeAllDevicesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeAllDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllDevicesResponse()
@@ -1140,13 +1122,7 @@ func NewDescribeDeviceResponse() (response *DescribeDeviceResponse) {
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDevice(request *DescribeDeviceRequest) (response *DescribeDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceRequest()
-    }
-    
-    response = NewDescribeDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceWithContext(context.Background(), request)
 }
 
 // DescribeDevice
@@ -1161,6 +1137,11 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResponse()
@@ -1196,13 +1177,7 @@ func NewDescribeDeviceClientKeyResponse() (response *DescribeDeviceClientKeyResp
 //  UNSUPPORTEDOPERATION_CLIENTCERTALREADYGOT = "UnsupportedOperation.ClientCertAlreadyGot"
 //  UNSUPPORTEDOPERATION_WRONGPRODUCTAUTHTYPE = "UnsupportedOperation.WrongProductAuthType"
 func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest) (response *DescribeDeviceClientKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceClientKeyRequest()
-    }
-    
-    response = NewDescribeDeviceClientKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceClientKeyWithContext(context.Background(), request)
 }
 
 // DescribeDeviceClientKey
@@ -1219,6 +1194,11 @@ func (c *Client) DescribeDeviceClientKeyWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceClientKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceClientKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceClientKeyResponse()
@@ -1252,13 +1232,7 @@ func NewDescribeDeviceResourceResponse() (response *DescribeDeviceResourceRespon
 //  RESOURCENOTFOUND_DEVICERESOURCENOTEXIST = "ResourceNotFound.DeviceResourceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResource(request *DescribeDeviceResourceRequest) (response *DescribeDeviceResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceResourceRequest()
-    }
-    
-    response = NewDescribeDeviceResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceResourceWithContext(context.Background(), request)
 }
 
 // DescribeDeviceResource
@@ -1273,6 +1247,11 @@ func (c *Client) DescribeDeviceResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeDeviceResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResourceResponse()
@@ -1305,13 +1284,7 @@ func NewDescribeDeviceResourcesResponse() (response *DescribeDeviceResourcesResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest) (response *DescribeDeviceResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceResourcesRequest()
-    }
-    
-    response = NewDescribeDeviceResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceResourcesWithContext(context.Background(), request)
 }
 
 // DescribeDeviceResources
@@ -1325,6 +1298,11 @@ func (c *Client) DescribeDeviceResourcesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDeviceResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceResourcesResponse()
@@ -1359,13 +1337,7 @@ func NewDescribeDeviceShadowResponse() (response *DescribeDeviceShadowResponse) 
 //  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
 //  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
 func (c *Client) DescribeDeviceShadow(request *DescribeDeviceShadowRequest) (response *DescribeDeviceShadowResponse, err error) {
-    if request == nil {
-        request = NewDescribeDeviceShadowRequest()
-    }
-    
-    response = NewDescribeDeviceShadowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDeviceShadowWithContext(context.Background(), request)
 }
 
 // DescribeDeviceShadow
@@ -1381,6 +1353,11 @@ func (c *Client) DescribeDeviceShadowWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDeviceShadowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceShadow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDeviceShadowResponse()
@@ -1413,13 +1390,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDevicesRequest()
-    }
-    
-    response = NewDescribeDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDevicesWithContext(context.Background(), request)
 }
 
 // DescribeDevices
@@ -1433,6 +1404,11 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDevicesResponse()
@@ -1463,13 +1439,7 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareRequest()
-    }
-    
-    response = NewDescribeFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareWithContext(context.Background(), request)
 }
 
 // DescribeFirmware
@@ -1481,6 +1451,11 @@ func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareResponse()
@@ -1511,13 +1486,7 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (response *DescribeFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTask
@@ -1529,6 +1498,11 @@ func (c *Client) DescribeFirmwareTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskResponse()
@@ -1559,13 +1533,7 @@ func NewDescribeFirmwareTaskDevicesResponse() (response *DescribeFirmwareTaskDev
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskDevices(request *DescribeFirmwareTaskDevicesRequest) (response *DescribeFirmwareTaskDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskDevicesRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskDevicesWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskDevices
@@ -1577,6 +1545,11 @@ func (c *Client) DescribeFirmwareTaskDevicesWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeFirmwareTaskDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskDevicesResponse()
@@ -1607,13 +1580,7 @@ func NewDescribeFirmwareTaskDistributionResponse() (response *DescribeFirmwareTa
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskDistribution(request *DescribeFirmwareTaskDistributionRequest) (response *DescribeFirmwareTaskDistributionResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskDistributionRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskDistributionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskDistributionWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskDistribution
@@ -1625,6 +1592,11 @@ func (c *Client) DescribeFirmwareTaskDistributionWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeFirmwareTaskDistributionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskDistribution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskDistributionResponse()
@@ -1655,13 +1627,7 @@ func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTask
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTaskStatisticsRequest()
-    }
-    
-    response = NewDescribeFirmwareTaskStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTaskStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTaskStatistics
@@ -1673,6 +1639,11 @@ func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTaskStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTaskStatisticsResponse()
@@ -1703,13 +1674,7 @@ func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeFirmwareTasksRequest()
-    }
-    
-    response = NewDescribeFirmwareTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFirmwareTasksWithContext(context.Background(), request)
 }
 
 // DescribeFirmwareTasks
@@ -1721,6 +1686,11 @@ func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirmwareTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFirmwareTasksResponse()
@@ -1757,13 +1727,7 @@ func NewDescribeLoraDeviceResponse() (response *DescribeLoraDeviceResponse) {
 //  INVALIDPARAMETERVALUE_REGISTERLORAINFOERROR = "InvalidParameterValue.RegisterLoraInfoError"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DescribeLoraDevice(request *DescribeLoraDeviceRequest) (response *DescribeLoraDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoraDeviceRequest()
-    }
-    
-    response = NewDescribeLoraDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLoraDeviceWithContext(context.Background(), request)
 }
 
 // DescribeLoraDevice
@@ -1781,6 +1745,11 @@ func (c *Client) DescribeLoraDeviceWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeLoraDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoraDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLoraDeviceResponse()
@@ -1816,13 +1785,7 @@ func NewDescribeMultiDevTaskResponse() (response *DescribeMultiDevTaskResponse) 
 //  RESOURCENOTFOUND_CREATEMULTIDEVICETASKNOTEXIST = "ResourceNotFound.CreateMultiDeviceTaskNotExist"
 //  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeMultiDevTask(request *DescribeMultiDevTaskRequest) (response *DescribeMultiDevTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeMultiDevTaskRequest()
-    }
-    
-    response = NewDescribeMultiDevTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMultiDevTaskWithContext(context.Background(), request)
 }
 
 // DescribeMultiDevTask
@@ -1839,6 +1802,11 @@ func (c *Client) DescribeMultiDevTaskWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMultiDevTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiDevTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMultiDevTaskResponse()
@@ -1876,13 +1844,7 @@ func NewDescribeMultiDevicesResponse() (response *DescribeMultiDevicesResponse) 
 //  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 //  UNAUTHORIZEDOPERATION_CREATEMULTIDEVICETASKNOTFINISHED = "UnauthorizedOperation.CreateMultiDeviceTaskNotFinished"
 func (c *Client) DescribeMultiDevices(request *DescribeMultiDevicesRequest) (response *DescribeMultiDevicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeMultiDevicesRequest()
-    }
-    
-    response = NewDescribeMultiDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMultiDevicesWithContext(context.Background(), request)
 }
 
 // DescribeMultiDevices
@@ -1901,6 +1863,11 @@ func (c *Client) DescribeMultiDevicesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeMultiDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMultiDevicesResponse()
@@ -1934,13 +1901,7 @@ func NewDescribeProductResourceResponse() (response *DescribeProductResourceResp
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest) (response *DescribeProductResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductResourceRequest()
-    }
-    
-    response = NewDescribeProductResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductResourceWithContext(context.Background(), request)
 }
 
 // DescribeProductResource
@@ -1955,6 +1916,11 @@ func (c *Client) DescribeProductResourceWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeProductResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductResourceResponse()
@@ -1989,13 +1955,7 @@ func NewDescribeProductResourcesResponse() (response *DescribeProductResourcesRe
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResources(request *DescribeProductResourcesRequest) (response *DescribeProductResourcesResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductResourcesRequest()
-    }
-    
-    response = NewDescribeProductResourcesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductResourcesWithContext(context.Background(), request)
 }
 
 // DescribeProductResources
@@ -2011,6 +1971,11 @@ func (c *Client) DescribeProductResourcesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeProductResourcesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductResources require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductResourcesResponse()
@@ -2044,13 +2009,7 @@ func NewDescribeProductTaskResponse() (response *DescribeProductTaskResponse) {
 //  RESOURCENOTFOUND_CREATEMULTIDEVICETASKNOTEXIST = "ResourceNotFound.CreateMultiDeviceTaskNotExist"
 //  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeProductTask(request *DescribeProductTaskRequest) (response *DescribeProductTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductTaskRequest()
-    }
-    
-    response = NewDescribeProductTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductTaskWithContext(context.Background(), request)
 }
 
 // DescribeProductTask
@@ -2065,6 +2024,11 @@ func (c *Client) DescribeProductTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProductTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductTaskResponse()
@@ -2096,13 +2060,7 @@ func NewDescribeProductTasksResponse() (response *DescribeProductTasksResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProductTasks(request *DescribeProductTasksRequest) (response *DescribeProductTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductTasksRequest()
-    }
-    
-    response = NewDescribeProductTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductTasksWithContext(context.Background(), request)
 }
 
 // DescribeProductTasks
@@ -2115,6 +2073,11 @@ func (c *Client) DescribeProductTasksWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeProductTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductTasksResponse()
@@ -2146,13 +2109,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *DescribeProductsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProductsRequest()
-    }
-    
-    response = NewDescribeProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProductsWithContext(context.Background(), request)
 }
 
 // DescribeProducts
@@ -2165,6 +2122,11 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProductsResponse()
@@ -2195,13 +2157,7 @@ func NewDescribePushResourceTaskStatisticsResponse() (response *DescribePushReso
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourceTaskStatisticsRequest) (response *DescribePushResourceTaskStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribePushResourceTaskStatisticsRequest()
-    }
-    
-    response = NewDescribePushResourceTaskStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePushResourceTaskStatisticsWithContext(context.Background(), request)
 }
 
 // DescribePushResourceTaskStatistics
@@ -2213,6 +2169,11 @@ func (c *Client) DescribePushResourceTaskStatisticsWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribePushResourceTaskStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePushResourceTaskStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePushResourceTaskStatisticsResponse()
@@ -2243,13 +2204,7 @@ func NewDescribeResourceTasksResponse() (response *DescribeResourceTasksResponse
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (response *DescribeResourceTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourceTasksRequest()
-    }
-    
-    response = NewDescribeResourceTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourceTasksWithContext(context.Background(), request)
 }
 
 // DescribeResourceTasks
@@ -2261,6 +2216,11 @@ func (c *Client) DescribeResourceTasksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeResourceTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourceTasksResponse()
@@ -2293,13 +2253,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_TASKNOTEXIST = "ResourceNotFound.TaskNotExist"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskRequest()
-    }
-    
-    response = NewDescribeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskWithContext(context.Background(), request)
 }
 
 // DescribeTask
@@ -2313,6 +2267,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResponse()
@@ -2344,13 +2303,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeTasksRequest()
-    }
-    
-    response = NewDescribeTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTasksWithContext(context.Background(), request)
 }
 
 // DescribeTasks
@@ -2363,6 +2316,11 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTasksResponse()
@@ -2399,13 +2357,7 @@ func NewDisableTopicRuleResponse() (response *DisableTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) DisableTopicRule(request *DisableTopicRuleRequest) (response *DisableTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewDisableTopicRuleRequest()
-    }
-    
-    response = NewDisableTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DisableTopicRuleWithContext(context.Background(), request)
 }
 
 // DisableTopicRule
@@ -2423,6 +2375,11 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, request *Disab
     if request == nil {
         request = NewDisableTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDisableTopicRuleResponse()
@@ -2454,17 +2411,12 @@ func NewDownloadDeviceResourceResponse() (response *DownloadDeviceResourceRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_DEVICERESOURCENOTEXIST = "ResourceNotFound.DeviceResourceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_RESOURCEFILENOTEXIST = "ResourceNotFound.ResourceFileNotExist"
 //  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
 func (c *Client) DownloadDeviceResource(request *DownloadDeviceResourceRequest) (response *DownloadDeviceResourceResponse, err error) {
-    if request == nil {
-        request = NewDownloadDeviceResourceRequest()
-    }
-    
-    response = NewDownloadDeviceResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadDeviceResourceWithContext(context.Background(), request)
 }
 
 // DownloadDeviceResource
@@ -2474,6 +2426,7 @@ func (c *Client) DownloadDeviceResource(request *DownloadDeviceResourceRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
+//  RESOURCENOTFOUND_DEVICERESOURCENOTEXIST = "ResourceNotFound.DeviceResourceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_RESOURCEFILENOTEXIST = "ResourceNotFound.ResourceFileNotExist"
 //  UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
@@ -2481,6 +2434,11 @@ func (c *Client) DownloadDeviceResourceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDownloadDeviceResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadDeviceResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadDeviceResourceResponse()
@@ -2511,13 +2469,7 @@ func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
-    if request == nil {
-        request = NewEditFirmwareRequest()
-    }
-    
-    response = NewEditFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.EditFirmwareWithContext(context.Background(), request)
 }
 
 // EditFirmware
@@ -2529,6 +2481,11 @@ func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmw
     if request == nil {
         request = NewEditFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EditFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEditFirmwareResponse()
@@ -2572,13 +2529,7 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *EnableTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewEnableTopicRuleRequest()
-    }
-    
-    response = NewEnableTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.EnableTopicRuleWithContext(context.Background(), request)
 }
 
 // EnableTopicRule
@@ -2603,6 +2554,11 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, request *Enable
     if request == nil {
         request = NewEnableTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEnableTopicRuleResponse()
@@ -2634,13 +2590,7 @@ func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLResponse, err error) {
-    if request == nil {
-        request = NewGetCOSURLRequest()
-    }
-    
-    response = NewGetCOSURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCOSURLWithContext(context.Background(), request)
 }
 
 // GetCOSURL
@@ -2653,6 +2603,11 @@ func (c *Client) GetCOSURLWithContext(ctx context.Context, request *GetCOSURLReq
     if request == nil {
         request = NewGetCOSURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCOSURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCOSURLResponse()
@@ -2685,13 +2640,7 @@ func NewGetUserResourceInfoResponse() (response *GetUserResourceInfoResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) GetUserResourceInfo(request *GetUserResourceInfoRequest) (response *GetUserResourceInfoResponse, err error) {
-    if request == nil {
-        request = NewGetUserResourceInfoRequest()
-    }
-    
-    response = NewGetUserResourceInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUserResourceInfoWithContext(context.Background(), request)
 }
 
 // GetUserResourceInfo
@@ -2705,6 +2654,11 @@ func (c *Client) GetUserResourceInfoWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetUserResourceInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUserResourceInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUserResourceInfoResponse()
@@ -2736,13 +2690,7 @@ func NewListLogResponse() (response *ListLogResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListLog(request *ListLogRequest) (response *ListLogResponse, err error) {
-    if request == nil {
-        request = NewListLogRequest()
-    }
-    
-    response = NewListLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListLogWithContext(context.Background(), request)
 }
 
 // ListLog
@@ -2755,6 +2703,11 @@ func (c *Client) ListLogWithContext(ctx context.Context, request *ListLogRequest
     if request == nil {
         request = NewListLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListLogResponse()
@@ -2786,13 +2739,7 @@ func NewListLogPayloadResponse() (response *ListLogPayloadResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ListLogPayload(request *ListLogPayloadRequest) (response *ListLogPayloadResponse, err error) {
-    if request == nil {
-        request = NewListLogPayloadRequest()
-    }
-    
-    response = NewListLogPayloadResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListLogPayloadWithContext(context.Background(), request)
 }
 
 // ListLogPayload
@@ -2805,6 +2752,11 @@ func (c *Client) ListLogPayloadWithContext(ctx context.Context, request *ListLog
     if request == nil {
         request = NewListLogPayloadRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLogPayload require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListLogPayloadResponse()
@@ -2836,13 +2788,7 @@ func NewListSDKLogResponse() (response *ListSDKLogResponse) {
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) ListSDKLog(request *ListSDKLogRequest) (response *ListSDKLogResponse, err error) {
-    if request == nil {
-        request = NewListSDKLogRequest()
-    }
-    
-    response = NewListSDKLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListSDKLogWithContext(context.Background(), request)
 }
 
 // ListSDKLog
@@ -2855,6 +2801,11 @@ func (c *Client) ListSDKLogWithContext(ctx context.Context, request *ListSDKLogR
     if request == nil {
         request = NewListSDKLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSDKLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListSDKLogResponse()
@@ -2885,13 +2836,7 @@ func NewPublishAsDeviceResponse() (response *PublishAsDeviceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) PublishAsDevice(request *PublishAsDeviceRequest) (response *PublishAsDeviceResponse, err error) {
-    if request == nil {
-        request = NewPublishAsDeviceRequest()
-    }
-    
-    response = NewPublishAsDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishAsDeviceWithContext(context.Background(), request)
 }
 
 // PublishAsDevice
@@ -2903,6 +2848,11 @@ func (c *Client) PublishAsDeviceWithContext(ctx context.Context, request *Publis
     if request == nil {
         request = NewPublishAsDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishAsDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishAsDeviceResponse()
@@ -2935,13 +2885,7 @@ func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResp
 //  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishBroadcastMessageRequest()
-    }
-    
-    response = NewPublishBroadcastMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishBroadcastMessageWithContext(context.Background(), request)
 }
 
 // PublishBroadcastMessage
@@ -2955,6 +2899,11 @@ func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request
     if request == nil {
         request = NewPublishBroadcastMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishBroadcastMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishBroadcastMessageResponse()
@@ -2998,13 +2947,7 @@ func NewPublishMessageResponse() (response *PublishMessageResponse) {
 //  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishMessageRequest()
-    }
-    
-    response = NewPublishMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishMessageWithContext(context.Background(), request)
 }
 
 // PublishMessage
@@ -3029,6 +2972,11 @@ func (c *Client) PublishMessageWithContext(ctx context.Context, request *Publish
     if request == nil {
         request = NewPublishMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishMessageResponse()
@@ -3065,13 +3013,7 @@ func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
 //  LIMITEXCEEDED_OFFLINEMESSAGEEXCEEDLIMIT = "LimitExceeded.OfflineMessageExceedLimit"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (response *PublishRRPCMessageResponse, err error) {
-    if request == nil {
-        request = NewPublishRRPCMessageRequest()
-    }
-    
-    response = NewPublishRRPCMessageResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishRRPCMessageWithContext(context.Background(), request)
 }
 
 // PublishRRPCMessage
@@ -3089,6 +3031,11 @@ func (c *Client) PublishRRPCMessageWithContext(ctx context.Context, request *Pub
     if request == nil {
         request = NewPublishRRPCMessageRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishRRPCMessage require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishRRPCMessageResponse()
@@ -3119,13 +3066,7 @@ func NewPublishToDeviceResponse() (response *PublishToDeviceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *PublishToDeviceResponse, err error) {
-    if request == nil {
-        request = NewPublishToDeviceRequest()
-    }
-    
-    response = NewPublishToDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishToDeviceWithContext(context.Background(), request)
 }
 
 // PublishToDevice
@@ -3137,6 +3078,11 @@ func (c *Client) PublishToDeviceWithContext(ctx context.Context, request *Publis
     if request == nil {
         request = NewPublishToDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishToDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishToDeviceResponse()
@@ -3180,13 +3126,7 @@ func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {
-    if request == nil {
-        request = NewReplaceTopicRuleRequest()
-    }
-    
-    response = NewReplaceTopicRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReplaceTopicRuleWithContext(context.Background(), request)
 }
 
 // ReplaceTopicRule
@@ -3211,6 +3151,11 @@ func (c *Client) ReplaceTopicRuleWithContext(ctx context.Context, request *Repla
     if request == nil {
         request = NewReplaceTopicRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceTopicRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReplaceTopicRuleResponse()
@@ -3244,13 +3189,7 @@ func NewResetDeviceStateResponse() (response *ResetDeviceStateResponse) {
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *ResetDeviceStateResponse, err error) {
-    if request == nil {
-        request = NewResetDeviceStateRequest()
-    }
-    
-    response = NewResetDeviceStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetDeviceStateWithContext(context.Background(), request)
 }
 
 // ResetDeviceState
@@ -3265,6 +3204,11 @@ func (c *Client) ResetDeviceStateWithContext(ctx context.Context, request *Reset
     if request == nil {
         request = NewResetDeviceStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDeviceState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetDeviceStateResponse()
@@ -3297,13 +3241,7 @@ func NewRetryDeviceFirmwareTaskResponse() (response *RetryDeviceFirmwareTaskResp
 //  FAILEDOPERATION_DEVICERUNNINGOTHEROTATASK = "FailedOperation.DeviceRunningOtherOtaTask"
 //  RESOURCENOTFOUND_DEVICEFIRMWARETASKNOTEXIST = "ResourceNotFound.DeviceFirmwareTaskNotExist"
 func (c *Client) RetryDeviceFirmwareTask(request *RetryDeviceFirmwareTaskRequest) (response *RetryDeviceFirmwareTaskResponse, err error) {
-    if request == nil {
-        request = NewRetryDeviceFirmwareTaskRequest()
-    }
-    
-    response = NewRetryDeviceFirmwareTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.RetryDeviceFirmwareTaskWithContext(context.Background(), request)
 }
 
 // RetryDeviceFirmwareTask
@@ -3317,6 +3255,11 @@ func (c *Client) RetryDeviceFirmwareTaskWithContext(ctx context.Context, request
     if request == nil {
         request = NewRetryDeviceFirmwareTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryDeviceFirmwareTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRetryDeviceFirmwareTaskResponse()
@@ -3349,13 +3292,7 @@ func NewSetProductsForbiddenStatusResponse() (response *SetProductsForbiddenStat
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) SetProductsForbiddenStatus(request *SetProductsForbiddenStatusRequest) (response *SetProductsForbiddenStatusResponse, err error) {
-    if request == nil {
-        request = NewSetProductsForbiddenStatusRequest()
-    }
-    
-    response = NewSetProductsForbiddenStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetProductsForbiddenStatusWithContext(context.Background(), request)
 }
 
 // SetProductsForbiddenStatus
@@ -3369,6 +3306,11 @@ func (c *Client) SetProductsForbiddenStatusWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSetProductsForbiddenStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetProductsForbiddenStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetProductsForbiddenStatusResponse()
@@ -3401,13 +3343,7 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
-    if request == nil {
-        request = NewUnbindDevicesRequest()
-    }
-    
-    response = NewUnbindDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindDevicesWithContext(context.Background(), request)
 }
 
 // UnbindDevices
@@ -3421,6 +3357,11 @@ func (c *Client) UnbindDevicesWithContext(ctx context.Context, request *UnbindDe
     if request == nil {
         request = NewUnbindDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindDevicesResponse()
@@ -3454,13 +3395,7 @@ func NewUpdateDeviceAvailableStateResponse() (response *UpdateDeviceAvailableSta
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 func (c *Client) UpdateDeviceAvailableState(request *UpdateDeviceAvailableStateRequest) (response *UpdateDeviceAvailableStateResponse, err error) {
-    if request == nil {
-        request = NewUpdateDeviceAvailableStateRequest()
-    }
-    
-    response = NewUpdateDeviceAvailableStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDeviceAvailableStateWithContext(context.Background(), request)
 }
 
 // UpdateDeviceAvailableState
@@ -3475,6 +3410,11 @@ func (c *Client) UpdateDeviceAvailableStateWithContext(ctx context.Context, requ
     if request == nil {
         request = NewUpdateDeviceAvailableStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDeviceAvailableState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDeviceAvailableStateResponse()
@@ -3513,13 +3453,7 @@ func NewUpdateDeviceShadowResponse() (response *UpdateDeviceShadowResponse) {
 //  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
 //  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
 func (c *Client) UpdateDeviceShadow(request *UpdateDeviceShadowRequest) (response *UpdateDeviceShadowResponse, err error) {
-    if request == nil {
-        request = NewUpdateDeviceShadowRequest()
-    }
-    
-    response = NewUpdateDeviceShadowResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDeviceShadowWithContext(context.Background(), request)
 }
 
 // UpdateDeviceShadow
@@ -3539,6 +3473,11 @@ func (c *Client) UpdateDeviceShadowWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateDeviceShadowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDeviceShadow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDeviceShadowResponse()
@@ -3573,13 +3512,7 @@ func NewUpdateDevicesEnableStateResponse() (response *UpdateDevicesEnableStateRe
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateRequest) (response *UpdateDevicesEnableStateResponse, err error) {
-    if request == nil {
-        request = NewUpdateDevicesEnableStateRequest()
-    }
-    
-    response = NewUpdateDevicesEnableStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateDevicesEnableStateWithContext(context.Background(), request)
 }
 
 // UpdateDevicesEnableState
@@ -3595,6 +3528,11 @@ func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateDevicesEnableStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDevicesEnableState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateDevicesEnableStateResponse()
@@ -3628,13 +3566,7 @@ func NewUpdateTopicPolicyResponse() (response *UpdateTopicPolicyResponse) {
 //  INVALIDPARAMETERVALUE_TOPICPOLICYALREADYEXIST = "InvalidParameterValue.TopicPolicyAlreadyExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
 func (c *Client) UpdateTopicPolicy(request *UpdateTopicPolicyRequest) (response *UpdateTopicPolicyResponse, err error) {
-    if request == nil {
-        request = NewUpdateTopicPolicyRequest()
-    }
-    
-    response = NewUpdateTopicPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateTopicPolicyWithContext(context.Background(), request)
 }
 
 // UpdateTopicPolicy
@@ -3649,6 +3581,11 @@ func (c *Client) UpdateTopicPolicyWithContext(ctx context.Context, request *Upda
     if request == nil {
         request = NewUpdateTopicPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTopicPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateTopicPolicyResponse()
@@ -3682,13 +3619,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 //  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
 //  LIMITEXCEEDED_FIRMWAREEXCEEDLIMIT = "LimitExceeded.FirmwareExceedLimit"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
-    if request == nil {
-        request = NewUploadFirmwareRequest()
-    }
-    
-    response = NewUploadFirmwareResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFirmwareWithContext(context.Background(), request)
 }
 
 // UploadFirmware
@@ -3703,6 +3634,11 @@ func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadF
     if request == nil {
         request = NewUploadFirmwareRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFirmware require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFirmwareResponse()

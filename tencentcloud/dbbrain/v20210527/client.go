@@ -16,6 +16,7 @@ package v20210527
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -80,13 +81,7 @@ func NewAddUserContactResponse() (response *AddUserContactResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) AddUserContact(request *AddUserContactRequest) (response *AddUserContactResponse, err error) {
-    if request == nil {
-        request = NewAddUserContactRequest()
-    }
-    
-    response = NewAddUserContactResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddUserContactWithContext(context.Background(), request)
 }
 
 // AddUserContact
@@ -111,6 +106,11 @@ func (c *Client) AddUserContactWithContext(ctx context.Context, request *AddUser
     if request == nil {
         request = NewAddUserContactRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddUserContact require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddUserContactResponse()
@@ -153,13 +153,7 @@ func NewCreateDBDiagReportTaskResponse() (response *CreateDBDiagReportTaskRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDBDiagReportTask(request *CreateDBDiagReportTaskRequest) (response *CreateDBDiagReportTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateDBDiagReportTaskRequest()
-    }
-    
-    response = NewCreateDBDiagReportTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDBDiagReportTaskWithContext(context.Background(), request)
 }
 
 // CreateDBDiagReportTask
@@ -183,6 +177,11 @@ func (c *Client) CreateDBDiagReportTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateDBDiagReportTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBDiagReportTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDBDiagReportTaskResponse()
@@ -225,13 +224,7 @@ func NewCreateDBDiagReportUrlResponse() (response *CreateDBDiagReportUrlResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDBDiagReportUrl(request *CreateDBDiagReportUrlRequest) (response *CreateDBDiagReportUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateDBDiagReportUrlRequest()
-    }
-    
-    response = NewCreateDBDiagReportUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDBDiagReportUrlWithContext(context.Background(), request)
 }
 
 // CreateDBDiagReportUrl
@@ -255,6 +248,11 @@ func (c *Client) CreateDBDiagReportUrlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateDBDiagReportUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDBDiagReportUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDBDiagReportUrlResponse()
@@ -296,13 +294,7 @@ func NewCreateKillTaskResponse() (response *CreateKillTaskResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateKillTask(request *CreateKillTaskRequest) (response *CreateKillTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateKillTaskRequest()
-    }
-    
-    response = NewCreateKillTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateKillTaskWithContext(context.Background(), request)
 }
 
 // CreateKillTask
@@ -325,6 +317,11 @@ func (c *Client) CreateKillTaskWithContext(ctx context.Context, request *CreateK
     if request == nil {
         request = NewCreateKillTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKillTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateKillTaskResponse()
@@ -367,13 +364,7 @@ func NewCreateMailProfileResponse() (response *CreateMailProfileResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateMailProfile(request *CreateMailProfileRequest) (response *CreateMailProfileResponse, err error) {
-    if request == nil {
-        request = NewCreateMailProfileRequest()
-    }
-    
-    response = NewCreateMailProfileResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMailProfileWithContext(context.Background(), request)
 }
 
 // CreateMailProfile
@@ -397,6 +388,11 @@ func (c *Client) CreateMailProfileWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateMailProfileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMailProfile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMailProfileResponse()
@@ -427,13 +423,7 @@ func NewCreateProxySessionKillTaskResponse() (response *CreateProxySessionKillTa
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateProxySessionKillTask(request *CreateProxySessionKillTaskRequest) (response *CreateProxySessionKillTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateProxySessionKillTaskRequest()
-    }
-    
-    response = NewCreateProxySessionKillTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProxySessionKillTaskWithContext(context.Background(), request)
 }
 
 // CreateProxySessionKillTask
@@ -445,6 +435,11 @@ func (c *Client) CreateProxySessionKillTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateProxySessionKillTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxySessionKillTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProxySessionKillTaskResponse()
@@ -488,13 +483,7 @@ func NewCreateSchedulerMailProfileResponse() (response *CreateSchedulerMailProfi
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSchedulerMailProfile(request *CreateSchedulerMailProfileRequest) (response *CreateSchedulerMailProfileResponse, err error) {
-    if request == nil {
-        request = NewCreateSchedulerMailProfileRequest()
-    }
-    
-    response = NewCreateSchedulerMailProfileResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSchedulerMailProfileWithContext(context.Background(), request)
 }
 
 // CreateSchedulerMailProfile
@@ -519,6 +508,11 @@ func (c *Client) CreateSchedulerMailProfileWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateSchedulerMailProfileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSchedulerMailProfile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSchedulerMailProfileResponse()
@@ -561,13 +555,7 @@ func NewCreateSecurityAuditLogExportTaskResponse() (response *CreateSecurityAudi
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSecurityAuditLogExportTask(request *CreateSecurityAuditLogExportTaskRequest) (response *CreateSecurityAuditLogExportTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityAuditLogExportTaskRequest()
-    }
-    
-    response = NewCreateSecurityAuditLogExportTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityAuditLogExportTaskWithContext(context.Background(), request)
 }
 
 // CreateSecurityAuditLogExportTask
@@ -591,6 +579,11 @@ func (c *Client) CreateSecurityAuditLogExportTaskWithContext(ctx context.Context
     if request == nil {
         request = NewCreateSecurityAuditLogExportTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityAuditLogExportTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityAuditLogExportTaskResponse()
@@ -633,13 +626,7 @@ func NewDeleteSecurityAuditLogExportTasksResponse() (response *DeleteSecurityAud
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecurityAuditLogExportTasks(request *DeleteSecurityAuditLogExportTasksRequest) (response *DeleteSecurityAuditLogExportTasksResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityAuditLogExportTasksRequest()
-    }
-    
-    response = NewDeleteSecurityAuditLogExportTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityAuditLogExportTasksWithContext(context.Background(), request)
 }
 
 // DeleteSecurityAuditLogExportTasks
@@ -663,6 +650,11 @@ func (c *Client) DeleteSecurityAuditLogExportTasksWithContext(ctx context.Contex
     if request == nil {
         request = NewDeleteSecurityAuditLogExportTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityAuditLogExportTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityAuditLogExportTasksResponse()
@@ -705,13 +697,7 @@ func NewDescribeAllUserContactResponse() (response *DescribeAllUserContactRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllUserContact(request *DescribeAllUserContactRequest) (response *DescribeAllUserContactResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllUserContactRequest()
-    }
-    
-    response = NewDescribeAllUserContactResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllUserContactWithContext(context.Background(), request)
 }
 
 // DescribeAllUserContact
@@ -735,6 +721,11 @@ func (c *Client) DescribeAllUserContactWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAllUserContactRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllUserContact require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllUserContactResponse()
@@ -777,13 +768,7 @@ func NewDescribeAllUserGroupResponse() (response *DescribeAllUserGroupResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllUserGroup(request *DescribeAllUserGroupRequest) (response *DescribeAllUserGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllUserGroupRequest()
-    }
-    
-    response = NewDescribeAllUserGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllUserGroupWithContext(context.Background(), request)
 }
 
 // DescribeAllUserGroup
@@ -807,6 +792,11 @@ func (c *Client) DescribeAllUserGroupWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAllUserGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllUserGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllUserGroupResponse()
@@ -849,13 +839,7 @@ func NewDescribeDBDiagEventResponse() (response *DescribeDBDiagEventResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBDiagEvent(request *DescribeDBDiagEventRequest) (response *DescribeDBDiagEventResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBDiagEventRequest()
-    }
-    
-    response = NewDescribeDBDiagEventResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBDiagEventWithContext(context.Background(), request)
 }
 
 // DescribeDBDiagEvent
@@ -879,6 +863,11 @@ func (c *Client) DescribeDBDiagEventWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDBDiagEventRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBDiagEvent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBDiagEventResponse()
@@ -921,13 +910,7 @@ func NewDescribeDBDiagEventsResponse() (response *DescribeDBDiagEventsResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBDiagEvents(request *DescribeDBDiagEventsRequest) (response *DescribeDBDiagEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBDiagEventsRequest()
-    }
-    
-    response = NewDescribeDBDiagEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBDiagEventsWithContext(context.Background(), request)
 }
 
 // DescribeDBDiagEvents
@@ -951,6 +934,11 @@ func (c *Client) DescribeDBDiagEventsWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeDBDiagEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBDiagEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBDiagEventsResponse()
@@ -993,13 +981,7 @@ func NewDescribeDBDiagHistoryResponse() (response *DescribeDBDiagHistoryResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBDiagHistory(request *DescribeDBDiagHistoryRequest) (response *DescribeDBDiagHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBDiagHistoryRequest()
-    }
-    
-    response = NewDescribeDBDiagHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBDiagHistoryWithContext(context.Background(), request)
 }
 
 // DescribeDBDiagHistory
@@ -1023,6 +1005,11 @@ func (c *Client) DescribeDBDiagHistoryWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDBDiagHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBDiagHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBDiagHistoryResponse()
@@ -1065,13 +1052,7 @@ func NewDescribeDBDiagReportTasksResponse() (response *DescribeDBDiagReportTasks
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBDiagReportTasks(request *DescribeDBDiagReportTasksRequest) (response *DescribeDBDiagReportTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBDiagReportTasksRequest()
-    }
-    
-    response = NewDescribeDBDiagReportTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBDiagReportTasksWithContext(context.Background(), request)
 }
 
 // DescribeDBDiagReportTasks
@@ -1095,6 +1076,11 @@ func (c *Client) DescribeDBDiagReportTasksWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeDBDiagReportTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBDiagReportTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBDiagReportTasksResponse()
@@ -1137,13 +1123,7 @@ func NewDescribeDBSpaceStatusResponse() (response *DescribeDBSpaceStatusResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (response *DescribeDBSpaceStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBSpaceStatusRequest()
-    }
-    
-    response = NewDescribeDBSpaceStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDBSpaceStatusWithContext(context.Background(), request)
 }
 
 // DescribeDBSpaceStatus
@@ -1167,6 +1147,11 @@ func (c *Client) DescribeDBSpaceStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDBSpaceStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBSpaceStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDBSpaceStatusResponse()
@@ -1210,13 +1195,7 @@ func NewDescribeDiagDBInstancesResponse() (response *DescribeDiagDBInstancesResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDiagDBInstances(request *DescribeDiagDBInstancesRequest) (response *DescribeDiagDBInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeDiagDBInstancesRequest()
-    }
-    
-    response = NewDescribeDiagDBInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDiagDBInstancesWithContext(context.Background(), request)
 }
 
 // DescribeDiagDBInstances
@@ -1241,6 +1220,11 @@ func (c *Client) DescribeDiagDBInstancesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDiagDBInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiagDBInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDiagDBInstancesResponse()
@@ -1284,13 +1268,7 @@ func NewDescribeHealthScoreResponse() (response *DescribeHealthScoreResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeHealthScore(request *DescribeHealthScoreRequest) (response *DescribeHealthScoreResponse, err error) {
-    if request == nil {
-        request = NewDescribeHealthScoreRequest()
-    }
-    
-    response = NewDescribeHealthScoreResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHealthScoreWithContext(context.Background(), request)
 }
 
 // DescribeHealthScore
@@ -1315,6 +1293,11 @@ func (c *Client) DescribeHealthScoreWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeHealthScoreRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHealthScore require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHealthScoreResponse()
@@ -1357,13 +1340,7 @@ func NewDescribeMailProfileResponse() (response *DescribeMailProfileResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMailProfile(request *DescribeMailProfileRequest) (response *DescribeMailProfileResponse, err error) {
-    if request == nil {
-        request = NewDescribeMailProfileRequest()
-    }
-    
-    response = NewDescribeMailProfileResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMailProfileWithContext(context.Background(), request)
 }
 
 // DescribeMailProfile
@@ -1387,6 +1364,11 @@ func (c *Client) DescribeMailProfileWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeMailProfileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMailProfile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMailProfileResponse()
@@ -1429,13 +1411,7 @@ func NewDescribeMySqlProcessListResponse() (response *DescribeMySqlProcessListRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMySqlProcessList(request *DescribeMySqlProcessListRequest) (response *DescribeMySqlProcessListResponse, err error) {
-    if request == nil {
-        request = NewDescribeMySqlProcessListRequest()
-    }
-    
-    response = NewDescribeMySqlProcessListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMySqlProcessListWithContext(context.Background(), request)
 }
 
 // DescribeMySqlProcessList
@@ -1459,6 +1435,11 @@ func (c *Client) DescribeMySqlProcessListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMySqlProcessListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMySqlProcessList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMySqlProcessListResponse()
@@ -1507,13 +1488,7 @@ func NewDescribeProxySessionKillTasksResponse() (response *DescribeProxySessionK
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProxySessionKillTasks(request *DescribeProxySessionKillTasksRequest) (response *DescribeProxySessionKillTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxySessionKillTasksRequest()
-    }
-    
-    response = NewDescribeProxySessionKillTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxySessionKillTasksWithContext(context.Background(), request)
 }
 
 // DescribeProxySessionKillTasks
@@ -1543,6 +1518,11 @@ func (c *Client) DescribeProxySessionKillTasksWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeProxySessionKillTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxySessionKillTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxySessionKillTasksResponse()
@@ -1585,13 +1565,7 @@ func NewDescribeSecurityAuditLogDownloadUrlsResponse() (response *DescribeSecuri
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecurityAuditLogDownloadUrls(request *DescribeSecurityAuditLogDownloadUrlsRequest) (response *DescribeSecurityAuditLogDownloadUrlsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
-    }
-    
-    response = NewDescribeSecurityAuditLogDownloadUrlsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityAuditLogDownloadUrlsWithContext(context.Background(), request)
 }
 
 // DescribeSecurityAuditLogDownloadUrls
@@ -1615,6 +1589,11 @@ func (c *Client) DescribeSecurityAuditLogDownloadUrlsWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeSecurityAuditLogDownloadUrlsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityAuditLogDownloadUrls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityAuditLogDownloadUrlsResponse()
@@ -1657,13 +1636,7 @@ func NewDescribeSecurityAuditLogExportTasksResponse() (response *DescribeSecurit
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecurityAuditLogExportTasks(request *DescribeSecurityAuditLogExportTasksRequest) (response *DescribeSecurityAuditLogExportTasksResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityAuditLogExportTasksRequest()
-    }
-    
-    response = NewDescribeSecurityAuditLogExportTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityAuditLogExportTasksWithContext(context.Background(), request)
 }
 
 // DescribeSecurityAuditLogExportTasks
@@ -1687,6 +1660,11 @@ func (c *Client) DescribeSecurityAuditLogExportTasksWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeSecurityAuditLogExportTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityAuditLogExportTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityAuditLogExportTasksResponse()
@@ -1729,13 +1707,7 @@ func NewDescribeSlowLogTimeSeriesStatsResponse() (response *DescribeSlowLogTimeS
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogTimeSeriesStatsRequest()
-    }
-    
-    response = NewDescribeSlowLogTimeSeriesStatsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSlowLogTimeSeriesStatsWithContext(context.Background(), request)
 }
 
 // DescribeSlowLogTimeSeriesStats
@@ -1759,6 +1731,11 @@ func (c *Client) DescribeSlowLogTimeSeriesStatsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeSlowLogTimeSeriesStatsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLogTimeSeriesStats require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogTimeSeriesStatsResponse()
@@ -1801,13 +1778,7 @@ func NewDescribeSlowLogTopSqlsResponse() (response *DescribeSlowLogTopSqlsRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSlowLogTopSqls(request *DescribeSlowLogTopSqlsRequest) (response *DescribeSlowLogTopSqlsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogTopSqlsRequest()
-    }
-    
-    response = NewDescribeSlowLogTopSqlsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSlowLogTopSqlsWithContext(context.Background(), request)
 }
 
 // DescribeSlowLogTopSqls
@@ -1831,6 +1802,11 @@ func (c *Client) DescribeSlowLogTopSqlsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSlowLogTopSqlsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLogTopSqls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogTopSqlsResponse()
@@ -1873,13 +1849,7 @@ func NewDescribeSlowLogUserHostStatsResponse() (response *DescribeSlowLogUserHos
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSlowLogUserHostStats(request *DescribeSlowLogUserHostStatsRequest) (response *DescribeSlowLogUserHostStatsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSlowLogUserHostStatsRequest()
-    }
-    
-    response = NewDescribeSlowLogUserHostStatsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSlowLogUserHostStatsWithContext(context.Background(), request)
 }
 
 // DescribeSlowLogUserHostStats
@@ -1903,6 +1873,11 @@ func (c *Client) DescribeSlowLogUserHostStatsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSlowLogUserHostStatsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLogUserHostStats require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogUserHostStatsResponse()
@@ -1945,13 +1920,7 @@ func NewDescribeTopSpaceSchemaTimeSeriesResponse() (response *DescribeTopSpaceSc
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTopSpaceSchemaTimeSeries(request *DescribeTopSpaceSchemaTimeSeriesRequest) (response *DescribeTopSpaceSchemaTimeSeriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
-    }
-    
-    response = NewDescribeTopSpaceSchemaTimeSeriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopSpaceSchemaTimeSeriesWithContext(context.Background(), request)
 }
 
 // DescribeTopSpaceSchemaTimeSeries
@@ -1975,6 +1944,11 @@ func (c *Client) DescribeTopSpaceSchemaTimeSeriesWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeTopSpaceSchemaTimeSeriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopSpaceSchemaTimeSeries require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopSpaceSchemaTimeSeriesResponse()
@@ -2017,13 +1991,7 @@ func NewDescribeTopSpaceSchemasResponse() (response *DescribeTopSpaceSchemasResp
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTopSpaceSchemas(request *DescribeTopSpaceSchemasRequest) (response *DescribeTopSpaceSchemasResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopSpaceSchemasRequest()
-    }
-    
-    response = NewDescribeTopSpaceSchemasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopSpaceSchemasWithContext(context.Background(), request)
 }
 
 // DescribeTopSpaceSchemas
@@ -2047,6 +2015,11 @@ func (c *Client) DescribeTopSpaceSchemasWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeTopSpaceSchemasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopSpaceSchemas require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopSpaceSchemasResponse()
@@ -2089,13 +2062,7 @@ func NewDescribeTopSpaceTableTimeSeriesResponse() (response *DescribeTopSpaceTab
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTopSpaceTableTimeSeries(request *DescribeTopSpaceTableTimeSeriesRequest) (response *DescribeTopSpaceTableTimeSeriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopSpaceTableTimeSeriesRequest()
-    }
-    
-    response = NewDescribeTopSpaceTableTimeSeriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopSpaceTableTimeSeriesWithContext(context.Background(), request)
 }
 
 // DescribeTopSpaceTableTimeSeries
@@ -2119,6 +2086,11 @@ func (c *Client) DescribeTopSpaceTableTimeSeriesWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeTopSpaceTableTimeSeriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopSpaceTableTimeSeries require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopSpaceTableTimeSeriesResponse()
@@ -2161,13 +2133,7 @@ func NewDescribeTopSpaceTablesResponse() (response *DescribeTopSpaceTablesRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTopSpaceTables(request *DescribeTopSpaceTablesRequest) (response *DescribeTopSpaceTablesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTopSpaceTablesRequest()
-    }
-    
-    response = NewDescribeTopSpaceTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTopSpaceTablesWithContext(context.Background(), request)
 }
 
 // DescribeTopSpaceTables
@@ -2191,6 +2157,11 @@ func (c *Client) DescribeTopSpaceTablesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeTopSpaceTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopSpaceTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTopSpaceTablesResponse()
@@ -2233,13 +2204,7 @@ func NewDescribeUserSqlAdviceResponse() (response *DescribeUserSqlAdviceResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserSqlAdvice(request *DescribeUserSqlAdviceRequest) (response *DescribeUserSqlAdviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserSqlAdviceRequest()
-    }
-    
-    response = NewDescribeUserSqlAdviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserSqlAdviceWithContext(context.Background(), request)
 }
 
 // DescribeUserSqlAdvice
@@ -2263,6 +2228,11 @@ func (c *Client) DescribeUserSqlAdviceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeUserSqlAdviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserSqlAdvice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserSqlAdviceResponse()
@@ -2306,13 +2276,7 @@ func NewKillMySqlThreadsResponse() (response *KillMySqlThreadsResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) KillMySqlThreads(request *KillMySqlThreadsRequest) (response *KillMySqlThreadsResponse, err error) {
-    if request == nil {
-        request = NewKillMySqlThreadsRequest()
-    }
-    
-    response = NewKillMySqlThreadsResponse()
-    err = c.Send(request, response)
-    return
+    return c.KillMySqlThreadsWithContext(context.Background(), request)
 }
 
 // KillMySqlThreads
@@ -2337,6 +2301,11 @@ func (c *Client) KillMySqlThreadsWithContext(ctx context.Context, request *KillM
     if request == nil {
         request = NewKillMySqlThreadsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("KillMySqlThreads require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewKillMySqlThreadsResponse()
@@ -2379,13 +2348,7 @@ func NewModifyDiagDBInstanceConfResponse() (response *ModifyDiagDBInstanceConfRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyDiagDBInstanceConf(request *ModifyDiagDBInstanceConfRequest) (response *ModifyDiagDBInstanceConfResponse, err error) {
-    if request == nil {
-        request = NewModifyDiagDBInstanceConfRequest()
-    }
-    
-    response = NewModifyDiagDBInstanceConfResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDiagDBInstanceConfWithContext(context.Background(), request)
 }
 
 // ModifyDiagDBInstanceConf
@@ -2409,6 +2372,11 @@ func (c *Client) ModifyDiagDBInstanceConfWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyDiagDBInstanceConfRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDiagDBInstanceConf require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDiagDBInstanceConfResponse()

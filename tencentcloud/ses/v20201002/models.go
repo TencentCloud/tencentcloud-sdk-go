@@ -334,6 +334,56 @@ func (r *CreateReceiverDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateReceiverDetailWithDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 收信人邮箱以及模板参数，数组形式
+	Datas []*ReceiverInputData `json:"Datas,omitempty" name:"Datas"`
+}
+
+func (r *CreateReceiverDetailWithDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverDetailWithDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReceiverId")
+	delete(f, "Datas")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReceiverDetailWithDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateReceiverDetailWithDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateReceiverDetailWithDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReceiverDetailWithDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateReceiverRequest struct {
 	*tchttp.BaseRequest
 
@@ -1229,6 +1279,16 @@ type ReceiverData struct {
 
 	// 创建时间,如:2021-09-28 16:40:35
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type ReceiverInputData struct {
+
+	// 收件人邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+	// 注意：参数值不能是html等复杂类型的数据。
+	TemplateData *string `json:"TemplateData,omitempty" name:"TemplateData"`
 }
 
 type SendEmailRequest struct {

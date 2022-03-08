@@ -16,6 +16,7 @@ package v20200713
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewDescribeImageStatResponse() (response *DescribeImageStatResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeImageStat(request *DescribeImageStatRequest) (response *DescribeImageStatResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageStatRequest()
-    }
-    
-    response = NewDescribeImageStatResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageStatWithContext(context.Background(), request)
 }
 
 // DescribeImageStat
@@ -99,6 +94,11 @@ func (c *Client) DescribeImageStatWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeImageStatRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageStat require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageStatResponse()
@@ -135,13 +135,7 @@ func NewDescribeImsListResponse() (response *DescribeImsListResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeImsList(request *DescribeImsListRequest) (response *DescribeImsListResponse, err error) {
-    if request == nil {
-        request = NewDescribeImsListRequest()
-    }
-    
-    response = NewDescribeImsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImsListWithContext(context.Background(), request)
 }
 
 // DescribeImsList
@@ -159,6 +153,11 @@ func (c *Client) DescribeImsListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeImsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImsListResponse()
@@ -249,13 +248,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
-    if request == nil {
-        request = NewImageModerationRequest()
-    }
-    
-    response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ImageModerationWithContext(context.Background(), request)
 }
 
 // ImageModeration
@@ -327,6 +320,11 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     if request == nil {
         request = NewImageModerationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageModeration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewImageModerationResponse()

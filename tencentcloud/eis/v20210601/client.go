@@ -16,6 +16,7 @@ package v20210601
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewGetRuntimeMCResponse() (response *GetRuntimeMCResponse) {
 //  INVALIDPARAMETERVALUE_RUNTIMENAMESPACEINVALID = "InvalidParameterValue.RuntimeNamespaceInvalid"
 //  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
 func (c *Client) GetRuntimeMC(request *GetRuntimeMCRequest) (response *GetRuntimeMCResponse, err error) {
-    if request == nil {
-        request = NewGetRuntimeMCRequest()
-    }
-    
-    response = NewGetRuntimeMCResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRuntimeMCWithContext(context.Background(), request)
 }
 
 // GetRuntimeMC
@@ -105,6 +100,11 @@ func (c *Client) GetRuntimeMCWithContext(ctx context.Context, request *GetRuntim
     if request == nil {
         request = NewGetRuntimeMCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRuntimeMC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRuntimeMCResponse()
@@ -143,13 +143,7 @@ func NewGetRuntimeResourceMonitorMetricMCResponse() (response *GetRuntimeResourc
 //  INVALIDPARAMETERVALUE_RUNTIMENAMESPACEINVALID = "InvalidParameterValue.RuntimeNamespaceInvalid"
 //  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
 func (c *Client) GetRuntimeResourceMonitorMetricMC(request *GetRuntimeResourceMonitorMetricMCRequest) (response *GetRuntimeResourceMonitorMetricMCResponse, err error) {
-    if request == nil {
-        request = NewGetRuntimeResourceMonitorMetricMCRequest()
-    }
-    
-    response = NewGetRuntimeResourceMonitorMetricMCResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRuntimeResourceMonitorMetricMCWithContext(context.Background(), request)
 }
 
 // GetRuntimeResourceMonitorMetricMC
@@ -169,6 +163,11 @@ func (c *Client) GetRuntimeResourceMonitorMetricMCWithContext(ctx context.Contex
     if request == nil {
         request = NewGetRuntimeResourceMonitorMetricMCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRuntimeResourceMonitorMetricMC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRuntimeResourceMonitorMetricMCResponse()
@@ -200,13 +199,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
-    if request == nil {
-        request = NewListDeployableRuntimesMCRequest()
-    }
-    
-    response = NewListDeployableRuntimesMCResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListDeployableRuntimesMCWithContext(context.Background(), request)
 }
 
 // ListDeployableRuntimesMC
@@ -219,6 +212,11 @@ func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, reques
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDeployableRuntimesMC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListDeployableRuntimesMCResponse()
@@ -257,13 +255,7 @@ func NewListRuntimeDeployedInstancesMCResponse() (response *ListRuntimeDeployedI
 //  INVALIDPARAMETERVALUE_RUNTIMEIDNOTEXIST = "InvalidParameterValue.RuntimeIdNotExist"
 //  INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
 func (c *Client) ListRuntimeDeployedInstancesMC(request *ListRuntimeDeployedInstancesMCRequest) (response *ListRuntimeDeployedInstancesMCResponse, err error) {
-    if request == nil {
-        request = NewListRuntimeDeployedInstancesMCRequest()
-    }
-    
-    response = NewListRuntimeDeployedInstancesMCResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListRuntimeDeployedInstancesMCWithContext(context.Background(), request)
 }
 
 // ListRuntimeDeployedInstancesMC
@@ -283,6 +275,11 @@ func (c *Client) ListRuntimeDeployedInstancesMCWithContext(ctx context.Context, 
     if request == nil {
         request = NewListRuntimeDeployedInstancesMCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRuntimeDeployedInstancesMC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListRuntimeDeployedInstancesMCResponse()
@@ -318,13 +315,7 @@ func NewListRuntimesMCResponse() (response *ListRuntimesMCResponse) {
 //  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListRuntimesMCResponse, err error) {
-    if request == nil {
-        request = NewListRuntimesMCRequest()
-    }
-    
-    response = NewListRuntimesMCResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListRuntimesMCWithContext(context.Background(), request)
 }
 
 // ListRuntimesMC
@@ -341,6 +332,11 @@ func (c *Client) ListRuntimesMCWithContext(ctx context.Context, request *ListRun
     if request == nil {
         request = NewListRuntimesMCRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListRuntimesMC require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListRuntimesMCResponse()

@@ -16,6 +16,7 @@ package v20201222
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewArchiveFlowResponse() (response *ArchiveFlowResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ArchiveFlow(request *ArchiveFlowRequest) (response *ArchiveFlowResponse, err error) {
-    if request == nil {
-        request = NewArchiveFlowRequest()
-    }
-    
-    response = NewArchiveFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.ArchiveFlowWithContext(context.Background(), request)
 }
 
 // ArchiveFlow
@@ -101,6 +96,11 @@ func (c *Client) ArchiveFlowWithContext(ctx context.Context, request *ArchiveFlo
     if request == nil {
         request = NewArchiveFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ArchiveFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewArchiveFlowResponse()
@@ -140,13 +140,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
-    if request == nil {
-        request = NewCancelFlowRequest()
-    }
-    
-    response = NewCancelFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelFlowWithContext(context.Background(), request)
 }
 
 // CancelFlow
@@ -167,6 +161,11 @@ func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowR
     if request == nil {
         request = NewCancelFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelFlowResponse()
@@ -200,13 +199,7 @@ func NewCheckBankCard2EVerificationResponse() (response *CheckBankCard2EVerifica
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckBankCard2EVerification(request *CheckBankCard2EVerificationRequest) (response *CheckBankCard2EVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckBankCard2EVerificationRequest()
-    }
-    
-    response = NewCheckBankCard2EVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBankCard2EVerificationWithContext(context.Background(), request)
 }
 
 // CheckBankCard2EVerification
@@ -221,6 +214,11 @@ func (c *Client) CheckBankCard2EVerificationWithContext(ctx context.Context, req
     if request == nil {
         request = NewCheckBankCard2EVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBankCard2EVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBankCard2EVerificationResponse()
@@ -254,13 +252,7 @@ func NewCheckBankCard3EVerificationResponse() (response *CheckBankCard3EVerifica
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckBankCard3EVerification(request *CheckBankCard3EVerificationRequest) (response *CheckBankCard3EVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckBankCard3EVerificationRequest()
-    }
-    
-    response = NewCheckBankCard3EVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBankCard3EVerificationWithContext(context.Background(), request)
 }
 
 // CheckBankCard3EVerification
@@ -275,6 +267,11 @@ func (c *Client) CheckBankCard3EVerificationWithContext(ctx context.Context, req
     if request == nil {
         request = NewCheckBankCard3EVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBankCard3EVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBankCard3EVerificationResponse()
@@ -308,13 +305,7 @@ func NewCheckBankCard4EVerificationResponse() (response *CheckBankCard4EVerifica
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckBankCard4EVerification(request *CheckBankCard4EVerificationRequest) (response *CheckBankCard4EVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckBankCard4EVerificationRequest()
-    }
-    
-    response = NewCheckBankCard4EVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBankCard4EVerificationWithContext(context.Background(), request)
 }
 
 // CheckBankCard4EVerification
@@ -329,6 +320,11 @@ func (c *Client) CheckBankCard4EVerificationWithContext(ctx context.Context, req
     if request == nil {
         request = NewCheckBankCard4EVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBankCard4EVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBankCard4EVerificationResponse()
@@ -368,13 +364,7 @@ func NewCheckBankCardVerificationResponse() (response *CheckBankCardVerification
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckBankCardVerification(request *CheckBankCardVerificationRequest) (response *CheckBankCardVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckBankCardVerificationRequest()
-    }
-    
-    response = NewCheckBankCardVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckBankCardVerificationWithContext(context.Background(), request)
 }
 
 // CheckBankCardVerification
@@ -395,6 +385,11 @@ func (c *Client) CheckBankCardVerificationWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCheckBankCardVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckBankCardVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckBankCardVerificationResponse()
@@ -430,13 +425,7 @@ func NewCheckFaceIdentifyResponse() (response *CheckFaceIdentifyResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CheckFaceIdentify(request *CheckFaceIdentifyRequest) (response *CheckFaceIdentifyResponse, err error) {
-    if request == nil {
-        request = NewCheckFaceIdentifyRequest()
-    }
-    
-    response = NewCheckFaceIdentifyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckFaceIdentifyWithContext(context.Background(), request)
 }
 
 // CheckFaceIdentify
@@ -453,6 +442,11 @@ func (c *Client) CheckFaceIdentifyWithContext(ctx context.Context, request *Chec
     if request == nil {
         request = NewCheckFaceIdentifyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckFaceIdentify require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckFaceIdentifyResponse()
@@ -486,13 +480,7 @@ func NewCheckIdCardVerificationResponse() (response *CheckIdCardVerificationResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckIdCardVerification(request *CheckIdCardVerificationRequest) (response *CheckIdCardVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckIdCardVerificationRequest()
-    }
-    
-    response = NewCheckIdCardVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckIdCardVerificationWithContext(context.Background(), request)
 }
 
 // CheckIdCardVerification
@@ -507,6 +495,11 @@ func (c *Client) CheckIdCardVerificationWithContext(ctx context.Context, request
     if request == nil {
         request = NewCheckIdCardVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckIdCardVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckIdCardVerificationResponse()
@@ -540,13 +533,7 @@ func NewCheckMobileAndNameResponse() (response *CheckMobileAndNameResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckMobileAndName(request *CheckMobileAndNameRequest) (response *CheckMobileAndNameResponse, err error) {
-    if request == nil {
-        request = NewCheckMobileAndNameRequest()
-    }
-    
-    response = NewCheckMobileAndNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckMobileAndNameWithContext(context.Background(), request)
 }
 
 // CheckMobileAndName
@@ -561,6 +548,11 @@ func (c *Client) CheckMobileAndNameWithContext(ctx context.Context, request *Che
     if request == nil {
         request = NewCheckMobileAndNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckMobileAndName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckMobileAndNameResponse()
@@ -594,13 +586,7 @@ func NewCheckMobileVerificationResponse() (response *CheckMobileVerificationResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckMobileVerification(request *CheckMobileVerificationRequest) (response *CheckMobileVerificationResponse, err error) {
-    if request == nil {
-        request = NewCheckMobileVerificationRequest()
-    }
-    
-    response = NewCheckMobileVerificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckMobileVerificationWithContext(context.Background(), request)
 }
 
 // CheckMobileVerification
@@ -615,6 +601,11 @@ func (c *Client) CheckMobileVerificationWithContext(ctx context.Context, request
     if request == nil {
         request = NewCheckMobileVerificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckMobileVerification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckMobileVerificationResponse()
@@ -653,13 +644,7 @@ func NewCheckVerifyCodeMatchFlowIdResponse() (response *CheckVerifyCodeMatchFlow
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CheckVerifyCodeMatchFlowId(request *CheckVerifyCodeMatchFlowIdRequest) (response *CheckVerifyCodeMatchFlowIdResponse, err error) {
-    if request == nil {
-        request = NewCheckVerifyCodeMatchFlowIdRequest()
-    }
-    
-    response = NewCheckVerifyCodeMatchFlowIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckVerifyCodeMatchFlowIdWithContext(context.Background(), request)
 }
 
 // CheckVerifyCodeMatchFlowId
@@ -679,6 +664,11 @@ func (c *Client) CheckVerifyCodeMatchFlowIdWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCheckVerifyCodeMatchFlowIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckVerifyCodeMatchFlowId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckVerifyCodeMatchFlowIdResponse()
@@ -713,13 +703,7 @@ func NewCreateFaceIdSignResponse() (response *CreateFaceIdSignResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateFaceIdSign(request *CreateFaceIdSignRequest) (response *CreateFaceIdSignResponse, err error) {
-    if request == nil {
-        request = NewCreateFaceIdSignRequest()
-    }
-    
-    response = NewCreateFaceIdSignResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFaceIdSignWithContext(context.Background(), request)
 }
 
 // CreateFaceIdSign
@@ -735,6 +719,11 @@ func (c *Client) CreateFaceIdSignWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateFaceIdSignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFaceIdSign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFaceIdSignResponse()
@@ -774,13 +763,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response *CreateFlowByFilesResponse, err error) {
-    if request == nil {
-        request = NewCreateFlowByFilesRequest()
-    }
-    
-    response = NewCreateFlowByFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFlowByFilesWithContext(context.Background(), request)
 }
 
 // CreateFlowByFiles
@@ -801,6 +784,11 @@ func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowByFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowByFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFlowByFilesResponse()
@@ -835,13 +823,7 @@ func NewCreateH5FaceIdUrlResponse() (response *CreateH5FaceIdUrlResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateH5FaceIdUrl(request *CreateH5FaceIdUrlRequest) (response *CreateH5FaceIdUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateH5FaceIdUrlRequest()
-    }
-    
-    response = NewCreateH5FaceIdUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateH5FaceIdUrlWithContext(context.Background(), request)
 }
 
 // CreateH5FaceIdUrl
@@ -857,6 +839,11 @@ func (c *Client) CreateH5FaceIdUrlWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateH5FaceIdUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateH5FaceIdUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateH5FaceIdUrlResponse()
@@ -938,13 +925,7 @@ func NewCreatePreviewSignUrlResponse() (response *CreatePreviewSignUrlResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreatePreviewSignUrl(request *CreatePreviewSignUrlRequest) (response *CreatePreviewSignUrlResponse, err error) {
-    if request == nil {
-        request = NewCreatePreviewSignUrlRequest()
-    }
-    
-    response = NewCreatePreviewSignUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePreviewSignUrlWithContext(context.Background(), request)
 }
 
 // CreatePreviewSignUrl
@@ -1007,6 +988,11 @@ func (c *Client) CreatePreviewSignUrlWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreatePreviewSignUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePreviewSignUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePreviewSignUrlResponse()
@@ -1050,13 +1036,7 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
-    if request == nil {
-        request = NewCreateSealRequest()
-    }
-    
-    response = NewCreateSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSealWithContext(context.Background(), request)
 }
 
 // CreateSeal
@@ -1081,6 +1061,11 @@ func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealR
     if request == nil {
         request = NewCreateSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSealResponse()
@@ -1126,13 +1111,7 @@ func NewCreateServerFlowSignResponse() (response *CreateServerFlowSignResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateServerFlowSign(request *CreateServerFlowSignRequest) (response *CreateServerFlowSignResponse, err error) {
-    if request == nil {
-        request = NewCreateServerFlowSignRequest()
-    }
-    
-    response = NewCreateServerFlowSignResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateServerFlowSignWithContext(context.Background(), request)
 }
 
 // CreateServerFlowSign
@@ -1159,6 +1138,11 @@ func (c *Client) CreateServerFlowSignWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateServerFlowSignRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServerFlowSign require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateServerFlowSignResponse()
@@ -1240,13 +1224,7 @@ func NewCreateSignUrlResponse() (response *CreateSignUrlResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSignUrl(request *CreateSignUrlRequest) (response *CreateSignUrlResponse, err error) {
-    if request == nil {
-        request = NewCreateSignUrlRequest()
-    }
-    
-    response = NewCreateSignUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSignUrlWithContext(context.Background(), request)
 }
 
 // CreateSignUrl
@@ -1309,6 +1287,11 @@ func (c *Client) CreateSignUrlWithContext(ctx context.Context, request *CreateSi
     if request == nil {
         request = NewCreateSignUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSignUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSignUrlResponse()
@@ -1388,13 +1371,7 @@ func NewCreateSubOrganizationResponse() (response *CreateSubOrganizationResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSubOrganization(request *CreateSubOrganizationRequest) (response *CreateSubOrganizationResponse, err error) {
-    if request == nil {
-        request = NewCreateSubOrganizationRequest()
-    }
-    
-    response = NewCreateSubOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubOrganizationWithContext(context.Background(), request)
 }
 
 // CreateSubOrganization
@@ -1455,6 +1432,11 @@ func (c *Client) CreateSubOrganizationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateSubOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubOrganizationResponse()
@@ -1541,13 +1523,7 @@ func NewCreateSubOrganizationAndSealResponse() (response *CreateSubOrganizationA
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSubOrganizationAndSeal(request *CreateSubOrganizationAndSealRequest) (response *CreateSubOrganizationAndSealResponse, err error) {
-    if request == nil {
-        request = NewCreateSubOrganizationAndSealRequest()
-    }
-    
-    response = NewCreateSubOrganizationAndSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubOrganizationAndSealWithContext(context.Background(), request)
 }
 
 // CreateSubOrganizationAndSeal
@@ -1615,6 +1591,11 @@ func (c *Client) CreateSubOrganizationAndSealWithContext(ctx context.Context, re
     if request == nil {
         request = NewCreateSubOrganizationAndSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubOrganizationAndSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubOrganizationAndSealResponse()
@@ -1696,13 +1677,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
-    if request == nil {
-        request = NewCreateUserRequest()
-    }
-    
-    response = NewCreateUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserWithContext(context.Background(), request)
 }
 
 // CreateUser
@@ -1765,6 +1740,11 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
     if request == nil {
         request = NewCreateUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserResponse()
@@ -1854,13 +1834,7 @@ func NewCreateUserAndSealResponse() (response *CreateUserAndSealResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUserAndSeal(request *CreateUserAndSealRequest) (response *CreateUserAndSealResponse, err error) {
-    if request == nil {
-        request = NewCreateUserAndSealRequest()
-    }
-    
-    response = NewCreateUserAndSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUserAndSealWithContext(context.Background(), request)
 }
 
 // CreateUserAndSeal
@@ -1931,6 +1905,11 @@ func (c *Client) CreateUserAndSealWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateUserAndSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserAndSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUserAndSealResponse()
@@ -1973,13 +1952,7 @@ func NewDeleteSealResponse() (response *DeleteSealResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSeal(request *DeleteSealRequest) (response *DeleteSealResponse, err error) {
-    if request == nil {
-        request = NewDeleteSealRequest()
-    }
-    
-    response = NewDeleteSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSealWithContext(context.Background(), request)
 }
 
 // DeleteSeal
@@ -2003,6 +1976,11 @@ func (c *Client) DeleteSealWithContext(ctx context.Context, request *DeleteSealR
     if request == nil {
         request = NewDeleteSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSealResponse()
@@ -2037,13 +2015,7 @@ func NewDescribeCatalogApproversResponse() (response *DescribeCatalogApproversRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeCatalogApprovers(request *DescribeCatalogApproversRequest) (response *DescribeCatalogApproversResponse, err error) {
-    if request == nil {
-        request = NewDescribeCatalogApproversRequest()
-    }
-    
-    response = NewDescribeCatalogApproversResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCatalogApproversWithContext(context.Background(), request)
 }
 
 // DescribeCatalogApprovers
@@ -2059,6 +2031,11 @@ func (c *Client) DescribeCatalogApproversWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCatalogApproversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogApprovers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCatalogApproversResponse()
@@ -2140,13 +2117,7 @@ func NewDescribeCatalogSignComponentsResponse() (response *DescribeCatalogSignCo
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCatalogSignComponents(request *DescribeCatalogSignComponentsRequest) (response *DescribeCatalogSignComponentsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCatalogSignComponentsRequest()
-    }
-    
-    response = NewDescribeCatalogSignComponentsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCatalogSignComponentsWithContext(context.Background(), request)
 }
 
 // DescribeCatalogSignComponents
@@ -2209,6 +2180,11 @@ func (c *Client) DescribeCatalogSignComponentsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCatalogSignComponentsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCatalogSignComponents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCatalogSignComponentsResponse()
@@ -2245,13 +2221,7 @@ func NewDescribeCustomFlowIdsResponse() (response *DescribeCustomFlowIdsResponse
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomFlowIds(request *DescribeCustomFlowIdsRequest) (response *DescribeCustomFlowIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomFlowIdsRequest()
-    }
-    
-    response = NewDescribeCustomFlowIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomFlowIdsWithContext(context.Background(), request)
 }
 
 // DescribeCustomFlowIds
@@ -2269,6 +2239,11 @@ func (c *Client) DescribeCustomFlowIdsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCustomFlowIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomFlowIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomFlowIdsResponse()
@@ -2305,13 +2280,7 @@ func NewDescribeCustomFlowIdsByFlowIdResponse() (response *DescribeCustomFlowIds
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomFlowIdsByFlowId(request *DescribeCustomFlowIdsByFlowIdRequest) (response *DescribeCustomFlowIdsByFlowIdResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomFlowIdsByFlowIdRequest()
-    }
-    
-    response = NewDescribeCustomFlowIdsByFlowIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomFlowIdsByFlowIdWithContext(context.Background(), request)
 }
 
 // DescribeCustomFlowIdsByFlowId
@@ -2329,6 +2298,11 @@ func (c *Client) DescribeCustomFlowIdsByFlowIdWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeCustomFlowIdsByFlowIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomFlowIdsByFlowId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomFlowIdsByFlowIdResponse()
@@ -2364,13 +2338,7 @@ func NewDescribeFaceIdPhotosResponse() (response *DescribeFaceIdPhotosResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFaceIdPhotos(request *DescribeFaceIdPhotosRequest) (response *DescribeFaceIdPhotosResponse, err error) {
-    if request == nil {
-        request = NewDescribeFaceIdPhotosRequest()
-    }
-    
-    response = NewDescribeFaceIdPhotosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFaceIdPhotosWithContext(context.Background(), request)
 }
 
 // DescribeFaceIdPhotos
@@ -2387,6 +2355,11 @@ func (c *Client) DescribeFaceIdPhotosWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFaceIdPhotosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFaceIdPhotos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFaceIdPhotosResponse()
@@ -2422,13 +2395,7 @@ func NewDescribeFaceIdResultsResponse() (response *DescribeFaceIdResultsResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFaceIdResults(request *DescribeFaceIdResultsRequest) (response *DescribeFaceIdResultsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFaceIdResultsRequest()
-    }
-    
-    response = NewDescribeFaceIdResultsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFaceIdResultsWithContext(context.Background(), request)
 }
 
 // DescribeFaceIdResults
@@ -2445,6 +2412,11 @@ func (c *Client) DescribeFaceIdResultsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFaceIdResultsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFaceIdResults require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFaceIdResultsResponse()
@@ -2482,13 +2454,7 @@ func NewDescribeFileIdsByCustomIdsResponse() (response *DescribeFileIdsByCustomI
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeFileIdsByCustomIds(request *DescribeFileIdsByCustomIdsRequest) (response *DescribeFileIdsByCustomIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileIdsByCustomIdsRequest()
-    }
-    
-    response = NewDescribeFileIdsByCustomIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileIdsByCustomIdsWithContext(context.Background(), request)
 }
 
 // DescribeFileIdsByCustomIds
@@ -2507,6 +2473,11 @@ func (c *Client) DescribeFileIdsByCustomIdsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeFileIdsByCustomIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileIdsByCustomIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileIdsByCustomIdsResponse()
@@ -2541,13 +2512,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *DescribeFileUrlsResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileUrlsRequest()
-    }
-    
-    response = NewDescribeFileUrlsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFileUrlsWithContext(context.Background(), request)
 }
 
 // DescribeFileUrls
@@ -2563,6 +2528,11 @@ func (c *Client) DescribeFileUrlsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeFileUrlsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileUrls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFileUrlsResponse()
@@ -2596,13 +2566,7 @@ func NewDescribeFlowResponse() (response *DescribeFlowResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlow(request *DescribeFlowRequest) (response *DescribeFlowResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowRequest()
-    }
-    
-    response = NewDescribeFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowWithContext(context.Background(), request)
 }
 
 // DescribeFlow
@@ -2617,6 +2581,11 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, request *DescribeF
     if request == nil {
         request = NewDescribeFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowResponse()
@@ -2649,13 +2618,7 @@ func NewDescribeFlowApproversResponse() (response *DescribeFlowApproversResponse
 //  INTERNALERROR_UNSERIALIZE = "InternalError.UnSerialize"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFlowApprovers(request *DescribeFlowApproversRequest) (response *DescribeFlowApproversResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowApproversRequest()
-    }
-    
-    response = NewDescribeFlowApproversResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowApproversWithContext(context.Background(), request)
 }
 
 // DescribeFlowApprovers
@@ -2669,6 +2632,11 @@ func (c *Client) DescribeFlowApproversWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeFlowApproversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowApprovers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowApproversResponse()
@@ -2701,13 +2669,7 @@ func NewDescribeFlowFilesResponse() (response *DescribeFlowFilesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFlowFiles(request *DescribeFlowFilesRequest) (response *DescribeFlowFilesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowFilesRequest()
-    }
-    
-    response = NewDescribeFlowFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowFilesWithContext(context.Background(), request)
 }
 
 // DescribeFlowFiles
@@ -2721,6 +2683,11 @@ func (c *Client) DescribeFlowFilesWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeFlowFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowFilesResponse()
@@ -2758,13 +2725,7 @@ func NewDescribeSealsResponse() (response *DescribeSealsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSeals(request *DescribeSealsRequest) (response *DescribeSealsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSealsRequest()
-    }
-    
-    response = NewDescribeSealsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSealsWithContext(context.Background(), request)
 }
 
 // DescribeSeals
@@ -2783,6 +2744,11 @@ func (c *Client) DescribeSealsWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeSealsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSeals require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSealsResponse()
@@ -2864,13 +2830,7 @@ func NewDescribeSubOrganizationsResponse() (response *DescribeSubOrganizationsRe
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSubOrganizations(request *DescribeSubOrganizationsRequest) (response *DescribeSubOrganizationsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubOrganizationsRequest()
-    }
-    
-    response = NewDescribeSubOrganizationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubOrganizationsWithContext(context.Background(), request)
 }
 
 // DescribeSubOrganizations
@@ -2933,6 +2893,11 @@ func (c *Client) DescribeSubOrganizationsWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeSubOrganizationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubOrganizations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubOrganizationsResponse()
@@ -2969,13 +2934,7 @@ func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
-    if request == nil {
-        request = NewDescribeUsersRequest()
-    }
-    
-    response = NewDescribeUsersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUsersWithContext(context.Background(), request)
 }
 
 // DescribeUsers
@@ -2993,6 +2952,11 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeUsersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUsersResponse()
@@ -3029,13 +2993,7 @@ func NewDestroyFlowFileResponse() (response *DestroyFlowFileResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DestroyFlowFile(request *DestroyFlowFileRequest) (response *DestroyFlowFileResponse, err error) {
-    if request == nil {
-        request = NewDestroyFlowFileRequest()
-    }
-    
-    response = NewDestroyFlowFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyFlowFileWithContext(context.Background(), request)
 }
 
 // DestroyFlowFile
@@ -3053,6 +3011,11 @@ func (c *Client) DestroyFlowFileWithContext(ctx context.Context, request *Destro
     if request == nil {
         request = NewDestroyFlowFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyFlowFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyFlowFileResponse()
@@ -3094,13 +3057,7 @@ func NewGenerateOrganizationSealResponse() (response *GenerateOrganizationSealRe
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GenerateOrganizationSeal(request *GenerateOrganizationSealRequest) (response *GenerateOrganizationSealResponse, err error) {
-    if request == nil {
-        request = NewGenerateOrganizationSealRequest()
-    }
-    
-    response = NewGenerateOrganizationSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateOrganizationSealWithContext(context.Background(), request)
 }
 
 // GenerateOrganizationSeal
@@ -3123,6 +3080,11 @@ func (c *Client) GenerateOrganizationSealWithContext(ctx context.Context, reques
     if request == nil {
         request = NewGenerateOrganizationSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateOrganizationSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateOrganizationSealResponse()
@@ -3172,13 +3134,7 @@ func NewGenerateUserSealResponse() (response *GenerateUserSealResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GenerateUserSeal(request *GenerateUserSealRequest) (response *GenerateUserSealResponse, err error) {
-    if request == nil {
-        request = NewGenerateUserSealRequest()
-    }
-    
-    response = NewGenerateUserSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.GenerateUserSealWithContext(context.Background(), request)
 }
 
 // GenerateUserSeal
@@ -3209,6 +3165,11 @@ func (c *Client) GenerateUserSealWithContext(ctx context.Context, request *Gener
     if request == nil {
         request = NewGenerateUserSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateUserSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGenerateUserSealResponse()
@@ -3247,13 +3208,7 @@ func NewModifyOrganizationDefaultSealResponse() (response *ModifyOrganizationDef
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyOrganizationDefaultSeal(request *ModifyOrganizationDefaultSealRequest) (response *ModifyOrganizationDefaultSealResponse, err error) {
-    if request == nil {
-        request = NewModifyOrganizationDefaultSealRequest()
-    }
-    
-    response = NewModifyOrganizationDefaultSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyOrganizationDefaultSealWithContext(context.Background(), request)
 }
 
 // ModifyOrganizationDefaultSeal
@@ -3273,6 +3228,11 @@ func (c *Client) ModifyOrganizationDefaultSealWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyOrganizationDefaultSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOrganizationDefaultSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyOrganizationDefaultSealResponse()
@@ -3315,13 +3275,7 @@ func NewModifySealResponse() (response *ModifySealResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifySeal(request *ModifySealRequest) (response *ModifySealResponse, err error) {
-    if request == nil {
-        request = NewModifySealRequest()
-    }
-    
-    response = NewModifySealResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySealWithContext(context.Background(), request)
 }
 
 // ModifySeal
@@ -3345,6 +3299,11 @@ func (c *Client) ModifySealWithContext(ctx context.Context, request *ModifySealR
     if request == nil {
         request = NewModifySealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySealResponse()
@@ -3428,13 +3387,7 @@ func NewModifySubOrganizationInfoResponse() (response *ModifySubOrganizationInfo
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifySubOrganizationInfo(request *ModifySubOrganizationInfoRequest) (response *ModifySubOrganizationInfoResponse, err error) {
-    if request == nil {
-        request = NewModifySubOrganizationInfoRequest()
-    }
-    
-    response = NewModifySubOrganizationInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubOrganizationInfoWithContext(context.Background(), request)
 }
 
 // ModifySubOrganizationInfo
@@ -3499,6 +3452,11 @@ func (c *Client) ModifySubOrganizationInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifySubOrganizationInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubOrganizationInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubOrganizationInfoResponse()
@@ -3584,13 +3542,7 @@ func NewModifyUserResponse() (response *ModifyUserResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
-    if request == nil {
-        request = NewModifyUserRequest()
-    }
-    
-    response = NewModifyUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserWithContext(context.Background(), request)
 }
 
 // ModifyUser
@@ -3657,6 +3609,11 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     if request == nil {
         request = NewModifyUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserResponse()
@@ -3695,13 +3652,7 @@ func NewModifyUserDefaultSealResponse() (response *ModifyUserDefaultSealResponse
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyUserDefaultSeal(request *ModifyUserDefaultSealRequest) (response *ModifyUserDefaultSealResponse, err error) {
-    if request == nil {
-        request = NewModifyUserDefaultSealRequest()
-    }
-    
-    response = NewModifyUserDefaultSealResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUserDefaultSealWithContext(context.Background(), request)
 }
 
 // ModifyUserDefaultSeal
@@ -3721,6 +3672,11 @@ func (c *Client) ModifyUserDefaultSealWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyUserDefaultSealRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserDefaultSeal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUserDefaultSealResponse()
@@ -3802,13 +3758,7 @@ func NewRejectFlowResponse() (response *RejectFlowResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RejectFlow(request *RejectFlowRequest) (response *RejectFlowResponse, err error) {
-    if request == nil {
-        request = NewRejectFlowRequest()
-    }
-    
-    response = NewRejectFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.RejectFlowWithContext(context.Background(), request)
 }
 
 // RejectFlow
@@ -3871,6 +3821,11 @@ func (c *Client) RejectFlowWithContext(ctx context.Context, request *RejectFlowR
     if request == nil {
         request = NewRejectFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RejectFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRejectFlowResponse()
@@ -3908,13 +3863,7 @@ func NewSendFlowResponse() (response *SendFlowResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) SendFlow(request *SendFlowRequest) (response *SendFlowResponse, err error) {
-    if request == nil {
-        request = NewSendFlowRequest()
-    }
-    
-    response = NewSendFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendFlowWithContext(context.Background(), request)
 }
 
 // SendFlow
@@ -3933,6 +3882,11 @@ func (c *Client) SendFlowWithContext(ctx context.Context, request *SendFlowReque
     if request == nil {
         request = NewSendFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendFlowResponse()
@@ -3973,13 +3927,7 @@ func NewSendFlowUrlResponse() (response *SendFlowUrlResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendFlowUrl(request *SendFlowUrlRequest) (response *SendFlowUrlResponse, err error) {
-    if request == nil {
-        request = NewSendFlowUrlRequest()
-    }
-    
-    response = NewSendFlowUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendFlowUrlWithContext(context.Background(), request)
 }
 
 // SendFlowUrl
@@ -4001,6 +3949,11 @@ func (c *Client) SendFlowUrlWithContext(ctx context.Context, request *SendFlowUr
     if request == nil {
         request = NewSendFlowUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendFlowUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendFlowUrlResponse()
@@ -4044,13 +3997,7 @@ func NewSendSignInnerVerifyCodeResponse() (response *SendSignInnerVerifyCodeResp
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendSignInnerVerifyCode(request *SendSignInnerVerifyCodeRequest) (response *SendSignInnerVerifyCodeResponse, err error) {
-    if request == nil {
-        request = NewSendSignInnerVerifyCodeRequest()
-    }
-    
-    response = NewSendSignInnerVerifyCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendSignInnerVerifyCodeWithContext(context.Background(), request)
 }
 
 // SendSignInnerVerifyCode
@@ -4075,6 +4022,11 @@ func (c *Client) SendSignInnerVerifyCodeWithContext(ctx context.Context, request
     if request == nil {
         request = NewSendSignInnerVerifyCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendSignInnerVerifyCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendSignInnerVerifyCodeResponse()
@@ -4110,13 +4062,7 @@ func NewSignFlowResponse() (response *SignFlowResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SignFlow(request *SignFlowRequest) (response *SignFlowResponse, err error) {
-    if request == nil {
-        request = NewSignFlowRequest()
-    }
-    
-    response = NewSignFlowResponse()
-    err = c.Send(request, response)
-    return
+    return c.SignFlowWithContext(context.Background(), request)
 }
 
 // SignFlow
@@ -4133,6 +4079,11 @@ func (c *Client) SignFlowWithContext(ctx context.Context, request *SignFlowReque
     if request == nil {
         request = NewSignFlowRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SignFlow require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSignFlowResponse()
@@ -4168,13 +4119,7 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
-    if request == nil {
-        request = NewUploadFilesRequest()
-    }
-    
-    response = NewUploadFilesResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFilesWithContext(context.Background(), request)
 }
 
 // UploadFiles
@@ -4191,6 +4136,11 @@ func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFile
     if request == nil {
         request = NewUploadFilesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFiles require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFilesResponse()
@@ -4272,13 +4222,7 @@ func NewVerifySubOrganizationResponse() (response *VerifySubOrganizationResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) VerifySubOrganization(request *VerifySubOrganizationRequest) (response *VerifySubOrganizationResponse, err error) {
-    if request == nil {
-        request = NewVerifySubOrganizationRequest()
-    }
-    
-    response = NewVerifySubOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifySubOrganizationWithContext(context.Background(), request)
 }
 
 // VerifySubOrganization
@@ -4341,6 +4285,11 @@ func (c *Client) VerifySubOrganizationWithContext(ctx context.Context, request *
     if request == nil {
         request = NewVerifySubOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifySubOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifySubOrganizationResponse()
@@ -4378,13 +4327,7 @@ func NewVerifyUserResponse() (response *VerifyUserResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) VerifyUser(request *VerifyUserRequest) (response *VerifyUserResponse, err error) {
-    if request == nil {
-        request = NewVerifyUserRequest()
-    }
-    
-    response = NewVerifyUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyUserWithContext(context.Background(), request)
 }
 
 // VerifyUser
@@ -4403,6 +4346,11 @@ func (c *Client) VerifyUserWithContext(ctx context.Context, request *VerifyUserR
     if request == nil {
         request = NewVerifyUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyUserResponse()

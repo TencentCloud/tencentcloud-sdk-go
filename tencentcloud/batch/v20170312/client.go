@@ -16,6 +16,7 @@ package v20170312
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -85,13 +86,7 @@ func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSTANCESNOTALLOWTOATTACH = "UnsupportedOperation.InstancesNotAllowToAttach"
 func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *AttachInstancesResponse, err error) {
-    if request == nil {
-        request = NewAttachInstancesRequest()
-    }
-    
-    response = NewAttachInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AttachInstancesWithContext(context.Background(), request)
 }
 
 // AttachInstances
@@ -121,6 +116,11 @@ func (c *Client) AttachInstancesWithContext(ctx context.Context, request *Attach
     if request == nil {
         request = NewAttachInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AttachInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAttachInstancesResponse()
@@ -172,13 +172,7 @@ func NewCreateComputeEnvResponse() (response *CreateComputeEnvResponse) {
 //  LIMITEXCEEDED_CPUQUOTA = "LimitExceeded.CpuQuota"
 //  UNAUTHORIZEDOPERATION_USERNOTALLOWEDTOUSEBATCH = "UnauthorizedOperation.UserNotAllowedToUseBatch"
 func (c *Client) CreateComputeEnv(request *CreateComputeEnvRequest) (response *CreateComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewCreateComputeEnvRequest()
-    }
-    
-    response = NewCreateComputeEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateComputeEnvWithContext(context.Background(), request)
 }
 
 // CreateComputeEnv
@@ -211,6 +205,11 @@ func (c *Client) CreateComputeEnvWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateComputeEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateComputeEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateComputeEnvResponse()
@@ -252,13 +251,7 @@ func NewCreateCpmComputeEnvResponse() (response *CreateCpmComputeEnvResponse) {
 //  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
 //  UNAUTHORIZEDOPERATION_USERNOTALLOWEDTOUSEBATCH = "UnauthorizedOperation.UserNotAllowedToUseBatch"
 func (c *Client) CreateCpmComputeEnv(request *CreateCpmComputeEnvRequest) (response *CreateCpmComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewCreateCpmComputeEnvRequest()
-    }
-    
-    response = NewCreateCpmComputeEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCpmComputeEnvWithContext(context.Background(), request)
 }
 
 // CreateCpmComputeEnv
@@ -281,6 +274,11 @@ func (c *Client) CreateCpmComputeEnvWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateCpmComputeEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCpmComputeEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCpmComputeEnvResponse()
@@ -328,13 +326,7 @@ func NewCreateTaskTemplateResponse() (response *CreateTaskTemplateResponse) {
 //  INVALIDPARAMETERVALUE_REMOTESTORAGESCHEMETYPE = "InvalidParameterValue.RemoteStorageSchemeType"
 //  LIMITEXCEEDED_TASKTEMPLATEQUOTA = "LimitExceeded.TaskTemplateQuota"
 func (c *Client) CreateTaskTemplate(request *CreateTaskTemplateRequest) (response *CreateTaskTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateTaskTemplateRequest()
-    }
-    
-    response = NewCreateTaskTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTaskTemplateWithContext(context.Background(), request)
 }
 
 // CreateTaskTemplate
@@ -363,6 +355,11 @@ func (c *Client) CreateTaskTemplateWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTaskTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTaskTemplateResponse()
@@ -399,13 +396,7 @@ func NewDeleteComputeEnvResponse() (response *DeleteComputeEnvResponse) {
 //  UNSUPPORTEDOPERATION_COMPUTEENVOPERATION = "UnsupportedOperation.ComputeEnvOperation"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 func (c *Client) DeleteComputeEnv(request *DeleteComputeEnvRequest) (response *DeleteComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewDeleteComputeEnvRequest()
-    }
-    
-    response = NewDeleteComputeEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteComputeEnvWithContext(context.Background(), request)
 }
 
 // DeleteComputeEnv
@@ -423,6 +414,11 @@ func (c *Client) DeleteComputeEnvWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteComputeEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteComputeEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteComputeEnvResponse()
@@ -461,13 +457,7 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobResponse, err error) {
-    if request == nil {
-        request = NewDeleteJobRequest()
-    }
-    
-    response = NewDeleteJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteJobWithContext(context.Background(), request)
 }
 
 // DeleteJob
@@ -487,6 +477,11 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobReq
     if request == nil {
         request = NewDeleteJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteJobResponse()
@@ -519,13 +514,7 @@ func NewDeleteTaskTemplatesResponse() (response *DeleteTaskTemplatesResponse) {
 //  INVALIDPARAMETER_TASKTEMPLATEIDMALFORMED = "InvalidParameter.TaskTemplateIdMalformed"
 //  RESOURCENOTFOUND_TASKTEMPLATE = "ResourceNotFound.TaskTemplate"
 func (c *Client) DeleteTaskTemplates(request *DeleteTaskTemplatesRequest) (response *DeleteTaskTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDeleteTaskTemplatesRequest()
-    }
-    
-    response = NewDeleteTaskTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTaskTemplatesWithContext(context.Background(), request)
 }
 
 // DeleteTaskTemplates
@@ -539,6 +528,11 @@ func (c *Client) DeleteTaskTemplatesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteTaskTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTaskTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTaskTemplatesResponse()
@@ -574,13 +568,7 @@ func NewDescribeAvailableCvmInstanceTypesResponse() (response *DescribeAvailable
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeAvailableCvmInstanceTypes(request *DescribeAvailableCvmInstanceTypesRequest) (response *DescribeAvailableCvmInstanceTypesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAvailableCvmInstanceTypesRequest()
-    }
-    
-    response = NewDescribeAvailableCvmInstanceTypesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAvailableCvmInstanceTypesWithContext(context.Background(), request)
 }
 
 // DescribeAvailableCvmInstanceTypes
@@ -597,6 +585,11 @@ func (c *Client) DescribeAvailableCvmInstanceTypesWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAvailableCvmInstanceTypesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailableCvmInstanceTypes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAvailableCvmInstanceTypesResponse()
@@ -629,13 +622,7 @@ func NewDescribeComputeEnvResponse() (response *DescribeComputeEnvResponse) {
 //  INVALIDPARAMETER_ENVIDMALFORMED = "InvalidParameter.EnvIdMalformed"
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 func (c *Client) DescribeComputeEnv(request *DescribeComputeEnvRequest) (response *DescribeComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewDescribeComputeEnvRequest()
-    }
-    
-    response = NewDescribeComputeEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComputeEnvWithContext(context.Background(), request)
 }
 
 // DescribeComputeEnv
@@ -649,6 +636,11 @@ func (c *Client) DescribeComputeEnvWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeComputeEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComputeEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvResponse()
@@ -683,13 +675,7 @@ func NewDescribeComputeEnvActivitiesResponse() (response *DescribeComputeEnvActi
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeComputeEnvActivities(request *DescribeComputeEnvActivitiesRequest) (response *DescribeComputeEnvActivitiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeComputeEnvActivitiesRequest()
-    }
-    
-    response = NewDescribeComputeEnvActivitiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComputeEnvActivitiesWithContext(context.Background(), request)
 }
 
 // DescribeComputeEnvActivities
@@ -705,6 +691,11 @@ func (c *Client) DescribeComputeEnvActivitiesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeComputeEnvActivitiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComputeEnvActivities require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvActivitiesResponse()
@@ -736,13 +727,7 @@ func NewDescribeComputeEnvCreateInfoResponse() (response *DescribeComputeEnvCrea
 //  INVALIDPARAMETER_ENVIDMALFORMED = "InvalidParameter.EnvIdMalformed"
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 func (c *Client) DescribeComputeEnvCreateInfo(request *DescribeComputeEnvCreateInfoRequest) (response *DescribeComputeEnvCreateInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeComputeEnvCreateInfoRequest()
-    }
-    
-    response = NewDescribeComputeEnvCreateInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComputeEnvCreateInfoWithContext(context.Background(), request)
 }
 
 // DescribeComputeEnvCreateInfo
@@ -755,6 +740,11 @@ func (c *Client) DescribeComputeEnvCreateInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeComputeEnvCreateInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComputeEnvCreateInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvCreateInfoResponse()
@@ -789,13 +779,7 @@ func NewDescribeComputeEnvCreateInfosResponse() (response *DescribeComputeEnvCre
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeComputeEnvCreateInfos(request *DescribeComputeEnvCreateInfosRequest) (response *DescribeComputeEnvCreateInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeComputeEnvCreateInfosRequest()
-    }
-    
-    response = NewDescribeComputeEnvCreateInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComputeEnvCreateInfosWithContext(context.Background(), request)
 }
 
 // DescribeComputeEnvCreateInfos
@@ -811,6 +795,11 @@ func (c *Client) DescribeComputeEnvCreateInfosWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeComputeEnvCreateInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComputeEnvCreateInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvCreateInfosResponse()
@@ -848,13 +837,7 @@ func NewDescribeComputeEnvsResponse() (response *DescribeComputeEnvsResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeComputeEnvs(request *DescribeComputeEnvsRequest) (response *DescribeComputeEnvsResponse, err error) {
-    if request == nil {
-        request = NewDescribeComputeEnvsRequest()
-    }
-    
-    response = NewDescribeComputeEnvsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComputeEnvsWithContext(context.Background(), request)
 }
 
 // DescribeComputeEnvs
@@ -873,6 +856,11 @@ func (c *Client) DescribeComputeEnvsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeComputeEnvsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComputeEnvs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvsResponse()
@@ -905,13 +893,7 @@ func NewDescribeCpmOsInfoResponse() (response *DescribeCpmOsInfoResponse) {
 //  INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
 //  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
 func (c *Client) DescribeCpmOsInfo(request *DescribeCpmOsInfoRequest) (response *DescribeCpmOsInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeCpmOsInfoRequest()
-    }
-    
-    response = NewDescribeCpmOsInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCpmOsInfoWithContext(context.Background(), request)
 }
 
 // DescribeCpmOsInfo
@@ -925,6 +907,11 @@ func (c *Client) DescribeCpmOsInfoWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeCpmOsInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCpmOsInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCpmOsInfoResponse()
@@ -961,13 +948,7 @@ func NewDescribeCvmZoneInstanceConfigInfosResponse() (response *DescribeCvmZoneI
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDBATCHINSTANCECHARGETYPE = "InvalidParameterValue.UnsupportedBatchInstanceChargeType"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInstanceConfigInfosRequest) (response *DescribeCvmZoneInstanceConfigInfosResponse, err error) {
-    if request == nil {
-        request = NewDescribeCvmZoneInstanceConfigInfosRequest()
-    }
-    
-    response = NewDescribeCvmZoneInstanceConfigInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCvmZoneInstanceConfigInfosWithContext(context.Background(), request)
 }
 
 // DescribeCvmZoneInstanceConfigInfos
@@ -985,6 +966,11 @@ func (c *Client) DescribeCvmZoneInstanceConfigInfosWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeCvmZoneInstanceConfigInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCvmZoneInstanceConfigInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCvmZoneInstanceConfigInfosResponse()
@@ -1016,13 +1002,7 @@ func NewDescribeInstanceCategoriesResponse() (response *DescribeInstanceCategori
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInstanceCategories(request *DescribeInstanceCategoriesRequest) (response *DescribeInstanceCategoriesResponse, err error) {
-    if request == nil {
-        request = NewDescribeInstanceCategoriesRequest()
-    }
-    
-    response = NewDescribeInstanceCategoriesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeInstanceCategoriesWithContext(context.Background(), request)
 }
 
 // DescribeInstanceCategories
@@ -1035,6 +1015,11 @@ func (c *Client) DescribeInstanceCategoriesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeInstanceCategoriesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceCategories require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeInstanceCategoriesResponse()
@@ -1067,13 +1052,7 @@ func NewDescribeJobResponse() (response *DescribeJobResponse) {
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 func (c *Client) DescribeJob(request *DescribeJobRequest) (response *DescribeJobResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobRequest()
-    }
-    
-    response = NewDescribeJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobWithContext(context.Background(), request)
 }
 
 // DescribeJob
@@ -1087,6 +1066,11 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, request *DescribeJo
     if request == nil {
         request = NewDescribeJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobResponse()
@@ -1119,13 +1103,7 @@ func NewDescribeJobSubmitInfoResponse() (response *DescribeJobSubmitInfoResponse
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 func (c *Client) DescribeJobSubmitInfo(request *DescribeJobSubmitInfoRequest) (response *DescribeJobSubmitInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobSubmitInfoRequest()
-    }
-    
-    response = NewDescribeJobSubmitInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobSubmitInfoWithContext(context.Background(), request)
 }
 
 // DescribeJobSubmitInfo
@@ -1139,6 +1117,11 @@ func (c *Client) DescribeJobSubmitInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeJobSubmitInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobSubmitInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobSubmitInfoResponse()
@@ -1175,13 +1158,7 @@ func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
-    if request == nil {
-        request = NewDescribeJobsRequest()
-    }
-    
-    response = NewDescribeJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeJobsWithContext(context.Background(), request)
 }
 
 // DescribeJobs
@@ -1199,6 +1176,11 @@ func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJ
     if request == nil {
         request = NewDescribeJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeJobsResponse()
@@ -1231,13 +1213,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
 //  RESOURCENOTFOUND_TASK = "ResourceNotFound.Task"
 func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskRequest()
-    }
-    
-    response = NewDescribeTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskWithContext(context.Background(), request)
 }
 
 // DescribeTask
@@ -1251,6 +1227,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
     if request == nil {
         request = NewDescribeTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResponse()
@@ -1290,13 +1271,7 @@ func NewDescribeTaskLogsResponse() (response *DescribeTaskLogsResponse) {
 //  RESOURCENOTFOUND_TASKINSTANCE = "ResourceNotFound.TaskInstance"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTaskLogs(request *DescribeTaskLogsRequest) (response *DescribeTaskLogsResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskLogsRequest()
-    }
-    
-    response = NewDescribeTaskLogsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskLogsWithContext(context.Background(), request)
 }
 
 // DescribeTaskLogs
@@ -1317,6 +1292,11 @@ func (c *Client) DescribeTaskLogsWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeTaskLogsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskLogs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskLogsResponse()
@@ -1351,13 +1331,7 @@ func NewDescribeTaskTemplatesResponse() (response *DescribeTaskTemplatesResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTaskTemplates(request *DescribeTaskTemplatesRequest) (response *DescribeTaskTemplatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskTemplatesRequest()
-    }
-    
-    response = NewDescribeTaskTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeTaskTemplates
@@ -1373,6 +1347,11 @@ func (c *Client) DescribeTaskTemplatesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeTaskTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskTemplatesResponse()
@@ -1409,13 +1388,7 @@ func NewDetachInstancesResponse() (response *DetachInstancesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DetachInstances(request *DetachInstancesRequest) (response *DetachInstancesResponse, err error) {
-    if request == nil {
-        request = NewDetachInstancesRequest()
-    }
-    
-    response = NewDetachInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetachInstancesWithContext(context.Background(), request)
 }
 
 // DetachInstances
@@ -1433,6 +1406,11 @@ func (c *Client) DetachInstancesWithContext(ctx context.Context, request *Detach
     if request == nil {
         request = NewDetachInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetachInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetachInstancesResponse()
@@ -1478,13 +1456,7 @@ func NewModifyComputeEnvResponse() (response *ModifyComputeEnvResponse) {
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 //  UNSUPPORTEDOPERATION_NOTENOUGHCOMPUTENODESTOTERMINATE = "UnsupportedOperation.NotEnoughComputeNodesToTerminate"
 func (c *Client) ModifyComputeEnv(request *ModifyComputeEnvRequest) (response *ModifyComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewModifyComputeEnvRequest()
-    }
-    
-    response = NewModifyComputeEnvResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyComputeEnvWithContext(context.Background(), request)
 }
 
 // ModifyComputeEnv
@@ -1511,6 +1483,11 @@ func (c *Client) ModifyComputeEnvWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyComputeEnvRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyComputeEnv require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyComputeEnvResponse()
@@ -1559,13 +1536,7 @@ func NewModifyTaskTemplateResponse() (response *ModifyTaskTemplateResponse) {
 //  INVALIDPARAMETERVALUE_REMOTESTORAGESCHEMETYPE = "InvalidParameterValue.RemoteStorageSchemeType"
 //  RESOURCENOTFOUND_TASKTEMPLATE = "ResourceNotFound.TaskTemplate"
 func (c *Client) ModifyTaskTemplate(request *ModifyTaskTemplateRequest) (response *ModifyTaskTemplateResponse, err error) {
-    if request == nil {
-        request = NewModifyTaskTemplateRequest()
-    }
-    
-    response = NewModifyTaskTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTaskTemplateWithContext(context.Background(), request)
 }
 
 // ModifyTaskTemplate
@@ -1595,6 +1566,11 @@ func (c *Client) ModifyTaskTemplateWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyTaskTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTaskTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTaskTemplateResponse()
@@ -1630,13 +1606,7 @@ func NewRetryJobsResponse() (response *RetryJobsResponse) {
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RetryJobs(request *RetryJobsRequest) (response *RetryJobsResponse, err error) {
-    if request == nil {
-        request = NewRetryJobsRequest()
-    }
-    
-    response = NewRetryJobsResponse()
-    err = c.Send(request, response)
-    return
+    return c.RetryJobsWithContext(context.Background(), request)
 }
 
 // RetryJobs
@@ -1653,6 +1623,11 @@ func (c *Client) RetryJobsWithContext(ctx context.Context, request *RetryJobsReq
     if request == nil {
         request = NewRetryJobsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryJobs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRetryJobsResponse()
@@ -1712,13 +1687,7 @@ func NewSubmitJobResponse() (response *SubmitJobResponse) {
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 //  UNAUTHORIZEDOPERATION_USERNOTALLOWEDTOUSEBATCH = "UnauthorizedOperation.UserNotAllowedToUseBatch"
 func (c *Client) SubmitJob(request *SubmitJobRequest) (response *SubmitJobResponse, err error) {
-    if request == nil {
-        request = NewSubmitJobRequest()
-    }
-    
-    response = NewSubmitJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.SubmitJobWithContext(context.Background(), request)
 }
 
 // SubmitJob
@@ -1759,6 +1728,11 @@ func (c *Client) SubmitJobWithContext(ctx context.Context, request *SubmitJobReq
     if request == nil {
         request = NewSubmitJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSubmitJobResponse()
@@ -1799,13 +1773,7 @@ func NewTerminateComputeNodeResponse() (response *TerminateComputeNodeResponse) 
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 //  UNSUPPORTEDOPERATION_COMPUTENODEISTERMINATING = "UnsupportedOperation.ComputeNodeIsTerminating"
 func (c *Client) TerminateComputeNode(request *TerminateComputeNodeRequest) (response *TerminateComputeNodeResponse, err error) {
-    if request == nil {
-        request = NewTerminateComputeNodeRequest()
-    }
-    
-    response = NewTerminateComputeNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateComputeNodeWithContext(context.Background(), request)
 }
 
 // TerminateComputeNode
@@ -1827,6 +1795,11 @@ func (c *Client) TerminateComputeNodeWithContext(ctx context.Context, request *T
     if request == nil {
         request = NewTerminateComputeNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateComputeNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateComputeNodeResponse()
@@ -1863,13 +1836,7 @@ func NewTerminateComputeNodesResponse() (response *TerminateComputeNodesResponse
 //  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 func (c *Client) TerminateComputeNodes(request *TerminateComputeNodesRequest) (response *TerminateComputeNodesResponse, err error) {
-    if request == nil {
-        request = NewTerminateComputeNodesRequest()
-    }
-    
-    response = NewTerminateComputeNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateComputeNodesWithContext(context.Background(), request)
 }
 
 // TerminateComputeNodes
@@ -1887,6 +1854,11 @@ func (c *Client) TerminateComputeNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTerminateComputeNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateComputeNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateComputeNodesResponse()
@@ -1926,13 +1898,7 @@ func NewTerminateJobResponse() (response *TerminateJobResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_TERMINATEOPERATIONWITHENVID = "UnsupportedOperation.TerminateOperationWithEnvId"
 func (c *Client) TerminateJob(request *TerminateJobRequest) (response *TerminateJobResponse, err error) {
-    if request == nil {
-        request = NewTerminateJobRequest()
-    }
-    
-    response = NewTerminateJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateJobWithContext(context.Background(), request)
 }
 
 // TerminateJob
@@ -1953,6 +1919,11 @@ func (c *Client) TerminateJobWithContext(ctx context.Context, request *Terminate
     if request == nil {
         request = NewTerminateJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateJobResponse()
@@ -1994,13 +1965,7 @@ func NewTerminateTaskInstanceResponse() (response *TerminateTaskInstanceResponse
 //  RESOURCENOTFOUND_TASKINSTANCE = "ResourceNotFound.TaskInstance"
 //  UNSUPPORTEDOPERATION_TERMINATEOPERATIONWITHENVID = "UnsupportedOperation.TerminateOperationWithEnvId"
 func (c *Client) TerminateTaskInstance(request *TerminateTaskInstanceRequest) (response *TerminateTaskInstanceResponse, err error) {
-    if request == nil {
-        request = NewTerminateTaskInstanceRequest()
-    }
-    
-    response = NewTerminateTaskInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateTaskInstanceWithContext(context.Background(), request)
 }
 
 // TerminateTaskInstance
@@ -2023,6 +1988,11 @@ func (c *Client) TerminateTaskInstanceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewTerminateTaskInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateTaskInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateTaskInstanceResponse()

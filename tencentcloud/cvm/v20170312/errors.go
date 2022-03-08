@@ -65,6 +65,9 @@ const (
 	// 促销期内购买的实例不允许调整配置或计费模式。
 	FAILEDOPERATION_PROMOTIONALPERIORESTRICTION = "FailedOperation.PromotionalPerioRestriction"
 
+	// 暂无法在此国家/地区提供该服务。
+	FAILEDOPERATION_PROMOTIONALREGIONRESTRICTION = "FailedOperation.PromotionalRegionRestriction"
+
 	// 镜像共享失败。
 	FAILEDOPERATION_QIMAGESHAREFAILED = "FailedOperation.QImageShareFailed"
 

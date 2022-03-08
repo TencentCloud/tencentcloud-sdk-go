@@ -16,6 +16,7 @@ package v20200226
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -114,13 +115,7 @@ func NewDescribeAntiFraudResponse() (response *DescribeAntiFraudResponse) {
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAntiFraud(request *DescribeAntiFraudRequest) (response *DescribeAntiFraudResponse, err error) {
-    if request == nil {
-        request = NewDescribeAntiFraudRequest()
-    }
-    
-    response = NewDescribeAntiFraudResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAntiFraudWithContext(context.Background(), request)
 }
 
 // DescribeAntiFraud
@@ -179,6 +174,11 @@ func (c *Client) DescribeAntiFraudWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAntiFraudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAntiFraud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAntiFraudResponse()
@@ -252,13 +252,7 @@ func NewGetAntiFraudResponse() (response *GetAntiFraudResponse) {
 //  UNKNOWNPARAMETER_SECRETIDNOTEXISTS = "UnknownParameter.SecretIdNotExists"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetAntiFraud(request *GetAntiFraudRequest) (response *GetAntiFraudResponse, err error) {
-    if request == nil {
-        request = NewGetAntiFraudRequest()
-    }
-    
-    response = NewGetAntiFraudResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAntiFraudWithContext(context.Background(), request)
 }
 
 // GetAntiFraud
@@ -313,6 +307,11 @@ func (c *Client) GetAntiFraudWithContext(ctx context.Context, request *GetAntiFr
     if request == nil {
         request = NewGetAntiFraudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAntiFraud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAntiFraudResponse()
@@ -365,13 +364,7 @@ func NewQueryAntiFraudResponse() (response *QueryAntiFraudResponse) {
 //  RESOURCEUNAVAILABLE_PERMISSIONDENIED = "ResourceUnavailable.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) QueryAntiFraud(request *QueryAntiFraudRequest) (response *QueryAntiFraudResponse, err error) {
-    if request == nil {
-        request = NewQueryAntiFraudRequest()
-    }
-    
-    response = NewQueryAntiFraudResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAntiFraudWithContext(context.Background(), request)
 }
 
 // QueryAntiFraud
@@ -405,6 +398,11 @@ func (c *Client) QueryAntiFraudWithContext(ctx context.Context, request *QueryAn
     if request == nil {
         request = NewQueryAntiFraudRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAntiFraud require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAntiFraudResponse()

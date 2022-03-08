@@ -16,6 +16,7 @@ package v20180625
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewBindEipAclsResponse() (response *BindEipAclsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindEipAcls(request *BindEipAclsRequest) (response *BindEipAclsResponse, err error) {
-    if request == nil {
-        request = NewBindEipAclsRequest()
-    }
-    
-    response = NewBindEipAclsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindEipAclsWithContext(context.Background(), request)
 }
 
 // BindEipAcls
@@ -85,6 +80,11 @@ func (c *Client) BindEipAclsWithContext(ctx context.Context, request *BindEipAcl
     if request == nil {
         request = NewBindEipAclsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindEipAcls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindEipAclsResponse()
@@ -117,13 +117,7 @@ func NewBindHostedResponse() (response *BindHostedResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindHosted(request *BindHostedRequest) (response *BindHostedResponse, err error) {
-    if request == nil {
-        request = NewBindHostedRequest()
-    }
-    
-    response = NewBindHostedResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindHostedWithContext(context.Background(), request)
 }
 
 // BindHosted
@@ -137,6 +131,11 @@ func (c *Client) BindHostedWithContext(ctx context.Context, request *BindHostedR
     if request == nil {
         request = NewBindHostedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindHosted require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindHostedResponse()
@@ -167,13 +166,7 @@ func NewBindRsResponse() (response *BindRsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindRs(request *BindRsRequest) (response *BindRsResponse, err error) {
-    if request == nil {
-        request = NewBindRsRequest()
-    }
-    
-    response = NewBindRsResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindRsWithContext(context.Background(), request)
 }
 
 // BindRs
@@ -185,6 +178,11 @@ func (c *Client) BindRsWithContext(ctx context.Context, request *BindRsRequest) 
     if request == nil {
         request = NewBindRsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindRs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindRsResponse()
@@ -215,13 +213,7 @@ func NewBindVpcIpResponse() (response *BindVpcIpResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) BindVpcIp(request *BindVpcIpRequest) (response *BindVpcIpResponse, err error) {
-    if request == nil {
-        request = NewBindVpcIpRequest()
-    }
-    
-    response = NewBindVpcIpResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindVpcIpWithContext(context.Background(), request)
 }
 
 // BindVpcIp
@@ -233,6 +225,11 @@ func (c *Client) BindVpcIpWithContext(ctx context.Context, request *BindVpcIpReq
     if request == nil {
         request = NewBindVpcIpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindVpcIp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindVpcIpResponse()
@@ -264,13 +261,7 @@ func NewCreateEipResponse() (response *CreateEipResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEip(request *CreateEipRequest) (response *CreateEipResponse, err error) {
-    if request == nil {
-        request = NewCreateEipRequest()
-    }
-    
-    response = NewCreateEipResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEipWithContext(context.Background(), request)
 }
 
 // CreateEip
@@ -283,6 +274,11 @@ func (c *Client) CreateEipWithContext(ctx context.Context, request *CreateEipReq
     if request == nil {
         request = NewCreateEipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEipResponse()
@@ -314,13 +310,7 @@ func NewCreateEipAclResponse() (response *CreateEipAclResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEipAcl(request *CreateEipAclRequest) (response *CreateEipAclResponse, err error) {
-    if request == nil {
-        request = NewCreateEipAclRequest()
-    }
-    
-    response = NewCreateEipAclResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEipAclWithContext(context.Background(), request)
 }
 
 // CreateEipAcl
@@ -333,6 +323,11 @@ func (c *Client) CreateEipAclWithContext(ctx context.Context, request *CreateEip
     if request == nil {
         request = NewCreateEipAclRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEipAcl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEipAclResponse()
@@ -365,13 +360,7 @@ func NewDeleteEipResponse() (response *DeleteEipResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteEip(request *DeleteEipRequest) (response *DeleteEipResponse, err error) {
-    if request == nil {
-        request = NewDeleteEipRequest()
-    }
-    
-    response = NewDeleteEipResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEipWithContext(context.Background(), request)
 }
 
 // DeleteEip
@@ -385,6 +374,11 @@ func (c *Client) DeleteEipWithContext(ctx context.Context, request *DeleteEipReq
     if request == nil {
         request = NewDeleteEipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEip require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEipResponse()
@@ -416,13 +410,7 @@ func NewDeleteEipAclResponse() (response *DeleteEipAclResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteEipAcl(request *DeleteEipAclRequest) (response *DeleteEipAclResponse, err error) {
-    if request == nil {
-        request = NewDeleteEipAclRequest()
-    }
-    
-    response = NewDeleteEipAclResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEipAclWithContext(context.Background(), request)
 }
 
 // DeleteEipAcl
@@ -435,6 +423,11 @@ func (c *Client) DeleteEipAclWithContext(ctx context.Context, request *DeleteEip
     if request == nil {
         request = NewDeleteEipAclRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEipAcl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEipAclResponse()
@@ -466,13 +459,7 @@ func NewDescribeEipAclsResponse() (response *DescribeEipAclsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEipAcls(request *DescribeEipAclsRequest) (response *DescribeEipAclsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEipAclsRequest()
-    }
-    
-    response = NewDescribeEipAclsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEipAclsWithContext(context.Background(), request)
 }
 
 // DescribeEipAcls
@@ -485,6 +472,11 @@ func (c *Client) DescribeEipAclsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeEipAclsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEipAcls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEipAclsResponse()
@@ -515,13 +507,7 @@ func NewDescribeEipQuotaResponse() (response *DescribeEipQuotaResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipQuota(request *DescribeEipQuotaRequest) (response *DescribeEipQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeEipQuotaRequest()
-    }
-    
-    response = NewDescribeEipQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEipQuotaWithContext(context.Background(), request)
 }
 
 // DescribeEipQuota
@@ -533,6 +519,11 @@ func (c *Client) DescribeEipQuotaWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeEipQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEipQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEipQuotaResponse()
@@ -563,13 +554,7 @@ func NewDescribeEipTaskResponse() (response *DescribeEipTaskResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEipTask(request *DescribeEipTaskRequest) (response *DescribeEipTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeEipTaskRequest()
-    }
-    
-    response = NewDescribeEipTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEipTaskWithContext(context.Background(), request)
 }
 
 // DescribeEipTask
@@ -581,6 +566,11 @@ func (c *Client) DescribeEipTaskWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeEipTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEipTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEipTaskResponse()
@@ -611,13 +601,7 @@ func NewDescribeEipsResponse() (response *DescribeEipsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEips(request *DescribeEipsRequest) (response *DescribeEipsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEipsRequest()
-    }
-    
-    response = NewDescribeEipsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEipsWithContext(context.Background(), request)
 }
 
 // DescribeEips
@@ -629,6 +613,11 @@ func (c *Client) DescribeEipsWithContext(ctx context.Context, request *DescribeE
     if request == nil {
         request = NewDescribeEipsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEips require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEipsResponse()
@@ -660,13 +649,7 @@ func NewModifyEipAclResponse() (response *ModifyEipAclResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipAcl(request *ModifyEipAclRequest) (response *ModifyEipAclResponse, err error) {
-    if request == nil {
-        request = NewModifyEipAclRequest()
-    }
-    
-    response = NewModifyEipAclResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEipAclWithContext(context.Background(), request)
 }
 
 // ModifyEipAcl
@@ -679,6 +662,11 @@ func (c *Client) ModifyEipAclWithContext(ctx context.Context, request *ModifyEip
     if request == nil {
         request = NewModifyEipAclRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEipAcl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEipAclResponse()
@@ -710,13 +698,7 @@ func NewModifyEipChargeResponse() (response *ModifyEipChargeResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipCharge(request *ModifyEipChargeRequest) (response *ModifyEipChargeResponse, err error) {
-    if request == nil {
-        request = NewModifyEipChargeRequest()
-    }
-    
-    response = NewModifyEipChargeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEipChargeWithContext(context.Background(), request)
 }
 
 // ModifyEipCharge
@@ -729,6 +711,11 @@ func (c *Client) ModifyEipChargeWithContext(ctx context.Context, request *Modify
     if request == nil {
         request = NewModifyEipChargeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEipCharge require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEipChargeResponse()
@@ -760,13 +747,7 @@ func NewModifyEipNameResponse() (response *ModifyEipNameResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyEipName(request *ModifyEipNameRequest) (response *ModifyEipNameResponse, err error) {
-    if request == nil {
-        request = NewModifyEipNameRequest()
-    }
-    
-    response = NewModifyEipNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEipNameWithContext(context.Background(), request)
 }
 
 // ModifyEipName
@@ -779,6 +760,11 @@ func (c *Client) ModifyEipNameWithContext(ctx context.Context, request *ModifyEi
     if request == nil {
         request = NewModifyEipNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEipName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEipNameResponse()
@@ -811,13 +797,7 @@ func NewUnbindEipAclsResponse() (response *UnbindEipAclsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindEipAcls(request *UnbindEipAclsRequest) (response *UnbindEipAclsResponse, err error) {
-    if request == nil {
-        request = NewUnbindEipAclsRequest()
-    }
-    
-    response = NewUnbindEipAclsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindEipAclsWithContext(context.Background(), request)
 }
 
 // UnbindEipAcls
@@ -831,6 +811,11 @@ func (c *Client) UnbindEipAclsWithContext(ctx context.Context, request *UnbindEi
     if request == nil {
         request = NewUnbindEipAclsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindEipAcls require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindEipAclsResponse()
@@ -863,13 +848,7 @@ func NewUnbindHostedResponse() (response *UnbindHostedResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindHosted(request *UnbindHostedRequest) (response *UnbindHostedResponse, err error) {
-    if request == nil {
-        request = NewUnbindHostedRequest()
-    }
-    
-    response = NewUnbindHostedResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindHostedWithContext(context.Background(), request)
 }
 
 // UnbindHosted
@@ -883,6 +862,11 @@ func (c *Client) UnbindHostedWithContext(ctx context.Context, request *UnbindHos
     if request == nil {
         request = NewUnbindHostedRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindHosted require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindHostedResponse()
@@ -913,13 +897,7 @@ func NewUnbindRsResponse() (response *UnbindRsResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindRs(request *UnbindRsRequest) (response *UnbindRsResponse, err error) {
-    if request == nil {
-        request = NewUnbindRsRequest()
-    }
-    
-    response = NewUnbindRsResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindRsWithContext(context.Background(), request)
 }
 
 // UnbindRs
@@ -931,6 +909,11 @@ func (c *Client) UnbindRsWithContext(ctx context.Context, request *UnbindRsReque
     if request == nil {
         request = NewUnbindRsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindRs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindRsResponse()
@@ -962,13 +945,7 @@ func NewUnbindRsListResponse() (response *UnbindRsListResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnbindRsList(request *UnbindRsListRequest) (response *UnbindRsListResponse, err error) {
-    if request == nil {
-        request = NewUnbindRsListRequest()
-    }
-    
-    response = NewUnbindRsListResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindRsListWithContext(context.Background(), request)
 }
 
 // UnbindRsList
@@ -981,6 +958,11 @@ func (c *Client) UnbindRsListWithContext(ctx context.Context, request *UnbindRsL
     if request == nil {
         request = NewUnbindRsListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindRsList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindRsListResponse()
@@ -1011,13 +993,7 @@ func NewUnbindVpcIpResponse() (response *UnbindVpcIpResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UnbindVpcIp(request *UnbindVpcIpRequest) (response *UnbindVpcIpResponse, err error) {
-    if request == nil {
-        request = NewUnbindVpcIpRequest()
-    }
-    
-    response = NewUnbindVpcIpResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindVpcIpWithContext(context.Background(), request)
 }
 
 // UnbindVpcIp
@@ -1029,6 +1005,11 @@ func (c *Client) UnbindVpcIpWithContext(ctx context.Context, request *UnbindVpcI
     if request == nil {
         request = NewUnbindVpcIpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindVpcIp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindVpcIpResponse()

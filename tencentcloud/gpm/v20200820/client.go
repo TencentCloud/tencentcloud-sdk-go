@@ -16,6 +16,7 @@ package v20200820
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewCancelMatchingResponse() (response *CancelMatchingResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) CancelMatching(request *CancelMatchingRequest) (response *CancelMatchingResponse, err error) {
-    if request == nil {
-        request = NewCancelMatchingRequest()
-    }
-    
-    response = NewCancelMatchingResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelMatchingWithContext(context.Background(), request)
 }
 
 // CancelMatching
@@ -119,6 +114,11 @@ func (c *Client) CancelMatchingWithContext(ctx context.Context, request *CancelM
     if request == nil {
         request = NewCancelMatchingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelMatching require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelMatchingResponse()
@@ -178,13 +178,7 @@ func NewCreateMatchResponse() (response *CreateMatchResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) CreateMatch(request *CreateMatchRequest) (response *CreateMatchResponse, err error) {
-    if request == nil {
-        request = NewCreateMatchRequest()
-    }
-    
-    response = NewCreateMatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMatchWithContext(context.Background(), request)
 }
 
 // CreateMatch
@@ -225,6 +219,11 @@ func (c *Client) CreateMatchWithContext(ctx context.Context, request *CreateMatc
     if request == nil {
         request = NewCreateMatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMatchResponse()
@@ -282,13 +281,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateRuleRequest()
-    }
-    
-    response = NewCreateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRuleWithContext(context.Background(), request)
 }
 
 // CreateRule
@@ -327,6 +320,11 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRuleResponse()
@@ -383,13 +381,7 @@ func NewDeleteMatchResponse() (response *DeleteMatchResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DeleteMatch(request *DeleteMatchRequest) (response *DeleteMatchResponse, err error) {
-    if request == nil {
-        request = NewDeleteMatchRequest()
-    }
-    
-    response = NewDeleteMatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteMatchWithContext(context.Background(), request)
 }
 
 // DeleteMatch
@@ -427,6 +419,11 @@ func (c *Client) DeleteMatchWithContext(ctx context.Context, request *DeleteMatc
     if request == nil {
         request = NewDeleteMatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteMatchResponse()
@@ -482,13 +479,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteRuleRequest()
-    }
-    
-    response = NewDeleteRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRuleWithContext(context.Background(), request)
 }
 
 // DeleteRule
@@ -525,6 +516,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRuleResponse()
@@ -580,13 +576,7 @@ func NewDescribeDataResponse() (response *DescribeDataResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeData(request *DescribeDataRequest) (response *DescribeDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeDataRequest()
-    }
-    
-    response = NewDescribeDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDataWithContext(context.Background(), request)
 }
 
 // DescribeData
@@ -623,6 +613,11 @@ func (c *Client) DescribeDataWithContext(ctx context.Context, request *DescribeD
     if request == nil {
         request = NewDescribeDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDataResponse()
@@ -676,13 +671,7 @@ func NewDescribeMatchResponse() (response *DescribeMatchResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeMatch(request *DescribeMatchRequest) (response *DescribeMatchResponse, err error) {
-    if request == nil {
-        request = NewDescribeMatchRequest()
-    }
-    
-    response = NewDescribeMatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMatchWithContext(context.Background(), request)
 }
 
 // DescribeMatch
@@ -717,6 +706,11 @@ func (c *Client) DescribeMatchWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeMatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMatchResponse()
@@ -769,13 +763,7 @@ func NewDescribeMatchCodesResponse() (response *DescribeMatchCodesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeMatchCodes(request *DescribeMatchCodesRequest) (response *DescribeMatchCodesResponse, err error) {
-    if request == nil {
-        request = NewDescribeMatchCodesRequest()
-    }
-    
-    response = NewDescribeMatchCodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMatchCodesWithContext(context.Background(), request)
 }
 
 // DescribeMatchCodes
@@ -809,6 +797,11 @@ func (c *Client) DescribeMatchCodesWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeMatchCodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMatchCodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMatchCodesResponse()
@@ -865,13 +858,7 @@ func NewDescribeMatchesResponse() (response *DescribeMatchesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeMatches(request *DescribeMatchesRequest) (response *DescribeMatchesResponse, err error) {
-    if request == nil {
-        request = NewDescribeMatchesRequest()
-    }
-    
-    response = NewDescribeMatchesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMatchesWithContext(context.Background(), request)
 }
 
 // DescribeMatches
@@ -909,6 +896,11 @@ func (c *Client) DescribeMatchesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeMatchesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMatches require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMatchesResponse()
@@ -955,13 +947,7 @@ func NewDescribeMatchingProgressResponse() (response *DescribeMatchingProgressRe
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACTION = "UnauthorizedOperation.UnauthorizedAction"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeMatchingProgress(request *DescribeMatchingProgressRequest) (response *DescribeMatchingProgressResponse, err error) {
-    if request == nil {
-        request = NewDescribeMatchingProgressRequest()
-    }
-    
-    response = NewDescribeMatchingProgressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMatchingProgressWithContext(context.Background(), request)
 }
 
 // DescribeMatchingProgress
@@ -989,6 +975,11 @@ func (c *Client) DescribeMatchingProgressWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeMatchingProgressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMatchingProgress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMatchingProgressResponse()
@@ -1041,13 +1032,7 @@ func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeRule(request *DescribeRuleRequest) (response *DescribeRuleResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleRequest()
-    }
-    
-    response = NewDescribeRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRuleWithContext(context.Background(), request)
 }
 
 // DescribeRule
@@ -1081,6 +1066,11 @@ func (c *Client) DescribeRuleWithContext(ctx context.Context, request *DescribeR
     if request == nil {
         request = NewDescribeRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRuleResponse()
@@ -1135,13 +1125,7 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRulesRequest()
-    }
-    
-    response = NewDescribeRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRulesWithContext(context.Background(), request)
 }
 
 // DescribeRules
@@ -1177,6 +1161,11 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRulesResponse()
@@ -1210,13 +1199,7 @@ func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
 //  INVALIDPARAMETERVALUE_MATCHCODENOTFOUND = "InvalidParameterValue.MatchCodeNotFound"
 //  INVALIDPARAMETERVALUE_MATCHNOTFOUND = "InvalidParameterValue.MatchNotFound"
 func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *DescribeTokenResponse, err error) {
-    if request == nil {
-        request = NewDescribeTokenRequest()
-    }
-    
-    response = NewDescribeTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTokenWithContext(context.Background(), request)
 }
 
 // DescribeToken
@@ -1231,6 +1214,11 @@ func (c *Client) DescribeTokenWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTokenResponse()
@@ -1289,13 +1277,7 @@ func NewModifyMatchResponse() (response *ModifyMatchResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) ModifyMatch(request *ModifyMatchRequest) (response *ModifyMatchResponse, err error) {
-    if request == nil {
-        request = NewModifyMatchRequest()
-    }
-    
-    response = NewModifyMatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMatchWithContext(context.Background(), request)
 }
 
 // ModifyMatch
@@ -1335,6 +1317,11 @@ func (c *Client) ModifyMatchWithContext(ctx context.Context, request *ModifyMatc
     if request == nil {
         request = NewModifyMatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMatchResponse()
@@ -1389,13 +1376,7 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyRuleRequest()
-    }
-    
-    response = NewModifyRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRuleWithContext(context.Background(), request)
 }
 
 // ModifyRule
@@ -1431,6 +1412,11 @@ func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleR
     if request == nil {
         request = NewModifyRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRuleResponse()
@@ -1464,13 +1450,7 @@ func NewModifyTokenResponse() (response *ModifyTokenResponse) {
 //  INVALIDPARAMETERVALUE_TOKENLIMIT = "InvalidParameterValue.TokenLimit"
 //  LIMITEXCEEDED_TOKENUPDATEEXCEED = "LimitExceeded.TokenUpdateExceed"
 func (c *Client) ModifyToken(request *ModifyTokenRequest) (response *ModifyTokenResponse, err error) {
-    if request == nil {
-        request = NewModifyTokenRequest()
-    }
-    
-    response = NewModifyTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTokenWithContext(context.Background(), request)
 }
 
 // ModifyToken
@@ -1485,6 +1465,11 @@ func (c *Client) ModifyTokenWithContext(ctx context.Context, request *ModifyToke
     if request == nil {
         request = NewModifyTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTokenResponse()
@@ -1541,13 +1526,7 @@ func NewStartMatchingResponse() (response *StartMatchingResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) StartMatching(request *StartMatchingRequest) (response *StartMatchingResponse, err error) {
-    if request == nil {
-        request = NewStartMatchingRequest()
-    }
-    
-    response = NewStartMatchingResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartMatchingWithContext(context.Background(), request)
 }
 
 // StartMatching
@@ -1585,6 +1564,11 @@ func (c *Client) StartMatchingWithContext(ctx context.Context, request *StartMat
     if request == nil {
         request = NewStartMatchingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartMatching require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartMatchingResponse()
@@ -1643,13 +1627,7 @@ func NewStartMatchingBackfillResponse() (response *StartMatchingBackfillResponse
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDREGION = "UnsupportedRegion"
 func (c *Client) StartMatchingBackfill(request *StartMatchingBackfillRequest) (response *StartMatchingBackfillResponse, err error) {
-    if request == nil {
-        request = NewStartMatchingBackfillRequest()
-    }
-    
-    response = NewStartMatchingBackfillResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartMatchingBackfillWithContext(context.Background(), request)
 }
 
 // StartMatchingBackfill
@@ -1689,6 +1667,11 @@ func (c *Client) StartMatchingBackfillWithContext(ctx context.Context, request *
     if request == nil {
         request = NewStartMatchingBackfillRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartMatchingBackfill require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartMatchingBackfillResponse()

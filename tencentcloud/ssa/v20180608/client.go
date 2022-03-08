@@ -16,6 +16,7 @@ package v20180608
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewDescribeAssetDetailResponse() (response *DescribeAssetDetailResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAssetDetail(request *DescribeAssetDetailRequest) (response *DescribeAssetDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetDetailRequest()
-    }
-    
-    response = NewDescribeAssetDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetDetail
@@ -87,6 +82,11 @@ func (c *Client) DescribeAssetDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAssetDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetDetailResponse()
@@ -119,13 +119,7 @@ func NewDescribeAssetListResponse() (response *DescribeAssetListResponse) {
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeAssetList(request *DescribeAssetListRequest) (response *DescribeAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetListRequest()
-    }
-    
-    response = NewDescribeAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetListWithContext(context.Background(), request)
 }
 
 // DescribeAssetList
@@ -139,6 +133,11 @@ func (c *Client) DescribeAssetListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetListResponse()
@@ -172,13 +171,7 @@ func NewDescribeAssetsMappingListResponse() (response *DescribeAssetsMappingList
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeAssetsMappingList(request *DescribeAssetsMappingListRequest) (response *DescribeAssetsMappingListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetsMappingListRequest()
-    }
-    
-    response = NewDescribeAssetsMappingListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetsMappingListWithContext(context.Background(), request)
 }
 
 // DescribeAssetsMappingList
@@ -193,6 +186,11 @@ func (c *Client) DescribeAssetsMappingListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAssetsMappingListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetsMappingList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetsMappingListResponse()
@@ -226,13 +224,7 @@ func NewDescribeCheckConfigAssetListResponse() (response *DescribeCheckConfigAss
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCheckConfigAssetList(request *DescribeCheckConfigAssetListRequest) (response *DescribeCheckConfigAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCheckConfigAssetListRequest()
-    }
-    
-    response = NewDescribeCheckConfigAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCheckConfigAssetListWithContext(context.Background(), request)
 }
 
 // DescribeCheckConfigAssetList
@@ -247,6 +239,11 @@ func (c *Client) DescribeCheckConfigAssetListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeCheckConfigAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCheckConfigAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCheckConfigAssetListResponse()
@@ -280,13 +277,7 @@ func NewDescribeCheckConfigDetailResponse() (response *DescribeCheckConfigDetail
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailRequest) (response *DescribeCheckConfigDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCheckConfigDetailRequest()
-    }
-    
-    response = NewDescribeCheckConfigDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCheckConfigDetailWithContext(context.Background(), request)
 }
 
 // DescribeCheckConfigDetail
@@ -301,6 +292,11 @@ func (c *Client) DescribeCheckConfigDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCheckConfigDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCheckConfigDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCheckConfigDetailResponse()
@@ -333,13 +329,7 @@ func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAsset
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceAssetListRequest()
-    }
-    
-    response = NewDescribeComplianceAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceAssetListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceAssetList
@@ -353,6 +343,11 @@ func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetListResponse()
@@ -386,13 +381,7 @@ func NewDescribeComplianceDetailResponse() (response *DescribeComplianceDetailRe
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceDetail(request *DescribeComplianceDetailRequest) (response *DescribeComplianceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceDetailRequest()
-    }
-    
-    response = NewDescribeComplianceDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceDetailWithContext(context.Background(), request)
 }
 
 // DescribeComplianceDetail
@@ -407,6 +396,11 @@ func (c *Client) DescribeComplianceDetailWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeComplianceDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceDetailResponse()
@@ -441,13 +435,7 @@ func NewDescribeComplianceListResponse() (response *DescribeComplianceListRespon
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeComplianceList(request *DescribeComplianceListRequest) (response *DescribeComplianceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceListRequest()
-    }
-    
-    response = NewDescribeComplianceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceList
@@ -463,6 +451,11 @@ func (c *Client) DescribeComplianceListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeComplianceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceListResponse()
@@ -495,13 +488,7 @@ func NewDescribeConfigListResponse() (response *DescribeConfigListResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeConfigList(request *DescribeConfigListRequest) (response *DescribeConfigListResponse, err error) {
-    if request == nil {
-        request = NewDescribeConfigListRequest()
-    }
-    
-    response = NewDescribeConfigListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeConfigListWithContext(context.Background(), request)
 }
 
 // DescribeConfigList
@@ -515,6 +502,11 @@ func (c *Client) DescribeConfigListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeConfigListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeConfigListResponse()
@@ -545,13 +537,7 @@ func NewDescribeEventDetailResponse() (response *DescribeEventDetailResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (response *DescribeEventDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventDetailRequest()
-    }
-    
-    response = NewDescribeEventDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEventDetailWithContext(context.Background(), request)
 }
 
 // DescribeEventDetail
@@ -563,6 +549,11 @@ func (c *Client) DescribeEventDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeEventDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEventDetailResponse()
@@ -594,13 +585,7 @@ func NewDescribeLeakDetectionListResponse() (response *DescribeLeakDetectionList
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeLeakDetectionList(request *DescribeLeakDetectionListRequest) (response *DescribeLeakDetectionListResponse, err error) {
-    if request == nil {
-        request = NewDescribeLeakDetectionListRequest()
-    }
-    
-    response = NewDescribeLeakDetectionListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeLeakDetectionListWithContext(context.Background(), request)
 }
 
 // DescribeLeakDetectionList
@@ -613,6 +598,11 @@ func (c *Client) DescribeLeakDetectionListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeLeakDetectionListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLeakDetectionList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeLeakDetectionListResponse()
@@ -645,13 +635,7 @@ func NewDescribeSafetyEventListResponse() (response *DescribeSafetyEventListResp
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeSafetyEventList(request *DescribeSafetyEventListRequest) (response *DescribeSafetyEventListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSafetyEventListRequest()
-    }
-    
-    response = NewDescribeSafetyEventListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSafetyEventListWithContext(context.Background(), request)
 }
 
 // DescribeSafetyEventList
@@ -665,6 +649,11 @@ func (c *Client) DescribeSafetyEventListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSafetyEventListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSafetyEventList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSafetyEventListResponse()
@@ -697,13 +686,7 @@ func NewDescribeSocAlertDetailsResponse() (response *DescribeSocAlertDetailsResp
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) DescribeSocAlertDetails(request *DescribeSocAlertDetailsRequest) (response *DescribeSocAlertDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSocAlertDetailsRequest()
-    }
-    
-    response = NewDescribeSocAlertDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSocAlertDetailsWithContext(context.Background(), request)
 }
 
 // DescribeSocAlertDetails
@@ -717,6 +700,11 @@ func (c *Client) DescribeSocAlertDetailsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeSocAlertDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSocAlertDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSocAlertDetailsResponse()
@@ -747,13 +735,7 @@ func NewDescribeSocAlertListResponse() (response *DescribeSocAlertListResponse) 
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DescribeSocAlertList(request *DescribeSocAlertListRequest) (response *DescribeSocAlertListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSocAlertListRequest()
-    }
-    
-    response = NewDescribeSocAlertListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSocAlertListWithContext(context.Background(), request)
 }
 
 // DescribeSocAlertList
@@ -765,6 +747,11 @@ func (c *Client) DescribeSocAlertListWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSocAlertListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSocAlertList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSocAlertListResponse()
@@ -815,13 +802,7 @@ func NewDescribeSocCspmComplianceResponse() (response *DescribeSocCspmCompliance
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSocCspmCompliance(request *DescribeSocCspmComplianceRequest) (response *DescribeSocCspmComplianceResponse, err error) {
-    if request == nil {
-        request = NewDescribeSocCspmComplianceRequest()
-    }
-    
-    response = NewDescribeSocCspmComplianceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSocCspmComplianceWithContext(context.Background(), request)
 }
 
 // DescribeSocCspmCompliance
@@ -853,6 +834,11 @@ func (c *Client) DescribeSocCspmComplianceWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSocCspmComplianceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSocCspmCompliance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSocCspmComplianceResponse()
@@ -883,13 +869,7 @@ func NewDescribeVulDetailResponse() (response *DescribeVulDetailResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeVulDetail(request *DescribeVulDetailRequest) (response *DescribeVulDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeVulDetailRequest()
-    }
-    
-    response = NewDescribeVulDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVulDetailWithContext(context.Background(), request)
 }
 
 // DescribeVulDetail
@@ -901,6 +881,11 @@ func (c *Client) DescribeVulDetailWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVulDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVulDetailResponse()
@@ -933,13 +918,7 @@ func NewDescribeVulListResponse() (response *DescribeVulListResponse) {
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVulList(request *DescribeVulListRequest) (response *DescribeVulListResponse, err error) {
-    if request == nil {
-        request = NewDescribeVulListRequest()
-    }
-    
-    response = NewDescribeVulListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVulListWithContext(context.Background(), request)
 }
 
 // DescribeVulList
@@ -953,6 +932,11 @@ func (c *Client) DescribeVulListWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVulListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVulListResponse()
@@ -985,13 +969,7 @@ func NewSaDivulgeDataQueryPubResponse() (response *SaDivulgeDataQueryPubResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) SaDivulgeDataQueryPub(request *SaDivulgeDataQueryPubRequest) (response *SaDivulgeDataQueryPubResponse, err error) {
-    if request == nil {
-        request = NewSaDivulgeDataQueryPubRequest()
-    }
-    
-    response = NewSaDivulgeDataQueryPubResponse()
-    err = c.Send(request, response)
-    return
+    return c.SaDivulgeDataQueryPubWithContext(context.Background(), request)
 }
 
 // SaDivulgeDataQueryPub
@@ -1005,6 +983,11 @@ func (c *Client) SaDivulgeDataQueryPubWithContext(ctx context.Context, request *
     if request == nil {
         request = NewSaDivulgeDataQueryPubRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaDivulgeDataQueryPub require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSaDivulgeDataQueryPubResponse()

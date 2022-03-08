@@ -16,6 +16,7 @@ package v20201002
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,13 +80,7 @@ func NewBatchSendEmailResponse() (response *BatchSendEmailResponse) {
 //  OPERATIONDENIED_SENDADDRESSSTATUSERROR = "OperationDenied.SendAddressStatusError"
 //  OPERATIONDENIED_TEMPLATESTATUSERROR = "OperationDenied.TemplateStatusError"
 func (c *Client) BatchSendEmail(request *BatchSendEmailRequest) (response *BatchSendEmailResponse, err error) {
-    if request == nil {
-        request = NewBatchSendEmailRequest()
-    }
-    
-    response = NewBatchSendEmailResponse()
-    err = c.Send(request, response)
-    return
+    return c.BatchSendEmailWithContext(context.Background(), request)
 }
 
 // BatchSendEmail
@@ -109,6 +104,11 @@ func (c *Client) BatchSendEmailWithContext(ctx context.Context, request *BatchSe
     if request == nil {
         request = NewBatchSendEmailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchSendEmail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBatchSendEmailResponse()
@@ -149,13 +149,7 @@ func NewCreateEmailAddressResponse() (response *CreateEmailAddressResponse) {
 //  OPERATIONDENIED_EXCEEDSENDERLIMIT = "OperationDenied.ExceedSenderLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) CreateEmailAddress(request *CreateEmailAddressRequest) (response *CreateEmailAddressResponse, err error) {
-    if request == nil {
-        request = NewCreateEmailAddressRequest()
-    }
-    
-    response = NewCreateEmailAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEmailAddressWithContext(context.Background(), request)
 }
 
 // CreateEmailAddress
@@ -177,6 +171,11 @@ func (c *Client) CreateEmailAddressWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateEmailAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmailAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEmailAddressResponse()
@@ -217,13 +216,7 @@ func NewCreateEmailIdentityResponse() (response *CreateEmailIdentityResponse) {
 //  OPERATIONDENIED_EXCEEDDOMAINLIMIT = "OperationDenied.ExceedDomainLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) CreateEmailIdentity(request *CreateEmailIdentityRequest) (response *CreateEmailIdentityResponse, err error) {
-    if request == nil {
-        request = NewCreateEmailIdentityRequest()
-    }
-    
-    response = NewCreateEmailIdentityResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEmailIdentityWithContext(context.Background(), request)
 }
 
 // CreateEmailIdentity
@@ -245,6 +238,11 @@ func (c *Client) CreateEmailIdentityWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateEmailIdentityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmailIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEmailIdentityResponse()
@@ -287,13 +285,7 @@ func NewCreateEmailTemplateResponse() (response *CreateEmailTemplateResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) CreateEmailTemplate(request *CreateEmailTemplateRequest) (response *CreateEmailTemplateResponse, err error) {
-    if request == nil {
-        request = NewCreateEmailTemplateRequest()
-    }
-    
-    response = NewCreateEmailTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEmailTemplateWithContext(context.Background(), request)
 }
 
 // CreateEmailTemplate
@@ -317,6 +309,11 @@ func (c *Client) CreateEmailTemplateWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateEmailTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmailTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEmailTemplateResponse()
@@ -351,13 +348,7 @@ func NewCreateReceiverResponse() (response *CreateReceiverResponse) {
 //  INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = "InvalidParameterValue.RepeatReceiverName"
 //  LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = "LimitExceeded.ExceedReceiverLimit"
 func (c *Client) CreateReceiver(request *CreateReceiverRequest) (response *CreateReceiverResponse, err error) {
-    if request == nil {
-        request = NewCreateReceiverRequest()
-    }
-    
-    response = NewCreateReceiverResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateReceiverWithContext(context.Background(), request)
 }
 
 // CreateReceiver
@@ -373,6 +364,11 @@ func (c *Client) CreateReceiverWithContext(ctx context.Context, request *CreateR
     if request == nil {
         request = NewCreateReceiverRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReceiver require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateReceiverResponse()
@@ -402,6 +398,7 @@ func NewCreateReceiverDetailResponse() (response *CreateReceiverDetailResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = "LimitExceeded.ExceedReceiverDetailLimit"
 //  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
@@ -409,13 +406,7 @@ func NewCreateReceiverDetailResponse() (response *CreateReceiverDetailResponse) 
 //  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 //  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
 func (c *Client) CreateReceiverDetail(request *CreateReceiverDetailRequest) (response *CreateReceiverDetailResponse, err error) {
-    if request == nil {
-        request = NewCreateReceiverDetailRequest()
-    }
-    
-    response = NewCreateReceiverDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateReceiverDetailWithContext(context.Background(), request)
 }
 
 // CreateReceiverDetail
@@ -423,6 +414,7 @@ func (c *Client) CreateReceiverDetail(request *CreateReceiverDetailRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = "LimitExceeded.ExceedReceiverDetailLimit"
 //  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
@@ -433,9 +425,61 @@ func (c *Client) CreateReceiverDetailWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateReceiverDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReceiverDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateReceiverDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateReceiverDetailWithDataRequest() (request *CreateReceiverDetailWithDataRequest) {
+    request = &CreateReceiverDetailWithDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "CreateReceiverDetailWithData")
+    
+    
+    return
+}
+
+func NewCreateReceiverDetailWithDataResponse() (response *CreateReceiverDetailWithDataResponse) {
+    response = &CreateReceiverDetailWithDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReceiverDetailWithData
+// 添加收件人地址附带模板参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
+func (c *Client) CreateReceiverDetailWithData(request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {
+    return c.CreateReceiverDetailWithDataWithContext(context.Background(), request)
+}
+
+// CreateReceiverDetailWithData
+// 添加收件人地址附带模板参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
+func (c *Client) CreateReceiverDetailWithDataWithContext(ctx context.Context, request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {
+    if request == nil {
+        request = NewCreateReceiverDetailWithDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReceiverDetailWithData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateReceiverDetailWithDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -466,13 +510,7 @@ func NewDeleteBlackListResponse() (response *DeleteBlackListResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteBlackList(request *DeleteBlackListRequest) (response *DeleteBlackListResponse, err error) {
-    if request == nil {
-        request = NewDeleteBlackListRequest()
-    }
-    
-    response = NewDeleteBlackListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteBlackListWithContext(context.Background(), request)
 }
 
 // DeleteBlackList
@@ -487,6 +525,11 @@ func (c *Client) DeleteBlackListWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteBlackListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBlackList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteBlackListResponse()
@@ -524,13 +567,7 @@ func NewDeleteEmailAddressResponse() (response *DeleteEmailAddressResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteEmailAddress(request *DeleteEmailAddressRequest) (response *DeleteEmailAddressResponse, err error) {
-    if request == nil {
-        request = NewDeleteEmailAddressRequest()
-    }
-    
-    response = NewDeleteEmailAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEmailAddressWithContext(context.Background(), request)
 }
 
 // DeleteEmailAddress
@@ -549,6 +586,11 @@ func (c *Client) DeleteEmailAddressWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteEmailAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEmailAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEmailAddressResponse()
@@ -585,13 +627,7 @@ func NewDeleteEmailIdentityResponse() (response *DeleteEmailIdentityResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (response *DeleteEmailIdentityResponse, err error) {
-    if request == nil {
-        request = NewDeleteEmailIdentityRequest()
-    }
-    
-    response = NewDeleteEmailIdentityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEmailIdentityWithContext(context.Background(), request)
 }
 
 // DeleteEmailIdentity
@@ -609,6 +645,11 @@ func (c *Client) DeleteEmailIdentityWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteEmailIdentityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEmailIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEmailIdentityResponse()
@@ -645,13 +686,7 @@ func NewDeleteEmailTemplateResponse() (response *DeleteEmailTemplateResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteEmailTemplate(request *DeleteEmailTemplateRequest) (response *DeleteEmailTemplateResponse, err error) {
-    if request == nil {
-        request = NewDeleteEmailTemplateRequest()
-    }
-    
-    response = NewDeleteEmailTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteEmailTemplateWithContext(context.Background(), request)
 }
 
 // DeleteEmailTemplate
@@ -669,6 +704,11 @@ func (c *Client) DeleteEmailTemplateWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteEmailTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEmailTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteEmailTemplateResponse()
@@ -706,13 +746,7 @@ func NewGetEmailIdentityResponse() (response *GetEmailIdentityResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) GetEmailIdentity(request *GetEmailIdentityRequest) (response *GetEmailIdentityResponse, err error) {
-    if request == nil {
-        request = NewGetEmailIdentityRequest()
-    }
-    
-    response = NewGetEmailIdentityResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetEmailIdentityWithContext(context.Background(), request)
 }
 
 // GetEmailIdentity
@@ -731,6 +765,11 @@ func (c *Client) GetEmailIdentityWithContext(ctx context.Context, request *GetEm
     if request == nil {
         request = NewGetEmailIdentityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEmailIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetEmailIdentityResponse()
@@ -768,13 +807,7 @@ func NewGetEmailTemplateResponse() (response *GetEmailTemplateResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetEmailTemplate(request *GetEmailTemplateRequest) (response *GetEmailTemplateResponse, err error) {
-    if request == nil {
-        request = NewGetEmailTemplateRequest()
-    }
-    
-    response = NewGetEmailTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetEmailTemplateWithContext(context.Background(), request)
 }
 
 // GetEmailTemplate
@@ -793,6 +826,11 @@ func (c *Client) GetEmailTemplateWithContext(ctx context.Context, request *GetEm
     if request == nil {
         request = NewGetEmailTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetEmailTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetEmailTemplateResponse()
@@ -854,13 +892,7 @@ func NewGetSendEmailStatusResponse() (response *GetSendEmailStatusResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetSendEmailStatus(request *GetSendEmailStatusRequest) (response *GetSendEmailStatusResponse, err error) {
-    if request == nil {
-        request = NewGetSendEmailStatusRequest()
-    }
-    
-    response = NewGetSendEmailStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSendEmailStatusWithContext(context.Background(), request)
 }
 
 // GetSendEmailStatus
@@ -903,6 +935,11 @@ func (c *Client) GetSendEmailStatusWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetSendEmailStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSendEmailStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSendEmailStatusResponse()
@@ -938,13 +975,7 @@ func NewGetStatisticsReportResponse() (response *GetStatisticsReportResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) GetStatisticsReport(request *GetStatisticsReportRequest) (response *GetStatisticsReportResponse, err error) {
-    if request == nil {
-        request = NewGetStatisticsReportRequest()
-    }
-    
-    response = NewGetStatisticsReportResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetStatisticsReportWithContext(context.Background(), request)
 }
 
 // GetStatisticsReport
@@ -961,6 +992,11 @@ func (c *Client) GetStatisticsReportWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetStatisticsReportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetStatisticsReport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetStatisticsReportResponse()
@@ -996,13 +1032,7 @@ func NewListBlackEmailAddressResponse() (response *ListBlackEmailAddressResponse
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListBlackEmailAddress(request *ListBlackEmailAddressRequest) (response *ListBlackEmailAddressResponse, err error) {
-    if request == nil {
-        request = NewListBlackEmailAddressRequest()
-    }
-    
-    response = NewListBlackEmailAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListBlackEmailAddressWithContext(context.Background(), request)
 }
 
 // ListBlackEmailAddress
@@ -1019,6 +1049,11 @@ func (c *Client) ListBlackEmailAddressWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListBlackEmailAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListBlackEmailAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListBlackEmailAddressResponse()
@@ -1055,13 +1090,7 @@ func NewListEmailAddressResponse() (response *ListEmailAddressResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListEmailAddress(request *ListEmailAddressRequest) (response *ListEmailAddressResponse, err error) {
-    if request == nil {
-        request = NewListEmailAddressRequest()
-    }
-    
-    response = NewListEmailAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEmailAddressWithContext(context.Background(), request)
 }
 
 // ListEmailAddress
@@ -1079,6 +1108,11 @@ func (c *Client) ListEmailAddressWithContext(ctx context.Context, request *ListE
     if request == nil {
         request = NewListEmailAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEmailAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEmailAddressResponse()
@@ -1115,13 +1149,7 @@ func NewListEmailIdentitiesResponse() (response *ListEmailIdentitiesResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListEmailIdentities(request *ListEmailIdentitiesRequest) (response *ListEmailIdentitiesResponse, err error) {
-    if request == nil {
-        request = NewListEmailIdentitiesRequest()
-    }
-    
-    response = NewListEmailIdentitiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEmailIdentitiesWithContext(context.Background(), request)
 }
 
 // ListEmailIdentities
@@ -1139,6 +1167,11 @@ func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListEmailIdentitiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEmailIdentities require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEmailIdentitiesResponse()
@@ -1175,13 +1208,7 @@ func NewListEmailTemplatesResponse() (response *ListEmailTemplatesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListEmailTemplates(request *ListEmailTemplatesRequest) (response *ListEmailTemplatesResponse, err error) {
-    if request == nil {
-        request = NewListEmailTemplatesRequest()
-    }
-    
-    response = NewListEmailTemplatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEmailTemplatesWithContext(context.Background(), request)
 }
 
 // ListEmailTemplates
@@ -1199,6 +1226,11 @@ func (c *Client) ListEmailTemplatesWithContext(ctx context.Context, request *Lis
     if request == nil {
         request = NewListEmailTemplatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEmailTemplates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEmailTemplatesResponse()
@@ -1230,13 +1262,7 @@ func NewListReceiversResponse() (response *ListReceiversResponse) {
 //  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ListReceivers(request *ListReceiversRequest) (response *ListReceiversResponse, err error) {
-    if request == nil {
-        request = NewListReceiversRequest()
-    }
-    
-    response = NewListReceiversResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListReceiversWithContext(context.Background(), request)
 }
 
 // ListReceivers
@@ -1249,6 +1275,11 @@ func (c *Client) ListReceiversWithContext(ctx context.Context, request *ListRece
     if request == nil {
         request = NewListReceiversRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListReceivers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListReceiversResponse()
@@ -1279,13 +1310,7 @@ func NewListSendTasksResponse() (response *ListSendTasksResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
 func (c *Client) ListSendTasks(request *ListSendTasksRequest) (response *ListSendTasksResponse, err error) {
-    if request == nil {
-        request = NewListSendTasksRequest()
-    }
-    
-    response = NewListSendTasksResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListSendTasksWithContext(context.Background(), request)
 }
 
 // ListSendTasks
@@ -1297,6 +1322,11 @@ func (c *Client) ListSendTasksWithContext(ctx context.Context, request *ListSend
     if request == nil {
         request = NewListSendTasksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSendTasks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListSendTasksResponse()
@@ -1365,13 +1395,7 @@ func NewSendEmailResponse() (response *SendEmailResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SendEmail(request *SendEmailRequest) (response *SendEmailResponse, err error) {
-    if request == nil {
-        request = NewSendEmailRequest()
-    }
-    
-    response = NewSendEmailResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendEmailWithContext(context.Background(), request)
 }
 
 // SendEmail
@@ -1421,6 +1445,11 @@ func (c *Client) SendEmailWithContext(ctx context.Context, request *SendEmailReq
     if request == nil {
         request = NewSendEmailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendEmail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendEmailResponse()
@@ -1459,13 +1488,7 @@ func NewUpdateEmailIdentityResponse() (response *UpdateEmailIdentityResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) UpdateEmailIdentity(request *UpdateEmailIdentityRequest) (response *UpdateEmailIdentityResponse, err error) {
-    if request == nil {
-        request = NewUpdateEmailIdentityRequest()
-    }
-    
-    response = NewUpdateEmailIdentityResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateEmailIdentityWithContext(context.Background(), request)
 }
 
 // UpdateEmailIdentity
@@ -1485,6 +1508,11 @@ func (c *Client) UpdateEmailIdentityWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateEmailIdentityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEmailIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateEmailIdentityResponse()
@@ -1525,13 +1553,7 @@ func NewUpdateEmailTemplateResponse() (response *UpdateEmailTemplateResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) UpdateEmailTemplate(request *UpdateEmailTemplateRequest) (response *UpdateEmailTemplateResponse, err error) {
-    if request == nil {
-        request = NewUpdateEmailTemplateRequest()
-    }
-    
-    response = NewUpdateEmailTemplateResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateEmailTemplateWithContext(context.Background(), request)
 }
 
 // UpdateEmailTemplate
@@ -1553,6 +1575,11 @@ func (c *Client) UpdateEmailTemplateWithContext(ctx context.Context, request *Up
     if request == nil {
         request = NewUpdateEmailTemplateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEmailTemplate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateEmailTemplateResponse()

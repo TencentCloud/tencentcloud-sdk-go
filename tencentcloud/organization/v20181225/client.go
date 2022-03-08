@@ -16,6 +16,7 @@ package v20181225
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -68,13 +69,7 @@ func NewAcceptOrganizationInvitationResponse() (response *AcceptOrganizationInvi
 //  FAILEDOPERATION_INORGANIZATIONALREADY = "FailedOperation.InOrganizationAlready"
 //  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) AcceptOrganizationInvitation(request *AcceptOrganizationInvitationRequest) (response *AcceptOrganizationInvitationResponse, err error) {
-    if request == nil {
-        request = NewAcceptOrganizationInvitationRequest()
-    }
-    
-    response = NewAcceptOrganizationInvitationResponse()
-    err = c.Send(request, response)
-    return
+    return c.AcceptOrganizationInvitationWithContext(context.Background(), request)
 }
 
 // AcceptOrganizationInvitation
@@ -87,6 +82,11 @@ func (c *Client) AcceptOrganizationInvitationWithContext(ctx context.Context, re
     if request == nil {
         request = NewAcceptOrganizationInvitationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcceptOrganizationInvitation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAcceptOrganizationInvitationResponse()
@@ -121,13 +121,7 @@ func NewAddOrganizationNodeResponse() (response *AddOrganizationNodeResponse) {
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) AddOrganizationNode(request *AddOrganizationNodeRequest) (response *AddOrganizationNodeResponse, err error) {
-    if request == nil {
-        request = NewAddOrganizationNodeRequest()
-    }
-    
-    response = NewAddOrganizationNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddOrganizationNodeWithContext(context.Background(), request)
 }
 
 // AddOrganizationNode
@@ -143,6 +137,11 @@ func (c *Client) AddOrganizationNodeWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddOrganizationNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddOrganizationNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddOrganizationNodeResponse()
@@ -173,13 +172,7 @@ func NewCancelOrganizationInvitationResponse() (response *CancelOrganizationInvi
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) CancelOrganizationInvitation(request *CancelOrganizationInvitationRequest) (response *CancelOrganizationInvitationResponse, err error) {
-    if request == nil {
-        request = NewCancelOrganizationInvitationRequest()
-    }
-    
-    response = NewCancelOrganizationInvitationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CancelOrganizationInvitationWithContext(context.Background(), request)
 }
 
 // CancelOrganizationInvitation
@@ -191,6 +184,11 @@ func (c *Client) CancelOrganizationInvitationWithContext(ctx context.Context, re
     if request == nil {
         request = NewCancelOrganizationInvitationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelOrganizationInvitation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCancelOrganizationInvitationResponse()
@@ -222,13 +220,7 @@ func NewCreateOrganizationResponse() (response *CreateOrganizationResponse) {
 //  FAILEDOPERATION_ORGANIZATIONEXISTALREADY = "FailedOperation.OrganizationExistAlready"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateOrganization(request *CreateOrganizationRequest) (response *CreateOrganizationResponse, err error) {
-    if request == nil {
-        request = NewCreateOrganizationRequest()
-    }
-    
-    response = NewCreateOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrganizationWithContext(context.Background(), request)
 }
 
 // CreateOrganization
@@ -241,6 +233,11 @@ func (c *Client) CreateOrganizationWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrganizationResponse()
@@ -273,13 +270,7 @@ func NewDeleteOrganizationResponse() (response *DeleteOrganizationResponse) {
 //  FAILEDOPERATION_SHAREUNITNOTEMPTY = "FailedOperation.ShareUnitNotEmpty"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (response *DeleteOrganizationResponse, err error) {
-    if request == nil {
-        request = NewDeleteOrganizationRequest()
-    }
-    
-    response = NewDeleteOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOrganizationWithContext(context.Background(), request)
 }
 
 // DeleteOrganization
@@ -293,6 +284,11 @@ func (c *Client) DeleteOrganizationWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationResponse()
@@ -325,13 +321,7 @@ func NewDeleteOrganizationMemberFromNodeResponse() (response *DeleteOrganization
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationMemberFromNode(request *DeleteOrganizationMemberFromNodeRequest) (response *DeleteOrganizationMemberFromNodeResponse, err error) {
-    if request == nil {
-        request = NewDeleteOrganizationMemberFromNodeRequest()
-    }
-    
-    response = NewDeleteOrganizationMemberFromNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOrganizationMemberFromNodeWithContext(context.Background(), request)
 }
 
 // DeleteOrganizationMemberFromNode
@@ -345,6 +335,11 @@ func (c *Client) DeleteOrganizationMemberFromNodeWithContext(ctx context.Context
     if request == nil {
         request = NewDeleteOrganizationMemberFromNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationMemberFromNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationMemberFromNodeResponse()
@@ -376,13 +371,7 @@ func NewDeleteOrganizationMembersResponse() (response *DeleteOrganizationMembers
 //  FAILEDOPERATION_QUITSHAREUINTERROR = "FailedOperation.QuitShareUintError"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationMembers(request *DeleteOrganizationMembersRequest) (response *DeleteOrganizationMembersResponse, err error) {
-    if request == nil {
-        request = NewDeleteOrganizationMembersRequest()
-    }
-    
-    response = NewDeleteOrganizationMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOrganizationMembersWithContext(context.Background(), request)
 }
 
 // DeleteOrganizationMembers
@@ -395,6 +384,11 @@ func (c *Client) DeleteOrganizationMembersWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteOrganizationMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationMembersResponse()
@@ -426,13 +420,7 @@ func NewDeleteOrganizationNodesResponse() (response *DeleteOrganizationNodesResp
 //  FAILEDOPERATION_NODENOTEMPTY = "FailedOperation.NodeNotEmpty"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) DeleteOrganizationNodes(request *DeleteOrganizationNodesRequest) (response *DeleteOrganizationNodesResponse, err error) {
-    if request == nil {
-        request = NewDeleteOrganizationNodesRequest()
-    }
-    
-    response = NewDeleteOrganizationNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteOrganizationNodesWithContext(context.Background(), request)
 }
 
 // DeleteOrganizationNodes
@@ -445,6 +433,11 @@ func (c *Client) DeleteOrganizationNodesWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteOrganizationNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationNodesResponse()
@@ -475,13 +468,7 @@ func NewDenyOrganizationInvitationResponse() (response *DenyOrganizationInvitati
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVITATIONNOTEXIST = "ResourceNotFound.InvitationNotExist"
 func (c *Client) DenyOrganizationInvitation(request *DenyOrganizationInvitationRequest) (response *DenyOrganizationInvitationResponse, err error) {
-    if request == nil {
-        request = NewDenyOrganizationInvitationRequest()
-    }
-    
-    response = NewDenyOrganizationInvitationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DenyOrganizationInvitationWithContext(context.Background(), request)
 }
 
 // DenyOrganizationInvitation
@@ -493,6 +480,11 @@ func (c *Client) DenyOrganizationInvitationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDenyOrganizationInvitationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DenyOrganizationInvitation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDenyOrganizationInvitationResponse()
@@ -524,13 +516,7 @@ func NewGetOrganizationResponse() (response *GetOrganizationResponse) {
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) GetOrganization(request *GetOrganizationRequest) (response *GetOrganizationResponse, err error) {
-    if request == nil {
-        request = NewGetOrganizationRequest()
-    }
-    
-    response = NewGetOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetOrganizationWithContext(context.Background(), request)
 }
 
 // GetOrganization
@@ -543,6 +529,11 @@ func (c *Client) GetOrganizationWithContext(ctx context.Context, request *GetOrg
     if request == nil {
         request = NewGetOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetOrganizationResponse()
@@ -574,13 +565,7 @@ func NewGetOrganizationMemberResponse() (response *GetOrganizationMemberResponse
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) GetOrganizationMember(request *GetOrganizationMemberRequest) (response *GetOrganizationMemberResponse, err error) {
-    if request == nil {
-        request = NewGetOrganizationMemberRequest()
-    }
-    
-    response = NewGetOrganizationMemberResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetOrganizationMemberWithContext(context.Background(), request)
 }
 
 // GetOrganizationMember
@@ -593,6 +578,11 @@ func (c *Client) GetOrganizationMemberWithContext(ctx context.Context, request *
     if request == nil {
         request = NewGetOrganizationMemberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetOrganizationMember require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetOrganizationMemberResponse()
@@ -623,13 +613,7 @@ func NewListOrganizationInvitationsResponse() (response *ListOrganizationInvitat
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ListOrganizationInvitations(request *ListOrganizationInvitationsRequest) (response *ListOrganizationInvitationsResponse, err error) {
-    if request == nil {
-        request = NewListOrganizationInvitationsRequest()
-    }
-    
-    response = NewListOrganizationInvitationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListOrganizationInvitationsWithContext(context.Background(), request)
 }
 
 // ListOrganizationInvitations
@@ -641,6 +625,11 @@ func (c *Client) ListOrganizationInvitationsWithContext(ctx context.Context, req
     if request == nil {
         request = NewListOrganizationInvitationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrganizationInvitations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListOrganizationInvitationsResponse()
@@ -672,13 +661,7 @@ func NewListOrganizationMembersResponse() (response *ListOrganizationMembersResp
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationMembers(request *ListOrganizationMembersRequest) (response *ListOrganizationMembersResponse, err error) {
-    if request == nil {
-        request = NewListOrganizationMembersRequest()
-    }
-    
-    response = NewListOrganizationMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListOrganizationMembersWithContext(context.Background(), request)
 }
 
 // ListOrganizationMembers
@@ -691,6 +674,11 @@ func (c *Client) ListOrganizationMembersWithContext(ctx context.Context, request
     if request == nil {
         request = NewListOrganizationMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrganizationMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListOrganizationMembersResponse()
@@ -722,13 +710,7 @@ func NewListOrganizationNodeMembersResponse() (response *ListOrganizationNodeMem
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationNodeMembers(request *ListOrganizationNodeMembersRequest) (response *ListOrganizationNodeMembersResponse, err error) {
-    if request == nil {
-        request = NewListOrganizationNodeMembersRequest()
-    }
-    
-    response = NewListOrganizationNodeMembersResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListOrganizationNodeMembersWithContext(context.Background(), request)
 }
 
 // ListOrganizationNodeMembers
@@ -741,6 +723,11 @@ func (c *Client) ListOrganizationNodeMembersWithContext(ctx context.Context, req
     if request == nil {
         request = NewListOrganizationNodeMembersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrganizationNodeMembers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListOrganizationNodeMembersResponse()
@@ -771,13 +758,7 @@ func NewListOrganizationNodesResponse() (response *ListOrganizationNodesResponse
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) ListOrganizationNodes(request *ListOrganizationNodesRequest) (response *ListOrganizationNodesResponse, err error) {
-    if request == nil {
-        request = NewListOrganizationNodesRequest()
-    }
-    
-    response = NewListOrganizationNodesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListOrganizationNodesWithContext(context.Background(), request)
 }
 
 // ListOrganizationNodes
@@ -789,6 +770,11 @@ func (c *Client) ListOrganizationNodesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewListOrganizationNodesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListOrganizationNodes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListOrganizationNodesResponse()
@@ -821,13 +807,7 @@ func NewMoveOrganizationMembersToNodeResponse() (response *MoveOrganizationMembe
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) MoveOrganizationMembersToNode(request *MoveOrganizationMembersToNodeRequest) (response *MoveOrganizationMembersToNodeResponse, err error) {
-    if request == nil {
-        request = NewMoveOrganizationMembersToNodeRequest()
-    }
-    
-    response = NewMoveOrganizationMembersToNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.MoveOrganizationMembersToNodeWithContext(context.Background(), request)
 }
 
 // MoveOrganizationMembersToNode
@@ -841,6 +821,11 @@ func (c *Client) MoveOrganizationMembersToNodeWithContext(ctx context.Context, r
     if request == nil {
         request = NewMoveOrganizationMembersToNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MoveOrganizationMembersToNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMoveOrganizationMembersToNodeResponse()
@@ -872,13 +857,7 @@ func NewQuitOrganizationResponse() (response *QuitOrganizationResponse) {
 //  FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) QuitOrganization(request *QuitOrganizationRequest) (response *QuitOrganizationResponse, err error) {
-    if request == nil {
-        request = NewQuitOrganizationRequest()
-    }
-    
-    response = NewQuitOrganizationResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuitOrganizationWithContext(context.Background(), request)
 }
 
 // QuitOrganization
@@ -891,6 +870,11 @@ func (c *Client) QuitOrganizationWithContext(ctx context.Context, request *QuitO
     if request == nil {
         request = NewQuitOrganizationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuitOrganization require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuitOrganizationResponse()
@@ -928,13 +912,7 @@ func NewSendOrganizationInvitationResponse() (response *SendOrganizationInvitati
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SendOrganizationInvitation(request *SendOrganizationInvitationRequest) (response *SendOrganizationInvitationResponse, err error) {
-    if request == nil {
-        request = NewSendOrganizationInvitationRequest()
-    }
-    
-    response = NewSendOrganizationInvitationResponse()
-    err = c.Send(request, response)
-    return
+    return c.SendOrganizationInvitationWithContext(context.Background(), request)
 }
 
 // SendOrganizationInvitation
@@ -953,6 +931,11 @@ func (c *Client) SendOrganizationInvitationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewSendOrganizationInvitationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendOrganizationInvitation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSendOrganizationInvitationResponse()
@@ -985,13 +968,7 @@ func NewUpdateOrganizationMemberResponse() (response *UpdateOrganizationMemberRe
 //  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) UpdateOrganizationMember(request *UpdateOrganizationMemberRequest) (response *UpdateOrganizationMemberResponse, err error) {
-    if request == nil {
-        request = NewUpdateOrganizationMemberRequest()
-    }
-    
-    response = NewUpdateOrganizationMemberResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateOrganizationMemberWithContext(context.Background(), request)
 }
 
 // UpdateOrganizationMember
@@ -1005,6 +982,11 @@ func (c *Client) UpdateOrganizationMemberWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUpdateOrganizationMemberRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOrganizationMember require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateOrganizationMemberResponse()
@@ -1038,13 +1020,7 @@ func NewUpdateOrganizationNodeResponse() (response *UpdateOrganizationNodeRespon
 //  RESOURCENOTFOUND_NODENOTEXIST = "ResourceNotFound.NodeNotExist"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
 func (c *Client) UpdateOrganizationNode(request *UpdateOrganizationNodeRequest) (response *UpdateOrganizationNodeResponse, err error) {
-    if request == nil {
-        request = NewUpdateOrganizationNodeRequest()
-    }
-    
-    response = NewUpdateOrganizationNodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateOrganizationNodeWithContext(context.Background(), request)
 }
 
 // UpdateOrganizationNode
@@ -1059,6 +1035,11 @@ func (c *Client) UpdateOrganizationNodeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewUpdateOrganizationNodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOrganizationNode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateOrganizationNodeResponse()

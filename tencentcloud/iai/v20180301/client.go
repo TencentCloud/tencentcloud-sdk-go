@@ -16,6 +16,7 @@ package v20180301
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -87,13 +88,7 @@ func NewAnalyzeDenseLandmarksResponse() (response *AnalyzeDenseLandmarksResponse
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) AnalyzeDenseLandmarks(request *AnalyzeDenseLandmarksRequest) (response *AnalyzeDenseLandmarksResponse, err error) {
-    if request == nil {
-        request = NewAnalyzeDenseLandmarksRequest()
-    }
-    
-    response = NewAnalyzeDenseLandmarksResponse()
-    err = c.Send(request, response)
-    return
+    return c.AnalyzeDenseLandmarksWithContext(context.Background(), request)
 }
 
 // AnalyzeDenseLandmarks
@@ -125,6 +120,11 @@ func (c *Client) AnalyzeDenseLandmarksWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAnalyzeDenseLandmarksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AnalyzeDenseLandmarks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAnalyzeDenseLandmarksResponse()
@@ -229,13 +229,7 @@ func NewAnalyzeFaceResponse() (response *AnalyzeFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) AnalyzeFace(request *AnalyzeFaceRequest) (response *AnalyzeFaceResponse, err error) {
-    if request == nil {
-        request = NewAnalyzeFaceRequest()
-    }
-    
-    response = NewAnalyzeFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AnalyzeFaceWithContext(context.Background(), request)
 }
 
 // AnalyzeFace
@@ -321,6 +315,11 @@ func (c *Client) AnalyzeFaceWithContext(ctx context.Context, request *AnalyzeFac
     if request == nil {
         request = NewAnalyzeFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AnalyzeFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAnalyzeFaceResponse()
@@ -441,13 +440,7 @@ func NewCheckSimilarPersonResponse() (response *CheckSimilarPersonResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CheckSimilarPerson(request *CheckSimilarPersonRequest) (response *CheckSimilarPersonResponse, err error) {
-    if request == nil {
-        request = NewCheckSimilarPersonRequest()
-    }
-    
-    response = NewCheckSimilarPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckSimilarPersonWithContext(context.Background(), request)
 }
 
 // CheckSimilarPerson
@@ -549,6 +542,11 @@ func (c *Client) CheckSimilarPersonWithContext(ctx context.Context, request *Che
     if request == nil {
         request = NewCheckSimilarPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckSimilarPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckSimilarPersonResponse()
@@ -659,13 +657,7 @@ func NewCompareFaceResponse() (response *CompareFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CompareFace(request *CompareFaceRequest) (response *CompareFaceResponse, err error) {
-    if request == nil {
-        request = NewCompareFaceRequest()
-    }
-    
-    response = NewCompareFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CompareFaceWithContext(context.Background(), request)
 }
 
 // CompareFace
@@ -757,6 +749,11 @@ func (c *Client) CompareFaceWithContext(ctx context.Context, request *CompareFac
     if request == nil {
         request = NewCompareFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CompareFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCompareFaceResponse()
@@ -857,13 +854,7 @@ func NewCopyPersonResponse() (response *CopyPersonResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CopyPerson(request *CopyPersonRequest) (response *CopyPersonResponse, err error) {
-    if request == nil {
-        request = NewCopyPersonRequest()
-    }
-    
-    response = NewCopyPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CopyPersonWithContext(context.Background(), request)
 }
 
 // CopyPerson
@@ -945,6 +936,11 @@ func (c *Client) CopyPersonWithContext(ctx context.Context, request *CopyPersonR
     if request == nil {
         request = NewCopyPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCopyPersonResponse()
@@ -1051,13 +1047,7 @@ func NewCreateFaceResponse() (response *CreateFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceResponse, err error) {
-    if request == nil {
-        request = NewCreateFaceRequest()
-    }
-    
-    response = NewCreateFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFaceWithContext(context.Background(), request)
 }
 
 // CreateFace
@@ -1145,6 +1135,11 @@ func (c *Client) CreateFaceWithContext(ctx context.Context, request *CreateFaceR
     if request == nil {
         request = NewCreateFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFaceResponse()
@@ -1250,13 +1245,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateGroupRequest()
-    }
-    
-    response = NewCreateGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateGroupWithContext(context.Background(), request)
 }
 
 // CreateGroup
@@ -1343,6 +1332,11 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     if request == nil {
         request = NewCreateGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateGroupResponse()
@@ -1449,13 +1443,7 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePersonResponse, err error) {
-    if request == nil {
-        request = NewCreatePersonRequest()
-    }
-    
-    response = NewCreatePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePersonWithContext(context.Background(), request)
 }
 
 // CreatePerson
@@ -1543,6 +1531,11 @@ func (c *Client) CreatePersonWithContext(ctx context.Context, request *CreatePer
     if request == nil {
         request = NewCreatePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePersonResponse()
@@ -1638,13 +1631,7 @@ func NewDeleteFaceResponse() (response *DeleteFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeleteFace(request *DeleteFaceRequest) (response *DeleteFaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteFaceRequest()
-    }
-    
-    response = NewDeleteFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFaceWithContext(context.Background(), request)
 }
 
 // DeleteFace
@@ -1721,6 +1708,11 @@ func (c *Client) DeleteFaceWithContext(ctx context.Context, request *DeleteFaceR
     if request == nil {
         request = NewDeleteFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFaceResponse()
@@ -1815,13 +1807,7 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteGroupRequest()
-    }
-    
-    response = NewDeleteGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteGroupWithContext(context.Background(), request)
 }
 
 // DeleteGroup
@@ -1897,6 +1883,11 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     if request == nil {
         request = NewDeleteGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteGroupResponse()
@@ -1992,13 +1983,7 @@ func NewDeletePersonResponse() (response *DeletePersonResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeletePerson(request *DeletePersonRequest) (response *DeletePersonResponse, err error) {
-    if request == nil {
-        request = NewDeletePersonRequest()
-    }
-    
-    response = NewDeletePersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePersonWithContext(context.Background(), request)
 }
 
 // DeletePerson
@@ -2075,6 +2060,11 @@ func (c *Client) DeletePersonWithContext(ctx context.Context, request *DeletePer
     if request == nil {
         request = NewDeletePersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePersonResponse()
@@ -2170,13 +2160,7 @@ func NewDeletePersonFromGroupResponse() (response *DeletePersonFromGroupResponse
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DeletePersonFromGroup(request *DeletePersonFromGroupRequest) (response *DeletePersonFromGroupResponse, err error) {
-    if request == nil {
-        request = NewDeletePersonFromGroupRequest()
-    }
-    
-    response = NewDeletePersonFromGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeletePersonFromGroupWithContext(context.Background(), request)
 }
 
 // DeletePersonFromGroup
@@ -2253,6 +2237,11 @@ func (c *Client) DeletePersonFromGroupWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeletePersonFromGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePersonFromGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeletePersonFromGroupResponse()
@@ -2382,13 +2371,7 @@ func NewDetectFaceResponse() (response *DetectFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DetectFace(request *DetectFaceRequest) (response *DetectFaceResponse, err error) {
-    if request == nil {
-        request = NewDetectFaceRequest()
-    }
-    
-    response = NewDetectFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectFaceWithContext(context.Background(), request)
 }
 
 // DetectFace
@@ -2499,6 +2482,11 @@ func (c *Client) DetectFaceWithContext(ctx context.Context, request *DetectFaceR
     if request == nil {
         request = NewDetectFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectFaceResponse()
@@ -2597,13 +2585,7 @@ func NewDetectFaceAttributesResponse() (response *DetectFaceAttributesResponse) 
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (response *DetectFaceAttributesResponse, err error) {
-    if request == nil {
-        request = NewDetectFaceAttributesRequest()
-    }
-    
-    response = NewDetectFaceAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectFaceAttributesWithContext(context.Background(), request)
 }
 
 // DetectFaceAttributes
@@ -2683,6 +2665,11 @@ func (c *Client) DetectFaceAttributesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDetectFaceAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectFaceAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectFaceAttributesResponse()
@@ -2803,13 +2790,7 @@ func NewDetectLiveFaceResponse() (response *DetectLiveFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) DetectLiveFace(request *DetectLiveFaceRequest) (response *DetectLiveFaceResponse, err error) {
-    if request == nil {
-        request = NewDetectLiveFaceRequest()
-    }
-    
-    response = NewDetectLiveFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DetectLiveFaceWithContext(context.Background(), request)
 }
 
 // DetectLiveFace
@@ -2911,6 +2892,11 @@ func (c *Client) DetectLiveFaceWithContext(ctx context.Context, request *DetectL
     if request == nil {
         request = NewDetectLiveFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectLiveFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDetectLiveFaceResponse()
@@ -3013,13 +2999,7 @@ func NewEstimateCheckSimilarPersonCostTimeResponse() (response *EstimateCheckSim
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) EstimateCheckSimilarPersonCostTime(request *EstimateCheckSimilarPersonCostTimeRequest) (response *EstimateCheckSimilarPersonCostTimeResponse, err error) {
-    if request == nil {
-        request = NewEstimateCheckSimilarPersonCostTimeRequest()
-    }
-    
-    response = NewEstimateCheckSimilarPersonCostTimeResponse()
-    err = c.Send(request, response)
-    return
+    return c.EstimateCheckSimilarPersonCostTimeWithContext(context.Background(), request)
 }
 
 // EstimateCheckSimilarPersonCostTime
@@ -3103,6 +3083,11 @@ func (c *Client) EstimateCheckSimilarPersonCostTimeWithContext(ctx context.Conte
     if request == nil {
         request = NewEstimateCheckSimilarPersonCostTimeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EstimateCheckSimilarPersonCostTime require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewEstimateCheckSimilarPersonCostTimeResponse()
@@ -3157,13 +3142,7 @@ func NewGetCheckSimilarPersonJobIdListResponse() (response *GetCheckSimilarPerso
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetCheckSimilarPersonJobIdList(request *GetCheckSimilarPersonJobIdListRequest) (response *GetCheckSimilarPersonJobIdListResponse, err error) {
-    if request == nil {
-        request = NewGetCheckSimilarPersonJobIdListRequest()
-    }
-    
-    response = NewGetCheckSimilarPersonJobIdListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetCheckSimilarPersonJobIdListWithContext(context.Background(), request)
 }
 
 // GetCheckSimilarPersonJobIdList
@@ -3199,6 +3178,11 @@ func (c *Client) GetCheckSimilarPersonJobIdListWithContext(ctx context.Context, 
     if request == nil {
         request = NewGetCheckSimilarPersonJobIdListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCheckSimilarPersonJobIdList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetCheckSimilarPersonJobIdListResponse()
@@ -3236,13 +3220,7 @@ func NewGetGroupInfoResponse() (response *GetGroupInfoResponse) {
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetGroupInfo(request *GetGroupInfoRequest) (response *GetGroupInfoResponse, err error) {
-    if request == nil {
-        request = NewGetGroupInfoRequest()
-    }
-    
-    response = NewGetGroupInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGroupInfoWithContext(context.Background(), request)
 }
 
 // GetGroupInfo
@@ -3261,6 +3239,11 @@ func (c *Client) GetGroupInfoWithContext(ctx context.Context, request *GetGroupI
     if request == nil {
         request = NewGetGroupInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroupInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGroupInfoResponse()
@@ -3355,13 +3338,7 @@ func NewGetGroupListResponse() (response *GetGroupListResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupListResponse, err error) {
-    if request == nil {
-        request = NewGetGroupListRequest()
-    }
-    
-    response = NewGetGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetGroupListWithContext(context.Background(), request)
 }
 
 // GetGroupList
@@ -3437,6 +3414,11 @@ func (c *Client) GetGroupListWithContext(ctx context.Context, request *GetGroupL
     if request == nil {
         request = NewGetGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetGroupListResponse()
@@ -3531,13 +3513,7 @@ func NewGetPersonBaseInfoResponse() (response *GetPersonBaseInfoResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonBaseInfo(request *GetPersonBaseInfoRequest) (response *GetPersonBaseInfoResponse, err error) {
-    if request == nil {
-        request = NewGetPersonBaseInfoRequest()
-    }
-    
-    response = NewGetPersonBaseInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPersonBaseInfoWithContext(context.Background(), request)
 }
 
 // GetPersonBaseInfo
@@ -3613,6 +3589,11 @@ func (c *Client) GetPersonBaseInfoWithContext(ctx context.Context, request *GetP
     if request == nil {
         request = NewGetPersonBaseInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPersonBaseInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPersonBaseInfoResponse()
@@ -3707,13 +3688,7 @@ func NewGetPersonGroupInfoResponse() (response *GetPersonGroupInfoResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonGroupInfo(request *GetPersonGroupInfoRequest) (response *GetPersonGroupInfoResponse, err error) {
-    if request == nil {
-        request = NewGetPersonGroupInfoRequest()
-    }
-    
-    response = NewGetPersonGroupInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPersonGroupInfoWithContext(context.Background(), request)
 }
 
 // GetPersonGroupInfo
@@ -3789,6 +3764,11 @@ func (c *Client) GetPersonGroupInfoWithContext(ctx context.Context, request *Get
     if request == nil {
         request = NewGetPersonGroupInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPersonGroupInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPersonGroupInfoResponse()
@@ -3883,13 +3863,7 @@ func NewGetPersonListResponse() (response *GetPersonListResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonList(request *GetPersonListRequest) (response *GetPersonListResponse, err error) {
-    if request == nil {
-        request = NewGetPersonListRequest()
-    }
-    
-    response = NewGetPersonListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPersonListWithContext(context.Background(), request)
 }
 
 // GetPersonList
@@ -3965,6 +3939,11 @@ func (c *Client) GetPersonListWithContext(ctx context.Context, request *GetPerso
     if request == nil {
         request = NewGetPersonListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPersonList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPersonListResponse()
@@ -4059,13 +4038,7 @@ func NewGetPersonListNumResponse() (response *GetPersonListNumResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetPersonListNum(request *GetPersonListNumRequest) (response *GetPersonListNumResponse, err error) {
-    if request == nil {
-        request = NewGetPersonListNumRequest()
-    }
-    
-    response = NewGetPersonListNumResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetPersonListNumWithContext(context.Background(), request)
 }
 
 // GetPersonListNum
@@ -4141,6 +4114,11 @@ func (c *Client) GetPersonListNumWithContext(ctx context.Context, request *GetPe
     if request == nil {
         request = NewGetPersonListNumRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPersonListNum require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetPersonListNumResponse()
@@ -4239,13 +4217,7 @@ func NewGetSimilarPersonResultResponse() (response *GetSimilarPersonResultRespon
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) GetSimilarPersonResult(request *GetSimilarPersonResultRequest) (response *GetSimilarPersonResultResponse, err error) {
-    if request == nil {
-        request = NewGetSimilarPersonResultRequest()
-    }
-    
-    response = NewGetSimilarPersonResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetSimilarPersonResultWithContext(context.Background(), request)
 }
 
 // GetSimilarPersonResult
@@ -4325,6 +4297,11 @@ func (c *Client) GetSimilarPersonResultWithContext(ctx context.Context, request 
     if request == nil {
         request = NewGetSimilarPersonResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSimilarPersonResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetSimilarPersonResultResponse()
@@ -4362,13 +4339,7 @@ func NewGetUpgradeGroupFaceModelVersionJobListResponse() (response *GetUpgradeGr
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetUpgradeGroupFaceModelVersionJobList(request *GetUpgradeGroupFaceModelVersionJobListRequest) (response *GetUpgradeGroupFaceModelVersionJobListResponse, err error) {
-    if request == nil {
-        request = NewGetUpgradeGroupFaceModelVersionJobListRequest()
-    }
-    
-    response = NewGetUpgradeGroupFaceModelVersionJobListResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUpgradeGroupFaceModelVersionJobListWithContext(context.Background(), request)
 }
 
 // GetUpgradeGroupFaceModelVersionJobList
@@ -4387,6 +4358,11 @@ func (c *Client) GetUpgradeGroupFaceModelVersionJobListWithContext(ctx context.C
     if request == nil {
         request = NewGetUpgradeGroupFaceModelVersionJobListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUpgradeGroupFaceModelVersionJobList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUpgradeGroupFaceModelVersionJobListResponse()
@@ -4423,13 +4399,7 @@ func NewGetUpgradeGroupFaceModelVersionResultResponse() (response *GetUpgradeGro
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GetUpgradeGroupFaceModelVersionResult(request *GetUpgradeGroupFaceModelVersionResultRequest) (response *GetUpgradeGroupFaceModelVersionResultResponse, err error) {
-    if request == nil {
-        request = NewGetUpgradeGroupFaceModelVersionResultRequest()
-    }
-    
-    response = NewGetUpgradeGroupFaceModelVersionResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetUpgradeGroupFaceModelVersionResultWithContext(context.Background(), request)
 }
 
 // GetUpgradeGroupFaceModelVersionResult
@@ -4447,6 +4417,11 @@ func (c *Client) GetUpgradeGroupFaceModelVersionResultWithContext(ctx context.Co
     if request == nil {
         request = NewGetUpgradeGroupFaceModelVersionResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetUpgradeGroupFaceModelVersionResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetUpgradeGroupFaceModelVersionResultResponse()
@@ -4541,13 +4516,7 @@ func NewModifyGroupResponse() (response *ModifyGroupResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
-    if request == nil {
-        request = NewModifyGroupRequest()
-    }
-    
-    response = NewModifyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyGroupWithContext(context.Background(), request)
 }
 
 // ModifyGroup
@@ -4623,6 +4592,11 @@ func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGrou
     if request == nil {
         request = NewModifyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyGroupResponse()
@@ -4717,13 +4691,7 @@ func NewModifyPersonBaseInfoResponse() (response *ModifyPersonBaseInfoResponse) 
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) ModifyPersonBaseInfo(request *ModifyPersonBaseInfoRequest) (response *ModifyPersonBaseInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonBaseInfoRequest()
-    }
-    
-    response = NewModifyPersonBaseInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonBaseInfoWithContext(context.Background(), request)
 }
 
 // ModifyPersonBaseInfo
@@ -4799,6 +4767,11 @@ func (c *Client) ModifyPersonBaseInfoWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyPersonBaseInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonBaseInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonBaseInfoResponse()
@@ -4893,13 +4866,7 @@ func NewModifyPersonGroupInfoResponse() (response *ModifyPersonGroupInfoResponse
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) ModifyPersonGroupInfo(request *ModifyPersonGroupInfoRequest) (response *ModifyPersonGroupInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyPersonGroupInfoRequest()
-    }
-    
-    response = NewModifyPersonGroupInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyPersonGroupInfoWithContext(context.Background(), request)
 }
 
 // ModifyPersonGroupInfo
@@ -4975,6 +4942,11 @@ func (c *Client) ModifyPersonGroupInfoWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyPersonGroupInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPersonGroupInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyPersonGroupInfoResponse()
@@ -5016,13 +4988,7 @@ func NewRevertGroupFaceModelVersionResponse() (response *RevertGroupFaceModelVer
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RevertGroupFaceModelVersion(request *RevertGroupFaceModelVersionRequest) (response *RevertGroupFaceModelVersionResponse, err error) {
-    if request == nil {
-        request = NewRevertGroupFaceModelVersionRequest()
-    }
-    
-    response = NewRevertGroupFaceModelVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevertGroupFaceModelVersionWithContext(context.Background(), request)
 }
 
 // RevertGroupFaceModelVersion
@@ -5045,6 +5011,11 @@ func (c *Client) RevertGroupFaceModelVersionWithContext(ctx context.Context, req
     if request == nil {
         request = NewRevertGroupFaceModelVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevertGroupFaceModelVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevertGroupFaceModelVersionResponse()
@@ -5169,13 +5140,7 @@ func NewSearchFacesResponse() (response *SearchFacesResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFacesResponse, err error) {
-    if request == nil {
-        request = NewSearchFacesRequest()
-    }
-    
-    response = NewSearchFacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchFacesWithContext(context.Background(), request)
 }
 
 // SearchFaces
@@ -5281,6 +5246,11 @@ func (c *Client) SearchFacesWithContext(ctx context.Context, request *SearchFace
     if request == nil {
         request = NewSearchFacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchFaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchFacesResponse()
@@ -5405,13 +5375,7 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupRequest) (response *SearchFacesReturnsByGroupResponse, err error) {
-    if request == nil {
-        request = NewSearchFacesReturnsByGroupRequest()
-    }
-    
-    response = NewSearchFacesReturnsByGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchFacesReturnsByGroupWithContext(context.Background(), request)
 }
 
 // SearchFacesReturnsByGroup
@@ -5517,6 +5481,11 @@ func (c *Client) SearchFacesReturnsByGroupWithContext(ctx context.Context, reque
     if request == nil {
         request = NewSearchFacesReturnsByGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchFacesReturnsByGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchFacesReturnsByGroupResponse()
@@ -5604,13 +5573,7 @@ func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchPersonsResponse, err error) {
-    if request == nil {
-        request = NewSearchPersonsRequest()
-    }
-    
-    response = NewSearchPersonsResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchPersonsWithContext(context.Background(), request)
 }
 
 // SearchPersons
@@ -5679,6 +5642,11 @@ func (c *Client) SearchPersonsWithContext(ctx context.Context, request *SearchPe
     if request == nil {
         request = NewSearchPersonsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchPersons require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchPersonsResponse()
@@ -5763,13 +5731,7 @@ func NewSearchPersonsReturnsByGroupResponse() (response *SearchPersonsReturnsByG
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) SearchPersonsReturnsByGroup(request *SearchPersonsReturnsByGroupRequest) (response *SearchPersonsReturnsByGroupResponse, err error) {
-    if request == nil {
-        request = NewSearchPersonsReturnsByGroupRequest()
-    }
-    
-    response = NewSearchPersonsReturnsByGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.SearchPersonsReturnsByGroupWithContext(context.Background(), request)
 }
 
 // SearchPersonsReturnsByGroup
@@ -5835,6 +5797,11 @@ func (c *Client) SearchPersonsReturnsByGroupWithContext(ctx context.Context, req
     if request == nil {
         request = NewSearchPersonsReturnsByGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchPersonsReturnsByGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSearchPersonsReturnsByGroupResponse()
@@ -5877,13 +5844,7 @@ func NewUpgradeGroupFaceModelVersionResponse() (response *UpgradeGroupFaceModelV
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) UpgradeGroupFaceModelVersion(request *UpgradeGroupFaceModelVersionRequest) (response *UpgradeGroupFaceModelVersionResponse, err error) {
-    if request == nil {
-        request = NewUpgradeGroupFaceModelVersionRequest()
-    }
-    
-    response = NewUpgradeGroupFaceModelVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeGroupFaceModelVersionWithContext(context.Background(), request)
 }
 
 // UpgradeGroupFaceModelVersion
@@ -5907,6 +5868,11 @@ func (c *Client) UpgradeGroupFaceModelVersionWithContext(ctx context.Context, re
     if request == nil {
         request = NewUpgradeGroupFaceModelVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeGroupFaceModelVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeGroupFaceModelVersionResponse()
@@ -6020,13 +5986,7 @@ func NewVerifyFaceResponse() (response *VerifyFaceResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) VerifyFace(request *VerifyFaceRequest) (response *VerifyFaceResponse, err error) {
-    if request == nil {
-        request = NewVerifyFaceRequest()
-    }
-    
-    response = NewVerifyFaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyFaceWithContext(context.Background(), request)
 }
 
 // VerifyFace
@@ -6121,6 +6081,11 @@ func (c *Client) VerifyFaceWithContext(ctx context.Context, request *VerifyFaceR
     if request == nil {
         request = NewVerifyFaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyFace require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyFaceResponse()
@@ -6196,13 +6161,7 @@ func NewVerifyPersonResponse() (response *VerifyPersonResponse) {
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 //  UNSUPPORTEDOPERATION_UNKNOWMETHOD = "UnsupportedOperation.UnknowMethod"
 func (c *Client) VerifyPerson(request *VerifyPersonRequest) (response *VerifyPersonResponse, err error) {
-    if request == nil {
-        request = NewVerifyPersonRequest()
-    }
-    
-    response = NewVerifyPersonResponse()
-    err = c.Send(request, response)
-    return
+    return c.VerifyPersonWithContext(context.Background(), request)
 }
 
 // VerifyPerson
@@ -6259,6 +6218,11 @@ func (c *Client) VerifyPersonWithContext(ctx context.Context, request *VerifyPer
     if request == nil {
         request = NewVerifyPersonRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyPerson require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewVerifyPersonResponse()

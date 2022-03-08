@@ -16,6 +16,7 @@ package v20181115
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewAddFairPlayPemResponse() (response *AddFairPlayPemResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) AddFairPlayPem(request *AddFairPlayPemRequest) (response *AddFairPlayPemResponse, err error) {
-    if request == nil {
-        request = NewAddFairPlayPemRequest()
-    }
-    
-    response = NewAddFairPlayPemResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddFairPlayPemWithContext(context.Background(), request)
 }
 
 // AddFairPlayPem
@@ -99,6 +94,11 @@ func (c *Client) AddFairPlayPemWithContext(ctx context.Context, request *AddFair
     if request == nil {
         request = NewAddFairPlayPemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddFairPlayPem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddFairPlayPemResponse()
@@ -132,13 +132,7 @@ func NewCreateEncryptKeysResponse() (response *CreateEncryptKeysResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateEncryptKeys(request *CreateEncryptKeysRequest) (response *CreateEncryptKeysResponse, err error) {
-    if request == nil {
-        request = NewCreateEncryptKeysRequest()
-    }
-    
-    response = NewCreateEncryptKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEncryptKeysWithContext(context.Background(), request)
 }
 
 // CreateEncryptKeys
@@ -153,6 +147,11 @@ func (c *Client) CreateEncryptKeysWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEncryptKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEncryptKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEncryptKeysResponse()
@@ -188,13 +187,7 @@ func NewCreateLicenseResponse() (response *CreateLicenseResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateLicense(request *CreateLicenseRequest) (response *CreateLicenseResponse, err error) {
-    if request == nil {
-        request = NewCreateLicenseRequest()
-    }
-    
-    response = NewCreateLicenseResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLicenseWithContext(context.Background(), request)
 }
 
 // CreateLicense
@@ -211,6 +204,11 @@ func (c *Client) CreateLicenseWithContext(ctx context.Context, request *CreateLi
     if request == nil {
         request = NewCreateLicenseRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLicense require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLicenseResponse()
@@ -248,13 +246,7 @@ func NewDeleteFairPlayPemResponse() (response *DeleteFairPlayPemResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteFairPlayPem(request *DeleteFairPlayPemRequest) (response *DeleteFairPlayPemResponse, err error) {
-    if request == nil {
-        request = NewDeleteFairPlayPemRequest()
-    }
-    
-    response = NewDeleteFairPlayPemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteFairPlayPemWithContext(context.Background(), request)
 }
 
 // DeleteFairPlayPem
@@ -273,6 +265,11 @@ func (c *Client) DeleteFairPlayPemWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteFairPlayPemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFairPlayPem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteFairPlayPemResponse()
@@ -306,13 +303,7 @@ func NewDescribeAllKeysResponse() (response *DescribeAllKeysResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAllKeys(request *DescribeAllKeysRequest) (response *DescribeAllKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeAllKeysRequest()
-    }
-    
-    response = NewDescribeAllKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAllKeysWithContext(context.Background(), request)
 }
 
 // DescribeAllKeys
@@ -327,6 +318,11 @@ func (c *Client) DescribeAllKeysWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeAllKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAllKeysResponse()
@@ -360,13 +356,7 @@ func NewDescribeFairPlayPemResponse() (response *DescribeFairPlayPemResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFairPlayPem(request *DescribeFairPlayPemRequest) (response *DescribeFairPlayPemResponse, err error) {
-    if request == nil {
-        request = NewDescribeFairPlayPemRequest()
-    }
-    
-    response = NewDescribeFairPlayPemResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFairPlayPemWithContext(context.Background(), request)
 }
 
 // DescribeFairPlayPem
@@ -381,6 +371,11 @@ func (c *Client) DescribeFairPlayPemWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeFairPlayPemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFairPlayPem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFairPlayPemResponse()
@@ -416,13 +411,7 @@ func NewDescribeKeysResponse() (response *DescribeKeysResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeKeys(request *DescribeKeysRequest) (response *DescribeKeysResponse, err error) {
-    if request == nil {
-        request = NewDescribeKeysRequest()
-    }
-    
-    response = NewDescribeKeysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeKeysWithContext(context.Background(), request)
 }
 
 // DescribeKeys
@@ -439,6 +428,11 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
     if request == nil {
         request = NewDescribeKeysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKeys require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeKeysResponse()
@@ -476,13 +470,7 @@ func NewModifyFairPlayPemResponse() (response *ModifyFairPlayPemResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyFairPlayPem(request *ModifyFairPlayPemRequest) (response *ModifyFairPlayPemResponse, err error) {
-    if request == nil {
-        request = NewModifyFairPlayPemRequest()
-    }
-    
-    response = NewModifyFairPlayPemResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyFairPlayPemWithContext(context.Background(), request)
 }
 
 // ModifyFairPlayPem
@@ -501,6 +489,11 @@ func (c *Client) ModifyFairPlayPemWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyFairPlayPemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFairPlayPem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyFairPlayPemResponse()
@@ -536,13 +529,7 @@ func NewStartEncryptionResponse() (response *StartEncryptionResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StartEncryption(request *StartEncryptionRequest) (response *StartEncryptionResponse, err error) {
-    if request == nil {
-        request = NewStartEncryptionRequest()
-    }
-    
-    response = NewStartEncryptionResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartEncryptionWithContext(context.Background(), request)
 }
 
 // StartEncryption
@@ -559,6 +546,11 @@ func (c *Client) StartEncryptionWithContext(ctx context.Context, request *StartE
     if request == nil {
         request = NewStartEncryptionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartEncryption require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartEncryptionResponse()

@@ -44,6 +44,9 @@ const (
 	// 异步任务状态异常。
 	FAILEDOPERATION_ASYNCTASKSTATUSERROR = "FailedOperation.AsyncTaskStatusError"
 
+	// 审计不存在。
+	FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
+
 	// 实例互斥操作锁定失败,请稍后重试。
 	FAILEDOPERATION_CDBINSTANCELOCKFAILERROR = "FailedOperation.CdbInstanceLockFailError"
 
@@ -239,6 +242,9 @@ const (
 	// 交易系统错误。
 	INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 
+	// 操作失败。
+	INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
+
 	// 未知错误。
 	INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 
@@ -353,6 +359,9 @@ const (
 	// 不支持的操作。
 	OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 
+	// 至少保留一个审计策略。
+	OPERATIONDENIED_ATLEASTAUDITPOLICYERROR = "OperationDenied.AtLeastAuditPolicyError"
+
 	// 审计日志文件数超过最大限制数。
 	OPERATIONDENIED_AUDITFILEOVERQUOTAERROR = "OperationDenied.AuditFileOverQuotaError"
 
@@ -388,6 +397,9 @@ const (
 
 	// 当前RO组有RO实例处于非法状态，不允许执行当前操作。
 	OPERATIONDENIED_CONFLICTROSTATUS = "OperationDenied.ConflictRoStatus"
+
+	// 当前只读组配置正在变更中，请勿重复发起请求。
+	OPERATIONDENIED_CONFLICTSTATUS = "OperationDenied.ConflictStatus"
 
 	// 已开通安全审计,不支持规则审计。
 	OPERATIONDENIED_DBBRAINPOLICYCONFLICT = "OperationDenied.DBBrainPolicyConflict"

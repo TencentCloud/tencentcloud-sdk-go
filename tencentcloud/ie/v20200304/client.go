@@ -16,6 +16,7 @@ package v20200304
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -84,13 +85,7 @@ func NewCreateEditingTaskResponse() (response *CreateEditingTaskResponse) {
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateEditingTask(request *CreateEditingTaskRequest) (response *CreateEditingTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateEditingTaskRequest()
-    }
-    
-    response = NewCreateEditingTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateEditingTaskWithContext(context.Background(), request)
 }
 
 // CreateEditingTask
@@ -119,6 +114,11 @@ func (c *Client) CreateEditingTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateEditingTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEditingTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateEditingTaskResponse()
@@ -167,13 +167,7 @@ func NewCreateMediaProcessTaskResponse() (response *CreateMediaProcessTaskRespon
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) CreateMediaProcessTask(request *CreateMediaProcessTaskRequest) (response *CreateMediaProcessTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateMediaProcessTaskRequest()
-    }
-    
-    response = NewCreateMediaProcessTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMediaProcessTaskWithContext(context.Background(), request)
 }
 
 // CreateMediaProcessTask
@@ -203,6 +197,11 @@ func (c *Client) CreateMediaProcessTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateMediaProcessTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMediaProcessTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMediaProcessTaskResponse()
@@ -244,13 +243,7 @@ func NewCreateMediaQualityRestorationTaskResponse() (response *CreateMediaQualit
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateMediaQualityRestorationTask(request *CreateMediaQualityRestorationTaskRequest) (response *CreateMediaQualityRestorationTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateMediaQualityRestorationTaskRequest()
-    }
-    
-    response = NewCreateMediaQualityRestorationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMediaQualityRestorationTaskWithContext(context.Background(), request)
 }
 
 // CreateMediaQualityRestorationTask
@@ -273,6 +266,11 @@ func (c *Client) CreateMediaQualityRestorationTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewCreateMediaQualityRestorationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMediaQualityRestorationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMediaQualityRestorationTaskResponse()
@@ -314,13 +312,7 @@ func NewCreateQualityControlTaskResponse() (response *CreateQualityControlTaskRe
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateQualityControlTask(request *CreateQualityControlTaskRequest) (response *CreateQualityControlTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateQualityControlTaskRequest()
-    }
-    
-    response = NewCreateQualityControlTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateQualityControlTaskWithContext(context.Background(), request)
 }
 
 // CreateQualityControlTask
@@ -343,6 +335,11 @@ func (c *Client) CreateQualityControlTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateQualityControlTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQualityControlTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateQualityControlTaskResponse()
@@ -377,13 +374,7 @@ func NewDescribeEditingTaskResultResponse() (response *DescribeEditingTaskResult
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeEditingTaskResult(request *DescribeEditingTaskResultRequest) (response *DescribeEditingTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeEditingTaskResultRequest()
-    }
-    
-    response = NewDescribeEditingTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEditingTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeEditingTaskResult
@@ -399,6 +390,11 @@ func (c *Client) DescribeEditingTaskResultWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEditingTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEditingTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEditingTaskResultResponse()
@@ -429,13 +425,7 @@ func NewDescribeMediaProcessTaskResultResponse() (response *DescribeMediaProcess
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
 func (c *Client) DescribeMediaProcessTaskResult(request *DescribeMediaProcessTaskResultRequest) (response *DescribeMediaProcessTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeMediaProcessTaskResultRequest()
-    }
-    
-    response = NewDescribeMediaProcessTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMediaProcessTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeMediaProcessTaskResult
@@ -447,6 +437,11 @@ func (c *Client) DescribeMediaProcessTaskResultWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeMediaProcessTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMediaProcessTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMediaProcessTaskResultResponse()
@@ -493,13 +488,7 @@ func NewDescribeMediaQualityRestorationTaskRusultResponse() (response *DescribeM
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMediaQualityRestorationTaskRusult(request *DescribeMediaQualityRestorationTaskRusultRequest) (response *DescribeMediaQualityRestorationTaskRusultResponse, err error) {
-    if request == nil {
-        request = NewDescribeMediaQualityRestorationTaskRusultRequest()
-    }
-    
-    response = NewDescribeMediaQualityRestorationTaskRusultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMediaQualityRestorationTaskRusultWithContext(context.Background(), request)
 }
 
 // DescribeMediaQualityRestorationTaskRusult
@@ -527,6 +516,11 @@ func (c *Client) DescribeMediaQualityRestorationTaskRusultWithContext(ctx contex
     if request == nil {
         request = NewDescribeMediaQualityRestorationTaskRusultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMediaQualityRestorationTaskRusult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMediaQualityRestorationTaskRusultResponse()
@@ -569,13 +563,7 @@ func NewDescribeQualityControlTaskResultResponse() (response *DescribeQualityCon
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeQualityControlTaskResult(request *DescribeQualityControlTaskResultRequest) (response *DescribeQualityControlTaskResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeQualityControlTaskResultRequest()
-    }
-    
-    response = NewDescribeQualityControlTaskResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeQualityControlTaskResultWithContext(context.Background(), request)
 }
 
 // DescribeQualityControlTaskResult
@@ -599,6 +587,11 @@ func (c *Client) DescribeQualityControlTaskResultWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeQualityControlTaskResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityControlTaskResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeQualityControlTaskResultResponse()
@@ -632,13 +625,7 @@ func NewStopMediaProcessTaskResponse() (response *StopMediaProcessTaskResponse) 
 //  INVALIDPARAMETERVALUE_ACTIONNOTSUPPORT = "InvalidParameterValue.ActionNotSupport"
 //  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
 func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (response *StopMediaProcessTaskResponse, err error) {
-    if request == nil {
-        request = NewStopMediaProcessTaskRequest()
-    }
-    
-    response = NewStopMediaProcessTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopMediaProcessTaskWithContext(context.Background(), request)
 }
 
 // StopMediaProcessTask
@@ -653,6 +640,11 @@ func (c *Client) StopMediaProcessTaskWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewStopMediaProcessTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMediaProcessTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopMediaProcessTaskResponse()
@@ -691,13 +683,7 @@ func NewStopMediaQualityRestorationTaskResponse() (response *StopMediaQualityRes
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) StopMediaQualityRestorationTask(request *StopMediaQualityRestorationTaskRequest) (response *StopMediaQualityRestorationTaskResponse, err error) {
-    if request == nil {
-        request = NewStopMediaQualityRestorationTaskRequest()
-    }
-    
-    response = NewStopMediaQualityRestorationTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopMediaQualityRestorationTaskWithContext(context.Background(), request)
 }
 
 // StopMediaQualityRestorationTask
@@ -717,6 +703,11 @@ func (c *Client) StopMediaQualityRestorationTaskWithContext(ctx context.Context,
     if request == nil {
         request = NewStopMediaQualityRestorationTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMediaQualityRestorationTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopMediaQualityRestorationTaskResponse()

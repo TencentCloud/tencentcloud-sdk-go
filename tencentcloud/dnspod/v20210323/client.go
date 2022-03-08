@@ -16,6 +16,7 @@ package v20210323
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -74,13 +75,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 //  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
 //  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
 func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainRequest()
-    }
-    
-    response = NewCreateDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainWithContext(context.Background(), request)
 }
 
 // CreateDomain
@@ -99,6 +94,11 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
     if request == nil {
         request = NewCreateDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainResponse()
@@ -149,13 +149,7 @@ func NewCreateDomainAliasResponse() (response *CreateDomainAliasResponse) {
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateDomainAlias(request *CreateDomainAliasRequest) (response *CreateDomainAliasResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainAliasRequest()
-    }
-    
-    response = NewCreateDomainAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainAliasWithContext(context.Background(), request)
 }
 
 // CreateDomainAlias
@@ -187,6 +181,11 @@ func (c *Client) CreateDomainAliasWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDomainAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainAliasResponse()
@@ -233,13 +232,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 //  REQUESTLIMITEXCEEDED_CREATEDOMAINLIMIT = "RequestLimitExceeded.CreateDomainLimit"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainBatchRequest()
-    }
-    
-    response = NewCreateDomainBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainBatchWithContext(context.Background(), request)
 }
 
 // CreateDomainBatch
@@ -267,6 +260,11 @@ func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDomainBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainBatchResponse()
@@ -306,13 +304,7 @@ func NewCreateDomainGroupResponse() (response *CreateDomainGroupResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateDomainGroup(request *CreateDomainGroupRequest) (response *CreateDomainGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainGroupRequest()
-    }
-    
-    response = NewCreateDomainGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainGroupWithContext(context.Background(), request)
 }
 
 // CreateDomainGroup
@@ -333,6 +325,11 @@ func (c *Client) CreateDomainGroupWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateDomainGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainGroupResponse()
@@ -412,13 +409,7 @@ func NewCreateRecordResponse() (response *CreateRecordResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) CreateRecord(request *CreateRecordRequest) (response *CreateRecordResponse, err error) {
-    if request == nil {
-        request = NewCreateRecordRequest()
-    }
-    
-    response = NewCreateRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecordWithContext(context.Background(), request)
 }
 
 // CreateRecord
@@ -479,6 +470,11 @@ func (c *Client) CreateRecordWithContext(ctx context.Context, request *CreateRec
     if request == nil {
         request = NewCreateRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecordResponse()
@@ -526,13 +522,7 @@ func NewCreateRecordBatchResponse() (response *CreateRecordBatchResponse) {
 //  REQUESTLIMITEXCEEDED_CREATEDOMAINLIMIT = "RequestLimitExceeded.CreateDomainLimit"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) CreateRecordBatch(request *CreateRecordBatchRequest) (response *CreateRecordBatchResponse, err error) {
-    if request == nil {
-        request = NewCreateRecordBatchRequest()
-    }
-    
-    response = NewCreateRecordBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRecordBatchWithContext(context.Background(), request)
 }
 
 // CreateRecordBatch
@@ -561,6 +551,11 @@ func (c *Client) CreateRecordBatchWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateRecordBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRecordBatchResponse()
@@ -602,13 +597,7 @@ func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteDomainRequest()
-    }
-    
-    response = NewDeleteDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDomainWithContext(context.Background(), request)
 }
 
 // DeleteDomain
@@ -631,6 +620,11 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDomainResponse()
@@ -677,13 +671,7 @@ func NewDeleteDomainAliasResponse() (response *DeleteDomainAliasResponse) {
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDomainAlias(request *DeleteDomainAliasRequest) (response *DeleteDomainAliasResponse, err error) {
-    if request == nil {
-        request = NewDeleteDomainAliasRequest()
-    }
-    
-    response = NewDeleteDomainAliasResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDomainAliasWithContext(context.Background(), request)
 }
 
 // DeleteDomainAlias
@@ -711,6 +699,11 @@ func (c *Client) DeleteDomainAliasWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteDomainAliasRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomainAlias require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDomainAliasResponse()
@@ -765,13 +758,7 @@ func NewDeleteRecordResponse() (response *DeleteRecordResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) DeleteRecord(request *DeleteRecordRequest) (response *DeleteRecordResponse, err error) {
-    if request == nil {
-        request = NewDeleteRecordRequest()
-    }
-    
-    response = NewDeleteRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRecordWithContext(context.Background(), request)
 }
 
 // DeleteRecord
@@ -807,6 +794,11 @@ func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRec
     if request == nil {
         request = NewDeleteRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRecordResponse()
@@ -846,13 +838,7 @@ func NewDeleteShareDomainResponse() (response *DeleteShareDomainResponse) {
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DeleteShareDomain(request *DeleteShareDomainRequest) (response *DeleteShareDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteShareDomainRequest()
-    }
-    
-    response = NewDeleteShareDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteShareDomainWithContext(context.Background(), request)
 }
 
 // DeleteShareDomain
@@ -873,6 +859,11 @@ func (c *Client) DeleteShareDomainWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteShareDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteShareDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteShareDomainResponse()
@@ -905,13 +896,7 @@ func NewDescribeBatchTaskResponse() (response *DescribeBatchTaskResponse) {
 //  INVALIDPARAMETER_BATCHTASKNOTEXIST = "InvalidParameter.BatchTaskNotExist"
 //  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
 func (c *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (response *DescribeBatchTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeBatchTaskRequest()
-    }
-    
-    response = NewDescribeBatchTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBatchTaskWithContext(context.Background(), request)
 }
 
 // DescribeBatchTask
@@ -925,6 +910,11 @@ func (c *Client) DescribeBatchTaskWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeBatchTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBatchTaskResponse()
@@ -960,13 +950,7 @@ func NewDescribeDomainResponse() (response *DescribeDomainResponse) {
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
 func (c *Client) DescribeDomain(request *DescribeDomainRequest) (response *DescribeDomainResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainRequest()
-    }
-    
-    response = NewDescribeDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainWithContext(context.Background(), request)
 }
 
 // DescribeDomain
@@ -983,6 +967,11 @@ func (c *Client) DescribeDomainWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainResponse()
@@ -1026,13 +1015,7 @@ func NewDescribeDomainAliasListResponse() (response *DescribeDomainAliasListResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NODATAOFDOMAINALIAS = "ResourceNotFound.NoDataOfDomainAlias"
 func (c *Client) DescribeDomainAliasList(request *DescribeDomainAliasListRequest) (response *DescribeDomainAliasListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainAliasListRequest()
-    }
-    
-    response = NewDescribeDomainAliasListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainAliasListWithContext(context.Background(), request)
 }
 
 // DescribeDomainAliasList
@@ -1057,6 +1040,11 @@ func (c *Client) DescribeDomainAliasListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDomainAliasListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainAliasList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainAliasListResponse()
@@ -1101,13 +1089,7 @@ func NewDescribeDomainListResponse() (response *DescribeDomainListResponse) {
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDomainList(request *DescribeDomainListRequest) (response *DescribeDomainListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainListRequest()
-    }
-    
-    response = NewDescribeDomainListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainListWithContext(context.Background(), request)
 }
 
 // DescribeDomainList
@@ -1133,6 +1115,11 @@ func (c *Client) DescribeDomainListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeDomainListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainListResponse()
@@ -1169,13 +1156,7 @@ func NewDescribeDomainLogListResponse() (response *DescribeDomainLogListResponse
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
 func (c *Client) DescribeDomainLogList(request *DescribeDomainLogListRequest) (response *DescribeDomainLogListResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainLogListRequest()
-    }
-    
-    response = NewDescribeDomainLogListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainLogListWithContext(context.Background(), request)
 }
 
 // DescribeDomainLogList
@@ -1193,6 +1174,11 @@ func (c *Client) DescribeDomainLogListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDomainLogListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainLogList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainLogListResponse()
@@ -1242,13 +1228,7 @@ func NewDescribeDomainPurviewResponse() (response *DescribeDomainPurviewResponse
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) DescribeDomainPurview(request *DescribeDomainPurviewRequest) (response *DescribeDomainPurviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainPurviewRequest()
-    }
-    
-    response = NewDescribeDomainPurviewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainPurviewWithContext(context.Background(), request)
 }
 
 // DescribeDomainPurview
@@ -1279,6 +1259,11 @@ func (c *Client) DescribeDomainPurviewWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeDomainPurviewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainPurview require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainPurviewResponse()
@@ -1313,13 +1298,7 @@ func NewDescribeDomainShareInfoResponse() (response *DescribeDomainShareInfoResp
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeDomainShareInfo(request *DescribeDomainShareInfoRequest) (response *DescribeDomainShareInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainShareInfoRequest()
-    }
-    
-    response = NewDescribeDomainShareInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainShareInfoWithContext(context.Background(), request)
 }
 
 // DescribeDomainShareInfo
@@ -1335,6 +1314,11 @@ func (c *Client) DescribeDomainShareInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeDomainShareInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainShareInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainShareInfoResponse()
@@ -1386,13 +1370,7 @@ func NewDescribeRecordResponse() (response *DescribeRecordResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) DescribeRecord(request *DescribeRecordRequest) (response *DescribeRecordResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordRequest()
-    }
-    
-    response = NewDescribeRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordWithContext(context.Background(), request)
 }
 
 // DescribeRecord
@@ -1425,6 +1403,11 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordResponse()
@@ -1474,13 +1457,7 @@ func NewDescribeRecordLineListResponse() (response *DescribeRecordLineListRespon
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) DescribeRecordLineList(request *DescribeRecordLineListRequest) (response *DescribeRecordLineListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordLineListRequest()
-    }
-    
-    response = NewDescribeRecordLineListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordLineListWithContext(context.Background(), request)
 }
 
 // DescribeRecordLineList
@@ -1511,6 +1488,11 @@ func (c *Client) DescribeRecordLineListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRecordLineListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordLineList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordLineListResponse()
@@ -1561,13 +1543,7 @@ func NewDescribeRecordListResponse() (response *DescribeRecordListResponse) {
 //  RESOURCENOTFOUND_NODATAOFRECORD = "ResourceNotFound.NoDataOfRecord"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRecordList(request *DescribeRecordListRequest) (response *DescribeRecordListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordListRequest()
-    }
-    
-    response = NewDescribeRecordListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordListWithContext(context.Background(), request)
 }
 
 // DescribeRecordList
@@ -1599,6 +1575,11 @@ func (c *Client) DescribeRecordListWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordListResponse()
@@ -1647,13 +1628,7 @@ func NewDescribeRecordTypeResponse() (response *DescribeRecordTypeResponse) {
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRecordType(request *DescribeRecordTypeRequest) (response *DescribeRecordTypeResponse, err error) {
-    if request == nil {
-        request = NewDescribeRecordTypeRequest()
-    }
-    
-    response = NewDescribeRecordTypeResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRecordTypeWithContext(context.Background(), request)
 }
 
 // DescribeRecordType
@@ -1683,6 +1658,11 @@ func (c *Client) DescribeRecordTypeWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeRecordTypeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordType require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRecordTypeResponse()
@@ -1719,13 +1699,7 @@ func NewDescribeUserDetailResponse() (response *DescribeUserDetailResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeUserDetail(request *DescribeUserDetailRequest) (response *DescribeUserDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserDetailRequest()
-    }
-    
-    response = NewDescribeUserDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserDetailWithContext(context.Background(), request)
 }
 
 // DescribeUserDetail
@@ -1743,6 +1717,11 @@ func (c *Client) DescribeUserDetailWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeUserDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserDetailResponse()
@@ -1796,13 +1775,7 @@ func NewModifyDomainLockResponse() (response *ModifyDomainLockResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyDomainLock(request *ModifyDomainLockRequest) (response *ModifyDomainLockResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainLockRequest()
-    }
-    
-    response = NewModifyDomainLockResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainLockWithContext(context.Background(), request)
 }
 
 // ModifyDomainLock
@@ -1837,6 +1810,11 @@ func (c *Client) ModifyDomainLockWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDomainLockRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainLock require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainLockResponse()
@@ -1882,13 +1860,7 @@ func NewModifyDomainOwnerResponse() (response *ModifyDomainOwnerResponse) {
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) ModifyDomainOwner(request *ModifyDomainOwnerRequest) (response *ModifyDomainOwnerResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainOwnerRequest()
-    }
-    
-    response = NewModifyDomainOwnerResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainOwnerWithContext(context.Background(), request)
 }
 
 // ModifyDomainOwner
@@ -1915,6 +1887,11 @@ func (c *Client) ModifyDomainOwnerWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyDomainOwnerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainOwner require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainOwnerResponse()
@@ -1967,13 +1944,7 @@ func NewModifyDomainRemarkResponse() (response *ModifyDomainRemarkResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyDomainRemark(request *ModifyDomainRemarkRequest) (response *ModifyDomainRemarkResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainRemarkRequest()
-    }
-    
-    response = NewModifyDomainRemarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainRemarkWithContext(context.Background(), request)
 }
 
 // ModifyDomainRemark
@@ -2007,6 +1978,11 @@ func (c *Client) ModifyDomainRemarkWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDomainRemarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainRemark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainRemarkResponse()
@@ -2044,13 +2020,7 @@ func NewModifyDomainStatusResponse() (response *ModifyDomainStatusResponse) {
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) ModifyDomainStatus(request *ModifyDomainStatusRequest) (response *ModifyDomainStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainStatusRequest()
-    }
-    
-    response = NewModifyDomainStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainStatusWithContext(context.Background(), request)
 }
 
 // ModifyDomainStatus
@@ -2069,6 +2039,11 @@ func (c *Client) ModifyDomainStatusWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDomainStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainStatusResponse()
@@ -2122,13 +2097,7 @@ func NewModifyDomainUnlockResponse() (response *ModifyDomainUnlockResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyDomainUnlock(request *ModifyDomainUnlockRequest) (response *ModifyDomainUnlockResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainUnlockRequest()
-    }
-    
-    response = NewModifyDomainUnlockResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainUnlockWithContext(context.Background(), request)
 }
 
 // ModifyDomainUnlock
@@ -2163,6 +2132,11 @@ func (c *Client) ModifyDomainUnlockWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyDomainUnlockRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainUnlock require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainUnlockResponse()
@@ -2236,13 +2210,7 @@ func NewModifyDynamicDNSResponse() (response *ModifyDynamicDNSResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyDynamicDNS(request *ModifyDynamicDNSRequest) (response *ModifyDynamicDNSResponse, err error) {
-    if request == nil {
-        request = NewModifyDynamicDNSRequest()
-    }
-    
-    response = NewModifyDynamicDNSResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDynamicDNSWithContext(context.Background(), request)
 }
 
 // ModifyDynamicDNS
@@ -2297,6 +2265,11 @@ func (c *Client) ModifyDynamicDNSWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyDynamicDNSRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDynamicDNS require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDynamicDNSResponse()
@@ -2376,13 +2349,7 @@ func NewModifyRecordResponse() (response *ModifyRecordResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyRecord(request *ModifyRecordRequest) (response *ModifyRecordResponse, err error) {
-    if request == nil {
-        request = NewModifyRecordRequest()
-    }
-    
-    response = NewModifyRecordResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRecordWithContext(context.Background(), request)
 }
 
 // ModifyRecord
@@ -2443,6 +2410,11 @@ func (c *Client) ModifyRecordWithContext(ctx context.Context, request *ModifyRec
     if request == nil {
         request = NewModifyRecordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecord require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRecordResponse()
@@ -2495,13 +2467,7 @@ func NewModifyRecordBatchResponse() (response *ModifyRecordBatchResponse) {
 //  REQUESTLIMITEXCEEDED_CREATEDOMAINLIMIT = "RequestLimitExceeded.CreateDomainLimit"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyRecordBatch(request *ModifyRecordBatchRequest) (response *ModifyRecordBatchResponse, err error) {
-    if request == nil {
-        request = NewModifyRecordBatchRequest()
-    }
-    
-    response = NewModifyRecordBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRecordBatchWithContext(context.Background(), request)
 }
 
 // ModifyRecordBatch
@@ -2535,6 +2501,11 @@ func (c *Client) ModifyRecordBatchWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyRecordBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRecordBatchResponse()
@@ -2590,13 +2561,7 @@ func NewModifyRecordRemarkResponse() (response *ModifyRecordRemarkResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyRecordRemark(request *ModifyRecordRemarkRequest) (response *ModifyRecordRemarkResponse, err error) {
-    if request == nil {
-        request = NewModifyRecordRemarkRequest()
-    }
-    
-    response = NewModifyRecordRemarkResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRecordRemarkWithContext(context.Background(), request)
 }
 
 // ModifyRecordRemark
@@ -2633,6 +2598,11 @@ func (c *Client) ModifyRecordRemarkWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRecordRemarkRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordRemark require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRecordRemarkResponse()
@@ -2705,13 +2675,7 @@ func NewModifyRecordStatusResponse() (response *ModifyRecordStatusResponse) {
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifyRecordStatus(request *ModifyRecordStatusRequest) (response *ModifyRecordStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyRecordStatusRequest()
-    }
-    
-    response = NewModifyRecordStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRecordStatusWithContext(context.Background(), request)
 }
 
 // ModifyRecordStatus
@@ -2765,6 +2729,11 @@ func (c *Client) ModifyRecordStatusWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyRecordStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRecordStatusResponse()
@@ -2839,13 +2808,7 @@ func NewModifySubdomainStatusResponse() (response *ModifySubdomainStatusResponse
 //  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
 //  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
 func (c *Client) ModifySubdomainStatus(request *ModifySubdomainStatusRequest) (response *ModifySubdomainStatusResponse, err error) {
-    if request == nil {
-        request = NewModifySubdomainStatusRequest()
-    }
-    
-    response = NewModifySubdomainStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubdomainStatusWithContext(context.Background(), request)
 }
 
 // ModifySubdomainStatus
@@ -2901,6 +2864,11 @@ func (c *Client) ModifySubdomainStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySubdomainStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubdomainStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubdomainStatusResponse()

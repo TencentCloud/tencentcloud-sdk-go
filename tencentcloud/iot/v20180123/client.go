@@ -16,6 +16,7 @@ package v20180123
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewActivateRuleResponse() (response *ActivateRuleResponse) {
 //  RESOURCEUNAVAILABLE_IOTRULENOQUERY = "ResourceUnavailable.IotRuleNoQuery"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) ActivateRule(request *ActivateRuleRequest) (response *ActivateRuleResponse, err error) {
-    if request == nil {
-        request = NewActivateRuleRequest()
-    }
-    
-    response = NewActivateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ActivateRuleWithContext(context.Background(), request)
 }
 
 // ActivateRule
@@ -107,6 +102,11 @@ func (c *Client) ActivateRuleWithContext(ctx context.Context, request *ActivateR
     if request == nil {
         request = NewActivateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ActivateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewActivateRuleResponse()
@@ -145,13 +145,7 @@ func NewAddDeviceResponse() (response *AddDeviceResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
-    if request == nil {
-        request = NewAddDeviceRequest()
-    }
-    
-    response = NewAddDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddDeviceWithContext(context.Background(), request)
 }
 
 // AddDevice
@@ -171,6 +165,11 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     if request == nil {
         request = NewAddDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddDeviceResponse()
@@ -212,13 +211,7 @@ func NewAddProductResponse() (response *AddProductResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddProduct(request *AddProductRequest) (response *AddProductResponse, err error) {
-    if request == nil {
-        request = NewAddProductRequest()
-    }
-    
-    response = NewAddProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddProductWithContext(context.Background(), request)
 }
 
 // AddProduct
@@ -241,6 +234,11 @@ func (c *Client) AddProductWithContext(ctx context.Context, request *AddProductR
     if request == nil {
         request = NewAddProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddProductResponse()
@@ -279,13 +277,7 @@ func NewAddRuleResponse() (response *AddRuleResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddRule(request *AddRuleRequest) (response *AddRuleResponse, err error) {
-    if request == nil {
-        request = NewAddRuleRequest()
-    }
-    
-    response = NewAddRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddRuleWithContext(context.Background(), request)
 }
 
 // AddRule
@@ -305,6 +297,11 @@ func (c *Client) AddRuleWithContext(ctx context.Context, request *AddRuleRequest
     if request == nil {
         request = NewAddRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddRuleResponse()
@@ -341,13 +338,7 @@ func NewAddTopicResponse() (response *AddTopicResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) AddTopic(request *AddTopicRequest) (response *AddTopicResponse, err error) {
-    if request == nil {
-        request = NewAddTopicRequest()
-    }
-    
-    response = NewAddTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddTopicWithContext(context.Background(), request)
 }
 
 // AddTopic
@@ -365,6 +356,11 @@ func (c *Client) AddTopicWithContext(ctx context.Context, request *AddTopicReque
     if request == nil {
         request = NewAddTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddTopicResponse()
@@ -399,13 +395,7 @@ func NewAppAddUserResponse() (response *AppAddUserResponse) {
 //  RESOURCEINUSE_IOTOPINPROGRESS = "ResourceInUse.IotOpInProgress"
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 func (c *Client) AppAddUser(request *AppAddUserRequest) (response *AppAddUserResponse, err error) {
-    if request == nil {
-        request = NewAppAddUserRequest()
-    }
-    
-    response = NewAppAddUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppAddUserWithContext(context.Background(), request)
 }
 
 // AppAddUser
@@ -421,6 +411,11 @@ func (c *Client) AppAddUserWithContext(ctx context.Context, request *AppAddUserR
     if request == nil {
         request = NewAppAddUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppAddUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppAddUserResponse()
@@ -455,13 +450,7 @@ func NewAppDeleteDeviceResponse() (response *AppDeleteDeviceResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppDeleteDevice(request *AppDeleteDeviceRequest) (response *AppDeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewAppDeleteDeviceRequest()
-    }
-    
-    response = NewAppDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppDeleteDeviceWithContext(context.Background(), request)
 }
 
 // AppDeleteDevice
@@ -477,6 +466,11 @@ func (c *Client) AppDeleteDeviceWithContext(ctx context.Context, request *AppDel
     if request == nil {
         request = NewAppDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppDeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppDeleteDeviceResponse()
@@ -510,13 +504,7 @@ func NewAppGetDeviceResponse() (response *AppGetDeviceResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDevice(request *AppGetDeviceRequest) (response *AppGetDeviceResponse, err error) {
-    if request == nil {
-        request = NewAppGetDeviceRequest()
-    }
-    
-    response = NewAppGetDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetDeviceWithContext(context.Background(), request)
 }
 
 // AppGetDevice
@@ -531,6 +519,11 @@ func (c *Client) AppGetDeviceWithContext(ctx context.Context, request *AppGetDev
     if request == nil {
         request = NewAppGetDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetDeviceResponse()
@@ -566,13 +559,7 @@ func NewAppGetDeviceDataResponse() (response *AppGetDeviceDataResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDeviceData(request *AppGetDeviceDataRequest) (response *AppGetDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewAppGetDeviceDataRequest()
-    }
-    
-    response = NewAppGetDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetDeviceDataWithContext(context.Background(), request)
 }
 
 // AppGetDeviceData
@@ -589,6 +576,11 @@ func (c *Client) AppGetDeviceDataWithContext(ctx context.Context, request *AppGe
     if request == nil {
         request = NewAppGetDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetDeviceDataResponse()
@@ -625,13 +617,7 @@ func NewAppGetDeviceStatusesResponse() (response *AppGetDeviceStatusesResponse) 
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDeviceStatuses(request *AppGetDeviceStatusesRequest) (response *AppGetDeviceStatusesResponse, err error) {
-    if request == nil {
-        request = NewAppGetDeviceStatusesRequest()
-    }
-    
-    response = NewAppGetDeviceStatusesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetDeviceStatusesWithContext(context.Background(), request)
 }
 
 // AppGetDeviceStatuses
@@ -649,6 +635,11 @@ func (c *Client) AppGetDeviceStatusesWithContext(ctx context.Context, request *A
     if request == nil {
         request = NewAppGetDeviceStatusesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetDeviceStatuses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetDeviceStatusesResponse()
@@ -680,13 +671,7 @@ func NewAppGetDevicesResponse() (response *AppGetDevicesResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetDevices(request *AppGetDevicesRequest) (response *AppGetDevicesResponse, err error) {
-    if request == nil {
-        request = NewAppGetDevicesRequest()
-    }
-    
-    response = NewAppGetDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetDevicesWithContext(context.Background(), request)
 }
 
 // AppGetDevices
@@ -699,6 +684,11 @@ func (c *Client) AppGetDevicesWithContext(ctx context.Context, request *AppGetDe
     if request == nil {
         request = NewAppGetDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetDevicesResponse()
@@ -733,13 +723,7 @@ func NewAppGetTokenResponse() (response *AppGetTokenResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetToken(request *AppGetTokenRequest) (response *AppGetTokenResponse, err error) {
-    if request == nil {
-        request = NewAppGetTokenRequest()
-    }
-    
-    response = NewAppGetTokenResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetTokenWithContext(context.Background(), request)
 }
 
 // AppGetToken
@@ -755,6 +739,11 @@ func (c *Client) AppGetTokenWithContext(ctx context.Context, request *AppGetToke
     if request == nil {
         request = NewAppGetTokenRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetToken require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetTokenResponse()
@@ -789,13 +778,7 @@ func NewAppGetUserResponse() (response *AppGetUserResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppGetUser(request *AppGetUserRequest) (response *AppGetUserResponse, err error) {
-    if request == nil {
-        request = NewAppGetUserRequest()
-    }
-    
-    response = NewAppGetUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppGetUserWithContext(context.Background(), request)
 }
 
 // AppGetUser
@@ -811,6 +794,11 @@ func (c *Client) AppGetUserWithContext(ctx context.Context, request *AppGetUserR
     if request == nil {
         request = NewAppGetUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppGetUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppGetUserResponse()
@@ -841,13 +829,7 @@ func NewAppIssueDeviceControlResponse() (response *AppIssueDeviceControlResponse
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_IOTAPPLICATIONDEVICENOTEXISTS = "ResourceNotFound.IotApplicationDeviceNotExists"
 func (c *Client) AppIssueDeviceControl(request *AppIssueDeviceControlRequest) (response *AppIssueDeviceControlResponse, err error) {
-    if request == nil {
-        request = NewAppIssueDeviceControlRequest()
-    }
-    
-    response = NewAppIssueDeviceControlResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppIssueDeviceControlWithContext(context.Background(), request)
 }
 
 // AppIssueDeviceControl
@@ -859,6 +841,11 @@ func (c *Client) AppIssueDeviceControlWithContext(ctx context.Context, request *
     if request == nil {
         request = NewAppIssueDeviceControlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppIssueDeviceControl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppIssueDeviceControlResponse()
@@ -891,13 +878,7 @@ func NewAppResetPasswordResponse() (response *AppResetPasswordResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppResetPassword(request *AppResetPasswordRequest) (response *AppResetPasswordResponse, err error) {
-    if request == nil {
-        request = NewAppResetPasswordRequest()
-    }
-    
-    response = NewAppResetPasswordResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppResetPasswordWithContext(context.Background(), request)
 }
 
 // AppResetPassword
@@ -911,6 +892,11 @@ func (c *Client) AppResetPasswordWithContext(ctx context.Context, request *AppRe
     if request == nil {
         request = NewAppResetPasswordRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppResetPassword require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppResetPasswordResponse()
@@ -948,13 +934,7 @@ func NewAppSecureAddDeviceResponse() (response *AppSecureAddDeviceResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 func (c *Client) AppSecureAddDevice(request *AppSecureAddDeviceRequest) (response *AppSecureAddDeviceResponse, err error) {
-    if request == nil {
-        request = NewAppSecureAddDeviceRequest()
-    }
-    
-    response = NewAppSecureAddDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppSecureAddDeviceWithContext(context.Background(), request)
 }
 
 // AppSecureAddDevice
@@ -973,6 +953,11 @@ func (c *Client) AppSecureAddDeviceWithContext(ctx context.Context, request *App
     if request == nil {
         request = NewAppSecureAddDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppSecureAddDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppSecureAddDeviceResponse()
@@ -1008,13 +993,7 @@ func NewAppUpdateDeviceResponse() (response *AppUpdateDeviceResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppUpdateDevice(request *AppUpdateDeviceRequest) (response *AppUpdateDeviceResponse, err error) {
-    if request == nil {
-        request = NewAppUpdateDeviceRequest()
-    }
-    
-    response = NewAppUpdateDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppUpdateDeviceWithContext(context.Background(), request)
 }
 
 // AppUpdateDevice
@@ -1031,6 +1010,11 @@ func (c *Client) AppUpdateDeviceWithContext(ctx context.Context, request *AppUpd
     if request == nil {
         request = NewAppUpdateDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppUpdateDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppUpdateDeviceResponse()
@@ -1063,13 +1047,7 @@ func NewAppUpdateUserResponse() (response *AppUpdateUserResponse) {
 //  RESOURCENOTFOUND_IOTAPPLICATIONNOTEXISTS = "ResourceNotFound.IotApplicationNotExists"
 //  RESOURCENOTFOUND_IOTAPPLICATIONUSERNOTEXISTS = "ResourceNotFound.IotApplicationUserNotExists"
 func (c *Client) AppUpdateUser(request *AppUpdateUserRequest) (response *AppUpdateUserResponse, err error) {
-    if request == nil {
-        request = NewAppUpdateUserRequest()
-    }
-    
-    response = NewAppUpdateUserResponse()
-    err = c.Send(request, response)
-    return
+    return c.AppUpdateUserWithContext(context.Background(), request)
 }
 
 // AppUpdateUser
@@ -1083,6 +1061,11 @@ func (c *Client) AppUpdateUserWithContext(ctx context.Context, request *AppUpdat
     if request == nil {
         request = NewAppUpdateUserRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AppUpdateUser require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAppUpdateUserResponse()
@@ -1114,13 +1097,7 @@ func NewAssociateSubDeviceToGatewayProductResponse() (response *AssociateSubDevi
 //  INVALIDPARAMETER_IOTPRODUCTINVALIDGATEWAYPRODUCTID = "InvalidParameter.IotProductInvalidGatewayProductId"
 //  INVALIDPARAMETER_IOTPRODUCTINVALIDSUBDEVICEPRODUCTID = "InvalidParameter.IotProductInvalidSubDeviceProductId"
 func (c *Client) AssociateSubDeviceToGatewayProduct(request *AssociateSubDeviceToGatewayProductRequest) (response *AssociateSubDeviceToGatewayProductResponse, err error) {
-    if request == nil {
-        request = NewAssociateSubDeviceToGatewayProductRequest()
-    }
-    
-    response = NewAssociateSubDeviceToGatewayProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.AssociateSubDeviceToGatewayProductWithContext(context.Background(), request)
 }
 
 // AssociateSubDeviceToGatewayProduct
@@ -1133,6 +1110,11 @@ func (c *Client) AssociateSubDeviceToGatewayProductWithContext(ctx context.Conte
     if request == nil {
         request = NewAssociateSubDeviceToGatewayProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateSubDeviceToGatewayProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssociateSubDeviceToGatewayProductResponse()
@@ -1170,13 +1152,7 @@ func NewDeactivateRuleResponse() (response *DeactivateRuleResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  RESOURCENOTFOUND_MQRULERULEIDNOTEXISTS = "ResourceNotFound.MqruleRuleIdNotExists"
 func (c *Client) DeactivateRule(request *DeactivateRuleRequest) (response *DeactivateRuleResponse, err error) {
-    if request == nil {
-        request = NewDeactivateRuleRequest()
-    }
-    
-    response = NewDeactivateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeactivateRuleWithContext(context.Background(), request)
 }
 
 // DeactivateRule
@@ -1195,6 +1171,11 @@ func (c *Client) DeactivateRuleWithContext(ctx context.Context, request *Deactiv
     if request == nil {
         request = NewDeactivateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeactivateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeactivateRuleResponse()
@@ -1231,13 +1212,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
-    if request == nil {
-        request = NewDeleteDeviceRequest()
-    }
-    
-    response = NewDeleteDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDeviceWithContext(context.Background(), request)
 }
 
 // DeleteDevice
@@ -1255,6 +1230,11 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDev
     if request == nil {
         request = NewDeleteDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDeviceResponse()
@@ -1293,13 +1273,7 @@ func NewDeleteProductResponse() (response *DeleteProductResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) DeleteProduct(request *DeleteProductRequest) (response *DeleteProductResponse, err error) {
-    if request == nil {
-        request = NewDeleteProductRequest()
-    }
-    
-    response = NewDeleteProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProductWithContext(context.Background(), request)
 }
 
 // DeleteProduct
@@ -1319,6 +1293,11 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     if request == nil {
         request = NewDeleteProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
@@ -1354,13 +1333,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  RESOURCEUNAVAILABLE_IOTRULEISACTIVE = "ResourceUnavailable.IotRuleIsActive"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteRuleRequest()
-    }
-    
-    response = NewDeleteRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRuleWithContext(context.Background(), request)
 }
 
 // DeleteRule
@@ -1377,6 +1350,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRuleResponse()
@@ -1411,13 +1389,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 //  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
-    if request == nil {
-        request = NewDeleteTopicRequest()
-    }
-    
-    response = NewDeleteTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteTopicWithContext(context.Background(), request)
 }
 
 // DeleteTopic
@@ -1433,6 +1405,11 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     if request == nil {
         request = NewDeleteTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteTopicResponse()
@@ -1467,13 +1444,7 @@ func NewGetDataHistoryResponse() (response *GetDataHistoryResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDataHistory(request *GetDataHistoryRequest) (response *GetDataHistoryResponse, err error) {
-    if request == nil {
-        request = NewGetDataHistoryRequest()
-    }
-    
-    response = NewGetDataHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDataHistoryWithContext(context.Background(), request)
 }
 
 // GetDataHistory
@@ -1489,6 +1460,11 @@ func (c *Client) GetDataHistoryWithContext(ctx context.Context, request *GetData
     if request == nil {
         request = NewGetDataHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDataHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDataHistoryResponse()
@@ -1524,13 +1500,7 @@ func NewGetDebugLogResponse() (response *GetDebugLogResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDebugLog(request *GetDebugLogRequest) (response *GetDebugLogResponse, err error) {
-    if request == nil {
-        request = NewGetDebugLogRequest()
-    }
-    
-    response = NewGetDebugLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDebugLogWithContext(context.Background(), request)
 }
 
 // GetDebugLog
@@ -1547,6 +1517,11 @@ func (c *Client) GetDebugLogWithContext(ctx context.Context, request *GetDebugLo
     if request == nil {
         request = NewGetDebugLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDebugLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDebugLogResponse()
@@ -1579,13 +1554,7 @@ func NewGetDeviceResponse() (response *GetDeviceResponse) {
 //  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDevice(request *GetDeviceRequest) (response *GetDeviceResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceRequest()
-    }
-    
-    response = NewGetDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceWithContext(context.Background(), request)
 }
 
 // GetDevice
@@ -1599,6 +1568,11 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, request *GetDeviceReq
     if request == nil {
         request = NewGetDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceResponse()
@@ -1633,13 +1607,7 @@ func NewGetDeviceDataResponse() (response *GetDeviceDataResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceData(request *GetDeviceDataRequest) (response *GetDeviceDataResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceDataRequest()
-    }
-    
-    response = NewGetDeviceDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceDataWithContext(context.Background(), request)
 }
 
 // GetDeviceData
@@ -1655,6 +1623,11 @@ func (c *Client) GetDeviceDataWithContext(ctx context.Context, request *GetDevic
     if request == nil {
         request = NewGetDeviceDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceDataResponse()
@@ -1690,13 +1663,7 @@ func NewGetDeviceLogResponse() (response *GetDeviceLogResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceLog(request *GetDeviceLogRequest) (response *GetDeviceLogResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceLogRequest()
-    }
-    
-    response = NewGetDeviceLogResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceLogWithContext(context.Background(), request)
 }
 
 // GetDeviceLog
@@ -1713,6 +1680,11 @@ func (c *Client) GetDeviceLogWithContext(ctx context.Context, request *GetDevice
     if request == nil {
         request = NewGetDeviceLogRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceLog require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceLogResponse()
@@ -1747,13 +1719,7 @@ func NewGetDeviceSignaturesResponse() (response *GetDeviceSignaturesResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceSignatures(request *GetDeviceSignaturesRequest) (response *GetDeviceSignaturesResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceSignaturesRequest()
-    }
-    
-    response = NewGetDeviceSignaturesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceSignaturesWithContext(context.Background(), request)
 }
 
 // GetDeviceSignatures
@@ -1769,6 +1735,11 @@ func (c *Client) GetDeviceSignaturesWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDeviceSignaturesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceSignatures require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceSignaturesResponse()
@@ -1804,13 +1775,7 @@ func NewGetDeviceStatisticsResponse() (response *GetDeviceStatisticsResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDeviceStatistics(request *GetDeviceStatisticsRequest) (response *GetDeviceStatisticsResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceStatisticsRequest()
-    }
-    
-    response = NewGetDeviceStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceStatisticsWithContext(context.Background(), request)
 }
 
 // GetDeviceStatistics
@@ -1827,6 +1792,11 @@ func (c *Client) GetDeviceStatisticsWithContext(ctx context.Context, request *Ge
     if request == nil {
         request = NewGetDeviceStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceStatisticsResponse()
@@ -1860,13 +1830,7 @@ func NewGetDeviceStatusesResponse() (response *GetDeviceStatusesResponse) {
 //  RESOURCENOTFOUND_IOTDEVICENOTEXISTS = "ResourceNotFound.IotDeviceNotExists"
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 func (c *Client) GetDeviceStatuses(request *GetDeviceStatusesRequest) (response *GetDeviceStatusesResponse, err error) {
-    if request == nil {
-        request = NewGetDeviceStatusesRequest()
-    }
-    
-    response = NewGetDeviceStatusesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDeviceStatusesWithContext(context.Background(), request)
 }
 
 // GetDeviceStatuses
@@ -1881,6 +1845,11 @@ func (c *Client) GetDeviceStatusesWithContext(ctx context.Context, request *GetD
     if request == nil {
         request = NewGetDeviceStatusesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceStatuses require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDeviceStatusesResponse()
@@ -1913,13 +1882,7 @@ func NewGetDevicesResponse() (response *GetDevicesResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetDevices(request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
-    if request == nil {
-        request = NewGetDevicesRequest()
-    }
-    
-    response = NewGetDevicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetDevicesWithContext(context.Background(), request)
 }
 
 // GetDevices
@@ -1933,6 +1896,11 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     if request == nil {
         request = NewGetDevicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetDevicesResponse()
@@ -1966,13 +1934,7 @@ func NewGetProductResponse() (response *GetProductResponse) {
 //  RESOURCENOTFOUND_IOTPRODUCTNOTEXISTS = "ResourceNotFound.IotProductNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetProduct(request *GetProductRequest) (response *GetProductResponse, err error) {
-    if request == nil {
-        request = NewGetProductRequest()
-    }
-    
-    response = NewGetProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetProductWithContext(context.Background(), request)
 }
 
 // GetProduct
@@ -1987,6 +1949,11 @@ func (c *Client) GetProductWithContext(ctx context.Context, request *GetProductR
     if request == nil {
         request = NewGetProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetProductResponse()
@@ -2018,13 +1985,7 @@ func NewGetProductsResponse() (response *GetProductsResponse) {
 //  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetProducts(request *GetProductsRequest) (response *GetProductsResponse, err error) {
-    if request == nil {
-        request = NewGetProductsRequest()
-    }
-    
-    response = NewGetProductsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetProductsWithContext(context.Background(), request)
 }
 
 // GetProducts
@@ -2037,6 +1998,11 @@ func (c *Client) GetProductsWithContext(ctx context.Context, request *GetProduct
     if request == nil {
         request = NewGetProductsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetProducts require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetProductsResponse()
@@ -2069,13 +2035,7 @@ func NewGetRuleResponse() (response *GetRuleResponse) {
 //  RESOURCENOTFOUND_IOTRULENOTEXISTS = "ResourceNotFound.IotRuleNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetRule(request *GetRuleRequest) (response *GetRuleResponse, err error) {
-    if request == nil {
-        request = NewGetRuleRequest()
-    }
-    
-    response = NewGetRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRuleWithContext(context.Background(), request)
 }
 
 // GetRule
@@ -2089,6 +2049,11 @@ func (c *Client) GetRuleWithContext(ctx context.Context, request *GetRuleRequest
     if request == nil {
         request = NewGetRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRuleResponse()
@@ -2120,13 +2085,7 @@ func NewGetRulesResponse() (response *GetRulesResponse) {
 //  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetRules(request *GetRulesRequest) (response *GetRulesResponse, err error) {
-    if request == nil {
-        request = NewGetRulesRequest()
-    }
-    
-    response = NewGetRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetRulesWithContext(context.Background(), request)
 }
 
 // GetRules
@@ -2139,6 +2098,11 @@ func (c *Client) GetRulesWithContext(ctx context.Context, request *GetRulesReque
     if request == nil {
         request = NewGetRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetRulesResponse()
@@ -2171,13 +2135,7 @@ func NewGetTopicResponse() (response *GetTopicResponse) {
 //  RESOURCENOTFOUND_IOTTOPICNOTEXISTS = "ResourceNotFound.IotTopicNotExists"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetTopic(request *GetTopicRequest) (response *GetTopicResponse, err error) {
-    if request == nil {
-        request = NewGetTopicRequest()
-    }
-    
-    response = NewGetTopicResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTopicWithContext(context.Background(), request)
 }
 
 // GetTopic
@@ -2191,6 +2149,11 @@ func (c *Client) GetTopicWithContext(ctx context.Context, request *GetTopicReque
     if request == nil {
         request = NewGetTopicRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTopic require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTopicResponse()
@@ -2222,13 +2185,7 @@ func NewGetTopicsResponse() (response *GetTopicsResponse) {
 //  INVALIDPARAMETER_IOTPARAMERROR = "InvalidParameter.IotParamError"
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 func (c *Client) GetTopics(request *GetTopicsRequest) (response *GetTopicsResponse, err error) {
-    if request == nil {
-        request = NewGetTopicsRequest()
-    }
-    
-    response = NewGetTopicsResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetTopicsWithContext(context.Background(), request)
 }
 
 // GetTopics
@@ -2241,6 +2198,11 @@ func (c *Client) GetTopicsWithContext(ctx context.Context, request *GetTopicsReq
     if request == nil {
         request = NewGetTopicsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTopics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetTopicsResponse()
@@ -2276,13 +2238,7 @@ func NewIssueDeviceControlResponse() (response *IssueDeviceControlResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) IssueDeviceControl(request *IssueDeviceControlRequest) (response *IssueDeviceControlResponse, err error) {
-    if request == nil {
-        request = NewIssueDeviceControlRequest()
-    }
-    
-    response = NewIssueDeviceControlResponse()
-    err = c.Send(request, response)
-    return
+    return c.IssueDeviceControlWithContext(context.Background(), request)
 }
 
 // IssueDeviceControl
@@ -2299,6 +2255,11 @@ func (c *Client) IssueDeviceControlWithContext(ctx context.Context, request *Iss
     if request == nil {
         request = NewIssueDeviceControlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IssueDeviceControl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewIssueDeviceControlResponse()
@@ -2336,13 +2297,7 @@ func NewPublishMsgResponse() (response *PublishMsgResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) PublishMsg(request *PublishMsgRequest) (response *PublishMsgResponse, err error) {
-    if request == nil {
-        request = NewPublishMsgRequest()
-    }
-    
-    response = NewPublishMsgResponse()
-    err = c.Send(request, response)
-    return
+    return c.PublishMsgWithContext(context.Background(), request)
 }
 
 // PublishMsg
@@ -2361,6 +2316,11 @@ func (c *Client) PublishMsgWithContext(ctx context.Context, request *PublishMsgR
     if request == nil {
         request = NewPublishMsgRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishMsg require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPublishMsgResponse()
@@ -2398,13 +2358,7 @@ func NewResetDeviceResponse() (response *ResetDeviceResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  RESOURCEUNAVAILABLE_MQIOTRESOURCENOTEXISTS = "ResourceUnavailable.MqiotResourceNotExists"
 func (c *Client) ResetDevice(request *ResetDeviceRequest) (response *ResetDeviceResponse, err error) {
-    if request == nil {
-        request = NewResetDeviceRequest()
-    }
-    
-    response = NewResetDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetDeviceWithContext(context.Background(), request)
 }
 
 // ResetDevice
@@ -2423,6 +2377,11 @@ func (c *Client) ResetDeviceWithContext(ctx context.Context, request *ResetDevic
     if request == nil {
         request = NewResetDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetDeviceResponse()
@@ -2454,13 +2413,7 @@ func NewUnassociateSubDeviceFromGatewayProductResponse() (response *UnassociateS
 //  INVALIDPARAMETER_IOTPRODUCTINVALIDGATEWAYPRODUCTID = "InvalidParameter.IotProductInvalidGatewayProductId"
 //  INVALIDPARAMETER_IOTPRODUCTINVALIDSUBDEVICEPRODUCTID = "InvalidParameter.IotProductInvalidSubDeviceProductId"
 func (c *Client) UnassociateSubDeviceFromGatewayProduct(request *UnassociateSubDeviceFromGatewayProductRequest) (response *UnassociateSubDeviceFromGatewayProductResponse, err error) {
-    if request == nil {
-        request = NewUnassociateSubDeviceFromGatewayProductRequest()
-    }
-    
-    response = NewUnassociateSubDeviceFromGatewayProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnassociateSubDeviceFromGatewayProductWithContext(context.Background(), request)
 }
 
 // UnassociateSubDeviceFromGatewayProduct
@@ -2473,6 +2426,11 @@ func (c *Client) UnassociateSubDeviceFromGatewayProductWithContext(ctx context.C
     if request == nil {
         request = NewUnassociateSubDeviceFromGatewayProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnassociateSubDeviceFromGatewayProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnassociateSubDeviceFromGatewayProductResponse()
@@ -2509,13 +2467,7 @@ func NewUpdateProductResponse() (response *UpdateProductResponse) {
 //  RESOURCENOTFOUND_IOTUSERNOTEXISTS = "ResourceNotFound.IotUserNotExists"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) UpdateProduct(request *UpdateProductRequest) (response *UpdateProductResponse, err error) {
-    if request == nil {
-        request = NewUpdateProductRequest()
-    }
-    
-    response = NewUpdateProductResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateProductWithContext(context.Background(), request)
 }
 
 // UpdateProduct
@@ -2533,6 +2485,11 @@ func (c *Client) UpdateProductWithContext(ctx context.Context, request *UpdatePr
     if request == nil {
         request = NewUpdateProductRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProduct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateProductResponse()
@@ -2572,13 +2529,7 @@ func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
 //  RESOURCEUNAVAILABLE_IOTRULEISACTIVE = "ResourceUnavailable.IotRuleIsActive"
 //  UNAUTHORIZEDOPERATION_IOTUSERISSUSPENDED = "UnauthorizedOperation.IotUserIsSuspended"
 func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleResponse, err error) {
-    if request == nil {
-        request = NewUpdateRuleRequest()
-    }
-    
-    response = NewUpdateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateRuleWithContext(context.Background(), request)
 }
 
 // UpdateRule
@@ -2599,6 +2550,11 @@ func (c *Client) UpdateRuleWithContext(ctx context.Context, request *UpdateRuleR
     if request == nil {
         request = NewUpdateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateRuleResponse()

@@ -16,6 +16,7 @@ package v20180625
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -73,13 +74,7 @@ func NewAcceptVpcPeerConnectionResponse() (response *AcceptVpcPeerConnectionResp
 //  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
 //  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) AcceptVpcPeerConnection(request *AcceptVpcPeerConnectionRequest) (response *AcceptVpcPeerConnectionResponse, err error) {
-    if request == nil {
-        request = NewAcceptVpcPeerConnectionRequest()
-    }
-    
-    response = NewAcceptVpcPeerConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.AcceptVpcPeerConnectionWithContext(context.Background(), request)
 }
 
 // AcceptVpcPeerConnection
@@ -97,6 +92,11 @@ func (c *Client) AcceptVpcPeerConnectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewAcceptVpcPeerConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcceptVpcPeerConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAcceptVpcPeerConnectionResponse()
@@ -127,13 +127,7 @@ func NewAsyncRegisterIpsResponse() (response *AsyncRegisterIpsResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) AsyncRegisterIps(request *AsyncRegisterIpsRequest) (response *AsyncRegisterIpsResponse, err error) {
-    if request == nil {
-        request = NewAsyncRegisterIpsRequest()
-    }
-    
-    response = NewAsyncRegisterIpsResponse()
-    err = c.Send(request, response)
-    return
+    return c.AsyncRegisterIpsWithContext(context.Background(), request)
 }
 
 // AsyncRegisterIps
@@ -145,6 +139,11 @@ func (c *Client) AsyncRegisterIpsWithContext(ctx context.Context, request *Async
     if request == nil {
         request = NewAsyncRegisterIpsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AsyncRegisterIps require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAsyncRegisterIpsResponse()
@@ -178,13 +177,7 @@ func NewBindEipsToNatGatewayResponse() (response *BindEipsToNatGatewayResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindEipsToNatGateway(request *BindEipsToNatGatewayRequest) (response *BindEipsToNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewBindEipsToNatGatewayRequest()
-    }
-    
-    response = NewBindEipsToNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindEipsToNatGatewayWithContext(context.Background(), request)
 }
 
 // BindEipsToNatGateway
@@ -199,6 +192,11 @@ func (c *Client) BindEipsToNatGatewayWithContext(ctx context.Context, request *B
     if request == nil {
         request = NewBindEipsToNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindEipsToNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindEipsToNatGatewayResponse()
@@ -233,13 +231,7 @@ func NewBindIpsToNatGatewayResponse() (response *BindIpsToNatGatewayResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindIpsToNatGateway(request *BindIpsToNatGatewayRequest) (response *BindIpsToNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewBindIpsToNatGatewayRequest()
-    }
-    
-    response = NewBindIpsToNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindIpsToNatGatewayWithContext(context.Background(), request)
 }
 
 // BindIpsToNatGateway
@@ -255,6 +247,11 @@ func (c *Client) BindIpsToNatGatewayWithContext(ctx context.Context, request *Bi
     if request == nil {
         request = NewBindIpsToNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindIpsToNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindIpsToNatGatewayResponse()
@@ -289,13 +286,7 @@ func NewBindSubnetsToNatGatewayResponse() (response *BindSubnetsToNatGatewayResp
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) BindSubnetsToNatGateway(request *BindSubnetsToNatGatewayRequest) (response *BindSubnetsToNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewBindSubnetsToNatGatewayRequest()
-    }
-    
-    response = NewBindSubnetsToNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindSubnetsToNatGatewayWithContext(context.Background(), request)
 }
 
 // BindSubnetsToNatGateway
@@ -311,6 +302,11 @@ func (c *Client) BindSubnetsToNatGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewBindSubnetsToNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindSubnetsToNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindSubnetsToNatGatewayResponse()
@@ -346,13 +342,7 @@ func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse
 //  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
 //  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (response *CreateCustomerGatewayResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomerGatewayRequest()
-    }
-    
-    response = NewCreateCustomerGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomerGatewayWithContext(context.Background(), request)
 }
 
 // CreateCustomerGateway
@@ -369,6 +359,11 @@ func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateCustomerGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomerGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomerGatewayResponse()
@@ -400,13 +395,7 @@ func NewCreateDockerSubnetWithVlanResponse() (response *CreateDockerSubnetWithVl
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateDockerSubnetWithVlan(request *CreateDockerSubnetWithVlanRequest) (response *CreateDockerSubnetWithVlanResponse, err error) {
-    if request == nil {
-        request = NewCreateDockerSubnetWithVlanRequest()
-    }
-    
-    response = NewCreateDockerSubnetWithVlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDockerSubnetWithVlanWithContext(context.Background(), request)
 }
 
 // CreateDockerSubnetWithVlan
@@ -419,6 +408,11 @@ func (c *Client) CreateDockerSubnetWithVlanWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateDockerSubnetWithVlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDockerSubnetWithVlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDockerSubnetWithVlanResponse()
@@ -459,13 +453,7 @@ func NewCreateHostedInterfaceResponse() (response *CreateHostedInterfaceResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHostedInterface(request *CreateHostedInterfaceRequest) (response *CreateHostedInterfaceResponse, err error) {
-    if request == nil {
-        request = NewCreateHostedInterfaceRequest()
-    }
-    
-    response = NewCreateHostedInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHostedInterfaceWithContext(context.Background(), request)
 }
 
 // CreateHostedInterface
@@ -487,6 +475,11 @@ func (c *Client) CreateHostedInterfaceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewCreateHostedInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHostedInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHostedInterfaceResponse()
@@ -521,13 +514,7 @@ func NewCreateInterfacesResponse() (response *CreateInterfacesResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateInterfaces(request *CreateInterfacesRequest) (response *CreateInterfacesResponse, err error) {
-    if request == nil {
-        request = NewCreateInterfacesRequest()
-    }
-    
-    response = NewCreateInterfacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInterfacesWithContext(context.Background(), request)
 }
 
 // CreateInterfaces
@@ -543,6 +530,11 @@ func (c *Client) CreateInterfacesWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateInterfacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInterfaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInterfacesResponse()
@@ -578,13 +570,7 @@ func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNatGateway(request *CreateNatGatewayRequest) (response *CreateNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewCreateNatGatewayRequest()
-    }
-    
-    response = NewCreateNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateNatGatewayWithContext(context.Background(), request)
 }
 
 // CreateNatGateway
@@ -601,6 +587,11 @@ func (c *Client) CreateNatGatewayWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateNatGatewayResponse()
@@ -636,13 +627,7 @@ func NewCreateRoutePoliciesResponse() (response *CreateRoutePoliciesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRoutePolicies(request *CreateRoutePoliciesRequest) (response *CreateRoutePoliciesResponse, err error) {
-    if request == nil {
-        request = NewCreateRoutePoliciesRequest()
-    }
-    
-    response = NewCreateRoutePoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRoutePoliciesWithContext(context.Background(), request)
 }
 
 // CreateRoutePolicies
@@ -659,6 +644,11 @@ func (c *Client) CreateRoutePoliciesWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateRoutePoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoutePolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRoutePoliciesResponse()
@@ -694,13 +684,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSubnetResponse, err error) {
-    if request == nil {
-        request = NewCreateSubnetRequest()
-    }
-    
-    response = NewCreateSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSubnetWithContext(context.Background(), request)
 }
 
 // CreateSubnet
@@ -717,6 +701,11 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
     if request == nil {
         request = NewCreateSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSubnetResponse()
@@ -748,13 +737,7 @@ func NewCreateVirtualSubnetWithVlanResponse() (response *CreateVirtualSubnetWith
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateVirtualSubnetWithVlan(request *CreateVirtualSubnetWithVlanRequest) (response *CreateVirtualSubnetWithVlanResponse, err error) {
-    if request == nil {
-        request = NewCreateVirtualSubnetWithVlanRequest()
-    }
-    
-    response = NewCreateVirtualSubnetWithVlanResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVirtualSubnetWithVlanWithContext(context.Background(), request)
 }
 
 // CreateVirtualSubnetWithVlan
@@ -767,6 +750,11 @@ func (c *Client) CreateVirtualSubnetWithVlanWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateVirtualSubnetWithVlanRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVirtualSubnetWithVlan require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVirtualSubnetWithVlanResponse()
@@ -799,13 +787,7 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcResponse, err error) {
-    if request == nil {
-        request = NewCreateVpcRequest()
-    }
-    
-    response = NewCreateVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVpcWithContext(context.Background(), request)
 }
 
 // CreateVpc
@@ -819,6 +801,11 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
     if request == nil {
         request = NewCreateVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVpcResponse()
@@ -856,13 +843,7 @@ func NewCreateVpcPeerConnectionResponse() (response *CreateVpcPeerConnectionResp
 //  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
 //  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) CreateVpcPeerConnection(request *CreateVpcPeerConnectionRequest) (response *CreateVpcPeerConnectionResponse, err error) {
-    if request == nil {
-        request = NewCreateVpcPeerConnectionRequest()
-    }
-    
-    response = NewCreateVpcPeerConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVpcPeerConnectionWithContext(context.Background(), request)
 }
 
 // CreateVpcPeerConnection
@@ -881,6 +862,11 @@ func (c *Client) CreateVpcPeerConnectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewCreateVpcPeerConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVpcPeerConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVpcPeerConnectionResponse()
@@ -916,13 +902,7 @@ func NewDeleteCustomerGatewayResponse() (response *DeleteCustomerGatewayResponse
 //  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
 //  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (response *DeleteCustomerGatewayResponse, err error) {
-    if request == nil {
-        request = NewDeleteCustomerGatewayRequest()
-    }
-    
-    response = NewDeleteCustomerGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCustomerGatewayWithContext(context.Background(), request)
 }
 
 // DeleteCustomerGateway
@@ -939,6 +919,11 @@ func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteCustomerGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomerGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCustomerGatewayResponse()
@@ -975,13 +960,7 @@ func NewDeleteHostedInterfaceResponse() (response *DeleteHostedInterfaceResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHostedInterface(request *DeleteHostedInterfaceRequest) (response *DeleteHostedInterfaceResponse, err error) {
-    if request == nil {
-        request = NewDeleteHostedInterfaceRequest()
-    }
-    
-    response = NewDeleteHostedInterfaceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteHostedInterfaceWithContext(context.Background(), request)
 }
 
 // DeleteHostedInterface
@@ -999,6 +978,11 @@ func (c *Client) DeleteHostedInterfaceWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDeleteHostedInterfaceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHostedInterface require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteHostedInterfaceResponse()
@@ -1032,13 +1016,7 @@ func NewDeleteHostedInterfacesResponse() (response *DeleteHostedInterfacesRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteHostedInterfaces(request *DeleteHostedInterfacesRequest) (response *DeleteHostedInterfacesResponse, err error) {
-    if request == nil {
-        request = NewDeleteHostedInterfacesRequest()
-    }
-    
-    response = NewDeleteHostedInterfacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteHostedInterfacesWithContext(context.Background(), request)
 }
 
 // DeleteHostedInterfaces
@@ -1053,6 +1031,11 @@ func (c *Client) DeleteHostedInterfacesWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDeleteHostedInterfacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHostedInterfaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteHostedInterfacesResponse()
@@ -1086,13 +1069,7 @@ func NewDeleteInterfacesResponse() (response *DeleteInterfacesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteInterfaces(request *DeleteInterfacesRequest) (response *DeleteInterfacesResponse, err error) {
-    if request == nil {
-        request = NewDeleteInterfacesRequest()
-    }
-    
-    response = NewDeleteInterfacesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteInterfacesWithContext(context.Background(), request)
 }
 
 // DeleteInterfaces
@@ -1107,6 +1084,11 @@ func (c *Client) DeleteInterfacesWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteInterfacesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInterfaces require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteInterfacesResponse()
@@ -1140,13 +1122,7 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *DeleteNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewDeleteNatGatewayRequest()
-    }
-    
-    response = NewDeleteNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteNatGatewayWithContext(context.Background(), request)
 }
 
 // DeleteNatGateway
@@ -1161,6 +1137,11 @@ func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteNatGatewayResponse()
@@ -1195,13 +1176,7 @@ func NewDeleteRoutePolicyResponse() (response *DeleteRoutePolicyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRoutePolicy(request *DeleteRoutePolicyRequest) (response *DeleteRoutePolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteRoutePolicyRequest()
-    }
-    
-    response = NewDeleteRoutePolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRoutePolicyWithContext(context.Background(), request)
 }
 
 // DeleteRoutePolicy
@@ -1217,6 +1192,11 @@ func (c *Client) DeleteRoutePolicyWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteRoutePolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoutePolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRoutePolicyResponse()
@@ -1253,13 +1233,7 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
-    if request == nil {
-        request = NewDeleteSubnetRequest()
-    }
-    
-    response = NewDeleteSubnetResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSubnetWithContext(context.Background(), request)
 }
 
 // DeleteSubnet
@@ -1277,6 +1251,11 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
     if request == nil {
         request = NewDeleteSubnetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSubnet require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSubnetResponse()
@@ -1310,13 +1289,7 @@ func NewDeleteVirtualIpResponse() (response *DeleteVirtualIpResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteVirtualIp(request *DeleteVirtualIpRequest) (response *DeleteVirtualIpResponse, err error) {
-    if request == nil {
-        request = NewDeleteVirtualIpRequest()
-    }
-    
-    response = NewDeleteVirtualIpResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVirtualIpWithContext(context.Background(), request)
 }
 
 // DeleteVirtualIp
@@ -1331,6 +1304,11 @@ func (c *Client) DeleteVirtualIpWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteVirtualIpRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVirtualIp require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVirtualIpResponse()
@@ -1370,13 +1348,7 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpcRequest()
-    }
-    
-    response = NewDeleteVpcResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpcWithContext(context.Background(), request)
 }
 
 // DeleteVpc
@@ -1397,6 +1369,11 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
     if request == nil {
         request = NewDeleteVpcRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpc require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpcResponse()
@@ -1433,13 +1410,7 @@ func NewDeleteVpcPeerConnectionResponse() (response *DeleteVpcPeerConnectionResp
 //  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
 //  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) DeleteVpcPeerConnection(request *DeleteVpcPeerConnectionRequest) (response *DeleteVpcPeerConnectionResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpcPeerConnectionRequest()
-    }
-    
-    response = NewDeleteVpcPeerConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpcPeerConnectionWithContext(context.Background(), request)
 }
 
 // DeleteVpcPeerConnection
@@ -1457,6 +1428,11 @@ func (c *Client) DeleteVpcPeerConnectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewDeleteVpcPeerConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpcPeerConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpcPeerConnectionResponse()
@@ -1497,13 +1473,7 @@ func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
 //  UNSUPPORTEDOPERATION_SPDSNETNOTINCIDR = "UnsupportedOperation.SpdSnetNotInCidr"
 //  UNSUPPORTEDOPERATION_VPNCONNEXIST = "UnsupportedOperation.VpnConnExist"
 func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (response *DeleteVpnConnectionResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpnConnectionRequest()
-    }
-    
-    response = NewDeleteVpnConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpnConnectionWithContext(context.Background(), request)
 }
 
 // DeleteVpnConnection
@@ -1525,6 +1495,11 @@ func (c *Client) DeleteVpnConnectionWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteVpnConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpnConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpnConnectionResponse()
@@ -1558,13 +1533,7 @@ func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
 //  RESOURCENOTFOUND_VPNGWNOTEXIST = "ResourceNotFound.VpnGwNotExist"
 //  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (response *DeleteVpnGatewayResponse, err error) {
-    if request == nil {
-        request = NewDeleteVpnGatewayRequest()
-    }
-    
-    response = NewDeleteVpnGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteVpnGatewayWithContext(context.Background(), request)
 }
 
 // DeleteVpnGateway
@@ -1579,6 +1548,11 @@ func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteVpnGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpnGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteVpnGatewayResponse()
@@ -1612,13 +1586,7 @@ func NewDeregisterIpsResponse() (response *DeregisterIpsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeregisterIps(request *DeregisterIpsRequest) (response *DeregisterIpsResponse, err error) {
-    if request == nil {
-        request = NewDeregisterIpsRequest()
-    }
-    
-    response = NewDeregisterIpsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeregisterIpsWithContext(context.Background(), request)
 }
 
 // DeregisterIps
@@ -1633,6 +1601,11 @@ func (c *Client) DeregisterIpsWithContext(ctx context.Context, request *Deregist
     if request == nil {
         request = NewDeregisterIpsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeregisterIps require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeregisterIpsResponse()
@@ -1664,13 +1637,7 @@ func NewDescribeCustomerGatewaysResponse() (response *DescribeCustomerGatewaysRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysRequest) (response *DescribeCustomerGatewaysResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomerGatewaysRequest()
-    }
-    
-    response = NewDescribeCustomerGatewaysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomerGatewaysWithContext(context.Background(), request)
 }
 
 // DescribeCustomerGateways
@@ -1683,6 +1650,11 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeCustomerGatewaysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomerGateways require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomerGatewaysResponse()
@@ -1716,13 +1688,7 @@ func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (response *DescribeNatGatewaysResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatGatewaysRequest()
-    }
-    
-    response = NewDescribeNatGatewaysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatGatewaysWithContext(context.Background(), request)
 }
 
 // DescribeNatGateways
@@ -1737,6 +1703,11 @@ func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeNatGatewaysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatGateways require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatGatewaysResponse()
@@ -1770,13 +1741,7 @@ func NewDescribeNatSubnetsResponse() (response *DescribeNatSubnetsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeNatSubnets(request *DescribeNatSubnetsRequest) (response *DescribeNatSubnetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatSubnetsRequest()
-    }
-    
-    response = NewDescribeNatSubnetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeNatSubnetsWithContext(context.Background(), request)
 }
 
 // DescribeNatSubnets
@@ -1791,6 +1756,11 @@ func (c *Client) DescribeNatSubnetsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeNatSubnetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatSubnets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeNatSubnetsResponse()
@@ -1824,13 +1794,7 @@ func NewDescribeRoutePoliciesResponse() (response *DescribeRoutePoliciesResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRoutePolicies(request *DescribeRoutePoliciesRequest) (response *DescribeRoutePoliciesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRoutePoliciesRequest()
-    }
-    
-    response = NewDescribeRoutePoliciesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRoutePoliciesWithContext(context.Background(), request)
 }
 
 // DescribeRoutePolicies
@@ -1845,6 +1809,11 @@ func (c *Client) DescribeRoutePoliciesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeRoutePoliciesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoutePolicies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRoutePoliciesResponse()
@@ -1877,13 +1846,7 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (response *DescribeRouteTablesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRouteTablesRequest()
-    }
-    
-    response = NewDescribeRouteTablesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRouteTablesWithContext(context.Background(), request)
 }
 
 // DescribeRouteTables
@@ -1897,6 +1860,11 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRouteTablesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRouteTables require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRouteTablesResponse()
@@ -1928,13 +1896,7 @@ func NewDescribeSubnetAvailableIpsResponse() (response *DescribeSubnetAvailableI
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetAvailableIps(request *DescribeSubnetAvailableIpsRequest) (response *DescribeSubnetAvailableIpsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetAvailableIpsRequest()
-    }
-    
-    response = NewDescribeSubnetAvailableIpsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetAvailableIpsWithContext(context.Background(), request)
 }
 
 // DescribeSubnetAvailableIps
@@ -1947,6 +1909,11 @@ func (c *Client) DescribeSubnetAvailableIpsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeSubnetAvailableIpsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnetAvailableIps require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetAvailableIpsResponse()
@@ -1978,13 +1945,7 @@ func NewDescribeSubnetByDeviceResponse() (response *DescribeSubnetByDeviceRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetByDevice(request *DescribeSubnetByDeviceRequest) (response *DescribeSubnetByDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetByDeviceRequest()
-    }
-    
-    response = NewDescribeSubnetByDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetByDeviceWithContext(context.Background(), request)
 }
 
 // DescribeSubnetByDevice
@@ -1997,6 +1958,11 @@ func (c *Client) DescribeSubnetByDeviceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeSubnetByDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnetByDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetByDeviceResponse()
@@ -2028,13 +1994,7 @@ func NewDescribeSubnetByHostedDeviceResponse() (response *DescribeSubnetByHosted
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnetByHostedDevice(request *DescribeSubnetByHostedDeviceRequest) (response *DescribeSubnetByHostedDeviceResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetByHostedDeviceRequest()
-    }
-    
-    response = NewDescribeSubnetByHostedDeviceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetByHostedDeviceWithContext(context.Background(), request)
 }
 
 // DescribeSubnetByHostedDevice
@@ -2047,6 +2007,11 @@ func (c *Client) DescribeSubnetByHostedDeviceWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSubnetByHostedDeviceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnetByHostedDevice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetByHostedDeviceResponse()
@@ -2079,13 +2044,7 @@ func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *DescribeSubnetsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSubnetsRequest()
-    }
-    
-    response = NewDescribeSubnetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSubnetsWithContext(context.Background(), request)
 }
 
 // DescribeSubnets
@@ -2099,6 +2058,11 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeSubnetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSubnetsResponse()
@@ -2131,13 +2095,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (response *DescribeTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskStatusRequest()
-    }
-    
-    response = NewDescribeTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeTaskStatus
@@ -2151,6 +2109,11 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskStatusResponse()
@@ -2182,13 +2145,7 @@ func NewDescribeVpcPeerConnectionsResponse() (response *DescribeVpcPeerConnectio
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcPeerConnections(request *DescribeVpcPeerConnectionsRequest) (response *DescribeVpcPeerConnectionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcPeerConnectionsRequest()
-    }
-    
-    response = NewDescribeVpcPeerConnectionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcPeerConnectionsWithContext(context.Background(), request)
 }
 
 // DescribeVpcPeerConnections
@@ -2201,6 +2158,11 @@ func (c *Client) DescribeVpcPeerConnectionsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeVpcPeerConnectionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcPeerConnections require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcPeerConnectionsResponse()
@@ -2233,13 +2195,7 @@ func NewDescribeVpcQuotaResponse() (response *DescribeVpcQuotaResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcQuota(request *DescribeVpcQuotaRequest) (response *DescribeVpcQuotaResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcQuotaRequest()
-    }
-    
-    response = NewDescribeVpcQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcQuotaWithContext(context.Background(), request)
 }
 
 // DescribeVpcQuota
@@ -2253,6 +2209,11 @@ func (c *Client) DescribeVpcQuotaWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeVpcQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcQuotaResponse()
@@ -2285,13 +2246,7 @@ func NewDescribeVpcResourceResponse() (response *DescribeVpcResourceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcResource(request *DescribeVpcResourceRequest) (response *DescribeVpcResourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcResourceRequest()
-    }
-    
-    response = NewDescribeVpcResourceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcResourceWithContext(context.Background(), request)
 }
 
 // DescribeVpcResource
@@ -2305,6 +2260,11 @@ func (c *Client) DescribeVpcResourceWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVpcResourceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcResource require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcResourceResponse()
@@ -2338,13 +2298,7 @@ func NewDescribeVpcViewResponse() (response *DescribeVpcViewResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeVpcView(request *DescribeVpcViewRequest) (response *DescribeVpcViewResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcViewRequest()
-    }
-    
-    response = NewDescribeVpcViewResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcViewWithContext(context.Background(), request)
 }
 
 // DescribeVpcView
@@ -2359,6 +2313,11 @@ func (c *Client) DescribeVpcViewWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeVpcViewRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcView require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcViewResponse()
@@ -2392,13 +2351,7 @@ func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeVpcsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcsRequest()
-    }
-    
-    response = NewDescribeVpcsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpcsWithContext(context.Background(), request)
 }
 
 // DescribeVpcs
@@ -2413,6 +2366,11 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
     if request == nil {
         request = NewDescribeVpcsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcs require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpcsResponse()
@@ -2444,13 +2402,7 @@ func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) (response *DescribeVpnConnectionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpnConnectionsRequest()
-    }
-    
-    response = NewDescribeVpnConnectionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpnConnectionsWithContext(context.Background(), request)
 }
 
 // DescribeVpnConnections
@@ -2463,6 +2415,11 @@ func (c *Client) DescribeVpnConnectionsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeVpnConnectionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpnConnections require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpnConnectionsResponse()
@@ -2494,13 +2451,7 @@ func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (response *DescribeVpnGatewaysResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpnGatewaysRequest()
-    }
-    
-    response = NewDescribeVpnGatewaysResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVpnGatewaysWithContext(context.Background(), request)
 }
 
 // DescribeVpnGateways
@@ -2513,6 +2464,11 @@ func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVpnGatewaysRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpnGateways require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVpnGatewaysResponse()
@@ -2545,13 +2501,7 @@ func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustom
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
 func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerGatewayConfigurationRequest) (response *DownloadCustomerGatewayConfigurationResponse, err error) {
-    if request == nil {
-        request = NewDownloadCustomerGatewayConfigurationRequest()
-    }
-    
-    response = NewDownloadCustomerGatewayConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadCustomerGatewayConfigurationWithContext(context.Background(), request)
 }
 
 // DownloadCustomerGatewayConfiguration
@@ -2565,6 +2515,11 @@ func (c *Client) DownloadCustomerGatewayConfigurationWithContext(ctx context.Con
     if request == nil {
         request = NewDownloadCustomerGatewayConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadCustomerGatewayConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadCustomerGatewayConfigurationResponse()
@@ -2600,13 +2555,7 @@ func NewModifyCustomerGatewayAttributeResponse() (response *ModifyCustomerGatewa
 //  UNSUPPORTEDOPERATION_CUSTOMERGATEWAYADDRINVALID = "UnsupportedOperation.CustomerGatewayAddrInvalid"
 //  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) ModifyCustomerGatewayAttribute(request *ModifyCustomerGatewayAttributeRequest) (response *ModifyCustomerGatewayAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyCustomerGatewayAttributeRequest()
-    }
-    
-    response = NewModifyCustomerGatewayAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCustomerGatewayAttributeWithContext(context.Background(), request)
 }
 
 // ModifyCustomerGatewayAttribute
@@ -2623,6 +2572,11 @@ func (c *Client) ModifyCustomerGatewayAttributeWithContext(ctx context.Context, 
     if request == nil {
         request = NewModifyCustomerGatewayAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomerGatewayAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCustomerGatewayAttributeResponse()
@@ -2657,13 +2611,7 @@ func NewModifyRoutePolicyResponse() (response *ModifyRoutePolicyResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRoutePolicy(request *ModifyRoutePolicyRequest) (response *ModifyRoutePolicyResponse, err error) {
-    if request == nil {
-        request = NewModifyRoutePolicyRequest()
-    }
-    
-    response = NewModifyRoutePolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRoutePolicyWithContext(context.Background(), request)
 }
 
 // ModifyRoutePolicy
@@ -2679,6 +2627,11 @@ func (c *Client) ModifyRoutePolicyWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyRoutePolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoutePolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRoutePolicyResponse()
@@ -2712,13 +2665,7 @@ func NewModifyRouteTableResponse() (response *ModifyRouteTableResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRouteTable(request *ModifyRouteTableRequest) (response *ModifyRouteTableResponse, err error) {
-    if request == nil {
-        request = NewModifyRouteTableRequest()
-    }
-    
-    response = NewModifyRouteTableResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRouteTableWithContext(context.Background(), request)
 }
 
 // ModifyRouteTable
@@ -2733,6 +2680,11 @@ func (c *Client) ModifyRouteTableWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyRouteTableRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRouteTable require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRouteTableResponse()
@@ -2766,13 +2718,7 @@ func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (response *ModifySubnetAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifySubnetAttributeRequest()
-    }
-    
-    response = NewModifySubnetAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubnetAttributeWithContext(context.Background(), request)
 }
 
 // ModifySubnetAttribute
@@ -2787,6 +2733,11 @@ func (c *Client) ModifySubnetAttributeWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySubnetAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubnetAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubnetAttributeResponse()
@@ -2820,13 +2771,7 @@ func NewModifySubnetDHCPRelayResponse() (response *ModifySubnetDHCPRelayResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifySubnetDHCPRelay(request *ModifySubnetDHCPRelayRequest) (response *ModifySubnetDHCPRelayResponse, err error) {
-    if request == nil {
-        request = NewModifySubnetDHCPRelayRequest()
-    }
-    
-    response = NewModifySubnetDHCPRelayResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySubnetDHCPRelayWithContext(context.Background(), request)
 }
 
 // ModifySubnetDHCPRelay
@@ -2841,6 +2786,11 @@ func (c *Client) ModifySubnetDHCPRelayWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifySubnetDHCPRelayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySubnetDHCPRelay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySubnetDHCPRelayResponse()
@@ -2874,13 +2824,7 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyVpcAttributeRequest()
-    }
-    
-    response = NewModifyVpcAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVpcAttributeWithContext(context.Background(), request)
 }
 
 // ModifyVpcAttribute
@@ -2895,6 +2839,11 @@ func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifyVpcAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVpcAttributeResponse()
@@ -2931,13 +2880,7 @@ func NewModifyVpcPeerConnectionResponse() (response *ModifyVpcPeerConnectionResp
 //  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
 //  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) ModifyVpcPeerConnection(request *ModifyVpcPeerConnectionRequest) (response *ModifyVpcPeerConnectionResponse, err error) {
-    if request == nil {
-        request = NewModifyVpcPeerConnectionRequest()
-    }
-    
-    response = NewModifyVpcPeerConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVpcPeerConnectionWithContext(context.Background(), request)
 }
 
 // ModifyVpcPeerConnection
@@ -2955,6 +2898,11 @@ func (c *Client) ModifyVpcPeerConnectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyVpcPeerConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcPeerConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVpcPeerConnectionResponse()
@@ -2996,13 +2944,7 @@ func NewModifyVpnConnectionAttributeResponse() (response *ModifyVpnConnectionAtt
 //  UNSUPPORTEDOPERATION_SPDACLCIDRINVALID = "UnsupportedOperation.SpdAclCidrInvalid"
 //  UNSUPPORTEDOPERATION_SPDSNETNOTINCIDR = "UnsupportedOperation.SpdSnetNotInCidr"
 func (c *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionAttributeRequest) (response *ModifyVpnConnectionAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyVpnConnectionAttributeRequest()
-    }
-    
-    response = NewModifyVpnConnectionAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVpnConnectionAttributeWithContext(context.Background(), request)
 }
 
 // ModifyVpnConnectionAttribute
@@ -3025,6 +2967,11 @@ func (c *Client) ModifyVpnConnectionAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyVpnConnectionAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpnConnectionAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVpnConnectionAttributeResponse()
@@ -3058,13 +3005,7 @@ func NewModifyVpnGatewayAttributeResponse() (response *ModifyVpnGatewayAttribute
 //  RESOURCENOTFOUND_VPNGWNOTEXIST = "ResourceNotFound.VpnGwNotExist"
 //  UNSUPPORTEDOPERATION_VPNCONNINUSE = "UnsupportedOperation.VpnConnInUse"
 func (c *Client) ModifyVpnGatewayAttribute(request *ModifyVpnGatewayAttributeRequest) (response *ModifyVpnGatewayAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyVpnGatewayAttributeRequest()
-    }
-    
-    response = NewModifyVpnGatewayAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVpnGatewayAttributeWithContext(context.Background(), request)
 }
 
 // ModifyVpnGatewayAttribute
@@ -3079,6 +3020,11 @@ func (c *Client) ModifyVpnGatewayAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVpnGatewayAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpnGatewayAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVpnGatewayAttributeResponse()
@@ -3116,13 +3062,7 @@ func NewRejectVpcPeerConnectionResponse() (response *RejectVpcPeerConnectionResp
 //  UNSUPPORTEDOPERATION_VPCCIDRCONFICT = "UnsupportedOperation.VpcCidrConfict"
 //  UNSUPPORTEDOPERATION_VPCPEEREXIST = "UnsupportedOperation.VpcPeerExist"
 func (c *Client) RejectVpcPeerConnection(request *RejectVpcPeerConnectionRequest) (response *RejectVpcPeerConnectionResponse, err error) {
-    if request == nil {
-        request = NewRejectVpcPeerConnectionRequest()
-    }
-    
-    response = NewRejectVpcPeerConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RejectVpcPeerConnectionWithContext(context.Background(), request)
 }
 
 // RejectVpcPeerConnection
@@ -3141,6 +3081,11 @@ func (c *Client) RejectVpcPeerConnectionWithContext(ctx context.Context, request
     if request == nil {
         request = NewRejectVpcPeerConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RejectVpcPeerConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRejectVpcPeerConnectionResponse()
@@ -3175,13 +3120,7 @@ func NewResetVpnConnectionResponse() (response *ResetVpnConnectionResponse) {
 //  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
 //  RESOURCENOTFOUND_VPNCONNNOTEXIST = "ResourceNotFound.VpnConnNotExist"
 func (c *Client) ResetVpnConnection(request *ResetVpnConnectionRequest) (response *ResetVpnConnectionResponse, err error) {
-    if request == nil {
-        request = NewResetVpnConnectionRequest()
-    }
-    
-    response = NewResetVpnConnectionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ResetVpnConnectionWithContext(context.Background(), request)
 }
 
 // ResetVpnConnection
@@ -3197,6 +3136,11 @@ func (c *Client) ResetVpnConnectionWithContext(ctx context.Context, request *Res
     if request == nil {
         request = NewResetVpnConnectionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetVpnConnection require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewResetVpnConnectionResponse()
@@ -3231,13 +3175,7 @@ func NewUnbindEipsFromNatGatewayResponse() (response *UnbindEipsFromNatGatewayRe
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindEipsFromNatGateway(request *UnbindEipsFromNatGatewayRequest) (response *UnbindEipsFromNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewUnbindEipsFromNatGatewayRequest()
-    }
-    
-    response = NewUnbindEipsFromNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindEipsFromNatGatewayWithContext(context.Background(), request)
 }
 
 // UnbindEipsFromNatGateway
@@ -3253,6 +3191,11 @@ func (c *Client) UnbindEipsFromNatGatewayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUnbindEipsFromNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindEipsFromNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindEipsFromNatGatewayResponse()
@@ -3286,13 +3229,7 @@ func NewUnbindIpsFromNatGatewayResponse() (response *UnbindIpsFromNatGatewayResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindIpsFromNatGateway(request *UnbindIpsFromNatGatewayRequest) (response *UnbindIpsFromNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewUnbindIpsFromNatGatewayRequest()
-    }
-    
-    response = NewUnbindIpsFromNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindIpsFromNatGatewayWithContext(context.Background(), request)
 }
 
 // UnbindIpsFromNatGateway
@@ -3307,6 +3244,11 @@ func (c *Client) UnbindIpsFromNatGatewayWithContext(ctx context.Context, request
     if request == nil {
         request = NewUnbindIpsFromNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindIpsFromNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindIpsFromNatGatewayResponse()
@@ -3340,13 +3282,7 @@ func NewUnbindSubnetsFromNatGatewayResponse() (response *UnbindSubnetsFromNatGat
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UnbindSubnetsFromNatGateway(request *UnbindSubnetsFromNatGatewayRequest) (response *UnbindSubnetsFromNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewUnbindSubnetsFromNatGatewayRequest()
-    }
-    
-    response = NewUnbindSubnetsFromNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindSubnetsFromNatGatewayWithContext(context.Background(), request)
 }
 
 // UnbindSubnetsFromNatGateway
@@ -3361,6 +3297,11 @@ func (c *Client) UnbindSubnetsFromNatGatewayWithContext(ctx context.Context, req
     if request == nil {
         request = NewUnbindSubnetsFromNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindSubnetsFromNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindSubnetsFromNatGatewayResponse()
@@ -3394,13 +3335,7 @@ func NewUpgradeNatGatewayResponse() (response *UpgradeNatGatewayResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpgradeNatGateway(request *UpgradeNatGatewayRequest) (response *UpgradeNatGatewayResponse, err error) {
-    if request == nil {
-        request = NewUpgradeNatGatewayRequest()
-    }
-    
-    response = NewUpgradeNatGatewayResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpgradeNatGatewayWithContext(context.Background(), request)
 }
 
 // UpgradeNatGateway
@@ -3415,6 +3350,11 @@ func (c *Client) UpgradeNatGatewayWithContext(ctx context.Context, request *Upgr
     if request == nil {
         request = NewUpgradeNatGatewayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeNatGateway require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpgradeNatGatewayResponse()

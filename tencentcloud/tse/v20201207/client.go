@@ -16,6 +16,7 @@ package v20201207
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewDescribeSREInstanceAccessAddressResponse() (response *DescribeSREInstanc
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSREInstanceAccessAddress(request *DescribeSREInstanceAccessAddressRequest) (response *DescribeSREInstanceAccessAddressResponse, err error) {
-    if request == nil {
-        request = NewDescribeSREInstanceAccessAddressRequest()
-    }
-    
-    response = NewDescribeSREInstanceAccessAddressResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSREInstanceAccessAddressWithContext(context.Background(), request)
 }
 
 // DescribeSREInstanceAccessAddress
@@ -91,6 +86,11 @@ func (c *Client) DescribeSREInstanceAccessAddressWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeSREInstanceAccessAddressRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSREInstanceAccessAddress require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSREInstanceAccessAddressResponse()
@@ -123,13 +123,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSREInstancesRequest()
-    }
-    
-    response = NewDescribeSREInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSREInstancesWithContext(context.Background(), request)
 }
 
 // DescribeSREInstances
@@ -143,6 +137,11 @@ func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeSREInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSREInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSREInstancesResponse()

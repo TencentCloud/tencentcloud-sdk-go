@@ -16,6 +16,7 @@ package v20200722
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -70,13 +71,7 @@ func NewCreateFlowServiceResponse() (response *CreateFlowServiceResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateFlowService(request *CreateFlowServiceRequest) (response *CreateFlowServiceResponse, err error) {
-    if request == nil {
-        request = NewCreateFlowServiceRequest()
-    }
-    
-    response = NewCreateFlowServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateFlowServiceWithContext(context.Background(), request)
 }
 
 // CreateFlowService
@@ -91,6 +86,11 @@ func (c *Client) CreateFlowServiceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateFlowServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateFlowServiceResponse()
@@ -125,13 +125,7 @@ func NewDescribeExecutionResponse() (response *DescribeExecutionResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeExecution(request *DescribeExecutionRequest) (response *DescribeExecutionResponse, err error) {
-    if request == nil {
-        request = NewDescribeExecutionRequest()
-    }
-    
-    response = NewDescribeExecutionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExecutionWithContext(context.Background(), request)
 }
 
 // DescribeExecution
@@ -147,6 +141,11 @@ func (c *Client) DescribeExecutionWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeExecutionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExecution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExecutionResponse()
@@ -180,13 +179,7 @@ func NewDescribeExecutionHistoryResponse() (response *DescribeExecutionHistoryRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeExecutionHistory(request *DescribeExecutionHistoryRequest) (response *DescribeExecutionHistoryResponse, err error) {
-    if request == nil {
-        request = NewDescribeExecutionHistoryRequest()
-    }
-    
-    response = NewDescribeExecutionHistoryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExecutionHistoryWithContext(context.Background(), request)
 }
 
 // DescribeExecutionHistory
@@ -201,6 +194,11 @@ func (c *Client) DescribeExecutionHistoryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeExecutionHistoryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExecutionHistory require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExecutionHistoryResponse()
@@ -233,13 +231,7 @@ func NewDescribeExecutionsResponse() (response *DescribeExecutionsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeExecutions(request *DescribeExecutionsRequest) (response *DescribeExecutionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeExecutionsRequest()
-    }
-    
-    response = NewDescribeExecutionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExecutionsWithContext(context.Background(), request)
 }
 
 // DescribeExecutions
@@ -253,6 +245,11 @@ func (c *Client) DescribeExecutionsWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeExecutionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExecutions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExecutionsResponse()
@@ -287,13 +284,7 @@ func NewDescribeFlowServiceDetailResponse() (response *DescribeFlowServiceDetail
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowServiceDetail(request *DescribeFlowServiceDetailRequest) (response *DescribeFlowServiceDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowServiceDetailRequest()
-    }
-    
-    response = NewDescribeFlowServiceDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowServiceDetailWithContext(context.Background(), request)
 }
 
 // DescribeFlowServiceDetail
@@ -309,6 +300,11 @@ func (c *Client) DescribeFlowServiceDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeFlowServiceDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowServiceDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowServiceDetailResponse()
@@ -342,13 +338,7 @@ func NewDescribeFlowServicesResponse() (response *DescribeFlowServicesResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowServices(request *DescribeFlowServicesRequest) (response *DescribeFlowServicesResponse, err error) {
-    if request == nil {
-        request = NewDescribeFlowServicesRequest()
-    }
-    
-    response = NewDescribeFlowServicesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeFlowServicesWithContext(context.Background(), request)
 }
 
 // DescribeFlowServices
@@ -363,6 +353,11 @@ func (c *Client) DescribeFlowServicesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeFlowServicesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowServices require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeFlowServicesResponse()
@@ -396,13 +391,7 @@ func NewModifyFlowServiceResponse() (response *ModifyFlowServiceResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyFlowService(request *ModifyFlowServiceRequest) (response *ModifyFlowServiceResponse, err error) {
-    if request == nil {
-        request = NewModifyFlowServiceRequest()
-    }
-    
-    response = NewModifyFlowServiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyFlowServiceWithContext(context.Background(), request)
 }
 
 // ModifyFlowService
@@ -417,6 +406,11 @@ func (c *Client) ModifyFlowServiceWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyFlowServiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFlowService require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyFlowServiceResponse()
@@ -450,13 +444,7 @@ func NewStartExecutionResponse() (response *StartExecutionResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StartExecution(request *StartExecutionRequest) (response *StartExecutionResponse, err error) {
-    if request == nil {
-        request = NewStartExecutionRequest()
-    }
-    
-    response = NewStartExecutionResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartExecutionWithContext(context.Background(), request)
 }
 
 // StartExecution
@@ -471,6 +459,11 @@ func (c *Client) StartExecutionWithContext(ctx context.Context, request *StartEx
     if request == nil {
         request = NewStartExecutionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartExecution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartExecutionResponse()
@@ -502,13 +495,7 @@ func NewStopExecutionResponse() (response *StopExecutionResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) StopExecution(request *StopExecutionRequest) (response *StopExecutionResponse, err error) {
-    if request == nil {
-        request = NewStopExecutionRequest()
-    }
-    
-    response = NewStopExecutionResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopExecutionWithContext(context.Background(), request)
 }
 
 // StopExecution
@@ -521,6 +508,11 @@ func (c *Client) StopExecutionWithContext(ctx context.Context, request *StopExec
     if request == nil {
         request = NewStopExecutionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopExecution require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopExecutionResponse()

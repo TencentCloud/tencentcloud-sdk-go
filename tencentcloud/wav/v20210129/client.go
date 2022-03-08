@@ -16,6 +16,7 @@ package v20210129
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewCreateChannelCodeResponse() (response *CreateChannelCodeResponse) {
 // CreateChannelCode
 // 新增渠道活码接口
 func (c *Client) CreateChannelCode(request *CreateChannelCodeRequest) (response *CreateChannelCodeResponse, err error) {
-    if request == nil {
-        request = NewCreateChannelCodeRequest()
-    }
-    
-    response = NewCreateChannelCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateChannelCodeWithContext(context.Background(), request)
 }
 
 // CreateChannelCode
@@ -79,6 +74,11 @@ func (c *Client) CreateChannelCodeWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateChannelCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChannelCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateChannelCodeResponse()
@@ -116,13 +116,7 @@ func NewCreateCorpTagResponse() (response *CreateCorpTagResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCorpTag(request *CreateCorpTagRequest) (response *CreateCorpTagResponse, err error) {
-    if request == nil {
-        request = NewCreateCorpTagRequest()
-    }
-    
-    response = NewCreateCorpTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCorpTagWithContext(context.Background(), request)
 }
 
 // CreateCorpTag
@@ -141,6 +135,11 @@ func (c *Client) CreateCorpTagWithContext(ctx context.Context, request *CreateCo
     if request == nil {
         request = NewCreateCorpTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCorpTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCorpTagResponse()
@@ -182,13 +181,7 @@ func NewCreateLeadResponse() (response *CreateLeadResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateLead(request *CreateLeadRequest) (response *CreateLeadResponse, err error) {
-    if request == nil {
-        request = NewCreateLeadRequest()
-    }
-    
-    response = NewCreateLeadResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateLeadWithContext(context.Background(), request)
 }
 
 // CreateLead
@@ -211,6 +204,11 @@ func (c *Client) CreateLeadWithContext(ctx context.Context, request *CreateLeadR
     if request == nil {
         request = NewCreateLeadRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLead require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateLeadResponse()
@@ -244,13 +242,7 @@ func NewQueryActivityJoinListResponse() (response *QueryActivityJoinListResponse
 //  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityJoinList(request *QueryActivityJoinListRequest) (response *QueryActivityJoinListResponse, err error) {
-    if request == nil {
-        request = NewQueryActivityJoinListRequest()
-    }
-    
-    response = NewQueryActivityJoinListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryActivityJoinListWithContext(context.Background(), request)
 }
 
 // QueryActivityJoinList
@@ -265,6 +257,11 @@ func (c *Client) QueryActivityJoinListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewQueryActivityJoinListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryActivityJoinList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryActivityJoinListResponse()
@@ -298,13 +295,7 @@ func NewQueryActivityListResponse() (response *QueryActivityListResponse) {
 //  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityList(request *QueryActivityListRequest) (response *QueryActivityListResponse, err error) {
-    if request == nil {
-        request = NewQueryActivityListRequest()
-    }
-    
-    response = NewQueryActivityListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryActivityListWithContext(context.Background(), request)
 }
 
 // QueryActivityList
@@ -319,6 +310,11 @@ func (c *Client) QueryActivityListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryActivityListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryActivityList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryActivityListResponse()
@@ -351,13 +347,7 @@ func NewQueryActivityLiveCodeListResponse() (response *QueryActivityLiveCodeList
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryActivityLiveCodeList(request *QueryActivityLiveCodeListRequest) (response *QueryActivityLiveCodeListResponse, err error) {
-    if request == nil {
-        request = NewQueryActivityLiveCodeListRequest()
-    }
-    
-    response = NewQueryActivityLiveCodeListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryActivityLiveCodeListWithContext(context.Background(), request)
 }
 
 // QueryActivityLiveCodeList
@@ -371,6 +361,11 @@ func (c *Client) QueryActivityLiveCodeListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryActivityLiveCodeListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryActivityLiveCodeList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryActivityLiveCodeListResponse()
@@ -403,13 +398,7 @@ func NewQueryChannelCodeListResponse() (response *QueryChannelCodeListResponse) 
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryChannelCodeList(request *QueryChannelCodeListRequest) (response *QueryChannelCodeListResponse, err error) {
-    if request == nil {
-        request = NewQueryChannelCodeListRequest()
-    }
-    
-    response = NewQueryChannelCodeListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryChannelCodeListWithContext(context.Background(), request)
 }
 
 // QueryChannelCodeList
@@ -423,6 +412,11 @@ func (c *Client) QueryChannelCodeListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryChannelCodeListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChannelCodeList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryChannelCodeListResponse()
@@ -455,13 +449,7 @@ func NewQueryChatArchivingListResponse() (response *QueryChatArchivingListRespon
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
 //  INTERNALERROR = "InternalError"
 func (c *Client) QueryChatArchivingList(request *QueryChatArchivingListRequest) (response *QueryChatArchivingListResponse, err error) {
-    if request == nil {
-        request = NewQueryChatArchivingListRequest()
-    }
-    
-    response = NewQueryChatArchivingListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryChatArchivingListWithContext(context.Background(), request)
 }
 
 // QueryChatArchivingList
@@ -475,6 +463,11 @@ func (c *Client) QueryChatArchivingListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryChatArchivingListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChatArchivingList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryChatArchivingListResponse()
@@ -510,13 +503,7 @@ func NewQueryClueInfoListResponse() (response *QueryClueInfoListResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) QueryClueInfoList(request *QueryClueInfoListRequest) (response *QueryClueInfoListResponse, err error) {
-    if request == nil {
-        request = NewQueryClueInfoListRequest()
-    }
-    
-    response = NewQueryClueInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryClueInfoListWithContext(context.Background(), request)
 }
 
 // QueryClueInfoList
@@ -533,6 +520,11 @@ func (c *Client) QueryClueInfoListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryClueInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryClueInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryClueInfoListResponse()
@@ -568,13 +560,7 @@ func NewQueryDealerInfoListResponse() (response *QueryDealerInfoListResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) QueryDealerInfoList(request *QueryDealerInfoListRequest) (response *QueryDealerInfoListResponse, err error) {
-    if request == nil {
-        request = NewQueryDealerInfoListRequest()
-    }
-    
-    response = NewQueryDealerInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryDealerInfoListWithContext(context.Background(), request)
 }
 
 // QueryDealerInfoList
@@ -591,6 +577,11 @@ func (c *Client) QueryDealerInfoListWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryDealerInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryDealerInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryDealerInfoListResponse()
@@ -629,13 +620,7 @@ func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDeta
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailRequest) (response *QueryExternalContactDetailResponse, err error) {
-    if request == nil {
-        request = NewQueryExternalContactDetailRequest()
-    }
-    
-    response = NewQueryExternalContactDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryExternalContactDetailWithContext(context.Background(), request)
 }
 
 // QueryExternalContactDetail
@@ -655,6 +640,11 @@ func (c *Client) QueryExternalContactDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryExternalContactDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExternalContactDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryExternalContactDetailResponse()
@@ -689,13 +679,7 @@ func NewQueryExternalContactListResponse() (response *QueryExternalContactListRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryExternalContactList(request *QueryExternalContactListRequest) (response *QueryExternalContactListResponse, err error) {
-    if request == nil {
-        request = NewQueryExternalContactListRequest()
-    }
-    
-    response = NewQueryExternalContactListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryExternalContactListWithContext(context.Background(), request)
 }
 
 // QueryExternalContactList
@@ -711,6 +695,11 @@ func (c *Client) QueryExternalContactListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryExternalContactListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExternalContactList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryExternalContactListResponse()
@@ -745,13 +734,7 @@ func NewQueryExternalUserMappingInfoResponse() (response *QueryExternalUserMappi
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryExternalUserMappingInfo(request *QueryExternalUserMappingInfoRequest) (response *QueryExternalUserMappingInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryExternalUserMappingInfoRequest()
-    }
-    
-    response = NewQueryExternalUserMappingInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryExternalUserMappingInfoWithContext(context.Background(), request)
 }
 
 // QueryExternalUserMappingInfo
@@ -767,6 +750,11 @@ func (c *Client) QueryExternalUserMappingInfoWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryExternalUserMappingInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExternalUserMappingInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryExternalUserMappingInfoResponse()
@@ -800,13 +788,7 @@ func NewQueryLicenseInfoResponse() (response *QueryLicenseInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) QueryLicenseInfo(request *QueryLicenseInfoRequest) (response *QueryLicenseInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryLicenseInfoRequest()
-    }
-    
-    response = NewQueryLicenseInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryLicenseInfoWithContext(context.Background(), request)
 }
 
 // QueryLicenseInfo
@@ -821,6 +803,11 @@ func (c *Client) QueryLicenseInfoWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryLicenseInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryLicenseInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryLicenseInfoResponse()
@@ -858,13 +845,7 @@ func NewQueryMiniAppCodeListResponse() (response *QueryMiniAppCodeListResponse) 
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) QueryMiniAppCodeList(request *QueryMiniAppCodeListRequest) (response *QueryMiniAppCodeListResponse, err error) {
-    if request == nil {
-        request = NewQueryMiniAppCodeListRequest()
-    }
-    
-    response = NewQueryMiniAppCodeListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMiniAppCodeListWithContext(context.Background(), request)
 }
 
 // QueryMiniAppCodeList
@@ -883,6 +864,11 @@ func (c *Client) QueryMiniAppCodeListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryMiniAppCodeListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMiniAppCodeList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMiniAppCodeListResponse()
@@ -918,13 +904,7 @@ func NewQueryVehicleInfoListResponse() (response *QueryVehicleInfoListResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) QueryVehicleInfoList(request *QueryVehicleInfoListRequest) (response *QueryVehicleInfoListResponse, err error) {
-    if request == nil {
-        request = NewQueryVehicleInfoListRequest()
-    }
-    
-    response = NewQueryVehicleInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryVehicleInfoListWithContext(context.Background(), request)
 }
 
 // QueryVehicleInfoList
@@ -941,6 +921,11 @@ func (c *Client) QueryVehicleInfoListWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryVehicleInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryVehicleInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryVehicleInfoListResponse()

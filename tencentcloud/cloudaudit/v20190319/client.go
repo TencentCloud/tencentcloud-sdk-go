@@ -16,6 +16,7 @@ package v20190319
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -96,13 +97,7 @@ func NewCreateAuditResponse() (response *CreateAuditResponse) {
 //  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
 //  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
 func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
-    if request == nil {
-        request = NewCreateAuditRequest()
-    }
-    
-    response = NewCreateAuditResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAuditWithContext(context.Background(), request)
 }
 
 // CreateAudit
@@ -143,6 +138,11 @@ func (c *Client) CreateAuditWithContext(ctx context.Context, request *CreateAudi
     if request == nil {
         request = NewCreateAuditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAudit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAuditResponse()
@@ -176,13 +176,7 @@ func NewCreateAuditTrackResponse() (response *CreateAuditTrackResponse) {
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
-    if request == nil {
-        request = NewCreateAuditTrackRequest()
-    }
-    
-    response = NewCreateAuditTrackResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAuditTrackWithContext(context.Background(), request)
 }
 
 // CreateAuditTrack
@@ -197,6 +191,11 @@ func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateAuditTrackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditTrack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAuditTrackResponse()
@@ -228,13 +227,7 @@ func NewDeleteAuditResponse() (response *DeleteAuditResponse) {
 //  INTERNALERROR_DELETEAUDITERROR = "InternalError.DeleteAuditError"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DeleteAudit(request *DeleteAuditRequest) (response *DeleteAuditResponse, err error) {
-    if request == nil {
-        request = NewDeleteAuditRequest()
-    }
-    
-    response = NewDeleteAuditResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAuditWithContext(context.Background(), request)
 }
 
 // DeleteAudit
@@ -247,6 +240,11 @@ func (c *Client) DeleteAuditWithContext(ctx context.Context, request *DeleteAudi
     if request == nil {
         request = NewDeleteAuditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAudit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAuditResponse()
@@ -280,13 +278,7 @@ func NewDeleteAuditTrackResponse() (response *DeleteAuditTrackResponse) {
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) DeleteAuditTrack(request *DeleteAuditTrackRequest) (response *DeleteAuditTrackResponse, err error) {
-    if request == nil {
-        request = NewDeleteAuditTrackRequest()
-    }
-    
-    response = NewDeleteAuditTrackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAuditTrackWithContext(context.Background(), request)
 }
 
 // DeleteAuditTrack
@@ -301,6 +293,11 @@ func (c *Client) DeleteAuditTrackWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteAuditTrackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditTrack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAuditTrackResponse()
@@ -332,13 +329,7 @@ func NewDescribeAuditResponse() (response *DescribeAuditResponse) {
 //  INTERNALERROR_DESCRIBEAUDITERROR = "InternalError.DescribeAuditError"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DescribeAudit(request *DescribeAuditRequest) (response *DescribeAuditResponse, err error) {
-    if request == nil {
-        request = NewDescribeAuditRequest()
-    }
-    
-    response = NewDescribeAuditResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAuditWithContext(context.Background(), request)
 }
 
 // DescribeAudit
@@ -351,6 +342,11 @@ func (c *Client) DescribeAuditWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeAuditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAudit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAuditResponse()
@@ -384,13 +380,7 @@ func NewDescribeAuditTracksResponse() (response *DescribeAuditTracksResponse) {
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) DescribeAuditTracks(request *DescribeAuditTracksRequest) (response *DescribeAuditTracksResponse, err error) {
-    if request == nil {
-        request = NewDescribeAuditTracksRequest()
-    }
-    
-    response = NewDescribeAuditTracksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAuditTracksWithContext(context.Background(), request)
 }
 
 // DescribeAuditTracks
@@ -405,6 +395,11 @@ func (c *Client) DescribeAuditTracksWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeAuditTracksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditTracks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAuditTracksResponse()
@@ -436,13 +431,7 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeEventsRequest()
-    }
-    
-    response = NewDescribeEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEventsWithContext(context.Background(), request)
 }
 
 // DescribeEvents
@@ -455,6 +444,11 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEventsResponse()
@@ -485,13 +479,7 @@ func NewGetAttributeKeyResponse() (response *GetAttributeKeyResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 func (c *Client) GetAttributeKey(request *GetAttributeKeyRequest) (response *GetAttributeKeyResponse, err error) {
-    if request == nil {
-        request = NewGetAttributeKeyRequest()
-    }
-    
-    response = NewGetAttributeKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.GetAttributeKeyWithContext(context.Background(), request)
 }
 
 // GetAttributeKey
@@ -503,6 +491,11 @@ func (c *Client) GetAttributeKeyWithContext(ctx context.Context, request *GetAtt
     if request == nil {
         request = NewGetAttributeKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAttributeKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewGetAttributeKeyResponse()
@@ -533,13 +526,7 @@ func NewInquireAuditCreditResponse() (response *InquireAuditCreditResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_INQUIREAUDITCREDITERROR = "InternalError.InquireAuditCreditError"
 func (c *Client) InquireAuditCredit(request *InquireAuditCreditRequest) (response *InquireAuditCreditResponse, err error) {
-    if request == nil {
-        request = NewInquireAuditCreditRequest()
-    }
-    
-    response = NewInquireAuditCreditResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquireAuditCreditWithContext(context.Background(), request)
 }
 
 // InquireAuditCredit
@@ -551,6 +538,11 @@ func (c *Client) InquireAuditCreditWithContext(ctx context.Context, request *Inq
     if request == nil {
         request = NewInquireAuditCreditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquireAuditCredit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquireAuditCreditResponse()
@@ -581,13 +573,7 @@ func NewListAuditsResponse() (response *ListAuditsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_LISTAUDITSERROR = "InternalError.ListAuditsError"
 func (c *Client) ListAudits(request *ListAuditsRequest) (response *ListAuditsResponse, err error) {
-    if request == nil {
-        request = NewListAuditsRequest()
-    }
-    
-    response = NewListAuditsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListAuditsWithContext(context.Background(), request)
 }
 
 // ListAudits
@@ -599,6 +585,11 @@ func (c *Client) ListAuditsWithContext(ctx context.Context, request *ListAuditsR
     if request == nil {
         request = NewListAuditsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAudits require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListAuditsResponse()
@@ -629,13 +620,7 @@ func NewListCmqEnableRegionResponse() (response *ListCmqEnableRegionResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCMQENABLEREGIONERROR = "InternalError.ListCmqEnableRegionError"
 func (c *Client) ListCmqEnableRegion(request *ListCmqEnableRegionRequest) (response *ListCmqEnableRegionResponse, err error) {
-    if request == nil {
-        request = NewListCmqEnableRegionRequest()
-    }
-    
-    response = NewListCmqEnableRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListCmqEnableRegionWithContext(context.Background(), request)
 }
 
 // ListCmqEnableRegion
@@ -647,6 +632,11 @@ func (c *Client) ListCmqEnableRegionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListCmqEnableRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCmqEnableRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListCmqEnableRegionResponse()
@@ -677,13 +667,7 @@ func NewListCosEnableRegionResponse() (response *ListCosEnableRegionResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_LISTCOSENABLEREGIONERROR = "InternalError.ListCosEnableRegionError"
 func (c *Client) ListCosEnableRegion(request *ListCosEnableRegionRequest) (response *ListCosEnableRegionResponse, err error) {
-    if request == nil {
-        request = NewListCosEnableRegionRequest()
-    }
-    
-    response = NewListCosEnableRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListCosEnableRegionWithContext(context.Background(), request)
 }
 
 // ListCosEnableRegion
@@ -695,6 +679,11 @@ func (c *Client) ListCosEnableRegionWithContext(ctx context.Context, request *Li
     if request == nil {
         request = NewListCosEnableRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListCosEnableRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListCosEnableRegionResponse()
@@ -725,13 +714,7 @@ func NewListKeyAliasByRegionResponse() (response *ListKeyAliasByRegionResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_LISTKEYALIASBYREGIONERROR = "InternalError.ListKeyAliasByRegionError"
 func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (response *ListKeyAliasByRegionResponse, err error) {
-    if request == nil {
-        request = NewListKeyAliasByRegionRequest()
-    }
-    
-    response = NewListKeyAliasByRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListKeyAliasByRegionWithContext(context.Background(), request)
 }
 
 // ListKeyAliasByRegion
@@ -743,6 +726,11 @@ func (c *Client) ListKeyAliasByRegionWithContext(ctx context.Context, request *L
     if request == nil {
         request = NewListKeyAliasByRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListKeyAliasByRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListKeyAliasByRegionResponse()
@@ -778,13 +766,7 @@ func NewLookUpEventsResponse() (response *LookUpEventsResponse) {
 //  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
 //  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
-    if request == nil {
-        request = NewLookUpEventsRequest()
-    }
-    
-    response = NewLookUpEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.LookUpEventsWithContext(context.Background(), request)
 }
 
 // LookUpEvents
@@ -801,6 +783,11 @@ func (c *Client) LookUpEventsWithContext(ctx context.Context, request *LookUpEve
     if request == nil {
         request = NewLookUpEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LookUpEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewLookUpEventsResponse()
@@ -834,13 +821,7 @@ func NewModifyAuditTrackResponse() (response *ModifyAuditTrackResponse) {
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
-    if request == nil {
-        request = NewModifyAuditTrackRequest()
-    }
-    
-    response = NewModifyAuditTrackResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAuditTrackWithContext(context.Background(), request)
 }
 
 // ModifyAuditTrack
@@ -855,6 +836,11 @@ func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyAuditTrackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuditTrack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAuditTrackResponse()
@@ -886,13 +872,7 @@ func NewStartLoggingResponse() (response *StartLoggingResponse) {
 //  INTERNALERROR_STARTLOGGINGERROR = "InternalError.StartLoggingError"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) StartLogging(request *StartLoggingRequest) (response *StartLoggingResponse, err error) {
-    if request == nil {
-        request = NewStartLoggingRequest()
-    }
-    
-    response = NewStartLoggingResponse()
-    err = c.Send(request, response)
-    return
+    return c.StartLoggingWithContext(context.Background(), request)
 }
 
 // StartLogging
@@ -905,6 +885,11 @@ func (c *Client) StartLoggingWithContext(ctx context.Context, request *StartLogg
     if request == nil {
         request = NewStartLoggingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartLogging require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStartLoggingResponse()
@@ -936,13 +921,7 @@ func NewStopLoggingResponse() (response *StopLoggingResponse) {
 //  INTERNALERROR_STOPLOGGINGERROR = "InternalError.StopLoggingError"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) StopLogging(request *StopLoggingRequest) (response *StopLoggingResponse, err error) {
-    if request == nil {
-        request = NewStopLoggingRequest()
-    }
-    
-    response = NewStopLoggingResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopLoggingWithContext(context.Background(), request)
 }
 
 // StopLogging
@@ -955,6 +934,11 @@ func (c *Client) StopLoggingWithContext(ctx context.Context, request *StopLoggin
     if request == nil {
         request = NewStopLoggingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopLogging require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopLoggingResponse()
@@ -1003,13 +987,7 @@ func NewUpdateAuditResponse() (response *UpdateAuditResponse) {
 //  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
 //  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) UpdateAudit(request *UpdateAuditRequest) (response *UpdateAuditResponse, err error) {
-    if request == nil {
-        request = NewUpdateAuditRequest()
-    }
-    
-    response = NewUpdateAuditResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAuditWithContext(context.Background(), request)
 }
 
 // UpdateAudit
@@ -1039,6 +1017,11 @@ func (c *Client) UpdateAuditWithContext(ctx context.Context, request *UpdateAudi
     if request == nil {
         request = NewUpdateAuditRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAudit require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAuditResponse()

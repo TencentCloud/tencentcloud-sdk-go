@@ -16,6 +16,7 @@ package v20201117
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -79,13 +80,7 @@ func NewApplyStackResponse() (response *ApplyStackResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
 func (c *Client) ApplyStack(request *ApplyStackRequest) (response *ApplyStackResponse, err error) {
-    if request == nil {
-        request = NewApplyStackRequest()
-    }
-    
-    response = NewApplyStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyStackWithContext(context.Background(), request)
 }
 
 // ApplyStack
@@ -109,6 +104,11 @@ func (c *Client) ApplyStackWithContext(ctx context.Context, request *ApplyStackR
     if request == nil {
         request = NewApplyStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyStackResponse()
@@ -144,13 +144,7 @@ func NewCreateStackResponse() (response *CreateStackResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) CreateStack(request *CreateStackRequest) (response *CreateStackResponse, err error) {
-    if request == nil {
-        request = NewCreateStackRequest()
-    }
-    
-    response = NewCreateStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStackWithContext(context.Background(), request)
 }
 
 // CreateStack
@@ -167,6 +161,11 @@ func (c *Client) CreateStackWithContext(ctx context.Context, request *CreateStac
     if request == nil {
         request = NewCreateStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStackResponse()
@@ -205,13 +204,7 @@ func NewCreateStackVersionResponse() (response *CreateStackVersionResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
 func (c *Client) CreateStackVersion(request *CreateStackVersionRequest) (response *CreateStackVersionResponse, err error) {
-    if request == nil {
-        request = NewCreateStackVersionRequest()
-    }
-    
-    response = NewCreateStackVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateStackVersionWithContext(context.Background(), request)
 }
 
 // CreateStackVersion
@@ -231,6 +224,11 @@ func (c *Client) CreateStackVersionWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateStackVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStackVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateStackVersionResponse()
@@ -266,13 +264,7 @@ func NewDeleteStackResponse() (response *DeleteStackResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteStack(request *DeleteStackRequest) (response *DeleteStackResponse, err error) {
-    if request == nil {
-        request = NewDeleteStackRequest()
-    }
-    
-    response = NewDeleteStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteStackWithContext(context.Background(), request)
 }
 
 // DeleteStack
@@ -289,6 +281,11 @@ func (c *Client) DeleteStackWithContext(ctx context.Context, request *DeleteStac
     if request == nil {
         request = NewDeleteStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteStackResponse()
@@ -324,13 +321,7 @@ func NewDeleteStackVersionResponse() (response *DeleteStackVersionResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteStackVersion(request *DeleteStackVersionRequest) (response *DeleteStackVersionResponse, err error) {
-    if request == nil {
-        request = NewDeleteStackVersionRequest()
-    }
-    
-    response = NewDeleteStackVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteStackVersionWithContext(context.Background(), request)
 }
 
 // DeleteStackVersion
@@ -347,6 +338,11 @@ func (c *Client) DeleteStackVersionWithContext(ctx context.Context, request *Del
     if request == nil {
         request = NewDeleteStackVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStackVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteStackVersionResponse()
@@ -382,13 +378,7 @@ func NewDescribeStackEventResponse() (response *DescribeStackEventResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStackEvent(request *DescribeStackEventRequest) (response *DescribeStackEventResponse, err error) {
-    if request == nil {
-        request = NewDescribeStackEventRequest()
-    }
-    
-    response = NewDescribeStackEventResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStackEventWithContext(context.Background(), request)
 }
 
 // DescribeStackEvent
@@ -405,6 +395,11 @@ func (c *Client) DescribeStackEventWithContext(ctx context.Context, request *Des
     if request == nil {
         request = NewDescribeStackEventRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStackEvent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStackEventResponse()
@@ -447,13 +442,7 @@ func NewDescribeStackEventsResponse() (response *DescribeStackEventsResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStackEvents(request *DescribeStackEventsRequest) (response *DescribeStackEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeStackEventsRequest()
-    }
-    
-    response = NewDescribeStackEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStackEventsWithContext(context.Background(), request)
 }
 
 // DescribeStackEvents
@@ -477,6 +466,11 @@ func (c *Client) DescribeStackEventsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeStackEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStackEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStackEventsResponse()
@@ -519,13 +513,7 @@ func NewDescribeStackVersionsResponse() (response *DescribeStackVersionsResponse
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStackVersions(request *DescribeStackVersionsRequest) (response *DescribeStackVersionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeStackVersionsRequest()
-    }
-    
-    response = NewDescribeStackVersionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStackVersionsWithContext(context.Background(), request)
 }
 
 // DescribeStackVersions
@@ -549,6 +537,11 @@ func (c *Client) DescribeStackVersionsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeStackVersionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStackVersions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStackVersionsResponse()
@@ -589,13 +582,7 @@ func NewDescribeStacksResponse() (response *DescribeStacksResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeStacks(request *DescribeStacksRequest) (response *DescribeStacksResponse, err error) {
-    if request == nil {
-        request = NewDescribeStacksRequest()
-    }
-    
-    response = NewDescribeStacksResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeStacksWithContext(context.Background(), request)
 }
 
 // DescribeStacks
@@ -617,6 +604,11 @@ func (c *Client) DescribeStacksWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeStacksRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStacks require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeStacksResponse()
@@ -653,13 +645,7 @@ func NewDestroyStackResponse() (response *DestroyStackResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DestroyStack(request *DestroyStackRequest) (response *DestroyStackResponse, err error) {
-    if request == nil {
-        request = NewDestroyStackRequest()
-    }
-    
-    response = NewDestroyStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyStackWithContext(context.Background(), request)
 }
 
 // DestroyStack
@@ -677,6 +663,11 @@ func (c *Client) DestroyStackWithContext(ctx context.Context, request *DestroySt
     if request == nil {
         request = NewDestroyStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyStackResponse()
@@ -719,13 +710,7 @@ func NewPlanStackResponse() (response *PlanStackResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
 func (c *Client) PlanStack(request *PlanStackRequest) (response *PlanStackResponse, err error) {
-    if request == nil {
-        request = NewPlanStackRequest()
-    }
-    
-    response = NewPlanStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.PlanStackWithContext(context.Background(), request)
 }
 
 // PlanStack
@@ -749,6 +734,11 @@ func (c *Client) PlanStackWithContext(ctx context.Context, request *PlanStackReq
     if request == nil {
         request = NewPlanStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PlanStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewPlanStackResponse()
@@ -783,13 +773,7 @@ func NewUpdateStackResponse() (response *UpdateStackResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UpdateStack(request *UpdateStackRequest) (response *UpdateStackResponse, err error) {
-    if request == nil {
-        request = NewUpdateStackRequest()
-    }
-    
-    response = NewUpdateStackResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateStackWithContext(context.Background(), request)
 }
 
 // UpdateStack
@@ -805,6 +789,11 @@ func (c *Client) UpdateStackWithContext(ctx context.Context, request *UpdateStac
     if request == nil {
         request = NewUpdateStackRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStack require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateStackResponse()
@@ -840,13 +829,7 @@ func NewUpdateStackVersionResponse() (response *UpdateStackVersionResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) UpdateStackVersion(request *UpdateStackVersionRequest) (response *UpdateStackVersionResponse, err error) {
-    if request == nil {
-        request = NewUpdateStackVersionRequest()
-    }
-    
-    response = NewUpdateStackVersionResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateStackVersionWithContext(context.Background(), request)
 }
 
 // UpdateStackVersion
@@ -863,6 +846,11 @@ func (c *Client) UpdateStackVersionWithContext(ctx context.Context, request *Upd
     if request == nil {
         request = NewUpdateStackVersionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateStackVersion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateStackVersionResponse()

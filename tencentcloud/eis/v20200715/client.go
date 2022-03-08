@@ -16,6 +16,7 @@ package v20200715
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -71,13 +72,7 @@ func NewDescribeEisConnectorConfigResponse() (response *DescribeEisConnectorConf
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
 func (c *Client) DescribeEisConnectorConfig(request *DescribeEisConnectorConfigRequest) (response *DescribeEisConnectorConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeEisConnectorConfigRequest()
-    }
-    
-    response = NewDescribeEisConnectorConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEisConnectorConfigWithContext(context.Background(), request)
 }
 
 // DescribeEisConnectorConfig
@@ -93,6 +88,11 @@ func (c *Client) DescribeEisConnectorConfigWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEisConnectorConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEisConnectorConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEisConnectorConfigResponse()
@@ -127,13 +127,7 @@ func NewListEisConnectorOperationsResponse() (response *ListEisConnectorOperatio
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_CONNECTORNOTEXIST = "InvalidParameterValue.ConnectorNotExist"
 func (c *Client) ListEisConnectorOperations(request *ListEisConnectorOperationsRequest) (response *ListEisConnectorOperationsResponse, err error) {
-    if request == nil {
-        request = NewListEisConnectorOperationsRequest()
-    }
-    
-    response = NewListEisConnectorOperationsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEisConnectorOperationsWithContext(context.Background(), request)
 }
 
 // ListEisConnectorOperations
@@ -149,6 +143,11 @@ func (c *Client) ListEisConnectorOperationsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewListEisConnectorOperationsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEisConnectorOperations require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEisConnectorOperationsResponse()
@@ -181,13 +180,7 @@ func NewListEisConnectorsResponse() (response *ListEisConnectorsResponse) {
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ListEisConnectors(request *ListEisConnectorsRequest) (response *ListEisConnectorsResponse, err error) {
-    if request == nil {
-        request = NewListEisConnectorsRequest()
-    }
-    
-    response = NewListEisConnectorsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ListEisConnectorsWithContext(context.Background(), request)
 }
 
 // ListEisConnectors
@@ -201,6 +194,11 @@ func (c *Client) ListEisConnectorsWithContext(ctx context.Context, request *List
     if request == nil {
         request = NewListEisConnectorsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListEisConnectors require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewListEisConnectorsResponse()

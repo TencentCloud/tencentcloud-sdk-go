@@ -16,6 +16,7 @@ package v20201101
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -75,13 +76,7 @@ func NewAddAssetImageRegistryRegistryDetailResponse() (response *AddAssetImageRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddAssetImageRegistryRegistryDetail(request *AddAssetImageRegistryRegistryDetailRequest) (response *AddAssetImageRegistryRegistryDetailResponse, err error) {
-    if request == nil {
-        request = NewAddAssetImageRegistryRegistryDetailRequest()
-    }
-    
-    response = NewAddAssetImageRegistryRegistryDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddAssetImageRegistryRegistryDetailWithContext(context.Background(), request)
 }
 
 // AddAssetImageRegistryRegistryDetail
@@ -101,6 +96,11 @@ func (c *Client) AddAssetImageRegistryRegistryDetailWithContext(ctx context.Cont
     if request == nil {
         request = NewAddAssetImageRegistryRegistryDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAssetImageRegistryRegistryDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddAssetImageRegistryRegistryDetailResponse()
@@ -137,13 +137,7 @@ func NewAddCompliancePolicyItemToWhitelistResponse() (response *AddCompliancePol
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) AddCompliancePolicyItemToWhitelist(request *AddCompliancePolicyItemToWhitelistRequest) (response *AddCompliancePolicyItemToWhitelistResponse, err error) {
-    if request == nil {
-        request = NewAddCompliancePolicyItemToWhitelistRequest()
-    }
-    
-    response = NewAddCompliancePolicyItemToWhitelistResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddCompliancePolicyItemToWhitelistWithContext(context.Background(), request)
 }
 
 // AddCompliancePolicyItemToWhitelist
@@ -161,6 +155,11 @@ func (c *Client) AddCompliancePolicyItemToWhitelistWithContext(ctx context.Conte
     if request == nil {
         request = NewAddCompliancePolicyItemToWhitelistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCompliancePolicyItemToWhitelist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddCompliancePolicyItemToWhitelistResponse()
@@ -204,13 +203,7 @@ func NewAddEditAbnormalProcessRuleResponse() (response *AddEditAbnormalProcessRu
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddEditAbnormalProcessRule(request *AddEditAbnormalProcessRuleRequest) (response *AddEditAbnormalProcessRuleResponse, err error) {
-    if request == nil {
-        request = NewAddEditAbnormalProcessRuleRequest()
-    }
-    
-    response = NewAddEditAbnormalProcessRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEditAbnormalProcessRuleWithContext(context.Background(), request)
 }
 
 // AddEditAbnormalProcessRule
@@ -235,6 +228,11 @@ func (c *Client) AddEditAbnormalProcessRuleWithContext(ctx context.Context, requ
     if request == nil {
         request = NewAddEditAbnormalProcessRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEditAbnormalProcessRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEditAbnormalProcessRuleResponse()
@@ -277,13 +275,7 @@ func NewAddEditAccessControlRuleResponse() (response *AddEditAccessControlRuleRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddEditAccessControlRule(request *AddEditAccessControlRuleRequest) (response *AddEditAccessControlRuleResponse, err error) {
-    if request == nil {
-        request = NewAddEditAccessControlRuleRequest()
-    }
-    
-    response = NewAddEditAccessControlRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEditAccessControlRuleWithContext(context.Background(), request)
 }
 
 // AddEditAccessControlRule
@@ -307,6 +299,11 @@ func (c *Client) AddEditAccessControlRuleWithContext(ctx context.Context, reques
     if request == nil {
         request = NewAddEditAccessControlRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEditAccessControlRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEditAccessControlRuleResponse()
@@ -352,13 +349,7 @@ func NewAddEditReverseShellWhiteListResponse() (response *AddEditReverseShellWhi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LENGTHLIMIT = "InvalidParameterValue.LengthLimit"
 func (c *Client) AddEditReverseShellWhiteList(request *AddEditReverseShellWhiteListRequest) (response *AddEditReverseShellWhiteListResponse, err error) {
-    if request == nil {
-        request = NewAddEditReverseShellWhiteListRequest()
-    }
-    
-    response = NewAddEditReverseShellWhiteListResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEditReverseShellWhiteListWithContext(context.Background(), request)
 }
 
 // AddEditReverseShellWhiteList
@@ -385,6 +376,11 @@ func (c *Client) AddEditReverseShellWhiteListWithContext(ctx context.Context, re
     if request == nil {
         request = NewAddEditReverseShellWhiteListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEditReverseShellWhiteList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEditReverseShellWhiteListResponse()
@@ -427,13 +423,7 @@ func NewAddEditRiskSyscallWhiteListResponse() (response *AddEditRiskSyscallWhite
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LENGTHLIMIT = "InvalidParameterValue.LengthLimit"
 func (c *Client) AddEditRiskSyscallWhiteList(request *AddEditRiskSyscallWhiteListRequest) (response *AddEditRiskSyscallWhiteListResponse, err error) {
-    if request == nil {
-        request = NewAddEditRiskSyscallWhiteListRequest()
-    }
-    
-    response = NewAddEditRiskSyscallWhiteListResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEditRiskSyscallWhiteListWithContext(context.Background(), request)
 }
 
 // AddEditRiskSyscallWhiteList
@@ -457,6 +447,11 @@ func (c *Client) AddEditRiskSyscallWhiteListWithContext(ctx context.Context, req
     if request == nil {
         request = NewAddEditRiskSyscallWhiteListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEditRiskSyscallWhiteList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEditRiskSyscallWhiteListResponse()
@@ -489,13 +484,7 @@ func NewAddEditWarningRulesResponse() (response *AddEditWarningRulesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) AddEditWarningRules(request *AddEditWarningRulesRequest) (response *AddEditWarningRulesResponse, err error) {
-    if request == nil {
-        request = NewAddEditWarningRulesRequest()
-    }
-    
-    response = NewAddEditWarningRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddEditWarningRulesWithContext(context.Background(), request)
 }
 
 // AddEditWarningRules
@@ -509,6 +498,11 @@ func (c *Client) AddEditWarningRulesWithContext(ctx context.Context, request *Ad
     if request == nil {
         request = NewAddEditWarningRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddEditWarningRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddEditWarningRulesResponse()
@@ -547,13 +541,7 @@ func NewCheckRepeatAssetImageRegistryResponse() (response *CheckRepeatAssetImage
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CheckRepeatAssetImageRegistry(request *CheckRepeatAssetImageRegistryRequest) (response *CheckRepeatAssetImageRegistryResponse, err error) {
-    if request == nil {
-        request = NewCheckRepeatAssetImageRegistryRequest()
-    }
-    
-    response = NewCheckRepeatAssetImageRegistryResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckRepeatAssetImageRegistryWithContext(context.Background(), request)
 }
 
 // CheckRepeatAssetImageRegistry
@@ -573,6 +561,11 @@ func (c *Client) CheckRepeatAssetImageRegistryWithContext(ctx context.Context, r
     if request == nil {
         request = NewCheckRepeatAssetImageRegistryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckRepeatAssetImageRegistry require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckRepeatAssetImageRegistryResponse()
@@ -604,13 +597,7 @@ func NewCreateAssetImageRegistryScanTaskResponse() (response *CreateAssetImageRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssetImageRegistryScanTask(request *CreateAssetImageRegistryScanTaskRequest) (response *CreateAssetImageRegistryScanTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetImageRegistryScanTaskRequest()
-    }
-    
-    response = NewCreateAssetImageRegistryScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetImageRegistryScanTaskWithContext(context.Background(), request)
 }
 
 // CreateAssetImageRegistryScanTask
@@ -623,6 +610,11 @@ func (c *Client) CreateAssetImageRegistryScanTaskWithContext(ctx context.Context
     if request == nil {
         request = NewCreateAssetImageRegistryScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetImageRegistryScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetImageRegistryScanTaskResponse()
@@ -654,13 +646,7 @@ func NewCreateAssetImageRegistryScanTaskOneKeyResponse() (response *CreateAssetI
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssetImageRegistryScanTaskOneKey(request *CreateAssetImageRegistryScanTaskOneKeyRequest) (response *CreateAssetImageRegistryScanTaskOneKeyResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetImageRegistryScanTaskOneKeyRequest()
-    }
-    
-    response = NewCreateAssetImageRegistryScanTaskOneKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetImageRegistryScanTaskOneKeyWithContext(context.Background(), request)
 }
 
 // CreateAssetImageRegistryScanTaskOneKey
@@ -673,6 +659,11 @@ func (c *Client) CreateAssetImageRegistryScanTaskOneKeyWithContext(ctx context.C
     if request == nil {
         request = NewCreateAssetImageRegistryScanTaskOneKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetImageRegistryScanTaskOneKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetImageRegistryScanTaskOneKeyResponse()
@@ -706,13 +697,7 @@ func NewCreateAssetImageScanSettingResponse() (response *CreateAssetImageScanSet
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateAssetImageScanSetting(request *CreateAssetImageScanSettingRequest) (response *CreateAssetImageScanSettingResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetImageScanSettingRequest()
-    }
-    
-    response = NewCreateAssetImageScanSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetImageScanSettingWithContext(context.Background(), request)
 }
 
 // CreateAssetImageScanSetting
@@ -727,6 +712,11 @@ func (c *Client) CreateAssetImageScanSettingWithContext(ctx context.Context, req
     if request == nil {
         request = NewCreateAssetImageScanSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetImageScanSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetImageScanSettingResponse()
@@ -761,13 +751,7 @@ func NewCreateAssetImageScanTaskResponse() (response *CreateAssetImageScanTaskRe
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssetImageScanTask(request *CreateAssetImageScanTaskRequest) (response *CreateAssetImageScanTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAssetImageScanTaskRequest()
-    }
-    
-    response = NewCreateAssetImageScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAssetImageScanTaskWithContext(context.Background(), request)
 }
 
 // CreateAssetImageScanTask
@@ -783,6 +767,11 @@ func (c *Client) CreateAssetImageScanTaskWithContext(ctx context.Context, reques
     if request == nil {
         request = NewCreateAssetImageScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetImageScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAssetImageScanTaskResponse()
@@ -819,13 +808,7 @@ func NewCreateCheckComponentResponse() (response *CreateCheckComponentResponse) 
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateCheckComponent(request *CreateCheckComponentRequest) (response *CreateCheckComponentResponse, err error) {
-    if request == nil {
-        request = NewCreateCheckComponentRequest()
-    }
-    
-    response = NewCreateCheckComponentResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCheckComponentWithContext(context.Background(), request)
 }
 
 // CreateCheckComponent
@@ -843,6 +826,11 @@ func (c *Client) CreateCheckComponentWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateCheckComponentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCheckComponent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCheckComponentResponse()
@@ -879,13 +867,7 @@ func NewCreateClusterCheckTaskResponse() (response *CreateClusterCheckTaskRespon
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateClusterCheckTask(request *CreateClusterCheckTaskRequest) (response *CreateClusterCheckTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateClusterCheckTaskRequest()
-    }
-    
-    response = NewCreateClusterCheckTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateClusterCheckTaskWithContext(context.Background(), request)
 }
 
 // CreateClusterCheckTask
@@ -903,6 +885,11 @@ func (c *Client) CreateClusterCheckTaskWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateClusterCheckTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterCheckTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateClusterCheckTaskResponse()
@@ -940,13 +927,7 @@ func NewCreateComplianceTaskResponse() (response *CreateComplianceTaskResponse) 
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateComplianceTask(request *CreateComplianceTaskRequest) (response *CreateComplianceTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateComplianceTaskRequest()
-    }
-    
-    response = NewCreateComplianceTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateComplianceTaskWithContext(context.Background(), request)
 }
 
 // CreateComplianceTask
@@ -965,6 +946,11 @@ func (c *Client) CreateComplianceTaskWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateComplianceTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateComplianceTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateComplianceTaskResponse()
@@ -1001,13 +987,7 @@ func NewCreateExportComplianceStatusListJobResponse() (response *CreateExportCom
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) CreateExportComplianceStatusListJob(request *CreateExportComplianceStatusListJobRequest) (response *CreateExportComplianceStatusListJobResponse, err error) {
-    if request == nil {
-        request = NewCreateExportComplianceStatusListJobRequest()
-    }
-    
-    response = NewCreateExportComplianceStatusListJobResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateExportComplianceStatusListJobWithContext(context.Background(), request)
 }
 
 // CreateExportComplianceStatusListJob
@@ -1025,6 +1005,11 @@ func (c *Client) CreateExportComplianceStatusListJobWithContext(ctx context.Cont
     if request == nil {
         request = NewCreateExportComplianceStatusListJobRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExportComplianceStatusListJob require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateExportComplianceStatusListJobResponse()
@@ -1058,13 +1043,7 @@ func NewCreateOrModifyPostPayCoresResponse() (response *CreateOrModifyPostPayCor
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateOrModifyPostPayCores(request *CreateOrModifyPostPayCoresRequest) (response *CreateOrModifyPostPayCoresResponse, err error) {
-    if request == nil {
-        request = NewCreateOrModifyPostPayCoresRequest()
-    }
-    
-    response = NewCreateOrModifyPostPayCoresResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrModifyPostPayCoresWithContext(context.Background(), request)
 }
 
 // CreateOrModifyPostPayCores
@@ -1079,6 +1058,11 @@ func (c *Client) CreateOrModifyPostPayCoresWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateOrModifyPostPayCoresRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrModifyPostPayCores require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrModifyPostPayCoresResponse()
@@ -1115,13 +1099,7 @@ func NewCreateRefreshTaskResponse() (response *CreateRefreshTaskResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateRefreshTask(request *CreateRefreshTaskRequest) (response *CreateRefreshTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateRefreshTaskRequest()
-    }
-    
-    response = NewCreateRefreshTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRefreshTaskWithContext(context.Background(), request)
 }
 
 // CreateRefreshTask
@@ -1139,6 +1117,11 @@ func (c *Client) CreateRefreshTaskWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateRefreshTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRefreshTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRefreshTaskResponse()
@@ -1176,13 +1159,7 @@ func NewCreateVirusScanAgainResponse() (response *CreateVirusScanAgainResponse) 
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateVirusScanAgain(request *CreateVirusScanAgainRequest) (response *CreateVirusScanAgainResponse, err error) {
-    if request == nil {
-        request = NewCreateVirusScanAgainRequest()
-    }
-    
-    response = NewCreateVirusScanAgainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVirusScanAgainWithContext(context.Background(), request)
 }
 
 // CreateVirusScanAgain
@@ -1201,6 +1178,11 @@ func (c *Client) CreateVirusScanAgainWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateVirusScanAgainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVirusScanAgain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVirusScanAgainResponse()
@@ -1233,13 +1215,7 @@ func NewCreateVirusScanTaskResponse() (response *CreateVirusScanTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateVirusScanTask(request *CreateVirusScanTaskRequest) (response *CreateVirusScanTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateVirusScanTaskRequest()
-    }
-    
-    response = NewCreateVirusScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateVirusScanTaskWithContext(context.Background(), request)
 }
 
 // CreateVirusScanTask
@@ -1253,6 +1229,11 @@ func (c *Client) CreateVirusScanTaskWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateVirusScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVirusScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateVirusScanTaskResponse()
@@ -1289,13 +1270,7 @@ func NewDeleteAbnormalProcessRulesResponse() (response *DeleteAbnormalProcessRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAbnormalProcessRules(request *DeleteAbnormalProcessRulesRequest) (response *DeleteAbnormalProcessRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteAbnormalProcessRulesRequest()
-    }
-    
-    response = NewDeleteAbnormalProcessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAbnormalProcessRulesWithContext(context.Background(), request)
 }
 
 // DeleteAbnormalProcessRules
@@ -1313,6 +1288,11 @@ func (c *Client) DeleteAbnormalProcessRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAbnormalProcessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAbnormalProcessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAbnormalProcessRulesResponse()
@@ -1349,13 +1329,7 @@ func NewDeleteAccessControlRulesResponse() (response *DeleteAccessControlRulesRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAccessControlRules(request *DeleteAccessControlRulesRequest) (response *DeleteAccessControlRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteAccessControlRulesRequest()
-    }
-    
-    response = NewDeleteAccessControlRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAccessControlRulesWithContext(context.Background(), request)
 }
 
 // DeleteAccessControlRules
@@ -1373,6 +1347,11 @@ func (c *Client) DeleteAccessControlRulesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDeleteAccessControlRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessControlRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAccessControlRulesResponse()
@@ -1408,13 +1387,7 @@ func NewDeleteCompliancePolicyItemFromWhitelistResponse() (response *DeleteCompl
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DeleteCompliancePolicyItemFromWhitelist(request *DeleteCompliancePolicyItemFromWhitelistRequest) (response *DeleteCompliancePolicyItemFromWhitelistResponse, err error) {
-    if request == nil {
-        request = NewDeleteCompliancePolicyItemFromWhitelistRequest()
-    }
-    
-    response = NewDeleteCompliancePolicyItemFromWhitelistResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCompliancePolicyItemFromWhitelistWithContext(context.Background(), request)
 }
 
 // DeleteCompliancePolicyItemFromWhitelist
@@ -1431,6 +1404,11 @@ func (c *Client) DeleteCompliancePolicyItemFromWhitelistWithContext(ctx context.
     if request == nil {
         request = NewDeleteCompliancePolicyItemFromWhitelistRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCompliancePolicyItemFromWhitelist require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCompliancePolicyItemFromWhitelistResponse()
@@ -1466,13 +1444,7 @@ func NewDeleteReverseShellWhiteListsResponse() (response *DeleteReverseShellWhit
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteReverseShellWhiteLists(request *DeleteReverseShellWhiteListsRequest) (response *DeleteReverseShellWhiteListsResponse, err error) {
-    if request == nil {
-        request = NewDeleteReverseShellWhiteListsRequest()
-    }
-    
-    response = NewDeleteReverseShellWhiteListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteReverseShellWhiteListsWithContext(context.Background(), request)
 }
 
 // DeleteReverseShellWhiteLists
@@ -1489,6 +1461,11 @@ func (c *Client) DeleteReverseShellWhiteListsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDeleteReverseShellWhiteListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReverseShellWhiteLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteReverseShellWhiteListsResponse()
@@ -1524,13 +1501,7 @@ func NewDeleteRiskSyscallWhiteListsResponse() (response *DeleteRiskSyscallWhiteL
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DeleteRiskSyscallWhiteLists(request *DeleteRiskSyscallWhiteListsRequest) (response *DeleteRiskSyscallWhiteListsResponse, err error) {
-    if request == nil {
-        request = NewDeleteRiskSyscallWhiteListsRequest()
-    }
-    
-    response = NewDeleteRiskSyscallWhiteListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRiskSyscallWhiteListsWithContext(context.Background(), request)
 }
 
 // DeleteRiskSyscallWhiteLists
@@ -1547,6 +1518,11 @@ func (c *Client) DeleteRiskSyscallWhiteListsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDeleteRiskSyscallWhiteListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRiskSyscallWhiteLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRiskSyscallWhiteListsResponse()
@@ -1584,13 +1560,7 @@ func NewDescribeAbnormalProcessDetailResponse() (response *DescribeAbnormalProce
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessDetail(request *DescribeAbnormalProcessDetailRequest) (response *DescribeAbnormalProcessDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessDetailRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessDetailWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessDetail
@@ -1609,6 +1579,11 @@ func (c *Client) DescribeAbnormalProcessDetailWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAbnormalProcessDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessDetailResponse()
@@ -1645,13 +1620,7 @@ func NewDescribeAbnormalProcessEventsResponse() (response *DescribeAbnormalProce
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessEvents(request *DescribeAbnormalProcessEventsRequest) (response *DescribeAbnormalProcessEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessEventsRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessEventsWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessEvents
@@ -1669,6 +1638,11 @@ func (c *Client) DescribeAbnormalProcessEventsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAbnormalProcessEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessEventsResponse()
@@ -1705,13 +1679,7 @@ func NewDescribeAbnormalProcessEventsExportResponse() (response *DescribeAbnorma
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessEventsExport(request *DescribeAbnormalProcessEventsExportRequest) (response *DescribeAbnormalProcessEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessEventsExportRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessEventsExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessEventsExportWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessEventsExport
@@ -1729,6 +1697,11 @@ func (c *Client) DescribeAbnormalProcessEventsExportWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAbnormalProcessEventsExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessEventsExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessEventsExportResponse()
@@ -1766,13 +1739,7 @@ func NewDescribeAbnormalProcessRuleDetailResponse() (response *DescribeAbnormalP
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessRuleDetail(request *DescribeAbnormalProcessRuleDetailRequest) (response *DescribeAbnormalProcessRuleDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessRuleDetailRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessRuleDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessRuleDetailWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessRuleDetail
@@ -1791,6 +1758,11 @@ func (c *Client) DescribeAbnormalProcessRuleDetailWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAbnormalProcessRuleDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessRuleDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessRuleDetailResponse()
@@ -1827,13 +1799,7 @@ func NewDescribeAbnormalProcessRulesResponse() (response *DescribeAbnormalProces
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessRules(request *DescribeAbnormalProcessRulesRequest) (response *DescribeAbnormalProcessRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessRulesRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessRulesWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessRules
@@ -1851,6 +1817,11 @@ func (c *Client) DescribeAbnormalProcessRulesWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAbnormalProcessRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessRulesResponse()
@@ -1887,13 +1858,7 @@ func NewDescribeAbnormalProcessRulesExportResponse() (response *DescribeAbnormal
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAbnormalProcessRulesExport(request *DescribeAbnormalProcessRulesExportRequest) (response *DescribeAbnormalProcessRulesExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessRulesExportRequest()
-    }
-    
-    response = NewDescribeAbnormalProcessRulesExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAbnormalProcessRulesExportWithContext(context.Background(), request)
 }
 
 // DescribeAbnormalProcessRulesExport
@@ -1911,6 +1876,11 @@ func (c *Client) DescribeAbnormalProcessRulesExportWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeAbnormalProcessRulesExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAbnormalProcessRulesExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessRulesExportResponse()
@@ -1949,13 +1919,7 @@ func NewDescribeAccessControlDetailResponse() (response *DescribeAccessControlDe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlDetail(request *DescribeAccessControlDetailRequest) (response *DescribeAccessControlDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlDetailRequest()
-    }
-    
-    response = NewDescribeAccessControlDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlDetailWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlDetail
@@ -1975,6 +1939,11 @@ func (c *Client) DescribeAccessControlDetailWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAccessControlDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlDetailResponse()
@@ -2011,13 +1980,7 @@ func NewDescribeAccessControlEventsResponse() (response *DescribeAccessControlEv
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlEvents(request *DescribeAccessControlEventsRequest) (response *DescribeAccessControlEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlEventsRequest()
-    }
-    
-    response = NewDescribeAccessControlEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlEventsWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlEvents
@@ -2035,6 +1998,11 @@ func (c *Client) DescribeAccessControlEventsWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAccessControlEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlEventsResponse()
@@ -2071,13 +2039,7 @@ func NewDescribeAccessControlEventsExportResponse() (response *DescribeAccessCon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlEventsExport(request *DescribeAccessControlEventsExportRequest) (response *DescribeAccessControlEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlEventsExportRequest()
-    }
-    
-    response = NewDescribeAccessControlEventsExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlEventsExportWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlEventsExport
@@ -2095,6 +2057,11 @@ func (c *Client) DescribeAccessControlEventsExportWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAccessControlEventsExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlEventsExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlEventsExportResponse()
@@ -2132,13 +2099,7 @@ func NewDescribeAccessControlRuleDetailResponse() (response *DescribeAccessContr
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlRuleDetail(request *DescribeAccessControlRuleDetailRequest) (response *DescribeAccessControlRuleDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlRuleDetailRequest()
-    }
-    
-    response = NewDescribeAccessControlRuleDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlRuleDetailWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlRuleDetail
@@ -2157,6 +2118,11 @@ func (c *Client) DescribeAccessControlRuleDetailWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAccessControlRuleDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlRuleDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlRuleDetailResponse()
@@ -2193,13 +2159,7 @@ func NewDescribeAccessControlRulesResponse() (response *DescribeAccessControlRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlRules(request *DescribeAccessControlRulesRequest) (response *DescribeAccessControlRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlRulesRequest()
-    }
-    
-    response = NewDescribeAccessControlRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlRulesWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlRules
@@ -2217,6 +2177,11 @@ func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAccessControlRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlRulesResponse()
@@ -2253,13 +2218,7 @@ func NewDescribeAccessControlRulesExportResponse() (response *DescribeAccessCont
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAccessControlRulesExport(request *DescribeAccessControlRulesExportRequest) (response *DescribeAccessControlRulesExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlRulesExportRequest()
-    }
-    
-    response = NewDescribeAccessControlRulesExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessControlRulesExportWithContext(context.Background(), request)
 }
 
 // DescribeAccessControlRulesExport
@@ -2277,6 +2236,11 @@ func (c *Client) DescribeAccessControlRulesExportWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAccessControlRulesExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessControlRulesExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlRulesExportResponse()
@@ -2313,13 +2277,7 @@ func NewDescribeAffectedClusterCountResponse() (response *DescribeAffectedCluste
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAffectedClusterCount(request *DescribeAffectedClusterCountRequest) (response *DescribeAffectedClusterCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeAffectedClusterCountRequest()
-    }
-    
-    response = NewDescribeAffectedClusterCountResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAffectedClusterCountWithContext(context.Background(), request)
 }
 
 // DescribeAffectedClusterCount
@@ -2337,6 +2295,11 @@ func (c *Client) DescribeAffectedClusterCountWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAffectedClusterCountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAffectedClusterCount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAffectedClusterCountResponse()
@@ -2373,13 +2336,7 @@ func NewDescribeAffectedNodeListResponse() (response *DescribeAffectedNodeListRe
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAffectedNodeList(request *DescribeAffectedNodeListRequest) (response *DescribeAffectedNodeListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAffectedNodeListRequest()
-    }
-    
-    response = NewDescribeAffectedNodeListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAffectedNodeListWithContext(context.Background(), request)
 }
 
 // DescribeAffectedNodeList
@@ -2397,6 +2354,11 @@ func (c *Client) DescribeAffectedNodeListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAffectedNodeListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAffectedNodeList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAffectedNodeListResponse()
@@ -2433,13 +2395,7 @@ func NewDescribeAffectedWorkloadListResponse() (response *DescribeAffectedWorklo
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeAffectedWorkloadList(request *DescribeAffectedWorkloadListRequest) (response *DescribeAffectedWorkloadListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAffectedWorkloadListRequest()
-    }
-    
-    response = NewDescribeAffectedWorkloadListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAffectedWorkloadListWithContext(context.Background(), request)
 }
 
 // DescribeAffectedWorkloadList
@@ -2457,6 +2413,11 @@ func (c *Client) DescribeAffectedWorkloadListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAffectedWorkloadListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAffectedWorkloadList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAffectedWorkloadListResponse()
@@ -2490,13 +2451,7 @@ func NewDescribeAssetAppServiceListResponse() (response *DescribeAssetAppService
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetAppServiceList(request *DescribeAssetAppServiceListRequest) (response *DescribeAssetAppServiceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetAppServiceListRequest()
-    }
-    
-    response = NewDescribeAssetAppServiceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetAppServiceListWithContext(context.Background(), request)
 }
 
 // DescribeAssetAppServiceList
@@ -2511,6 +2466,11 @@ func (c *Client) DescribeAssetAppServiceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetAppServiceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetAppServiceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetAppServiceListResponse()
@@ -2544,13 +2504,7 @@ func NewDescribeAssetComponentListResponse() (response *DescribeAssetComponentLi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetComponentList(request *DescribeAssetComponentListRequest) (response *DescribeAssetComponentListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetComponentListRequest()
-    }
-    
-    response = NewDescribeAssetComponentListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetComponentListWithContext(context.Background(), request)
 }
 
 // DescribeAssetComponentList
@@ -2565,6 +2519,11 @@ func (c *Client) DescribeAssetComponentListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetComponentListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetComponentList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetComponentListResponse()
@@ -2598,13 +2557,7 @@ func NewDescribeAssetContainerDetailResponse() (response *DescribeAssetContainer
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetContainerDetail(request *DescribeAssetContainerDetailRequest) (response *DescribeAssetContainerDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetContainerDetailRequest()
-    }
-    
-    response = NewDescribeAssetContainerDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetContainerDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetContainerDetail
@@ -2619,6 +2572,11 @@ func (c *Client) DescribeAssetContainerDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetContainerDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetContainerDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetContainerDetailResponse()
@@ -2652,13 +2610,7 @@ func NewDescribeAssetContainerListResponse() (response *DescribeAssetContainerLi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetContainerList(request *DescribeAssetContainerListRequest) (response *DescribeAssetContainerListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetContainerListRequest()
-    }
-    
-    response = NewDescribeAssetContainerListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetContainerListWithContext(context.Background(), request)
 }
 
 // DescribeAssetContainerList
@@ -2673,6 +2625,11 @@ func (c *Client) DescribeAssetContainerListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetContainerListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetContainerList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetContainerListResponse()
@@ -2706,13 +2663,7 @@ func NewDescribeAssetDBServiceListResponse() (response *DescribeAssetDBServiceLi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetDBServiceList(request *DescribeAssetDBServiceListRequest) (response *DescribeAssetDBServiceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetDBServiceListRequest()
-    }
-    
-    response = NewDescribeAssetDBServiceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetDBServiceListWithContext(context.Background(), request)
 }
 
 // DescribeAssetDBServiceList
@@ -2727,6 +2678,11 @@ func (c *Client) DescribeAssetDBServiceListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetDBServiceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetDBServiceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetDBServiceListResponse()
@@ -2760,13 +2716,7 @@ func NewDescribeAssetHostDetailResponse() (response *DescribeAssetHostDetailResp
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetHostDetail(request *DescribeAssetHostDetailRequest) (response *DescribeAssetHostDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetHostDetailRequest()
-    }
-    
-    response = NewDescribeAssetHostDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetHostDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetHostDetail
@@ -2781,6 +2731,11 @@ func (c *Client) DescribeAssetHostDetailWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeAssetHostDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetHostDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetHostDetailResponse()
@@ -2814,13 +2769,7 @@ func NewDescribeAssetHostListResponse() (response *DescribeAssetHostListResponse
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetHostList(request *DescribeAssetHostListRequest) (response *DescribeAssetHostListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetHostListRequest()
-    }
-    
-    response = NewDescribeAssetHostListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetHostListWithContext(context.Background(), request)
 }
 
 // DescribeAssetHostList
@@ -2835,6 +2784,11 @@ func (c *Client) DescribeAssetHostListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAssetHostListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetHostList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetHostListResponse()
@@ -2871,13 +2825,7 @@ func NewDescribeAssetImageBindRuleInfoResponse() (response *DescribeAssetImageBi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageBindRuleInfo(request *DescribeAssetImageBindRuleInfoRequest) (response *DescribeAssetImageBindRuleInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageBindRuleInfoRequest()
-    }
-    
-    response = NewDescribeAssetImageBindRuleInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageBindRuleInfoWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageBindRuleInfo
@@ -2895,6 +2843,11 @@ func (c *Client) DescribeAssetImageBindRuleInfoWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssetImageBindRuleInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageBindRuleInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageBindRuleInfoResponse()
@@ -2929,13 +2882,7 @@ func NewDescribeAssetImageDetailResponse() (response *DescribeAssetImageDetailRe
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageDetail(request *DescribeAssetImageDetailRequest) (response *DescribeAssetImageDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageDetailRequest()
-    }
-    
-    response = NewDescribeAssetImageDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageDetail
@@ -2951,6 +2898,11 @@ func (c *Client) DescribeAssetImageDetailWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAssetImageDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageDetailResponse()
@@ -2984,13 +2936,7 @@ func NewDescribeAssetImageHostListResponse() (response *DescribeAssetImageHostLi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageHostList(request *DescribeAssetImageHostListRequest) (response *DescribeAssetImageHostListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageHostListRequest()
-    }
-    
-    response = NewDescribeAssetImageHostListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageHostListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageHostList
@@ -3005,6 +2951,11 @@ func (c *Client) DescribeAssetImageHostListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageHostListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageHostList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageHostListResponse()
@@ -3038,13 +2989,7 @@ func NewDescribeAssetImageListResponse() (response *DescribeAssetImageListRespon
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageList(request *DescribeAssetImageListRequest) (response *DescribeAssetImageListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageListRequest()
-    }
-    
-    response = NewDescribeAssetImageListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageList
@@ -3059,6 +3004,11 @@ func (c *Client) DescribeAssetImageListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeAssetImageListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageListResponse()
@@ -3092,13 +3042,7 @@ func NewDescribeAssetImageListExportResponse() (response *DescribeAssetImageList
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageListExport(request *DescribeAssetImageListExportRequest) (response *DescribeAssetImageListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageListExport
@@ -3113,6 +3057,11 @@ func (c *Client) DescribeAssetImageListExportWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetImageListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageListExportResponse()
@@ -3146,13 +3095,7 @@ func NewDescribeAssetImageRegistryAssetStatusResponse() (response *DescribeAsset
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryAssetStatus(request *DescribeAssetImageRegistryAssetStatusRequest) (response *DescribeAssetImageRegistryAssetStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryAssetStatusRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryAssetStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryAssetStatusWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryAssetStatus
@@ -3167,6 +3110,11 @@ func (c *Client) DescribeAssetImageRegistryAssetStatusWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeAssetImageRegistryAssetStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryAssetStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryAssetStatusResponse()
@@ -3198,13 +3146,7 @@ func NewDescribeAssetImageRegistryDetailResponse() (response *DescribeAssetImage
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryDetail(request *DescribeAssetImageRegistryDetailRequest) (response *DescribeAssetImageRegistryDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryDetailRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryDetail
@@ -3217,6 +3159,11 @@ func (c *Client) DescribeAssetImageRegistryDetailWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAssetImageRegistryDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryDetailResponse()
@@ -3248,13 +3195,7 @@ func NewDescribeAssetImageRegistryListResponse() (response *DescribeAssetImageRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryListRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryList
@@ -3267,6 +3208,11 @@ func (c *Client) DescribeAssetImageRegistryListWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeAssetImageRegistryListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryListResponse()
@@ -3298,13 +3244,7 @@ func NewDescribeAssetImageRegistryListExportResponse() (response *DescribeAssetI
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryListExport(request *DescribeAssetImageRegistryListExportRequest) (response *DescribeAssetImageRegistryListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryListExport
@@ -3317,6 +3257,11 @@ func (c *Client) DescribeAssetImageRegistryListExportWithContext(ctx context.Con
     if request == nil {
         request = NewDescribeAssetImageRegistryListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryListExportResponse()
@@ -3355,13 +3300,7 @@ func NewDescribeAssetImageRegistryRegistryDetailResponse() (response *DescribeAs
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryRegistryDetail(request *DescribeAssetImageRegistryRegistryDetailRequest) (response *DescribeAssetImageRegistryRegistryDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryRegistryDetailRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryRegistryDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryRegistryDetailWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryRegistryDetail
@@ -3381,6 +3320,11 @@ func (c *Client) DescribeAssetImageRegistryRegistryDetailWithContext(ctx context
     if request == nil {
         request = NewDescribeAssetImageRegistryRegistryDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryRegistryDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRegistryDetailResponse()
@@ -3412,13 +3356,7 @@ func NewDescribeAssetImageRegistryRegistryListResponse() (response *DescribeAsse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryRegistryList(request *DescribeAssetImageRegistryRegistryListRequest) (response *DescribeAssetImageRegistryRegistryListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryRegistryListRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryRegistryListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryRegistryListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryRegistryList
@@ -3431,6 +3369,11 @@ func (c *Client) DescribeAssetImageRegistryRegistryListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeAssetImageRegistryRegistryListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryRegistryList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRegistryListResponse()
@@ -3464,13 +3407,7 @@ func NewDescribeAssetImageRegistryRiskInfoListResponse() (response *DescribeAsse
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryRiskInfoList(request *DescribeAssetImageRegistryRiskInfoListRequest) (response *DescribeAssetImageRegistryRiskInfoListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryRiskInfoListRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryRiskInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryRiskInfoListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryRiskInfoList
@@ -3485,6 +3422,11 @@ func (c *Client) DescribeAssetImageRegistryRiskInfoListWithContext(ctx context.C
     if request == nil {
         request = NewDescribeAssetImageRegistryRiskInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryRiskInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRiskInfoListResponse()
@@ -3516,13 +3458,7 @@ func NewDescribeAssetImageRegistryRiskListExportResponse() (response *DescribeAs
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryRiskListExport(request *DescribeAssetImageRegistryRiskListExportRequest) (response *DescribeAssetImageRegistryRiskListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryRiskListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryRiskListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryRiskListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryRiskListExport
@@ -3535,6 +3471,11 @@ func (c *Client) DescribeAssetImageRegistryRiskListExportWithContext(ctx context
     if request == nil {
         request = NewDescribeAssetImageRegistryRiskListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryRiskListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryRiskListExportResponse()
@@ -3567,13 +3508,7 @@ func NewDescribeAssetImageRegistryScanStatusOneKeyResponse() (response *Describe
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryScanStatusOneKey(request *DescribeAssetImageRegistryScanStatusOneKeyRequest) (response *DescribeAssetImageRegistryScanStatusOneKeyResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryScanStatusOneKeyRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryScanStatusOneKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryScanStatusOneKeyWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryScanStatusOneKey
@@ -3587,6 +3522,11 @@ func (c *Client) DescribeAssetImageRegistryScanStatusOneKeyWithContext(ctx conte
     if request == nil {
         request = NewDescribeAssetImageRegistryScanStatusOneKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryScanStatusOneKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryScanStatusOneKeyResponse()
@@ -3618,13 +3558,7 @@ func NewDescribeAssetImageRegistrySummaryResponse() (response *DescribeAssetImag
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistrySummary(request *DescribeAssetImageRegistrySummaryRequest) (response *DescribeAssetImageRegistrySummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistrySummaryRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistrySummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistrySummaryWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistrySummary
@@ -3637,6 +3571,11 @@ func (c *Client) DescribeAssetImageRegistrySummaryWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageRegistrySummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistrySummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistrySummaryResponse()
@@ -3668,13 +3607,7 @@ func NewDescribeAssetImageRegistryVirusListResponse() (response *DescribeAssetIm
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVirusList(request *DescribeAssetImageRegistryVirusListRequest) (response *DescribeAssetImageRegistryVirusListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryVirusListRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryVirusListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryVirusListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryVirusList
@@ -3687,6 +3620,11 @@ func (c *Client) DescribeAssetImageRegistryVirusListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeAssetImageRegistryVirusListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryVirusList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVirusListResponse()
@@ -3718,13 +3656,7 @@ func NewDescribeAssetImageRegistryVirusListExportResponse() (response *DescribeA
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVirusListExport(request *DescribeAssetImageRegistryVirusListExportRequest) (response *DescribeAssetImageRegistryVirusListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryVirusListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryVirusListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryVirusListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryVirusListExport
@@ -3737,6 +3669,11 @@ func (c *Client) DescribeAssetImageRegistryVirusListExportWithContext(ctx contex
     if request == nil {
         request = NewDescribeAssetImageRegistryVirusListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryVirusListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVirusListExportResponse()
@@ -3768,13 +3705,7 @@ func NewDescribeAssetImageRegistryVulListResponse() (response *DescribeAssetImag
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVulList(request *DescribeAssetImageRegistryVulListRequest) (response *DescribeAssetImageRegistryVulListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryVulListRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryVulListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryVulListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryVulList
@@ -3787,6 +3718,11 @@ func (c *Client) DescribeAssetImageRegistryVulListWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageRegistryVulListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryVulList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVulListResponse()
@@ -3818,13 +3754,7 @@ func NewDescribeAssetImageRegistryVulListExportResponse() (response *DescribeAss
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVulListExport(request *DescribeAssetImageRegistryVulListExportRequest) (response *DescribeAssetImageRegistryVulListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRegistryVulListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageRegistryVulListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRegistryVulListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRegistryVulListExport
@@ -3837,6 +3767,11 @@ func (c *Client) DescribeAssetImageRegistryVulListExportWithContext(ctx context.
     if request == nil {
         request = NewDescribeAssetImageRegistryVulListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRegistryVulListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRegistryVulListExportResponse()
@@ -3871,13 +3806,7 @@ func NewDescribeAssetImageRiskListResponse() (response *DescribeAssetImageRiskLi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRiskList(request *DescribeAssetImageRiskListRequest) (response *DescribeAssetImageRiskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRiskListRequest()
-    }
-    
-    response = NewDescribeAssetImageRiskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRiskListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRiskList
@@ -3893,6 +3822,11 @@ func (c *Client) DescribeAssetImageRiskListWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageRiskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRiskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRiskListResponse()
@@ -3926,13 +3860,7 @@ func NewDescribeAssetImageRiskListExportResponse() (response *DescribeAssetImage
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRiskListExport(request *DescribeAssetImageRiskListExportRequest) (response *DescribeAssetImageRiskListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageRiskListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageRiskListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageRiskListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageRiskListExport
@@ -3947,6 +3875,11 @@ func (c *Client) DescribeAssetImageRiskListExportWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeAssetImageRiskListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageRiskListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageRiskListExportResponse()
@@ -3979,13 +3912,7 @@ func NewDescribeAssetImageScanSettingResponse() (response *DescribeAssetImageSca
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 func (c *Client) DescribeAssetImageScanSetting(request *DescribeAssetImageScanSettingRequest) (response *DescribeAssetImageScanSettingResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageScanSettingRequest()
-    }
-    
-    response = NewDescribeAssetImageScanSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageScanSettingWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageScanSetting
@@ -3999,6 +3926,11 @@ func (c *Client) DescribeAssetImageScanSettingWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeAssetImageScanSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageScanSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageScanSettingResponse()
@@ -4033,13 +3965,7 @@ func NewDescribeAssetImageScanStatusResponse() (response *DescribeAssetImageScan
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageScanStatus(request *DescribeAssetImageScanStatusRequest) (response *DescribeAssetImageScanStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageScanStatusRequest()
-    }
-    
-    response = NewDescribeAssetImageScanStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageScanStatusWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageScanStatus
@@ -4055,6 +3981,11 @@ func (c *Client) DescribeAssetImageScanStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetImageScanStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageScanStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageScanStatusResponse()
@@ -4088,13 +4019,7 @@ func NewDescribeAssetImageScanTaskResponse() (response *DescribeAssetImageScanTa
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageScanTask(request *DescribeAssetImageScanTaskRequest) (response *DescribeAssetImageScanTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageScanTaskRequest()
-    }
-    
-    response = NewDescribeAssetImageScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageScanTaskWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageScanTask
@@ -4109,6 +4034,11 @@ func (c *Client) DescribeAssetImageScanTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeAssetImageScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageScanTaskResponse()
@@ -4142,13 +4072,7 @@ func NewDescribeAssetImageSimpleListResponse() (response *DescribeAssetImageSimp
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageSimpleList(request *DescribeAssetImageSimpleListRequest) (response *DescribeAssetImageSimpleListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageSimpleListRequest()
-    }
-    
-    response = NewDescribeAssetImageSimpleListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageSimpleListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageSimpleList
@@ -4163,6 +4087,11 @@ func (c *Client) DescribeAssetImageSimpleListWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeAssetImageSimpleListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageSimpleList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageSimpleListResponse()
@@ -4197,13 +4126,7 @@ func NewDescribeAssetImageVirusListResponse() (response *DescribeAssetImageVirus
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageVirusList(request *DescribeAssetImageVirusListRequest) (response *DescribeAssetImageVirusListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageVirusListRequest()
-    }
-    
-    response = NewDescribeAssetImageVirusListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageVirusListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageVirusList
@@ -4219,6 +4142,11 @@ func (c *Client) DescribeAssetImageVirusListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetImageVirusListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageVirusList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageVirusListResponse()
@@ -4252,13 +4180,7 @@ func NewDescribeAssetImageVirusListExportResponse() (response *DescribeAssetImag
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageVirusListExport(request *DescribeAssetImageVirusListExportRequest) (response *DescribeAssetImageVirusListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageVirusListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageVirusListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageVirusListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageVirusListExport
@@ -4273,6 +4195,11 @@ func (c *Client) DescribeAssetImageVirusListExportWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAssetImageVirusListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageVirusListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageVirusListExportResponse()
@@ -4307,13 +4234,7 @@ func NewDescribeAssetImageVulListResponse() (response *DescribeAssetImageVulList
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageVulList(request *DescribeAssetImageVulListRequest) (response *DescribeAssetImageVulListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageVulListRequest()
-    }
-    
-    response = NewDescribeAssetImageVulListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageVulListWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageVulList
@@ -4329,6 +4250,11 @@ func (c *Client) DescribeAssetImageVulListWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeAssetImageVulListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageVulList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageVulListResponse()
@@ -4362,13 +4288,7 @@ func NewDescribeAssetImageVulListExportResponse() (response *DescribeAssetImageV
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageVulListExport(request *DescribeAssetImageVulListExportRequest) (response *DescribeAssetImageVulListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageVulListExportRequest()
-    }
-    
-    response = NewDescribeAssetImageVulListExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetImageVulListExportWithContext(context.Background(), request)
 }
 
 // DescribeAssetImageVulListExport
@@ -4383,6 +4303,11 @@ func (c *Client) DescribeAssetImageVulListExportWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeAssetImageVulListExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetImageVulListExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageVulListExportResponse()
@@ -4416,13 +4341,7 @@ func NewDescribeAssetPortListResponse() (response *DescribeAssetPortListResponse
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetPortList(request *DescribeAssetPortListRequest) (response *DescribeAssetPortListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetPortListRequest()
-    }
-    
-    response = NewDescribeAssetPortListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetPortListWithContext(context.Background(), request)
 }
 
 // DescribeAssetPortList
@@ -4437,6 +4356,11 @@ func (c *Client) DescribeAssetPortListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAssetPortListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetPortList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetPortListResponse()
@@ -4470,13 +4394,7 @@ func NewDescribeAssetProcessListResponse() (response *DescribeAssetProcessListRe
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetProcessListRequest()
-    }
-    
-    response = NewDescribeAssetProcessListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetProcessListWithContext(context.Background(), request)
 }
 
 // DescribeAssetProcessList
@@ -4491,6 +4409,11 @@ func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeAssetProcessListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetProcessList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetProcessListResponse()
@@ -4524,13 +4447,7 @@ func NewDescribeAssetSummaryResponse() (response *DescribeAssetSummaryResponse) 
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetSummary(request *DescribeAssetSummaryRequest) (response *DescribeAssetSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetSummaryRequest()
-    }
-    
-    response = NewDescribeAssetSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetSummaryWithContext(context.Background(), request)
 }
 
 // DescribeAssetSummary
@@ -4545,6 +4462,11 @@ func (c *Client) DescribeAssetSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeAssetSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetSummaryResponse()
@@ -4578,13 +4500,7 @@ func NewDescribeAssetWebServiceListResponse() (response *DescribeAssetWebService
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetWebServiceList(request *DescribeAssetWebServiceListRequest) (response *DescribeAssetWebServiceListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetWebServiceListRequest()
-    }
-    
-    response = NewDescribeAssetWebServiceListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAssetWebServiceListWithContext(context.Background(), request)
 }
 
 // DescribeAssetWebServiceList
@@ -4599,6 +4515,11 @@ func (c *Client) DescribeAssetWebServiceListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeAssetWebServiceListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetWebServiceList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAssetWebServiceListResponse()
@@ -4635,13 +4556,7 @@ func NewDescribeCheckItemListResponse() (response *DescribeCheckItemListResponse
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeCheckItemList(request *DescribeCheckItemListRequest) (response *DescribeCheckItemListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCheckItemListRequest()
-    }
-    
-    response = NewDescribeCheckItemListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCheckItemListWithContext(context.Background(), request)
 }
 
 // DescribeCheckItemList
@@ -4659,6 +4574,11 @@ func (c *Client) DescribeCheckItemListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeCheckItemListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCheckItemList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCheckItemListResponse()
@@ -4695,13 +4615,7 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (response *DescribeClusterDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterDetailRequest()
-    }
-    
-    response = NewDescribeClusterDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterDetailWithContext(context.Background(), request)
 }
 
 // DescribeClusterDetail
@@ -4719,6 +4633,11 @@ func (c *Client) DescribeClusterDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeClusterDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterDetailResponse()
@@ -4755,13 +4674,7 @@ func NewDescribeClusterSummaryResponse() (response *DescribeClusterSummaryRespon
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClusterSummary(request *DescribeClusterSummaryRequest) (response *DescribeClusterSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeClusterSummaryRequest()
-    }
-    
-    response = NewDescribeClusterSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeClusterSummaryWithContext(context.Background(), request)
 }
 
 // DescribeClusterSummary
@@ -4779,6 +4692,11 @@ func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeClusterSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeClusterSummaryResponse()
@@ -4815,13 +4733,7 @@ func NewDescribeComplianceAssetDetailInfoResponse() (response *DescribeComplianc
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceAssetDetailInfo(request *DescribeComplianceAssetDetailInfoRequest) (response *DescribeComplianceAssetDetailInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceAssetDetailInfoRequest()
-    }
-    
-    response = NewDescribeComplianceAssetDetailInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceAssetDetailInfoWithContext(context.Background(), request)
 }
 
 // DescribeComplianceAssetDetailInfo
@@ -4839,6 +4751,11 @@ func (c *Client) DescribeComplianceAssetDetailInfoWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeComplianceAssetDetailInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceAssetDetailInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetDetailInfoResponse()
@@ -4874,13 +4791,7 @@ func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAsset
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetListRequest) (response *DescribeComplianceAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceAssetListRequest()
-    }
-    
-    response = NewDescribeComplianceAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceAssetListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceAssetList
@@ -4897,6 +4808,11 @@ func (c *Client) DescribeComplianceAssetListWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeComplianceAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetListResponse()
@@ -4933,13 +4849,7 @@ func NewDescribeComplianceAssetPolicyItemListResponse() (response *DescribeCompl
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceAssetPolicyItemList(request *DescribeComplianceAssetPolicyItemListRequest) (response *DescribeComplianceAssetPolicyItemListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceAssetPolicyItemListRequest()
-    }
-    
-    response = NewDescribeComplianceAssetPolicyItemListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceAssetPolicyItemListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceAssetPolicyItemList
@@ -4957,6 +4867,11 @@ func (c *Client) DescribeComplianceAssetPolicyItemListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeComplianceAssetPolicyItemListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceAssetPolicyItemList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceAssetPolicyItemListResponse()
@@ -4991,13 +4906,7 @@ func NewDescribeCompliancePeriodTaskListResponse() (response *DescribeCompliance
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeCompliancePeriodTaskList(request *DescribeCompliancePeriodTaskListRequest) (response *DescribeCompliancePeriodTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCompliancePeriodTaskListRequest()
-    }
-    
-    response = NewDescribeCompliancePeriodTaskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCompliancePeriodTaskListWithContext(context.Background(), request)
 }
 
 // DescribeCompliancePeriodTaskList
@@ -5013,6 +4922,11 @@ func (c *Client) DescribeCompliancePeriodTaskListWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeCompliancePeriodTaskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompliancePeriodTaskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCompliancePeriodTaskListResponse()
@@ -5048,13 +4962,7 @@ func NewDescribeCompliancePolicyItemAffectedAssetListResponse() (response *Descr
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeCompliancePolicyItemAffectedAssetList(request *DescribeCompliancePolicyItemAffectedAssetListRequest) (response *DescribeCompliancePolicyItemAffectedAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeCompliancePolicyItemAffectedAssetListRequest()
-    }
-    
-    response = NewDescribeCompliancePolicyItemAffectedAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCompliancePolicyItemAffectedAssetListWithContext(context.Background(), request)
 }
 
 // DescribeCompliancePolicyItemAffectedAssetList
@@ -5071,6 +4979,11 @@ func (c *Client) DescribeCompliancePolicyItemAffectedAssetListWithContext(ctx co
     if request == nil {
         request = NewDescribeCompliancePolicyItemAffectedAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompliancePolicyItemAffectedAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCompliancePolicyItemAffectedAssetListResponse()
@@ -5106,13 +5019,7 @@ func NewDescribeCompliancePolicyItemAffectedSummaryResponse() (response *Describ
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeCompliancePolicyItemAffectedSummary(request *DescribeCompliancePolicyItemAffectedSummaryRequest) (response *DescribeCompliancePolicyItemAffectedSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeCompliancePolicyItemAffectedSummaryRequest()
-    }
-    
-    response = NewDescribeCompliancePolicyItemAffectedSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCompliancePolicyItemAffectedSummaryWithContext(context.Background(), request)
 }
 
 // DescribeCompliancePolicyItemAffectedSummary
@@ -5129,6 +5036,11 @@ func (c *Client) DescribeCompliancePolicyItemAffectedSummaryWithContext(ctx cont
     if request == nil {
         request = NewDescribeCompliancePolicyItemAffectedSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompliancePolicyItemAffectedSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCompliancePolicyItemAffectedSummaryResponse()
@@ -5164,13 +5076,7 @@ func NewDescribeComplianceScanFailedAssetListResponse() (response *DescribeCompl
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceScanFailedAssetList(request *DescribeComplianceScanFailedAssetListRequest) (response *DescribeComplianceScanFailedAssetListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceScanFailedAssetListRequest()
-    }
-    
-    response = NewDescribeComplianceScanFailedAssetListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceScanFailedAssetListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceScanFailedAssetList
@@ -5187,6 +5093,11 @@ func (c *Client) DescribeComplianceScanFailedAssetListWithContext(ctx context.Co
     if request == nil {
         request = NewDescribeComplianceScanFailedAssetListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceScanFailedAssetList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceScanFailedAssetListResponse()
@@ -5222,13 +5133,7 @@ func NewDescribeComplianceTaskAssetSummaryResponse() (response *DescribeComplian
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceTaskAssetSummary(request *DescribeComplianceTaskAssetSummaryRequest) (response *DescribeComplianceTaskAssetSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceTaskAssetSummaryRequest()
-    }
-    
-    response = NewDescribeComplianceTaskAssetSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceTaskAssetSummaryWithContext(context.Background(), request)
 }
 
 // DescribeComplianceTaskAssetSummary
@@ -5245,6 +5150,11 @@ func (c *Client) DescribeComplianceTaskAssetSummaryWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeComplianceTaskAssetSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceTaskAssetSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceTaskAssetSummaryResponse()
@@ -5281,13 +5191,7 @@ func NewDescribeComplianceTaskPolicyItemSummaryListResponse() (response *Describ
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeComplianceTaskPolicyItemSummaryList(request *DescribeComplianceTaskPolicyItemSummaryListRequest) (response *DescribeComplianceTaskPolicyItemSummaryListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceTaskPolicyItemSummaryListRequest()
-    }
-    
-    response = NewDescribeComplianceTaskPolicyItemSummaryListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceTaskPolicyItemSummaryListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceTaskPolicyItemSummaryList
@@ -5305,6 +5209,11 @@ func (c *Client) DescribeComplianceTaskPolicyItemSummaryListWithContext(ctx cont
     if request == nil {
         request = NewDescribeComplianceTaskPolicyItemSummaryListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceTaskPolicyItemSummaryList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceTaskPolicyItemSummaryListResponse()
@@ -5340,13 +5249,7 @@ func NewDescribeComplianceWhitelistItemListResponse() (response *DescribeComplia
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeComplianceWhitelistItemList(request *DescribeComplianceWhitelistItemListRequest) (response *DescribeComplianceWhitelistItemListResponse, err error) {
-    if request == nil {
-        request = NewDescribeComplianceWhitelistItemListRequest()
-    }
-    
-    response = NewDescribeComplianceWhitelistItemListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeComplianceWhitelistItemListWithContext(context.Background(), request)
 }
 
 // DescribeComplianceWhitelistItemList
@@ -5363,6 +5266,11 @@ func (c *Client) DescribeComplianceWhitelistItemListWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeComplianceWhitelistItemListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeComplianceWhitelistItemList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeComplianceWhitelistItemListResponse()
@@ -5394,13 +5302,7 @@ func NewDescribeContainerAssetSummaryResponse() (response *DescribeContainerAsse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerAssetSummary(request *DescribeContainerAssetSummaryRequest) (response *DescribeContainerAssetSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerAssetSummaryRequest()
-    }
-    
-    response = NewDescribeContainerAssetSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerAssetSummaryWithContext(context.Background(), request)
 }
 
 // DescribeContainerAssetSummary
@@ -5413,6 +5315,11 @@ func (c *Client) DescribeContainerAssetSummaryWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeContainerAssetSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerAssetSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerAssetSummaryResponse()
@@ -5444,13 +5351,7 @@ func NewDescribeContainerSecEventSummaryResponse() (response *DescribeContainerS
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeContainerSecEventSummary(request *DescribeContainerSecEventSummaryRequest) (response *DescribeContainerSecEventSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeContainerSecEventSummaryRequest()
-    }
-    
-    response = NewDescribeContainerSecEventSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeContainerSecEventSummaryWithContext(context.Background(), request)
 }
 
 // DescribeContainerSecEventSummary
@@ -5463,6 +5364,11 @@ func (c *Client) DescribeContainerSecEventSummaryWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeContainerSecEventSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerSecEventSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeContainerSecEventSummaryResponse()
@@ -5496,13 +5402,7 @@ func NewDescribeEscapeEventDetailResponse() (response *DescribeEscapeEventDetail
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 func (c *Client) DescribeEscapeEventDetail(request *DescribeEscapeEventDetailRequest) (response *DescribeEscapeEventDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeEventDetailRequest()
-    }
-    
-    response = NewDescribeEscapeEventDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEscapeEventDetailWithContext(context.Background(), request)
 }
 
 // DescribeEscapeEventDetail
@@ -5517,6 +5417,11 @@ func (c *Client) DescribeEscapeEventDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeEscapeEventDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEscapeEventDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEscapeEventDetailResponse()
@@ -5549,13 +5454,7 @@ func NewDescribeEscapeEventInfoResponse() (response *DescribeEscapeEventInfoResp
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeEscapeEventInfo(request *DescribeEscapeEventInfoRequest) (response *DescribeEscapeEventInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeEventInfoRequest()
-    }
-    
-    response = NewDescribeEscapeEventInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEscapeEventInfoWithContext(context.Background(), request)
 }
 
 // DescribeEscapeEventInfo
@@ -5569,6 +5468,11 @@ func (c *Client) DescribeEscapeEventInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEscapeEventInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEscapeEventInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEscapeEventInfoResponse()
@@ -5601,13 +5505,7 @@ func NewDescribeEscapeEventsExportResponse() (response *DescribeEscapeEventsExpo
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeEscapeEventsExport(request *DescribeEscapeEventsExportRequest) (response *DescribeEscapeEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeEventsExportRequest()
-    }
-    
-    response = NewDescribeEscapeEventsExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEscapeEventsExportWithContext(context.Background(), request)
 }
 
 // DescribeEscapeEventsExport
@@ -5621,6 +5519,11 @@ func (c *Client) DescribeEscapeEventsExportWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeEscapeEventsExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEscapeEventsExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEscapeEventsExportResponse()
@@ -5652,13 +5555,7 @@ func NewDescribeEscapeRuleInfoResponse() (response *DescribeEscapeRuleInfoRespon
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEscapeRuleInfo(request *DescribeEscapeRuleInfoRequest) (response *DescribeEscapeRuleInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeRuleInfoRequest()
-    }
-    
-    response = NewDescribeEscapeRuleInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEscapeRuleInfoWithContext(context.Background(), request)
 }
 
 // DescribeEscapeRuleInfo
@@ -5671,6 +5568,11 @@ func (c *Client) DescribeEscapeRuleInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeEscapeRuleInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEscapeRuleInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEscapeRuleInfoResponse()
@@ -5702,13 +5604,7 @@ func NewDescribeEscapeSafeStateResponse() (response *DescribeEscapeSafeStateResp
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeEscapeSafeState(request *DescribeEscapeSafeStateRequest) (response *DescribeEscapeSafeStateResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeSafeStateRequest()
-    }
-    
-    response = NewDescribeEscapeSafeStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEscapeSafeStateWithContext(context.Background(), request)
 }
 
 // DescribeEscapeSafeState
@@ -5721,6 +5617,11 @@ func (c *Client) DescribeEscapeSafeStateWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeEscapeSafeStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEscapeSafeState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEscapeSafeStateResponse()
@@ -5757,13 +5658,7 @@ func NewDescribeExportJobResultResponse() (response *DescribeExportJobResultResp
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeExportJobResult(request *DescribeExportJobResultRequest) (response *DescribeExportJobResultResponse, err error) {
-    if request == nil {
-        request = NewDescribeExportJobResultRequest()
-    }
-    
-    response = NewDescribeExportJobResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeExportJobResultWithContext(context.Background(), request)
 }
 
 // DescribeExportJobResult
@@ -5781,6 +5676,11 @@ func (c *Client) DescribeExportJobResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeExportJobResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExportJobResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeExportJobResultResponse()
@@ -5812,13 +5712,7 @@ func NewDescribeImageAuthorizedInfoResponse() (response *DescribeImageAuthorized
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeImageAuthorizedInfo(request *DescribeImageAuthorizedInfoRequest) (response *DescribeImageAuthorizedInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageAuthorizedInfoRequest()
-    }
-    
-    response = NewDescribeImageAuthorizedInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageAuthorizedInfoWithContext(context.Background(), request)
 }
 
 // DescribeImageAuthorizedInfo
@@ -5831,6 +5725,11 @@ func (c *Client) DescribeImageAuthorizedInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeImageAuthorizedInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageAuthorizedInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageAuthorizedInfoResponse()
@@ -5862,13 +5761,7 @@ func NewDescribeImageRegistryTimingScanTaskResponse() (response *DescribeImageRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeImageRegistryTimingScanTask(request *DescribeImageRegistryTimingScanTaskRequest) (response *DescribeImageRegistryTimingScanTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRegistryTimingScanTaskRequest()
-    }
-    
-    response = NewDescribeImageRegistryTimingScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageRegistryTimingScanTaskWithContext(context.Background(), request)
 }
 
 // DescribeImageRegistryTimingScanTask
@@ -5881,6 +5774,11 @@ func (c *Client) DescribeImageRegistryTimingScanTaskWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeImageRegistryTimingScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryTimingScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageRegistryTimingScanTaskResponse()
@@ -5912,13 +5810,7 @@ func NewDescribeImageRiskSummaryResponse() (response *DescribeImageRiskSummaryRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeImageRiskSummary(request *DescribeImageRiskSummaryRequest) (response *DescribeImageRiskSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRiskSummaryRequest()
-    }
-    
-    response = NewDescribeImageRiskSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageRiskSummaryWithContext(context.Background(), request)
 }
 
 // DescribeImageRiskSummary
@@ -5931,6 +5823,11 @@ func (c *Client) DescribeImageRiskSummaryWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeImageRiskSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRiskSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageRiskSummaryResponse()
@@ -5967,13 +5864,7 @@ func NewDescribeImageRiskTendencyResponse() (response *DescribeImageRiskTendency
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATARANGE = "InvalidParameterValue.DataRange"
 func (c *Client) DescribeImageRiskTendency(request *DescribeImageRiskTendencyRequest) (response *DescribeImageRiskTendencyResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageRiskTendencyRequest()
-    }
-    
-    response = NewDescribeImageRiskTendencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageRiskTendencyWithContext(context.Background(), request)
 }
 
 // DescribeImageRiskTendency
@@ -5991,6 +5882,11 @@ func (c *Client) DescribeImageRiskTendencyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeImageRiskTendencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRiskTendency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageRiskTendencyResponse()
@@ -6023,13 +5919,7 @@ func NewDescribeImageSimpleListResponse() (response *DescribeImageSimpleListResp
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeImageSimpleList(request *DescribeImageSimpleListRequest) (response *DescribeImageSimpleListResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageSimpleListRequest()
-    }
-    
-    response = NewDescribeImageSimpleListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeImageSimpleListWithContext(context.Background(), request)
 }
 
 // DescribeImageSimpleList
@@ -6043,6 +5933,11 @@ func (c *Client) DescribeImageSimpleListWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeImageSimpleListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageSimpleList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeImageSimpleListResponse()
@@ -6074,13 +5969,7 @@ func NewDescribePostPayDetailResponse() (response *DescribePostPayDetailResponse
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribePostPayDetail(request *DescribePostPayDetailRequest) (response *DescribePostPayDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribePostPayDetailRequest()
-    }
-    
-    response = NewDescribePostPayDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePostPayDetailWithContext(context.Background(), request)
 }
 
 // DescribePostPayDetail
@@ -6093,6 +5982,11 @@ func (c *Client) DescribePostPayDetailWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribePostPayDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostPayDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePostPayDetailResponse()
@@ -6126,13 +6020,7 @@ func NewDescribeProVersionInfoResponse() (response *DescribeProVersionInfoRespon
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) DescribeProVersionInfo(request *DescribeProVersionInfoRequest) (response *DescribeProVersionInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeProVersionInfoRequest()
-    }
-    
-    response = NewDescribeProVersionInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProVersionInfoWithContext(context.Background(), request)
 }
 
 // DescribeProVersionInfo
@@ -6147,6 +6035,11 @@ func (c *Client) DescribeProVersionInfoWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeProVersionInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProVersionInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProVersionInfoResponse()
@@ -6180,13 +6073,7 @@ func NewDescribePurchaseStateInfoResponse() (response *DescribePurchaseStateInfo
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribePurchaseStateInfo(request *DescribePurchaseStateInfoRequest) (response *DescribePurchaseStateInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribePurchaseStateInfoRequest()
-    }
-    
-    response = NewDescribePurchaseStateInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribePurchaseStateInfoWithContext(context.Background(), request)
 }
 
 // DescribePurchaseStateInfo
@@ -6201,6 +6088,11 @@ func (c *Client) DescribePurchaseStateInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribePurchaseStateInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePurchaseStateInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribePurchaseStateInfoResponse()
@@ -6237,13 +6129,7 @@ func NewDescribeRefreshTaskResponse() (response *DescribeRefreshTaskResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRefreshTask(request *DescribeRefreshTaskRequest) (response *DescribeRefreshTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeRefreshTaskRequest()
-    }
-    
-    response = NewDescribeRefreshTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRefreshTaskWithContext(context.Background(), request)
 }
 
 // DescribeRefreshTask
@@ -6261,6 +6147,11 @@ func (c *Client) DescribeRefreshTaskWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRefreshTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRefreshTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRefreshTaskResponse()
@@ -6298,13 +6189,7 @@ func NewDescribeReverseShellDetailResponse() (response *DescribeReverseShellDeta
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) DescribeReverseShellDetail(request *DescribeReverseShellDetailRequest) (response *DescribeReverseShellDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeReverseShellDetailRequest()
-    }
-    
-    response = NewDescribeReverseShellDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReverseShellDetailWithContext(context.Background(), request)
 }
 
 // DescribeReverseShellDetail
@@ -6323,6 +6208,11 @@ func (c *Client) DescribeReverseShellDetailWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeReverseShellDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellDetailResponse()
@@ -6359,13 +6249,7 @@ func NewDescribeReverseShellEventsResponse() (response *DescribeReverseShellEven
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeReverseShellEventsRequest()
-    }
-    
-    response = NewDescribeReverseShellEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReverseShellEventsWithContext(context.Background(), request)
 }
 
 // DescribeReverseShellEvents
@@ -6383,6 +6267,11 @@ func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeReverseShellEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellEventsResponse()
@@ -6419,13 +6308,7 @@ func NewDescribeReverseShellEventsExportResponse() (response *DescribeReverseShe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellEventsExport(request *DescribeReverseShellEventsExportRequest) (response *DescribeReverseShellEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeReverseShellEventsExportRequest()
-    }
-    
-    response = NewDescribeReverseShellEventsExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReverseShellEventsExportWithContext(context.Background(), request)
 }
 
 // DescribeReverseShellEventsExport
@@ -6443,6 +6326,11 @@ func (c *Client) DescribeReverseShellEventsExportWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeReverseShellEventsExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellEventsExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellEventsExportResponse()
@@ -6480,13 +6368,7 @@ func NewDescribeReverseShellWhiteListDetailResponse() (response *DescribeReverse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) DescribeReverseShellWhiteListDetail(request *DescribeReverseShellWhiteListDetailRequest) (response *DescribeReverseShellWhiteListDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeReverseShellWhiteListDetailRequest()
-    }
-    
-    response = NewDescribeReverseShellWhiteListDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReverseShellWhiteListDetailWithContext(context.Background(), request)
 }
 
 // DescribeReverseShellWhiteListDetail
@@ -6505,6 +6387,11 @@ func (c *Client) DescribeReverseShellWhiteListDetailWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeReverseShellWhiteListDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellWhiteListDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellWhiteListDetailResponse()
@@ -6540,13 +6427,7 @@ func NewDescribeReverseShellWhiteListsResponse() (response *DescribeReverseShell
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeReverseShellWhiteLists(request *DescribeReverseShellWhiteListsRequest) (response *DescribeReverseShellWhiteListsResponse, err error) {
-    if request == nil {
-        request = NewDescribeReverseShellWhiteListsRequest()
-    }
-    
-    response = NewDescribeReverseShellWhiteListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeReverseShellWhiteListsWithContext(context.Background(), request)
 }
 
 // DescribeReverseShellWhiteLists
@@ -6563,6 +6444,11 @@ func (c *Client) DescribeReverseShellWhiteListsWithContext(ctx context.Context, 
     if request == nil {
         request = NewDescribeReverseShellWhiteListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReverseShellWhiteLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeReverseShellWhiteListsResponse()
@@ -6599,13 +6485,7 @@ func NewDescribeRiskListResponse() (response *DescribeRiskListResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRiskList(request *DescribeRiskListRequest) (response *DescribeRiskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskListRequest()
-    }
-    
-    response = NewDescribeRiskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskListWithContext(context.Background(), request)
 }
 
 // DescribeRiskList
@@ -6623,6 +6503,11 @@ func (c *Client) DescribeRiskListWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRiskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskListResponse()
@@ -6660,13 +6545,7 @@ func NewDescribeRiskSyscallDetailResponse() (response *DescribeRiskSyscallDetail
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) DescribeRiskSyscallDetail(request *DescribeRiskSyscallDetailRequest) (response *DescribeRiskSyscallDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallDetailRequest()
-    }
-    
-    response = NewDescribeRiskSyscallDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallDetailWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallDetail
@@ -6685,6 +6564,11 @@ func (c *Client) DescribeRiskSyscallDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRiskSyscallDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallDetailResponse()
@@ -6722,13 +6606,7 @@ func NewDescribeRiskSyscallEventsResponse() (response *DescribeRiskSyscallEvents
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRiskSyscallEvents(request *DescribeRiskSyscallEventsRequest) (response *DescribeRiskSyscallEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallEventsRequest()
-    }
-    
-    response = NewDescribeRiskSyscallEventsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallEventsWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallEvents
@@ -6747,6 +6625,11 @@ func (c *Client) DescribeRiskSyscallEventsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRiskSyscallEventsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallEvents require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallEventsResponse()
@@ -6783,13 +6666,7 @@ func NewDescribeRiskSyscallEventsExportResponse() (response *DescribeRiskSyscall
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRiskSyscallEventsExport(request *DescribeRiskSyscallEventsExportRequest) (response *DescribeRiskSyscallEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallEventsExportRequest()
-    }
-    
-    response = NewDescribeRiskSyscallEventsExportResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallEventsExportWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallEventsExport
@@ -6807,6 +6684,11 @@ func (c *Client) DescribeRiskSyscallEventsExportWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeRiskSyscallEventsExportRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallEventsExport require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallEventsExportResponse()
@@ -6843,13 +6725,7 @@ func NewDescribeRiskSyscallNamesResponse() (response *DescribeRiskSyscallNamesRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRiskSyscallNames(request *DescribeRiskSyscallNamesRequest) (response *DescribeRiskSyscallNamesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallNamesRequest()
-    }
-    
-    response = NewDescribeRiskSyscallNamesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallNamesWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallNames
@@ -6867,6 +6743,11 @@ func (c *Client) DescribeRiskSyscallNamesWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeRiskSyscallNamesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallNames require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallNamesResponse()
@@ -6904,13 +6785,7 @@ func NewDescribeRiskSyscallWhiteListDetailResponse() (response *DescribeRiskSysc
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) DescribeRiskSyscallWhiteListDetail(request *DescribeRiskSyscallWhiteListDetailRequest) (response *DescribeRiskSyscallWhiteListDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallWhiteListDetailRequest()
-    }
-    
-    response = NewDescribeRiskSyscallWhiteListDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallWhiteListDetailWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallWhiteListDetail
@@ -6929,6 +6804,11 @@ func (c *Client) DescribeRiskSyscallWhiteListDetailWithContext(ctx context.Conte
     if request == nil {
         request = NewDescribeRiskSyscallWhiteListDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallWhiteListDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallWhiteListDetailResponse()
@@ -6964,13 +6844,7 @@ func NewDescribeRiskSyscallWhiteListsResponse() (response *DescribeRiskSyscallWh
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeRiskSyscallWhiteLists(request *DescribeRiskSyscallWhiteListsRequest) (response *DescribeRiskSyscallWhiteListsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRiskSyscallWhiteListsRequest()
-    }
-    
-    response = NewDescribeRiskSyscallWhiteListsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRiskSyscallWhiteListsWithContext(context.Background(), request)
 }
 
 // DescribeRiskSyscallWhiteLists
@@ -6987,6 +6861,11 @@ func (c *Client) DescribeRiskSyscallWhiteListsWithContext(ctx context.Context, r
     if request == nil {
         request = NewDescribeRiskSyscallWhiteListsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskSyscallWhiteLists require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRiskSyscallWhiteListsResponse()
@@ -7023,13 +6902,7 @@ func NewDescribeSecEventsTendencyResponse() (response *DescribeSecEventsTendency
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATARANGE = "InvalidParameterValue.DataRange"
 func (c *Client) DescribeSecEventsTendency(request *DescribeSecEventsTendencyRequest) (response *DescribeSecEventsTendencyResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecEventsTendencyRequest()
-    }
-    
-    response = NewDescribeSecEventsTendencyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecEventsTendencyWithContext(context.Background(), request)
 }
 
 // DescribeSecEventsTendency
@@ -7047,6 +6920,11 @@ func (c *Client) DescribeSecEventsTendencyWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeSecEventsTendencyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecEventsTendency require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecEventsTendencyResponse()
@@ -7083,13 +6961,7 @@ func NewDescribeTaskResultSummaryResponse() (response *DescribeTaskResultSummary
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskResultSummary(request *DescribeTaskResultSummaryRequest) (response *DescribeTaskResultSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeTaskResultSummaryRequest()
-    }
-    
-    response = NewDescribeTaskResultSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTaskResultSummaryWithContext(context.Background(), request)
 }
 
 // DescribeTaskResultSummary
@@ -7107,6 +6979,11 @@ func (c *Client) DescribeTaskResultSummaryWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeTaskResultSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskResultSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTaskResultSummaryResponse()
@@ -7143,13 +7020,7 @@ func NewDescribeUnfinishRefreshTaskResponse() (response *DescribeUnfinishRefresh
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUnfinishRefreshTask(request *DescribeUnfinishRefreshTaskRequest) (response *DescribeUnfinishRefreshTaskResponse, err error) {
-    if request == nil {
-        request = NewDescribeUnfinishRefreshTaskRequest()
-    }
-    
-    response = NewDescribeUnfinishRefreshTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUnfinishRefreshTaskWithContext(context.Background(), request)
 }
 
 // DescribeUnfinishRefreshTask
@@ -7167,6 +7038,11 @@ func (c *Client) DescribeUnfinishRefreshTaskWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeUnfinishRefreshTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnfinishRefreshTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUnfinishRefreshTaskResponse()
@@ -7203,13 +7079,7 @@ func NewDescribeUserClusterResponse() (response *DescribeUserClusterResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUserCluster(request *DescribeUserClusterRequest) (response *DescribeUserClusterResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserClusterRequest()
-    }
-    
-    response = NewDescribeUserClusterResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUserClusterWithContext(context.Background(), request)
 }
 
 // DescribeUserCluster
@@ -7227,6 +7097,11 @@ func (c *Client) DescribeUserClusterWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeUserClusterRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCluster require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUserClusterResponse()
@@ -7258,13 +7133,7 @@ func NewDescribeValueAddedSrvInfoResponse() (response *DescribeValueAddedSrvInfo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeValueAddedSrvInfo(request *DescribeValueAddedSrvInfoRequest) (response *DescribeValueAddedSrvInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeValueAddedSrvInfoRequest()
-    }
-    
-    response = NewDescribeValueAddedSrvInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeValueAddedSrvInfoWithContext(context.Background(), request)
 }
 
 // DescribeValueAddedSrvInfo
@@ -7277,6 +7146,11 @@ func (c *Client) DescribeValueAddedSrvInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeValueAddedSrvInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeValueAddedSrvInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeValueAddedSrvInfoResponse()
@@ -7310,13 +7184,7 @@ func NewDescribeVirusDetailResponse() (response *DescribeVirusDetailResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusDetail(request *DescribeVirusDetailRequest) (response *DescribeVirusDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusDetailRequest()
-    }
-    
-    response = NewDescribeVirusDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusDetailWithContext(context.Background(), request)
 }
 
 // DescribeVirusDetail
@@ -7331,6 +7199,11 @@ func (c *Client) DescribeVirusDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeVirusDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusDetailResponse()
@@ -7365,13 +7238,7 @@ func NewDescribeVirusListResponse() (response *DescribeVirusListResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusList(request *DescribeVirusListRequest) (response *DescribeVirusListResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusListRequest()
-    }
-    
-    response = NewDescribeVirusListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusListWithContext(context.Background(), request)
 }
 
 // DescribeVirusList
@@ -7387,6 +7254,11 @@ func (c *Client) DescribeVirusListWithContext(ctx context.Context, request *Desc
     if request == nil {
         request = NewDescribeVirusListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusListResponse()
@@ -7419,13 +7291,7 @@ func NewDescribeVirusMonitorSettingResponse() (response *DescribeVirusMonitorSet
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusMonitorSetting(request *DescribeVirusMonitorSettingRequest) (response *DescribeVirusMonitorSettingResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusMonitorSettingRequest()
-    }
-    
-    response = NewDescribeVirusMonitorSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusMonitorSettingWithContext(context.Background(), request)
 }
 
 // DescribeVirusMonitorSetting
@@ -7439,6 +7305,11 @@ func (c *Client) DescribeVirusMonitorSettingWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVirusMonitorSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusMonitorSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusMonitorSettingResponse()
@@ -7471,13 +7342,7 @@ func NewDescribeVirusScanSettingResponse() (response *DescribeVirusScanSettingRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusScanSetting(request *DescribeVirusScanSettingRequest) (response *DescribeVirusScanSettingResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusScanSettingRequest()
-    }
-    
-    response = NewDescribeVirusScanSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusScanSettingWithContext(context.Background(), request)
 }
 
 // DescribeVirusScanSetting
@@ -7491,6 +7356,11 @@ func (c *Client) DescribeVirusScanSettingWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDescribeVirusScanSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusScanSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusScanSettingResponse()
@@ -7523,13 +7393,7 @@ func NewDescribeVirusScanTaskStatusResponse() (response *DescribeVirusScanTaskSt
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusScanTaskStatus(request *DescribeVirusScanTaskStatusRequest) (response *DescribeVirusScanTaskStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusScanTaskStatusRequest()
-    }
-    
-    response = NewDescribeVirusScanTaskStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusScanTaskStatusWithContext(context.Background(), request)
 }
 
 // DescribeVirusScanTaskStatus
@@ -7543,6 +7407,11 @@ func (c *Client) DescribeVirusScanTaskStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeVirusScanTaskStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusScanTaskStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusScanTaskStatusResponse()
@@ -7573,13 +7442,7 @@ func NewDescribeVirusScanTimeoutSettingResponse() (response *DescribeVirusScanTi
 // 可能返回的错误码:
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 func (c *Client) DescribeVirusScanTimeoutSetting(request *DescribeVirusScanTimeoutSettingRequest) (response *DescribeVirusScanTimeoutSettingResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusScanTimeoutSettingRequest()
-    }
-    
-    response = NewDescribeVirusScanTimeoutSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusScanTimeoutSettingWithContext(context.Background(), request)
 }
 
 // DescribeVirusScanTimeoutSetting
@@ -7591,6 +7454,11 @@ func (c *Client) DescribeVirusScanTimeoutSettingWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeVirusScanTimeoutSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusScanTimeoutSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusScanTimeoutSettingResponse()
@@ -7624,13 +7492,7 @@ func NewDescribeVirusSummaryResponse() (response *DescribeVirusSummaryResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusSummary(request *DescribeVirusSummaryRequest) (response *DescribeVirusSummaryResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusSummaryRequest()
-    }
-    
-    response = NewDescribeVirusSummaryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusSummaryWithContext(context.Background(), request)
 }
 
 // DescribeVirusSummary
@@ -7645,6 +7507,11 @@ func (c *Client) DescribeVirusSummaryWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeVirusSummaryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusSummary require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusSummaryResponse()
@@ -7679,13 +7546,7 @@ func NewDescribeVirusTaskListResponse() (response *DescribeVirusTaskListResponse
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVirusTaskList(request *DescribeVirusTaskListRequest) (response *DescribeVirusTaskListResponse, err error) {
-    if request == nil {
-        request = NewDescribeVirusTaskListRequest()
-    }
-    
-    response = NewDescribeVirusTaskListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeVirusTaskListWithContext(context.Background(), request)
 }
 
 // DescribeVirusTaskList
@@ -7701,6 +7562,11 @@ func (c *Client) DescribeVirusTaskListWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeVirusTaskListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirusTaskList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeVirusTaskListResponse()
@@ -7734,13 +7600,7 @@ func NewDescribeWarningRulesResponse() (response *DescribeWarningRulesResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeWarningRules(request *DescribeWarningRulesRequest) (response *DescribeWarningRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeWarningRulesRequest()
-    }
-    
-    response = NewDescribeWarningRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeWarningRulesWithContext(context.Background(), request)
 }
 
 // DescribeWarningRules
@@ -7755,6 +7615,11 @@ func (c *Client) DescribeWarningRulesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeWarningRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWarningRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeWarningRulesResponse()
@@ -7787,13 +7652,7 @@ func NewExportVirusListResponse() (response *ExportVirusListResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ExportVirusList(request *ExportVirusListRequest) (response *ExportVirusListResponse, err error) {
-    if request == nil {
-        request = NewExportVirusListRequest()
-    }
-    
-    response = NewExportVirusListResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExportVirusListWithContext(context.Background(), request)
 }
 
 // ExportVirusList
@@ -7807,6 +7666,11 @@ func (c *Client) ExportVirusListWithContext(ctx context.Context, request *Export
     if request == nil {
         request = NewExportVirusListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportVirusList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExportVirusListResponse()
@@ -7843,13 +7707,7 @@ func NewInitializeUserComplianceEnvironmentResponse() (response *InitializeUserC
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) InitializeUserComplianceEnvironment(request *InitializeUserComplianceEnvironmentRequest) (response *InitializeUserComplianceEnvironmentResponse, err error) {
-    if request == nil {
-        request = NewInitializeUserComplianceEnvironmentRequest()
-    }
-    
-    response = NewInitializeUserComplianceEnvironmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.InitializeUserComplianceEnvironmentWithContext(context.Background(), request)
 }
 
 // InitializeUserComplianceEnvironment
@@ -7867,6 +7725,11 @@ func (c *Client) InitializeUserComplianceEnvironmentWithContext(ctx context.Cont
     if request == nil {
         request = NewInitializeUserComplianceEnvironmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InitializeUserComplianceEnvironment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInitializeUserComplianceEnvironmentResponse()
@@ -7903,13 +7766,7 @@ func NewModifyAbnormalProcessRuleStatusResponse() (response *ModifyAbnormalProce
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAbnormalProcessRuleStatus(request *ModifyAbnormalProcessRuleStatusRequest) (response *ModifyAbnormalProcessRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAbnormalProcessRuleStatusRequest()
-    }
-    
-    response = NewModifyAbnormalProcessRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAbnormalProcessRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifyAbnormalProcessRuleStatus
@@ -7927,6 +7784,11 @@ func (c *Client) ModifyAbnormalProcessRuleStatusWithContext(ctx context.Context,
     if request == nil {
         request = NewModifyAbnormalProcessRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAbnormalProcessRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAbnormalProcessRuleStatusResponse()
@@ -7963,13 +7825,7 @@ func NewModifyAbnormalProcessStatusResponse() (response *ModifyAbnormalProcessSt
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAbnormalProcessStatus(request *ModifyAbnormalProcessStatusRequest) (response *ModifyAbnormalProcessStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAbnormalProcessStatusRequest()
-    }
-    
-    response = NewModifyAbnormalProcessStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAbnormalProcessStatusWithContext(context.Background(), request)
 }
 
 // ModifyAbnormalProcessStatus
@@ -7987,6 +7843,11 @@ func (c *Client) ModifyAbnormalProcessStatusWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyAbnormalProcessStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAbnormalProcessStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAbnormalProcessStatusResponse()
@@ -8023,13 +7884,7 @@ func NewModifyAccessControlRuleStatusResponse() (response *ModifyAccessControlRu
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAccessControlRuleStatus(request *ModifyAccessControlRuleStatusRequest) (response *ModifyAccessControlRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAccessControlRuleStatusRequest()
-    }
-    
-    response = NewModifyAccessControlRuleStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccessControlRuleStatusWithContext(context.Background(), request)
 }
 
 // ModifyAccessControlRuleStatus
@@ -8047,6 +7902,11 @@ func (c *Client) ModifyAccessControlRuleStatusWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyAccessControlRuleStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessControlRuleStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccessControlRuleStatusResponse()
@@ -8083,13 +7943,7 @@ func NewModifyAccessControlStatusResponse() (response *ModifyAccessControlStatus
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAccessControlStatus(request *ModifyAccessControlStatusRequest) (response *ModifyAccessControlStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAccessControlStatusRequest()
-    }
-    
-    response = NewModifyAccessControlStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAccessControlStatusWithContext(context.Background(), request)
 }
 
 // ModifyAccessControlStatus
@@ -8107,6 +7961,11 @@ func (c *Client) ModifyAccessControlStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyAccessControlStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessControlStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAccessControlStatusResponse()
@@ -8141,13 +8000,7 @@ func NewModifyAssetResponse() (response *ModifyAssetResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAsset(request *ModifyAssetRequest) (response *ModifyAssetResponse, err error) {
-    if request == nil {
-        request = NewModifyAssetRequest()
-    }
-    
-    response = NewModifyAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAssetWithContext(context.Background(), request)
 }
 
 // ModifyAsset
@@ -8163,6 +8016,11 @@ func (c *Client) ModifyAssetWithContext(ctx context.Context, request *ModifyAsse
     if request == nil {
         request = NewModifyAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAssetResponse()
@@ -8194,13 +8052,7 @@ func NewModifyAssetImageRegistryScanStopResponse() (response *ModifyAssetImageRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAssetImageRegistryScanStop(request *ModifyAssetImageRegistryScanStopRequest) (response *ModifyAssetImageRegistryScanStopResponse, err error) {
-    if request == nil {
-        request = NewModifyAssetImageRegistryScanStopRequest()
-    }
-    
-    response = NewModifyAssetImageRegistryScanStopResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAssetImageRegistryScanStopWithContext(context.Background(), request)
 }
 
 // ModifyAssetImageRegistryScanStop
@@ -8213,6 +8065,11 @@ func (c *Client) ModifyAssetImageRegistryScanStopWithContext(ctx context.Context
     if request == nil {
         request = NewModifyAssetImageRegistryScanStopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetImageRegistryScanStop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAssetImageRegistryScanStopResponse()
@@ -8244,13 +8101,7 @@ func NewModifyAssetImageRegistryScanStopOneKeyResponse() (response *ModifyAssetI
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAssetImageRegistryScanStopOneKey(request *ModifyAssetImageRegistryScanStopOneKeyRequest) (response *ModifyAssetImageRegistryScanStopOneKeyResponse, err error) {
-    if request == nil {
-        request = NewModifyAssetImageRegistryScanStopOneKeyRequest()
-    }
-    
-    response = NewModifyAssetImageRegistryScanStopOneKeyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAssetImageRegistryScanStopOneKeyWithContext(context.Background(), request)
 }
 
 // ModifyAssetImageRegistryScanStopOneKey
@@ -8263,6 +8114,11 @@ func (c *Client) ModifyAssetImageRegistryScanStopOneKeyWithContext(ctx context.C
     if request == nil {
         request = NewModifyAssetImageRegistryScanStopOneKeyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetImageRegistryScanStopOneKey require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAssetImageRegistryScanStopOneKeyResponse()
@@ -8299,13 +8155,7 @@ func NewModifyAssetImageScanStopResponse() (response *ModifyAssetImageScanStopRe
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyAssetImageScanStop(request *ModifyAssetImageScanStopRequest) (response *ModifyAssetImageScanStopResponse, err error) {
-    if request == nil {
-        request = NewModifyAssetImageScanStopRequest()
-    }
-    
-    response = NewModifyAssetImageScanStopResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAssetImageScanStopWithContext(context.Background(), request)
 }
 
 // ModifyAssetImageScanStop
@@ -8323,6 +8173,11 @@ func (c *Client) ModifyAssetImageScanStopWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyAssetImageScanStopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetImageScanStop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAssetImageScanStopResponse()
@@ -8358,13 +8213,7 @@ func NewModifyCompliancePeriodTaskResponse() (response *ModifyCompliancePeriodTa
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyCompliancePeriodTask(request *ModifyCompliancePeriodTaskRequest) (response *ModifyCompliancePeriodTaskResponse, err error) {
-    if request == nil {
-        request = NewModifyCompliancePeriodTaskRequest()
-    }
-    
-    response = NewModifyCompliancePeriodTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCompliancePeriodTaskWithContext(context.Background(), request)
 }
 
 // ModifyCompliancePeriodTask
@@ -8381,6 +8230,11 @@ func (c *Client) ModifyCompliancePeriodTaskWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyCompliancePeriodTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCompliancePeriodTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCompliancePeriodTaskResponse()
@@ -8413,13 +8267,7 @@ func NewModifyEscapeEventStatusResponse() (response *ModifyEscapeEventStatusResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 func (c *Client) ModifyEscapeEventStatus(request *ModifyEscapeEventStatusRequest) (response *ModifyEscapeEventStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyEscapeEventStatusRequest()
-    }
-    
-    response = NewModifyEscapeEventStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEscapeEventStatusWithContext(context.Background(), request)
 }
 
 // ModifyEscapeEventStatus
@@ -8433,6 +8281,11 @@ func (c *Client) ModifyEscapeEventStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyEscapeEventStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEscapeEventStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEscapeEventStatusResponse()
@@ -8467,13 +8320,7 @@ func NewModifyEscapeRuleResponse() (response *ModifyEscapeRuleResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 func (c *Client) ModifyEscapeRule(request *ModifyEscapeRuleRequest) (response *ModifyEscapeRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyEscapeRuleRequest()
-    }
-    
-    response = NewModifyEscapeRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyEscapeRuleWithContext(context.Background(), request)
 }
 
 // ModifyEscapeRule
@@ -8489,6 +8336,11 @@ func (c *Client) ModifyEscapeRuleWithContext(ctx context.Context, request *Modif
     if request == nil {
         request = NewModifyEscapeRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEscapeRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyEscapeRuleResponse()
@@ -8525,13 +8377,7 @@ func NewModifyReverseShellStatusResponse() (response *ModifyReverseShellStatusRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) ModifyReverseShellStatus(request *ModifyReverseShellStatusRequest) (response *ModifyReverseShellStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyReverseShellStatusRequest()
-    }
-    
-    response = NewModifyReverseShellStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyReverseShellStatusWithContext(context.Background(), request)
 }
 
 // ModifyReverseShellStatus
@@ -8549,6 +8395,11 @@ func (c *Client) ModifyReverseShellStatusWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyReverseShellStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReverseShellStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyReverseShellStatusResponse()
@@ -8585,13 +8436,7 @@ func NewModifyRiskSyscallStatusResponse() (response *ModifyRiskSyscallStatusResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) ModifyRiskSyscallStatus(request *ModifyRiskSyscallStatusRequest) (response *ModifyRiskSyscallStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyRiskSyscallStatusRequest()
-    }
-    
-    response = NewModifyRiskSyscallStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRiskSyscallStatusWithContext(context.Background(), request)
 }
 
 // ModifyRiskSyscallStatus
@@ -8609,6 +8454,11 @@ func (c *Client) ModifyRiskSyscallStatusWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyRiskSyscallStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRiskSyscallStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRiskSyscallStatusResponse()
@@ -8645,13 +8495,7 @@ func NewModifyVirusFileStatusResponse() (response *ModifyVirusFileStatusResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATANOTFOUND = "InvalidParameterValue.DataNotFound"
 func (c *Client) ModifyVirusFileStatus(request *ModifyVirusFileStatusRequest) (response *ModifyVirusFileStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyVirusFileStatusRequest()
-    }
-    
-    response = NewModifyVirusFileStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVirusFileStatusWithContext(context.Background(), request)
 }
 
 // ModifyVirusFileStatus
@@ -8669,6 +8513,11 @@ func (c *Client) ModifyVirusFileStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewModifyVirusFileStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVirusFileStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVirusFileStatusResponse()
@@ -8701,13 +8550,7 @@ func NewModifyVirusMonitorSettingResponse() (response *ModifyVirusMonitorSetting
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyVirusMonitorSetting(request *ModifyVirusMonitorSettingRequest) (response *ModifyVirusMonitorSettingResponse, err error) {
-    if request == nil {
-        request = NewModifyVirusMonitorSettingRequest()
-    }
-    
-    response = NewModifyVirusMonitorSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVirusMonitorSettingWithContext(context.Background(), request)
 }
 
 // ModifyVirusMonitorSetting
@@ -8721,6 +8564,11 @@ func (c *Client) ModifyVirusMonitorSettingWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyVirusMonitorSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVirusMonitorSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVirusMonitorSettingResponse()
@@ -8754,13 +8602,7 @@ func NewModifyVirusScanSettingResponse() (response *ModifyVirusScanSettingRespon
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyVirusScanSetting(request *ModifyVirusScanSettingRequest) (response *ModifyVirusScanSettingResponse, err error) {
-    if request == nil {
-        request = NewModifyVirusScanSettingRequest()
-    }
-    
-    response = NewModifyVirusScanSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVirusScanSettingWithContext(context.Background(), request)
 }
 
 // ModifyVirusScanSetting
@@ -8775,6 +8617,11 @@ func (c *Client) ModifyVirusScanSettingWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyVirusScanSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVirusScanSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVirusScanSettingResponse()
@@ -8807,13 +8654,7 @@ func NewModifyVirusScanTimeoutSettingResponse() (response *ModifyVirusScanTimeou
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyVirusScanTimeoutSetting(request *ModifyVirusScanTimeoutSettingRequest) (response *ModifyVirusScanTimeoutSettingResponse, err error) {
-    if request == nil {
-        request = NewModifyVirusScanTimeoutSettingRequest()
-    }
-    
-    response = NewModifyVirusScanTimeoutSettingResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyVirusScanTimeoutSettingWithContext(context.Background(), request)
 }
 
 // ModifyVirusScanTimeoutSetting
@@ -8827,6 +8668,11 @@ func (c *Client) ModifyVirusScanTimeoutSettingWithContext(ctx context.Context, r
     if request == nil {
         request = NewModifyVirusScanTimeoutSettingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVirusScanTimeoutSetting require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyVirusScanTimeoutSettingResponse()
@@ -8865,13 +8711,7 @@ func NewRemoveAssetImageRegistryRegistryDetailResponse() (response *RemoveAssetI
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RemoveAssetImageRegistryRegistryDetail(request *RemoveAssetImageRegistryRegistryDetailRequest) (response *RemoveAssetImageRegistryRegistryDetailResponse, err error) {
-    if request == nil {
-        request = NewRemoveAssetImageRegistryRegistryDetailRequest()
-    }
-    
-    response = NewRemoveAssetImageRegistryRegistryDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveAssetImageRegistryRegistryDetailWithContext(context.Background(), request)
 }
 
 // RemoveAssetImageRegistryRegistryDetail
@@ -8891,6 +8731,11 @@ func (c *Client) RemoveAssetImageRegistryRegistryDetailWithContext(ctx context.C
     if request == nil {
         request = NewRemoveAssetImageRegistryRegistryDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveAssetImageRegistryRegistryDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveAssetImageRegistryRegistryDetailResponse()
@@ -8924,13 +8769,7 @@ func NewRenewImageAuthorizeStateResponse() (response *RenewImageAuthorizeStateRe
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) RenewImageAuthorizeState(request *RenewImageAuthorizeStateRequest) (response *RenewImageAuthorizeStateResponse, err error) {
-    if request == nil {
-        request = NewRenewImageAuthorizeStateRequest()
-    }
-    
-    response = NewRenewImageAuthorizeStateResponse()
-    err = c.Send(request, response)
-    return
+    return c.RenewImageAuthorizeStateWithContext(context.Background(), request)
 }
 
 // RenewImageAuthorizeState
@@ -8945,6 +8784,11 @@ func (c *Client) RenewImageAuthorizeStateWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRenewImageAuthorizeStateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewImageAuthorizeState require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRenewImageAuthorizeStateResponse()
@@ -8981,13 +8825,7 @@ func NewScanComplianceAssetsResponse() (response *ScanComplianceAssetsResponse) 
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ScanComplianceAssets(request *ScanComplianceAssetsRequest) (response *ScanComplianceAssetsResponse, err error) {
-    if request == nil {
-        request = NewScanComplianceAssetsRequest()
-    }
-    
-    response = NewScanComplianceAssetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanComplianceAssetsWithContext(context.Background(), request)
 }
 
 // ScanComplianceAssets
@@ -9005,6 +8843,11 @@ func (c *Client) ScanComplianceAssetsWithContext(ctx context.Context, request *S
     if request == nil {
         request = NewScanComplianceAssetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanComplianceAssets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanComplianceAssetsResponse()
@@ -9041,13 +8884,7 @@ func NewScanComplianceAssetsByPolicyItemResponse() (response *ScanComplianceAsse
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ScanComplianceAssetsByPolicyItem(request *ScanComplianceAssetsByPolicyItemRequest) (response *ScanComplianceAssetsByPolicyItemResponse, err error) {
-    if request == nil {
-        request = NewScanComplianceAssetsByPolicyItemRequest()
-    }
-    
-    response = NewScanComplianceAssetsByPolicyItemResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanComplianceAssetsByPolicyItemWithContext(context.Background(), request)
 }
 
 // ScanComplianceAssetsByPolicyItem
@@ -9065,6 +8902,11 @@ func (c *Client) ScanComplianceAssetsByPolicyItemWithContext(ctx context.Context
     if request == nil {
         request = NewScanComplianceAssetsByPolicyItemRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanComplianceAssetsByPolicyItem require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanComplianceAssetsByPolicyItemResponse()
@@ -9101,13 +8943,7 @@ func NewScanCompliancePolicyItemsResponse() (response *ScanCompliancePolicyItems
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ScanCompliancePolicyItems(request *ScanCompliancePolicyItemsRequest) (response *ScanCompliancePolicyItemsResponse, err error) {
-    if request == nil {
-        request = NewScanCompliancePolicyItemsRequest()
-    }
-    
-    response = NewScanCompliancePolicyItemsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanCompliancePolicyItemsWithContext(context.Background(), request)
 }
 
 // ScanCompliancePolicyItems
@@ -9125,6 +8961,11 @@ func (c *Client) ScanCompliancePolicyItemsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewScanCompliancePolicyItemsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanCompliancePolicyItems require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanCompliancePolicyItemsResponse()
@@ -9161,13 +9002,7 @@ func NewScanComplianceScanFailedAssetsResponse() (response *ScanComplianceScanFa
 //  OPERATIONDENIED = "OperationDenied"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ScanComplianceScanFailedAssets(request *ScanComplianceScanFailedAssetsRequest) (response *ScanComplianceScanFailedAssetsResponse, err error) {
-    if request == nil {
-        request = NewScanComplianceScanFailedAssetsRequest()
-    }
-    
-    response = NewScanComplianceScanFailedAssetsResponse()
-    err = c.Send(request, response)
-    return
+    return c.ScanComplianceScanFailedAssetsWithContext(context.Background(), request)
 }
 
 // ScanComplianceScanFailedAssets
@@ -9185,6 +9020,11 @@ func (c *Client) ScanComplianceScanFailedAssetsWithContext(ctx context.Context, 
     if request == nil {
         request = NewScanComplianceScanFailedAssetsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScanComplianceScanFailedAssets require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewScanComplianceScanFailedAssetsResponse()
@@ -9221,13 +9061,7 @@ func NewSetCheckModeResponse() (response *SetCheckModeResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) SetCheckMode(request *SetCheckModeRequest) (response *SetCheckModeResponse, err error) {
-    if request == nil {
-        request = NewSetCheckModeRequest()
-    }
-    
-    response = NewSetCheckModeResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetCheckModeWithContext(context.Background(), request)
 }
 
 // SetCheckMode
@@ -9245,6 +9079,11 @@ func (c *Client) SetCheckModeWithContext(ctx context.Context, request *SetCheckM
     if request == nil {
         request = NewSetCheckModeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetCheckMode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetCheckModeResponse()
@@ -9280,13 +9119,7 @@ func NewStopVirusScanTaskResponse() (response *StopVirusScanTaskResponse) {
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) StopVirusScanTask(request *StopVirusScanTaskRequest) (response *StopVirusScanTaskResponse, err error) {
-    if request == nil {
-        request = NewStopVirusScanTaskRequest()
-    }
-    
-    response = NewStopVirusScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.StopVirusScanTaskWithContext(context.Background(), request)
 }
 
 // StopVirusScanTask
@@ -9303,6 +9136,11 @@ func (c *Client) StopVirusScanTaskWithContext(ctx context.Context, request *Stop
     if request == nil {
         request = NewStopVirusScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopVirusScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewStopVirusScanTaskResponse()
@@ -9336,13 +9174,7 @@ func NewSyncAssetImageRegistryAssetResponse() (response *SyncAssetImageRegistryA
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncAssetImageRegistryAsset(request *SyncAssetImageRegistryAssetRequest) (response *SyncAssetImageRegistryAssetResponse, err error) {
-    if request == nil {
-        request = NewSyncAssetImageRegistryAssetRequest()
-    }
-    
-    response = NewSyncAssetImageRegistryAssetResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncAssetImageRegistryAssetWithContext(context.Background(), request)
 }
 
 // SyncAssetImageRegistryAsset
@@ -9357,6 +9189,11 @@ func (c *Client) SyncAssetImageRegistryAssetWithContext(ctx context.Context, req
     if request == nil {
         request = NewSyncAssetImageRegistryAssetRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncAssetImageRegistryAsset require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncAssetImageRegistryAssetResponse()
@@ -9395,13 +9232,7 @@ func NewUpdateAssetImageRegistryRegistryDetailResponse() (response *UpdateAssetI
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateAssetImageRegistryRegistryDetail(request *UpdateAssetImageRegistryRegistryDetailRequest) (response *UpdateAssetImageRegistryRegistryDetailResponse, err error) {
-    if request == nil {
-        request = NewUpdateAssetImageRegistryRegistryDetailRequest()
-    }
-    
-    response = NewUpdateAssetImageRegistryRegistryDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateAssetImageRegistryRegistryDetailWithContext(context.Background(), request)
 }
 
 // UpdateAssetImageRegistryRegistryDetail
@@ -9421,6 +9252,11 @@ func (c *Client) UpdateAssetImageRegistryRegistryDetailWithContext(ctx context.C
     if request == nil {
         request = NewUpdateAssetImageRegistryRegistryDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAssetImageRegistryRegistryDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateAssetImageRegistryRegistryDetailResponse()
@@ -9452,13 +9288,7 @@ func NewUpdateImageRegistryTimingScanTaskResponse() (response *UpdateImageRegist
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateImageRegistryTimingScanTask(request *UpdateImageRegistryTimingScanTaskRequest) (response *UpdateImageRegistryTimingScanTaskResponse, err error) {
-    if request == nil {
-        request = NewUpdateImageRegistryTimingScanTaskRequest()
-    }
-    
-    response = NewUpdateImageRegistryTimingScanTaskResponse()
-    err = c.Send(request, response)
-    return
+    return c.UpdateImageRegistryTimingScanTaskWithContext(context.Background(), request)
 }
 
 // UpdateImageRegistryTimingScanTask
@@ -9471,6 +9301,11 @@ func (c *Client) UpdateImageRegistryTimingScanTaskWithContext(ctx context.Contex
     if request == nil {
         request = NewUpdateImageRegistryTimingScanTaskRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateImageRegistryTimingScanTask require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUpdateImageRegistryTimingScanTaskResponse()

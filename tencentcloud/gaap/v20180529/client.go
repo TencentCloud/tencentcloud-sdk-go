@@ -16,6 +16,7 @@ package v20180529
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,13 +79,7 @@ func NewAddRealServersResponse() (response *AddRealServersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) AddRealServers(request *AddRealServersRequest) (response *AddRealServersResponse, err error) {
-    if request == nil {
-        request = NewAddRealServersRequest()
-    }
-    
-    response = NewAddRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddRealServersWithContext(context.Background(), request)
 }
 
 // AddRealServers
@@ -107,6 +102,11 @@ func (c *Client) AddRealServersWithContext(ctx context.Context, request *AddReal
     if request == nil {
         request = NewAddRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddRealServersResponse()
@@ -153,13 +153,7 @@ func NewBindListenerRealServersResponse() (response *BindListenerRealServersResp
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BindListenerRealServers(request *BindListenerRealServersRequest) (response *BindListenerRealServersResponse, err error) {
-    if request == nil {
-        request = NewBindListenerRealServersRequest()
-    }
-    
-    response = NewBindListenerRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindListenerRealServersWithContext(context.Background(), request)
 }
 
 // BindListenerRealServers
@@ -187,6 +181,11 @@ func (c *Client) BindListenerRealServersWithContext(ctx context.Context, request
     if request == nil {
         request = NewBindListenerRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindListenerRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindListenerRealServersResponse()
@@ -233,13 +232,7 @@ func NewBindRuleRealServersResponse() (response *BindRuleRealServersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) BindRuleRealServers(request *BindRuleRealServersRequest) (response *BindRuleRealServersResponse, err error) {
-    if request == nil {
-        request = NewBindRuleRealServersRequest()
-    }
-    
-    response = NewBindRuleRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindRuleRealServersWithContext(context.Background(), request)
 }
 
 // BindRuleRealServers
@@ -267,6 +260,11 @@ func (c *Client) BindRuleRealServersWithContext(ctx context.Context, request *Bi
     if request == nil {
         request = NewBindRuleRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindRuleRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindRuleRealServersResponse()
@@ -306,13 +304,7 @@ func NewCheckProxyCreateResponse() (response *CheckProxyCreateResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) CheckProxyCreate(request *CheckProxyCreateRequest) (response *CheckProxyCreateResponse, err error) {
-    if request == nil {
-        request = NewCheckProxyCreateRequest()
-    }
-    
-    response = NewCheckProxyCreateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckProxyCreateWithContext(context.Background(), request)
 }
 
 // CheckProxyCreate
@@ -333,6 +325,11 @@ func (c *Client) CheckProxyCreateWithContext(ctx context.Context, request *Check
     if request == nil {
         request = NewCheckProxyCreateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckProxyCreate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckProxyCreateResponse()
@@ -375,13 +372,7 @@ func NewCloseProxiesResponse() (response *CloseProxiesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CloseProxies(request *CloseProxiesRequest) (response *CloseProxiesResponse, err error) {
-    if request == nil {
-        request = NewCloseProxiesRequest()
-    }
-    
-    response = NewCloseProxiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseProxiesWithContext(context.Background(), request)
 }
 
 // CloseProxies
@@ -405,6 +396,11 @@ func (c *Client) CloseProxiesWithContext(ctx context.Context, request *CloseProx
     if request == nil {
         request = NewCloseProxiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseProxies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseProxiesResponse()
@@ -445,13 +441,7 @@ func NewCloseProxyGroupResponse() (response *CloseProxyGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CloseProxyGroup(request *CloseProxyGroupRequest) (response *CloseProxyGroupResponse, err error) {
-    if request == nil {
-        request = NewCloseProxyGroupRequest()
-    }
-    
-    response = NewCloseProxyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseProxyGroupWithContext(context.Background(), request)
 }
 
 // CloseProxyGroup
@@ -473,6 +463,11 @@ func (c *Client) CloseProxyGroupWithContext(ctx context.Context, request *CloseP
     if request == nil {
         request = NewCloseProxyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseProxyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseProxyGroupResponse()
@@ -514,13 +509,7 @@ func NewCloseSecurityPolicyResponse() (response *CloseSecurityPolicyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CloseSecurityPolicy(request *CloseSecurityPolicyRequest) (response *CloseSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewCloseSecurityPolicyRequest()
-    }
-    
-    response = NewCloseSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseSecurityPolicyWithContext(context.Background(), request)
 }
 
 // CloseSecurityPolicy
@@ -543,6 +532,11 @@ func (c *Client) CloseSecurityPolicyWithContext(ctx context.Context, request *Cl
     if request == nil {
         request = NewCloseSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseSecurityPolicyResponse()
@@ -583,13 +577,7 @@ func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCertificate(request *CreateCertificateRequest) (response *CreateCertificateResponse, err error) {
-    if request == nil {
-        request = NewCreateCertificateRequest()
-    }
-    
-    response = NewCreateCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCertificateWithContext(context.Background(), request)
 }
 
 // CreateCertificate
@@ -611,6 +599,11 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCertificateResponse()
@@ -651,13 +644,7 @@ func NewCreateCustomHeaderResponse() (response *CreateCustomHeaderResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) CreateCustomHeader(request *CreateCustomHeaderRequest) (response *CreateCustomHeaderResponse, err error) {
-    if request == nil {
-        request = NewCreateCustomHeaderRequest()
-    }
-    
-    response = NewCreateCustomHeaderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustomHeaderWithContext(context.Background(), request)
 }
 
 // CreateCustomHeader
@@ -679,6 +666,11 @@ func (c *Client) CreateCustomHeaderWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateCustomHeaderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomHeader require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustomHeaderResponse()
@@ -725,13 +717,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainRequest()
-    }
-    
-    response = NewCreateDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainWithContext(context.Background(), request)
 }
 
 // CreateDomain
@@ -759,6 +745,11 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
     if request == nil {
         request = NewCreateDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainResponse()
@@ -799,13 +790,7 @@ func NewCreateDomainErrorPageInfoResponse() (response *CreateDomainErrorPageInfo
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateDomainErrorPageInfo(request *CreateDomainErrorPageInfoRequest) (response *CreateDomainErrorPageInfoResponse, err error) {
-    if request == nil {
-        request = NewCreateDomainErrorPageInfoRequest()
-    }
-    
-    response = NewCreateDomainErrorPageInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateDomainErrorPageInfoWithContext(context.Background(), request)
 }
 
 // CreateDomainErrorPageInfo
@@ -827,6 +812,11 @@ func (c *Client) CreateDomainErrorPageInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewCreateDomainErrorPageInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainErrorPageInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateDomainErrorPageInfoResponse()
@@ -874,13 +864,7 @@ func NewCreateHTTPListenerResponse() (response *CreateHTTPListenerResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPListener(request *CreateHTTPListenerRequest) (response *CreateHTTPListenerResponse, err error) {
-    if request == nil {
-        request = NewCreateHTTPListenerRequest()
-    }
-    
-    response = NewCreateHTTPListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHTTPListenerWithContext(context.Background(), request)
 }
 
 // CreateHTTPListener
@@ -909,6 +893,11 @@ func (c *Client) CreateHTTPListenerWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateHTTPListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHTTPListener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHTTPListenerResponse()
@@ -955,13 +944,7 @@ func NewCreateHTTPSListenerResponse() (response *CreateHTTPSListenerResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHTTPSListener(request *CreateHTTPSListenerRequest) (response *CreateHTTPSListenerResponse, err error) {
-    if request == nil {
-        request = NewCreateHTTPSListenerRequest()
-    }
-    
-    response = NewCreateHTTPSListenerResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateHTTPSListenerWithContext(context.Background(), request)
 }
 
 // CreateHTTPSListener
@@ -989,6 +972,11 @@ func (c *Client) CreateHTTPSListenerWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateHTTPSListenerRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHTTPSListener require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateHTTPSListenerResponse()
@@ -1041,13 +1029,7 @@ func NewCreateProxyResponse() (response *CreateProxyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateProxy(request *CreateProxyRequest) (response *CreateProxyResponse, err error) {
-    if request == nil {
-        request = NewCreateProxyRequest()
-    }
-    
-    response = NewCreateProxyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProxyWithContext(context.Background(), request)
 }
 
 // CreateProxy
@@ -1081,6 +1063,11 @@ func (c *Client) CreateProxyWithContext(ctx context.Context, request *CreateProx
     if request == nil {
         request = NewCreateProxyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProxyResponse()
@@ -1123,13 +1110,7 @@ func NewCreateProxyGroupResponse() (response *CreateProxyGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateProxyGroup(request *CreateProxyGroupRequest) (response *CreateProxyGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateProxyGroupRequest()
-    }
-    
-    response = NewCreateProxyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProxyGroupWithContext(context.Background(), request)
 }
 
 // CreateProxyGroup
@@ -1153,6 +1134,11 @@ func (c *Client) CreateProxyGroupWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateProxyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProxyGroupResponse()
@@ -1192,13 +1178,7 @@ func NewCreateProxyGroupDomainResponse() (response *CreateProxyGroupDomainRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateProxyGroupDomain(request *CreateProxyGroupDomainRequest) (response *CreateProxyGroupDomainResponse, err error) {
-    if request == nil {
-        request = NewCreateProxyGroupDomainRequest()
-    }
-    
-    response = NewCreateProxyGroupDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateProxyGroupDomainWithContext(context.Background(), request)
 }
 
 // CreateProxyGroupDomain
@@ -1219,6 +1199,11 @@ func (c *Client) CreateProxyGroupDomainWithContext(ctx context.Context, request 
     if request == nil {
         request = NewCreateProxyGroupDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxyGroupDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateProxyGroupDomainResponse()
@@ -1264,13 +1249,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateRuleRequest()
-    }
-    
-    response = NewCreateRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRuleWithContext(context.Background(), request)
 }
 
 // CreateRule
@@ -1297,6 +1276,11 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     if request == nil {
         request = NewCreateRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRuleResponse()
@@ -1338,13 +1322,7 @@ func NewCreateSecurityPolicyResponse() (response *CreateSecurityPolicyResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (response *CreateSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityPolicyRequest()
-    }
-    
-    response = NewCreateSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityPolicyWithContext(context.Background(), request)
 }
 
 // CreateSecurityPolicy
@@ -1367,6 +1345,11 @@ func (c *Client) CreateSecurityPolicyWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityPolicyResponse()
@@ -1408,13 +1391,7 @@ func NewCreateSecurityRulesResponse() (response *CreateSecurityRulesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateSecurityRules(request *CreateSecurityRulesRequest) (response *CreateSecurityRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityRulesRequest()
-    }
-    
-    response = NewCreateSecurityRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSecurityRulesWithContext(context.Background(), request)
 }
 
 // CreateSecurityRules
@@ -1437,6 +1414,11 @@ func (c *Client) CreateSecurityRulesWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSecurityRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSecurityRulesResponse()
@@ -1486,13 +1468,7 @@ func NewCreateTCPListenersResponse() (response *CreateTCPListenersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTCPListeners(request *CreateTCPListenersRequest) (response *CreateTCPListenersResponse, err error) {
-    if request == nil {
-        request = NewCreateTCPListenersRequest()
-    }
-    
-    response = NewCreateTCPListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTCPListenersWithContext(context.Background(), request)
 }
 
 // CreateTCPListeners
@@ -1523,6 +1499,11 @@ func (c *Client) CreateTCPListenersWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateTCPListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTCPListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTCPListenersResponse()
@@ -1568,13 +1549,7 @@ func NewCreateUDPListenersResponse() (response *CreateUDPListenersResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUDPListeners(request *CreateUDPListenersRequest) (response *CreateUDPListenersResponse, err error) {
-    if request == nil {
-        request = NewCreateUDPListenersRequest()
-    }
-    
-    response = NewCreateUDPListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateUDPListenersWithContext(context.Background(), request)
 }
 
 // CreateUDPListeners
@@ -1601,6 +1576,11 @@ func (c *Client) CreateUDPListenersWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateUDPListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUDPListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateUDPListenersResponse()
@@ -1640,13 +1620,7 @@ func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
-    if request == nil {
-        request = NewDeleteCertificateRequest()
-    }
-    
-    response = NewDeleteCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteCertificateWithContext(context.Background(), request)
 }
 
 // DeleteCertificate
@@ -1667,6 +1641,11 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
     if request == nil {
         request = NewDeleteCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteCertificateResponse()
@@ -1709,13 +1688,7 @@ func NewDeleteDomainResponse() (response *DeleteDomainResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteDomain(request *DeleteDomainRequest) (response *DeleteDomainResponse, err error) {
-    if request == nil {
-        request = NewDeleteDomainRequest()
-    }
-    
-    response = NewDeleteDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDomainWithContext(context.Background(), request)
 }
 
 // DeleteDomain
@@ -1739,6 +1712,11 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
     if request == nil {
         request = NewDeleteDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDomainResponse()
@@ -1778,13 +1756,7 @@ func NewDeleteDomainErrorPageInfoResponse() (response *DeleteDomainErrorPageInfo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DeleteDomainErrorPageInfo(request *DeleteDomainErrorPageInfoRequest) (response *DeleteDomainErrorPageInfoResponse, err error) {
-    if request == nil {
-        request = NewDeleteDomainErrorPageInfoRequest()
-    }
-    
-    response = NewDeleteDomainErrorPageInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteDomainErrorPageInfoWithContext(context.Background(), request)
 }
 
 // DeleteDomainErrorPageInfo
@@ -1805,6 +1777,11 @@ func (c *Client) DeleteDomainErrorPageInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteDomainErrorPageInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomainErrorPageInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteDomainErrorPageInfoResponse()
@@ -1846,13 +1823,7 @@ func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteListeners(request *DeleteListenersRequest) (response *DeleteListenersResponse, err error) {
-    if request == nil {
-        request = NewDeleteListenersRequest()
-    }
-    
-    response = NewDeleteListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteListenersWithContext(context.Background(), request)
 }
 
 // DeleteListeners
@@ -1875,6 +1846,11 @@ func (c *Client) DeleteListenersWithContext(ctx context.Context, request *Delete
     if request == nil {
         request = NewDeleteListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteListenersResponse()
@@ -1916,13 +1892,7 @@ func NewDeleteProxyGroupResponse() (response *DeleteProxyGroupResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteProxyGroup(request *DeleteProxyGroupRequest) (response *DeleteProxyGroupResponse, err error) {
-    if request == nil {
-        request = NewDeleteProxyGroupRequest()
-    }
-    
-    response = NewDeleteProxyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteProxyGroupWithContext(context.Background(), request)
 }
 
 // DeleteProxyGroup
@@ -1945,6 +1915,11 @@ func (c *Client) DeleteProxyGroupWithContext(ctx context.Context, request *Delet
     if request == nil {
         request = NewDeleteProxyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProxyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteProxyGroupResponse()
@@ -1987,13 +1962,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteRuleRequest()
-    }
-    
-    response = NewDeleteRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteRuleWithContext(context.Background(), request)
 }
 
 // DeleteRule
@@ -2017,6 +1986,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
     if request == nil {
         request = NewDeleteRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteRuleResponse()
@@ -2057,13 +2031,7 @@ func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (response *DeleteSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityPolicyRequest()
-    }
-    
-    response = NewDeleteSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityPolicyWithContext(context.Background(), request)
 }
 
 // DeleteSecurityPolicy
@@ -2085,6 +2053,11 @@ func (c *Client) DeleteSecurityPolicyWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDeleteSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityPolicyResponse()
@@ -2124,13 +2097,7 @@ func NewDeleteSecurityRulesResponse() (response *DeleteSecurityRulesResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteSecurityRules(request *DeleteSecurityRulesRequest) (response *DeleteSecurityRulesResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityRulesRequest()
-    }
-    
-    response = NewDeleteSecurityRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteSecurityRulesWithContext(context.Background(), request)
 }
 
 // DeleteSecurityRules
@@ -2151,6 +2118,11 @@ func (c *Client) DeleteSecurityRulesWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDeleteSecurityRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteSecurityRulesResponse()
@@ -2190,13 +2162,7 @@ func NewDescribeAccessRegionsResponse() (response *DescribeAccessRegionsResponse
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAccessRegions(request *DescribeAccessRegionsRequest) (response *DescribeAccessRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessRegionsRequest()
-    }
-    
-    response = NewDescribeAccessRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessRegionsWithContext(context.Background(), request)
 }
 
 // DescribeAccessRegions
@@ -2217,6 +2183,11 @@ func (c *Client) DescribeAccessRegionsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeAccessRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessRegionsResponse()
@@ -2255,13 +2226,7 @@ func NewDescribeAccessRegionsByDestRegionResponse() (response *DescribeAccessReg
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAccessRegionsByDestRegion(request *DescribeAccessRegionsByDestRegionRequest) (response *DescribeAccessRegionsByDestRegionResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessRegionsByDestRegionRequest()
-    }
-    
-    response = NewDescribeAccessRegionsByDestRegionResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeAccessRegionsByDestRegionWithContext(context.Background(), request)
 }
 
 // DescribeAccessRegionsByDestRegion
@@ -2281,6 +2246,11 @@ func (c *Client) DescribeAccessRegionsByDestRegionWithContext(ctx context.Contex
     if request == nil {
         request = NewDescribeAccessRegionsByDestRegionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessRegionsByDestRegion require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeAccessRegionsByDestRegionResponse()
@@ -2319,13 +2289,7 @@ func NewDescribeBlackHeaderResponse() (response *DescribeBlackHeaderResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeBlackHeader(request *DescribeBlackHeaderRequest) (response *DescribeBlackHeaderResponse, err error) {
-    if request == nil {
-        request = NewDescribeBlackHeaderRequest()
-    }
-    
-    response = NewDescribeBlackHeaderResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeBlackHeaderWithContext(context.Background(), request)
 }
 
 // DescribeBlackHeader
@@ -2345,6 +2309,11 @@ func (c *Client) DescribeBlackHeaderWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeBlackHeaderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlackHeader require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeBlackHeaderResponse()
@@ -2384,13 +2353,7 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificateDetailRequest()
-    }
-    
-    response = NewDescribeCertificateDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificateDetailWithContext(context.Background(), request)
 }
 
 // DescribeCertificateDetail
@@ -2411,6 +2374,11 @@ func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeCertificateDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificateDetailResponse()
@@ -2450,13 +2418,7 @@ func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) 
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) (response *DescribeCertificatesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCertificatesRequest()
-    }
-    
-    response = NewDescribeCertificatesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCertificatesWithContext(context.Background(), request)
 }
 
 // DescribeCertificates
@@ -2477,6 +2439,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCertificatesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificates require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCertificatesResponse()
@@ -2517,13 +2484,7 @@ func NewDescribeCountryAreaMappingResponse() (response *DescribeCountryAreaMappi
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeCountryAreaMapping(request *DescribeCountryAreaMappingRequest) (response *DescribeCountryAreaMappingResponse, err error) {
-    if request == nil {
-        request = NewDescribeCountryAreaMappingRequest()
-    }
-    
-    response = NewDescribeCountryAreaMappingResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCountryAreaMappingWithContext(context.Background(), request)
 }
 
 // DescribeCountryAreaMapping
@@ -2545,6 +2506,11 @@ func (c *Client) DescribeCountryAreaMappingWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeCountryAreaMappingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCountryAreaMapping require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCountryAreaMappingResponse()
@@ -2583,13 +2549,7 @@ func NewDescribeCustomHeaderResponse() (response *DescribeCustomHeaderResponse) 
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeCustomHeader(request *DescribeCustomHeaderRequest) (response *DescribeCustomHeaderResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomHeaderRequest()
-    }
-    
-    response = NewDescribeCustomHeaderResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeCustomHeaderWithContext(context.Background(), request)
 }
 
 // DescribeCustomHeader
@@ -2609,6 +2569,11 @@ func (c *Client) DescribeCustomHeaderWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeCustomHeaderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomHeader require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeCustomHeaderResponse()
@@ -2647,13 +2612,7 @@ func NewDescribeDestRegionsResponse() (response *DescribeDestRegionsResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeDestRegions(request *DescribeDestRegionsRequest) (response *DescribeDestRegionsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDestRegionsRequest()
-    }
-    
-    response = NewDescribeDestRegionsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDestRegionsWithContext(context.Background(), request)
 }
 
 // DescribeDestRegions
@@ -2673,6 +2632,11 @@ func (c *Client) DescribeDestRegionsWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeDestRegionsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDestRegions require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDestRegionsResponse()
@@ -2708,13 +2672,7 @@ func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPage
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainErrorPageInfoRequest()
-    }
-    
-    response = NewDescribeDomainErrorPageInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainErrorPageInfoWithContext(context.Background(), request)
 }
 
 // DescribeDomainErrorPageInfo
@@ -2731,6 +2689,11 @@ func (c *Client) DescribeDomainErrorPageInfoWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeDomainErrorPageInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainErrorPageInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainErrorPageInfoResponse()
@@ -2766,13 +2729,7 @@ func NewDescribeDomainErrorPageInfoByIdsResponse() (response *DescribeDomainErro
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeDomainErrorPageInfoByIds(request *DescribeDomainErrorPageInfoByIdsRequest) (response *DescribeDomainErrorPageInfoByIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDomainErrorPageInfoByIdsRequest()
-    }
-    
-    response = NewDescribeDomainErrorPageInfoByIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeDomainErrorPageInfoByIdsWithContext(context.Background(), request)
 }
 
 // DescribeDomainErrorPageInfoByIds
@@ -2789,6 +2746,11 @@ func (c *Client) DescribeDomainErrorPageInfoByIdsWithContext(ctx context.Context
     if request == nil {
         request = NewDescribeDomainErrorPageInfoByIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainErrorPageInfoByIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeDomainErrorPageInfoByIdsResponse()
@@ -2827,13 +2789,7 @@ func NewDescribeGroupAndStatisticsProxyResponse() (response *DescribeGroupAndSta
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeGroupAndStatisticsProxy(request *DescribeGroupAndStatisticsProxyRequest) (response *DescribeGroupAndStatisticsProxyResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupAndStatisticsProxyRequest()
-    }
-    
-    response = NewDescribeGroupAndStatisticsProxyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupAndStatisticsProxyWithContext(context.Background(), request)
 }
 
 // DescribeGroupAndStatisticsProxy
@@ -2853,6 +2809,11 @@ func (c *Client) DescribeGroupAndStatisticsProxyWithContext(ctx context.Context,
     if request == nil {
         request = NewDescribeGroupAndStatisticsProxyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupAndStatisticsProxy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupAndStatisticsProxyResponse()
@@ -2894,13 +2855,7 @@ func NewDescribeGroupDomainConfigResponse() (response *DescribeGroupDomainConfig
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeGroupDomainConfig(request *DescribeGroupDomainConfigRequest) (response *DescribeGroupDomainConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeGroupDomainConfigRequest()
-    }
-    
-    response = NewDescribeGroupDomainConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeGroupDomainConfigWithContext(context.Background(), request)
 }
 
 // DescribeGroupDomainConfig
@@ -2923,6 +2878,11 @@ func (c *Client) DescribeGroupDomainConfigWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeGroupDomainConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupDomainConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeGroupDomainConfigResponse()
@@ -2964,13 +2924,7 @@ func NewDescribeHTTPListenersResponse() (response *DescribeHTTPListenersResponse
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeHTTPListeners(request *DescribeHTTPListenersRequest) (response *DescribeHTTPListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeHTTPListenersRequest()
-    }
-    
-    response = NewDescribeHTTPListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHTTPListenersWithContext(context.Background(), request)
 }
 
 // DescribeHTTPListeners
@@ -2993,6 +2947,11 @@ func (c *Client) DescribeHTTPListenersWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeHTTPListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHTTPListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHTTPListenersResponse()
@@ -3033,13 +2992,7 @@ func NewDescribeHTTPSListenersResponse() (response *DescribeHTTPSListenersRespon
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeHTTPSListeners(request *DescribeHTTPSListenersRequest) (response *DescribeHTTPSListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeHTTPSListenersRequest()
-    }
-    
-    response = NewDescribeHTTPSListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeHTTPSListenersWithContext(context.Background(), request)
 }
 
 // DescribeHTTPSListeners
@@ -3061,6 +3014,11 @@ func (c *Client) DescribeHTTPSListenersWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeHTTPSListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHTTPSListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeHTTPSListenersResponse()
@@ -3099,13 +3057,7 @@ func NewDescribeListenerRealServersResponse() (response *DescribeListenerRealSer
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeListenerRealServers(request *DescribeListenerRealServersRequest) (response *DescribeListenerRealServersResponse, err error) {
-    if request == nil {
-        request = NewDescribeListenerRealServersRequest()
-    }
-    
-    response = NewDescribeListenerRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeListenerRealServersWithContext(context.Background(), request)
 }
 
 // DescribeListenerRealServers
@@ -3125,6 +3077,11 @@ func (c *Client) DescribeListenerRealServersWithContext(ctx context.Context, req
     if request == nil {
         request = NewDescribeListenerRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeListenerRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeListenerRealServersResponse()
@@ -3164,13 +3121,7 @@ func NewDescribeListenerStatisticsResponse() (response *DescribeListenerStatisti
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeListenerStatistics(request *DescribeListenerStatisticsRequest) (response *DescribeListenerStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeListenerStatisticsRequest()
-    }
-    
-    response = NewDescribeListenerStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeListenerStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeListenerStatistics
@@ -3191,6 +3142,11 @@ func (c *Client) DescribeListenerStatisticsWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDescribeListenerStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeListenerStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeListenerStatisticsResponse()
@@ -3230,13 +3186,7 @@ func NewDescribeProxiesResponse() (response *DescribeProxiesResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeProxies(request *DescribeProxiesRequest) (response *DescribeProxiesResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxiesRequest()
-    }
-    
-    response = NewDescribeProxiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxiesWithContext(context.Background(), request)
 }
 
 // DescribeProxies
@@ -3257,6 +3207,11 @@ func (c *Client) DescribeProxiesWithContext(ctx context.Context, request *Descri
     if request == nil {
         request = NewDescribeProxiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxiesResponse()
@@ -3297,13 +3252,7 @@ func NewDescribeProxiesStatusResponse() (response *DescribeProxiesStatusResponse
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeProxiesStatus(request *DescribeProxiesStatusRequest) (response *DescribeProxiesStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxiesStatusRequest()
-    }
-    
-    response = NewDescribeProxiesStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxiesStatusWithContext(context.Background(), request)
 }
 
 // DescribeProxiesStatus
@@ -3325,6 +3274,11 @@ func (c *Client) DescribeProxiesStatusWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeProxiesStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxiesStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxiesStatusResponse()
@@ -3362,13 +3316,7 @@ func NewDescribeProxyAndStatisticsListenersResponse() (response *DescribeProxyAn
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeProxyAndStatisticsListeners(request *DescribeProxyAndStatisticsListenersRequest) (response *DescribeProxyAndStatisticsListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyAndStatisticsListenersRequest()
-    }
-    
-    response = NewDescribeProxyAndStatisticsListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyAndStatisticsListenersWithContext(context.Background(), request)
 }
 
 // DescribeProxyAndStatisticsListeners
@@ -3387,6 +3335,11 @@ func (c *Client) DescribeProxyAndStatisticsListenersWithContext(ctx context.Cont
     if request == nil {
         request = NewDescribeProxyAndStatisticsListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyAndStatisticsListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyAndStatisticsListenersResponse()
@@ -3430,13 +3383,7 @@ func NewDescribeProxyDetailResponse() (response *DescribeProxyDetailResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeProxyDetail(request *DescribeProxyDetailRequest) (response *DescribeProxyDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyDetailRequest()
-    }
-    
-    response = NewDescribeProxyDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyDetailWithContext(context.Background(), request)
 }
 
 // DescribeProxyDetail
@@ -3461,6 +3408,11 @@ func (c *Client) DescribeProxyDetailWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeProxyDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyDetailResponse()
@@ -3501,13 +3453,7 @@ func NewDescribeProxyGroupDetailsResponse() (response *DescribeProxyGroupDetails
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeProxyGroupDetails(request *DescribeProxyGroupDetailsRequest) (response *DescribeProxyGroupDetailsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyGroupDetailsRequest()
-    }
-    
-    response = NewDescribeProxyGroupDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyGroupDetailsWithContext(context.Background(), request)
 }
 
 // DescribeProxyGroupDetails
@@ -3529,6 +3475,11 @@ func (c *Client) DescribeProxyGroupDetailsWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeProxyGroupDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyGroupDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyGroupDetailsResponse()
@@ -3569,13 +3520,7 @@ func NewDescribeProxyGroupListResponse() (response *DescribeProxyGroupListRespon
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeProxyGroupList(request *DescribeProxyGroupListRequest) (response *DescribeProxyGroupListResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyGroupListRequest()
-    }
-    
-    response = NewDescribeProxyGroupListResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyGroupListWithContext(context.Background(), request)
 }
 
 // DescribeProxyGroupList
@@ -3597,6 +3542,11 @@ func (c *Client) DescribeProxyGroupListWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeProxyGroupListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyGroupList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyGroupListResponse()
@@ -3635,13 +3585,7 @@ func NewDescribeProxyGroupStatisticsResponse() (response *DescribeProxyGroupStat
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProxyGroupStatistics(request *DescribeProxyGroupStatisticsRequest) (response *DescribeProxyGroupStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyGroupStatisticsRequest()
-    }
-    
-    response = NewDescribeProxyGroupStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyGroupStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeProxyGroupStatistics
@@ -3661,6 +3605,11 @@ func (c *Client) DescribeProxyGroupStatisticsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeProxyGroupStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyGroupStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyGroupStatisticsResponse()
@@ -3700,13 +3649,7 @@ func NewDescribeProxyStatisticsResponse() (response *DescribeProxyStatisticsResp
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProxyStatistics(request *DescribeProxyStatisticsRequest) (response *DescribeProxyStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyStatisticsRequest()
-    }
-    
-    response = NewDescribeProxyStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeProxyStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeProxyStatistics
@@ -3727,6 +3670,11 @@ func (c *Client) DescribeProxyStatisticsWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeProxyStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeProxyStatisticsResponse()
@@ -3763,13 +3711,7 @@ func NewDescribeRealServerStatisticsResponse() (response *DescribeRealServerStat
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeRealServerStatistics(request *DescribeRealServerStatisticsRequest) (response *DescribeRealServerStatisticsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRealServerStatisticsRequest()
-    }
-    
-    response = NewDescribeRealServerStatisticsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRealServerStatisticsWithContext(context.Background(), request)
 }
 
 // DescribeRealServerStatistics
@@ -3787,6 +3729,11 @@ func (c *Client) DescribeRealServerStatisticsWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeRealServerStatisticsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRealServerStatistics require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRealServerStatisticsResponse()
@@ -3825,13 +3772,7 @@ func NewDescribeRealServersResponse() (response *DescribeRealServersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRealServers(request *DescribeRealServersRequest) (response *DescribeRealServersResponse, err error) {
-    if request == nil {
-        request = NewDescribeRealServersRequest()
-    }
-    
-    response = NewDescribeRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRealServersWithContext(context.Background(), request)
 }
 
 // DescribeRealServers
@@ -3851,6 +3792,11 @@ func (c *Client) DescribeRealServersWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRealServersResponse()
@@ -3889,13 +3835,7 @@ func NewDescribeRealServersStatusResponse() (response *DescribeRealServersStatus
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeRealServersStatus(request *DescribeRealServersStatusRequest) (response *DescribeRealServersStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeRealServersStatusRequest()
-    }
-    
-    response = NewDescribeRealServersStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRealServersStatusWithContext(context.Background(), request)
 }
 
 // DescribeRealServersStatus
@@ -3915,6 +3855,11 @@ func (c *Client) DescribeRealServersStatusWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDescribeRealServersStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRealServersStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRealServersStatusResponse()
@@ -3953,13 +3898,7 @@ func NewDescribeRegionAndPriceResponse() (response *DescribeRegionAndPriceRespon
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRegionAndPrice(request *DescribeRegionAndPriceRequest) (response *DescribeRegionAndPriceResponse, err error) {
-    if request == nil {
-        request = NewDescribeRegionAndPriceRequest()
-    }
-    
-    response = NewDescribeRegionAndPriceResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRegionAndPriceWithContext(context.Background(), request)
 }
 
 // DescribeRegionAndPrice
@@ -3979,6 +3918,11 @@ func (c *Client) DescribeRegionAndPriceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRegionAndPriceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegionAndPrice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRegionAndPriceResponse()
@@ -4017,13 +3961,7 @@ func NewDescribeResourcesByTagResponse() (response *DescribeResourcesByTagRespon
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeResourcesByTag(request *DescribeResourcesByTagRequest) (response *DescribeResourcesByTagResponse, err error) {
-    if request == nil {
-        request = NewDescribeResourcesByTagRequest()
-    }
-    
-    response = NewDescribeResourcesByTagResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeResourcesByTagWithContext(context.Background(), request)
 }
 
 // DescribeResourcesByTag
@@ -4043,6 +3981,11 @@ func (c *Client) DescribeResourcesByTagWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeResourcesByTagRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcesByTag require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeResourcesByTagResponse()
@@ -4081,13 +4024,7 @@ func NewDescribeRuleRealServersResponse() (response *DescribeRuleRealServersResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeRuleRealServers(request *DescribeRuleRealServersRequest) (response *DescribeRuleRealServersResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleRealServersRequest()
-    }
-    
-    response = NewDescribeRuleRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRuleRealServersWithContext(context.Background(), request)
 }
 
 // DescribeRuleRealServers
@@ -4107,6 +4044,11 @@ func (c *Client) DescribeRuleRealServersWithContext(ctx context.Context, request
     if request == nil {
         request = NewDescribeRuleRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRuleRealServersResponse()
@@ -4145,13 +4087,7 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeRulesRequest()
-    }
-    
-    response = NewDescribeRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRulesWithContext(context.Background(), request)
 }
 
 // DescribeRules
@@ -4171,6 +4107,11 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, request *Describe
     if request == nil {
         request = NewDescribeRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRulesResponse()
@@ -4212,13 +4153,7 @@ func NewDescribeRulesByRuleIdsResponse() (response *DescribeRulesByRuleIdsRespon
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRulesByRuleIds(request *DescribeRulesByRuleIdsRequest) (response *DescribeRulesByRuleIdsResponse, err error) {
-    if request == nil {
-        request = NewDescribeRulesByRuleIdsRequest()
-    }
-    
-    response = NewDescribeRulesByRuleIdsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRulesByRuleIdsWithContext(context.Background(), request)
 }
 
 // DescribeRulesByRuleIds
@@ -4241,6 +4176,11 @@ func (c *Client) DescribeRulesByRuleIdsWithContext(ctx context.Context, request 
     if request == nil {
         request = NewDescribeRulesByRuleIdsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRulesByRuleIds require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRulesByRuleIdsResponse()
@@ -4281,13 +4221,7 @@ func NewDescribeSecurityPolicyDetailResponse() (response *DescribeSecurityPolicy
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeSecurityPolicyDetail(request *DescribeSecurityPolicyDetailRequest) (response *DescribeSecurityPolicyDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityPolicyDetailRequest()
-    }
-    
-    response = NewDescribeSecurityPolicyDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityPolicyDetailWithContext(context.Background(), request)
 }
 
 // DescribeSecurityPolicyDetail
@@ -4309,6 +4243,11 @@ func (c *Client) DescribeSecurityPolicyDetailWithContext(ctx context.Context, re
     if request == nil {
         request = NewDescribeSecurityPolicyDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicyDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityPolicyDetailResponse()
@@ -4351,13 +4290,7 @@ func NewDescribeSecurityRulesResponse() (response *DescribeSecurityRulesResponse
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSecurityRules(request *DescribeSecurityRulesRequest) (response *DescribeSecurityRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityRulesRequest()
-    }
-    
-    response = NewDescribeSecurityRulesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeSecurityRulesWithContext(context.Background(), request)
 }
 
 // DescribeSecurityRules
@@ -4381,6 +4314,11 @@ func (c *Client) DescribeSecurityRulesWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeSecurityRulesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityRules require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeSecurityRulesResponse()
@@ -4420,13 +4358,7 @@ func NewDescribeTCPListenersResponse() (response *DescribeTCPListenersResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTCPListeners(request *DescribeTCPListenersRequest) (response *DescribeTCPListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeTCPListenersRequest()
-    }
-    
-    response = NewDescribeTCPListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTCPListenersWithContext(context.Background(), request)
 }
 
 // DescribeTCPListeners
@@ -4447,6 +4379,11 @@ func (c *Client) DescribeTCPListenersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeTCPListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTCPListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTCPListenersResponse()
@@ -4485,13 +4422,7 @@ func NewDescribeUDPListenersResponse() (response *DescribeUDPListenersResponse) 
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeUDPListeners(request *DescribeUDPListenersRequest) (response *DescribeUDPListenersResponse, err error) {
-    if request == nil {
-        request = NewDescribeUDPListenersRequest()
-    }
-    
-    response = NewDescribeUDPListenersResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeUDPListenersWithContext(context.Background(), request)
 }
 
 // DescribeUDPListeners
@@ -4511,6 +4442,11 @@ func (c *Client) DescribeUDPListenersWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeUDPListenersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUDPListeners require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeUDPListenersResponse()
@@ -4556,13 +4492,7 @@ func NewDestroyProxiesResponse() (response *DestroyProxiesResponse) {
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DestroyProxies(request *DestroyProxiesRequest) (response *DestroyProxiesResponse, err error) {
-    if request == nil {
-        request = NewDestroyProxiesRequest()
-    }
-    
-    response = NewDestroyProxiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DestroyProxiesWithContext(context.Background(), request)
 }
 
 // DestroyProxies
@@ -4589,6 +4519,11 @@ func (c *Client) DestroyProxiesWithContext(ctx context.Context, request *Destroy
     if request == nil {
         request = NewDestroyProxiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyProxies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDestroyProxiesResponse()
@@ -4633,13 +4568,7 @@ func NewInquiryPriceCreateProxyResponse() (response *InquiryPriceCreateProxyResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) InquiryPriceCreateProxy(request *InquiryPriceCreateProxyRequest) (response *InquiryPriceCreateProxyResponse, err error) {
-    if request == nil {
-        request = NewInquiryPriceCreateProxyRequest()
-    }
-    
-    response = NewInquiryPriceCreateProxyResponse()
-    err = c.Send(request, response)
-    return
+    return c.InquiryPriceCreateProxyWithContext(context.Background(), request)
 }
 
 // InquiryPriceCreateProxy
@@ -4665,6 +4594,11 @@ func (c *Client) InquiryPriceCreateProxyWithContext(ctx context.Context, request
     if request == nil {
         request = NewInquiryPriceCreateProxyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceCreateProxy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewInquiryPriceCreateProxyResponse()
@@ -4708,13 +4642,7 @@ func NewModifyCertificateResponse() (response *ModifyCertificateResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyCertificate(request *ModifyCertificateRequest) (response *ModifyCertificateResponse, err error) {
-    if request == nil {
-        request = NewModifyCertificateRequest()
-    }
-    
-    response = NewModifyCertificateResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCertificateWithContext(context.Background(), request)
 }
 
 // ModifyCertificate
@@ -4739,6 +4667,11 @@ func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *Modi
     if request == nil {
         request = NewModifyCertificateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCertificateResponse()
@@ -4778,13 +4711,7 @@ func NewModifyCertificateAttributesResponse() (response *ModifyCertificateAttrib
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCertificateAttributes(request *ModifyCertificateAttributesRequest) (response *ModifyCertificateAttributesResponse, err error) {
-    if request == nil {
-        request = NewModifyCertificateAttributesRequest()
-    }
-    
-    response = NewModifyCertificateAttributesResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyCertificateAttributesWithContext(context.Background(), request)
 }
 
 // ModifyCertificateAttributes
@@ -4805,6 +4732,11 @@ func (c *Client) ModifyCertificateAttributesWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyCertificateAttributesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificateAttributes require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyCertificateAttributesResponse()
@@ -4850,13 +4782,7 @@ func NewModifyDomainResponse() (response *ModifyDomainResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyDomain(request *ModifyDomainRequest) (response *ModifyDomainResponse, err error) {
-    if request == nil {
-        request = NewModifyDomainRequest()
-    }
-    
-    response = NewModifyDomainResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyDomainWithContext(context.Background(), request)
 }
 
 // ModifyDomain
@@ -4883,6 +4809,11 @@ func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDom
     if request == nil {
         request = NewModifyDomainRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomain require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyDomainResponse()
@@ -4922,13 +4853,7 @@ func NewModifyGroupDomainConfigResponse() (response *ModifyGroupDomainConfigResp
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyGroupDomainConfig(request *ModifyGroupDomainConfigRequest) (response *ModifyGroupDomainConfigResponse, err error) {
-    if request == nil {
-        request = NewModifyGroupDomainConfigRequest()
-    }
-    
-    response = NewModifyGroupDomainConfigResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyGroupDomainConfigWithContext(context.Background(), request)
 }
 
 // ModifyGroupDomainConfig
@@ -4949,6 +4874,11 @@ func (c *Client) ModifyGroupDomainConfigWithContext(ctx context.Context, request
     if request == nil {
         request = NewModifyGroupDomainConfigRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGroupDomainConfig require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyGroupDomainConfigResponse()
@@ -4990,13 +4920,7 @@ func NewModifyHTTPListenerAttributeResponse() (response *ModifyHTTPListenerAttri
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) ModifyHTTPListenerAttribute(request *ModifyHTTPListenerAttributeRequest) (response *ModifyHTTPListenerAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyHTTPListenerAttributeRequest()
-    }
-    
-    response = NewModifyHTTPListenerAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyHTTPListenerAttributeWithContext(context.Background(), request)
 }
 
 // ModifyHTTPListenerAttribute
@@ -5019,6 +4943,11 @@ func (c *Client) ModifyHTTPListenerAttributeWithContext(ctx context.Context, req
     if request == nil {
         request = NewModifyHTTPListenerAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHTTPListenerAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyHTTPListenerAttributeResponse()
@@ -5060,13 +4989,7 @@ func NewModifyHTTPSListenerAttributeResponse() (response *ModifyHTTPSListenerAtt
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyHTTPSListenerAttribute(request *ModifyHTTPSListenerAttributeRequest) (response *ModifyHTTPSListenerAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyHTTPSListenerAttributeRequest()
-    }
-    
-    response = NewModifyHTTPSListenerAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyHTTPSListenerAttributeWithContext(context.Background(), request)
 }
 
 // ModifyHTTPSListenerAttribute
@@ -5089,6 +5012,11 @@ func (c *Client) ModifyHTTPSListenerAttributeWithContext(ctx context.Context, re
     if request == nil {
         request = NewModifyHTTPSListenerAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHTTPSListenerAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyHTTPSListenerAttributeResponse()
@@ -5131,13 +5059,7 @@ func NewModifyProxiesAttributeResponse() (response *ModifyProxiesAttributeRespon
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyProxiesAttribute(request *ModifyProxiesAttributeRequest) (response *ModifyProxiesAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyProxiesAttributeRequest()
-    }
-    
-    response = NewModifyProxiesAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProxiesAttributeWithContext(context.Background(), request)
 }
 
 // ModifyProxiesAttribute
@@ -5161,6 +5083,11 @@ func (c *Client) ModifyProxiesAttributeWithContext(ctx context.Context, request 
     if request == nil {
         request = NewModifyProxiesAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxiesAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProxiesAttributeResponse()
@@ -5203,13 +5130,7 @@ func NewModifyProxiesProjectResponse() (response *ModifyProxiesProjectResponse) 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyProxiesProject(request *ModifyProxiesProjectRequest) (response *ModifyProxiesProjectResponse, err error) {
-    if request == nil {
-        request = NewModifyProxiesProjectRequest()
-    }
-    
-    response = NewModifyProxiesProjectResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProxiesProjectWithContext(context.Background(), request)
 }
 
 // ModifyProxiesProject
@@ -5233,6 +5154,11 @@ func (c *Client) ModifyProxiesProjectWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyProxiesProjectRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxiesProject require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProxiesProjectResponse()
@@ -5276,13 +5202,7 @@ func NewModifyProxyConfigurationResponse() (response *ModifyProxyConfigurationRe
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyProxyConfiguration(request *ModifyProxyConfigurationRequest) (response *ModifyProxyConfigurationResponse, err error) {
-    if request == nil {
-        request = NewModifyProxyConfigurationRequest()
-    }
-    
-    response = NewModifyProxyConfigurationResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProxyConfigurationWithContext(context.Background(), request)
 }
 
 // ModifyProxyConfiguration
@@ -5307,6 +5227,11 @@ func (c *Client) ModifyProxyConfigurationWithContext(ctx context.Context, reques
     if request == nil {
         request = NewModifyProxyConfigurationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxyConfiguration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProxyConfigurationResponse()
@@ -5346,13 +5271,7 @@ func NewModifyProxyGroupAttributeResponse() (response *ModifyProxyGroupAttribute
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyProxyGroupAttribute(request *ModifyProxyGroupAttributeRequest) (response *ModifyProxyGroupAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyProxyGroupAttributeRequest()
-    }
-    
-    response = NewModifyProxyGroupAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyProxyGroupAttributeWithContext(context.Background(), request)
 }
 
 // ModifyProxyGroupAttribute
@@ -5373,6 +5292,11 @@ func (c *Client) ModifyProxyGroupAttributeWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyProxyGroupAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxyGroupAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyProxyGroupAttributeResponse()
@@ -5410,13 +5334,7 @@ func NewModifyRealServerNameResponse() (response *ModifyRealServerNameResponse) 
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyRealServerName(request *ModifyRealServerNameRequest) (response *ModifyRealServerNameResponse, err error) {
-    if request == nil {
-        request = NewModifyRealServerNameRequest()
-    }
-    
-    response = NewModifyRealServerNameResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRealServerNameWithContext(context.Background(), request)
 }
 
 // ModifyRealServerName
@@ -5435,6 +5353,11 @@ func (c *Client) ModifyRealServerNameWithContext(ctx context.Context, request *M
     if request == nil {
         request = NewModifyRealServerNameRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRealServerName require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRealServerNameResponse()
@@ -5474,13 +5397,7 @@ func NewModifyRuleAttributeResponse() (response *ModifyRuleAttributeResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyRuleAttribute(request *ModifyRuleAttributeRequest) (response *ModifyRuleAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyRuleAttributeRequest()
-    }
-    
-    response = NewModifyRuleAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyRuleAttributeWithContext(context.Background(), request)
 }
 
 // ModifyRuleAttribute
@@ -5501,6 +5418,11 @@ func (c *Client) ModifyRuleAttributeWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyRuleAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRuleAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyRuleAttributeResponse()
@@ -5542,13 +5464,7 @@ func NewModifySecurityRuleResponse() (response *ModifySecurityRuleResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifySecurityRule(request *ModifySecurityRuleRequest) (response *ModifySecurityRuleResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityRuleRequest()
-    }
-    
-    response = NewModifySecurityRuleResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifySecurityRuleWithContext(context.Background(), request)
 }
 
 // ModifySecurityRule
@@ -5571,6 +5487,11 @@ func (c *Client) ModifySecurityRuleWithContext(ctx context.Context, request *Mod
     if request == nil {
         request = NewModifySecurityRuleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityRule require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifySecurityRuleResponse()
@@ -5612,13 +5533,7 @@ func NewModifyTCPListenerAttributeResponse() (response *ModifyTCPListenerAttribu
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTCPListenerAttribute(request *ModifyTCPListenerAttributeRequest) (response *ModifyTCPListenerAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyTCPListenerAttributeRequest()
-    }
-    
-    response = NewModifyTCPListenerAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyTCPListenerAttributeWithContext(context.Background(), request)
 }
 
 // ModifyTCPListenerAttribute
@@ -5641,6 +5556,11 @@ func (c *Client) ModifyTCPListenerAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyTCPListenerAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTCPListenerAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyTCPListenerAttributeResponse()
@@ -5682,13 +5602,7 @@ func NewModifyUDPListenerAttributeResponse() (response *ModifyUDPListenerAttribu
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyUDPListenerAttribute(request *ModifyUDPListenerAttributeRequest) (response *ModifyUDPListenerAttributeResponse, err error) {
-    if request == nil {
-        request = NewModifyUDPListenerAttributeRequest()
-    }
-    
-    response = NewModifyUDPListenerAttributeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyUDPListenerAttributeWithContext(context.Background(), request)
 }
 
 // ModifyUDPListenerAttribute
@@ -5711,6 +5625,11 @@ func (c *Client) ModifyUDPListenerAttributeWithContext(ctx context.Context, requ
     if request == nil {
         request = NewModifyUDPListenerAttributeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUDPListenerAttribute require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyUDPListenerAttributeResponse()
@@ -5754,13 +5673,7 @@ func NewOpenProxiesResponse() (response *OpenProxiesResponse) {
 //  UNAUTHORIZEDOPERATION_CROSSBORDERINISOLATING = "UnauthorizedOperation.CrossBorderInIsolating"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) OpenProxies(request *OpenProxiesRequest) (response *OpenProxiesResponse, err error) {
-    if request == nil {
-        request = NewOpenProxiesRequest()
-    }
-    
-    response = NewOpenProxiesResponse()
-    err = c.Send(request, response)
-    return
+    return c.OpenProxiesWithContext(context.Background(), request)
 }
 
 // OpenProxies
@@ -5785,6 +5698,11 @@ func (c *Client) OpenProxiesWithContext(ctx context.Context, request *OpenProxie
     if request == nil {
         request = NewOpenProxiesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenProxies require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOpenProxiesResponse()
@@ -5824,13 +5742,7 @@ func NewOpenProxyGroupResponse() (response *OpenProxyGroupResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) OpenProxyGroup(request *OpenProxyGroupRequest) (response *OpenProxyGroupResponse, err error) {
-    if request == nil {
-        request = NewOpenProxyGroupRequest()
-    }
-    
-    response = NewOpenProxyGroupResponse()
-    err = c.Send(request, response)
-    return
+    return c.OpenProxyGroupWithContext(context.Background(), request)
 }
 
 // OpenProxyGroup
@@ -5851,6 +5763,11 @@ func (c *Client) OpenProxyGroupWithContext(ctx context.Context, request *OpenPro
     if request == nil {
         request = NewOpenProxyGroupRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenProxyGroup require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOpenProxyGroupResponse()
@@ -5892,13 +5809,7 @@ func NewOpenSecurityPolicyResponse() (response *OpenSecurityPolicyResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) OpenSecurityPolicy(request *OpenSecurityPolicyRequest) (response *OpenSecurityPolicyResponse, err error) {
-    if request == nil {
-        request = NewOpenSecurityPolicyRequest()
-    }
-    
-    response = NewOpenSecurityPolicyResponse()
-    err = c.Send(request, response)
-    return
+    return c.OpenSecurityPolicyWithContext(context.Background(), request)
 }
 
 // OpenSecurityPolicy
@@ -5921,6 +5832,11 @@ func (c *Client) OpenSecurityPolicyWithContext(ctx context.Context, request *Ope
     if request == nil {
         request = NewOpenSecurityPolicyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenSecurityPolicy require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewOpenSecurityPolicyResponse()
@@ -5960,13 +5876,7 @@ func NewRemoveRealServersResponse() (response *RemoveRealServersResponse) {
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) RemoveRealServers(request *RemoveRealServersRequest) (response *RemoveRealServersResponse, err error) {
-    if request == nil {
-        request = NewRemoveRealServersRequest()
-    }
-    
-    response = NewRemoveRealServersResponse()
-    err = c.Send(request, response)
-    return
+    return c.RemoveRealServersWithContext(context.Background(), request)
 }
 
 // RemoveRealServers
@@ -5987,6 +5897,11 @@ func (c *Client) RemoveRealServersWithContext(ctx context.Context, request *Remo
     if request == nil {
         request = NewRemoveRealServersRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveRealServers require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRemoveRealServersResponse()
@@ -6032,13 +5947,7 @@ func NewSetAuthenticationResponse() (response *SetAuthenticationResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) SetAuthentication(request *SetAuthenticationRequest) (response *SetAuthenticationResponse, err error) {
-    if request == nil {
-        request = NewSetAuthenticationRequest()
-    }
-    
-    response = NewSetAuthenticationResponse()
-    err = c.Send(request, response)
-    return
+    return c.SetAuthenticationWithContext(context.Background(), request)
 }
 
 // SetAuthentication
@@ -6065,6 +5974,11 @@ func (c *Client) SetAuthenticationWithContext(ctx context.Context, request *SetA
     if request == nil {
         request = NewSetAuthenticationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAuthentication require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSetAuthenticationResponse()

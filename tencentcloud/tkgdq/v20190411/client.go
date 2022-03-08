@@ -16,6 +16,7 @@ package v20190411
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -77,13 +78,7 @@ func NewDescribeEntityResponse() (response *DescribeEntityResponse) {
 //  LIMITEXCEEDED_INSUFFICIENTBALANCEERROR = "LimitExceeded.InsufficientBalanceError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNTERROR = "UnauthorizedOperation.UnauthorizedAccountError"
 func (c *Client) DescribeEntity(request *DescribeEntityRequest) (response *DescribeEntityResponse, err error) {
-    if request == nil {
-        request = NewDescribeEntityRequest()
-    }
-    
-    response = NewDescribeEntityResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeEntityWithContext(context.Background(), request)
 }
 
 // DescribeEntity
@@ -105,6 +100,11 @@ func (c *Client) DescribeEntityWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeEntityRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEntity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeEntityResponse()
@@ -145,13 +145,7 @@ func NewDescribeRelationResponse() (response *DescribeRelationResponse) {
 //  LIMITEXCEEDED_INSUFFICIENTBALANCEERROR = "LimitExceeded.InsufficientBalanceError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNTERROR = "UnauthorizedOperation.UnauthorizedAccountError"
 func (c *Client) DescribeRelation(request *DescribeRelationRequest) (response *DescribeRelationResponse, err error) {
-    if request == nil {
-        request = NewDescribeRelationRequest()
-    }
-    
-    response = NewDescribeRelationResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeRelationWithContext(context.Background(), request)
 }
 
 // DescribeRelation
@@ -173,6 +167,11 @@ func (c *Client) DescribeRelationWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeRelationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelation require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeRelationResponse()
@@ -213,13 +212,7 @@ func NewDescribeTripleResponse() (response *DescribeTripleResponse) {
 //  LIMITEXCEEDED_INSUFFICIENTBALANCEERROR = "LimitExceeded.InsufficientBalanceError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNTERROR = "UnauthorizedOperation.UnauthorizedAccountError"
 func (c *Client) DescribeTriple(request *DescribeTripleRequest) (response *DescribeTripleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTripleRequest()
-    }
-    
-    response = NewDescribeTripleResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeTripleWithContext(context.Background(), request)
 }
 
 // DescribeTriple
@@ -241,6 +234,11 @@ func (c *Client) DescribeTripleWithContext(ctx context.Context, request *Describ
     if request == nil {
         request = NewDescribeTripleRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTriple require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeTripleResponse()

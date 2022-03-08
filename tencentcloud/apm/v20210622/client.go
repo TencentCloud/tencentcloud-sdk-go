@@ -16,6 +16,7 @@ package v20210622
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -67,13 +68,7 @@ func NewCreateApmInstanceResponse() (response *CreateApmInstanceResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateApmInstance(request *CreateApmInstanceRequest) (response *CreateApmInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateApmInstanceRequest()
-    }
-    
-    response = NewCreateApmInstanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateApmInstanceWithContext(context.Background(), request)
 }
 
 // CreateApmInstance
@@ -85,6 +80,11 @@ func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreateApmInstanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApmInstance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateApmInstanceResponse()
@@ -120,13 +120,7 @@ func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *DescribeApmAgentResponse, err error) {
-    if request == nil {
-        request = NewDescribeApmAgentRequest()
-    }
-    
-    response = NewDescribeApmAgentResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApmAgentWithContext(context.Background(), request)
 }
 
 // DescribeApmAgent
@@ -143,6 +137,11 @@ func (c *Client) DescribeApmAgentWithContext(ctx context.Context, request *Descr
     if request == nil {
         request = NewDescribeApmAgentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmAgent require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApmAgentResponse()
@@ -174,13 +173,7 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (response *DescribeApmInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribeApmInstancesRequest()
-    }
-    
-    response = NewDescribeApmInstancesResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeApmInstancesWithContext(context.Background(), request)
 }
 
 // DescribeApmInstances
@@ -193,6 +186,11 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeApmInstancesRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApmInstances require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeApmInstancesResponse()
@@ -226,13 +224,7 @@ func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeMetricRecordsRequest()
-    }
-    
-    response = NewDescribeMetricRecordsResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeMetricRecordsWithContext(context.Background(), request)
 }
 
 // DescribeMetricRecords
@@ -247,6 +239,11 @@ func (c *Client) DescribeMetricRecordsWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDescribeMetricRecordsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMetricRecords require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeMetricRecordsResponse()

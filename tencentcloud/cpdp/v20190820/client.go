@@ -16,6 +16,7 @@ package v20190820
 
 import (
     "context"
+    "errors"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -64,13 +65,7 @@ func NewAddContractResponse() (response *AddContractResponse) {
 // AddContract
 // 云支付-添加合同接口
 func (c *Client) AddContract(request *AddContractRequest) (response *AddContractResponse, err error) {
-    if request == nil {
-        request = NewAddContractRequest()
-    }
-    
-    response = NewAddContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddContractWithContext(context.Background(), request)
 }
 
 // AddContract
@@ -79,6 +74,11 @@ func (c *Client) AddContractWithContext(ctx context.Context, request *AddContrac
     if request == nil {
         request = NewAddContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddContractResponse()
@@ -106,13 +106,7 @@ func NewAddMerchantResponse() (response *AddMerchantResponse) {
 // AddMerchant
 // 云支付-添加商户接口
 func (c *Client) AddMerchant(request *AddMerchantRequest) (response *AddMerchantResponse, err error) {
-    if request == nil {
-        request = NewAddMerchantRequest()
-    }
-    
-    response = NewAddMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddMerchantWithContext(context.Background(), request)
 }
 
 // AddMerchant
@@ -121,6 +115,11 @@ func (c *Client) AddMerchantWithContext(ctx context.Context, request *AddMerchan
     if request == nil {
         request = NewAddMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddMerchantResponse()
@@ -148,13 +147,7 @@ func NewAddShopResponse() (response *AddShopResponse) {
 // AddShop
 // 云支付-添加门店接口
 func (c *Client) AddShop(request *AddShopRequest) (response *AddShopResponse, err error) {
-    if request == nil {
-        request = NewAddShopRequest()
-    }
-    
-    response = NewAddShopResponse()
-    err = c.Send(request, response)
-    return
+    return c.AddShopWithContext(context.Background(), request)
 }
 
 // AddShop
@@ -163,6 +156,11 @@ func (c *Client) AddShopWithContext(ctx context.Context, request *AddShopRequest
     if request == nil {
         request = NewAddShopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddShop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAddShopResponse()
@@ -195,13 +193,7 @@ func NewApplyApplicationMaterialResponse() (response *ApplyApplicationMaterialRe
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyApplicationMaterial(request *ApplyApplicationMaterialRequest) (response *ApplyApplicationMaterialResponse, err error) {
-    if request == nil {
-        request = NewApplyApplicationMaterialRequest()
-    }
-    
-    response = NewApplyApplicationMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyApplicationMaterialWithContext(context.Background(), request)
 }
 
 // ApplyApplicationMaterial
@@ -215,6 +207,11 @@ func (c *Client) ApplyApplicationMaterialWithContext(ctx context.Context, reques
     if request == nil {
         request = NewApplyApplicationMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyApplicationMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyApplicationMaterialResponse()
@@ -247,13 +244,7 @@ func NewApplyOutwardOrderResponse() (response *ApplyOutwardOrderResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyOutwardOrder(request *ApplyOutwardOrderRequest) (response *ApplyOutwardOrderResponse, err error) {
-    if request == nil {
-        request = NewApplyOutwardOrderRequest()
-    }
-    
-    response = NewApplyOutwardOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyOutwardOrderWithContext(context.Background(), request)
 }
 
 // ApplyOutwardOrder
@@ -267,6 +258,11 @@ func (c *Client) ApplyOutwardOrderWithContext(ctx context.Context, request *Appl
     if request == nil {
         request = NewApplyOutwardOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyOutwardOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyOutwardOrderResponse()
@@ -299,13 +295,7 @@ func NewApplyPayerInfoResponse() (response *ApplyPayerInfoResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyPayerInfo(request *ApplyPayerInfoRequest) (response *ApplyPayerInfoResponse, err error) {
-    if request == nil {
-        request = NewApplyPayerInfoRequest()
-    }
-    
-    response = NewApplyPayerInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyPayerInfoWithContext(context.Background(), request)
 }
 
 // ApplyPayerInfo
@@ -319,6 +309,11 @@ func (c *Client) ApplyPayerInfoWithContext(ctx context.Context, request *ApplyPa
     if request == nil {
         request = NewApplyPayerInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyPayerInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyPayerInfoResponse()
@@ -354,13 +349,7 @@ func NewApplyReWithdrawalResponse() (response *ApplyReWithdrawalResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ApplyReWithdrawal(request *ApplyReWithdrawalRequest) (response *ApplyReWithdrawalResponse, err error) {
-    if request == nil {
-        request = NewApplyReWithdrawalRequest()
-    }
-    
-    response = NewApplyReWithdrawalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyReWithdrawalWithContext(context.Background(), request)
 }
 
 // ApplyReWithdrawal
@@ -377,6 +366,11 @@ func (c *Client) ApplyReWithdrawalWithContext(ctx context.Context, request *Appl
     if request == nil {
         request = NewApplyReWithdrawalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyReWithdrawal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyReWithdrawalResponse()
@@ -412,13 +406,7 @@ func NewApplyReconciliationFileResponse() (response *ApplyReconciliationFileResp
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ApplyReconciliationFile(request *ApplyReconciliationFileRequest) (response *ApplyReconciliationFileResponse, err error) {
-    if request == nil {
-        request = NewApplyReconciliationFileRequest()
-    }
-    
-    response = NewApplyReconciliationFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyReconciliationFileWithContext(context.Background(), request)
 }
 
 // ApplyReconciliationFile
@@ -435,6 +423,11 @@ func (c *Client) ApplyReconciliationFileWithContext(ctx context.Context, request
     if request == nil {
         request = NewApplyReconciliationFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyReconciliationFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyReconciliationFileResponse()
@@ -467,13 +460,7 @@ func NewApplyTradeResponse() (response *ApplyTradeResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) ApplyTrade(request *ApplyTradeRequest) (response *ApplyTradeResponse, err error) {
-    if request == nil {
-        request = NewApplyTradeRequest()
-    }
-    
-    response = NewApplyTradeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyTradeWithContext(context.Background(), request)
 }
 
 // ApplyTrade
@@ -487,6 +474,11 @@ func (c *Client) ApplyTradeWithContext(ctx context.Context, request *ApplyTradeR
     if request == nil {
         request = NewApplyTradeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyTrade require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyTradeResponse()
@@ -521,13 +513,7 @@ func NewApplyWithdrawalResponse() (response *ApplyWithdrawalResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) ApplyWithdrawal(request *ApplyWithdrawalRequest) (response *ApplyWithdrawalResponse, err error) {
-    if request == nil {
-        request = NewApplyWithdrawalRequest()
-    }
-    
-    response = NewApplyWithdrawalResponse()
-    err = c.Send(request, response)
-    return
+    return c.ApplyWithdrawalWithContext(context.Background(), request)
 }
 
 // ApplyWithdrawal
@@ -543,6 +529,11 @@ func (c *Client) ApplyWithdrawalWithContext(ctx context.Context, request *ApplyW
     if request == nil {
         request = NewApplyWithdrawalRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyWithdrawal require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewApplyWithdrawalResponse()
@@ -577,13 +568,7 @@ func NewBindAccountResponse() (response *BindAccountResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) BindAccount(request *BindAccountRequest) (response *BindAccountResponse, err error) {
-    if request == nil {
-        request = NewBindAccountRequest()
-    }
-    
-    response = NewBindAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindAccountWithContext(context.Background(), request)
 }
 
 // BindAccount
@@ -599,6 +584,11 @@ func (c *Client) BindAccountWithContext(ctx context.Context, request *BindAccoun
     if request == nil {
         request = NewBindAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindAccountResponse()
@@ -633,13 +623,7 @@ func NewBindAcctResponse() (response *BindAcctResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) BindAcct(request *BindAcctRequest) (response *BindAcctResponse, err error) {
-    if request == nil {
-        request = NewBindAcctRequest()
-    }
-    
-    response = NewBindAcctResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindAcctWithContext(context.Background(), request)
 }
 
 // BindAcct
@@ -655,6 +639,11 @@ func (c *Client) BindAcctWithContext(ctx context.Context, request *BindAcctReque
     if request == nil {
         request = NewBindAcctRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindAcct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindAcctResponse()
@@ -689,13 +678,7 @@ func NewBindOpenBankExternalSubMerchantBankAccountResponse() (response *BindOpen
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) BindOpenBankExternalSubMerchantBankAccount(request *BindOpenBankExternalSubMerchantBankAccountRequest) (response *BindOpenBankExternalSubMerchantBankAccountResponse, err error) {
-    if request == nil {
-        request = NewBindOpenBankExternalSubMerchantBankAccountRequest()
-    }
-    
-    response = NewBindOpenBankExternalSubMerchantBankAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindOpenBankExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
 
 // BindOpenBankExternalSubMerchantBankAccount
@@ -711,6 +694,11 @@ func (c *Client) BindOpenBankExternalSubMerchantBankAccountWithContext(ctx conte
     if request == nil {
         request = NewBindOpenBankExternalSubMerchantBankAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindOpenBankExternalSubMerchantBankAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindOpenBankExternalSubMerchantBankAccountResponse()
@@ -749,13 +737,7 @@ func NewBindRelateAccReUnionPayResponse() (response *BindRelateAccReUnionPayResp
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAccReUnionPay(request *BindRelateAccReUnionPayRequest) (response *BindRelateAccReUnionPayResponse, err error) {
-    if request == nil {
-        request = NewBindRelateAccReUnionPayRequest()
-    }
-    
-    response = NewBindRelateAccReUnionPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindRelateAccReUnionPayWithContext(context.Background(), request)
 }
 
 // BindRelateAccReUnionPay
@@ -775,6 +757,11 @@ func (c *Client) BindRelateAccReUnionPayWithContext(ctx context.Context, request
     if request == nil {
         request = NewBindRelateAccReUnionPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindRelateAccReUnionPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindRelateAccReUnionPayResponse()
@@ -819,13 +806,7 @@ func NewBindRelateAcctSmallAmountResponse() (response *BindRelateAcctSmallAmount
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAcctSmallAmount(request *BindRelateAcctSmallAmountRequest) (response *BindRelateAcctSmallAmountResponse, err error) {
-    if request == nil {
-        request = NewBindRelateAcctSmallAmountRequest()
-    }
-    
-    response = NewBindRelateAcctSmallAmountResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindRelateAcctSmallAmountWithContext(context.Background(), request)
 }
 
 // BindRelateAcctSmallAmount
@@ -851,6 +832,11 @@ func (c *Client) BindRelateAcctSmallAmountWithContext(ctx context.Context, reque
     if request == nil {
         request = NewBindRelateAcctSmallAmountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindRelateAcctSmallAmount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindRelateAcctSmallAmountResponse()
@@ -897,13 +883,7 @@ func NewBindRelateAcctUnionPayResponse() (response *BindRelateAcctUnionPayRespon
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) BindRelateAcctUnionPay(request *BindRelateAcctUnionPayRequest) (response *BindRelateAcctUnionPayResponse, err error) {
-    if request == nil {
-        request = NewBindRelateAcctUnionPayRequest()
-    }
-    
-    response = NewBindRelateAcctUnionPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.BindRelateAcctUnionPayWithContext(context.Background(), request)
 }
 
 // BindRelateAcctUnionPay
@@ -931,6 +911,11 @@ func (c *Client) BindRelateAcctUnionPayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewBindRelateAcctUnionPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindRelateAcctUnionPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewBindRelateAcctUnionPayResponse()
@@ -965,13 +950,7 @@ func NewCheckAcctResponse() (response *CheckAcctResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CheckAcct(request *CheckAcctRequest) (response *CheckAcctResponse, err error) {
-    if request == nil {
-        request = NewCheckAcctRequest()
-    }
-    
-    response = NewCheckAcctResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckAcctWithContext(context.Background(), request)
 }
 
 // CheckAcct
@@ -987,6 +966,11 @@ func (c *Client) CheckAcctWithContext(ctx context.Context, request *CheckAcctReq
     if request == nil {
         request = NewCheckAcctRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckAcct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckAcctResponse()
@@ -1025,13 +1009,7 @@ func NewCheckAmountResponse() (response *CheckAmountResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CheckAmount(request *CheckAmountRequest) (response *CheckAmountResponse, err error) {
-    if request == nil {
-        request = NewCheckAmountRequest()
-    }
-    
-    response = NewCheckAmountResponse()
-    err = c.Send(request, response)
-    return
+    return c.CheckAmountWithContext(context.Background(), request)
 }
 
 // CheckAmount
@@ -1051,6 +1029,11 @@ func (c *Client) CheckAmountWithContext(ctx context.Context, request *CheckAmoun
     if request == nil {
         request = NewCheckAmountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckAmount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCheckAmountResponse()
@@ -1079,42 +1062,25 @@ func NewCloseOpenBankPaymentOrderResponse() (response *CloseOpenBankPaymentOrder
 // 云企付-关闭订单
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CloseOpenBankPaymentOrder(request *CloseOpenBankPaymentOrderRequest) (response *CloseOpenBankPaymentOrderResponse, err error) {
-    if request == nil {
-        request = NewCloseOpenBankPaymentOrderRequest()
-    }
-    
-    response = NewCloseOpenBankPaymentOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseOpenBankPaymentOrderWithContext(context.Background(), request)
 }
 
 // CloseOpenBankPaymentOrder
 // 云企付-关闭订单
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CloseOpenBankPaymentOrderWithContext(ctx context.Context, request *CloseOpenBankPaymentOrderRequest) (response *CloseOpenBankPaymentOrderResponse, err error) {
     if request == nil {
         request = NewCloseOpenBankPaymentOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseOpenBankPaymentOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseOpenBankPaymentOrderResponse()
@@ -1149,13 +1115,7 @@ func NewCloseOrderResponse() (response *CloseOrderResponse) {
 //  FAILEDOPERATION_ORDERNOTACTIVATED = "FailedOperation.OrderNotActivated"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderResponse, err error) {
-    if request == nil {
-        request = NewCloseOrderRequest()
-    }
-    
-    response = NewCloseOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CloseOrderWithContext(context.Background(), request)
 }
 
 // CloseOrder
@@ -1171,6 +1131,11 @@ func (c *Client) CloseOrderWithContext(ctx context.Context, request *CloseOrderR
     if request == nil {
         request = NewCloseOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCloseOrderResponse()
@@ -1203,13 +1168,7 @@ func NewConfirmOrderResponse() (response *ConfirmOrderResponse) {
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) ConfirmOrder(request *ConfirmOrderRequest) (response *ConfirmOrderResponse, err error) {
-    if request == nil {
-        request = NewConfirmOrderRequest()
-    }
-    
-    response = NewConfirmOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.ConfirmOrderWithContext(context.Background(), request)
 }
 
 // ConfirmOrder
@@ -1223,6 +1182,11 @@ func (c *Client) ConfirmOrderWithContext(ctx context.Context, request *ConfirmOr
     if request == nil {
         request = NewConfirmOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConfirmOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewConfirmOrderResponse()
@@ -1273,13 +1237,7 @@ func NewContractOrderResponse() (response *ContractOrderResponse) {
 //  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ContractOrder(request *ContractOrderRequest) (response *ContractOrderResponse, err error) {
-    if request == nil {
-        request = NewContractOrderRequest()
-    }
-    
-    response = NewContractOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.ContractOrderWithContext(context.Background(), request)
 }
 
 // ContractOrder
@@ -1311,6 +1269,11 @@ func (c *Client) ContractOrderWithContext(ctx context.Context, request *Contract
     if request == nil {
         request = NewContractOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ContractOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewContractOrderResponse()
@@ -1345,13 +1308,7 @@ func NewCreateAcctResponse() (response *CreateAcctResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CreateAcct(request *CreateAcctRequest) (response *CreateAcctResponse, err error) {
-    if request == nil {
-        request = NewCreateAcctRequest()
-    }
-    
-    response = NewCreateAcctResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAcctWithContext(context.Background(), request)
 }
 
 // CreateAcct
@@ -1367,6 +1324,11 @@ func (c *Client) CreateAcctWithContext(ctx context.Context, request *CreateAcctR
     if request == nil {
         request = NewCreateAcctRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAcct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAcctResponse()
@@ -1402,13 +1364,7 @@ func NewCreateAgentTaxPaymentInfosResponse() (response *CreateAgentTaxPaymentInf
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateAgentTaxPaymentInfos(request *CreateAgentTaxPaymentInfosRequest) (response *CreateAgentTaxPaymentInfosResponse, err error) {
-    if request == nil {
-        request = NewCreateAgentTaxPaymentInfosRequest()
-    }
-    
-    response = NewCreateAgentTaxPaymentInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAgentTaxPaymentInfosWithContext(context.Background(), request)
 }
 
 // CreateAgentTaxPaymentInfos
@@ -1425,6 +1381,11 @@ func (c *Client) CreateAgentTaxPaymentInfosWithContext(ctx context.Context, requ
     if request == nil {
         request = NewCreateAgentTaxPaymentInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgentTaxPaymentInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAgentTaxPaymentInfosResponse()
@@ -1458,13 +1419,7 @@ func NewCreateAnchorResponse() (response *CreateAnchorResponse) {
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) CreateAnchor(request *CreateAnchorRequest) (response *CreateAnchorResponse, err error) {
-    if request == nil {
-        request = NewCreateAnchorRequest()
-    }
-    
-    response = NewCreateAnchorResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateAnchorWithContext(context.Background(), request)
 }
 
 // CreateAnchor
@@ -1479,6 +1434,11 @@ func (c *Client) CreateAnchorWithContext(ctx context.Context, request *CreateAnc
     if request == nil {
         request = NewCreateAnchorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAnchor require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateAnchorResponse()
@@ -1512,13 +1472,7 @@ func NewCreateBatchPaymentResponse() (response *CreateBatchPaymentResponse) {
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) CreateBatchPayment(request *CreateBatchPaymentRequest) (response *CreateBatchPaymentResponse, err error) {
-    if request == nil {
-        request = NewCreateBatchPaymentRequest()
-    }
-    
-    response = NewCreateBatchPaymentResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateBatchPaymentWithContext(context.Background(), request)
 }
 
 // CreateBatchPayment
@@ -1533,6 +1487,11 @@ func (c *Client) CreateBatchPaymentWithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateBatchPaymentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchPayment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateBatchPaymentResponse()
@@ -1574,13 +1533,7 @@ func NewCreateCustAcctIdResponse() (response *CreateCustAcctIdResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CreateCustAcctId(request *CreateCustAcctIdRequest) (response *CreateCustAcctIdResponse, err error) {
-    if request == nil {
-        request = NewCreateCustAcctIdRequest()
-    }
-    
-    response = NewCreateCustAcctIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateCustAcctIdWithContext(context.Background(), request)
 }
 
 // CreateCustAcctId
@@ -1603,6 +1556,11 @@ func (c *Client) CreateCustAcctIdWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateCustAcctIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustAcctId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateCustAcctIdResponse()
@@ -1642,13 +1600,7 @@ func NewCreateExternalAnchorResponse() (response *CreateExternalAnchorResponse) 
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CreateExternalAnchor(request *CreateExternalAnchorRequest) (response *CreateExternalAnchorResponse, err error) {
-    if request == nil {
-        request = NewCreateExternalAnchorRequest()
-    }
-    
-    response = NewCreateExternalAnchorResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateExternalAnchorWithContext(context.Background(), request)
 }
 
 // CreateExternalAnchor
@@ -1669,6 +1621,11 @@ func (c *Client) CreateExternalAnchorWithContext(ctx context.Context, request *C
     if request == nil {
         request = NewCreateExternalAnchorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExternalAnchor require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateExternalAnchorResponse()
@@ -1714,13 +1671,7 @@ func NewCreateInvoiceResponse() (response *CreateInvoiceResponse) {
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateInvoice(request *CreateInvoiceRequest) (response *CreateInvoiceResponse, err error) {
-    if request == nil {
-        request = NewCreateInvoiceRequest()
-    }
-    
-    response = NewCreateInvoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateInvoiceWithContext(context.Background(), request)
 }
 
 // CreateInvoice
@@ -1747,6 +1698,11 @@ func (c *Client) CreateInvoiceWithContext(ctx context.Context, request *CreateIn
     if request == nil {
         request = NewCreateInvoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInvoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInvoiceResponse()
@@ -1777,13 +1733,7 @@ func NewCreateInvoiceV2Response() (response *CreateInvoiceV2Response) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) CreateInvoiceV2(request *CreateInvoiceV2Request) (response *CreateInvoiceV2Response, err error) {
-    if request == nil {
-        request = NewCreateInvoiceV2Request()
-    }
-    
-    response = NewCreateInvoiceV2Response()
-    err = c.Send(request, response)
-    return
+    return c.CreateInvoiceV2WithContext(context.Background(), request)
 }
 
 // CreateInvoiceV2
@@ -1795,6 +1745,11 @@ func (c *Client) CreateInvoiceV2WithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateInvoiceV2Request()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInvoiceV2 require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateInvoiceV2Response()
@@ -1832,13 +1787,7 @@ func NewCreateMerchantResponse() (response *CreateMerchantResponse) {
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateMerchant(request *CreateMerchantRequest) (response *CreateMerchantResponse, err error) {
-    if request == nil {
-        request = NewCreateMerchantRequest()
-    }
-    
-    response = NewCreateMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateMerchantWithContext(context.Background(), request)
 }
 
 // CreateMerchant
@@ -1857,6 +1806,11 @@ func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateM
     if request == nil {
         request = NewCreateMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateMerchantResponse()
@@ -1885,40 +1839,25 @@ func NewCreateOpenBankExternalSubMerchantRegistrationResponse() (response *Creat
 // 云企付-子商户进件
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankExternalSubMerchantRegistration(request *CreateOpenBankExternalSubMerchantRegistrationRequest) (response *CreateOpenBankExternalSubMerchantRegistrationResponse, err error) {
-    if request == nil {
-        request = NewCreateOpenBankExternalSubMerchantRegistrationRequest()
-    }
-    
-    response = NewCreateOpenBankExternalSubMerchantRegistrationResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOpenBankExternalSubMerchantRegistrationWithContext(context.Background(), request)
 }
 
 // CreateOpenBankExternalSubMerchantRegistration
 // 云企付-子商户进件
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankExternalSubMerchantRegistrationWithContext(ctx context.Context, request *CreateOpenBankExternalSubMerchantRegistrationRequest) (response *CreateOpenBankExternalSubMerchantRegistrationResponse, err error) {
     if request == nil {
         request = NewCreateOpenBankExternalSubMerchantRegistrationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankExternalSubMerchantRegistration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOpenBankExternalSubMerchantRegistrationResponse()
@@ -1947,40 +1886,25 @@ func NewCreateOpenBankMerchantResponse() (response *CreateOpenBankMerchantRespon
 // 云企付-创建商户
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankMerchant(request *CreateOpenBankMerchantRequest) (response *CreateOpenBankMerchantResponse, err error) {
-    if request == nil {
-        request = NewCreateOpenBankMerchantRequest()
-    }
-    
-    response = NewCreateOpenBankMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOpenBankMerchantWithContext(context.Background(), request)
 }
 
 // CreateOpenBankMerchant
 // 云企付-创建商户
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankMerchantWithContext(ctx context.Context, request *CreateOpenBankMerchantRequest) (response *CreateOpenBankMerchantResponse, err error) {
     if request == nil {
         request = NewCreateOpenBankMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOpenBankMerchantResponse()
@@ -2009,40 +1933,25 @@ func NewCreateOpenBankPaymentOrderResponse() (response *CreateOpenBankPaymentOrd
 // 云企付-创建支付订单
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankPaymentOrder(request *CreateOpenBankPaymentOrderRequest) (response *CreateOpenBankPaymentOrderResponse, err error) {
-    if request == nil {
-        request = NewCreateOpenBankPaymentOrderRequest()
-    }
-    
-    response = NewCreateOpenBankPaymentOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOpenBankPaymentOrderWithContext(context.Background(), request)
 }
 
 // CreateOpenBankPaymentOrder
 // 云企付-创建支付订单
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) CreateOpenBankPaymentOrderWithContext(ctx context.Context, request *CreateOpenBankPaymentOrderRequest) (response *CreateOpenBankPaymentOrderResponse, err error) {
     if request == nil {
         request = NewCreateOpenBankPaymentOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankPaymentOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOpenBankPaymentOrderResponse()
@@ -2077,13 +1986,7 @@ func NewCreateOrderResponse() (response *CreateOrderResponse) {
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) CreateOrder(request *CreateOrderRequest) (response *CreateOrderResponse, err error) {
-    if request == nil {
-        request = NewCreateOrderRequest()
-    }
-    
-    response = NewCreateOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateOrderWithContext(context.Background(), request)
 }
 
 // CreateOrder
@@ -2099,6 +2002,11 @@ func (c *Client) CreateOrderWithContext(ctx context.Context, request *CreateOrde
     if request == nil {
         request = NewCreateOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateOrderResponse()
@@ -2135,13 +2043,7 @@ func NewCreatePayMerchantResponse() (response *CreatePayMerchantResponse) {
 //  FAILEDOPERATION_MERCHANTEXIST = "FailedOperation.MerchantExist"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) CreatePayMerchant(request *CreatePayMerchantRequest) (response *CreatePayMerchantResponse, err error) {
-    if request == nil {
-        request = NewCreatePayMerchantRequest()
-    }
-    
-    response = NewCreatePayMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreatePayMerchantWithContext(context.Background(), request)
 }
 
 // CreatePayMerchant
@@ -2159,6 +2061,11 @@ func (c *Client) CreatePayMerchantWithContext(ctx context.Context, request *Crea
     if request == nil {
         request = NewCreatePayMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePayMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreatePayMerchantResponse()
@@ -2203,13 +2110,7 @@ func NewCreateRedInvoiceResponse() (response *CreateRedInvoiceResponse) {
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoice(request *CreateRedInvoiceRequest) (response *CreateRedInvoiceResponse, err error) {
-    if request == nil {
-        request = NewCreateRedInvoiceRequest()
-    }
-    
-    response = NewCreateRedInvoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateRedInvoiceWithContext(context.Background(), request)
 }
 
 // CreateRedInvoice
@@ -2235,6 +2136,11 @@ func (c *Client) CreateRedInvoiceWithContext(ctx context.Context, request *Creat
     if request == nil {
         request = NewCreateRedInvoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRedInvoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRedInvoiceResponse()
@@ -2279,13 +2185,7 @@ func NewCreateRedInvoiceV2Response() (response *CreateRedInvoiceV2Response) {
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (response *CreateRedInvoiceV2Response, err error) {
-    if request == nil {
-        request = NewCreateRedInvoiceV2Request()
-    }
-    
-    response = NewCreateRedInvoiceV2Response()
-    err = c.Send(request, response)
-    return
+    return c.CreateRedInvoiceV2WithContext(context.Background(), request)
 }
 
 // CreateRedInvoiceV2
@@ -2311,6 +2211,11 @@ func (c *Client) CreateRedInvoiceV2WithContext(ctx context.Context, request *Cre
     if request == nil {
         request = NewCreateRedInvoiceV2Request()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRedInvoiceV2 require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateRedInvoiceV2Response()
@@ -2347,13 +2252,7 @@ func NewCreateSinglePayResponse() (response *CreateSinglePayResponse) {
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *CreateSinglePayResponse, err error) {
-    if request == nil {
-        request = NewCreateSinglePayRequest()
-    }
-    
-    response = NewCreateSinglePayResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSinglePayWithContext(context.Background(), request)
 }
 
 // CreateSinglePay
@@ -2371,6 +2270,11 @@ func (c *Client) CreateSinglePayWithContext(ctx context.Context, request *Create
     if request == nil {
         request = NewCreateSinglePayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSinglePay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSinglePayResponse()
@@ -2407,13 +2311,7 @@ func NewCreateSinglePaymentResponse() (response *CreateSinglePaymentResponse) {
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
-    if request == nil {
-        request = NewCreateSinglePaymentRequest()
-    }
-    
-    response = NewCreateSinglePaymentResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateSinglePaymentWithContext(context.Background(), request)
 }
 
 // CreateSinglePayment
@@ -2431,6 +2329,11 @@ func (c *Client) CreateSinglePaymentWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateSinglePaymentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSinglePayment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateSinglePaymentResponse()
@@ -2473,13 +2376,7 @@ func NewCreateTransferBatchResponse() (response *CreateTransferBatchResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) CreateTransferBatch(request *CreateTransferBatchRequest) (response *CreateTransferBatchResponse, err error) {
-    if request == nil {
-        request = NewCreateTransferBatchRequest()
-    }
-    
-    response = NewCreateTransferBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.CreateTransferBatchWithContext(context.Background(), request)
 }
 
 // CreateTransferBatch
@@ -2503,6 +2400,11 @@ func (c *Client) CreateTransferBatchWithContext(ctx context.Context, request *Cr
     if request == nil {
         request = NewCreateTransferBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTransferBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewCreateTransferBatchResponse()
@@ -2545,13 +2447,7 @@ func NewDeduceQuotaResponse() (response *DeduceQuotaResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) DeduceQuota(request *DeduceQuotaRequest) (response *DeduceQuotaResponse, err error) {
-    if request == nil {
-        request = NewDeduceQuotaRequest()
-    }
-    
-    response = NewDeduceQuotaResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeduceQuotaWithContext(context.Background(), request)
 }
 
 // DeduceQuota
@@ -2575,6 +2471,11 @@ func (c *Client) DeduceQuotaWithContext(ctx context.Context, request *DeduceQuot
     if request == nil {
         request = NewDeduceQuotaRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeduceQuota require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeduceQuotaResponse()
@@ -2610,13 +2511,7 @@ func NewDeleteAgentTaxPaymentInfoResponse() (response *DeleteAgentTaxPaymentInfo
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) DeleteAgentTaxPaymentInfo(request *DeleteAgentTaxPaymentInfoRequest) (response *DeleteAgentTaxPaymentInfoResponse, err error) {
-    if request == nil {
-        request = NewDeleteAgentTaxPaymentInfoRequest()
-    }
-    
-    response = NewDeleteAgentTaxPaymentInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAgentTaxPaymentInfoWithContext(context.Background(), request)
 }
 
 // DeleteAgentTaxPaymentInfo
@@ -2633,6 +2528,11 @@ func (c *Client) DeleteAgentTaxPaymentInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgentTaxPaymentInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAgentTaxPaymentInfoResponse()
@@ -2668,13 +2568,7 @@ func NewDeleteAgentTaxPaymentInfosResponse() (response *DeleteAgentTaxPaymentInf
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) DeleteAgentTaxPaymentInfos(request *DeleteAgentTaxPaymentInfosRequest) (response *DeleteAgentTaxPaymentInfosResponse, err error) {
-    if request == nil {
-        request = NewDeleteAgentTaxPaymentInfosRequest()
-    }
-    
-    response = NewDeleteAgentTaxPaymentInfosResponse()
-    err = c.Send(request, response)
-    return
+    return c.DeleteAgentTaxPaymentInfosWithContext(context.Background(), request)
 }
 
 // DeleteAgentTaxPaymentInfos
@@ -2691,6 +2585,11 @@ func (c *Client) DeleteAgentTaxPaymentInfosWithContext(ctx context.Context, requ
     if request == nil {
         request = NewDeleteAgentTaxPaymentInfosRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgentTaxPaymentInfos require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDeleteAgentTaxPaymentInfosResponse()
@@ -2726,13 +2625,7 @@ func NewDescribeChargeDetailResponse() (response *DescribeChargeDetailResponse) 
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) DescribeChargeDetail(request *DescribeChargeDetailRequest) (response *DescribeChargeDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeChargeDetailRequest()
-    }
-    
-    response = NewDescribeChargeDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeChargeDetailWithContext(context.Background(), request)
 }
 
 // DescribeChargeDetail
@@ -2749,6 +2642,11 @@ func (c *Client) DescribeChargeDetailWithContext(ctx context.Context, request *D
     if request == nil {
         request = NewDescribeChargeDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChargeDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeChargeDetailResponse()
@@ -2780,13 +2678,7 @@ func NewDescribeOrderStatusResponse() (response *DescribeOrderStatusResponse) {
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DescribeOrderStatus(request *DescribeOrderStatusRequest) (response *DescribeOrderStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeOrderStatusRequest()
-    }
-    
-    response = NewDescribeOrderStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.DescribeOrderStatusWithContext(context.Background(), request)
 }
 
 // DescribeOrderStatus
@@ -2799,6 +2691,11 @@ func (c *Client) DescribeOrderStatusWithContext(ctx context.Context, request *De
     if request == nil {
         request = NewDescribeOrderStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrderStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDescribeOrderStatusResponse()
@@ -2830,13 +2727,7 @@ func NewDistributeAccreditQueryResponse() (response *DistributeAccreditQueryResp
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeAccreditQuery(request *DistributeAccreditQueryRequest) (response *DistributeAccreditQueryResponse, err error) {
-    if request == nil {
-        request = NewDistributeAccreditQueryRequest()
-    }
-    
-    response = NewDistributeAccreditQueryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeAccreditQueryWithContext(context.Background(), request)
 }
 
 // DistributeAccreditQuery
@@ -2849,6 +2740,11 @@ func (c *Client) DistributeAccreditQueryWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeAccreditQueryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeAccreditQuery require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeAccreditQueryResponse()
@@ -2880,13 +2776,7 @@ func NewDistributeAccreditTlinxResponse() (response *DistributeAccreditTlinxResp
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeAccreditTlinx(request *DistributeAccreditTlinxRequest) (response *DistributeAccreditTlinxResponse, err error) {
-    if request == nil {
-        request = NewDistributeAccreditTlinxRequest()
-    }
-    
-    response = NewDistributeAccreditTlinxResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeAccreditTlinxWithContext(context.Background(), request)
 }
 
 // DistributeAccreditTlinx
@@ -2899,6 +2789,11 @@ func (c *Client) DistributeAccreditTlinxWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeAccreditTlinxRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeAccreditTlinx require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeAccreditTlinxResponse()
@@ -2930,13 +2825,7 @@ func NewDistributeAddReceiverResponse() (response *DistributeAddReceiverResponse
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeAddReceiver(request *DistributeAddReceiverRequest) (response *DistributeAddReceiverResponse, err error) {
-    if request == nil {
-        request = NewDistributeAddReceiverRequest()
-    }
-    
-    response = NewDistributeAddReceiverResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeAddReceiverWithContext(context.Background(), request)
 }
 
 // DistributeAddReceiver
@@ -2949,6 +2838,11 @@ func (c *Client) DistributeAddReceiverWithContext(ctx context.Context, request *
     if request == nil {
         request = NewDistributeAddReceiverRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeAddReceiver require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeAddReceiverResponse()
@@ -2980,13 +2874,7 @@ func NewDistributeApplyResponse() (response *DistributeApplyResponse) {
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeApply(request *DistributeApplyRequest) (response *DistributeApplyResponse, err error) {
-    if request == nil {
-        request = NewDistributeApplyRequest()
-    }
-    
-    response = NewDistributeApplyResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeApplyWithContext(context.Background(), request)
 }
 
 // DistributeApply
@@ -2999,6 +2887,11 @@ func (c *Client) DistributeApplyWithContext(ctx context.Context, request *Distri
     if request == nil {
         request = NewDistributeApplyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeApply require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeApplyResponse()
@@ -3030,13 +2923,7 @@ func NewDistributeCancelResponse() (response *DistributeCancelResponse) {
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeCancel(request *DistributeCancelRequest) (response *DistributeCancelResponse, err error) {
-    if request == nil {
-        request = NewDistributeCancelRequest()
-    }
-    
-    response = NewDistributeCancelResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeCancelWithContext(context.Background(), request)
 }
 
 // DistributeCancel
@@ -3049,6 +2936,11 @@ func (c *Client) DistributeCancelWithContext(ctx context.Context, request *Distr
     if request == nil {
         request = NewDistributeCancelRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeCancel require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeCancelResponse()
@@ -3080,13 +2972,7 @@ func NewDistributeQueryResponse() (response *DistributeQueryResponse) {
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeQuery(request *DistributeQueryRequest) (response *DistributeQueryResponse, err error) {
-    if request == nil {
-        request = NewDistributeQueryRequest()
-    }
-    
-    response = NewDistributeQueryResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeQueryWithContext(context.Background(), request)
 }
 
 // DistributeQuery
@@ -3099,6 +2985,11 @@ func (c *Client) DistributeQueryWithContext(ctx context.Context, request *Distri
     if request == nil {
         request = NewDistributeQueryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeQuery require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeQueryResponse()
@@ -3130,13 +3021,7 @@ func NewDistributeQueryReceiverResponse() (response *DistributeQueryReceiverResp
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeQueryReceiver(request *DistributeQueryReceiverRequest) (response *DistributeQueryReceiverResponse, err error) {
-    if request == nil {
-        request = NewDistributeQueryReceiverRequest()
-    }
-    
-    response = NewDistributeQueryReceiverResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeQueryReceiverWithContext(context.Background(), request)
 }
 
 // DistributeQueryReceiver
@@ -3149,6 +3034,11 @@ func (c *Client) DistributeQueryReceiverWithContext(ctx context.Context, request
     if request == nil {
         request = NewDistributeQueryReceiverRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeQueryReceiver require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeQueryReceiverResponse()
@@ -3180,13 +3070,7 @@ func NewDistributeRemoveReceiverResponse() (response *DistributeRemoveReceiverRe
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) DistributeRemoveReceiver(request *DistributeRemoveReceiverRequest) (response *DistributeRemoveReceiverResponse, err error) {
-    if request == nil {
-        request = NewDistributeRemoveReceiverRequest()
-    }
-    
-    response = NewDistributeRemoveReceiverResponse()
-    err = c.Send(request, response)
-    return
+    return c.DistributeRemoveReceiverWithContext(context.Background(), request)
 }
 
 // DistributeRemoveReceiver
@@ -3199,6 +3083,11 @@ func (c *Client) DistributeRemoveReceiverWithContext(ctx context.Context, reques
     if request == nil {
         request = NewDistributeRemoveReceiverRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeRemoveReceiver require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDistributeRemoveReceiverResponse()
@@ -3235,13 +3124,7 @@ func NewDownloadBillResponse() (response *DownloadBillResponse) {
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DownloadBill(request *DownloadBillRequest) (response *DownloadBillResponse, err error) {
-    if request == nil {
-        request = NewDownloadBillRequest()
-    }
-    
-    response = NewDownloadBillResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadBillWithContext(context.Background(), request)
 }
 
 // DownloadBill
@@ -3259,6 +3142,11 @@ func (c *Client) DownloadBillWithContext(ctx context.Context, request *DownloadB
     if request == nil {
         request = NewDownloadBillRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadBill require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadBillResponse()
@@ -3295,13 +3183,7 @@ func NewDownloadOrgFileResponse() (response *DownloadOrgFileResponse) {
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DownloadOrgFile(request *DownloadOrgFileRequest) (response *DownloadOrgFileResponse, err error) {
-    if request == nil {
-        request = NewDownloadOrgFileRequest()
-    }
-    
-    response = NewDownloadOrgFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadOrgFileWithContext(context.Background(), request)
 }
 
 // DownloadOrgFile
@@ -3319,6 +3201,11 @@ func (c *Client) DownloadOrgFileWithContext(ctx context.Context, request *Downlo
     if request == nil {
         request = NewDownloadOrgFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadOrgFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadOrgFileResponse()
@@ -3351,13 +3238,7 @@ func NewDownloadReconciliationUrlResponse() (response *DownloadReconciliationUrl
 //  FAILEDOPERATION_ISEMPTY = "FailedOperation.IsEmpty"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) DownloadReconciliationUrl(request *DownloadReconciliationUrlRequest) (response *DownloadReconciliationUrlResponse, err error) {
-    if request == nil {
-        request = NewDownloadReconciliationUrlRequest()
-    }
-    
-    response = NewDownloadReconciliationUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.DownloadReconciliationUrlWithContext(context.Background(), request)
 }
 
 // DownloadReconciliationUrl
@@ -3371,6 +3252,11 @@ func (c *Client) DownloadReconciliationUrlWithContext(ctx context.Context, reque
     if request == nil {
         request = NewDownloadReconciliationUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadReconciliationUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewDownloadReconciliationUrlResponse()
@@ -3403,13 +3289,7 @@ func NewExecuteMemberTransactionResponse() (response *ExecuteMemberTransactionRe
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) ExecuteMemberTransaction(request *ExecuteMemberTransactionRequest) (response *ExecuteMemberTransactionResponse, err error) {
-    if request == nil {
-        request = NewExecuteMemberTransactionRequest()
-    }
-    
-    response = NewExecuteMemberTransactionResponse()
-    err = c.Send(request, response)
-    return
+    return c.ExecuteMemberTransactionWithContext(context.Background(), request)
 }
 
 // ExecuteMemberTransaction
@@ -3423,6 +3303,11 @@ func (c *Client) ExecuteMemberTransactionWithContext(ctx context.Context, reques
     if request == nil {
         request = NewExecuteMemberTransactionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExecuteMemberTransaction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewExecuteMemberTransactionResponse()
@@ -3470,13 +3355,7 @@ func NewMigrateOrderRefundResponse() (response *MigrateOrderRefundResponse) {
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) MigrateOrderRefund(request *MigrateOrderRefundRequest) (response *MigrateOrderRefundResponse, err error) {
-    if request == nil {
-        request = NewMigrateOrderRefundRequest()
-    }
-    
-    response = NewMigrateOrderRefundResponse()
-    err = c.Send(request, response)
-    return
+    return c.MigrateOrderRefundWithContext(context.Background(), request)
 }
 
 // MigrateOrderRefund
@@ -3505,6 +3384,11 @@ func (c *Client) MigrateOrderRefundWithContext(ctx context.Context, request *Mig
     if request == nil {
         request = NewMigrateOrderRefundRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MigrateOrderRefund require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMigrateOrderRefundResponse()
@@ -3550,13 +3434,7 @@ func NewMigrateOrderRefundQueryResponse() (response *MigrateOrderRefundQueryResp
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) MigrateOrderRefundQuery(request *MigrateOrderRefundQueryRequest) (response *MigrateOrderRefundQueryResponse, err error) {
-    if request == nil {
-        request = NewMigrateOrderRefundQueryRequest()
-    }
-    
-    response = NewMigrateOrderRefundQueryResponse()
-    err = c.Send(request, response)
-    return
+    return c.MigrateOrderRefundQueryWithContext(context.Background(), request)
 }
 
 // MigrateOrderRefundQuery
@@ -3583,6 +3461,11 @@ func (c *Client) MigrateOrderRefundQueryWithContext(ctx context.Context, request
     if request == nil {
         request = NewMigrateOrderRefundQueryRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MigrateOrderRefundQuery require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewMigrateOrderRefundQueryResponse()
@@ -3618,13 +3501,7 @@ func NewModifyAgentTaxPaymentInfoResponse() (response *ModifyAgentTaxPaymentInfo
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) ModifyAgentTaxPaymentInfo(request *ModifyAgentTaxPaymentInfoRequest) (response *ModifyAgentTaxPaymentInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyAgentTaxPaymentInfoRequest()
-    }
-    
-    response = NewModifyAgentTaxPaymentInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyAgentTaxPaymentInfoWithContext(context.Background(), request)
 }
 
 // ModifyAgentTaxPaymentInfo
@@ -3641,6 +3518,11 @@ func (c *Client) ModifyAgentTaxPaymentInfoWithContext(ctx context.Context, reque
     if request == nil {
         request = NewModifyAgentTaxPaymentInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAgentTaxPaymentInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyAgentTaxPaymentInfoResponse()
@@ -3676,13 +3558,7 @@ func NewModifyBindedAccountResponse() (response *ModifyBindedAccountResponse) {
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) ModifyBindedAccount(request *ModifyBindedAccountRequest) (response *ModifyBindedAccountResponse, err error) {
-    if request == nil {
-        request = NewModifyBindedAccountRequest()
-    }
-    
-    response = NewModifyBindedAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyBindedAccountWithContext(context.Background(), request)
 }
 
 // ModifyBindedAccount
@@ -3699,6 +3575,11 @@ func (c *Client) ModifyBindedAccountWithContext(ctx context.Context, request *Mo
     if request == nil {
         request = NewModifyBindedAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBindedAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyBindedAccountResponse()
@@ -3731,13 +3612,7 @@ func NewModifyMerchantResponse() (response *ModifyMerchantResponse) {
 //  FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
 //  FAILEDOPERATION_MODIFYMERCHANTFAILED = "FailedOperation.ModifyMerchantFailed"
 func (c *Client) ModifyMerchant(request *ModifyMerchantRequest) (response *ModifyMerchantResponse, err error) {
-    if request == nil {
-        request = NewModifyMerchantRequest()
-    }
-    
-    response = NewModifyMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMerchantWithContext(context.Background(), request)
 }
 
 // ModifyMerchant
@@ -3751,6 +3626,11 @@ func (c *Client) ModifyMerchantWithContext(ctx context.Context, request *ModifyM
     if request == nil {
         request = NewModifyMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMerchantResponse()
@@ -3789,13 +3669,7 @@ func NewModifyMntMbrBindRelateAcctBankCodeResponse() (response *ModifyMntMbrBind
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) ModifyMntMbrBindRelateAcctBankCode(request *ModifyMntMbrBindRelateAcctBankCodeRequest) (response *ModifyMntMbrBindRelateAcctBankCodeResponse, err error) {
-    if request == nil {
-        request = NewModifyMntMbrBindRelateAcctBankCodeRequest()
-    }
-    
-    response = NewModifyMntMbrBindRelateAcctBankCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.ModifyMntMbrBindRelateAcctBankCodeWithContext(context.Background(), request)
 }
 
 // ModifyMntMbrBindRelateAcctBankCode
@@ -3815,6 +3689,11 @@ func (c *Client) ModifyMntMbrBindRelateAcctBankCodeWithContext(ctx context.Conte
     if request == nil {
         request = NewModifyMntMbrBindRelateAcctBankCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMntMbrBindRelateAcctBankCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewModifyMntMbrBindRelateAcctBankCodeResponse()
@@ -3850,13 +3729,7 @@ func NewQueryAcctBindingResponse() (response *QueryAcctBindingResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *QueryAcctBindingResponse, err error) {
-    if request == nil {
-        request = NewQueryAcctBindingRequest()
-    }
-    
-    response = NewQueryAcctBindingResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAcctBindingWithContext(context.Background(), request)
 }
 
 // QueryAcctBinding
@@ -3873,6 +3746,11 @@ func (c *Client) QueryAcctBindingWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryAcctBindingRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAcctBinding require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAcctBindingResponse()
@@ -3908,13 +3786,7 @@ func NewQueryAcctInfoResponse() (response *QueryAcctInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctInfo(request *QueryAcctInfoRequest) (response *QueryAcctInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryAcctInfoRequest()
-    }
-    
-    response = NewQueryAcctInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAcctInfoWithContext(context.Background(), request)
 }
 
 // QueryAcctInfo
@@ -3931,6 +3803,11 @@ func (c *Client) QueryAcctInfoWithContext(ctx context.Context, request *QueryAcc
     if request == nil {
         request = NewQueryAcctInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAcctInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAcctInfoResponse()
@@ -3965,13 +3842,7 @@ func NewQueryAcctInfoListResponse() (response *QueryAcctInfoListResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response *QueryAcctInfoListResponse, err error) {
-    if request == nil {
-        request = NewQueryAcctInfoListRequest()
-    }
-    
-    response = NewQueryAcctInfoListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAcctInfoListWithContext(context.Background(), request)
 }
 
 // QueryAcctInfoList
@@ -3987,6 +3858,11 @@ func (c *Client) QueryAcctInfoListWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryAcctInfoListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAcctInfoList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAcctInfoListResponse()
@@ -4023,13 +3899,7 @@ func NewQueryAgentStatementsResponse() (response *QueryAgentStatementsResponse) 
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) QueryAgentStatements(request *QueryAgentStatementsRequest) (response *QueryAgentStatementsResponse, err error) {
-    if request == nil {
-        request = NewQueryAgentStatementsRequest()
-    }
-    
-    response = NewQueryAgentStatementsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAgentStatementsWithContext(context.Background(), request)
 }
 
 // QueryAgentStatements
@@ -4047,6 +3917,11 @@ func (c *Client) QueryAgentStatementsWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryAgentStatementsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAgentStatements require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAgentStatementsResponse()
@@ -4082,13 +3957,7 @@ func NewQueryAgentTaxPaymentBatchResponse() (response *QueryAgentTaxPaymentBatch
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryAgentTaxPaymentBatch(request *QueryAgentTaxPaymentBatchRequest) (response *QueryAgentTaxPaymentBatchResponse, err error) {
-    if request == nil {
-        request = NewQueryAgentTaxPaymentBatchRequest()
-    }
-    
-    response = NewQueryAgentTaxPaymentBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAgentTaxPaymentBatchWithContext(context.Background(), request)
 }
 
 // QueryAgentTaxPaymentBatch
@@ -4105,6 +3974,11 @@ func (c *Client) QueryAgentTaxPaymentBatchWithContext(ctx context.Context, reque
     if request == nil {
         request = NewQueryAgentTaxPaymentBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAgentTaxPaymentBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAgentTaxPaymentBatchResponse()
@@ -4139,13 +4013,7 @@ func NewQueryAnchorContractInfoResponse() (response *QueryAnchorContractInfoResp
 //  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryAnchorContractInfo(request *QueryAnchorContractInfoRequest) (response *QueryAnchorContractInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryAnchorContractInfoRequest()
-    }
-    
-    response = NewQueryAnchorContractInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAnchorContractInfoWithContext(context.Background(), request)
 }
 
 // QueryAnchorContractInfo
@@ -4161,6 +4029,11 @@ func (c *Client) QueryAnchorContractInfoWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryAnchorContractInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAnchorContractInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAnchorContractInfoResponse()
@@ -4193,13 +4066,7 @@ func NewQueryApplicationMaterialResponse() (response *QueryApplicationMaterialRe
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryApplicationMaterial(request *QueryApplicationMaterialRequest) (response *QueryApplicationMaterialResponse, err error) {
-    if request == nil {
-        request = NewQueryApplicationMaterialRequest()
-    }
-    
-    response = NewQueryApplicationMaterialResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryApplicationMaterialWithContext(context.Background(), request)
 }
 
 // QueryApplicationMaterial
@@ -4213,6 +4080,11 @@ func (c *Client) QueryApplicationMaterialWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryApplicationMaterialRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryApplicationMaterial require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryApplicationMaterialResponse()
@@ -4245,13 +4117,7 @@ func NewQueryAssignmentResponse() (response *QueryAssignmentResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryAssignment(request *QueryAssignmentRequest) (response *QueryAssignmentResponse, err error) {
-    if request == nil {
-        request = NewQueryAssignmentRequest()
-    }
-    
-    response = NewQueryAssignmentResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryAssignmentWithContext(context.Background(), request)
 }
 
 // QueryAssignment
@@ -4265,6 +4131,11 @@ func (c *Client) QueryAssignmentWithContext(ctx context.Context, request *QueryA
     if request == nil {
         request = NewQueryAssignmentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryAssignment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryAssignmentResponse()
@@ -4299,13 +4170,7 @@ func NewQueryBalanceResponse() (response *QueryBalanceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryBalance(request *QueryBalanceRequest) (response *QueryBalanceResponse, err error) {
-    if request == nil {
-        request = NewQueryBalanceRequest()
-    }
-    
-    response = NewQueryBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBalanceWithContext(context.Background(), request)
 }
 
 // QueryBalance
@@ -4321,6 +4186,11 @@ func (c *Client) QueryBalanceWithContext(ctx context.Context, request *QueryBala
     if request == nil {
         request = NewQueryBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBalanceResponse()
@@ -4359,13 +4229,7 @@ func NewQueryBankClearResponse() (response *QueryBankClearResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankClear(request *QueryBankClearRequest) (response *QueryBankClearResponse, err error) {
-    if request == nil {
-        request = NewQueryBankClearRequest()
-    }
-    
-    response = NewQueryBankClearResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBankClearWithContext(context.Background(), request)
 }
 
 // QueryBankClear
@@ -4385,6 +4249,11 @@ func (c *Client) QueryBankClearWithContext(ctx context.Context, request *QueryBa
     if request == nil {
         request = NewQueryBankClearRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBankClear require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBankClearResponse()
@@ -4423,13 +4292,7 @@ func NewQueryBankTransactionDetailsResponse() (response *QueryBankTransactionDet
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankTransactionDetails(request *QueryBankTransactionDetailsRequest) (response *QueryBankTransactionDetailsResponse, err error) {
-    if request == nil {
-        request = NewQueryBankTransactionDetailsRequest()
-    }
-    
-    response = NewQueryBankTransactionDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBankTransactionDetailsWithContext(context.Background(), request)
 }
 
 // QueryBankTransactionDetails
@@ -4449,6 +4312,11 @@ func (c *Client) QueryBankTransactionDetailsWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryBankTransactionDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBankTransactionDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBankTransactionDetailsResponse()
@@ -4487,13 +4355,7 @@ func NewQueryBankWithdrawCashDetailsResponse() (response *QueryBankWithdrawCashD
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBankWithdrawCashDetails(request *QueryBankWithdrawCashDetailsRequest) (response *QueryBankWithdrawCashDetailsResponse, err error) {
-    if request == nil {
-        request = NewQueryBankWithdrawCashDetailsRequest()
-    }
-    
-    response = NewQueryBankWithdrawCashDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBankWithdrawCashDetailsWithContext(context.Background(), request)
 }
 
 // QueryBankWithdrawCashDetails
@@ -4513,6 +4375,11 @@ func (c *Client) QueryBankWithdrawCashDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryBankWithdrawCashDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBankWithdrawCashDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBankWithdrawCashDetailsResponse()
@@ -4551,13 +4418,7 @@ func NewQueryBatchPaymentResultResponse() (response *QueryBatchPaymentResultResp
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBatchPaymentResult(request *QueryBatchPaymentResultRequest) (response *QueryBatchPaymentResultResponse, err error) {
-    if request == nil {
-        request = NewQueryBatchPaymentResultRequest()
-    }
-    
-    response = NewQueryBatchPaymentResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBatchPaymentResultWithContext(context.Background(), request)
 }
 
 // QueryBatchPaymentResult
@@ -4577,6 +4438,11 @@ func (c *Client) QueryBatchPaymentResultWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryBatchPaymentResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBatchPaymentResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBatchPaymentResultResponse()
@@ -4615,13 +4481,7 @@ func NewQueryBillDownloadURLResponse() (response *QueryBillDownloadURLResponse) 
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryBillDownloadURL(request *QueryBillDownloadURLRequest) (response *QueryBillDownloadURLResponse, err error) {
-    if request == nil {
-        request = NewQueryBillDownloadURLRequest()
-    }
-    
-    response = NewQueryBillDownloadURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryBillDownloadURLWithContext(context.Background(), request)
 }
 
 // QueryBillDownloadURL
@@ -4641,6 +4501,11 @@ func (c *Client) QueryBillDownloadURLWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryBillDownloadURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryBillDownloadURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryBillDownloadURLResponse()
@@ -4679,13 +4544,7 @@ func NewQueryCityCodeResponse() (response *QueryCityCodeResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryCityCode(request *QueryCityCodeRequest) (response *QueryCityCodeResponse, err error) {
-    if request == nil {
-        request = NewQueryCityCodeRequest()
-    }
-    
-    response = NewQueryCityCodeResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCityCodeWithContext(context.Background(), request)
 }
 
 // QueryCityCode
@@ -4705,6 +4564,11 @@ func (c *Client) QueryCityCodeWithContext(ctx context.Context, request *QueryCit
     if request == nil {
         request = NewQueryCityCodeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCityCode require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCityCodeResponse()
@@ -4743,13 +4607,7 @@ func NewQueryCommonTransferRechargeResponse() (response *QueryCommonTransferRech
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryCommonTransferRecharge(request *QueryCommonTransferRechargeRequest) (response *QueryCommonTransferRechargeResponse, err error) {
-    if request == nil {
-        request = NewQueryCommonTransferRechargeRequest()
-    }
-    
-    response = NewQueryCommonTransferRechargeResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCommonTransferRechargeWithContext(context.Background(), request)
 }
 
 // QueryCommonTransferRecharge
@@ -4769,6 +4627,11 @@ func (c *Client) QueryCommonTransferRechargeWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryCommonTransferRechargeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCommonTransferRecharge require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCommonTransferRechargeResponse()
@@ -4833,13 +4696,7 @@ func NewQueryContractResponse() (response *QueryContractResponse) {
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryContractResponse, err error) {
-    if request == nil {
-        request = NewQueryContractRequest()
-    }
-    
-    response = NewQueryContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryContractWithContext(context.Background(), request)
 }
 
 // QueryContract
@@ -4885,6 +4742,11 @@ func (c *Client) QueryContractWithContext(ctx context.Context, request *QueryCon
     if request == nil {
         request = NewQueryContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryContractResponse()
@@ -4949,13 +4811,7 @@ func NewQueryContractPayFeeResponse() (response *QueryContractPayFeeResponse) {
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryContractPayFee(request *QueryContractPayFeeRequest) (response *QueryContractPayFeeResponse, err error) {
-    if request == nil {
-        request = NewQueryContractPayFeeRequest()
-    }
-    
-    response = NewQueryContractPayFeeResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryContractPayFeeWithContext(context.Background(), request)
 }
 
 // QueryContractPayFee
@@ -5001,6 +4857,11 @@ func (c *Client) QueryContractPayFeeWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryContractPayFeeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryContractPayFee require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryContractPayFeeResponse()
@@ -5065,13 +4926,7 @@ func NewQueryContractPayWayListResponse() (response *QueryContractPayWayListResp
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryContractPayWayList(request *QueryContractPayWayListRequest) (response *QueryContractPayWayListResponse, err error) {
-    if request == nil {
-        request = NewQueryContractPayWayListRequest()
-    }
-    
-    response = NewQueryContractPayWayListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryContractPayWayListWithContext(context.Background(), request)
 }
 
 // QueryContractPayWayList
@@ -5117,6 +4972,11 @@ func (c *Client) QueryContractPayWayListWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryContractPayWayListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryContractPayWayList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryContractPayWayListResponse()
@@ -5181,13 +5041,7 @@ func NewQueryContractRelateShopResponse() (response *QueryContractRelateShopResp
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryContractRelateShop(request *QueryContractRelateShopRequest) (response *QueryContractRelateShopResponse, err error) {
-    if request == nil {
-        request = NewQueryContractRelateShopRequest()
-    }
-    
-    response = NewQueryContractRelateShopResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryContractRelateShopWithContext(context.Background(), request)
 }
 
 // QueryContractRelateShop
@@ -5233,6 +5087,11 @@ func (c *Client) QueryContractRelateShopWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryContractRelateShopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryContractRelateShop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryContractRelateShopResponse()
@@ -5271,13 +5130,7 @@ func NewQueryCustAcctIdBalanceResponse() (response *QueryCustAcctIdBalanceRespon
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryCustAcctIdBalance(request *QueryCustAcctIdBalanceRequest) (response *QueryCustAcctIdBalanceResponse, err error) {
-    if request == nil {
-        request = NewQueryCustAcctIdBalanceRequest()
-    }
-    
-    response = NewQueryCustAcctIdBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryCustAcctIdBalanceWithContext(context.Background(), request)
 }
 
 // QueryCustAcctIdBalance
@@ -5297,6 +5150,11 @@ func (c *Client) QueryCustAcctIdBalanceWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryCustAcctIdBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCustAcctIdBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryCustAcctIdBalanceResponse()
@@ -5330,13 +5188,7 @@ func NewQueryDownloadBillURLResponse() (response *QueryDownloadBillURLResponse) 
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryDownloadBillURL(request *QueryDownloadBillURLRequest) (response *QueryDownloadBillURLResponse, err error) {
-    if request == nil {
-        request = NewQueryDownloadBillURLRequest()
-    }
-    
-    response = NewQueryDownloadBillURLResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryDownloadBillURLWithContext(context.Background(), request)
 }
 
 // QueryDownloadBillURL
@@ -5351,6 +5203,11 @@ func (c *Client) QueryDownloadBillURLWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryDownloadBillURLRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryDownloadBillURL require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryDownloadBillURLResponse()
@@ -5384,13 +5241,7 @@ func NewQueryExceedingInfoResponse() (response *QueryExceedingInfoResponse) {
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryExceedingInfo(request *QueryExceedingInfoRequest) (response *QueryExceedingInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryExceedingInfoRequest()
-    }
-    
-    response = NewQueryExceedingInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryExceedingInfoWithContext(context.Background(), request)
 }
 
 // QueryExceedingInfo
@@ -5405,6 +5256,11 @@ func (c *Client) QueryExceedingInfoWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryExceedingInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExceedingInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryExceedingInfoResponse()
@@ -5437,13 +5293,7 @@ func NewQueryExchangeRateResponse() (response *QueryExchangeRateResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (response *QueryExchangeRateResponse, err error) {
-    if request == nil {
-        request = NewQueryExchangeRateRequest()
-    }
-    
-    response = NewQueryExchangeRateResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryExchangeRateWithContext(context.Background(), request)
 }
 
 // QueryExchangeRate
@@ -5457,6 +5307,11 @@ func (c *Client) QueryExchangeRateWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryExchangeRateRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExchangeRate require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryExchangeRateResponse()
@@ -5489,13 +5344,7 @@ func NewQueryFundsTransactionDetailsResponse() (response *QueryFundsTransactionD
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryFundsTransactionDetails(request *QueryFundsTransactionDetailsRequest) (response *QueryFundsTransactionDetailsResponse, err error) {
-    if request == nil {
-        request = NewQueryFundsTransactionDetailsRequest()
-    }
-    
-    response = NewQueryFundsTransactionDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryFundsTransactionDetailsWithContext(context.Background(), request)
 }
 
 // QueryFundsTransactionDetails
@@ -5509,6 +5358,11 @@ func (c *Client) QueryFundsTransactionDetailsWithContext(ctx context.Context, re
     if request == nil {
         request = NewQueryFundsTransactionDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFundsTransactionDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryFundsTransactionDetailsResponse()
@@ -5554,13 +5408,7 @@ func NewQueryInvoiceResponse() (response *QueryInvoiceResponse) {
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryInvoice(request *QueryInvoiceRequest) (response *QueryInvoiceResponse, err error) {
-    if request == nil {
-        request = NewQueryInvoiceRequest()
-    }
-    
-    response = NewQueryInvoiceResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryInvoiceWithContext(context.Background(), request)
 }
 
 // QueryInvoice
@@ -5587,6 +5435,11 @@ func (c *Client) QueryInvoiceWithContext(ctx context.Context, request *QueryInvo
     if request == nil {
         request = NewQueryInvoiceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryInvoice require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryInvoiceResponse()
@@ -5617,13 +5470,7 @@ func NewQueryInvoiceV2Response() (response *QueryInvoiceV2Response) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) QueryInvoiceV2(request *QueryInvoiceV2Request) (response *QueryInvoiceV2Response, err error) {
-    if request == nil {
-        request = NewQueryInvoiceV2Request()
-    }
-    
-    response = NewQueryInvoiceV2Response()
-    err = c.Send(request, response)
-    return
+    return c.QueryInvoiceV2WithContext(context.Background(), request)
 }
 
 // QueryInvoiceV2
@@ -5635,6 +5482,11 @@ func (c *Client) QueryInvoiceV2WithContext(ctx context.Context, request *QueryIn
     if request == nil {
         request = NewQueryInvoiceV2Request()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryInvoiceV2 require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryInvoiceV2Response()
@@ -5665,13 +5517,7 @@ func NewQueryMaliciousRegistrationResponse() (response *QueryMaliciousRegistrati
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) QueryMaliciousRegistration(request *QueryMaliciousRegistrationRequest) (response *QueryMaliciousRegistrationResponse, err error) {
-    if request == nil {
-        request = NewQueryMaliciousRegistrationRequest()
-    }
-    
-    response = NewQueryMaliciousRegistrationResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMaliciousRegistrationWithContext(context.Background(), request)
 }
 
 // QueryMaliciousRegistration
@@ -5683,6 +5529,11 @@ func (c *Client) QueryMaliciousRegistrationWithContext(ctx context.Context, requ
     if request == nil {
         request = NewQueryMaliciousRegistrationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMaliciousRegistration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMaliciousRegistrationResponse()
@@ -5723,13 +5574,7 @@ func NewQueryMemberBindResponse() (response *QueryMemberBindResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryMemberBind(request *QueryMemberBindRequest) (response *QueryMemberBindResponse, err error) {
-    if request == nil {
-        request = NewQueryMemberBindRequest()
-    }
-    
-    response = NewQueryMemberBindResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMemberBindWithContext(context.Background(), request)
 }
 
 // QueryMemberBind
@@ -5751,6 +5596,11 @@ func (c *Client) QueryMemberBindWithContext(ctx context.Context, request *QueryM
     if request == nil {
         request = NewQueryMemberBindRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMemberBind require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMemberBindResponse()
@@ -5789,13 +5639,7 @@ func NewQueryMemberTransactionResponse() (response *QueryMemberTransactionRespon
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryMemberTransaction(request *QueryMemberTransactionRequest) (response *QueryMemberTransactionResponse, err error) {
-    if request == nil {
-        request = NewQueryMemberTransactionRequest()
-    }
-    
-    response = NewQueryMemberTransactionResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMemberTransactionWithContext(context.Background(), request)
 }
 
 // QueryMemberTransaction
@@ -5815,6 +5659,11 @@ func (c *Client) QueryMemberTransactionWithContext(ctx context.Context, request 
     if request == nil {
         request = NewQueryMemberTransactionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMemberTransaction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMemberTransactionResponse()
@@ -5853,13 +5702,7 @@ func NewQueryMemberTransactionDetailsResponse() (response *QueryMemberTransactio
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryMemberTransactionDetails(request *QueryMemberTransactionDetailsRequest) (response *QueryMemberTransactionDetailsResponse, err error) {
-    if request == nil {
-        request = NewQueryMemberTransactionDetailsRequest()
-    }
-    
-    response = NewQueryMemberTransactionDetailsResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMemberTransactionDetailsWithContext(context.Background(), request)
 }
 
 // QueryMemberTransactionDetails
@@ -5879,6 +5722,11 @@ func (c *Client) QueryMemberTransactionDetailsWithContext(ctx context.Context, r
     if request == nil {
         request = NewQueryMemberTransactionDetailsRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMemberTransactionDetails require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMemberTransactionDetailsResponse()
@@ -5912,13 +5760,7 @@ func NewQueryMerchantResponse() (response *QueryMerchantResponse) {
 //  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryMerchant(request *QueryMerchantRequest) (response *QueryMerchantResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantRequest()
-    }
-    
-    response = NewQueryMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantWithContext(context.Background(), request)
 }
 
 // QueryMerchant
@@ -5933,6 +5775,11 @@ func (c *Client) QueryMerchantWithContext(ctx context.Context, request *QueryMer
     if request == nil {
         request = NewQueryMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantResponse()
@@ -5965,13 +5812,7 @@ func NewQueryMerchantBalanceResponse() (response *QueryMerchantBalanceResponse) 
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryMerchantBalance(request *QueryMerchantBalanceRequest) (response *QueryMerchantBalanceResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantBalanceRequest()
-    }
-    
-    response = NewQueryMerchantBalanceResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantBalanceWithContext(context.Background(), request)
 }
 
 // QueryMerchantBalance
@@ -5985,6 +5826,11 @@ func (c *Client) QueryMerchantBalanceWithContext(ctx context.Context, request *Q
     if request == nil {
         request = NewQueryMerchantBalanceRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchantBalance require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantBalanceResponse()
@@ -6017,13 +5863,7 @@ func NewQueryMerchantClassificationResponse() (response *QueryMerchantClassifica
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryMerchantClassification(request *QueryMerchantClassificationRequest) (response *QueryMerchantClassificationResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantClassificationRequest()
-    }
-    
-    response = NewQueryMerchantClassificationResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantClassificationWithContext(context.Background(), request)
 }
 
 // QueryMerchantClassification
@@ -6037,6 +5877,11 @@ func (c *Client) QueryMerchantClassificationWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryMerchantClassificationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchantClassification require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantClassificationResponse()
@@ -6075,13 +5920,7 @@ func NewQueryMerchantInfoForManagementResponse() (response *QueryMerchantInfoFor
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QueryMerchantInfoForManagement(request *QueryMerchantInfoForManagementRequest) (response *QueryMerchantInfoForManagementResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantInfoForManagementRequest()
-    }
-    
-    response = NewQueryMerchantInfoForManagementResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantInfoForManagementWithContext(context.Background(), request)
 }
 
 // QueryMerchantInfoForManagement
@@ -6101,6 +5940,11 @@ func (c *Client) QueryMerchantInfoForManagementWithContext(ctx context.Context, 
     if request == nil {
         request = NewQueryMerchantInfoForManagementRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchantInfoForManagement require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantInfoForManagementResponse()
@@ -6134,13 +5978,7 @@ func NewQueryMerchantOrderResponse() (response *QueryMerchantOrderResponse) {
 //  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryMerchantOrder(request *QueryMerchantOrderRequest) (response *QueryMerchantOrderResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantOrderRequest()
-    }
-    
-    response = NewQueryMerchantOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantOrderWithContext(context.Background(), request)
 }
 
 // QueryMerchantOrder
@@ -6155,6 +5993,11 @@ func (c *Client) QueryMerchantOrderWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryMerchantOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchantOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantOrderResponse()
@@ -6188,13 +6031,7 @@ func NewQueryMerchantPayWayListResponse() (response *QueryMerchantPayWayListResp
 //  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryMerchantPayWayList(request *QueryMerchantPayWayListRequest) (response *QueryMerchantPayWayListResponse, err error) {
-    if request == nil {
-        request = NewQueryMerchantPayWayListRequest()
-    }
-    
-    response = NewQueryMerchantPayWayListResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryMerchantPayWayListWithContext(context.Background(), request)
 }
 
 // QueryMerchantPayWayList
@@ -6209,9 +6046,120 @@ func (c *Client) QueryMerchantPayWayListWithContext(ctx context.Context, request
     if request == nil {
         request = NewQueryMerchantPayWayListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMerchantPayWayList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryMerchantPayWayListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankBankAccountBalanceRequest() (request *QueryOpenBankBankAccountBalanceRequest) {
+    request = &QueryOpenBankBankAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBankAccountBalance")
+    
+    
+    return
+}
+
+func NewQueryOpenBankBankAccountBalanceResponse() (response *QueryOpenBankBankAccountBalanceResponse) {
+    response = &QueryOpenBankBankAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankBankAccountBalance
+// 云企付-查询账户余额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBankAccountBalance(request *QueryOpenBankBankAccountBalanceRequest) (response *QueryOpenBankBankAccountBalanceResponse, err error) {
+    return c.QueryOpenBankBankAccountBalanceWithContext(context.Background(), request)
+}
+
+// QueryOpenBankBankAccountBalance
+// 云企付-查询账户余额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBankAccountBalanceWithContext(ctx context.Context, request *QueryOpenBankBankAccountBalanceRequest) (response *QueryOpenBankBankAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankBankAccountBalanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankBankAccountBalance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankBankAccountBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankBankBranchListRequest() (request *QueryOpenBankBankBranchListRequest) {
+    request = &QueryOpenBankBankBranchListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBankBranchList")
+    
+    
+    return
+}
+
+func NewQueryOpenBankBankBranchListResponse() (response *QueryOpenBankBankBranchListResponse) {
+    response = &QueryOpenBankBankBranchListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankBankBranchList
+// 云企付-查询联行号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBankBranchList(request *QueryOpenBankBankBranchListRequest) (response *QueryOpenBankBankBranchListResponse, err error) {
+    return c.QueryOpenBankBankBranchListWithContext(context.Background(), request)
+}
+
+// QueryOpenBankBankBranchList
+// 云企付-查询联行号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankBankBranchListWithContext(ctx context.Context, request *QueryOpenBankBankBranchListRequest) (response *QueryOpenBankBankBranchListResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankBankBranchListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankBankBranchList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankBankBranchListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6242,13 +6190,7 @@ func NewQueryOpenBankBindExternalSubMerchantBankAccountResponse() (response *Que
 //  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccount(request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
-    }
-    
-    response = NewQueryOpenBankBindExternalSubMerchantBankAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankBindExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
 
 // QueryOpenBankBindExternalSubMerchantBankAccount
@@ -6263,9 +6205,67 @@ func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccountWithContext(ctx 
     if request == nil {
         request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankBindExternalSubMerchantBankAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankBindExternalSubMerchantBankAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankDailyReceiptDownloadUrlRequest() (request *QueryOpenBankDailyReceiptDownloadUrlRequest) {
+    request = &QueryOpenBankDailyReceiptDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankDailyReceiptDownloadUrl")
+    
+    
+    return
+}
+
+func NewQueryOpenBankDailyReceiptDownloadUrlResponse() (response *QueryOpenBankDailyReceiptDownloadUrlResponse) {
+    response = &QueryOpenBankDailyReceiptDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankDailyReceiptDownloadUrl
+// 云企付-按日期批量查询回单下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankDailyReceiptDownloadUrl(request *QueryOpenBankDailyReceiptDownloadUrlRequest) (response *QueryOpenBankDailyReceiptDownloadUrlResponse, err error) {
+    return c.QueryOpenBankDailyReceiptDownloadUrlWithContext(context.Background(), request)
+}
+
+// QueryOpenBankDailyReceiptDownloadUrl
+// 云企付-按日期批量查询回单下载地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+func (c *Client) QueryOpenBankDailyReceiptDownloadUrlWithContext(ctx context.Context, request *QueryOpenBankDailyReceiptDownloadUrlRequest) (response *QueryOpenBankDailyReceiptDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankDailyReceiptDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankDailyReceiptDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankDailyReceiptDownloadUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -6296,13 +6296,7 @@ func NewQueryOpenBankDownLoadUrlResponse() (response *QueryOpenBankDownLoadUrlRe
 //  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryOpenBankDownLoadUrl(request *QueryOpenBankDownLoadUrlRequest) (response *QueryOpenBankDownLoadUrlResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankDownLoadUrlRequest()
-    }
-    
-    response = NewQueryOpenBankDownLoadUrlResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankDownLoadUrlWithContext(context.Background(), request)
 }
 
 // QueryOpenBankDownLoadUrl
@@ -6317,6 +6311,11 @@ func (c *Client) QueryOpenBankDownLoadUrlWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQueryOpenBankDownLoadUrlRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankDownLoadUrl require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankDownLoadUrlResponse()
@@ -6350,13 +6349,7 @@ func NewQueryOpenBankExternalSubMerchantBankAccountResponse() (response *QueryOp
 //  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) QueryOpenBankExternalSubMerchantBankAccount(request *QueryOpenBankExternalSubMerchantBankAccountRequest) (response *QueryOpenBankExternalSubMerchantBankAccountResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
-    }
-    
-    response = NewQueryOpenBankExternalSubMerchantBankAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
 
 // QueryOpenBankExternalSubMerchantBankAccount
@@ -6371,6 +6364,11 @@ func (c *Client) QueryOpenBankExternalSubMerchantBankAccountWithContext(ctx cont
     if request == nil {
         request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankExternalSubMerchantBankAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankExternalSubMerchantBankAccountResponse()
@@ -6399,32 +6397,25 @@ func NewQueryOpenBankExternalSubMerchantRegistrationResponse() (response *QueryO
 // 云企付-子商户进件结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankExternalSubMerchantRegistration(request *QueryOpenBankExternalSubMerchantRegistrationRequest) (response *QueryOpenBankExternalSubMerchantRegistrationResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankExternalSubMerchantRegistrationRequest()
-    }
-    
-    response = NewQueryOpenBankExternalSubMerchantRegistrationResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankExternalSubMerchantRegistrationWithContext(context.Background(), request)
 }
 
 // QueryOpenBankExternalSubMerchantRegistration
 // 云企付-子商户进件结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankExternalSubMerchantRegistrationWithContext(ctx context.Context, request *QueryOpenBankExternalSubMerchantRegistrationRequest) (response *QueryOpenBankExternalSubMerchantRegistrationResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankExternalSubMerchantRegistrationRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankExternalSubMerchantRegistration require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankExternalSubMerchantRegistrationResponse()
@@ -6453,35 +6444,75 @@ func NewQueryOpenBankPaymentOrderResponse() (response *QueryOpenBankPaymentOrder
 // 云企付-查询订单支付结果
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankPaymentOrder(request *QueryOpenBankPaymentOrderRequest) (response *QueryOpenBankPaymentOrderResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankPaymentOrderRequest()
-    }
-    
-    response = NewQueryOpenBankPaymentOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankPaymentOrderWithContext(context.Background(), request)
 }
 
 // QueryOpenBankPaymentOrder
 // 云企付-查询订单支付结果
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankPaymentOrderWithContext(ctx context.Context, request *QueryOpenBankPaymentOrderRequest) (response *QueryOpenBankPaymentOrderResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankPaymentOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankPaymentOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankSupportBankListRequest() (request *QueryOpenBankSupportBankListRequest) {
+    request = &QueryOpenBankSupportBankListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSupportBankList")
+    
+    
+    return
+}
+
+func NewQueryOpenBankSupportBankListResponse() (response *QueryOpenBankSupportBankListResponse) {
+    response = &QueryOpenBankSupportBankListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankSupportBankList
+// 云企付-查询支持银行列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSupportBankList(request *QueryOpenBankSupportBankListRequest) (response *QueryOpenBankSupportBankListResponse, err error) {
+    return c.QueryOpenBankSupportBankListWithContext(context.Background(), request)
+}
+
+// QueryOpenBankSupportBankList
+// 云企付-查询支持银行列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSupportBankListWithContext(ctx context.Context, request *QueryOpenBankSupportBankListRequest) (response *QueryOpenBankSupportBankListResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankSupportBankListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankSupportBankList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankSupportBankListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6509,13 +6540,7 @@ func NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse() (response *Q
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccount(request *QueryOpenBankUnbindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankUnbindExternalSubMerchantBankAccountResponse, err error) {
-    if request == nil {
-        request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
-    }
-    
-    response = NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
 
 // QueryOpenBankUnbindExternalSubMerchantBankAccount
@@ -6527,6 +6552,11 @@ func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(ct
     if request == nil {
         request = NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankUnbindExternalSubMerchantBankAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
@@ -6561,13 +6591,7 @@ func NewQueryOrderResponse() (response *QueryOrderResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderResponse, err error) {
-    if request == nil {
-        request = NewQueryOrderRequest()
-    }
-    
-    response = NewQueryOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOrderWithContext(context.Background(), request)
 }
 
 // QueryOrder
@@ -6583,6 +6607,11 @@ func (c *Client) QueryOrderWithContext(ctx context.Context, request *QueryOrderR
     if request == nil {
         request = NewQueryOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOrderResponse()
@@ -6617,13 +6646,7 @@ func NewQueryOrderStatusResponse() (response *QueryOrderStatusResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryOrderStatus(request *QueryOrderStatusRequest) (response *QueryOrderStatusResponse, err error) {
-    if request == nil {
-        request = NewQueryOrderStatusRequest()
-    }
-    
-    response = NewQueryOrderStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOrderStatusWithContext(context.Background(), request)
 }
 
 // QueryOrderStatus
@@ -6639,6 +6662,11 @@ func (c *Client) QueryOrderStatusWithContext(ctx context.Context, request *Query
     if request == nil {
         request = NewQueryOrderStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOrderStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOrderStatusResponse()
@@ -6671,13 +6699,7 @@ func NewQueryOutwardOrderResponse() (response *QueryOutwardOrderResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryOutwardOrder(request *QueryOutwardOrderRequest) (response *QueryOutwardOrderResponse, err error) {
-    if request == nil {
-        request = NewQueryOutwardOrderRequest()
-    }
-    
-    response = NewQueryOutwardOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryOutwardOrderWithContext(context.Background(), request)
 }
 
 // QueryOutwardOrder
@@ -6691,6 +6713,11 @@ func (c *Client) QueryOutwardOrderWithContext(ctx context.Context, request *Quer
     if request == nil {
         request = NewQueryOutwardOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOutwardOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryOutwardOrderResponse()
@@ -6723,13 +6750,7 @@ func NewQueryPayerInfoResponse() (response *QueryPayerInfoResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryPayerInfo(request *QueryPayerInfoRequest) (response *QueryPayerInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryPayerInfoRequest()
-    }
-    
-    response = NewQueryPayerInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryPayerInfoWithContext(context.Background(), request)
 }
 
 // QueryPayerInfo
@@ -6743,6 +6764,11 @@ func (c *Client) QueryPayerInfoWithContext(ctx context.Context, request *QueryPa
     if request == nil {
         request = NewQueryPayerInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryPayerInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryPayerInfoResponse()
@@ -6781,13 +6807,7 @@ func NewQueryReconciliationDocumentResponse() (response *QueryReconciliationDocu
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryReconciliationDocument(request *QueryReconciliationDocumentRequest) (response *QueryReconciliationDocumentResponse, err error) {
-    if request == nil {
-        request = NewQueryReconciliationDocumentRequest()
-    }
-    
-    response = NewQueryReconciliationDocumentResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryReconciliationDocumentWithContext(context.Background(), request)
 }
 
 // QueryReconciliationDocument
@@ -6807,6 +6827,11 @@ func (c *Client) QueryReconciliationDocumentWithContext(ctx context.Context, req
     if request == nil {
         request = NewQueryReconciliationDocumentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryReconciliationDocument require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryReconciliationDocumentResponse()
@@ -6845,13 +6870,7 @@ func NewQueryReconciliationFileApplyInfoResponse() (response *QueryReconciliatio
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QueryReconciliationFileApplyInfo(request *QueryReconciliationFileApplyInfoRequest) (response *QueryReconciliationFileApplyInfoResponse, err error) {
-    if request == nil {
-        request = NewQueryReconciliationFileApplyInfoRequest()
-    }
-    
-    response = NewQueryReconciliationFileApplyInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryReconciliationFileApplyInfoWithContext(context.Background(), request)
 }
 
 // QueryReconciliationFileApplyInfo
@@ -6871,6 +6890,11 @@ func (c *Client) QueryReconciliationFileApplyInfoWithContext(ctx context.Context
     if request == nil {
         request = NewQueryReconciliationFileApplyInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryReconciliationFileApplyInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryReconciliationFileApplyInfoResponse()
@@ -6904,13 +6928,7 @@ func NewQueryRefundResponse() (response *QueryRefundResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefundResponse, err error) {
-    if request == nil {
-        request = NewQueryRefundRequest()
-    }
-    
-    response = NewQueryRefundResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryRefundWithContext(context.Background(), request)
 }
 
 // QueryRefund
@@ -6925,6 +6943,11 @@ func (c *Client) QueryRefundWithContext(ctx context.Context, request *QueryRefun
     if request == nil {
         request = NewQueryRefundRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryRefund require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryRefundResponse()
@@ -6958,13 +6981,7 @@ func NewQueryShopOpenIdResponse() (response *QueryShopOpenIdResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QueryShopOpenId(request *QueryShopOpenIdRequest) (response *QueryShopOpenIdResponse, err error) {
-    if request == nil {
-        request = NewQueryShopOpenIdRequest()
-    }
-    
-    response = NewQueryShopOpenIdResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryShopOpenIdWithContext(context.Background(), request)
 }
 
 // QueryShopOpenId
@@ -6979,6 +6996,11 @@ func (c *Client) QueryShopOpenIdWithContext(ctx context.Context, request *QueryS
     if request == nil {
         request = NewQueryShopOpenIdRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryShopOpenId require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryShopOpenIdResponse()
@@ -7014,13 +7036,7 @@ func NewQuerySinglePayResponse() (response *QuerySinglePayResponse) {
 //  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *QuerySinglePayResponse, err error) {
-    if request == nil {
-        request = NewQuerySinglePayRequest()
-    }
-    
-    response = NewQuerySinglePayResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuerySinglePayWithContext(context.Background(), request)
 }
 
 // QuerySinglePay
@@ -7037,6 +7053,11 @@ func (c *Client) QuerySinglePayWithContext(ctx context.Context, request *QuerySi
     if request == nil {
         request = NewQuerySinglePayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuerySinglePay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuerySinglePayResponse()
@@ -7072,13 +7093,7 @@ func NewQuerySinglePaymentResultResponse() (response *QuerySinglePaymentResultRe
 //  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) QuerySinglePaymentResult(request *QuerySinglePaymentResultRequest) (response *QuerySinglePaymentResultResponse, err error) {
-    if request == nil {
-        request = NewQuerySinglePaymentResultRequest()
-    }
-    
-    response = NewQuerySinglePaymentResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuerySinglePaymentResultWithContext(context.Background(), request)
 }
 
 // QuerySinglePaymentResult
@@ -7095,6 +7110,11 @@ func (c *Client) QuerySinglePaymentResultWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQuerySinglePaymentResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuerySinglePaymentResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuerySinglePaymentResultResponse()
@@ -7133,13 +7153,7 @@ func NewQuerySingleTransactionStatusResponse() (response *QuerySingleTransaction
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QuerySingleTransactionStatus(request *QuerySingleTransactionStatusRequest) (response *QuerySingleTransactionStatusResponse, err error) {
-    if request == nil {
-        request = NewQuerySingleTransactionStatusRequest()
-    }
-    
-    response = NewQuerySingleTransactionStatusResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuerySingleTransactionStatusWithContext(context.Background(), request)
 }
 
 // QuerySingleTransactionStatus
@@ -7159,6 +7173,11 @@ func (c *Client) QuerySingleTransactionStatusWithContext(ctx context.Context, re
     if request == nil {
         request = NewQuerySingleTransactionStatusRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuerySingleTransactionStatus require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuerySingleTransactionStatusResponse()
@@ -7197,13 +7216,7 @@ func NewQuerySmallAmountTransferResponse() (response *QuerySmallAmountTransferRe
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) QuerySmallAmountTransfer(request *QuerySmallAmountTransferRequest) (response *QuerySmallAmountTransferResponse, err error) {
-    if request == nil {
-        request = NewQuerySmallAmountTransferRequest()
-    }
-    
-    response = NewQuerySmallAmountTransferResponse()
-    err = c.Send(request, response)
-    return
+    return c.QuerySmallAmountTransferWithContext(context.Background(), request)
 }
 
 // QuerySmallAmountTransfer
@@ -7223,6 +7236,11 @@ func (c *Client) QuerySmallAmountTransferWithContext(ctx context.Context, reques
     if request == nil {
         request = NewQuerySmallAmountTransferRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuerySmallAmountTransfer require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQuerySmallAmountTransferResponse()
@@ -7255,13 +7273,7 @@ func NewQueryTradeResponse() (response *QueryTradeResponse) {
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 func (c *Client) QueryTrade(request *QueryTradeRequest) (response *QueryTradeResponse, err error) {
-    if request == nil {
-        request = NewQueryTradeRequest()
-    }
-    
-    response = NewQueryTradeResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryTradeWithContext(context.Background(), request)
 }
 
 // QueryTrade
@@ -7275,6 +7287,11 @@ func (c *Client) QueryTradeWithContext(ctx context.Context, request *QueryTradeR
     if request == nil {
         request = NewQueryTradeRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTrade require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryTradeResponse()
@@ -7317,13 +7334,7 @@ func NewQueryTransferBatchResponse() (response *QueryTransferBatchResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferBatch(request *QueryTransferBatchRequest) (response *QueryTransferBatchResponse, err error) {
-    if request == nil {
-        request = NewQueryTransferBatchRequest()
-    }
-    
-    response = NewQueryTransferBatchResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryTransferBatchWithContext(context.Background(), request)
 }
 
 // QueryTransferBatch
@@ -7347,6 +7358,11 @@ func (c *Client) QueryTransferBatchWithContext(ctx context.Context, request *Que
     if request == nil {
         request = NewQueryTransferBatchRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTransferBatch require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryTransferBatchResponse()
@@ -7389,13 +7405,7 @@ func NewQueryTransferDetailResponse() (response *QueryTransferDetailResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferDetail(request *QueryTransferDetailRequest) (response *QueryTransferDetailResponse, err error) {
-    if request == nil {
-        request = NewQueryTransferDetailRequest()
-    }
-    
-    response = NewQueryTransferDetailResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryTransferDetailWithContext(context.Background(), request)
 }
 
 // QueryTransferDetail
@@ -7419,6 +7429,11 @@ func (c *Client) QueryTransferDetailWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryTransferDetailRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTransferDetail require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryTransferDetailResponse()
@@ -7461,13 +7476,7 @@ func NewQueryTransferResultResponse() (response *QueryTransferResultResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) QueryTransferResult(request *QueryTransferResultRequest) (response *QueryTransferResultResponse, err error) {
-    if request == nil {
-        request = NewQueryTransferResultRequest()
-    }
-    
-    response = NewQueryTransferResultResponse()
-    err = c.Send(request, response)
-    return
+    return c.QueryTransferResultWithContext(context.Background(), request)
 }
 
 // QueryTransferResult
@@ -7491,6 +7500,11 @@ func (c *Client) QueryTransferResultWithContext(ctx context.Context, request *Qu
     if request == nil {
         request = NewQueryTransferResultRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryTransferResult require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewQueryTransferResultResponse()
@@ -7522,13 +7536,7 @@ func NewRechargeByThirdPayResponse() (response *RechargeByThirdPayResponse) {
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RechargeByThirdPay(request *RechargeByThirdPayRequest) (response *RechargeByThirdPayResponse, err error) {
-    if request == nil {
-        request = NewRechargeByThirdPayRequest()
-    }
-    
-    response = NewRechargeByThirdPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.RechargeByThirdPayWithContext(context.Background(), request)
 }
 
 // RechargeByThirdPay
@@ -7541,6 +7549,11 @@ func (c *Client) RechargeByThirdPayWithContext(ctx context.Context, request *Rec
     if request == nil {
         request = NewRechargeByThirdPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RechargeByThirdPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRechargeByThirdPayResponse()
@@ -7579,13 +7592,7 @@ func NewRechargeMemberThirdPayResponse() (response *RechargeMemberThirdPayRespon
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RechargeMemberThirdPay(request *RechargeMemberThirdPayRequest) (response *RechargeMemberThirdPayResponse, err error) {
-    if request == nil {
-        request = NewRechargeMemberThirdPayRequest()
-    }
-    
-    response = NewRechargeMemberThirdPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.RechargeMemberThirdPayWithContext(context.Background(), request)
 }
 
 // RechargeMemberThirdPay
@@ -7605,6 +7612,11 @@ func (c *Client) RechargeMemberThirdPayWithContext(ctx context.Context, request 
     if request == nil {
         request = NewRechargeMemberThirdPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RechargeMemberThirdPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRechargeMemberThirdPayResponse()
@@ -7650,13 +7662,7 @@ func NewRefundResponse() (response *RefundResponse) {
 //  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err error) {
-    if request == nil {
-        request = NewRefundRequest()
-    }
-    
-    response = NewRefundResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefundWithContext(context.Background(), request)
 }
 
 // Refund
@@ -7683,6 +7689,11 @@ func (c *Client) RefundWithContext(ctx context.Context, request *RefundRequest) 
     if request == nil {
         request = NewRefundRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("Refund require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefundResponse()
@@ -7715,13 +7726,7 @@ func NewRefundMemberTransactionResponse() (response *RefundMemberTransactionResp
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RefundMemberTransaction(request *RefundMemberTransactionRequest) (response *RefundMemberTransactionResponse, err error) {
-    if request == nil {
-        request = NewRefundMemberTransactionRequest()
-    }
-    
-    response = NewRefundMemberTransactionResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefundMemberTransactionWithContext(context.Background(), request)
 }
 
 // RefundMemberTransaction
@@ -7735,6 +7740,11 @@ func (c *Client) RefundMemberTransactionWithContext(ctx context.Context, request
     if request == nil {
         request = NewRefundMemberTransactionRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundMemberTransaction require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefundMemberTransactionResponse()
@@ -7768,13 +7778,7 @@ func NewRefundOrderResponse() (response *RefundOrderResponse) {
 //  FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) RefundOrder(request *RefundOrderRequest) (response *RefundOrderResponse, err error) {
-    if request == nil {
-        request = NewRefundOrderRequest()
-    }
-    
-    response = NewRefundOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefundOrderWithContext(context.Background(), request)
 }
 
 // RefundOrder
@@ -7789,6 +7793,11 @@ func (c *Client) RefundOrderWithContext(ctx context.Context, request *RefundOrde
     if request == nil {
         request = NewRefundOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefundOrderResponse()
@@ -7822,13 +7831,7 @@ func NewRefundTlinxOrderResponse() (response *RefundTlinxOrderResponse) {
 //  FAILEDOPERATION_ORDERREFUNDERROR = "FailedOperation.OrderRefundError"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 func (c *Client) RefundTlinxOrder(request *RefundTlinxOrderRequest) (response *RefundTlinxOrderResponse, err error) {
-    if request == nil {
-        request = NewRefundTlinxOrderRequest()
-    }
-    
-    response = NewRefundTlinxOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.RefundTlinxOrderWithContext(context.Background(), request)
 }
 
 // RefundTlinxOrder
@@ -7843,6 +7846,11 @@ func (c *Client) RefundTlinxOrderWithContext(ctx context.Context, request *Refun
     if request == nil {
         request = NewRefundTlinxOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundTlinxOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRefundTlinxOrderResponse()
@@ -7877,13 +7885,7 @@ func NewRegisterBehaviorResponse() (response *RegisterBehaviorResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) RegisterBehavior(request *RegisterBehaviorRequest) (response *RegisterBehaviorResponse, err error) {
-    if request == nil {
-        request = NewRegisterBehaviorRequest()
-    }
-    
-    response = NewRegisterBehaviorResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterBehaviorWithContext(context.Background(), request)
 }
 
 // RegisterBehavior
@@ -7899,6 +7901,11 @@ func (c *Client) RegisterBehaviorWithContext(ctx context.Context, request *Regis
     if request == nil {
         request = NewRegisterBehaviorRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterBehavior require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterBehaviorResponse()
@@ -7933,13 +7940,7 @@ func NewRegisterBillResponse() (response *RegisterBillResponse) {
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RegisterBill(request *RegisterBillRequest) (response *RegisterBillResponse, err error) {
-    if request == nil {
-        request = NewRegisterBillRequest()
-    }
-    
-    response = NewRegisterBillResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterBillWithContext(context.Background(), request)
 }
 
 // RegisterBill
@@ -7955,6 +7956,11 @@ func (c *Client) RegisterBillWithContext(ctx context.Context, request *RegisterB
     if request == nil {
         request = NewRegisterBillRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterBill require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterBillResponse()
@@ -7993,13 +7999,7 @@ func NewRegisterBillSupportWithdrawResponse() (response *RegisterBillSupportWith
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RegisterBillSupportWithdraw(request *RegisterBillSupportWithdrawRequest) (response *RegisterBillSupportWithdrawResponse, err error) {
-    if request == nil {
-        request = NewRegisterBillSupportWithdrawRequest()
-    }
-    
-    response = NewRegisterBillSupportWithdrawResponse()
-    err = c.Send(request, response)
-    return
+    return c.RegisterBillSupportWithdrawWithContext(context.Background(), request)
 }
 
 // RegisterBillSupportWithdraw
@@ -8019,6 +8019,11 @@ func (c *Client) RegisterBillSupportWithdrawWithContext(ctx context.Context, req
     if request == nil {
         request = NewRegisterBillSupportWithdrawRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterBillSupportWithdraw require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRegisterBillSupportWithdrawResponse()
@@ -8057,13 +8062,7 @@ func NewRevResigterBillSupportWithdrawResponse() (response *RevResigterBillSuppo
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RevResigterBillSupportWithdraw(request *RevResigterBillSupportWithdrawRequest) (response *RevResigterBillSupportWithdrawResponse, err error) {
-    if request == nil {
-        request = NewRevResigterBillSupportWithdrawRequest()
-    }
-    
-    response = NewRevResigterBillSupportWithdrawResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevResigterBillSupportWithdrawWithContext(context.Background(), request)
 }
 
 // RevResigterBillSupportWithdraw
@@ -8083,6 +8082,11 @@ func (c *Client) RevResigterBillSupportWithdrawWithContext(ctx context.Context, 
     if request == nil {
         request = NewRevResigterBillSupportWithdrawRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevResigterBillSupportWithdraw require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevResigterBillSupportWithdrawResponse()
@@ -8121,13 +8125,7 @@ func NewReviseMbrPropertyResponse() (response *ReviseMbrPropertyResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) ReviseMbrProperty(request *ReviseMbrPropertyRequest) (response *ReviseMbrPropertyResponse, err error) {
-    if request == nil {
-        request = NewReviseMbrPropertyRequest()
-    }
-    
-    response = NewReviseMbrPropertyResponse()
-    err = c.Send(request, response)
-    return
+    return c.ReviseMbrPropertyWithContext(context.Background(), request)
 }
 
 // ReviseMbrProperty
@@ -8147,6 +8145,11 @@ func (c *Client) ReviseMbrPropertyWithContext(ctx context.Context, request *Revi
     if request == nil {
         request = NewReviseMbrPropertyRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReviseMbrProperty require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewReviseMbrPropertyResponse()
@@ -8185,13 +8188,7 @@ func NewRevokeMemberRechargeThirdPayResponse() (response *RevokeMemberRechargeTh
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) RevokeMemberRechargeThirdPay(request *RevokeMemberRechargeThirdPayRequest) (response *RevokeMemberRechargeThirdPayResponse, err error) {
-    if request == nil {
-        request = NewRevokeMemberRechargeThirdPayRequest()
-    }
-    
-    response = NewRevokeMemberRechargeThirdPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevokeMemberRechargeThirdPayWithContext(context.Background(), request)
 }
 
 // RevokeMemberRechargeThirdPay
@@ -8211,6 +8208,11 @@ func (c *Client) RevokeMemberRechargeThirdPayWithContext(ctx context.Context, re
     if request == nil {
         request = NewRevokeMemberRechargeThirdPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeMemberRechargeThirdPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevokeMemberRechargeThirdPayResponse()
@@ -8242,13 +8244,7 @@ func NewRevokeRechargeByThirdPayResponse() (response *RevokeRechargeByThirdPayRe
 //  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
 //  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
 func (c *Client) RevokeRechargeByThirdPay(request *RevokeRechargeByThirdPayRequest) (response *RevokeRechargeByThirdPayResponse, err error) {
-    if request == nil {
-        request = NewRevokeRechargeByThirdPayRequest()
-    }
-    
-    response = NewRevokeRechargeByThirdPayResponse()
-    err = c.Send(request, response)
-    return
+    return c.RevokeRechargeByThirdPayWithContext(context.Background(), request)
 }
 
 // RevokeRechargeByThirdPay
@@ -8261,6 +8257,11 @@ func (c *Client) RevokeRechargeByThirdPayWithContext(ctx context.Context, reques
     if request == nil {
         request = NewRevokeRechargeByThirdPayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeRechargeByThirdPay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewRevokeRechargeByThirdPayResponse()
@@ -8320,13 +8321,7 @@ func NewSyncContractDataResponse() (response *SyncContractDataResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) SyncContractData(request *SyncContractDataRequest) (response *SyncContractDataResponse, err error) {
-    if request == nil {
-        request = NewSyncContractDataRequest()
-    }
-    
-    response = NewSyncContractDataResponse()
-    err = c.Send(request, response)
-    return
+    return c.SyncContractDataWithContext(context.Background(), request)
 }
 
 // SyncContractData
@@ -8367,6 +8362,11 @@ func (c *Client) SyncContractDataWithContext(ctx context.Context, request *SyncC
     if request == nil {
         request = NewSyncContractDataRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncContractData require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewSyncContractDataResponse()
@@ -8428,13 +8428,7 @@ func NewTerminateContractResponse() (response *TerminateContractResponse) {
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) TerminateContract(request *TerminateContractRequest) (response *TerminateContractResponse, err error) {
-    if request == nil {
-        request = NewTerminateContractRequest()
-    }
-    
-    response = NewTerminateContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.TerminateContractWithContext(context.Background(), request)
 }
 
 // TerminateContract
@@ -8477,6 +8471,11 @@ func (c *Client) TerminateContractWithContext(ctx context.Context, request *Term
     if request == nil {
         request = NewTerminateContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTerminateContractResponse()
@@ -8538,13 +8537,7 @@ func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
 //  INVALIDPARAMETER_PARAMUNMARSHALFAILED = "InvalidParameter.ParamUnmarshalFailed"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response *TransferSinglePayResponse, err error) {
-    if request == nil {
-        request = NewTransferSinglePayRequest()
-    }
-    
-    response = NewTransferSinglePayResponse()
-    err = c.Send(request, response)
-    return
+    return c.TransferSinglePayWithContext(context.Background(), request)
 }
 
 // TransferSinglePay
@@ -8587,6 +8580,11 @@ func (c *Client) TransferSinglePayWithContext(ctx context.Context, request *Tran
     if request == nil {
         request = NewTransferSinglePayRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferSinglePay require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewTransferSinglePayResponse()
@@ -8621,13 +8619,7 @@ func NewUnBindAcctResponse() (response *UnBindAcctResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) UnBindAcct(request *UnBindAcctRequest) (response *UnBindAcctResponse, err error) {
-    if request == nil {
-        request = NewUnBindAcctRequest()
-    }
-    
-    response = NewUnBindAcctResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnBindAcctWithContext(context.Background(), request)
 }
 
 // UnBindAcct
@@ -8643,6 +8635,11 @@ func (c *Client) UnBindAcctWithContext(ctx context.Context, request *UnBindAcctR
     if request == nil {
         request = NewUnBindAcctRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnBindAcct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnBindAcctResponse()
@@ -8677,13 +8674,7 @@ func NewUnbindOpenBankExternalSubMerchantBankAccountResponse() (response *Unbind
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_ = "MissingParameter."
 func (c *Client) UnbindOpenBankExternalSubMerchantBankAccount(request *UnbindOpenBankExternalSubMerchantBankAccountRequest) (response *UnbindOpenBankExternalSubMerchantBankAccountResponse, err error) {
-    if request == nil {
-        request = NewUnbindOpenBankExternalSubMerchantBankAccountRequest()
-    }
-    
-    response = NewUnbindOpenBankExternalSubMerchantBankAccountResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindOpenBankExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
 
 // UnbindOpenBankExternalSubMerchantBankAccount
@@ -8699,6 +8690,11 @@ func (c *Client) UnbindOpenBankExternalSubMerchantBankAccountWithContext(ctx con
     if request == nil {
         request = NewUnbindOpenBankExternalSubMerchantBankAccountRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindOpenBankExternalSubMerchantBankAccount require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindOpenBankExternalSubMerchantBankAccountResponse()
@@ -8737,13 +8733,7 @@ func NewUnbindRelateAcctResponse() (response *UnbindRelateAcctResponse) {
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) UnbindRelateAcct(request *UnbindRelateAcctRequest) (response *UnbindRelateAcctResponse, err error) {
-    if request == nil {
-        request = NewUnbindRelateAcctRequest()
-    }
-    
-    response = NewUnbindRelateAcctResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnbindRelateAcctWithContext(context.Background(), request)
 }
 
 // UnbindRelateAcct
@@ -8763,6 +8753,11 @@ func (c *Client) UnbindRelateAcctWithContext(ctx context.Context, request *Unbin
     if request == nil {
         request = NewUnbindRelateAcctRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindRelateAcct require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnbindRelateAcctResponse()
@@ -8802,13 +8797,7 @@ func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOrderResponse, err error) {
-    if request == nil {
-        request = NewUnifiedOrderRequest()
-    }
-    
-    response = NewUnifiedOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnifiedOrderWithContext(context.Background(), request)
 }
 
 // UnifiedOrder
@@ -8829,6 +8818,11 @@ func (c *Client) UnifiedOrderWithContext(ctx context.Context, request *UnifiedOr
     if request == nil {
         request = NewUnifiedOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnifiedOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnifiedOrderResponse()
@@ -8868,13 +8862,7 @@ func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response *UnifiedTlinxOrderResponse, err error) {
-    if request == nil {
-        request = NewUnifiedTlinxOrderRequest()
-    }
-    
-    response = NewUnifiedTlinxOrderResponse()
-    err = c.Send(request, response)
-    return
+    return c.UnifiedTlinxOrderWithContext(context.Background(), request)
 }
 
 // UnifiedTlinxOrder
@@ -8895,6 +8883,11 @@ func (c *Client) UnifiedTlinxOrderWithContext(ctx context.Context, request *Unif
     if request == nil {
         request = NewUnifiedTlinxOrderRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnifiedTlinxOrder require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUnifiedTlinxOrderResponse()
@@ -8934,13 +8927,7 @@ func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoRe
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoRequest) (response *UploadExternalAnchorInfoResponse, err error) {
-    if request == nil {
-        request = NewUploadExternalAnchorInfoRequest()
-    }
-    
-    response = NewUploadExternalAnchorInfoResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadExternalAnchorInfoWithContext(context.Background(), request)
 }
 
 // UploadExternalAnchorInfo
@@ -8961,6 +8948,11 @@ func (c *Client) UploadExternalAnchorInfoWithContext(ctx context.Context, reques
     if request == nil {
         request = NewUploadExternalAnchorInfoRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadExternalAnchorInfo require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadExternalAnchorInfoResponse()
@@ -8994,13 +8986,7 @@ func NewUploadFileResponse() (response *UploadFileResponse) {
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) UploadFile(request *UploadFileRequest) (response *UploadFileResponse, err error) {
-    if request == nil {
-        request = NewUploadFileRequest()
-    }
-    
-    response = NewUploadFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadFileWithContext(context.Background(), request)
 }
 
 // UploadFile
@@ -9015,6 +9001,11 @@ func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileR
     if request == nil {
         request = NewUploadFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadFileResponse()
@@ -9048,13 +9039,7 @@ func NewUploadOrgFileResponse() (response *UploadOrgFileResponse) {
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 func (c *Client) UploadOrgFile(request *UploadOrgFileRequest) (response *UploadOrgFileResponse, err error) {
-    if request == nil {
-        request = NewUploadOrgFileRequest()
-    }
-    
-    response = NewUploadOrgFileResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadOrgFileWithContext(context.Background(), request)
 }
 
 // UploadOrgFile
@@ -9069,6 +9054,11 @@ func (c *Client) UploadOrgFileWithContext(ctx context.Context, request *UploadOr
     if request == nil {
         request = NewUploadOrgFileRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadOrgFile require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadOrgFileResponse()
@@ -9103,13 +9093,7 @@ func NewUploadTaxListResponse() (response *UploadTaxListResponse) {
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) UploadTaxList(request *UploadTaxListRequest) (response *UploadTaxListResponse, err error) {
-    if request == nil {
-        request = NewUploadTaxListRequest()
-    }
-    
-    response = NewUploadTaxListResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadTaxListWithContext(context.Background(), request)
 }
 
 // UploadTaxList
@@ -9125,6 +9109,11 @@ func (c *Client) UploadTaxListWithContext(ctx context.Context, request *UploadTa
     if request == nil {
         request = NewUploadTaxListRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadTaxList require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadTaxListResponse()
@@ -9160,13 +9149,7 @@ func NewUploadTaxPaymentResponse() (response *UploadTaxPaymentResponse) {
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) UploadTaxPayment(request *UploadTaxPaymentRequest) (response *UploadTaxPaymentResponse, err error) {
-    if request == nil {
-        request = NewUploadTaxPaymentRequest()
-    }
-    
-    response = NewUploadTaxPaymentResponse()
-    err = c.Send(request, response)
-    return
+    return c.UploadTaxPaymentWithContext(context.Background(), request)
 }
 
 // UploadTaxPayment
@@ -9183,6 +9166,11 @@ func (c *Client) UploadTaxPaymentWithContext(ctx context.Context, request *Uploa
     if request == nil {
         request = NewUploadTaxPaymentRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadTaxPayment require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewUploadTaxPaymentResponse()
@@ -9218,13 +9206,7 @@ func NewViewContractResponse() (response *ViewContractResponse) {
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewContract(request *ViewContractRequest) (response *ViewContractResponse, err error) {
-    if request == nil {
-        request = NewViewContractRequest()
-    }
-    
-    response = NewViewContractResponse()
-    err = c.Send(request, response)
-    return
+    return c.ViewContractWithContext(context.Background(), request)
 }
 
 // ViewContract
@@ -9241,6 +9223,11 @@ func (c *Client) ViewContractWithContext(ctx context.Context, request *ViewContr
     if request == nil {
         request = NewViewContractRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ViewContract require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewViewContractResponse()
@@ -9276,13 +9263,7 @@ func NewViewMerchantResponse() (response *ViewMerchantResponse) {
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewMerchant(request *ViewMerchantRequest) (response *ViewMerchantResponse, err error) {
-    if request == nil {
-        request = NewViewMerchantRequest()
-    }
-    
-    response = NewViewMerchantResponse()
-    err = c.Send(request, response)
-    return
+    return c.ViewMerchantWithContext(context.Background(), request)
 }
 
 // ViewMerchant
@@ -9299,6 +9280,11 @@ func (c *Client) ViewMerchantWithContext(ctx context.Context, request *ViewMerch
     if request == nil {
         request = NewViewMerchantRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ViewMerchant require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewViewMerchantResponse()
@@ -9334,13 +9320,7 @@ func NewViewShopResponse() (response *ViewShopResponse) {
 //  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 //  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewShop(request *ViewShopRequest) (response *ViewShopResponse, err error) {
-    if request == nil {
-        request = NewViewShopRequest()
-    }
-    
-    response = NewViewShopResponse()
-    err = c.Send(request, response)
-    return
+    return c.ViewShopWithContext(context.Background(), request)
 }
 
 // ViewShop
@@ -9357,6 +9337,11 @@ func (c *Client) ViewShopWithContext(ctx context.Context, request *ViewShopReque
     if request == nil {
         request = NewViewShopRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ViewShop require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewViewShopResponse()
@@ -9395,13 +9380,7 @@ func NewWithdrawCashMembershipResponse() (response *WithdrawCashMembershipRespon
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) WithdrawCashMembership(request *WithdrawCashMembershipRequest) (response *WithdrawCashMembershipResponse, err error) {
-    if request == nil {
-        request = NewWithdrawCashMembershipRequest()
-    }
-    
-    response = NewWithdrawCashMembershipResponse()
-    err = c.Send(request, response)
-    return
+    return c.WithdrawCashMembershipWithContext(context.Background(), request)
 }
 
 // WithdrawCashMembership
@@ -9421,6 +9400,11 @@ func (c *Client) WithdrawCashMembershipWithContext(ctx context.Context, request 
     if request == nil {
         request = NewWithdrawCashMembershipRequest()
     }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WithdrawCashMembership require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewWithdrawCashMembershipResponse()
