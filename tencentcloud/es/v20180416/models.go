@@ -1888,6 +1888,9 @@ type UpgradeInstanceRequest struct {
 
 	// 升级方式：<li>scale 蓝绿变更</li><li>restart 滚动重启</li>默认值为scale
 	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
+
+	// 升级版本前是否对集群进行备份，默认不备份
+	CosBackup *bool `json:"CosBackup,omitempty" name:"CosBackup"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -1908,6 +1911,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LicenseType")
 	delete(f, "BasicSecurityType")
 	delete(f, "UpgradeMode")
+	delete(f, "CosBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

@@ -1172,6 +1172,10 @@ type DataDisk struct {
 	// 数据盘快照 ID，类似 `snap-l8psqwnt`。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 数据盘是否随子机销毁。取值范围：<br><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘<br><li>FALSE：子机销毁时，保留数据盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
 type DeleteAutoScalingGroupRequest struct {
@@ -1754,7 +1758,7 @@ func (r *DescribeAutoScalingGroupsResponse) FromJsonString(s string) error {
 type DescribeAutoScalingInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 待查询云服务器（CVM）的实例ID。参数不支持同时指定InstanceIds和Filters。
+	// 待查询云服务器（CVM）的实例ID。每次请求的上限为100。参数不支持同时指定InstanceIds和Filters。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 过滤条件。
@@ -1766,7 +1770,7 @@ type DescribeAutoScalingInstancesRequest struct {
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为2000。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -3853,6 +3857,9 @@ type ScheduledAction struct {
 
 	// 定时任务的创建时间。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 定时任务的执行类型。取值范围：<br><li>CRONTAB：代表定时任务为重复执行。<br><li>ONCE：代表定时任务为单次执行。
+	ScheduledType *string `json:"ScheduledType,omitempty" name:"ScheduledType"`
 }
 
 type ServiceSettings struct {

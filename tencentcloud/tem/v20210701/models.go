@@ -631,6 +631,15 @@ type DeployApplicationRequest struct {
 
 	// 启动探针配置
 	StartupProbe *HealthCheckConfig `json:"StartupProbe,omitempty" name:"StartupProbe"`
+
+	// 操作系统版本；
+	// 当选择openjdk时，可选参数：
+	// - ALPINE
+	// - CENTOS
+	// 当选择konajdk时，可选参数：
+	// - ALPINE
+	// - TENCENTOS
+	OsFlavour *string `json:"OsFlavour,omitempty" name:"OsFlavour"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -683,6 +692,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "ConfEdited")
 	delete(f, "SpeedUp")
 	delete(f, "StartupProbe")
+	delete(f, "OsFlavour")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}

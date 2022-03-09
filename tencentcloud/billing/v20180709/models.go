@@ -50,6 +50,15 @@ type ActionSummaryOverviewItem struct {
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
+type ApplicableProducts struct {
+
+	// 适用商品名称，值为“全产品通用”或商品名称组成的string，以","分割。
+	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
+
+	// postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。如GoodsName为多个商品名以","分割组成的string，而PayMode为"*"，表示每一件商品的模式都为"*"。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+}
+
 type BillDetail struct {
 
 	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
@@ -2273,6 +2282,186 @@ func (r *DescribeDosageDetailByDateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeVoucherInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 一页多少条数据，默认是20条，最大不超过1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 第多少页，默认是1
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 代金券id
+	VoucherId *string `json:"VoucherId,omitempty" name:"VoucherId"`
+
+	// 代金券订单id
+	CodeId *string `json:"CodeId,omitempty" name:"CodeId"`
+
+	// 商品码
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 代金券名称
+	VoucherName *string `json:"VoucherName,omitempty" name:"VoucherName"`
+
+	// 发放开始时间
+	TimeFrom *string `json:"TimeFrom,omitempty" name:"TimeFrom"`
+
+	// 发放结束时间
+	TimeTo *string `json:"TimeTo,omitempty" name:"TimeTo"`
+
+	// 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
+	SortField *string `json:"SortField,omitempty" name:"SortField"`
+
+	// 指定升序降序：desc、asc
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
+
+	// 付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+	PayScene *string `json:"PayScene,omitempty" name:"PayScene"`
+
+	// 操作人，默认就是用户uin
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DescribeVoucherInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoucherInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Status")
+	delete(f, "VoucherId")
+	delete(f, "CodeId")
+	delete(f, "ProductCode")
+	delete(f, "ActivityId")
+	delete(f, "VoucherName")
+	delete(f, "TimeFrom")
+	delete(f, "TimeTo")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
+	delete(f, "PayMode")
+	delete(f, "PayScene")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoucherInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVoucherInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 券总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 总余额（微分）
+		TotalBalance *int64 `json:"TotalBalance,omitempty" name:"TotalBalance"`
+
+		// 代金券相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VoucherInfos []*VoucherInfos `json:"VoucherInfos,omitempty" name:"VoucherInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVoucherInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoucherInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVoucherUsageDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 一页多少条数据，默认是20条，最大不超过1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 第多少页，默认是1
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 代金券id
+	VoucherId *string `json:"VoucherId,omitempty" name:"VoucherId"`
+
+	// 操作人，默认就是用户uin
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DescribeVoucherUsageDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoucherUsageDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "VoucherId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoucherUsageDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVoucherUsageDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 券总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 总已用金额（微分）
+		TotalUsedAmount *int64 `json:"TotalUsedAmount,omitempty" name:"TotalUsedAmount"`
+
+		// 代金券使用记录细节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UsageRecords []*UsageRecords `json:"UsageRecords,omitempty" name:"UsageRecords"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeVoucherUsageDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoucherUsageDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetailPoint struct {
 
 	// 时间
@@ -2293,6 +2482,15 @@ type DetailSet struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+}
+
+type ExcludedProducts struct {
+
+	// 不适用商品名称
+	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
+
+	// postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 }
 
 type PayDealsRequest struct {
@@ -2490,4 +2688,66 @@ type TagSummaryOverviewItem struct {
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
+}
+
+type UsageDetails struct {
+
+	// 商品名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 商品细节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductName *string `json:"SubProductName,omitempty" name:"SubProductName"`
+}
+
+type UsageRecords struct {
+
+	// 使用金额（微分）
+	UsedAmount *int64 `json:"UsedAmount,omitempty" name:"UsedAmount"`
+
+	// 使用时间
+	UsedTime *string `json:"UsedTime,omitempty" name:"UsedTime"`
+
+	// 使用记录细节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageDetails []*UsageDetails `json:"UsageDetails,omitempty" name:"UsageDetails"`
+}
+
+type VoucherInfos struct {
+
+	// 代金券拥有者
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 代金券面额（微分）
+	NominalValue *int64 `json:"NominalValue,omitempty" name:"NominalValue"`
+
+	// 剩余金额（微分）
+	Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 代金券id
+	VoucherId *string `json:"VoucherId,omitempty" name:"VoucherId"`
+
+	// postPay后付费/prePay预付费/riPay预留实例/空字符串或者'*'表示全部模式
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+	PayScene *string `json:"PayScene,omitempty" name:"PayScene"`
+
+	// 有效期生效时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 有效期截止时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 适用商品信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicableProducts *ApplicableProducts `json:"ApplicableProducts,omitempty" name:"ApplicableProducts"`
+
+	// 不适用商品信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludedProducts []*ExcludedProducts `json:"ExcludedProducts,omitempty" name:"ExcludedProducts"`
 }

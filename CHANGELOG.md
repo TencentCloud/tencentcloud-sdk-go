@@ -1,3 +1,116 @@
+# Release v1.0.362
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 47 次发布
+
+发布时间：2022-03-09 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
+
+	* 新增成员：DeleteWithInstance
+
+* [ScheduledAction](https://cloud.tencent.com/document/api/377/20453#ScheduledAction)
+
+	* 新增成员：ScheduledType
+
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 32 次发布
+
+发布时间：2022-03-09 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
+* [DescribeVoucherUsageDetails](https://cloud.tencent.com/document/api/555/70812)
+
+新增数据结构：
+
+* [ApplicableProducts](https://cloud.tencent.com/document/api/555/19183#ApplicableProducts)
+* [ExcludedProducts](https://cloud.tencent.com/document/api/555/19183#ExcludedProducts)
+* [UsageDetails](https://cloud.tencent.com/document/api/555/19183#UsageDetails)
+* [UsageRecords](https://cloud.tencent.com/document/api/555/19183#UsageRecords)
+* [VoucherInfos](https://cloud.tencent.com/document/api/555/19183#VoucherInfos)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 25 次发布
+
+发布时间：2022-03-09 08:11:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
+
+	* 新增入参：CosBackup
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 41 次发布
+
+发布时间：2022-03-09 08:14:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)
+
+	* 新增入参：PolicyIds
+
+	* <font color="#dd0000">**修改入参**：</font>PolicyId
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 13 次发布
+
+发布时间：2022-03-09 08:17:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：OsFlavour
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.361
 
 ## 企业收付平台(cpdp) 版本：2019-08-20

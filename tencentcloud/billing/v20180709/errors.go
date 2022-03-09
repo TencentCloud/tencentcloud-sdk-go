@@ -32,6 +32,9 @@ const (
 	// 账户余额不足。
 	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 
+	// appId不符。
+	FAILEDOPERATION_INVALIDAPPID = "FailedOperation.InvalidAppId"
+
 	// 订单状态错误，只有未支付订单才能支付。
 	FAILEDOPERATION_INVALIDDEAL = "FailedOperation.InvalidDeal"
 

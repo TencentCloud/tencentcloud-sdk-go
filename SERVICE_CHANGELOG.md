@@ -1,10 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 58 次发布
+### 第 47 次发布
 
-发布时间：2022-03-08 08:09:49
+发布时间：2022-03-09 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
+
+	* 新增成员：DeleteWithInstance
+
+* [ScheduledAction](https://cloud.tencent.com/document/api/377/20453#ScheduledAction)
+
+	* 新增成员：ScheduledType
+
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 32 次发布
+
+发布时间：2022-03-09 08:06:22
 
 本次发布包含了以下内容：
 
@@ -12,94 +35,79 @@
 
 新增接口：
 
-* [QueryOpenBankBankAccountBalance](https://cloud.tencent.com/document/api/1122/70774)
-* [QueryOpenBankDailyReceiptDownloadUrl](https://cloud.tencent.com/document/api/1122/70773)
+* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
+* [DescribeVoucherUsageDetails](https://cloud.tencent.com/document/api/555/70812)
 
 新增数据结构：
 
-* [QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult)
-* [QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult)
+* [ApplicableProducts](https://cloud.tencent.com/document/api/555/19183#ApplicableProducts)
+* [ExcludedProducts](https://cloud.tencent.com/document/api/555/19183#ExcludedProducts)
+* [UsageDetails](https://cloud.tencent.com/document/api/555/19183#UsageDetails)
+* [UsageRecords](https://cloud.tencent.com/document/api/555/19183#UsageRecords)
+* [VoucherInfos](https://cloud.tencent.com/document/api/555/19183#VoucherInfos)
 
 
 
-## 企业组织(organization) 版本：2021-03-31
+## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 7 次发布
+### 第 25 次发布
 
-发布时间：2022-03-08 08:16:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
-
-	* 新增成员：BindStatus
-
-
-
-
-## 企业组织(organization) 版本：2018-12-25
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 8 次发布
-
-发布时间：2022-03-07 16:52:17
+发布时间：2022-03-09 08:11:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateReceiverDetailWithData](https://cloud.tencent.com/document/api/1288/70776)
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
 
-新增数据结构：
-
-* [ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData)
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 11 次发布
-
-发布时间：2022-03-08 08:18:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
-
-	* 新增成员：ComponentCnt
+	* 新增入参：CosBackup
 
 
 
 
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 15 次发布
+### 第 41 次发布
 
-发布时间：2022-03-08 08:20:05
+发布时间：2022-03-09 08:14:02
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+* [ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)
 
-	* 新增成员：SpecId, EnvReplica, RunningCount
+	* 新增入参：PolicyIds
 
+	* <font color="#dd0000">**修改入参**：</font>PolicyId
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 13 次发布
+
+发布时间：2022-03-09 08:17:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：OsFlavour
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
 
 
 
@@ -2739,6 +2747,25 @@
 
 ## 弹性伸缩(as) 版本：2018-04-19
 
+### 第 47 次发布
+
+发布时间：2022-03-09 08:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
+
+	* 新增成员：DeleteWithInstance
+
+* [ScheduledAction](https://cloud.tencent.com/document/api/377/20453#ScheduledAction)
+
+	* 新增成员：ScheduledType
+
+
 ### 第 46 次发布
 
 发布时间：2022-02-23 08:02:26
@@ -5300,6 +5327,27 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 32 次发布
+
+发布时间：2022-03-09 08:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVoucherUsageDetails](https://cloud.tencent.com/document/api/555/70812)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplicableProducts](https://cloud.tencent.com/document/api/555/19183#ApplicableProducts)](https://cloud.tencent.com/document/api/555/19183#[ApplicableProducts](https://cloud.tencent.com/document/api/555/19183#ApplicableProducts))
+* [[ExcludedProducts](https://cloud.tencent.com/document/api/555/19183#ExcludedProducts)](https://cloud.tencent.com/document/api/555/19183#[ExcludedProducts](https://cloud.tencent.com/document/api/555/19183#ExcludedProducts))
+* [[UsageDetails](https://cloud.tencent.com/document/api/555/19183#UsageDetails)](https://cloud.tencent.com/document/api/555/19183#[UsageDetails](https://cloud.tencent.com/document/api/555/19183#UsageDetails))
+* [[UsageRecords](https://cloud.tencent.com/document/api/555/19183#UsageRecords)](https://cloud.tencent.com/document/api/555/19183#[UsageRecords](https://cloud.tencent.com/document/api/555/19183#UsageRecords))
+* [[VoucherInfos](https://cloud.tencent.com/document/api/555/19183#VoucherInfos)](https://cloud.tencent.com/document/api/555/19183#[VoucherInfos](https://cloud.tencent.com/document/api/555/19183#VoucherInfos))
 
 ### 第 31 次发布
 
@@ -18900,13 +18948,13 @@
 
 新增接口：
 
-* [[QueryOpenBankBankAccountBalance](https://cloud.tencent.com/document/api/1122/70774)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryOpenBankDailyReceiptDownloadUrl](https://cloud.tencent.com/document/api/1122/70773)](https://cloud.tencent.com/document/api/#/#)
+* [QueryOpenBankBankAccountBalance](https://cloud.tencent.com/document/api/1122/70774)
+* [QueryOpenBankDailyReceiptDownloadUrl](https://cloud.tencent.com/document/api/1122/70773)
 
 新增数据结构：
 
-* [[QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult))
-* [[QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult))
+* [QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult)
+* [QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult)
 
 ### 第 57 次发布
 
@@ -30137,6 +30185,21 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 25 次发布
+
+发布时间：2022-03-09 08:11:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
+
+	* 新增入参：CosBackup
+
 
 ### 第 24 次发布
 
@@ -43152,6 +43215,23 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 41 次发布
+
+发布时间：2022-03-09 08:14:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)
+
+	* 新增入参：PolicyIds
+
+	* <font color="#dd0000">**修改入参**：</font>PolicyId
+
+
 ### 第 40 次发布
 
 发布时间：2022-03-03 08:09:04
@@ -51153,11 +51233,11 @@
 
 新增接口：
 
-* [[CreateReceiverDetailWithData](https://cloud.tencent.com/document/api/1288/70776)](https://cloud.tencent.com/document/api/#/#)
+* [CreateReceiverDetailWithData](https://cloud.tencent.com/document/api/1288/70776)
 
 新增数据结构：
 
-* [[ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData)](https://cloud.tencent.com/document/api/1288/51053#[ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData))
+* [ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData)
 
 ### 第 7 次发布
 
@@ -59408,6 +59488,21 @@
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 13 次发布
+
+发布时间：2022-03-09 08:17:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：OsFlavour
+
 
 ### 第 12 次发布
 

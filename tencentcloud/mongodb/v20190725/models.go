@@ -240,13 +240,15 @@ func (r *CreateBackupDBInstanceResponse) FromJsonString(s string) error {
 type CreateBackupDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 要下载的备份文件名，可通过DescribeDBBackups接口获取
+	// 要下载的备份文件名，可通过DescribeDBBackups接口获取。
 	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 
-	// 下载备份的分片列表
+	// 指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
+	// 如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+	// 如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
 	BackupSets []*ReplicaSetInfo `json:"BackupSets,omitempty" name:"BackupSets"`
 }
 
@@ -2405,7 +2407,7 @@ func (r *RenewDBInstancesResponse) FromJsonString(s string) error {
 
 type ReplicaSetInfo struct {
 
-	// 分片名称
+	// 副本集ID
 	ReplicaSetId *string `json:"ReplicaSetId,omitempty" name:"ReplicaSetId"`
 }
 
