@@ -223,6 +223,10 @@ type AdaptiveStreamTemplate struct {
 	// <li>0：否，</li>
 	// <li>1：是。</li>
 	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 极速高清转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 }
 
 type AiAnalysisResult struct {
@@ -10675,6 +10679,75 @@ func (r *ModifyMediaInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyMediaStorageClassRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件唯一标识列表。
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 目标存储类型。可选值有：
+	// <li> STANDARD：标准存储。</li>
+	// <li> STANDARD_IA：低频存储。</li>
+	// <li> ARCHIVE：归档存储。</li>
+	// <li> DEEP_ARCHIVE：深度归档存储。</li>
+	StorageClass *string `json:"StorageClass,omitempty" name:"StorageClass"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 取回模式。当文件的存储类型从归档或深度归档转换为标准存储时，需要指定取回（也称为解冻）操作的模式，具体说明请参考[数据取回及取回模式](https://cloud.tencent.com/document/product/266/56196#retake)。
+	// 当媒体文件目前的存储类型为归档存储时，有以下取值：
+	// <li>Expedited：极速模式。</li>
+	// <li>Standard：标准模式。</li>
+	// <li>Bulk：批量模式。</li>
+	// 当媒体文件目前的存储类型为深度归档存储时，有以下取值：
+	// <li>Standard：标准模式。</li>
+	// <li>Bulk：批量模式。</li>
+	RestoreTier *string `json:"RestoreTier,omitempty" name:"RestoreTier"`
+}
+
+func (r *ModifyMediaStorageClassRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMediaStorageClassRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileIds")
+	delete(f, "StorageClass")
+	delete(f, "SubAppId")
+	delete(f, "RestoreTier")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMediaStorageClassRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMediaStorageClassResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyMediaStorageClassResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMediaStorageClassResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPersonSampleRequest struct {
 	*tchttp.BaseRequest
 
@@ -13764,9 +13837,7 @@ type SvgWatermarkInputForUpdate struct {
 
 type TEHDConfig struct {
 
-	// 极速高清类型，可选值：
-	// <li>TEHD-100：极速高清-100。</li>
-	// 不填代表不启用极速高清。
+	// 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频码率上限，当 Type 指定了极速高清类型时有效。
@@ -13776,9 +13847,7 @@ type TEHDConfig struct {
 
 type TEHDConfigForUpdate struct {
 
-	// 极速高清类型，可选值：
-	// <li>TEHD-100：极速高清-100。</li>
-	// 不填代表不修改。
+	// 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示不修改。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 视频码率上限，不填代表不修改。

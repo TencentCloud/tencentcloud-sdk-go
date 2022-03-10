@@ -1282,6 +1282,55 @@ func (c *Client) CreateEKSContainerInstancesWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateImageCacheRequest() (request *CreateImageCacheRequest) {
+    request = &CreateImageCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateImageCache")
+    
+    
+    return
+}
+
+func NewCreateImageCacheResponse() (response *CreateImageCacheResponse) {
+    response = &CreateImageCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateImageCache
+// 创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateImageCache(request *CreateImageCacheRequest) (response *CreateImageCacheResponse, err error) {
+    return c.CreateImageCacheWithContext(context.Background(), request)
+}
+
+// CreateImageCache
+// 创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *CreateImageCacheRequest) (response *CreateImageCacheResponse, err error) {
+    if request == nil {
+        request = NewCreateImageCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusAlertRuleRequest() (request *CreatePrometheusAlertRuleRequest) {
     request = &CreatePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2123,6 +2172,57 @@ func (c *Client) DeleteEKSContainerInstancesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteEKSContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteImageCachesRequest() (request *DeleteImageCachesRequest) {
+    request = &DeleteImageCachesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteImageCaches")
+    
+    
+    return
+}
+
+func NewDeleteImageCachesResponse() (response *DeleteImageCachesResponse) {
+    response = &DeleteImageCachesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteImageCaches
+// 批量删除镜像缓存
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteImageCaches(request *DeleteImageCachesRequest) (response *DeleteImageCachesResponse, err error) {
+    return c.DeleteImageCachesWithContext(context.Background(), request)
+}
+
+// DeleteImageCaches
+// 批量删除镜像缓存
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteImageCachesWithContext(ctx context.Context, request *DeleteImageCachesRequest) (response *DeleteImageCachesResponse, err error) {
+    if request == nil {
+        request = NewDeleteImageCachesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteImageCaches require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteImageCachesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4020,6 +4120,55 @@ func (c *Client) DescribeExternalClusterSpecWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeImageCachesRequest() (request *DescribeImageCachesRequest) {
+    request = &DescribeImageCachesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeImageCaches")
+    
+    
+    return
+}
+
+func NewDescribeImageCachesResponse() (response *DescribeImageCachesResponse) {
+    response = &DescribeImageCachesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeImageCaches
+// 查询镜像缓存信息接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeImageCaches(request *DescribeImageCachesRequest) (response *DescribeImageCachesResponse, err error) {
+    return c.DescribeImageCachesWithContext(context.Background(), request)
+}
+
+// DescribeImageCaches
+// 查询镜像缓存信息接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeImageCachesWithContext(ctx context.Context, request *DescribeImageCachesRequest) (response *DescribeImageCachesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageCachesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageCaches require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageCachesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
     request = &DescribeImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5232,6 +5381,57 @@ func (c *Client) ForwardApplicationRequestV3WithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewForwardApplicationRequestV3Response()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetMostSuitableImageCacheRequest() (request *GetMostSuitableImageCacheRequest) {
+    request = &GetMostSuitableImageCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "GetMostSuitableImageCache")
+    
+    
+    return
+}
+
+func NewGetMostSuitableImageCacheResponse() (response *GetMostSuitableImageCacheResponse) {
+    response = &GetMostSuitableImageCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetMostSuitableImageCache
+// 根据镜像列表，查询匹配的镜像缓存
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetMostSuitableImageCache(request *GetMostSuitableImageCacheRequest) (response *GetMostSuitableImageCacheResponse, err error) {
+    return c.GetMostSuitableImageCacheWithContext(context.Background(), request)
+}
+
+// GetMostSuitableImageCache
+// 根据镜像列表，查询匹配的镜像缓存
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetMostSuitableImageCacheWithContext(ctx context.Context, request *GetMostSuitableImageCacheRequest) (response *GetMostSuitableImageCacheResponse, err error) {
+    if request == nil {
+        request = NewGetMostSuitableImageCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMostSuitableImageCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMostSuitableImageCacheResponse()
     err = c.Send(request, response)
     return
 }
@@ -6499,6 +6699,53 @@ func (c *Client) UpdateEKSContainerInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewUpdateEKSContainerInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateImageCacheRequest() (request *UpdateImageCacheRequest) {
+    request = &UpdateImageCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateImageCache")
+    
+    
+    return
+}
+
+func NewUpdateImageCacheResponse() (response *UpdateImageCacheResponse) {
+    response = &UpdateImageCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateImageCache
+// 更新镜像缓存接口
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateImageCache(request *UpdateImageCacheRequest) (response *UpdateImageCacheResponse, err error) {
+    return c.UpdateImageCacheWithContext(context.Background(), request)
+}
+
+// UpdateImageCache
+// 更新镜像缓存接口
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateImageCacheWithContext(ctx context.Context, request *UpdateImageCacheRequest) (response *UpdateImageCacheResponse, err error) {
+    if request == nil {
+        request = NewUpdateImageCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateImageCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateImageCacheResponse()
     err = c.Send(request, response)
     return
 }

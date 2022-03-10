@@ -6227,6 +6227,133 @@ func (c *Client) ModifyMediaInfoWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyMediaStorageClassRequest() (request *ModifyMediaStorageClassRequest) {
+    request = &ModifyMediaStorageClassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyMediaStorageClass")
+    
+    
+    return
+}
+
+func NewModifyMediaStorageClassResponse() (response *ModifyMediaStorageClassResponse) {
+    response = &ModifyMediaStorageClassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMediaStorageClass
+// 修改媒体文件的存储类型。
+//
+// 当媒体文件的存储类型为标准存储时，可以修改为以下类型：
+//
+// <li>低频存储</li>
+//
+// <li>归档存储</li>
+//
+// <li>深度归档存储</li>
+//
+// 当媒体文件的当前存储类型为低频存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// <li>归档存储</li>
+//
+// <li>深度归档存储</li>
+//
+// 当媒体文件的当前存储类型为归档存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// 当媒体文件的当前存储类型为深度归档存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
+//  INVALIDPARAMETERVALUE_STORAGECLASS = "InvalidParameterValue.StorageClass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = "InvalidParameterValue.UnsupportedRestoreTier"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSTORAGECLASS = "InvalidParameterValue.UnsupportedStorageClass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRANSITION = "InvalidParameterValue.UnsupportedTransition"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILENOTEXIST = "ResourceNotFound.FileNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMediaStorageClass(request *ModifyMediaStorageClassRequest) (response *ModifyMediaStorageClassResponse, err error) {
+    return c.ModifyMediaStorageClassWithContext(context.Background(), request)
+}
+
+// ModifyMediaStorageClass
+// 修改媒体文件的存储类型。
+//
+// 当媒体文件的存储类型为标准存储时，可以修改为以下类型：
+//
+// <li>低频存储</li>
+//
+// <li>归档存储</li>
+//
+// <li>深度归档存储</li>
+//
+// 当媒体文件的当前存储类型为低频存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// <li>归档存储</li>
+//
+// <li>深度归档存储</li>
+//
+// 当媒体文件的当前存储类型为归档存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// 当媒体文件的当前存储类型为深度归档存储时，可以修改为以下类型：
+//
+// <li>标准存储</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
+//  INVALIDPARAMETERVALUE_STORAGECLASS = "InvalidParameterValue.StorageClass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = "InvalidParameterValue.UnsupportedRestoreTier"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDSTORAGECLASS = "InvalidParameterValue.UnsupportedStorageClass"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRANSITION = "InvalidParameterValue.UnsupportedTransition"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILENOTEXIST = "ResourceNotFound.FileNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyMediaStorageClassWithContext(ctx context.Context, request *ModifyMediaStorageClassRequest) (response *ModifyMediaStorageClassResponse, err error) {
+    if request == nil {
+        request = NewModifyMediaStorageClassRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMediaStorageClass require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMediaStorageClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPersonSampleRequest() (request *ModifyPersonSampleRequest) {
     request = &ModifyPersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},

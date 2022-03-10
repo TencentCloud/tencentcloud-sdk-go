@@ -523,6 +523,61 @@ func (c *Client) DescribeKTVMusicDetailWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeKTVMusicTagsRequest() (request *DescribeKTVMusicTagsRequest) {
+    request = &DescribeKTVMusicTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicTags")
+    
+    
+    return
+}
+
+func NewDescribeKTVMusicTagsResponse() (response *DescribeKTVMusicTagsResponse) {
+    response = &DescribeKTVMusicTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVMusicTags
+// 获取直播互动曲库标签分组信息和标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVMusicTags(request *DescribeKTVMusicTagsRequest) (response *DescribeKTVMusicTagsResponse, err error) {
+    return c.DescribeKTVMusicTagsWithContext(context.Background(), request)
+}
+
+// DescribeKTVMusicTags
+// 获取直播互动曲库标签分组信息和标签信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVMusicTagsWithContext(ctx context.Context, request *DescribeKTVMusicTagsRequest) (response *DescribeKTVMusicTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMusicTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVMusicTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRequest) {
     request = &DescribeKTVPlaylistDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -867,6 +922,57 @@ func (c *Client) DescribeKTVSingersWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeKTVSingersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKTVSuggestionsRequest() (request *DescribeKTVSuggestionsRequest) {
+    request = &DescribeKTVSuggestionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSuggestions")
+    
+    
+    return
+}
+
+func NewDescribeKTVSuggestionsResponse() (response *DescribeKTVSuggestionsResponse) {
+    response = &DescribeKTVSuggestionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVSuggestions
+// 获取直播互动曲库联想词
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSuggestions(request *DescribeKTVSuggestionsRequest) (response *DescribeKTVSuggestionsResponse, err error) {
+    return c.DescribeKTVSuggestionsWithContext(context.Background(), request)
+}
+
+// DescribeKTVSuggestions
+// 获取直播互动曲库联想词
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKTVSuggestionsWithContext(ctx context.Context, request *DescribeKTVSuggestionsRequest) (response *DescribeKTVSuggestionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVSuggestionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVSuggestions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVSuggestionsResponse()
     err = c.Send(request, response)
     return
 }

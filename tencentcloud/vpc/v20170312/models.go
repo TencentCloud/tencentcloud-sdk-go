@@ -1512,6 +1512,10 @@ type CcnBandwidthInfo struct {
 	// 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnRegionBandwidthLimit *CcnRegionBandwidthLimit `json:"CcnRegionBandwidthLimit,omitempty" name:"CcnRegionBandwidthLimit"`
+
+	// 云市场实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MarketId *string `json:"MarketId,omitempty" name:"MarketId"`
 }
 
 type CcnInstance struct {

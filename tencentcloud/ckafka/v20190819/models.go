@@ -3363,6 +3363,17 @@ type InstanceDetailResponse struct {
 	InstanceList []*InstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
 }
 
+type InstanceQuotaConfigResp struct {
+
+	// 生产限流大小，单位 MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitempty" name:"QuotaProducerByteRate"`
+
+	// 消费限流大小，单位 MB/s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitempty" name:"QuotaConsumerByteRate"`
+}
+
 type InstanceResponse struct {
 
 	// 符合条件的实例列表
@@ -3661,6 +3672,12 @@ type ModifyTopicAttributesRequest struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 生产限流，单位 MB/s
+	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitempty" name:"QuotaProducerByteRate"`
+
+	// 消费限流，单位 MB/s
+	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitempty" name:"QuotaConsumerByteRate"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -3690,6 +3707,8 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "AclRuleName")
 	delete(f, "RetentionBytes")
 	delete(f, "Tags")
+	delete(f, "QuotaProducerByteRate")
+	delete(f, "QuotaConsumerByteRate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}
@@ -3977,6 +3996,10 @@ type TopicAttributesResponse struct {
 	// 预设策略列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclRuleList []*AclRule `json:"AclRuleList,omitempty" name:"AclRuleList"`
+
+	// topic 限流策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaConfig *InstanceQuotaConfigResp `json:"QuotaConfig,omitempty" name:"QuotaConfig"`
 }
 
 type TopicDetail struct {

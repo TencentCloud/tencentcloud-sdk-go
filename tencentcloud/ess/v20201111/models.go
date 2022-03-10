@@ -47,7 +47,10 @@ type ApproverInfo struct {
 	// 身份证号
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
 
-	// 证件类型 ID_CARD 身份证
+	// 证件类型 
+	// ID_CARD 身份证
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitempty" name:"ApproverIdCardType"`
 
 	// sms--短信，none--不通知
@@ -783,11 +786,13 @@ type FlowCreateApprover struct {
 	// 签署方经办人手机号码
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
-	// 签署方经办人证件类型，ID_CARD表示身份证
-	ApproverIdCardType *string `json:"ApproverIdCardType,omitempty" name:"ApproverIdCardType"`
-
 	// 签署方经办人证件号码
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
+
+	// 签署方经办人证件类型ID_CARD 身份证
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	ApproverIdCardType *string `json:"ApproverIdCardType,omitempty" name:"ApproverIdCardType"`
 
 	// 签署方经办人在模板中的角色ID
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`

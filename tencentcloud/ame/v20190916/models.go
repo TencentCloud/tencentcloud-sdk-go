@@ -30,6 +30,21 @@ type Album struct {
 	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap"`
 }
 
+type ApplicationLicenseInput struct {
+
+	// 应用名称，注：后面三个字段AndroidPackageName、IOSBundleId、PcIdentifier，三者选填一个
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// app的安卓包名
+	AndroidPackageName *string `json:"AndroidPackageName,omitempty" name:"AndroidPackageName"`
+
+	// app的IOS的BundleId名
+	IOSBundleId *string `json:"IOSBundleId,omitempty" name:"IOSBundleId"`
+
+	// PC标识名
+	PcIdentifier *string `json:"PcIdentifier,omitempty" name:"PcIdentifier"`
+}
+
 type Artist struct {
 
 	// 歌手名
@@ -135,6 +150,9 @@ type CreateKTVRobotRequest struct {
 
 	// 进房参数。
 	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
+
+	// license基础信息
+	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitempty" name:"ApplicationLicenseInput"`
 }
 
 func (r *CreateKTVRobotRequest) ToJsonString() string {
@@ -151,6 +169,7 @@ func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RTCSystem")
 	delete(f, "JoinRoomInput")
+	delete(f, "ApplicationLicenseInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKTVRobotRequest has unknown keys!", "")
 	}
@@ -578,6 +597,51 @@ func (r *DescribeKTVMusicDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeKTVMusicTagsRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeKTVMusicTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVMusicTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 标签分组列表
+		TagGroupSet []*KTVMusicTagGroup `json:"TagGroupSet,omitempty" name:"TagGroupSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVMusicTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeKTVPlaylistDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -949,6 +1013,55 @@ func (r *DescribeKTVSingersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKTVSingersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSuggestionsRequest struct {
+	*tchttp.BaseRequest
+
+	// 联想关键词
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+}
+
+func (r *DescribeKTVSuggestionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSuggestionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVSuggestionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKTVSuggestionsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 联想词信息列表。返回总数最大为10。
+		KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitempty" name:"KTVSuggestionInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeKTVSuggestionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1573,6 +1686,27 @@ type KTVMusicDetailInfo struct {
 	PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
 }
 
+type KTVMusicTagGroup struct {
+
+	// 标签分组英文名
+	EnglishGroupName *string `json:"EnglishGroupName,omitempty" name:"EnglishGroupName"`
+
+	// 标签分组中文名
+	ChineseGroupName *string `json:"ChineseGroupName,omitempty" name:"ChineseGroupName"`
+
+	// 标签分类下标签列表
+	TagSet []*KTVMusicTagInfo `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+type KTVMusicTagInfo struct {
+
+	// 标签Id
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+
+	// 标签
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+}
+
 type KTVMusicTopInfo struct {
 
 	// 歌曲Id
@@ -1687,6 +1821,12 @@ type KTVSingerInfo struct {
 
 	// 歌曲总播放次数
 	PlayCount *int64 `json:"PlayCount,omitempty" name:"PlayCount"`
+}
+
+type KTVSuggestionInfo struct {
+
+	// 联想词
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 }
 
 type Lyric struct {
@@ -2082,6 +2222,10 @@ type SearchKTVMusicsRequest struct {
 	// <li> Sort.Order 可选 Desc </li>
 	// <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
 	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 标签 ID 集合，匹配集合指定所有 ID 。
+	// <li>数组长度限制：10。</li>
+	TagIds []*string `json:"TagIds,omitempty" name:"TagIds"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -2100,6 +2244,7 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Sort")
+	delete(f, "TagIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKTVMusicsRequest has unknown keys!", "")
 	}

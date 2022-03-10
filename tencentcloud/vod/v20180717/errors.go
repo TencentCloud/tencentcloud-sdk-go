@@ -383,6 +383,9 @@ const (
 	// 参数值错误：Operation 无效。
 	INVALIDPARAMETERVALUE_OPERATION = "InvalidParameterValue.Operation"
 
+	// 参数值错误：文件原存储类型异常。
+	INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
+
 	// 参数值错误：ParentId 无效。
 	INVALIDPARAMETERVALUE_PARENTID = "InvalidParameterValue.ParentId"
 
@@ -467,6 +470,9 @@ const (
 	// 参数值错误：人工确认结果取值非法。
 	INVALIDPARAMETERVALUE_STATUS = "InvalidParameterValue.Status"
 
+	// 参数值错误：目标存储类型不在可选值中。
+	INVALIDPARAMETERVALUE_STORAGECLASS = "InvalidParameterValue.StorageClass"
+
 	// 参数值错误：存储地域。
 	INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
 
@@ -539,6 +545,15 @@ const (
 	// 去重识别码一天内重复，请求被去重。
 	INVALIDPARAMETERVALUE_UNIQUEIDENTIFIER = "InvalidParameterValue.UniqueIdentifier"
 
+	// 参数值错误：文件不支持该解冻方式。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = "InvalidParameterValue.UnsupportedRestoreTier"
+
+	// 参数值错误：不支持的目标存储类型，深度归档只支持部分园区。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDSTORAGECLASS = "InvalidParameterValue.UnsupportedStorageClass"
+
+	// 参数值错误：不支持的存储类型转换。
+	INVALIDPARAMETERVALUE_UNSUPPORTEDTRANSITION = "InvalidParameterValue.UnsupportedTransition"
+
 	// 参数错误：无效的Url。
 	INVALIDPARAMETERVALUE_URL = "InvalidParameterValue.Url"
 
@@ -584,6 +599,9 @@ const (
 	// 超过限制值：模板数超限。
 	LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
@@ -607,6 +625,9 @@ const (
 
 	// 资源不存在：关键词。
 	RESOURCENOTFOUND_WORD = "ResourceNotFound.Word"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 参数错误：不支持MasterPlaylist的M3u8。
 	RESOURCEUNAVAILABLE_MASTERPLAYLIST = "ResourceUnavailable.MasterPlaylist"

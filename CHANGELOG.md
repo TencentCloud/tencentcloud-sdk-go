@@ -1,3 +1,137 @@
+# Release v1.0.363
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 30 次发布
+
+发布时间：2022-03-10 08:03:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeKTVMusicTags](https://cloud.tencent.com/document/api/1155/70856)
+* [DescribeKTVSuggestions](https://cloud.tencent.com/document/api/1155/70855)
+
+修改接口：
+
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)
+
+	* 新增入参：ApplicationLicenseInput
+
+* [SearchKTVMusics](https://cloud.tencent.com/document/api/1155/56401)
+
+	* 新增入参：TagIds
+
+
+新增数据结构：
+
+* [ApplicationLicenseInput](https://cloud.tencent.com/document/api/1155/40113#ApplicationLicenseInput)
+* [KTVMusicTagGroup](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTagGroup)
+* [KTVMusicTagInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTagInfo)
+* [KTVSuggestionInfo](https://cloud.tencent.com/document/api/1155/40113#KTVSuggestionInfo)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 37 次发布
+
+发布时间：2022-03-10 08:06:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyTopicAttributes](https://cloud.tencent.com/document/api/597/40844)
+
+	* 新增入参：QuotaProducerByteRate, QuotaConsumerByteRate
+
+
+新增数据结构：
+
+* [InstanceQuotaConfigResp](https://cloud.tencent.com/document/api/597/40861#InstanceQuotaConfigResp)
+
+修改数据结构：
+
+* [TopicAttributesResponse](https://cloud.tencent.com/document/api/597/40861#TopicAttributesResponse)
+
+	* 新增成员：QuotaConfig
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 91 次发布
+
+发布时间：2022-03-10 08:16:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateImageCache](https://cloud.tencent.com/document/api/457/70861)
+* [DeleteImageCaches](https://cloud.tencent.com/document/api/457/70860)
+* [DescribeImageCaches](https://cloud.tencent.com/document/api/457/70859)
+* [GetMostSuitableImageCache](https://cloud.tencent.com/document/api/457/70858)
+* [UpdateImageCache](https://cloud.tencent.com/document/api/457/70857)
+
+新增数据结构：
+
+* [ImageCache](https://cloud.tencent.com/document/api/457/31866#ImageCache)
+* [ImageCacheEvent](https://cloud.tencent.com/document/api/457/31866#ImageCacheEvent)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 96 次发布
+
+发布时间：2022-03-10 08:17:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyMediaStorageClass](https://cloud.tencent.com/document/api/266/70862)
+
+修改数据结构：
+
+* [AdaptiveStreamTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveStreamTemplate)
+
+	* 新增成员：TEHDConfig
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 107 次发布
+
+发布时间：2022-03-10 08:17:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CcnBandwidthInfo](https://cloud.tencent.com/document/api/215/15824#CcnBandwidthInfo)
+
+	* 新增成员：MarketId
+
+
+
+
 # Release v1.0.362
 
 ## 弹性伸缩(as) 版本：2018-04-19

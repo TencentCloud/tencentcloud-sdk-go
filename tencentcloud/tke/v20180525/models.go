@@ -1769,6 +1769,96 @@ func (r *CreateEKSContainerInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateImageCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于制作镜像缓存的容器镜像列表
+	Images []*string `json:"Images,omitempty" name:"Images"`
+
+	// 实例所属子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例所属VPC Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 镜像缓存名称
+	ImageCacheName *string `json:"ImageCacheName,omitempty" name:"ImageCacheName"`
+
+	// 安全组Id
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 镜像仓库凭证数组
+	ImageRegistryCredentials []*ImageRegistryCredential `json:"ImageRegistryCredentials,omitempty" name:"ImageRegistryCredentials"`
+
+	// 用来绑定容器实例的已有EIP
+	ExistedEipId *string `json:"ExistedEipId,omitempty" name:"ExistedEipId"`
+
+	// 是否为容器实例自动创建EIP，默认为false。若传true，则此参数和ExistedEipIds互斥
+	AutoCreateEip *bool `json:"AutoCreateEip,omitempty" name:"AutoCreateEip"`
+
+	// 自动创建EIP的可选参数。若传此参数，则会自动创建EIP。
+	// 另外此参数和ExistedEipIds互斥
+	AutoCreateEipAttribute *EipAttribute `json:"AutoCreateEipAttribute,omitempty" name:"AutoCreateEipAttribute"`
+
+	// 镜像缓存的大小。默认为20 GiB。取值范围参考[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)中的高性能云盘类型的大小限制。
+	ImageCacheSize *uint64 `json:"ImageCacheSize,omitempty" name:"ImageCacheSize"`
+
+	// 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+}
+
+func (r *CreateImageCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Images")
+	delete(f, "SubnetId")
+	delete(f, "VpcId")
+	delete(f, "ImageCacheName")
+	delete(f, "SecurityGroupIds")
+	delete(f, "ImageRegistryCredentials")
+	delete(f, "ExistedEipId")
+	delete(f, "AutoCreateEip")
+	delete(f, "AutoCreateEipAttribute")
+	delete(f, "ImageCacheSize")
+	delete(f, "RetentionDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 镜像缓存Id
+		ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImageCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePrometheusAlertRuleRequest struct {
 	*tchttp.BaseRequest
 
@@ -2500,6 +2590,52 @@ func (r *DeleteEKSContainerInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEKSContainerInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageCachesRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像缓存Id数组
+	ImageCacheIds []*string `json:"ImageCacheIds,omitempty" name:"ImageCacheIds"`
+}
+
+func (r *DeleteImageCachesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImageCachesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageCacheIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImageCachesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageCachesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteImageCachesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteImageCachesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4269,6 +4405,77 @@ func (r *DescribeExternalClusterSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeImageCachesRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像缓存Id数组
+	ImageCacheIds []*string `json:"ImageCacheIds,omitempty" name:"ImageCacheIds"`
+
+	// 镜像缓存名称数组
+	ImageCacheNames []*string `json:"ImageCacheNames,omitempty" name:"ImageCacheNames"`
+
+	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件，可选条件：
+	// (1)实例名称
+	// KeyName: image-cache-name
+	// 类型：String
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeImageCachesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageCachesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageCacheIds")
+	delete(f, "ImageCacheNames")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageCachesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageCachesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 镜像缓存总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 镜像缓存信息列表
+		ImageCaches []*ImageCache `json:"ImageCaches,omitempty" name:"ImageCaches"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageCachesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageCachesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImagesRequest struct {
 	*tchttp.BaseRequest
 }
@@ -5786,6 +5993,59 @@ func (r *ForwardApplicationRequestV3Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetMostSuitableImageCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 容器镜像列表
+	Images []*string `json:"Images,omitempty" name:"Images"`
+}
+
+func (r *GetMostSuitableImageCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMostSuitableImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Images")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMostSuitableImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMostSuitableImageCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否有匹配的镜像缓存
+		Found *bool `json:"Found,omitempty" name:"Found"`
+
+		// 匹配的镜像缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageCache *ImageCache `json:"ImageCache,omitempty" name:"ImageCache"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetMostSuitableImageCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMostSuitableImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetTkeAppChartListRequest struct {
 	*tchttp.BaseRequest
 
@@ -5944,6 +6204,66 @@ type IPAddress struct {
 
 	// 网络端口
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
+}
+
+type ImageCache struct {
+
+	// 镜像缓存Id
+	ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+
+	// 镜像缓存名称
+	ImageCacheName *string `json:"ImageCacheName,omitempty" name:"ImageCacheName"`
+
+	// 镜像缓存大小。单位：GiB
+	ImageCacheSize *uint64 `json:"ImageCacheSize,omitempty" name:"ImageCacheSize"`
+
+	// 镜像缓存包含的镜像列表
+	Images []*string `json:"Images,omitempty" name:"Images"`
+
+	// 创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 到期时间
+	ExpireDateTime *string `json:"ExpireDateTime,omitempty" name:"ExpireDateTime"`
+
+	// 镜像缓存事件信息
+	Events []*ImageCacheEvent `json:"Events,omitempty" name:"Events"`
+
+	// 最新一次匹配到镜像缓存的时间
+	LastMatchedTime *string `json:"LastMatchedTime,omitempty" name:"LastMatchedTime"`
+
+	// 镜像缓存对应的快照Id
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 镜像缓存状态，可能取值：
+	// Pending：创建中
+	// Ready：创建完成
+	// Failed：创建失败
+	// Updating：更新中
+	// UpdateFailed：更新失败
+	// 只有状态为Ready时，才能正常使用镜像缓存
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ImageCacheEvent struct {
+
+	// 镜像缓存Id
+	ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+
+	// 事件类型, Normal或者Warning
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 事件原因简述
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 事件原因详述
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 事件第一次出现时间
+	FirstTimestamp *string `json:"FirstTimestamp,omitempty" name:"FirstTimestamp"`
+
+	// 事件最后一次出现时间
+	LastTimestamp *string `json:"LastTimestamp,omitempty" name:"LastTimestamp"`
 }
 
 type ImageInstance struct {
@@ -8107,6 +8427,56 @@ func (r *UpdateEKSContainerInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateEKSContainerInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 镜像缓存Id
+	ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+
+	// 镜像缓存名称
+	ImageCacheName *string `json:"ImageCacheName,omitempty" name:"ImageCacheName"`
+}
+
+func (r *UpdateImageCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageCacheId")
+	delete(f, "ImageCacheName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateImageCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateImageCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

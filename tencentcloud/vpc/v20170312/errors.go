@@ -572,6 +572,9 @@ const (
 	// 指定的子网不支持创建本地网关类型的路由。
 	UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = "UnsupportedOperation.NormalSubnetNotSupportLocalGateway"
 
+	// 当前实例已被封禁，无法进行此操作。
+	UNSUPPORTEDOPERATION_NOTLOCKEDINSTANCEOPERATION = "UnsupportedOperation.NotLockedInstanceOperation"
+
 	// 当前云联网实例未处于申请中状态，无法进行操作。
 	UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = "UnsupportedOperation.NotPendingCcnInstance"
 
