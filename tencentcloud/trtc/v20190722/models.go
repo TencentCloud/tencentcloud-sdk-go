@@ -735,64 +735,6 @@ func (r *DescribeRoomInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTrtcInteractiveTimeRequest struct {
-	*tchttp.BaseRequest
-
-	// 查询开始时间，格式为YYYY-MM-DD。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，格式为YYYY-MM-DD。
-	// 单次查询统计区间最多不能超过31天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回所有应用的合计值。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
-}
-
-func (r *DescribeTrtcInteractiveTimeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTrtcInteractiveTimeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "SdkAppId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrtcInteractiveTimeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeTrtcInteractiveTimeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用的用量信息数组。
-		Usages []*OneSdkAppIdUsagesInfo `json:"Usages,omitempty" name:"Usages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribeTrtcInteractiveTimeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeTrtcInteractiveTimeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeTrtcMcuTranscodeTimeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1216,18 +1158,6 @@ type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
-type OneSdkAppIdUsagesInfo struct {
-
-	// 该 SdkAppId 对应的用量记录数长度
-	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-	// 用量数组
-	SdkAppIdTrtcTimeUsages []*SdkAppIdTrtcUsage `json:"SdkAppIdTrtcTimeUsages,omitempty" name:"SdkAppIdTrtcTimeUsages"`
-
-	// 应用ID
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-}
-
 type OutputParams struct {
 
 	// 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
@@ -1512,28 +1442,6 @@ type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
 
 	// 视频时长-全高清FHD，单位：秒。
 	VideoTimeFhd *uint64 `json:"VideoTimeFhd,omitempty" name:"VideoTimeFhd"`
-}
-
-type SdkAppIdTrtcUsage struct {
-
-	// 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
-	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
-
-	// 语音时长，单位：秒。
-	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
-
-	// 音视频时长，单位：秒。
-	// 2019年10月11日前注册，没有变更为 [新计费模式](https://cloud.tencent.com/document/product/647/17157) 的用户才会返回此值。
-	AudioVideoTime *uint64 `json:"AudioVideoTime,omitempty" name:"AudioVideoTime"`
-
-	// 视频时长-标清SD，单位：秒。
-	VideoTimeSd *uint64 `json:"VideoTimeSd,omitempty" name:"VideoTimeSd"`
-
-	// 视频时长-高清HD，单位：秒。
-	VideoTimeHd *uint64 `json:"VideoTimeHd,omitempty" name:"VideoTimeHd"`
-
-	// 视频时长-超清HD，单位：秒。
-	VideoTimeHdp *uint64 `json:"VideoTimeHdp,omitempty" name:"VideoTimeHdp"`
 }
 
 type SmallVideoLayoutParams struct {

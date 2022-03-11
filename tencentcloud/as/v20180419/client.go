@@ -3209,53 +3209,6 @@ func (c *Client) ModifyScheduledActionWithContext(ctx context.Context, request *
     return
 }
 
-func NewPreviewPaiDomainNameRequest() (request *PreviewPaiDomainNameRequest) {
-    request = &PreviewPaiDomainNameRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("as", APIVersion, "PreviewPaiDomainName")
-    
-    
-    return
-}
-
-func NewPreviewPaiDomainNameResponse() (response *PreviewPaiDomainNameResponse) {
-    response = &PreviewPaiDomainNameResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// PreviewPaiDomainName
-// 本接口（PreviewPaiDomainName）用于预览PAI实例域名。
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDPAIDOMAINNAMETYPE = "InvalidParameterValue.InvalidPaiDomainNameType"
-func (c *Client) PreviewPaiDomainName(request *PreviewPaiDomainNameRequest) (response *PreviewPaiDomainNameResponse, err error) {
-    return c.PreviewPaiDomainNameWithContext(context.Background(), request)
-}
-
-// PreviewPaiDomainName
-// 本接口（PreviewPaiDomainName）用于预览PAI实例域名。
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDPAIDOMAINNAMETYPE = "InvalidParameterValue.InvalidPaiDomainNameType"
-func (c *Client) PreviewPaiDomainNameWithContext(ctx context.Context, request *PreviewPaiDomainNameRequest) (response *PreviewPaiDomainNameResponse, err error) {
-    if request == nil {
-        request = NewPreviewPaiDomainNameRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("PreviewPaiDomainName require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewPreviewPaiDomainNameResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
     request = &RemoveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -188,9 +188,6 @@ const (
 	// 指定的通知组 ID 不是数值字符串格式。
 	INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 
-	// 指定的PAI域名类型不支持。
-	INVALIDPARAMETERVALUE_INVALIDPAIDOMAINNAMETYPE = "InvalidParameterValue.InvalidPaiDomainNameType"
-
 	// 定时任务ID无效。
 	INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
 

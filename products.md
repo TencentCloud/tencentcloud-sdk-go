@@ -13,7 +13,7 @@
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2022-03-03 08:00:37 |
 | apigateway | [API网关](https://cloud.tencent.com/document/product/628) | 2022-03-03 08:00:40 |
 | apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2022-02-21 08:01:18 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-03-09 08:05:55 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-03-11 08:03:26 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2022-03-08 08:06:26 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2022-02-21 08:01:30 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2022-02-21 08:01:32 |
@@ -121,7 +121,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-02-21 08:10:11 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-03-03 08:09:36 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-02-21 08:10:18 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-03-11 08:11:56 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-03-08 08:16:27 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-02-21 08:10:29 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-02-21 08:10:32 |
@@ -176,7 +176,7 @@
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-02-21 08:13:40 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-02-21 08:13:41 |
-| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2022-02-21 08:13:42 |
+| trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2022-03-11 08:15:26 |
 | tse | [腾讯云微服务引擎](https://cloud.tencent.com/document/product/1364) | 2022-03-08 08:20:05 |
 | tsf | [腾讯微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2022-03-01 08:14:14 |
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2022-02-21 08:14:10 |

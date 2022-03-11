@@ -1,3 +1,42 @@
+# Release v1.0.364
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 48 次发布
+
+发布时间：2022-03-11 08:03:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* PreviewPaiDomainName
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 28 次发布
+
+发布时间：2022-03-11 08:15:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeTrtcInteractiveTime
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* OneSdkAppIdUsagesInfo
+* SdkAppIdTrtcUsage
+
+
+
 # Release v1.0.363
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
