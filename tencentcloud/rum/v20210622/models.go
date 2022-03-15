@@ -358,6 +358,9 @@ type CreateTawInstanceRequest struct {
 
 	// 数据存储时长计费
 	PeriodRetain *string `json:"PeriodRetain,omitempty" name:"PeriodRetain"`
+
+	// 实例购买渠道("cdn" 等)
+	BuyingChannel *string `json:"BuyingChannel,omitempty" name:"BuyingChannel"`
 }
 
 func (r *CreateTawInstanceRequest) ToJsonString() string {
@@ -380,6 +383,7 @@ func (r *CreateTawInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceDesc")
 	delete(f, "CountNum")
 	delete(f, "PeriodRetain")
+	delete(f, "BuyingChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTawInstanceRequest has unknown keys!", "")
 	}

@@ -320,6 +320,10 @@ type SREInstance struct {
 	// 引擎实例是否开启控制台内网访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableConsoleIntranet *bool `json:"EnableConsoleIntranet,omitempty" name:"EnableConsoleIntranet"`
+
+	// 引擎实例是否展示参数配置页面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigInfoVisible *bool `json:"ConfigInfoVisible,omitempty" name:"ConfigInfoVisible"`
 }
 
 type ServiceGovernanceInfo struct {

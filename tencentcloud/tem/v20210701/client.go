@@ -422,6 +422,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
+//  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
@@ -439,6 +440,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
+//  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
@@ -1012,6 +1014,7 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplication(request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
     return c.RestartApplicationWithContext(context.Background(), request)
 }
@@ -1022,6 +1025,7 @@ func (c *Client) RestartApplication(request *RestartApplicationRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationWithContext(ctx context.Context, request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
     if request == nil {
         request = NewRestartApplicationRequest()
@@ -1061,6 +1065,7 @@ func NewRestartApplicationPodResponse() (response *RestartApplicationPodResponse
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
     return c.RestartApplicationPodWithContext(context.Background(), request)
 }
@@ -1071,6 +1076,7 @@ func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationPodWithContext(ctx context.Context, request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
     if request == nil {
         request = NewRestartApplicationPodRequest()
@@ -1110,6 +1116,7 @@ func NewResumeDeployApplicationResponse() (response *ResumeDeployApplicationResp
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) ResumeDeployApplication(request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
     return c.ResumeDeployApplicationWithContext(context.Background(), request)
 }
@@ -1120,6 +1127,7 @@ func (c *Client) ResumeDeployApplication(request *ResumeDeployApplicationRequest
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) ResumeDeployApplicationWithContext(ctx context.Context, request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
     if request == nil {
         request = NewResumeDeployApplicationRequest()
@@ -1157,8 +1165,7 @@ func NewRevertDeployApplicationResponse() (response *RevertDeployApplicationResp
 // 回滚分批发布
 //
 // 可能返回的错误码:
-//  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
-//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
     return c.RevertDeployApplicationWithContext(context.Background(), request)
 }
@@ -1167,8 +1174,7 @@ func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest
 // 回滚分批发布
 //
 // 可能返回的错误码:
-//  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
-//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RevertDeployApplicationWithContext(ctx context.Context, request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
     if request == nil {
         request = NewRevertDeployApplicationRequest()

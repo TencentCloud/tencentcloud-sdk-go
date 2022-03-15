@@ -2659,6 +2659,7 @@ func NewDescribeBackupTablesResponse() (response *DescribeBackupTablesResponse) 
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -2677,6 +2678,7 @@ func (c *Client) DescribeBackupTables(request *DescribeBackupTablesRequest) (res
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -5896,6 +5898,7 @@ func NewModifyAuditConfigResponse() (response *ModifyAuditConfigResponse) {
 // 本接口(ModifyAuditConfig)用于修改云数据库审计策略的服务配置，包括审计日志保存时长等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_AUDITMODIFYSTATUSERROR = "InternalError.AuditModifyStatusError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -5914,6 +5917,7 @@ func (c *Client) ModifyAuditConfig(request *ModifyAuditConfigRequest) (response 
 // 本接口(ModifyAuditConfig)用于修改云数据库审计策略的服务配置，包括审计日志保存时长等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AUDITCONFIGNOTEXIST = "FailedOperation.AuditConfigNotExist"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_AUDITMODIFYSTATUSERROR = "InternalError.AuditModifyStatusError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
@@ -7024,6 +7028,7 @@ func NewOfflineIsolatedInstancesResponse() (response *OfflineIsolatedInstancesRe
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) OfflineIsolatedInstances(request *OfflineIsolatedInstancesRequest) (response *OfflineIsolatedInstancesResponse, err error) {
     return c.OfflineIsolatedInstancesWithContext(context.Background(), request)
 }
@@ -7042,6 +7047,7 @@ func (c *Client) OfflineIsolatedInstances(request *OfflineIsolatedInstancesReque
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) OfflineIsolatedInstancesWithContext(ctx context.Context, request *OfflineIsolatedInstancesRequest) (response *OfflineIsolatedInstancesResponse, err error) {
     if request == nil {
         request = NewOfflineIsolatedInstancesRequest()
@@ -8163,6 +8169,7 @@ func NewUpgradeDBInstanceEngineVersionResponse() (response *UpgradeDBInstanceEng
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
@@ -8179,6 +8186,7 @@ func (c *Client) UpgradeDBInstanceEngineVersion(request *UpgradeDBInstanceEngine
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"

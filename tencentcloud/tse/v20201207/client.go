@@ -122,6 +122,8 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
     return c.DescribeSREInstancesWithContext(context.Background(), request)
 }
@@ -133,6 +135,8 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *DescribeSREInstancesRequest) (response *DescribeSREInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeSREInstancesRequest()

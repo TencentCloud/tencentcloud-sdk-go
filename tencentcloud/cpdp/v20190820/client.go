@@ -6132,10 +6132,7 @@ func NewQueryOpenBankBankBranchListResponse() (response *QueryOpenBankBankBranch
 // 云企付-查询联行号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBankBranchList(request *QueryOpenBankBankBranchListRequest) (response *QueryOpenBankBankBranchListResponse, err error) {
     return c.QueryOpenBankBankBranchListWithContext(context.Background(), request)
 }
@@ -6144,10 +6141,7 @@ func (c *Client) QueryOpenBankBankBranchList(request *QueryOpenBankBankBranchLis
 // 云企付-查询联行号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBankBranchListWithContext(ctx context.Context, request *QueryOpenBankBankBranchListRequest) (response *QueryOpenBankBankBranchListResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankBankBranchListRequest()
@@ -6185,10 +6179,7 @@ func NewQueryOpenBankBindExternalSubMerchantBankAccountResponse() (response *Que
 // 云企付-子商户银行卡绑定结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccount(request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse, err error) {
     return c.QueryOpenBankBindExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
@@ -6197,10 +6188,7 @@ func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccount(request *QueryO
 // 云企付-子商户银行卡绑定结果查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBindExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) (response *QueryOpenBankBindExternalSubMerchantBankAccountResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankBindExternalSubMerchantBankAccountRequest()
@@ -6238,10 +6226,7 @@ func NewQueryOpenBankDailyReceiptDownloadUrlResponse() (response *QueryOpenBankD
 // 云企付-按日期批量查询回单下载地址
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankDailyReceiptDownloadUrl(request *QueryOpenBankDailyReceiptDownloadUrlRequest) (response *QueryOpenBankDailyReceiptDownloadUrlResponse, err error) {
     return c.QueryOpenBankDailyReceiptDownloadUrlWithContext(context.Background(), request)
 }
@@ -6250,10 +6235,7 @@ func (c *Client) QueryOpenBankDailyReceiptDownloadUrl(request *QueryOpenBankDail
 // 云企付-按日期批量查询回单下载地址
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankDailyReceiptDownloadUrlWithContext(ctx context.Context, request *QueryOpenBankDailyReceiptDownloadUrlRequest) (response *QueryOpenBankDailyReceiptDownloadUrlResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankDailyReceiptDownloadUrlRequest()
@@ -6291,10 +6273,7 @@ func NewQueryOpenBankDownLoadUrlResponse() (response *QueryOpenBankDownLoadUrlRe
 // 云企付-查询对账单下载地址
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankDownLoadUrl(request *QueryOpenBankDownLoadUrlRequest) (response *QueryOpenBankDownLoadUrlResponse, err error) {
     return c.QueryOpenBankDownLoadUrlWithContext(context.Background(), request)
 }
@@ -6303,10 +6282,7 @@ func (c *Client) QueryOpenBankDownLoadUrl(request *QueryOpenBankDownLoadUrlReque
 // 云企付-查询对账单下载地址
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankDownLoadUrlWithContext(ctx context.Context, request *QueryOpenBankDownLoadUrlRequest) (response *QueryOpenBankDownLoadUrlResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankDownLoadUrlRequest()
@@ -6344,10 +6320,7 @@ func NewQueryOpenBankExternalSubMerchantBankAccountResponse() (response *QueryOp
 // 云企付-子商户银行卡列表查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankExternalSubMerchantBankAccount(request *QueryOpenBankExternalSubMerchantBankAccountRequest) (response *QueryOpenBankExternalSubMerchantBankAccountResponse, err error) {
     return c.QueryOpenBankExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
@@ -6356,10 +6329,7 @@ func (c *Client) QueryOpenBankExternalSubMerchantBankAccount(request *QueryOpenB
 // 云企付-子商户银行卡列表查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankExternalSubMerchantBankAccountWithContext(ctx context.Context, request *QueryOpenBankExternalSubMerchantBankAccountRequest) (response *QueryOpenBankExternalSubMerchantBankAccountResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankExternalSubMerchantBankAccountRequest()
@@ -7651,6 +7621,7 @@ func NewRefundResponse() (response *RefundResponse) {
 //  FAILEDOPERATION_ABNORMALORDERSTATE = "FailedOperation.AbnormalOrderState"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BANLANCENOTENOUGHERROR = "FailedOperation.BanlanceNotEnoughError"
+//  FAILEDOPERATION_CHANNELREFUNDFAILED = "FailedOperation.ChannelRefundFailed"
 //  FAILEDOPERATION_INTERNALSERVICETIMEOUT = "FailedOperation.InternalServiceTimeout"
 //  FAILEDOPERATION_INVALIDREFUNDAMT = "FailedOperation.InvalidRefundAmt"
 //  FAILEDOPERATION_MERCHANTBALANCENOTENOUGH = "FailedOperation.MerchantBalanceNotEnough"
@@ -7675,6 +7646,7 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
 //  FAILEDOPERATION_ABNORMALORDERSTATE = "FailedOperation.AbnormalOrderState"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BANLANCENOTENOUGHERROR = "FailedOperation.BanlanceNotEnoughError"
+//  FAILEDOPERATION_CHANNELREFUNDFAILED = "FailedOperation.ChannelRefundFailed"
 //  FAILEDOPERATION_INTERNALSERVICETIMEOUT = "FailedOperation.InternalServiceTimeout"
 //  FAILEDOPERATION_INVALIDREFUNDAMT = "FailedOperation.InvalidRefundAmt"
 //  FAILEDOPERATION_MERCHANTBALANCENOTENOUGH = "FailedOperation.MerchantBalanceNotEnough"

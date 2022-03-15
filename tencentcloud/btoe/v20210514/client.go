@@ -620,6 +620,7 @@ func NewGetDepositCertResponse() (response *GetDepositCertResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) GetDepositCert(request *GetDepositCertRequest) (response *GetDepositCertResponse, err error) {
     return c.GetDepositCertWithContext(context.Background(), request)
 }
@@ -634,6 +635,7 @@ func (c *Client) GetDepositCert(request *GetDepositCertRequest) (response *GetDe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERVALUE = "InvalidParameter.InvalidParameterValue"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) GetDepositCertWithContext(ctx context.Context, request *GetDepositCertRequest) (response *GetDepositCertResponse, err error) {
     if request == nil {
         request = NewGetDepositCertRequest()

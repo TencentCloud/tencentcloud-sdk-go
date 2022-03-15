@@ -1,39 +1,167 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 48 次发布
+### 第 24 次发布
 
-发布时间：2022-03-11 08:03:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* PreviewPaiDomainName
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 28 次发布
-
-发布时间：2022-03-11 08:15:26
+发布时间：2022-03-15 08:03:22
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改数据结构：
 
-* DescribeTrtcInteractiveTime
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
 
-<font color="#dd0000">**删除数据结构**：</font>
+	* 新增成员：UnionPackFlag
 
-* OneSdkAppIdUsagesInfo
-* SdkAppIdTrtcUsage
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 15 次发布
+
+发布时间：2022-03-15 08:06:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateConfigExtra](https://cloud.tencent.com/document/api/614/71166)
+* [DeleteConfigExtra](https://cloud.tencent.com/document/api/614/71165)
+* [DescribeConfigExtras](https://cloud.tencent.com/document/api/614/71164)
+* [ModifyConfigExtra](https://cloud.tencent.com/document/api/614/71163)
+
+新增数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+* [ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo)
+* [ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo)
+* [ContainerWorkLoadInfo](https://cloud.tencent.com/document/api/614/56471#ContainerWorkLoadInfo)
+* [HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo)
+
+修改数据结构：
+
+* [ConsumerContent](https://cloud.tencent.com/document/api/614/56471#ConsumerContent)
+
+	* 新增成员：TagJsonNotTiled
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 59 次发布
+
+发布时间：2022-03-15 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>GoodsName
+
+* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PayerClientIp, PayerUa
+
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 4 次发布
+
+发布时间：2022-03-15 08:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgeUnitCloud](https://cloud.tencent.com/document/api/1118/66764)
+
+	* 新增入参：OpenCloudMonitor
+
+
+
+
+## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 13 次发布
+
+发布时间：2022-03-15 08:13:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TextSimilarityPro](https://cloud.tencent.com/document/api/271/71168)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 12 次发布
+
+发布时间：2022-03-15 08:13:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+
+	* 新增入参：BuyingChannel
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 9 次发布
+
+发布时间：2022-03-15 08:14:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteReceiver](https://cloud.tencent.com/document/api/1288/71169)
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 16 次发布
+
+发布时间：2022-03-15 08:16:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：ConfigInfoVisible
+
 
 
 
@@ -1240,6 +1368,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 24 次发布
+
+发布时间：2022-03-15 08:03:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+
+	* 新增成员：UnionPackFlag
+
 
 ### 第 23 次发布
 
@@ -17076,6 +17219,36 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 15 次发布
+
+发布时间：2022-03-15 08:06:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateConfigExtra](https://cloud.tencent.com/document/api/614/71166)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteConfigExtra](https://cloud.tencent.com/document/api/614/71165)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeConfigExtras](https://cloud.tencent.com/document/api/614/71164)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyConfigExtra](https://cloud.tencent.com/document/api/614/71163)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)](https://cloud.tencent.com/document/api/614/56471#[ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo))
+* [[ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo)](https://cloud.tencent.com/document/api/614/56471#[ContainerFileInfo](https://cloud.tencent.com/document/api/614/56471#ContainerFileInfo))
+* [[ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo)](https://cloud.tencent.com/document/api/614/56471#[ContainerStdoutInfo](https://cloud.tencent.com/document/api/614/56471#ContainerStdoutInfo))
+* [[ContainerWorkLoadInfo](https://cloud.tencent.com/document/api/614/56471#ContainerWorkLoadInfo)](https://cloud.tencent.com/document/api/614/56471#[ContainerWorkLoadInfo](https://cloud.tencent.com/document/api/614/56471#ContainerWorkLoadInfo))
+* [[HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo)](https://cloud.tencent.com/document/api/614/56471#[HostFileInfo](https://cloud.tencent.com/document/api/614/56471#HostFileInfo))
+
+修改数据结构：
+
+* [ConsumerContent](https://cloud.tencent.com/document/api/614/56471#ConsumerContent)
+
+	* 新增成员：TagJsonNotTiled
+
+
 ### 第 14 次发布
 
 发布时间：2022-01-05 08:06:03
@@ -18932,6 +19105,25 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 59 次发布
+
+发布时间：2022-03-15 08:06:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>GoodsName
+
+* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>PayerClientIp, PayerUa
+
 
 ### 第 58 次发布
 
@@ -35527,6 +35719,21 @@
 
 ## 物联网边缘计算平台(iecp) 版本：2021-09-14
 
+### 第 4 次发布
+
+发布时间：2022-03-15 08:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEdgeUnitCloud](https://cloud.tencent.com/document/api/1118/66764)
+
+	* 新增入参：OpenCloudMonitor
+
+
 ### 第 3 次发布
 
 发布时间：2022-02-23 08:08:30
@@ -45838,6 +46045,18 @@
 
 ## 自然语言处理(nlp) 版本：2019-04-08
 
+### 第 13 次发布
+
+发布时间：2022-03-15 08:13:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TextSimilarityPro](https://cloud.tencent.com/document/api/271/71168)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 12 次发布
 
 发布时间：2021-05-10 16:12:19
@@ -50050,6 +50269,21 @@
 
 ## 前端性能监控(rum) 版本：2021-06-22
 
+### 第 12 次发布
+
+发布时间：2022-03-15 08:13:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+
+	* 新增入参：BuyingChannel
+
+
 ### 第 11 次发布
 
 发布时间：2022-02-14 08:15:11
@@ -51217,6 +51451,18 @@
 
 
 ## 邮件推送(ses) 版本：2020-10-02
+
+### 第 9 次发布
+
+发布时间：2022-03-15 08:14:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteReceiver](https://cloud.tencent.com/document/api/1288/71169)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 8 次发布
 
@@ -64047,6 +64293,21 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 16 次发布
+
+发布时间：2022-03-15 08:16:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：ConfigInfoVisible
+
 
 ### 第 15 次发布
 

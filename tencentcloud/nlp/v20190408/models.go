@@ -1389,6 +1389,59 @@ func (r *TextCorrectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type TextSimilarityProRequest struct {
+	*tchttp.BaseRequest
+
+	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
+	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
+
+	// 目标句子（仅支持UTF-8格式，不超过128字符）
+	TargetText []*string `json:"TargetText,omitempty" name:"TargetText"`
+}
+
+func (r *TextSimilarityProRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextSimilarityProRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SrcText")
+	delete(f, "TargetText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextSimilarityProRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TextSimilarityProResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 每个目标句子与源句子的相似度分值，按照分值降序排列
+		Similarity []*Similarity `json:"Similarity,omitempty" name:"Similarity"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TextSimilarityProResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextSimilarityProResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TextSimilarityRequest struct {
 	*tchttp.BaseRequest
 

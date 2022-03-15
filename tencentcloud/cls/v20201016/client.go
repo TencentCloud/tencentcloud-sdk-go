@@ -315,6 +315,73 @@ func (c *Client) CreateConfigWithContext(ctx context.Context, request *CreateCon
     return
 }
 
+func NewCreateConfigExtraRequest() (request *CreateConfigExtraRequest) {
+    request = &CreateConfigExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateConfigExtra")
+    
+    
+    return
+}
+
+func NewCreateConfigExtraResponse() (response *CreateConfigExtraResponse) {
+    response = &CreateConfigExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConfigExtra
+// 本接口用于创建特殊采集配置任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateConfigExtra(request *CreateConfigExtraRequest) (response *CreateConfigExtraResponse, err error) {
+    return c.CreateConfigExtraWithContext(context.Background(), request)
+}
+
+// CreateConfigExtra
+// 本接口用于创建特殊采集配置任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateConfigExtraWithContext(ctx context.Context, request *CreateConfigExtraRequest) (response *CreateConfigExtraResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigExtraRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigExtra require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
     request = &CreateConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1003,6 +1070,69 @@ func (c *Client) DeleteConfigWithContext(ctx context.Context, request *DeleteCon
     return
 }
 
+func NewDeleteConfigExtraRequest() (request *DeleteConfigExtraRequest) {
+    request = &DeleteConfigExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteConfigExtra")
+    
+    
+    return
+}
+
+func NewDeleteConfigExtraResponse() (response *DeleteConfigExtraResponse) {
+    response = &DeleteConfigExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteConfigExtra
+// 本接口用于删除特殊采集规则配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteConfigExtra(request *DeleteConfigExtraRequest) (response *DeleteConfigExtraResponse, err error) {
+    return c.DeleteConfigExtraWithContext(context.Background(), request)
+}
+
+// DeleteConfigExtra
+// 本接口用于删除特殊采集规则配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DeleteConfigExtraWithContext(ctx context.Context, request *DeleteConfigExtraRequest) (response *DeleteConfigExtraResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigExtraRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigExtra require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConfigExtraResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConfigFromMachineGroupRequest() (request *DeleteConfigFromMachineGroupRequest) {
     request = &DeleteConfigFromMachineGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1647,6 +1777,69 @@ func (c *Client) DescribeAlarmsWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeAlarmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigExtrasRequest() (request *DescribeConfigExtrasRequest) {
+    request = &DescribeConfigExtrasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeConfigExtras")
+    
+    
+    return
+}
+
+func NewDescribeConfigExtrasResponse() (response *DescribeConfigExtrasResponse) {
+    response = &DescribeConfigExtrasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConfigExtras
+// 本接口用于获取特殊采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConfigExtras(request *DescribeConfigExtrasRequest) (response *DescribeConfigExtrasResponse, err error) {
+    return c.DescribeConfigExtrasWithContext(context.Background(), request)
+}
+
+// DescribeConfigExtras
+// 本接口用于获取特殊采集配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeConfigExtrasWithContext(ctx context.Context, request *DescribeConfigExtrasRequest) (response *DescribeConfigExtrasResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigExtrasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigExtras require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigExtrasResponse()
     err = c.Send(request, response)
     return
 }
@@ -2954,6 +3147,69 @@ func (c *Client) ModifyConfigWithContext(ctx context.Context, request *ModifyCon
     request.SetContext(ctx)
     
     response = NewModifyConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConfigExtraRequest() (request *ModifyConfigExtraRequest) {
+    request = &ModifyConfigExtraRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyConfigExtra")
+    
+    
+    return
+}
+
+func NewModifyConfigExtraResponse() (response *ModifyConfigExtraResponse) {
+    response = &ModifyConfigExtraResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyConfigExtra
+// 本接口用于修改特殊采集配置任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyConfigExtra(request *ModifyConfigExtraRequest) (response *ModifyConfigExtraResponse, err error) {
+    return c.ModifyConfigExtraWithContext(context.Background(), request)
+}
+
+// ModifyConfigExtra
+// 本接口用于修改特殊采集配置任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyConfigExtraWithContext(ctx context.Context, request *ModifyConfigExtraRequest) (response *ModifyConfigExtraResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigExtraRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigExtra require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConfigExtraResponse()
     err = c.Send(request, response)
     return
 }

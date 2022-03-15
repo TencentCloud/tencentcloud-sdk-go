@@ -1619,6 +1619,7 @@ func NewDescribeDDoSDataResponse() (response *DescribeDDoSDataResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDDoSData(request *DescribeDDoSDataRequest) (response *DescribeDDoSDataResponse, err error) {
@@ -1640,6 +1641,7 @@ func (c *Client) DescribeDDoSData(request *DescribeDDoSDataRequest) (response *D
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDDoSDataWithContext(ctx context.Context, request *DescribeDDoSDataRequest) (response *DescribeDDoSDataResponse, err error) {
@@ -3410,6 +3412,7 @@ func NewDescribeUrlViolationsResponse() (response *DescribeUrlViolationsResponse
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribeUrlViolations(request *DescribeUrlViolationsRequest) (response *DescribeUrlViolationsResponse, err error) {
     return c.DescribeUrlViolationsWithContext(context.Background(), request)
 }
@@ -3428,6 +3431,7 @@ func (c *Client) DescribeUrlViolations(request *DescribeUrlViolationsRequest) (r
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribeUrlViolationsWithContext(ctx context.Context, request *DescribeUrlViolationsRequest) (response *DescribeUrlViolationsResponse, err error) {
     if request == nil {
         request = NewDescribeUrlViolationsRequest()

@@ -173,6 +173,7 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
@@ -186,6 +187,7 @@ func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"

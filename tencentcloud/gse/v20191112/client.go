@@ -3148,6 +3148,7 @@ func NewGetUploadFederationTokenResponse() (response *GetUploadFederationTokenRe
 // 本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetUploadFederationToken(request *GetUploadFederationTokenRequest) (response *GetUploadFederationTokenResponse, err error) {
@@ -3158,6 +3159,7 @@ func (c *Client) GetUploadFederationToken(request *GetUploadFederationTokenReque
 // 本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SERVICENOTOPENED = "UnauthorizedOperation.ServiceNotOpened"
 func (c *Client) GetUploadFederationTokenWithContext(ctx context.Context, request *GetUploadFederationTokenRequest) (response *GetUploadFederationTokenResponse, err error) {

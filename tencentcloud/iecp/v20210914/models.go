@@ -792,6 +792,9 @@ type CreateEdgeUnitCloudRequest struct {
 
 	// 集群service cidr, 默认 10.2.0.0/16
 	ServiceCIDR *string `json:"ServiceCIDR,omitempty" name:"ServiceCIDR"`
+
+	// 是否开启监控。目前内存中权限开启联系产品开通白名单
+	OpenCloudMonitor *bool `json:"OpenCloudMonitor,omitempty" name:"OpenCloudMonitor"`
 }
 
 func (r *CreateEdgeUnitCloudRequest) ToJsonString() string {
@@ -812,6 +815,7 @@ func (r *CreateEdgeUnitCloudRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "PodCIDR")
 	delete(f, "ServiceCIDR")
+	delete(f, "OpenCloudMonitor")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEdgeUnitCloudRequest has unknown keys!", "")
 	}

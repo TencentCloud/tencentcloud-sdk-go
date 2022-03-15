@@ -8113,6 +8113,7 @@ func NewDescribeVideoListByChannelResponse() (response *DescribeVideoListByChann
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeVideoListByChannel(request *DescribeVideoListByChannelRequest) (response *DescribeVideoListByChannelResponse, err error) {
     return c.DescribeVideoListByChannelWithContext(context.Background(), request)
@@ -8123,6 +8124,7 @@ func (c *Client) DescribeVideoListByChannel(request *DescribeVideoListByChannelR
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeVideoListByChannelWithContext(ctx context.Context, request *DescribeVideoListByChannelRequest) (response *DescribeVideoListByChannelResponse, err error) {
     if request == nil {
@@ -8162,6 +8164,7 @@ func NewDescribeWarnModResponse() (response *DescribeWarnModResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarnMod(request *DescribeWarnModRequest) (response *DescribeWarnModResponse, err error) {
     return c.DescribeWarnModWithContext(context.Background(), request)
@@ -8172,6 +8175,7 @@ func (c *Client) DescribeWarnMod(request *DescribeWarnModRequest) (response *Des
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarnModWithContext(ctx context.Context, request *DescribeWarnModRequest) (response *DescribeWarnModResponse, err error) {
     if request == nil {
@@ -8211,6 +8215,7 @@ func NewDescribeWarningsResponse() (response *DescribeWarningsResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarnings(request *DescribeWarningsRequest) (response *DescribeWarningsResponse, err error) {
     return c.DescribeWarningsWithContext(context.Background(), request)
@@ -8221,6 +8226,7 @@ func (c *Client) DescribeWarnings(request *DescribeWarningsRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeWarningsWithContext(ctx context.Context, request *DescribeWarningsRequest) (response *DescribeWarningsResponse, err error) {
     if request == nil {
@@ -8260,6 +8266,7 @@ func NewDescribeXP2PDataResponse() (response *DescribeXP2PDataResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeXP2PData(request *DescribeXP2PDataRequest) (response *DescribeXP2PDataResponse, err error) {
     return c.DescribeXP2PDataWithContext(context.Background(), request)
@@ -8270,6 +8277,7 @@ func (c *Client) DescribeXP2PData(request *DescribeXP2PDataRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = "ResourceUnavailable.GBProtocolExecException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeXP2PDataWithContext(ctx context.Context, request *DescribeXP2PDataRequest) (response *DescribeXP2PDataResponse, err error) {
     if request == nil {

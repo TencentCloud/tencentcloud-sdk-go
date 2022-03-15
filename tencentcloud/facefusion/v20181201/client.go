@@ -68,6 +68,7 @@ func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
@@ -83,6 +84,7 @@ func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FUSEMATERIALNOTEXIST = "FailedOperation.FuseMaterialNotExist"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"

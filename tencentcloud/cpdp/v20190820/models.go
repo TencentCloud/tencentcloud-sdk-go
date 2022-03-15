@@ -7736,7 +7736,7 @@ type OpenBankPayeeInfo struct {
 	BankBranchId *string `json:"BankBranchId,omitempty" name:"BankBranchId"`
 
 	// 收款方绑卡序列号。
-	// 当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付平台时，下发的绑卡序列号。
+	// 当渠道为TENPAY，付款方式为EBANK_PAYMENT时，必填，上送收款方入驻云企付平台时，下发的绑卡序列号。
 	BindSerialNo *string `json:"BindSerialNo,omitempty" name:"BindSerialNo"`
 }
 
@@ -11891,6 +11891,7 @@ type QueryOpenBankDownLoadUrlResponse struct {
 		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
 
 		// 查询对账文件下载响应对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *QueryOpenBankDownLoadUrlResult `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

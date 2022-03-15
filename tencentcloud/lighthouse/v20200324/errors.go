@@ -149,6 +149,9 @@ const (
 	// 云联网实例ID格式非法。
 	INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
 
+	// 磁盘名称长度超出限制。
+	INVALIDPARAMETERVALUE_DISKNAMETOOLONG = "InvalidParameterValue.DiskNameTooLong"
+
 	// 磁盘大小发生改变。
 	INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = "InvalidParameterValue.DiskSizeNotMatch"
 

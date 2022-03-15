@@ -716,6 +716,55 @@ func (c *Client) DeleteEmailTemplateWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteReceiverRequest() (request *DeleteReceiverRequest) {
+    request = &DeleteReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ses", APIVersion, "DeleteReceiver")
+    
+    
+    return
+}
+
+func NewDeleteReceiverResponse() (response *DeleteReceiverResponse) {
+    response = &DeleteReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteReceiver
+// 根据收件id删除收件人列表,同时删除列表中的所有收件邮箱
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+func (c *Client) DeleteReceiver(request *DeleteReceiverRequest) (response *DeleteReceiverResponse, err error) {
+    return c.DeleteReceiverWithContext(context.Background(), request)
+}
+
+// DeleteReceiver
+// 根据收件id删除收件人列表,同时删除列表中的所有收件邮箱
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+func (c *Client) DeleteReceiverWithContext(ctx context.Context, request *DeleteReceiverRequest) (response *DeleteReceiverResponse, err error) {
+    if request == nil {
+        request = NewDeleteReceiverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReceiver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetEmailIdentityRequest() (request *GetEmailIdentityRequest) {
     request = &GetEmailIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},

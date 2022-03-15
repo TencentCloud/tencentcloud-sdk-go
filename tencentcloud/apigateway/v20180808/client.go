@@ -2281,6 +2281,7 @@ func NewDescribeApiAppBindApisStatusResponse() (response *DescribeApiAppBindApis
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
     return c.DescribeApiAppBindApisStatusWithContext(context.Background(), request)
@@ -2291,6 +2292,7 @@ func (c *Client) DescribeApiAppBindApisStatus(request *DescribeApiAppBindApisSta
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DescribeApiAppBindApisStatusWithContext(ctx context.Context, request *DescribeApiAppBindApisStatusRequest) (response *DescribeApiAppBindApisStatusResponse, err error) {
     if request == nil {
@@ -3663,6 +3665,7 @@ func NewDescribeServiceUsagePlanResponse() (response *DescribeServiceUsagePlanRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceUsagePlan(request *DescribeServiceUsagePlanRequest) (response *DescribeServiceUsagePlanResponse, err error) {
     return c.DescribeServiceUsagePlanWithContext(context.Background(), request)
@@ -3675,6 +3678,7 @@ func (c *Client) DescribeServiceUsagePlan(request *DescribeServiceUsagePlanReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceUsagePlanWithContext(ctx context.Context, request *DescribeServiceUsagePlanRequest) (response *DescribeServiceUsagePlanResponse, err error) {
     if request == nil {
@@ -4407,6 +4411,7 @@ func NewModifyApiResponse() (response *ModifyApiResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
 //  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_EIAMERROR = "FailedOperation.EIAMError"
 //  FAILEDOPERATION_EBERROR = "FailedOperation.EbError"
 //  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -4461,6 +4466,7 @@ func (c *Client) ModifyApi(request *ModifyApiRequest) (response *ModifyApiRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
 //  FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
+//  FAILEDOPERATION_EIAMERROR = "FailedOperation.EIAMError"
 //  FAILEDOPERATION_EBERROR = "FailedOperation.EbError"
 //  FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"

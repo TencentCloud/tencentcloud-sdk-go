@@ -4163,6 +4163,7 @@ func NewModifyFenceBindResponse() (response *ModifyFenceBindResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *ModifyFenceBindResponse, err error) {
@@ -4176,6 +4177,7 @@ func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *Mod
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) ModifyFenceBindWithContext(ctx context.Context, request *ModifyFenceBindRequest) (response *ModifyFenceBindResponse, err error) {

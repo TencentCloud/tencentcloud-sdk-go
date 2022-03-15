@@ -2809,6 +2809,7 @@ func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse
 // 可能返回的错误码:
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
+//  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (response *DeleteServerlessGroupResponse, err error) {
     return c.DeleteServerlessGroupWithContext(context.Background(), request)
@@ -2820,6 +2821,7 @@ func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
+//  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) DeleteServerlessGroupWithContext(ctx context.Context, request *DeleteServerlessGroupRequest) (response *DeleteServerlessGroupResponse, err error) {
     if request == nil {
@@ -3902,6 +3904,7 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     return c.DescribeConfigWithContext(context.Background(), request)
 }
@@ -3911,6 +3914,7 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeConfigWithContext(ctx context.Context, request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
         request = NewDescribeConfigRequest()
@@ -4057,6 +4061,7 @@ func NewDescribeConfigSummaryResponse() (response *DescribeConfigSummaryResponse
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigSummary(request *DescribeConfigSummaryRequest) (response *DescribeConfigSummaryResponse, err error) {
     return c.DescribeConfigSummaryWithContext(context.Background(), request)
@@ -4069,6 +4074,7 @@ func (c *Client) DescribeConfigSummary(request *DescribeConfigSummaryRequest) (r
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigSummaryWithContext(ctx context.Context, request *DescribeConfigSummaryRequest) (response *DescribeConfigSummaryResponse, err error) {
     if request == nil {
@@ -4110,6 +4116,7 @@ func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
@@ -4125,6 +4132,7 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
 //  FAILEDOPERATION_CONFIGQUERYFAILED = "FailedOperation.ConfigQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
@@ -5022,6 +5030,7 @@ func NewDescribeGroupGatewaysResponse() (response *DescribeGroupGatewaysResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupGateways(request *DescribeGroupGatewaysRequest) (response *DescribeGroupGatewaysResponse, err error) {
     return c.DescribeGroupGatewaysWithContext(context.Background(), request)
@@ -5032,6 +5041,7 @@ func (c *Client) DescribeGroupGateways(request *DescribeGroupGatewaysRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupGatewaysWithContext(ctx context.Context, request *DescribeGroupGatewaysRequest) (response *DescribeGroupGatewaysResponse, err error) {
     if request == nil {
@@ -5377,6 +5387,7 @@ func NewDescribeImageRepositoryResponse() (response *DescribeImageRepositoryResp
 // 镜像仓库列表 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
@@ -5390,6 +5401,7 @@ func (c *Client) DescribeImageRepository(request *DescribeImageRepositoryRequest
 // 镜像仓库列表 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
@@ -5436,6 +5448,7 @@ func NewDescribeImageTagsResponse() (response *DescribeImageTagsResponse) {
 //  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 //  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -5453,6 +5466,7 @@ func (c *Client) DescribeImageTags(request *DescribeImageTagsRequest) (response 
 //  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = "InvalidParameterValue.ContainergroupApplicationIdNull"
 //  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
 //  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -5603,9 +5617,7 @@ func NewDescribeInvocationMetricDataDimensionResponse() (response *DescribeInvoc
 // 查询维度
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricDataDimension(request *DescribeInvocationMetricDataDimensionRequest) (response *DescribeInvocationMetricDataDimensionResponse, err error) {
     return c.DescribeInvocationMetricDataDimensionWithContext(context.Background(), request)
 }
@@ -5614,9 +5626,7 @@ func (c *Client) DescribeInvocationMetricDataDimension(request *DescribeInvocati
 // 查询维度
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricDataDimensionWithContext(ctx context.Context, request *DescribeInvocationMetricDataDimensionRequest) (response *DescribeInvocationMetricDataDimensionResponse, err error) {
     if request == nil {
         request = NewDescribeInvocationMetricDataDimensionRequest()
@@ -5654,9 +5664,7 @@ func NewDescribeInvocationMetricDataPointResponse() (response *DescribeInvocatio
 // 查询单值指标维度
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricDataPoint(request *DescribeInvocationMetricDataPointRequest) (response *DescribeInvocationMetricDataPointResponse, err error) {
     return c.DescribeInvocationMetricDataPointWithContext(context.Background(), request)
 }
@@ -5665,9 +5673,7 @@ func (c *Client) DescribeInvocationMetricDataPoint(request *DescribeInvocationMe
 // 查询单值指标维度
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeInvocationMetricDataPointWithContext(ctx context.Context, request *DescribeInvocationMetricDataPointRequest) (response *DescribeInvocationMetricDataPointResponse, err error) {
     if request == nil {
         request = NewDescribeInvocationMetricDataPointRequest()
@@ -5816,6 +5822,8 @@ func NewDescribeLaneRulesResponse() (response *DescribeLaneRulesResponse) {
 //  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
 //  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
 //  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
@@ -5872,6 +5880,8 @@ func (c *Client) DescribeLaneRules(request *DescribeLaneRulesRequest) (response 
 //  FAILEDOPERATION_LANEINFORELEASECONSULFAILED = "FailedOperation.LaneInfoReleaseConsulFailed"
 //  FAILEDOPERATION_LANERULEENABLECONSULFAILED = "FailedOperation.LaneRuleEnableConsulFailed"
 //  FAILEDOPERATION_LANERULEMAXLIMIT = "FailedOperation.LaneRuleMaxLimit"
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_LANEINFOALREADYUSED = "InvalidParameter.LaneInfoAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEALREADYUSED = "InvalidParameter.LaneInfoNameAlreadyUsed"
 //  INVALIDPARAMETER_LANEINFONAMEINVALID = "InvalidParameter.LaneInfoNameInvalid"
@@ -6859,6 +6869,7 @@ func NewDescribeReleasedConfigResponse() (response *DescribeReleasedConfigRespon
 // 查询group发布的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
@@ -6871,6 +6882,7 @@ func (c *Client) DescribeReleasedConfig(request *DescribeReleasedConfigRequest) 
 // 查询group发布的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
@@ -7016,6 +7028,7 @@ func NewDescribeServerlessGroupResponse() (response *DescribeServerlessGroupResp
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
@@ -7031,6 +7044,7 @@ func (c *Client) DescribeServerlessGroup(request *DescribeServerlessGroupRequest
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
@@ -9567,6 +9581,7 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -9585,6 +9600,7 @@ func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *Release
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -9852,6 +9868,7 @@ func NewRevocationPublicConfigResponse() (response *RevocationPublicConfigRespon
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RevocationPublicConfig(request *RevocationPublicConfigRequest) (response *RevocationPublicConfigResponse, err error) {
     return c.RevocationPublicConfigWithContext(context.Background(), request)
 }
@@ -9861,6 +9878,7 @@ func (c *Client) RevocationPublicConfig(request *RevocationPublicConfigRequest) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RevocationPublicConfigWithContext(ctx context.Context, request *RevocationPublicConfigRequest) (response *RevocationPublicConfigResponse, err error) {
     if request == nil {
         request = NewRevocationPublicConfigRequest()
@@ -10172,6 +10190,7 @@ func NewStartContainerGroupResponse() (response *StartContainerGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = "FailedOperation.ContainergroupGroupHasrun"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
@@ -10186,6 +10205,7 @@ func (c *Client) StartContainerGroup(request *StartContainerGroupRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = "FailedOperation.ContainergroupGroupHasrun"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"

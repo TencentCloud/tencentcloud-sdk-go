@@ -3420,7 +3420,7 @@ type DescribeCDBProxyRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 代理ID
+	// 代理组ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 }
 

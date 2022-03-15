@@ -379,6 +379,7 @@ func NewDeleteInvokerResponse() (response *DeleteInvokerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
     return c.DeleteInvokerWithContext(context.Background(), request)
@@ -389,6 +390,7 @@ func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteI
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteInvokerWithContext(ctx context.Context, request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
     if request == nil {
