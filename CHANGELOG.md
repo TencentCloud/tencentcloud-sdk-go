@@ -1,3 +1,191 @@
+# Release v1.0.366
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 9 次发布
+
+发布时间：2022-03-16 08:04:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCaptchaMiniOperData](https://cloud.tencent.com/document/api/1110/48470)
+
+	* 新增入参：End
+
+* [DescribeCaptchaOperData](https://cloud.tencent.com/document/api/1110/40477)
+
+	* 新增入参：End
+
+* [DescribeCaptchaTicketData](https://cloud.tencent.com/document/api/1110/47983)
+
+	* 新增入参：End
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 17 次发布
+
+发布时间：2022-03-16 08:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIPStatusList](https://cloud.tencent.com/document/api/1132/71274)
+
+新增数据结构：
+
+* [IPDefendStatus](https://cloud.tencent.com/document/api/1132/49071#IPDefendStatus)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 75 次发布
+
+发布时间：2022-03-16 08:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceModifyInstancesChargeType](https://cloud.tencent.com/document/api/213/17965)
+
+	* 新增入参：ModifyPortableDataDisk
+
+* [ModifyInstancesChargeType](https://cloud.tencent.com/document/api/213/17964)
+
+	* 新增入参：ModifyPortableDataDisk
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 2 次发布
+
+发布时间：2022-03-16 08:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
+
+	* 新增入参：NeedPreview
+
+	* 新增出参：PreviewFileUrl
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：NeedPreview
+
+	* 新增出参：PreviewUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 12 次发布
+
+发布时间：2022-03-16 08:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增入参：NeedPreview
+
+	* 新增出参：PreviewUrls
+
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：NotChannelOrganization
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 44 次发布
+
+发布时间：2022-03-16 08:13:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
+
+	* 新增成员：TotalConcurrencyMem, TotalAllocatedConcurrencyMem
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 10 次发布
+
+发布时间：2022-03-16 08:13:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
+
+	* 新增入参：TriggerType
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 92 次发布
+
+发布时间：2022-03-16 08:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Container](https://cloud.tencent.com/document/api/457/31866#Container)
+
+	* 新增成员：SecurityContext
+
+
+
+
 # Release v1.0.365
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

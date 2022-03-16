@@ -1821,6 +1821,61 @@ func (r *DescribeGuideScanInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeIPStatusListRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产Id
+	IPList []*string `json:"IPList,omitempty" name:"IPList"`
+}
+
+func (r *DescribeIPStatusListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPStatusListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IPList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIPStatusListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIPStatusListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// ip状态信息
+		StatusList []*IPDefendStatus `json:"StatusList,omitempty" name:"StatusList"`
+
+		// 状态码
+		ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+		// 状态信息
+		ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIPStatusListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNatFwInfoCountRequest struct {
 	*tchttp.BaseRequest
 }
@@ -3045,6 +3100,15 @@ func (r *ExpandCfwVerticalResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IPDefendStatus struct {
+
+	// ip地址
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// 防护状态   1:防护打开; -1:地址错误; 其他:未防护
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type InstanceInfo struct {

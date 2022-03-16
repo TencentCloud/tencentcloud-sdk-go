@@ -2893,6 +2893,14 @@ type NamespaceUsage struct {
 
 	// 命名空间函数个数
 	FunctionsCount *int64 `json:"FunctionsCount,omitempty" name:"FunctionsCount"`
+
+	// 命名空间配额总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalConcurrencyMem *int64 `json:"TotalConcurrencyMem,omitempty" name:"TotalConcurrencyMem"`
+
+	// 命名空间配额使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAllocatedConcurrencyMem *int64 `json:"TotalAllocatedConcurrencyMem,omitempty" name:"TotalAllocatedConcurrencyMem"`
 }
 
 type ProtocolParams struct {

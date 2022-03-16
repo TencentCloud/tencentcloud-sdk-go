@@ -531,6 +531,9 @@ type DescribeCaptchaMiniOperDataRequest struct {
 
 	// 查询类型
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 查询结束时间
+	End *uint64 `json:"End,omitempty" name:"End"`
 }
 
 func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
@@ -548,6 +551,7 @@ func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
 	delete(f, "CaptchaAppId")
 	delete(f, "Start")
 	delete(f, "Type")
+	delete(f, "End")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaMiniOperDataRequest has unknown keys!", "")
 	}
@@ -798,6 +802,9 @@ type DescribeCaptchaOperDataRequest struct {
 
 	// 查询类型
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 查询结束时间
+	End *uint64 `json:"End,omitempty" name:"End"`
 }
 
 func (r *DescribeCaptchaOperDataRequest) ToJsonString() string {
@@ -815,6 +822,7 @@ func (r *DescribeCaptchaOperDataRequest) FromJsonString(s string) error {
 	delete(f, "CaptchaAppId")
 	delete(f, "Start")
 	delete(f, "Type")
+	delete(f, "End")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaOperDataRequest has unknown keys!", "")
 	}
@@ -984,6 +992,9 @@ type DescribeCaptchaTicketDataRequest struct {
 
 	// 查询开始时间 例如：20200909
 	Start *int64 `json:"Start,omitempty" name:"Start"`
+
+	// 查询结束时间 例如：20220314
+	End *int64 `json:"End,omitempty" name:"End"`
 }
 
 func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
@@ -1000,6 +1011,7 @@ func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CaptchaAppId")
 	delete(f, "Start")
+	delete(f, "End")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaptchaTicketDataRequest has unknown keys!", "")
 	}

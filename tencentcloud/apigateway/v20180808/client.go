@@ -2589,7 +2589,7 @@ func NewDescribeApiKeysStatusResponse() (response *DescribeApiKeysStatusResponse
 // DescribeApiKeysStatus
 // 本接口（DescribeApiKeysStatus）用于查询密钥列表。
 //
-// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息，本接口不会显示密钥 Key。
+// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
@@ -2600,7 +2600,7 @@ func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (r
 // DescribeApiKeysStatus
 // 本接口（DescribeApiKeysStatus）用于查询密钥列表。
 //
-// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息，本接口不会显示密钥 Key。
+// 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"

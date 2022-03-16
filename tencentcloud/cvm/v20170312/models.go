@@ -3185,6 +3185,9 @@ type InquiryPriceModifyInstancesChargeTypeRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<dx-alert infotype="explain" title="">若指定实例的付费模式为预付费则该参数必传。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 是否同时切换弹性数据云盘计费模式。取值范围：<br><li>TRUE：表示切换弹性数据云盘计费模式<br><li>FALSE：表示不切换弹性数据云盘计费模式<br><br>默认取值：FALSE。
+	ModifyPortableDataDisk *bool `json:"ModifyPortableDataDisk,omitempty" name:"ModifyPortableDataDisk"`
 }
 
 func (r *InquiryPriceModifyInstancesChargeTypeRequest) ToJsonString() string {
@@ -3202,6 +3205,7 @@ func (r *InquiryPriceModifyInstancesChargeTypeRequest) FromJsonString(s string) 
 	delete(f, "InstanceIds")
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
+	delete(f, "ModifyPortableDataDisk")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceModifyInstancesChargeTypeRequest has unknown keys!", "")
 	}
@@ -4659,6 +4663,9 @@ type ModifyInstancesChargeTypeRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<dx-alert infotype="explain" title="">若指定实例的付费模式为预付费则该参数必传。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 是否同时切换弹性数据云盘计费模式。取值范围：<br><li>TRUE：表示切换弹性数据云盘计费模式<br><li>FALSE：表示不切换弹性数据云盘计费模式<br><br>默认取值：FALSE。
+	ModifyPortableDataDisk *bool `json:"ModifyPortableDataDisk,omitempty" name:"ModifyPortableDataDisk"`
 }
 
 func (r *ModifyInstancesChargeTypeRequest) ToJsonString() string {
@@ -4676,6 +4683,7 @@ func (r *ModifyInstancesChargeTypeRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
+	delete(f, "ModifyPortableDataDisk")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstancesChargeTypeRequest has unknown keys!", "")
 	}

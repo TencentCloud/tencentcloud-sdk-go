@@ -936,6 +936,10 @@ type Container struct {
 	// Gpu限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuLimit *uint64 `json:"GpuLimit,omitempty" name:"GpuLimit"`
+
+	// 容器的安全上下文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityContext *SecurityContext `json:"SecurityContext,omitempty" name:"SecurityContext"`
 }
 
 type ContainerState struct {

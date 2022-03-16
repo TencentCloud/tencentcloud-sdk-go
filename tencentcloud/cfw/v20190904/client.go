@@ -1595,6 +1595,55 @@ func (c *Client) DescribeGuideScanInfoWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeIPStatusListRequest() (request *DescribeIPStatusListRequest) {
+    request = &DescribeIPStatusListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeIPStatusList")
+    
+    
+    return
+}
+
+func NewDescribeIPStatusListResponse() (response *DescribeIPStatusListResponse) {
+    response = &DescribeIPStatusListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIPStatusList
+// ip防护状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIPStatusList(request *DescribeIPStatusListRequest) (response *DescribeIPStatusListResponse, err error) {
+    return c.DescribeIPStatusListWithContext(context.Background(), request)
+}
+
+// DescribeIPStatusList
+// ip防护状态查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *DescribeIPStatusListRequest) (response *DescribeIPStatusListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIPStatusListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIPStatusList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIPStatusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatFwInfoCountRequest() (request *DescribeNatFwInfoCountRequest) {
     request = &DescribeNatFwInfoCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

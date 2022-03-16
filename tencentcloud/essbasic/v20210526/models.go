@@ -188,7 +188,7 @@ type CreateConsoleLoginUrlResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 控制台url
+		// 控制台url，此链接5分钟内有效，且只能访问一次
 		ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
 		// 渠道合作企业是否认证开通腾讯电子签。
@@ -222,6 +222,9 @@ type CreateFlowsByTemplatesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 }
 
 func (r *CreateFlowsByTemplatesRequest) ToJsonString() string {
@@ -239,6 +242,7 @@ func (r *CreateFlowsByTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "FlowInfos")
 	delete(f, "Operator")
+	delete(f, "NeedPreview")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowsByTemplatesRequest has unknown keys!", "")
 	}
@@ -258,6 +262,9 @@ type CreateFlowsByTemplatesResponse struct {
 		// 创建消息，对应多个合同ID，
 	// 成功为“”,创建失败则对应失败消息
 		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
+		// 预览模式下返回的预览文件url数组
+		PreviewUrls []*string `json:"PreviewUrls,omitempty" name:"PreviewUrls"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -290,7 +297,7 @@ type CreateSignUrlsRequest struct {
 	// 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面; “APP”-第三方APP或小程序跳转电子签小程序;
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// 签署完成后H5引导页跳转URL
+	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
@@ -695,6 +702,10 @@ type FlowApproverInfo struct {
 
 	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传；
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
+
+	// 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
+	// 默认为false，即签署人位于同一个渠道应用号下；
+	NotChannelOrganization *bool `json:"NotChannelOrganization,omitempty" name:"NotChannelOrganization"`
 }
 
 type FlowDetailInfo struct {
@@ -732,7 +743,7 @@ type FlowInfo struct {
 	// 合同名字
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 签署截止时间戳，超过有效签署时间则该签署流程失败
+	// 签署截止时间戳，超过有效签署时间则该签署流程失败，默认一年
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 模板ID
@@ -748,7 +759,7 @@ type FlowInfo struct {
 	// 回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 多个签署人信息
+	// 多个签署人信息，渠道侧目前不支持超过5个签署方信息
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
 
 	// 表单K-V对列表
@@ -1071,7 +1082,7 @@ type SignUrlInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
-	// 链接失效时间
+	// 链接失效时间,默认30分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
