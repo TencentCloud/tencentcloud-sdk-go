@@ -903,7 +903,7 @@ func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
 //
 // 6. 对视频转自适应码流；
 //
-// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
 //
@@ -940,7 +940,7 @@ func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *Creat
 //
 // 6. 对视频转自适应码流；
 //
-// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
 //
@@ -3790,7 +3790,7 @@ func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
 //
 // 
 //
-// * 智能内容审核（画面鉴黄、鉴政、鉴暴、声音鉴黄）；
+// * 智能内容审核（画面鉴黄、敏感信息检测、声音鉴黄）；
 //
 // * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 //
@@ -3814,7 +3814,7 @@ func (c *Client) ProcessLiveStream(request *ProcessLiveStreamRequest) (response 
 //
 // 
 //
-// * 智能内容审核（画面鉴黄、鉴政、鉴暴、声音鉴黄）；
+// * 智能内容审核（画面鉴黄、敏感信息检测、声音鉴黄）；
 //
 // * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
 //
@@ -3877,7 +3877,7 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 6. 对视频转自适应码流；
 //
-// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
 //
@@ -3909,7 +3909,7 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 6. 对视频转自适应码流；
 //
-// 7. 智能内容审核（鉴黄、鉴恐、鉴政）；
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
 // 8. 智能内容分析（标签、分类、封面、按帧标签）；
 //

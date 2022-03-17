@@ -1,10 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 验证码(captcha) 版本：2019-07-22
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 9 次发布
+### 第 28 次发布
 
-发布时间：2022-03-16 08:04:45
+发布时间：2022-03-17 08:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
+
+	* 新增成员：PathMatchMode
+
+* [CreateApiRsp](https://cloud.tencent.com/document/api/628/45244#CreateApiRsp)
+
+	* 新增成员：Status, ErrMsg, ApiName
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 38 次发布
+
+发布时间：2022-03-17 08:03:56
 
 本次发布包含了以下内容：
 
@@ -12,26 +35,52 @@
 
 修改接口：
 
-* [DescribeCaptchaMiniOperData](https://cloud.tencent.com/document/api/1110/48470)
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
 
-	* 新增入参：End
-
-* [DescribeCaptchaOperData](https://cloud.tencent.com/document/api/1110/40477)
-
-	* 新增入参：End
-
-* [DescribeCaptchaTicketData](https://cloud.tencent.com/document/api/1110/47983)
-
-	* 新增入参：End
+	* 新增入参：MultiZoneFlag, ZoneIds
 
 
 
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 数据湖计算(dlc) 版本：2021-01-25
 
-### 第 17 次发布
+### 第 10 次发布
 
-发布时间：2022-03-16 08:05:40
+发布时间：2022-03-17 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+
+	* 新增入参：Filters
+
+
+修改数据结构：
+
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+
+	* 新增成员：Function, View, Column, DataEngine, ReAuth, Source, Mode, Operator, CreateTime
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：StorageSize, RecordCount
+
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+
+	* 新增成员：UserType
+
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 5 次发布
+
+发布时间：2022-03-17 08:08:16
 
 本次发布包含了以下内容：
 
@@ -39,42 +88,26 @@
 
 新增接口：
 
-* [DescribeIPStatusList](https://cloud.tencent.com/document/api/1132/71274)
+* [CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)
+* [CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)
+* [DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)
+* [DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)
+* [DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)
+* [ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)
+* [ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)
 
 新增数据结构：
 
-* [IPDefendStatus](https://cloud.tencent.com/document/api/1132/49071#IPDefendStatus)
+* [DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)
+* [EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 75 次发布
-
-发布时间：2022-03-16 08:07:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InquiryPriceModifyInstancesChargeType](https://cloud.tencent.com/document/api/213/17965)
-
-	* 新增入参：ModifyPortableDataDisk
-
-* [ModifyInstancesChargeType](https://cloud.tencent.com/document/api/213/17964)
-
-	* 新增入参：ModifyPortableDataDisk
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
+## 智能媒资托管(smh) 版本：2021-07-12
 
 ### 第 2 次发布
 
-发布时间：2022-03-16 08:09:15
+发布时间：2022-03-17 08:11:49
 
 本次发布包含了以下内容：
 
@@ -82,107 +115,35 @@
 
 修改接口：
 
-* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
 
-	* 新增入参：NeedPreview
+	* 新增入参：OrderBy, OrderByType, AutoRenew, BindPhone
 
-	* 新增出参：PreviewFileUrl
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
 
-* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
-
-	* 新增入参：NeedPreview
-
-	* 新增出参：PreviewUrl
+	* 新增入参：OrderBy, OrderByType, Type
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 12 次发布
+### 第 108 次发布
 
-发布时间：2022-03-16 08:09:18
+发布时间：2022-03-17 08:15:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
-
-	* 新增入参：NeedPreview
-
-	* 新增出参：PreviewUrls
-
-
-修改数据结构：
-
-* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
-
-	* 新增成员：NotChannelOrganization
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 44 次发布
-
-发布时间：2022-03-16 08:13:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
-
-	* 新增成员：TotalConcurrencyMem, TotalAllocatedConcurrencyMem
-
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 10 次发布
-
-发布时间：2022-03-16 08:13:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
-
-	* 新增入参：TriggerType
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 92 次发布
-
-发布时间：2022-03-16 08:15:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Container](https://cloud.tencent.com/document/api/457/31866#Container)
-
-	* 新增成员：SecurityContext
-
+* [DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)
+* [DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)
+* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
+* [LockCcns](https://cloud.tencent.com/document/api/215/71322)
+* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
+* [UnlockCcns](https://cloud.tencent.com/document/api/215/71320)
 
 
 
@@ -2112,6 +2073,25 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 28 次发布
+
+发布时间：2022-03-17 08:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
+
+	* 新增成员：PathMatchMode
+
+* [CreateApiRsp](https://cloud.tencent.com/document/api/628/45244#CreateApiRsp)
+
+	* 新增成员：Status, ErrMsg, ApiName
+
 
 ### 第 27 次发布
 
@@ -13837,11 +13817,11 @@
 
 新增接口：
 
-* [[DescribeIPStatusList](https://cloud.tencent.com/document/api/1132/71274)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeIPStatusList](https://cloud.tencent.com/document/api/1132/71274)
 
 新增数据结构：
 
-* [[IPDefendStatus](https://cloud.tencent.com/document/api/1132/49071#IPDefendStatus)](https://cloud.tencent.com/document/api/1132/49071#[IPDefendStatus](https://cloud.tencent.com/document/api/1132/49071#IPDefendStatus))
+* [IPDefendStatus](https://cloud.tencent.com/document/api/1132/49071#IPDefendStatus)
 
 ### 第 16 次发布
 
@@ -14728,6 +14708,21 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 38 次发布
+
+发布时间：2022-03-17 08:03:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增入参：MultiZoneFlag, ZoneIds
+
 
 ### 第 37 次发布
 
@@ -26259,6 +26254,36 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 10 次发布
+
+发布时间：2022-03-17 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+
+	* 新增入参：Filters
+
+
+修改数据结构：
+
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+
+	* 新增成员：Function, View, Column, DataEngine, ReAuth, Source, Mode, Operator, CreateTime
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：StorageSize, RecordCount
+
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+
+	* 新增成员：UserType
+
+
 ### 第 9 次发布
 
 发布时间：2021-12-22 08:10:52
@@ -35844,6 +35869,29 @@
 
 
 ## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 5 次发布
+
+发布时间：2022-03-17 08:08:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)](https://cloud.tencent.com/document/api/1118/66797#[DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo))
+* [[EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)](https://cloud.tencent.com/document/api/1118/66797#[EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo))
 
 ### 第 4 次发布
 
@@ -51789,6 +51837,25 @@
 
 
 ## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 2 次发布
+
+发布时间：2022-03-17 08:11:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
+
+	* 新增入参：OrderBy, OrderByType, AutoRenew, BindPhone
+
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
+
+	* 新增入参：OrderBy, OrderByType, Type
+
 
 ### 第 1 次发布
 
@@ -69846,6 +69913,23 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 108 次发布
+
+发布时间：2022-03-17 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)](https://cloud.tencent.com/document/api/#/#)
+* [[LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)](https://cloud.tencent.com/document/api/#/#)
+* [[LockCcns](https://cloud.tencent.com/document/api/215/71322)](https://cloud.tencent.com/document/api/#/#)
+* [[UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)](https://cloud.tencent.com/document/api/#/#)
+* [[UnlockCcns](https://cloud.tencent.com/document/api/215/71320)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 107 次发布
 

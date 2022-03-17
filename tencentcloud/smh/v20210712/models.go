@@ -257,6 +257,18 @@ type DescribeOfficialInstancesRequest struct {
 
 	// 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 对指定列进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 续费管理筛选类型
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 超级管理管理员账号是否绑定了手机号
+	BindPhone *bool `json:"BindPhone,omitempty" name:"BindPhone"`
 }
 
 func (r *DescribeOfficialInstancesRequest) ToJsonString() string {
@@ -275,6 +287,10 @@ func (r *DescribeOfficialInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIds")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "AutoRenew")
+	delete(f, "BindPhone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfficialInstancesRequest has unknown keys!", "")
 	}
@@ -372,6 +388,15 @@ type DescribeTrafficPackagesRequest struct {
 
 	// 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 对指定列进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 来源类型筛选
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *DescribeTrafficPackagesRequest) ToJsonString() string {
@@ -389,6 +414,9 @@ func (r *DescribeTrafficPackagesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceIds")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficPackagesRequest has unknown keys!", "")
 	}

@@ -442,6 +442,56 @@ func (r *CreateConfigMapResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateEdgeNodeBatchRequest struct {
+	*tchttp.BaseRequest
+
+	// 边缘单元ID
+	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
+
+	// 节点信息
+	Nodes []*DracoNodeInfo `json:"Nodes,omitempty" name:"Nodes"`
+}
+
+func (r *CreateEdgeNodeBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEdgeNodeBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeUnitId")
+	delete(f, "Nodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEdgeNodeBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEdgeNodeBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateEdgeNodeBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEdgeNodeBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateEdgeNodeGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -1037,6 +1087,55 @@ func (r *CreateUpdateNodeUnitResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUpdateNodeUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 无
+	Second *int64 `json:"Second,omitempty" name:"Second"`
+}
+
+func (r *CreateUserTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Second")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUserTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2383,6 +2482,56 @@ func (r *DescribeEdgeNodePodsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEdgeNodeRemarkListRequest struct {
+	*tchttp.BaseRequest
+
+	// 边缘单元ID
+	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
+}
+
+func (r *DescribeEdgeNodeRemarkListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeNodeRemarkListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeUnitId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgeNodeRemarkListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEdgeNodeRemarkListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 边缘单元内的备注列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Remarks []*string `json:"Remarks,omitempty" name:"Remarks"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEdgeNodeRemarkListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeNodeRemarkListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEdgeNodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -2678,6 +2827,80 @@ func (r *DescribeEdgePodResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEdgePodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEdgeSnNodesRequest struct {
+	*tchttp.BaseRequest
+
+	// 边缘单元ID
+	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
+
+	// 根据节点名称模糊匹配
+	NamePattern *string `json:"NamePattern,omitempty" name:"NamePattern"`
+
+	// 根据设备SN模糊匹配
+	SNPattern *string `json:"SNPattern,omitempty" name:"SNPattern"`
+
+	// 根据备注批次信息模糊匹配
+	RemarkPattern *string `json:"RemarkPattern,omitempty" name:"RemarkPattern"`
+
+	// 默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeEdgeSnNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeSnNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeUnitId")
+	delete(f, "NamePattern")
+	delete(f, "SNPattern")
+	delete(f, "RemarkPattern")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgeSnNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEdgeSnNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 满足条件的总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 节点详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NodeSet []*EdgeDracoNodeInfo `json:"NodeSet,omitempty" name:"NodeSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEdgeSnNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeSnNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4614,6 +4837,68 @@ func (r *DescribeSecretsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeYeheResourceLimitRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeYeheResourceLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYeheResourceLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeYeheResourceLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeYeheResourceLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户父账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 允许创建的节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateNodeLimit *uint64 `json:"CreateNodeLimit,omitempty" name:"CreateNodeLimit"`
+
+		// 允许创建的集群数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CreateClusterLimit *uint64 `json:"CreateClusterLimit,omitempty" name:"CreateClusterLimit"`
+
+		// 是否有监控开启权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnablePermMonitor *bool `json:"EnablePermMonitor,omitempty" name:"EnablePermMonitor"`
+
+		// 节点是否有admin的所有权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnablePermAdminNode *bool `json:"EnablePermAdminNode,omitempty" name:"EnablePermAdminNode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeYeheResourceLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYeheResourceLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DockerConfig struct {
 
 	// 镜像仓库地址
@@ -4625,6 +4910,18 @@ type DockerConfig struct {
 
 	// 密码
 	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+type DracoNodeInfo struct {
+
+	// 设备SN。SN仅支持大写字母、数字，长度限制为1~32个字符
+	SN *string `json:"SN,omitempty" name:"SN"`
+
+	// 节点名称。长度限制为1~63个字符，节点名称只支持小写英文、数字、中横线、英文句号
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 节点备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type EdgeCloudCluster struct {
@@ -4680,6 +4977,27 @@ type EdgeCloudCluster struct {
 	// 用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UID *string `json:"UID,omitempty" name:"UID"`
+}
+
+type EdgeDracoNodeInfo struct {
+
+	// 节点ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否已激活
+	IsUsed *bool `json:"IsUsed,omitempty" name:"IsUsed"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 备注信息，如批次
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// SN 设备号
+	SN *string `json:"SN,omitempty" name:"SN"`
 }
 
 type EdgeNodeInfo struct {
@@ -5550,6 +5868,64 @@ func (r *ModifyConfigMapResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyEdgeDracoNodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 边缘单元ID
+	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
+
+	// 边缘节点ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点信息
+	NodeInfo *DracoNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 是否重置draco设备
+	IsReset *bool `json:"IsReset,omitempty" name:"IsReset"`
+}
+
+func (r *ModifyEdgeDracoNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdgeDracoNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeUnitId")
+	delete(f, "NodeId")
+	delete(f, "NodeInfo")
+	delete(f, "IsReset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEdgeDracoNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEdgeDracoNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyEdgeDracoNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdgeDracoNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyEdgeNodeLabelsRequest struct {
 	*tchttp.BaseRequest
 
@@ -5799,6 +6175,64 @@ func (r *ModifyEdgeUnitApplicationYamlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEdgeUnitApplicationYamlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEdgeUnitCloudApiRequest struct {
+	*tchttp.BaseRequest
+
+	// 边缘单元ID
+	EdgeUnitId *uint64 `json:"EdgeUnitId,omitempty" name:"EdgeUnitId"`
+
+	// 边缘单元名称，64字符内
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述，200字符内
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否开启监控
+	OpenCloudMonitor *bool `json:"OpenCloudMonitor,omitempty" name:"OpenCloudMonitor"`
+}
+
+func (r *ModifyEdgeUnitCloudApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdgeUnitCloudApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeUnitId")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "OpenCloudMonitor")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEdgeUnitCloudApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEdgeUnitCloudApiResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyEdgeUnitCloudApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEdgeUnitCloudApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

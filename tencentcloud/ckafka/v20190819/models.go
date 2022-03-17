@@ -845,6 +845,12 @@ type CreateInstancePreRequest struct {
 
 	// 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 跨可用区，zoneIds必填
+	MultiZoneFlag *bool `json:"MultiZoneFlag,omitempty" name:"MultiZoneFlag"`
+
+	// 可用区列表
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -875,6 +881,8 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "Partition")
 	delete(f, "Tags")
 	delete(f, "DiskType")
+	delete(f, "MultiZoneFlag")
+	delete(f, "ZoneIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}

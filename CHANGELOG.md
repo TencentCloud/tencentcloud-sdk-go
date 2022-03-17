@@ -1,3 +1,152 @@
+# Release v1.0.367
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 28 次发布
+
+发布时间：2022-03-17 08:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
+
+	* 新增成员：PathMatchMode
+
+* [CreateApiRsp](https://cloud.tencent.com/document/api/628/45244#CreateApiRsp)
+
+	* 新增成员：Status, ErrMsg, ApiName
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 38 次发布
+
+发布时间：2022-03-17 08:03:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增入参：MultiZoneFlag, ZoneIds
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 10 次发布
+
+发布时间：2022-03-17 08:06:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+
+	* 新增入参：Filters
+
+
+修改数据结构：
+
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+
+	* 新增成员：Function, View, Column, DataEngine, ReAuth, Source, Mode, Operator, CreateTime
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：StorageSize, RecordCount
+
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+
+	* 新增成员：UserType
+
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 5 次发布
+
+发布时间：2022-03-17 08:08:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)
+* [CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)
+* [DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)
+* [DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)
+* [DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)
+* [ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)
+* [ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)
+
+新增数据结构：
+
+* [DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)
+* [EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)
+
+
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 2 次发布
+
+发布时间：2022-03-17 08:11:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
+
+	* 新增入参：OrderBy, OrderByType, AutoRenew, BindPhone
+
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
+
+	* 新增入参：OrderBy, OrderByType, Type
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 108 次发布
+
+发布时间：2022-03-17 08:15:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)
+* [DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)
+* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
+* [LockCcns](https://cloud.tencent.com/document/api/215/71322)
+* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
+* [UnlockCcns](https://cloud.tencent.com/document/api/215/71320)
+
+
+
 # Release v1.0.366
 
 ## 验证码(captcha) 版本：2019-07-22

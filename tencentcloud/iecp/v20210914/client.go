@@ -331,6 +331,91 @@ func (c *Client) CreateEdgeNodeWithContext(ctx context.Context, request *CreateE
     return
 }
 
+func NewCreateEdgeNodeBatchRequest() (request *CreateEdgeNodeBatchRequest) {
+    request = &CreateEdgeNodeBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeNodeBatch")
+    
+    
+    return
+}
+
+func NewCreateEdgeNodeBatchResponse() (response *CreateEdgeNodeBatchResponse) {
+    response = &CreateEdgeNodeBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEdgeNodeBatch
+// 批量预注册节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeNodeBatch(request *CreateEdgeNodeBatchRequest) (response *CreateEdgeNodeBatchResponse, err error) {
+    return c.CreateEdgeNodeBatchWithContext(context.Background(), request)
+}
+
+// CreateEdgeNodeBatch
+// 批量预注册节点
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeNodeBatchWithContext(ctx context.Context, request *CreateEdgeNodeBatchRequest) (response *CreateEdgeNodeBatchResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeNodeBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeNodeBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeNodeBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEdgeNodeGroupRequest() (request *CreateEdgeNodeGroupRequest) {
     request = &CreateEdgeNodeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -909,6 +994,77 @@ func (c *Client) CreateUpdateNodeUnitWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateUpdateNodeUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserTokenRequest() (request *CreateUserTokenRequest) {
+    request = &CreateUserTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "CreateUserToken")
+    
+    
+    return
+}
+
+func NewCreateUserTokenResponse() (response *CreateUserTokenResponse) {
+    response = &CreateUserTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserToken
+// 创建token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserToken(request *CreateUserTokenRequest) (response *CreateUserTokenResponse, err error) {
+    return c.CreateUserTokenWithContext(context.Background(), request)
+}
+
+// CreateUserToken
+// 创建token
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserTokenWithContext(ctx context.Context, request *CreateUserTokenRequest) (response *CreateUserTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateUserTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -2675,6 +2831,91 @@ func (c *Client) DescribeEdgeNodePodsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeEdgeNodeRemarkListRequest() (request *DescribeEdgeNodeRemarkListRequest) {
+    request = &DescribeEdgeNodeRemarkListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNodeRemarkList")
+    
+    
+    return
+}
+
+func NewDescribeEdgeNodeRemarkListResponse() (response *DescribeEdgeNodeRemarkListResponse) {
+    response = &DescribeEdgeNodeRemarkListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEdgeNodeRemarkList
+// 获取节点备注信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodeRemarkList(request *DescribeEdgeNodeRemarkListRequest) (response *DescribeEdgeNodeRemarkListResponse, err error) {
+    return c.DescribeEdgeNodeRemarkListWithContext(context.Background(), request)
+}
+
+// DescribeEdgeNodeRemarkList
+// 获取节点备注信息列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeNodeRemarkListWithContext(ctx context.Context, request *DescribeEdgeNodeRemarkListRequest) (response *DescribeEdgeNodeRemarkListResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeNodeRemarkListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeNodeRemarkList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeNodeRemarkListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeNodesRequest() (request *DescribeEdgeNodesRequest) {
     request = &DescribeEdgeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2884,6 +3125,79 @@ func (c *Client) DescribeEdgePodWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeEdgePodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEdgeSnNodesRequest() (request *DescribeEdgeSnNodesRequest) {
+    request = &DescribeEdgeSnNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeSnNodes")
+    
+    
+    return
+}
+
+func NewDescribeEdgeSnNodesResponse() (response *DescribeEdgeSnNodesResponse) {
+    response = &DescribeEdgeSnNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEdgeSnNodes
+// 查询预注册节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeSnNodes(request *DescribeEdgeSnNodesRequest) (response *DescribeEdgeSnNodesResponse, err error) {
+    return c.DescribeEdgeSnNodesWithContext(context.Background(), request)
+}
+
+// DescribeEdgeSnNodes
+// 查询预注册节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEdgeSnNodesWithContext(ctx context.Context, request *DescribeEdgeSnNodesRequest) (response *DescribeEdgeSnNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeSnNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeSnNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeSnNodesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4916,6 +5230,77 @@ func (c *Client) DescribeSecretsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeYeheResourceLimitRequest() (request *DescribeYeheResourceLimitRequest) {
+    request = &DescribeYeheResourceLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeYeheResourceLimit")
+    
+    
+    return
+}
+
+func NewDescribeYeheResourceLimitResponse() (response *DescribeYeheResourceLimitResponse) {
+    response = &DescribeYeheResourceLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeYeheResourceLimit
+// 查询用户的资源限制
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeYeheResourceLimit(request *DescribeYeheResourceLimitRequest) (response *DescribeYeheResourceLimitResponse, err error) {
+    return c.DescribeYeheResourceLimitWithContext(context.Background(), request)
+}
+
+// DescribeYeheResourceLimit
+// 查询用户的资源限制
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeYeheResourceLimitWithContext(ctx context.Context, request *DescribeYeheResourceLimitRequest) (response *DescribeYeheResourceLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeYeheResourceLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeYeheResourceLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeYeheResourceLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMarketComponentRequest() (request *GetMarketComponentRequest) {
     request = &GetMarketComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5285,6 +5670,91 @@ func (c *Client) ModifyConfigMapWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyEdgeDracoNodeRequest() (request *ModifyEdgeDracoNodeRequest) {
+    request = &ModifyEdgeDracoNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeDracoNode")
+    
+    
+    return
+}
+
+func NewModifyEdgeDracoNodeResponse() (response *ModifyEdgeDracoNodeResponse) {
+    response = &ModifyEdgeDracoNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEdgeDracoNode
+// 编辑draco设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeDracoNode(request *ModifyEdgeDracoNodeRequest) (response *ModifyEdgeDracoNodeResponse, err error) {
+    return c.ModifyEdgeDracoNodeWithContext(context.Background(), request)
+}
+
+// ModifyEdgeDracoNode
+// 编辑draco设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeDracoNodeWithContext(ctx context.Context, request *ModifyEdgeDracoNodeRequest) (response *ModifyEdgeDracoNodeResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeDracoNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeDracoNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeDracoNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEdgeNodeLabelsRequest() (request *ModifyEdgeNodeLabelsRequest) {
     request = &ModifyEdgeNodeLabelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5650,6 +6120,77 @@ func (c *Client) ModifyEdgeUnitApplicationYamlWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewModifyEdgeUnitApplicationYamlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEdgeUnitCloudApiRequest() (request *ModifyEdgeUnitCloudApiRequest) {
+    request = &ModifyEdgeUnitCloudApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitCloudApi")
+    
+    
+    return
+}
+
+func NewModifyEdgeUnitCloudApiResponse() (response *ModifyEdgeUnitCloudApiResponse) {
+    response = &ModifyEdgeUnitCloudApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEdgeUnitCloudApi
+// 更新边缘单元信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitCloudApi(request *ModifyEdgeUnitCloudApiRequest) (response *ModifyEdgeUnitCloudApiResponse, err error) {
+    return c.ModifyEdgeUnitCloudApiWithContext(context.Background(), request)
+}
+
+// ModifyEdgeUnitCloudApi
+// 更新边缘单元信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyEdgeUnitCloudApiWithContext(ctx context.Context, request *ModifyEdgeUnitCloudApiRequest) (response *ModifyEdgeUnitCloudApiResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeUnitCloudApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeUnitCloudApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeUnitCloudApiResponse()
     err = c.Send(request, response)
     return
 }

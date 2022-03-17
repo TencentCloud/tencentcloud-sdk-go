@@ -1179,6 +1179,14 @@ type CosConfig struct {
 	// API调用后端COS的签名开关，默认为false。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Authorization *bool `json:"Authorization,omitempty" name:"Authorization"`
+
+	// API后端COS的路径匹配模式，可选值：
+	// BackEndPath ： 后端路径匹配
+	// FullPath ： 全路径匹配
+	// 
+	// 默认值为：BackEndPath
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathMatchMode *string `json:"PathMatchMode,omitempty" name:"PathMatchMode"`
 }
 
 type CreateAPIDocRequest struct {
@@ -1618,17 +1626,29 @@ type CreateApiRsp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
 
-	// path
+	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitempty" name:"Path"`
 
-	// method
+	// 请求方法
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitempty" name:"Method"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 导入状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// api name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
 }
 
 type CreateIPStrategyRequest struct {
@@ -7178,7 +7198,7 @@ type Service struct {
 
 type ServiceConfig struct {
 
-	// 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
+	// 后端类型。启用vpc时生效，目前支持的类型为clb, cvm和upstream
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// vpc 的唯一ID。
