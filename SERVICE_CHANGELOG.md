@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API网关(apigateway) 版本：2018-08-08
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 28 次发布
+### 第 18 次发布
 
-发布时间：2022-03-17 08:01:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CosConfig](https://cloud.tencent.com/document/api/628/45244#CosConfig)
-
-	* 新增成员：PathMatchMode
-
-* [CreateApiRsp](https://cloud.tencent.com/document/api/628/45244#CreateApiRsp)
-
-	* 新增成员：Status, ErrMsg, ApiName
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 38 次发布
-
-发布时间：2022-03-17 08:03:56
+发布时间：2022-03-18 08:06:40
 
 本次发布包含了以下内容：
 
@@ -35,18 +12,18 @@
 
 修改接口：
 
-* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
 
-	* 新增入参：MultiZoneFlag, ZoneIds
+	* 新增入参：CustomizationId
 
 
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2022-03-17 08:06:17
+发布时间：2022-03-18 08:10:58
 
 本次发布包含了以下内容：
 
@@ -54,83 +31,60 @@
 
 修改接口：
 
-* [DescribeUsers](https://cloud.tencent.com/document/api/1342/58460)
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
 
-	* 新增入参：Filters
+	* 新增入参：UserType, WorkGroupIds
 
+* [CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)
 
-修改数据结构：
-
-* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
-
-	* 新增成员：Function, View, Column, DataEngine, ReAuth, Source, Mode, Operator, CreateTime
-
-* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
-
-	* 新增成员：StorageSize, RecordCount
-
-* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
-
-	* 新增成员：UserType
+	* 新增入参：UserIds
 
 
 
 
-## 物联网边缘计算平台(iecp) 版本：2021-09-14
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 5 次发布
+### 第 42 次发布
 
-发布时间：2022-03-17 08:08:16
+发布时间：2022-03-18 08:14:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)
-* [CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)
-* [DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)
-* [DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)
-* [DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)
-* [ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)
-* [ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+
+	* 新增入参：CLSNotices
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：TriggerTasks
+
+* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
+
+	* 新增入参：CLSNotices
+
 
 新增数据结构：
 
-* [DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)
-* [EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)
+* [CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)
 
+修改数据结构：
 
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
 
-## 智能媒资托管(smh) 版本：2021-07-12
-
-### 第 2 次发布
-
-发布时间：2022-03-17 08:11:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
-
-	* 新增入参：OrderBy, OrderByType, AutoRenew, BindPhone
-
-* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
-
-	* 新增入参：OrderBy, OrderByType, Type
+	* 新增成员：CLSNotices
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 自然语言处理(nlp) 版本：2019-04-08
 
-### 第 108 次发布
+### 第 14 次发布
 
-发布时间：2022-03-17 08:15:03
+发布时间：2022-03-18 08:15:22
 
 本次发布包含了以下内容：
 
@@ -138,12 +92,26 @@
 
 新增接口：
 
-* [DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)
-* [DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)
-* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
-* [LockCcns](https://cloud.tencent.com/document/api/215/71322)
-* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
-* [UnlockCcns](https://cloud.tencent.com/document/api/215/71320)
+* [TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 63 次发布
+
+发布时间：2022-03-18 08:15:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+
+	* 新增出参：CodeSet, CodeCrc
+
 
 
 
@@ -3931,6 +3899,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 18 次发布
+
+发布时间：2022-03-18 08:06:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：CustomizationId
+
 
 ### 第 17 次发布
 
@@ -26254,6 +26237,25 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 11 次发布
+
+发布时间：2022-03-18 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+
+	* 新增入参：UserType, WorkGroupIds
+
+* [CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)
+
+	* 新增入参：UserIds
+
+
 ### 第 10 次发布
 
 发布时间：2022-03-17 08:06:17
@@ -35880,18 +35882,18 @@
 
 新增接口：
 
-* [[CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEdgeNodeBatch](https://cloud.tencent.com/document/api/1118/71317)
+* [CreateUserToken](https://cloud.tencent.com/document/api/1118/71319)
+* [DescribeEdgeNodeRemarkList](https://cloud.tencent.com/document/api/1118/71316)
+* [DescribeEdgeSnNodes](https://cloud.tencent.com/document/api/1118/71315)
+* [DescribeYeheResourceLimit](https://cloud.tencent.com/document/api/1118/71314)
+* [ModifyEdgeDracoNode](https://cloud.tencent.com/document/api/1118/71313)
+* [ModifyEdgeUnitCloudApi](https://cloud.tencent.com/document/api/1118/71312)
 
 新增数据结构：
 
-* [[DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)](https://cloud.tencent.com/document/api/1118/66797#[DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo))
-* [[EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)](https://cloud.tencent.com/document/api/1118/66797#[EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo))
+* [DracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#DracoNodeInfo)
+* [EdgeDracoNodeInfo](https://cloud.tencent.com/document/api/1118/66797#EdgeDracoNodeInfo)
 
 ### 第 4 次发布
 
@@ -43591,6 +43593,40 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 42 次发布
+
+发布时间：2022-03-18 08:14:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+
+	* 新增入参：CLSNotices
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：TriggerTasks
+
+* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
+
+	* 新增入参：CLSNotices
+
+
+新增数据结构：
+
+* [[CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)](https://cloud.tencent.com/document/api/248/30354#[CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice))
+
+修改数据结构：
+
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+
+	* 新增成员：CLSNotices
+
+
 ### 第 41 次发布
 
 发布时间：2022-03-09 08:14:02
@@ -46219,6 +46255,18 @@
 
 ## 自然语言处理(nlp) 版本：2019-04-08
 
+### 第 14 次发布
+
+发布时间：2022-03-18 08:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 13 次发布
 
 发布时间：2022-03-15 08:13:08
@@ -46864,6 +46912,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 63 次发布
+
+发布时间：2022-03-18 08:15:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+
+	* 新增出参：CodeSet, CodeCrc
+
 
 ### 第 62 次发布
 
@@ -69924,12 +69987,12 @@
 
 新增接口：
 
-* [[DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)](https://cloud.tencent.com/document/api/#/#)
-* [[LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)](https://cloud.tencent.com/document/api/#/#)
-* [[LockCcns](https://cloud.tencent.com/document/api/215/71322)](https://cloud.tencent.com/document/api/#/#)
-* [[UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)](https://cloud.tencent.com/document/api/#/#)
-* [[UnlockCcns](https://cloud.tencent.com/document/api/215/71320)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCrossBorderCcnRegionBandwidthLimits](https://cloud.tencent.com/document/api/215/71325)
+* [DescribeTenantCcns](https://cloud.tencent.com/document/api/215/71324)
+* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
+* [LockCcns](https://cloud.tencent.com/document/api/215/71322)
+* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
+* [UnlockCcns](https://cloud.tencent.com/document/api/215/71320)
 
 ### 第 107 次发布
 

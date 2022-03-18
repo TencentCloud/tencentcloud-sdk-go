@@ -5852,7 +5852,7 @@ type MediaSnapshotByTimeOffsetItem struct {
 
 type MediaSnapshotByTimePicInfoItem struct {
 
-	// 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
+	// 该张截图对应视频文件中的时间偏移，单位为秒。
 	TimeOffset *float64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 
 	// 该张截图的路径。

@@ -1476,6 +1476,79 @@ func (c *Client) TextCorrectionWithContext(ctx context.Context, request *TextCor
     return
 }
 
+func NewTextCorrectionProRequest() (request *TextCorrectionProRequest) {
+    request = &TextCorrectionProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("nlp", APIVersion, "TextCorrectionPro")
+    
+    
+    return
+}
+
+func NewTextCorrectionProResponse() (response *TextCorrectionProResponse) {
+    response = &TextCorrectionProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TextCorrectionPro
+// 提供对中文文本的自动纠错功能，能够识别输入文本中的错误片段，定位错误并给出正确的文本结果；支持长度不超过128字符（含标点符号）的长文本纠错。
+//
+// 
+//
+// 此功能是基于千亿级大规模互联网语料和LSTM、BERT等深度神经网络模型进行训练，并持续迭代更新，以保证效果不断提升，是搜索引擎、语音识别、内容审核等功能更好运行的基础之一。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
+//  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
+//  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
+func (c *Client) TextCorrectionPro(request *TextCorrectionProRequest) (response *TextCorrectionProResponse, err error) {
+    return c.TextCorrectionProWithContext(context.Background(), request)
+}
+
+// TextCorrectionPro
+// 提供对中文文本的自动纠错功能，能够识别输入文本中的错误片段，定位错误并给出正确的文本结果；支持长度不超过128字符（含标点符号）的长文本纠错。
+//
+// 
+//
+// 此功能是基于千亿级大规模互联网语料和LSTM、BERT等深度神经网络模型进行训练，并持续迭代更新，以保证效果不断提升，是搜索引擎、语音识别、内容审核等功能更好运行的基础之一。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
+//  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
+//  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
+func (c *Client) TextCorrectionProWithContext(ctx context.Context, request *TextCorrectionProRequest) (response *TextCorrectionProResponse, err error) {
+    if request == nil {
+        request = NewTextCorrectionProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextCorrectionPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextCorrectionProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextSimilarityRequest() (request *TextSimilarityRequest) {
     request = &TextSimilarityRequest{
         BaseRequest: &tchttp.BaseRequest{},

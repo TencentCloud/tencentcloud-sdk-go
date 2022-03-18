@@ -348,23 +348,26 @@ type CreateRecTaskRequest struct {
 	// 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
 	DataLen *uint64 `json:"DataLen,omitempty" name:"DataLen"`
 
-	// 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
-	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
+	// 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
+	ConvertNumMode *int64 `json:"ConvertNumMode,omitempty" name:"ConvertNumMode"`
 
 	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
 	FilterDirty *int64 `json:"FilterDirty,omitempty" name:"FilterDirty"`
 
-	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
-	FilterModal *int64 `json:"FilterModal,omitempty" name:"FilterModal"`
+	// 热词表id。如不设置该参数，自动生效默认热词表；如果设置了该参数，那么将生效对应的热词表。
+	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 
-	// 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
-	ConvertNumMode *int64 `json:"ConvertNumMode,omitempty" name:"ConvertNumMode"`
+	// 自学习模型 id。如不设置该参数，自动生效最后一次上线的自学习模型；如果设置了该参数，那么将生效对应的自学习模型。
+	CustomizationId *string `json:"CustomizationId,omitempty" name:"CustomizationId"`
 
 	// 附加参数(该参数无意义，忽略即可)
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
 	// 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
 	FilterPunc *int64 `json:"FilterPunc,omitempty" name:"FilterPunc"`
+
+	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
+	FilterModal *int64 `json:"FilterModal,omitempty" name:"FilterModal"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -389,12 +392,13 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "Url")
 	delete(f, "Data")
 	delete(f, "DataLen")
-	delete(f, "HotwordId")
-	delete(f, "FilterDirty")
-	delete(f, "FilterModal")
 	delete(f, "ConvertNumMode")
+	delete(f, "FilterDirty")
+	delete(f, "HotwordId")
+	delete(f, "CustomizationId")
 	delete(f, "Extra")
 	delete(f, "FilterPunc")
+	delete(f, "FilterModal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}

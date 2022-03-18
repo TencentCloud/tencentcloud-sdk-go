@@ -23,6 +23,9 @@ const (
 	// 非法文本输入导致返回异常
 	FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 
+	// 后端服务超时。
+	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+
 	// 文本向量化失败
 	FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 

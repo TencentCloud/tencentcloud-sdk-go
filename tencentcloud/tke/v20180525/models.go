@@ -498,7 +498,7 @@ type Cluster struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 
-	// 集群状态 (Running 运行中  Creating 创建中 Abnormal 异常  )
+	// 集群状态 (Running 运行中  Creating 创建中 Idling 闲置中  Abnormal 异常  )
 	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 
 	// 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))

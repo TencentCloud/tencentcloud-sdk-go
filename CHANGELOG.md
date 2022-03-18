@@ -1,3 +1,120 @@
+# Release v1.0.368
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 18 次发布
+
+发布时间：2022-03-18 08:06:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：CustomizationId
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 11 次发布
+
+发布时间：2022-03-18 08:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+
+	* 新增入参：UserType, WorkGroupIds
+
+* [CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)
+
+	* 新增入参：UserIds
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 42 次发布
+
+发布时间：2022-03-18 08:14:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+
+	* 新增入参：CLSNotices
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：TriggerTasks
+
+* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
+
+	* 新增入参：CLSNotices
+
+
+新增数据结构：
+
+* [CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)
+
+修改数据结构：
+
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+
+	* 新增成员：CLSNotices
+
+
+
+
+## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 14 次发布
+
+发布时间：2022-03-18 08:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 63 次发布
+
+发布时间：2022-03-18 08:15:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+
+	* 新增出参：CodeSet, CodeCrc
+
+
+
+
 # Release v1.0.367
 
 ## API网关(apigateway) 版本：2018-08-08

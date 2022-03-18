@@ -168,6 +168,10 @@ type AlarmNotice struct {
 	// 告警通知模板绑定的告警策略ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 推送cls渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 }
 
 type AlarmPolicy struct {
@@ -546,6 +550,21 @@ func (r *BindingPolicyTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CLSNotice struct {
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 日志集Id
+	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+
+	// 主题Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 启停状态，可不传，默认启用。0=停用，1=启用
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+}
+
 type CommonNamespace struct {
 
 	// 命名空间标示
@@ -644,6 +663,9 @@ type CreateAlarmNoticeRequest struct {
 
 	// 回调通知 最多3个
 	URLNotices []*URLNotice `json:"URLNotices,omitempty" name:"URLNotices"`
+
+	// 推送CLS日志服务的操作 最多1个
+	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -664,6 +686,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "NoticeLanguage")
 	delete(f, "UserNotices")
 	delete(f, "URLNotices")
+	delete(f, "CLSNotices")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -1993,6 +2016,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 是否需要策略与入参过滤维度参数的对应关系，1：是  0：否，默认为0
 	NeedCorrespondence *int64 `json:"NeedCorrespondence,omitempty" name:"NeedCorrespondence"`
+
+	// 按照触发任务（例如弹性伸缩）过滤策略。最多10个
+	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitempty" name:"TriggerTasks"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -2026,6 +2052,7 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "NotBindingNoticeRule")
 	delete(f, "InstanceGroupId")
 	delete(f, "NeedCorrespondence")
+	delete(f, "TriggerTasks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}
@@ -4321,6 +4348,9 @@ type ModifyAlarmNoticeRequest struct {
 
 	// 回调通知 最多3个
 	URLNotices []*URLNotice `json:"URLNotices,omitempty" name:"URLNotices"`
+
+	// 告警通知推送到CLS服务 最多1个
+	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -4342,6 +4372,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "NoticeId")
 	delete(f, "UserNotices")
 	delete(f, "URLNotices")
+	delete(f, "CLSNotices")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}

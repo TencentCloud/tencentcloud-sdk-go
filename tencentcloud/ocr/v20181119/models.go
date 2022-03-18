@@ -2914,6 +2914,12 @@ type MLIDPassportOCRResponse struct {
 	// }
 		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 
+		// 最下方第一行 MRZ Code 序列
+		CodeSet *string `json:"CodeSet,omitempty" name:"CodeSet"`
+
+		// 最下方第二行 MRZ Code 序列
+		CodeCrc *string `json:"CodeCrc,omitempty" name:"CodeCrc"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

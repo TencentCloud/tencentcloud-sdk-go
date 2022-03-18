@@ -174,7 +174,7 @@ type ApplyCDBProxyRequest struct {
 	// 安全组
 	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
-	// 描述说明
+	// 描述说明，最大支持256位。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
@@ -682,7 +682,7 @@ type CloseCDBProxyRequest struct {
 	// 代理组ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
-	// 是否只关闭读写分离，取值："true" | "false"
+	// 是否只关闭读写分离，取值："true" | "false"，默认为"false"
 	OnlyCloseRW *bool `json:"OnlyCloseRW,omitempty" name:"OnlyCloseRW"`
 }
 
@@ -1815,7 +1815,7 @@ type CreateParamTemplateRequest struct {
 	// 参数列表。
 	ParamList []*Parameter `json:"ParamList,omitempty" name:"ParamList"`
 
-	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 }
 
@@ -2802,7 +2802,7 @@ type DescribeAuditRulesRequest struct {
 	// 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页偏移量。
+	// 分页偏移量。默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -4923,7 +4923,7 @@ type DescribeParamTemplateInfoResponse struct {
 		// 参数模板描述
 		Description *string `json:"Description,omitempty" name:"Description"`
 
-		// 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+		// 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 		TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6869,7 +6869,7 @@ type ModifyAccountPrivilegesRequest struct {
 	// 注意，不传该参数表示清除该权限。
 	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges"`
 
-	// 该参数不为空时，为批量修改权限。可选值为：grant，revoke。
+	// 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
 	ModifyAction *string `json:"ModifyAction,omitempty" name:"ModifyAction"`
 }
 

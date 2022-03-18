@@ -1335,7 +1335,7 @@ type CreateRuleRequest struct {
 	// 不传递该字段时表示使用对应监听器的ForwardProtocol。
 	ForwardProtocol *string `json:"ForwardProtocol,omitempty" name:"ForwardProtocol"`
 
-	// 回源Host。加速通道转发到远照的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
+	// 回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
 	ForwardHost *string `json:"ForwardHost,omitempty" name:"ForwardHost"`
 
 	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
