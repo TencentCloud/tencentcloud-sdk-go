@@ -2542,6 +2542,60 @@ func (r *ConfirmEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ContentReviewOcrResult struct {
+
+	// Ocr 文字鉴别结果的评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// Ocr 文字鉴别的结果建议，取值范围：
+	// <li>pass；</li>
+	// <li>review；</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// Ocr 文字鉴别的嫌疑关键词列表。
+	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
+
+	// Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+}
+
+type ContentReviewResult struct {
+
+	// 结果类型，取值范围：
+	// <li>Porn.Image：图片画面中的鉴别令人反感的信息结果；</li>
+	// <li>Terrorism.Image：图片画面中的鉴别令人不安全的信息结果；</li>
+	// <li>Political.Image：图片画面中的鉴别令人不适宜信息结果；</li>
+	// <li>Porn.Ocr：图片 OCR 文字中的鉴别令人反感的信息结果；</li>
+	// <li>Terrorism.Ocr：图片 OCR 文字中的鉴别令人不安全的信息结果；</li>
+	// <li>Political.Ocr：图片 OCR 文字中的鉴别令人不适宜信息结果。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图片画面中的鉴别令人反感的信息结果，当 Type 为 Porn.Image 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornImageResult *PornImageResult `json:"PornImageResult,omitempty" name:"PornImageResult"`
+
+	// 图片画面中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Image 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerrorismImageResult *TerrorismImageResult `json:"TerrorismImageResult,omitempty" name:"TerrorismImageResult"`
+
+	// 图片画面中的鉴别令人不适宜信息结果，当 Type 为 Political.Image 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalImageResult *PoliticalImageResult `json:"PoliticalImageResult,omitempty" name:"PoliticalImageResult"`
+
+	// 图片 OCR 文字中的鉴别令人反感的信息结果，当 Type 为 Porn.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PornOcrResult *ContentReviewOcrResult `json:"PornOcrResult,omitempty" name:"PornOcrResult"`
+
+	// 图片 OCR 中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TerrorismOcrResult *ContentReviewOcrResult `json:"TerrorismOcrResult,omitempty" name:"TerrorismOcrResult"`
+
+	// 图片 OCR 文字中的鉴别令人不适宜信息结果，当 Type 为 Political.Ocr 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PoliticalOcrResult *ContentReviewOcrResult `json:"PoliticalOcrResult,omitempty" name:"PoliticalOcrResult"`
+}
+
 type ContentReviewTemplateItem struct {
 
 	// 智能识别模板唯一标识。
@@ -8424,6 +8478,13 @@ type ImageCenterCut struct {
 	Radius *int64 `json:"Radius,omitempty" name:"Radius"`
 }
 
+type ImageContentReviewInput struct {
+
+	// 图片智能内容审核模板 ID。当前只支持：
+	// <li>10：所有审核类型均打开。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
 type ImageOperation struct {
 
 	// 图片处理类型。可选类型有：
@@ -11929,6 +11990,24 @@ type PoliticalConfigureInfoForUpdate struct {
 	OcrReviewInfo *PoliticalOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
+type PoliticalImageResult struct {
+
+	// 鉴别涉及令人不适宜信息的评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 鉴别涉及令人不适宜信息的结果建议，取值范围：
+	// <li>pass；</li>
+	// <li>review；</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 涉及令人不适宜的信息、违规图标名字。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 涉及令人不适宜的信息、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+}
+
 type PoliticalImgReviewTemplateInfo struct {
 
 	// 画面鉴别涉及令人不适宜的信息的任务开关，可选值：
@@ -12060,6 +12139,25 @@ type PornConfigureInfoForUpdate struct {
 
 	// 文本鉴别涉及令人反感的信息的控制参数。
 	OcrReviewInfo *PornOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type PornImageResult struct {
+
+	// 鉴别涉及令人反感的信息的评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 鉴别涉及令人反感的信息的结果建议，取值范围：
+	// <li>pass；</li>
+	// <li>review；</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 鉴别涉及令人反感的信息的结果标签，取值范围：
+	// <li>porn：色情；</li>
+	// <li>sexy：性感；</li>
+	// <li>vulgar：低俗；</li>
+	// <li>intimacy：亲密行为。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type PornImgReviewTemplateInfo struct {
@@ -12233,6 +12331,67 @@ type ProcedureTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ProcessImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+	ContentReviewInput *ImageContentReviewInput `json:"ContentReviewInput,omitempty" name:"ContentReviewInput"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ProcessImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "Operation")
+	delete(f, "ContentReviewInput")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProcessImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片内容智能识别任务结果。
+		ContentReviewResultSet []*ContentReviewResult `json:"ContentReviewResultSet,omitempty" name:"ContentReviewResultSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ProcessImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ProcessImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessMediaByProcedureRequest struct {
@@ -14023,6 +14182,28 @@ type TerrorismConfigureInfoForUpdate struct {
 
 	// 文本鉴别涉及令人不安全的信息的任务控制参数。
 	OcrReviewInfo *TerrorismOcrReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
+}
+
+type TerrorismImageResult struct {
+
+	// 鉴别涉及令人不安全的信息的评分，分值为0到100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 鉴别涉及令人不安全的信息的结果建议，取值范围：
+	// <li>pass；</li>
+	// <li>review；</li>
+	// <li>block。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 鉴别涉及令人不安全的信息的结果标签，取值范围：
+	// <li>guns：武器枪支；</li>
+	// <li>crowd：人群聚集；</li>
+	// <li>police：警察部队；</li>
+	// <li>bloody：血腥画面；</li>
+	// <li>banners：暴恐旗帜；</li>
+	// <li>explosion：爆炸火灾；</li>
+	// <li>scenario：暴恐画面。</li>
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type TerrorismImgReviewTemplateInfo struct {

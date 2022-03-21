@@ -72,14 +72,14 @@ type CancelFlowRequest struct {
 	// 操作用户id
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
 	// 流程id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 撤销原因
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CancelFlowRequest) ToJsonString() string {
@@ -95,9 +95,9 @@ func (r *CancelFlowRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Agent")
 	delete(f, "FlowId")
 	delete(f, "CancelMessage")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelFlowRequest has unknown keys!", "")
 	}
@@ -819,6 +819,9 @@ type FlowCreateApprover struct {
 
 	// 是否发送短信，sms--短信通知，none--不通知，默认为sms
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 签署意愿确认渠道,WEIXINAPP:人脸识别
+	VerifyChannel []*string `json:"VerifyChannel,omitempty" name:"VerifyChannel"`
 }
 
 type FormField struct {

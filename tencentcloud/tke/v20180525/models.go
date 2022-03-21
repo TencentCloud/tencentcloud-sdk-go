@@ -350,6 +350,12 @@ type AutoScalingGroupRange struct {
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
+type AutoUpgradeClusterLevel struct {
+
+	// 是否开启自动变配集群等级
+	IsAutoUpgrade *bool `json:"IsAutoUpgrade,omitempty" name:"IsAutoUpgrade"`
+}
+
 type AutoscalingAdded struct {
 
 	// 正在加入中的节点数量
@@ -711,6 +717,12 @@ type ClusterBasicSettings struct {
 
 	// 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群等级，针对托管集群生效
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+	// 自动变配集群等级，针对托管集群生效
+	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 type ClusterCIDRSettings struct {
@@ -6644,6 +6656,12 @@ type ModifyClusterAttributeRequest struct {
 
 	// 集群描述
 	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+
+	// 集群等级
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+	// 自动变配集群等级
+	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 func (r *ModifyClusterAttributeRequest) ToJsonString() string {
@@ -6662,6 +6680,8 @@ func (r *ModifyClusterAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "ClusterName")
 	delete(f, "ClusterDesc")
+	delete(f, "ClusterLevel")
+	delete(f, "AutoUpgradeClusterLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAttributeRequest has unknown keys!", "")
 	}
@@ -6683,6 +6703,14 @@ type ModifyClusterAttributeResponse struct {
 		// 集群描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+
+		// 集群等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+		// 自动变配集群等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -7102,6 +7102,87 @@ func (c *Client) ParseStreamingManifestWithContext(ctx context.Context, request 
     return
 }
 
+func NewProcessImageRequest() (request *ProcessImageRequest) {
+    request = &ProcessImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ProcessImage")
+    
+    
+    return
+}
+
+func NewProcessImageResponse() (response *ProcessImageResponse) {
+    response = &ProcessImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ProcessImage
+// 对点播中的图片文件发起处理任务，功能包括：
+//
+// 
+//
+// 1. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）;
+//
+// 
+//
+// ><li>图片文件大小支持：文件 < 5M；</li>
+//
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响识别效果；</li>
+//
+// ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ProcessImage(request *ProcessImageRequest) (response *ProcessImageResponse, err error) {
+    return c.ProcessImageWithContext(context.Background(), request)
+}
+
+// ProcessImage
+// 对点播中的图片文件发起处理任务，功能包括：
+//
+// 
+//
+// 1. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）;
+//
+// 
+//
+// ><li>图片文件大小支持：文件 < 5M；</li>
+//
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响识别效果；</li>
+//
+// ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ProcessImageWithContext(ctx context.Context, request *ProcessImageRequest) (response *ProcessImageResponse, err error) {
+    if request == nil {
+        request = NewProcessImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ProcessImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewProcessImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewProcessMediaRequest() (request *ProcessMediaRequest) {
     request = &ProcessMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},

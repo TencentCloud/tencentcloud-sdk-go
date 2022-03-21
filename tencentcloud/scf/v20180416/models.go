@@ -3088,6 +3088,23 @@ type PutProvisionedConcurrencyConfigRequest struct {
 
 	// 定时预置任务
 	TriggerActions []*TriggerAction `json:"TriggerActions,omitempty" name:"TriggerActions"`
+
+	// 预置类型，
+	// 静态预置：Default
+	// 动态追踪并发利用率指标预置：ConcurrencyUtilizationTracking
+	// 预置类型二选一，设置静态预置时可以设置VersionProvisionedConcurrencyNum。
+	// 
+	// 动态利用率预置可以设置TrackingTarget，MinCapacity，MaxCapacity，保持向后兼容性此时VersionProvisionedConcurrencyNum设置为0.
+	ProvisionedType *string `json:"ProvisionedType,omitempty" name:"ProvisionedType"`
+
+	// 指标追踪的并发利用率。设置范围(0,1)
+	TrackingTarget *float64 `json:"TrackingTarget,omitempty" name:"TrackingTarget"`
+
+	// 缩容时的最小值, 最小值为1
+	MinCapacity *uint64 `json:"MinCapacity,omitempty" name:"MinCapacity"`
+
+	// 扩容时的最大值
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 }
 
 func (r *PutProvisionedConcurrencyConfigRequest) ToJsonString() string {
@@ -3107,6 +3124,10 @@ func (r *PutProvisionedConcurrencyConfigRequest) FromJsonString(s string) error 
 	delete(f, "VersionProvisionedConcurrencyNum")
 	delete(f, "Namespace")
 	delete(f, "TriggerActions")
+	delete(f, "ProvisionedType")
+	delete(f, "TrackingTarget")
+	delete(f, "MinCapacity")
+	delete(f, "MaxCapacity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutProvisionedConcurrencyConfigRequest has unknown keys!", "")
 	}

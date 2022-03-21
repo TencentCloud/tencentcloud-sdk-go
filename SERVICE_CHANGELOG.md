@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 语音识别(asr) 版本：2019-06-14
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 18 次发布
+### 第 31 次发布
 
-发布时间：2022-03-18 08:06:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
-
-	* 新增入参：CustomizationId
-
-
-
-
-## 数据湖计算(dlc) 版本：2021-01-25
-
-### 第 11 次发布
-
-发布时间：2022-03-18 08:10:58
+发布时间：2022-03-21 08:06:03
 
 本次发布包含了以下内容：
 
@@ -31,60 +12,112 @@
 
 修改接口：
 
-* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
 
-	* 新增入参：UserType, WorkGroupIds
-
-* [CreateWorkGroup](https://cloud.tencent.com/document/api/1342/58464)
-
-	* 新增入参：UserIds
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 42 次发布
-
-发布时间：2022-03-18 08:14:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
-
-	* 新增入参：CLSNotices
-
-* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
-
-	* 新增入参：TriggerTasks
-
-* [ModifyAlarmNotice](https://cloud.tencent.com/document/api/248/51277)
-
-	* 新增入参：CLSNotices
+	* 新增入参：SetVolumeCommandInput
 
 
 新增数据结构：
 
-* [CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)
+* [SetVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetVolumeCommandInput)
 
 修改数据结构：
 
-* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
 
-	* 新增成员：CLSNotices
-
-
+	* 新增成员：SetVolumeInput
 
 
-## 自然语言处理(nlp) 版本：2019-04-08
 
-### 第 14 次发布
 
-发布时间：2022-03-18 08:15:22
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 3 次发布
+
+发布时间：2022-03-18 15:46:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CancelFlow](https://cloud.tencent.com/document/api/1323/70362)
+
+	* <font color="#dd0000">**修改入参**：</font>Agent
+
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：VerifyChannel
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 13 次发布
+
+发布时间：2022-03-21 08:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProjects](https://cloud.tencent.com/document/api/1464/61475)
+
+	* 新增入参：IsDemo
+
+* [DescribeScores](https://cloud.tencent.com/document/api/1464/61951)
+
+	* 新增入参：IsDemo
+
+* [DescribeTawInstances](https://cloud.tencent.com/document/api/1464/69213)
+
+	* 新增入参：IsDemo
+
+
+修改数据结构：
+
+* [ProjectLimit](https://cloud.tencent.com/document/api/1464/61476#ProjectLimit)
+
+	* <font color="#dd0000">**修改成员**：</font>ID, ProjectID
+
+* [RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject)
+
+	* 新增成员：ProjectStatus
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 45 次发布
+
+发布时间：2022-03-21 08:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+
+	* 新增入参：ProvisionedType, TrackingTarget, MinCapacity, MaxCapacity
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 81 次发布
+
+发布时间：2022-03-21 08:16:19
 
 本次发布包含了以下内容：
 
@@ -92,15 +125,16 @@
 
 新增接口：
 
-* [TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)
+* [FreezeCloudBaseRunServers](https://cloud.tencent.com/document/api/876/71436)
+* [UnfreezeCloudBaseRunServers](https://cloud.tencent.com/document/api/876/71435)
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 63 次发布
+### 第 93 次发布
 
-发布时间：2022-03-18 08:15:31
+发布时间：2022-03-21 08:17:26
 
 本次发布包含了以下内容：
 
@@ -108,10 +142,48 @@
 
 修改接口：
 
-* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
 
-	* 新增出参：CodeSet, CodeCrc
+	* 新增入参：ClusterLevel, AutoUpgradeClusterLevel
 
+	* 新增出参：ClusterLevel, AutoUpgradeClusterLevel
+
+
+新增数据结构：
+
+* [AutoUpgradeClusterLevel](https://cloud.tencent.com/document/api/457/31866#AutoUpgradeClusterLevel)
+
+修改数据结构：
+
+* [ClusterBasicSettings](https://cloud.tencent.com/document/api/457/31866#ClusterBasicSettings)
+
+	* 新增成员：ClusterLevel, AutoUpgradeClusterLevel
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 97 次发布
+
+发布时间：2022-03-21 08:18:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ProcessImage](https://cloud.tencent.com/document/api/266/71437)
+
+新增数据结构：
+
+* [ContentReviewOcrResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewOcrResult)
+* [ContentReviewResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewResult)
+* [ImageContentReviewInput](https://cloud.tencent.com/document/api/266/31773#ImageContentReviewInput)
+* [PoliticalImageResult](https://cloud.tencent.com/document/api/266/31773#PoliticalImageResult)
+* [PornImageResult](https://cloud.tencent.com/document/api/266/31773#PornImageResult)
+* [TerrorismImageResult](https://cloud.tencent.com/document/api/266/31773#TerrorismImageResult)
 
 
 
@@ -513,6 +585,32 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 31 次发布
+
+发布时间：2022-03-21 08:06:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+
+	* 新增入参：SetVolumeCommandInput
+
+
+新增数据结构：
+
+* [[SetVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetVolumeCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetVolumeCommandInput))
+
+修改数据结构：
+
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
+
+	* 新增成员：SetVolumeInput
+
 
 ### 第 30 次发布
 
@@ -31074,6 +31172,28 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 3 次发布
+
+发布时间：2022-03-18 15:46:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CancelFlow](https://cloud.tencent.com/document/api/1323/70362)
+
+	* <font color="#dd0000">**修改入参**：</font>Agent
+
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：VerifyChannel
+
+
 ### 第 2 次发布
 
 发布时间：2022-03-16 08:09:15
@@ -43618,7 +43738,7 @@
 
 新增数据结构：
 
-* [[CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)](https://cloud.tencent.com/document/api/248/30354#[CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice))
+* [CLSNotice](https://cloud.tencent.com/document/api/248/30354#CLSNotice)
 
 修改数据结构：
 
@@ -46265,7 +46385,7 @@
 
 新增接口：
 
-* [[TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)](https://cloud.tencent.com/document/api/#/#)
+* [TextCorrectionPro](https://cloud.tencent.com/document/api/271/71355)
 
 ### 第 13 次发布
 
@@ -50506,6 +50626,40 @@
 
 ## 前端性能监控(rum) 版本：2021-06-22
 
+### 第 13 次发布
+
+发布时间：2022-03-21 08:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProjects](https://cloud.tencent.com/document/api/1464/61475)
+
+	* 新增入参：IsDemo
+
+* [DescribeScores](https://cloud.tencent.com/document/api/1464/61951)
+
+	* 新增入参：IsDemo
+
+* [DescribeTawInstances](https://cloud.tencent.com/document/api/1464/69213)
+
+	* 新增入参：IsDemo
+
+
+修改数据结构：
+
+* [ProjectLimit](https://cloud.tencent.com/document/api/1464/61476#ProjectLimit)
+
+	* <font color="#dd0000">**修改成员**：</font>ID, ProjectID
+
+* [RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject)
+
+	* 新增成员：ProjectStatus
+
+
 ### 第 12 次发布
 
 发布时间：2022-03-15 08:13:58
@@ -50737,6 +50891,21 @@
 
 
 ## 云函数(scf) 版本：2018-04-16
+
+### 第 45 次发布
+
+发布时间：2022-03-21 08:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PutProvisionedConcurrencyConfig](https://cloud.tencent.com/document/api/583/51246)
+
+	* 新增入参：ProvisionedType, TrackingTarget, MinCapacity, MaxCapacity
+
 
 ### 第 44 次发布
 
@@ -55714,6 +55883,19 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 81 次发布
+
+发布时间：2022-03-21 08:16:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FreezeCloudBaseRunServers](https://cloud.tencent.com/document/api/876/71436)](https://cloud.tencent.com/document/api/#/#)
+* [[UnfreezeCloudBaseRunServers](https://cloud.tencent.com/document/api/876/71435)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 80 次发布
 
@@ -62030,6 +62212,34 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 93 次发布
+
+发布时间：2022-03-21 08:17:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
+
+	* 新增入参：ClusterLevel, AutoUpgradeClusterLevel
+
+	* 新增出参：ClusterLevel, AutoUpgradeClusterLevel
+
+
+新增数据结构：
+
+* [[AutoUpgradeClusterLevel](https://cloud.tencent.com/document/api/457/31866#AutoUpgradeClusterLevel)](https://cloud.tencent.com/document/api/457/31866#[AutoUpgradeClusterLevel](https://cloud.tencent.com/document/api/457/31866#AutoUpgradeClusterLevel))
+
+修改数据结构：
+
+* [ClusterBasicSettings](https://cloud.tencent.com/document/api/457/31866#ClusterBasicSettings)
+
+	* 新增成员：ClusterLevel, AutoUpgradeClusterLevel
+
+
 ### 第 92 次发布
 
 发布时间：2022-03-16 08:15:43
@@ -67235,6 +67445,27 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 97 次发布
+
+发布时间：2022-03-21 08:18:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ProcessImage](https://cloud.tencent.com/document/api/266/71437)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ContentReviewOcrResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewOcrResult)](https://cloud.tencent.com/document/api/266/31773#[ContentReviewOcrResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewOcrResult))
+* [[ContentReviewResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewResult)](https://cloud.tencent.com/document/api/266/31773#[ContentReviewResult](https://cloud.tencent.com/document/api/266/31773#ContentReviewResult))
+* [[ImageContentReviewInput](https://cloud.tencent.com/document/api/266/31773#ImageContentReviewInput)](https://cloud.tencent.com/document/api/266/31773#[ImageContentReviewInput](https://cloud.tencent.com/document/api/266/31773#ImageContentReviewInput))
+* [[PoliticalImageResult](https://cloud.tencent.com/document/api/266/31773#PoliticalImageResult)](https://cloud.tencent.com/document/api/266/31773#[PoliticalImageResult](https://cloud.tencent.com/document/api/266/31773#PoliticalImageResult))
+* [[PornImageResult](https://cloud.tencent.com/document/api/266/31773#PornImageResult)](https://cloud.tencent.com/document/api/266/31773#[PornImageResult](https://cloud.tencent.com/document/api/266/31773#PornImageResult))
+* [[TerrorismImageResult](https://cloud.tencent.com/document/api/266/31773#TerrorismImageResult)](https://cloud.tencent.com/document/api/266/31773#[TerrorismImageResult](https://cloud.tencent.com/document/api/266/31773#TerrorismImageResult))
 
 ### 第 96 次发布
 

@@ -5561,6 +5561,69 @@ type FreequotaInfo struct {
 	FreeQuotaType *string `json:"FreeQuotaType,omitempty" name:"FreeQuotaType"`
 }
 
+type FreezeCloudBaseRunServersRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名列表
+	ServerNameList []*string `json:"ServerNameList,omitempty" name:"ServerNameList"`
+}
+
+func (r *FreezeCloudBaseRunServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreezeCloudBaseRunServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeCloudBaseRunServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FreezeCloudBaseRunServersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量状态状态
+	// 成功：succ
+	// 失败：fail
+	// 部分：partial（部分成功、部分失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 冻结失败服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailServerList []*string `json:"FailServerList,omitempty" name:"FailServerList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FreezeCloudBaseRunServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FunctionInfo struct {
 
 	// 命名空间
@@ -6795,5 +6858,68 @@ func (r *TurnOnStandaloneGatewayResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TurnOnStandaloneGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnfreezeCloudBaseRunServersRequest struct {
+	*tchttp.BaseRequest
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称列表
+	ServerNameList []*string `json:"ServerNameList,omitempty" name:"ServerNameList"`
+}
+
+func (r *UnfreezeCloudBaseRunServersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfreezeCloudBaseRunServersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnfreezeCloudBaseRunServersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnfreezeCloudBaseRunServersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批量执行结果
+	// 成功：succ
+	// 失败：fail
+	// 部分：partial（部分成功、部分失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 解冻失败列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailServerList []*string `json:"FailServerList,omitempty" name:"FailServerList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnfreezeCloudBaseRunServersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnfreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

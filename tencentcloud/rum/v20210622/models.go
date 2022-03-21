@@ -3476,6 +3476,9 @@ type DescribeProjectsRequest struct {
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否为demo模式（1=是，2=否）
+	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
 func (r *DescribeProjectsRequest) ToJsonString() string {
@@ -3493,6 +3496,7 @@ func (r *DescribeProjectsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "IsDemo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
 	}
@@ -3712,6 +3716,9 @@ type DescribeScoresRequest struct {
 
 	// 项目ID
 	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// 是否为demo模式（1=是，2=否）
+	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
 func (r *DescribeScoresRequest) ToJsonString() string {
@@ -3729,6 +3736,7 @@ func (r *DescribeScoresRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "StartTime")
 	delete(f, "ID")
+	delete(f, "IsDemo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScoresRequest has unknown keys!", "")
 	}
@@ -3852,6 +3860,9 @@ type DescribeTawInstancesRequest struct {
 
 	// 过滤参数
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否为demo模式（1=是，2=否）
+	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
 func (r *DescribeTawInstancesRequest) ToJsonString() string {
@@ -3874,6 +3885,7 @@ func (r *DescribeTawInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceStatuses")
 	delete(f, "InstanceIds")
 	delete(f, "Filters")
+	delete(f, "IsDemo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTawInstancesRequest has unknown keys!", "")
 	}
@@ -4270,12 +4282,6 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 
 type ProjectLimit struct {
 
-	// 主键ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
-
-	// 项目ID
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
-
 	// 接口
 	ProjectInterface *string `json:"ProjectInterface,omitempty" name:"ProjectInterface"`
 
@@ -4284,6 +4290,12 @@ type ProjectLimit struct {
 
 	// 上报类型 1：上报率  2：上报量限制
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 主键ID
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
 }
 
 type ReleaseFile struct {
@@ -4455,6 +4467,10 @@ type RumProject struct {
 	// 是否星标  1:是 0:否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsStar *int64 `json:"IsStar,omitempty" name:"IsStar"`
+
+	// 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectStatus *int64 `json:"ProjectStatus,omitempty" name:"ProjectStatus"`
 }
 
 type RumPvInfo struct {

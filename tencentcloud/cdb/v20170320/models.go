@@ -5052,10 +5052,10 @@ type DescribeProxyConnectionPoolConfRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页查询偏移量
+	// 分页
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询限制
+	// 限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -7347,10 +7347,10 @@ type ModifyCDBProxyRequest struct {
 	// 数据库代理组唯一ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
-	// 是否开始延迟剔除，取值："true" | "false"
+	// 是否开始延迟剔除，默认false，取值："true" | "false"
 	IsKickout *bool `json:"IsKickout,omitempty" name:"IsKickout"`
 
-	// 最少保留数
+	// 最少保留数，最小为0，最大为实例数量
 	MinCount *uint64 `json:"MinCount,omitempty" name:"MinCount"`
 
 	// 延迟剔除的阈值；如果IsKickOut="true", 该字段必填
@@ -7362,10 +7362,10 @@ type ModifyCDBProxyRequest struct {
 	// 实例只读权重
 	RoWeightValues *RoWeight `json:"RoWeightValues,omitempty" name:"RoWeightValues"`
 
-	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："true" | "false"
+	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，默认false，取值："true" | "false"
 	FailOver *bool `json:"FailOver,omitempty" name:"FailOver"`
 
-	// 是否自动添加只读实例，取值："true" | "false"
+	// 是否自动添加只读实例，默认false，取值："true" | "false"
 	AutoAddRo *bool `json:"AutoAddRo,omitempty" name:"AutoAddRo"`
 }
 
@@ -9875,10 +9875,10 @@ type UpgradeCDBProxyRequest struct {
 	// 数据库代理ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
-	// 代理节点个数
+	// 代理节点个数，实际规格支持数
 	ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
 
-	// 代理节点核数
+	// 代理节点核数，实际规格支持数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 代理节点内存大小

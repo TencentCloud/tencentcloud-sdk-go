@@ -3656,6 +3656,59 @@ func (c *Client) EstablishWxGatewayRouteWithContext(ctx context.Context, request
     return
 }
 
+func NewFreezeCloudBaseRunServersRequest() (request *FreezeCloudBaseRunServersRequest) {
+    request = &FreezeCloudBaseRunServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "FreezeCloudBaseRunServers")
+    
+    
+    return
+}
+
+func NewFreezeCloudBaseRunServersResponse() (response *FreezeCloudBaseRunServersResponse) {
+    response = &FreezeCloudBaseRunServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FreezeCloudBaseRunServers
+// 批量冻结
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) FreezeCloudBaseRunServers(request *FreezeCloudBaseRunServersRequest) (response *FreezeCloudBaseRunServersResponse, err error) {
+    return c.FreezeCloudBaseRunServersWithContext(context.Background(), request)
+}
+
+// FreezeCloudBaseRunServers
+// 批量冻结
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) FreezeCloudBaseRunServersWithContext(ctx context.Context, request *FreezeCloudBaseRunServersRequest) (response *FreezeCloudBaseRunServersResponse, err error) {
+    if request == nil {
+        request = NewFreezeCloudBaseRunServersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FreezeCloudBaseRunServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFreezeCloudBaseRunServersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCloudBaseRunServerFlowConfRequest() (request *ModifyCloudBaseRunServerFlowConfRequest) {
     request = &ModifyCloudBaseRunServerFlowConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4253,6 +4306,61 @@ func (c *Client) TurnOnStandaloneGatewayWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewTurnOnStandaloneGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnfreezeCloudBaseRunServersRequest() (request *UnfreezeCloudBaseRunServersRequest) {
+    request = &UnfreezeCloudBaseRunServersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "UnfreezeCloudBaseRunServers")
+    
+    
+    return
+}
+
+func NewUnfreezeCloudBaseRunServersResponse() (response *UnfreezeCloudBaseRunServersResponse) {
+    response = &UnfreezeCloudBaseRunServersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnfreezeCloudBaseRunServers
+// 批量解冻服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) UnfreezeCloudBaseRunServers(request *UnfreezeCloudBaseRunServersRequest) (response *UnfreezeCloudBaseRunServersResponse, err error) {
+    return c.UnfreezeCloudBaseRunServersWithContext(context.Background(), request)
+}
+
+// UnfreezeCloudBaseRunServers
+// 批量解冻服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) UnfreezeCloudBaseRunServersWithContext(ctx context.Context, request *UnfreezeCloudBaseRunServersRequest) (response *UnfreezeCloudBaseRunServersResponse, err error) {
+    if request == nil {
+        request = NewUnfreezeCloudBaseRunServersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnfreezeCloudBaseRunServers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnfreezeCloudBaseRunServersResponse()
     err = c.Send(request, response)
     return
 }

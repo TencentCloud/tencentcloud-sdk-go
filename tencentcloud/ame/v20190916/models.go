@@ -1766,10 +1766,10 @@ type KTVRobotInfo struct {
 	// 播放进度，单位：毫秒。
 	Position *uint64 `json:"Position,omitempty" name:"Position"`
 
-	// 音频参数
+	// 音频参数。
 	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitempty" name:"SetAudioParamInput"`
 
-	// 进房信息
+	// 进房信息。
 	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
 
 	// RTC厂商类型，取值有：
@@ -1782,6 +1782,9 @@ type KTVRobotInfo struct {
 	// <li>RepeatSingle：单曲循环</li>
 	// <li>Shuffle：随机播放</li>
 	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitempty" name:"SetPlayModeInput"`
+
+	// 音量，范围 0~100，默认为 50。
+	SetVolumeInput *SetVolumeCommandInput `json:"SetVolumeInput,omitempty" name:"SetVolumeInput"`
 }
 
 type KTVSingerBaseInfo struct {
@@ -2350,6 +2353,12 @@ type SetPlaylistCommandInput struct {
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
 }
 
+type SetVolumeCommandInput struct {
+
+	// 音量大小，取值范围为 0~100，默认值为 50。
+	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+}
+
 type SortBy struct {
 
 	// 排序字段
@@ -2398,6 +2407,7 @@ type SyncKTVRobotCommandRequest struct {
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
 	// <li>SetDestroyMode：设置销毁模式</li>
+	// <li>SetVolume：设置音量</li>
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 播放参数。
@@ -2420,6 +2430,9 @@ type SyncKTVRobotCommandRequest struct {
 
 	// 销毁模式，当Command取SetDestroyMode时，必填。
 	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
+
+	// 音量，当Command取SetVolume时，必填。
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
 }
 
 func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
@@ -2443,6 +2456,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 	delete(f, "SendMessageCommandInput")
 	delete(f, "SetPlayModeCommandInput")
 	delete(f, "SetDestroyModeCommandInput")
+	delete(f, "SetVolumeCommandInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncKTVRobotCommandRequest has unknown keys!", "")
 	}
