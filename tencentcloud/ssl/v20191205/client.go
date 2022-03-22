@@ -968,6 +968,7 @@ func NewDescribeManagersResponse() (response *DescribeManagersResponse) {
 // 查询管理人列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeManagers(request *DescribeManagersRequest) (response *DescribeManagersResponse, err error) {
@@ -978,6 +979,7 @@ func (c *Client) DescribeManagers(request *DescribeManagersRequest) (response *D
 // 查询管理人列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeManagersWithContext(ctx context.Context, request *DescribeManagersRequest) (response *DescribeManagersResponse, err error) {

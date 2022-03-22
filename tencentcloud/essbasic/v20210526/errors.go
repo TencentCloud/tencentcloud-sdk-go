@@ -17,6 +17,9 @@ package v20210526
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
@@ -49,6 +52,9 @@ const (
 
 	// 生成唯一ID错误。
 	INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+
+	// 序列化错误。
+	INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 
 	// 系统错误。
 	INTERNALERROR_SYSTEM = "InternalError.System"

@@ -3561,6 +3561,7 @@ func NewEstablishCloudBaseRunServerResponse() (response *EstablishCloudBaseRunSe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
 //  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
@@ -3576,6 +3577,7 @@ func (c *Client) EstablishCloudBaseRunServer(request *EstablishCloudBaseRunServe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APICREATED = "InvalidParameter.APICreated"
 //  INVALIDPARAMETER_SERVICEEVIL = "InvalidParameter.ServiceEvil"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"

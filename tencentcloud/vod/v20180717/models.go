@@ -2412,7 +2412,7 @@ type ComposeMediaTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ComposeMediaTaskOutput `json:"Output,omitempty" name:"Output"`
 
-	// 原始视频的元信息。
+	// 输出视频的元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
@@ -8023,7 +8023,7 @@ type EditMediaTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *EditMediaTaskOutput `json:"Output,omitempty" name:"Output"`
 
-	// 原始视频的元信息。
+	// 输出视频的元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
@@ -12963,7 +12963,7 @@ type PullUploadTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
-	// 原始视频的元信息。
+	// 输出视频的元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
 	// 转拉上传完成后生成的播放地址。

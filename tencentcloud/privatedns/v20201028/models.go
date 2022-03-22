@@ -907,6 +907,51 @@ func (r *DescribePrivateZoneServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeQuotaUsageRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeQuotaUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuotaUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuotaUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQuotaUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Tld额度使用情况
+		TldQuota *TldQuota `json:"TldQuota,omitempty" name:"TldQuota"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeQuotaUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuotaUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRequestDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -1338,6 +1383,21 @@ type TagInfo struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TldQuota struct {
+
+	// 总共额度
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 已使用额度
+	Used *int64 `json:"Used,omitempty" name:"Used"`
+
+	// 库存
+	Stock *int64 `json:"Stock,omitempty" name:"Stock"`
+
+	// 用户限额
+	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
 }
 
 type VpcInfo struct {

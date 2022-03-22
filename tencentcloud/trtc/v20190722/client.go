@@ -185,6 +185,7 @@ func NewDeletePictureResponse() (response *DeletePictureResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeletePictureResponse, err error) {
@@ -198,6 +199,7 @@ func (c *Client) DeletePicture(request *DeletePictureRequest) (response *DeleteP
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePictureRequest) (response *DeletePictureResponse, err error) {
@@ -1323,6 +1325,7 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETROOMFROMCACHEERROR = "InternalError.GetRoomFromCacheError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
 //  INVALIDPARAMETER_MAINVIDEORIGHTALIGN = "InvalidParameter.MainVideoRightAlign"
@@ -1404,6 +1407,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETROOMFROMCACHEERROR = "InternalError.GetRoomFromCacheError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
 //  INVALIDPARAMETER_MAINVIDEORIGHTALIGN = "InvalidParameter.MainVideoRightAlign"

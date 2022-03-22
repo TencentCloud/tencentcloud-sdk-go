@@ -119,6 +119,7 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
     return c.AttachUserPolicyWithContext(context.Background(), request)
@@ -130,6 +131,7 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
     if request == nil {
@@ -349,6 +351,108 @@ func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateExportTaskRequest() (request *CreateExportTaskRequest) {
+    request = &CreateExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateExportTask")
+    
+    
+    return
+}
+
+func NewCreateExportTaskResponse() (response *CreateExportTaskResponse) {
+    response = &CreateExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateExportTask
+// 该接口（CreateExportTask）用于创建导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateExportTask(request *CreateExportTaskRequest) (response *CreateExportTaskResponse, err error) {
+    return c.CreateExportTaskWithContext(context.Background(), request)
+}
+
+// CreateExportTask
+// 该接口（CreateExportTask）用于创建导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateExportTaskWithContext(ctx context.Context, request *CreateExportTaskRequest) (response *CreateExportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateExportTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateImportTaskRequest() (request *CreateImportTaskRequest) {
+    request = &CreateImportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateImportTask")
+    
+    
+    return
+}
+
+func NewCreateImportTaskResponse() (response *CreateImportTaskResponse) {
+    response = &CreateImportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateImportTask
+// 该接口（CreateImportTask）用于创建导入任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateImportTask(request *CreateImportTaskRequest) (response *CreateImportTaskResponse, err error) {
+    return c.CreateImportTaskWithContext(context.Background(), request)
+}
+
+// CreateImportTask
+// 该接口（CreateImportTask）用于创建导入任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *CreateImportTaskRequest) (response *CreateImportTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateImportTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScriptRequest() (request *CreateScriptRequest) {
     request = &CreateScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -524,6 +628,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
@@ -540,6 +645,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
@@ -706,6 +812,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
     return c.CreateUserWithContext(context.Background(), request)
 }
@@ -722,6 +829,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 //  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
     if request == nil {
         request = NewCreateUserRequest()
@@ -1633,6 +1741,7 @@ func NewModifyUserResponse() (response *ModifyUserResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
     return c.ModifyUserWithContext(context.Background(), request)
@@ -1643,6 +1752,7 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
     if request == nil {

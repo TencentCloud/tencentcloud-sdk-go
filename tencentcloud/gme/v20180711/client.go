@@ -203,6 +203,140 @@ func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppReq
     return
 }
 
+func NewCreateScanUserRequest() (request *CreateScanUserRequest) {
+    request = &CreateScanUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "CreateScanUser")
+    
+    
+    return
+}
+
+func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
+    response = &CreateScanUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScanUser
+// 新增自定义送检用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
+    return c.CreateScanUserWithContext(context.Background(), request)
+}
+
+// CreateScanUser
+// 新增自定义送检用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
+    if request == nil {
+        request = NewCreateScanUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScanUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScanUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteScanUserRequest() (request *DeleteScanUserRequest) {
+    request = &DeleteScanUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DeleteScanUser")
+    
+    
+    return
+}
+
+func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
+    response = &DeleteScanUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteScanUser
+// 删除自定义送检用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
+    return c.DeleteScanUserWithContext(context.Background(), request)
+}
+
+// DeleteScanUser
+// 删除自定义送检用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteScanUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScanUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteScanUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
     request = &DescribeAgeDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

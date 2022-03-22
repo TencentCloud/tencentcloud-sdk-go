@@ -473,6 +473,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
 //  INTERNALERROR_QUOTAUSGLIMIT = "InternalError.QuotaUSGLimit"
 //  INTERNALERROR_TASKCREATEFAILED = "InternalError.TaskCreateFailed"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INTERNALERROR_VPCCOMMON = "InternalError.VpcCommon"
@@ -523,6 +524,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INTERNALERROR_QUOTAMAXNODLIMIT = "InternalError.QuotaMaxNodLimit"
 //  INTERNALERROR_QUOTAUSGLIMIT = "InternalError.QuotaUSGLimit"
 //  INTERNALERROR_TASKCREATEFAILED = "InternalError.TaskCreateFailed"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INTERNALERROR_VPCCOMMON = "InternalError.VpcCommon"
@@ -926,6 +928,7 @@ func NewCreateClusterNodePoolResponse() (response *CreateClusterNodePoolResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
+//  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -941,6 +944,7 @@ func (c *Client) CreateClusterNodePool(request *CreateClusterNodePoolRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
+//  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -1520,6 +1524,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -1540,6 +1545,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_CLUSTERSTATE = "InternalError.ClusterState"
+//  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_PUBLICCLUSTEROPNOTSUPPORT = "InternalError.PublicClusterOpNotSupport"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -3615,6 +3621,7 @@ func NewDescribeEKSClustersResponse() (response *DescribeEKSClustersResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3634,6 +3641,7 @@ func (c *Client) DescribeEKSClusters(request *DescribeEKSClustersRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -5340,6 +5348,7 @@ func NewForwardApplicationRequestV3Response() (response *ForwardApplicationReque
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -5361,6 +5370,7 @@ func (c *Client) ForwardApplicationRequestV3(request *ForwardApplicationRequestV
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

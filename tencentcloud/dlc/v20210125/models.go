@@ -378,6 +378,128 @@ func (r *CreateDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateExportTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据来源，lakefsStorage、taskResult
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 导出任务输入配置
+	InputConf []*KVPair `json:"InputConf,omitempty" name:"InputConf"`
+
+	// 导出任务输出配置
+	OutputConf []*KVPair `json:"OutputConf,omitempty" name:"OutputConf"`
+
+	// 目标数据源的类型，目前支持导出到cos
+	OutputType *string `json:"OutputType,omitempty" name:"OutputType"`
+}
+
+func (r *CreateExportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputType")
+	delete(f, "InputConf")
+	delete(f, "OutputConf")
+	delete(f, "OutputType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateExportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateExportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImportTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据来源，cos
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 输入配置
+	InputConf []*KVPair `json:"InputConf,omitempty" name:"InputConf"`
+
+	// 输出配置
+	OutputConf []*KVPair `json:"OutputConf,omitempty" name:"OutputConf"`
+
+	// 目标数据源的类型，目前支持导入到托管存储，即lakefsStorage
+	OutputType *string `json:"OutputType,omitempty" name:"OutputType"`
+}
+
+func (r *CreateImportTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImportTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputType")
+	delete(f, "InputConf")
+	delete(f, "OutputConf")
+	delete(f, "OutputType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImportTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImportTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateImportTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateScriptRequest struct {
 	*tchttp.BaseRequest
 

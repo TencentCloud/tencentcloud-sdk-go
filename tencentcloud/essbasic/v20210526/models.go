@@ -1304,6 +1304,84 @@ type TemplateInfo struct {
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 }
 
+type UploadFile struct {
+
+	// Base64编码后的文件内容
+	FileBody *string `json:"FileBody,omitempty" name:"FileBody"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+type UploadFilesRequest struct {
+	*tchttp.BaseRequest
+
+	// 文件对应业务类型，用于区分文件存储路径：
+	// 1. TEMPLATE - 模版； 文件类型：.pdf
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 上传文件内容数组，最多支持20个文件
+	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *UploadFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessType")
+	delete(f, "Agent")
+	delete(f, "FileInfos")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件id数组
+		FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+		// 上传成功文件数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 文件Url
+		FileUrls []*string `json:"FileUrls,omitempty" name:"FileUrls"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UsageDetail struct {
 
 	// 渠道侧合作企业唯一标识

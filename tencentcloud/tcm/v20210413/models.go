@@ -385,6 +385,10 @@ type InjectConfig struct {
 	// 是否等待sidecar启动
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitempty" name:"HoldApplicationUntilProxyStarts"`
+
+	// 是否允许sidecar等待
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HoldProxyUntilApplicationEnds *bool `json:"HoldProxyUntilApplicationEnds,omitempty" name:"HoldProxyUntilApplicationEnds"`
 }
 
 type IstioConfig struct {
@@ -500,6 +504,14 @@ type MeshConfig struct {
 	// 自动注入配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Inject *InjectConfig `json:"Inject,omitempty" name:"Inject"`
+
+	// 调用跟踪配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tracing *TracingConfig `json:"Tracing,omitempty" name:"Tracing"`
+
+	// Sidecar自定义资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SidecarResources *ResourceRequirements `json:"SidecarResources,omitempty" name:"SidecarResources"`
 }
 
 type MeshStatus struct {

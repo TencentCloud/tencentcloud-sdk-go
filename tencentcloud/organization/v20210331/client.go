@@ -287,6 +287,7 @@ func NewDescribeOrganizationMembersResponse() (response *DescribeOrganizationMem
 // 获取企业组织成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEBILLINGPERMISSIONERR = "FailedOperation.OperateBillingPermissionErr"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
@@ -298,6 +299,7 @@ func (c *Client) DescribeOrganizationMembers(request *DescribeOrganizationMember
 // 获取企业组织成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEBILLINGPERMISSIONERR = "FailedOperation.OperateBillingPermissionErr"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"

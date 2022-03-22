@@ -773,6 +773,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -795,6 +796,7 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -971,6 +973,67 @@ func (c *Client) SyncProxyOrganizationOperatorsWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewSyncProxyOrganizationOperatorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFilesRequest() (request *UploadFilesRequest) {
+    request = &UploadFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "UploadFiles")
+    
+    
+    return
+}
+
+func NewUploadFilesResponse() (response *UploadFilesResponse) {
+    response = &UploadFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadFiles
+// 此接口（UploadFiles）用于文件上传。
+//
+// 调用时需要设置Domain 为 file.ess.tencent.cn
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
+    return c.UploadFilesWithContext(context.Background(), request)
+}
+
+// UploadFiles
+// 此接口（UploadFiles）用于文件上传。
+//
+// 调用时需要设置Domain 为 file.ess.tencent.cn
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
+    if request == nil {
+        request = NewUploadFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadFilesResponse()
     err = c.Send(request, response)
     return
 }

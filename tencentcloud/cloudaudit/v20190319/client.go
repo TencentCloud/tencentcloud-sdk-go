@@ -713,6 +713,7 @@ func NewListKeyAliasByRegionResponse() (response *ListKeyAliasByRegionResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTKEYALIASBYREGIONERROR = "InternalError.ListKeyAliasByRegionError"
+//  INVALIDPARAMETERVALUE_KMSREGIONERROR = "InvalidParameterValue.KmsRegionError"
 func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (response *ListKeyAliasByRegionResponse, err error) {
     return c.ListKeyAliasByRegionWithContext(context.Background(), request)
 }
@@ -722,6 +723,7 @@ func (c *Client) ListKeyAliasByRegion(request *ListKeyAliasByRegionRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR_LISTKEYALIASBYREGIONERROR = "InternalError.ListKeyAliasByRegionError"
+//  INVALIDPARAMETERVALUE_KMSREGIONERROR = "InvalidParameterValue.KmsRegionError"
 func (c *Client) ListKeyAliasByRegionWithContext(ctx context.Context, request *ListKeyAliasByRegionRequest) (response *ListKeyAliasByRegionResponse, err error) {
     if request == nil {
         request = NewListKeyAliasByRegionRequest()

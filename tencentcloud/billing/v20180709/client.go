@@ -990,6 +990,7 @@ func NewDescribeVoucherUsageDetailsResponse() (response *DescribeVoucherUsageDet
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeVoucherUsageDetails(request *DescribeVoucherUsageDetailsRequest) (response *DescribeVoucherUsageDetailsResponse, err error) {
     return c.DescribeVoucherUsageDetailsWithContext(context.Background(), request)
 }
@@ -1002,6 +1003,7 @@ func (c *Client) DescribeVoucherUsageDetails(request *DescribeVoucherUsageDetail
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeVoucherUsageDetailsWithContext(ctx context.Context, request *DescribeVoucherUsageDetailsRequest) (response *DescribeVoucherUsageDetailsResponse, err error) {
     if request == nil {
         request = NewDescribeVoucherUsageDetailsRequest()

@@ -32,6 +32,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 数据库错误。
+	INTERNALERROR_DBERROR = "InternalError.DBError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

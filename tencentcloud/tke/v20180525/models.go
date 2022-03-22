@@ -3881,6 +3881,9 @@ type DescribeEKSClusterCredentialResponse struct {
 		// 标记是否新的内外网功能
 		ProxyLB *bool `json:"ProxyLB,omitempty" name:"ProxyLB"`
 
+		// 连接用户集群k8s 的Config
+		Kubeconfig *string `json:"Kubeconfig,omitempty" name:"Kubeconfig"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

@@ -1526,6 +1526,76 @@ func (r *UpdateDiagnoseSettingsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UpdateDictionariesRequest struct {
+	*tchttp.BaseRequest
+
+	// ES实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// IK分词主词典COS地址
+	IkMainDicts []*string `json:"IkMainDicts,omitempty" name:"IkMainDicts"`
+
+	// IK分词停用词词典COS地址
+	IkStopwords []*string `json:"IkStopwords,omitempty" name:"IkStopwords"`
+
+	// 同义词词典COS地址
+	Synonym []*string `json:"Synonym,omitempty" name:"Synonym"`
+
+	// QQ分词词典COS地址
+	QQDict []*string `json:"QQDict,omitempty" name:"QQDict"`
+
+	// 0：安装；1：删除
+	UpdateType *int64 `json:"UpdateType,omitempty" name:"UpdateType"`
+
+	// 是否强制重启集群
+	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+}
+
+func (r *UpdateDictionariesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDictionariesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IkMainDicts")
+	delete(f, "IkStopwords")
+	delete(f, "Synonym")
+	delete(f, "QQDict")
+	delete(f, "UpdateType")
+	delete(f, "ForceRestart")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDictionariesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDictionariesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateDictionariesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDictionariesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateInstanceRequest struct {
 	*tchttp.BaseRequest
 

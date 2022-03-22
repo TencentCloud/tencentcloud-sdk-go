@@ -1221,10 +1221,12 @@ func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
 //  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
+//  FAILEDOPERATION_VERIFYUINISREALNAME = "FailedOperation.VerifyUinIsRealname"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
 //  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  LIMITEXCEEDED_REQUESTLIMIT = "LimitExceeded.RequestLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (response *SendPhoneEmailCodeResponse, err error) {
     return c.SendPhoneEmailCodeWithContext(context.Background(), request)
@@ -1236,10 +1238,12 @@ func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
 //  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
+//  FAILEDOPERATION_VERIFYUINISREALNAME = "FailedOperation.VerifyUinIsRealname"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_CODETYPEISINVALID = "InvalidParameter.CodeTypeIsInvalid"
 //  INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 //  INVALIDPARAMETER_TELEPHONEISINVALID = "InvalidParameter.TelephoneIsInvalid"
+//  LIMITEXCEEDED_REQUESTLIMIT = "LimitExceeded.RequestLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) SendPhoneEmailCodeWithContext(ctx context.Context, request *SendPhoneEmailCodeRequest) (response *SendPhoneEmailCodeResponse, err error) {
     if request == nil {

@@ -267,6 +267,112 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateScanUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要新增送检的用户号。示例：1234
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *CreateScanUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateScanUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果码
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateScanUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScanUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteScanUserRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要删除送检的用户号。示例：1234
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DeleteScanUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScanUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScanUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteScanUserResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果码
+		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteScanUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScanUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeAgeDetectTaskRequest struct {
 	*tchttp.BaseRequest
 

@@ -59,6 +59,9 @@ const (
 	// 接口错误。
 	INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
 
+	// 内部错误，请重试。
+	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+
 	// 不支持的方法。
 	INTERNALERROR_METHODERR = "InternalError.MethodErr"
 
@@ -103,6 +106,9 @@ const (
 
 	// PageSize超过100。
 	INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
+
+	// 待操作的图片未找到。
+	INVALIDPARAMETER_PICTURENOTFOUND = "InvalidParameter.PictureNotFound"
 
 	// 自定义布局参数错误。
 	INVALIDPARAMETER_PRESETLAYOUTCONFIG = "InvalidParameter.PresetLayoutConfig"

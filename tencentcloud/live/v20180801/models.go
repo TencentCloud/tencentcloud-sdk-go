@@ -1056,6 +1056,19 @@ type CreateLivePullStreamTaskRequest struct {
 
 	// 任务描述，限制 512 字节。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 备源的类型：
+	// PullLivePushLive -直播，
+	// PullVodPushLive -点播。
+	// 注意：
+	// 1. 仅当主源类型为直播源时，备源才会生效。
+	// 2. 主直播源拉流中断时，自动使用备源进行拉流。
+	// 3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+	BackupSourceType *string `json:"BackupSourceType,omitempty" name:"BackupSourceType"`
+
+	// 备源 URL。
+	// 只允许填一个备源 URL
+	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
 }
 
 func (r *CreateLivePullStreamTaskRequest) ToJsonString() string {
@@ -1085,6 +1098,8 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "ExtraCmd")
 	delete(f, "Comment")
+	delete(f, "BackupSourceType")
+	delete(f, "BackupSourceUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePullStreamTaskRequest has unknown keys!", "")
 	}
@@ -7784,6 +7799,19 @@ type ModifyLivePullStreamTaskRequest struct {
 
 	// 任务备注。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 备源的类型：
+	// PullLivePushLive -直播，
+	// PullVodPushLive -点播。
+	// 注意：
+	// 1. 仅当主源类型为直播源时，备源才会生效。
+	// 2. 主直播源拉流中断时，自动使用备源进行拉流。
+	// 3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+	BackupSourceType *string `json:"BackupSourceType,omitempty" name:"BackupSourceType"`
+
+	// 备源 URL。
+	// 只允许填一个备源 URL
+	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
 }
 
 func (r *ModifyLivePullStreamTaskRequest) ToJsonString() string {
@@ -7811,6 +7839,8 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "FileIndex")
 	delete(f, "OffsetTime")
 	delete(f, "Comment")
+	delete(f, "BackupSourceType")
+	delete(f, "BackupSourceUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePullStreamTaskRequest has unknown keys!", "")
 	}

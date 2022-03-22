@@ -74,6 +74,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 //  INVALIDPARAMETER_DOMAINNOTREGED = "InvalidParameter.DomainNotReged"
 //  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
 //  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
 func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
     return c.CreateDomainWithContext(context.Background(), request)
 }
@@ -90,6 +91,7 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
 //  INVALIDPARAMETER_DOMAINNOTREGED = "InvalidParameter.DomainNotReged"
 //  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
 //  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
 func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDomainRequest) (response *CreateDomainResponse, err error) {
     if request == nil {
         request = NewCreateDomainRequest()

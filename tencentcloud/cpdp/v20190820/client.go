@@ -8758,6 +8758,7 @@ func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
 // 应用需要先调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8776,6 +8777,7 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
 // 应用需要先调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8823,6 +8825,7 @@ func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
 // 云支付-统一下单接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8841,6 +8844,7 @@ func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response 
 // 云支付-统一下单接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8888,6 +8892,7 @@ func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoRe
 // 灵云-上传主播信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8906,6 +8911,7 @@ func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoReque
 // 灵云-上传主播信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"

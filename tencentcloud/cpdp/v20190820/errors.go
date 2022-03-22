@@ -20,6 +20,9 @@ const (
 	// 未进行实名认证。
 	AUTHFAILURE_ACCOUNT = "AuthFailure.Account"
 
+	// 权限限额，禁止操作。
+	AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+
 	// 未找到密钥。
 	AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 

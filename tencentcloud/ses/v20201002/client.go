@@ -459,6 +459,7 @@ func NewCreateReceiverDetailWithDataResponse() (response *CreateReceiverDetailWi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
+//  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 func (c *Client) CreateReceiverDetailWithData(request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {
     return c.CreateReceiverDetailWithDataWithContext(context.Background(), request)
 }
@@ -468,6 +469,7 @@ func (c *Client) CreateReceiverDetailWithData(request *CreateReceiverDetailWithD
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
+//  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 func (c *Client) CreateReceiverDetailWithDataWithContext(ctx context.Context, request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {
     if request == nil {
         request = NewCreateReceiverDetailWithDataRequest()

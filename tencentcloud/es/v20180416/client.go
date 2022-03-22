@@ -689,6 +689,63 @@ func (c *Client) UpdateDiagnoseSettingsWithContext(ctx context.Context, request 
     return
 }
 
+func NewUpdateDictionariesRequest() (request *UpdateDictionariesRequest) {
+    request = &UpdateDictionariesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("es", APIVersion, "UpdateDictionaries")
+    
+    
+    return
+}
+
+func NewUpdateDictionariesResponse() (response *UpdateDictionariesResponse) {
+    response = &UpdateDictionariesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDictionaries
+// 更新ES集群词典
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDictionaries(request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
+    return c.UpdateDictionariesWithContext(context.Background(), request)
+}
+
+// UpdateDictionaries
+// 更新ES集群词典
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateDictionariesWithContext(ctx context.Context, request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
+    if request == nil {
+        request = NewUpdateDictionariesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDictionaries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDictionariesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateInstanceRequest() (request *UpdateInstanceRequest) {
     request = &UpdateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
