@@ -66,6 +66,9 @@ type BatchSendEmailRequest struct {
 
 	// 退订选项 1: 加入退订链接 0: 不加入退订链接
 	Unsubscribe *string `json:"Unsubscribe,omitempty" name:"Unsubscribe"`
+
+	// 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+	ADLocation *uint64 `json:"ADLocation,omitempty" name:"ADLocation"`
 }
 
 func (r *BatchSendEmailRequest) ToJsonString() string {
@@ -91,6 +94,7 @@ func (r *BatchSendEmailRequest) FromJsonString(s string) error {
 	delete(f, "CycleParam")
 	delete(f, "TimedParam")
 	delete(f, "Unsubscribe")
+	delete(f, "ADLocation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSendEmailRequest has unknown keys!", "")
 	}

@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 交易失败。
+	FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -97,6 +100,9 @@ const (
 
 	// 无效的参数，仓库已存在。
 	INVALIDPARAMETER_ERRREPOEXIST = "InvalidParameter.ErrRepoExist"
+
+	// 请求参数数量过多。
+	INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
 
 	// 触发器名称已存在。
 	INVALIDPARAMETER_ERRTRIGGEREXIST = "InvalidParameter.ErrTriggerExist"

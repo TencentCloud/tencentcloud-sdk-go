@@ -69,6 +69,7 @@ func NewAddUsersToWorkGroupResponse() (response *AddUsersToWorkGroupResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNAUTHORIZEDOPERATION_ADDUSERSTOWORKGROUP = "UnauthorizedOperation.AddUsersToWorkgroup"
 func (c *Client) AddUsersToWorkGroup(request *AddUsersToWorkGroupRequest) (response *AddUsersToWorkGroupResponse, err error) {
     return c.AddUsersToWorkGroupWithContext(context.Background(), request)
 }
@@ -80,6 +81,7 @@ func (c *Client) AddUsersToWorkGroup(request *AddUsersToWorkGroupRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNAUTHORIZEDOPERATION_ADDUSERSTOWORKGROUP = "UnauthorizedOperation.AddUsersToWorkgroup"
 func (c *Client) AddUsersToWorkGroupWithContext(ctx context.Context, request *AddUsersToWorkGroupRequest) (response *AddUsersToWorkGroupResponse, err error) {
     if request == nil {
         request = NewAddUsersToWorkGroupRequest()
@@ -120,6 +122,8 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
     return c.AttachUserPolicyWithContext(context.Background(), request)
@@ -132,6 +136,8 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
     if request == nil {
@@ -171,6 +177,8 @@ func NewAttachWorkGroupPolicyResponse() (response *AttachWorkGroupPolicyResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (response *AttachWorkGroupPolicyResponse, err error) {
     return c.AttachWorkGroupPolicyWithContext(context.Background(), request)
 }
@@ -180,6 +188,8 @@ func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) AttachWorkGroupPolicyWithContext(ctx context.Context, request *AttachWorkGroupPolicyRequest) (response *AttachWorkGroupPolicyResponse, err error) {
     if request == nil {
         request = NewAttachWorkGroupPolicyRequest()
@@ -219,6 +229,7 @@ func NewBindWorkGroupsToUserResponse() (response *BindWorkGroupsToUserResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = "UnauthorizedOperation.BindWorkgroupsToUser"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (response *BindWorkGroupsToUserResponse, err error) {
     return c.BindWorkGroupsToUserWithContext(context.Background(), request)
@@ -230,6 +241,7 @@ func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = "UnauthorizedOperation.BindWorkgroupsToUser"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) BindWorkGroupsToUserWithContext(ctx context.Context, request *BindWorkGroupsToUserRequest) (response *BindWorkGroupsToUserResponse, err error) {
     if request == nil {
@@ -813,6 +825,8 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
     return c.CreateUserWithContext(context.Background(), request)
 }
@@ -830,6 +844,8 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
     if request == nil {
         request = NewCreateUserRequest()
@@ -875,6 +891,9 @@ func NewCreateWorkGroupResponse() (response *CreateWorkGroupResponse) {
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEWORKGROUP = "UnauthorizedOperation.CreateWorkgroup"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *CreateWorkGroupResponse, err error) {
     return c.CreateWorkGroupWithContext(context.Background(), request)
 }
@@ -891,6 +910,9 @@ func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *Cre
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEWORKGROUP = "UnauthorizedOperation.CreateWorkgroup"
+//  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+//  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 func (c *Client) CreateWorkGroupWithContext(ctx context.Context, request *CreateWorkGroupRequest) (response *CreateWorkGroupResponse, err error) {
     if request == nil {
         request = NewCreateWorkGroupRequest()
@@ -981,6 +1003,8 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
+//  UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     return c.DeleteUserWithContext(context.Background(), request)
@@ -994,6 +1018,8 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
+//  UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
@@ -1034,6 +1060,7 @@ func NewDeleteUsersFromWorkGroupResponse() (response *DeleteUsersFromWorkGroupRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  UNAUTHORIZEDOPERATION_DELETEUSERSFROMWORKGROUP = "UnauthorizedOperation.DeleteUsersFromWorkgroup"
 func (c *Client) DeleteUsersFromWorkGroup(request *DeleteUsersFromWorkGroupRequest) (response *DeleteUsersFromWorkGroupResponse, err error) {
     return c.DeleteUsersFromWorkGroupWithContext(context.Background(), request)
 }
@@ -1044,6 +1071,7 @@ func (c *Client) DeleteUsersFromWorkGroup(request *DeleteUsersFromWorkGroupReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
+//  UNAUTHORIZEDOPERATION_DELETEUSERSFROMWORKGROUP = "UnauthorizedOperation.DeleteUsersFromWorkgroup"
 func (c *Client) DeleteUsersFromWorkGroupWithContext(ctx context.Context, request *DeleteUsersFromWorkGroupRequest) (response *DeleteUsersFromWorkGroupResponse, err error) {
     if request == nil {
         request = NewDeleteUsersFromWorkGroupRequest()
@@ -1082,6 +1110,8 @@ func NewDeleteWorkGroupResponse() (response *DeleteWorkGroupResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
     return c.DeleteWorkGroupWithContext(context.Background(), request)
 }
@@ -1091,6 +1121,8 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, request *DeleteWorkGroupRequest) (response *DeleteWorkGroupResponse, err error) {
     if request == nil {
         request = NewDeleteWorkGroupRequest()
@@ -1645,6 +1677,7 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *DetachUserPolicyResponse, err error) {
     return c.DetachUserPolicyWithContext(context.Background(), request)
@@ -1655,6 +1688,7 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) DetachUserPolicyWithContext(ctx context.Context, request *DetachUserPolicyRequest) (response *DetachUserPolicyResponse, err error) {
     if request == nil {
@@ -1694,6 +1728,7 @@ func NewDetachWorkGroupPolicyResponse() (response *DetachWorkGroupPolicyResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
     return c.DetachWorkGroupPolicyWithContext(context.Background(), request)
 }
@@ -1703,6 +1738,7 @@ func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
     if request == nil {
         request = NewDetachWorkGroupPolicyRequest()
@@ -1742,6 +1778,7 @@ func NewModifyUserResponse() (response *ModifyUserResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_MODIFYUSERINFO = "UnauthorizedOperation.ModifyUserInfo"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
     return c.ModifyUserWithContext(context.Background(), request)
@@ -1753,6 +1790,7 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = "ResourcesSoldOut.UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_MODIFYUSERINFO = "UnauthorizedOperation.ModifyUserInfo"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
     if request == nil {
@@ -1792,6 +1830,7 @@ func NewModifyWorkGroupResponse() (response *ModifyWorkGroupResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
 func (c *Client) ModifyWorkGroup(request *ModifyWorkGroupRequest) (response *ModifyWorkGroupResponse, err error) {
     return c.ModifyWorkGroupWithContext(context.Background(), request)
 }
@@ -1801,6 +1840,7 @@ func (c *Client) ModifyWorkGroup(request *ModifyWorkGroupRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
 func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *ModifyWorkGroupRequest) (response *ModifyWorkGroupResponse, err error) {
     if request == nil {
         request = NewModifyWorkGroupRequest()
@@ -1840,6 +1880,7 @@ func NewUnbindWorkGroupsFromUserResponse() (response *UnbindWorkGroupsFromUserRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
 func (c *Client) UnbindWorkGroupsFromUser(request *UnbindWorkGroupsFromUserRequest) (response *UnbindWorkGroupsFromUserResponse, err error) {
     return c.UnbindWorkGroupsFromUserWithContext(context.Background(), request)
 }
@@ -1850,6 +1891,7 @@ func (c *Client) UnbindWorkGroupsFromUser(request *UnbindWorkGroupsFromUserReque
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
 func (c *Client) UnbindWorkGroupsFromUserWithContext(ctx context.Context, request *UnbindWorkGroupsFromUserRequest) (response *UnbindWorkGroupsFromUserResponse, err error) {
     if request == nil {
         request = NewUnbindWorkGroupsFromUserRequest()

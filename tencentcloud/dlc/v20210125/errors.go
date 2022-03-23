@@ -119,6 +119,42 @@ const (
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
+	// 子用户不是管理员，无权将用户添加到工作组。
+	UNAUTHORIZEDOPERATION_ADDUSERSTOWORKGROUP = "UnauthorizedOperation.AddUsersToWorkgroup"
+
+	// 子用户不是管理员，无权绑定工作组到用户。
+	UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = "UnauthorizedOperation.BindWorkgroupsToUser"
+
+	// 子用户不是管理员，无权创建工作组。
+	UNAUTHORIZEDOPERATION_CREATEWORKGROUP = "UnauthorizedOperation.CreateWorkgroup"
+
+	// 子用户不是管理员，无权删除用户。
+	UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
+
+	// 子用户不是管理员，无权将用户从工作组解绑。
+	UNAUTHORIZEDOPERATION_DELETEUSERSFROMWORKGROUP = "UnauthorizedOperation.DeleteUsersFromWorkgroup"
+
+	// 子用户不是管理员，无权删除工作组。
+	UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
+
+	// 子用户无权授予特定权限。
+	UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
+
+	// 子用户不是管理员，无权修改用户信息。
+	UNAUTHORIZEDOPERATION_MODIFYUSERINFO = "UnauthorizedOperation.ModifyUserInfo"
+
+	// 子用户不是管理员，无权修改工作组信息。
+	UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+
+	// 子用户无权取消特定权限。
+	UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
+
+	// 子用户不是管理员，无权将工作组和用户解绑。
+	UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
+
+	// 子用户不存在。
+	UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+
 	// 无法修改主账号。
 	UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
 )

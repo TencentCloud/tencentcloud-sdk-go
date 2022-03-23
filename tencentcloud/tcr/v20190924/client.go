@@ -121,6 +121,7 @@ func NewBatchDeleteRepositoryPersonalResponse() (response *BatchDeleteRepository
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
     return c.BatchDeleteRepositoryPersonalWithContext(context.Background(), request)
@@ -132,6 +133,7 @@ func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPer
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
+//  INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) BatchDeleteRepositoryPersonalWithContext(ctx context.Context, request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
     if request == nil {
@@ -489,6 +491,8 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 创建实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -514,6 +518,8 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 创建实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"

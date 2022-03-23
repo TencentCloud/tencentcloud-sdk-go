@@ -593,7 +593,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 创建参数模板
+// 创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -606,7 +606,7 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
 }
 
 // CreateParamTemplate
-// 创建参数模板
+// 创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2526,6 +2526,55 @@ func (c *Client) DescribeProxySlowLogWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeReplicationGroupRequest() (request *DescribeReplicationGroupRequest) {
+    request = &DescribeReplicationGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeReplicationGroup")
+    
+    
+    return
+}
+
+func NewDescribeReplicationGroupResponse() (response *DescribeReplicationGroupResponse) {
+    response = &DescribeReplicationGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeReplicationGroup
+// 查询复制组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+func (c *Client) DescribeReplicationGroup(request *DescribeReplicationGroupRequest) (response *DescribeReplicationGroupResponse, err error) {
+    return c.DescribeReplicationGroupWithContext(context.Background(), request)
+}
+
+// DescribeReplicationGroup
+// 查询复制组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+func (c *Client) DescribeReplicationGroupWithContext(ctx context.Context, request *DescribeReplicationGroupRequest) (response *DescribeReplicationGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeReplicationGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReplicationGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReplicationGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
     request = &DescribeSlowLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3441,7 +3490,7 @@ func NewModifyAutoBackupConfigResponse() (response *ModifyAutoBackupConfigRespon
 }
 
 // ModifyAutoBackupConfig
-// 设置自动备份时间
+// 设置自动备份配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -3458,7 +3507,7 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
 }
 
 // ModifyAutoBackupConfig
-// 设置自动备份时间
+// 设置自动备份配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -3861,7 +3910,6 @@ func NewModifyNetworkConfigResponse() (response *ModifyNetworkConfigResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -3878,7 +3926,6 @@ func (c *Client) ModifyNetworkConfig(request *ModifyNetworkConfigRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"

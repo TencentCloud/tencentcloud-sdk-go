@@ -55,6 +55,10 @@ type AbnormalProcessEventDescription struct {
 
 	// 命中规则的id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 }
 
 type AbnormalProcessEventInfo struct {
@@ -149,6 +153,9 @@ type AbnormalProcessRuleInfo struct {
 
 	// 系统策略的子策略数组
 	SystemChildRules []*AbnormalProcessSystemChildRuleInfo `json:"SystemChildRules,omitempty" name:"SystemChildRules"`
+
+	// 是否是系统默认策略
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
 }
 
 type AbnormalProcessSystemChildRuleInfo struct {
@@ -213,6 +220,10 @@ type AccessControlEventDescription struct {
 
 	// 命中规则id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 }
 
 type AccessControlEventInfo struct {
@@ -316,6 +327,9 @@ type AccessControlRuleInfo struct {
 
 	// 系统策略的子策略数组
 	SystemChildRules []*AccessControlSystemChildRuleInfo `json:"SystemChildRules,omitempty" name:"SystemChildRules"`
+
+	// 是否是系统默认策略
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
 }
 
 type AccessControlSystemChildRuleInfo struct {
@@ -2657,6 +2671,10 @@ type DescribeAbnormalProcessDetailResponse struct {
 		// 事件描述
 		EventDetail *AbnormalProcessEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
 
+		// 祖先进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2819,6 +2837,12 @@ type DescribeAbnormalProcessRuleDetailRequest struct {
 
 	// 镜像id, 在添加白名单的时候使用
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeAbnormalProcessRuleDetailRequest) ToJsonString() string {
@@ -2835,6 +2859,8 @@ func (r *DescribeAbnormalProcessRuleDetailRequest) FromJsonString(s string) erro
 	}
 	delete(f, "RuleId")
 	delete(f, "ImageId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalProcessRuleDetailRequest has unknown keys!", "")
 	}
@@ -3044,6 +3070,13 @@ type DescribeAccessControlDetailResponse struct {
 		// 事件描述
 		EventDetail *AccessControlEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
 
+		// 父进程信息
+		ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+
+		// 祖先进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3206,6 +3239,12 @@ type DescribeAccessControlRuleDetailRequest struct {
 
 	// 镜像id, 仅仅在事件加白的时候使用
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeAccessControlRuleDetailRequest) ToJsonString() string {
@@ -3222,6 +3261,8 @@ func (r *DescribeAccessControlRuleDetailRequest) FromJsonString(s string) error 
 	}
 	delete(f, "RuleId")
 	delete(f, "ImageId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessControlRuleDetailRequest has unknown keys!", "")
 	}
@@ -7637,6 +7678,13 @@ type DescribeEscapeEventDetailResponse struct {
 		// 事件描述
 		EventDetail *EscapeEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
 
+		// 父进程信息
+		ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+
+		// 祖先进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -8520,6 +8568,10 @@ type DescribeReverseShellDetailResponse struct {
 		// 事件描述
 		EventDetail *ReverseShellEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
 
+		// 祖先进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -8905,6 +8957,10 @@ type DescribeRiskSyscallDetailResponse struct {
 
 		// 事件描述
 		EventDetail *RiskSyscallEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+
+		// 祖先进程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9680,6 +9736,42 @@ type DescribeVirusDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
 
+		// 父进程启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PProcessStartUser *string `json:"PProcessStartUser,omitempty" name:"PProcessStartUser"`
+
+		// 父进程用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PProcessUserGroup *string `json:"PProcessUserGroup,omitempty" name:"PProcessUserGroup"`
+
+		// 父进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PProcessPath *string `json:"PProcessPath,omitempty" name:"PProcessPath"`
+
+		// 父进程命令行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PProcessParam *string `json:"PProcessParam,omitempty" name:"PProcessParam"`
+
+		// 祖先进程启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitempty" name:"AncestorProcessStartUser"`
+
+		// 祖先进程用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitempty" name:"AncestorProcessUserGroup"`
+
+		// 祖先进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessPath *string `json:"AncestorProcessPath,omitempty" name:"AncestorProcessPath"`
+
+		// 祖先进程命令行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AncestorProcessParam *string `json:"AncestorProcessParam,omitempty" name:"AncestorProcessParam"`
+
+		// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -10235,6 +10327,10 @@ type EscapeEventDescription struct {
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 }
 
 type EscapeEventInfo struct {
@@ -12146,6 +12242,25 @@ type PortInfo struct {
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
+type ProcessBaseInfo struct {
+
+	// 进程启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+
+	// 进程用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+
+	// 进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+
+	// 进程命令行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+}
+
 type ProcessDetailBaseInfo struct {
 
 	// 进程名称
@@ -12346,6 +12461,10 @@ type ReverseShellEventDescription struct {
 
 	// 目标地址
 	DstAddress *string `json:"DstAddress,omitempty" name:"DstAddress"`
+
+	// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 }
 
 type ReverseShellEventInfo struct {
@@ -12464,6 +12583,10 @@ type RiskSyscallEventDescription struct {
 
 	// 系统调用名称
 	SyscallName *string `json:"SyscallName,omitempty" name:"SyscallName"`
+
+	// 事件最后一次处理的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 }
 
 type RiskSyscallEventInfo struct {

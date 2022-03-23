@@ -2832,6 +2832,70 @@ func (r *DescribeProxySlowLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeReplicationGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例列表的大小，参数默认值20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，取Limit整数倍
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 复制组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 实例ID和实例名称，支持模糊查询
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+}
+
+func (r *DescribeReplicationGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "GroupId")
+	delete(f, "SearchKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReplicationGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReplicationGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 复制组数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 复制组信息
+		Groups []*Groups `json:"Groups,omitempty" name:"Groups"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeReplicationGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSlowLogRequest struct {
 	*tchttp.BaseRequest
 
@@ -3379,6 +3443,36 @@ func (r *EnableReplicaReadonlyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *EnableReplicaReadonlyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Groups struct {
+
+	// 用户AppID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 地域ID 1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 复制组信息
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 复制组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 复制组状态，37："绑定复制组中"，38："复制组重连中"，51："解绑复制组中"，52："复制组实例切主中"，53："角色变更中"
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 复制组数量
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 复制组实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*Instances `json:"Instances,omitempty" name:"Instances"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type HotKeyInfo struct {
@@ -4069,6 +4163,71 @@ type InstanceTextParam struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type Instances struct {
+
+	// 用户AppID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 地域ID 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 区域ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 副本数量
+	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
+
+	// 分片数量
+	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
+
+	// 分片大小
+	RedisShardSize *int64 `json:"RedisShardSize,omitempty" name:"RedisShardSize"`
+
+	// 实例的磁盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 引擎：社区版Redis、腾讯云CKV
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 实例角色，rw可读写，r只读
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 实例VIP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 内部参数，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// vpc网络ID 如：75101
+	VpcID *int64 `json:"VpcID,omitempty" name:"VpcID"`
+
+	// 实例端口
+	VPort *int64 `json:"VPort,omitempty" name:"VPort"`
+
+	// 实例状态：0-待初始化，1-流程中，2-运行中，-2-已隔离，-3-待删除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 仓库ID
+	GrocerySysId *int64 `json:"GrocerySysId,omitempty" name:"GrocerySysId"`
+
+	// 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新实例
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type KillMasterGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -4292,6 +4451,9 @@ type ModifyAutoBackupConfigResponse struct {
 
 		// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
 		TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
+
+		// 全量备份文件保存天数,单位：天
+		BackupStorageDays *int64 `json:"BackupStorageDays,omitempty" name:"BackupStorageDays"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4699,6 +4861,9 @@ type ModifyNetworkConfigRequest struct {
 
 	// 子网ID，changeVpc、changeBaseToVpc的时候需要提供
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// vip保留时间，单位：天
+	Recycle *int64 `json:"Recycle,omitempty" name:"Recycle"`
 }
 
 func (r *ModifyNetworkConfigRequest) ToJsonString() string {
@@ -4718,6 +4883,7 @@ func (r *ModifyNetworkConfigRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "Recycle")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkConfigRequest has unknown keys!", "")
 	}

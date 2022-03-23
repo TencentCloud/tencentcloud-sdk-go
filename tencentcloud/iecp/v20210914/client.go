@@ -1736,6 +1736,77 @@ func (c *Client) DeleteEdgeUnitPodWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteIotDeviceBatchRequest() (request *DeleteIotDeviceBatchRequest) {
+    request = &DeleteIotDeviceBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DeleteIotDeviceBatch")
+    
+    
+    return
+}
+
+func NewDeleteIotDeviceBatchResponse() (response *DeleteIotDeviceBatchResponse) {
+    response = &DeleteIotDeviceBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIotDeviceBatch
+// 批量删除设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIotDeviceBatch(request *DeleteIotDeviceBatchRequest) (response *DeleteIotDeviceBatchResponse, err error) {
+    return c.DeleteIotDeviceBatchWithContext(context.Background(), request)
+}
+
+// DeleteIotDeviceBatch
+// 批量删除设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIotDeviceBatchWithContext(ctx context.Context, request *DeleteIotDeviceBatchRequest) (response *DeleteIotDeviceBatchResponse, err error) {
+    if request == nil {
+        request = NewDeleteIotDeviceBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIotDeviceBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIotDeviceBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2468,6 +2539,87 @@ func (c *Client) DescribeConfigMapsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeConfigMapsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDracoEdgeNodeInstallerRequest() (request *DescribeDracoEdgeNodeInstallerRequest) {
+    request = &DescribeDracoEdgeNodeInstallerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeDracoEdgeNodeInstaller")
+    
+    
+    return
+}
+
+func NewDescribeDracoEdgeNodeInstallerResponse() (response *DescribeDracoEdgeNodeInstallerResponse) {
+    response = &DescribeDracoEdgeNodeInstallerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDracoEdgeNodeInstaller
+// 自动获取Draco设备的安装包
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDracoEdgeNodeInstaller(request *DescribeDracoEdgeNodeInstallerRequest) (response *DescribeDracoEdgeNodeInstallerResponse, err error) {
+    return c.DescribeDracoEdgeNodeInstallerWithContext(context.Background(), request)
+}
+
+// DescribeDracoEdgeNodeInstaller
+// 自动获取Draco设备的安装包
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDracoEdgeNodeInstallerWithContext(ctx context.Context, request *DescribeDracoEdgeNodeInstallerRequest) (response *DescribeDracoEdgeNodeInstallerResponse, err error) {
+    if request == nil {
+        request = NewDescribeDracoEdgeNodeInstallerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDracoEdgeNodeInstaller require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDracoEdgeNodeInstallerResponse()
     err = c.Send(request, response)
     return
 }

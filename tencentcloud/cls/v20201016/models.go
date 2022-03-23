@@ -4192,7 +4192,7 @@ type ModifyTopicRequest struct {
 	// 若开启最大分裂，该主题能够能够允许的最大分区数
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitempty" name:"MaxSplitPartitions"`
 
-	// 生命周期，单位天；可取值范围1~366
+	// 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 

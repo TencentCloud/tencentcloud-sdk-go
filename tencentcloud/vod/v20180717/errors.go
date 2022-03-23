@@ -329,6 +329,9 @@ const (
 	// 参数错误：图片水印模板。
 	INVALIDPARAMETERVALUE_IMAGETEMPLATE = "InvalidParameterValue.ImageTemplate"
 
+	// 参数值错误：Interval 无效。
+	INVALIDPARAMETERVALUE_INTERVAL = "InvalidParameterValue.Interval"
+
 	// 参数错误：无效的操作类型。
 	INVALIDPARAMETERVALUE_INVALIDOPERATIONTYPE = "InvalidParameterValue.InvalidOperationType"
 

@@ -4013,6 +4013,73 @@ func (c *Client) DescribeMediaInfosWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeMediaPlayStatDetailsRequest() (request *DescribeMediaPlayStatDetailsRequest) {
+    request = &DescribeMediaPlayStatDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeMediaPlayStatDetails")
+    
+    
+    return
+}
+
+func NewDescribeMediaPlayStatDetailsResponse() (response *DescribeMediaPlayStatDetailsResponse) {
+    response = &DescribeMediaPlayStatDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMediaPlayStatDetails
+// 该接口用于查询媒体文件按指定时间粒度统计的播放数据
+//
+// * 可以查询最近一年的播放统计数据。
+//
+// * 时间粒度为小时，结束时间和起始时间的跨度最大为7天。
+//
+// * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INTERVAL = "InvalidParameterValue.Interval"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+func (c *Client) DescribeMediaPlayStatDetails(request *DescribeMediaPlayStatDetailsRequest) (response *DescribeMediaPlayStatDetailsResponse, err error) {
+    return c.DescribeMediaPlayStatDetailsWithContext(context.Background(), request)
+}
+
+// DescribeMediaPlayStatDetails
+// 该接口用于查询媒体文件按指定时间粒度统计的播放数据
+//
+// * 可以查询最近一年的播放统计数据。
+//
+// * 时间粒度为小时，结束时间和起始时间的跨度最大为7天。
+//
+// * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_INTERVAL = "InvalidParameterValue.Interval"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+func (c *Client) DescribeMediaPlayStatDetailsWithContext(ctx context.Context, request *DescribeMediaPlayStatDetailsRequest) (response *DescribeMediaPlayStatDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMediaPlayStatDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMediaPlayStatDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMediaPlayStatDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaProcessUsageDataRequest() (request *DescribeMediaProcessUsageDataRequest) {
     request = &DescribeMediaProcessUsageDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

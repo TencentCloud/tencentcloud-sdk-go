@@ -1321,6 +1321,9 @@ type CreateLiveRecordTemplateRequest struct {
 
 	// Mp3录制参数，开启Mp3录制时设置。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
+
+	// 是否去除水印，类型为慢直播时此参数无效。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -1344,6 +1347,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "IsDelayLive")
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
+	delete(f, "RemoveWatermark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordTemplateRequest has unknown keys!", "")
 	}
@@ -7961,6 +7965,9 @@ type ModifyLiveRecordTemplateRequest struct {
 
 	// MP3 录制参数，开启 MP3 录制时设置。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
+
+	// 是否去除水印，类型为慢直播时此参数无效。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
 }
 
 func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
@@ -7984,6 +7991,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AacParam")
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
+	delete(f, "RemoveWatermark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRecordTemplateRequest has unknown keys!", "")
 	}
@@ -8954,6 +8962,10 @@ type RecordTemplateInfo struct {
 
 	// MP3 录制参数。
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
+
+	// 是否去除水印。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
 }
 
 type RefererAuthConfig struct {

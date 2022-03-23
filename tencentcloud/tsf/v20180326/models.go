@@ -10876,7 +10876,7 @@ type ImageRepository struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
-	// ApplicationName值
+	// ApplicationName值（类型是string）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *ScalableRule `json:"ApplicationName,omitempty" name:"ApplicationName"`
 }

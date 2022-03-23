@@ -993,6 +993,12 @@ type AssociateNatGatewayAddressRequest struct {
 
 	// 弹性IP可用区，自动分配弹性IP时传递。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	StockPublicIpAddressesBandwidthOut *uint64 `json:"StockPublicIpAddressesBandwidthOut,omitempty" name:"StockPublicIpAddressesBandwidthOut"`
+
+	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	PublicIpAddressesBandwidthOut *uint64 `json:"PublicIpAddressesBandwidthOut,omitempty" name:"PublicIpAddressesBandwidthOut"`
 }
 
 func (r *AssociateNatGatewayAddressRequest) ToJsonString() string {
@@ -1011,6 +1017,8 @@ func (r *AssociateNatGatewayAddressRequest) FromJsonString(s string) error {
 	delete(f, "AddressCount")
 	delete(f, "PublicIpAddresses")
 	delete(f, "Zone")
+	delete(f, "StockPublicIpAddressesBandwidthOut")
+	delete(f, "PublicIpAddressesBandwidthOut")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateNatGatewayAddressRequest has unknown keys!", "")
 	}
@@ -2984,6 +2992,12 @@ type CreateNatGatewayRequest struct {
 
 	// NAT网关所属子网
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	StockPublicIpAddressesBandwidthOut *uint64 `json:"StockPublicIpAddressesBandwidthOut,omitempty" name:"StockPublicIpAddressesBandwidthOut"`
+
+	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+	PublicIpAddressesBandwidthOut *uint64 `json:"PublicIpAddressesBandwidthOut,omitempty" name:"PublicIpAddressesBandwidthOut"`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -3007,6 +3021,8 @@ func (r *CreateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Tags")
 	delete(f, "SubnetId")
+	delete(f, "StockPublicIpAddressesBandwidthOut")
+	delete(f, "PublicIpAddressesBandwidthOut")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatGatewayRequest has unknown keys!", "")
 	}

@@ -6542,6 +6542,74 @@ func (r *DescribeMediaInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMediaPlayStatDetailsRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计时间粒度，有效值：
+	// <li>Hour：以小时为粒度。</li>
+	// <li>Day：以天为粒度。</li>
+	// 默认按时间跨度决定，小于1天以小时为粒度，大于等于1天则以天为粒度。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeMediaPlayStatDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMediaPlayStatDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Interval")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaPlayStatDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMediaPlayStatDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 播放统计数据。
+		PlayStatInfoSet []*PlayStatInfo `json:"PlayStatInfoSet,omitempty" name:"PlayStatInfoSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMediaPlayStatDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMediaPlayStatDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMediaProcessUsageDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -11886,6 +11954,23 @@ type PlayStatFileInfo struct {
 	// <li> android_play_times：Android 端播放次数。</li>
 	// <li> host_name	域名。</li>
 	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type PlayStatInfo struct {
+
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	// <li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
+	// <li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 媒体文件ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 播放次数。
+	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+
+	// 播放流量，单位：字节。
+	Traffic *uint64 `json:"Traffic,omitempty" name:"Traffic"`
 }
 
 type PlayerConfig struct {
