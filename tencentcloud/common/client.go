@@ -191,11 +191,11 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		}
 	}
 
-	for k, v := range cr.GetHeader() {
+	for k, v := range request.GetHeader() {
 		switch k {
 		case "X-TC-Action", "X-TC-Version", "X-TC-Timestamp", "X-TC-RequestClient",
 			"X-TC-Language", "Content-Type", "X-TC-Region", "X-TC-Token":
-			log.Printf("Overwriting special header \"%s\" is not allowed", k)
+			log.Printf("Skip header \"%s\": can not specify built-in header", k)
 		default:
 			headers[k] = v
 		}

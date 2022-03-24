@@ -196,6 +196,9 @@ func (r *BaseRequest) GetHeader() map[string]string {
 }
 
 func (r *BaseRequest) SetHeader(header map[string]string) {
+	if header == nil {
+		return
+	}
 	r.header = header
 }
 
