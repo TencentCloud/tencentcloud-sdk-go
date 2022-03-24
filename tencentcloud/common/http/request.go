@@ -39,6 +39,7 @@ type Request interface {
 	GetVersion() string
 	GetContentType() string
 	GetContext() context.Context
+	GetHeader() map[string]string
 	SetScheme(string)
 	SetRootDomain(string)
 	SetDomain(string)
@@ -47,6 +48,7 @@ type Request interface {
 	SetContentType(string)
 	SetBody([]byte)
 	SetContext(context.Context)
+	SetHeader(header map[string]string)
 }
 
 type BaseRequest struct {
@@ -58,6 +60,7 @@ type BaseRequest struct {
 	path       string
 	params     map[string]string
 	formParams map[string]string
+	header     map[string]string
 
 	service string
 	version string
@@ -186,6 +189,14 @@ func (r *BaseRequest) GetContext() context.Context {
 
 func (r *BaseRequest) SetContext(ctx context.Context) {
 	r.context = ctx
+}
+
+func (r *BaseRequest) GetHeader() map[string]string {
+	return r.header
+}
+
+func (r *BaseRequest) SetHeader(header map[string]string) {
+	r.header = header
 }
 
 func GetUrlQueriesEncoded(params map[string]string) string {
