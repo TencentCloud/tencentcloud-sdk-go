@@ -32,6 +32,9 @@ const (
 	// 当前异步事件状态不支持此操作，请稍后重试。
 	FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
 
+	// 请求role信息失败。
+	FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
+
 	// 复制函数失败。
 	FAILEDOPERATION_COPYFAILED = "FailedOperation.CopyFailed"
 
@@ -209,6 +212,9 @@ const (
 	// Args 参数值有误。
 	INVALIDPARAMETERVALUE_ARGS = "InvalidParameterValue.Args"
 
+	// AsyncRunEnable 取值不正确。
+	INVALIDPARAMETERVALUE_ASYNCRUNENABLE = "InvalidParameterValue.AsyncRunEnable"
+
 	// 函数异步重试配置参数无效。
 	INVALIDPARAMETERVALUE_ASYNCTRIGGERCONFIG = "InvalidParameterValue.AsyncTriggerConfig"
 
@@ -287,6 +293,9 @@ const (
 	// 环境变量DNS[OS_NAMESERVER]配置有误。
 	INVALIDPARAMETERVALUE_DNSINFO = "InvalidParameterValue.DnsInfo"
 
+	// DynamicEnabled 参数传入错误。
+	INVALIDPARAMETERVALUE_DYNAMICENABLED = "InvalidParameterValue.DynamicEnabled"
+
 	// EipConfig参数错误。
 	INVALIDPARAMETERVALUE_EIPCONFIG = "InvalidParameterValue.EipConfig"
 
@@ -341,6 +350,9 @@ const (
 	// InlineZipFile非法。
 	INVALIDPARAMETERVALUE_INLINEZIPFILE = "InvalidParameterValue.InlineZipFile"
 
+	// InstanceConcurrencyConfig 参数传入错误。
+	INVALIDPARAMETERVALUE_INSTANCECONCURRENCYCONFIG = "InvalidParameterValue.InstanceConcurrencyConfig"
+
 	// InvokeType取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_INVOKETYPE = "InvalidParameterValue.InvokeType"
 
@@ -358,6 +370,9 @@ const (
 
 	// 参数超出长度限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+
+	// MaxConcurrency 参数传入错误。
+	INVALIDPARAMETERVALUE_MAXCONCURRENCY = "InvalidParameterValue.MaxConcurrency"
 
 	// Memory取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
 	INVALIDPARAMETERVALUE_MEMORY = "InvalidParameterValue.Memory"

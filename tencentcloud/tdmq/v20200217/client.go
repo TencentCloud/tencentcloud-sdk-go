@@ -5166,6 +5166,59 @@ func (c *Client) ResetMsgSubOffsetByTimestampWithContext(ctx context.Context, re
     return
 }
 
+func NewResetRocketMQConsumerOffSetRequest() (request *ResetRocketMQConsumerOffSetRequest) {
+    request = &ResetRocketMQConsumerOffSetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tdmq", APIVersion, "ResetRocketMQConsumerOffSet")
+    
+    
+    return
+}
+
+func NewResetRocketMQConsumerOffSetResponse() (response *ResetRocketMQConsumerOffSetResponse) {
+    response = &ResetRocketMQConsumerOffSetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetRocketMQConsumerOffSet
+// 重置指定Group的消费位点到指定时间戳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ResetRocketMQConsumerOffSet(request *ResetRocketMQConsumerOffSetRequest) (response *ResetRocketMQConsumerOffSetResponse, err error) {
+    return c.ResetRocketMQConsumerOffSetWithContext(context.Background(), request)
+}
+
+// ResetRocketMQConsumerOffSet
+// 重置指定Group的消费位点到指定时间戳
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ResetRocketMQConsumerOffSetWithContext(ctx context.Context, request *ResetRocketMQConsumerOffSetRequest) (response *ResetRocketMQConsumerOffSetResponse, err error) {
+    if request == nil {
+        request = NewResetRocketMQConsumerOffSetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetRocketMQConsumerOffSet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetRocketMQConsumerOffSetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRewindCmqQueueRequest() (request *RewindCmqQueueRequest) {
     request = &RewindCmqQueueRequest{
         BaseRequest: &tchttp.BaseRequest{},

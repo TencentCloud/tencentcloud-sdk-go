@@ -23,6 +23,9 @@ const (
 	// 今日次数达到限制。
 	FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
 
+	// 数据源查询失败。
+	FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
+
 	// 检测失败。
 	FAILEDOPERATION_DETECTFAILED = "FailedOperation.DetectFailed"
 

@@ -361,6 +361,56 @@ type ClusterParamModifyLog struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type CreateAccountsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 新账户列表
+	Accounts []*NewAccount `json:"Accounts,omitempty" name:"Accounts"`
+}
+
+func (r *CreateAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Accounts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateClustersRequest struct {
 	*tchttp.BaseRequest
 
@@ -602,7 +652,16 @@ func (r *CreateClustersResponse) FromJsonString(s string) error {
 
 type CynosdbCluster struct {
 
-	// 集群状态
+	// 集群状态， 可选值如下:
+	// creating: 创建中
+	// running:运行中
+	// isolating:隔离中
+	// isolated:已隔离
+	// activating:解隔离中
+	// offlining:下线中
+	// offlined:已下线
+	// deleting:删除中
+	// deleted:已删除
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 更新时间
@@ -2658,6 +2717,21 @@ type NetAddr struct {
 	// 网络类型（ro-只读,rw/ha-读写）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
+}
+
+type NewAccount struct {
+
+	// 账户名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 密码
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+
+	// 主机
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type ObjectTask struct {

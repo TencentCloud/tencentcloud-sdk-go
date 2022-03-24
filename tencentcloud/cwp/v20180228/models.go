@@ -10501,6 +10501,121 @@ func (r *DescribeSecurityDynamicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityEventStatRequest struct {
+	*tchttp.BaseRequest
+
+	// 该接口无过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSecurityEventStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityEventStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityEventStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityEventStatResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 木马事件统计
+		MalwareStat *EventStat `json:"MalwareStat,omitempty" name:"MalwareStat"`
+
+		// 异地事件统计
+		HostLoginStat *EventStat `json:"HostLoginStat,omitempty" name:"HostLoginStat"`
+
+		// 爆破事件统计
+		BruteAttackStat *EventStat `json:"BruteAttackStat,omitempty" name:"BruteAttackStat"`
+
+		// 恶意请求事件统计
+		MaliciousRequestStat *EventStat `json:"MaliciousRequestStat,omitempty" name:"MaliciousRequestStat"`
+
+		// 本地提权事件统计
+		PrivilegeStat *EventStat `json:"PrivilegeStat,omitempty" name:"PrivilegeStat"`
+
+		// 反弹Shell事件统计
+		ReverseShellStat *EventStat `json:"ReverseShellStat,omitempty" name:"ReverseShellStat"`
+
+		// 高危命令事件统计
+		HighRiskBashStat *EventStat `json:"HighRiskBashStat,omitempty" name:"HighRiskBashStat"`
+
+		// 网络攻击事件统计
+		AttackLogsStat *EventStat `json:"AttackLogsStat,omitempty" name:"AttackLogsStat"`
+
+		// 高危漏洞事件统计
+		VulHighStat *EventStat `json:"VulHighStat,omitempty" name:"VulHighStat"`
+
+		// 中危漏洞事件统计
+		VulNormalStat *EventStat `json:"VulNormalStat,omitempty" name:"VulNormalStat"`
+
+		// 低危漏洞事件统计
+		VulLowStat *EventStat `json:"VulLowStat,omitempty" name:"VulLowStat"`
+
+		// 高危基线漏洞事件统计
+		BaselineHighStat *EventStat `json:"BaselineHighStat,omitempty" name:"BaselineHighStat"`
+
+		// 中危基线漏事件统计
+		BaselineNormalStat *EventStat `json:"BaselineNormalStat,omitempty" name:"BaselineNormalStat"`
+
+		// 低危基线漏事件统计
+		BaselineLowStat *EventStat `json:"BaselineLowStat,omitempty" name:"BaselineLowStat"`
+
+		// 有未处理安全事件的机器总数
+		MachineTotalAffectNum *uint64 `json:"MachineTotalAffectNum,omitempty" name:"MachineTotalAffectNum"`
+
+		// 有未处理入侵安全事件的机器总数
+		InvasionTotalAffectNum *uint64 `json:"InvasionTotalAffectNum,omitempty" name:"InvasionTotalAffectNum"`
+
+		// 有未处理漏洞安全事件的机器总数
+		VulTotalAffectNum *uint64 `json:"VulTotalAffectNum,omitempty" name:"VulTotalAffectNum"`
+
+		// 有未处理基线安全事件的机器总数
+		BaseLineTotalAffectNum *uint64 `json:"BaseLineTotalAffectNum,omitempty" name:"BaseLineTotalAffectNum"`
+
+		// 有未处理网络攻击安全事件的机器总数
+		CyberAttackTotalAffectNum *uint64 `json:"CyberAttackTotalAffectNum,omitempty" name:"CyberAttackTotalAffectNum"`
+
+		// 严重漏洞事件统计
+		VulRiskStat *EventStat `json:"VulRiskStat,omitempty" name:"VulRiskStat"`
+
+		// 严重基线漏洞事件统计
+		BaselineRiskStat *EventStat `json:"BaselineRiskStat,omitempty" name:"BaselineRiskStat"`
+
+		// 漏洞数统计
+		VulStat *EventStat `json:"VulStat,omitempty" name:"VulStat"`
+
+		// 安全得分
+		Score *uint64 `json:"Score,omitempty" name:"Score"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityEventStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityEventStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSecurityEventsCntRequest struct {
 	*tchttp.BaseRequest
 }
@@ -12179,6 +12294,15 @@ type EmergencyVul struct {
 	// 影响机器数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+}
+
+type EventStat struct {
+
+	// 事件数
+	EventsNum *uint64 `json:"EventsNum,omitempty" name:"EventsNum"`
+
+	// 受影响的主机数
+	MachineAffectNum *uint64 `json:"MachineAffectNum,omitempty" name:"MachineAffectNum"`
 }
 
 type ExpertServiceOrderInfo struct {

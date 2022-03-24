@@ -14139,7 +14139,7 @@ func NewModifyNetworkInterfaceQosResponse() (response *ModifyNetworkInterfaceQos
 }
 
 // ModifyNetworkInterfaceQos
-// 修改弹性网卡服务质量
+// 修改弹性网卡服务质量。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14151,7 +14151,7 @@ func (c *Client) ModifyNetworkInterfaceQos(request *ModifyNetworkInterfaceQosReq
 }
 
 // ModifyNetworkInterfaceQos
-// 修改弹性网卡服务质量
+// 修改弹性网卡服务质量。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -15110,7 +15110,7 @@ func NewNotifyRoutesResponse() (response *NotifyRoutesResponse) {
 }
 
 // NotifyRoutes
-// 路由表列表页操作增加“发布到云联网”，用于发布路由到云联网。
+// 本接口（NotifyRoutes）用于路由表列表页操作增加“发布到云联网”，发布路由到云联网。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -15128,7 +15128,7 @@ func (c *Client) NotifyRoutes(request *NotifyRoutesRequest) (response *NotifyRou
 }
 
 // NotifyRoutes
-// 路由表列表页操作增加“发布到云联网”，用于发布路由到云联网。
+// 本接口（NotifyRoutes）用于路由表列表页操作增加“发布到云联网”，发布路由到云联网。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

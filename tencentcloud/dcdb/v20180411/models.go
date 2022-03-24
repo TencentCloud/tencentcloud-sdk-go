@@ -3921,6 +3921,10 @@ type ParamDesc struct {
 
 	// 是否有设置过值，false:没有设置过值，true:有设置过值。
 	HaveSetValue *bool `json:"HaveSetValue,omitempty" name:"HaveSetValue"`
+
+	// 是否需要重启生效，false:不需要重启，
+	// true:需要重启
+	NeedRestart *bool `json:"NeedRestart,omitempty" name:"NeedRestart"`
 }
 
 type ParamModifyResult struct {

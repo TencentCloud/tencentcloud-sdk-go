@@ -373,6 +373,10 @@ type BGPInstanceSpecification struct {
 	// 联合产品标记，0代表普通高防包，1代表联合高防包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnionPackFlag *uint64 `json:"UnionPackFlag,omitempty" name:"UnionPackFlag"`
+
+	// 业务带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceBandWidth *uint64 `json:"ServiceBandWidth,omitempty" name:"ServiceBandWidth"`
 }
 
 type BGPInstanceUsages struct {
@@ -3887,6 +3891,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
 	FilterBoundStatus *string `json:"FilterBoundStatus,omitempty" name:"FilterBoundStatus"`
+
+	// 实例id数组
+	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitempty" name:"FilterInstanceIdList"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -3910,6 +3917,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterLine")
 	delete(f, "FilterStatus")
 	delete(f, "FilterBoundStatus")
+	delete(f, "FilterInstanceIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}

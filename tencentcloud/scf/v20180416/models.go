@@ -3957,10 +3957,10 @@ type UsageInfo struct {
 
 type Variable struct {
 
-	// 变量的名称
+	// 变量的名称，不可为空字符
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 变量的值
+	// 变量的值，不可为空字符
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 

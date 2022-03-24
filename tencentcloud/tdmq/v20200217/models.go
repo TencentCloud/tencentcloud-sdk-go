@@ -6761,6 +6761,72 @@ func (r *ResetMsgSubOffsetByTimestampResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResetRocketMQConsumerOffSetRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间名称
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 消费组名称
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 重置方式，0表示从最新位点开始，1表示从指定时间点开始
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
+	ResetTimestamp *uint64 `json:"ResetTimestamp,omitempty" name:"ResetTimestamp"`
+}
+
+func (r *ResetRocketMQConsumerOffSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetRocketMQConsumerOffSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "GroupId")
+	delete(f, "Topic")
+	delete(f, "Type")
+	delete(f, "ResetTimestamp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRocketMQConsumerOffSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetRocketMQConsumerOffSetResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetRocketMQConsumerOffSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetRocketMQConsumerOffSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RetentionPolicy struct {
 
 	// 消息保留时长

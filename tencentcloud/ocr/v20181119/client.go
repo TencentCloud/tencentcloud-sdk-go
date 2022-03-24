@@ -4159,6 +4159,73 @@ func (c *Client) RecognizeThaiIDCardOCRWithContext(ctx context.Context, request 
     return
 }
 
+func NewRecognizeTravelCardOCRRequest() (request *RecognizeTravelCardOCRRequest) {
+    request = &RecognizeTravelCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTravelCardOCR")
+    
+    
+    return
+}
+
+func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRResponse) {
+    response = &RecognizeTravelCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeTravelCardOCR
+// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
+    return c.RecognizeTravelCardOCRWithContext(context.Background(), request)
+}
+
+// RecognizeTravelCardOCR
+// 本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeTravelCardOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeTravelCardOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeTravelCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
     request = &ResidenceBookletOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5242,6 +5309,7 @@ func NewVerifyBasicBizLicenseResponse() (response *VerifyBasicBizLicenseResponse
 // 您可以通过输入营业执照注册号或营业执照图片（若两者都输入则只用注册号做查询）进行核验，接口返回查询到的工商照面信息，并比对要校验的字段与查询结果的一致性。查询到工商信息包括：统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、注册资本等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
@@ -5263,6 +5331,7 @@ func (c *Client) VerifyBasicBizLicense(request *VerifyBasicBizLicenseRequest) (r
 // 您可以通过输入营业执照注册号或营业执照图片（若两者都输入则只用注册号做查询）进行核验，接口返回查询到的工商照面信息，并比对要校验的字段与查询结果的一致性。查询到工商信息包括：统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、注册资本等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
@@ -5317,6 +5386,7 @@ func NewVerifyBizLicenseResponse() (response *VerifyBizLicenseResponse) {
 // 查询到工商信息包括：统一社会信用代码、组织机构代码、经营期限、法人姓名、经营状态、经营业务范围及方式、注册资金、注册币种、登记机关、开业日期、企业（机构）类型、注销日期、吊销日期、许可经营项目、一般经营项目、核准时间、省、地级市、区/县、住所所在行政区划代码、行业门类代码、行业门类名称、国民经济行业代码、国民经济行业名称、经营（业务）范围等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
@@ -5342,6 +5412,7 @@ func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *V
 // 查询到工商信息包括：统一社会信用代码、组织机构代码、经营期限、法人姓名、经营状态、经营业务范围及方式、注册资金、注册币种、登记机关、开业日期、企业（机构）类型、注销日期、吊销日期、许可经营项目、一般经营项目、核准时间、省、地级市、区/县、住所所在行政区划代码、行业门类代码、行业门类名称、国民经济行业代码、国民经济行业名称、经营（业务）范围等。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"

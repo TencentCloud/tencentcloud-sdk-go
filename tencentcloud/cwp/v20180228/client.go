@@ -7873,6 +7873,53 @@ func (c *Client) DescribeSecurityDynamicsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSecurityEventStatRequest() (request *DescribeSecurityEventStatRequest) {
+    request = &DescribeSecurityEventStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityEventStat")
+    
+    
+    return
+}
+
+func NewDescribeSecurityEventStatResponse() (response *DescribeSecurityEventStatResponse) {
+    response = &DescribeSecurityEventStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityEventStat
+// 获取安全事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSecurityEventStat(request *DescribeSecurityEventStatRequest) (response *DescribeSecurityEventStatResponse, err error) {
+    return c.DescribeSecurityEventStatWithContext(context.Background(), request)
+}
+
+// DescribeSecurityEventStat
+// 获取安全事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSecurityEventStatWithContext(ctx context.Context, request *DescribeSecurityEventStatRequest) (response *DescribeSecurityEventStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityEventStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityEventStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityEventStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityEventsCntRequest() (request *DescribeSecurityEventsCntRequest) {
     request = &DescribeSecurityEventsCntRequest{
         BaseRequest: &tchttp.BaseRequest{},

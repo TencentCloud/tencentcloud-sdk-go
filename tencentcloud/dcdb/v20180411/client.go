@@ -1403,7 +1403,6 @@ func NewDescribeDCDBPriceResponse() (response *DescribeDCDBPriceResponse) {
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
-//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDCDBPrice(request *DescribeDCDBPriceRequest) (response *DescribeDCDBPriceResponse, err error) {
@@ -1417,7 +1416,6 @@ func (c *Client) DescribeDCDBPrice(request *DescribeDCDBPriceRequest) (response 
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
-//  INVALIDPARAMETER_SPECNOTFOUND = "InvalidParameter.SpecNotFound"
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDCDBPriceWithContext(ctx context.Context, request *DescribeDCDBPriceRequest) (response *DescribeDCDBPriceResponse, err error) {

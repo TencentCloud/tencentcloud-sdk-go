@@ -14802,7 +14802,7 @@ type ModifyNetworkInterfaceQosRequest struct {
 	// 弹性网卡ID，支持批量修改。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" name:"NetworkInterfaceIds"`
 
-	// 服务质量，可选值：AU、AG、PT，分别代表金、银、白金三个等级。
+	// 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 

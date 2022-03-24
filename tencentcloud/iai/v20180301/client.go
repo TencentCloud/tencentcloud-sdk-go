@@ -159,6 +159,7 @@ func NewAnalyzeFaceResponse() (response *AnalyzeFaceResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -242,6 +243,7 @@ func (c *Client) AnalyzeFace(request *AnalyzeFaceRequest) (response *AnalyzeFace
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -585,6 +587,7 @@ func NewCompareFaceResponse() (response *CompareFaceResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACEQUALITYNOTQUALIFIED = "FailedOperation.FaceQualityNotQualified"
@@ -674,6 +677,7 @@ func (c *Client) CompareFace(request *CompareFaceRequest) (response *CompareFace
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACEQUALITYNOTQUALIFIED = "FailedOperation.FaceQualityNotQualified"
@@ -975,6 +979,7 @@ func NewCreateFaceResponse() (response *CreateFaceResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_CREATEFACECONCURRENT = "FailedOperation.CreateFaceConcurrent"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -1060,6 +1065,7 @@ func (c *Client) CreateFace(request *CreateFaceRequest) (response *CreateFaceRes
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_CREATEFACECONCURRENT = "FailedOperation.CreateFaceConcurrent"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -1178,6 +1184,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 // 不同算法模型版本（FaceModelVersion）的人员库（Group）最多可包含人脸（Face）数不同。算法模型版本为2.0的人员库最多包含100万张人脸，算法模型版本为3.0的人员库最多可包含300万张人脸。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
@@ -1262,6 +1269,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 // 不同算法模型版本（FaceModelVersion）的人员库（Group）最多可包含人脸（Face）数不同。算法模型版本为2.0的人员库最多包含100万张人脸，算法模型版本为3.0的人员库最多可包含300万张人脸。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
@@ -1431,6 +1439,7 @@ func NewCreatePersonResponse() (response *CreatePersonResponse) {
 //  INVALIDPARAMETERVALUE_UNIQUEPERSONCONTROLILLEGAL = "InvalidParameterValue.UniquePersonControlIllegal"
 //  INVALIDPARAMETERVALUE_UPLOADFACENUMEXCEED = "InvalidParameterValue.UploadFaceNumExceed"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_ERRORFACENUMEXCEED = "LimitExceeded.ErrorFaceNumExceed"
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
@@ -1516,6 +1525,7 @@ func (c *Client) CreatePerson(request *CreatePersonRequest) (response *CreatePer
 //  INVALIDPARAMETERVALUE_UNIQUEPERSONCONTROLILLEGAL = "InvalidParameterValue.UniquePersonControlIllegal"
 //  INVALIDPARAMETERVALUE_UPLOADFACENUMEXCEED = "InvalidParameterValue.UploadFaceNumExceed"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_ERRORFACENUMEXCEED = "LimitExceeded.ErrorFaceNumExceed"
 //  MISSINGPARAMETER_ERRORPARAMETEREMPTY = "MissingParameter.ErrorParameterEmpty"
 //  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
@@ -2300,6 +2310,8 @@ func NewDetectFaceResponse() (response *DetectFaceResponse) {
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -2408,6 +2420,8 @@ func (c *Client) DetectFace(request *DetectFaceRequest) (response *DetectFaceRes
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -2559,6 +2573,7 @@ func NewDetectFaceAttributesResponse() (response *DetectFaceAttributesResponse) 
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
@@ -2636,6 +2651,7 @@ func (c *Client) DetectFaceAttributes(request *DetectFaceAttributesRequest) (res
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
@@ -2720,6 +2736,7 @@ func NewDetectLiveFaceResponse() (response *DetectLiveFaceResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -2819,6 +2836,7 @@ func (c *Client) DetectLiveFace(request *DetectLiveFaceRequest) (response *Detec
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -3272,6 +3290,7 @@ func NewGetGroupListResponse() (response *GetGroupListResponse) {
 // 获取人员库列表。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
@@ -3345,6 +3364,7 @@ func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupL
 // 获取人员库列表。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
@@ -5068,6 +5088,7 @@ func NewSearchFacesResponse() (response *SearchFacesResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -5171,6 +5192,7 @@ func (c *Client) SearchFaces(request *SearchFacesRequest) (response *SearchFaces
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -5303,6 +5325,7 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -5406,6 +5429,7 @@ func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupReq
 // 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
@@ -5534,6 +5558,7 @@ func NewSearchPersonsResponse() (response *SearchPersonsResponse) {
 // - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -5600,6 +5625,7 @@ func (c *Client) SearchPersons(request *SearchPersonsRequest) (response *SearchP
 // - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -5915,6 +5941,7 @@ func NewVerifyFaceResponse() (response *VerifyFaceResponse) {
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACEQUALITYNOTQUALIFIED = "FailedOperation.FaceQualityNotQualified"
@@ -6007,6 +6034,7 @@ func (c *Client) VerifyFace(request *VerifyFaceRequest) (response *VerifyFaceRes
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_FACEQUALITYNOTQUALIFIED = "FailedOperation.FaceQualityNotQualified"

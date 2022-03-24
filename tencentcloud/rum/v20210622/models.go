@@ -3474,10 +3474,10 @@ type DescribeProjectsRequest struct {
 	// 分页页码，整型
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件
+	// 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 是否为demo模式（1=是，2=否）
+	// 该参数已废弃，demo模式请在Filters内注明
 	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
@@ -3717,7 +3717,7 @@ type DescribeScoresRequest struct {
 	// 项目ID
 	ID *int64 `json:"ID,omitempty" name:"ID"`
 
-	// 是否为demo模式（1=是，2=否）
+	// 该参数已废弃
 	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
@@ -3858,10 +3858,10 @@ type DescribeTawInstancesRequest struct {
 	// 实例Id
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 过滤参数
+	// 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 是否为demo模式（1=是，2=否）
+	// 该参数已废弃，demo模式请在Filters内注明
 	IsDemo *int64 `json:"IsDemo,omitempty" name:"IsDemo"`
 }
 
