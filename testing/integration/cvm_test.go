@@ -121,38 +121,3 @@ func TestDescribeInstances(t *testing.T) {
 		t.Errorf("response item count inconsisitent!")
 	}
 }
-
-func TestCustomHeader(t *testing.T) {
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-	client, err := cvm.NewClient(
-		credential,
-		regions.Guangzhou,
-		profile.NewClientProfile())
-	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-	}
-
-	request := cvm.NewDescribeInstancesRequest()
-	request.SetHeader(map[string]string{
-		"X-Custom-Key-1": "X-Custom-Value-1",
-	})
-
-	if request.GetHeader()["X-Custom-Key-1"] != "X-Custom-Value-1" {
-		t.Fatal("custom header not set")
-	}
-
-	request.SetHeader(nil)
-	if len(request.GetHeader()) != 0 {
-		t.Fatal("set custom header to nil failed")
-	}
-
-	response, err := client.DescribeInstances(request)
-	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
-	}
-	if *response.Response.TotalCount != (int64)(len(response.Response.InstanceSet)) {
-		t.Errorf("response item count inconsisitent!")
-	}
-}

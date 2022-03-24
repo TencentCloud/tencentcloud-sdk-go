@@ -63,28 +63,37 @@ func TestCommonRequest_IsOctetStream(t *testing.T) {
 			t.Fatalf("panic on IsOctetStream: %+v", e)
 		}
 	}()
-	cr1 := &CommonRequest{header: map[string]string{
-		"Content-Type": "text/plain",
-	}}
+	cr1 := &CommonRequest{
+		BaseRequest: &BaseRequest{
+			header: map[string]string{
+				"Content-Type": "text/plain",
+			},
+		}}
 	cr2 := &CommonRequest{
-		header: map[string]string{
-			"Content-Type": octetStream,
+		BaseRequest: &BaseRequest{
+			header: map[string]string{
+				"Content-Type": octetStream,
+			},
 		},
 		actionParameters: map[string]interface{}{
 			"octetstreambody": []byte{},
 		},
 	}
 	cr3 := &CommonRequest{
-		header: map[string]string{
-			"Content-Type": octetStream,
+		BaseRequest: &BaseRequest{
+			header: map[string]string{
+				"Content-Type": octetStream,
+			},
 		},
 		actionParameters: map[string]interface{}{
 			"OctetStreamBody": []string{},
 		},
 	}
 	cr4 := &CommonRequest{
-		header: map[string]string{
-			"Content-Type": octetStream,
+		BaseRequest: &BaseRequest{
+			header: map[string]string{
+				"Content-Type": octetStream,
+			},
 		},
 		actionParameters: map[string]interface{}{
 			"OctetStreamBody": []byte{},
@@ -136,5 +145,33 @@ func TestCommonRequest_SetOctetStreamParameters(t *testing.T) {
 		if val := cr.IsOctetStream(); val != wanted {
 			t.Fatalf("SetOctetStreamParameters failed: expected %+v, got %+v", wanted, val)
 		}
+	}
+}
+
+func TestCommonRequest_Header(t *testing.T) {
+	r := &CommonRequest{}
+
+	if r.GetHeader() != nil {
+		t.Fatal("default header MUST be nil")
+	}
+
+	// SetHeader(nil) MUST not replace nil map with empty map
+	r.SetHeader(nil)
+	if r.GetHeader() != nil {
+		t.Fatal("SetHeader(nil) MUST not replace nil map with empty map")
+	}
+
+	r.SetHeader(map[string]string{"X-Key-1": "X-Value-1"})
+	if r.GetHeader()["X-Key-1"] != "X-Value-1" {
+		t.Fatal("SetHeader failed")
+	}
+
+	r.SetHeader(nil)
+	if r.GetHeader() == nil {
+		t.Fatal("SetHeader(nil) MUST not overwrite existing header (for backward compatibility)")
+	}
+
+	if r.GetHeader()["X-Key-1"] != "X-Value-1" {
+		t.Fatal("SetHeader(nil) MUST not overwrite existing header (for backward compatibility)")
 	}
 }
