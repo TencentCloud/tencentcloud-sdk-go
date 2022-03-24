@@ -265,7 +265,7 @@ type ChangeReplicaToMasterRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 副本Id
+	// 副本组Id，多AZ实例必填
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -972,6 +972,12 @@ type DescribeAutoBackupConfigResponse struct {
 		// 时间段。
 		TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
+		// 全量备份文件保存天数
+		BackupStorageDays *int64 `json:"BackupStorageDays,omitempty" name:"BackupStorageDays"`
+
+		// tendis binlog备份文件保存天数
+		BinlogStorageDays *int64 `json:"BinlogStorageDays,omitempty" name:"BinlogStorageDays"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1055,16 +1061,16 @@ func (r *DescribeBackupUrlResponse) FromJsonString(s string) error {
 type DescribeCommonDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例Vip信息列表
+	// vpc网络ID信息列表
 	VpcIds []*int64 `json:"VpcIds,omitempty" name:"VpcIds"`
 
-	// 子网id信息列表
+	// 子网ID信息列表
 	SubnetIds []*int64 `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
 	// 计费类型过滤列表；0表示包年包月，1表示按量计费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 实例id过滤信息列表
+	// 实例ID过滤信息列表
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例名称过滤信息列表
@@ -1188,6 +1194,12 @@ type DescribeDBSecurityGroupsResponse struct {
 
 		// 安全组规则
 		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
+
+		// 安全组生效内网地址
+		VIP *string `json:"VIP,omitempty" name:"VIP"`
+
+		// 安全组生效内网端口
+		VPort *string `json:"VPort,omitempty" name:"VPort"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2285,7 +2297,7 @@ func (r *DescribeInstanceZoneInfoResponse) FromJsonString(s string) error {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例列表的大小，参数默认值20
+	// 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
@@ -2350,6 +2362,12 @@ type DescribeInstancesRequest struct {
 
 	// 内部参数，用户可忽略
 	MonitorVersion *string `json:"MonitorVersion,omitempty" name:"MonitorVersion"`
+
+	// 根据标签的Key和Value筛选资源，不传或者传空数组则不进行过滤
+	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitempty" name:"InstanceTags"`
+
+	// 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -2386,6 +2404,8 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SearchKeys")
 	delete(f, "TypeList")
 	delete(f, "MonitorVersion")
+	delete(f, "InstanceTags")
+	delete(f, "TagKeys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -2704,7 +2724,7 @@ type DescribeProjectSecurityGroupsRequest struct {
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 拉取数量限制。
+	// 拉取数量限制，默认20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索条件，支持安全组id或者安全组名称。
@@ -3038,7 +3058,7 @@ type DescribeTaskListRequest struct {
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 分页大小
+	// 分页大小,默认20，上限不大于100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍（自动向下取整）
@@ -4299,6 +4319,9 @@ type ManualBackupInstanceRequest struct {
 
 	// 备份的备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 保存天数。0代表指定默认保留时间
+	StorageDays *int64 `json:"StorageDays,omitempty" name:"StorageDays"`
 }
 
 func (r *ManualBackupInstanceRequest) ToJsonString() string {
@@ -4315,6 +4338,7 @@ func (r *ManualBackupInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Remark")
+	delete(f, "StorageDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ManualBackupInstanceRequest has unknown keys!", "")
 	}
@@ -4599,7 +4623,7 @@ type ModifyInstanceAccountRequest struct {
 	// 子账号描述信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 子账号路由策略：填写master或者slave，表示路由主节点，从节点
+	// 路由策略：填写master或者replication，表示主节点或者从节点
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitempty" name:"ReadonlyPolicy"`
 
 	// 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
@@ -5123,6 +5147,18 @@ type RedisBackupSet struct {
 
 	// 备份是否被锁定，0：未被锁定；1：已被锁定
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+
+	// 内部字段，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSize *int64 `json:"BackupSize,omitempty" name:"BackupSize"`
+
+	// 内部字段，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FullBackup *int64 `json:"FullBackup,omitempty" name:"FullBackup"`
+
+	// 内部字段，用户可忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type RedisCommonInstanceList struct {
@@ -5376,7 +5412,7 @@ type ResourceTag struct {
 type RestoreInstanceRequest struct {
 	*tchttp.BaseRequest
 
-	// 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+	// 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
@@ -5745,7 +5781,7 @@ type UpgradeInstanceRequest struct {
 	// 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
 	RedisShardNum *uint64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 副本数量，标准架构不需要填写，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+	// 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
 	// 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
@@ -5860,6 +5896,9 @@ type UpgradeVersionToMultiAvailabilityZonesRequest struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否升级proxy和redis内核版本，升级后可支持就近接入
+	UpgradeProxyAndRedisServer *bool `json:"UpgradeProxyAndRedisServer,omitempty" name:"UpgradeProxyAndRedisServer"`
 }
 
 func (r *UpgradeVersionToMultiAvailabilityZonesRequest) ToJsonString() string {
@@ -5875,6 +5914,7 @@ func (r *UpgradeVersionToMultiAvailabilityZonesRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "UpgradeProxyAndRedisServer")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeVersionToMultiAvailabilityZonesRequest has unknown keys!", "")
 	}

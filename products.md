@@ -50,7 +50,7 @@
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2022-02-21 08:03:52 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2022-03-03 08:03:36 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-03-16 08:06:39 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-03-24 08:09:21 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-03-23 08:04:21 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-02-21 08:04:51 |
@@ -88,7 +88,7 @@
 | gse | [游戏服务器伸缩](https://cloud.tencent.com/document/product/1165) | 2022-02-21 08:07:25 |
 | habo | [](https://cloud.tencent.com/document/product) | 2019-05-09 19:37:22 |
 | hcm | [数学作业批改](https://cloud.tencent.com/document/product/1004) | 2022-02-21 08:07:36 |
-| iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2022-02-21 08:07:37 |
+| iai | [人脸识别](https://cloud.tencent.com/document/product/867) | 2022-03-24 08:12:37 |
 | ic | [物联卡](https://cloud.tencent.com/document/product/636) | 2022-02-21 08:07:43 |
 | ie | [智能编辑](https://cloud.tencent.com/document/product/1186) | 2022-02-21 08:07:44 |
 | iecp | [物联网边缘计算平台](https://cloud.tencent.com/document/product/1118) | 2022-03-23 08:07:34 |
@@ -128,7 +128,7 @@
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2022-03-03 08:10:01 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2022-03-22 08:13:14 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2022-02-21 08:10:44 |
-| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-03-23 08:10:37 |
+| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-03-24 08:15:42 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2022-02-21 08:10:55 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2022-02-21 08:10:56 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2022-03-21 08:15:09 |

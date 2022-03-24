@@ -1,3 +1,70 @@
+# Release v1.0.372
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 60 次发布
+
+发布时间：2022-03-24 08:09:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [OpenBankApprovalGuideInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankApprovalGuideInfo)
+
+修改数据结构：
+
+* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
+
+	* 新增成员：BankApprovalGuideInfo
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 42 次发布
+
+发布时间：2022-03-24 08:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAutoBackupConfig](https://cloud.tencent.com/document/api/239/20019)
+
+	* 新增出参：BackupStorageDays, BinlogStorageDays
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/239/41259)
+
+	* 新增出参：VIP, VPort
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
+
+	* 新增入参：InstanceTags, TagKeys
+
+* [ManualBackupInstance](https://cloud.tencent.com/document/api/239/20010)
+
+	* 新增入参：StorageDays
+
+* [UpgradeVersionToMultiAvailabilityZones](https://cloud.tencent.com/document/api/239/54759)
+
+	* 新增入参：UpgradeProxyAndRedisServer
+
+
+修改数据结构：
+
+* [RedisBackupSet](https://cloud.tencent.com/document/api/239/20022#RedisBackupSet)
+
+	* 新增成员：BackupSize, FullBackup, InstanceType
+
+
+
+
 # Release v1.0.371
 
 ## 物联网边缘计算平台(iecp) 版本：2021-09-14

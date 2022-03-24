@@ -2021,7 +2021,7 @@ func NewDescribeInstanceZoneInfoResponse() (response *DescribeInstanceZoneInfoRe
 }
 
 // DescribeInstanceZoneInfo
-// 查询Redis节点信息
+// 查询Redis节点详细信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2038,7 +2038,7 @@ func (c *Client) DescribeInstanceZoneInfo(request *DescribeInstanceZoneInfoReque
 }
 
 // DescribeInstanceZoneInfo
-// 查询Redis节点信息
+// 查询Redis节点详细信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2198,7 +2198,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 }
 
 // DescribeParamTemplateInfo
-// 查询参数模板详情
+// 查询参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2212,7 +2212,7 @@ func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoReq
 }
 
 // DescribeParamTemplateInfo
-// 查询参数模板详情
+// 查询参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3553,7 +3553,7 @@ func NewModifyConnectionConfigResponse() (response *ModifyConnectionConfigRespon
 }
 
 // ModifyConnectionConfig
-// 修改实例的连接配置，包括带宽和最大连接数
+// 修改实例的连接配置，包括带宽和最大连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3562,7 +3562,7 @@ func (c *Client) ModifyConnectionConfig(request *ModifyConnectionConfigRequest) 
 }
 
 // ModifyConnectionConfig
-// 修改实例的连接配置，包括带宽和最大连接数
+// 修改实例的连接配置，包括带宽和最大连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

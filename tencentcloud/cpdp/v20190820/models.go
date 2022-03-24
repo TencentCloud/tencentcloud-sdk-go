@@ -7705,6 +7705,16 @@ type MultiApplyOrder struct {
 	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
 }
 
+type OpenBankApprovalGuideInfo struct {
+
+	// PC网银指引
+	PcGuideUrl *string `json:"PcGuideUrl,omitempty" name:"PcGuideUrl"`
+
+	// 手机网银指引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MobileGuideUrl *string `json:"MobileGuideUrl,omitempty" name:"MobileGuideUrl"`
+}
+
 type OpenBankGoodsInfo struct {
 
 	// 商品名称，默认值“商品支付”
@@ -12272,9 +12282,13 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectInfo *OpenBankRedirectInfo `json:"RedirectInfo,omitempty" name:"RedirectInfo"`
 
-	// 第三方渠道返回信息，见渠道特殊说明
+	// 第三方渠道返回信息，见渠道特殊说明,详情见附录-复杂类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
+
+	// 银行复核指引。当TENPAY下OPENBANT_PAYMENT时，下单受理成功是返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BankApprovalGuideInfo *OpenBankApprovalGuideInfo `json:"BankApprovalGuideInfo,omitempty" name:"BankApprovalGuideInfo"`
 }
 
 type QueryOpenBankSupportBankListRequest struct {
