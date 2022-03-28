@@ -51,6 +51,12 @@ func main() {
 		VpcId:    common.StringPtr("vpc-8ek64x3d"),
 	}
 
+	// set custom headers
+	request.SetHeader(map[string]string{
+		"X-TC-TraceId": "my-trace-id",
+		"X-TC-Canary":  "my-canary",
+	})
+
 	// get response structure
 	response, err := client.RunInstances(request)
 	// API errors

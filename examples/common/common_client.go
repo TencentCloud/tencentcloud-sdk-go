@@ -38,6 +38,12 @@ func main() {
 	// // 3. []byte
 	// bodyBytes := []byte(bodyStr)
 
+	// set custom headers
+	request.SetHeader(map[string]string{
+		"X-TC-TraceId": "my-trace-id",
+		"X-TC-Canary":  "my-canary",
+	})
+
 	// 设置action所需的请求数据
 	err := request.SetActionParameters(body)
 	if err != nil {
