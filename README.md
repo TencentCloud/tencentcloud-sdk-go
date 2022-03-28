@@ -331,8 +331,8 @@ import "crypto/tls"
 
 1. 环境变量
 
-   默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey.
-   相关代码如下：
+    默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey.
+    相关代码如下：
 
     ```go
     provider := common.DefaultEnvProvider()
@@ -341,12 +341,12 @@ import "crypto/tls"
 
 2. 配置文件
 
-   配置文件路径为：
+    配置文件路径为：
    1. 环境变量 `TENCENTCLOUD_CREDENTIALS_FILE` 所指定的路径
    2. Linux or MacOS: `~/.tencentcloud/credentials`
    3. Windows: `c:\Users\NAME\.tencentcloud\credentials`
 
-   配置文件格式如下：
+    配置文件格式如下：
 
     ```ini
     [default]
@@ -354,7 +354,7 @@ import "crypto/tls"
     secret_key = xxxxx
     ```
 
-   相关代码如下：
+    相关代码如下：
 
     ```go
     provider := common.DefaultProfileProvider()
@@ -363,11 +363,11 @@ import "crypto/tls"
 
 3. 角色扮演
 
-   有关角色扮演的相关概念请参阅：[腾讯云角色概述](https://cloud.tencent.com/document/product/598/19420)
+    有关角色扮演的相关概念请参阅：[腾讯云角色概述](https://cloud.tencent.com/document/product/598/19420)
 
-   要使用此种方式，您必须在腾讯云访问管理控制台上创建了一个角色，具体创建过程请参阅：[腾讯云角色创建](https://cloud.tencent.com/document/product/598/19381)
+    要使用此种方式，您必须在腾讯云访问管理控制台上创建了一个角色，具体创建过程请参阅：[腾讯云角色创建](https://cloud.tencent.com/document/product/598/19381)
 
-   在您拥有角色后，可以通过如下方式获取凭证：
+    在您拥有角色后，可以通过如下方式获取凭证：
 
     ```go
     provider := common.DefaultRoleArnProvider(secretId, secretKey, roleArn)
@@ -376,9 +376,9 @@ import "crypto/tls"
 
 4. 实例角色
 
-   有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)
+    有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)
 
-   在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证。相关代码如下：
+    在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证。相关代码如下：
 
     ```go
     provider := common.DefaultCvmRoleProvider()
@@ -387,14 +387,14 @@ import "crypto/tls"
 
 5. 凭证提供链
 
-   腾讯云 GO SDK 提供了 凭证提供链，它会默认以 `环境变量->配置文件->实例角色` 的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
+    腾讯云 GO SDK 提供了 凭证提供链，它会默认以 `环境变量->配置文件->实例角色` 的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
 
     ```go
     provider := common.DefaultProviderChain()
     credentail, err := provider.GetCredential()
     ```
 
-   您也可以自定义自己的凭证提供链，从而改变其调用顺序：
+    您也可以自定义自己的凭证提供链，从而改变其调用顺序：
 
     ```go
     provider1 := common.DefaultCvmRoleProvider()
@@ -404,7 +404,7 @@ import "crypto/tls"
     credentail, err := provider.GetCredential()
     ```
 
-   更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
+    更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
 
 # 错误处理
 
