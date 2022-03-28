@@ -206,3 +206,81 @@ func TestClient_withRegionBreaker(t *testing.T) {
 		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
 	}
 }
+
+func TestClient_PacketSizeLimit(t *testing.T) {
+	cli, err := NewClientWithSecretId("", "", regions.Guangzhou)
+	if err != nil {
+		t.Fatal(err)
+	}
+	cli = cli.WithProfile(profile.NewClientProfile())
+
+	{
+		r := newTestRequest()
+		r.SetPacketSizeLimit(0)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+		if _, ok := err.(tchttp.PacketTooLargeError); ok {
+			t.Fatal("packet size limit 0 should not limit packet")
+		}
+	}
+
+	{
+		httpMethod := "GET"
+		signMethod := SHA1
+		r := newTestRequest()
+		r.SetHttpMethod(httpMethod)
+		cli.signMethod = signMethod
+		r.GetParams()["test-key"] = "long-string"
+		r.SetPacketSizeLimit(5)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+		if _, ok := err.(tchttp.PacketTooLargeError); !ok {
+			t.Fatalf("httpMethod:%s, signMethod:%s, packet limit not work", httpMethod, signMethod)
+		}
+	}
+
+	{
+		httpMethod := "GET"
+		signMethod := SHA256
+		r := newTestRequest()
+		r.SetHttpMethod(httpMethod)
+		cli.signMethod = signMethod
+		r.GetParams()["test-key"] = "long-string"
+		r.SetPacketSizeLimit(5)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+		if _, ok := err.(tchttp.PacketTooLargeError); !ok {
+			t.Fatalf("httpMethod:%s, signMethod:%s, packet limit not work", httpMethod, signMethod)
+		}
+	}
+
+	{
+		httpMethod := "POST"
+		signMethod := SHA1
+		r := newTestRequest()
+		r.SetHttpMethod(httpMethod)
+		cli.signMethod = signMethod
+		r.GetParams()["test-key"] = "long-string"
+		r.SetPacketSizeLimit(5)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+		if _, ok := err.(tchttp.PacketTooLargeError); !ok {
+			t.Fatalf("httpMethod:%s, signMethod:%s, packet limit not work", httpMethod, signMethod)
+		}
+	}
+
+	{
+		httpMethod := "POST"
+		signMethod := SHA256
+		r := newTestRequest()
+		r.SetHttpMethod(httpMethod)
+		cli.signMethod = signMethod
+		r.GetParams()["test-key"] = "long-string"
+		r.SetPacketSizeLimit(5)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+		if _, ok := err.(tchttp.PacketTooLargeError); !ok {
+			t.Fatalf("httpMethod:%s, signMethod:%s, packet limit not work", httpMethod, signMethod)
+		}
+	}
+}

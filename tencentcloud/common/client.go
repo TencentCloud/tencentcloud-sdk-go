@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math"
 	"net/http"
 	"net/http/httputil"
 	"strconv"
@@ -51,6 +52,10 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
+	}
+
+	if request.GetPacketSizeLimit() == 0 {
+		request.SetPacketSizeLimit(math.MaxInt64)
 	}
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
@@ -106,6 +111,16 @@ func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Respo
 }
 
 func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Response) error {
+	err := tchttp.ConstructParams(request)
+	if err != nil {
+		return err
+	}
+
+	err = request.Validate()
+	if err != nil {
+		return err
+	}
+
 	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
 	if err != nil {
 		return err
@@ -129,6 +144,10 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 		return err
 	}
 	err = signRequest(request, c.credential, c.signMethod)
+	if err != nil {
+		return err
+	}
+	err = request.Validate()
 	if err != nil {
 		return err
 	}
@@ -287,6 +306,18 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
+
+	err = request.Validate()
+	if err != nil {
+		return err
+	}
+
+	// need check packet size manually since sendWithSignatureV3
+	// bypass tchttp.Request's member function to build packet
+	if int64(len(url)) > request.GetPacketSizeLimit() {
+		return tchttp.PacketTooLargeError{Size: int64(len(url)), Limit: request.GetPacketSizeLimit()}
+	}
+
 	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
