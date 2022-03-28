@@ -65,13 +65,11 @@ go get -v -u github.com/tencentcloud/tencentcloud-sdk-go
 
 ## 通过源码安装
 
-前往代码托管地址 [Github](https://github.com/tencentcloud/tencentcloud-sdk-go)
-或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
+前往代码托管地址 [Github](https://github.com/tencentcloud/tencentcloud-sdk-go) 或者 [Gitee](https://gitee.com/tencentcloud/tencentcloud-sdk-go) 下载最新代码，解压后安装到 $GOPATH/src/github.com/tencentcloud 目录下。
 
 # 快速开始
 
-每个接口都有一个对应的 Request 结构和一个 Response 结构。例如云服务器的查询实例列表接口 DescribeInstances 有对应的请求结构体 DescribeInstancesRequest 和返回结构体
-DescribeInstancesResponse 。
+每个接口都有一个对应的 Request 结构和一个 Response 结构。例如云服务器的查询实例列表接口 DescribeInstances 有对应的请求结构体 DescribeInstancesRequest 和返回结构体 DescribeInstancesResponse 。
 
 下面以云服务器查询实例列表接口为例，介绍 SDK 的基础用法。
 
@@ -125,82 +123,81 @@ import (
 )
 
 func main() {
-	// 必要步骤：
-	// 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。
-	// 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，
-	// 以免泄露密钥对危及你的财产安全。
-	credential := common.NewCredential("secretId", "secretKey")
+        // 必要步骤：
+        // 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。
+        // 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，
+        // 以免泄露密钥对危及你的财产安全。
+        credential := common.NewCredential("secretId", "secretKey")
 
-	// 非必要步骤
-	// 实例化一个客户端配置对象，可以指定超时时间等配置
-	cpf := profile.NewClientProfile()
-	// SDK默认使用POST方法。
-	// 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
-	// 如非必要请不要修改默认设置。
-	cpf.HttpProfile.ReqMethod = "POST"
-	// SDK有默认的超时时间，如非必要请不要修改默认设置。
-	// 如有需要请在代码中查阅以获取最新的默认值。
-	cpf.HttpProfile.ReqTimeout = 30
-	// SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
-	// 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-	// SDK默认用TC3-HMAC-SHA256进行签名，它更安全但是会轻微降低性能。
-	// 如非必要请不要修改默认设置。
-	cpf.SignMethod = "TC3-HMAC-SHA256"
-	// SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
-	// 但大部分产品或接口并不支持全英文的返回。
-	// 如非必要请不要修改默认设置。
-	cpf.Language = "en-US"
-	//打印日志，默认是false
-	// cpf.Debug = true
+        // 非必要步骤
+        // 实例化一个客户端配置对象，可以指定超时时间等配置
+        cpf := profile.NewClientProfile()
+        // SDK默认使用POST方法。
+        // 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
+        // 如非必要请不要修改默认设置。
+        cpf.HttpProfile.ReqMethod = "POST"
+        // SDK有默认的超时时间，如非必要请不要修改默认设置。
+        // 如有需要请在代码中查阅以获取最新的默认值。
+        cpf.HttpProfile.ReqTimeout = 30
+        // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+        // 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
+        cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+        // SDK默认用TC3-HMAC-SHA256进行签名，它更安全但是会轻微降低性能。
+        // 如非必要请不要修改默认设置。
+        cpf.SignMethod = "TC3-HMAC-SHA256"
+        // SDK 默认用 zh-CN 调用返回中文。此外还可以设置 en-US 返回全英文。
+        // 但大部分产品或接口并不支持全英文的返回。
+        // 如非必要请不要修改默认设置。
+        cpf.Language = "en-US"
+        //打印日志，默认是false
+        // cpf.Debug = true
 
-	// 实例化要请求产品(以cvm为例)的client对象
-	// 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
-	client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
-	// 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
-	// 你可以直接查询SDK源码确定DescribeInstancesRequest有哪些属性可以设置，
-	// 属性可能是基本类型，也可能引用了另一个数据结构。
-	// 推荐使用IDE进行开发，可以方便的跳转查阅各个接口和数据结构的文档说明。
-	request := cvm.NewDescribeInstancesRequest()
 
-	// 基本类型的设置。
-	// 此接口允许设置返回的实例数量。此处指定为只返回一个。
-	// SDK采用的是指针风格指定参数，即使对于基本类型你也需要用指针来对参数赋值。
-	// SDK提供对基本类型的指针引用封装函数
-	request.Limit = common.Int64Ptr(1)
+        // 实例化要请求产品(以cvm为例)的client对象
+        // 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
+        client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+        // 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
+        // 你可以直接查询SDK源码确定DescribeInstancesRequest有哪些属性可以设置，
+        // 属性可能是基本类型，也可能引用了另一个数据结构。
+        // 推荐使用IDE进行开发，可以方便的跳转查阅各个接口和数据结构的文档说明。
+        request := cvm.NewDescribeInstancesRequest()
 
-	// 数组类型的设置。
-	// 此接口允许指定实例 ID 进行过滤，但是由于和接下来要演示的 Filter 参数冲突，先注释掉。
-	// request.InstanceIds = common.StringPtrs([]string{"ins-r8hr2upy"})
+        // 基本类型的设置。
+        // 此接口允许设置返回的实例数量。此处指定为只返回一个。
+        // SDK采用的是指针风格指定参数，即使对于基本类型你也需要用指针来对参数赋值。
+        // SDK提供对基本类型的指针引用封装函数
+        request.Limit = common.Int64Ptr(1)
 
-	// 复杂对象的设置。
-	// 在这个接口中，Filters是数组，数组的元素是复杂对象Filter，Filter的成员Values是string数组。
-	request.Filters = []*cvm.Filter{
-		&cvm.Filter{
-			Name:   common.StringPtr("zone"),
-			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
-		},
-	}
+        // 数组类型的设置。
+        // 此接口允许指定实例 ID 进行过滤，但是由于和接下来要演示的 Filter 参数冲突，先注释掉。
+        // request.InstanceIds = common.StringPtrs([]string{"ins-r8hr2upy"})
 
-	// 通过client对象调用想要访问的接口，需要传入请求对象
-	response, err := client.DescribeInstances(request)
-	// 处理异常
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s", err)
-		return
-	}
-	// 非SDK异常，直接失败。实际代码中可以加入其他的处理。
-	if err != nil {
-		panic(err)
-	}
-	// 打印返回的json字符串
-	fmt.Printf("%s\n", response.ToJsonString())
+        // 复杂对象的设置。
+        // 在这个接口中，Filters是数组，数组的元素是复杂对象Filter，Filter的成员Values是string数组。
+        request.Filters = []*cvm.Filter{
+            &cvm.Filter{
+                Name: common.StringPtr("zone"),
+                Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
+            },
+        }
+
+        // 通过client对象调用想要访问的接口，需要传入请求对象
+        response, err := client.DescribeInstances(request)
+        // 处理异常
+        if _, ok := err.(*errors.TencentCloudSDKError); ok {
+            fmt.Printf("An API error has returned: %s", err)
+            return
+        }
+        // 非SDK异常，直接失败。实际代码中可以加入其他的处理。
+        if err != nil {
+            panic(err)
+        }
+        // 打印返回的json字符串
+        fmt.Printf("%s\n", response.ToJsonString())
 }
 ```
 
-更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request
-初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request
-的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
+更多示例参见 [examples](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/examples) 目录。对于复杂接口的 Request 初始化例子，可以参考 [例一](examples/cvm/v20170312/run_instances.go) 。对于使用json字符串初始化 Request 的例子，可以参考 [例二](examples/cvm/v20170312/describe_instances.go) 。
 
 # 相关配置
 
@@ -226,7 +223,8 @@ cpf.HttpProfile.ReqMethod = "POST"
 
 ## 超时时间
 
-SDK有默认的超时时间，如非必要请不要修改默认设置。 如有需要请在代码中查阅以获取最新的默认值。  
+SDK有默认的超时时间，如非必要请不要修改默认设置。
+如有需要请在代码中查阅以获取最新的默认值。  
 单位：秒
 
 ```go
@@ -235,7 +233,8 @@ cpf.HttpProfile.ReqTimeout = 30
 
 ## 指定域名
 
-SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务， 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
+SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
 
 ```go
 cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
@@ -266,11 +265,11 @@ SDK 的每一个 client 默认使用长连接模式，即请求的头部 Connect
 
 ```go
 ...
-client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
-tp := &http.Transport{
-DisableKeepAlives: true,
-}
-client.WithHttpTransport(tp)
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tp := &http.Transport{
+        DisableKeepAlives: true,
+    }
+    client.WithHttpTransport(tp)
 ...
 ```
 
@@ -291,10 +290,10 @@ SDK 会自动将您请求的地域设置为备选地域。
 
 ```golang
     // 开启
-cpf.DisableRegionBreaker = false
-// 设置备用请求地址，不需要指定服务，SDK 会自动在头部加上服务名(如cvm)
-// 例如，设置为 ap-guangzhou.tencentcloudapi.com，则最终的请求为 cvm.ap-guangzhou.tencentcloudapi.com
-cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
+    cpf.DisableRegionBreaker = false
+    // 设置备用请求地址，不需要指定服务，SDK 会自动在头部加上服务名(如cvm)
+    // 例如，设置为 ap-guangzhou.tencentcloudapi.com，则最终的请求为 cvm.ap-guangzhou.tencentcloudapi.com
+    cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
 ```
 
 此功能仅支持单个客户端的同步请求。
@@ -309,16 +308,18 @@ cpf.BackupEndpoint = "ap-guangzhou.tencentcloudapi.com"
 
 ## 忽略服务器证书校验
 
-虽然使用 SDK 调用公有云服务时，必须校验服务器证书，以识破他人伪装的服务器，确保请求的安全。 但是某些极端情况下，例如测试时，你可能会需要忽略自签名的服务器证书。 以下是其中一种可能的方法：
+虽然使用 SDK 调用公有云服务时，必须校验服务器证书，以识破他人伪装的服务器，确保请求的安全。
+但是某些极端情况下，例如测试时，你可能会需要忽略自签名的服务器证书。
+以下是其中一种可能的方法：
 
 ```golang
 import "crypto/tls"
 ...
-client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
-tr := &http.Transport{
-TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-}
-client.WithHttpTransport(tr)
+    client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+    }
+    client.WithHttpTransport(tr)
 ...
 ```
 
@@ -330,7 +331,8 @@ client.WithHttpTransport(tr)
 
 1. 环境变量
 
-   默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey. 相关代码如下：
+   默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey.
+   相关代码如下：
 
     ```go
     provider := common.DefaultEnvProvider()
@@ -340,9 +342,9 @@ client.WithHttpTransport(tr)
 2. 配置文件
 
    配置文件路径为：
-    1. 环境变量 `TENCENTCLOUD_CREDENTIALS_FILE` 所指定的路径
-    2. Linux or MacOS: `~/.tencentcloud/credentials`
-    3. Windows: `c:\Users\NAME\.tencentcloud\credentials`
+   1. 环境变量 `TENCENTCLOUD_CREDENTIALS_FILE` 所指定的路径
+   2. Linux or MacOS: `~/.tencentcloud/credentials`
+   3. Windows: `c:\Users\NAME\.tencentcloud\credentials`
 
    配置文件格式如下：
 
@@ -414,15 +416,15 @@ client.WithHttpTransport(tr)
 // Handling errors
 response, err := client.DescribeInstances(request)
 if terr, ok := err.(*errors.TencentCloudSDKError); ok {
-code := terr.GetCode()
-if code == cvm.FAILEDOPERATION_ILLEGALTAGKEY{
-fmt.Printf("Handling error: FailedOperation.IllegalTagKey,%s", err)
-}else if code == cvm.UNAUTHORIZEDOPERATION{
-fmt.Printf("Handling error: UnauthorizedOperation,%s", err)
-}else{
-fmt.Printf("An API error has returned: %s", err)
-}
-return
+    code := terr.GetCode()
+    if code == cvm.FAILEDOPERATION_ILLEGALTAGKEY{
+        fmt.Printf("Handling error: FailedOperation.IllegalTagKey,%s", err)
+    }else if code == cvm.UNAUTHORIZEDOPERATION{
+        fmt.Printf("Handling error: UnauthorizedOperation,%s", err)
+    }else{
+        fmt.Printf("An API error has returned: %s", err)
+    }
+    return
 }
 ...
 ```
@@ -465,7 +467,7 @@ return
 //  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error){
-...
+    ...
 }
 ```
 
@@ -485,28 +487,29 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 
 [RunInstancesRequest示例](examples/cvm/v20170312/run_instances.go)
 ```go
-request := cvm.NewRunInstancesRequest()
-request.SetHeader(map[string]string{
-    "X-TC-TraceId": "my-trace-id",
-    "X-TC-Canary":  "my-canary",
-})
+   request := cvm.NewRunInstancesRequest()
+   request.SetHeader(map[string]string{
+       "X-TC-TraceId": "my-trace-id",
+       "X-TC-Canary":  "my-canary",
+   })
 ```
 
 [CommonRequest示例](examples/common/common_client.go)
 
 ```go
-request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
-request.SetHeader(map[string]string{
-    "X-TC-TraceId": "my-trace-id",
-    "X-TC-Canary":  "my-canary",
-})
+   request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
+   request.SetHeader(map[string]string{
+       "X-TC-TraceId": "my-trace-id",
+       "X-TC-Canary":  "my-canary",
+   })
 ```
 
 # 请求重试
 
 ## 网络错误重试
 
-当发生临时网络错误或超时时，SDK可以被配置为自动重试。默认不开启。 通过 `ClientProfile` 配置重试次数和重试间隔时间。
+当发生临时网络错误或超时时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
 
 > 通过反射检查 `Request` 结构体是否存在 `ClientToken` 字段，存在该字段则认为是幂等请求。
 > 幂等请求才会在网络错误时自动重试，非幂等请求会抛出异常，防止请求多次重放造成结果不一致。
@@ -524,8 +527,8 @@ import (
 func main() {
 	credential := common.NewCredential("secretId", "secretKey")
 	prof := profile.NewClientProfile()
-	prof.NetworkFailureMaxRetries = 3                             // 定义最大重试次数
-	prof.NetworkFailureRetryDuration = profile.ExponentialBackoff // 定义重试间隔时间
+	prof.NetworkFailureMaxRetries = 3                               // 定义最大重试次数
+	prof.NetworkFailureRetryDuration = profile.ExponentialBackoff   // 定义重试间隔时间
 	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
 
 	// ...
@@ -536,7 +539,8 @@ func main() {
 
 ## 限频重试
 
-当发生API限频时，SDK可以被配置为自动重试。默认不开启。 通过 `ClientProfile` 配置重试次数和重试间隔时间。
+当发生API限频时，SDK可以被配置为自动重试。默认不开启。
+通过 `ClientProfile` 配置重试次数和重试间隔时间。
 
 ```golang
 package main
@@ -551,8 +555,8 @@ import (
 func main() {
 	credential := common.NewCredential("secretId", "secretKey")
 	prof := profile.NewClientProfile()
-	prof.RateLimitExceededMaxRetries = 3                             // 定义最大重试次数
-	prof.RateLimitExceededRetryDuration = profile.ExponentialBackoff // 定义重试建个时间
+	prof.RateLimitExceededMaxRetries = 3                               // 定义最大重试次数
+	prof.RateLimitExceededRetryDuration = profile.ExponentialBackoff   // 定义重试建个时间
 	client, _ := cvm.NewClient(credential, regions.Guangzhou, prof)
 
 	// ...
@@ -561,7 +565,8 @@ func main() {
 
 ## 幂等标识符
 
-当网络超时重试或限频重试开启时，会自动向请求中注入 `ClientToken` 参数（如果请求存在`ClientToken`字段且为空）。 当用户手动指定 `ClientToken` 时，会跳过注入流程。
+当网络超时重试或限频重试开启时，会自动向请求中注入 `ClientToken` 参数（如果请求存在`ClientToken`字段且为空）。
+当用户手动指定 `ClientToken` 时，会跳过注入流程。
 
 > 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
