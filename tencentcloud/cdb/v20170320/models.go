@@ -4717,10 +4717,10 @@ type DescribeInstanceParamRecordsRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页偏移量。
+	// 分页偏移量，默认值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页大小。
+	// 分页大小，默认值：20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -7934,10 +7934,10 @@ type ModifyParamTemplateRequest struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模板名称。
+	// 模板名称，长度不超过64。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 模板描述。
+	// 模板描述，长度不超过255。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 参数列表。

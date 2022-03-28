@@ -12170,10 +12170,10 @@ type QueryOpenBankPaymentOrderRequest struct {
 	// 渠道商户号。外部接入平台入驻云企付平台下发。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 外部商户订单号。与ChannelOrderId二者选一。
+	// 外部商户订单号。与ChannelOrderId不能同时为空。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
 
-	// 云平台订单号。与OutOrderId二者选一。
+	// 云平台订单号。与OutOrderId不能同时为空。
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境。

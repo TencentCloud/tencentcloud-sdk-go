@@ -1255,6 +1255,9 @@ type BriefDomain struct {
 
 	// 域名所属产品，cdn/ecdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 主域名
+	ParentHost *string `json:"ParentHost,omitempty" name:"ParentHost"`
 }
 
 type Cache struct {
@@ -5257,6 +5260,10 @@ type DetailDomain struct {
 	// 规则引擎
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleEngine *RuleEngine `json:"RuleEngine,omitempty" name:"RuleEngine"`
+
+	// 主域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentHost *string `json:"ParentHost,omitempty" name:"ParentHost"`
 }
 
 type DiagnoseData struct {

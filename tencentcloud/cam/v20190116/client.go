@@ -1502,7 +1502,7 @@ func NewDescribeSafeAuthFlagResponse() (response *DescribeSafeAuthFlagResponse) 
 }
 
 // DescribeSafeAuthFlag
-// 查询安全设置
+// 查询用户安全设置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1513,7 +1513,7 @@ func (c *Client) DescribeSafeAuthFlag(request *DescribeSafeAuthFlagRequest) (res
 }
 
 // DescribeSafeAuthFlag
-// 查询安全设置
+// 查询用户安全设置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

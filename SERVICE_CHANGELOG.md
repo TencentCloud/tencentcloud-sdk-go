@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 25 次发布
+### 第 44 次发布
 
-发布时间：2022-03-24 23:15:57
+发布时间：2022-03-28 08:03:45
 
 本次发布包含了以下内容：
 
@@ -12,91 +12,76 @@
 
 修改接口：
 
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+* [DescribeSafeAuthFlag](https://cloud.tencent.com/document/api/598/48426)
 
-	* 新增入参：FilterInstanceIdList
-
-
-修改数据结构：
-
-* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
-
-	* 新增成员：ServiceBandWidth
+	* 新增出参：PromptTrust
 
 
 
 
-## 主机安全(cwp) 版本：2018-02-28
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 38 次发布
+### 第 94 次发布
 
-发布时间：2022-03-24 20:38:18
+发布时间：2022-03-28 08:04:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeSecurityEventStat](https://cloud.tencent.com/document/api/296/71661)
+* [BriefDomain](https://cloud.tencent.com/document/api/228/30987#BriefDomain)
+
+	* 新增成员：ParentHost
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ParentHost
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 76 次发布
+
+发布时间：2022-03-28 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchTemplate](https://cloud.tencent.com/document/api/213/66327)
+
+	* 新增入参：DisableApiTermination
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 99 次发布
+
+发布时间：2022-03-28 08:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [EventStat](https://cloud.tencent.com/document/api/296/19867#EventStat)
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 37 次发布
-
-发布时间：2022-03-24 23:20:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [EditMediaTEHDConfig](https://cloud.tencent.com/document/api/266/31773#EditMediaTEHDConfig)
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
 
 修改数据结构：
 
-* [ParamDesc](https://cloud.tencent.com/document/api/557/16142#ParamDesc)
+* [EditMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#EditMediaOutputConfig)
 
-	* 新增成员：NeedRestart
+	* 新增成员：VideoStream, TEHDConfig
 
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 34 次发布
-
-发布时间：2022-03-24 20:42:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ParamDesc](https://cloud.tencent.com/document/api/237/16191#ParamDesc)
-
-	* 新增成员：NeedRestart
-
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 31 次发布
-
-发布时间：2022-03-24 20:46:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ResetRocketMQConsumerOffSet](https://cloud.tencent.com/document/api/1179/71662)
 
 
 
@@ -7250,6 +7235,21 @@
 
 ## 访问管理(cam) 版本：2019-01-16
 
+### 第 44 次发布
+
+发布时间：2022-03-28 08:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSafeAuthFlag](https://cloud.tencent.com/document/api/598/48426)
+
+	* 新增出参：PromptTrust
+
+
 ### 第 43 次发布
 
 发布时间：2022-03-01 08:01:53
@@ -11432,6 +11432,25 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 94 次发布
+
+发布时间：2022-03-28 08:04:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BriefDomain](https://cloud.tencent.com/document/api/228/30987#BriefDomain)
+
+	* 新增成员：ParentHost
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：ParentHost
+
 
 ### 第 93 次发布
 
@@ -20928,6 +20947,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 76 次发布
+
+发布时间：2022-03-28 08:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchTemplate](https://cloud.tencent.com/document/api/213/66327)
+
+	* 新增入参：DisableApiTermination
+
+
 ### 第 75 次发布
 
 发布时间：2022-03-16 08:07:01
@@ -22430,11 +22464,11 @@
 
 新增接口：
 
-* [[DescribeSecurityEventStat](https://cloud.tencent.com/document/api/296/71661)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSecurityEventStat](https://cloud.tencent.com/document/api/296/71661)
 
 新增数据结构：
 
-* [[EventStat](https://cloud.tencent.com/document/api/296/19867#EventStat)](https://cloud.tencent.com/document/api/296/19867#[EventStat](https://cloud.tencent.com/document/api/296/19867#EventStat))
+* [EventStat](https://cloud.tencent.com/document/api/296/19867#EventStat)
 
 ### 第 37 次发布
 
@@ -59529,7 +59563,7 @@
 
 新增接口：
 
-* [[ResetRocketMQConsumerOffSet](https://cloud.tencent.com/document/api/1179/71662)](https://cloud.tencent.com/document/api/#/#)
+* [ResetRocketMQConsumerOffSet](https://cloud.tencent.com/document/api/1179/71662)
 
 ### 第 30 次发布
 
@@ -67806,6 +67840,26 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 99 次发布
+
+发布时间：2022-03-28 08:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[EditMediaTEHDConfig](https://cloud.tencent.com/document/api/266/31773#EditMediaTEHDConfig)](https://cloud.tencent.com/document/api/266/31773#[EditMediaTEHDConfig](https://cloud.tencent.com/document/api/266/31773#EditMediaTEHDConfig))
+* [[EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)](https://cloud.tencent.com/document/api/266/31773#[EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream))
+
+修改数据结构：
+
+* [EditMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#EditMediaOutputConfig)
+
+	* 新增成员：VideoStream, TEHDConfig
+
 
 ### 第 98 次发布
 
