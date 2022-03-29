@@ -1,3 +1,176 @@
+# Release v1.0.376
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 7 次发布
+
+发布时间：2022-03-30 06:01:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApmInstances](https://cloud.tencent.com/document/api/1463/65103)
+
+	* 新增入参：DemoInstanceFlag
+
+
+
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 49 次发布
+
+发布时间：2022-03-30 06:01:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
+
+	* 新增成员：Encrypt
+
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 33 次发布
+
+发布时间：2022-03-30 06:01:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDealsByCond](https://cloud.tencent.com/document/api/555/19179)
+
+	* 新增入参：ResourceId
+
+
+修改数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
+
+	* 新增成员：ResourceId
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 87 次发布
+
+发布时间：2022-03-30 06:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)
+
+	* 新增入参：InstanceName
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 7 次发布
+
+发布时间：2022-03-30 06:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
+
+	* 新增成员：IsCustomTld
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 14 次发布
+
+发布时间：2022-03-30 06:12:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateResource](https://cloud.tencent.com/document/api/1371/60146)
+
+	* 新增入参：ResourceFrom, ResourceConfig
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：EnablePrometheusConf
+
+
+新增数据结构：
+
+* [EnablePrometheusConf](https://cloud.tencent.com/document/api/1371/60171#EnablePrometheusConf)
+
+修改数据结构：
+
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/60171#IngressInfo)
+
+	* 新增成员：RewriteType
+
+* [MountedSettingConf](https://cloud.tencent.com/document/api/1371/60171#MountedSettingConf)
+
+	* 新增成员：SecretDataName
+
+* [Pair](https://cloud.tencent.com/document/api/1371/60171#Pair)
+
+	* 新增成员：Secret
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+### 第 7 次发布
+
+发布时间：2022-03-30 06:13:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [LoginNodeOverview](https://cloud.tencent.com/document/api/1527/64906#LoginNodeOverview)
+
+修改数据结构：
+
+* [ClusterOverview](https://cloud.tencent.com/document/api/1527/64906#ClusterOverview)
+
+	* 新增成员：LoginNodeSet, LoginNodeCount
+
+
+
+
 # Release v1.0.375
 
 ## 批量计算(batch) 版本：2017-03-12

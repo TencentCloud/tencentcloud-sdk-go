@@ -829,6 +829,10 @@ type Deal struct {
 	// 子产品编码中文名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductName *string `json:"SubProductName,omitempty" name:"SubProductName"`
+
+	// 订单对应的资源id, 查询参数Limit超过200，将返回null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId []*string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type DescribeAccountBalanceRequest struct {
@@ -2073,6 +2077,9 @@ type DescribeDealsByCondRequest struct {
 
 	// 大订单号
 	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 func (r *DescribeDealsByCondRequest) ToJsonString() string {
@@ -2094,6 +2101,7 @@ func (r *DescribeDealsByCondRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "OrderId")
 	delete(f, "BigDealId")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDealsByCondRequest has unknown keys!", "")
 	}

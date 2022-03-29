@@ -326,6 +326,9 @@ type DescribeApmInstancesRequest struct {
 
 	// 过滤实例ID
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 是否查询官方demo实例
+	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitempty" name:"DemoInstanceFlag"`
 }
 
 func (r *DescribeApmInstancesRequest) ToJsonString() string {
@@ -343,6 +346,7 @@ func (r *DescribeApmInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "InstanceName")
 	delete(f, "InstanceIds")
+	delete(f, "DemoInstanceFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmInstancesRequest has unknown keys!", "")
 	}

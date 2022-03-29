@@ -1346,7 +1346,6 @@ func NewDescribeDBPerformanceResponse() (response *DescribeDBPerformanceResponse
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
 //  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
-//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBPerformance(request *DescribeDBPerformanceRequest) (response *DescribeDBPerformanceResponse, err error) {
     return c.DescribeDBPerformanceWithContext(context.Background(), request)
@@ -1365,7 +1364,6 @@ func (c *Client) DescribeDBPerformance(request *DescribeDBPerformanceRequest) (r
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_SHARDNOTEXIST = "InvalidParameterValue.ShardNotExist"
 //  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
-//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBPerformanceWithContext(ctx context.Context, request *DescribeDBPerformanceRequest) (response *DescribeDBPerformanceResponse, err error) {
     if request == nil {

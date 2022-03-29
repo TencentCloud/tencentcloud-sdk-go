@@ -2737,6 +2737,9 @@ type DescribeAuditPoliciesRequest struct {
 	// 审计规则 ID。可使用该审计规则 ID 查询到其关联的审计策略。
 	// 注意，参数 RuleId，InstanceId，PolicyId，PolicyName 必须至少传一个。
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 func (r *DescribeAuditPoliciesRequest) ToJsonString() string {
@@ -2757,6 +2760,7 @@ func (r *DescribeAuditPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "RuleId")
+	delete(f, "InstanceName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditPoliciesRequest has unknown keys!", "")
 	}

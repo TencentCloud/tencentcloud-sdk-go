@@ -91,7 +91,7 @@ type CreateApplicationRequest struct {
 	// - WAR
 	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
 
-	// 是否启用调用链功能
+	// 是否开启 Java 应用的 APM 自动上报功能，1 表示启用；0 表示关闭
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
@@ -302,6 +302,12 @@ type CreateResourceRequest struct {
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 资源来源，目前支持：existing，已有资源；creating，自动创建
+	ResourceFrom *string `json:"ResourceFrom,omitempty" name:"ResourceFrom"`
+
+	// 设置 resource 的额外配置
+	ResourceConfig *string `json:"ResourceConfig,omitempty" name:"ResourceConfig"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -320,6 +326,8 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceType")
 	delete(f, "ResourceId")
 	delete(f, "SourceChannel")
+	delete(f, "ResourceFrom")
+	delete(f, "ResourceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}
@@ -640,6 +648,9 @@ type DeployApplicationRequest struct {
 	// - ALPINE
 	// - TENCENTOS
 	OsFlavour *string `json:"OsFlavour,omitempty" name:"OsFlavour"`
+
+	// 是否开启prometheus 业务指标监控
+	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -693,6 +704,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "SpeedUp")
 	delete(f, "StartupProbe")
 	delete(f, "OsFlavour")
+	delete(f, "EnablePrometheusConf")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}
@@ -792,7 +804,7 @@ type DeployStrategyConf struct {
 	// beta分批实例数
 	BetaBatchNum *int64 `json:"BetaBatchNum,omitempty" name:"BetaBatchNum"`
 
-	// 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的
+	// 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的，3-首次发布
 	DeployStrategyType *int64 `json:"DeployStrategyType,omitempty" name:"DeployStrategyType"`
 
 	// 每批暂停间隔
@@ -1245,6 +1257,15 @@ type EksService struct {
 	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings"`
 }
 
+type EnablePrometheusConf struct {
+
+	// 应用开放的监听端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 业务指标暴露的url path
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
 type EsInfo struct {
 
 	// 最小实例数
@@ -1407,6 +1428,12 @@ type IngressInfo struct {
 
 	// 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
 	Mixed *bool `json:"Mixed,omitempty" name:"Mixed"`
+
+	// 重定向模式，可选值：
+	// - AUTO（自动重定向http到https）
+	// - NONE（不使用重定向）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteType *string `json:"RewriteType,omitempty" name:"RewriteType"`
 }
 
 type IngressRule struct {
@@ -1730,6 +1757,9 @@ type MountedSettingConf struct {
 
 	// 配置内容
 	Data []*Pair `json:"Data,omitempty" name:"Data"`
+
+	// 加密配置名称
+	SecretDataName *string `json:"SecretDataName,omitempty" name:"SecretDataName"`
 }
 
 type NamespacePage struct {
@@ -1762,6 +1792,10 @@ type Pair struct {
 	// 配置名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 加密配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Secret *string `json:"Secret,omitempty" name:"Secret"`
 }
 
 type PortMapping struct {

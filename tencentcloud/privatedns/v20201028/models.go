@@ -761,7 +761,7 @@ type DescribePrivateZoneRecordListRequest struct {
 	// 分页偏移量，从0开始
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页限制数目， 最大100，默认20
+	// 分页限制数目， 最大200，默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -1287,6 +1287,10 @@ type PrivateZone struct {
 	// 绑定的关联账号的vpc列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+
+	// 是否自定义TLD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCustomTld *bool `json:"IsCustomTld,omitempty" name:"IsCustomTld"`
 }
 
 type PrivateZoneRecord struct {

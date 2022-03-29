@@ -1093,7 +1093,7 @@ func (r *CreateUpdateNodeUnitResponse) FromJsonString(s string) error {
 type CreateUserTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// 无
+	// token过期时间，有效值是1~300秒
 	Second *int64 `json:"Second,omitempty" name:"Second"`
 }
 

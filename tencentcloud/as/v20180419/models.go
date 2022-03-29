@@ -1176,6 +1176,10 @@ type DataDisk struct {
 	// 数据盘是否随子机销毁。取值范围：<br><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘<br><li>FALSE：子机销毁时，保留数据盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 数据盘是否加密。取值范围：<br><li>TRUE：加密<br><li>FALSE：不加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *bool `json:"Encrypt,omitempty" name:"Encrypt"`
 }
 
 type DeleteAutoScalingGroupRequest struct {

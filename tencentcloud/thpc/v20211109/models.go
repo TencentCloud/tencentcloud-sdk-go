@@ -144,6 +144,12 @@ type ClusterOverview struct {
 
 	// 管控节点概览。
 	ManagerNodeSet []*ManagerNodeOverview `json:"ManagerNodeSet,omitempty" name:"ManagerNodeSet"`
+
+	// 登录节点概览。
+	LoginNodeSet []*LoginNodeOverview `json:"LoginNodeSet,omitempty" name:"LoginNodeSet"`
+
+	// 登录节点数量。
+	LoginNodeCount *int64 `json:"LoginNodeCount,omitempty" name:"LoginNodeCount"`
 }
 
 type ComputeNode struct {
@@ -443,6 +449,12 @@ type InternetAccessible struct {
 
 	// 公网出带宽上限，单位：Mbps。默认值：0Mbps。不同机型带宽上限范围不一致，具体限制详见购买网络带宽。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+}
+
+type LoginNodeOverview struct {
+
+	// 登录节点ID。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type LoginSettings struct {
