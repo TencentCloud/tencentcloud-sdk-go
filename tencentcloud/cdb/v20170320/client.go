@@ -1082,6 +1082,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
@@ -1119,6 +1120,7 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
@@ -5815,6 +5817,7 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
 //  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
 //  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
@@ -5859,6 +5862,7 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDCHARACTERERROR = "InvalidParameterValue.AccountPasswordCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDLENGTHERROR = "InvalidParameterValue.AccountPasswordLengthError"
 //  INVALIDPARAMETERVALUE_ACCOUNTPASSWORDRULEERROR = "InvalidParameterValue.AccountPasswordRuleError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_USERNAMERULEERROR = "InvalidParameterValue.UserNameRuleError"
 //  INVALIDPARAMETERVALUE_USERNOTEXISTERROR = "InvalidParameterValue.UserNotExistError"
 //  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
@@ -6495,6 +6499,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 // 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
@@ -6508,6 +6513,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
 // 本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
@@ -8115,6 +8121,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
@@ -8132,6 +8139,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TRADEERROR = "InternalError.TradeError"

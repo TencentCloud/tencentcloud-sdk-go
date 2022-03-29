@@ -358,6 +358,7 @@ func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
 func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response *AllocateAddressesResponse, err error) {
     return c.AllocateAddressesWithContext(context.Background(), request)
 }
@@ -400,6 +401,7 @@ func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response 
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
 func (c *Client) AllocateAddressesWithContext(ctx context.Context, request *AllocateAddressesRequest) (response *AllocateAddressesResponse, err error) {
     if request == nil {
         request = NewAllocateAddressesRequest()
@@ -1069,6 +1071,7 @@ func NewAssociateNatGatewayAddressResponse() (response *AssociateNatGatewayAddre
 // 本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = "InvalidParameterValue.EIPBrandWidthOutInvalid"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
 //  LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.DailyAllocateAddressQuotaLimitExceeded"
@@ -1089,6 +1092,7 @@ func (c *Client) AssociateNatGatewayAddress(request *AssociateNatGatewayAddressR
 // 本接口(AssociateNatGatewayAddress)用于NAT网关绑定弹性IP（EIP）。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = "InvalidParameterValue.EIPBrandWidthOutInvalid"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
 //  LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.DailyAllocateAddressQuotaLimitExceeded"
@@ -3026,6 +3030,7 @@ func NewCreateNatGatewaySourceIpTranslationNatRuleResponse() (response *CreateNa
 //  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGatewaySourceIpTranslationNatRuleRequest) (response *CreateNatGatewaySourceIpTranslationNatRuleResponse, err error) {
     return c.CreateNatGatewaySourceIpTranslationNatRuleWithContext(context.Background(), request)
@@ -3043,6 +3048,7 @@ func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGa
 //  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 func (c *Client) CreateNatGatewaySourceIpTranslationNatRuleWithContext(ctx context.Context, request *CreateNatGatewaySourceIpTranslationNatRuleRequest) (response *CreateNatGatewaySourceIpTranslationNatRuleResponse, err error) {
     if request == nil {
@@ -8597,6 +8603,7 @@ func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -8609,6 +8616,7 @@ func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -10572,6 +10580,7 @@ func NewDescribeVpnGatewaySslServersResponse() (response *DescribeVpnGatewaySslS
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVpnGatewaySslServers(request *DescribeVpnGatewaySslServersRequest) (response *DescribeVpnGatewaySslServersResponse, err error) {
     return c.DescribeVpnGatewaySslServersWithContext(context.Background(), request)
@@ -10583,6 +10592,7 @@ func (c *Client) DescribeVpnGatewaySslServers(request *DescribeVpnGatewaySslServ
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVpnGatewaySslServersWithContext(ctx context.Context, request *DescribeVpnGatewaySslServersRequest) (response *DescribeVpnGatewaySslServersResponse, err error) {
     if request == nil {

@@ -2479,6 +2479,77 @@ func (r *DescribeLogContextResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLogHistogramRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	From *int64 `json:"From,omitempty" name:"From"`
+
+	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	To *int64 `json:"To,omitempty" name:"To"`
+
+	// 查询语句
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 时间间隔: 单位ms
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeLogHistogramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogHistogramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "Interval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogHistogramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLogHistogramResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 统计周期： 单位ms
+		Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+		// 命中关键字的日志总条数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 周期内统计结果详情
+		HistogramInfos []*HistogramInfo `json:"HistogramInfos,omitempty" name:"HistogramInfos"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLogHistogramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogHistogramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLogsetsRequest struct {
 	*tchttp.BaseRequest
 
@@ -3249,6 +3320,15 @@ func (r *GetAlarmLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetAlarmLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type HistogramInfo struct {
+
+	// 统计周期内的日志条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 按 period 取整后的 unix timestamp： 单位毫秒
+	BTime *int64 `json:"BTime,omitempty" name:"BTime"`
 }
 
 type HostFileInfo struct {

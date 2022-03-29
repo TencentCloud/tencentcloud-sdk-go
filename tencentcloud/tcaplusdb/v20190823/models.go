@@ -264,6 +264,18 @@ type ClusterInfo struct {
 	// 数据订阅的kafka信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaInfo *KafkaInfo `json:"KafkaInfo,omitempty" name:"KafkaInfo"`
+
+	// 集群Txh备份文件多少天后过期删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitempty" name:"TxhBackupExpireDay"`
+
+	// 集群Ulog备份文件多少天后过期删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UlogBackupExpireDay *uint64 `json:"UlogBackupExpireDay,omitempty" name:"UlogBackupExpireDay"`
+
+	// 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsReadOnlyUlogBackupExpireDay *uint64 `json:"IsReadOnlyUlogBackupExpireDay,omitempty" name:"IsReadOnlyUlogBackupExpireDay"`
 }
 
 type CompareIdlFilesRequest struct {
@@ -1080,13 +1092,13 @@ type DescribeApplicationsRequest struct {
 	// 集群ID，用于获取指定集群的单据
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 分页
+	// 分页，限制当前返回多少条记录，大于等于10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页
+	// 分页，从多少条数据开始返回
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 申请单状态，用于过滤
+	// 申请单状态，用于过滤，0-待审核 1-已经审核并提交任务 2-已驳回
 	CensorStatus *int64 `json:"CensorStatus,omitempty" name:"CensorStatus"`
 
 	// 表格组id，用于过滤
@@ -1098,7 +1110,7 @@ type DescribeApplicationsRequest struct {
 	// 申请人uin，用于过滤
 	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
 
-	// 申请类型，用于过滤
+	// 申请类型，用于过滤，0加表 1删除表 2清理表 3修改表 4表重建 5存储层扩缩容 6接入层扩缩容 7复制表数据 8key回档
 	ApplyType *int64 `json:"ApplyType,omitempty" name:"ApplyType"`
 }
 
@@ -3707,6 +3719,10 @@ type TableInfoNew struct {
 	// 表格分布式索引/缓写、kafka数据订阅信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbClusterInfoStruct *string `json:"DbClusterInfoStruct,omitempty" name:"DbClusterInfoStruct"`
+
+	// 表格Txh备份文件多少天后过期删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitempty" name:"TxhBackupExpireDay"`
 }
 
 type TableResultNew struct {

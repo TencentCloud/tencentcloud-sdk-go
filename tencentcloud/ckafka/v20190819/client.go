@@ -690,6 +690,7 @@ func NewCreateTokenResponse() (response *CreateTokenResponse) {
 // 创建最高权限的token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -702,6 +703,7 @@ func (c *Client) CreateToken(request *CreateTokenRequest) (response *CreateToken
 // 创建最高权限的token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

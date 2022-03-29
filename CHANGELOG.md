@@ -1,3 +1,268 @@
+# Release v1.0.375
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 40 次发布
+
+发布时间：2022-03-29 08:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
+
+	* <font color="#dd0000">**修改成员**：</font>Notifications
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 16 次发布
+
+发布时间：2022-03-29 08:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogHistogram](https://cloud.tencent.com/document/api/614/71726)
+
+新增数据结构：
+
+* [HistogramInfo](https://cloud.tencent.com/document/api/614/56471#HistogramInfo)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 61 次发布
+
+发布时间：2022-03-29 08:07:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetBillDownloadUrl](https://cloud.tencent.com/document/api/1122/71727)
+
+新增数据结构：
+
+* [BillDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#BillDownloadUrlResult)
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 16 次发布
+
+发布时间：2022-03-29 08:08:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyClusterName](https://cloud.tencent.com/document/api/1003/71729)
+* [ModifyInstanceName](https://cloud.tencent.com/document/api/1003/71728)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 14 次发布
+
+发布时间：2022-03-29 08:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+
+	* 新增入参：AutoJumpBack
+
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：SignComponents
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 76 次发布
+
+发布时间：2022-03-29 08:12:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PushQualityData](https://cloud.tencent.com/document/api/267/20474#PushQualityData)
+
+	* 新增成员：Bandwidth, Flux
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 12 次发布
+
+发布时间：2022-03-29 08:14:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmailTemplate](https://cloud.tencent.com/document/api/1288/51042)
+
+	* 新增出参：TemplateID
+
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 15 次发布
+
+发布时间：2022-03-29 08:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInfo](https://cloud.tencent.com/document/api/596/39686#ClusterInfo)
+
+	* 新增成员：TxhBackupExpireDay, UlogBackupExpireDay, IsReadOnlyUlogBackupExpireDay
+
+* [TableInfoNew](https://cloud.tencent.com/document/api/596/39686#TableInfoNew)
+
+	* 新增成员：TxhBackupExpireDay
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 82 次发布
+
+发布时间：2022-03-29 08:15:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWxCloudBaseRunEnv](https://cloud.tencent.com/document/api/876/55054)
+
+	* 新增入参：IsOpenCloudInvoke
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 13 次发布
+
+发布时间：2022-03-29 08:16:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComplianceAssetSummary](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetSummary)
+
+	* 新增成员：OpenPolicyItemCount, IgnoredPolicyItemCount
+
+* [CompliancePeriodTaskRule](https://cloud.tencent.com/document/api/1285/65614#CompliancePeriodTaskRule)
+
+	* 新增成员：Enable
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 17 次发布
+
+发布时间：2022-03-29 08:17:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
+
+	* 新增成员：SyncMode
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：ConsoleDefaultPwd
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：MainPassword
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 110 次发布
+
+发布时间：2022-03-29 08:18:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36722)
+
+	* 新增入参：PublicIpFromSameZone
+
+* [CreateNatGateway](https://cloud.tencent.com/document/api/215/36721)
+
+	* 新增入参：PublicIpFromSameZone
+
+* [InquiryPriceCreateVpnGateway](https://cloud.tencent.com/document/api/215/17512)
+
+	* 新增入参：MaxConnection, Type
+
+
+
+
 # Release v1.0.374
 
 ## 访问管理(cam) 版本：2019-01-16

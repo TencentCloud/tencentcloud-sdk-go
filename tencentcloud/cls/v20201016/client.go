@@ -2252,6 +2252,81 @@ func (c *Client) DescribeLogContextWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeLogHistogramRequest() (request *DescribeLogHistogramRequest) {
+    request = &DescribeLogHistogramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeLogHistogram")
+    
+    
+    return
+}
+
+func NewDescribeLogHistogramResponse() (response *DescribeLogHistogramResponse) {
+    response = &DescribeLogHistogramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogHistogram
+// 本接口用于构建直方图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeLogHistogram(request *DescribeLogHistogramRequest) (response *DescribeLogHistogramResponse, err error) {
+    return c.DescribeLogHistogramWithContext(context.Background(), request)
+}
+
+// DescribeLogHistogram
+// 本接口用于构建直方图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDCONTEXT = "FailedOperation.InvalidContext"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  FAILEDOPERATION_SEARCHTIMEOUT = "FailedOperation.SearchTimeout"
+//  FAILEDOPERATION_SYNTAXERROR = "FailedOperation.SyntaxError"
+//  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeLogHistogramWithContext(ctx context.Context, request *DescribeLogHistogramRequest) (response *DescribeLogHistogramResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogHistogramRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogHistogram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogHistogramResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogsetsRequest() (request *DescribeLogsetsRequest) {
     request = &DescribeLogsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},

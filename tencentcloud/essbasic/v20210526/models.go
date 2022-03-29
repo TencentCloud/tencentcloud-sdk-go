@@ -299,6 +299,9 @@ type CreateSignUrlsRequest struct {
 
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// "APP" 类型的签署链接，可以设置此值；表示签署完成后自动回跳至源APP；
+	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -318,6 +321,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "Endpoint")
 	delete(f, "JumpUrl")
+	delete(f, "AutoJumpBack")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
@@ -682,7 +686,9 @@ type FlowApproverInfo struct {
 	// 签署完回调url
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 签署人类型，PERSON和ORGANIZATION
+	// 签署人类型，PERSON-个人；ORGANIZATION-企业；
+	// ENTERPRISESERVER-企业静默签;
+	// 注：ENTERPRISESERVER 类型仅用于使用文件创建流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
 	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 用户侧第三方id
@@ -706,6 +712,9 @@ type FlowApproverInfo struct {
 	// 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
 	// 默认为false，即签署人位于同一个渠道应用号下；
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitempty" name:"NotChannelOrganization"`
+
+	// 使用PDF文件直接发起合同时，签署人指定的签署控件
+	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 }
 
 type FlowDetailInfo struct {

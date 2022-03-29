@@ -28,6 +28,10 @@ type BoundK8SInfo struct {
 	// 绑定的kubernetes的集群类型，分tke和eks两种
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoundClusterType *string `json:"BoundClusterType,omitempty" name:"BoundClusterType"`
+
+	// 服务同步模式，all为全量同步，demand为按需同步
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
 }
 
 type DescribeSREInstanceAccessAddressRequest struct {
@@ -324,6 +328,10 @@ type SREInstance struct {
 	// 引擎实例是否展示参数配置页面
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigInfoVisible *bool `json:"ConfigInfoVisible,omitempty" name:"ConfigInfoVisible"`
+
+	// 引擎实例控制台默认密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleDefaultPwd *string `json:"ConsoleDefaultPwd,omitempty" name:"ConsoleDefaultPwd"`
 }
 
 type ServiceGovernanceInfo struct {
@@ -342,6 +350,9 @@ type ServiceGovernanceInfo struct {
 
 	// 该实例支持的功能，鉴权就是 Auth
 	Features []*string `json:"Features,omitempty" name:"Features"`
+
+	// 主账户名默认为 polaris，该值为主账户的默认密码
+	MainPassword *string `json:"MainPassword,omitempty" name:"MainPassword"`
 }
 
 type VpcInfo struct {

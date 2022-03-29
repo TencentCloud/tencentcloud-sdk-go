@@ -272,6 +272,9 @@ type CreateEmailTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 模板id
+		TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1662,7 +1665,7 @@ type UpdateEmailTemplateRequest struct {
 	// 模板ID
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 
-	// 模版名字
+	// 模板名字
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 

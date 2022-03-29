@@ -695,6 +695,7 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     return c.CreateCmqTopicWithContext(context.Background(), request)
 }
@@ -707,6 +708,7 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
         request = NewCreateCmqTopicRequest()
@@ -4671,6 +4673,7 @@ func NewModifyRocketMQClusterResponse() (response *ModifyRocketMQClusterResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) ModifyRocketMQCluster(request *ModifyRocketMQClusterRequest) (response *ModifyRocketMQClusterResponse, err error) {
     return c.ModifyRocketMQClusterWithContext(context.Background(), request)
 }
@@ -4686,6 +4689,7 @@ func (c *Client) ModifyRocketMQCluster(request *ModifyRocketMQClusterRequest) (r
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) ModifyRocketMQClusterWithContext(ctx context.Context, request *ModifyRocketMQClusterRequest) (response *ModifyRocketMQClusterResponse, err error) {
     if request == nil {
         request = NewModifyRocketMQClusterRequest()

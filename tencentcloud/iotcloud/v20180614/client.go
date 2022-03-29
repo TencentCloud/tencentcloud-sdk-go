@@ -3065,6 +3065,7 @@ func NewPublishToDeviceResponse() (response *PublishToDeviceResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *PublishToDeviceResponse, err error) {
     return c.PublishToDeviceWithContext(context.Background(), request)
 }
@@ -3074,6 +3075,7 @@ func (c *Client) PublishToDevice(request *PublishToDeviceRequest) (response *Pub
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) PublishToDeviceWithContext(ctx context.Context, request *PublishToDeviceRequest) (response *PublishToDeviceResponse, err error) {
     if request == nil {
         request = NewPublishToDeviceRequest()

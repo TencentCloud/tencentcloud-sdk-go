@@ -1307,6 +1307,14 @@ type ComplianceAssetSummary struct {
 
 	// 定时检测规则。
 	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitempty" name:"PeriodRule"`
+
+	// 已开启的检查项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenPolicyItemCount *uint64 `json:"OpenPolicyItemCount,omitempty" name:"OpenPolicyItemCount"`
+
+	// 已忽略的检查项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoredPolicyItemCount *uint64 `json:"IgnoredPolicyItemCount,omitempty" name:"IgnoredPolicyItemCount"`
 }
 
 type ComplianceBenchmarkStandard struct {
@@ -1429,6 +1437,10 @@ type CompliancePeriodTaskRule struct {
 
 	// 在这天的什么时间执行，格式为：HH:mm:SS。
 	ExecutionTime *string `json:"ExecutionTime,omitempty" name:"ExecutionTime"`
+
+	// 是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 }
 
 type CompliancePolicyItemSummary struct {

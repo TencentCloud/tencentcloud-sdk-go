@@ -4217,6 +4217,7 @@ func NewDescribePrepaidProductsResponse() (response *DescribePrepaidProductsResp
 //     2. 商品中每种资源的额度和剩余额度。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribePrepaidProducts(request *DescribePrepaidProductsRequest) (response *DescribePrepaidProductsResponse, err error) {
     return c.DescribePrepaidProductsWithContext(context.Background(), request)
@@ -4230,6 +4231,7 @@ func (c *Client) DescribePrepaidProducts(request *DescribePrepaidProductsRequest
 //     2. 商品中每种资源的额度和剩余额度。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribePrepaidProductsWithContext(ctx context.Context, request *DescribePrepaidProductsRequest) (response *DescribePrepaidProductsResponse, err error) {
     if request == nil {

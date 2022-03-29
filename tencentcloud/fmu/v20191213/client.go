@@ -552,7 +552,9 @@ func NewStyleImageResponse() (response *StyleImageResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageResponse, err error) {
     return c.StyleImageWithContext(context.Background(), request)
 }
@@ -574,7 +576,9 @@ func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageRes
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImageWithContext(ctx context.Context, request *StyleImageRequest) (response *StyleImageResponse, err error) {
     if request == nil {
         request = NewStyleImageRequest()
@@ -625,7 +629,9 @@ func NewStyleImageProResponse() (response *StyleImageProResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
     return c.StyleImageProWithContext(context.Background(), request)
 }
@@ -647,7 +653,9 @@ func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleIm
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_IMAGEEMPTY = "InvalidParameterValue.ImageEmpty"
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImageProWithContext(ctx context.Context, request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
     if request == nil {
         request = NewStyleImageProRequest()

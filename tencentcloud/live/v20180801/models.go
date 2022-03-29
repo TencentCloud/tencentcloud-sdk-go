@@ -6575,10 +6575,10 @@ type DescribeStreamPushInfoListRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+	// 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名。
@@ -8829,6 +8829,12 @@ type PushQualityData struct {
 
 	// 推流参数
 	StreamParam *string `json:"StreamParam,omitempty" name:"StreamParam"`
+
+	// 带宽，单位Mbps。
+	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 流量，单位MB。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
 }
 
 type RecentPullInfo struct {

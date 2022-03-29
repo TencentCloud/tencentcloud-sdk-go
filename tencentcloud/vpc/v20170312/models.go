@@ -999,6 +999,9 @@ type AssociateNatGatewayAddressRequest struct {
 
 	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
 	PublicIpAddressesBandwidthOut *uint64 `json:"PublicIpAddressesBandwidthOut,omitempty" name:"PublicIpAddressesBandwidthOut"`
+
+	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
+	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitempty" name:"PublicIpFromSameZone"`
 }
 
 func (r *AssociateNatGatewayAddressRequest) ToJsonString() string {
@@ -1019,6 +1022,7 @@ func (r *AssociateNatGatewayAddressRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "StockPublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpAddressesBandwidthOut")
+	delete(f, "PublicIpFromSameZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateNatGatewayAddressRequest has unknown keys!", "")
 	}
@@ -2998,6 +3002,9 @@ type CreateNatGatewayRequest struct {
 
 	// 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
 	PublicIpAddressesBandwidthOut *uint64 `json:"PublicIpAddressesBandwidthOut,omitempty" name:"PublicIpAddressesBandwidthOut"`
+
+	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
+	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitempty" name:"PublicIpFromSameZone"`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -3023,6 +3030,7 @@ func (r *CreateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "StockPublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpAddressesBandwidthOut")
+	delete(f, "PublicIpFromSameZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatGatewayRequest has unknown keys!", "")
 	}
@@ -12656,6 +12664,12 @@ type InquiryPriceCreateVpnGatewayRequest struct {
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100；单位：个。
+	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
+
+	// 查询的VPN类型，支持IPSEC和SSL两种类型，为SSL类型时，MaxConnection参数必传。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *InquiryPriceCreateVpnGatewayRequest) ToJsonString() string {
@@ -12673,6 +12687,8 @@ func (r *InquiryPriceCreateVpnGatewayRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidthOut")
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
+	delete(f, "MaxConnection")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateVpnGatewayRequest has unknown keys!", "")
 	}

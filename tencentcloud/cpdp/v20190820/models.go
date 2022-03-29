@@ -1643,6 +1643,13 @@ type BankCardItem struct {
 	IdCode *string `json:"IdCode,omitempty" name:"IdCode"`
 }
 
+type BillDownloadUrlResult struct {
+
+	// 对账单下载地址。GET方式访问，返回zip包，解压后为csv格式文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+}
+
 type BindAccountRequest struct {
 	*tchttp.BaseRequest
 
@@ -7079,6 +7086,71 @@ type FundsTransactionItem struct {
 	// _平安渠道，如果是见证+收单的交易，返回交易订单号_
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type GetBillDownloadUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 清算日期（YYYYMMDD，今天传昨天的日期，每日下午1点后出前一日的账单）
+	Day *string `json:"Day,omitempty" name:"Day"`
+}
+
+func (r *GetBillDownloadUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBillDownloadUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Day")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBillDownloadUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBillDownloadUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 账单文件下载地址响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *BillDownloadUrlResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetBillDownloadUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBillDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MemberTransactionItem struct {

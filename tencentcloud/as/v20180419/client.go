@@ -2768,6 +2768,8 @@ func NewModifyLaunchConfigurationAttributesResponse() (response *ModifyLaunchCon
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 //  INVALIDPARAMETERVALUE_LAUNCHCONFIGURATIONNAMEDUPLICATED = "InvalidParameterValue.LaunchConfigurationNameDuplicated"
 //  INVALIDPARAMETERVALUE_NOTSTRINGTYPEFLOAT = "InvalidParameterValue.NotStringTypeFloat"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
 //  INVALIDPARAMETERVALUE_USERDATAFORMATERROR = "InvalidParameterValue.UserDataFormatError"
 //  INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = "InvalidParameterValue.UserDataSizeExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2803,6 +2805,8 @@ func (c *Client) ModifyLaunchConfigurationAttributes(request *ModifyLaunchConfig
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 //  INVALIDPARAMETERVALUE_LAUNCHCONFIGURATIONNAMEDUPLICATED = "InvalidParameterValue.LaunchConfigurationNameDuplicated"
 //  INVALIDPARAMETERVALUE_NOTSTRINGTYPEFLOAT = "InvalidParameterValue.NotStringTypeFloat"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
 //  INVALIDPARAMETERVALUE_USERDATAFORMATERROR = "InvalidParameterValue.UserDataFormatError"
 //  INVALIDPARAMETERVALUE_USERDATASIZEEXCEEDED = "InvalidParameterValue.UserDataSizeExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3593,6 +3597,7 @@ func NewStopAutoScalingInstancesResponse() (response *StopAutoScalingInstancesRe
 // 可能返回的错误码:
 //  CALLCVMERROR = "CallCvmError"
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
@@ -3622,6 +3627,7 @@ func (c *Client) StopAutoScalingInstances(request *StopAutoScalingInstancesReque
 // 可能返回的错误码:
 //  CALLCVMERROR = "CallCvmError"
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"

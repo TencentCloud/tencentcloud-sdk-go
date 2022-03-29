@@ -1170,6 +1170,7 @@ func NewDeleteDBResponse() (response *DeleteDBResponse) {
 // 本接口(DeleteDB)用于删除数据库。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
@@ -1186,6 +1187,7 @@ func (c *Client) DeleteDB(request *DeleteDBRequest) (response *DeleteDBResponse,
 // 本接口(DeleteDB)用于删除数据库。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"

@@ -624,6 +624,7 @@ func NewStopMediaProcessTaskResponse() (response *StopMediaProcessTaskResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ACTIONNOTSUPPORT = "InvalidParameterValue.ActionNotSupport"
 //  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (response *StopMediaProcessTaskResponse, err error) {
     return c.StopMediaProcessTaskWithContext(context.Background(), request)
 }
@@ -636,6 +637,7 @@ func (c *Client) StopMediaProcessTask(request *StopMediaProcessTaskRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ACTIONNOTSUPPORT = "InvalidParameterValue.ActionNotSupport"
 //  INVALIDPARAMETERVALUE_TASKIDNOTEXIST = "InvalidParameterValue.TaskIdNotExist"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) StopMediaProcessTaskWithContext(ctx context.Context, request *StopMediaProcessTaskRequest) (response *StopMediaProcessTaskResponse, err error) {
     if request == nil {
         request = NewStopMediaProcessTaskRequest()

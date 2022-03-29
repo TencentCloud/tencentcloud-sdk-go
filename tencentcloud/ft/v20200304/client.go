@@ -75,6 +75,7 @@ func NewCancelFaceMorphJobResponse() (response *CancelFaceMorphJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) CancelFaceMorphJob(request *CancelFaceMorphJobRequest) (response *CancelFaceMorphJobResponse, err error) {
     return c.CancelFaceMorphJobWithContext(context.Background(), request)
 }
@@ -92,6 +93,7 @@ func (c *Client) CancelFaceMorphJob(request *CancelFaceMorphJobRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) CancelFaceMorphJobWithContext(ctx context.Context, request *CancelFaceMorphJobRequest) (response *CancelFaceMorphJobResponse, err error) {
     if request == nil {
         request = NewCancelFaceMorphJobRequest()

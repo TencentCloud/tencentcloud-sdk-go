@@ -692,6 +692,7 @@ func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
     return c.DescribeResourceConfigsWithContext(context.Background(), request)
 }
@@ -711,6 +712,7 @@ func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResourceConfigsWithContext(ctx context.Context, request *DescribeResourceConfigsRequest) (response *DescribeResourceConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceConfigsRequest()
@@ -754,6 +756,7 @@ func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelated
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
     return c.DescribeResourceRelatedJobsWithContext(context.Background(), request)
 }
@@ -768,6 +771,7 @@ func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJob
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResourceRelatedJobsWithContext(ctx context.Context, request *DescribeResourceRelatedJobsRequest) (response *DescribeResourceRelatedJobsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceRelatedJobsRequest()

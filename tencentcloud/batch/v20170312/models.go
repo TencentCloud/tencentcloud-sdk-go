@@ -2444,7 +2444,7 @@ type NamedComputeEnv struct {
 	AgentRunningMode *AgentRunningMode `json:"AgentRunningMode,omitempty" name:"AgentRunningMode"`
 
 	// 通知信息
-	Notifications *Notification `json:"Notifications,omitempty" name:"Notifications"`
+	Notifications []*Notification `json:"Notifications,omitempty" name:"Notifications"`
 
 	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
 	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive,omitempty" name:"ActionIfComputeNodeInactive"`
