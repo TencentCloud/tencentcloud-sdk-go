@@ -74,6 +74,9 @@ const (
 	// ConnectionName取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_CONNECTIONNAME = "InvalidParameterValue.ConnectionName"
 
+	// DTSParams取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_DTSPARAMS = "InvalidParameterValue.DTSParams"
+
 	// Description取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 

@@ -469,7 +469,7 @@ func NewDescribeAgentDealsByCacheResponse() (response *DescribeAgentDealsByCache
 }
 
 // DescribeAgentDealsByCache
-// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+// 供代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -481,7 +481,7 @@ func (c *Client) DescribeAgentDealsByCache(request *DescribeAgentDealsByCacheReq
 }
 
 // DescribeAgentDealsByCache
-// 供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+// 供代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -522,7 +522,7 @@ func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResp
 }
 
 // DescribeAgentDealsCache
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -534,7 +534,7 @@ func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest
 }
 
 // DescribeAgentDealsCache
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】供超大型代理商（代客数量>=3000 ）拉取缓存的全量客户订单。
+// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -734,7 +734,7 @@ func NewDescribeAgentSelfPayDealsV2Response() (response *DescribeAgentSelfPayDea
 }
 
 // DescribeAgentSelfPayDealsV2
-// 可以查询代理商下指定客户的自付订单
+// 查询代理商名下指定代客的自付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -746,7 +746,7 @@ func (c *Client) DescribeAgentSelfPayDealsV2(request *DescribeAgentSelfPayDealsV
 }
 
 // DescribeAgentSelfPayDealsV2
-// 可以查询代理商下指定客户的自付订单
+// 查询代理商名下指定代客的自付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

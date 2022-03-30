@@ -909,6 +909,8 @@ func NewGetSendEmailStatusResponse() (response *GetSendEmailStatusResponse) {
 // GetSendEmailStatus
 // 获取邮件发送状态。仅支持查询30天之内的数据
 //
+// 默认接口请求频率限制：1次/秒
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_EMAILADDRINBLACKLIST = "FailedOperation.EmailAddrInBlacklist"
 //  FAILEDOPERATION_EMAILCONTENTTOOLARGE = "FailedOperation.EmailContentToolarge"
@@ -948,6 +950,8 @@ func (c *Client) GetSendEmailStatus(request *GetSendEmailStatusRequest) (respons
 
 // GetSendEmailStatus
 // 获取邮件发送状态。仅支持查询30天之内的数据
+//
+// 默认接口请求频率限制：1次/秒
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EMAILADDRINBLACKLIST = "FailedOperation.EmailAddrInBlacklist"

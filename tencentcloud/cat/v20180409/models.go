@@ -1313,6 +1313,75 @@ func (r *DescribeDetailedSingleProbeDataResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProbeMetricDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 分析任务类型
+	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitempty" name:"AnalyzeTaskType"`
+
+	// 指标类型，counter 或者 gauge
+	MetricType *string `json:"MetricType,omitempty" name:"MetricType"`
+
+	// 指标详细字段
+	Field *string `json:"Field,omitempty" name:"Field"`
+
+	// 过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 聚合时间, 1m、1d、100d 等等
+	GroupBy *string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 过滤条件数组
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeProbeMetricDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeMetricDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnalyzeTaskType")
+	delete(f, "MetricType")
+	delete(f, "Field")
+	delete(f, "Filter")
+	delete(f, "GroupBy")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProbeMetricDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProbeMetricDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标 JSON 序列化后的字符串
+		MetricSet *string `json:"MetricSet,omitempty" name:"MetricSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProbeMetricDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeMetricDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProbeNodesRequest struct {
 	*tchttp.BaseRequest
 

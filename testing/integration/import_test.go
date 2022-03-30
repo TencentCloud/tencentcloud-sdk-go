@@ -58,6 +58,7 @@ import (
 	cdbv20170320 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdb/v20170320"
 	cdnv20180606 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn/v20180606"
 	cdsv20180420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cds/v20180420"
+	cfgv20210820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfg/v20210820"
 	cfsv20190719 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfs/v20190719"
 	cfwv20190904 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfw/v20190904"
 	chdfsv20190718 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/chdfs/v20190718"
@@ -727,6 +728,19 @@ func TestCdsv20180420Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init cds_v20180420 client: %v", err))
+    }
+}
+
+func TestCfgv20210820Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := cfgv20210820.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init cfg_v20210820 client: %v", err))
     }
 }
 

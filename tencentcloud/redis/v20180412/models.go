@@ -5136,7 +5136,7 @@ type RedisBackupSet struct {
 	// 备份ID
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 
-	// 备份类型。 manualBackupInstance：用户发起的手动备份； systemBackupInstance：凌晨系统发起的备份
+	// 备份类型。1：用户发起的手动备份； 0：凌晨系统发起的备份
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 
 	// 备份状态。  1:"备份被其它流程锁定";  2:"备份正常，没有被任何流程锁定";  -1:"备份已过期"； 3:"备份正在被导出";  4:"备份导出成功"

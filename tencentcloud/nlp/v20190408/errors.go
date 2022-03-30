@@ -35,41 +35,14 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// 外部服务调用失败
-	INTERNALERROR_EXTERNALSERVICEERROR = "InternalError.ExternalServiceError"
-
-	// 图数据库引擎内部错误	
-	INTERNALERROR_GRAPHENGINEERROR = "InternalError.GraphEngineError"
-
-	// 图查询引擎计算超时错误	
-	INTERNALERROR_GREMLINTIMEOUTERROR = "InternalError.GremlinTimeoutError"
-
-	// 请求数据解析失败
-	INTERNALERROR_REQUESTENCODEERROR = "InternalError.RequestEncodeError"
-
-	// 读取请求数据内容失败
-	INTERNALERROR_REQUESTPARSEERROR = "InternalError.RequestParseError"
-
 	// 资源请求错误
 	INTERNALERROR_RESOURCEREQUESTERROR = "InternalError.ResourceRequestError"
-
-	// 系统响应解析失败
-	INTERNALERROR_RESPONSEDECODEERROR = "InternalError.ResponseDecodeError"
 
 	// 服务调用错误
 	INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
-
-	// 接口不存在
-	INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
-
-	// 不可用的接口操作错误
-	INVALIDPARAMETER_INVALIDACTIONERROR = "InvalidParameter.InvalidActionError"
-
-	// 参数取值错误。
-	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 参数空值错误
 	INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
@@ -92,20 +65,11 @@ const (
 	// 资源用量达到上限
 	LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
 
-	// 缺少参数错误。
-	MISSINGPARAMETER = "MissingParameter"
-
-	// 资源被占用。
-	RESOURCEINUSE = "ResourceInUse"
-
 	// 名称已存在
 	RESOURCEINUSE_NAMEEXISTS = "ResourceInUse.NameExists"
 
 	// 资源正在操作中
 	RESOURCEINUSE_RESOURCEOPERATING = "ResourceInUse.ResourceOperating"
-
-	// 资源不足。
-	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 额度用尽，请充值后重试
 	RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
@@ -124,9 +88,6 @@ const (
 
 	// 您的账号尚未开通NLP服务，请登录腾讯云NLP控制台进行服务开通后再使用
 	RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
-
-	// 未授权操作。
-	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
 	// 实名认证失败
 	UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"

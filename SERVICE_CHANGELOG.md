@@ -1,172 +1,142 @@
 # 本版本更新包含以下内容：
 
-## 应用性能观测(apm) 版本：2021-06-22
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2022-03-31 06:03:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/599/15912#Job)
+
+	* 新增成员：NotificationTarget
+
+* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
+
+	* 新增成员：NotificationTarget
+
+* [NamedCpmComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedCpmComputeEnv)
+
+	* 新增成员：NotificationTarget
+
+
+
+
+## 云拨测(cat) 版本：2018-04-09
 
 ### 第 7 次发布
 
-发布时间：2022-03-30 06:01:18
+发布时间：2022-03-31 06:03:51
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeApmInstances](https://cloud.tencent.com/document/api/1463/65103)
-
-	* 新增入参：DemoInstanceFlag
+* [DescribeProbeMetricData](https://cloud.tencent.com/document/api/280/71856)
 
 
 
+## 混沌演练平台(cfg) 版本：2021-08-20
 
-## 弹性伸缩(as) 版本：2018-04-19
+### 第 1 次发布
 
-### 第 49 次发布
-
-发布时间：2022-03-30 06:01:19
+发布时间：2022-03-30 12:59:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
-
-	* 新增成员：Encrypt
-
-
-
-
-## 计费相关(billing) 版本：2018-07-09
-
-### 第 33 次发布
-
-发布时间：2022-03-30 06:01:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDealsByCond](https://cloud.tencent.com/document/api/555/19179)
-
-	* 新增入参：ResourceId
-
-
-修改数据结构：
-
-* [Deal](https://cloud.tencent.com/document/api/555/19183#Deal)
-
-	* 新增成员：ResourceId
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 87 次发布
-
-发布时间：2022-03-30 06:02:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAuditPolicies](https://cloud.tencent.com/document/api/236/45453)
-
-	* 新增入参：InstanceName
-
-
-
-
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
-
-### 第 7 次发布
-
-发布时间：2022-03-30 06:10:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
-
-	* 新增成员：IsCustomTld
-
-
-
-
-## 弹性微服务(tem) 版本：2021-07-01
-
-### 第 14 次发布
-
-发布时间：2022-03-30 06:12:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateResource](https://cloud.tencent.com/document/api/1371/60146)
-
-	* 新增入参：ResourceFrom, ResourceConfig
-
-* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
-
-	* 新增入参：EnablePrometheusConf
-
+* [CreateTaskFromTemplate](https://cloud.tencent.com/document/api/1500/71783)
+* [DeleteTask](https://cloud.tencent.com/document/api/1500/71782)
+* [DescribeTask](https://cloud.tencent.com/document/api/1500/71781)
+* [DescribeTaskExecuteLogs](https://cloud.tencent.com/document/api/1500/71780)
+* [DescribeTaskList](https://cloud.tencent.com/document/api/1500/71779)
+* [DescribeTemplate](https://cloud.tencent.com/document/api/1500/71778)
+* [DescribeTemplateList](https://cloud.tencent.com/document/api/1500/71773)
+* [ExecuteTask](https://cloud.tencent.com/document/api/1500/71777)
+* [ExecuteTaskInstance](https://cloud.tencent.com/document/api/1500/71776)
+* [ModifyTaskRunStatus](https://cloud.tencent.com/document/api/1500/71775)
 
 新增数据结构：
 
-* [EnablePrometheusConf](https://cloud.tencent.com/document/api/1371/60171#EnablePrometheusConf)
-
-修改数据结构：
-
-* [IngressInfo](https://cloud.tencent.com/document/api/1371/60171#IngressInfo)
-
-	* 新增成员：RewriteType
-
-* [MountedSettingConf](https://cloud.tencent.com/document/api/1371/60171#MountedSettingConf)
-
-	* 新增成员：SecretDataName
-
-* [Pair](https://cloud.tencent.com/document/api/1371/60171#Pair)
-
-	* 新增成员：Secret
-
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
+* [DescribePolicy](https://cloud.tencent.com/document/api/1500/71784#DescribePolicy)
+* [TagWithCreate](https://cloud.tencent.com/document/api/1500/71784#TagWithCreate)
+* [TagWithDescribe](https://cloud.tencent.com/document/api/1500/71784#TagWithDescribe)
+* [Task](https://cloud.tencent.com/document/api/1500/71784#Task)
+* [TaskConfig](https://cloud.tencent.com/document/api/1500/71784#TaskConfig)
+* [TaskGroup](https://cloud.tencent.com/document/api/1500/71784#TaskGroup)
+* [TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction)
+* [TaskGroupActionConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupActionConfig)
+* [TaskGroupConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupConfig)
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
+* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
+* [TaskMonitor](https://cloud.tencent.com/document/api/1500/71784#TaskMonitor)
+* [Template](https://cloud.tencent.com/document/api/1500/71784#Template)
+* [TemplateGroup](https://cloud.tencent.com/document/api/1500/71784#TemplateGroup)
+* [TemplateGroupAction](https://cloud.tencent.com/document/api/1500/71784#TemplateGroupAction)
+* [TemplateListItem](https://cloud.tencent.com/document/api/1500/71784#TemplateListItem)
+* [TemplateMonitor](https://cloud.tencent.com/document/api/1500/71784#TemplateMonitor)
+* [TemplatePolicy](https://cloud.tencent.com/document/api/1500/71784#TemplatePolicy)
 
 
 
-## 高性能计算平台(thpc) 版本：2021-11-09
+## 自然语言处理(nlp) 版本：2019-04-08
 
-### 第 7 次发布
+### 第 15 次发布
 
-发布时间：2022-03-30 06:13:05
+发布时间：2022-03-31 06:11:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+<font color="#dd0000">**删除接口**：</font>
 
-* [LoginNodeOverview](https://cloud.tencent.com/document/api/1527/64906#LoginNodeOverview)
+* DescribeEntity
+* DescribeRelation
+* DescribeTriple
 
-修改数据结构：
+<font color="#dd0000">**删除数据结构**：</font>
 
-* [ClusterOverview](https://cloud.tencent.com/document/api/1527/64906#ClusterOverview)
+* EntityRelationContent
+* EntityRelationObject
+* EntityRelationSubject
+* TripleContent
 
-	* 新增成员：LoginNodeSet, LoginNodeCount
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 24 次发布
+
+发布时间：2022-03-31 06:11:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAgentDealsByCache](https://cloud.tencent.com/document/api/563/54256)
+
+	* 新增入参：BigDealIds
+
+* [DescribeAgentPayDealsV2](https://cloud.tencent.com/document/api/563/55198)
+
+	* 新增入参：BigDealIds
+
+* [DescribeAgentSelfPayDealsV2](https://cloud.tencent.com/document/api/563/55197)
+
+	* 新增入参：BigDealIds
 
 
 
@@ -4517,6 +4487,29 @@
 
 ## 批量计算(batch) 版本：2017-03-12
 
+### 第 41 次发布
+
+发布时间：2022-03-31 06:03:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/599/15912#Job)
+
+	* 新增成员：NotificationTarget
+
+* [NamedComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedComputeEnv)
+
+	* 新增成员：NotificationTarget
+
+* [NamedCpmComputeEnv](https://cloud.tencent.com/document/api/599/15912#NamedCpmComputeEnv)
+
+	* 新增成员：NotificationTarget
+
+
 ### 第 40 次发布
 
 发布时间：2022-03-29 08:04:27
@@ -8401,6 +8394,18 @@
 
 
 ## 云拨测(cat) 版本：2018-04-09
+
+### 第 7 次发布
+
+发布时间：2022-03-31 06:03:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProbeMetricData](https://cloud.tencent.com/document/api/280/71856)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 6 次发布
 
@@ -13793,6 +13798,53 @@
 * [CdsAuditInstance](https://cloud.tencent.com/document/api/856/33913#CdsAuditInstance)
 * [DbauditTypesInfo](https://cloud.tencent.com/document/api/856/33913#DbauditTypesInfo)
 * [RegionInfo](https://cloud.tencent.com/document/api/856/33913#RegionInfo)
+
+
+
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 1 次发布
+
+发布时间：2022-03-30 12:59:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTaskFromTemplate](https://cloud.tencent.com/document/api/1500/71783)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteTask](https://cloud.tencent.com/document/api/1500/71782)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTask](https://cloud.tencent.com/document/api/1500/71781)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTaskExecuteLogs](https://cloud.tencent.com/document/api/1500/71780)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTaskList](https://cloud.tencent.com/document/api/1500/71779)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTemplate](https://cloud.tencent.com/document/api/1500/71778)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTemplateList](https://cloud.tencent.com/document/api/1500/71773)](https://cloud.tencent.com/document/api/#/#)
+* [[ExecuteTask](https://cloud.tencent.com/document/api/1500/71777)](https://cloud.tencent.com/document/api/#/#)
+* [[ExecuteTaskInstance](https://cloud.tencent.com/document/api/1500/71776)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyTaskRunStatus](https://cloud.tencent.com/document/api/1500/71775)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DescribePolicy](https://cloud.tencent.com/document/api/1500/71784#DescribePolicy)](https://cloud.tencent.com/document/api/1500/71784#[DescribePolicy](https://cloud.tencent.com/document/api/1500/71784#DescribePolicy))
+* [[TagWithCreate](https://cloud.tencent.com/document/api/1500/71784#TagWithCreate)](https://cloud.tencent.com/document/api/1500/71784#[TagWithCreate](https://cloud.tencent.com/document/api/1500/71784#TagWithCreate))
+* [[TagWithDescribe](https://cloud.tencent.com/document/api/1500/71784#TagWithDescribe)](https://cloud.tencent.com/document/api/1500/71784#[TagWithDescribe](https://cloud.tencent.com/document/api/1500/71784#TagWithDescribe))
+* [[Task](https://cloud.tencent.com/document/api/1500/71784#Task)](https://cloud.tencent.com/document/api/1500/71784#[Task](https://cloud.tencent.com/document/api/1500/71784#Task))
+* [[TaskConfig](https://cloud.tencent.com/document/api/1500/71784#TaskConfig)](https://cloud.tencent.com/document/api/1500/71784#[TaskConfig](https://cloud.tencent.com/document/api/1500/71784#TaskConfig))
+* [[TaskGroup](https://cloud.tencent.com/document/api/1500/71784#TaskGroup)](https://cloud.tencent.com/document/api/1500/71784#[TaskGroup](https://cloud.tencent.com/document/api/1500/71784#TaskGroup))
+* [[TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction)](https://cloud.tencent.com/document/api/1500/71784#[TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction))
+* [[TaskGroupActionConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupActionConfig)](https://cloud.tencent.com/document/api/1500/71784#[TaskGroupActionConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupActionConfig))
+* [[TaskGroupConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupConfig)](https://cloud.tencent.com/document/api/1500/71784#[TaskGroupConfig](https://cloud.tencent.com/document/api/1500/71784#TaskGroupConfig))
+* [[TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)](https://cloud.tencent.com/document/api/1500/71784#[TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance))
+* [[TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)](https://cloud.tencent.com/document/api/1500/71784#[TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem))
+* [[TaskMonitor](https://cloud.tencent.com/document/api/1500/71784#TaskMonitor)](https://cloud.tencent.com/document/api/1500/71784#[TaskMonitor](https://cloud.tencent.com/document/api/1500/71784#TaskMonitor))
+* [[Template](https://cloud.tencent.com/document/api/1500/71784#Template)](https://cloud.tencent.com/document/api/1500/71784#[Template](https://cloud.tencent.com/document/api/1500/71784#Template))
+* [[TemplateGroup](https://cloud.tencent.com/document/api/1500/71784#TemplateGroup)](https://cloud.tencent.com/document/api/1500/71784#[TemplateGroup](https://cloud.tencent.com/document/api/1500/71784#TemplateGroup))
+* [[TemplateGroupAction](https://cloud.tencent.com/document/api/1500/71784#TemplateGroupAction)](https://cloud.tencent.com/document/api/1500/71784#[TemplateGroupAction](https://cloud.tencent.com/document/api/1500/71784#TemplateGroupAction))
+* [[TemplateListItem](https://cloud.tencent.com/document/api/1500/71784#TemplateListItem)](https://cloud.tencent.com/document/api/1500/71784#[TemplateListItem](https://cloud.tencent.com/document/api/1500/71784#TemplateListItem))
+* [[TemplateMonitor](https://cloud.tencent.com/document/api/1500/71784#TemplateMonitor)](https://cloud.tencent.com/document/api/1500/71784#[TemplateMonitor](https://cloud.tencent.com/document/api/1500/71784#TemplateMonitor))
+* [[TemplatePolicy](https://cloud.tencent.com/document/api/1500/71784#TemplatePolicy)](https://cloud.tencent.com/document/api/1500/71784#[TemplatePolicy](https://cloud.tencent.com/document/api/1500/71784#TemplatePolicy))
 
 
 
@@ -46787,6 +46839,27 @@
 
 ## 自然语言处理(nlp) 版本：2019-04-08
 
+### 第 15 次发布
+
+发布时间：2022-03-31 06:11:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeEntity
+* DescribeRelation
+* DescribeTriple
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* EntityRelationContent
+* EntityRelationObject
+* EntityRelationSubject
+* TripleContent
+
 ### 第 14 次发布
 
 发布时间：2022-03-18 08:15:22
@@ -48875,6 +48948,29 @@
 
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 24 次发布
+
+发布时间：2022-03-31 06:11:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAgentDealsByCache](https://cloud.tencent.com/document/api/563/54256)
+
+	* 新增入参：BigDealIds
+
+* [DescribeAgentPayDealsV2](https://cloud.tencent.com/document/api/563/55198)
+
+	* 新增入参：BigDealIds
+
+* [DescribeAgentSelfPayDealsV2](https://cloud.tencent.com/document/api/563/55197)
+
+	* 新增入参：BigDealIds
+
 
 ### 第 23 次发布
 
@@ -60932,7 +61028,7 @@
 
 新增数据结构：
 
-* [[EnablePrometheusConf](https://cloud.tencent.com/document/api/1371/60171#EnablePrometheusConf)](https://cloud.tencent.com/document/api/1371/60171#[EnablePrometheusConf](https://cloud.tencent.com/document/api/1371/60171#EnablePrometheusConf))
+* [EnablePrometheusConf](https://cloud.tencent.com/document/api/1371/60171#EnablePrometheusConf)
 
 修改数据结构：
 
@@ -61229,7 +61325,7 @@
 
 新增数据结构：
 
-* [[LoginNodeOverview](https://cloud.tencent.com/document/api/1527/64906#LoginNodeOverview)](https://cloud.tencent.com/document/api/1527/64906#[LoginNodeOverview](https://cloud.tencent.com/document/api/1527/64906#LoginNodeOverview))
+* [LoginNodeOverview](https://cloud.tencent.com/document/api/1527/64906#LoginNodeOverview)
 
 修改数据结构：
 

@@ -967,8 +967,11 @@ type DescribeAgentDealsByCacheRequest struct {
 	// 下单人账号ID列表
 	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
-	// 订单号列表
+	// 子订单号列表
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 
 	// 支付方式，0：自付；1：代付
 	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
@@ -994,6 +997,7 @@ func (r *DescribeAgentDealsByCacheRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "OwnerUins")
 	delete(f, "DealNames")
+	delete(f, "BigDealIds")
 	delete(f, "PayerMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDealsByCacheRequest has unknown keys!", "")
@@ -1215,8 +1219,11 @@ type DescribeAgentPayDealsV2Request struct {
 	// 下单人账号ID列表
 	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
 
-	// 订单号列表
+	// 子订单号列表
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 }
 
 func (r *DescribeAgentPayDealsV2Request) ToJsonString() string {
@@ -1239,6 +1246,7 @@ func (r *DescribeAgentPayDealsV2Request) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "OwnerUins")
 	delete(f, "DealNames")
+	delete(f, "BigDealIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentPayDealsV2Request has unknown keys!", "")
 	}
@@ -1375,8 +1383,11 @@ type DescribeAgentSelfPayDealsV2Request struct {
 	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 订单号列表
+	// 子订单号列表
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
 }
 
 func (r *DescribeAgentSelfPayDealsV2Request) ToJsonString() string {
@@ -1399,6 +1410,7 @@ func (r *DescribeAgentSelfPayDealsV2Request) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "Status")
 	delete(f, "DealNames")
+	delete(f, "BigDealIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentSelfPayDealsV2Request has unknown keys!", "")
 	}

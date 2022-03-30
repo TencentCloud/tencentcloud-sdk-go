@@ -784,6 +784,7 @@ type DataDisk struct {
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 数据盘ID。LOCAL_BASIC 和 LOCAL_SSD 类型没有ID，暂时不支持该参数。
+	// 该参数目前仅用于`DescribeInstances`接口。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
 	// 数据盘是否随子机销毁。取值范围：

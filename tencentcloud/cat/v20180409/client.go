@@ -799,6 +799,53 @@ func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeProbeMetricDataRequest() (request *DescribeProbeMetricDataRequest) {
+    request = &DescribeProbeMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeMetricData")
+    
+    
+    return
+}
+
+func NewDescribeProbeMetricDataResponse() (response *DescribeProbeMetricDataResponse) {
+    response = &DescribeProbeMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProbeMetricData
+// 列出云拨测指标详细数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+func (c *Client) DescribeProbeMetricData(request *DescribeProbeMetricDataRequest) (response *DescribeProbeMetricDataResponse, err error) {
+    return c.DescribeProbeMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeProbeMetricData
+// 列出云拨测指标详细数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+func (c *Client) DescribeProbeMetricDataWithContext(ctx context.Context, request *DescribeProbeMetricDataRequest) (response *DescribeProbeMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProbeMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProbeMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
     request = &DescribeProbeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
