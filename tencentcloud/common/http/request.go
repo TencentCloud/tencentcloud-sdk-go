@@ -49,7 +49,6 @@ type Request interface {
 	SetBody([]byte)
 	SetContext(context.Context)
 	SetPacketSizeLimit(int64)
-	Validate() error
 }
 
 type BaseRequest struct {
@@ -215,21 +214,6 @@ func (r *BaseRequest) GetPacketSizeLimit() int64 {
 
 func (r *BaseRequest) SetPacketSizeLimit(n int64) {
 	r.bodySizeLimit = n
-}
-
-func (r *BaseRequest) Validate() error {
-	if r.GetHttpMethod() == "POST" {
-		size := len(GetUrlQueriesEncoded(r.params))
-		if int64(size) > r.bodySizeLimit {
-			return PacketTooLargeError{Size: int64(size), Limit: r.bodySizeLimit}
-		}
-	} else if r.GetHttpMethod() == "GET" {
-		size := len(r.GetUrl())
-		if int64(size) > r.bodySizeLimit {
-			return PacketTooLargeError{Size: int64(size), Limit: r.bodySizeLimit}
-		}
-	}
-	return nil
 }
 
 func (r *BaseRequest) Init() *BaseRequest {

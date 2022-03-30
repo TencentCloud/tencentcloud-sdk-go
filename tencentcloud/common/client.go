@@ -116,12 +116,16 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 		return err
 	}
 
-	err = request.Validate()
+	httpUrl := request.GetUrl()
+	httpBody := request.GetBodyReader()
+	sizeLimit := request.GetPacketSizeLimit()
+	httpMethod := request.GetHttpMethod()
+	err = checkRequestSize(httpMethod, httpUrl, "", sizeLimit, httpBody)
 	if err != nil {
 		return err
 	}
 
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, httpBody)
 	if err != nil {
 		return err
 	}
@@ -147,11 +151,18 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	err = request.Validate()
+
+	httpUrl := request.GetUrl()
+	httpBody := request.GetBodyReader()
+	sizeLimit := request.GetPacketSizeLimit()
+	httpMethod := request.GetHttpMethod()
+	signMethod := c.signMethod
+	err = checkRequestSize(httpMethod, httpUrl, signMethod, sizeLimit, httpBody)
 	if err != nil {
 		return err
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, httpBody)
 	if err != nil {
 		return err
 	}
@@ -307,18 +318,13 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		url = url + "?" + canonicalQueryString
 	}
 
-	err = request.Validate()
+	httpBody := strings.NewReader(requestPayload)
+	err = checkRequestSize(httpRequestMethod, url, algorithm, request.GetPacketSizeLimit(), httpBody)
 	if err != nil {
 		return err
 	}
 
-	// need check packet size manually since sendWithSignatureV3
-	// bypass tchttp.Request's member function to build packet
-	if int64(len(url)) > request.GetPacketSizeLimit() {
-		return tchttp.PacketTooLargeError{Size: int64(len(url)), Limit: request.GetPacketSizeLimit()}
-	}
-
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, httpBody)
 	if err != nil {
 		return err
 	}
