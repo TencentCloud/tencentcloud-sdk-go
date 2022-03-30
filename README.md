@@ -483,14 +483,11 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 
 ## 自定义 Header
 
-自定义 Header 目前仅允许 X-TC-TraceId 和 X-TC-Canary
-
 [RunInstancesRequest示例](examples/cvm/v20170312/run_instances.go)
 ```go
    request := cvm.NewRunInstancesRequest()
    request.SetHeader(map[string]string{
-       "X-TC-TraceId": "my-trace-id",
-       "X-TC-Canary":  "my-canary",
+       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
    })
 ```
 
@@ -499,8 +496,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 ```go
    request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
    request.SetHeader(map[string]string{
-       "X-TC-TraceId": "my-trace-id",
-       "X-TC-Canary":  "my-canary",
+       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
    })
 ```
 

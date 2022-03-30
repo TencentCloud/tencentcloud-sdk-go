@@ -151,18 +151,22 @@ func TestCommonRequest_SetOctetStreamParameters(t *testing.T) {
 func TestCommonRequest_Header(t *testing.T) {
 	r := &CommonRequest{}
 
+	const (
+		traceKey = "X-TC-TraceId"
+		traceVal = "ffe0c072-8a5d-4e17-8887-a8a60252abca"
+	)
+
 	if r.GetHeader() != nil {
 		t.Fatal("default header MUST be nil")
 	}
 
-	// SetHeader(nil) MUST not replace nil map with empty map
 	r.SetHeader(nil)
 	if r.GetHeader() != nil {
 		t.Fatal("SetHeader(nil) MUST not replace nil map with empty map")
 	}
 
-	r.SetHeader(map[string]string{"X-Key-1": "X-Value-1"})
-	if r.GetHeader()["X-Key-1"] != "X-Value-1" {
+	r.SetHeader(map[string]string{traceKey: traceVal})
+	if r.GetHeader()[traceKey] != traceVal {
 		t.Fatal("SetHeader failed")
 	}
 
@@ -171,7 +175,7 @@ func TestCommonRequest_Header(t *testing.T) {
 		t.Fatal("SetHeader(nil) MUST not overwrite existing header (for backward compatibility)")
 	}
 
-	if r.GetHeader()["X-Key-1"] != "X-Value-1" {
+	if r.GetHeader()[traceKey] != traceVal {
 		t.Fatal("SetHeader(nil) MUST not overwrite existing header (for backward compatibility)")
 	}
 }

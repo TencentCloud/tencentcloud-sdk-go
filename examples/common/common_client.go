@@ -40,8 +40,7 @@ func main() {
 
 	// set custom headers
 	request.SetHeader(map[string]string{
-		"X-TC-TraceId": "my-trace-id",
-		"X-TC-Canary":  "my-canary",
+		"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
 	})
 
 	// 设置action所需的请求数据
