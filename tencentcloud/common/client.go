@@ -1,9 +1,11 @@
 package common
 
 import (
+	"bytes"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"math"
 	"net/http"
@@ -117,7 +119,10 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	}
 
 	httpUrl := request.GetUrl()
-	httpBody := request.GetBodyReader()
+	httpBody, err := ioutil.ReadAll(request.GetBodyReader())
+	if err != nil {
+		return err
+	}
 	sizeLimit := request.GetPacketSizeLimit()
 	httpMethod := request.GetHttpMethod()
 	err = checkRequestSize(httpMethod, httpUrl, "", sizeLimit, httpBody)
@@ -125,7 +130,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 		return err
 	}
 
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, httpBody)
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, bytes.NewReader(httpBody))
 	if err != nil {
 		return err
 	}
@@ -153,7 +158,10 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	}
 
 	httpUrl := request.GetUrl()
-	httpBody := request.GetBodyReader()
+	httpBody, err := ioutil.ReadAll(request.GetBodyReader())
+	if err != nil {
+		return err
+	}
 	sizeLimit := request.GetPacketSizeLimit()
 	httpMethod := request.GetHttpMethod()
 	signMethod := c.signMethod
@@ -162,7 +170,7 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 		return err
 	}
 
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, httpBody)
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, bytes.NewReader(httpBody))
 	if err != nil {
 		return err
 	}
@@ -318,13 +326,12 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		url = url + "?" + canonicalQueryString
 	}
 
-	httpBody := strings.NewReader(requestPayload)
-	err = checkRequestSize(httpRequestMethod, url, algorithm, request.GetPacketSizeLimit(), httpBody)
+	err = checkRequestSize(httpRequestMethod, url, algorithm, request.GetPacketSizeLimit(), []byte(requestPayload))
 	if err != nil {
 		return err
 	}
 
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, httpBody)
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}

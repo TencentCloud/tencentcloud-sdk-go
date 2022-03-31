@@ -206,6 +206,11 @@ func TestClient_withRegionBreaker(t *testing.T) {
 	}
 }
 
+type testRequest struct {
+	*tchttp.BaseRequest
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
 func TestClient_PacketSizeLimit(t *testing.T) {
 	cli, err := NewClientWithSecretId("", "", regions.Guangzhou)
 	if err != nil {
@@ -443,28 +448,22 @@ func TestClient_PacketSizeLimit(t *testing.T) {
 		},
 	}
 
-	for _, tc := range testCases {
+	for i, tc := range testCases {
 		cli.signMethod = tc.signMethod
-		r := newTestRequest()
+		r := &testRequest{BaseRequest: &tchttp.BaseRequest{}}
+		r.Init().WithApiInfo("cvm", "2017-03-12", "RunInstances")
 		r.SetHttpMethod(tc.httpMethod)
 
-		if tc.httpMethod == http.MethodGet {
-			r.GetParams()["someParams"] = longString(tc.size)
-		} else {
-			err = r.SetActionParameters(map[string]interface{}{"someParams": longString(tc.size)})
-			if err != nil {
-				t.Fatal(err)
-			}
-		}
-
+		payload := longString(tc.size)
+		r.Payload = &payload
 		r.SetPacketSizeLimit(tc.limit)
 		rsp := tchttp.NewCommonResponse()
 		err = cli.Send(r, rsp)
 
 		_, limited := err.(PacketTooLargeError)
 		if limited != tc.limited {
-			t.Fatalf("httpMethod:%s, signMethod:%s, size:%d, limit:%d, expected_limited: %v, got: %v",
-				tc.httpMethod, tc.signMethod, tc.size, tc.limit, tc.limited, limited)
+			t.Fatalf("idx:%d, httpMethod:%s, signMethod:%s, size:%d, limit:%d, expected_limited: %v, got: %v",
+				i, tc.httpMethod, tc.signMethod, tc.size, tc.limit, tc.limited, limited)
 		}
 	}
 }
