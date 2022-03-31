@@ -2,13 +2,12 @@ package common
 
 import (
 	"bytes"
-	"io/ioutil"
-	"net/http"
-	"testing"
-
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	"io/ioutil"
+	"net/http"
+	"testing"
 )
 
 type requestWithClientToken struct {
@@ -205,4 +204,274 @@ func TestClient_withRegionBreaker(t *testing.T) {
 	if c.rb.maxFailNum != defaultMaxFailNum {
 		t.Errorf("want %d ,got %d", defaultMaxFailNum, c.rb.maxFailNum)
 	}
+}
+
+type testRequest struct {
+	*tchttp.BaseRequest
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
+func TestClient_PacketSizeLimit(t *testing.T) {
+	cli, err := NewClientWithSecretId("", "", regions.Guangzhou)
+	if err != nil {
+		t.Fatal(err)
+	}
+	cli = cli.WithProfile(profile.NewClientProfile())
+
+	const (
+		KB = 1024
+		MB = KB * 1024
+	)
+
+	testCases := []struct {
+		httpMethod string
+		signMethod string
+		size       int64
+		limit      int64
+		limited    bool
+	}{
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA1,
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA1,
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA1,
+			size:       1 * KB,
+			// limit should > ( size * 2 + len(http://domain.com/path) ) because url-encode double the data size
+			limit:   4 * KB,
+			limited: false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA1,
+			size:       33 * KB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA1,
+			size:       33 * KB,
+			limit:      34 * KB,
+			limited:    true,
+		},
+
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      4 * KB,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA256,
+			size:       33 * KB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: SHA256,
+			size:       33 * KB,
+			limit:      34 * KB,
+			limited:    true,
+		},
+
+		{
+			httpMethod: http.MethodGet,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      4 * KB,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       33 * KB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodGet,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       33 * KB,
+			limit:      34 * KB,
+			limited:    true,
+		},
+
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA1,
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA1,
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA1,
+			size:       1 * KB,
+			limit:      4 * KB,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA1,
+			size:       2 * MB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA1,
+			size:       2 * MB,
+			limit:      6 * MB,
+			limited:    true,
+		},
+
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA256,
+			size:       1 * KB,
+			limit:      4 * KB,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA256,
+			size:       2 * MB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: SHA256,
+			size:       2 * MB,
+			limit:      6 * MB,
+			limited:    true,
+		},
+
+		{
+			httpMethod: http.MethodPost,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      0,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      5,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       1 * KB,
+			limit:      4 * KB,
+			limited:    false,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       11 * MB,
+			limit:      0,
+			limited:    true,
+		},
+		{
+			httpMethod: http.MethodPost,
+			signMethod: "TC3-HMAC-SHA256",
+			size:       11 * MB,
+			limit:      33 * MB,
+			limited:    true,
+		},
+	}
+
+	for i, tc := range testCases {
+		cli.signMethod = tc.signMethod
+		r := &testRequest{BaseRequest: &tchttp.BaseRequest{}}
+		r.Init().WithApiInfo("cvm", "2017-03-12", "RunInstances")
+		r.SetHttpMethod(tc.httpMethod)
+
+		payload := longString(tc.size)
+		r.Payload = &payload
+		r.SetPacketSizeLimit(tc.limit)
+		rsp := tchttp.NewCommonResponse()
+		err = cli.Send(r, rsp)
+
+		_, limited := err.(PacketTooLargeError)
+		if limited != tc.limited {
+			t.Fatalf("idx:%d, httpMethod:%s, signMethod:%s, size:%d, limit:%d, expected_limited: %v, got: %v",
+				i, tc.httpMethod, tc.signMethod, tc.size, tc.limit, tc.limited, limited)
+		}
+	}
+}
+
+func longString(n int64) string {
+	p := make([]byte, n)
+	for i := int64(0); i < n; i++ {
+		p[i] = 'a'
+	}
+	return string(p)
 }

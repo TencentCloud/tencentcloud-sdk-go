@@ -1,10 +1,13 @@
 package common
 
 import (
+	"bytes"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
+	"math"
 	"net/http"
 	"net/http/httputil"
 	"strconv"
@@ -51,6 +54,10 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
+	}
+
+	if request.GetPacketSizeLimit() == 0 {
+		request.SetPacketSizeLimit(math.MaxInt64)
 	}
 
 	tchttp.CompleteCommonParams(request, c.GetRegion())
@@ -106,7 +113,24 @@ func (c *Client) sendWithSignature(request tchttp.Request, response tchttp.Respo
 }
 
 func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Response) error {
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+	err := tchttp.ConstructParams(request)
+	if err != nil {
+		return err
+	}
+
+	httpUrl := request.GetUrl()
+	httpBody, err := ioutil.ReadAll(request.GetBodyReader())
+	if err != nil {
+		return err
+	}
+	sizeLimit := request.GetPacketSizeLimit()
+	httpMethod := request.GetHttpMethod()
+	err = checkRequestSize(httpMethod, httpUrl, "", sizeLimit, httpBody)
+	if err != nil {
+		return err
+	}
+
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, bytes.NewReader(httpBody))
 	if err != nil {
 		return err
 	}
@@ -132,7 +156,21 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+
+	httpUrl := request.GetUrl()
+	httpBody, err := ioutil.ReadAll(request.GetBodyReader())
+	if err != nil {
+		return err
+	}
+	sizeLimit := request.GetPacketSizeLimit()
+	httpMethod := request.GetHttpMethod()
+	signMethod := c.signMethod
+	err = checkRequestSize(httpMethod, httpUrl, signMethod, sizeLimit, httpBody)
+	if err != nil {
+		return err
+	}
+
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpMethod, httpUrl, bytes.NewReader(httpBody))
 	if err != nil {
 		return err
 	}
@@ -287,6 +325,12 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
+
+	err = checkRequestSize(httpRequestMethod, url, algorithm, request.GetPacketSizeLimit(), []byte(requestPayload))
+	if err != nil {
+		return err
+	}
+
 	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err

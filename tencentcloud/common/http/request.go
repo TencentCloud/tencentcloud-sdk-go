@@ -39,6 +39,7 @@ type Request interface {
 	GetVersion() string
 	GetContentType() string
 	GetContext() context.Context
+	GetPacketSizeLimit() int64
 	SetScheme(string)
 	SetRootDomain(string)
 	SetDomain(string)
@@ -47,6 +48,7 @@ type Request interface {
 	SetContentType(string)
 	SetBody([]byte)
 	SetContext(context.Context)
+	SetPacketSizeLimit(int64)
 }
 
 type BaseRequest struct {
@@ -63,8 +65,9 @@ type BaseRequest struct {
 	version string
 	action  string
 
-	contentType string
-	body        []byte
+	contentType   string
+	body          []byte
+	bodySizeLimit int64
 }
 
 func (r *BaseRequest) GetAction() string {
@@ -203,6 +206,14 @@ func (r *BaseRequest) GetBodyReader() io.Reader {
 	} else {
 		return strings.NewReader("")
 	}
+}
+
+func (r *BaseRequest) GetPacketSizeLimit() int64 {
+	return r.bodySizeLimit
+}
+
+func (r *BaseRequest) SetPacketSizeLimit(n int64) {
+	r.bodySizeLimit = n
 }
 
 func (r *BaseRequest) Init() *BaseRequest {
