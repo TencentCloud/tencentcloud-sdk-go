@@ -14,8 +14,6 @@ type actionParameters map[string]interface{}
 
 type CommonRequest struct {
 	*BaseRequest
-	// custom header, may be overwritten
-	header map[string]string
 	actionParameters
 }
 
@@ -56,7 +54,7 @@ func (cr *CommonRequest) SetActionParameters(data interface{}) error {
 }
 
 func (cr *CommonRequest) IsOctetStream() bool {
-	v, ok := cr.header["Content-Type"]
+	v, ok := cr.GetHeader()["Content-Type"]
 	if !ok || v != octetStream {
 		return false
 	}
@@ -75,11 +73,17 @@ func (cr *CommonRequest) SetHeader(header map[string]string) {
 	if header == nil {
 		return
 	}
-	cr.header = header
+	if cr.BaseRequest == nil {
+		cr.BaseRequest = &BaseRequest{}
+	}
+	cr.BaseRequest.SetHeader(header)
 }
 
 func (cr *CommonRequest) GetHeader() map[string]string {
-	return cr.header
+	if cr.BaseRequest == nil {
+		return nil
+	}
+	return cr.BaseRequest.GetHeader()
 }
 
 // SetOctetStreamParameters set request body to your data, and set head Content-Type to application/octet-stream
@@ -90,7 +94,7 @@ func (cr *CommonRequest) SetOctetStreamParameters(header map[string]string, body
 		header = map[string]string{}
 	}
 	header["Content-Type"] = octetStream
-	cr.header = header
+	cr.SetHeader(header)
 	parameter["OctetStreamBody"] = body
 	cr.actionParameters = parameter
 }

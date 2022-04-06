@@ -376,7 +376,7 @@ import "crypto/tls"
 
 4. 实例角色
 
-    有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)  
+    有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)
 
     在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证。相关代码如下：
 
@@ -480,6 +480,25 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 目前仅支持使用 POST 方式发送请求，且签名方法必须使用 签名方法 v3。
 
 详细使用请参阅示例：[使用 Common Client 进行调用](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/common_client.go)
+
+## 自定义 Header
+
+[RunInstancesRequest示例](examples/cvm/v20170312/run_instances.go)
+```go
+   request := cvm.NewRunInstancesRequest()
+   request.SetHeader(map[string]string{
+       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
+   })
+```
+
+[CommonRequest示例](examples/common/common_client.go)
+
+```go
+   request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
+   request.SetHeader(map[string]string{
+       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
+   })
+```
 
 # 请求重试
 
