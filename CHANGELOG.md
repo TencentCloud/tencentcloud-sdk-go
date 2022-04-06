@@ -1,3 +1,5 @@
+# Release v1.0.379
+
 # Release v1.0.378
 
 # Release v1.0.377
