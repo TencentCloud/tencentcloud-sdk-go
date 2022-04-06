@@ -1220,6 +1220,9 @@ type CreateCloneInstanceRequest struct {
 
 	// 金融围拢 ID 。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
+
+	// 项目ID，默认项目ID0
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -1254,6 +1257,7 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DeployGroupId")
 	delete(f, "DryRun")
 	delete(f, "CageId")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
@@ -7642,7 +7646,7 @@ func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error 
 type ModifyDBInstanceVipVportRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c2nl9rpv 或者 cdbrg-c3nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 目标 IP。该参数和 DstPort 参数，两者必传一个。

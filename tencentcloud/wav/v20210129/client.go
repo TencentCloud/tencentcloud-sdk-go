@@ -532,6 +532,112 @@ func (c *Client) QueryClueInfoListWithContext(ctx context.Context, request *Quer
     return
 }
 
+func NewQueryCrmStatisticsRequest() (request *QueryCrmStatisticsRequest) {
+    request = &QueryCrmStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryCrmStatistics")
+    
+    
+    return
+}
+
+func NewQueryCrmStatisticsResponse() (response *QueryCrmStatisticsResponse) {
+    response = &QueryCrmStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCrmStatistics
+// 通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCrmStatistics(request *QueryCrmStatisticsRequest) (response *QueryCrmStatisticsResponse, err error) {
+    return c.QueryCrmStatisticsWithContext(context.Background(), request)
+}
+
+// QueryCrmStatistics
+// 通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCrmStatisticsWithContext(ctx context.Context, request *QueryCrmStatisticsRequest) (response *QueryCrmStatisticsResponse, err error) {
+    if request == nil {
+        request = NewQueryCrmStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCrmStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCrmStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCustomerEventDetailStatisticsRequest() (request *QueryCustomerEventDetailStatisticsRequest) {
+    request = &QueryCustomerEventDetailStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryCustomerEventDetailStatistics")
+    
+    
+    return
+}
+
+func NewQueryCustomerEventDetailStatisticsResponse() (response *QueryCustomerEventDetailStatisticsResponse) {
+    response = &QueryCustomerEventDetailStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCustomerEventDetailStatistics
+// 通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCustomerEventDetailStatistics(request *QueryCustomerEventDetailStatisticsRequest) (response *QueryCustomerEventDetailStatisticsResponse, err error) {
+    return c.QueryCustomerEventDetailStatisticsWithContext(context.Background(), request)
+}
+
+// QueryCustomerEventDetailStatistics
+// 通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryCustomerEventDetailStatisticsWithContext(ctx context.Context, request *QueryCustomerEventDetailStatisticsRequest) (response *QueryCustomerEventDetailStatisticsResponse, err error) {
+    if request == nil {
+        request = NewQueryCustomerEventDetailStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCustomerEventDetailStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCustomerEventDetailStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
     request = &QueryDealerInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -707,6 +813,71 @@ func (c *Client) QueryExternalContactListWithContext(ctx context.Context, reques
     return
 }
 
+func NewQueryExternalUserEventListRequest() (request *QueryExternalUserEventListRequest) {
+    request = &QueryExternalUserEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryExternalUserEventList")
+    
+    
+    return
+}
+
+func NewQueryExternalUserEventListResponse() (response *QueryExternalUserEventListResponse) {
+    response = &QueryExternalUserEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExternalUserEventList
+// 通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMESPANLIMITEXCEEDED = "InvalidParameterValue.TimeSpanLimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalUserEventList(request *QueryExternalUserEventListRequest) (response *QueryExternalUserEventListResponse, err error) {
+    return c.QueryExternalUserEventListWithContext(context.Background(), request)
+}
+
+// QueryExternalUserEventList
+// 通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMESPANLIMITEXCEEDED = "InvalidParameterValue.TimeSpanLimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalUserEventListWithContext(ctx context.Context, request *QueryExternalUserEventListRequest) (response *QueryExternalUserEventListResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalUserEventListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExternalUserEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryExternalUserEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryExternalUserMappingInfoRequest() (request *QueryExternalUserMappingInfoRequest) {
     request = &QueryExternalUserMappingInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -815,6 +986,71 @@ func (c *Client) QueryLicenseInfoWithContext(ctx context.Context, request *Query
     return
 }
 
+func NewQueryMaterialListRequest() (request *QueryMaterialListRequest) {
+    request = &QueryMaterialListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryMaterialList")
+    
+    
+    return
+}
+
+func NewQueryMaterialListResponse() (response *QueryMaterialListResponse) {
+    response = &QueryMaterialListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMaterialList
+// 通过接口按类型拉取租户当前的素材列表及关键信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMESPANLIMITEXCEEDED = "InvalidParameterValue.TimeSpanLimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryMaterialList(request *QueryMaterialListRequest) (response *QueryMaterialListResponse, err error) {
+    return c.QueryMaterialListWithContext(context.Background(), request)
+}
+
+// QueryMaterialList
+// 通过接口按类型拉取租户当前的素材列表及关键信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_TIMESPANLIMITEXCEEDED = "InvalidParameterValue.TimeSpanLimitExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryMaterialListWithContext(ctx context.Context, request *QueryMaterialListRequest) (response *QueryMaterialListResponse, err error) {
+    if request == nil {
+        request = NewQueryMaterialListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMaterialList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryMaterialListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
     request = &QueryMiniAppCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -872,6 +1108,120 @@ func (c *Client) QueryMiniAppCodeListWithContext(ctx context.Context, request *Q
     request.SetContext(ctx)
     
     response = NewQueryMiniAppCodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryStaffEventDetailStatisticsRequest() (request *QueryStaffEventDetailStatisticsRequest) {
+    request = &QueryStaffEventDetailStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryStaffEventDetailStatistics")
+    
+    
+    return
+}
+
+func NewQueryStaffEventDetailStatisticsResponse() (response *QueryStaffEventDetailStatisticsResponse) {
+    response = &QueryStaffEventDetailStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryStaffEventDetailStatistics
+// 通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryStaffEventDetailStatistics(request *QueryStaffEventDetailStatisticsRequest) (response *QueryStaffEventDetailStatisticsResponse, err error) {
+    return c.QueryStaffEventDetailStatisticsWithContext(context.Background(), request)
+}
+
+// QueryStaffEventDetailStatistics
+// 通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) QueryStaffEventDetailStatisticsWithContext(ctx context.Context, request *QueryStaffEventDetailStatisticsRequest) (response *QueryStaffEventDetailStatisticsResponse, err error) {
+    if request == nil {
+        request = NewQueryStaffEventDetailStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryStaffEventDetailStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryStaffEventDetailStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryUserInfoListRequest() (request *QueryUserInfoListRequest) {
+    request = &QueryUserInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wav", APIVersion, "QueryUserInfoList")
+    
+    
+    return
+}
+
+func NewQueryUserInfoListResponse() (response *QueryUserInfoListResponse) {
+    response = &QueryUserInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryUserInfoList
+// 查询企业成员信息列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryUserInfoList(request *QueryUserInfoListRequest) (response *QueryUserInfoListResponse, err error) {
+    return c.QueryUserInfoListWithContext(context.Background(), request)
+}
+
+// QueryUserInfoList
+// 查询企业成员信息列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  AUTHFAILURE_MISSINGACCESSTOKEN = "AuthFailure.MissingAccessToken"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryUserInfoListWithContext(ctx context.Context, request *QueryUserInfoListRequest) (response *QueryUserInfoListResponse, err error) {
+    if request == nil {
+        request = NewQueryUserInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryUserInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryUserInfoListResponse()
     err = c.Send(request, response)
     return
 }

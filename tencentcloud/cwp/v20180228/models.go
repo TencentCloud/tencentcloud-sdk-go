@@ -1688,7 +1688,7 @@ type BashEvent struct {
 	// 规则等级：1-高 2-中 3-低
 	RuleLevel *uint64 `json:"RuleLevel,omitempty" name:"RuleLevel"`
 
-	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白
+	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 发生时间
@@ -1853,6 +1853,10 @@ type BruteAttackInfo struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0：待处理，1：忽略，5：已处理，6：加入白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataStatus *uint64 `json:"DataStatus,omitempty" name:"DataStatus"`
 }
 
 type BruteAttackRule struct {
@@ -6871,6 +6875,7 @@ type DescribeBruteAttackListRequest struct {
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
 	// <li>UserName - String - 是否必填：否 - UserName筛选</li>
 	// <li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
@@ -7729,11 +7734,12 @@ type DescribeHostLoginListRequest struct {
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>UserName - String - 是否必填：否 - 用户名筛选</li>
 	// <li>LoginTimeBegin - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
 	// <li>LoginTimeEnd - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
 	// <li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
-	// <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；5：已加白</li>
+	// <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；5：已加白,14:已处理，15：已忽略</li>
 	// <li>RiskLevel - int - 是否必填：否 - 状态筛选0:高危；1：可疑</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
@@ -7965,7 +7971,7 @@ type DescribeImportMachineInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		EffectiveMachineInfoList []*EffectiveMachineInfo `json:"EffectiveMachineInfoList,omitempty" name:"EffectiveMachineInfoList"`
 
-		// 用户批量导入失败的机器列表（比如机器不存在等...）
+		// 用户批量导入失败的机器列表（例如机器不存在等...）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		InvalidMachineList []*string `json:"InvalidMachineList,omitempty" name:"InvalidMachineList"`
 
@@ -8278,7 +8284,7 @@ type DescribeMachineInfoResponse struct {
 		// 专业版开通时间。
 		ProVersionOpenDate *string `json:"ProVersionOpenDate,omitempty" name:"ProVersionOpenDate"`
 
-		// 云主机类型。
+		// 云服务器类型。
 	// <li>CVM: 腾讯云服务器</li>
 	// <li>BM: 黑石物理机</li>
 	// <li>ECM: 边缘计算服务器</li>
@@ -13756,7 +13762,7 @@ type HostLoginList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
 
-	// 1:正常登录；2异地登录； 5已加白
+	// 1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 国家id
@@ -14939,7 +14945,7 @@ func (r *OpenProVersionPrepaidResponse) FromJsonString(s string) error {
 type OpenProVersionRequest struct {
 	*tchttp.BaseRequest
 
-	// 云主机类型。(当前参数已作废,可以留空值 )
+	// 云服务器类型。(当前参数已作废,可以留空值 )
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
 	// 机器所属地域。(当前参数已作废,可以留空值 )
@@ -15066,7 +15072,7 @@ type PrivilegeEscalationProcess struct {
 	// 进程树
 	ProcTree *string `json:"ProcTree,omitempty" name:"ProcTree"`
 
-	// 处理状态：0-待处理 2-白名单
+	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 发生时间
@@ -15484,7 +15490,7 @@ type ReverseShell struct {
 	// 父进程路径
 	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
 
-	// 处理状态：0-待处理 2-白名单
+	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 产生时间
@@ -15556,7 +15562,7 @@ type RiskDnsList struct {
 	// 用户规则id
 	UserRuleId *uint64 `json:"UserRuleId,omitempty" name:"UserRuleId"`
 
-	// 状态；0-待处理，2-已加白，3-非信任状态
+	// 状态；0-待处理，2-已加白，3-非信任状态，4-已处理，5-已忽略
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 首次访问时间

@@ -796,7 +796,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
-		// 是否为 VIP 客户。
+		// 是否为付费证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
 
@@ -816,7 +816,7 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SubmittedData *SubmittedData `json:"SubmittedData,omitempty" name:"SubmittedData"`
 
-		// 是否可重颁发证书。
+		// 是否可续费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RenewAble *bool `json:"RenewAble,omitempty" name:"RenewAble"`
 

@@ -141,10 +141,10 @@ type AlarmTargetInfo struct {
 	// 告警对象序号。
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 查询范围起始时间相对当前的历史时间，取值为非正，最大值为0，最小值为-1440。
+	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
 	StartTimeOffset *int64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
-	// 查询范围终止时间相对当前的历史时间，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 

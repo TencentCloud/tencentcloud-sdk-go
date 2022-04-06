@@ -101,9 +101,6 @@ const (
 	// Master节点数量无效。
 	INVALIDPARAMETER_INCORRECTMASTERCOUNT = "InvalidParameter.IncorrectMasterCount"
 
-	// core节点的数量不能超过20。
-	INVALIDPARAMETER_INVAILDCORECOUNT = "InvalidParameter.InvaildCoreCount"
-
 	// 无效参数，AppId。
 	INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 
@@ -127,6 +124,9 @@ const (
 
 	// Core节点数量无效。
 	INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+
+	// CosFileUri参数值无效。
+	INVALIDPARAMETER_INVALIDCOSFILEURI = "InvalidParameter.InvalidCosFileURI"
 
 	// 扩容数量必须大于0。
 	INVALIDPARAMETER_INVALIDCOUNT = "InvalidParameter.InvalidCount"
@@ -236,6 +236,9 @@ const (
 	// 无效的高可用参数。
 	INVALIDPARAMETER_INVALIDSUPPORTHA = "InvalidParameter.InvalidSupportHA"
 
+	// 参数错误。
+	INVALIDPARAMETER_INVALIDTAGSGROUP = "InvalidParameter.InvalidTagsGroup"
+
 	// task的数量不能超过20。
 	INVALIDPARAMETER_INVALIDTASKCOUNT = "InvalidParameter.InvalidTaskCount"
 
@@ -325,9 +328,6 @@ const (
 
 	// 当前资源规格不存在默认规格。
 	RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpecNotDefaultSpec"
-
-	// 当前资源规格不存在默认规格。
-	RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = "ResourceUnavailable.ResourceSpec_NotDefaultSpec"
 
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"

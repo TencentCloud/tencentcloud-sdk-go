@@ -3063,6 +3063,10 @@ type DescribeDiagnoseReportResponse struct {
 		// 源站检测信息
 		OriginInfo *DiagnoseData `json:"OriginInfo,omitempty" name:"OriginInfo"`
 
+		// 刷新检测信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PurgeInfo *DiagnoseData `json:"PurgeInfo,omitempty" name:"PurgeInfo"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -9547,15 +9551,15 @@ type UpdateDomainConfigRequest struct {
 	// 浏览器缓存配置（功能灰度中，尚未全量）
 	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
+	// 地域属性特殊配置
+	// 适用于域名境内加速、境外加速配置不一致场景
+	SpecificConfig *SpecificConfig `json:"SpecificConfig,omitempty" name:"SpecificConfig"`
+
 	// 域名业务类型
 	// web：静态加速
 	// download：下载加速
 	// media：流媒体点播加速
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
-
-	// 地域属性特殊配置
-	// 适用于域名境内加速、境外加速配置不一致场景
-	SpecificConfig *SpecificConfig `json:"SpecificConfig,omitempty" name:"SpecificConfig"`
 
 	// 域名加速区域
 	// mainland：中国境内加速
@@ -9650,8 +9654,8 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "ForceRedirect")
 	delete(f, "Referer")
 	delete(f, "MaxAge")
-	delete(f, "ServiceType")
 	delete(f, "SpecificConfig")
+	delete(f, "ServiceType")
 	delete(f, "Area")
 	delete(f, "OriginPullTimeout")
 	delete(f, "AwsPrivateAccess")

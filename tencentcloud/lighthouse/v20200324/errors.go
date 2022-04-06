@@ -317,6 +317,9 @@ const (
 	// 防火墙规则不存在。
 	RESOURCENOTFOUND_FIREWALLRULESNOTFOUND = "ResourceNotFound.FirewallRulesNotFound"
 
+	// 实例不存在挂载的数据盘。
+	RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = "ResourceNotFound.InstanceDataDiskNotFound"
+
 	// 实例 ID 不存在。
 	RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 

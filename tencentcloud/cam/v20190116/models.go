@@ -866,6 +866,85 @@ func (r *CreateServiceLinkedRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateUserOIDCConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份提供商URL。OpenID Connect身份提供商标识。
+	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+	// 授权请求Response type，固定值id_token
+	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+	// 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+	ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+	MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+	Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateUserOIDCConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserOIDCConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdentityUrl")
+	delete(f, "IdentityKey")
+	delete(f, "ClientId")
+	delete(f, "AuthorizationEndpoint")
+	delete(f, "ResponseType")
+	delete(f, "ResponseMode")
+	delete(f, "MappingFiled")
+	delete(f, "Scope")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserOIDCConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserOIDCConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUserOIDCConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserOIDCConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserSAMLConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -1611,6 +1690,81 @@ func (r *DescribeSubAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeUserOIDCConfigRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeUserOIDCConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserOIDCConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserOIDCConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserOIDCConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 身份提供商类型。 12：用户OIDC身份提供商
+		ProviderType *uint64 `json:"ProviderType,omitempty" name:"ProviderType"`
+
+		// 身份提供商URL
+		IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+		// 签名公钥
+		IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+		// 客户端id
+		ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+		// 状态：0:未设置，11:已开启，2:已禁用
+		Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+		// 授权请求Endpoint
+		AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+		// 授权请求Scope
+		Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+		// 授权请求Response type
+		ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+		// 授权请求Response mode
+		ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+		// 映射字段名称
+		MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+		// 描述
+		Description *string `json:"Description,omitempty" name:"Description"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserOIDCConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserOIDCConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserSAMLConfigRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1814,6 +1968,48 @@ func (r *DetachUserPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUserSSORequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DisableUserSSORequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableUserSSORequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableUserSSORequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableUserSSOResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisableUserSSOResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableUserSSOResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4541,6 +4737,85 @@ func (r *UpdateSAMLProviderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateSAMLProviderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateUserOIDCConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份提供商URL。OpenID Connect身份提供商标识。
+	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+	// 授权请求Response type，固定值id_token。
+	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+	// 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+	ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+	MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+	Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateUserOIDCConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserOIDCConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdentityUrl")
+	delete(f, "IdentityKey")
+	delete(f, "ClientId")
+	delete(f, "AuthorizationEndpoint")
+	delete(f, "ResponseType")
+	delete(f, "ResponseMode")
+	delete(f, "MappingFiled")
+	delete(f, "Scope")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserOIDCConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateUserOIDCConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateUserOIDCConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

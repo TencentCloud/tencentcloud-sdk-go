@@ -2663,7 +2663,7 @@ type CreateFlowLogRequest struct {
 	// 流日志实例名字
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID
@@ -12257,7 +12257,7 @@ type FlowLog struct {
 	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN。
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。

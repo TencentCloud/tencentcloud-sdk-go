@@ -29,7 +29,7 @@ type ApproverInfo struct {
 	// 0：企业
 	// 1：个人
 	// 3：企业静默签署
-	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署，目前只支持第一方进行静默签署。
+	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 本环节需要操作人的名字
@@ -780,7 +780,11 @@ type FlowBrief struct {
 
 type FlowCreateApprover struct {
 
-	// 签署方类型 (0为企业/1为个人)
+	// 参与者类型：
+	// 0：企业
+	// 1：个人
+	// 3：企业静默签署
+	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 如果签署方为企业，需要填入企业全称

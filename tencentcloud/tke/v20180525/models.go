@@ -786,6 +786,64 @@ type ClusterInternalLB struct {
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
+type ClusterLevelAttribute struct {
+
+	// 集群等级
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 等级名称
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// Pod数量
+	PodCount *uint64 `json:"PodCount,omitempty" name:"PodCount"`
+
+	// Configmap数量
+	ConfigMapCount *uint64 `json:"ConfigMapCount,omitempty" name:"ConfigMapCount"`
+
+	// CRD数量
+	CRDCount *uint64 `json:"CRDCount,omitempty" name:"CRDCount"`
+
+	// 是否启用
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 其他资源数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherCount *uint64 `json:"OtherCount,omitempty" name:"OtherCount"`
+}
+
+type ClusterLevelChangeRecord struct {
+
+	// 记录ID
+	ID *string `json:"ID,omitempty" name:"ID"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 变配状态：trading 发货中,upgrading 变配中,success 变配成功,failed 变配失败。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 变配前规模
+	OldLevel *string `json:"OldLevel,omitempty" name:"OldLevel"`
+
+	// 变配后规模
+	NewLevel *string `json:"NewLevel,omitempty" name:"NewLevel"`
+
+	// 变配触发类型：manual 手动,auto 自动
+	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 开始时间
+	StartedAt *string `json:"StartedAt,omitempty" name:"StartedAt"`
+
+	// 结束时间
+	EndedAt *string `json:"EndedAt,omitempty" name:"EndedAt"`
+}
+
 type ClusterNetworkSettings struct {
 
 	// 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突
@@ -3369,6 +3427,126 @@ func (r *DescribeClusterKubeconfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeClusterLevelAttributeRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID，变配时使用
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+}
+
+func (r *DescribeClusterLevelAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterLevelAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterLevelAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterLevelAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群规模
+		Items []*ClusterLevelAttribute `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterLevelAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterLevelAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterLevelChangeRecordsRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 开始时间
+	StartAt *string `json:"StartAt,omitempty" name:"StartAt"`
+
+	// 结束时间
+	EndAt *string `json:"EndAt,omitempty" name:"EndAt"`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterLevelChangeRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterLevelChangeRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterID")
+	delete(f, "StartAt")
+	delete(f, "EndAt")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterLevelChangeRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterLevelChangeRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 集群规模
+		Items []*ClusterLevelChangeRecord `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeClusterLevelChangeRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterLevelChangeRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeClusterNodePoolDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -5158,6 +5336,64 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceUsageRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeResourceUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// CRD使用量
+		CRDUsage *ResourceUsage `json:"CRDUsage,omitempty" name:"CRDUsage"`
+
+		// Pod使用量
+		PodUsage *uint64 `json:"PodUsage,omitempty" name:"PodUsage"`
+
+		// ConfigMap使用量
+		ConfigMapUsage *uint64 `json:"ConfigMapUsage,omitempty" name:"ConfigMapUsage"`
+
+		// 其他资源使用量
+		OtherUsage *ResourceUsage `json:"OtherUsage,omitempty" name:"OtherUsage"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeRouteTableConflictsRequest struct {
 	*tchttp.BaseRequest
 
@@ -6009,6 +6245,58 @@ func (r *ForwardApplicationRequestV3Response) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ForwardApplicationRequestV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterLevelPriceRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群规格，托管集群询价
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+}
+
+func (r *GetClusterLevelPriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetClusterLevelPriceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterLevel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetClusterLevelPriceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetClusterLevelPriceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 询价结果，单位：分，打折后
+		Cost *uint64 `json:"Cost,omitempty" name:"Cost"`
+
+		// 询价结果，单位：分，折扣前
+		TotalCost *uint64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetClusterLevelPriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetClusterLevelPriceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7793,6 +8081,27 @@ type ResourceDeleteOption struct {
 
 	// 集群删除时资源的删除模式：terminate（销毁），retain （保留）
 	DeleteMode *string `json:"DeleteMode,omitempty" name:"DeleteMode"`
+}
+
+type ResourceUsage struct {
+
+	// 资源类型
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源使用量
+	Usage *uint64 `json:"Usage,omitempty" name:"Usage"`
+
+	// 资源使用详情
+	Details []*ResourceUsageDetail `json:"Details,omitempty" name:"Details"`
+}
+
+type ResourceUsageDetail struct {
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源使用量
+	Usage *uint64 `json:"Usage,omitempty" name:"Usage"`
 }
 
 type RestartEKSContainerInstancesRequest struct {

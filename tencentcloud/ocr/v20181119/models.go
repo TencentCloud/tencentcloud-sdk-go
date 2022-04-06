@@ -2799,14 +2799,12 @@ type MLIDCardOCRResponse struct {
 		// 证件图片
 		Image *string `json:"Image,omitempty" name:"Image"`
 
-		// 扩展字段：
+		// 此字段为扩展字段。
+	// 返回字段识别结果的置信度，格式如下
 	// {
-	//     ID:{
-	//         Confidence:0.9999
-	//     },
-	//     Name:{
-	//         Confidence:0.9996
-	//     }
+	//   字段名:{
+	//     Confidence:0.9999
+	//   }
 	// }
 		AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 

@@ -863,6 +863,65 @@ func (c *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateUserOIDCConfigRequest() (request *CreateUserOIDCConfigRequest) {
+    request = &CreateUserOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CreateUserOIDCConfig")
+    
+    
+    return
+}
+
+func NewCreateUserOIDCConfigResponse() (response *CreateUserOIDCConfigResponse) {
+    response = &CreateUserOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserOIDCConfig
+// 创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYKEYERROR = "InvalidParameterValue.IdentityKeyError"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+func (c *Client) CreateUserOIDCConfig(request *CreateUserOIDCConfigRequest) (response *CreateUserOIDCConfigResponse, err error) {
+    return c.CreateUserOIDCConfigWithContext(context.Background(), request)
+}
+
+// CreateUserOIDCConfig
+// 创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYKEYERROR = "InvalidParameterValue.IdentityKeyError"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+func (c *Client) CreateUserOIDCConfigWithContext(ctx context.Context, request *CreateUserOIDCConfigRequest) (response *CreateUserOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateUserOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserOIDCConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserSAMLConfigRequest() (request *CreateUserSAMLConfigRequest) {
     request = &CreateUserSAMLConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1688,6 +1747,53 @@ func (c *Client) DescribeSubAccountsWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeUserOIDCConfigRequest() (request *DescribeUserOIDCConfigRequest) {
+    request = &DescribeUserOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeUserOIDCConfig")
+    
+    
+    return
+}
+
+func NewDescribeUserOIDCConfigResponse() (response *DescribeUserOIDCConfigResponse) {
+    response = &DescribeUserOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserOIDCConfig
+// 查询用户OIDC配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) DescribeUserOIDCConfig(request *DescribeUserOIDCConfigRequest) (response *DescribeUserOIDCConfigResponse, err error) {
+    return c.DescribeUserOIDCConfigWithContext(context.Background(), request)
+}
+
+// DescribeUserOIDCConfig
+// 查询用户OIDC配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) DescribeUserOIDCConfigWithContext(ctx context.Context, request *DescribeUserOIDCConfigRequest) (response *DescribeUserOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserOIDCConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserSAMLConfigRequest() (request *DescribeUserSAMLConfigRequest) {
     request = &DescribeUserSAMLConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1709,9 +1815,7 @@ func NewDescribeUserSAMLConfigResponse() (response *DescribeUserSAMLConfigRespon
 // 查询用户SAML配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 func (c *Client) DescribeUserSAMLConfig(request *DescribeUserSAMLConfigRequest) (response *DescribeUserSAMLConfigResponse, err error) {
     return c.DescribeUserSAMLConfigWithContext(context.Background(), request)
 }
@@ -1720,9 +1824,7 @@ func (c *Client) DescribeUserSAMLConfig(request *DescribeUserSAMLConfigRequest) 
 // 查询用户SAML配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
 func (c *Client) DescribeUserSAMLConfigWithContext(ctx context.Context, request *DescribeUserSAMLConfigRequest) (response *DescribeUserSAMLConfigResponse, err error) {
     if request == nil {
         request = NewDescribeUserSAMLConfigRequest()
@@ -1908,6 +2010,53 @@ func (c *Client) DetachUserPolicyWithContext(ctx context.Context, request *Detac
     request.SetContext(ctx)
     
     response = NewDetachUserPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableUserSSORequest() (request *DisableUserSSORequest) {
+    request = &DisableUserSSORequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DisableUserSSO")
+    
+    
+    return
+}
+
+func NewDisableUserSSOResponse() (response *DisableUserSSOResponse) {
+    response = &DisableUserSSOResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableUserSSO
+// 禁用用户SSO
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+func (c *Client) DisableUserSSO(request *DisableUserSSORequest) (response *DisableUserSSOResponse, err error) {
+    return c.DisableUserSSOWithContext(context.Background(), request)
+}
+
+// DisableUserSSO
+// 禁用用户SSO
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+func (c *Client) DisableUserSSOWithContext(ctx context.Context, request *DisableUserSSORequest) (response *DisableUserSSOResponse, err error) {
+    if request == nil {
+        request = NewDisableUserSSORequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableUserSSO require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableUserSSOResponse()
     err = c.Send(request, response)
     return
 }
@@ -4195,6 +4344,65 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserR
     request.SetContext(ctx)
     
     response = NewUpdateUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateUserOIDCConfigRequest() (request *UpdateUserOIDCConfigRequest) {
+    request = &UpdateUserOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateUserOIDCConfig")
+    
+    
+    return
+}
+
+func NewUpdateUserOIDCConfigResponse() (response *UpdateUserOIDCConfigResponse) {
+    response = &UpdateUserOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateUserOIDCConfig
+// 修改用户OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYKEYERROR = "InvalidParameterValue.IdentityKeyError"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) UpdateUserOIDCConfig(request *UpdateUserOIDCConfigRequest) (response *UpdateUserOIDCConfigResponse, err error) {
+    return c.UpdateUserOIDCConfigWithContext(context.Background(), request)
+}
+
+// UpdateUserOIDCConfig
+// 修改用户OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYKEYERROR = "InvalidParameterValue.IdentityKeyError"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) UpdateUserOIDCConfigWithContext(ctx context.Context, request *UpdateUserOIDCConfigRequest) (response *UpdateUserOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateUserOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateUserOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateUserOIDCConfigResponse()
     err = c.Send(request, response)
     return
 }

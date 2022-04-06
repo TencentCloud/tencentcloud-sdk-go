@@ -233,6 +233,12 @@ const (
 	// 策略文档的Version字段不合法。
 	INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 
+	// OIDC签名公钥错误。
+	INVALIDPARAMETERVALUE_IDENTITYKEYERROR = "InvalidParameterValue.IdentityKeyError"
+
+	// 身份提供商URL错误。
+	INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+
 	// 身份提供商元数据文档错误。
 	INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
 

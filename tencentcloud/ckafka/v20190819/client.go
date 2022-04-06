@@ -538,6 +538,7 @@ func NewCreatePartitionResponse() (response *CreatePartitionResponse) {
 // 本接口用于增加主题中的分区
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -559,6 +560,7 @@ func (c *Client) CreatePartition(request *CreatePartitionRequest) (response *Cre
 // 本接口用于增加主题中的分区
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

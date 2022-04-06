@@ -705,10 +705,18 @@ func (r *DescribeKTVPlaylistDetailResponse) FromJsonString(s string) error {
 type DescribeKTVPlaylistsRequest struct {
 	*tchttp.BaseRequest
 
+	// 歌单类型，取值有：
+	// ·OfficialRec：官方推荐
+	// ·Normal：自定义
+	// 当该字段未填时，默认为取OfficialRec
+	Type *string `json:"Type,omitempty" name:"Type"`
+
 	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -724,6 +732,7 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {

@@ -2029,70 +2029,6 @@ func (r *DescribeNotificationConfigurationsResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribePaiInstancesRequest struct {
-	*tchttp.BaseRequest
-
-	// 依据PAI实例的实例ID进行查询。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
-
-	// 过滤条件。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 返回数量，默认为20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-}
-
-func (r *DescribePaiInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribePaiInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceIds")
-	delete(f, "Filters")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePaiInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribePaiInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的PAI实例数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// PAI实例详细信息
-		PaiInstanceSet []*PaiInstance `json:"PaiInstanceSet,omitempty" name:"PaiInstanceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *DescribePaiInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribePaiInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeScalingPoliciesRequest struct {
 	*tchttp.BaseRequest
 
@@ -3567,18 +3503,6 @@ type NotificationTarget struct {
 
 	// 主题名称，如果`TargetType`取值为`CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC`，则本字段必填。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
-}
-
-type PaiInstance struct {
-
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 实例域名
-	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
-
-	// PAI管理页面URL
-	PaiMateUrl *string `json:"PaiMateUrl,omitempty" name:"PaiMateUrl"`
 }
 
 type RemoveInstancesRequest struct {

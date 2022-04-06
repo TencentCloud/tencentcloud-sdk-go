@@ -284,6 +284,9 @@ const (
 	// 该产品类型只能创建LoRa设备。
 	UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENOTLORADEVICE = "UnauthorizedOperation.ProductCantHaveNotLoRaDevice"
 
+	// 产品禁用了该功能。
+	UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+
 	// 产品不支持密钥认证。
 	UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
 

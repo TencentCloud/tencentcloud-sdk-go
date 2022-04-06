@@ -422,6 +422,7 @@ func NewCreateProxySessionKillTaskResponse() (response *CreateProxySessionKillTa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) CreateProxySessionKillTask(request *CreateProxySessionKillTaskRequest) (response *CreateProxySessionKillTaskResponse, err error) {
     return c.CreateProxySessionKillTaskWithContext(context.Background(), request)
 }
@@ -431,6 +432,7 @@ func (c *Client) CreateProxySessionKillTask(request *CreateProxySessionKillTaskR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) CreateProxySessionKillTaskWithContext(ctx context.Context, request *CreateProxySessionKillTaskRequest) (response *CreateProxySessionKillTaskResponse, err error) {
     if request == nil {
         request = NewCreateProxySessionKillTaskRequest()

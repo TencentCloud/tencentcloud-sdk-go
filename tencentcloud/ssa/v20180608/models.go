@@ -53,7 +53,7 @@ type AlertListData struct {
 
 type AlertType struct {
 
-	// 时间戳
+	// 标准时间格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlertTime *string `json:"AlertTime,omitempty" name:"AlertTime"`
 
@@ -637,6 +637,26 @@ type ConcernInfo struct {
 	// 最近数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticsCount *int64 `json:"StatisticsCount,omitempty" name:"StatisticsCount"`
+
+	// 可疑关注点字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchData *string `json:"SearchData,omitempty" name:"SearchData"`
+
+	// 可疑关注点字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCountryIso *string `json:"IpCountryIso,omitempty" name:"IpCountryIso"`
+
+	// 可疑关注点字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpProvinceIso *string `json:"IpProvinceIso,omitempty" name:"IpProvinceIso"`
+
+	// 可疑关注点字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCity *string `json:"IpCity,omitempty" name:"IpCity"`
+
+	// 可疑关注点字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventSubType *string `json:"EventSubType,omitempty" name:"EventSubType"`
 }
 
 type DataAssetMapping struct {
@@ -1744,6 +1764,9 @@ type DescribeSocAlertListRequest struct {
 
 	// 排序参数
 	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 是否导出
+	ExportFlag *bool `json:"ExportFlag,omitempty" name:"ExportFlag"`
 }
 
 func (r *DescribeSocAlertListRequest) ToJsonString() string {
@@ -1763,6 +1786,7 @@ func (r *DescribeSocAlertListRequest) FromJsonString(s string) error {
 	delete(f, "Scenes")
 	delete(f, "Filter")
 	delete(f, "Sorter")
+	delete(f, "ExportFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocAlertListRequest has unknown keys!", "")
 	}
@@ -1955,6 +1979,10 @@ type DescribeVulDetailResponse struct {
 		// 资产归属
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SsaAssetCategory *int64 `json:"SsaAssetCategory,omitempty" name:"SsaAssetCategory"`
+
+		// 资产文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VulPath *string `json:"VulPath,omitempty" name:"VulPath"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2401,6 +2429,10 @@ type VulItem struct {
 	// 漏洞描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulRepairPlan *string `json:"VulRepairPlan,omitempty" name:"VulRepairPlan"`
+
+	// 漏洞文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulPath *string `json:"VulPath,omitempty" name:"VulPath"`
 }
 
 type VulList struct {

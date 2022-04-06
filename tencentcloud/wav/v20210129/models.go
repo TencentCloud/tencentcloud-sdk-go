@@ -278,6 +278,47 @@ type ClueInfoDetail struct {
 	TagList []*string `json:"TagList,omitempty" name:"TagList"`
 }
 
+type CorpUserInfo struct {
+
+	// 企业成员UserId
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 企业成员在SaaS名片内填写的姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 企业成员在企微原生通讯录内的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserOpenId *string `json:"UserOpenId,omitempty" name:"UserOpenId"`
+
+	// 成员所属经销商id，可为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
+
+	// 成员所属门店id，可为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+
+	// 企业成员手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 成员所属部门id列表，仅返回该应用有查看权限的部门id；成员授权模式下，固定返回根部门id，即固定为1；多个部门使用逗号分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgIds *string `json:"OrgIds,omitempty" name:"OrgIds"`
+
+	// 主部门，仅当应用对主部门有查看权限时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainDepartment *string `json:"MainDepartment,omitempty" name:"MainDepartment"`
+
+	// 是否为部门负责人，第三方应用可为空。与orgIds值一一对应，多个部门使用逗号隔开，0-否， 1-是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLeaderInDept *string `json:"IsLeaderInDept,omitempty" name:"IsLeaderInDept"`
+
+	// 激活状态: 0=已激活，1=已禁用，-1=退出企业"
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type CreateChannelCodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -533,6 +574,60 @@ func (r *CreateLeadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CrmStatisticsData struct {
+
+	// 新增线索
+	LeadCnt *uint64 `json:"LeadCnt,omitempty" name:"LeadCnt"`
+
+	// 新增建档
+	BuildCnt *uint64 `json:"BuildCnt,omitempty" name:"BuildCnt"`
+
+	// 新增到店
+	InvitedCnt *uint64 `json:"InvitedCnt,omitempty" name:"InvitedCnt"`
+
+	// 新增下订
+	OrderedCnt *uint64 `json:"OrderedCnt,omitempty" name:"OrderedCnt"`
+
+	// 新增成交
+	DeliveredCnt *uint64 `json:"DeliveredCnt,omitempty" name:"DeliveredCnt"`
+
+	// 新增战败
+	DefeatCnt *uint64 `json:"DefeatCnt,omitempty" name:"DefeatCnt"`
+
+	// 新增好友
+	NewContactCnt *uint64 `json:"NewContactCnt,omitempty" name:"NewContactCnt"`
+
+	// 统计时间, 单位：天
+	StatisticalTime *string `json:"StatisticalTime,omitempty" name:"StatisticalTime"`
+}
+
+type CustomerActionEventDetail struct {
+
+	// 事件码
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 事件类型
+	EventType *int64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 事件来源
+	EventSource *int64 `json:"EventSource,omitempty" name:"EventSource"`
+
+	// 外部联系人id
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+
+	// 销售顾问id
+	SalesId *uint64 `json:"SalesId,omitempty" name:"SalesId"`
+
+	// 素材类型
+	MaterialType *int64 `json:"MaterialType,omitempty" name:"MaterialType"`
+
+	// 素材编号id
+	MaterialId *uint64 `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 事件上报时间，单位：秒
+	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
+}
+
 type DealerInfo struct {
 
 	// 企微SaaS平台经销商id
@@ -598,6 +693,21 @@ type ExternalContactTag struct {
 	// 该成员添加此外部联系人所打企业标签的id，仅企业设置（type为1）的标签返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagId *string `json:"TagId,omitempty" name:"TagId"`
+}
+
+type ExternalUserEventInfo struct {
+
+	// 事件编码, 添加外部联系人(ADD_EXTERNAL_CUSTOMER)/成员删除外部联系人(DELETE_EXTERNAL_CUSTOMER)/外部联系人删除成员(DELETE_FOLLOW_USER)
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 外部联系人id
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+
+	// 企微SaaS的成员id
+	SalesId *string `json:"SalesId,omitempty" name:"SalesId"`
+
+	// 事件上报时间戳，单位：秒
+	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
 }
 
 type ExternalUserMappingInfo struct {
@@ -701,6 +811,19 @@ type LiveCodeDetail struct {
 
 	// 更新时间戳，单位为秒
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type MaterialInfo struct {
+
+	// 素材id
+	MaterialId *uint64 `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 素材名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaterialName *string `json:"MaterialName,omitempty" name:"MaterialName"`
+
+	// 素材状态, -1: 删除 0: 启用 1: 禁用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type MiniAppCodeInfo struct {
@@ -1083,6 +1206,146 @@ func (r *QueryClueInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryCrmStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 请求的企业成员id，为空时默认全租户
+	SalesId *string `json:"SalesId,omitempty" name:"SalesId"`
+
+	// 请求的部门id，为空时默认全租户
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+}
+
+func (r *QueryCrmStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCrmStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	delete(f, "SalesId")
+	delete(f, "OrgId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCrmStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCrmStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// CRM统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*CrmStatisticsData `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCrmStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCrmStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCustomerEventDetailStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryCustomerEventDetailStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCustomerEventDetailStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCustomerEventDetailStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCustomerEventDetailStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 外部联系人SaaS使用明细统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*CustomerActionEventDetail `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCustomerEventDetailStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCustomerEventDetailStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryDealerInfoListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1269,6 +1532,72 @@ func (r *QueryExternalContactListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryExternalUserEventListRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryExternalUserEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalUserEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryExternalUserEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryExternalUserEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 外部联系人事件信息响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*ExternalUserEventInfo `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryExternalUserEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalUserEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryExternalUserMappingInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -1369,6 +1698,68 @@ func (r *QueryLicenseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryMaterialListRequest struct {
+	*tchttp.BaseRequest
+
+	// 素材类型：0-图片，1-视频，3-文章，10-车型，11-名片
+	MaterialType *int64 `json:"MaterialType,omitempty" name:"MaterialType"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryMaterialListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMaterialListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaterialType")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMaterialListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMaterialListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 企业素材列表响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*MaterialInfo `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryMaterialListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMaterialListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryMiniAppCodeListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1424,6 +1815,130 @@ func (r *QueryMiniAppCodeListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryMiniAppCodeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryStaffEventDetailStatisticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryStaffEventDetailStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryStaffEventDetailStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryStaffEventDetailStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryStaffEventDetailStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 企业成员SaaS使用明细统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*SalesActionEventDetail `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryStaffEventDetailStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryStaffEventDetailStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryUserInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryUserInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryUserInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryUserInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+		// 企业成员信息列表响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageData []*CorpUserInfo `json:"PageData,omitempty" name:"PageData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryUserInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryUserInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1487,6 +2002,30 @@ func (r *QueryVehicleInfoListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryVehicleInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SalesActionEventDetail struct {
+
+	// 事件码
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 事件类型
+	EventType *int64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 事件来源
+	EventSource *int64 `json:"EventSource,omitempty" name:"EventSource"`
+
+	// 销售顾问id
+	SalesId *uint64 `json:"SalesId,omitempty" name:"SalesId"`
+
+	// 素材类型
+	MaterialType *int64 `json:"MaterialType,omitempty" name:"MaterialType"`
+
+	// 素材编号id
+	MaterialId *uint64 `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 事件上报时间，单位：秒
+	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
 }
 
 type TagDetailInfo struct {

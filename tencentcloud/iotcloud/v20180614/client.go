@@ -1875,6 +1875,57 @@ func (c *Client) DescribeMultiDevicesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeProductRequest() (request *DescribeProductRequest) {
+    request = &DescribeProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DescribeProduct")
+    
+    
+    return
+}
+
+func NewDescribeProductResponse() (response *DescribeProductResponse) {
+    response = &DescribeProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProduct
+// 本接口（DescribeProduct）用于查看产品详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeProduct(request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
+    return c.DescribeProductWithContext(context.Background(), request)
+}
+
+// DescribeProduct
+// 本接口（DescribeProduct）用于查看产品详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) DescribeProductWithContext(ctx context.Context, request *DescribeProductRequest) (response *DescribeProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProduct require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductResourceRequest() (request *DescribeProductResourceRequest) {
     request = &DescribeProductResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3538,6 +3589,59 @@ func (c *Client) UpdateDevicesEnableStateWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewUpdateDevicesEnableStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProductDynamicRegisterRequest() (request *UpdateProductDynamicRegisterRequest) {
+    request = &UpdateProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateProductDynamicRegister")
+    
+    
+    return
+}
+
+func NewUpdateProductDynamicRegisterResponse() (response *UpdateProductDynamicRegisterResponse) {
+    response = &UpdateProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProductDynamicRegister
+// 更新产品动态注册的配置 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateProductDynamicRegister(request *UpdateProductDynamicRegisterRequest) (response *UpdateProductDynamicRegisterResponse, err error) {
+    return c.UpdateProductDynamicRegisterWithContext(context.Background(), request)
+}
+
+// UpdateProductDynamicRegister
+// 更新产品动态注册的配置 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateProductDynamicRegisterWithContext(ctx context.Context, request *UpdateProductDynamicRegisterRequest) (response *UpdateProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewUpdateProductDynamicRegisterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProductDynamicRegister require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProductDynamicRegisterResponse()
     err = c.Send(request, response)
     return
 }

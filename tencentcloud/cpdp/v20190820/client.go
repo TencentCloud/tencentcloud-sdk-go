@@ -6610,6 +6610,7 @@ func NewQueryOrderResponse() (response *QueryOrderResponse) {
 // 根据订单号，或者用户Id，查询支付订单状态 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -6623,6 +6624,7 @@ func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderRes
 // 根据订单号，或者用户Id，查询支付订单状态 
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -6665,6 +6667,7 @@ func NewQueryOrderStatusResponse() (response *QueryOrderStatusResponse) {
 // 云支付-查询订单付款状态
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -6678,6 +6681,7 @@ func (c *Client) QueryOrderStatus(request *QueryOrderStatusRequest) (response *Q
 // 云支付-查询订单付款状态
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8814,6 +8818,7 @@ func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8833,6 +8838,7 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8881,6 +8887,7 @@ func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8900,6 +8907,7 @@ func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8948,6 +8956,7 @@ func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -8967,6 +8976,7 @@ func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"

@@ -41,6 +41,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 参数值时间跨度超出接口限制。
+	INVALIDPARAMETERVALUE_TIMESPANLIMITEXCEEDED = "InvalidParameterValue.TimeSpanLimitExceeded"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

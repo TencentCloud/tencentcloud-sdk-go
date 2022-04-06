@@ -3928,6 +3928,7 @@ func NewDescribeBaselineAnalysisDataResponse() (response *DescribeBaselineAnalys
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBaselineAnalysisData(request *DescribeBaselineAnalysisDataRequest) (response *DescribeBaselineAnalysisDataResponse, err error) {
     return c.DescribeBaselineAnalysisDataWithContext(context.Background(), request)
 }
@@ -3942,6 +3943,7 @@ func (c *Client) DescribeBaselineAnalysisData(request *DescribeBaselineAnalysisD
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBaselineAnalysisDataWithContext(ctx context.Context, request *DescribeBaselineAnalysisDataRequest) (response *DescribeBaselineAnalysisDataResponse, err error) {
     if request == nil {
         request = NewDescribeBaselineAnalysisDataRequest()

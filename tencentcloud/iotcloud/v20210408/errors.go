@@ -23,8 +23,14 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// CA证书内容错误。
+	INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 
 	// CA验证证书不匹配。
 	INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
@@ -35,11 +41,26 @@ const (
 	// 创建的设备名已存在。
 	INVALIDPARAMETERVALUE_DEVICEALREADYEXIST = "InvalidParameterValue.DeviceAlreadyExist"
 
+	// 消息Payload超出限制。
+	INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+
 	// 产品类型不支持。
 	INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 
+	// CA证书已经绑定了产品，无法操作。
+	LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+
+	// 不支持私有证书操作。
+	LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+
+	// CA证书重复。
+	LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+
 	// 设备数量超过限制。
 	LIMITEXCEEDED_DEVICEEXCEEDLIMIT = "LimitExceeded.DeviceExceedLimit"
+
+	// CA证书不存在。
+	RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 
 	// 设备不存在。
 	RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
@@ -67,6 +88,9 @@ const (
 
 	// 该产品类型只能创建LoRa设备。
 	UNAUTHORIZEDOPERATION_PRODUCTCANTHAVENOTLORADEVICE = "UnauthorizedOperation.ProductCantHaveNotLoRaDevice"
+
+	// 产品禁用了该功能。
+	UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
 
 	// 产品不支持密钥认证。
 	UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"

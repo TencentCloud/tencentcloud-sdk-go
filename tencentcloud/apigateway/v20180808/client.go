@@ -3403,6 +3403,7 @@ func NewDescribeServiceEnvironmentStrategyResponse() (response *DescribeServiceE
 // 本接口（DescribeServiceEnvironmentStrategy）用于展示服务限流策略。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceEnvironmentStrategy(request *DescribeServiceEnvironmentStrategyRequest) (response *DescribeServiceEnvironmentStrategyResponse, err error) {
     return c.DescribeServiceEnvironmentStrategyWithContext(context.Background(), request)
@@ -3412,6 +3413,7 @@ func (c *Client) DescribeServiceEnvironmentStrategy(request *DescribeServiceEnvi
 // 本接口（DescribeServiceEnvironmentStrategy）用于展示服务限流策略。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 func (c *Client) DescribeServiceEnvironmentStrategyWithContext(ctx context.Context, request *DescribeServiceEnvironmentStrategyRequest) (response *DescribeServiceEnvironmentStrategyResponse, err error) {
     if request == nil {
@@ -4742,6 +4744,7 @@ func NewModifyExclusiveInstanceResponse() (response *ModifyExclusiveInstanceResp
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest) (response *ModifyExclusiveInstanceResponse, err error) {
     return c.ModifyExclusiveInstanceWithContext(context.Background(), request)
 }
@@ -4763,6 +4766,7 @@ func (c *Client) ModifyExclusiveInstance(request *ModifyExclusiveInstanceRequest
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 func (c *Client) ModifyExclusiveInstanceWithContext(ctx context.Context, request *ModifyExclusiveInstanceRequest) (response *ModifyExclusiveInstanceResponse, err error) {
     if request == nil {
         request = NewModifyExclusiveInstanceRequest()

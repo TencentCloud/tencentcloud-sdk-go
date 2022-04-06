@@ -38,6 +38,9 @@ const (
 	// 参数值过小。
 	INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 
+	// 无法找到弹性伸缩组ID。
+	RESOURCENOTFOUND_AUTOSCALINGGROUPID = "ResourceNotFound.AutoScalingGroupId"
+
 	// 集群不存在。
 	RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 
@@ -46,6 +49,9 @@ const (
 
 	// 该伸缩组已绑定集群，请更换伸缩组。
 	UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
+
+	// 指定的集群或集群队列当前不支持绑定弹性伸缩组。
+	UNSUPPORTEDOPERATION_BINDAUTOSCALINGGROUP = "UnsupportedOperation.BindAutoScalingGroup"
 
 	// 该集群当前状态不支持该操作。
 	UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"

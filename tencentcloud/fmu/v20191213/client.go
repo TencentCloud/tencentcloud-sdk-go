@@ -554,6 +554,7 @@ func NewStyleImageResponse() (response *StyleImageResponse) {
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageResponse, err error) {
     return c.StyleImageWithContext(context.Background(), request)
@@ -578,6 +579,7 @@ func (c *Client) StyleImage(request *StyleImageRequest) (response *StyleImageRes
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImageWithContext(ctx context.Context, request *StyleImageRequest) (response *StyleImageResponse, err error) {
     if request == nil {
@@ -721,6 +723,7 @@ func NewTryLipstickPicResponse() (response *TryLipstickPicResponse) {
 //  FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETERVALUE_FACERECTINVALID = "InvalidParameterValue.FaceRectInvalid"
 //  INVALIDPARAMETERVALUE_FACERECTINVALIDFIRST = "InvalidParameterValue.FaceRectInvalidFirst"
 //  INVALIDPARAMETERVALUE_FACERECTINVALIDSECOND = "InvalidParameterValue.FaceRectInvalidSecond"
@@ -778,6 +781,7 @@ func (c *Client) TryLipstickPic(request *TryLipstickPicRequest) (response *TryLi
 //  FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETERVALUE_FACERECTINVALID = "InvalidParameterValue.FaceRectInvalid"
 //  INVALIDPARAMETERVALUE_FACERECTINVALIDFIRST = "InvalidParameterValue.FaceRectInvalidFirst"
 //  INVALIDPARAMETERVALUE_FACERECTINVALIDSECOND = "InvalidParameterValue.FaceRectInvalidSecond"

@@ -135,7 +135,9 @@ func NewCreatePrivateCAResponse() (response *CreatePrivateCAResponse) {
 // 创建私有CA证书
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
     return c.CreatePrivateCAWithContext(context.Background(), request)
 }
@@ -144,7 +146,9 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
 // 创建私有CA证书
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
     if request == nil {
         request = NewCreatePrivateCARequest()
@@ -185,6 +189,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 //  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
@@ -199,6 +204,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 //  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
 //  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
@@ -239,12 +245,8 @@ func NewDeletePrivateCAResponse() (response *DeletePrivateCAResponse) {
 // 删除私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
-//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
-//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+//  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
     return c.DeletePrivateCAWithContext(context.Background(), request)
 }
@@ -253,12 +255,8 @@ func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *Del
 // 删除私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
-//  UNAUTHORIZEDOPERATION_GATEWAYHASBINDEDDEVICES = "UnauthorizedOperation.GatewayHasBindedDevices"
-//  UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
+//  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DeletePrivateCAWithContext(ctx context.Context, request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
     if request == nil {
         request = NewDeletePrivateCARequest()
@@ -330,6 +328,65 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, request *DeletePr
     request.SetContext(ctx)
     
     response = NewDeleteProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteProductPrivateCARequest() (request *DeleteProductPrivateCARequest) {
+    request = &DeleteProductPrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteProductPrivateCA")
+    
+    
+    return
+}
+
+func NewDeleteProductPrivateCAResponse() (response *DeleteProductPrivateCAResponse) {
+    response = &DeleteProductPrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteProductPrivateCA
+// 删除产品的私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
+//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
+func (c *Client) DeleteProductPrivateCA(request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
+    return c.DeleteProductPrivateCAWithContext(context.Background(), request)
+}
+
+// DeleteProductPrivateCA
+// 删除产品的私有CA证书
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
+//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
+//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
+func (c *Client) DeleteProductPrivateCAWithContext(ctx context.Context, request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
+    if request == nil {
+        request = NewDeleteProductPrivateCARequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProductPrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProductPrivateCAResponse()
     err = c.Send(request, response)
     return
 }
@@ -459,9 +516,7 @@ func NewDescribePrivateCAResponse() (response *DescribePrivateCAResponse) {
 // 查询私有化CA信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
     return c.DescribePrivateCAWithContext(context.Background(), request)
 }
@@ -470,9 +525,7 @@ func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response 
 // 查询私有化CA信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCAWithContext(ctx context.Context, request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
     if request == nil {
         request = NewDescribePrivateCARequest()
@@ -510,9 +563,7 @@ func NewDescribePrivateCABindedProductsResponse() (response *DescribePrivateCABi
 // 查询私有CA绑定的产品列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
     return c.DescribePrivateCABindedProductsWithContext(context.Background(), request)
 }
@@ -521,9 +572,7 @@ func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABinde
 // 查询私有CA绑定的产品列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCABindedProductsWithContext(ctx context.Context, request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
     if request == nil {
         request = NewDescribePrivateCABindedProductsRequest()
@@ -561,9 +610,7 @@ func NewDescribePrivateCAsResponse() (response *DescribePrivateCAsResponse) {
 // 查询私有CA证书列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCAs(request *DescribePrivateCAsRequest) (response *DescribePrivateCAsResponse, err error) {
     return c.DescribePrivateCAsWithContext(context.Background(), request)
 }
@@ -572,9 +619,7 @@ func (c *Client) DescribePrivateCAs(request *DescribePrivateCAsRequest) (respons
 // 查询私有CA证书列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCAsWithContext(ctx context.Context, request *DescribePrivateCAsRequest) (response *DescribePrivateCAsResponse, err error) {
     if request == nil {
         request = NewDescribePrivateCAsRequest()
@@ -693,6 +738,253 @@ func (c *Client) DescribeProductCAWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewListLogRequest() (request *ListLogRequest) {
+    request = &ListLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListLog")
+    
+    
+    return
+}
+
+func NewListLogResponse() (response *ListLogResponse) {
+    response = &ListLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListLog
+// 本接口（ListLog）用于查看日志信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLog(request *ListLogRequest) (response *ListLogResponse, err error) {
+    return c.ListLogWithContext(context.Background(), request)
+}
+
+// ListLog
+// 本接口（ListLog）用于查看日志信息 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogWithContext(ctx context.Context, request *ListLogRequest) (response *ListLogResponse, err error) {
+    if request == nil {
+        request = NewListLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListLogPayloadRequest() (request *ListLogPayloadRequest) {
+    request = &ListLogPayloadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListLogPayload")
+    
+    
+    return
+}
+
+func NewListLogPayloadResponse() (response *ListLogPayloadResponse) {
+    response = &ListLogPayloadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListLogPayload
+// 获取日志内容列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogPayload(request *ListLogPayloadRequest) (response *ListLogPayloadResponse, err error) {
+    return c.ListLogPayloadWithContext(context.Background(), request)
+}
+
+// ListLogPayload
+// 获取日志内容列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListLogPayloadWithContext(ctx context.Context, request *ListLogPayloadRequest) (response *ListLogPayloadResponse, err error) {
+    if request == nil {
+        request = NewListLogPayloadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListLogPayload require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListLogPayloadResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSDKLogRequest() (request *ListSDKLogRequest) {
+    request = &ListSDKLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListSDKLog")
+    
+    
+    return
+}
+
+func NewListSDKLogResponse() (response *ListSDKLogResponse) {
+    response = &ListSDKLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListSDKLog
+// 获取设备上报的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListSDKLog(request *ListSDKLogRequest) (response *ListSDKLogResponse, err error) {
+    return c.ListSDKLogWithContext(context.Background(), request)
+}
+
+// ListSDKLog
+// 获取设备上报的日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) ListSDKLogWithContext(ctx context.Context, request *ListSDKLogRequest) (response *ListSDKLogResponse, err error) {
+    if request == nil {
+        request = NewListSDKLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSDKLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageRequest) {
+    request = &PublishBroadcastMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "PublishBroadcastMessage")
+    
+    
+    return
+}
+
+func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResponse) {
+    response = &PublishBroadcastMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PublishBroadcastMessage
+// 发布广播消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
+    return c.PublishBroadcastMessageWithContext(context.Background(), request)
+}
+
+// PublishBroadcastMessage
+// 发布广播消息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishBroadcastMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishBroadcastMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPublishBroadcastMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetProductsForbiddenStatusRequest() (request *SetProductsForbiddenStatusRequest) {
+    request = &SetProductsForbiddenStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "SetProductsForbiddenStatus")
+    
+    
+    return
+}
+
+func NewSetProductsForbiddenStatusResponse() (response *SetProductsForbiddenStatusResponse) {
+    response = &SetProductsForbiddenStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetProductsForbiddenStatus
+// 批量设置产品禁用状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) SetProductsForbiddenStatus(request *SetProductsForbiddenStatusRequest) (response *SetProductsForbiddenStatusResponse, err error) {
+    return c.SetProductsForbiddenStatusWithContext(context.Background(), request)
+}
+
+// SetProductsForbiddenStatus
+// 批量设置产品禁用状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) SetProductsForbiddenStatusWithContext(ctx context.Context, request *SetProductsForbiddenStatusRequest) (response *SetProductsForbiddenStatusResponse, err error) {
+    if request == nil {
+        request = NewSetProductsForbiddenStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetProductsForbiddenStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetProductsForbiddenStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateDeviceLogLevelRequest() (request *UpdateDeviceLogLevelRequest) {
     request = &UpdateDeviceLogLevelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -740,6 +1032,59 @@ func (c *Client) UpdateDeviceLogLevelWithContext(ctx context.Context, request *U
     request.SetContext(ctx)
     
     response = NewUpdateDeviceLogLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDevicePSKRequest() (request *UpdateDevicePSKRequest) {
+    request = &UpdateDevicePSKRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateDevicePSK")
+    
+    
+    return
+}
+
+func NewUpdateDevicePSKResponse() (response *UpdateDevicePSKResponse) {
+    response = &UpdateDevicePSKResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDevicePSK
+// 本接口（UpdateDevicePSK）用于更新设备的PSK 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
+func (c *Client) UpdateDevicePSK(request *UpdateDevicePSKRequest) (response *UpdateDevicePSKResponse, err error) {
+    return c.UpdateDevicePSKWithContext(context.Background(), request)
+}
+
+// UpdateDevicePSK
+// 本接口（UpdateDevicePSK）用于更新设备的PSK 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
+func (c *Client) UpdateDevicePSKWithContext(ctx context.Context, request *UpdateDevicePSKRequest) (response *UpdateDevicePSKResponse, err error) {
+    if request == nil {
+        request = NewUpdateDevicePSKRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDevicePSK require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDevicePSKResponse()
     err = c.Send(request, response)
     return
 }
@@ -820,11 +1165,7 @@ func NewUpdatePrivateCAResponse() (response *UpdatePrivateCAResponse) {
 // 更新私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     return c.UpdatePrivateCAWithContext(context.Background(), request)
 }
@@ -833,11 +1174,7 @@ func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *Upd
 // 更新私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
+//  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     if request == nil {
         request = NewUpdatePrivateCARequest()
@@ -850,6 +1187,106 @@ func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdatePrivateCAResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProductDynamicRegisterRequest() (request *UpdateProductDynamicRegisterRequest) {
+    request = &UpdateProductDynamicRegisterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateProductDynamicRegister")
+    
+    
+    return
+}
+
+func NewUpdateProductDynamicRegisterResponse() (response *UpdateProductDynamicRegisterResponse) {
+    response = &UpdateProductDynamicRegisterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProductDynamicRegister
+// 更新产品动态注册的配置 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateProductDynamicRegister(request *UpdateProductDynamicRegisterRequest) (response *UpdateProductDynamicRegisterResponse, err error) {
+    return c.UpdateProductDynamicRegisterWithContext(context.Background(), request)
+}
+
+// UpdateProductDynamicRegister
+// 更新产品动态注册的配置 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
+func (c *Client) UpdateProductDynamicRegisterWithContext(ctx context.Context, request *UpdateProductDynamicRegisterRequest) (response *UpdateProductDynamicRegisterResponse, err error) {
+    if request == nil {
+        request = NewUpdateProductDynamicRegisterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProductDynamicRegister require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProductDynamicRegisterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProductPrivateCARequest() (request *UpdateProductPrivateCARequest) {
+    request = &UpdateProductPrivateCARequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "UpdateProductPrivateCA")
+    
+    
+    return
+}
+
+func NewUpdateProductPrivateCAResponse() (response *UpdateProductPrivateCAResponse) {
+    response = &UpdateProductPrivateCAResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProductPrivateCA
+// 更新产品的私有CA
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+func (c *Client) UpdateProductPrivateCA(request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
+    return c.UpdateProductPrivateCAWithContext(context.Background(), request)
+}
+
+// UpdateProductPrivateCA
+// 更新产品的私有CA
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+func (c *Client) UpdateProductPrivateCAWithContext(ctx context.Context, request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
+    if request == nil {
+        request = NewUpdateProductPrivateCARequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProductPrivateCA require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProductPrivateCAResponse()
     err = c.Send(request, response)
     return
 }

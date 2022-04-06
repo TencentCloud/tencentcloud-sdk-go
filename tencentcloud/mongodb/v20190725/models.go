@@ -2121,6 +2121,68 @@ func (r *KillOpsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDBInstanceNetworkAddressRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 原IP保留时长，单位为分钟；原IP会在约定时间后释放，在释放前原IP和新IP均可访问；0表示立即回收原IP
+	OldIpExpiredTime *uint64 `json:"OldIpExpiredTime,omitempty" name:"OldIpExpiredTime"`
+
+	// 切换后IP地址所属私有网络统一ID，若为基础网络，该字段为空
+	NewUniqVpcId *string `json:"NewUniqVpcId,omitempty" name:"NewUniqVpcId"`
+
+	// 切换后IP地址所属子网统一ID，若为基础网络，该字段为空
+	NewUniqSubnetId *string `json:"NewUniqSubnetId,omitempty" name:"NewUniqSubnetId"`
+
+	// 待修改IP信息
+	NetworkAddresses []*ModifyNetworkAddress `json:"NetworkAddresses,omitempty" name:"NetworkAddresses"`
+}
+
+func (r *ModifyDBInstanceNetworkAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceNetworkAddressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OldIpExpiredTime")
+	delete(f, "NewUniqVpcId")
+	delete(f, "NewUniqSubnetId")
+	delete(f, "NetworkAddresses")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceNetworkAddressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceNetworkAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDBInstanceNetworkAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceNetworkAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyDBInstanceSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -2242,6 +2304,15 @@ func (r *ModifyDBInstanceSpecResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetworkAddress struct {
+
+	// 新IP地址。
+	NewIPAddress *string `json:"NewIPAddress,omitempty" name:"NewIPAddress"`
+
+	// 原IP地址。
+	OldIpAddress *string `json:"OldIpAddress,omitempty" name:"OldIpAddress"`
 }
 
 type OfflineIsolatedDBInstanceRequest struct {

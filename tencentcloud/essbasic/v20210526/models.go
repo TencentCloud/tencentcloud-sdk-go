@@ -300,7 +300,7 @@ type CreateSignUrlsRequest struct {
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// "APP" 类型的签署链接，可以设置此值；表示签署完成后自动回跳至源APP；
+	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后后自动回跳至调用方小程序
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
 }
 

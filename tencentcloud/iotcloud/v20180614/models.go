@@ -2289,6 +2289,32 @@ func (r *DescribeMultiDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProductRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProductResourceRequest struct {
 	*tchttp.BaseRequest
 
@@ -2405,6 +2431,38 @@ func (r *DescribeProductResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProductResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProductResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 产品ID
+		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+		// 产品名
+		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+		// 产品元数据
+		ProductMetadata *ProductMetadata `json:"ProductMetadata,omitempty" name:"ProductMetadata"`
+
+		// 产品属性
+		ProductProperties *ProductProperties `json:"ProductProperties,omitempty" name:"ProductProperties"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4689,6 +4747,69 @@ func (r *UpdateDevicesEnableStateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateDevicesEnableStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateProductDynamicRegisterRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+	RegisterType *uint64 `json:"RegisterType,omitempty" name:"RegisterType"`
+
+	// 动态注册设备上限
+	RegisterLimit *uint64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+}
+
+func (r *UpdateProductDynamicRegisterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProductDynamicRegisterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "RegisterType")
+	delete(f, "RegisterLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProductDynamicRegisterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateProductDynamicRegisterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+		RegisterType *uint64 `json:"RegisterType,omitempty" name:"RegisterType"`
+
+		// 动态注册产品密钥
+		ProductSecret *string `json:"ProductSecret,omitempty" name:"ProductSecret"`
+
+		// 动态注册设备上限
+		RegisterLimit *uint64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateProductDynamicRegisterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProductDynamicRegisterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -20,6 +20,9 @@ const (
 	// 认证失败。
 	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 
+	// 余额不足，开通失败，请充值后再开通。
+	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+
 	// 文件下载失败。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 

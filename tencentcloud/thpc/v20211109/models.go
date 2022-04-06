@@ -106,7 +106,10 @@ type CFSOption struct {
 	// 文件系统远程挂载ip及路径
 	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
 
-	// 文件系统协议类型，默认值NFS 3.0
+	// 文件系统协议类型，默认值NFS 3.0。
+	// <li>NFS 3.0。
+	// <li>NFS 4.0。
+	// <li>TURBO。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
@@ -195,7 +198,7 @@ type CreateClusterRequest struct {
 	// 指定管理节点。
 	ManagerNode *ManagerNode `json:"ManagerNode,omitempty" name:"ManagerNode"`
 
-	// 指定管理节点的数量。目前仅支持一个管理节点。
+	// 指定管理节点的数量。默认取值：1。取值范围：1～2。
 	ManagerNodeCount *int64 `json:"ManagerNodeCount,omitempty" name:"ManagerNodeCount"`
 
 	// 指定计算节点。
@@ -204,10 +207,10 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。
+	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。
@@ -229,7 +232,8 @@ type CreateClusterRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。<br><li>NIS：NIS域名字服务。
+	// 域名字服务类型。默认值：NIS
+	// <li>NIS：NIS域名字服务。
 	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 
 	// 集群显示名称。
@@ -237,6 +241,17 @@ type CreateClusterRequest struct {
 
 	// 集群存储选项
 	StorageOption *StorageOption `json:"StorageOption,omitempty" name:"StorageOption"`
+
+	// 已废弃。
+	// 指定登录节点。
+	LoginNode []*LoginNode `json:"LoginNode,omitempty" name:"LoginNode"`
+
+	// 已废弃。
+	// 指定登录节点的数量。默认取值：0。取值范围：0～10。
+	LoginNodeCount *int64 `json:"LoginNodeCount,omitempty" name:"LoginNodeCount"`
+
+	// 创建集群时同时绑定的标签对说明。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -266,6 +281,9 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "AccountType")
 	delete(f, "ClusterName")
 	delete(f, "StorageOption")
+	delete(f, "LoginNode")
+	delete(f, "LoginNodeCount")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -451,6 +469,33 @@ type InternetAccessible struct {
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
+type LoginNode struct {
+
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 节点机型。不同实例机型指定了不同的资源规格。
+	// <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+	SystemDisk []*SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
+
+	// 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+	InternetAccessible []*InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 节点显示名称。<br><li>
+	// 不指定节点显示名称则默认显示‘未命名’。
+	// 最多支持60个字符。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
 type LoginNodeOverview struct {
 
 	// 登录节点ID。
@@ -528,6 +573,15 @@ type SystemDisk struct {
 
 	// 系统盘大小，单位：GB。默认值为 50
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type VirtualPrivateCloud struct {

@@ -59,7 +59,7 @@ const (
 	// 未知错误，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	FAILEDOPERATION_PARAMETERSOTHERERROR = "FailedOperation.ParametersOtherError"
 
-	// 手机号在黑名单库中，通常是用户退订或者命中运营商黑名单导致的，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
+	// 手机号在免打扰名单库中，通常是用户退订或者命中运营商免打扰名单导致的，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
 	FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 
 	// 号码解析失败，请检查号码是否符合 E.164 标准。
@@ -185,19 +185,19 @@ const (
 	// 模板内容存在敏感词，请参考[正文模板审核标准](https://cloud.tencent.com/document/product/382/39023)。
 	INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = "InvalidParameterValue.TemplateWithDirtyWords"
 
-	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
 
-	// 业务短信国家/地区在黑名单中，可自行到控制台调整短信限制策略。
+	// 业务短信国家/地区不在国际港澳台短信发送限制设置的列表中而禁发，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = "LimitExceeded.AppCountryOrRegionInBlacklist"
 
 	// 业务短信日下发条数超过设定的上限 ，可自行到控制台调整短信频率限制策略。
 	LIMITEXCEEDED_APPDAILYLIMIT = "LimitExceeded.AppDailyLimit"
 
-	// 业务短信国际/港澳台日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信国际/港澳台日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整发送总量阈值。
 	LIMITEXCEEDED_APPGLOBALDAILYLIMIT = "LimitExceeded.AppGlobalDailyLimit"
 
-	// 业务短信中国大陆日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信中国大陆日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整发送总量阈值。
 	LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = "LimitExceeded.AppMainlandChinaDailyLimit"
 
 	// 短信日下发条数超过设定的上限 (国际/港澳台)，如需调整限制，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773)。

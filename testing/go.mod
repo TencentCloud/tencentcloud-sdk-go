@@ -30,6 +30,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha v0.0.0
@@ -55,7 +56,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.377
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.378
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -229,6 +230,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb => ../tencentcloud/bmlb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc => ../tencentcloud/bmvpc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri => ../tencentcloud/bri
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca => ../tencentcloud/bsca
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe => ../tencentcloud/btoe
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam => ../tencentcloud/cam
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha => ../tencentcloud/captcha

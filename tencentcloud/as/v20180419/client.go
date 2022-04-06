@@ -2023,69 +2023,6 @@ func (c *Client) DescribeNotificationConfigurationsWithContext(ctx context.Conte
     return
 }
 
-func NewDescribePaiInstancesRequest() (request *DescribePaiInstancesRequest) {
-    request = &DescribePaiInstancesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("as", APIVersion, "DescribePaiInstances")
-    
-    
-    return
-}
-
-func NewDescribePaiInstancesResponse() (response *DescribePaiInstancesResponse) {
-    response = &DescribePaiInstancesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribePaiInstances
-// 本接口（DescribePaiInstances）用于查询PAI实例信息。
-//
-// 
-//
-// * 可以根据实例ID、实例域名等信息来查询PAI实例的详细信息。过滤信息详细请见过滤器`Filter`。
-//
-// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的PAI实例。
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-func (c *Client) DescribePaiInstances(request *DescribePaiInstancesRequest) (response *DescribePaiInstancesResponse, err error) {
-    return c.DescribePaiInstancesWithContext(context.Background(), request)
-}
-
-// DescribePaiInstances
-// 本接口（DescribePaiInstances）用于查询PAI实例信息。
-//
-// 
-//
-// * 可以根据实例ID、实例域名等信息来查询PAI实例的详细信息。过滤信息详细请见过滤器`Filter`。
-//
-// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的PAI实例。
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
-//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-func (c *Client) DescribePaiInstancesWithContext(ctx context.Context, request *DescribePaiInstancesRequest) (response *DescribePaiInstancesResponse, err error) {
-    if request == nil {
-        request = NewDescribePaiInstancesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribePaiInstances require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribePaiInstancesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesRequest) {
     request = &DescribeScalingPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},

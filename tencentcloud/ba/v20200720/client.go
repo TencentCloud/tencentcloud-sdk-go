@@ -170,9 +170,7 @@ func NewSyncIcpOrderWebInfoResponse() (response *SyncIcpOrderWebInfoResponse) {
 // 只有指定的网站信息字段能被同步
 //
 // 可能返回的错误码:
-//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
     return c.SyncIcpOrderWebInfoWithContext(context.Background(), request)
 }
@@ -183,9 +181,7 @@ func (c *Client) SyncIcpOrderWebInfo(request *SyncIcpOrderWebInfoRequest) (respo
 // 只有指定的网站信息字段能被同步
 //
 // 可能返回的错误码:
-//  INTERNALERROR_RESOURCENOTFOUND = "InternalError.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SyncIcpOrderWebInfoWithContext(ctx context.Context, request *SyncIcpOrderWebInfoRequest) (response *SyncIcpOrderWebInfoResponse, err error) {
     if request == nil {
         request = NewSyncIcpOrderWebInfoRequest()

@@ -202,4 +202,7 @@ const (
 
 	// 存在绑定的VPC资源。
 	UNSUPPORTEDOPERATION_EXISTBOUNDVPC = "UnsupportedOperation.ExistBoundVpc"
+
+	// 接口调用超过限频。
+	UNSUPPORTEDOPERATION_FREQUENCYLIMIT = "UnsupportedOperation.FrequencyLimit"
 )

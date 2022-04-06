@@ -38,6 +38,9 @@ const (
 	// 当前实例不支持设置参数。
 	INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = "InvalidParameter.CurrentInstanceNotSupportModifyParams"
 
+	// 无效Vip信息。
+	INVALIDPARAMETER_INVALIDVIP = "InvalidParameter.InvalidVip"
+
 	// 当前子帐号无权执行该操作。
 	INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 

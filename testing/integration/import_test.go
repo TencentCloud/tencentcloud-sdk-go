@@ -47,6 +47,7 @@ import (
 	bmlbv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb/v20180625"
 	bmvpcv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc/v20180625"
 	briv20190328 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri/v20190328"
+	bscav20210811 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca/v20210811"
 	btoev20210303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210303"
 	btoev20210514 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210514"
 	camv20190116 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam/v20190116"
@@ -202,6 +203,7 @@ import (
 	temv20201221 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20201221"
 	temv20210701 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20210701"
 	thpcv20211109 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20211109"
+	thpcv20220401 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20220401"
 	tiav20180226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tia/v20180226"
 	ticv20201117 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tic/v20201117"
 	ticmv20181127 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ticm/v20181127"
@@ -585,6 +587,19 @@ func TestBriv20190328Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init bri_v20190328 client: %v", err))
+    }
+}
+
+func TestBscav20210811Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := bscav20210811.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init bsca_v20210811 client: %v", err))
     }
 }
 
@@ -2600,6 +2615,19 @@ func TestThpcv20211109Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init thpc_v20211109 client: %v", err))
+    }
+}
+
+func TestThpcv20220401Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := thpcv20220401.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init thpc_v20220401 client: %v", err))
     }
 }
 
