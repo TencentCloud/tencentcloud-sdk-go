@@ -447,6 +447,75 @@ func (c *Client) CreateConsumerWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateDataTransformRequest() (request *CreateDataTransformRequest) {
+    request = &CreateDataTransformRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "CreateDataTransform")
+    
+    
+    return
+}
+
+func NewCreateDataTransformResponse() (response *CreateDataTransformResponse) {
+    response = &CreateDataTransformResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDataTransform
+// 本接口用于创建数据加工任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateDataTransform(request *CreateDataTransformRequest) (response *CreateDataTransformResponse, err error) {
+    return c.CreateDataTransformWithContext(context.Background(), request)
+}
+
+// CreateDataTransform
+// 本接口用于创建数据加工任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateDataTransformWithContext(ctx context.Context, request *CreateDataTransformRequest) (response *CreateDataTransformResponse, err error) {
+    if request == nil {
+        request = NewCreateDataTransformRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataTransform require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataTransformResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExportRequest() (request *CreateExportRequest) {
     request = &CreateExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1263,6 +1332,73 @@ func (c *Client) DeleteConsumerWithContext(ctx context.Context, request *DeleteC
     return
 }
 
+func NewDeleteDataTransformRequest() (request *DeleteDataTransformRequest) {
+    request = &DeleteDataTransformRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteDataTransform")
+    
+    
+    return
+}
+
+func NewDeleteDataTransformResponse() (response *DeleteDataTransformResponse) {
+    response = &DeleteDataTransformResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDataTransform
+// 本接口用于删除数据加工任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteDataTransform(request *DeleteDataTransformRequest) (response *DeleteDataTransformResponse, err error) {
+    return c.DeleteDataTransformWithContext(context.Background(), request)
+}
+
+// DeleteDataTransform
+// 本接口用于删除数据加工任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteDataTransformWithContext(ctx context.Context, request *DeleteDataTransformRequest) (response *DeleteDataTransformResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataTransformRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataTransform require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataTransformResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteExportRequest() (request *DeleteExportRequest) {
     request = &DeleteExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2039,6 +2175,71 @@ func (c *Client) DescribeConsumerWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataTransformInfoRequest() (request *DescribeDataTransformInfoRequest) {
+    request = &DescribeDataTransformInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeDataTransformInfo")
+    
+    
+    return
+}
+
+func NewDescribeDataTransformInfoResponse() (response *DescribeDataTransformInfoResponse) {
+    response = &DescribeDataTransformInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataTransformInfo
+// 本接口用于获取数据加工任务列表基本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeDataTransformInfo(request *DescribeDataTransformInfoRequest) (response *DescribeDataTransformInfoResponse, err error) {
+    return c.DescribeDataTransformInfoWithContext(context.Background(), request)
+}
+
+// DescribeDataTransformInfo
+// 本接口用于获取数据加工任务列表基本信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeDataTransformInfoWithContext(ctx context.Context, request *DescribeDataTransformInfoRequest) (response *DescribeDataTransformInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataTransformInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataTransformInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataTransformInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -3348,6 +3549,77 @@ func (c *Client) ModifyConsumerWithContext(ctx context.Context, request *ModifyC
     request.SetContext(ctx)
     
     response = NewModifyConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDataTransformRequest() (request *ModifyDataTransformRequest) {
+    request = &ModifyDataTransformRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyDataTransform")
+    
+    
+    return
+}
+
+func NewModifyDataTransformResponse() (response *ModifyDataTransformResponse) {
+    response = &ModifyDataTransformResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDataTransform
+// 本接口用于修改数据加工任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyDataTransform(request *ModifyDataTransformRequest) (response *ModifyDataTransformResponse, err error) {
+    return c.ModifyDataTransformWithContext(context.Background(), request)
+}
+
+// ModifyDataTransform
+// 本接口用于修改数据加工任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) ModifyDataTransformWithContext(ctx context.Context, request *ModifyDataTransformRequest) (response *ModifyDataTransformResponse, err error) {
+    if request == nil {
+        request = NewModifyDataTransformRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataTransform require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDataTransformResponse()
     err = c.Send(request, response)
     return
 }

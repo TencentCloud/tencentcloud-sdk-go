@@ -1440,6 +1440,8 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
 //  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = "FailedOperation.SignatureIncorrectOrUnapproved"
 //  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = "FailedOperation.TemplateParamSetNotMatchApprovedTemplate"
+//  FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = "FailedOperation.TemplateUnapprovedOrNotExist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -1474,7 +1476,9 @@ func NewSendSmsResponse() (response *SendSmsResponse) {
 //  UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = "UnauthorizedOperation.SerivceSuspendDueToArrears"
 //  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 //  UNSUPPORTEDOPERATION_ = "UnsupportedOperation."
+//  UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = "UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone"
 //  UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+//  UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"
 //  UNSUPPORTEDOPERATION_UNSUPORTEDREGION = "UnsupportedOperation.UnsuportedRegion"
 func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, err error) {
     return c.SendSmsWithContext(context.Background(), request)
@@ -1498,6 +1502,8 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
 //  FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 //  FAILEDOPERATION_SIGNATUREINCORRECTORUNAPPROVED = "FailedOperation.SignatureIncorrectOrUnapproved"
 //  FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
+//  FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = "FailedOperation.TemplateParamSetNotMatchApprovedTemplate"
+//  FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = "FailedOperation.TemplateUnapprovedOrNotExist"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 //  INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 //  INTERNALERROR_RESTAPIINTERFACENOTEXIST = "InternalError.RestApiInterfaceNotExist"
@@ -1532,7 +1538,9 @@ func (c *Client) SendSms(request *SendSmsRequest) (response *SendSmsResponse, er
 //  UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = "UnauthorizedOperation.SerivceSuspendDueToArrears"
 //  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
 //  UNSUPPORTEDOPERATION_ = "UnsupportedOperation."
+//  UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = "UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone"
 //  UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+//  UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"
 //  UNSUPPORTEDOPERATION_UNSUPORTEDREGION = "UnsupportedOperation.UnsuportedRegion"
 func (c *Client) SendSmsWithContext(ctx context.Context, request *SendSmsRequest) (response *SendSmsResponse, err error) {
     if request == nil {

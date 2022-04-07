@@ -1693,6 +1693,11 @@ func (r *CreateProtocolBlockConfigResponse) FromJsonString(s string) error {
 
 type CreateSchedulingDomainRequest struct {
 	*tchttp.BaseRequest
+
+	// 代表是否混合云本地化的产品。
+	// hybrid: 宙斯盾本地化
+	// 不填写：其他
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *CreateSchedulingDomainRequest) ToJsonString() string {
@@ -1707,6 +1712,7 @@ func (r *CreateSchedulingDomainRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchedulingDomainRequest has unknown keys!", "")
 	}
@@ -2963,7 +2969,7 @@ func (r *DescribeCCLevelPolicyResponse) FromJsonString(s string) error {
 type DescribeCCPrecisionPlyListRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -2975,13 +2981,13 @@ type DescribeCCPrecisionPlyListRequest struct {
 	// 指定特定实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// ip地址，普通高防ip要传该字段
+	// IP地址，普通高防IP要传该字段
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 域名，普通高防ip要传该字段
+	// 域名，普通高防IP要传该字段
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 协议，普通高防ip要传该字段
+	// 协议，普通高防IP要传该字段
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
@@ -3039,7 +3045,7 @@ func (r *DescribeCCPrecisionPlyListResponse) FromJsonString(s string) error {
 type DescribeCCReqLimitPolicyListRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防ip）
+	// 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -3051,13 +3057,13 @@ type DescribeCCReqLimitPolicyListRequest struct {
 	// 指定实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Ip地址，普通高防ip要传该字段
+	// IP地址，普通高防IP要传该字段
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 域名，普通高防ip要传该字段
+	// 域名，普通高防IP要传该字段
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 协议，普通高防ip要传该字段
+	// 协议，普通高防IP要传该字段
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
@@ -3281,7 +3287,7 @@ func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
 type DescribeCcBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防ip）
+	// 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 指定特定实例Id
@@ -3293,16 +3299,16 @@ type DescribeCcBlackWhiteIpListRequest struct {
 	// 一页条数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// Ip地址，普通高防ip要传该字段
+	// IP地址，普通高防IP要传该字段
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 域名，普通高防ip要传该字段
+	// 域名，普通高防IP要传该字段
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 协议，普通高防ip要传该字段
+	// 协议，普通高防IP要传该字段
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 筛选ip，需要筛选黑白名单ip时传该字段
+	// 筛选IP，需要筛选黑白名单IP时传该字段
 	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
 
 	// 黑白名单筛选字段，需要筛选黑白名单列表时传该字段
@@ -3365,7 +3371,7 @@ func (r *DescribeCcBlackWhiteIpListResponse) FromJsonString(s string) error {
 type DescribeCcGeoIPBlockConfigListRequest struct {
 	*tchttp.BaseRequest
 
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -3377,13 +3383,13 @@ type DescribeCcGeoIPBlockConfigListRequest struct {
 	// 指定特定实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Ip地址，普通高防ip要传该字段
+	// IP地址，普通高防ip要传该字段
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 域名，普通高防ip要传该字段
+	// 域名，普通高防IP要传该字段
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 协议，普通高防ip要传该字段
+	// 协议，普通高防IP要传该字段
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
@@ -5057,7 +5063,7 @@ type ModifyCCLevelPolicyRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Ip地址
+	// IP地址
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 域名
@@ -5231,7 +5237,7 @@ type ModifyCCThresholdPolicyRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Ip地址
+	// IP地址
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 域名

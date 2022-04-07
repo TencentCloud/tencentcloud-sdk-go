@@ -4778,6 +4778,15 @@ type DescribeTrafficPackagesRequest struct {
 
 	// 分页查询记录个数，默认100，最大1000
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 流量包排序方式，支持以下值：
+	// expireTimeDesc：默认值，按过期时间倒序
+	// expireTimeAsc：按过期时间正序
+	// createTimeDesc：按创建时间倒序
+	// createTimeAsc：按创建时间正序
+	// status：按状态排序，正常抵扣>未生效>已用尽>已过期
+	// channel：按来源排序，主动购买>自动续订>CDN赠送
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 }
 
 func (r *DescribeTrafficPackagesRequest) ToJsonString() string {
@@ -4794,6 +4803,7 @@ func (r *DescribeTrafficPackagesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "SortBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficPackagesRequest has unknown keys!", "")
 	}
@@ -4815,6 +4825,9 @@ type DescribeTrafficPackagesResponse struct {
 
 		// 有效流量包个数
 		EnabledCount *int64 `json:"EnabledCount,omitempty" name:"EnabledCount"`
+
+		// 付费流量包个数
+		PaidCount *int64 `json:"PaidCount,omitempty" name:"PaidCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -111,10 +111,10 @@ type AlarmTarget struct {
 	// 告警对象序号；从1开始递增。
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 查询范围起始时间相对当前的历史时间，单位非分钟，取值为非正，最大值为0，最小值为-1440。
+	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
 	StartTimeOffset *int64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
-	// 查询范围终止时间相对当前的历史时间，单位非分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 日志集ID。
@@ -872,6 +872,83 @@ func (r *CreateConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDataTransformRequest struct {
+	*tchttp.BaseRequest
+
+	// 函数类型. DSL:1 SQL:2
+	FuncType *int64 `json:"FuncType,omitempty" name:"FuncType"`
+
+	// 源日志主题
+	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
+
+	// 加工任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 加工逻辑函数
+	EtlContent *string `json:"EtlContent,omitempty" name:"EtlContent"`
+
+	// 加工任务目的topic_id以及别名
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitempty" name:"DstResources"`
+
+	// 任务类型.  以SrcTopicId为数据源建立预览任务:1，以PreviewLogStatistics为数据源建立预览任务:2  真实任务:3
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务启动状态.   默认为1，正常开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
+
+	// 测试数据
+	PreviewLogStatistics []*PreviewLogStatistic `json:"PreviewLogStatistics,omitempty" name:"PreviewLogStatistics"`
+}
+
+func (r *CreateDataTransformRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTransformRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FuncType")
+	delete(f, "SrcTopicId")
+	delete(f, "Name")
+	delete(f, "EtlContent")
+	delete(f, "DstResources")
+	delete(f, "TaskType")
+	delete(f, "EnableFlag")
+	delete(f, "PreviewLogStatistics")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataTransformRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDataTransformResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDataTransformResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDataTransformResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateExportRequest struct {
 	*tchttp.BaseRequest
 
@@ -1306,6 +1383,57 @@ type CsvInfo struct {
 	NonExistingField *string `json:"NonExistingField,omitempty" name:"NonExistingField"`
 }
 
+type DataTransformResouceInfo struct {
+
+	// 目标主题id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
+type DataTransformTaskInfo struct {
+
+	// 数据加工任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据加工任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务启用状态，默认为1，正常开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
+
+	// 加工任务类型，1： DSL， 2：SQL
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 源日志主题
+	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
+
+	// 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 加工任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最近修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 最后启用时间，如果需要重建集群，修改该时间
+	LastEnableTime *string `json:"LastEnableTime,omitempty" name:"LastEnableTime"`
+
+	// 日志主题名称
+	SrcTopicName *string `json:"SrcTopicName,omitempty" name:"SrcTopicName"`
+
+	// 日志集id
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 加工任务目的topic_id以及别名
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitempty" name:"DstResources"`
+
+	// 加工逻辑函数
+	EtlContent *string `json:"EtlContent,omitempty" name:"EtlContent"`
+}
+
 type DeleteAlarmNoticeRequest struct {
 	*tchttp.BaseRequest
 
@@ -1583,6 +1711,52 @@ func (r *DeleteConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDataTransformRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据加工任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteDataTransformRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataTransformRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataTransformRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDataTransformResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDataTransformResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataTransformResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2282,6 +2456,88 @@ func (r *DescribeConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataTransformInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// <br><li> taskName
+	// 
+	// 按照【加工任务名称】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> taskId
+	// 
+	// 按照【加工任务id】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 默认值为2.   1: 获取单个任务的详细信息 2：获取任务列表
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// Type为1， 此参数必填
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeDataTransformInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataTransformInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Type")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataTransformInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataTransformInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据加工任务列表信息
+		DataTransformTaskInfos []*DataTransformTaskInfo `json:"DataTransformTaskInfos,omitempty" name:"DataTransformTaskInfos"`
+
+		// 任务总次数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDataTransformInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataTransformInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3983,6 +4239,68 @@ func (r *ModifyConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyDataTransformRequest struct {
+	*tchttp.BaseRequest
+
+	// 加工任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 加工任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 加工逻辑函数
+	EtlContent *string `json:"EtlContent,omitempty" name:"EtlContent"`
+
+	// 任务启动状态. 默认为1，正常开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
+
+	// 加工任务目的topic_id以及别名
+	DstResources []*DataTransformResouceInfo `json:"DstResources,omitempty" name:"DstResources"`
+}
+
+func (r *ModifyDataTransformRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataTransformRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "EtlContent")
+	delete(f, "EnableFlag")
+	delete(f, "DstResources")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataTransformRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataTransformResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyDataTransformResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataTransformResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyIndexRequest struct {
 	*tchttp.BaseRequest
 
@@ -4380,6 +4698,28 @@ type PartitionInfo struct {
 	// 只读分区数据停止写入时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastWriteTime *string `json:"LastWriteTime,omitempty" name:"LastWriteTime"`
+}
+
+type PreviewLogStatistic struct {
+
+	// 日志内容
+	LogContent *string `json:"LogContent,omitempty" name:"LogContent"`
+
+	// 行号
+	LineNum *int64 `json:"LineNum,omitempty" name:"LineNum"`
+
+	// 目标日志主题
+	DstTopicId *string `json:"DstTopicId,omitempty" name:"DstTopicId"`
+
+	// 失败错误码， 空字符串""表示正常
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 日志时间戳
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 目标topic-name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstTopicName *string `json:"DstTopicName,omitempty" name:"DstTopicName"`
 }
 
 type RetryShipperTaskRequest struct {

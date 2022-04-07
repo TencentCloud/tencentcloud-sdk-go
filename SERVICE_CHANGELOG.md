@@ -1,5 +1,108 @@
 # 本版本更新包含以下内容：
 
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 26 次发布
+
+发布时间：2022-04-07 06:04:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
+
+	* 新增入参：Product
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 89 次发布
+
+发布时间：2022-04-07 06:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
+
+	* 新增入参：TagValues, UniqueVpcIds, UniqSubnetIds
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 96 次发布
+
+发布时间：2022-04-07 06:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/228/39230)
+
+	* 新增入参：SortBy
+
+	* 新增出参：PaidCount
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 17 次发布
+
+发布时间：2022-04-07 06:21:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDataTransform](https://cloud.tencent.com/document/api/614/72184)
+* [DeleteDataTransform](https://cloud.tencent.com/document/api/614/72183)
+* [DescribeDataTransformInfo](https://cloud.tencent.com/document/api/614/72182)
+* [ModifyDataTransform](https://cloud.tencent.com/document/api/614/72181)
+
+新增数据结构：
+
+* [DataTransformResouceInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformResouceInfo)
+* [DataTransformTaskInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformTaskInfo)
+* [PreviewLogStatistic](https://cloud.tencent.com/document/api/614/56471#PreviewLogStatistic)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 96 次发布
+
+发布时间：2022-04-06 17:49:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：ClusterLevel, AutoUpgradeClusterLevel
+
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -1263,6 +1366,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 26 次发布
+
+发布时间：2022-04-07 06:04:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchedulingDomain](https://cloud.tencent.com/document/api/1021/57557)
+
+	* 新增入参：Product
+
 
 ### 第 25 次发布
 
@@ -9747,6 +9865,21 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 89 次发布
+
+发布时间：2022-04-07 06:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
+
+	* 新增入参：TagValues, UniqueVpcIds, UniqSubnetIds
+
+
 ### 第 88 次发布
 
 发布时间：2022-04-04 06:12:51
@@ -11581,6 +11714,23 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 96 次发布
+
+发布时间：2022-04-07 06:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/228/39230)
+
+	* 新增入参：SortBy
+
+	* 新增出参：PaidCount
+
 
 ### 第 95 次发布
 
@@ -17519,6 +17669,27 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 17 次发布
+
+发布时间：2022-04-07 06:21:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDataTransform](https://cloud.tencent.com/document/api/614/72184)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDataTransform](https://cloud.tencent.com/document/api/614/72183)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDataTransformInfo](https://cloud.tencent.com/document/api/614/72182)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDataTransform](https://cloud.tencent.com/document/api/614/72181)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DataTransformResouceInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformResouceInfo)](https://cloud.tencent.com/document/api/614/56471#[DataTransformResouceInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformResouceInfo))
+* [[DataTransformTaskInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformTaskInfo)](https://cloud.tencent.com/document/api/614/56471#[DataTransformTaskInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformTaskInfo))
+* [[PreviewLogStatistic](https://cloud.tencent.com/document/api/614/56471#PreviewLogStatistic)](https://cloud.tencent.com/document/api/614/56471#[PreviewLogStatistic](https://cloud.tencent.com/document/api/614/56471#PreviewLogStatistic))
 
 ### 第 16 次发布
 
@@ -63267,6 +63438,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 96 次发布
+
+发布时间：2022-04-06 17:49:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：ClusterLevel, AutoUpgradeClusterLevel
+
 
 ### 第 95 次发布
 

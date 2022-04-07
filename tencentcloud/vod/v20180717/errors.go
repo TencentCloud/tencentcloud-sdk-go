@@ -173,7 +173,7 @@ const (
 	// 参数值错误：裁剪时间段太长。
 	INVALIDPARAMETERVALUE_CLIPDURATION = "InvalidParameterValue.ClipDuration"
 
-	// 无效的音频/视频编编码格式。
+	// 无效的音频/视频编码格式。
 	INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 
 	// 参数值错误：ColumnCount。

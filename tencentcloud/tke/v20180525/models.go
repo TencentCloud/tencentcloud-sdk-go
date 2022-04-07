@@ -537,6 +537,14 @@ type Cluster struct {
 	// 集群是否开启第三方节点支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableExternalNode *bool `json:"EnableExternalNode,omitempty" name:"EnableExternalNode"`
+
+	// 集群等级，针对托管集群生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+	// 自动变配集群等级，针对托管集群生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 type ClusterAdvancedSettings struct {

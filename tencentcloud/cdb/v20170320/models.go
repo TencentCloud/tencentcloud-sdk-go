@@ -3956,7 +3956,7 @@ type DescribeDBInstancesRequest struct {
 	// 子网 ID。
 	SubnetIds []*uint64 `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
-	// 是否锁定标记。
+	// 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
 	CdbErrors []*int64 `json:"CdbErrors,omitempty" name:"CdbErrors"`
 
 	// 返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
@@ -3997,6 +3997,15 @@ type DescribeDBInstancesRequest struct {
 
 	// 金融围拢 ID 。
 	CageIds []*string `json:"CageIds,omitempty" name:"CageIds"`
+
+	// 标签值
+	TagValues []*string `json:"TagValues,omitempty" name:"TagValues"`
+
+	// 私有网络字符型vpcId
+	UniqueVpcIds []*string `json:"UniqueVpcIds,omitempty" name:"UniqueVpcIds"`
+
+	// 私有网络字符型subnetId
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -4039,6 +4048,9 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DeployGroupIds")
 	delete(f, "TagKeysForSearch")
 	delete(f, "CageIds")
+	delete(f, "TagValues")
+	delete(f, "UniqueVpcIds")
+	delete(f, "UniqSubnetIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}

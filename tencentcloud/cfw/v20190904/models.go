@@ -1361,13 +1361,13 @@ type DescribeAddrTemplateListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 模版总数
+		// 模板总数
 		Total *int64 `json:"Total,omitempty" name:"Total"`
 
-		// 模版列表数据
+		// 模板列表数据
 		Data []*TemplateListInfo `json:"Data,omitempty" name:"Data"`
 
-		// 模版名称列表
+		// 模板名称列表
 		NameList []*string `json:"NameList,omitempty" name:"NameList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

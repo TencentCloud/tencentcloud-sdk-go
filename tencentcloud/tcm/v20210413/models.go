@@ -684,7 +684,7 @@ type WorkloadConfig struct {
 	// 工作副本数
 	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
 
-	// 资源限制
+	// 资源配置
 	Resources *ResourceRequirements `json:"Resources,omitempty" name:"Resources"`
 
 	// HPA策略

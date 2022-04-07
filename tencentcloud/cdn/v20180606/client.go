@@ -472,6 +472,7 @@ func NewCreateScdnDomainResponse() (response *CreateScdnDomainResponse) {
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
+//  RESOURCEUNAVAILABLE_SCDNUSERSUSPEND = "ResourceUnavailable.ScdnUserSuspend"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
@@ -502,6 +503,7 @@ func (c *Client) CreateScdnDomain(request *CreateScdnDomainRequest) (response *C
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
+//  RESOURCEUNAVAILABLE_SCDNUSERSUSPEND = "ResourceUnavailable.ScdnUserSuspend"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
@@ -3368,7 +3370,7 @@ func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResp
 }
 
 // DescribeTrafficPackages
-// DescribeTrafficPackages 用于查询中国境内 CDN 流量包详情。
+// DescribeTrafficPackages 用于查询 CDN 流量包详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -3382,7 +3384,7 @@ func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest
 }
 
 // DescribeTrafficPackages
-// DescribeTrafficPackages 用于查询中国境内 CDN 流量包详情。
+// DescribeTrafficPackages 用于查询 CDN 流量包详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
