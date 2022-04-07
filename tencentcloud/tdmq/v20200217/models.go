@@ -667,6 +667,10 @@ type CmqQueue struct {
 	// 最大消息堆积大小（字节）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgBacklogSize *int64 `json:"MaxMsgBacklogSize,omitempty" name:"MaxMsgBacklogSize"`
+
+	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitempty" name:"RetentionSizeInMB"`
 }
 
 type CmqSubscription struct {
@@ -783,6 +787,10 @@ type CmqTopic struct {
 	// 命名空间名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type CmqTransactionPolicy struct {
@@ -6952,6 +6960,10 @@ type RocketMQClusterInfo struct {
 
 	// VPC接入地址
 	VpcEndPoint *string `json:"VpcEndPoint,omitempty" name:"VpcEndPoint"`
+
+	// 是否支持命名空间接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportNamespaceEndpoint *bool `json:"SupportNamespaceEndpoint,omitempty" name:"SupportNamespaceEndpoint"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -7028,6 +7040,14 @@ type RocketMQNamespace struct {
 	// 说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 公网接入点地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" name:"PublicEndpoint"`
+
+	// VPC接入点地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcEndpoint *string `json:"VpcEndpoint,omitempty" name:"VpcEndpoint"`
 }
 
 type RocketMQTopic struct {

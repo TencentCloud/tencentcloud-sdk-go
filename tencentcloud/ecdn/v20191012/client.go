@@ -241,7 +241,7 @@ func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
 //
 // 
 //
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/570/42471"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41122"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
@@ -267,7 +267,7 @@ func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *D
 //
 // 
 //
-// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/570/42471"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+// >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41122"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"

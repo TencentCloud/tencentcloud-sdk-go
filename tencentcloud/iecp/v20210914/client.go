@@ -116,6 +116,77 @@ func (c *Client) ApplyMarketComponentWithContext(ctx context.Context, request *A
     return
 }
 
+func NewBuildMessageRouteRequest() (request *BuildMessageRouteRequest) {
+    request = &BuildMessageRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "BuildMessageRoute")
+    
+    
+    return
+}
+
+func NewBuildMessageRouteResponse() (response *BuildMessageRouteResponse) {
+    response = &BuildMessageRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BuildMessageRoute
+// 建立消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BuildMessageRoute(request *BuildMessageRouteRequest) (response *BuildMessageRouteResponse, err error) {
+    return c.BuildMessageRouteWithContext(context.Background(), request)
+}
+
+// BuildMessageRoute
+// 建立消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BuildMessageRouteWithContext(ctx context.Context, request *BuildMessageRouteRequest) (response *BuildMessageRouteResponse, err error) {
+    if request == nil {
+        request = NewBuildMessageRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuildMessageRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBuildMessageRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationVisualizationRequest() (request *CreateApplicationVisualizationRequest) {
     request = &CreateApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -781,6 +852,219 @@ func (c *Client) CreateEdgeUnitCloudWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateEdgeUnitCloudResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateEdgeUnitDevicesRequest() (request *CreateEdgeUnitDevicesRequest) {
+    request = &CreateEdgeUnitDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeUnitDevices")
+    
+    
+    return
+}
+
+func NewCreateEdgeUnitDevicesResponse() (response *CreateEdgeUnitDevicesResponse) {
+    response = &CreateEdgeUnitDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEdgeUnitDevices
+// 批量绑定设备到单元
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeUnitDevices(request *CreateEdgeUnitDevicesRequest) (response *CreateEdgeUnitDevicesResponse, err error) {
+    return c.CreateEdgeUnitDevicesWithContext(context.Background(), request)
+}
+
+// CreateEdgeUnitDevices
+// 批量绑定设备到单元
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeUnitDevicesWithContext(ctx context.Context, request *CreateEdgeUnitDevicesRequest) (response *CreateEdgeUnitDevicesResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeUnitDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeUnitDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeUnitDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateIotDeviceRequest() (request *CreateIotDeviceRequest) {
+    request = &CreateIotDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "CreateIotDevice")
+    
+    
+    return
+}
+
+func NewCreateIotDeviceResponse() (response *CreateIotDeviceResponse) {
+    response = &CreateIotDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateIotDevice
+// 创建子设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIotDevice(request *CreateIotDeviceRequest) (response *CreateIotDeviceResponse, err error) {
+    return c.CreateIotDeviceWithContext(context.Background(), request)
+}
+
+// CreateIotDevice
+// 创建子设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateIotDeviceWithContext(ctx context.Context, request *CreateIotDeviceRequest) (response *CreateIotDeviceResponse, err error) {
+    if request == nil {
+        request = NewCreateIotDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIotDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMessageRouteRequest() (request *CreateMessageRouteRequest) {
+    request = &CreateMessageRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "CreateMessageRoute")
+    
+    
+    return
+}
+
+func NewCreateMessageRouteResponse() (response *CreateMessageRouteResponse) {
+    response = &CreateMessageRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMessageRoute
+// 创建消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMessageRoute(request *CreateMessageRouteRequest) (response *CreateMessageRouteResponse, err error) {
+    return c.CreateMessageRouteWithContext(context.Background(), request)
+}
+
+// CreateMessageRoute
+// 创建消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateMessageRouteWithContext(ctx context.Context, request *CreateMessageRouteRequest) (response *CreateMessageRouteResponse, err error) {
+    if request == nil {
+        request = NewCreateMessageRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMessageRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMessageRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -1665,6 +1949,77 @@ func (c *Client) DeleteEdgeUnitDeployGridItemWithContext(ctx context.Context, re
     return
 }
 
+func NewDeleteEdgeUnitDevicesRequest() (request *DeleteEdgeUnitDevicesRequest) {
+    request = &DeleteEdgeUnitDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitDevices")
+    
+    
+    return
+}
+
+func NewDeleteEdgeUnitDevicesResponse() (response *DeleteEdgeUnitDevicesResponse) {
+    response = &DeleteEdgeUnitDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEdgeUnitDevices
+// 批量解绑单元设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitDevices(request *DeleteEdgeUnitDevicesRequest) (response *DeleteEdgeUnitDevicesResponse, err error) {
+    return c.DeleteEdgeUnitDevicesWithContext(context.Background(), request)
+}
+
+// DeleteEdgeUnitDevices
+// 批量解绑单元设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEdgeUnitDevicesWithContext(ctx context.Context, request *DeleteEdgeUnitDevicesRequest) (response *DeleteEdgeUnitDevicesResponse, err error) {
+    if request == nil {
+        request = NewDeleteEdgeUnitDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEdgeUnitDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEdgeUnitDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteEdgeUnitPodRequest() (request *DeleteEdgeUnitPodRequest) {
     request = &DeleteEdgeUnitPodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1736,6 +2091,77 @@ func (c *Client) DeleteEdgeUnitPodWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteIotDeviceRequest() (request *DeleteIotDeviceRequest) {
+    request = &DeleteIotDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DeleteIotDevice")
+    
+    
+    return
+}
+
+func NewDeleteIotDeviceResponse() (response *DeleteIotDeviceResponse) {
+    response = &DeleteIotDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIotDevice
+// 删除设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIotDevice(request *DeleteIotDeviceRequest) (response *DeleteIotDeviceResponse, err error) {
+    return c.DeleteIotDeviceWithContext(context.Background(), request)
+}
+
+// DeleteIotDevice
+// 删除设备
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteIotDeviceWithContext(ctx context.Context, request *DeleteIotDeviceRequest) (response *DeleteIotDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteIotDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIotDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIotDeviceBatchRequest() (request *DeleteIotDeviceBatchRequest) {
     request = &DeleteIotDeviceBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1803,6 +2229,77 @@ func (c *Client) DeleteIotDeviceBatchWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteIotDeviceBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMessageRouteRequest() (request *DeleteMessageRouteRequest) {
+    request = &DeleteMessageRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DeleteMessageRoute")
+    
+    
+    return
+}
+
+func NewDeleteMessageRouteResponse() (response *DeleteMessageRouteResponse) {
+    response = &DeleteMessageRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteMessageRoute
+// 删除消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMessageRoute(request *DeleteMessageRouteRequest) (response *DeleteMessageRouteResponse, err error) {
+    return c.DeleteMessageRouteWithContext(context.Background(), request)
+}
+
+// DeleteMessageRoute
+// 删除消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteMessageRouteWithContext(ctx context.Context, request *DeleteMessageRouteRequest) (response *DeleteMessageRouteResponse, err error) {
+    if request == nil {
+        request = NewDeleteMessageRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMessageRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMessageRouteResponse()
     err = c.Send(request, response)
     return
 }
@@ -4743,6 +5240,219 @@ func (c *Client) DescribeEdgeUnitsCloudWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeIotDeviceRequest() (request *DescribeIotDeviceRequest) {
+    request = &DescribeIotDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeIotDevice")
+    
+    
+    return
+}
+
+func NewDescribeIotDeviceResponse() (response *DescribeIotDeviceResponse) {
+    response = &DescribeIotDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIotDevice
+// 获取设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIotDevice(request *DescribeIotDeviceRequest) (response *DescribeIotDeviceResponse, err error) {
+    return c.DescribeIotDeviceWithContext(context.Background(), request)
+}
+
+// DescribeIotDevice
+// 获取设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIotDeviceWithContext(ctx context.Context, request *DescribeIotDeviceRequest) (response *DescribeIotDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeIotDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIotDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIotDevicesRequest() (request *DescribeIotDevicesRequest) {
+    request = &DescribeIotDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeIotDevices")
+    
+    
+    return
+}
+
+func NewDescribeIotDevicesResponse() (response *DescribeIotDevicesResponse) {
+    response = &DescribeIotDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIotDevices
+// 获取设备列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIotDevices(request *DescribeIotDevicesRequest) (response *DescribeIotDevicesResponse, err error) {
+    return c.DescribeIotDevicesWithContext(context.Background(), request)
+}
+
+// DescribeIotDevices
+// 获取设备列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIotDevicesWithContext(ctx context.Context, request *DescribeIotDevicesRequest) (response *DescribeIotDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIotDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIotDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIotDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMessageRouteListRequest() (request *DescribeMessageRouteListRequest) {
+    request = &DescribeMessageRouteListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "DescribeMessageRouteList")
+    
+    
+    return
+}
+
+func NewDescribeMessageRouteListResponse() (response *DescribeMessageRouteListResponse) {
+    response = &DescribeMessageRouteListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMessageRouteList
+// 获取消息路由列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMessageRouteList(request *DescribeMessageRouteListRequest) (response *DescribeMessageRouteListResponse, err error) {
+    return c.DescribeMessageRouteListWithContext(context.Background(), request)
+}
+
+// DescribeMessageRouteList
+// 获取消息路由列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeMessageRouteListWithContext(ctx context.Context, request *DescribeMessageRouteListRequest) (response *DescribeMessageRouteListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageRouteListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageRouteList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageRouteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMonitorMetricsRequest() (request *DescribeMonitorMetricsRequest) {
     request = &DescribeMonitorMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6418,6 +7128,77 @@ func (c *Client) ModifyEdgeUnitDeployGridItemWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyIotDeviceRequest() (request *ModifyIotDeviceRequest) {
+    request = &ModifyIotDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "ModifyIotDevice")
+    
+    
+    return
+}
+
+func NewModifyIotDeviceResponse() (response *ModifyIotDeviceResponse) {
+    response = &ModifyIotDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyIotDevice
+// 修改设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIotDevice(request *ModifyIotDeviceRequest) (response *ModifyIotDeviceResponse, err error) {
+    return c.ModifyIotDeviceWithContext(context.Background(), request)
+}
+
+// ModifyIotDevice
+// 修改设备信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyIotDeviceWithContext(ctx context.Context, request *ModifyIotDeviceRequest) (response *ModifyIotDeviceResponse, err error) {
+    if request == nil {
+        request = NewModifyIotDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIotDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIotDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNodeUnitTemplateRequest() (request *ModifyNodeUnitTemplateRequest) {
     request = &ModifyNodeUnitTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6627,6 +7408,77 @@ func (c *Client) RedeployEdgeUnitApplicationWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewRedeployEdgeUnitApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetRouteOnOffRequest() (request *SetRouteOnOffRequest) {
+    request = &SetRouteOnOffRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iecp", APIVersion, "SetRouteOnOff")
+    
+    
+    return
+}
+
+func NewSetRouteOnOffResponse() (response *SetRouteOnOffResponse) {
+    response = &SetRouteOnOffResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetRouteOnOff
+// 开关消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetRouteOnOff(request *SetRouteOnOffRequest) (response *SetRouteOnOffResponse, err error) {
+    return c.SetRouteOnOffWithContext(context.Background(), request)
+}
+
+// SetRouteOnOff
+// 开关消息路由
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetRouteOnOffWithContext(ctx context.Context, request *SetRouteOnOffRequest) (response *SetRouteOnOffResponse, err error) {
+    if request == nil {
+        request = NewSetRouteOnOffRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetRouteOnOff require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetRouteOnOffResponse()
     err = c.Send(request, response)
     return
 }

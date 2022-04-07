@@ -190,6 +190,53 @@ func (r *CreateTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签列表。
+	// N取值范围：0~9
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteResourceTagRequest struct {
 	*tchttp.BaseRequest
 
@@ -287,6 +334,53 @@ func (r *DeleteTagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签列表。
+	// N取值范围：0~9
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *DeleteTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1224,6 +1318,276 @@ func (r *DetachResourcesTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FailedResource struct {
+
+	// 失败的资源六段式
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 错误码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 错误信息
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type GetResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源六段式列表。腾讯云使用资源六段式描述一个资源。
+	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+	// 如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。
+	// N取值范围：0~9
+	ResourceList []*string `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 标签键和标签值。
+	// 指定多个标签，会查询同时绑定了该多个标签的资源。
+	// N取值范围：0~5。
+	// 每个TagFilters中的TagValue最多支持10个
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+	// 每一页返回的数据最大条数，最大200。
+	// 缺省值：50。
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *GetResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceList")
+	delete(f, "TagFilters")
+	delete(f, "PaginationToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取的下一页的Token值
+		PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+		// 资源及关联的标签(键和值)列表
+		ResourceTagMappingList []*ResourceTagMapping `json:"ResourceTagMappingList,omitempty" name:"ResourceTagMappingList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+	// 每一页返回的数据最大条数，最大1000。
+	// 缺省值：50。
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *GetTagKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PaginationToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取的下一页的Token值
+		PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+		// 标签键信息。
+		TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTagKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagValuesRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签键。
+	// 返回所有标签键列表对应的标签值。
+	// 最大长度：20
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+	// 每一页返回的数据最大条数，最大1000。
+	// 缺省值：50。
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *GetTagValuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagValuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagKeys")
+	delete(f, "PaginationToken")
+	delete(f, "MaxResults")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagValuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagValuesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取的下一页的Token值
+		PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+		// 标签列表。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTagValuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagValuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagsRequest struct {
+	*tchttp.BaseRequest
+
+	// 从上一页的响应中获取的下一页的Token值。
+	// 如果是第一次请求，设置为空。
+	PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+	// 每一页返回的数据最大条数，最大1000。
+	// 缺省值：50。
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+
+	// 标签键。
+	// 返回所有标签键列表对应的标签。
+	// 最大长度：20
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+}
+
+func (r *GetTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PaginationToken")
+	delete(f, "MaxResults")
+	delete(f, "TagKeys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 获取的下一页的Token值
+		PaginationToken *string `json:"PaginationToken,omitempty" name:"PaginationToken"`
+
+		// 标签列表。
+		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyResourceTagsRequest struct {
 	*tchttp.BaseRequest
 
@@ -1378,6 +1742,16 @@ type ResourceTag struct {
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
+type ResourceTagMapping struct {
+
+	// 资源六段式。腾讯云使用资源六段式描述一个资源。
+	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 资源关联的标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type Tag struct {
 
 	// 标签键
@@ -1424,6 +1798,67 @@ type TagResource struct {
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
+type TagResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
+	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+	// N取值范围：0~9
+	ResourceList []*string `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 标签键和标签值。
+	// 如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。
+	// 同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。
+	// 如果标签不存在会为您自动创建标签。
+	// N取值范围：0~9
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *TagResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TagResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceList")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TagResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 失败资源信息。
+	// 创建并绑定标签成功时，返回的FailedResources为空。
+	// 创建并绑定标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
+		FailedResources []*FailedResource `json:"FailedResources,omitempty" name:"FailedResources"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TagResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TagResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TagWithDelete struct {
 
 	// 标签键
@@ -1434,6 +1869,64 @@ type TagWithDelete struct {
 
 	// 是否可以删除
 	CanDelete *uint64 `json:"CanDelete,omitempty" name:"CanDelete"`
+}
+
+type UnTagResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
+	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+	// N取值范围：0~9
+	ResourceList []*string `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 标签键。
+	// 取值范围：0~9
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+}
+
+func (r *UnTagResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnTagResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceList")
+	delete(f, "TagKeys")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnTagResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnTagResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 失败资源信息。
+	// 解绑标签成功时，返回的FailedResources为空。
+	// 解绑标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
+		FailedResources []*FailedResource `json:"FailedResources,omitempty" name:"FailedResources"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnTagResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnTagResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateResourceTagValueRequest struct {

@@ -604,6 +604,9 @@ type CreateInstancesRequest struct {
 
 	// 要创建的容器配置列表。
 	Containers []*DockerContainerConfiguration `json:"Containers,omitempty" name:"Containers"`
+
+	// 是否自动使用代金券。默认不使用。
+	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -628,6 +631,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ClientToken")
 	delete(f, "LoginConfiguration")
 	delete(f, "Containers")
+	delete(f, "AutoVoucher")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}

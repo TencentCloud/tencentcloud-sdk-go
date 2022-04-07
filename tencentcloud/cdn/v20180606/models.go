@@ -4688,11 +4688,15 @@ type DescribeTopDataRequest struct {
 	*tchttp.BaseRequest
 
 	// 查询起始日期：yyyy-MM-dd HH:mm:ss
-	// 当前仅支持按天粒度的数据查询，参数需为某天的起点时刻
+	// 仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
+	// 返回大于等于起始日期当天 00:00:00 点产生的数据，如 StartTime为2018-09-04 10:40:00，返回数据的起始时间为2018-09-04 00:00:00
+	// 仅支持 90 天内数据查询
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询起始日期：yyyy-MM-dd HH:mm:ss
-	// 当前仅支持按天粒度的数据查询，参数需为某天的结束时刻
+	// 查询结束日期：yyyy-MM-dd HH:mm:ss
+	// 仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
+	// 返回小于等于结束日期当天 23:59:59 产生的数据，如EndTime为2018-09-05 22:40:00，返回数据的结束时间为2018-09-05 23:59:59
+	// EndTime 需要大于等于 StartTime
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序对象，支持以下几种形式：
@@ -4713,10 +4717,12 @@ type DescribeTopDataRequest struct {
 	// 是否详细显示每个域名的的具体数值
 	Detail *bool `json:"Detail,omitempty" name:"Detail"`
 
-	// 地域，目前可不填，默认是大陆
+	// 指定服务地域查询，不填充表示查询中国境内 CDN 数据
+	// mainland：指定查询中国境内 CDN 数据
+	// overseas：指定查询中国境外 CDN 数据
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 产品名，目前仅可使用cdn
+	// 指定查询的产品数据，目前仅可使用cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 

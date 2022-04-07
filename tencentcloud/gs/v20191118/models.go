@@ -73,6 +73,11 @@ type CreateSessionRequest struct {
 
 	// 游戏相关参数
 	GameContext *string `json:"GameContext,omitempty" name:"GameContext"`
+
+	// 云端运行模式。
+	// RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+	// 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -104,6 +109,7 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	delete(f, "HostUserId")
 	delete(f, "Role")
 	delete(f, "GameContext")
+	delete(f, "RunMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSessionRequest has unknown keys!", "")
 	}

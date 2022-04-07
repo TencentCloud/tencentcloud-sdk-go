@@ -266,6 +266,77 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
     return
 }
 
+func NewCreateTagsRequest() (request *CreateTagsRequest) {
+    request = &CreateTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "CreateTags")
+    
+    
+    return
+}
+
+func NewCreateTagsResponse() (response *CreateTagsResponse) {
+    response = &CreateTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTags
+// 本接口用于创建多对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+//  RESOURCEINUSE_TAGDUPLICATE = "ResourceInUse.TagDuplicate"
+func (c *Client) CreateTags(request *CreateTagsRequest) (response *CreateTagsResponse, err error) {
+    return c.CreateTagsWithContext(context.Background(), request)
+}
+
+// CreateTags
+// 本接口用于创建多对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_TAGKEY = "LimitExceeded.TagKey"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+//  RESOURCEINUSE_TAGDUPLICATE = "ResourceInUse.TagDuplicate"
+func (c *Client) CreateTagsWithContext(ctx context.Context, request *CreateTagsRequest) (response *CreateTagsResponse, err error) {
+    if request == nil {
+        request = NewCreateTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourceTagRequest() (request *DeleteResourceTagRequest) {
     request = &DeleteResourceTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -378,6 +449,73 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
     request.SetContext(ctx)
     
     response = NewDeleteTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
+    request = &DeleteTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "DeleteTags")
+    
+    
+    return
+}
+
+func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
+    response = &DeleteTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTags
+// 本接口用于删除一对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGATTACHEDRESOURCE = "FailedOperation.TagAttachedResource"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
+func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsResponse, err error) {
+    return c.DeleteTagsWithContext(context.Background(), request)
+}
+
+// DeleteTags
+// 本接口用于删除一对标签键和标签值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGATTACHEDRESOURCE = "FailedOperation.TagAttachedResource"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = "InvalidParameterValue.TagKeyCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  RESOURCENOTFOUND_TAGNONEXIST = "ResourceNotFound.TagNonExist"
+func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsRequest) (response *DeleteTagsResponse, err error) {
+    if request == nil {
+        request = NewDeleteTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTagsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1024,6 +1162,246 @@ func (c *Client) DetachResourcesTagWithContext(ctx context.Context, request *Det
     return
 }
 
+func NewGetResourcesRequest() (request *GetResourcesRequest) {
+    request = &GetResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "GetResources")
+    
+    
+    return
+}
+
+func NewGetResourcesResponse() (response *GetResourcesResponse) {
+    response = &GetResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetResources
+// 查询绑定了标签的资源列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+func (c *Client) GetResources(request *GetResourcesRequest) (response *GetResourcesResponse, err error) {
+    return c.GetResourcesWithContext(context.Background(), request)
+}
+
+// GetResources
+// 查询绑定了标签的资源列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+func (c *Client) GetResourcesWithContext(ctx context.Context, request *GetResourcesRequest) (response *GetResourcesResponse, err error) {
+    if request == nil {
+        request = NewGetResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTagKeysRequest() (request *GetTagKeysRequest) {
+    request = &GetTagKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "GetTagKeys")
+    
+    
+    return
+}
+
+func NewGetTagKeysResponse() (response *GetTagKeysResponse) {
+    response = &GetTagKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTagKeys
+// 查询标签键列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetTagKeys(request *GetTagKeysRequest) (response *GetTagKeysResponse, err error) {
+    return c.GetTagKeysWithContext(context.Background(), request)
+}
+
+// GetTagKeys
+// 查询标签键列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetTagKeysWithContext(ctx context.Context, request *GetTagKeysRequest) (response *GetTagKeysResponse, err error) {
+    if request == nil {
+        request = NewGetTagKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTagKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTagKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTagValuesRequest() (request *GetTagValuesRequest) {
+    request = &GetTagValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "GetTagValues")
+    
+    
+    return
+}
+
+func NewGetTagValuesResponse() (response *GetTagValuesResponse) {
+    response = &GetTagValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTagValues
+// 用于查询已建立的标签列表中的标签值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetTagValues(request *GetTagValuesRequest) (response *GetTagValuesResponse, err error) {
+    return c.GetTagValuesWithContext(context.Background(), request)
+}
+
+// GetTagValues
+// 用于查询已建立的标签列表中的标签值。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetTagValuesWithContext(ctx context.Context, request *GetTagValuesRequest) (response *GetTagValuesResponse, err error) {
+    if request == nil {
+        request = NewGetTagValuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTagValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTagValuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTagsRequest() (request *GetTagsRequest) {
+    request = &GetTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "GetTags")
+    
+    
+    return
+}
+
+func NewGetTagsResponse() (response *GetTagsResponse) {
+    response = &GetTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTags
+// 用于获取已建立的标签列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetTags(request *GetTagsRequest) (response *GetTagsResponse, err error) {
+    return c.GetTagsWithContext(context.Background(), request)
+}
+
+// GetTags
+// 用于获取已建立的标签列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) GetTagsWithContext(ctx context.Context, request *GetTagsRequest) (response *GetTagsResponse, err error) {
+    if request == nil {
+        request = NewGetTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
     request = &ModifyResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1168,6 +1546,156 @@ func (c *Client) ModifyResourcesTagValueWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyResourcesTagValueResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTagResourcesRequest() (request *TagResourcesRequest) {
+    request = &TagResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "TagResources")
+    
+    
+    return
+}
+
+func NewTagResourcesResponse() (response *TagResourcesResponse) {
+    response = &TagResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TagResources
+// 为指定的多个云产品的多个云资源统一创建并绑定标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETER_UNSUPPORTEDSERVICE = "InvalidParameter.UnsupportedService"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+func (c *Client) TagResources(request *TagResourcesRequest) (response *TagResourcesResponse, err error) {
+    return c.TagResourcesWithContext(context.Background(), request)
+}
+
+// TagResources
+// 为指定的多个云产品的多个云资源统一创建并绑定标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETER_UNSUPPORTEDSERVICE = "InvalidParameter.UnsupportedService"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  INVALIDPARAMETERVALUE_TAGVALUEEMPTY = "InvalidParameterValue.TagValueEmpty"
+//  INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = "InvalidParameterValue.TagValueLengthExceeded"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+//  LIMITEXCEEDED_TAGVALUE = "LimitExceeded.TagValue"
+func (c *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest) (response *TagResourcesResponse, err error) {
+    if request == nil {
+        request = NewTagResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TagResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTagResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnTagResourcesRequest() (request *UnTagResourcesRequest) {
+    request = &UnTagResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tag", APIVersion, "UnTagResources")
+    
+    
+    return
+}
+
+func NewUnTagResourcesResponse() (response *UnTagResourcesResponse) {
+    response = &UnTagResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnTagResources
+// 指定的多个云产品的多个云资源统一解绑标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+func (c *Client) UnTagResources(request *UnTagResourcesRequest) (response *UnTagResourcesResponse, err error) {
+    return c.UnTagResourcesWithContext(context.Background(), request)
+}
+
+// UnTagResources
+// 指定的多个云产品的多个云资源统一解绑标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCETAGPROCESSING = "FailedOperation.ResourceTagProcessing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
+//  INVALIDPARAMETER_TAG = "InvalidParameter.Tag"
+//  INVALIDPARAMETERVALUE_RESOURCEDESCRIPTIONERROR = "InvalidParameterValue.ResourceDescriptionError"
+//  INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = "InvalidParameterValue.TagKeyDuplicate"
+//  INVALIDPARAMETERVALUE_TAGKEYEMPTY = "InvalidParameterValue.TagKeyEmpty"
+//  INVALIDPARAMETERVALUE_TAGKEYLENGTHEXCEEDED = "InvalidParameterValue.TagKeyLengthExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUECHARACTERILLEGAL = "InvalidParameterValue.TagValueCharacterIllegal"
+//  LIMITEXCEEDED_RESOURCENUMPERREQUEST = "LimitExceeded.ResourceNumPerRequest"
+//  LIMITEXCEEDED_TAGNUMPERREQUEST = "LimitExceeded.TagNumPerRequest"
+func (c *Client) UnTagResourcesWithContext(ctx context.Context, request *UnTagResourcesRequest) (response *UnTagResourcesResponse, err error) {
+    if request == nil {
+        request = NewUnTagResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnTagResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnTagResourcesResponse()
     err = c.Send(request, response)
     return
 }

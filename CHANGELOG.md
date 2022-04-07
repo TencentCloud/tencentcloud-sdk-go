@@ -1,3 +1,180 @@
+# Release v1.0.381
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 18 次发布
+
+发布时间：2022-04-08 06:03:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBlockByIpTimesList](https://cloud.tencent.com/document/api/1132/58282)
+
+	* 新增入参：EdgeId, LogSource
+
+
+修改数据结构：
+
+* [UnHandleEvent](https://cloud.tencent.com/document/api/1132/49071#UnHandleEvent)
+
+	* 新增成员：VpcFwCount
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 77 次发布
+
+发布时间：2022-04-08 06:05:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：DisableApiTermination
+
+
+
+
+## 云游戏解决方案(gs) 版本：2019-11-18
+
+### 第 17 次发布
+
+发布时间：2022-04-08 06:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
+
+	* 新增入参：RunMode
+
+
+
+
+## 物联网边缘计算平台(iecp) 版本：2021-09-14
+
+### 第 7 次发布
+
+发布时间：2022-04-08 06:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BuildMessageRoute](https://cloud.tencent.com/document/api/1118/72274)
+* [CreateEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72273)
+* [CreateIotDevice](https://cloud.tencent.com/document/api/1118/72272)
+* [CreateMessageRoute](https://cloud.tencent.com/document/api/1118/72271)
+* [DeleteEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72270)
+* [DeleteIotDevice](https://cloud.tencent.com/document/api/1118/72269)
+* [DeleteMessageRoute](https://cloud.tencent.com/document/api/1118/72268)
+* [DescribeIotDevice](https://cloud.tencent.com/document/api/1118/72267)
+* [DescribeIotDevices](https://cloud.tencent.com/document/api/1118/72266)
+* [DescribeMessageRouteList](https://cloud.tencent.com/document/api/1118/72265)
+* [ModifyIotDevice](https://cloud.tencent.com/document/api/1118/72264)
+* [SetRouteOnOff](https://cloud.tencent.com/document/api/1118/72263)
+
+新增数据结构：
+
+* [DeleteEdgeUnitDevicesDevice](https://cloud.tencent.com/document/api/1118/66797#DeleteEdgeUnitDevicesDevice)
+* [IotDevicesInfo](https://cloud.tencent.com/document/api/1118/66797#IotDevicesInfo)
+* [RouteInfo](https://cloud.tencent.com/document/api/1118/66797#RouteInfo)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 28 次发布
+
+发布时间：2022-04-08 06:09:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
+
+	* 新增入参：AutoVoucher
+
+
+
+
+## 标签(tag) 版本：2018-08-13
+
+### 第 10 次发布
+
+发布时间：2022-04-08 06:12:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTags](https://cloud.tencent.com/document/api/651/72282)
+* [DeleteTags](https://cloud.tencent.com/document/api/651/72281)
+* [GetResources](https://cloud.tencent.com/document/api/651/72278)
+* [GetTagKeys](https://cloud.tencent.com/document/api/651/72277)
+* [GetTagValues](https://cloud.tencent.com/document/api/651/72276)
+* [GetTags](https://cloud.tencent.com/document/api/651/72275)
+* [TagResources](https://cloud.tencent.com/document/api/651/72280)
+* [UnTagResources](https://cloud.tencent.com/document/api/651/72279)
+
+新增数据结构：
+
+* [FailedResource](https://cloud.tencent.com/document/api/651/35327#FailedResource)
+* [ResourceTagMapping](https://cloud.tencent.com/document/api/651/35327#ResourceTagMapping)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 32 次发布
+
+发布时间：2022-04-08 06:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+
+	* 新增成员：RetentionSizeInMB
+
+* [CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic)
+
+	* 新增成员：Status
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：SupportNamespaceEndpoint
+
+* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+
+	* 新增成员：PublicEndpoint, VpcEndpoint
+
+
+
+
 # Release v1.0.380
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

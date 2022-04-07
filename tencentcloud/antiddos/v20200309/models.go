@@ -3380,10 +3380,10 @@ type DescribeCcGeoIPBlockConfigListRequest struct {
 	// 一页条数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 指定特定实例Id
+	// 指定特定实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// IP地址，普通高防ip要传该字段
+	// IP地址，普通高防IP要传该字段
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// 域名，普通高防IP要传该字段

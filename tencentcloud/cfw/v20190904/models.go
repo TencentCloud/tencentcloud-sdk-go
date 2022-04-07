@@ -1488,6 +1488,12 @@ type DescribeBlockByIpTimesListRequest struct {
 
 	// 来源
 	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// vpc间防火墙开关边id
+	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
+
+	// 日志来源 move：vpc间防火墙
+	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
 }
 
 func (r *DescribeBlockByIpTimesListRequest) ToJsonString() string {
@@ -1508,6 +1514,8 @@ func (r *DescribeBlockByIpTimesListRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "Direction")
 	delete(f, "Source")
+	delete(f, "EdgeId")
+	delete(f, "LogSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockByIpTimesListRequest has unknown keys!", "")
 	}
@@ -5427,6 +5435,10 @@ type UnHandleEvent struct {
 
 	// 1 打开 0 关闭
 	BaseLineOutSwitch *uint64 `json:"BaseLineOutSwitch,omitempty" name:"BaseLineOutSwitch"`
+
+	// vpc间防火墙实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcFwCount *uint64 `json:"VpcFwCount,omitempty" name:"VpcFwCount"`
 }
 
 type UnHandleEventDetail struct {

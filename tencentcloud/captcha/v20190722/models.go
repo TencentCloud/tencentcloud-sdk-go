@@ -601,10 +601,10 @@ type DescribeCaptchaMiniResultRequest struct {
 	// 业务侧获取到的验证码使用者的外网IP
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
-	// 验证码应用APPID
+	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
 	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
-	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
 	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
@@ -875,10 +875,10 @@ type DescribeCaptchaResultRequest struct {
 	// 前端回调函数返回的随机字符串
 	Randstr *string `json:"Randstr,omitempty" name:"Randstr"`
 
-	// 验证码应用ID
+	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
 	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
-	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
 	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据

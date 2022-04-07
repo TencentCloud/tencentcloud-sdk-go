@@ -381,7 +381,7 @@ func NewDescribeCaptchaMiniResultResponse() (response *DescribeCaptchaMiniResult
 }
 
 // DescribeCaptchaMiniResult
-// 核查验证码小程序插件票据结果
+// 核查验证码票据结果(小程序插件) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -393,7 +393,7 @@ func (c *Client) DescribeCaptchaMiniResult(request *DescribeCaptchaMiniResultReq
 }
 
 // DescribeCaptchaMiniResult
-// 核查验证码小程序插件票据结果
+// 核查验证码票据结果(小程序插件) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -540,7 +540,7 @@ func NewDescribeCaptchaResultResponse() (response *DescribeCaptchaResultResponse
 }
 
 // DescribeCaptchaResult
-// 核查验证码票据结果
+// 核查验证码票据结果(Web|APP)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -552,7 +552,7 @@ func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (r
 }
 
 // DescribeCaptchaResult
-// 核查验证码票据结果
+// 核查验证码票据结果(Web|APP)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

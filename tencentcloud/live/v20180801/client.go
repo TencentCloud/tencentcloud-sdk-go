@@ -6602,6 +6602,8 @@ func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
 // DropLiveStream
 // 断开推流连接，但可以重新推流。
 //
+// 注：对已经不活跃的流，调用该断流接口时，接口返回成功。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -6625,6 +6627,8 @@ func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropL
 
 // DropLiveStream
 // 断开推流连接，但可以重新推流。
+//
+// 注：对已经不活跃的流，调用该断流接口时，接口返回成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
