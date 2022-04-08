@@ -56,15 +56,15 @@ func TestDescribeInstancesSignV1Get(t *testing.T) {
 }
 
 func TestEmptyStringGetSignV1HmacSHA1(t *testing.T) {
-    testEmptyStringGet(t, "HmacSHA1")
+	testEmptyStringGet(t, "HmacSHA1")
 }
 
 func TestEmptyStringGetSignV1HmacSHA256(t *testing.T) {
-    testEmptyStringGet(t, "HmacSHA256")
+	testEmptyStringGet(t, "HmacSHA256")
 }
 
 func TestEmptyStringGetSignV3(t *testing.T) {
-    testEmptyStringGet(t, "TC3-HMAC-SHA256")
+	testEmptyStringGet(t, "TC3-HMAC-SHA256")
 }
 
 func testEmptyStringGet(t *testing.T, method string) {

@@ -137,6 +137,9 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
+	for k, v := range request.GetHeader() {
+		httpRequest.Header.Set(k, v)
+	}
 	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
 		return err
@@ -177,6 +180,11 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
+
+	for k, v := range request.GetHeader() {
+		httpRequest.Header.Set(k, v)
+	}
+
 	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
 		return err
@@ -218,6 +226,16 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 				headers[k] = v
 			}
 			octetStreamBody = cr.GetOctetStreamBody()
+		}
+	}
+
+	for k, v := range request.GetHeader() {
+		switch k {
+		case "X-TC-Action", "X-TC-Version", "X-TC-Timestamp", "X-TC-RequestClient",
+			"X-TC-Language", "Content-Type", "X-TC-Region", "X-TC-Token":
+			log.Printf("Skip header \"%s\": can not specify built-in header", k)
+		default:
+			headers[k] = v
 		}
 	}
 
