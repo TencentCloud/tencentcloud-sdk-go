@@ -610,6 +610,55 @@ func (c *Client) DescribeLeakDetectionListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeMappingResultsRequest() (request *DescribeMappingResultsRequest) {
+    request = &DescribeMappingResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeMappingResults")
+    
+    
+    return
+}
+
+func NewDescribeMappingResultsResponse() (response *DescribeMappingResultsResponse) {
+    response = &DescribeMappingResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMappingResults
+// 获取测绘列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMappingResults(request *DescribeMappingResultsRequest) (response *DescribeMappingResultsResponse, err error) {
+    return c.DescribeMappingResultsWithContext(context.Background(), request)
+}
+
+// DescribeMappingResults
+// 获取测绘列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeMappingResultsWithContext(ctx context.Context, request *DescribeMappingResultsRequest) (response *DescribeMappingResultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMappingResultsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMappingResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMappingResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListRequest) {
     request = &DescribeSafetyEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},

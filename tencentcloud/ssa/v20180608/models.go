@@ -444,6 +444,26 @@ type AssetList struct {
 	List []*Asset `json:"List,omitempty" name:"List"`
 }
 
+type AssetQueryFilter struct {
+
+	// 查询参数
+	Filter []*QueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询连接符，1 and  ，2 or
+	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
+}
+
+type AssetTypeStatistic struct {
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// 统计计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCount *uint64 `json:"AssetCount,omitempty" name:"AssetCount"`
+}
+
 type Bucket struct {
 
 	// key
@@ -1613,6 +1633,72 @@ func (r *DescribeLeakDetectionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMappingResultsRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件，FilterKey 取值范围：AssetId，AssetIp，PrivateIp，Protocol，Service，OS，Process，Component，AssetType，Domain，Port，LastMappingTime，MappingType，Disposal，Vpc
+	Filter []*AssetQueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序条件，SortKey取值范围：CreateTime，LastMappingTime
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 页码
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页大小，默认大小20
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeMappingResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMappingResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "Sorter")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMappingResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMappingResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *Results `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeMappingResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMappingResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSafetyEventListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2061,6 +2147,81 @@ type Filter struct {
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
+type MappingResult struct {
+
+	// 资产名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetIp *string `json:"AssetIp,omitempty" name:"AssetIp"`
+
+	// 内网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 资产id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *string `json:"Service,omitempty" name:"Service"`
+
+	// 组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Component *string `json:"Component,omitempty" name:"Component"`
+
+	// 进程
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Process *string `json:"Process,omitempty" name:"Process"`
+
+	// 操作系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OS *string `json:"OS,omitempty" name:"OS"`
+
+	// 测绘时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastMappingTime *string `json:"LastMappingTime,omitempty" name:"LastMappingTime"`
+
+	// 处置建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalRecommendations *string `json:"DisposalRecommendations,omitempty" name:"DisposalRecommendations"`
+
+	// 处置建议详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalRecommendationDetails *string `json:"DisposalRecommendationDetails,omitempty" name:"DisposalRecommendationDetails"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 测绘状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MappingStatus *uint64 `json:"MappingStatus,omitempty" name:"MappingStatus"`
+
+	// 区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 安全防护状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityStatus []*SecurityStatus `json:"SecurityStatus,omitempty" name:"SecurityStatus"`
+}
+
 type QueryFilter struct {
 
 	// 查询的字段
@@ -2069,7 +2230,7 @@ type QueryFilter struct {
 	// 查询的值
 	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
 
-	// 匹配类型，枚举见pb
+	// 匹配类型，1等于；2大于；3小于；4大于等于；5小于等于；6不等于；7in；8not in；9模糊匹配
 	FilterOperatorType *int64 `json:"FilterOperatorType,omitempty" name:"FilterOperatorType"`
 }
 
@@ -2080,6 +2241,25 @@ type QuerySort struct {
 
 	// 顺序，1升序2降序
 	SortType *int64 `json:"SortType,omitempty" name:"SortType"`
+}
+
+type Results struct {
+
+	// 测绘类型统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*AssetTypeStatistic `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 测绘结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result []*MappingResult `json:"Result,omitempty" name:"Result"`
+
+	// 测绘任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
+
+	// 最大测绘任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskMaxCount *uint64 `json:"TaskMaxCount,omitempty" name:"TaskMaxCount"`
 }
 
 type SaDivulgeDataQueryPub struct {
@@ -2233,6 +2413,9 @@ func (r *SaDivulgeDataQueryPubResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SaDivulgeDataQueryPubResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityStatus struct {
 }
 
 type SocCheckItem struct {

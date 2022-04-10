@@ -3653,7 +3653,7 @@ func (r *GetCOSURLResponse) FromJsonString(s string) error {
 type GetDeviceListRequest struct {
 	*tchttp.BaseRequest
 
-	// 需要查看设备列表的产品 ID
+	// 需要查看设备列表的产品ID, -1代表ProjectId来筛选
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 分页偏移
@@ -4119,10 +4119,10 @@ type GetStudioProductListRequest struct {
 	// 产品DevStatus
 	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
 
-	// Offset
+	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit
+	// 数量限制
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -4504,17 +4504,17 @@ type LoRaGatewayItem struct {
 
 type LoRaGatewayLocation struct {
 
-	// 准确度
-	Accuracy *float64 `json:"Accuracy,omitempty" name:"Accuracy"`
-
-	// 海拔
-	Altitude *float64 `json:"Altitude,omitempty" name:"Altitude"`
-
 	// 纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
 	// 精度
 	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 准确度
+	Accuracy *float64 `json:"Accuracy,omitempty" name:"Accuracy"`
+
+	// 海拔
+	Altitude *float64 `json:"Altitude,omitempty" name:"Altitude"`
 }
 
 type ModifyFenceBindRequest struct {

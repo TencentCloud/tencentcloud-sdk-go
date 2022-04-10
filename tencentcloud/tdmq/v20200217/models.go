@@ -193,6 +193,10 @@ type AMQPQueueDetail struct {
 	// 死信交换机路由键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitempty" name:"DeadLetterRoutingKey"`
+
+	// Queue对应的Topic名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 type AMQPRouteRelation struct {

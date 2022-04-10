@@ -8031,6 +8031,11 @@ type PushUrlsCacheRequest struct {
 	// 2. 当前只支持递归解析一级索引和子索引中的ts分片，递归深度不超过3层
 	// 3. 解析获取的ts分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热
 	ParseM3U8 *bool `json:"ParseM3U8,omitempty" name:"ParseM3U8"`
+
+	// 是否关闭Range回源
+	// 注意事项：
+	// 此功能灰度发布中，敬请期待
+	DisableRange *bool `json:"DisableRange,omitempty" name:"DisableRange"`
 }
 
 func (r *PushUrlsCacheRequest) ToJsonString() string {
@@ -8050,6 +8055,7 @@ func (r *PushUrlsCacheRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "Layer")
 	delete(f, "ParseM3U8")
+	delete(f, "DisableRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushUrlsCacheRequest has unknown keys!", "")
 	}

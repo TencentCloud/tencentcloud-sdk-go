@@ -5473,7 +5473,7 @@ type ReservedInstanceTypeItem struct {
 
 type ReservedInstances struct {
 
-	// 已购买的预留实例计费ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
+	// （此字段已废弃，建议使用字段：ReservedInstanceId）已购买的预留实例计费ID。形如：ri-rtbh4han。
 	ReservedInstancesId *string `json:"ReservedInstancesId,omitempty" name:"ReservedInstancesId"`
 
 	// 预留实例计费的规格。形如：S3.MEDIUM4。
@@ -5516,6 +5516,12 @@ type ReservedInstances struct {
 	// 预留实例计费的类型。形如：S3。
 	// 返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
 	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
+
+	// 已购买的预留实例计费ID。形如：ri-rtbh4han。
+	ReservedInstanceId *string `json:"ReservedInstanceId,omitempty" name:"ReservedInstanceId"`
+
+	// 预留实例显示名称。形如：riname-01
+	ReservedInstanceName *string `json:"ReservedInstanceName,omitempty" name:"ReservedInstanceName"`
 }
 
 type ReservedInstancesOffering struct {

@@ -210,10 +210,6 @@ func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, request *Ass
         request = NewAssumeRoleWithSAMLRequest()
     }
     
-    if c.GetCredential() == nil {
-        return nil, errors.New("AssumeRoleWithSAML require credential")
-    }
-
     request.SetContext(ctx)
     
     response = NewAssumeRoleWithSAMLResponse()

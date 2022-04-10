@@ -689,6 +689,7 @@ func NewCreateLoRaGatewayResponse() (response *CreateLoRaGatewayResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALLORASERVERERROR = "InternalError.InternalLoRaServerError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  RESOURCENOTFOUND_GATEWAYDUPKEYEXIST = "ResourceNotFound.GatewayDupKeyExist"
 func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response *CreateLoRaGatewayResponse, err error) {
@@ -701,6 +702,7 @@ func (c *Client) CreateLoRaGateway(request *CreateLoRaGatewayRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALLORASERVERERROR = "InternalError.InternalLoRaServerError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  RESOURCENOTFOUND_GATEWAYDUPKEYEXIST = "ResourceNotFound.GatewayDupKeyExist"
 func (c *Client) CreateLoRaGatewayWithContext(ctx context.Context, request *CreateLoRaGatewayRequest) (response *CreateLoRaGatewayResponse, err error) {
@@ -1815,6 +1817,7 @@ func NewDescribeBatchProductionResponse() (response *DescribeBatchProductionResp
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeBatchProduction(request *DescribeBatchProductionRequest) (response *DescribeBatchProductionResponse, err error) {
     return c.DescribeBatchProductionWithContext(context.Background(), request)
 }
@@ -1831,6 +1834,7 @@ func (c *Client) DescribeBatchProduction(request *DescribeBatchProductionRequest
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeBatchProductionWithContext(ctx context.Context, request *DescribeBatchProductionRequest) (response *DescribeBatchProductionResponse, err error) {
     if request == nil {
         request = NewDescribeBatchProductionRequest()
@@ -2066,6 +2070,7 @@ func NewDescribeDeviceDataResponse() (response *DescribeDeviceDataResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
     return c.DescribeDeviceDataWithContext(context.Background(), request)
 }
@@ -2085,6 +2090,7 @@ func (c *Client) DescribeDeviceData(request *DescribeDeviceDataRequest) (respons
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeDeviceDataWithContext(ctx context.Context, request *DescribeDeviceDataRequest) (response *DescribeDeviceDataResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceDataRequest()
@@ -2132,6 +2138,7 @@ func NewDescribeDeviceDataHistoryResponse() (response *DescribeDeviceDataHistory
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
     return c.DescribeDeviceDataHistoryWithContext(context.Background(), request)
 }
@@ -2150,6 +2157,7 @@ func (c *Client) DescribeDeviceDataHistory(request *DescribeDeviceDataHistoryReq
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, request *DescribeDeviceDataHistoryRequest) (response *DescribeDeviceDataHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceDataHistoryRequest()
@@ -2907,6 +2915,7 @@ func NewDescribeStudioProductResponse() (response *DescribeStudioProductResponse
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (response *DescribeStudioProductResponse, err error) {
     return c.DescribeStudioProductWithContext(context.Background(), request)
 }
@@ -2919,6 +2928,7 @@ func (c *Client) DescribeStudioProduct(request *DescribeStudioProductRequest) (r
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeStudioProductWithContext(ctx context.Context, request *DescribeStudioProductRequest) (response *DescribeStudioProductResponse, err error) {
     if request == nil {
         request = NewDescribeStudioProductRequest()

@@ -6991,6 +6991,64 @@ func (r *DescribeInovcationIndicatorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页个数，默认为20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 机器列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *InstanceEnrichedInfoPage `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInvocationMetricDataCurveRequest struct {
 	*tchttp.BaseRequest
 
@@ -10414,6 +10472,15 @@ type FileConfigRelease struct {
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
+type Filter struct {
+
+	// 过滤条件名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤条件匹配值，几个条件间是或关系
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
 type GatewayApiGroupVo struct {
 
 	// 分组ID
@@ -11138,6 +11205,88 @@ type InstanceAdvancedSettings struct {
 	// dockerd --graph 指定值, 默认为 /var/lib/docker
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerGraphPath *string `json:"DockerGraphPath,omitempty" name:"DockerGraphPath"`
+}
+
+type InstanceEnrichedInfo struct {
+
+	// 机器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 机器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 机器内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
+
+	// 机器外网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// 机器所在VPC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 机器运行状态 Pending Running Stopped Rebooting Starting Stopping Abnormal Unknown
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 机器可用状态（表示机器上的Agent在线）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceAvailableStatus *string `json:"InstanceAvailableStatus,omitempty" name:"InstanceAvailableStatus"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 应用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 机器所在部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
+type InstanceEnrichedInfoPage struct {
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*InstanceEnrichedInfo `json:"Content,omitempty" name:"Content"`
 }
 
 type InvocationIndicator struct {

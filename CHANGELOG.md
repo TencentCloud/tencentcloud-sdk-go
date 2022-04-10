@@ -1,3 +1,144 @@
+# Release v1.0.382
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 97 次发布
+
+发布时间：2022-04-11 06:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：DisableRange
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 18 次发布
+
+发布时间：2022-04-11 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 78 次发布
+
+发布时间：2022-04-11 06:09:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ReservedInstances](https://cloud.tencent.com/document/api/213/15753#ReservedInstances)
+
+	* 新增成员：ReservedInstanceId, ReservedInstanceName
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 42 次发布
+
+发布时间：2022-04-11 06:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
+
+	* <font color="#dd0000">**修改成员**：</font>Accuracy, Altitude
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 8 次发布
+
+发布时间：2022-04-11 06:16:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)
+
+新增数据结构：
+
+* [AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)
+* [AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)
+* [MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)
+* [Results](https://cloud.tencent.com/document/api/664/51406#Results)
+* [SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 33 次发布
+
+发布时间：2022-04-11 06:18:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AMQPQueueDetail](https://cloud.tencent.com/document/api/1179/46089#AMQPQueueDetail)
+
+	* 新增成员：TopicName
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 71 次发布
+
+发布时间：2022-04-11 06:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/649/72342)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/649/36099#Filter)
+* [InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)
+* [InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)
+
+
+
 # Release v1.0.381
 
 ## 云防火墙(cfw) 版本：2019-09-04

@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 18 次发布
+### 第 97 次发布
 
-发布时间：2022-04-08 06:03:52
+发布时间：2022-04-11 06:08:14
 
 本次发布包含了以下内容：
 
@@ -12,143 +12,35 @@
 
 修改接口：
 
-* [DescribeBlockByIpTimesList](https://cloud.tencent.com/document/api/1132/58282)
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
 
-	* 新增入参：EdgeId, LogSource
+	* 新增入参：DisableRange
 
 
-修改数据结构：
 
-* [UnHandleEvent](https://cloud.tencent.com/document/api/1132/49071#UnHandleEvent)
 
-	* 新增成员：VpcFwCount
+## 日志服务(cls) 版本：2020-10-16
 
+### 第 18 次发布
+
+发布时间：2022-04-11 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
 
 
 
 ## 云服务器(cvm) 版本：2017-03-12
 
-### 第 77 次发布
+### 第 78 次发布
 
-发布时间：2022-04-08 06:05:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：DisableApiTermination
-
-
-
-
-## 云游戏解决方案(gs) 版本：2019-11-18
-
-### 第 17 次发布
-
-发布时间：2022-04-08 06:07:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
-
-	* 新增入参：RunMode
-
-
-
-
-## 物联网边缘计算平台(iecp) 版本：2021-09-14
-
-### 第 7 次发布
-
-发布时间：2022-04-08 06:08:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [BuildMessageRoute](https://cloud.tencent.com/document/api/1118/72274)
-* [CreateEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72273)
-* [CreateIotDevice](https://cloud.tencent.com/document/api/1118/72272)
-* [CreateMessageRoute](https://cloud.tencent.com/document/api/1118/72271)
-* [DeleteEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72270)
-* [DeleteIotDevice](https://cloud.tencent.com/document/api/1118/72269)
-* [DeleteMessageRoute](https://cloud.tencent.com/document/api/1118/72268)
-* [DescribeIotDevice](https://cloud.tencent.com/document/api/1118/72267)
-* [DescribeIotDevices](https://cloud.tencent.com/document/api/1118/72266)
-* [DescribeMessageRouteList](https://cloud.tencent.com/document/api/1118/72265)
-* [ModifyIotDevice](https://cloud.tencent.com/document/api/1118/72264)
-* [SetRouteOnOff](https://cloud.tencent.com/document/api/1118/72263)
-
-新增数据结构：
-
-* [DeleteEdgeUnitDevicesDevice](https://cloud.tencent.com/document/api/1118/66797#DeleteEdgeUnitDevicesDevice)
-* [IotDevicesInfo](https://cloud.tencent.com/document/api/1118/66797#IotDevicesInfo)
-* [RouteInfo](https://cloud.tencent.com/document/api/1118/66797#RouteInfo)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 28 次发布
-
-发布时间：2022-04-08 06:09:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
-
-	* 新增入参：AutoVoucher
-
-
-
-
-## 标签(tag) 版本：2018-08-13
-
-### 第 10 次发布
-
-发布时间：2022-04-08 06:12:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateTags](https://cloud.tencent.com/document/api/651/72282)
-* [DeleteTags](https://cloud.tencent.com/document/api/651/72281)
-* [GetResources](https://cloud.tencent.com/document/api/651/72278)
-* [GetTagKeys](https://cloud.tencent.com/document/api/651/72277)
-* [GetTagValues](https://cloud.tencent.com/document/api/651/72276)
-* [GetTags](https://cloud.tencent.com/document/api/651/72275)
-* [TagResources](https://cloud.tencent.com/document/api/651/72280)
-* [UnTagResources](https://cloud.tencent.com/document/api/651/72279)
-
-新增数据结构：
-
-* [FailedResource](https://cloud.tencent.com/document/api/651/35327#FailedResource)
-* [ResourceTagMapping](https://cloud.tencent.com/document/api/651/35327#ResourceTagMapping)
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 32 次发布
-
-发布时间：2022-04-08 06:13:51
+发布时间：2022-04-11 06:09:58
 
 本次发布包含了以下内容：
 
@@ -156,22 +48,94 @@
 
 修改数据结构：
 
-* [CmqQueue](https://cloud.tencent.com/document/api/1179/46089#CmqQueue)
+* [ReservedInstances](https://cloud.tencent.com/document/api/213/15753#ReservedInstances)
 
-	* 新增成员：RetentionSizeInMB
+	* 新增成员：ReservedInstanceId, ReservedInstanceName
 
-* [CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic)
 
-	* 新增成员：Status
 
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
 
-	* 新增成员：SupportNamespaceEndpoint
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+### 第 42 次发布
 
-	* 新增成员：PublicEndpoint, VpcEndpoint
+发布时间：2022-04-11 06:13:21
 
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
+
+	* <font color="#dd0000">**修改成员**：</font>Accuracy, Altitude
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 8 次发布
+
+发布时间：2022-04-11 06:16:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)
+
+新增数据结构：
+
+* [AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)
+* [AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)
+* [MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)
+* [Results](https://cloud.tencent.com/document/api/664/51406#Results)
+* [SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 33 次发布
+
+发布时间：2022-04-11 06:18:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AMQPQueueDetail](https://cloud.tencent.com/document/api/1179/46089#AMQPQueueDetail)
+
+	* 新增成员：TopicName
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 71 次发布
+
+发布时间：2022-04-11 06:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/649/72342)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/649/36099#Filter)
+* [InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)
+* [InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)
 
 
 
@@ -11787,6 +11751,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 97 次发布
+
+发布时间：2022-04-11 06:08:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：DisableRange
+
+
 ### 第 96 次发布
 
 发布时间：2022-04-07 06:15:45
@@ -17764,6 +17743,19 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 18 次发布
+
+发布时间：2022-04-11 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 17 次发布
 
 发布时间：2022-04-07 06:21:48
@@ -21454,6 +21446,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 78 次发布
+
+发布时间：2022-04-11 06:09:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ReservedInstances](https://cloud.tencent.com/document/api/213/15753#ReservedInstances)
+
+	* 新增成员：ReservedInstanceId, ReservedInstanceName
+
 
 ### 第 77 次发布
 
@@ -36694,24 +36701,24 @@
 
 新增接口：
 
-* [[BuildMessageRoute](https://cloud.tencent.com/document/api/1118/72274)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72273)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateIotDevice](https://cloud.tencent.com/document/api/1118/72272)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMessageRoute](https://cloud.tencent.com/document/api/1118/72271)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72270)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteIotDevice](https://cloud.tencent.com/document/api/1118/72269)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMessageRoute](https://cloud.tencent.com/document/api/1118/72268)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIotDevice](https://cloud.tencent.com/document/api/1118/72267)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIotDevices](https://cloud.tencent.com/document/api/1118/72266)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMessageRouteList](https://cloud.tencent.com/document/api/1118/72265)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIotDevice](https://cloud.tencent.com/document/api/1118/72264)](https://cloud.tencent.com/document/api/#/#)
-* [[SetRouteOnOff](https://cloud.tencent.com/document/api/1118/72263)](https://cloud.tencent.com/document/api/#/#)
+* [BuildMessageRoute](https://cloud.tencent.com/document/api/1118/72274)
+* [CreateEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72273)
+* [CreateIotDevice](https://cloud.tencent.com/document/api/1118/72272)
+* [CreateMessageRoute](https://cloud.tencent.com/document/api/1118/72271)
+* [DeleteEdgeUnitDevices](https://cloud.tencent.com/document/api/1118/72270)
+* [DeleteIotDevice](https://cloud.tencent.com/document/api/1118/72269)
+* [DeleteMessageRoute](https://cloud.tencent.com/document/api/1118/72268)
+* [DescribeIotDevice](https://cloud.tencent.com/document/api/1118/72267)
+* [DescribeIotDevices](https://cloud.tencent.com/document/api/1118/72266)
+* [DescribeMessageRouteList](https://cloud.tencent.com/document/api/1118/72265)
+* [ModifyIotDevice](https://cloud.tencent.com/document/api/1118/72264)
+* [SetRouteOnOff](https://cloud.tencent.com/document/api/1118/72263)
 
 新增数据结构：
 
-* [[DeleteEdgeUnitDevicesDevice](https://cloud.tencent.com/document/api/1118/66797#DeleteEdgeUnitDevicesDevice)](https://cloud.tencent.com/document/api/1118/66797#[DeleteEdgeUnitDevicesDevice](https://cloud.tencent.com/document/api/1118/66797#DeleteEdgeUnitDevicesDevice))
-* [[IotDevicesInfo](https://cloud.tencent.com/document/api/1118/66797#IotDevicesInfo)](https://cloud.tencent.com/document/api/1118/66797#[IotDevicesInfo](https://cloud.tencent.com/document/api/1118/66797#IotDevicesInfo))
-* [[RouteInfo](https://cloud.tencent.com/document/api/1118/66797#RouteInfo)](https://cloud.tencent.com/document/api/1118/66797#[RouteInfo](https://cloud.tencent.com/document/api/1118/66797#RouteInfo))
+* [DeleteEdgeUnitDevicesDevice](https://cloud.tencent.com/document/api/1118/66797#DeleteEdgeUnitDevicesDevice)
+* [IotDevicesInfo](https://cloud.tencent.com/document/api/1118/66797#IotDevicesInfo)
+* [RouteInfo](https://cloud.tencent.com/document/api/1118/66797#RouteInfo)
 
 ### 第 6 次发布
 
@@ -38151,6 +38158,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 42 次发布
+
+发布时间：2022-04-11 06:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
+
+	* <font color="#dd0000">**修改成员**：</font>Accuracy, Altitude
+
 
 ### 第 41 次发布
 
@@ -54526,6 +54548,26 @@
 
 ## 安全运营中心(ssa) 版本：2018-06-08
 
+### 第 8 次发布
+
+发布时间：2022-04-11 06:16:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)](https://cloud.tencent.com/document/api/664/51406#[AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter))
+* [[AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)](https://cloud.tencent.com/document/api/664/51406#[AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic))
+* [[MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)](https://cloud.tencent.com/document/api/664/51406#[MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult))
+* [[Results](https://cloud.tencent.com/document/api/664/51406#Results)](https://cloud.tencent.com/document/api/664/51406#[Results](https://cloud.tencent.com/document/api/664/51406#Results))
+* [[SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)](https://cloud.tencent.com/document/api/664/51406#[SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus))
+
 ### 第 7 次发布
 
 发布时间：2022-04-01 06:13:54
@@ -55523,19 +55565,19 @@
 
 新增接口：
 
-* [[CreateTags](https://cloud.tencent.com/document/api/651/72282)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTags](https://cloud.tencent.com/document/api/651/72281)](https://cloud.tencent.com/document/api/#/#)
-* [[GetResources](https://cloud.tencent.com/document/api/651/72278)](https://cloud.tencent.com/document/api/#/#)
-* [[GetTagKeys](https://cloud.tencent.com/document/api/651/72277)](https://cloud.tencent.com/document/api/#/#)
-* [[GetTagValues](https://cloud.tencent.com/document/api/651/72276)](https://cloud.tencent.com/document/api/#/#)
-* [[GetTags](https://cloud.tencent.com/document/api/651/72275)](https://cloud.tencent.com/document/api/#/#)
-* [[TagResources](https://cloud.tencent.com/document/api/651/72280)](https://cloud.tencent.com/document/api/#/#)
-* [[UnTagResources](https://cloud.tencent.com/document/api/651/72279)](https://cloud.tencent.com/document/api/#/#)
+* [CreateTags](https://cloud.tencent.com/document/api/651/72282)
+* [DeleteTags](https://cloud.tencent.com/document/api/651/72281)
+* [GetResources](https://cloud.tencent.com/document/api/651/72278)
+* [GetTagKeys](https://cloud.tencent.com/document/api/651/72277)
+* [GetTagValues](https://cloud.tencent.com/document/api/651/72276)
+* [GetTags](https://cloud.tencent.com/document/api/651/72275)
+* [TagResources](https://cloud.tencent.com/document/api/651/72280)
+* [UnTagResources](https://cloud.tencent.com/document/api/651/72279)
 
 新增数据结构：
 
-* [[FailedResource](https://cloud.tencent.com/document/api/651/35327#FailedResource)](https://cloud.tencent.com/document/api/651/35327#[FailedResource](https://cloud.tencent.com/document/api/651/35327#FailedResource))
-* [[ResourceTagMapping](https://cloud.tencent.com/document/api/651/35327#ResourceTagMapping)](https://cloud.tencent.com/document/api/651/35327#[ResourceTagMapping](https://cloud.tencent.com/document/api/651/35327#ResourceTagMapping))
+* [FailedResource](https://cloud.tencent.com/document/api/651/35327#FailedResource)
+* [ResourceTagMapping](https://cloud.tencent.com/document/api/651/35327#ResourceTagMapping)
 
 ### 第 9 次发布
 
@@ -60472,6 +60514,21 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 33 次发布
+
+发布时间：2022-04-11 06:18:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AMQPQueueDetail](https://cloud.tencent.com/document/api/1179/46089#AMQPQueueDetail)
+
+	* 新增成员：TopicName
+
 
 ### 第 32 次发布
 
@@ -66626,6 +66683,24 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 71 次发布
+
+发布时间：2022-04-11 06:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Filter](https://cloud.tencent.com/document/api/649/36099#Filter)](https://cloud.tencent.com/document/api/649/36099#[Filter](https://cloud.tencent.com/document/api/649/36099#Filter))
+* [[InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)](https://cloud.tencent.com/document/api/649/36099#[InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo))
+* [[InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)](https://cloud.tencent.com/document/api/649/36099#[InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage))
 
 ### 第 70 次发布
 

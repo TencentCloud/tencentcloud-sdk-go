@@ -241,6 +241,52 @@ type Ckafka struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
+type CloseKafkaConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// CLS对应的topic标识
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+}
+
+func (r *CloseKafkaConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseKafkaConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseKafkaConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloseKafkaConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloseKafkaConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseKafkaConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Column struct {
 
 	// 列的名字
@@ -4676,6 +4722,55 @@ type NoticeReceiver struct {
 
 	// 位序
 	Index *int64 `json:"Index,omitempty" name:"Index"`
+}
+
+type OpenKafkaConsumerRequest struct {
+	*tchttp.BaseRequest
+
+	// CLS控制台创建的TopicId
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+}
+
+func (r *OpenKafkaConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenKafkaConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenKafkaConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 待消费TopicId
+		TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *OpenKafkaConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenKafkaConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PartitionInfo struct {
