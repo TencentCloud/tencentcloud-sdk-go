@@ -110,6 +110,7 @@ func NewGetUsagePlanUsageAmountResponse() (response *GetUsagePlanUsageAmountResp
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest) (response *GetUsagePlanUsageAmountResponse, err error) {
     return c.GetUsagePlanUsageAmountWithContext(context.Background(), request)
 }
@@ -121,6 +122,7 @@ func (c *Client) GetUsagePlanUsageAmount(request *GetUsagePlanUsageAmountRequest
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) GetUsagePlanUsageAmountWithContext(ctx context.Context, request *GetUsagePlanUsageAmountRequest) (response *GetUsagePlanUsageAmountResponse, err error) {
     if request == nil {
         request = NewGetUsagePlanUsageAmountRequest()

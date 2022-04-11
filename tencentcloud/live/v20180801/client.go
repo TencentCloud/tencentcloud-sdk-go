@@ -3970,6 +3970,7 @@ func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
 // 根据域名状态、类型等信息查询用户的域名信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -3983,6 +3984,7 @@ func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (respo
 // 根据域名状态、类型等信息查询用户的域名信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

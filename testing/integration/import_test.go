@@ -120,6 +120,7 @@ import (
 	iaiv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20180301"
 	iaiv20200303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20200303"
 	icv20190307 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic/v20190307"
+	icrv20211014 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/icr/v20211014"
 	iev20200304 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie/v20200304"
 	iecpv20210914 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp/v20210914"
 	iirv20200417 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir/v20200417"
@@ -1536,6 +1537,19 @@ func TestIcv20190307Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init ic_v20190307 client: %v", err))
+    }
+}
+
+func TestIcrv20211014Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := icrv20211014.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init icr_v20211014 client: %v", err))
     }
 }
 

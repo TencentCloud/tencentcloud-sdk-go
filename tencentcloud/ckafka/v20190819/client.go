@@ -66,6 +66,7 @@ func NewAuthorizeTokenResponse() (response *AuthorizeTokenResponse) {
 // 给实例授权token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -78,6 +79,7 @@ func (c *Client) AuthorizeToken(request *AuthorizeTokenRequest) (response *Autho
 // 给实例授权token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1502,6 +1504,7 @@ func NewDescribeACLResponse() (response *DescribeACLResponse) {
 // 枚举ACL
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -1523,6 +1526,7 @@ func (c *Client) DescribeACL(request *DescribeACLRequest) (response *DescribeACL
 // 枚举ACL
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

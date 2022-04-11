@@ -1079,6 +1079,12 @@ type CreateIndexRequest struct {
 
 	// 是否生效，默认为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
+
+	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
 func (r *CreateIndexRequest) ToJsonString() string {
@@ -1096,6 +1102,8 @@ func (r *CreateIndexRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "Rule")
 	delete(f, "Status")
+	delete(f, "IncludeInternalFields")
+	delete(f, "MetadataFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIndexRequest has unknown keys!", "")
 	}
@@ -2689,6 +2697,14 @@ type DescribeIndexResponse struct {
 
 		// 索引修改时间，初始值为索引创建时间。
 		ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+		// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
+
+		// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4358,6 +4374,12 @@ type ModifyIndexRequest struct {
 
 	// 索引规则
 	Rule *RuleInfo `json:"Rule,omitempty" name:"Rule"`
+
+	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
+
+	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
 func (r *ModifyIndexRequest) ToJsonString() string {
@@ -4375,6 +4397,8 @@ func (r *ModifyIndexRequest) FromJsonString(s string) error {
 	delete(f, "TopicId")
 	delete(f, "Status")
 	delete(f, "Rule")
+	delete(f, "IncludeInternalFields")
+	delete(f, "MetadataFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIndexRequest has unknown keys!", "")
 	}

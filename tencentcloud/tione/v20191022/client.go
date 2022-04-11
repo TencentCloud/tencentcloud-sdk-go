@@ -645,6 +645,7 @@ func NewDescribeCodeRepositoryResponse() (response *DescribeCodeRepositoryRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) (response *DescribeCodeRepositoryResponse, err error) {
     return c.DescribeCodeRepositoryWithContext(context.Background(), request)
@@ -660,6 +661,7 @@ func (c *Client) DescribeCodeRepository(request *DescribeCodeRepositoryRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_BILLNOTACTIVATED = "ResourceUnavailable.BillNotActivated"
 func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, request *DescribeCodeRepositoryRequest) (response *DescribeCodeRepositoryResponse, err error) {
     if request == nil {

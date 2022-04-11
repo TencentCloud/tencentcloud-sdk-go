@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 97 次发布
+### 第 19 次发布
 
-发布时间：2022-04-11 06:08:14
+发布时间：2022-04-12 06:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：SpeakerId
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 19 次发布
+
+发布时间：2022-04-12 06:09:41
 
 本次发布包含了以下内容：
 
@@ -12,18 +31,26 @@
 
 修改接口：
 
-* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+* [CreateIndex](https://cloud.tencent.com/document/api/614/56445)
 
-	* 新增入参：DisableRange
+	* 新增入参：IncludeInternalFields, MetadataFlag
+
+* [DescribeIndex](https://cloud.tencent.com/document/api/614/56443)
+
+	* 新增出参：IncludeInternalFields, MetadataFlag
+
+* [ModifyIndex](https://cloud.tencent.com/document/api/614/56442)
+
+	* 新增入参：IncludeInternalFields, MetadataFlag
 
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## 对话机器人(icr) 版本：2021-10-14
 
-### 第 18 次发布
+### 第 1 次发布
 
-发布时间：2022-04-11 06:09:13
+发布时间：2022-04-11 21:23:35
 
 本次发布包含了以下内容：
 
@@ -31,111 +58,94 @@
 
 新增接口：
 
-* [CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)
-* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+* [GetIndustryV1HomeMembers](https://cloud.tencent.com/document/api/1268/72392)
 
+新增数据结构：
 
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 78 次发布
-
-发布时间：2022-04-11 06:09:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ReservedInstances](https://cloud.tencent.com/document/api/213/15753#ReservedInstances)
-
-	* 新增成员：ReservedInstanceId, ReservedInstanceName
-
+* [GetIndustryV1HomeMembersReqPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersReqPayload)
+* [GetIndustryV1HomeMembersRespData](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespData)
+* [GetIndustryV1HomeMembersRespFeature](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespFeature)
+* [GetIndustryV1HomeMembersRespIndustry](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespIndustry)
+* [GetIndustryV1HomeMembersRespPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespPayload)
+* [GetIndustryV1HomeMembersRespProduct](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespProduct)
+* [GetIndustryV1HomeMembersRespType](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespType)
+* [ReqMetadata](https://cloud.tencent.com/document/api/1268/72393#ReqMetadata)
+* [ReqMetadataLBS](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataLBS)
+* [ReqMetadataVagrant](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataVagrant)
+* [RspMetadata](https://cloud.tencent.com/document/api/1268/72393#RspMetadata)
 
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-### 第 42 次发布
+### 第 43 次发布
 
-发布时间：2022-04-11 06:13:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LoRaGatewayLocation](https://cloud.tencent.com/document/api/1081/34988#LoRaGatewayLocation)
-
-	* <font color="#dd0000">**修改成员**：</font>Accuracy, Altitude
-
-
-
-
-## 安全运营中心(ssa) 版本：2018-06-08
-
-### 第 8 次发布
-
-发布时间：2022-04-11 06:16:51
+发布时间：2022-04-12 06:15:29
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)
+* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
 
-新增数据结构：
-
-* [AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)
-* [AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)
-* [MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)
-* [Results](https://cloud.tencent.com/document/api/664/51406#Results)
-* [SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)
+	* 新增出参：GatewayName
 
 
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
 
-### 第 33 次发布
+## 容器安全服务(tcss) 版本：2020-11-01
 
-发布时间：2022-04-11 06:18:16
+### 第 14 次发布
+
+发布时间：2022-04-12 06:21:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [AMQPQueueDetail](https://cloud.tencent.com/document/api/1179/46089#AMQPQueueDetail)
+* [DescribeProVersionInfo](https://cloud.tencent.com/document/api/1285/65467)
 
-	* 新增成员：TopicName
+	* 新增出参：BuyStatus, IsPurchased
 
 
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 71 次发布
+### 第 72 次发布
 
-发布时间：2022-04-11 06:19:17
+发布时间：2022-04-12 06:23:46
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeInstances](https://cloud.tencent.com/document/api/649/72342)
+* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
 
-新增数据结构：
+	* 新增成员：KubeInjectEnable
 
-* [Filter](https://cloud.tencent.com/document/api/649/36099#Filter)
-* [InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)
-* [InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：KubeInjectEnable
+
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+
+	* 新增成员：ApplicationNameReal
+
+* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
+
+	* 新增成员：KubeInjectEnable
+
+* [ServiceStatisticsResult](https://cloud.tencent.com/document/api/649/36099#ServiceStatisticsResult)
+
+	* 新增成员：Apdex, Qps, InstanceOnlineCount, InstanceTotalCount, Status, ErrorRateLevel, AvgTimeConsumingLevel, ApdexLevel
+
 
 
 
@@ -4066,6 +4076,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 19 次发布
+
+发布时间：2022-04-12 06:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：SpeakerId
+
 
 ### 第 18 次发布
 
@@ -17743,6 +17768,29 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 19 次发布
+
+发布时间：2022-04-12 06:09:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateIndex](https://cloud.tencent.com/document/api/614/56445)
+
+	* 新增入参：IncludeInternalFields, MetadataFlag
+
+* [DescribeIndex](https://cloud.tencent.com/document/api/614/56443)
+
+	* 新增出参：IncludeInternalFields, MetadataFlag
+
+* [ModifyIndex](https://cloud.tencent.com/document/api/614/56442)
+
+	* 新增入参：IncludeInternalFields, MetadataFlag
+
+
 ### 第 18 次发布
 
 发布时间：2022-04-11 06:09:13
@@ -17753,8 +17801,8 @@
 
 新增接口：
 
-* [[CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)](https://cloud.tencent.com/document/api/#/#)
+* [CloseKafkaConsumer](https://cloud.tencent.com/document/api/614/72340)
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
 
 ### 第 17 次发布
 
@@ -36396,6 +36444,37 @@
 
 
 
+## 对话机器人(icr) 版本：2021-10-14
+
+### 第 1 次发布
+
+发布时间：2022-04-11 21:23:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetIndustryV1HomeMembers](https://cloud.tencent.com/document/api/1268/72392)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[GetIndustryV1HomeMembersReqPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersReqPayload)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersReqPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersReqPayload))
+* [[GetIndustryV1HomeMembersRespData](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespData)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespData](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespData))
+* [[GetIndustryV1HomeMembersRespFeature](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespFeature)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespFeature](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespFeature))
+* [[GetIndustryV1HomeMembersRespIndustry](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespIndustry)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespIndustry](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespIndustry))
+* [[GetIndustryV1HomeMembersRespPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespPayload)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespPayload))
+* [[GetIndustryV1HomeMembersRespProduct](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespProduct)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespProduct](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespProduct))
+* [[GetIndustryV1HomeMembersRespType](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespType)](https://cloud.tencent.com/document/api/1268/72393#[GetIndustryV1HomeMembersRespType](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespType))
+* [[ReqMetadata](https://cloud.tencent.com/document/api/1268/72393#ReqMetadata)](https://cloud.tencent.com/document/api/1268/72393#[ReqMetadata](https://cloud.tencent.com/document/api/1268/72393#ReqMetadata))
+* [[ReqMetadataLBS](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataLBS)](https://cloud.tencent.com/document/api/1268/72393#[ReqMetadataLBS](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataLBS))
+* [[ReqMetadataVagrant](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataVagrant)](https://cloud.tencent.com/document/api/1268/72393#[ReqMetadataVagrant](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataVagrant))
+* [[RspMetadata](https://cloud.tencent.com/document/api/1268/72393#RspMetadata)](https://cloud.tencent.com/document/api/1268/72393#[RspMetadata](https://cloud.tencent.com/document/api/1268/72393#RspMetadata))
+
+
+
+
 ## 智能编辑(ie) 版本：2020-03-04
 
 ### 第 11 次发布
@@ -38158,6 +38237,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 43 次发布
+
+发布时间：2022-04-12 06:15:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
+
+	* 新增出参：GatewayName
+
 
 ### 第 42 次发布
 
@@ -54558,15 +54652,15 @@
 
 新增接口：
 
-* [[DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMappingResults](https://cloud.tencent.com/document/api/664/72341)
 
 新增数据结构：
 
-* [[AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)](https://cloud.tencent.com/document/api/664/51406#[AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter))
-* [[AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)](https://cloud.tencent.com/document/api/664/51406#[AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic))
-* [[MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)](https://cloud.tencent.com/document/api/664/51406#[MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult))
-* [[Results](https://cloud.tencent.com/document/api/664/51406#Results)](https://cloud.tencent.com/document/api/664/51406#[Results](https://cloud.tencent.com/document/api/664/51406#Results))
-* [[SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)](https://cloud.tencent.com/document/api/664/51406#[SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus))
+* [AssetQueryFilter](https://cloud.tencent.com/document/api/664/51406#AssetQueryFilter)
+* [AssetTypeStatistic](https://cloud.tencent.com/document/api/664/51406#AssetTypeStatistic)
+* [MappingResult](https://cloud.tencent.com/document/api/664/51406#MappingResult)
+* [Results](https://cloud.tencent.com/document/api/664/51406#Results)
+* [SecurityStatus](https://cloud.tencent.com/document/api/664/51406#SecurityStatus)
 
 ### 第 7 次发布
 
@@ -59793,6 +59887,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 14 次发布
+
+发布时间：2022-04-12 06:21:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProVersionInfo](https://cloud.tencent.com/document/api/1285/65467)
+
+	* 新增出参：BuyStatus, IsPurchased
+
 
 ### 第 13 次发布
 
@@ -66684,6 +66793,37 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 72 次发布
+
+发布时间：2022-04-12 06:23:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
+
+	* 新增成员：KubeInjectEnable
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：KubeInjectEnable
+
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+
+	* 新增成员：ApplicationNameReal
+
+* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
+
+	* 新增成员：KubeInjectEnable
+
+* [ServiceStatisticsResult](https://cloud.tencent.com/document/api/649/36099#ServiceStatisticsResult)
+
+	* 新增成员：Apdex, Qps, InstanceOnlineCount, InstanceTotalCount, Status, ErrorRateLevel, AvgTimeConsumingLevel, ApdexLevel
+
+
 ### 第 71 次发布
 
 发布时间：2022-04-11 06:19:17
@@ -66694,13 +66834,13 @@
 
 新增接口：
 
-* [[DescribeInstances](https://cloud.tencent.com/document/api/649/72342)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstances](https://cloud.tencent.com/document/api/649/72342)
 
 新增数据结构：
 
-* [[Filter](https://cloud.tencent.com/document/api/649/36099#Filter)](https://cloud.tencent.com/document/api/649/36099#[Filter](https://cloud.tencent.com/document/api/649/36099#Filter))
-* [[InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)](https://cloud.tencent.com/document/api/649/36099#[InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo))
-* [[InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)](https://cloud.tencent.com/document/api/649/36099#[InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage))
+* [Filter](https://cloud.tencent.com/document/api/649/36099#Filter)
+* [InstanceEnrichedInfo](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfo)
+* [InstanceEnrichedInfoPage](https://cloud.tencent.com/document/api/649/36099#InstanceEnrichedInfoPage)
 
 ### 第 70 次发布
 

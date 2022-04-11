@@ -5047,6 +5047,7 @@ func NewModifyProxiesAttributeResponse() (response *ModifyProxiesAttributeRespon
 // 本接口（ModifyProxiesAttribute）用于修改实例的属性（目前只支持修改通道的名称）。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
 //  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
@@ -5068,6 +5069,7 @@ func (c *Client) ModifyProxiesAttribute(request *ModifyProxiesAttributeRequest) 
 // 本接口（ModifyProxiesAttribute）用于修改实例的属性（目前只支持修改通道的名称）。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
 //  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
@@ -5189,6 +5191,7 @@ func NewModifyProxyConfigurationResponse() (response *ModifyProxyConfigurationRe
 // 本接口（ModifyProxyConfiguration）用于修改通道的配置。根据当前业务的容量需求，扩容或缩容相关通道的配置。仅支持Scalarable为1的通道,Scalarable可通过接口DescribeProxies获取。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
 //  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
@@ -5211,6 +5214,7 @@ func (c *Client) ModifyProxyConfiguration(request *ModifyProxyConfigurationReque
 // 本接口（ModifyProxyConfiguration）用于修改通道的配置。根据当前业务的容量需求，扩容或缩容相关通道的配置。仅支持Scalarable为1的通道,Scalarable可通过接口DescribeProxies获取。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTBALANCEINSUFFICIENT = "FailedOperation.AccountBalanceInsufficient"
 //  FAILEDOPERATION_DUPLICATEDREQUEST = "FailedOperation.DuplicatedRequest"
@@ -5798,6 +5802,7 @@ func NewOpenSecurityPolicyResponse() (response *OpenSecurityPolicyResponse) {
 // 开启安全策略
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
 //  FAILEDOPERATION_PROXYSECURITYALREADYOPEN = "FailedOperation.ProxySecurityAlreadyOpen"
@@ -5818,6 +5823,7 @@ func (c *Client) OpenSecurityPolicy(request *OpenSecurityPolicyRequest) (respons
 // 开启安全策略
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACTIONISDOING = "FailedOperation.ActionIsDoing"
 //  FAILEDOPERATION_PROXYSECURITYALREADYOPEN = "FailedOperation.ProxySecurityAlreadyOpen"

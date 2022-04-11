@@ -540,7 +540,7 @@ func NewDescribeCaptchaResultResponse() (response *DescribeCaptchaResultResponse
 }
 
 // DescribeCaptchaResult
-// 核查验证码票据结果(Web|APP)
+// 核查验证码票据结果(Web及APP)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -552,7 +552,7 @@ func (c *Client) DescribeCaptchaResult(request *DescribeCaptchaResultRequest) (r
 }
 
 // DescribeCaptchaResult
-// 核查验证码票据结果(Web|APP)
+// 核查验证码票据结果(Web及APP)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

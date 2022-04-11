@@ -342,6 +342,7 @@ func NewCopySnapshotCrossRegionsResponse() (response *CopySnapshotCrossRegionsRe
 //
 // 可能返回的错误码:
 //  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
@@ -364,6 +365,7 @@ func (c *Client) CopySnapshotCrossRegions(request *CopySnapshotCrossRegionsReque
 //
 // 可能返回的错误码:
 //  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"

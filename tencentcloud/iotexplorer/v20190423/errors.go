@@ -230,6 +230,9 @@ const (
 	// 规则数量超过限制。
 	INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
 
+	// 二进制数据格式只可利用 * 将数据进行转发。
+	INVALIDPARAMETERVALUE_SELECTKEYFROMBINARYPAYLOAD = "InvalidParameterValue.SelectKeyFromBinaryPayload"
+
 	// 开始时间晚于结束时间。
 	INVALIDPARAMETERVALUE_STARTTIMELATERENDTIME = "InvalidParameterValue.StartTimeLaterEndTime"
 

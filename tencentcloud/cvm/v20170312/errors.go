@@ -737,6 +737,9 @@ const (
 	// 不支持指定的磁盘
 	UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
 
+	// 不支持已经设置了释放时间的实例，请在实例详情页撤销实例定时销毁后再试。
+	UNSUPPORTEDOPERATION_INVALIDINSTANCENOTSUPPORTEDPROTECTEDINSTANCE = "UnsupportedOperation.InvalidInstanceNotSupportedProtectedInstance"
+
 	// 当前操作只支持国际版用户。
 	UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = "UnsupportedOperation.InvalidPermissionNonInternationalAccount"
 

@@ -397,6 +397,7 @@ func NewDeleteComputeEnvResponse() (response *DeleteComputeEnvResponse) {
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVOPERATION = "UnsupportedOperation.ComputeEnvOperation"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 func (c *Client) DeleteComputeEnv(request *DeleteComputeEnvRequest) (response *DeleteComputeEnvResponse, err error) {
@@ -412,6 +413,7 @@ func (c *Client) DeleteComputeEnv(request *DeleteComputeEnvRequest) (response *D
 //  RESOURCENOTFOUND_COMPUTEENV = "ResourceNotFound.ComputeEnv"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ACCEPTOTHERREQUEST = "UnsupportedOperation.AcceptOtherRequest"
+//  UNSUPPORTEDOPERATION_COMPUTEENVACCEPTOTHERREQUEST = "UnsupportedOperation.ComputeEnvAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_COMPUTEENVOPERATION = "UnsupportedOperation.ComputeEnvOperation"
 //  UNSUPPORTEDOPERATION_COMPUTENODEFORBIDTERMINATE = "UnsupportedOperation.ComputeNodeForbidTerminate"
 func (c *Client) DeleteComputeEnvWithContext(ctx context.Context, request *DeleteComputeEnvRequest) (response *DeleteComputeEnvResponse, err error) {

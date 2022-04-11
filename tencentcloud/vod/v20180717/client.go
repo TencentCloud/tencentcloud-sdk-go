@@ -848,6 +848,7 @@ func NewCreateHeadTailTemplateResponse() (response *CreateHeadTailTemplateRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
@@ -867,6 +868,7 @@ func (c *Client) CreateHeadTailTemplate(request *CreateHeadTailTemplateRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
@@ -1948,6 +1950,7 @@ func NewDeleteClassResponse() (response *DeleteClassResponse) {
 // * 否则，请先执行[删除媒体](/document/product/266/31764)及子分类，再删除该分类；
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_CLASSID = "InvalidParameterValue.ClassId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1962,6 +1965,7 @@ func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClass
 // * 否则，请先执行[删除媒体](/document/product/266/31764)及子分类，再删除该分类；
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_CLASSID = "InvalidParameterValue.ClassId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -3761,6 +3765,7 @@ func NewDescribeHeadTailTemplatesResponse() (response *DescribeHeadTailTemplates
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3775,6 +3780,7 @@ func (c *Client) DescribeHeadTailTemplates(request *DescribeHeadTailTemplatesReq
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6110,6 +6116,7 @@ func NewModifyHeadTailTemplateResponse() (response *ModifyHeadTailTemplateRespon
 // 修改片头片尾模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6126,6 +6133,7 @@ func (c *Client) ModifyHeadTailTemplate(request *ModifyHeadTailTemplateRequest) 
 // 修改片头片尾模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

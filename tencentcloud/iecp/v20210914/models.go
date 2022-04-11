@@ -6596,7 +6596,7 @@ type ModifyConfigMapRequest struct {
 	// ConfigMap名称
 	ConfigMapName *string `json:"ConfigMapName,omitempty" name:"ConfigMapName"`
 
-	// Yaml配置
+	// Yaml配置, base64之后的串
 	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
 
 	// ConfigMap命名空间

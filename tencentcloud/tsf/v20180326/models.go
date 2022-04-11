@@ -1130,6 +1130,10 @@ type ContainGroup struct {
 	// 部署组备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// KubeInjectEnable值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeInjectEnable *bool `json:"KubeInjectEnable,omitempty" name:"KubeInjectEnable"`
 }
 
 type ContainGroupResult struct {
@@ -1314,6 +1318,10 @@ type ContainerGroupDeploy struct {
 	// 数据卷挂载信息，list
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMountInfos []*VolumeMountInfo `json:"VolumeMountInfos,omitempty" name:"VolumeMountInfos"`
+
+	// KubeInjectEnable值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeInjectEnable *bool `json:"KubeInjectEnable,omitempty" name:"KubeInjectEnable"`
 }
 
 type ContainerGroupDetail struct {
@@ -10943,9 +10951,13 @@ type ImageRepository struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
-	// ApplicationName值（类型是string）
+	// ApplicationName值（废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *ScalableRule `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// ApplicationName值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationNameReal *string `json:"ApplicationNameReal,omitempty" name:"ApplicationNameReal"`
 }
 
 type ImageRepositoryResult struct {
@@ -12489,6 +12501,10 @@ type Namespace struct {
 	// 是否开启高可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsHaEnable *string `json:"IsHaEnable,omitempty" name:"IsHaEnable"`
+
+	// KubeInjectEnable值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KubeInjectEnable *bool `json:"KubeInjectEnable,omitempty" name:"KubeInjectEnable"`
 }
 
 type OperateApplicationTcrBindingRequest struct {
@@ -13924,6 +13940,38 @@ type ServiceStatisticsResult struct {
 	// 数据库类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// Apdex值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Apdex *float64 `json:"Apdex,omitempty" name:"Apdex"`
+
+	// Qps值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qps *float64 `json:"Qps,omitempty" name:"Qps"`
+
+	// 实例在线数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceOnlineCount *int64 `json:"InstanceOnlineCount,omitempty" name:"InstanceOnlineCount"`
+
+	// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTotalCount *int64 `json:"InstanceTotalCount,omitempty" name:"InstanceTotalCount"`
+
+	// normal/error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// normal/warn/error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorRateLevel *string `json:"ErrorRateLevel,omitempty" name:"ErrorRateLevel"`
+
+	// normal/warn/error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgTimeConsumingLevel *string `json:"AvgTimeConsumingLevel,omitempty" name:"AvgTimeConsumingLevel"`
+
+	// normal/warn/error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApdexLevel *string `json:"ApdexLevel,omitempty" name:"ApdexLevel"`
 }
 
 type ServiceStatisticsResults struct {

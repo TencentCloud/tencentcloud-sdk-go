@@ -56,7 +56,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.382
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.383
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -97,6 +97,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/icr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir v0.0.0
@@ -297,6 +298,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm => ../tencentcloud/hcm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai => ../tencentcloud/iai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic => ../tencentcloud/ic
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/icr => ../tencentcloud/icr
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie => ../tencentcloud/ie
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp => ../tencentcloud/iecp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir => ../tencentcloud/iir

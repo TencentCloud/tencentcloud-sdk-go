@@ -407,7 +407,8 @@ type ControlDeviceDataResponse struct {
 		Data *string `json:"Data,omitempty" name:"Data"`
 
 		// JSON字符串， 返回下发控制的结果信息, 
-	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
+	// pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *string `json:"Result,omitempty" name:"Result"`
 
@@ -1864,6 +1865,10 @@ type DescribeDeviceBindGatewayResponse struct {
 		// 网关设备名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+		// 网关产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

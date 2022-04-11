@@ -6134,10 +6134,7 @@ func NewQueryOpenBankBankAccountBalanceResponse() (response *QueryOpenBankBankAc
 // 云企付-查询账户余额
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBankAccountBalance(request *QueryOpenBankBankAccountBalanceRequest) (response *QueryOpenBankBankAccountBalanceResponse, err error) {
     return c.QueryOpenBankBankAccountBalanceWithContext(context.Background(), request)
 }
@@ -6146,10 +6143,7 @@ func (c *Client) QueryOpenBankBankAccountBalance(request *QueryOpenBankBankAccou
 // 云企付-查询账户余额
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_INVALIDPARAMETER = "FailedOperation.InvalidParameter"
-//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
-//  FAILEDOPERATION_QUERYORDERERROR = "FailedOperation.QueryOrderError"
-//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryOpenBankBankAccountBalanceWithContext(ctx context.Context, request *QueryOpenBankBankAccountBalanceRequest) (response *QueryOpenBankBankAccountBalanceResponse, err error) {
     if request == nil {
         request = NewQueryOpenBankBankAccountBalanceRequest()
@@ -6952,6 +6946,7 @@ func NewQueryRefundResponse() (response *QueryRefundResponse) {
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -6964,6 +6959,7 @@ func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefund
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -7005,6 +7001,7 @@ func NewQueryShopOpenIdResponse() (response *QueryShopOpenIdResponse) {
 // 云支付-获取门店OpenId接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -7017,6 +7014,7 @@ func (c *Client) QueryShopOpenId(request *QueryShopOpenIdRequest) (response *Que
 // 云支付-获取门店OpenId接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -8426,6 +8424,7 @@ func NewTerminateContractResponse() (response *TerminateContractResponse) {
 // 通过此接口进行解约
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -8466,6 +8465,7 @@ func (c *Client) TerminateContract(request *TerminateContractRequest) (response 
 // 通过此接口进行解约
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -8535,6 +8535,7 @@ func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
 // 智能代发-单笔代发转账接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -8575,6 +8576,7 @@ func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response 
 // 智能代发-单笔代发转账接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"

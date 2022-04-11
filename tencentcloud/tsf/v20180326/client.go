@@ -8729,6 +8729,7 @@ func NewModifyContainerReplicasResponse() (response *ModifyContainerReplicasResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEDEPLOYMENTNOTFOUND = "InternalError.ContainergroupKuberneteDeploymentNotfound"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPINSTANCENUMINVALID = "InvalidParameterValue.ContainergroupInstanceNumInvalid"
@@ -8744,6 +8745,7 @@ func (c *Client) ModifyContainerReplicas(request *ModifyContainerReplicasRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETEDEPLOYMENTNOTFOUND = "InternalError.ContainergroupKuberneteDeploymentNotfound"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPINSTANCENUMINVALID = "InvalidParameterValue.ContainergroupInstanceNumInvalid"
@@ -9275,6 +9277,7 @@ func NewOperateApplicationTcrBindingResponse() (response *OperateApplicationTcrB
 // 绑定解绑tcr仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBindingRequest) (response *OperateApplicationTcrBindingResponse, err error) {
@@ -9285,6 +9288,7 @@ func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBind
 // 绑定解绑tcr仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) OperateApplicationTcrBindingWithContext(ctx context.Context, request *OperateApplicationTcrBindingRequest) (response *OperateApplicationTcrBindingResponse, err error) {

@@ -8396,6 +8396,15 @@ type DescribeProVersionInfoResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
+		// 购买状态
+	// 待购: Pending
+	// 已购: Normal
+	// 隔离: Isolate
+		BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+
+		// 是否曾经购买过(false:未曾 true:曾经购买过)
+		IsPurchased *bool `json:"IsPurchased,omitempty" name:"IsPurchased"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

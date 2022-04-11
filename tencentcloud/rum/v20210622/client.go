@@ -75,6 +75,7 @@ func NewCreateLogExportResponse() (response *CreateLogExportResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLogExport(request *CreateLogExportRequest) (response *CreateLogExportResponse, err error) {
     return c.CreateLogExportWithContext(context.Background(), request)
 }
@@ -92,6 +93,7 @@ func (c *Client) CreateLogExport(request *CreateLogExportRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLogExportWithContext(ctx context.Context, request *CreateLogExportRequest) (response *CreateLogExportResponse, err error) {
     if request == nil {
         request = NewCreateLogExportRequest()
@@ -130,6 +132,7 @@ func NewCreateOfflineLogConfigResponse() (response *CreateOfflineLogConfigRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOfflineLogConfig(request *CreateOfflineLogConfigRequest) (response *CreateOfflineLogConfigResponse, err error) {
     return c.CreateOfflineLogConfigWithContext(context.Background(), request)
 }
@@ -139,6 +142,7 @@ func (c *Client) CreateOfflineLogConfig(request *CreateOfflineLogConfigRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOfflineLogConfigWithContext(ctx context.Context, request *CreateOfflineLogConfigRequest) (response *CreateOfflineLogConfigResponse, err error) {
     if request == nil {
         request = NewCreateOfflineLogConfigRequest()

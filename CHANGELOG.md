@@ -1,3 +1,154 @@
+# Release v1.0.383
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 19 次发布
+
+发布时间：2022-04-12 06:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：SpeakerId
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 19 次发布
+
+发布时间：2022-04-12 06:09:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateIndex](https://cloud.tencent.com/document/api/614/56445)
+
+	* 新增入参：IncludeInternalFields, MetadataFlag
+
+* [DescribeIndex](https://cloud.tencent.com/document/api/614/56443)
+
+	* 新增出参：IncludeInternalFields, MetadataFlag
+
+* [ModifyIndex](https://cloud.tencent.com/document/api/614/56442)
+
+	* 新增入参：IncludeInternalFields, MetadataFlag
+
+
+
+
+## 对话机器人(icr) 版本：2021-10-14
+
+### 第 1 次发布
+
+发布时间：2022-04-11 21:23:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetIndustryV1HomeMembers](https://cloud.tencent.com/document/api/1268/72392)
+
+新增数据结构：
+
+* [GetIndustryV1HomeMembersReqPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersReqPayload)
+* [GetIndustryV1HomeMembersRespData](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespData)
+* [GetIndustryV1HomeMembersRespFeature](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespFeature)
+* [GetIndustryV1HomeMembersRespIndustry](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespIndustry)
+* [GetIndustryV1HomeMembersRespPayload](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespPayload)
+* [GetIndustryV1HomeMembersRespProduct](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespProduct)
+* [GetIndustryV1HomeMembersRespType](https://cloud.tencent.com/document/api/1268/72393#GetIndustryV1HomeMembersRespType)
+* [ReqMetadata](https://cloud.tencent.com/document/api/1268/72393#ReqMetadata)
+* [ReqMetadataLBS](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataLBS)
+* [ReqMetadataVagrant](https://cloud.tencent.com/document/api/1268/72393#ReqMetadataVagrant)
+* [RspMetadata](https://cloud.tencent.com/document/api/1268/72393#RspMetadata)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 43 次发布
+
+发布时间：2022-04-12 06:15:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeviceBindGateway](https://cloud.tencent.com/document/api/1081/67872)
+
+	* 新增出参：GatewayName
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 14 次发布
+
+发布时间：2022-04-12 06:21:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeProVersionInfo](https://cloud.tencent.com/document/api/1285/65467)
+
+	* 新增出参：BuyStatus, IsPurchased
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 72 次发布
+
+发布时间：2022-04-12 06:23:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
+
+	* 新增成员：KubeInjectEnable
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：KubeInjectEnable
+
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+
+	* 新增成员：ApplicationNameReal
+
+* [Namespace](https://cloud.tencent.com/document/api/649/36099#Namespace)
+
+	* 新增成员：KubeInjectEnable
+
+* [ServiceStatisticsResult](https://cloud.tencent.com/document/api/649/36099#ServiceStatisticsResult)
+
+	* 新增成员：Apdex, Qps, InstanceOnlineCount, InstanceTotalCount, Status, ErrorRateLevel, AvgTimeConsumingLevel, ApdexLevel
+
+
+
+
 # Release v1.0.382
 
 ## 内容分发网络(cdn) 版本：2018-06-06
