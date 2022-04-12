@@ -12,28 +12,28 @@ import (
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 )
 
-func getCredential() common.CredentialIface {
+func getCredential(t *testing.T) common.CredentialIface {
 	pr := common.DefaultProviderChain()
 	cr, err := pr.GetCredential()
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 	return cr
 }
 
 // TestCommonRequest
-// 目前只支持 签名v3+POST
+// Currently only supports signature v3+POST
 func TestCommonRequest(t *testing.T) {
-	cr := getCredential()
+	cr := getCredential(t)
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
-	//创建common client
+	//Create common request
 	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
 
-	// 创建common request
+	// create common request
 	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
-	// 自定义请求参数,SetActionParameters 函数支持三种数据类型的入参
+	// To customize request parameters, the SetActionParameters function supports input parameters of three data types
 	// 1. map[string]interface{}
 	//body:=map[string]interface{}{
 	//	"InstanceId":"crs-xxx",
@@ -46,16 +46,16 @@ func TestCommonRequest(t *testing.T) {
 	// 3. []byte
 	bodyBytes := []byte(bodyStr)
 
-	// 设置action所需的请求数据
+	// Set the request data required by the action
 	err := request.SetActionParameters(bodyBytes)
 	if err != nil {
 		return
 	}
 
-	//创建common response
+	// create common response
 	response := tchttp.NewCommonResponse()
 
-	//发送请求
+	// send request
 	err = client.Send(request, response)
 	if err != nil {
 		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
@@ -63,13 +63,13 @@ func TestCommonRequest(t *testing.T) {
 }
 
 func TestClient_SendOctetStream(t *testing.T) {
-	cr := getCredential()
+	cr := getCredential(t)
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
-	// 创建common client
+	// create common client
 	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
-	// 创建common request
+	// create common request
 	request := tchttp.NewCommonRequest("cls", "2020-10-16", "UploadLog")
 	headers := map[string]string{
 		"X-CLS-TopicId":      "f6c4fa6f-367a-4f14-8289-1ff6f77ed975",
@@ -79,10 +79,10 @@ func TestClient_SendOctetStream(t *testing.T) {
 	body, _ := ioutil.ReadFile("./binary.data")
 
 	request.SetOctetStreamParameters(headers, body)
-	// 创建common response
+	//  create common response
 	response := tchttp.NewCommonResponse()
 
-	// 发送请求
+	// send request
 	err := client.SendOctetStream(request, response)
 	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
 		if terr.GetCode() == "OperationDenied" || terr.GetCode() == "ResourceNotFound.TopicNotExist" {

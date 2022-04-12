@@ -13,7 +13,7 @@ import (
 )
 
 func TestOctetStreamAction(t *testing.T) {
-	cr := getCredential()
+	cr := getCredential(t)
 	cpf := profile.NewClientProfile()
 	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
