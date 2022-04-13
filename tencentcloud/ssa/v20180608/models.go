@@ -1904,6 +1904,18 @@ func (r *DescribeSocAlertListResponse) FromJsonString(s string) error {
 
 type DescribeSocCheckItemListRequest struct {
 	*tchttp.BaseRequest
+
+	// 查询参数,可支持的排序字段:Name,Type,AssetType,Level,Standard,IsFree
+	Filter []*QueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序参数:无
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 当前页码数据，默认值为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页面索引，默认值为0
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
 }
 
 func (r *DescribeSocCheckItemListRequest) ToJsonString() string {
@@ -1918,6 +1930,10 @@ func (r *DescribeSocCheckItemListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filter")
+	delete(f, "Sorter")
+	delete(f, "PageSize")
+	delete(f, "PageIndex")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocCheckItemListRequest has unknown keys!", "")
 	}
@@ -1927,6 +1943,10 @@ func (r *DescribeSocCheckItemListRequest) FromJsonString(s string) error {
 type DescribeSocCheckItemListResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 检查项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *DescribeSocCheckItemListRspRsp `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1942,6 +1962,17 @@ func (r *DescribeSocCheckItemListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeSocCheckItemListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocCheckItemListRspRsp struct {
+
+	// 检查项详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*SocCheckItemV1 `json:"List,omitempty" name:"List"`
+
+	// 检查项总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
 type DescribeSocCspmComplianceRequest struct {
@@ -2306,61 +2337,61 @@ type Results struct {
 
 type SaDivulgeDataQueryPub struct {
 
-	// Id
+	// Id信息
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// Uin
+	// 用户Uin
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
-	// AppId
+	// 用户AppId
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// EventName
+	// 事件名称
 	EventName *string `json:"EventName,omitempty" name:"EventName"`
 
-	// DivulgeSoure
+	// 监控源 0:全部 1:GitHub 2:暗网 默认值1
 	DivulgeSoure *string `json:"DivulgeSoure,omitempty" name:"DivulgeSoure"`
 
-	// Asset
+	// 受影响资产
 	Asset *string `json:"Asset,omitempty" name:"Asset"`
 
-	// RuleName
+	// 命中主题集下的规则topic名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// RuleId
+	// 命中主题集下的规则topic唯一id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// RuleWord
+	// 命中主题集下的自定义规则策略
 	RuleWord *string `json:"RuleWord,omitempty" name:"RuleWord"`
 
-	// ScanUrl
+	// 扫描监测url"
 	ScanUrl *string `json:"ScanUrl,omitempty" name:"ScanUrl"`
 
-	// ScanCount
+	// 扫描监测命中次数
 	ScanCount *string `json:"ScanCount,omitempty" name:"ScanCount"`
 
-	// Level
+	// 风险等级 -1:未知 1:低危 2:中危 3:高危 4:严重
 	Level *string `json:"Level,omitempty" name:"Level"`
 
-	// Status
+	// 安全事件处理状态 -1:未知 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// EventTime
+	// 安全事件发生时间
 	EventTime *string `json:"EventTime,omitempty" name:"EventTime"`
 
-	// InsertTime
+	// 事件插入时间
 	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
 
-	// UpdateTime
+	// 事件更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type SaDivulgeDataQueryPubList struct {
 
-	// Count
+	// 数据条数
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// List
+	// 自定义泄露事件列表
 	List []*SaDivulgeDataQueryPub `json:"List,omitempty" name:"List"`
 }
 
@@ -2477,6 +2508,37 @@ type SocCheckItem struct {
 	// 失败数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailCount *int64 `json:"FailCount,omitempty" name:"FailCount"`
+}
+
+type SocCheckItemV1 struct {
+
+	// 检查项id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckId *string `json:"CheckId,omitempty" name:"CheckId"`
+
+	// 配置要求
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 检查项类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 检查对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// 默认风险等级 2:低危 3:中危 4:高危
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 相关规范
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Standard *string `json:"Standard,omitempty" name:"Standard"`
+
+	// 检查项是否付费 1:免费 2:付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFree *int64 `json:"IsFree,omitempty" name:"IsFree"`
 }
 
 type SocComplianceInfoResp struct {

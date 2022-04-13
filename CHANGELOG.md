@@ -1,3 +1,137 @@
+# Release v1.0.385
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 90 次发布
+
+发布时间：2022-04-14 06:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)
+
+修改接口：
+
+* [AddTimeWindow](https://cloud.tencent.com/document/api/236/33891)
+
+	* 新增入参：MaxDelayTime
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：Vips
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：Vips
+
+* [DescribeTimeWindow](https://cloud.tencent.com/document/api/236/33889)
+
+	* 新增出参：MaxDelayTime
+
+* [ModifyTimeWindow](https://cloud.tencent.com/document/api/236/33888)
+
+	* 新增入参：MaxDelayTime
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 98 次发布
+
+发布时间：2022-04-14 06:08:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
+
+
+新增数据结构：
+
+* [HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)
+* [QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)
+
+修改数据结构：
+
+* [AwsPrivateAccess](https://cloud.tencent.com/document/api/228/30987#AwsPrivateAccess)
+
+	* 新增成员：Region, Bucket
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：OriginCompany
+
+* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
+
+	* 新增成员：Region, Bucket
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 10 次发布
+
+发布时间：2022-04-14 06:16:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
+
+	* 新增入参：Filter, Sorter, PageSize, PageIndex
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)
+* [SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 20 次发布
+
+发布时间：2022-04-14 06:18:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)
+
+
+
 # Release v1.0.384
 
 ## 云硬盘(cbs) 版本：2017-03-12

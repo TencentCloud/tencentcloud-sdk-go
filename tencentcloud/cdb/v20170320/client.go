@@ -7422,6 +7422,57 @@ func (c *Client) RenewDBInstanceWithContext(ctx context.Context, request *RenewD
     return
 }
 
+func NewResetRootAccountRequest() (request *ResetRootAccountRequest) {
+    request = &ResetRootAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cdb", APIVersion, "ResetRootAccount")
+    
+    
+    return
+}
+
+func NewResetRootAccountResponse() (response *ResetRootAccountResponse) {
+    response = &ResetRootAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetRootAccount
+// 重置实例ROOT账，初始化账号权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) ResetRootAccount(request *ResetRootAccountRequest) (response *ResetRootAccountResponse, err error) {
+    return c.ResetRootAccountWithContext(context.Background(), request)
+}
+
+// ResetRootAccount
+// 重置实例ROOT账，初始化账号权限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
+//  INVALIDPARAMETERVALUE_VERIFYACCOUNTNOROOTERROR = "InvalidParameterValue.VerifyAccountNoRootError"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
+func (c *Client) ResetRootAccountWithContext(ctx context.Context, request *ResetRootAccountRequest) (response *ResetRootAccountResponse, err error) {
+    if request == nil {
+        request = NewResetRootAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetRootAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetRootAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
     request = &RestartDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

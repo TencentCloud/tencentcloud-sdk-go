@@ -1,10 +1,49 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 40 次发布
+### 第 90 次发布
 
-发布时间：2022-04-13 06:12:00
+发布时间：2022-04-14 06:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)
+
+修改接口：
+
+* [AddTimeWindow](https://cloud.tencent.com/document/api/236/33891)
+
+	* 新增入参：MaxDelayTime
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：Vips
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：Vips
+
+* [DescribeTimeWindow](https://cloud.tencent.com/document/api/236/33889)
+
+	* 新增出参：MaxDelayTime
+
+* [ModifyTimeWindow](https://cloud.tencent.com/document/api/236/33888)
+
+	* 新增入参：MaxDelayTime
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 98 次发布
+
+发布时间：2022-04-14 06:08:21
 
 本次发布包含了以下内容：
 
@@ -12,170 +51,50 @@
 
 修改接口：
 
-* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
 
-	* 新增入参：DiskBackupQuota
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
 
-* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
 
-	* 新增入参：DiskBackupId
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
 
-* [InquiryPriceCreateDisks](https://cloud.tencent.com/document/api/362/16314)
 
-	* 新增入参：DiskBackupQuota
+新增数据结构：
 
+* [HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)
+* [QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)
 
 修改数据结构：
 
-* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+* [AwsPrivateAccess](https://cloud.tencent.com/document/api/228/30987#AwsPrivateAccess)
 
-	* 新增成员：DiskBackupCount, InstanceType
+	* 新增成员：Region, Bucket
 
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
 
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
 
+* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
 
-### 第 23 次发布
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
 
-发布时间：2022-04-13 06:12:26
+	* 新增成员：OriginCompany
 
-本次发布包含了以下内容：
+* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
 
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
-
-	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
-
-
-
-
-## 专线接入(dc) 版本：2018-04-10
-
-### 第 23 次发布
-
-发布时间：2022-04-13 06:36:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
-
-	* 新增入参：BfdEnable, NqaEnable, BfdInfo, NqaInfo
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 38 次发布
-
-发布时间：2022-04-13 06:37:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeDBSecurityGroups
-* DescribeOrders
-
-修改接口：
-
-* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
-
-	* 新增出参：DealName
-
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Deal
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 35 次发布
-
-发布时间：2022-04-13 06:56:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeDBSecurityGroups
-* DescribeOrders
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Deal
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 26 次发布
-
-发布时间：2022-04-13 07:01:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
-
-	* 新增入参：NeedSupportTDE, KMSKeyId, KMSRegion
-
-
-修改数据结构：
-
-* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
-
-	* 新增成员：IsSupportTDE
-
-* [SpecInfo](https://cloud.tencent.com/document/api/409/16778#SpecInfo)
-
-	* 新增成员：SupportKMSRegions
-
-* [SpecItemInfo](https://cloud.tencent.com/document/api/409/16778#SpecItemInfo)
-
-	* 新增成员：IsSupportTDE
+	* 新增成员：Region, Bucket
 
 
 
 
 ## 安全运营中心(ssa) 版本：2018-06-08
 
-### 第 9 次发布
+### 第 10 次发布
 
-发布时间：2022-04-13 07:07:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
-
-
-
-## 分布式消息队列(tdmq) 版本：2020-02-17
-
-### 第 34 次发布
-
-发布时间：2022-04-13 07:16:01
+发布时间：2022-04-14 06:16:47
 
 本次发布包含了以下内容：
 
@@ -183,22 +102,25 @@
 
 修改接口：
 
-* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
 
-	* 新增入参：RetentionSizeInMB
+	* 新增入参：Filter, Sorter, PageSize, PageIndex
 
-* [ModifyCmqQueueAttribute](https://cloud.tencent.com/document/api/1179/55905)
-
-	* 新增入参：RetentionSizeInMB
+	* 新增出参：Data
 
 
+新增数据结构：
+
+* [DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)
+* [SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)
 
 
-## 云点播(vod) 版本：2018-07-17
 
-### 第 100 次发布
+## 图像分析(tiia) 版本：2019-05-29
 
-发布时间：2022-04-13 07:24:51
+### 第 20 次发布
+
+发布时间：2022-04-14 06:18:37
 
 本次发布包含了以下内容：
 
@@ -206,13 +128,7 @@
 
 新增接口：
 
-* [CreateStorageRegion](https://cloud.tencent.com/document/api/266/72481)
-* [DescribeStorageRegions](https://cloud.tencent.com/document/api/266/72480)
-* [ModifyDefaultStorageRegion](https://cloud.tencent.com/document/api/266/72479)
-
-新增数据结构：
-
-* [StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo)
+* [RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)
 
 
 
@@ -10038,6 +9954,41 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 90 次发布
+
+发布时间：2022-04-14 06:07:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [AddTimeWindow](https://cloud.tencent.com/document/api/236/33891)
+
+	* 新增入参：MaxDelayTime
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
+
+	* 新增入参：Vips
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
+
+	* 新增入参：Vips
+
+* [DescribeTimeWindow](https://cloud.tencent.com/document/api/236/33889)
+
+	* 新增出参：MaxDelayTime
+
+* [ModifyTimeWindow](https://cloud.tencent.com/document/api/236/33888)
+
+	* 新增入参：MaxDelayTime
+
+
 ### 第 89 次发布
 
 发布时间：2022-04-07 06:13:17
@@ -11887,6 +11838,53 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 98 次发布
+
+发布时间：2022-04-14 06:08:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：HwPrivateAccess, QnPrivateAccess
+
+
+新增数据结构：
+
+* [[HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)](https://cloud.tencent.com/document/api/228/30987#[HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess))
+* [[QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)](https://cloud.tencent.com/document/api/228/30987#[QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess))
+
+修改数据结构：
+
+* [AwsPrivateAccess](https://cloud.tencent.com/document/api/228/30987#AwsPrivateAccess)
+
+	* 新增成员：Region, Bucket
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：OriginCompany
+
+* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
+
+	* 新增成员：Region, Bucket
+
 
 ### 第 97 次发布
 
@@ -54840,6 +54838,28 @@
 
 ## 安全运营中心(ssa) 版本：2018-06-08
 
+### 第 10 次发布
+
+发布时间：2022-04-14 06:16:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
+
+	* 新增入参：Filter, Sorter, PageSize, PageIndex
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [[DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)](https://cloud.tencent.com/document/api/664/51406#[DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp))
+* [[SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)](https://cloud.tencent.com/document/api/664/51406#[SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1))
+
 ### 第 9 次发布
 
 发布时间：2022-04-13 07:07:25
@@ -54850,7 +54870,7 @@
 
 新增接口：
 
-* [[DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
 
 ### 第 8 次发布
 
@@ -62925,6 +62945,18 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 20 次发布
+
+发布时间：2022-04-14 06:18:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 19 次发布
 
 发布时间：2021-12-16 08:15:16
@@ -69421,13 +69453,13 @@
 
 新增接口：
 
-* [[CreateStorageRegion](https://cloud.tencent.com/document/api/266/72481)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStorageRegions](https://cloud.tencent.com/document/api/266/72480)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDefaultStorageRegion](https://cloud.tencent.com/document/api/266/72479)](https://cloud.tencent.com/document/api/#/#)
+* [CreateStorageRegion](https://cloud.tencent.com/document/api/266/72481)
+* [DescribeStorageRegions](https://cloud.tencent.com/document/api/266/72480)
+* [ModifyDefaultStorageRegion](https://cloud.tencent.com/document/api/266/72479)
 
 新增数据结构：
 
-* [[StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo)](https://cloud.tencent.com/document/api/266/31773#[StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo))
+* [StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo)
 
 ### 第 99 次发布
 

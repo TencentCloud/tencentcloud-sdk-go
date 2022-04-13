@@ -175,6 +175,12 @@ type AddCdnDomainRequest struct {
 
 	// 回源OSS私有鉴权
 	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
+
+	// 华为云对象存储回源鉴权
+	HwPrivateAccess *HwPrivateAccess `json:"HwPrivateAccess,omitempty" name:"HwPrivateAccess"`
+
+	// 七牛云对象存储回源鉴权
+	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -225,6 +231,8 @@ func (r *AddCdnDomainRequest) FromJsonString(s string) error {
 	delete(f, "Quic")
 	delete(f, "AwsPrivateAccess")
 	delete(f, "OssPrivateAccess")
+	delete(f, "HwPrivateAccess")
+	delete(f, "QnPrivateAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCdnDomainRequest has unknown keys!", "")
 	}
@@ -988,6 +996,14 @@ type AwsPrivateAccess struct {
 	// 密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// Bucketname
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 }
 
 type BandwidthAlert struct {
@@ -5287,6 +5303,14 @@ type DetailDomain struct {
 	// 主域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentHost *string `json:"ParentHost,omitempty" name:"ParentHost"`
+
+	// 华为云对象存储回源鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwPrivateAccess *HwPrivateAccess `json:"HwPrivateAccess,omitempty" name:"HwPrivateAccess"`
+
+	// 七牛云对象存储回源鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 }
 
 type DiagnoseData struct {
@@ -6080,6 +6104,24 @@ type Https struct {
 	// Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion"`
+}
+
+type HwPrivateAccess struct {
+
+	// 开关 on/off
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 访问 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// bucketname
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 }
 
 type ImageOptimization struct {
@@ -7311,6 +7353,14 @@ type MainlandConfig struct {
 	// 回源OSS私有鉴权。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
+
+	// 华为云对象存储回源鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwPrivateAccess *HwPrivateAccess `json:"HwPrivateAccess,omitempty" name:"HwPrivateAccess"`
+
+	// 七牛云对象存储回源鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 }
 
 type ManageClsTopicDomainsRequest struct {
@@ -7573,6 +7623,10 @@ type Origin struct {
 	// HTTPS回源高级配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceHttps *AdvanceHttps `json:"AdvanceHttps,omitempty" name:"AdvanceHttps"`
+
+	// 对象存储回源厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginCompany *string `json:"OriginCompany,omitempty" name:"OriginCompany"`
 }
 
 type OriginAuthentication struct {
@@ -7642,6 +7696,14 @@ type OssPrivateAccess struct {
 	// 密钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// Bucketname
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 }
 
 type OverseaConfig struct {
@@ -8083,6 +8145,19 @@ func (r *PushUrlsCacheResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QnPrivateAccess struct {
+
+	// 开关 on/off
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 访问 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 密钥
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 }
 
 type QueryStringKey struct {
@@ -9640,6 +9715,12 @@ type UpdateDomainConfigRequest struct {
 
 	// 共享CNAME配置，白名单功能
 	ShareCname *ShareCname `json:"ShareCname,omitempty" name:"ShareCname"`
+
+	// 华为云对象存储回源鉴权
+	HwPrivateAccess *HwPrivateAccess `json:"HwPrivateAccess,omitempty" name:"HwPrivateAccess"`
+
+	// 七牛云对象存储回源鉴权
+	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -9698,6 +9779,8 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "WebSocket")
 	delete(f, "RemoteAuthentication")
 	delete(f, "ShareCname")
+	delete(f, "HwPrivateAccess")
+	delete(f, "QnPrivateAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

@@ -79,6 +79,9 @@ type AddTimeWindowRequest struct {
 
 	// 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
 	Sunday []*string `json:"Sunday,omitempty" name:"Sunday"`
+
+	// 最大延迟阈值，仅对主实例和灾备实例有效
+	MaxDelayTime *uint64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
 }
 
 func (r *AddTimeWindowRequest) ToJsonString() string {
@@ -101,6 +104,7 @@ func (r *AddTimeWindowRequest) FromJsonString(s string) error {
 	delete(f, "Friday")
 	delete(f, "Saturday")
 	delete(f, "Sunday")
+	delete(f, "MaxDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddTimeWindowRequest has unknown keys!", "")
 	}
@@ -1431,7 +1435,7 @@ type CreateDBInstanceHourRequest struct {
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
@@ -1463,6 +1467,9 @@ type CreateDBInstanceHourRequest struct {
 
 	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
+	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 }
 
 func (r *CreateDBInstanceHourRequest) ToJsonString() string {
@@ -1512,6 +1519,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
+	delete(f, "Vips")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
 	}
@@ -1622,7 +1630,7 @@ type CreateDBInstanceRequest struct {
 	// 置放群组 ID。
 	DeployGroupId *string `json:"DeployGroupId,omitempty" name:"DeployGroupId"`
 
-	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
@@ -1654,6 +1662,9 @@ type CreateDBInstanceRequest struct {
 
 	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
+	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -1704,6 +1715,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
+	delete(f, "Vips")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -5909,6 +5921,9 @@ type DescribeTimeWindowResponse struct {
 		// 星期日的可维护时间列表。
 		Sunday []*string `json:"Sunday,omitempty" name:"Sunday"`
 
+		// 最大数据延迟阈值
+		MaxDelayTime *uint64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -6874,19 +6889,19 @@ type ModifyAccountPrivilegesRequest struct {
 	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
 
 	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE","UPDATE"。
-	// 注意，不传该参数表示清除该权限。
+	// 注意，ModifyAction为空时，不传该参数表示清除该权限。
 	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges"`
 
 	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-	// 注意，不传该参数表示清除该权限。
+	// 注意，ModifyAction为空时，不传该参数表示清除该权限。
 	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges"`
 
 	// 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-	// 注意，不传该参数表示清除该权限。
+	// 注意，ModifyAction为空时，不传该参数表示清除该权限。
 	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges"`
 
 	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
-	// 注意，不传该参数表示清除该权限。
+	// 注意，ModifyAction为空时，不传该参数表示清除该权限。
 	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges"`
 
 	// 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
@@ -8083,6 +8098,9 @@ type ModifyTimeWindowRequest struct {
 
 	// 指定修改哪一天的客户时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
 	Weekdays []*string `json:"Weekdays,omitempty" name:"Weekdays"`
+
+	// 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+	MaxDelayTime *uint64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
 }
 
 func (r *ModifyTimeWindowRequest) ToJsonString() string {
@@ -8100,6 +8118,7 @@ func (r *ModifyTimeWindowRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "TimeRanges")
 	delete(f, "Weekdays")
+	delete(f, "MaxDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTimeWindowRequest has unknown keys!", "")
 	}
@@ -8786,6 +8805,52 @@ func (r *RenewDBInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RenewDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetRootAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *ResetRootAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetRootAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRootAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetRootAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ResetRootAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetRootAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

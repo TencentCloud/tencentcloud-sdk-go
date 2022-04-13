@@ -1461,6 +1461,101 @@ func (c *Client) RecognizeCarWithContext(ctx context.Context, request *Recognize
     return
 }
 
+func NewRecognizeCarProRequest() (request *RecognizeCarProRequest) {
+    request = &RecognizeCarProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "RecognizeCarPro")
+    
+    
+    return
+}
+
+func NewRecognizeCarProResponse() (response *RecognizeCarProResponse) {
+    response = &RecognizeCarProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeCarPro
+// 车辆识别（增强版）可对图片中汽车的车型和车牌进行识别，可识别7000多种车型，覆盖轿车、SUV、大型客车等市面常见车，输出车辆的车身颜色、品牌、车系、年份、车牌和位置等信息。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
+//
+// 
+//
+// >     
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
+//  FAILEDOPERATION_RECOGNIZEFAILDED = "FailedOperation.RecognizeFailded"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeCarPro(request *RecognizeCarProRequest) (response *RecognizeCarProResponse, err error) {
+    return c.RecognizeCarProWithContext(context.Background(), request)
+}
+
+// RecognizeCarPro
+// 车辆识别（增强版）可对图片中汽车的车型和车牌进行识别，可识别7000多种车型，覆盖轿车、SUV、大型客车等市面常见车，输出车辆的车身颜色、品牌、车系、年份、车牌和位置等信息。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
+//
+// 
+//
+// >     
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
+//  FAILEDOPERATION_RECOGNIZEFAILDED = "FailedOperation.RecognizeFailded"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeCarProWithContext(ctx context.Context, request *RecognizeCarProRequest) (response *RecognizeCarProResponse, err error) {
+    if request == nil {
+        request = NewRecognizeCarProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeCarPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeCarProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchImageRequest() (request *SearchImageRequest) {
     request = &SearchImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1360,6 +1360,71 @@ type ProductInfo struct {
 	LemmaInfoList []*LemmaInfo `json:"LemmaInfoList,omitempty" name:"LemmaInfoList"`
 }
 
+type RecognizeCarProRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	// 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *RecognizeCarProRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeCarProRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeCarProRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeCarProResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
+
+		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeCarProResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeCarProResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RecognizeCarRequest struct {
 	*tchttp.BaseRequest
 
