@@ -17,8 +17,14 @@ package v20180529
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 非企业认证客户。
 	AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+
+	// 子账户未授权操作。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
@@ -76,6 +82,12 @@ const (
 
 	// 监听器当前状态无法支持该操作。
 	FAILEDOPERATION_LISTENERSTATUSERROR = "FailedOperation.ListenerStatusError"
+
+	// 加速通道在升级中，暂不支持配置变更，请提工单申请。
+	FAILEDOPERATION_MIGRATION = "FailedOperation.Migration"
+
+	// 该通道为非标通道，限制所有写操作。
+	FAILEDOPERATION_NONSTANDARDPROXY = "FailedOperation.NonStandardProxy"
 
 	// 仅支持Version2.0的通道。
 	FAILEDOPERATION_NOTSUPPORTOLDVERSIONPROXY = "FailedOperation.NotSupportOldVersionProxy"

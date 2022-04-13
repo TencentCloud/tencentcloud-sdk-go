@@ -603,7 +603,7 @@ type CreateInstancesRequest struct {
 	// 项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
@@ -639,14 +639,23 @@ type CreateInstancesRequest struct {
 	// 安全组ID。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+	// PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBVersion、DBKernelVersion至少需要传递一个。
 	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
 
-	// PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
+	// PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。该参数和DBVersion、DBMajorVersion至少需要传递一个。
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 
 	// 实例节点信息，购买跨可用区实例时填写。
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitempty" name:"DBNodeSet"`
+
+	// 是否需要支持数据透明加密，1：是，0：否（默认）。
+	NeedSupportTDE *uint64 `json:"NeedSupportTDE,omitempty" name:"NeedSupportTDE"`
+
+	// 自定义密钥的keyId，若选择自定义密匙加密，则需要传入自定义密匙的keyId，keyId是CMK的唯一标识。
+	KMSKeyId *string `json:"KMSKeyId,omitempty" name:"KMSKeyId"`
+
+	// 使用KMS服务的地域，KMSRegion为空默认使用本地域的kms，本地域不支持的情况下需自选其他KMS支持的地域。
+	KMSRegion *string `json:"KMSRegion,omitempty" name:"KMSRegion"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -685,6 +694,9 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DBMajorVersion")
 	delete(f, "DBKernelVersion")
 	delete(f, "DBNodeSet")
+	delete(f, "NeedSupportTDE")
+	delete(f, "KMSKeyId")
+	delete(f, "KMSRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -777,7 +789,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// 只读组ID。
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
 
-	// 实例需要绑定的Tag信息，默认为空
+	// 实例需要绑定的Tag信息，默认为空（该类型为Tag数组类型）
 	TagList *Tag `json:"TagList,omitempty" name:"TagList"`
 
 	// 安全组id
@@ -1245,6 +1257,10 @@ type DBInstance struct {
 	// 实例的节点信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBNodeSet []*DBNode `json:"DBNodeSet,omitempty" name:"DBNodeSet"`
+
+	// 实例是否支持TDE数据加密  0：不支持，1：支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportTDE *int64 `json:"IsSupportTDE,omitempty" name:"IsSupportTDE"`
 }
 
 type DBInstanceNetInfo struct {
@@ -4748,6 +4764,10 @@ type SpecInfo struct {
 
 	// 规格详细信息列表
 	SpecItemInfoList []*SpecItemInfo `json:"SpecItemInfoList,omitempty" name:"SpecItemInfoList"`
+
+	// 支持KMS的地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportKMSRegions []*string `json:"SupportKMSRegions,omitempty" name:"SupportKMSRegions"`
 }
 
 type SpecItemInfo struct {
@@ -4789,6 +4809,10 @@ type SpecItemInfo struct {
 	// PostgreSQL的内核版本编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
+
+	// 是否支持TDE数据加密功能，0-不支持，1-支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportTDE *int64 `json:"IsSupportTDE,omitempty" name:"IsSupportTDE"`
 }
 
 type Tag struct {

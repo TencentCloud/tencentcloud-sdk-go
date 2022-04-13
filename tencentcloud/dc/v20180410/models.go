@@ -378,6 +378,18 @@ type CreateDirectConnectTunnelRequest struct {
 
 	// 高速上云服务ID
 	CloudAttachId *string `json:"CloudAttachId,omitempty" name:"CloudAttachId"`
+
+	// 是否开启BFD
+	BfdEnable *int64 `json:"BfdEnable,omitempty" name:"BfdEnable"`
+
+	// 是否开启NQA
+	NqaEnable *int64 `json:"NqaEnable,omitempty" name:"NqaEnable"`
+
+	// BFD配置信息
+	BfdInfo *BFDInfo `json:"BfdInfo,omitempty" name:"BfdInfo"`
+
+	// NQA配置信息
+	NqaInfo *NQAInfo `json:"NqaInfo,omitempty" name:"NqaInfo"`
 }
 
 func (r *CreateDirectConnectTunnelRequest) ToJsonString() string {
@@ -408,6 +420,10 @@ func (r *CreateDirectConnectTunnelRequest) FromJsonString(s string) error {
 	delete(f, "CustomerAddress")
 	delete(f, "TencentBackupAddress")
 	delete(f, "CloudAttachId")
+	delete(f, "BfdEnable")
+	delete(f, "NqaEnable")
+	delete(f, "BfdInfo")
+	delete(f, "NqaInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDirectConnectTunnelRequest has unknown keys!", "")
 	}

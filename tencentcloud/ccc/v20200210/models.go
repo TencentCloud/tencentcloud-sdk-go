@@ -1337,14 +1337,14 @@ type DescribeTelCdrRequest struct {
 	// 结束时间戳，Unix 时间戳
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 
+	// 实例 ID（deprecated）
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
 	// 返回数据条数，上限（deprecated）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移（deprecated）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 实例 ID（deprecated）
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 应用 ID
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1376,9 +1376,9 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StartTimeStamp")
 	delete(f, "EndTimeStamp")
+	delete(f, "InstanceId")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "InstanceId")
 	delete(f, "SdkAppId")
 	delete(f, "PageSize")
 	delete(f, "PageNumber")

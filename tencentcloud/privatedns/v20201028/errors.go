@@ -137,7 +137,7 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// 内部专用TLD，不支持创建。
+	// 内部保留域名，不支持创建。
 	INVALIDPARAMETERVALUE_RESERVEDDOMAIN = "InvalidParameterValue.ReservedDomain"
 
 	// 超过配额限制。
@@ -172,9 +172,6 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
-	// TLD增值包超额不允许操作。
-	RESOURCEUNAVAILABLE_TLDOPERATELIMIT = "ResourceUnavailable.TldOperateLimit"
 
 	// TLD增值包已过期。
 	RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"

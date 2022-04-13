@@ -1285,6 +1285,75 @@ func (c *Client) CreateSnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     return
 }
 
+func NewCreateStorageRegionRequest() (request *CreateStorageRegionRequest) {
+    request = &CreateStorageRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "CreateStorageRegion")
+    
+    
+    return
+}
+
+func NewCreateStorageRegionResponse() (response *CreateStorageRegionResponse) {
+    response = &CreateStorageRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateStorageRegion
+// 该接口用于开通某地域的存储。
+//
+//   1. 用户开通点播业务时，系统默认为用户开通了部分地域的存储，用户如果需要开通其它地域的存储，可以通过该接口进行开通。
+//
+//   2. 通过 DescribeStorageRegions 接口可以查询到所有存储地域及已经开通的地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_USERSTATUSINAVLID = "FailedOperation.UserStatusInavlid"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateStorageRegion(request *CreateStorageRegionRequest) (response *CreateStorageRegionResponse, err error) {
+    return c.CreateStorageRegionWithContext(context.Background(), request)
+}
+
+// CreateStorageRegion
+// 该接口用于开通某地域的存储。
+//
+//   1. 用户开通点播业务时，系统默认为用户开通了部分地域的存储，用户如果需要开通其它地域的存储，可以通过该接口进行开通。
+//
+//   2. 通过 DescribeStorageRegions 接口可以查询到所有存储地域及已经开通的地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_USERSTATUSINAVLID = "FailedOperation.UserStatusInavlid"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateStorageRegionWithContext(ctx context.Context, request *CreateStorageRegionRequest) (response *CreateStorageRegionResponse, err error) {
+    if request == nil {
+        request = NewCreateStorageRegionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStorageRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStorageRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSubAppIdRequest() (request *CreateSubAppIdRequest) {
     request = &CreateSubAppIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4649,6 +4718,69 @@ func (c *Client) DescribeStorageDetailsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeStorageRegionsRequest() (request *DescribeStorageRegionsRequest) {
+    request = &DescribeStorageRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeStorageRegions")
+    
+    
+    return
+}
+
+func NewDescribeStorageRegionsResponse() (response *DescribeStorageRegionsResponse) {
+    response = &DescribeStorageRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStorageRegions
+// 该接口用于：
+//
+//   1. 查询点播可开通的所有存储园区列表。
+//
+//   2. 查询已经开通的园区列表。
+//
+//   3. 查询默认使用的存储园区。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeStorageRegions(request *DescribeStorageRegionsRequest) (response *DescribeStorageRegionsResponse, err error) {
+    return c.DescribeStorageRegionsWithContext(context.Background(), request)
+}
+
+// DescribeStorageRegions
+// 该接口用于：
+//
+//   1. 查询点播可开通的所有存储园区列表。
+//
+//   2. 查询已经开通的园区列表。
+//
+//   3. 查询默认使用的存储园区。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeStorageRegionsWithContext(ctx context.Context, request *DescribeStorageRegionsRequest) (response *DescribeStorageRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStorageRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStorageRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStorageRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubAppIdsRequest() (request *DescribeSubAppIdsRequest) {
     request = &DescribeSubAppIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6016,6 +6148,65 @@ func (c *Client) ModifyContentReviewTemplateWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewModifyContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDefaultStorageRegionRequest() (request *ModifyDefaultStorageRegionRequest) {
+    request = &ModifyDefaultStorageRegionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyDefaultStorageRegion")
+    
+    
+    return
+}
+
+func NewModifyDefaultStorageRegionResponse() (response *ModifyDefaultStorageRegionResponse) {
+    response = &ModifyDefaultStorageRegionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDefaultStorageRegion
+// 该接口用于设置默认的存储地域。上传文件时如果没有指定地域，将上传到默认地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDefaultStorageRegion(request *ModifyDefaultStorageRegionRequest) (response *ModifyDefaultStorageRegionResponse, err error) {
+    return c.ModifyDefaultStorageRegionWithContext(context.Background(), request)
+}
+
+// ModifyDefaultStorageRegion
+// 该接口用于设置默认的存储地域。上传文件时如果没有指定地域，将上传到默认地域。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyDefaultStorageRegionWithContext(ctx context.Context, request *ModifyDefaultStorageRegionRequest) (response *ModifyDefaultStorageRegionResponse, err error) {
+    if request == nil {
+        request = NewModifyDefaultStorageRegionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDefaultStorageRegion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDefaultStorageRegionResponse()
     err = c.Send(request, response)
     return
 }

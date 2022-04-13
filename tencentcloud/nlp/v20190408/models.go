@@ -1096,7 +1096,7 @@ type TextClassificationRequest struct {
 
 	// 领域分类体系（默认取1值）：
 	// 1、通用领域，二分类
-	// 2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表
+	// 2、新闻领域，五分类。类别数据不一定全部返回，详情见类目映射表（注意：目前五分类已下线不可用）
 	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
 }
 

@@ -1902,6 +1902,48 @@ func (r *DescribeSocAlertListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSocCheckItemListRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeSocCheckItemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCheckItemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocCheckItemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocCheckItemListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSocCheckItemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCheckItemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSocCspmComplianceRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2325,13 +2367,13 @@ type SaDivulgeDataQueryPubList struct {
 type SaDivulgeDataQueryPubRequest struct {
 	*tchttp.BaseRequest
 
-	// 模糊查询字段
+	// 模糊查询字段(针对appid或者uin)
 	QueryKey *string `json:"QueryKey,omitempty" name:"QueryKey"`
 
 	// 安全事件名称
 	EventName *string `json:"EventName,omitempty" name:"EventName"`
 
-	// 监控源
+	// 监控源  0:全部 1:GitHub 2:暗网 默认值1
 	DivulgeSoure *string `json:"DivulgeSoure,omitempty" name:"DivulgeSoure"`
 
 	// 受影响资产
@@ -2343,10 +2385,10 @@ type SaDivulgeDataQueryPubRequest struct {
 	// 命中主题集下的规则topic唯一id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 风险等级
+	// 风险等级 -1:未知 1:低危 2:中危 3:高危 4:严重
 	Level *string `json:"Level,omitempty" name:"Level"`
 
-	// 安全事件状态
+	// 安全事件处理状态 -1:未知 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 起始时间
@@ -2396,7 +2438,7 @@ type SaDivulgeDataQueryPubResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 结果
+		// 自定义泄露事件列表
 		Data *SaDivulgeDataQueryPubList `json:"Data,omitempty" name:"Data"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

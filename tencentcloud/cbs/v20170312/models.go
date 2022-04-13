@@ -458,6 +458,9 @@ type CreateDisksRequest struct {
 
 	// 创建云盘时指定自动挂载并初始化该数据盘。
 	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitempty" name:"AutoMountConfiguration"`
+
+	// 指定云硬盘备份点配额。
+	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -487,6 +490,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DeleteSnapshot")
 	delete(f, "AutoMountConfiguration")
+	delete(f, "DiskBackupQuota")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}
@@ -527,6 +531,9 @@ type CreateSnapshotRequest struct {
 
 	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
 }
 
 func (r *CreateSnapshotRequest) ToJsonString() string {
@@ -544,6 +551,7 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "DiskId")
 	delete(f, "SnapshotName")
 	delete(f, "Deadline")
+	delete(f, "DiskBackupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotRequest has unknown keys!", "")
 	}
@@ -1470,6 +1478,12 @@ type Disk struct {
 
 	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
 	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
+
+	// 云硬盘备份点已使用的数量。
+	DiskBackupCount *uint64 `json:"DiskBackupCount,omitempty" name:"DiskBackupCount"`
+
+	// 云硬盘挂载实例的类型。取值范围：<br><li>CVM<br><li>EKS
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type DiskChargePrepaid struct {
@@ -1723,26 +1737,29 @@ func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string
 type InquiryPriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
 
+	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
+
 	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
-	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
-
-	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
-	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+	// 云盘所属项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 购买云盘的数量。不填则默认为1。
 	DiskCount *uint64 `json:"DiskCount,omitempty" name:"DiskCount"`
 
-	// 云盘所属项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
 	// 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 指定云硬盘备份点配额。
+	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 func (r *InquiryPriceCreateDisksRequest) ToJsonString() string {
@@ -1757,13 +1774,14 @@ func (r *InquiryPriceCreateDisksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "DiskChargeType")
 	delete(f, "DiskType")
 	delete(f, "DiskSize")
-	delete(f, "DiskChargeType")
-	delete(f, "DiskChargePrepaid")
-	delete(f, "DiskCount")
 	delete(f, "ProjectId")
+	delete(f, "DiskCount")
 	delete(f, "ThroughputPerformance")
+	delete(f, "DiskChargePrepaid")
+	delete(f, "DiskBackupQuota")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDisksRequest has unknown keys!", "")
 	}
@@ -2383,9 +2401,9 @@ type PrepayPrice struct {
 
 type Price struct {
 
-	// 预付费云盘预支费用的原价，单位：元。
+	// 后付费云盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
 
 	// 预付费云盘预支费用的折扣价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2395,29 +2413,29 @@ type Price struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
 
-	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 高精度后付费云盘原单价, 单位：元
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
-
-	// 后付费云盘折扣单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitempty" name:"UnitPriceHigh"`
 
 	// 高精度预付费云盘预支费用的原价, 单位：元	。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitempty" name:"OriginalPriceHigh"`
 
+	// 预付费云盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
 	// 高精度预付费云盘预支费用的折扣价, 单位：元
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitempty" name:"DiscountPriceHigh"`
 
-	// 高精度后付费云盘原单价, 单位：元
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnitPriceHigh *string `json:"UnitPriceHigh,omitempty" name:"UnitPriceHigh"`
-
 	// 高精度后付费云盘折扣单价, 单位：元
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitempty" name:"UnitPriceDiscountHigh"`
+
+	// 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 }
 
 type RenewDiskRequest struct {

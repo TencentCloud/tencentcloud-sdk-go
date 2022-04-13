@@ -1,3 +1,221 @@
+# Release v1.0.384
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 40 次发布
+
+发布时间：2022-04-13 06:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
+
+	* 新增入参：DiskBackupQuota
+
+* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
+
+	* 新增入参：DiskBackupId
+
+* [InquiryPriceCreateDisks](https://cloud.tencent.com/document/api/362/16314)
+
+	* 新增入参：DiskBackupQuota
+
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：DiskBackupCount, InstanceType
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 23 次发布
+
+发布时间：2022-04-13 06:12:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 23 次发布
+
+发布时间：2022-04-13 06:36:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDirectConnectTunnel](https://cloud.tencent.com/document/api/216/19821)
+
+	* 新增入参：BfdEnable, NqaEnable, BfdInfo, NqaInfo
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 38 次发布
+
+发布时间：2022-04-13 06:37:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBSecurityGroups
+* DescribeOrders
+
+修改接口：
+
+* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
+
+	* 新增出参：DealName
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Deal
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 35 次发布
+
+发布时间：2022-04-13 06:56:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBSecurityGroups
+* DescribeOrders
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Deal
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 26 次发布
+
+发布时间：2022-04-13 07:01:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：NeedSupportTDE, KMSKeyId, KMSRegion
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：IsSupportTDE
+
+* [SpecInfo](https://cloud.tencent.com/document/api/409/16778#SpecInfo)
+
+	* 新增成员：SupportKMSRegions
+
+* [SpecItemInfo](https://cloud.tencent.com/document/api/409/16778#SpecItemInfo)
+
+	* 新增成员：IsSupportTDE
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 9 次发布
+
+发布时间：2022-04-13 07:07:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 34 次发布
+
+发布时间：2022-04-13 07:16:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmqQueue](https://cloud.tencent.com/document/api/1179/55917)
+
+	* 新增入参：RetentionSizeInMB
+
+* [ModifyCmqQueueAttribute](https://cloud.tencent.com/document/api/1179/55905)
+
+	* 新增入参：RetentionSizeInMB
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 100 次发布
+
+发布时间：2022-04-13 07:24:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateStorageRegion](https://cloud.tencent.com/document/api/266/72481)
+* [DescribeStorageRegions](https://cloud.tencent.com/document/api/266/72480)
+* [ModifyDefaultStorageRegion](https://cloud.tencent.com/document/api/266/72479)
+
+新增数据结构：
+
+* [StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo)
+
+
+
 # Release v1.0.383
 
 ## 语音识别(asr) 版本：2019-06-14

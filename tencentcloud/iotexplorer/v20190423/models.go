@@ -4049,7 +4049,7 @@ type GetProjectListRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 按项目D搜索
+	// 按项目ID搜索
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 按产品ID搜索

@@ -245,10 +245,10 @@ type ReqMetadata struct {
 
 type ReqMetadataLBS struct {
 
-	// 无
+	// 纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
-	// 无
+	// 经度
 	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
 }
 

@@ -1260,10 +1260,10 @@ type CreateCmqQueueRequest struct {
 	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+	// 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
-	// 队列是否开启回溯消息能力，该参数取值范围0-msgRetentionSeconds,即最大的回溯时间为消息在队列中的保留周期，0表示不开启。
+	// 队列是否开启回溯消息能力，该参数取值范围0-1296000，0表示不开启。
 	RewindSeconds *uint64 `json:"RewindSeconds,omitempty" name:"RewindSeconds"`
 
 	// 1 表示事务队列，0 表示普通队列
@@ -1292,6 +1292,9 @@ type CreateCmqQueueRequest struct {
 
 	// 标签数组
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitempty" name:"RetentionSizeInMB"`
 }
 
 func (r *CreateCmqQueueRequest) ToJsonString() string {
@@ -1322,6 +1325,7 @@ func (r *CreateCmqQueueRequest) FromJsonString(s string) error {
 	delete(f, "MaxTimeToLive")
 	delete(f, "Trace")
 	delete(f, "Tags")
+	delete(f, "RetentionSizeInMB")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCmqQueueRequest has unknown keys!", "")
 	}
@@ -5762,10 +5766,10 @@ type ModifyCmqQueueAttributeRequest struct {
 	// 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitempty" name:"MaxMsgSize"`
 
-	// 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+	// 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitempty" name:"MsgRetentionSeconds"`
 
-	// 消息最长回溯时间，取值范围0-msgRetentionSeconds，消息的最大回溯之间为消息在队列中的保存周期，0表示不开启消息回溯。
+	// 队列是否开启回溯消息能力，该参数取值范围0-1296000，0表示不开启。
 	RewindSeconds *uint64 `json:"RewindSeconds,omitempty" name:"RewindSeconds"`
 
 	// 第一次查询时间
@@ -5791,6 +5795,9 @@ type ModifyCmqQueueAttributeRequest struct {
 
 	// 是否开启事务，1开启，0不开启
 	Transaction *uint64 `json:"Transaction,omitempty" name:"Transaction"`
+
+	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitempty" name:"RetentionSizeInMB"`
 }
 
 func (r *ModifyCmqQueueAttributeRequest) ToJsonString() string {
@@ -5820,6 +5827,7 @@ func (r *ModifyCmqQueueAttributeRequest) FromJsonString(s string) error {
 	delete(f, "Policy")
 	delete(f, "Trace")
 	delete(f, "Transaction")
+	delete(f, "RetentionSizeInMB")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCmqQueueAttributeRequest has unknown keys!", "")
 	}

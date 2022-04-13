@@ -4477,7 +4477,7 @@ type DescribeDefaultParamsRequest struct {
 	// mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 }
 
@@ -5072,10 +5072,10 @@ type DescribeProxyConnectionPoolConfRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页
+	// 分页查询偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制
+	// 分页查询限制
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
