@@ -2,7 +2,6 @@ package common
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"net/http"
 	"reflect"
@@ -33,7 +32,7 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 			if err, ok := err.(net.Error); ok && (err.Timeout() || err.Temporary()) {
 				duration := durationFunc(idx)
 				if c.debug {
-					log.Printf(tplNetworkFailureRetry, idx, maxRetries, duration.Seconds(), err.Error())
+					c.logger.Printf(tplNetworkFailureRetry, idx, maxRetries, duration.Seconds(), err.Error())
 				}
 
 				time.Sleep(duration)
