@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"time"
 
@@ -36,7 +35,7 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 		if err, ok := err.(*errors.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
 			duration := durationFunc(idx)
 			if c.debug {
-				log.Printf(tplRateLimitRetry, idx, maxRetries, duration.Seconds(), err.Error())
+				c.logger.Printf(tplRateLimitRetry, idx, maxRetries, duration.Seconds(), err.Error())
 			}
 
 			time.Sleep(duration)
