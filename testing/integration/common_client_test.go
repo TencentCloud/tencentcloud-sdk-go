@@ -1,7 +1,6 @@
 package integration
 
 import (
-	"fmt"
 	"io/ioutil"
 	"testing"
 
@@ -26,19 +25,17 @@ func getCredential(t *testing.T) common.CredentialIface {
 func TestCommonRequest(t *testing.T) {
 	cr := getCredential(t)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
-	//Create common request
 	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
 
 	// create common request
 	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
 	// To customize request parameters, the SetActionParameters function supports input parameters of three data types
 	// 1. map[string]interface{}
-	//body:=map[string]interface{}{
+	// body:=map[string]interface{}{
 	//	"InstanceId":"crs-xxx",
 	//	"SpanType":2,
-	//}
+	// }
 
 	// 2. string
 	bodyStr := `{}`
@@ -58,14 +55,13 @@ func TestCommonRequest(t *testing.T) {
 	// send request
 	err = client.Send(request, response)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+		t.Errorf("fail to invoke api: %v", err)
 	}
 }
 
 func TestClient_SendOctetStream(t *testing.T) {
 	cr := getCredential(t)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cls.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
 	// create common client
 	client := common.NewCommonClient(cr, regions.Guangzhou, cpf)
@@ -87,13 +83,9 @@ func TestClient_SendOctetStream(t *testing.T) {
 	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
 		if terr.GetCode() == "OperationDenied" || terr.GetCode() == "ResourceNotFound.TopicNotExist" {
 			return
-		} else {
-			t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
-
 		}
 	}
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+		t.Errorf("fail to invoke api: %v", err)
 	}
-	t.Log(string(response.GetBody()))
 }

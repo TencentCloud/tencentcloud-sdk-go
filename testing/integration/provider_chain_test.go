@@ -8,12 +8,11 @@ import (
 
 func TestProviderChain(t *testing.T) {
 	// custom provider chain
-	/*
-		provider1 := common.DefaultCvmRoleProvider()
-		provider2 := common.DefaultEnvProvider()
-		customProviders := []common.Provider{provider1, provider2}
-		pc := common.NewProviderChain(customProviders)
-	*/
+	//
+	//	provider1 := common.DefaultCvmRoleProvider()
+	//	provider2 := common.DefaultEnvProvider()
+	//	customProviders := []common.Provider{provider1, provider2}
+	//	pc := common.NewProviderChain(customProviders)
 
 	// default provider
 	pc := common.DefaultProviderChain()

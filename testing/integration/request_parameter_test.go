@@ -15,14 +15,12 @@
 package integration
 
 import (
-	"fmt"
 	"os"
 	"strings"
 	"testing"
 
 	cbs "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs/v20170312"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	faceid "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid/v20180301"
@@ -31,47 +29,35 @@ import (
 )
 
 func TestIntType(t *testing.T) {
-
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := cvm.NewDescribeInstancesRequest()
-
 	request.Limit = common.Int64Ptr(-1)
 
-	response, err := client.DescribeInstances(request)
-
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "length less than 1 or greater than 100") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	_, err := client.DescribeInstances(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
+	}
+	if strings.Index(err.Error(), "InvalidParameterValue") == -1 {
+		t.Fatalf("The error is not expected: %s", err.Error())
 	}
 }
 
 func TestUintAndStringAndNestType(t *testing.T) {
-	//Set the interface parameters to uInt, String, multi-layer nested complex objects
+	// Set the interface parameters to uInt, String, multi-layer nested objects
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cbs.tencentcloudapi.com"
 	client, _ := cbs.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := cbs.NewDescribeSnapshotsRequest()
-
 	request.Filters = []*cbs.Filter{
 		{
 			Name:   common.StringPtr("snapshot-name"),
@@ -84,160 +70,118 @@ func TestUintAndStringAndNestType(t *testing.T) {
 	}
 	request.Limit = common.Uint64Ptr(1)
 
-	response, err := client.DescribeSnapshots(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "SnapshotId  is invalid") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	_, err := client.DescribeSnapshots(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
 	}
-
+	if strings.Index(err.Error(), "InvalidParameter") == -1 {
+		t.Fatalf("The error is not expected: %s", err.Error())
+	}
 }
 
 func TestBoolAndDatetimeIsoType(t *testing.T) {
-	//Set the interface parameters to Bool, Datetime_Iso type
+	// Set the interface parameters to Bool, Datetime_Iso type
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cbs.tencentcloudapi.com"
 	client, _ := cbs.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := cbs.NewModifySnapshotAttributeRequest()
-
 	request.SnapshotId = common.StringPtr("")
 	request.SnapshotName = common.StringPtr("")
 	request.IsPermanent = common.BoolPtr(false)
 	request.Deadline = common.StringPtr("2021-05-22T09:00:00Z")
 
-	response, err := client.ModifySnapshotAttribute(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "SnapshotId:  is invalid") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	_, err := client.ModifySnapshotAttribute(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
 	}
-
+	if strings.Index(err.Error(), "InvalidParameter") == -1 {
+		t.Fatalf("The error is not expected: %s", err.Error())
+	}
 }
 
 func TestDateType(t *testing.T) {
-	//Set the interface parameter to Date type
+	// Set the interface parameter to Date type
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cbs.tencentcloudapi.com"
 	client, _ := cbs.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := cbs.NewDescribeSnapshotOperationLogsRequest()
-
 	request.Filters = []*cbs.Filter{
 		{
 			Name:   common.StringPtr("snapshot-id"),
-			Values: common.StringPtrs([]string{""}),
+			Values: common.StringPtrs([]string{"invalid-snp-id"}),
 		},
 	}
 	request.BeginTime = common.StringPtr("2021-05-21")
 	request.EndTime = common.StringPtr("2021-05-21")
 
-	response, err := client.DescribeSnapshotOperationLogs(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "SnapshotId  is invalid") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	// not a good api design, the api responses successully with wrong input
+	_, err := client.DescribeSnapshotOperationLogs(request)
+	if err == nil {
+		t.Logf("unexpected success")
 	}
 }
 
 func TestDatetimeType(t *testing.T) {
-	//Set the interface parameter to Datetime type
+	// Set the interface parameter to Datetime type
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "scf.tencentcloudapi.com"
 	client, _ := scf.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := scf.NewGetFunctionLogsRequest()
-
 	request.StartTime = common.StringPtr("2021-05-21 11:00:00")
 	request.EndTime = common.StringPtr("2021-05-21 11:00:00")
 
-	response, err := client.GetFunctionLogs(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
-	}
+	_, err := client.GetFunctionLogs(request)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf("unexpected error: %s", err)
 	}
-	fmt.Printf("%s\n", response.ToJsonString())
 }
 
 func TestFloatType(t *testing.T) {
-	//Set the interface parameter to float type
+	// Set the interface parameter to float type
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "iai.tencentcloudapi.com"
 	client, _ := iai.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := iai.NewSearchFacesRequest()
-
 	request.GroupIds = common.StringPtrs([]string{"test"})
 	request.Url = common.StringPtr("https://www.test.com")
 	request.FaceMatchThreshold = common.Float64Ptr(0.2)
 
-	response, err := client.SearchFaces(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "人员库ID不存在") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	_, err := client.SearchFaces(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
+	}
+	if strings.Index(err.Error(), "InvalidParameter") == -1 {
+		t.Fatalf("The error is not expected: %s", err.Error())
 	}
 }
 
 func TestComplexType(t *testing.T) {
-	//Set interface parameters to complex types
+	// Set interface parameters to complex types
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "faceid.tencentcloudapi.com"
+	cpf.Language = "en-US"
 	client, _ := faceid.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := faceid.NewMobileStatusRequest()
-
 	request.Mobile = common.StringPtr("null")
 	request.Encryption = &faceid.Encryption{
 		CiphertextBlob: common.StringPtr("null"),
@@ -245,17 +189,12 @@ func TestComplexType(t *testing.T) {
 		Iv:             common.StringPtr("null"),
 	}
 
-	response, err := client.MobileStatus(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "Service not activated") == -1 {
-			t.Errorf(fmt.Sprintf("The error is not as expected"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The error is not as expected"))
+	_, err := client.MobileStatus(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
+	}
+	// not a good test case, we should use cvm describe-instances
+	if strings.Index(err.Error(), "UnauthorizedOperation.Nonactivated") == -1 {
+		t.Fatalf("The error is not expected: %s", err.Error())
 	}
 }

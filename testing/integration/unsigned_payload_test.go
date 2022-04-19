@@ -15,7 +15,6 @@
 package integration
 
 import (
-	"fmt"
 	"os"
 	"testing"
 	"time"
@@ -50,31 +49,22 @@ func TestUnsignedPayload(t *testing.T) {
 
 		request := iai.NewCompareFaceRequest()
 
-		request.ImageA = common.StringPtr(getBigString(3145728))
-		request.ImageB = common.StringPtr(getBigString(2097152))
-		request.UrlA = common.StringPtr("https://cloudapi-test-1254240205.cos.ap-nanjing.myqcloud.com/9d1f1393e5fc5ca13032e40e3bf9e882.jpeg")
-		request.UrlB = common.StringPtr("https://cloudapi-test-1254240205.cos.ap-nanjing.myqcloud.com/9d1f1393e5fc5ca13032e40e3bf9e882.jpeg")
+		request.ImageA = common.StringPtr(getBigString(3145))
+		request.ImageB = common.StringPtr(getBigString(2097))
+		// request.UrlA = common.StringPtr("https://cloudapi-test-1254240205.cos.ap-nanjing.myqcloud.com/9d1f1393e5fc5ca13032e40e3bf9e882.jpeg")
+		// request.UrlB = common.StringPtr("https://cloudapi-test-1254240205.cos.ap-nanjing.myqcloud.com/9d1f1393e5fc5ca13032e40e3bf9e882.jpeg")
 
 		start := time.Now()
-		response, err := client.CompareFace(request)
+		_, err := client.CompareFace(request)
+		if _, ok := err.(*errors.TencentCloudSDKError); !ok {
+			t.Errorf("request failed with unexpected error.")
+		}
 		elapsed := time.Since(start)
-		fmt.Println("The time it takes for the request to complete：", elapsed)
-
 		useTime[i] = float64(elapsed)
-
-		if _, ok := err.(*errors.TencentCloudSDKError); ok {
-			fmt.Printf("An API error has returned: %s", err)
-			t.Errorf(fmt.Sprintf("The request failed, the expected request succeeded!"))
-		}
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
 	}
 
 	if useTime[0] > useTime[1] {
-		t.Errorf(fmt.Sprintf("The request time of setting unsigned-payload is greater than the request time of " +
-			"not setting unsigned-payload"))
+		t.Logf("The request time of setting unsigned-payload %f > ordinary %f", useTime[0], useTime[1])
 	}
 
 }

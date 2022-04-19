@@ -15,7 +15,6 @@
 package integration
 
 import (
-	"fmt"
 	"os"
 	"strings"
 	"testing"
@@ -27,94 +26,71 @@ import (
 	sts "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts/v20180813"
 )
 
-//func getCredential(t *testing.T, tmpId sting, tmpKey string, tmpToken string,) {
-func ToGetCredential(t *testing.T) (string, string, string) {
-
+func toGetCredential(t *testing.T) (string, string, string) {
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "sts.tencentcloudapi.com"
 	client, _ := sts.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := sts.NewAssumeRoleRequest()
-
 	request.RoleArn = common.StringPtr(os.Getenv("TENCENTCLOUD_ROLE_ARN"))
+	if *request.RoleArn == "" {
+		t.Skipf("TENCENTCLOUD_ROLE_ARN env var not set")
+	}
 	request.RoleSessionName = common.StringPtr("cloudapi-test")
 
 	response, err := client.AssumeRole(request)
-
 	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s", err)
-		t.Errorf(fmt.Sprintf("The request failed, the expected request succeeded!"))
+		t.Fatalf("unexpected error has returned: %s", err)
 	}
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf("fail to init client: %v", err)
 	}
 
 	tmpId := *response.Response.Credentials.TmpSecretId
 	tmpKey := *response.Response.Credentials.TmpSecretKey
 	tmpToken := *response.Response.Credentials.Token
-
 	return tmpId, tmpKey, tmpToken
 }
 
 func testCredRequestSuccess(t *testing.T, reqMethodList []string) {
-
 	for _, reqMethod := range reqMethodList {
-		id, key, token := ToGetCredential(t)
+		id, key, token := toGetCredential(t)
 		credential := common.NewTokenCredential(id, key, token)
 		cpf := profile.NewClientProfile()
 		cpf.HttpProfile.ReqMethod = reqMethod
-		cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 		client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 		request := cvm.NewDescribeZonesRequest()
 
-		response, err := client.DescribeZones(request)
-		if _, ok := err.(*errors.TencentCloudSDKError); ok {
-			fmt.Printf("An API error has returned: %s", err)
-			t.Errorf(fmt.Sprintf("The request failed, the expected request succeeded!"))
-		}
+		_, err := client.DescribeZones(request)
 		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+			t.Fatalf("unexpected error: %s", err)
 		}
-		fmt.Printf("%s\n", response.ToJsonString())
 	}
 
 }
 
 func testCredRequestFail(t *testing.T, reMethodList []string) {
-
 	for _, reqMethod := range reMethodList {
-		id, key, token := ToGetCredential(t)
+		id, key, token := toGetCredential(t)
 		credential := common.NewTokenCredential(id, key, token+"error")
 		cpf := profile.NewClientProfile()
 		cpf.HttpProfile.ReqMethod = reqMethod
-		cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 		client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 		request := cvm.NewDescribeInstancesOperationLimitRequest()
-
 		request.InstanceIds = common.StringPtrs([]string{" "})
 		request.Operation = common.StringPtr("INSTANCE_DEGRADE")
 
-		response, err := client.DescribeInstancesOperationLimit(request)
-		if _, ok := err.(*errors.TencentCloudSDKError); ok {
-			fmt.Printf("An API error has returned: %s\n", err)
-			if strings.Index(err.Error(), "AuthFailure.TokenFailure") == -1 {
-				t.Errorf(fmt.Sprintf("The error code is not as expected! \n"))
-			}
-			if strings.Index(err.Error(), "Token verification failed, please check if your Token is correct") == -1 {
-				t.Errorf(fmt.Sprintf("The error code is not as expected! \n"))
-			}
-		} else {
-			if err != nil {
-				t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-			}
-			fmt.Printf("%s\n", response.ToJsonString())
-			t.Errorf(fmt.Sprintf("The request succeeded, the expected request failed!"))
+		_, err := client.DescribeInstancesOperationLimit(request)
+		if err == nil {
+			t.Fatalf("unexpected success")
+		}
+		if strings.Index(err.Error(), "AuthFailure.TokenFailure") == -1 {
+			t.Fatalf("The error code is not as expected!")
 		}
 	}
 }

@@ -38,7 +38,7 @@ func TestDescribeInstancesSignV1Get(t *testing.T) {
 		regions.Guangzhou,
 		cpf)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf(fmt.Sprintf("fail to init client: %v", err))
 	}
 
 	request := cvm.NewDescribeInstancesRequest()
@@ -48,11 +48,10 @@ func TestDescribeInstancesSignV1Get(t *testing.T) {
 			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
 		},
 	}
-	resp, err := client.DescribeInstances(request)
+	_, err = client.DescribeInstances(request)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+		t.Fatalf("fail to invoke api: %v", err)
 	}
-	fmt.Printf("%s\n", resp.ToJsonString())
 }
 
 func TestEmptyStringGetSignV1HmacSHA1(t *testing.T) {
@@ -79,7 +78,7 @@ func testEmptyStringGet(t *testing.T, method string) {
 		regions.Guangzhou,
 		cpf)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf("fail to init client: %v", err)
 	}
 
 	request := cvm.NewDescribeInstancesRequest()
@@ -89,15 +88,16 @@ func testEmptyStringGet(t *testing.T, method string) {
 			Values: common.StringPtrs([]string{""}),
 		},
 	}
-	resp, err := client.DescribeInstances(request)
+	_, err = client.DescribeInstances(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
+	}
 	if terr, ok := err.(*errors.TencentCloudSDKError); ok {
-		code := terr.GetCode()
-		if code == cvm.INVALIDZONE_MISMATCHREGION {
+		if terr.GetCode() == cvm.INVALIDZONE_MISMATCHREGION {
 			return
 		}
 	}
-	fmt.Printf("%s\n", resp.ToJsonString())
-	t.Errorf(fmt.Sprintf("not expected error: %v", err))
+	t.Fatalf("not expected error: %v", err)
 }
 
 func TestDescribeInstances(t *testing.T) {
@@ -109,15 +109,15 @@ func TestDescribeInstances(t *testing.T) {
 		regions.Guangzhou,
 		profile.NewClientProfile())
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf("fail to init client: %v", err)
 	}
 
 	request := cvm.NewDescribeInstancesRequest()
 	response, err := client.DescribeInstances(request)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to invoke api: %v", err))
+		t.Fatalf("fail to invoke api: %v", err)
 	}
 	if *response.Response.TotalCount != (int64)(len(response.Response.InstanceSet)) {
-		t.Errorf("response item count inconsisitent!")
+		t.Fatalf("response item count inconsisitent!")
 	}
 }

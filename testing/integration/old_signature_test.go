@@ -15,61 +15,51 @@
 package integration
 
 import (
-	"fmt"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func TestOldSignature(t *testing.T) {
-
 	signMethodList := []string{"HmacSHA256", "HmacSHA1"}
 	reqMethodList := []string{"GET", "POST"}
 	oldSignature(signMethodList, reqMethodList, t)
 }
 
 func oldSignature(signMethodList []string, reqMethodList []string, t *testing.T) {
-
 	for _, signMethod := range signMethodList {
-		for _, reqmethod := range reqMethodList {
-			fmt.Printf("%s request，use %s sign method.\n", reqmethod, signMethod)
+		for _, reqMethod := range reqMethodList {
 			credential := common.NewCredential(
 				os.Getenv("TENCENTCLOUD_SECRET_ID"),
 				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 			)
 			cpf := profile.NewClientProfile()
-			cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
-			cpf.HttpProfile.ReqMethod = reqmethod
+			cpf.HttpProfile.ReqMethod = reqMethod
 			cpf.SignMethod = signMethod
 			client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 			request := cvm.NewDescribeZonesRequest()
 
-			response, err := client.DescribeZones(request)
-			if _, ok := err.(*errors.TencentCloudSDKError); ok {
-				fmt.Printf("An API error has returned: %s", err)
-				t.Errorf(fmt.Sprintf("The request failed, the expected request succeeded!"))
-			}
+			_, err := client.DescribeZones(request)
 			if err != nil {
-				t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+				t.Fatalf("unexpected error: %s", err)
 			}
-			fmt.Printf("%s\n", response.ToJsonString())
 		}
 	}
 
 	for _, signMethod := range signMethodList {
 		for _, reqMethod := range reqMethodList {
-			fmt.Printf("%s request，use %s sign method.\n", reqMethod, signMethod)
 			credential := common.NewCredential(
 				os.Getenv("TENCENTCLOUD_SECRET_ID"),
 				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 			)
 			cpf := profile.NewClientProfile()
-			cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
+			cpf.HttpProfile.ReqMethod = reqMethod
+			cpf.SignMethod = signMethod
 			client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 			request := cvm.NewDescribeInstancesOperationLimitRequest()
@@ -77,20 +67,13 @@ func oldSignature(signMethodList []string, reqMethodList []string, t *testing.T)
 			request.InstanceIds = common.StringPtrs([]string{""})
 			request.Operation = common.StringPtr("INSTANCE_DEGRADE")
 
-			response, err := client.DescribeInstancesOperationLimit(request)
-			if _, ok := err.(*errors.TencentCloudSDKError); ok {
-				fmt.Printf("An API error has returned: %s\n", err)
-				if strings.Index(err.Error(), "InvalidInstanceId.Malformed") == -1 {
-					t.Errorf(fmt.Sprintf("The error is not as expected"))
-				}
-			} else {
-				if err != nil {
-					t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-				}
-				fmt.Printf("%s\n", response.ToJsonString())
-				t.Errorf(fmt.Sprintf("The error is not as expected"))
+			_, err := client.DescribeInstancesOperationLimit(request)
+			if err == nil {
+				t.Fatalf("unexpected success")
+			}
+			if strings.Index(err.Error(), "InvalidInstanceId.Malformed") == -1 {
+				t.Fatalf("unexpected error %s", err)
 			}
 		}
-
 	}
 }

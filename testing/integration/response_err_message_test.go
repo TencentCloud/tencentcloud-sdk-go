@@ -15,46 +15,32 @@
 package integration
 
 import (
-	"fmt"
 	"os"
 	"strings"
 	"testing"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func TestResponseMessage(t *testing.T) {
-
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
 	)
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	client, _ := cvm.NewClient(credential, "ap-guangzhou", cpf)
 
 	request := cvm.NewDescribeInstancesOperationLimitRequest()
-
 	request.InstanceIds = common.StringPtrs([]string{""})
 	request.Operation = common.StringPtr("INSTANCE_DEGRADE")
 
-	response, err := client.DescribeInstancesOperationLimit(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		if strings.Index(err.Error(), "InvalidInstanceId.Malformed") == -1 {
-			t.Errorf(fmt.Sprintf("The error code is not as expected! \n"))
-		} else if strings.Index(err.Error(), "Instance ID `` is not acceptable, please provide a canonical instance ID") == -1 {
-			t.Errorf(fmt.Sprintf("The error code is not as expected! \n"))
-		}
-	} else {
-		if err != nil {
-			t.Errorf(fmt.Sprintf("fail to init client: %v", err))
-		}
-		fmt.Printf("%s\n", response.ToJsonString())
-		t.Errorf(fmt.Sprintf("The request succeeded, the expected request failed!"))
+	_, err := client.DescribeInstancesOperationLimit(request)
+	if err == nil {
+		t.Fatalf("unexpected success")
 	}
-
+	if strings.Index(err.Error(), "InvalidInstanceId.Malformed") == -1 {
+		t.Fatalf("The error code %s is not expected value", err.Error())
+	}
 }

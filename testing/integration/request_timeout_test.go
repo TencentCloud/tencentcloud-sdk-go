@@ -15,17 +15,15 @@
 package integration
 
 import (
-	"fmt"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
-	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
-	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	"os"
 	"testing"
+
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+	cvm "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 )
 
 func TestRequestTimeout(t *testing.T) {
-
 	credential := common.NewCredential(
 		os.Getenv("TENCENTCLOUD_SECRET_ID"),
 		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
@@ -37,13 +35,8 @@ func TestRequestTimeout(t *testing.T) {
 
 	request := cvm.NewDescribeZonesRequest()
 
-	response, err := client.DescribeZones(request)
-	if _, ok := err.(*errors.TencentCloudSDKError); ok {
-		fmt.Printf("An API error has returned: %s\n", err)
-		t.Errorf(fmt.Sprintf("The request failed, the expected request succeeded!"))
-	}
+	_, err := client.DescribeZones(request)
 	if err != nil {
-		t.Errorf(fmt.Sprintf("fail to init client: %v", err))
+		t.Fatalf("unexpeced error: %v", err)
 	}
-	fmt.Printf("%s\n", response.ToJsonString())
 }
