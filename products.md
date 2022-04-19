@@ -124,7 +124,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-04-13 07:00:13 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-04-08 06:10:55 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-04-08 06:10:59 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-04-19 20:30:49 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-04-04 07:01:46 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-04-04 07:01:49 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-04-04 07:02:02 |

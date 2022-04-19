@@ -1,45 +1,23 @@
 # 本版本更新包含以下内容：
 
-## 云监控(monitor) 版本：2018-07-24
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 43 次发布
+### 第 65 次发布
 
-发布时间：2022-04-19 06:13:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
-
-	* 新增成员：Weekday
-
-* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
-
-	* 新增成员：Weekday
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 7 次发布
-
-发布时间：2022-04-19 06:20:51
+发布时间：2022-04-19 19:47:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
 
-新增数据结构：
+	* 新增入参：Type
 
-* [PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)
+	* 新增出参：IDNumber, TestingInterval, TestingResult, TestingTime
+
 
 
 
@@ -48331,6 +48309,23 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 65 次发布
+
+发布时间：2022-04-19 19:47:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+
+	* 新增入参：Type
+
+	* 新增出参：IDNumber, TestingInterval, TestingResult, TestingTime
+
+
 ### 第 64 次发布
 
 发布时间：2022-03-24 17:13:23
@@ -75044,11 +75039,11 @@
 
 新增接口：
 
-* [[AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)](https://cloud.tencent.com/document/api/#/#)
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
 
 新增数据结构：
 
-* [[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)](https://cloud.tencent.com/document/api/627/53609#[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem))
+* [PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)
 
 ### 第 6 次发布
 
