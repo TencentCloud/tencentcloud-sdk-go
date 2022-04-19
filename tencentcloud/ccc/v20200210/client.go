@@ -791,6 +791,61 @@ func (c *Client) DescribePSTNActiveSessionListWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeProtectedTelCdrRequest() (request *DescribeProtectedTelCdrRequest) {
+    request = &DescribeProtectedTelCdrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeProtectedTelCdr")
+    
+    
+    return
+}
+
+func NewDescribeProtectedTelCdrResponse() (response *DescribeProtectedTelCdrResponse) {
+    response = &DescribeProtectedTelCdrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProtectedTelCdr
+// 获取主被叫受保护的电话服务记录与录音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeProtectedTelCdr(request *DescribeProtectedTelCdrRequest) (response *DescribeProtectedTelCdrResponse, err error) {
+    return c.DescribeProtectedTelCdrWithContext(context.Background(), request)
+}
+
+// DescribeProtectedTelCdr
+// 获取主被叫受保护的电话服务记录与录音
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeProtectedTelCdrWithContext(ctx context.Context, request *DescribeProtectedTelCdrRequest) (response *DescribeProtectedTelCdrResponse, err error) {
+    if request == nil {
+        request = NewDescribeProtectedTelCdrRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProtectedTelCdr require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProtectedTelCdrResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSeatUserListRequest() (request *DescribeSeatUserListRequest) {
     request = &DescribeSeatUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},

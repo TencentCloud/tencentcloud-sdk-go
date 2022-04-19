@@ -171,6 +171,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_DATAFORMATABNORMALERROR = "InternalError.DataFormatAbnormalError"
 //  INTERNALERROR_OCRERROR = "InternalError.OcrError"
 //  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
@@ -203,6 +204,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_DATAFORMATABNORMALERROR = "InternalError.DataFormatAbnormalError"
 //  INTERNALERROR_OCRERROR = "InternalError.OcrError"
 //  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"

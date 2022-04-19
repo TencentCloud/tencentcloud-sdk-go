@@ -7811,6 +7811,14 @@ type OverseaConfig struct {
 	// 回源OSS私有鉴权。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OssPrivateAccess *OssPrivateAccess `json:"OssPrivateAccess,omitempty" name:"OssPrivateAccess"`
+
+	// 华为云对象存储鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HwPrivateAccess *HwPrivateAccess `json:"HwPrivateAccess,omitempty" name:"HwPrivateAccess"`
+
+	// 七牛云对象存储鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 }
 
 type PathBasedOriginRule struct {

@@ -2533,6 +2533,67 @@ type ClearItem struct {
 	TotalAmt *string `json:"TotalAmt,omitempty" name:"TotalAmt"`
 }
 
+type CloseCloudOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户Id，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 开发者订单号
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *CloseCloudOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseCloudOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "OutTradeNo")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseCloudOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloseCloudOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CloseCloudOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseCloudOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CloseOpenBankPaymentOrderRequest struct {
 	*tchttp.BaseRequest
 
@@ -2685,6 +2746,394 @@ func (r *CloseOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CloseOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloudAttachmentInfo struct {
+
+	// 附加项金额。
+	// 附加项的金额（必须是正数，单位：分），代表积分的数量、抵扣的金额、溢价的金额、补贴的金额
+	AttachmentAmount *int64 `json:"AttachmentAmount,omitempty" name:"AttachmentAmount"`
+
+	// 附加项类型。
+	// Add：加项；
+	// Sub：减项；
+	// Point：积分项；
+	// Subsidy：补贴项。
+	AttachmentType *string `json:"AttachmentType,omitempty" name:"AttachmentType"`
+
+	// 附加项名称。
+	// 当银行作为收单机构可能会对该字段有要求，请向米大师确认。
+	AttachmentName *string `json:"AttachmentName,omitempty" name:"AttachmentName"`
+
+	// 附加项编号。
+	// 当银行作为收单机构可能会对该字段有要求，请向米大师确认。
+	AttachmentCode *string `json:"AttachmentCode,omitempty" name:"AttachmentCode"`
+}
+
+type CloudChannelExternalUserInfo struct {
+
+	// 渠道方用户类型，枚举值:
+	// WX_OPENID 微信支付类型
+	// ALIPAY_BUYERID 支付宝支付类型
+	ChannelExternalUserType *string `json:"ChannelExternalUserType,omitempty" name:"ChannelExternalUserType"`
+
+	// 渠道方用户Id
+	ChannelExternalUserId *string `json:"ChannelExternalUserId,omitempty" name:"ChannelExternalUserId"`
+}
+
+type CloudClientInfo struct {
+
+	// 场景类型。
+	// wechat_ecommerce渠道 - h5支付方式，此字段必填；
+	// 枚举值：
+	// CLIENT_TYPE_UNKNOWN 未知;
+	// CLIENT_TYPE_IOS ios系统;
+	// CLIENT_TYPE_ANDROID 安卓系统;
+	// CLIENT_TYPE_WAP WAP场景;
+	// CLIENT_TYPE_H5 H5场景;
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 网站URL。
+	AppUrl *string `json:"AppUrl,omitempty" name:"AppUrl"`
+
+	// IOS平台BundleID。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+
+	// Android平台PackageName
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+}
+
+type CloudExternalChannelData struct {
+
+	// 第三方渠道数据名。
+	// PAYMENT_ORDER_EXTERNAL_REQUEST_DATA: 支付下单请求数据
+	// PAYMENT_ORDER_EXTERNAL_RETURN_DATA: 支付下单返回数据
+	// PAYMENT_ORDER_EXTERNAL_NOTIFY_DATA: 支付通知数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalChannelDataName *string `json:"ExternalChannelDataName,omitempty" name:"ExternalChannelDataName"`
+
+	// 第三方渠道数据值。
+	// 当ExternalChannelDataType=PAYMENT时，反序列化格式请参考[ExternalChannelPaymentDataValue](https://dev.tke.midas.qq.com/juxin-doc-next/apidocs/external-channel-data/QueryExternalChannelData.html#externalchannelpaymentdatavalue)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalChannelDataValue *string `json:"ExternalChannelDataValue,omitempty" name:"ExternalChannelDataValue"`
+}
+
+type CloudExternalPromptGroup struct {
+
+	// 渠道名。
+	// 为米大师定义的枚举值：
+	// wechat 微信渠道
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道扩展促销信息列表，由各个渠道自行定义。
+	// ChannelName为wechat时，组成为 <Wechat-ExternalPromptInfo>
+	ExternalPromptInfoList []*CloudExternalPromptInfo `json:"ExternalPromptInfoList,omitempty" name:"ExternalPromptInfoList"`
+}
+
+type CloudExternalPromptInfo struct {
+
+	// 优惠商品信息类型。
+	ExternalPromptType *string `json:"ExternalPromptType,omitempty" name:"ExternalPromptType"`
+
+	// 优惠商品信息数据。
+	ExternalPromptValue *string `json:"ExternalPromptValue,omitempty" name:"ExternalPromptValue"`
+
+	// 优惠商品名称。
+	ExternalPromptName *string `json:"ExternalPromptName,omitempty" name:"ExternalPromptName"`
+}
+
+type CloudGlobalPayTimeInfo struct {
+
+	// 订单开始时间。
+	// 不指定时默认为当前时间。
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 订单结束时间。
+	// 逾期将会拒绝下单。不指定时默认为当前时间的7天后结束。
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" name:"ExpireTimestamp"`
+
+	// 时区。
+	// 不指定时默认为28800，表示北京时间（东八区）。
+	TimeOffset *int64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
+}
+
+type CloudOrderReturn struct {
+
+	// 米大师分配的支付主MidasAppId
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 开发者支付订单号
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 调用下单接口传进来的子单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubOrderList []*CloudSubOrderReturn `json:"SubOrderList,omitempty" name:"SubOrderList"`
+
+	// 调用下单接口获取的米大师交易订单号
+	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 支付渠道
+	// wechat:微信支付
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 物品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 发货标识，由开发者在调用下单接口的时候传入
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// ISO货币代码
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 支付金额，单位：分
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 订单状态
+	// 0:初始状态，获取米大师交易订单成功
+	// 1:拉起米大师支付页面成功，用户未支付
+	// 2:用户支付成功，正在发货
+	// 3:用户支付成功，发货失败
+	// 4:用户支付成功，发货成功
+	// 5:关单中
+	// 6:已关单
+	OrderState *string `json:"OrderState,omitempty" name:"OrderState"`
+
+	// 下单时间，unix时间戳
+	OrderTime *string `json:"OrderTime,omitempty" name:"OrderTime"`
+
+	// 支付时间，unix时间戳
+	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
+
+	// 支付回调时间，unix时间戳
+	CallBackTime *string `json:"CallBackTime,omitempty" name:"CallBackTime"`
+
+	// 支付机构订单号
+	ChannelExternalOrderId *string `json:"ChannelExternalOrderId,omitempty" name:"ChannelExternalOrderId"`
+
+	// 米大师内部渠道订单号
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 是否曾退款
+	RefundFlag *string `json:"RefundFlag,omitempty" name:"RefundFlag"`
+
+	// 用户支付金额
+	CashAmt *string `json:"CashAmt,omitempty" name:"CashAmt"`
+
+	// 抵扣券金额
+	CouponAmt *string `json:"CouponAmt,omitempty" name:"CouponAmt"`
+
+	// 商品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 结算信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleInfo *CloudSettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 附加项信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachmentInfoList []*CloudAttachmentInfo `json:"AttachmentInfoList,omitempty" name:"AttachmentInfoList"`
+
+	// 渠道方返回的用户信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExternalUserInfoList []*CloudChannelExternalUserInfo `json:"ChannelExternalUserInfoList,omitempty" name:"ChannelExternalUserInfoList"`
+
+	// 渠道扩展促销列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnPromptGroupList []*CloudExternalPromptGroup `json:"ExternalReturnPromptGroupList,omitempty" name:"ExternalReturnPromptGroupList"`
+
+	// 场景扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneInfo *string `json:"SceneInfo,omitempty" name:"SceneInfo"`
+}
+
+type CloudSettleInfo struct {
+
+	// 是否需要支付确认。
+	// 0: 不需要支付确认
+	// 1: 需要支付确认
+	// 传1时，需要在支付完成后成功调用了《支付确认》接口，该笔订单才会被清分出去
+	NeedToBeConfirmed *int64 `json:"NeedToBeConfirmed,omitempty" name:"NeedToBeConfirmed"`
+
+	// 是否指定分账。
+	// 0: 不指定分账
+	// 1: 指定分账
+	ProfitSharing *int64 `json:"ProfitSharing,omitempty" name:"ProfitSharing"`
+}
+
+type CloudStoreInfo struct {
+
+	// 门店ID。
+	StoreId *string `json:"StoreId,omitempty" name:"StoreId"`
+
+	// 门店名称。
+	StoreName *string `json:"StoreName,omitempty" name:"StoreName"`
+
+	// 门店地址。
+	StoreAddress *string `json:"StoreAddress,omitempty" name:"StoreAddress"`
+
+	// 门店地区代码。
+	StoreAreaCode *string `json:"StoreAreaCode,omitempty" name:"StoreAreaCode"`
+
+	// 设备ID。
+	// wechat_ecommerce渠道 - h5支付方式，此字段必填。
+	StoreDeviceId *string `json:"StoreDeviceId,omitempty" name:"StoreDeviceId"`
+}
+
+type CloudSubOrder struct {
+
+	// 子订单号。
+	// 长度32个字符供参考，部分渠道存在长度更短的情况接入时请联系开发咨询。
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 支付子商户ID。
+	// 米大师计费SubAppId，代表子商户。
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 商品名称。
+	// 业务自定义的子订单商品名称，无需URL编码，长度限制以具体所接入渠道为准。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 商品详情。
+	// 业务自定义的子订单商品详情，无需URL编码，长度限制以具体所接入渠道为准。
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 平台应收。
+	// 子订单平台应收金额，单位：分，需要注意的是Amt = PlatformIncome+SubMchIncome。
+	PlatformIncome *int64 `json:"PlatformIncome,omitempty" name:"PlatformIncome"`
+
+	// 商户应收。
+	// 子订单结算应收金额，单位：分，需要注意的是Amt = PlatformIncome+SubMchIncome。
+	SubMchIncome *int64 `json:"SubMchIncome,omitempty" name:"SubMchIncome"`
+
+	// 透传字段。
+	// 发货标识，由开发者在调用米大师下单接口的 时候下发。
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 支付金额。
+	// 子订单支付金额，需要注意的是Amt = PlatformIncome+SubMchIncome。
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 原始金额。
+	// 子订单原始金额，OriginalAmt>=Amt。
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 微信子商户号。
+	WxSubMchId *string `json:"WxSubMchId,omitempty" name:"WxSubMchId"`
+
+	// 结算信息。
+	// 例如是否需要分账、是否需要支付确认等。
+	SettleInfo *CloudSettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 附加项信息列表。
+	// 例如溢价信息、抵扣信息、积分信息、补贴信息
+	// 通过该字段可以实现渠道方的优惠抵扣补贴等营销功能。
+	AttachmentInfoList []*CloudAttachmentInfo `json:"AttachmentInfoList,omitempty" name:"AttachmentInfoList"`
+}
+
+type CloudSubOrderRefund struct {
+
+	// 子订单退款金额
+	RefundAmt *int64 `json:"RefundAmt,omitempty" name:"RefundAmt"`
+
+	// 平台应退金额
+	PlatformRefundAmt *int64 `json:"PlatformRefundAmt,omitempty" name:"PlatformRefundAmt"`
+
+	// 商家应退金额
+	SubMchRefundAmt *int64 `json:"SubMchRefundAmt,omitempty" name:"SubMchRefundAmt"`
+
+	// 子订单号
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 子退款单号，调用方需要保证全局唯一性
+	SubRefundId *string `json:"SubRefundId,omitempty" name:"SubRefundId"`
+}
+
+type CloudSubOrderReturn struct {
+
+	// 子订单号
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 米大师计费SubAppId，代表子商户
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子订单商品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 子订单商品详情
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 子订单平台应收金额，单位：分
+	PlatformIncome *int64 `json:"PlatformIncome,omitempty" name:"PlatformIncome"`
+
+	// 子订单结算应收金额，单位：分
+	SubMchIncome *int64 `json:"SubMchIncome,omitempty" name:"SubMchIncome"`
+
+	// 子订单支付金额
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 子订单原始金额
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 核销状态，1表示核销，0表示未核销
+	SettleCheck *int64 `json:"SettleCheck,omitempty" name:"SettleCheck"`
+
+	// 结算信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleInfo *CloudSettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 透传字段，由开发者在调用米大师下单接口的时候下发
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 附加项信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachmentInfoList *CloudAttachmentInfo `json:"AttachmentInfoList,omitempty" name:"AttachmentInfoList"`
+
+	// 渠道方应答的订单号，透传处理
+	ChannelExternalSubOrderId *string `json:"ChannelExternalSubOrderId,omitempty" name:"ChannelExternalSubOrderId"`
+
+	// 微信子商户号
+	WxSubMchId *string `json:"WxSubMchId,omitempty" name:"WxSubMchId"`
+}
+
+type CloudSubRefundItem struct {
+
+	// 渠道方应答的退款ID，透传处理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExternalRefundId *string `json:"ChannelExternalRefundId,omitempty" name:"ChannelExternalRefundId"`
+
+	// 渠道方应答的订单号，透传处理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExternalOrderId *string `json:"ChannelExternalOrderId,omitempty" name:"ChannelExternalOrderId"`
+
+	// 子单退款金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundAmt *int64 `json:"RefundAmt,omitempty" name:"RefundAmt"`
+
+	// 子单订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubOutTradeNo *string `json:"SubOutTradeNo,omitempty" name:"SubOutTradeNo"`
+
+	// 子单退款id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubRefundId *string `json:"SubRefundId,omitempty" name:"SubRefundId"`
+
+	// 子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 渠道子单支付订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubOrderId *string `json:"ChannelSubOrderId,omitempty" name:"ChannelSubOrderId"`
+
+	// 渠道子退款订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelSubRefundId *string `json:"ChannelSubRefundId,omitempty" name:"ChannelSubRefundId"`
 }
 
 type ConfirmOrderRequest struct {
@@ -3549,6 +3998,95 @@ func (r *CreateBatchPaymentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBatchPaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudSubMerchantRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId，根应用Id。
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 父应用Id。
+	ParentAppId *string `json:"ParentAppId,omitempty" name:"ParentAppId"`
+
+	// 子商户名。
+	SubMchName *string `json:"SubMchName,omitempty" name:"SubMchName"`
+
+	// 子商户描述。
+	SubMchDescription *string `json:"SubMchDescription,omitempty" name:"SubMchDescription"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 子应用Id，为空则自动创建子应用id。
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 子商户名缩写。
+	SubMchShortName *string `json:"SubMchShortName,omitempty" name:"SubMchShortName"`
+
+	// 业务平台自定义的子商户Id，唯一。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+}
+
+func (r *CreateCloudSubMerchantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudSubMerchantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "ParentAppId")
+	delete(f, "SubMchName")
+	delete(f, "SubMchDescription")
+	delete(f, "MidasEnvironment")
+	delete(f, "SubAppId")
+	delete(f, "SubMchShortName")
+	delete(f, "OutSubMerchantId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudSubMerchantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCloudSubMerchantResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 子应用Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+		// 渠道子商户Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+		// 层级，从0开始。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Level *int64 `json:"Level,omitempty" name:"Level"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCloudSubMerchantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudSubMerchantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8458,7 +8996,7 @@ type QueryAcctItem struct {
 	// 子商户名称
 	SubMchName *string `json:"SubMchName,omitempty" name:"SubMchName"`
 
-	// 子账号号
+	// 子账号
 	SubAcctNo *string `json:"SubAcctNo,omitempty" name:"SubAcctNo"`
 
 	// 不填则默认子商户名称
@@ -9441,6 +9979,287 @@ func (r *QueryCityCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryCityCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudChannelDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 业务订单号，外部订单号
+	OutOrderNo *string `json:"OutOrderNo,omitempty" name:"OutOrderNo"`
+
+	// 数据类型
+	// PAYMENT:支付
+	ExternalChannelDataType *string `json:"ExternalChannelDataType,omitempty" name:"ExternalChannelDataType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 子应用ID
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 渠道订单号
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 渠道名称，指定渠道查询
+	// wechat:微信支付
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+func (r *QueryCloudChannelDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudChannelDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "OutOrderNo")
+	delete(f, "ExternalChannelDataType")
+	delete(f, "MidasEnvironment")
+	delete(f, "SubAppId")
+	delete(f, "ChannelOrderId")
+	delete(f, "Channel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCloudChannelDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudChannelDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 外部订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OutOrderNo *string `json:"OutOrderNo,omitempty" name:"OutOrderNo"`
+
+		// 渠道订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+		// 第三方渠道数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExternalChannelDataType *string `json:"ExternalChannelDataType,omitempty" name:"ExternalChannelDataType"`
+
+		// 渠道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+		// 第三方渠道数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExternalChannelDataList []*CloudExternalChannelData `json:"ExternalChannelDataList,omitempty" name:"ExternalChannelDataList"`
+
+		// 子应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+		// 米大师分配的支付主MidasAppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCloudChannelDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudChannelDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户Id，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 查询类型
+	// by_order:根据订单号查订单
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 开发者的主订单号
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+}
+
+func (r *QueryCloudOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "Type")
+	delete(f, "MidasEnvironment")
+	delete(f, "OutTradeNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCloudOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 订单数量
+		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+		// 订单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OrderList []*CloudOrderReturn `json:"OrderList,omitempty" name:"OrderList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCloudOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudRefundOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户Id，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	RefundId *string `json:"RefundId,omitempty" name:"RefundId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+}
+
+func (r *QueryCloudRefundOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudRefundOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "RefundId")
+	delete(f, "MidasEnvironment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCloudRefundOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryCloudRefundOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该笔退款订单对应的UnifiedOrder下单时传入的OutTradeNo
+		OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+		// 该笔退款订单对应的支付成功后支付机构返回的支付订单号
+		ChannelExternalOrderId *string `json:"ChannelExternalOrderId,omitempty" name:"ChannelExternalOrderId"`
+
+		// 该笔退款订单退款后支付机构返回的退款单号
+		ChannelExternalRefundId *string `json:"ChannelExternalRefundId,omitempty" name:"ChannelExternalRefundId"`
+
+		// 内部请求微信支付、银行等支付机构的订单号
+		ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+		// 请求退款时传的退款ID后查询退款时传的RefundId
+		RefundId *string `json:"RefundId,omitempty" name:"RefundId"`
+
+		// 被使用的RefundId，业务可忽略该字段
+		UsedRefundId *string `json:"UsedRefundId,omitempty" name:"UsedRefundId"`
+
+		// 退款总金额
+		TotalRefundAmt *int64 `json:"TotalRefundAmt,omitempty" name:"TotalRefundAmt"`
+
+		// ISO货币代码
+		CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+		// 退款状态码，退款提交成功后返回
+	// 1:退款中
+	// 2:退款成功
+	// 3:退款失败
+		State *string `json:"State,omitempty" name:"State"`
+
+		// 子单退款信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubRefundList []*CloudSubRefundItem `json:"SubRefundList,omitempty" name:"SubRefundList"`
+
+		// 透传字段，退款成功回调透传给应用，用于开发者透传自定义内容
+		Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+		// 米大师分配的支付主MidasAppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+		// 该笔退款订单退款后内部返回的退款单号
+		ChannelRefundId *string `json:"ChannelRefundId,omitempty" name:"ChannelRefundId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryCloudRefundOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCloudRefundOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14790,6 +15609,106 @@ func (r *RechargeMemberThirdPayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RefundCloudOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户Id，长度不小于5位，仅支持字母和数字的组合
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	RefundId *string `json:"RefundId,omitempty" name:"RefundId"`
+
+	// 退款金额，单位：分
+	// 当该字段为空或者为0时，系统会默认使用订单当实付金额作为退款金额
+	TotalRefundAmt *int64 `json:"TotalRefundAmt,omitempty" name:"TotalRefundAmt"`
+
+	// 商品订单，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 平台应收金额，单位：分
+	PlatformRefundAmt *int64 `json:"PlatformRefundAmt,omitempty" name:"PlatformRefundAmt"`
+
+	// 结算应收金额，单位：分
+	MchRefundAmt *int64 `json:"MchRefundAmt,omitempty" name:"MchRefundAmt"`
+
+	// 支持多个子订单批量退款单个子订单退款支持传SubOutTradeNo
+	// 也支持传SubOrderRefundList，都传的时候以SubOrderRefundList为准。
+	// 如果传了子单退款细节，外部不需要再传退款金额，平台应退，商户应退金额
+	SubOrderRefundList []*CloudSubOrderRefund `json:"SubOrderRefundList,omitempty" name:"SubOrderRefundList"`
+
+	// 渠道订单号，当出现重复支付时，可以将重复支付订单的渠道订单号传入，以进行退款（注意：目前该重复支付订单的渠道订单号仅能通过米大师内部获取），更多重复支付订单退款说明，请参考[重复支付订单退款说明](https://dev.tke.midas.qq.com/juxin-doc-next/apidocs/receive-order/Refund.html#%E9%87%8D%E5%A4%8D%E6%94%AF%E4%BB%98%E8%AE%A2%E5%8D%95%E9%80%80%E6%AC%BE%E8%AF%B4%E6%98%8E)
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 通知地址
+	RefundNotifyUrl *string `json:"RefundNotifyUrl,omitempty" name:"RefundNotifyUrl"`
+
+	// 透传字段，退款成功回调透传给应用，用于开发者透传自定义内容
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 渠道扩展退款促销列表，可将各个渠道的退款促销信息放于该列表
+	ExternalRefundPromptGroupList *string `json:"ExternalRefundPromptGroupList,omitempty" name:"ExternalRefundPromptGroupList"`
+}
+
+func (r *RefundCloudOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundCloudOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "RefundId")
+	delete(f, "TotalRefundAmt")
+	delete(f, "OutTradeNo")
+	delete(f, "MidasEnvironment")
+	delete(f, "PlatformRefundAmt")
+	delete(f, "MchRefundAmt")
+	delete(f, "SubOrderRefundList")
+	delete(f, "ChannelOrderId")
+	delete(f, "RefundNotifyUrl")
+	delete(f, "Metadata")
+	delete(f, "ExternalRefundPromptGroupList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundCloudOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefundCloudOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefundCloudOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundCloudOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RefundMemberTransactionRequest struct {
 	*tchttp.BaseRequest
 
@@ -16949,6 +17868,287 @@ func (r *UnbindRelateAcctResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindRelateAcctResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedCloudOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 米大师分配的支付主MidasAppId
+	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
+
+	// 用户Id。
+	// 长度不小于5位，仅支持字母和数字的组合，长度限制以具体接入渠道为准
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 开发者主订单号。
+	// 支付订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合，长度供参考，部分渠道存在长度更短的情况接入时请联系开发咨询
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 货币类型。
+	// ISO货币代码，CNY
+	CurrencyType *string `json:"CurrencyType,omitempty" name:"CurrencyType"`
+
+	// 商品Id。
+	// 业务自定义的商品id，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 商品名称。
+	// 业务自定义的商品名称，无需URL编码，长度限制以具体所接入渠道为准。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 商品详情。
+	// 业务自定义的商品详情，无需URL编码，长度限制以具体所接入渠道为准。
+	ProductDetail *string `json:"ProductDetail,omitempty" name:"ProductDetail"`
+
+	// 原始金额。
+	// 单位：分，需要注意的是，OriginalAmt>=TotalAmt
+	OriginalAmt *int64 `json:"OriginalAmt,omitempty" name:"OriginalAmt"`
+
+	// 支付金额。
+	// 单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome。
+	TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	MidasEnvironment *string `json:"MidasEnvironment,omitempty" name:"MidasEnvironment"`
+
+	// 支付SubAppId。
+	// 米大师计费SubAppId，代表子商户。指定使用该商户的商户号下单时必传。
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 顶层支付渠道。
+	// 银行收单:
+	// openbank_ccb: 建设银行
+	// openbank_icbc: 工商银行
+	// openbank_cmb: 招商银行
+	// openbank_ping: 平安银行
+	// openbank_icbc_jft：工商银行聚付通
+	// 非银行收单，可以为空
+	RealChannel *string `json:"RealChannel,omitempty" name:"RealChannel"`
+
+	// 支付渠道。
+	// wechat：微信支付
+	// wechat_ecommerce: 微信电商收付通
+	// open_alipay: 支付宝
+	// open_quickpass: 银联云闪付
+	// icbc_epay: 工银e支付
+	// foreign_cardpay: 外卡支付
+	// icbc_jft_wechat: 工行聚付通-微信
+	// icbc_jft_alipay: 工行聚付通-支付宝
+	// icbc_jft_epay: 工行聚付通-e支付
+	// 指定渠道下单时必传
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 透传字段。
+	// 支付成功回调透传给应用，用于开发者透传自定义内容。
+	Metadata *string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 数量。
+	// 购买数量,不传默认为1。
+	Quantity *int64 `json:"Quantity,omitempty" name:"Quantity"`
+
+	// Web端回调地址。
+	// Web端网页回调地址，仅当Web端SDK使用页面跳转方式时有效。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 支付取消地址。
+	CancelUrl *string `json:"CancelUrl,omitempty" name:"CancelUrl"`
+
+	// 微信AppId。
+	// wechat渠道或wchat_ecommerce渠道可以指定下单时的wxappid。
+	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 微信SubAppId。
+	// wechat渠道可以指定下单时的sub_appid。
+	WxSubAppId *string `json:"WxSubAppId,omitempty" name:"WxSubAppId"`
+
+	// 微信公众号/小程序OpenId。
+	// 微信公众号/小程序支付时为必选，需要传微信下的openid。
+	WxOpenId *string `json:"WxOpenId,omitempty" name:"WxOpenId"`
+
+	// 微信公众号/小程序SubOpenId。
+	// 在服务商模式下，微信公众号/小程序支付时wx_sub_openid和wx_openid二选一。
+	WxSubOpenId *string `json:"WxSubOpenId,omitempty" name:"WxSubOpenId"`
+
+	// 平台应收金额。
+	// 单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+	TotalPlatformIncome *int64 `json:"TotalPlatformIncome,omitempty" name:"TotalPlatformIncome"`
+
+	// 结算应收金额。
+	// 单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
+
+	// 子订单列表。
+	// 格式：子订单号、子应用Id、金额。压缩后最长不可超过32K字节(去除空格，换行，制表符等无意义字符)。
+	SubOrderList []*CloudSubOrder `json:"SubOrderList,omitempty" name:"SubOrderList"`
+
+	// 结算信息。
+	// 例如是否需要分账、是否需要支付确认等，
+	// 注意：如果子单列表中传入了SettleInfo，在主单中不可再传入SettleInfo字段。
+	SettleInfo *CloudSettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 附加项信息列表。
+	// 例如溢价信息、抵扣信息、积分信息、补贴信息
+	// 通过该字段可以实现渠道方的优惠抵扣补贴等营销功能
+	// 注意：当传SubOrderList时，请在子单信息中传附加项信息，不要在主单中传该字段。
+	AttachmentInfoList []*CloudAttachmentInfo `json:"AttachmentInfoList,omitempty" name:"AttachmentInfoList"`
+
+	// 支付通知地址。
+	// 调用方可通过该字段传入自定义支付通知地址。
+	PaymentNotifyUrl *string `json:"PaymentNotifyUrl,omitempty" name:"PaymentNotifyUrl"`
+
+	// 支付场景。
+	// 需要结合 RealChannel和Channel字段使用可选值:
+	// wechat-app 微信APP支付方式
+	// wechat-mini 微信小程序支付，示例：当 RealChannel=wechat Channel=wechat PayScene=wechat-mini时，内部会直接以小程序方式调用微信统一下单接口。
+	PayScene *string `json:"PayScene,omitempty" name:"PayScene"`
+
+	// 语言代码。
+	// (BCP-47格式)，取值请参考https://mpay.pages.woa.com/zh/api/objectdefinitions/objects/#mpayapisordersapplicationcontextapplicationcontext
+	LocaleCode *string `json:"LocaleCode,omitempty" name:"LocaleCode"`
+
+	// 地区代码。
+	// 取值请参考https://mpay.pages.woa.com/zh/api/objectdefinitions/objects/#mpayapisordersapplicationcontextapplicationcontext
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 用户IP。
+	// 请求用户的IP地址，特定的渠道或特定的支付方式，此字段为必填
+	// wechat_ecommerce渠道 - h5支付方式，此字段必填。
+	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+
+	// 渠道订单号生成模式。
+	// 枚举值。决定请求渠道方时的订单号的生成模式，详情请联系米大师沟通。不指定时默认为由米大师自行生成。
+	ChannelOrderIdMode *string `json:"ChannelOrderIdMode,omitempty" name:"ChannelOrderIdMode"`
+
+	// 全局支付时间信息。
+	GlobalPayTimeInfo *CloudGlobalPayTimeInfo `json:"GlobalPayTimeInfo,omitempty" name:"GlobalPayTimeInfo"`
+
+	// 渠道应用Id取用方式。
+	// USE_APPID 使用渠道应用Id;
+	// USE_SUB_APPID 使用子渠道应用Id;
+	// USE_APPID_AND_SUB_APPID 既使用渠道应用Id也使用子渠道应用ID。
+	ChannelAppIdPolicy *string `json:"ChannelAppIdPolicy,omitempty" name:"ChannelAppIdPolicy"`
+
+	// 门店信息。
+	// 特定的渠道或特定的支付方式，此字段为必填
+	// wechat_ecommerce渠道 - h5支付方式，此字段必填
+	StoreInfo *CloudStoreInfo `json:"StoreInfo,omitempty" name:"StoreInfo"`
+
+	// 客户端信息。
+	// 特定的渠道或特定的支付方式，此字段为必填
+	// wechat_ecommerce渠道 - h5支付方式，此字段必填
+	ClientInfo *CloudClientInfo `json:"ClientInfo,omitempty" name:"ClientInfo"`
+
+	// 渠道扩展促销列表。
+	// 可将各个渠道的促销信息放于该列表。
+	ExternalPromptGroupList []*CloudExternalPromptGroup `json:"ExternalPromptGroupList,omitempty" name:"ExternalPromptGroupList"`
+
+	// 收单模式。
+	// ORDER_RECEIVE_MODE_COMMON - 普通支付
+	// ORDER_RECEIVE_MODE_COMBINE - 合单支付
+	// ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
+	// 若不传入该字段，则会根据是否传入子单来判断是 普通支付 还是 合单支付
+	OrderReceiveMode *string `json:"OrderReceiveMode,omitempty" name:"OrderReceiveMode"`
+}
+
+func (r *UnifiedCloudOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedCloudOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MidasAppId")
+	delete(f, "UserId")
+	delete(f, "OutTradeNo")
+	delete(f, "CurrencyType")
+	delete(f, "ProductId")
+	delete(f, "ProductName")
+	delete(f, "ProductDetail")
+	delete(f, "OriginalAmt")
+	delete(f, "TotalAmt")
+	delete(f, "MidasEnvironment")
+	delete(f, "SubAppId")
+	delete(f, "RealChannel")
+	delete(f, "Channel")
+	delete(f, "Metadata")
+	delete(f, "Quantity")
+	delete(f, "CallbackUrl")
+	delete(f, "CancelUrl")
+	delete(f, "WxAppId")
+	delete(f, "WxSubAppId")
+	delete(f, "WxOpenId")
+	delete(f, "WxSubOpenId")
+	delete(f, "TotalPlatformIncome")
+	delete(f, "TotalMchIncome")
+	delete(f, "SubOrderList")
+	delete(f, "SettleInfo")
+	delete(f, "AttachmentInfoList")
+	delete(f, "PaymentNotifyUrl")
+	delete(f, "PayScene")
+	delete(f, "LocaleCode")
+	delete(f, "RegionCode")
+	delete(f, "UserClientIp")
+	delete(f, "ChannelOrderIdMode")
+	delete(f, "GlobalPayTimeInfo")
+	delete(f, "ChannelAppIdPolicy")
+	delete(f, "StoreInfo")
+	delete(f, "ClientInfo")
+	delete(f, "ExternalPromptGroupList")
+	delete(f, "OrderReceiveMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedCloudOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnifiedCloudOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 米大师的交易订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+
+		// 开发者的支付订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+		// SDK的支付参数。
+	// 支付参数透传给米大师SDK（原文透传给SDK即可，不需要解码）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PayInfo *string `json:"PayInfo,omitempty" name:"PayInfo"`
+
+		// 支付金额，单位：分。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalAmt *int64 `json:"TotalAmt,omitempty" name:"TotalAmt"`
+
+		// 渠道信息，用于拉起渠道支付。j
+	// son字符串，注意此字段仅会在传入正确的PayScene入参时才会有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ChannelInfo *string `json:"ChannelInfo,omitempty" name:"ChannelInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UnifiedCloudOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnifiedCloudOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -121,7 +121,7 @@ func NewBatchDeleteRepositoryPersonalResponse() (response *BatchDeleteRepository
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
-//  INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
+//  INVALIDPARAMETER_ERRTOOLARGE = "InvalidParameter.ErrTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
     return c.BatchDeleteRepositoryPersonalWithContext(context.Background(), request)
@@ -133,7 +133,7 @@ func (c *Client) BatchDeleteRepositoryPersonal(request *BatchDeleteRepositoryPer
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
-//  INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
+//  INVALIDPARAMETER_ERRTOOLARGE = "InvalidParameter.ErrTooLarge"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) BatchDeleteRepositoryPersonalWithContext(ctx context.Context, request *BatchDeleteRepositoryPersonalRequest) (response *BatchDeleteRepositoryPersonalResponse, err error) {
     if request == nil {
@@ -492,7 +492,10 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
+//  FAILEDOPERATION_VALIDATEREGISTRYNAMEFAIL = "FailedOperation.ValidateRegistryNameFail"
+//  FAILEDOPERATION_VALIDATESUPPORTEDREGIONFAIL = "FailedOperation.ValidateSupportedRegionFail"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -507,6 +510,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
 //  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -519,7 +523,10 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
+//  FAILEDOPERATION_VALIDATEREGISTRYNAMEFAIL = "FailedOperation.ValidateRegistryNameFail"
+//  FAILEDOPERATION_VALIDATESUPPORTEDREGIONFAIL = "FailedOperation.ValidateSupportedRegionFail"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -534,6 +541,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INVALIDPARAMETER_ERRORTAGOVERLIMIT = "InvalidParameter.ErrorTagOverLimit"
 //  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3874,10 +3882,15 @@ func NewDescribeSecurityPoliciesResponse() (response *DescribeSecurityPoliciesRe
 // 查询实例公网访问白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETSECURITYPOLICYFAIL = "FailedOperation.GetSecurityPolicyFail"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3889,10 +3902,15 @@ func (c *Client) DescribeSecurityPolicies(request *DescribeSecurityPoliciesReque
 // 查询实例公网访问白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETSECURITYPOLICYFAIL = "FailedOperation.GetSecurityPolicyFail"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -4975,6 +4993,7 @@ func NewModifyRepositoryResponse() (response *ModifyRepositoryResponse) {
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {
@@ -4992,6 +5011,7 @@ func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *M
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyRepositoryWithContext(ctx context.Context, request *ModifyRepositoryRequest) (response *ModifyRepositoryResponse, err error) {

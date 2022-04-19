@@ -697,6 +697,7 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     return c.CreateCmqTopicWithContext(context.Background(), request)
@@ -710,6 +711,7 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
+//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
@@ -1014,6 +1016,7 @@ func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest) (response *CreateRocketMQNamespaceResponse, err error) {
     return c.CreateRocketMQNamespaceWithContext(context.Background(), request)
 }
@@ -1030,6 +1033,7 @@ func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateRocketMQNamespaceWithContext(ctx context.Context, request *CreateRocketMQNamespaceRequest) (response *CreateRocketMQNamespaceResponse, err error) {
     if request == nil {
         request = NewCreateRocketMQNamespaceRequest()
@@ -2522,6 +2526,7 @@ func NewDescribeAMQPExchangesResponse() (response *DescribeAMQPExchangesResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (response *DescribeAMQPExchangesResponse, err error) {
@@ -2534,6 +2539,7 @@ func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPExchangesWithContext(ctx context.Context, request *DescribeAMQPExchangesRequest) (response *DescribeAMQPExchangesResponse, err error) {

@@ -23,6 +23,9 @@ const (
 	// 权限限额，禁止操作。
 	AUTHFAILURE_FORBIDDEN = "AuthFailure.Forbidden"
 
+	// 聚鑫签名信息不匹配。
+	AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+
 	// 未找到密钥。
 	AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 
@@ -197,6 +200,24 @@ const (
 	// 商户权限错误。
 	FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
 
+	// 聚鑫内部系统错误。
+	FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+
+	// 聚鑫需要重试。
+	FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+
+	// 聚鑫当前企业对该产品能力有未完成的申请单。
+	FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+
+	// 聚鑫订单已经提交。
+	FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+
+	// 通用风控系统错误，被风控拦截。
+	FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+
+	// 聚鑫不支持该操作。
+	FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+
 	// 参数缺失。
 	FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
 
@@ -353,6 +374,9 @@ const (
 	// 发票已开具。
 	INTERNALERROR_INVOICEEXIST = "InternalError.InvoiceExist"
 
+	// 聚鑫内部系统未知错误。
+	INTERNALERROR_MIDAS = "InternalError.Midas"
+
 	// 参数错误。
 	INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
 
@@ -380,6 +404,24 @@ const (
 	// 缺少必填参数。
 	INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
 
+	// 聚鑫参数无效。
+	INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+
+	// 聚鑫环境参数非法。
+	INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+
+	// 聚鑫第三方应用无效。
+	INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+
+	// 聚鑫文件格式错误。
+	INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+
+	// 聚鑫摘要错误。
+	INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+
+	// 聚鑫签约ID非法。
+	INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+
 	// 参数编码失败。
 	INVALIDPARAMETER_PARAMMARSHALFAILED = "InvalidParameter.ParamMarshalFailed"
 
@@ -388,6 +430,33 @@ const (
 
 	// 无效参数。
 	INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+
+	// 聚鑫文件过大。
+	LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+
+	// 聚鑫不允许并发下单。
+	LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+
+	// 聚鑫订单已取消。
+	LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+
+	// 聚鑫已关单。
+	LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+
+	// 聚鑫订单已过期，包括超时未支付、超过退款期限等情况。
+	LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+
+	// 聚鑫处理失败。
+	LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+
+	// 聚鑫处理部分成功部分失败。
+	LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+
+	// 聚鑫处理中。
+	LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+
+	// 聚鑫处理成功，请勿再提交。
+	LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -400,6 +469,15 @@ const (
 
 	// 参数缺少Appid。
 	MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+
+	// 聚鑫接口请求频率限制。
+	REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+
+	// 聚鑫接口无效请求过多。
+	REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+
+	// 聚鑫流程进行中，不能重入。
+	RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
 
 	// 运行资源不足。
 	RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
@@ -416,6 +494,39 @@ const (
 	// 商户信息不存在。
 	RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 
+	// 聚鑫第三方应用未查找到。
+	RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+
+	// 聚鑫第三方渠道找不到订单，ORDER_NOT_FOUND表示支付中台找不到订单。
+	RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+
+	// 聚鑫订单没有查到记录。
+	RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+
+	// 聚鑫签约关系不存在。
+	RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+
 	// 平台信息不存在。
 	RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+
+	// 聚鑫单日限额。
+	RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+
+	// 聚鑫订单剩余冻结金额不足，因此会完结失败。
+	RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+
+	// 聚鑫商户可用余额不足。
+	RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+
+	// 聚鑫单笔限额。
+	RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+
+	// 聚鑫用户可用余额不足。
+	RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+
+	// 聚鑫钱包支付超限。
+	RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+
+	// 聚鑫系统未授权。
+	UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
 )

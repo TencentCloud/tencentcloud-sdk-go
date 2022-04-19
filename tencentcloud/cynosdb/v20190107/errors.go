@@ -191,6 +191,9 @@ const (
 	// serverless实例当前状态{{1}}不允许该操作。
 	OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
 
+	// 任务冲突检查不通过。
+	OPERATIONDENIED_TASKCONFLICTERROR = "OperationDenied.TaskConflictError"
+
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
 

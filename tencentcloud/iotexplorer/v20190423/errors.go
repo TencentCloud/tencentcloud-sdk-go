@@ -26,6 +26,9 @@ const (
 	// 动作消息不可达。
 	FAILEDOPERATION_ACTIONUNREACHABLE = "FailedOperation.ActionUnreachable"
 
+	// 广播任务正在执行。
+	FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
+
 	// 设备已为目标升级版本。
 	FAILEDOPERATION_DEVICEFIRMWAREISUPDATED = "FailedOperation.DeviceFirmwareIsUpdated"
 
@@ -208,6 +211,9 @@ const (
 
 	// 操作不支持。
 	INVALIDPARAMETERVALUE_OPERATIONDENIED = "InvalidParameterValue.OperationDenied"
+
+	// 消息Payload超出限制。
+	INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 
 	// 创建的产品名已存在。
 	INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"

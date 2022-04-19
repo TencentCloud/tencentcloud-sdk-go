@@ -5397,6 +5397,67 @@ type ProjectEntryEx struct {
 	DeviceCount *uint64 `json:"DeviceCount,omitempty" name:"DeviceCount"`
 }
 
+type PublishBroadcastMessageRequest struct {
+	*tchttp.BaseRequest
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 消息内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息质量等级
+	Qos *int64 `json:"Qos,omitempty" name:"Qos"`
+
+	// ayload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
+}
+
+func (r *PublishBroadcastMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishBroadcastMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "Payload")
+	delete(f, "Qos")
+	delete(f, "PayloadEncoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishBroadcastMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PublishBroadcastMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 广播消息任务Id
+		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *PublishBroadcastMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishBroadcastMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PublishMessageRequest struct {
 	*tchttp.BaseRequest
 

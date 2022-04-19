@@ -23,8 +23,23 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 获取数据库数据错误。
+	FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+
+	// 获取安全组策略错误。
+	FAILEDOPERATION_GETSECURITYPOLICYFAIL = "FailedOperation.GetSecurityPolicyFail"
+
+	// 获取TcrClient错误。
+	FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
+
 	// 交易失败。
 	FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
+
+	// 校验仓库名称失败。
+	FAILEDOPERATION_VALIDATEREGISTRYNAMEFAIL = "FailedOperation.ValidateRegistryNameFail"
+
+	// 校验支持地域错误。
+	FAILEDOPERATION_VALIDATESUPPORTEDREGIONFAIL = "FailedOperation.ValidateSupportedRegionFail"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -101,8 +116,8 @@ const (
 	// 无效的参数，仓库已存在。
 	INVALIDPARAMETER_ERRREPOEXIST = "InvalidParameter.ErrRepoExist"
 
-	// 请求参数数量过多。
-	INVALIDPARAMETER_ERRREQARGSTOOLARGE = "InvalidParameter.ErrReqArgsTooLarge"
+	// 参数过多。
+	INVALIDPARAMETER_ERRTOOLARGE = "InvalidParameter.ErrTooLarge"
 
 	// 触发器名称已存在。
 	INVALIDPARAMETER_ERRTRIGGEREXIST = "InvalidParameter.ErrTriggerExist"
@@ -148,6 +163,9 @@ const (
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 配额超限。
+	OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
 
 	// 实例状态异常。
 	RESOURCEINSUFFICIENT_ERRORINSTANCENOTRUNNING = "ResourceInsufficient.ErrorInstanceNotRunning"

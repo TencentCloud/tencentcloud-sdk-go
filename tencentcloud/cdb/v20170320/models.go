@@ -489,6 +489,9 @@ type BackupInfo struct {
 
 	// 手动备份别名
 	ManualBackupName *string `json:"ManualBackupName,omitempty" name:"ManualBackupName"`
+
+	// 备份保留类型，save_mode_regular - 常规保存备份，save_mode_period - 定期保存备份
+	SaveMode *string `json:"SaveMode,omitempty" name:"SaveMode"`
 }
 
 type BackupItem struct {
@@ -1459,7 +1462,7 @@ type CreateDBInstanceHourRequest struct {
 	// 金融围拢 ID 。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
 
-	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板，默认值是："HIGH_STABILITY"。
 	ParamTemplateType *string `json:"ParamTemplateType,omitempty" name:"ParamTemplateType"`
 
 	// 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
@@ -2922,6 +2925,21 @@ type DescribeBackupConfigResponse struct {
 
 		// 实例自动备份的时间窗。
 		BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitempty" name:"BackupTimeWindow"`
+
+		// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+		EnableBackupPeriodSave *string `json:"EnableBackupPeriodSave,omitempty" name:"EnableBackupPeriodSave"`
+
+		// 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+		BackupPeriodSaveDays *int64 `json:"BackupPeriodSaveDays,omitempty" name:"BackupPeriodSaveDays"`
+
+		// 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+		BackupPeriodSaveInterval *string `json:"BackupPeriodSaveInterval,omitempty" name:"BackupPeriodSaveInterval"`
+
+		// 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+		BackupPeriodSaveCount *int64 `json:"BackupPeriodSaveCount,omitempty" name:"BackupPeriodSaveCount"`
+
+		// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+		StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitempty" name:"StartBackupPeriodSaveDate"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7136,7 +7154,7 @@ type ModifyBackupConfigRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份文件的保留时间，单位为天。最小值为7天，最大值为732天。
+	// 备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 
 	// (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
@@ -7145,11 +7163,29 @@ type ModifyBackupConfigRequest struct {
 	// 自动备份方式，仅支持：physical - 物理冷备
 	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
-	// binlog的保留时间，单位为天。最小值为7天，最大值为732天。该值的设置不能大于备份文件的保留时间。
+	// binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
 	BinlogExpireDays *int64 `json:"BinlogExpireDays,omitempty" name:"BinlogExpireDays"`
 
 	// 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
 	BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitempty" name:"BackupTimeWindow"`
+
+	// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+	EnableBackupPeriodSave *string `json:"EnableBackupPeriodSave,omitempty" name:"EnableBackupPeriodSave"`
+
+	// 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
+	EnableBackupPeriodLongTermSave *string `json:"EnableBackupPeriodLongTermSave,omitempty" name:"EnableBackupPeriodLongTermSave"`
+
+	// 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+	BackupPeriodSaveDays *int64 `json:"BackupPeriodSaveDays,omitempty" name:"BackupPeriodSaveDays"`
+
+	// 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+	BackupPeriodSaveInterval *string `json:"BackupPeriodSaveInterval,omitempty" name:"BackupPeriodSaveInterval"`
+
+	// 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+	BackupPeriodSaveCount *int64 `json:"BackupPeriodSaveCount,omitempty" name:"BackupPeriodSaveCount"`
+
+	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitempty" name:"StartBackupPeriodSaveDate"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -7170,6 +7206,12 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "BackupMethod")
 	delete(f, "BinlogExpireDays")
 	delete(f, "BackupTimeWindow")
+	delete(f, "EnableBackupPeriodSave")
+	delete(f, "EnableBackupPeriodLongTermSave")
+	delete(f, "BackupPeriodSaveDays")
+	delete(f, "BackupPeriodSaveInterval")
+	delete(f, "BackupPeriodSaveCount")
+	delete(f, "StartBackupPeriodSaveDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}

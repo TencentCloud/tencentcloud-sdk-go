@@ -494,6 +494,9 @@ const (
 	// 内存 limit 和 request 不能同时为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPINVALIDMEMINFO = "InvalidParameterValue.ContainergroupInvalidMemInfo"
 
+	// limit最大数量，默认 20, 最大值 50。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPLIMITVALUEINVALID = "InvalidParameterValue.ContainergroupLimitValueInvalid"
+
 	// 集群内存资源不足。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPMEMLIMITOVER = "InvalidParameterValue.ContainergroupMemlimitOver"
 
@@ -562,6 +565,9 @@ const (
 
 	// 文件配置项名称不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
+
+	// 无法获取文件配置项或无权限访问。
+	INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
 
 	// 同一部署组禁止配置文件重复(文件路径+文件名)。
 	INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"

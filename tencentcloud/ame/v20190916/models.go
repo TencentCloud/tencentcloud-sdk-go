@@ -153,6 +153,9 @@ type CreateKTVRobotRequest struct {
 
 	// license基础信息
 	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitempty" name:"ApplicationLicenseInput"`
+
+	// 创建机器人时初始化参数。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
 }
 
 func (r *CreateKTVRobotRequest) ToJsonString() string {
@@ -170,6 +173,7 @@ func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
 	delete(f, "RTCSystem")
 	delete(f, "JoinRoomInput")
 	delete(f, "ApplicationLicenseInput")
+	delete(f, "SyncRobotCommands")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKTVRobotRequest has unknown keys!", "")
 	}
@@ -2490,6 +2494,47 @@ func (r *SyncKTVRobotCommandResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SyncKTVRobotCommandResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncRobotCommand struct {
+
+	// 可同时传入多个指令，顺序执行。取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>SwitchPrevious：上一首</li>
+	// <li>SwitchNext：下一首</li>
+	// <li>SetPlayMode：设置播放模式</li>
+	// <li>Seek：调整播放进度</li>
+	// <li>SetPlaylist：歌单变更</li>
+	// <li>SetAudioParam：音频参数变更</li>
+	// <li>SendMessage：发送自定义消息</li>
+	// <li>SetDestroyMode：设置销毁模式</li>
+	// <li>SetVolume：设置音量</li>
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 播放参数。
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitempty" name:"PlayCommandInput"`
+
+	// 播放列表变更信息，当Command取SetPlaylist时，必填。
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitempty" name:"SetPlaylistCommandInput"`
+
+	// 播放进度，当Command取Seek时，必填。
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitempty" name:"SeekCommandInput"`
+
+	// 音频参数，当Command取SetAudioParam时，必填。
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitempty" name:"SetAudioParamCommandInput"`
+
+	// 自定义消息，当Command取SendMessage时，必填。
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitempty" name:"SendMessageCommandInput"`
+
+	// 播放模式，当Command取SetPlayMode时，必填。
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitempty" name:"SetPlayModeCommandInput"`
+
+	// 销毁模式，当Command取SetDestroyMode时，必填。
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
+
+	// 音量，当Command取SetVolume时，必填。
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
 }
 
 type TRTCJoinRoomInput struct {

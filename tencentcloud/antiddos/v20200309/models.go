@@ -5905,35 +5905,59 @@ func (r *ModifyPortAclConfigResponse) FromJsonString(s string) error {
 
 type NewL7RuleEntry struct {
 
-	// 会话保持时间，单位秒
-	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
-
-	// 负载均衡方式，取值[1(加权轮询)]
-	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
-
-	// 回源列表
-	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
-
-	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
-	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+	// 转发协议，取值[http, https]
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 转发域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 转发协议，取值[http, https]
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	// 负载均衡方式，取值[1(加权轮询)]
+	LbType *uint64 `json:"LbType,omitempty" name:"LbType"`
+
+	// 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+	KeepEnable *uint64 `json:"KeepEnable,omitempty" name:"KeepEnable"`
+
+	// 会话保持时间，单位秒
+	KeepTime *uint64 `json:"KeepTime,omitempty" name:"KeepTime"`
 
 	// 回源方式，取值[1(域名回源)，2(IP回源)]
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
+	// 回源列表
+	SourceList []*L4RuleSource `json:"SourceList,omitempty" name:"SourceList"`
+
+	// 区域码
+	Region *uint64 `json:"Region,omitempty" name:"Region"`
+
+	// 资源Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源Ip
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则描述
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
 
 	// 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// HTTPS协议的CC防护等级
-	CCLevel *string `json:"CCLevel,omitempty" name:"CCLevel"`
+	// cc防护状态，取值[0(关闭), 1(开启)]
+	CCStatus *uint64 `json:"CCStatus,omitempty" name:"CCStatus"`
 
 	// HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
 	CCEnable *uint64 `json:"CCEnable,omitempty" name:"CCEnable"`
@@ -5941,42 +5965,24 @@ type NewL7RuleEntry struct {
 	// HTTPS协议的CC防护阈值
 	CCThreshold *uint64 `json:"CCThreshold,omitempty" name:"CCThreshold"`
 
-	// 区域码
-	Region *uint64 `json:"Region,omitempty" name:"Region"`
-
-	// 规则描述
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
-
-	// 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-	Cert *string `json:"Cert,omitempty" name:"Cert"`
+	// HTTPS协议的CC防护等级
+	CCLevel *string `json:"CCLevel,omitempty" name:"CCLevel"`
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 
-	// 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
-	// 资源Ip
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
-
-	// 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
-
-	// 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
-	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitempty" name:"HttpsToHttpEnable"`
 
 	// 接入端口值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualPort *uint64 `json:"VirtualPort,omitempty" name:"VirtualPort"`
 
-	// cc防护状态，取值[0(关闭), 1(开启)]
-	CCStatus *uint64 `json:"CCStatus,omitempty" name:"CCStatus"`
+	// http强制跳转https，1表示打开，0表示关闭
+	RewriteHttps *uint64 `json:"RewriteHttps,omitempty" name:"RewriteHttps"`
 
-	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
-
-	// 资源Id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	// 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
+	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
 }
 
 type PackInfo struct {

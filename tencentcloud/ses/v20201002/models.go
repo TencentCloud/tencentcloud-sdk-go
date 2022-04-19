@@ -1126,10 +1126,10 @@ func (r *ListEmailIdentitiesResponse) FromJsonString(s string) error {
 type ListEmailTemplatesRequest struct {
 	*tchttp.BaseRequest
 
-	// 获取模版数据量，用于分页
+	// 获取模板数据量，用于分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 获取模版偏移值，用于分页
+	// 获取模板偏移值，用于分页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -1160,7 +1160,7 @@ type ListEmailTemplatesResponse struct {
 		// 邮件模板列表
 		TemplatesMetadata []*TemplatesMetadata `json:"TemplatesMetadata,omitempty" name:"TemplatesMetadata"`
 
-		// 模版总数量
+		// 模板总数量
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

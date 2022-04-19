@@ -2223,6 +2223,7 @@ func NewDestroyDCDBInstanceResponse() (response *DestroyDCDBInstanceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DestroyDCDBInstance(request *DestroyDCDBInstanceRequest) (response *DestroyDCDBInstanceResponse, err error) {
     return c.DestroyDCDBInstanceWithContext(context.Background(), request)
 }
@@ -2237,6 +2238,7 @@ func (c *Client) DestroyDCDBInstance(request *DestroyDCDBInstanceRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DestroyDCDBInstanceWithContext(ctx context.Context, request *DestroyDCDBInstanceRequest) (response *DestroyDCDBInstanceResponse, err error) {
     if request == nil {
         request = NewDestroyDCDBInstanceRequest()

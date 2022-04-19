@@ -1,3 +1,48 @@
+# Release v1.0.386
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 43 次发布
+
+发布时间：2022-04-19 06:13:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+
+	* 新增成员：Weekday
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：Weekday
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 7 次发布
+
+发布时间：2022-04-19 06:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+新增数据结构：
+
+* [PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)
+
+
+
 # Release v1.0.385
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

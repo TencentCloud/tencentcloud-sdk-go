@@ -1975,6 +1975,94 @@ type DescribeSocCheckItemListRspRsp struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
+type DescribeSocCheckResultListRequest struct {
+	*tchttp.BaseRequest
+
+	// 查询参数,可支持的查询参数：
+	// Name,Type,AssetType,Result,PloyName,PloyId
+	Filter []*QueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序参数,可支持的排序参数：CheckStatus,RiskCount
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 当前页码数据，默认值为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页面索引，默认值为0
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 资产id
+	AssetId *string `json:"AssetId,omitempty" name:"AssetId"`
+}
+
+func (r *DescribeSocCheckResultListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCheckResultListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "Sorter")
+	delete(f, "PageSize")
+	delete(f, "PageIndex")
+	delete(f, "AssetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSocCheckResultListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocCheckResultListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data *DescribeSocCheckResultListRspRsp `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSocCheckResultListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSocCheckResultListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSocCheckResultListRspRsp struct {
+
+	// 具体检查项详情
+	List []*SocCheckResult `json:"List,omitempty" name:"List"`
+
+	// 检查结果总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 低危个数
+	LowTotal *int64 `json:"LowTotal,omitempty" name:"LowTotal"`
+
+	// 中危个数
+	MiddleTotal *int64 `json:"MiddleTotal,omitempty" name:"MiddleTotal"`
+
+	// 高危个数
+	HighTotal *int64 `json:"HighTotal,omitempty" name:"HighTotal"`
+
+	// 正常个数
+	NormalTotal *int64 `json:"NormalTotal,omitempty" name:"NormalTotal"`
+}
+
 type DescribeSocCspmComplianceRequest struct {
 	*tchttp.BaseRequest
 }
@@ -2364,7 +2452,7 @@ type SaDivulgeDataQueryPub struct {
 	// 命中主题集下的自定义规则策略
 	RuleWord *string `json:"RuleWord,omitempty" name:"RuleWord"`
 
-	// 扫描监测url"
+	// 扫描监测url
 	ScanUrl *string `json:"ScanUrl,omitempty" name:"ScanUrl"`
 
 	// 扫描监测命中次数
@@ -2539,6 +2627,39 @@ type SocCheckItemV1 struct {
 	// 检查项是否付费 1:免费 2:付费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFree *int64 `json:"IsFree,omitempty" name:"IsFree"`
+}
+
+type SocCheckResult struct {
+
+	// 检查项的uuid
+	CheckId *string `json:"CheckId,omitempty" name:"CheckId"`
+
+	// 配置要求
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 检查项的类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 检查对象
+	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// 策略名
+	PloyName *string `json:"PloyName,omitempty" name:"PloyName"`
+
+	// 策略id
+	PloyId *int64 `json:"PloyId,omitempty" name:"PloyId"`
+
+	// 正常,低危,中危,高危
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 不符合数
+	FailAssetNum *int64 `json:"FailAssetNum,omitempty" name:"FailAssetNum"`
+
+	// 总数
+	TotalAssetNum *int64 `json:"TotalAssetNum,omitempty" name:"TotalAssetNum"`
+
+	// 处置建议url链接
+	DealUrl *string `json:"DealUrl,omitempty" name:"DealUrl"`
 }
 
 type SocComplianceInfoResp struct {

@@ -1041,6 +1041,131 @@ func (c *Client) CheckAmountWithContext(ctx context.Context, request *CheckAmoun
     return
 }
 
+func NewCloseCloudOrderRequest() (request *CloseCloudOrderRequest) {
+    request = &CloseCloudOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CloseCloudOrder")
+    
+    
+    return
+}
+
+func NewCloseCloudOrderResponse() (response *CloseCloudOrderResponse) {
+    response = &CloseCloudOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseCloudOrder
+// 通过此接口关闭此前已创建的订单。关闭后，用户将无法继续付款，仅能关闭创建后未支付的订单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) CloseCloudOrder(request *CloseCloudOrderRequest) (response *CloseCloudOrderResponse, err error) {
+    return c.CloseCloudOrderWithContext(context.Background(), request)
+}
+
+// CloseCloudOrder
+// 通过此接口关闭此前已创建的订单。关闭后，用户将无法继续付款，仅能关闭创建后未支付的订单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) CloseCloudOrderWithContext(ctx context.Context, request *CloseCloudOrderRequest) (response *CloseCloudOrderResponse, err error) {
+    if request == nil {
+        request = NewCloseCloudOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseCloudOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseCloudOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseOpenBankPaymentOrderRequest() (request *CloseOpenBankPaymentOrderRequest) {
     request = &CloseOpenBankPaymentOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1109,6 +1234,7 @@ func NewCloseOrderResponse() (response *CloseOrderResponse) {
 // 通过此接口关闭此前已创建的订单，关闭后，用户将无法继续付款。仅能关闭创建后未支付的订单
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -1122,6 +1248,7 @@ func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderRes
 // 通过此接口关闭此前已创建的订单，关闭后，用户将无法继续付款。仅能关闭创建后未支付的订单
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -1302,6 +1429,7 @@ func NewCreateAcctResponse() (response *CreateAcctResponse) {
 // 子商户入驻聚鑫平台
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -1315,6 +1443,7 @@ func (c *Client) CreateAcct(request *CreateAcctRequest) (response *CreateAcctRes
 // 子商户入驻聚鑫平台
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -1495,6 +1624,131 @@ func (c *Client) CreateBatchPaymentWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateBatchPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCloudSubMerchantRequest() (request *CreateCloudSubMerchantRequest) {
+    request = &CreateCloudSubMerchantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateCloudSubMerchant")
+    
+    
+    return
+}
+
+func NewCreateCloudSubMerchantResponse() (response *CreateCloudSubMerchantResponse) {
+    response = &CreateCloudSubMerchantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCloudSubMerchant
+// 创建子商户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) CreateCloudSubMerchant(request *CreateCloudSubMerchantRequest) (response *CreateCloudSubMerchantResponse, err error) {
+    return c.CreateCloudSubMerchantWithContext(context.Background(), request)
+}
+
+// CreateCloudSubMerchant
+// 创建子商户
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) CreateCloudSubMerchantWithContext(ctx context.Context, request *CreateCloudSubMerchantRequest) (response *CreateCloudSubMerchantResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudSubMerchantRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudSubMerchant require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudSubMerchantResponse()
     err = c.Send(request, response)
     return
 }
@@ -3777,6 +4031,7 @@ func NewQueryAcctBindingResponse() (response *QueryAcctBindingResponse) {
 // 聚鑫-查询子账户绑定银行卡
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -3791,6 +4046,7 @@ func (c *Client) QueryAcctBinding(request *QueryAcctBindingRequest) (response *Q
 // 聚鑫-查询子账户绑定银行卡
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -3834,6 +4090,7 @@ func NewQueryAcctInfoResponse() (response *QueryAcctInfoResponse) {
 // 聚鑫-开户信息查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -3848,6 +4105,7 @@ func (c *Client) QueryAcctInfo(request *QueryAcctInfoRequest) (response *QueryAc
 // 聚鑫-开户信息查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -3891,6 +4149,7 @@ func NewQueryAcctInfoListResponse() (response *QueryAcctInfoListResponse) {
 // 聚鑫-开户信息列表查询, 查询某一段时间的开户信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -3904,6 +4163,7 @@ func (c *Client) QueryAcctInfoList(request *QueryAcctInfoListRequest) (response 
 // 聚鑫-开户信息列表查询, 查询某一段时间的开户信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4219,6 +4479,7 @@ func NewQueryBalanceResponse() (response *QueryBalanceResponse) {
 // 子商户余额查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4232,6 +4493,7 @@ func (c *Client) QueryBalance(request *QueryBalanceRequest) (response *QueryBala
 // 子商户余额查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4627,6 +4889,381 @@ func (c *Client) QueryCityCodeWithContext(ctx context.Context, request *QueryCit
     request.SetContext(ctx)
     
     response = NewQueryCityCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCloudChannelDataRequest() (request *QueryCloudChannelDataRequest) {
+    request = &QueryCloudChannelDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudChannelData")
+    
+    
+    return
+}
+
+func NewQueryCloudChannelDataResponse() (response *QueryCloudChannelDataResponse) {
+    response = &QueryCloudChannelDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCloudChannelData
+// 发起支付等渠道操作后，可以调用该接口查询渠道的数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudChannelData(request *QueryCloudChannelDataRequest) (response *QueryCloudChannelDataResponse, err error) {
+    return c.QueryCloudChannelDataWithContext(context.Background(), request)
+}
+
+// QueryCloudChannelData
+// 发起支付等渠道操作后，可以调用该接口查询渠道的数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudChannelDataWithContext(ctx context.Context, request *QueryCloudChannelDataRequest) (response *QueryCloudChannelDataResponse, err error) {
+    if request == nil {
+        request = NewQueryCloudChannelDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCloudChannelData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCloudChannelDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCloudOrderRequest() (request *QueryCloudOrderRequest) {
+    request = &QueryCloudOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudOrder")
+    
+    
+    return
+}
+
+func NewQueryCloudOrderResponse() (response *QueryCloudOrderResponse) {
+    response = &QueryCloudOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCloudOrder
+// 根据订单号或用户ID，查询支付订单状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudOrder(request *QueryCloudOrderRequest) (response *QueryCloudOrderResponse, err error) {
+    return c.QueryCloudOrderWithContext(context.Background(), request)
+}
+
+// QueryCloudOrder
+// 根据订单号或用户ID，查询支付订单状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudOrderWithContext(ctx context.Context, request *QueryCloudOrderRequest) (response *QueryCloudOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryCloudOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCloudOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCloudOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCloudRefundOrderRequest() (request *QueryCloudRefundOrderRequest) {
+    request = &QueryCloudRefundOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudRefundOrder")
+    
+    
+    return
+}
+
+func NewQueryCloudRefundOrderResponse() (response *QueryCloudRefundOrderResponse) {
+    response = &QueryCloudRefundOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCloudRefundOrder
+// 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudRefundOrder(request *QueryCloudRefundOrderRequest) (response *QueryCloudRefundOrderResponse, err error) {
+    return c.QueryCloudRefundOrderWithContext(context.Background(), request)
+}
+
+// QueryCloudRefundOrder
+// 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) QueryCloudRefundOrderWithContext(ctx context.Context, request *QueryCloudRefundOrderRequest) (response *QueryCloudRefundOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryCloudRefundOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCloudRefundOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCloudRefundOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -6946,6 +7583,7 @@ func NewQueryRefundResponse() (response *QueryRefundResponse) {
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -6959,6 +7597,7 @@ func (c *Client) QueryRefund(request *QueryRefundRequest) (response *QueryRefund
 // 提交退款申请后，通过调用该接口查询退款状态。退款可能有一定延时，用微信零钱支付的退款约20分钟内到账，银行卡支付的退款约3个工作日后到账。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -7001,6 +7640,7 @@ func NewQueryShopOpenIdResponse() (response *QueryShopOpenIdResponse) {
 // 云支付-获取门店OpenId接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -7014,6 +7654,7 @@ func (c *Client) QueryShopOpenId(request *QueryShopOpenIdRequest) (response *Que
 // 云支付-获取门店OpenId接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
@@ -7730,6 +8371,131 @@ func (c *Client) RefundWithContext(ctx context.Context, request *RefundRequest) 
     return
 }
 
+func NewRefundCloudOrderRequest() (request *RefundCloudOrderRequest) {
+    request = &RefundCloudOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RefundCloudOrder")
+    
+    
+    return
+}
+
+func NewRefundCloudOrderResponse() (response *RefundCloudOrderResponse) {
+    response = &RefundCloudOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefundCloudOrder
+// 如交易订单需退款，可以通过本接口将支付款全部或部分退还给付款方，聚鑫将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。最长支持1年的订单退款。在订单包含多个子订单的情况下，如果使用本接口传入OutTradeNo或TransactionId退款，则只支持全单退款；如果需要部分退款，请通过传入子订单的方式来指定部分金额退款。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) RefundCloudOrder(request *RefundCloudOrderRequest) (response *RefundCloudOrderResponse, err error) {
+    return c.RefundCloudOrderWithContext(context.Background(), request)
+}
+
+// RefundCloudOrder
+// 如交易订单需退款，可以通过本接口将支付款全部或部分退还给付款方，聚鑫将在收到退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。最长支持1年的订单退款。在订单包含多个子订单的情况下，如果使用本接口传入OutTradeNo或TransactionId退款，则只支持全单退款；如果需要部分退款，请通过传入子订单的方式来指定部分金额退款。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) RefundCloudOrderWithContext(ctx context.Context, request *RefundCloudOrderRequest) (response *RefundCloudOrderResponse, err error) {
+    if request == nil {
+        request = NewRefundCloudOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundCloudOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefundCloudOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefundMemberTransactionRequest() (request *RefundMemberTransactionRequest) {
     request = &RefundMemberTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8424,6 +9190,7 @@ func NewTerminateContractResponse() (response *TerminateContractResponse) {
 // 通过此接口进行解约
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
@@ -8465,6 +9232,7 @@ func (c *Client) TerminateContract(request *TerminateContractRequest) (response 
 // 通过此接口进行解约
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
@@ -8535,6 +9303,7 @@ func NewTransferSinglePayResponse() (response *TransferSinglePayResponse) {
 // 智能代发-单笔代发转账接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
@@ -8576,6 +9345,7 @@ func (c *Client) TransferSinglePay(request *TransferSinglePayRequest) (response 
 // 智能代发-单笔代发转账接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
@@ -8646,6 +9416,7 @@ func NewUnBindAcctResponse() (response *UnBindAcctResponse) {
 // 商户解除绑定的提现银行卡
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -8659,6 +9430,7 @@ func (c *Client) UnBindAcct(request *UnBindAcctRequest) (response *UnBindAcctRes
 // 商户解除绑定的提现银行卡
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -8701,6 +9473,7 @@ func NewUnbindOpenBankExternalSubMerchantBankAccountResponse() (response *Unbind
 // 云企付-子商户银行卡解绑
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -8714,6 +9487,7 @@ func (c *Client) UnbindOpenBankExternalSubMerchantBankAccount(request *UnbindOpe
 // 云企付-子商户银行卡解绑
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -8794,6 +9568,133 @@ func (c *Client) UnbindRelateAcctWithContext(ctx context.Context, request *Unbin
     request.SetContext(ctx)
     
     response = NewUnbindRelateAcctResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnifiedCloudOrderRequest() (request *UnifiedCloudOrderRequest) {
+    request = &UnifiedCloudOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedCloudOrder")
+    
+    
+    return
+}
+
+func NewUnifiedCloudOrderResponse() (response *UnifiedCloudOrderResponse) {
+    response = &UnifiedCloudOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnifiedCloudOrder
+// 应用需要先调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) UnifiedCloudOrder(request *UnifiedCloudOrderRequest) (response *UnifiedCloudOrderResponse, err error) {
+    return c.UnifiedCloudOrderWithContext(context.Background(), request)
+}
+
+// UnifiedCloudOrder
+// 应用需要先调用本接口生成支付订单号，并将应答的PayInfo透传给聚鑫SDK，拉起客户端（包括微信公众号/微信小程序/客户端App）支付。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_MIDAS = "AuthFailure.Midas"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  FAILEDOPERATION_MIDASINTERNALERROR = "FailedOperation.MidasInternalError"
+//  FAILEDOPERATION_MIDASNEEDRETRY = "FailedOperation.MidasNeedRetry"
+//  FAILEDOPERATION_MIDASREGISTERUNFINISHED = "FailedOperation.MidasRegisterUnfinished"
+//  FAILEDOPERATION_MIDASREPEATORDER = "FailedOperation.MidasRepeatOrder"
+//  FAILEDOPERATION_MIDASRISK = "FailedOperation.MidasRisk"
+//  FAILEDOPERATION_MIDASUNSUPPORTEDACTION = "FailedOperation.MidasUnsupportedAction"
+//  FAILEDOPERATION_MISSINGPARAMETER = "FailedOperation.MissingParameter"
+//  INTERNALERROR_MIDAS = "InternalError.Midas"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_MIDAS = "InvalidParameter.Midas"
+//  INVALIDPARAMETER_MIDASENVIRONMENT = "InvalidParameter.MidasEnvironment"
+//  INVALIDPARAMETER_MIDASEXTERNALAPP = "InvalidParameter.MidasExternalApp"
+//  INVALIDPARAMETER_MIDASFILETYPE = "InvalidParameter.MidasFileType"
+//  INVALIDPARAMETER_MIDASHASH = "InvalidParameter.MidasHash"
+//  INVALIDPARAMETER_MIDASSIGNID = "InvalidParameter.MidasSignId"
+//  LIMITEXCEEDED_MIDASLARGEFILE = "LimitExceeded.MidasLargeFile"
+//  LIMITEXCEEDED_MIDASORDER = "LimitExceeded.MidasOrder"
+//  LIMITEXCEEDED_MIDASORDERCANCELED = "LimitExceeded.MidasOrderCanceled"
+//  LIMITEXCEEDED_MIDASORDERCLOSED = "LimitExceeded.MidasOrderClosed"
+//  LIMITEXCEEDED_MIDASORDEREXPIRED = "LimitExceeded.MidasOrderExpired"
+//  LIMITEXCEEDED_MIDASORDERFAILED = "LimitExceeded.MidasOrderFailed"
+//  LIMITEXCEEDED_MIDASORDERPARTIALSUCCESS = "LimitExceeded.MidasOrderPartialSuccess"
+//  LIMITEXCEEDED_MIDASORDERPROCESSING = "LimitExceeded.MidasOrderProcessing"
+//  LIMITEXCEEDED_MIDASORDERSUCCESS = "LimitExceeded.MidasOrderSuccess"
+//  REQUESTLIMITEXCEEDED_MIDAS = "RequestLimitExceeded.Midas"
+//  REQUESTLIMITEXCEEDED_MIDASINVALIDREQUEST = "RequestLimitExceeded.MidasInvalidRequest"
+//  RESOURCEINUSE_MIDAS = "ResourceInUse.Midas"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_MIDASEXTERNALAPP = "ResourceNotFound.MidasExternalApp"
+//  RESOURCENOTFOUND_MIDASEXTERNALORDER = "ResourceNotFound.MidasExternalOrder"
+//  RESOURCENOTFOUND_MIDASORDER = "ResourceNotFound.MidasOrder"
+//  RESOURCENOTFOUND_MIDASSIGN = "ResourceNotFound.MidasSign"
+//  RESOURCEUNAVAILABLE_MIDASDAY = "ResourceUnavailable.MidasDay"
+//  RESOURCEUNAVAILABLE_MIDASFROZENAMOUNT = "ResourceUnavailable.MidasFrozenAmount"
+//  RESOURCEUNAVAILABLE_MIDASMERCHANTBALANCE = "ResourceUnavailable.MidasMerchantBalance"
+//  RESOURCEUNAVAILABLE_MIDASORDER = "ResourceUnavailable.MidasOrder"
+//  RESOURCEUNAVAILABLE_MIDASUSERBALANCE = "ResourceUnavailable.MidasUserBalance"
+//  RESOURCEUNAVAILABLE_MIDASWALLET = "ResourceUnavailable.MidasWallet"
+//  UNAUTHORIZEDOPERATION_MIDAS = "UnauthorizedOperation.Midas"
+func (c *Client) UnifiedCloudOrderWithContext(ctx context.Context, request *UnifiedCloudOrderRequest) (response *UnifiedCloudOrderResponse, err error) {
+    if request == nil {
+        request = NewUnifiedCloudOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnifiedCloudOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnifiedCloudOrderResponse()
     err = c.Send(request, response)
     return
 }

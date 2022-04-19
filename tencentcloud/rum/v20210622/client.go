@@ -886,6 +886,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
     return c.DeleteProjectWithContext(context.Background(), request)
 }
@@ -895,6 +896,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
     if request == nil {
         request = NewDeleteProjectRequest()

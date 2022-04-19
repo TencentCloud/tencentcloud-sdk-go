@@ -4934,6 +4934,57 @@ func (c *Client) ModifyTopicRuleWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageRequest) {
+    request = &PublishBroadcastMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishBroadcastMessage")
+    
+    
+    return
+}
+
+func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResponse) {
+    response = &PublishBroadcastMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PublishBroadcastMessage
+// 发布广播消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
+    return c.PublishBroadcastMessageWithContext(context.Background(), request)
+}
+
+// PublishBroadcastMessage
+// 发布广播消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
+//  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishBroadcastMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishBroadcastMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPublishBroadcastMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},

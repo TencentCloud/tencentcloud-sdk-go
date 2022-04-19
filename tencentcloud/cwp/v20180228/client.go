@@ -1292,6 +1292,7 @@ func NewDeleteMalwaresResponse() (response *DeleteMalwaresResponse) {
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMalwares(request *DeleteMalwaresRequest) (response *DeleteMalwaresResponse, err error) {
     return c.DeleteMalwaresWithContext(context.Background(), request)
 }
@@ -1306,6 +1307,7 @@ func (c *Client) DeleteMalwares(request *DeleteMalwaresRequest) (response *Delet
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteMalwaresWithContext(ctx context.Context, request *DeleteMalwaresRequest) (response *DeleteMalwaresResponse, err error) {
     if request == nil {
         request = NewDeleteMalwaresRequest()

@@ -5578,6 +5578,10 @@ type URLNotice struct {
 	// 通知结束时间 一天开始的秒数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 通知周期 1-7表示周一到周日
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weekday []*int64 `json:"Weekday,omitempty" name:"Weekday"`
 }
 
 type UnBindingAllPolicyObjectRequest struct {
@@ -5962,4 +5966,8 @@ type UserNotice struct {
 	// 电话拨打类型 SYNC=同时拨打 CIRCLE=轮询拨打 不指定时默认是轮询
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneCallType *string `json:"PhoneCallType,omitempty" name:"PhoneCallType"`
+
+	// 通知周期 1-7表示周一到周日
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weekday []*int64 `json:"Weekday,omitempty" name:"Weekday"`
 }

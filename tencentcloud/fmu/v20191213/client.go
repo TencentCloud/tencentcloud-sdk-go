@@ -241,6 +241,7 @@ func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobRespon
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
     return c.CancelBeautifyVideoJobWithContext(context.Background(), request)
 }
@@ -254,6 +255,7 @@ func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) 
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CancelBeautifyVideoJobWithContext(ctx context.Context, request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
     if request == nil {
         request = NewCancelBeautifyVideoJobRequest()

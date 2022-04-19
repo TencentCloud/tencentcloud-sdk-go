@@ -151,6 +151,9 @@ type AntiFraudFilter struct {
 	// 0：不加密（默认值）
 	// 1：md5
 	NameCryptoType *string `json:"NameCryptoType,omitempty" name:"NameCryptoType"`
+
+	// 是否使用旧回包
+	OldResponseType *string `json:"OldResponseType,omitempty" name:"OldResponseType"`
 }
 
 type AntiFraudRecord struct {

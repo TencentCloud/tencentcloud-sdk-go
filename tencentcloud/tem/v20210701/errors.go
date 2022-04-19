@@ -41,6 +41,9 @@ const (
 	// 查询实例信息失败。
 	INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 
+	// 查询服务关联的 ingress 失败。
+	INTERNALERROR_DESCRIBESERVICEINGRESSERROR = "InternalError.DescribeServiceIngressError"
+
 	// 重启失败。
 	INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 

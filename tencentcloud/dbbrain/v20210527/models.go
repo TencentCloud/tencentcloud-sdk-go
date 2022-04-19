@@ -229,7 +229,7 @@ type CreateKillTaskRequest struct {
 	// kill会话任务的关联实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 任务持续时间时间，单位秒，手动关闭任务传-1。
+	// 任务持续时间，单位秒，手动关闭任务传-1。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 任务过滤条件，客户端IP。
@@ -2470,7 +2470,7 @@ type MailConfiguration struct {
 	// 是否开启邮件发送: 0, 否; 1, 是。
 	SendMail *int64 `json:"SendMail,omitempty" name:"SendMail"`
 
-	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模版，配置需要发送巡检邮件的地域；订阅的邮件发送模版，配置当前订阅实例的所属地域。
+	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
 	Region []*string `json:"Region,omitempty" name:"Region"`
 
 	// 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。

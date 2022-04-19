@@ -2331,6 +2331,7 @@ func NewDescribeExportsResponse() (response *DescribeExportsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2349,6 +2350,7 @@ func (c *Client) DescribeExports(request *DescribeExportsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4066,7 +4068,7 @@ func NewOpenKafkaConsumerResponse() (response *OpenKafkaConsumerResponse) {
 }
 
 // OpenKafkaConsumer
-// 打开kafka协议消费
+// 打开Kafka协议消费功能
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4086,7 +4088,7 @@ func (c *Client) OpenKafkaConsumer(request *OpenKafkaConsumerRequest) (response 
 }
 
 // OpenKafkaConsumer
-// 打开kafka协议消费
+// 打开Kafka协议消费功能
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

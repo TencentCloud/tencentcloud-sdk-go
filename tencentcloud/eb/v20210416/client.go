@@ -480,6 +480,7 @@ func NewCreateTransformationResponse() (response *CreateTransformationResponse) 
 // 用于创建转换器
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) CreateTransformation(request *CreateTransformationRequest) (response *CreateTransformationResponse, err error) {
     return c.CreateTransformationWithContext(context.Background(), request)
@@ -489,6 +490,7 @@ func (c *Client) CreateTransformation(request *CreateTransformationRequest) (res
 // 用于创建转换器
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) CreateTransformationWithContext(ctx context.Context, request *CreateTransformationRequest) (response *CreateTransformationResponse, err error) {
     if request == nil {
@@ -764,14 +766,6 @@ func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
-//  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
-//  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
-//  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
-//  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     return c.DeleteTransformationWithContext(context.Background(), request)
 }
@@ -781,14 +775,6 @@ func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
-//  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
-//  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
-//  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
-//  RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
 func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     if request == nil {
         request = NewDeleteTransformationRequest()
@@ -930,6 +916,7 @@ func NewGetTransformationResponse() (response *GetTransformationResponse) {
 // 用于获取转换器详情
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 func (c *Client) GetTransformation(request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     return c.GetTransformationWithContext(context.Background(), request)
@@ -939,6 +926,7 @@ func (c *Client) GetTransformation(request *GetTransformationRequest) (response 
 // 用于获取转换器详情
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 func (c *Client) GetTransformationWithContext(ctx context.Context, request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     if request == nil {

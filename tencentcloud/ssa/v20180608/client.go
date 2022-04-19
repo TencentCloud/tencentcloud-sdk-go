@@ -859,6 +859,57 @@ func (c *Client) DescribeSocCheckItemListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSocCheckResultListRequest() (request *DescribeSocCheckResultListRequest) {
+    request = &DescribeSocCheckResultListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCheckResultList")
+    
+    
+    return
+}
+
+func NewDescribeSocCheckResultListResponse() (response *DescribeSocCheckResultListResponse) {
+    response = &DescribeSocCheckResultListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSocCheckResultList
+// 云安全配置检查项结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSocCheckResultList(request *DescribeSocCheckResultListRequest) (response *DescribeSocCheckResultListResponse, err error) {
+    return c.DescribeSocCheckResultListWithContext(context.Background(), request)
+}
+
+// DescribeSocCheckResultList
+// 云安全配置检查项结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) DescribeSocCheckResultListWithContext(ctx context.Context, request *DescribeSocCheckResultListRequest) (response *DescribeSocCheckResultListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSocCheckResultListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSocCheckResultList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSocCheckResultListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRequest) {
     request = &DescribeSocCspmComplianceRequest{
         BaseRequest: &tchttp.BaseRequest{},

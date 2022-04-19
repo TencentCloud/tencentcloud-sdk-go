@@ -2955,6 +2955,10 @@ type Image struct {
 	// 镜像关联的快照信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet"`
+
+	// 镜像关联的标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ImageOsList struct {

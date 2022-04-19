@@ -290,9 +290,7 @@ func NewChangeApiUsableStatusResponse() (response *ChangeApiUsableStatusResponse
 // 启用或禁用API
 //
 // 可能返回的错误码:
-//  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
-//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
-//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) ChangeApiUsableStatus(request *ChangeApiUsableStatusRequest) (response *ChangeApiUsableStatusResponse, err error) {
     return c.ChangeApiUsableStatusWithContext(context.Background(), request)
 }
@@ -301,9 +299,7 @@ func (c *Client) ChangeApiUsableStatus(request *ChangeApiUsableStatusRequest) (r
 // 启用或禁用API
 //
 // 可能返回的错误码:
-//  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
-//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
-//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) ChangeApiUsableStatusWithContext(ctx context.Context, request *ChangeApiUsableStatusRequest) (response *ChangeApiUsableStatusResponse, err error) {
     if request == nil {
         request = NewChangeApiUsableStatusRequest()
@@ -1651,6 +1647,7 @@ func NewCreateServerlessGroupResponse() (response *CreateServerlessGroupResponse
 //  INVALIDPARAMETERVALUE_GROUPNAMENULL = "InvalidParameterValue.GroupNameNull"
 //  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
 //  INVALIDPARAMETERVALUE_GROUPPKGNULL = "InvalidParameterValue.GroupPkgNull"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
 func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
     return c.CreateServerlessGroupWithContext(context.Background(), request)
 }
@@ -1665,6 +1662,7 @@ func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (r
 //  INVALIDPARAMETERVALUE_GROUPNAMENULL = "InvalidParameterValue.GroupNameNull"
 //  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
 //  INVALIDPARAMETERVALUE_GROUPPKGNULL = "InvalidParameterValue.GroupPkgNull"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
 func (c *Client) CreateServerlessGroupWithContext(ctx context.Context, request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
     if request == nil {
         request = NewCreateServerlessGroupRequest()
@@ -3029,6 +3027,7 @@ func NewDeployContainerGroupResponse() (response *DeployContainerGroupResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -3069,6 +3068,7 @@ func (c *Client) DeployContainerGroup(request *DeployContainerGroupRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5774,6 +5774,7 @@ func NewDescribeInvocationMetricScatterPlotResponse() (response *DescribeInvocat
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
 func (c *Client) DescribeInvocationMetricScatterPlot(request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
     return c.DescribeInvocationMetricScatterPlotWithContext(context.Background(), request)
 }
@@ -5784,6 +5785,7 @@ func (c *Client) DescribeInvocationMetricScatterPlot(request *DescribeInvocation
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
 func (c *Client) DescribeInvocationMetricScatterPlotWithContext(ctx context.Context, request *DescribeInvocationMetricScatterPlotRequest) (response *DescribeInvocationMetricScatterPlotResponse, err error) {
     if request == nil {
         request = NewDescribeInvocationMetricScatterPlotRequest()
@@ -6613,6 +6615,7 @@ func NewDescribePodInstancesResponse() (response *DescribePodInstancesResponse) 
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPLIMITVALUEINVALID = "InvalidParameterValue.ContainergroupLimitValueInvalid"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -6633,6 +6636,7 @@ func (c *Client) DescribePodInstances(request *DescribePodInstancesRequest) (res
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPLIMITVALUEINVALID = "InvalidParameterValue.ContainergroupLimitValueInvalid"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -8563,6 +8567,7 @@ func NewExecuteTaskFlowResponse() (response *ExecuteTaskFlowResponse) {
 //  FAILEDOPERATION_TASKPUSHERROR = "FailedOperation.TaskPushError"
 //  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
 //  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
@@ -8581,6 +8586,7 @@ func (c *Client) ExecuteTaskFlow(request *ExecuteTaskFlowRequest) (response *Exe
 //  FAILEDOPERATION_TASKPUSHERROR = "FailedOperation.TaskPushError"
 //  INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
 //  MISSINGPARAMETER_TASKPARAMETERMISSED = "MissingParameter.TaskParameterMissed"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOPERMISSION = "UnauthorizedOperation.CamTsfRoleNoPermission"
 //  UNAUTHORIZEDOPERATION_CAMTSFROLENOTEXIST = "UnauthorizedOperation.CamTsfRoleNotExist"
@@ -8834,6 +8840,7 @@ func NewModifyLaneResponse() (response *ModifyLaneResponse) {
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) ModifyLane(request *ModifyLaneRequest) (response *ModifyLaneResponse, err error) {
     return c.ModifyLaneWithContext(context.Background(), request)
 }
@@ -8887,6 +8894,7 @@ func (c *Client) ModifyLane(request *ModifyLaneRequest) (response *ModifyLaneRes
 //  INVALIDPARAMETERVALUE_LANERULETAGNOTEMPTY = "InvalidParameterValue.LaneRuleTagNotEmpty"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOOLONG = "InvalidParameterValue.LaneRuleTagValueTooLong"
 //  INVALIDPARAMETERVALUE_LANERULETAGVALUETOTALTOOLONG = "InvalidParameterValue.LaneRuleTagValueTotalTooLong"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) ModifyLaneWithContext(ctx context.Context, request *ModifyLaneRequest) (response *ModifyLaneResponse, err error) {
     if request == nil {
         request = NewModifyLaneRequest()
@@ -9601,6 +9609,7 @@ func NewReleaseApiGroupResponse() (response *ReleaseApiGroupResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseApiGroup(request *ReleaseApiGroupRequest) (response *ReleaseApiGroupResponse, err error) {
     return c.ReleaseApiGroupWithContext(context.Background(), request)
@@ -9611,6 +9620,7 @@ func (c *Client) ReleaseApiGroup(request *ReleaseApiGroupRequest) (response *Rel
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseApiGroupWithContext(ctx context.Context, request *ReleaseApiGroupRequest) (response *ReleaseApiGroupResponse, err error) {
     if request == nil {
@@ -9718,6 +9728,7 @@ func NewReleaseFileConfigResponse() (response *ReleaseFileConfigResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) ReleaseFileConfig(request *ReleaseFileConfigRequest) (response *ReleaseFileConfigResponse, err error) {
@@ -9730,6 +9741,7 @@ func (c *Client) ReleaseFileConfig(request *ReleaseFileConfigRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
 //  INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) ReleaseFileConfigWithContext(ctx context.Context, request *ReleaseFileConfigRequest) (response *ReleaseFileConfigResponse, err error) {
@@ -9986,6 +9998,7 @@ func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     return c.RollbackConfigWithContext(context.Background(), request)
@@ -9996,6 +10009,7 @@ func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *Rollb
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) RollbackConfigWithContext(ctx context.Context, request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     if request == nil {
@@ -10148,11 +10162,7 @@ func NewShrinkGroupResponse() (response *ShrinkGroupResponse) {
 // 下线部署组所有机器实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ShrinkGroup(request *ShrinkGroupRequest) (response *ShrinkGroupResponse, err error) {
     return c.ShrinkGroupWithContext(context.Background(), request)
 }
@@ -10161,11 +10171,7 @@ func (c *Client) ShrinkGroup(request *ShrinkGroupRequest) (response *ShrinkGroup
 // 下线部署组所有机器实例
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = "InternalError.TsfApmEsResponseStatusException"
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStdoutSearchRequestParamError"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ShrinkGroupWithContext(ctx context.Context, request *ShrinkGroupRequest) (response *ShrinkGroupResponse, err error) {
     if request == nil {
         request = NewShrinkGroupRequest()
@@ -10735,6 +10741,7 @@ func NewUpdateApiGroupResponse() (response *UpdateApiGroupResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) UpdateApiGroup(request *UpdateApiGroupRequest) (response *UpdateApiGroupResponse, err error) {
     return c.UpdateApiGroupWithContext(context.Background(), request)
 }
@@ -10744,6 +10751,7 @@ func (c *Client) UpdateApiGroup(request *UpdateApiGroupRequest) (response *Updat
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) UpdateApiGroupWithContext(ctx context.Context, request *UpdateApiGroupRequest) (response *UpdateApiGroupResponse, err error) {
     if request == nil {
         request = NewUpdateApiGroupRequest()
@@ -10784,6 +10792,7 @@ func NewUpdateApiRateLimitRuleResponse() (response *UpdateApiRateLimitRuleRespon
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) UpdateApiRateLimitRule(request *UpdateApiRateLimitRuleRequest) (response *UpdateApiRateLimitRuleResponse, err error) {
     return c.UpdateApiRateLimitRuleWithContext(context.Background(), request)
 }
@@ -10795,6 +10804,7 @@ func (c *Client) UpdateApiRateLimitRule(request *UpdateApiRateLimitRuleRequest) 
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 func (c *Client) UpdateApiRateLimitRuleWithContext(ctx context.Context, request *UpdateApiRateLimitRuleRequest) (response *UpdateApiRateLimitRuleResponse, err error) {
     if request == nil {
         request = NewUpdateApiRateLimitRuleRequest()
@@ -10986,6 +10996,7 @@ func NewUpdateHealthCheckSettingsResponse() (response *UpdateHealthCheckSettings
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
     return c.UpdateHealthCheckSettingsWithContext(context.Background(), request)
 }
@@ -10995,6 +11006,7 @@ func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateHealthCheckSettingsWithContext(ctx context.Context, request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
     if request == nil {
         request = NewUpdateHealthCheckSettingsRequest()

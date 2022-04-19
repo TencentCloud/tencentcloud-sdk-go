@@ -1,126 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 90 次发布
+### 第 43 次发布
 
-发布时间：2022-04-14 06:07:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)
-
-修改接口：
-
-* [AddTimeWindow](https://cloud.tencent.com/document/api/236/33891)
-
-	* 新增入参：MaxDelayTime
-
-* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
-
-	* 新增入参：Vips
-
-* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
-
-	* 新增入参：Vips
-
-* [DescribeTimeWindow](https://cloud.tencent.com/document/api/236/33889)
-
-	* 新增出参：MaxDelayTime
-
-* [ModifyTimeWindow](https://cloud.tencent.com/document/api/236/33888)
-
-	* 新增入参：MaxDelayTime
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 98 次发布
-
-发布时间：2022-04-14 06:08:21
+发布时间：2022-04-19 06:13:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
-
-	* 新增入参：HwPrivateAccess, QnPrivateAccess
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：HwPrivateAccess, QnPrivateAccess
-
-
-新增数据结构：
-
-* [HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)
-* [QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)
 
 修改数据结构：
 
-* [AwsPrivateAccess](https://cloud.tencent.com/document/api/228/30987#AwsPrivateAccess)
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
 
-	* 新增成员：Region, Bucket
+	* 新增成员：Weekday
 
-* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
 
-	* 新增成员：HwPrivateAccess, QnPrivateAccess
-
-* [MainlandConfig](https://cloud.tencent.com/document/api/228/30987#MainlandConfig)
-
-	* 新增成员：HwPrivateAccess, QnPrivateAccess
-
-* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
-
-	* 新增成员：OriginCompany
-
-* [OssPrivateAccess](https://cloud.tencent.com/document/api/228/30987#OssPrivateAccess)
-
-	* 新增成员：Region, Bucket
+	* 新增成员：Weekday
 
 
 
 
-## 安全运营中心(ssa) 版本：2018-06-08
+## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 10 次发布
+### 第 7 次发布
 
-发布时间：2022-04-14 06:16:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSocCheckItemList](https://cloud.tencent.com/document/api/664/72477)
-
-	* 新增入参：Filter, Sorter, PageSize, PageIndex
-
-	* 新增出参：Data
-
-
-新增数据结构：
-
-* [DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)
-* [SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)
-
-
-
-## 图像分析(tiia) 版本：2019-05-29
-
-### 第 20 次发布
-
-发布时间：2022-04-14 06:18:37
+发布时间：2022-04-19 06:20:51
 
 本次发布包含了以下内容：
 
@@ -128,7 +35,11 @@
 
 新增接口：
 
-* [RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+新增数据结构：
+
+* [PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)
 
 
 
@@ -411,6 +322,21 @@
 
 ## 借贷反欺诈(af) 版本：2020-02-26
 
+### 第 5 次发布
+
+发布时间：2022-04-15 06:01:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter)
+
+	* 新增成员：OldResponseType
+
+
 ### 第 4 次发布
 
 发布时间：2021-11-18 08:02:15
@@ -530,6 +456,25 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 33 次发布
+
+发布时间：2022-04-15 06:01:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)
+
+	* 新增入参：SyncRobotCommands
+
+
+新增数据结构：
+
+* [SyncRobotCommand](https://cloud.tencent.com/document/api/1155/40113#SyncRobotCommand)
 
 ### 第 32 次发布
 
@@ -1395,6 +1340,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 27 次发布
+
+发布时间：2022-04-18 06:05:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+
+	* 新增成员：RewriteHttps, ErrCode
+
 
 ### 第 26 次发布
 
@@ -9509,6 +9469,18 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 24 次发布
+
+发布时间：2022-04-15 06:03:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProtectedTelCdr](https://cloud.tencent.com/document/api/679/72597)
+
 ### 第 23 次发布
 
 发布时间：2022-04-13 06:12:26
@@ -9954,6 +9926,32 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 91 次发布
+
+发布时间：2022-04-18 06:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
+
+	* 新增出参：EnableBackupPeriodSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
+
+	* 新增入参：EnableBackupPeriodSave, EnableBackupPeriodLongTermSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
+
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：SaveMode
+
+
 ### 第 90 次发布
 
 发布时间：2022-04-14 06:07:55
@@ -9964,7 +9962,7 @@
 
 新增接口：
 
-* [[ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)](https://cloud.tencent.com/document/api/#/#)
+* [ResetRootAccount](https://cloud.tencent.com/document/api/236/72551)
 
 修改接口：
 
@@ -11839,6 +11837,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 99 次发布
+
+发布时间：2022-04-18 06:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OverseaConfig](https://cloud.tencent.com/document/api/228/30987#OverseaConfig)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+
 ### 第 98 次发布
 
 发布时间：2022-04-14 06:08:21
@@ -11860,8 +11873,8 @@
 
 新增数据结构：
 
-* [[HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)](https://cloud.tencent.com/document/api/228/30987#[HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess))
-* [[QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)](https://cloud.tencent.com/document/api/228/30987#[QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess))
+* [HwPrivateAccess](https://cloud.tencent.com/document/api/228/30987#HwPrivateAccess)
+* [QnPrivateAccess](https://cloud.tencent.com/document/api/228/30987#QnPrivateAccess)
 
 修改数据结构：
 
@@ -19838,6 +19851,41 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 62 次发布
+
+发布时间：2022-04-15 06:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseCloudOrder](https://cloud.tencent.com/document/api/1122/72605)
+* [CreateCloudSubMerchant](https://cloud.tencent.com/document/api/1122/72604)
+* [QueryCloudChannelData](https://cloud.tencent.com/document/api/1122/72603)
+* [QueryCloudOrder](https://cloud.tencent.com/document/api/1122/72602)
+* [QueryCloudRefundOrder](https://cloud.tencent.com/document/api/1122/72601)
+* [RefundCloudOrder](https://cloud.tencent.com/document/api/1122/72600)
+* [UnifiedCloudOrder](https://cloud.tencent.com/document/api/1122/72599)
+
+新增数据结构：
+
+* [CloudAttachmentInfo](https://cloud.tencent.com/document/api/1122/40683#CloudAttachmentInfo)
+* [CloudChannelExternalUserInfo](https://cloud.tencent.com/document/api/1122/40683#CloudChannelExternalUserInfo)
+* [CloudClientInfo](https://cloud.tencent.com/document/api/1122/40683#CloudClientInfo)
+* [CloudExternalChannelData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalChannelData)
+* [CloudExternalPromptGroup](https://cloud.tencent.com/document/api/1122/40683#CloudExternalPromptGroup)
+* [CloudExternalPromptInfo](https://cloud.tencent.com/document/api/1122/40683#CloudExternalPromptInfo)
+* [CloudGlobalPayTimeInfo](https://cloud.tencent.com/document/api/1122/40683#CloudGlobalPayTimeInfo)
+* [CloudOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudOrderReturn)
+* [CloudSettleInfo](https://cloud.tencent.com/document/api/1122/40683#CloudSettleInfo)
+* [CloudStoreInfo](https://cloud.tencent.com/document/api/1122/40683#CloudStoreInfo)
+* [CloudSubOrder](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrder)
+* [CloudSubOrderRefund](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrderRefund)
+* [CloudSubOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrderReturn)
+* [CloudSubRefundItem](https://cloud.tencent.com/document/api/1122/40683#CloudSubRefundItem)
+
 ### 第 61 次发布
 
 发布时间：2022-03-29 08:07:17
@@ -21604,6 +21652,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 79 次发布
+
+发布时间：2022-04-15 06:05:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Image](https://cloud.tencent.com/document/api/213/15753#Image)
+
+	* 新增成员：Tags
+
 
 ### 第 78 次发布
 
@@ -38387,6 +38450,18 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 44 次发布
+
+发布时间：2022-04-18 06:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/1081/72633)
+
 ### 第 43 次发布
 
 发布时间：2022-04-12 06:15:29
@@ -44895,6 +44970,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 43 次发布
+
+发布时间：2022-04-19 06:13:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+
+	* 新增成员：Weekday
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：Weekday
+
 
 ### 第 42 次发布
 
@@ -54838,6 +54932,23 @@
 
 ## 安全运营中心(ssa) 版本：2018-06-08
 
+### 第 11 次发布
+
+发布时间：2022-04-18 06:17:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSocCheckResultList](https://cloud.tencent.com/document/api/664/72634)
+
+新增数据结构：
+
+* [DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp)
+* [SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult)
+
 ### 第 10 次发布
 
 发布时间：2022-04-14 06:16:47
@@ -54857,8 +54968,8 @@
 
 新增数据结构：
 
-* [[DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)](https://cloud.tencent.com/document/api/664/51406#[DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp))
-* [[SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)](https://cloud.tencent.com/document/api/664/51406#[SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1))
+* [DescribeSocCheckItemListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckItemListRspRsp)
+* [SocCheckItemV1](https://cloud.tencent.com/document/api/664/51406#SocCheckItemV1)
 
 ### 第 9 次发布
 
@@ -62955,7 +63066,7 @@
 
 新增接口：
 
-* [[RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeCarPro](https://cloud.tencent.com/document/api/865/72553)
 
 ### 第 19 次发布
 
@@ -74922,6 +75033,58 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 7 次发布
+
+发布时间：2022-04-19 06:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)](https://cloud.tencent.com/document/api/627/53609#[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem))
+
+### 第 6 次发布
+
+发布时间：2022-04-18 06:22:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
+* [DeleteDomainWhiteRules](https://cloud.tencent.com/document/api/627/72649)
+* [DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)
+* [DescribeAutoDenyIP](https://cloud.tencent.com/document/api/627/72647)
+* [DescribeDomainWhiteRules](https://cloud.tencent.com/document/api/627/72646)
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+* [DescribeWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72643)
+* [DescribeWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72642)
+* [DescribeWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72641)
+* [ModifyDomainWhiteRule](https://cloud.tencent.com/document/api/627/72640)
+* [ModifyWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72639)
+* [ModifyWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72638)
+* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+新增数据结构：
+
+* [AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail)
+* [IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData)
+* [IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem)
+* [IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem)
+* [IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData)
+* [RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList)
+* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
 
 ### 第 5 次发布
 

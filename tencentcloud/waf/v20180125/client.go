@@ -92,6 +92,124 @@ func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCusto
     return
 }
 
+func NewAddDomainWhiteRuleRequest() (request *AddDomainWhiteRuleRequest) {
+    request = &AddDomainWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "AddDomainWhiteRule")
+    
+    
+    return
+}
+
+func NewAddDomainWhiteRuleResponse() (response *AddDomainWhiteRuleResponse) {
+    response = &AddDomainWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddDomainWhiteRule
+// 增加域名规则白名单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) AddDomainWhiteRule(request *AddDomainWhiteRuleRequest) (response *AddDomainWhiteRuleResponse, err error) {
+    return c.AddDomainWhiteRuleWithContext(context.Background(), request)
+}
+
+// AddDomainWhiteRule
+// 增加域名规则白名单
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) AddDomainWhiteRuleWithContext(ctx context.Context, request *AddDomainWhiteRuleRequest) (response *AddDomainWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewAddDomainWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDomainWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddDomainWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddSpartaProtectionRequest() (request *AddSpartaProtectionRequest) {
+    request = &AddSpartaProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "AddSpartaProtection")
+    
+    
+    return
+}
+
+func NewAddSpartaProtectionResponse() (response *AddSpartaProtectionResponse) {
+    response = &AddSpartaProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddSpartaProtection
+// 添加Spart防护域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddSpartaProtection(request *AddSpartaProtectionRequest) (response *AddSpartaProtectionResponse, err error) {
+    return c.AddSpartaProtectionWithContext(context.Background(), request)
+}
+
+// AddSpartaProtection
+// 添加Spart防护域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) AddSpartaProtectionWithContext(ctx context.Context, request *AddSpartaProtectionRequest) (response *AddSpartaProtectionResponse, err error) {
+    if request == nil {
+        request = NewAddSpartaProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddSpartaProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddSpartaProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
     request = &CreateAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -358,6 +476,57 @@ func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteDomainWhiteRulesRequest() (request *DeleteDomainWhiteRulesRequest) {
+    request = &DeleteDomainWhiteRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteDomainWhiteRules")
+    
+    
+    return
+}
+
+func NewDeleteDomainWhiteRulesResponse() (response *DeleteDomainWhiteRulesResponse) {
+    response = &DeleteDomainWhiteRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDomainWhiteRules
+// 删除域名规则白名单
+//
+// 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteDomainWhiteRules(request *DeleteDomainWhiteRulesRequest) (response *DeleteDomainWhiteRulesResponse, err error) {
+    return c.DeleteDomainWhiteRulesWithContext(context.Background(), request)
+}
+
+// DeleteDomainWhiteRules
+// 删除域名规则白名单
+//
+// 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteDomainWhiteRulesWithContext(ctx context.Context, request *DeleteDomainWhiteRulesRequest) (response *DeleteDomainWhiteRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainWhiteRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomainWhiteRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDomainWhiteRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDownloadRecordRequest() (request *DeleteDownloadRecordRequest) {
     request = &DeleteDownloadRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -401,6 +570,53 @@ func (c *Client) DeleteDownloadRecordWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteDownloadRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIpAccessControlRequest() (request *DeleteIpAccessControlRequest) {
+    request = &DeleteIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteIpAccessControl")
+    
+    
+    return
+}
+
+func NewDeleteIpAccessControlResponse() (response *DeleteIpAccessControlResponse) {
+    response = &DeleteIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIpAccessControl
+// Waf IP黑白名单Delete接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
+    return c.DeleteIpAccessControlWithContext(context.Background(), request)
+}
+
+// DeleteIpAccessControl
+// Waf IP黑白名单Delete接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteIpAccessControlWithContext(ctx context.Context, request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewDeleteIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIpAccessControlResponse()
     err = c.Send(request, response)
     return
 }
@@ -707,6 +923,55 @@ func (c *Client) DescribeAccessIndexWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeAutoDenyIPRequest() (request *DescribeAutoDenyIPRequest) {
+    request = &DescribeAutoDenyIPRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAutoDenyIP")
+    
+    
+    return
+}
+
+func NewDescribeAutoDenyIPResponse() (response *DescribeAutoDenyIPResponse) {
+    response = &DescribeAutoDenyIPResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoDenyIP
+// 描述WAF自动封禁IP详情,对齐自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAutoDenyIP(request *DescribeAutoDenyIPRequest) (response *DescribeAutoDenyIPResponse, err error) {
+    return c.DescribeAutoDenyIPWithContext(context.Background(), request)
+}
+
+// DescribeAutoDenyIP
+// 描述WAF自动封禁IP详情,对齐自动封堵状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAutoDenyIPWithContext(ctx context.Context, request *DescribeAutoDenyIPRequest) (response *DescribeAutoDenyIPResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoDenyIPRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoDenyIP require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoDenyIPResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
     request = &DescribeCustomRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -750,6 +1015,57 @@ func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeCustomRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainWhiteRulesRequest() (request *DescribeDomainWhiteRulesRequest) {
+    request = &DescribeDomainWhiteRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeDomainWhiteRules")
+    
+    
+    return
+}
+
+func NewDescribeDomainWhiteRulesResponse() (response *DescribeDomainWhiteRulesResponse) {
+    response = &DescribeDomainWhiteRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainWhiteRules
+// 获取域名的规则白名单
+//
+// 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainWhiteRules(request *DescribeDomainWhiteRulesRequest) (response *DescribeDomainWhiteRulesResponse, err error) {
+    return c.DescribeDomainWhiteRulesWithContext(context.Background(), request)
+}
+
+// DescribeDomainWhiteRules
+// 获取域名的规则白名单
+//
+// 
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainWhiteRulesWithContext(ctx context.Context, request *DescribeDomainWhiteRulesRequest) (response *DescribeDomainWhiteRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainWhiteRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainWhiteRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainWhiteRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -803,6 +1119,102 @@ func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeFlowTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIpAccessControlRequest() (request *DescribeIpAccessControlRequest) {
+    request = &DescribeIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeIpAccessControl")
+    
+    
+    return
+}
+
+func NewDescribeIpAccessControlResponse() (response *DescribeIpAccessControlResponse) {
+    response = &DescribeIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIpAccessControl
+// Waf ip黑白名单查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeIpAccessControl(request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
+    return c.DescribeIpAccessControlWithContext(context.Background(), request)
+}
+
+// DescribeIpAccessControl
+// Waf ip黑白名单查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeIpAccessControlWithContext(ctx context.Context, request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIpHitItemsRequest() (request *DescribeIpHitItemsRequest) {
+    request = &DescribeIpHitItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeIpHitItems")
+    
+    
+    return
+}
+
+func NewDescribeIpHitItemsResponse() (response *DescribeIpHitItemsResponse) {
+    response = &DescribeIpHitItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIpHitItems
+// Waf  IP封堵状态查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIpHitItems(request *DescribeIpHitItemsRequest) (response *DescribeIpHitItemsResponse, err error) {
+    return c.DescribeIpHitItemsWithContext(context.Background(), request)
+}
+
+// DescribeIpHitItems
+// Waf  IP封堵状态查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *DescribeIpHitItemsRequest) (response *DescribeIpHitItemsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIpHitItemsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIpHitItems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIpHitItemsResponse()
     err = c.Send(request, response)
     return
 }
@@ -878,6 +1290,151 @@ func (c *Client) DescribeUserClbWafRegionsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeUserClbWafRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWafAutoDenyRulesRequest() (request *DescribeWafAutoDenyRulesRequest) {
+    request = &DescribeWafAutoDenyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeWafAutoDenyRules")
+    
+    
+    return
+}
+
+func NewDescribeWafAutoDenyRulesResponse() (response *DescribeWafAutoDenyRulesResponse) {
+    response = &DescribeWafAutoDenyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWafAutoDenyRules
+// 返回ip惩罚规则详细信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWafAutoDenyRules(request *DescribeWafAutoDenyRulesRequest) (response *DescribeWafAutoDenyRulesResponse, err error) {
+    return c.DescribeWafAutoDenyRulesWithContext(context.Background(), request)
+}
+
+// DescribeWafAutoDenyRules
+// 返回ip惩罚规则详细信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeWafAutoDenyRulesWithContext(ctx context.Context, request *DescribeWafAutoDenyRulesRequest) (response *DescribeWafAutoDenyRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWafAutoDenyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWafAutoDenyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWafAutoDenyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWafAutoDenyStatusRequest() (request *DescribeWafAutoDenyStatusRequest) {
+    request = &DescribeWafAutoDenyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeWafAutoDenyStatus")
+    
+    
+    return
+}
+
+func NewDescribeWafAutoDenyStatusResponse() (response *DescribeWafAutoDenyStatusResponse) {
+    response = &DescribeWafAutoDenyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWafAutoDenyStatus
+// 描述WAF自动封禁模块详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWafAutoDenyStatus(request *DescribeWafAutoDenyStatusRequest) (response *DescribeWafAutoDenyStatusResponse, err error) {
+    return c.DescribeWafAutoDenyStatusWithContext(context.Background(), request)
+}
+
+// DescribeWafAutoDenyStatus
+// 描述WAF自动封禁模块详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWafAutoDenyStatusWithContext(ctx context.Context, request *DescribeWafAutoDenyStatusRequest) (response *DescribeWafAutoDenyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeWafAutoDenyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWafAutoDenyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWafAutoDenyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWafThreatenIntelligenceRequest() (request *DescribeWafThreatenIntelligenceRequest) {
+    request = &DescribeWafThreatenIntelligenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeWafThreatenIntelligence")
+    
+    
+    return
+}
+
+func NewDescribeWafThreatenIntelligenceResponse() (response *DescribeWafThreatenIntelligenceResponse) {
+    response = &DescribeWafThreatenIntelligenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWafThreatenIntelligence
+// 描述WAF威胁情报封禁模块配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWafThreatenIntelligence(request *DescribeWafThreatenIntelligenceRequest) (response *DescribeWafThreatenIntelligenceResponse, err error) {
+    return c.DescribeWafThreatenIntelligenceWithContext(context.Background(), request)
+}
+
+// DescribeWafThreatenIntelligence
+// 描述WAF威胁情报封禁模块配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context, request *DescribeWafThreatenIntelligenceRequest) (response *DescribeWafThreatenIntelligenceResponse, err error) {
+    if request == nil {
+        request = NewDescribeWafThreatenIntelligenceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWafThreatenIntelligence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWafThreatenIntelligenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1014,6 +1571,198 @@ func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyDomainWhiteRuleRequest() (request *ModifyDomainWhiteRuleRequest) {
+    request = &ModifyDomainWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyDomainWhiteRule")
+    
+    
+    return
+}
+
+func NewModifyDomainWhiteRuleResponse() (response *ModifyDomainWhiteRuleResponse) {
+    response = &ModifyDomainWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDomainWhiteRule
+// 更改某一条规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDomainWhiteRule(request *ModifyDomainWhiteRuleRequest) (response *ModifyDomainWhiteRuleResponse, err error) {
+    return c.ModifyDomainWhiteRuleWithContext(context.Background(), request)
+}
+
+// ModifyDomainWhiteRule
+// 更改某一条规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDomainWhiteRuleWithContext(ctx context.Context, request *ModifyDomainWhiteRuleRequest) (response *ModifyDomainWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWafAutoDenyRulesRequest() (request *ModifyWafAutoDenyRulesRequest) {
+    request = &ModifyWafAutoDenyRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyWafAutoDenyRules")
+    
+    
+    return
+}
+
+func NewModifyWafAutoDenyRulesResponse() (response *ModifyWafAutoDenyRulesResponse) {
+    response = &ModifyWafAutoDenyRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWafAutoDenyRules
+// 修改ip惩罚规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyWafAutoDenyRules(request *ModifyWafAutoDenyRulesRequest) (response *ModifyWafAutoDenyRulesResponse, err error) {
+    return c.ModifyWafAutoDenyRulesWithContext(context.Background(), request)
+}
+
+// ModifyWafAutoDenyRules
+// 修改ip惩罚规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyWafAutoDenyRulesWithContext(ctx context.Context, request *ModifyWafAutoDenyRulesRequest) (response *ModifyWafAutoDenyRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyWafAutoDenyRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWafAutoDenyRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWafAutoDenyRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWafAutoDenyStatusRequest() (request *ModifyWafAutoDenyStatusRequest) {
+    request = &ModifyWafAutoDenyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyWafAutoDenyStatus")
+    
+    
+    return
+}
+
+func NewModifyWafAutoDenyStatusResponse() (response *ModifyWafAutoDenyStatusResponse) {
+    response = &ModifyWafAutoDenyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWafAutoDenyStatus
+// 配置WAF自动封禁模块状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyWafAutoDenyStatus(request *ModifyWafAutoDenyStatusRequest) (response *ModifyWafAutoDenyStatusResponse, err error) {
+    return c.ModifyWafAutoDenyStatusWithContext(context.Background(), request)
+}
+
+// ModifyWafAutoDenyStatus
+// 配置WAF自动封禁模块状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyWafAutoDenyStatusWithContext(ctx context.Context, request *ModifyWafAutoDenyStatusRequest) (response *ModifyWafAutoDenyStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyWafAutoDenyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWafAutoDenyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWafAutoDenyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWafThreatenIntelligenceRequest() (request *ModifyWafThreatenIntelligenceRequest) {
+    request = &ModifyWafThreatenIntelligenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyWafThreatenIntelligence")
+    
+    
+    return
+}
+
+func NewModifyWafThreatenIntelligenceResponse() (response *ModifyWafThreatenIntelligenceResponse) {
+    response = &ModifyWafThreatenIntelligenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWafThreatenIntelligence
+// 配置WAF威胁情报封禁模块详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyWafThreatenIntelligence(request *ModifyWafThreatenIntelligenceRequest) (response *ModifyWafThreatenIntelligenceResponse, err error) {
+    return c.ModifyWafThreatenIntelligenceWithContext(context.Background(), request)
+}
+
+// ModifyWafThreatenIntelligence
+// 配置WAF威胁情报封禁模块详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyWafThreatenIntelligenceWithContext(ctx context.Context, request *ModifyWafThreatenIntelligenceRequest) (response *ModifyWafThreatenIntelligenceResponse, err error) {
+    if request == nil {
+        request = NewModifyWafThreatenIntelligenceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWafThreatenIntelligence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWafThreatenIntelligenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchAccessLogRequest() (request *SearchAccessLogRequest) {
     request = &SearchAccessLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1095,6 +1844,55 @@ func (c *Client) SearchAccessLogWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpsertIpAccessControlRequest() (request *UpsertIpAccessControlRequest) {
+    request = &UpsertIpAccessControlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "UpsertIpAccessControl")
+    
+    
+    return
+}
+
+func NewUpsertIpAccessControlResponse() (response *UpsertIpAccessControlResponse) {
+    response = &UpsertIpAccessControlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpsertIpAccessControl
+// Waf IP黑白名单Upsert接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) UpsertIpAccessControl(request *UpsertIpAccessControlRequest) (response *UpsertIpAccessControlResponse, err error) {
+    return c.UpsertIpAccessControlWithContext(context.Background(), request)
+}
+
+// UpsertIpAccessControl
+// Waf IP黑白名单Upsert接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) UpsertIpAccessControlWithContext(ctx context.Context, request *UpsertIpAccessControlRequest) (response *UpsertIpAccessControlResponse, err error) {
+    if request == nil {
+        request = NewUpsertIpAccessControlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpsertIpAccessControl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpsertIpAccessControlResponse()
     err = c.Send(request, response)
     return
 }

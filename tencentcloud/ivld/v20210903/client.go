@@ -1601,7 +1601,7 @@ func NewImportMediaResponse() (response *ImportMediaResponse) {
 //
 // 
 //
-// 分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}-${task-start-time}`的目录(`task-start-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}-${task-start-time}`目录
+// 分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}_${task-create-time}`的目录(`task-create-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}_${task-create-time}`目录
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDSECRETID = "AuthFailure.InvalidSecretId"
@@ -1708,7 +1708,7 @@ func (c *Client) ImportMedia(request *ImportMediaRequest) (response *ImportMedia
 //
 // 
 //
-// 分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}-${task-start-time}`的目录(`task-start-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}-${task-start-time}`目录
+// 分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}_${task-create-time}`的目录(`task-create-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}_${task-create-time}`目录
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDSECRETID = "AuthFailure.InvalidSecretId"
@@ -1880,7 +1880,7 @@ func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
 //
 // | TaskId | 是 | String | 任务ID |
 //
-// | TaskStatus | 是 | [TaskStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#TaskStatus) | 任务执行状态 |
+// | TaskStatus | 是 | [TaskStatus](/document/product/1509/65063#TaskInfo) | 任务执行状态 |
 //
 // | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 //
@@ -1898,7 +1898,7 @@ func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
 //
 // | MediaId | 是 | String | 媒资ID |
 //
-// | MediaStatus | 是 | [MediaStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#MediaStatus) | 媒资导入状态|
+// | MediaStatus | 是 | [MediaStatus](/document/product/1509/65063#MediaInfo) | 媒资导入状态|
 //
 // | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 //
@@ -1970,7 +1970,7 @@ func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *Modif
 //
 // | TaskId | 是 | String | 任务ID |
 //
-// | TaskStatus | 是 | [TaskStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#TaskStatus) | 任务执行状态 |
+// | TaskStatus | 是 | [TaskStatus](/document/product/1509/65063#TaskInfo) | 任务执行状态 |
 //
 // | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 //
@@ -1988,7 +1988,7 @@ func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *Modif
 //
 // | MediaId | 是 | String | 媒资ID |
 //
-// | MediaStatus | 是 | [MediaStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#MediaStatus) | 媒资导入状态|
+// | MediaStatus | 是 | [MediaStatus](/document/product/1509/65063#MediaInfo) | 媒资导入状态|
 //
 // | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 //

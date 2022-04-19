@@ -23,6 +23,9 @@ const (
 	// 未授权操作。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 重复的作业名。
 	FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 

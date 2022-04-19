@@ -1016,6 +1016,74 @@ func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProtectedTelCdrRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间戳，Unix 秒级时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳，Unix 秒级时间戳
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+
+	// 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeProtectedTelCdrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectedTelCdrRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTimeStamp")
+	delete(f, "EndTimeStamp")
+	delete(f, "SdkAppId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProtectedTelCdrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProtectedTelCdrResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 话单记录总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 话单记录
+		TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProtectedTelCdrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProtectedTelCdrResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSeatUserListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1331,28 +1399,28 @@ func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
 
-	// 起始时间戳，Unix 时间戳
+	// 起始时间戳，Unix 秒级时间戳
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 
-	// 结束时间戳，Unix 时间戳
+	// 结束时间戳，Unix 秒级时间戳
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
 
-	// 实例 ID（deprecated）
+	// 实例 ID（废弃）
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 返回数据条数，上限（deprecated）
+	// 返回数据条数，上限（废弃）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移（deprecated）
+	// 偏移（废弃）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，上限 100
+	// 分页尺寸（必填），上限 100
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 分页页码，从 0 开始
+	// 分页页码（必填），从 0 开始
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
 	// 按手机号筛选
