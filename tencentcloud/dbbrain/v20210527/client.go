@@ -118,6 +118,77 @@ func (c *Client) AddUserContactWithContext(ctx context.Context, request *AddUser
     return
 }
 
+func NewCancelKillTaskRequest() (request *CancelKillTaskRequest) {
+    request = &CancelKillTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CancelKillTask")
+    
+    
+    return
+}
+
+func NewCancelKillTaskResponse() (response *CancelKillTaskResponse) {
+    response = &CancelKillTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelKillTask
+// 终止中断会话任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelKillTask(request *CancelKillTaskRequest) (response *CancelKillTaskResponse, err error) {
+    return c.CancelKillTaskWithContext(context.Background(), request)
+}
+
+// CancelKillTask
+// 终止中断会话任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelKillTaskWithContext(ctx context.Context, request *CancelKillTaskRequest) (response *CancelKillTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelKillTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelKillTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest) {
     request = &CreateDBDiagReportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +664,77 @@ func (c *Client) CreateSecurityAuditLogExportTaskWithContext(ctx context.Context
     return
 }
 
+func NewCreateSqlFilterRequest() (request *CreateSqlFilterRequest) {
+    request = &CreateSqlFilterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateSqlFilter")
+    
+    
+    return
+}
+
+func NewCreateSqlFilterResponse() (response *CreateSqlFilterResponse) {
+    response = &CreateSqlFilterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSqlFilter
+// 创建实例SQL限流任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSqlFilter(request *CreateSqlFilterRequest) (response *CreateSqlFilterResponse, err error) {
+    return c.CreateSqlFilterWithContext(context.Background(), request)
+}
+
+// CreateSqlFilter
+// 创建实例SQL限流任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateSqlFilterWithContext(ctx context.Context, request *CreateSqlFilterRequest) (response *CreateSqlFilterResponse, err error) {
+    if request == nil {
+        request = NewCreateSqlFilterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSqlFilter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSqlFilterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAuditLogExportTasksRequest) {
     request = &DeleteSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -660,6 +802,77 @@ func (c *Client) DeleteSecurityAuditLogExportTasksWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDeleteSecurityAuditLogExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSqlFiltersRequest() (request *DeleteSqlFiltersRequest) {
+    request = &DeleteSqlFiltersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteSqlFilters")
+    
+    
+    return
+}
+
+func NewDeleteSqlFiltersResponse() (response *DeleteSqlFiltersResponse) {
+    response = &DeleteSqlFiltersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSqlFilters
+// 删除实例SQL限流任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSqlFilters(request *DeleteSqlFiltersRequest) (response *DeleteSqlFiltersResponse, err error) {
+    return c.DeleteSqlFiltersWithContext(context.Background(), request)
+}
+
+// DeleteSqlFilters
+// 删除实例SQL限流任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSqlFiltersWithContext(ctx context.Context, request *DeleteSqlFiltersRequest) (response *DeleteSqlFiltersResponse, err error) {
+    if request == nil {
+        request = NewDeleteSqlFiltersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSqlFilters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSqlFiltersResponse()
     err = c.Send(request, response)
     return
 }
@@ -1449,6 +1662,77 @@ func (c *Client) DescribeMySqlProcessListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeNoPrimaryKeyTablesRequest() (request *DescribeNoPrimaryKeyTablesRequest) {
+    request = &DescribeNoPrimaryKeyTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeNoPrimaryKeyTables")
+    
+    
+    return
+}
+
+func NewDescribeNoPrimaryKeyTablesResponse() (response *DescribeNoPrimaryKeyTablesResponse) {
+    response = &DescribeNoPrimaryKeyTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNoPrimaryKeyTables
+// 查询实例无主键表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNoPrimaryKeyTables(request *DescribeNoPrimaryKeyTablesRequest) (response *DescribeNoPrimaryKeyTablesResponse, err error) {
+    return c.DescribeNoPrimaryKeyTablesWithContext(context.Background(), request)
+}
+
+// DescribeNoPrimaryKeyTables
+// 查询实例无主键表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNoPrimaryKeyTablesWithContext(ctx context.Context, request *DescribeNoPrimaryKeyTablesRequest) (response *DescribeNoPrimaryKeyTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNoPrimaryKeyTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNoPrimaryKeyTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNoPrimaryKeyTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxySessionKillTasksRequest() (request *DescribeProxySessionKillTasksRequest) {
     request = &DescribeProxySessionKillTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1528,6 +1812,77 @@ func (c *Client) DescribeProxySessionKillTasksWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeProxySessionKillTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisTopBigKeysRequest() (request *DescribeRedisTopBigKeysRequest) {
+    request = &DescribeRedisTopBigKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisTopBigKeys")
+    
+    
+    return
+}
+
+func NewDescribeRedisTopBigKeysResponse() (response *DescribeRedisTopBigKeysResponse) {
+    response = &DescribeRedisTopBigKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRedisTopBigKeys
+// 查询redis实例大key列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopBigKeys(request *DescribeRedisTopBigKeysRequest) (response *DescribeRedisTopBigKeysResponse, err error) {
+    return c.DescribeRedisTopBigKeysWithContext(context.Background(), request)
+}
+
+// DescribeRedisTopBigKeys
+// 查询redis实例大key列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopBigKeysWithContext(ctx context.Context, request *DescribeRedisTopBigKeysRequest) (response *DescribeRedisTopBigKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisTopBigKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisTopBigKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisTopBigKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -1883,6 +2238,148 @@ func (c *Client) DescribeSlowLogUserHostStatsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeSlowLogUserHostStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSqlFiltersRequest() (request *DescribeSqlFiltersRequest) {
+    request = &DescribeSqlFiltersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSqlFilters")
+    
+    
+    return
+}
+
+func NewDescribeSqlFiltersResponse() (response *DescribeSqlFiltersResponse) {
+    response = &DescribeSqlFiltersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSqlFilters
+// 查询实例SQL限流任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlFilters(request *DescribeSqlFiltersRequest) (response *DescribeSqlFiltersResponse, err error) {
+    return c.DescribeSqlFiltersWithContext(context.Background(), request)
+}
+
+// DescribeSqlFilters
+// 查询实例SQL限流任务列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlFiltersWithContext(ctx context.Context, request *DescribeSqlFiltersRequest) (response *DescribeSqlFiltersResponse, err error) {
+    if request == nil {
+        request = NewDescribeSqlFiltersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSqlFilters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSqlFiltersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSqlTemplateRequest() (request *DescribeSqlTemplateRequest) {
+    request = &DescribeSqlTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSqlTemplate")
+    
+    
+    return
+}
+
+func NewDescribeSqlTemplateResponse() (response *DescribeSqlTemplateResponse) {
+    response = &DescribeSqlTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSqlTemplate
+// 查询SQL模版。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlTemplate(request *DescribeSqlTemplateRequest) (response *DescribeSqlTemplateResponse, err error) {
+    return c.DescribeSqlTemplateWithContext(context.Background(), request)
+}
+
+// DescribeSqlTemplate
+// 查询SQL模版。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSqlTemplateWithContext(ctx context.Context, request *DescribeSqlTemplateRequest) (response *DescribeSqlTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeSqlTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSqlTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSqlTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -2382,6 +2879,148 @@ func (c *Client) ModifyDiagDBInstanceConfWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyDiagDBInstanceConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySqlFiltersRequest() (request *ModifySqlFiltersRequest) {
+    request = &ModifySqlFiltersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "ModifySqlFilters")
+    
+    
+    return
+}
+
+func NewModifySqlFiltersResponse() (response *ModifySqlFiltersResponse) {
+    response = &ModifySqlFiltersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySqlFilters
+// 更改实例限流任务状态，目前仅用于终止限流。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySqlFilters(request *ModifySqlFiltersRequest) (response *ModifySqlFiltersResponse, err error) {
+    return c.ModifySqlFiltersWithContext(context.Background(), request)
+}
+
+// ModifySqlFilters
+// 更改实例限流任务状态，目前仅用于终止限流。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySqlFiltersWithContext(ctx context.Context, request *ModifySqlFiltersRequest) (response *ModifySqlFiltersResponse, err error) {
+    if request == nil {
+        request = NewModifySqlFiltersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySqlFilters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySqlFiltersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyUserAccountRequest() (request *VerifyUserAccountRequest) {
+    request = &VerifyUserAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbbrain", APIVersion, "VerifyUserAccount")
+    
+    
+    return
+}
+
+func NewVerifyUserAccountResponse() (response *VerifyUserAccountResponse) {
+    response = &VerifyUserAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyUserAccount
+// 验证用户数据库账号权限，获取会话token。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifyUserAccount(request *VerifyUserAccountRequest) (response *VerifyUserAccountResponse, err error) {
+    return c.VerifyUserAccountWithContext(context.Background(), request)
+}
+
+// VerifyUserAccount
+// 验证用户数据库账号权限，获取会话token。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) VerifyUserAccountWithContext(ctx context.Context, request *VerifyUserAccountRequest) (response *VerifyUserAccountResponse, err error) {
+    if request == nil {
+        request = NewVerifyUserAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyUserAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyUserAccountResponse()
     err = c.Send(request, response)
     return
 }

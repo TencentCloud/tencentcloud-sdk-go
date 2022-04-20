@@ -1165,7 +1165,7 @@ func NewCreateUpstreamResponse() (response *CreateUpstreamResponse) {
 }
 
 // CreateUpstream
-// 用于创建创建VPC通道
+// 用于创建创建后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1192,7 +1192,7 @@ func (c *Client) CreateUpstream(request *CreateUpstreamRequest) (response *Creat
 }
 
 // CreateUpstream
-// 用于创建创建VPC通道
+// 用于创建创建后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1821,7 +1821,7 @@ func NewDeleteUpstreamResponse() (response *DeleteUpstreamResponse) {
 }
 
 // DeleteUpstream
-// 删除VPC通道，需要注意有api绑定时，不允许删除
+// 删除后端通道，需要注意有API绑定时，不允许删除
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1840,7 +1840,7 @@ func (c *Client) DeleteUpstream(request *DeleteUpstreamRequest) (response *Delet
 }
 
 // DeleteUpstream
-// 删除VPC通道，需要注意有api绑定时，不允许删除
+// 删除后端通道，需要注意有API绑定时，不允许删除
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2768,6 +2768,7 @@ func NewDescribeExclusiveInstanceDetailResponse() (response *DescribeExclusiveIn
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
 //  FAILEDOPERATION_INSTANCENOTEXIST = "FailedOperation.InstanceNotExist"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -2785,6 +2786,7 @@ func (c *Client) DescribeExclusiveInstanceDetail(request *DescribeExclusiveInsta
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
 //  FAILEDOPERATION_INSTANCENOTEXIST = "FailedOperation.InstanceNotExist"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -3821,7 +3823,7 @@ func NewDescribeUpstreamBindApisResponse() (response *DescribeUpstreamBindApisRe
 }
 
 // DescribeUpstreamBindApis
-// 查询VPC通道绑定的api列表
+// 查询后端通道所绑定的API列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3839,7 +3841,7 @@ func (c *Client) DescribeUpstreamBindApis(request *DescribeUpstreamBindApisReque
 }
 
 // DescribeUpstreamBindApis
-// 查询VPC通道绑定的api列表
+// 查询后端通道所绑定的API列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3886,7 +3888,7 @@ func NewDescribeUpstreamsResponse() (response *DescribeUpstreamsResponse) {
 }
 
 // DescribeUpstreams
-// 查询VPC通道列表详情
+// 查询后端通道列表详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3904,7 +3906,7 @@ func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response 
 }
 
 // DescribeUpstreams
-// 查询VPC通道列表详情
+// 查询后端通道列表详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5160,7 +5162,7 @@ func NewModifyUpstreamResponse() (response *ModifyUpstreamResponse) {
 }
 
 // ModifyUpstream
-// 修改VPC通道
+// 修改后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5183,7 +5185,7 @@ func (c *Client) ModifyUpstream(request *ModifyUpstreamRequest) (response *Modif
 }
 
 // ModifyUpstream
-// 修改VPC通道
+// 修改后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -302,6 +302,9 @@ type InputManageMarketingRisk struct {
 
 	// 可选填写。详情请跳转至OnlineScamInfo查看。
 	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitempty" name:"OnlineScam"`
+
+	// 平台: 1android
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
 }
 
 type ManageMarketingRiskRequest struct {
@@ -525,6 +528,10 @@ type OutputManageMarketingRiskValue struct {
 	// 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
+
+	// 唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConstId *string `json:"ConstId,omitempty" name:"ConstId"`
 }
 
 type QQAccountInfo struct {

@@ -6041,6 +6041,7 @@ func NewModifyClassResponse() (response *ModifyClassResponse) {
 // 修改媒体分类属性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSNAMEDUPLICATE = "FailedOperation.ClassNameDuplicate"
 //  FAILEDOPERATION_CLASSNOFOUND = "FailedOperation.ClassNoFound"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
@@ -6056,6 +6057,7 @@ func (c *Client) ModifyClass(request *ModifyClassRequest) (response *ModifyClass
 // 修改媒体分类属性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSNAMEDUPLICATE = "FailedOperation.ClassNameDuplicate"
 //  FAILEDOPERATION_CLASSNOFOUND = "FailedOperation.ClassNoFound"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"

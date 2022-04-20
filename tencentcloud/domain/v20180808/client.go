@@ -828,6 +828,61 @@ func (c *Client) DescribeDomainPriceListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainSimpleInfoRequest() (request *DescribeDomainSimpleInfoRequest) {
+    request = &DescribeDomainSimpleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainSimpleInfo")
+    
+    
+    return
+}
+
+func NewDescribeDomainSimpleInfoResponse() (response *DescribeDomainSimpleInfoResponse) {
+    response = &DescribeDomainSimpleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainSimpleInfo
+// 获取域名实名信息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribeDomainSimpleInfo(request *DescribeDomainSimpleInfoRequest) (response *DescribeDomainSimpleInfoResponse, err error) {
+    return c.DescribeDomainSimpleInfoWithContext(context.Background(), request)
+}
+
+// DescribeDomainSimpleInfo
+// 获取域名实名信息详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEDOMAINFAILED = "FailedOperation.DescribeDomainFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
+func (c *Client) DescribeDomainSimpleInfoWithContext(ctx context.Context, request *DescribeDomainSimpleInfoRequest) (response *DescribeDomainSimpleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainSimpleInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainSimpleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainSimpleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest) {
     request = &DescribePhoneEmailListRequest{
         BaseRequest: &tchttp.BaseRequest{},

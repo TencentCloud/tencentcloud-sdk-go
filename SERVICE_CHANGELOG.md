@@ -2,9 +2,9 @@
 
 ## API网关(apigateway) 版本：2018-08-08
 
-### 第 29 次发布
+### 第 30 次发布
 
-发布时间：2022-04-20 06:02:43
+发布时间：2022-04-21 06:05:25
 
 本次发布包含了以下内容：
 
@@ -12,25 +12,121 @@
 
 修改接口：
 
-* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+* [CreatePlugin](https://cloud.tencent.com/document/api/628/58234)
 
-	* 新增入参：Owner
+	* 新增入参：Tags
 
+* [CreateUpstream](https://cloud.tencent.com/document/api/628/70414)
+
+	* 新增入参：UpstreamType, Tags, HealthChecker
+
+* [ModifyUpstream](https://cloud.tencent.com/document/api/628/70410)
+
+	* 新增入参：UpstreamType, HealthChecker
+
+
+
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 2 次发布
+
+发布时间：2022-04-21 06:07:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyConcurrent](https://cloud.tencent.com/document/api/1547/72827)
+* [CreateSession](https://cloud.tencent.com/document/api/1547/72826)
+
+### 第 1 次发布
+
+发布时间：2022-04-20 16:44:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DestroySession](https://cloud.tencent.com/document/api/1547/72812)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 100 次发布
+
+发布时间：2022-04-21 06:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillingData](https://cloud.tencent.com/document/api/228/41237)
+
+	* 新增入参：TimeZone
+
+* [DescribeCdnData](https://cloud.tencent.com/document/api/228/30986)
+
+	* 新增入参：TimeZone
+
+* [DescribeOriginData](https://cloud.tencent.com/document/api/228/30984)
+
+	* 新增入参：TimeZone
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：PostMaxSize
+
+
+新增数据结构：
+
+* [CacheConfig](https://cloud.tencent.com/document/api/228/30987#CacheConfig)
+* [HeuristicCache](https://cloud.tencent.com/document/api/228/30987#HeuristicCache)
 
 修改数据结构：
 
-* [ServiceConfig](https://cloud.tencent.com/document/api/628/45244#ServiceConfig)
+* [CacheConfigFollowOrigin](https://cloud.tencent.com/document/api/228/30987#CacheConfigFollowOrigin)
 
-	* 新增成员：UpstreamId
-
-
+	* 新增成员：HeuristicCache
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
 
-### 第 15 次发布
 
-发布时间：2022-04-20 06:13:52
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 39 次发布
+
+发布时间：2022-04-21 06:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTopic](https://cloud.tencent.com/document/api/597/40851)
+
+	* 新增入参：MaxMessageBytes
+
+* [DescribeInstancesDetail](https://cloud.tencent.com/document/api/597/40834)
+
+	* 新增入参：InstanceIdList
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 20 次发布
+
+发布时间：2022-04-21 06:09:08
 
 本次发布包含了以下内容：
 
@@ -38,34 +134,216 @@
 
 修改数据结构：
 
-* [AbnormalProcessChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessChildRuleInfo)
+* [LogContextInfo](https://cloud.tencent.com/document/api/614/56471#LogContextInfo)
 
-	* 新增成员：RuleLevel
+	* 新增成员：HostName
 
-* [AbnormalProcessEventDescription](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventDescription)
+* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
 
-	* 新增成员：GroupName
+	* 新增成员：HostName
 
-* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
 
-	* 新增成员：MatchGroupName, MatchRuleLevel
 
-* [AbnormalProcessSystemChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessSystemChildRuleInfo)
 
-	* 新增成员：RuleLevel
+## 云服务器(cvm) 版本：2017-03-12
 
-* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+### 第 80 次发布
 
-	* 新增成员：NodeIP, HostID
+发布时间：2022-04-21 06:09:51
 
-* [EscapeRule](https://cloud.tencent.com/document/api/1285/65614#EscapeRule)
+本次发布包含了以下内容：
 
-	* 新增成员：Group
+改善已有的文档。
 
-* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+修改接口：
 
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+* [DeleteImages](https://cloud.tencent.com/document/api/213/15716)
 
+	* 新增入参：DeleteBindedSnap, DryRun
+
+* [SyncImages](https://cloud.tencent.com/document/api/213/15711)
+
+	* 新增入参：DryRun
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 9 次发布
+
+发布时间：2022-04-21 06:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelKillTask](https://cloud.tencent.com/document/api/1130/72836)
+* [CreateSqlFilter](https://cloud.tencent.com/document/api/1130/72835)
+* [DeleteSqlFilters](https://cloud.tencent.com/document/api/1130/72834)
+* [DescribeNoPrimaryKeyTables](https://cloud.tencent.com/document/api/1130/72833)
+* [DescribeRedisTopBigKeys](https://cloud.tencent.com/document/api/1130/72832)
+* [DescribeSqlFilters](https://cloud.tencent.com/document/api/1130/72831)
+* [DescribeSqlTemplate](https://cloud.tencent.com/document/api/1130/72830)
+* [ModifySqlFilters](https://cloud.tencent.com/document/api/1130/72829)
+* [VerifyUserAccount](https://cloud.tencent.com/document/api/1130/72828)
+
+新增数据结构：
+
+* [RedisKeySpaceData](https://cloud.tencent.com/document/api/1130/57812#RedisKeySpaceData)
+* [SQLFilter](https://cloud.tencent.com/document/api/1130/57812#SQLFilter)
+* [Table](https://cloud.tencent.com/document/api/1130/57812#Table)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 13 次发布
+
+发布时间：2022-04-21 06:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+
+	* 新增入参：UserAlias
+
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：UserAlias
+
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+
+	* 新增成员：UserAlias
+
+* [UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage)
+
+	* 新增成员：UserAlias
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 19 次发布
+
+发布时间：2022-04-21 06:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDomainSimpleInfo](https://cloud.tencent.com/document/api/242/72837)
+
+新增数据结构：
+
+* [DomainSimpleInfo](https://cloud.tencent.com/document/api/242/38895#DomainSimpleInfo)
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 6 次发布
+
+发布时间：2022-04-21 06:16:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputManageMarketingRisk)
+
+	* 新增成员：Platform
+
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputManageMarketingRiskValue)
+
+	* 新增成员：ConstId
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 43 次发布
+
+发布时间：2022-04-21 06:16:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AllocateWanAddress](https://cloud.tencent.com/document/api/239/72839)
+* [ReleaseWanAddress](https://cloud.tencent.com/document/api/239/72838)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 101 次发布
+
+发布时间：2022-04-21 06:20:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)
+
+	* 新增成员：WidevineDefinition, FairPlayDefinition
+
+* [DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)
+
+	* 新增成员：WidevineDefinition, FairPlayDefinition
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 8 次发布
+
+发布时间：2022-04-21 06:21:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDomains](https://cloud.tencent.com/document/api/627/72840)
+
+修改接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+	* 新增入参：Weights
+
+
+新增数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
+* [FiltersItemNew](https://cloud.tencent.com/document/api/627/53609#FiltersItemNew)
 
 
 
@@ -2141,6 +2419,29 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 30 次发布
+
+发布时间：2022-04-21 06:05:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePlugin](https://cloud.tencent.com/document/api/628/58234)
+
+	* 新增入参：Tags
+
+* [CreateUpstream](https://cloud.tencent.com/document/api/628/70414)
+
+	* 新增入参：UpstreamType, Tags, HealthChecker
+
+* [ModifyUpstream](https://cloud.tencent.com/document/api/628/70410)
+
+	* 新增入参：UpstreamType, HealthChecker
+
 
 ### 第 29 次发布
 
@@ -8503,6 +8804,36 @@
 
 
 
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 2 次发布
+
+发布时间：2022-04-21 06:07:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyConcurrent](https://cloud.tencent.com/document/api/1547/72827)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSession](https://cloud.tencent.com/document/api/1547/72826)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 1 次发布
+
+发布时间：2022-04-20 16:44:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DestroySession](https://cloud.tencent.com/document/api/1547/72812)](https://cloud.tencent.com/document/api/#/#)
+
+
+
+
 ## 云数据加密代理网关(casb) 版本：2020-05-07
 
 ### 第 1 次发布
@@ -11884,6 +12215,45 @@
 
 
 ## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 100 次发布
+
+发布时间：2022-04-21 06:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillingData](https://cloud.tencent.com/document/api/228/41237)
+
+	* 新增入参：TimeZone
+
+* [DescribeCdnData](https://cloud.tencent.com/document/api/228/30986)
+
+	* 新增入参：TimeZone
+
+* [DescribeOriginData](https://cloud.tencent.com/document/api/228/30984)
+
+	* 新增入参：TimeZone
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：PostMaxSize
+
+
+新增数据结构：
+
+* [[CacheConfig](https://cloud.tencent.com/document/api/228/30987#CacheConfig)](https://cloud.tencent.com/document/api/228/30987#[CacheConfig](https://cloud.tencent.com/document/api/228/30987#CacheConfig))
+* [[HeuristicCache](https://cloud.tencent.com/document/api/228/30987#HeuristicCache)](https://cloud.tencent.com/document/api/228/30987#[HeuristicCache](https://cloud.tencent.com/document/api/228/30987#HeuristicCache))
+
+修改数据结构：
+
+* [CacheConfigFollowOrigin](https://cloud.tencent.com/document/api/228/30987#CacheConfigFollowOrigin)
+
+	* 新增成员：HeuristicCache
+
 
 ### 第 99 次发布
 
@@ -15374,6 +15744,25 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 39 次发布
+
+发布时间：2022-04-21 06:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTopic](https://cloud.tencent.com/document/api/597/40851)
+
+	* 新增入参：MaxMessageBytes
+
+* [DescribeInstancesDetail](https://cloud.tencent.com/document/api/597/40834)
+
+	* 新增入参：InstanceIdList
+
+
 ### 第 38 次发布
 
 发布时间：2022-03-17 08:03:56
@@ -17938,6 +18327,25 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 20 次发布
+
+发布时间：2022-04-21 06:09:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LogContextInfo](https://cloud.tencent.com/document/api/614/56471#LogContextInfo)
+
+	* 新增成员：HostName
+
+* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
+
+	* 新增成员：HostName
+
 
 ### 第 19 次发布
 
@@ -21700,6 +22108,25 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 80 次发布
+
+发布时间：2022-04-21 06:09:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteImages](https://cloud.tencent.com/document/api/213/15716)
+
+	* 新增入参：DeleteBindedSnap, DryRun
+
+* [SyncImages](https://cloud.tencent.com/document/api/213/15711)
+
+	* 新增入参：DryRun
+
 
 ### 第 79 次发布
 
@@ -25867,6 +26294,32 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
+### 第 9 次发布
+
+发布时间：2022-04-21 06:10:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelKillTask](https://cloud.tencent.com/document/api/1130/72836)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSqlFilter](https://cloud.tencent.com/document/api/1130/72835)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSqlFilters](https://cloud.tencent.com/document/api/1130/72834)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNoPrimaryKeyTables](https://cloud.tencent.com/document/api/1130/72833)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRedisTopBigKeys](https://cloud.tencent.com/document/api/1130/72832)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSqlFilters](https://cloud.tencent.com/document/api/1130/72831)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSqlTemplate](https://cloud.tencent.com/document/api/1130/72830)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySqlFilters](https://cloud.tencent.com/document/api/1130/72829)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifyUserAccount](https://cloud.tencent.com/document/api/1130/72828)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RedisKeySpaceData](https://cloud.tencent.com/document/api/1130/57812#RedisKeySpaceData)](https://cloud.tencent.com/document/api/1130/57812#[RedisKeySpaceData](https://cloud.tencent.com/document/api/1130/57812#RedisKeySpaceData))
+* [[SQLFilter](https://cloud.tencent.com/document/api/1130/57812#SQLFilter)](https://cloud.tencent.com/document/api/1130/57812#[SQLFilter](https://cloud.tencent.com/document/api/1130/57812#SQLFilter))
+* [[Table](https://cloud.tencent.com/document/api/1130/57812#Table)](https://cloud.tencent.com/document/api/1130/57812#[Table](https://cloud.tencent.com/document/api/1130/57812#Table))
+
 ### 第 8 次发布
 
 发布时间：2022-03-03 08:04:55
@@ -27236,6 +27689,36 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 13 次发布
+
+发布时间：2022-04-21 06:11:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1342/58465)
+
+	* 新增入参：UserAlias
+
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：UserAlias
+
+* [UserInfo](https://cloud.tencent.com/document/api/1342/53778#UserInfo)
+
+	* 新增成员：UserAlias
+
+* [UserMessage](https://cloud.tencent.com/document/api/1342/53778#UserMessage)
+
+	* 新增成员：UserAlias
+
+
 ### 第 12 次发布
 
 发布时间：2022-03-22 08:08:11
@@ -27682,6 +28165,22 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 19 次发布
+
+发布时间：2022-04-21 06:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDomainSimpleInfo](https://cloud.tencent.com/document/api/242/72837)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DomainSimpleInfo](https://cloud.tencent.com/document/api/242/38895#DomainSimpleInfo)](https://cloud.tencent.com/document/api/242/38895#[DomainSimpleInfo](https://cloud.tencent.com/document/api/242/38895#DomainSimpleInfo))
 
 ### 第 18 次发布
 
@@ -51095,6 +51594,25 @@
 
 ## 全栈式风控引擎(rce) 版本：2020-11-03
 
+### 第 6 次发布
+
+发布时间：2022-04-21 06:16:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputManageMarketingRisk](https://cloud.tencent.com/document/api/1343/52566#InputManageMarketingRisk)
+
+	* 新增成员：Platform
+
+* [OutputManageMarketingRiskValue](https://cloud.tencent.com/document/api/1343/52566#OutputManageMarketingRiskValue)
+
+	* 新增成员：ConstId
+
+
 ### 第 5 次发布
 
 发布时间：2022-01-10 08:14:37
@@ -51198,6 +51716,19 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 43 次发布
+
+发布时间：2022-04-21 06:16:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AllocateWanAddress](https://cloud.tencent.com/document/api/239/72839)](https://cloud.tencent.com/document/api/#/#)
+* [[ReleaseWanAddress](https://cloud.tencent.com/document/api/239/72838)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 42 次发布
 
@@ -69658,6 +70189,25 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 101 次发布
+
+发布时间：2022-04-21 06:20:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DrmStreamingsInfo](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfo)
+
+	* 新增成员：WidevineDefinition, FairPlayDefinition
+
+* [DrmStreamingsInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#DrmStreamingsInfoForUpdate)
+
+	* 新增成员：WidevineDefinition, FairPlayDefinition
+
+
 ### 第 100 次发布
 
 发布时间：2022-04-13 07:24:51
@@ -75137,6 +75687,30 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 8 次发布
+
+发布时间：2022-04-21 06:21:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDomains](https://cloud.tencent.com/document/api/627/72840)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+	* 新增入参：Weights
+
+
+新增数据结构：
+
+* [[DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)](https://cloud.tencent.com/document/api/627/53609#[DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo))
+* [[FiltersItemNew](https://cloud.tencent.com/document/api/627/53609#FiltersItemNew)](https://cloud.tencent.com/document/api/627/53609#[FiltersItemNew](https://cloud.tencent.com/document/api/627/53609#FiltersItemNew))
 
 ### 第 7 次发布
 

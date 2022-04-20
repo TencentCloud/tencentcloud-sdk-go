@@ -6475,7 +6475,7 @@ type InstanceInfo struct {
 	// 端口号
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 
-	// 是否锁定标记
+	// 磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定
 	CdbError *int64 `json:"CdbError,omitempty" name:"CdbError"`
 
 	// 私有网络描述符，例如：“vpc-5v8wn9mg”

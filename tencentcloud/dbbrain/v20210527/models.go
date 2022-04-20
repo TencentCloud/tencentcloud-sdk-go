@@ -77,6 +77,59 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CancelKillTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CancelKillTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelKillTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelKillTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelKillTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// kill会话任务终止成功返回1。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CancelKillTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelKillTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ContactItem struct {
 
 	// 联系人id。
@@ -550,6 +603,79 @@ func (r *CreateSecurityAuditLogExportTaskResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSqlFilterRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+
+	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+
+	// 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
+	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
+
+	// 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+
+	// 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *CreateSqlFilterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSqlFilterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SessionToken")
+	delete(f, "SqlType")
+	delete(f, "FilterKey")
+	delete(f, "MaxConcurrency")
+	delete(f, "Duration")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSqlFilterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSqlFilterResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 限流任务ID。
+		FilterId *int64 `json:"FilterId,omitempty" name:"FilterId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSqlFilterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSqlFilterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteSecurityAuditLogExportTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -601,6 +727,60 @@ func (r *DeleteSecurityAuditLogExportTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSecurityAuditLogExportTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSqlFiltersRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+
+	// 限流任务ID列表。
+	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+}
+
+func (r *DeleteSqlFiltersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSqlFiltersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SessionToken")
+	delete(f, "FilterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSqlFiltersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSqlFiltersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSqlFiltersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSqlFiltersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1384,6 +1564,83 @@ func (r *DescribeMySqlProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNoPrimaryKeyTablesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询日期，最早为30天前的日期。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 查询数目，默认为20，最大为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeNoPrimaryKeyTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNoPrimaryKeyTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Date")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNoPrimaryKeyTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNoPrimaryKeyTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 无主键表总数。
+		NoPrimaryKeyTableCount *int64 `json:"NoPrimaryKeyTableCount,omitempty" name:"NoPrimaryKeyTableCount"`
+
+		// 与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
+		NoPrimaryKeyTableCountDiff *int64 `json:"NoPrimaryKeyTableCountDiff,omitempty" name:"NoPrimaryKeyTableCountDiff"`
+
+		// 记录的无主键表总数（不超过无主键表总数），可用于分页查询。
+		NoPrimaryKeyTableRecordCount *int64 `json:"NoPrimaryKeyTableRecordCount,omitempty" name:"NoPrimaryKeyTableRecordCount"`
+
+		// 无主键表列表。
+		NoPrimaryKeyTables []*Table `json:"NoPrimaryKeyTables,omitempty" name:"NoPrimaryKeyTables"`
+
+		// 采集时间戳（秒）。
+		Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeNoPrimaryKeyTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNoPrimaryKeyTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeProxySessionKillTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -1441,6 +1698,78 @@ func (r *DescribeProxySessionKillTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProxySessionKillTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRedisTopBigKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询日期，最早可为前30天的日期。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
+	KeyType *string `json:"KeyType,omitempty" name:"KeyType"`
+
+	// 查询数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRedisTopBigKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopBigKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Date")
+	delete(f, "Product")
+	delete(f, "SortBy")
+	delete(f, "KeyType")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopBigKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRedisTopBigKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// top key列表。
+		TopKeys []*RedisKeySpaceData `json:"TopKeys,omitempty" name:"TopKeys"`
+
+		// 采集时间戳（秒）。
+		Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeRedisTopBigKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopBigKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1785,6 +2114,147 @@ func (r *DescribeSlowLogUserHostStatsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSlowLogUserHostStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlFiltersRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务ID列表，用于筛选任务列表。
+	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSqlFiltersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlFiltersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FilterIds")
+	delete(f, "Statuses")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlFiltersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlFiltersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 限流任务总数目。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 限流任务列表。
+		Items []*SQLFilter `json:"Items,omitempty" name:"Items"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSqlFiltersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlFiltersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlTemplateRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库名。
+	Schema *string `json:"Schema,omitempty" name:"Schema"`
+
+	// SQL语句。
+	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *DescribeSqlTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Schema")
+	delete(f, "SqlText")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSqlTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据库名。
+		Schema *string `json:"Schema,omitempty" name:"Schema"`
+
+		// SQL语句。
+		SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+		// SQL类型。
+		SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+
+		// SQL模版内容。
+		SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
+
+		// SQL模版ID。
+		SqlId *int64 `json:"SqlId,omitempty" name:"SqlId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSqlTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSqlTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2541,6 +3011,68 @@ func (r *ModifyDiagDBInstanceConfResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifySqlFiltersRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+
+	// SQL限流任务ID列表。
+	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 限流任务状态，取值支持TERMINATED - 终止。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *ModifySqlFiltersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySqlFiltersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SessionToken")
+	delete(f, "FilterIds")
+	delete(f, "Status")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySqlFiltersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySqlFiltersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySqlFiltersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySqlFiltersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorFloatMetric struct {
 
 	// 指标名称。
@@ -2619,6 +3151,66 @@ type ProfileInfo struct {
 
 	// 邮件模板的内容。
 	MailConfiguration *MailConfiguration `json:"MailConfiguration,omitempty" name:"MailConfiguration"`
+}
+
+type RedisKeySpaceData struct {
+
+	// key名。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// key类型。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// key编码方式。
+	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+
+	// key过期时间戳（毫秒），0代表未设置过期时间。
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// key内存大小，单位Byte。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 元素个数。
+	ItemCount *int64 `json:"ItemCount,omitempty" name:"ItemCount"`
+
+	// 最大元素长度。
+	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`
+}
+
+type SQLFilter struct {
+
+	// 任务ID。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+
+	// 筛选SQL的关键词，多个关键词用英文逗号拼接。
+	OriginKeys *string `json:"OriginKeys,omitempty" name:"OriginKeys"`
+
+	// 筛选SQL的规则。
+	OriginRule *string `json:"OriginRule,omitempty" name:"OriginRule"`
+
+	// 已拒绝SQL数目。
+	RejectedSqlCount *int64 `json:"RejectedSqlCount,omitempty" name:"RejectedSqlCount"`
+
+	// 当前并发数。
+	CurrentConcurrency *int64 `json:"CurrentConcurrency,omitempty" name:"CurrentConcurrency"`
+
+	// 最大并发数。
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+
+	// 任务创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 当前时间。
+	CurrentTime *string `json:"CurrentTime,omitempty" name:"CurrentTime"`
+
+	// 限流过期时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
 type SchemaItem struct {
@@ -2827,6 +3419,24 @@ type SlowLogTopSqlItem struct {
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
+type Table struct {
+
+	// 库名。
+	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+
+	// 表名。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 库表的存储引擎。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 行数。
+	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
+
+	// 总使用空间（MB）。
+	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
+}
+
 type TableSpaceData struct {
 
 	// 表名。
@@ -2940,4 +3550,65 @@ type UserProfile struct {
 
 	// 配置详情。
 	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+}
+
+type VerifyUserAccountRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库账号名。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 数据库账号密码。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *VerifyUserAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyUserAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "User")
+	delete(f, "Password")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyUserAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyUserAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 会话token，有效期为5分钟。
+		SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VerifyUserAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyUserAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

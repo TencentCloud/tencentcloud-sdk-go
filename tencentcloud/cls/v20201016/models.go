@@ -3709,6 +3709,10 @@ type LogContextInfo struct {
 
 	// 日志时间戳
 	BTime *int64 `json:"BTime,omitempty" name:"BTime"`
+
+	// 日志来源主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
 type LogInfo struct {
@@ -3737,6 +3741,10 @@ type LogInfo struct {
 	// 日志内容的Json序列化字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogJson *string `json:"LogJson,omitempty" name:"LogJson"`
+
+	// 日志来源主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
 type LogItem struct {

@@ -40,6 +40,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/car"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/casb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cat"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs"

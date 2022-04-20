@@ -1723,7 +1723,7 @@ type CreatePluginRequest struct {
 	// 用户自定义的插件名称。最长50个字符，最短2个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
 	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
 
-	// 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter。
+	// 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter, CircuitBreaker, ProxyCache。
 	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
 
 	// 插件定义语句，支持json。
@@ -1731,6 +1731,9 @@ type CreatePluginRequest struct {
 
 	// 插件描述，限定200字以内。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreatePluginRequest) ToJsonString() string {
@@ -1749,6 +1752,7 @@ func (r *CreatePluginRequest) FromJsonString(s string) error {
 	delete(f, "PluginType")
 	delete(f, "PluginData")
 	delete(f, "Description")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePluginRequest has unknown keys!", "")
 	}
@@ -1892,31 +1896,40 @@ func (r *CreateServiceResponse) FromJsonString(s string) error {
 type CreateUpstreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 后端协议，HTTP, HTTPS其中之一
+	// 后端协议，取值范围：HTTP, HTTPS
 	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
-	// 负载均衡算法目前支持ROUND_ROBIN
+	// 负载均衡算法，取值范围：ROUND-ROBIN
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 
 	// VPC唯一ID
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
-	// VPC通道名字
+	// 后端通道名字
 	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
 
-	// VPC通道描述
+	// 后端通道描述
 	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+
+	// 后端访问类型，取值范围：IP_PORT, K8S
+	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
 
 	// 请求重试次数，默认3次
 	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
 
-	// 请求到后端的，host头
+	// 网关转发到后端的Host请求头
 	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
 
 	// 后端节点
 	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
 
-	// k8s服务的配置
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 健康检查配置，目前只支持VPC通道
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+
+	// K8S容器服务的配置
 	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
 }
 
@@ -1937,9 +1950,12 @@ func (r *CreateUpstreamRequest) FromJsonString(s string) error {
 	delete(f, "UniqVpcId")
 	delete(f, "UpstreamName")
 	delete(f, "UpstreamDescription")
+	delete(f, "UpstreamType")
 	delete(f, "Retries")
 	delete(f, "UpstreamHost")
 	delete(f, "Nodes")
+	delete(f, "Tags")
+	delete(f, "HealthChecker")
 	delete(f, "K8sService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUpstreamRequest has unknown keys!", "")
@@ -1951,7 +1967,7 @@ type CreateUpstreamResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 创建返回的唯一id
+		// 创建返回的唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
@@ -2453,7 +2469,7 @@ func (r *DeleteServiceSubDomainMappingResponse) FromJsonString(s string) error {
 type DeleteUpstreamRequest struct {
 	*tchttp.BaseRequest
 
-	// 待删除的VPC通道唯一ID
+	// 待删除的后端通道ID
 	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 }
 
@@ -2480,7 +2496,7 @@ type DeleteUpstreamResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 成功删除的vpc通道id
+		// 成功删除的后端通道ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
@@ -4577,7 +4593,7 @@ type DescribeServiceResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DeploymentType *string `json:"DeploymentType,omitempty" name:"DeploymentType"`
 
-		// 特殊用途
+		// 特殊用途, NULL和DEFAULT表示无特殊用途，其他用途如HTTP_DNS等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		SpecialUse *string `json:"SpecialUse,omitempty" name:"SpecialUse"`
 
@@ -4835,13 +4851,13 @@ type DescribeUpstreamBindApis struct {
 type DescribeUpstreamBindApisRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页
+	// 分页大小
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页
+	// 分页起始位置
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// vpc通道Id
+	// 后端通道ID
 	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
 	// ServiceId和ApiId过滤查询
@@ -4905,13 +4921,13 @@ type DescribeUpstreamInfo struct {
 type DescribeUpstreamsRequest struct {
 	*tchttp.BaseRequest
 
-	// 分页
+	// 分页大小
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页
+	// 分页起始位置
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤条件
+	// 过滤条件，支持后端通道ID（UpstreamId）、后端通道名字（UpstreamName）过滤查询
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6662,19 +6678,22 @@ func (r *ModifySubDomainResponse) FromJsonString(s string) error {
 type ModifyUpstreamRequest struct {
 	*tchttp.BaseRequest
 
-	// VPC通道唯一ID
+	// 后端通道唯一ID
 	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
-	// VPC通道名字
+	// 后端通道名字
 	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
 
-	// VPC通道描述
+	// 后端通道描述
 	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
 
-	// 后端协议，HTTP, HTTPS其中之一
+	// 后端协议，取值范围：HTTP, HTTPS
 	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
-	// 负载均衡算法目前支持ROUND_ROBIN
+	// 后端访问类型，取值范围：IP_PORT, K8S
+	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+
+	// 负载均衡算法，取值范围：ROUND_ROBIN
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 
 	// VPC唯一ID
@@ -6683,13 +6702,16 @@ type ModifyUpstreamRequest struct {
 	// 请求重试次数，默认3次
 	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
 
-	// 请求到后端的，host头
+	// 网关转发到后端的 Host 请求头
 	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
 
 	// 后端节点列表
 	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
 
-	// k8s服务配置
+	// 健康检查配置，目前只支持VPC通道
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+
+	// 容器服务配置
 	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
 }
 
@@ -6709,11 +6731,13 @@ func (r *ModifyUpstreamRequest) FromJsonString(s string) error {
 	delete(f, "UpstreamName")
 	delete(f, "UpstreamDescription")
 	delete(f, "Scheme")
+	delete(f, "UpstreamType")
 	delete(f, "Algorithm")
 	delete(f, "UniqVpcId")
 	delete(f, "Retries")
 	delete(f, "UpstreamHost")
 	delete(f, "Nodes")
+	delete(f, "HealthChecker")
 	delete(f, "K8sService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUpstreamRequest has unknown keys!", "")
@@ -6725,7 +6749,7 @@ type ModifyUpstreamResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 返回修改后的vpc通道信息
+		// 返回修改后的后端通道信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *UpstreamInfo `json:"Result,omitempty" name:"Result"`
 
@@ -7989,25 +8013,25 @@ type UpstreamHealthCheckerReqHeaders struct {
 
 type UpstreamInfo struct {
 
-	// VPC通道唯一ID
+	// 后端通道唯一ID
 	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
-	// VPC通道名字
+	// 后端通道名字
 	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
 
-	// VPC通道描述
+	// 后端通道描述
 	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
 
-	// 写意
+	// 后端协议，取值范围：HTTP, HTTPS
 	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
-	// 负载均衡算法
+	// 负载均衡算法，取值范围：ROUND_ROBIN
 	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
 
-	// vpc唯一ID
+	// VPC唯一ID
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
-	// 请求重拾次数
+	// 请求重试次数
 	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
 
 	// 后端节点
@@ -8024,21 +8048,21 @@ type UpstreamInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
 
-	// Upstream的类型
+	// 后端的类型，取值范围：IP_PORT, K8S
 	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
 
-	// k8s服务配置
+	// K8S容器服务配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	K8sServices []*K8sService `json:"K8sServices,omitempty" name:"K8sServices"`
 
-	// vpc通道的Host
+	// 网关转发给后端的Host请求头
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
 }
 
 type UpstreamNode struct {
 
-	// IP（domain）
+	// IP或域名
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 端口[0, 65535]
@@ -8047,7 +8071,7 @@ type UpstreamNode struct {
 	// 权重[0, 100], 0为禁用
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 
-	// vm实例id
+	// CVM实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VmInstanceId *string `json:"VmInstanceId,omitempty" name:"VmInstanceId"`
 
@@ -8055,15 +8079,15 @@ type UpstreamNode struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
-	// 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报
+	// 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报。目前只支持VPC通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Healthy *string `json:"Healthy,omitempty" name:"Healthy"`
 
-	// k8s服务名字
+	// K8S容器服务名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 
-	// k8s命名空间
+	// K8S命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
 
@@ -8071,7 +8095,7 @@ type UpstreamNode struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// Node的来源
+	// Node的来源，取值范围：K8S
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitempty" name:"Source"`
 

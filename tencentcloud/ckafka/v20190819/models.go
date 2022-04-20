@@ -1212,11 +1212,14 @@ type CreateTopicRequest struct {
 	// 是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitempty" name:"UncleanLeaderElectionEnable"`
 
-	// 可消息选。保留时间，单位ms，当前最小值为60000ms
+	// 可选参数。消息保留时间，单位ms，当前最小值为60000ms
 	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
 
 	// Segment分片滚动的时长，单位ms，当前最小为3600000ms
 	SegmentMs *int64 `json:"SegmentMs,omitempty" name:"SegmentMs"`
+
+	// 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为8388608Byte（即8MB）。
+	MaxMessageBytes *int64 `json:"MaxMessageBytes,omitempty" name:"MaxMessageBytes"`
 
 	// 预设ACL规则, 1:打开  0:关闭，默认不打开
 	EnableAclRule *int64 `json:"EnableAclRule,omitempty" name:"EnableAclRule"`
@@ -1255,6 +1258,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "UncleanLeaderElectionEnable")
 	delete(f, "RetentionMs")
 	delete(f, "SegmentMs")
+	delete(f, "MaxMessageBytes")
 	delete(f, "EnableAclRule")
 	delete(f, "AclRuleName")
 	delete(f, "RetentionBytes")
@@ -2283,11 +2287,14 @@ type DescribeInstancesDetailRequest struct {
 	// 匹配标签key值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 过滤器。
+	// 过滤器。filter.Name 支持('Ip', 'VpcId', 'SubNetId', 'InstanceType','InstanceId') ,filter.Values最多传递10个值.
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 已经废弃， 使用InstanceIdList
 	InstanceIds *string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 按照实例ID过滤
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 func (r *DescribeInstancesDetailRequest) ToJsonString() string {
@@ -2310,6 +2317,7 @@ func (r *DescribeInstancesDetailRequest) FromJsonString(s string) error {
 	delete(f, "TagKey")
 	delete(f, "Filters")
 	delete(f, "InstanceIds")
+	delete(f, "InstanceIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesDetailRequest has unknown keys!", "")
 	}

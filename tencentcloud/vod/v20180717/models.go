@@ -8018,12 +8018,24 @@ type DrmStreamingsInfo struct {
 
 	// 保护类型为 SimpleAES 的转自适应码流模板 ID。
 	SimpleAesDefinition *uint64 `json:"SimpleAesDefinition,omitempty" name:"SimpleAesDefinition"`
+
+	// 保护类型为 Widevine 的转自适应码流模板 ID。
+	WidevineDefinition *uint64 `json:"WidevineDefinition,omitempty" name:"WidevineDefinition"`
+
+	// 保护类型为 FairPlay 的转自适应码流模板 ID。
+	FairPlayDefinition *uint64 `json:"FairPlayDefinition,omitempty" name:"FairPlayDefinition"`
 }
 
 type DrmStreamingsInfoForUpdate struct {
 
 	// 保护类型为 SimpleAES 的转自适应码流模板 ID。
 	SimpleAesDefinition *uint64 `json:"SimpleAesDefinition,omitempty" name:"SimpleAesDefinition"`
+
+	// 保护类型为 Widevine 的转自适应码流模板 ID。
+	WidevineDefinition *uint64 `json:"WidevineDefinition,omitempty" name:"WidevineDefinition"`
+
+	// 保护类型为 FairPlay 的转自适应码流模板 ID。
+	FairPlayDefinition *uint64 `json:"FairPlayDefinition,omitempty" name:"FairPlayDefinition"`
 }
 
 type EditMediaFileInfo struct {
@@ -13551,7 +13563,7 @@ type SearchMediaRequest struct {
 	// <li>数组长度限制：10。</li>
 	SourceTypes []*string `json:"SourceTypes,omitempty" name:"SourceTypes"`
 
-	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
+	// 推流直播码集合。匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds"`
 
@@ -13617,7 +13629,7 @@ type SearchMediaRequest struct {
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
 	// （不推荐：应使用 StreamIds 替代）
-	// 推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
+	// 推流直播码。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// （不推荐：应使用 Vids 替代）

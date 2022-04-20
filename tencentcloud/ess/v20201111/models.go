@@ -196,7 +196,7 @@ type CreateDocumentRequest struct {
 	// 无
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 用户上传的模版ID
+	// 用户上传的模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 流程ID
@@ -214,7 +214,8 @@ type CreateDocumentRequest struct {
 	// 客户端Token，保持接口幂等性
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 是否需要生成预览文件 默认不生成
+	// 是否需要生成预览文件 默认不生成；
+	// 预览链接有效期300秒；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 }
 

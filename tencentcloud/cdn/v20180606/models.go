@@ -1291,6 +1291,16 @@ type Cache struct {
 	RuleCache []*RuleCache `json:"RuleCache,omitempty" name:"RuleCache"`
 }
 
+type CacheConfig struct {
+
+	// on 代表开启自定义启发式缓存时间
+	// off 代表关闭自定义启发式缓存时间
+	HeuristicCacheTimeSwitch *string `json:"HeuristicCacheTimeSwitch,omitempty" name:"HeuristicCacheTimeSwitch"`
+
+	// 单位 秒.
+	HeuristicCacheTime *int64 `json:"HeuristicCacheTime,omitempty" name:"HeuristicCacheTime"`
+}
+
 type CacheConfigCache struct {
 
 	// 缓存配置开关
@@ -1332,6 +1342,10 @@ type CacheConfigFollowOrigin struct {
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 启发式缓存配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeuristicCache *HeuristicCache `json:"HeuristicCache,omitempty" name:"HeuristicCache"`
 }
 
 type CacheConfigNoCache struct {
@@ -2397,6 +2411,9 @@ type DescribeBillingDataRequest struct {
 
 	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定查询时间的时区，默认UTC+08:00
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *DescribeBillingDataRequest) ToJsonString() string {
@@ -2420,6 +2437,7 @@ func (r *DescribeBillingDataRequest) FromJsonString(s string) error {
 	delete(f, "District")
 	delete(f, "Metric")
 	delete(f, "Product")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingDataRequest has unknown keys!", "")
 	}
@@ -2649,6 +2667,9 @@ type DescribeCdnDataRequest struct {
 
 	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定查询时间的时区，默认UTC+08:00
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *DescribeCdnDataRequest) ToJsonString() string {
@@ -2678,6 +2699,7 @@ func (r *DescribeCdnDataRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "AreaType")
 	delete(f, "Product")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCdnDataRequest has unknown keys!", "")
 	}
@@ -3716,6 +3738,9 @@ type DescribeOriginDataRequest struct {
 	// mainland：指定查询中国境内 CDN 数据
 	// overseas：指定查询中国境外 CDN 数据
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 指定查询时间的时区，默认UTC+08:00
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *DescribeOriginDataRequest) ToJsonString() string {
@@ -3738,6 +3763,7 @@ func (r *DescribeOriginDataRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "Detail")
 	delete(f, "Area")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginDataRequest has unknown keys!", "")
 	}
@@ -5981,6 +6007,16 @@ type HeaderKey struct {
 	// 组成CacheKey的header数组，';' 分割
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type HeuristicCache struct {
+
+	// on 代表开启启发式缓存
+	// off 代表关闭启发式缓存
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 自定义启发式缓存时间配置
+	CacheConfig *CacheConfig `json:"CacheConfig,omitempty" name:"CacheConfig"`
 }
 
 type Hsts struct {
@@ -9709,6 +9745,9 @@ type UpdateDomainConfigRequest struct {
 	// 合并回源
 	OriginCombine *OriginCombine `json:"OriginCombine,omitempty" name:"OriginCombine"`
 
+	// POST请求传输配置
+	PostMaxSize *PostSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
+
 	// Quic访问（收费服务，详见计费说明和产品文档）
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
@@ -9782,6 +9821,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6Access")
 	delete(f, "OfflineCache")
 	delete(f, "OriginCombine")
+	delete(f, "PostMaxSize")
 	delete(f, "Quic")
 	delete(f, "OssPrivateAccess")
 	delete(f, "WebSocket")

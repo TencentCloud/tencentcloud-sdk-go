@@ -359,7 +359,7 @@ type AddSpartaProtectionRequest struct {
 	// UpstreamType=1时，填次字段表示回源域名
 	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
 
-	// UpstreamType=0时，填次字段表示回源ip
+	// UpstreamType=0时，填次字段表示回源IP
 	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
 
 	// 是否开启HTTP2,开启HTTP2需要HTTPS支持
@@ -380,8 +380,11 @@ type AddSpartaProtectionRequest struct {
 	// 实例id，上线之后带上此字段
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
-	// anycast ip类型开关： 0 普通ip 1 Anycast ip
+	// anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+
+	// src权重
+	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -419,6 +422,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "IsKeepAlive")
 	delete(f, "InstanceID")
 	delete(f, "Anycast")
+	delete(f, "Weights")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1398,6 +1402,67 @@ func (r *DescribeDomainWhiteRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// domain列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Domains []*DomainInfo `json:"Domains,omitempty" name:"Domains"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFlowTrendRequest struct {
 	*tchttp.BaseRequest
 
@@ -1837,6 +1902,9 @@ func (r *DescribeWafThreatenIntelligenceResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DomainInfo struct {
+}
+
 type ExportAccessInfo struct {
 
 	// 日志导出任务ID
@@ -1880,6 +1948,18 @@ type ExportAccessInfo struct {
 
 	// 日志导出创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type FiltersItemNew struct {
+
+	// 字段名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 是否精确查找
+	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
 type IpAccessControlData struct {

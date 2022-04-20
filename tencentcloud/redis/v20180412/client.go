@@ -118,6 +118,79 @@ func (c *Client) AddReplicationInstanceWithContext(ctx context.Context, request 
     return
 }
 
+func NewAllocateWanAddressRequest() (request *AllocateWanAddressRequest) {
+    request = &AllocateWanAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "AllocateWanAddress")
+    
+    
+    return
+}
+
+func NewAllocateWanAddressResponse() (response *AllocateWanAddressResponse) {
+    response = &AllocateWanAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AllocateWanAddress
+// 开通外网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_INSTANCENAMERULEERROR = "InvalidParameterValue.InstanceNameRuleError"
+//  INVALIDPARAMETERVALUE_NOTREPEATBIND = "InvalidParameterValue.NotRepeatBind"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  INVALIDPARAMETERVALUE_SPECNOTEXIST = "InvalidParameterValue.SpecNotExist"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  LIMITEXCEEDED_EXCEEDUPPERLIMIT = "LimitExceeded.ExceedUpperLimit"
+//  LIMITEXCEEDED_INSTANCENOTEMPTY = "LimitExceeded.InstanceNotEmpty"
+//  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) AllocateWanAddress(request *AllocateWanAddressRequest) (response *AllocateWanAddressResponse, err error) {
+    return c.AllocateWanAddressWithContext(context.Background(), request)
+}
+
+// AllocateWanAddress
+// 开通外网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_INSTANCENAMERULEERROR = "InvalidParameterValue.InstanceNameRuleError"
+//  INVALIDPARAMETERVALUE_NOTREPEATBIND = "InvalidParameterValue.NotRepeatBind"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  INVALIDPARAMETERVALUE_SPECNOTEXIST = "InvalidParameterValue.SpecNotExist"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  LIMITEXCEEDED_EXCEEDUPPERLIMIT = "LimitExceeded.ExceedUpperLimit"
+//  LIMITEXCEEDED_INSTANCENOTEMPTY = "LimitExceeded.InstanceNotEmpty"
+//  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) AllocateWanAddressWithContext(ctx context.Context, request *AllocateWanAddressRequest) (response *AllocateWanAddressResponse, err error) {
+    if request == nil {
+        request = NewAllocateWanAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateWanAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAllocateWanAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyParamsTemplateRequest() (request *ApplyParamsTemplateRequest) {
     request = &ApplyParamsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4017,6 +4090,59 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseWanAddressRequest() (request *ReleaseWanAddressRequest) {
+    request = &ReleaseWanAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "ReleaseWanAddress")
+    
+    
+    return
+}
+
+func NewReleaseWanAddressResponse() (response *ReleaseWanAddressResponse) {
+    response = &ReleaseWanAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReleaseWanAddress
+// 关闭外网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) ReleaseWanAddress(request *ReleaseWanAddressRequest) (response *ReleaseWanAddressResponse, err error) {
+    return c.ReleaseWanAddressWithContext(context.Background(), request)
+}
+
+// ReleaseWanAddress
+// 关闭外网
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) ReleaseWanAddressWithContext(ctx context.Context, request *ReleaseWanAddressRequest) (response *ReleaseWanAddressResponse, err error) {
+    if request == nil {
+        request = NewReleaseWanAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseWanAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseWanAddressResponse()
     err = c.Send(request, response)
     return
 }

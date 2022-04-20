@@ -856,6 +856,9 @@ type CreateUserRequest struct {
 
 	// 绑定到用户的工作组ID集合。
 	WorkGroupIds []*int64 `json:"WorkGroupIds,omitempty" name:"WorkGroupIds"`
+
+	// 用户别名，字符长度小50
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -875,6 +878,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "PolicySet")
 	delete(f, "UserType")
 	delete(f, "WorkGroupIds")
+	delete(f, "UserAlias")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -1624,6 +1628,7 @@ type DescribeTasksRequest struct {
 	// task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 	// task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
 	// task-operator- string （子uin过滤）
+	// task-kind - string （任务类型过滤）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
@@ -1712,7 +1717,7 @@ type DescribeUsersRequest struct {
 	// 排序方式，desc表示正序，asc表示反序， 默认为asc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。
+	// 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -2447,6 +2452,10 @@ type TaskResponseInfo struct {
 	// 查询数据能不能下载
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanDownload *bool `json:"CanDownload,omitempty" name:"CanDownload"`
+
+	// 用户别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
 }
 
 type TaskResultInfo struct {
@@ -2620,6 +2629,10 @@ type UserInfo struct {
 	// 用户类型。ADMIN：管理员 COMMON：普通用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 用户别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
 }
 
 type UserMessage struct {
@@ -2636,6 +2649,9 @@ type UserMessage struct {
 
 	// 当前用户的创建时间，形如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户别名
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
 }
 
 type ViewBaseInfo struct {

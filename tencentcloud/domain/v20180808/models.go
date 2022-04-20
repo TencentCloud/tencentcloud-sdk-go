@@ -892,6 +892,58 @@ func (r *DescribeDomainPriceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainSimpleInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 域名
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+}
+
+func (r *DescribeDomainSimpleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainSimpleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainSimpleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainSimpleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 域名信息
+		DomainInfo *DomainSimpleInfo `json:"DomainInfo,omitempty" name:"DomainInfo"`
+
+		// 账号ID
+		Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainSimpleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainSimpleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePhoneEmailListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1246,6 +1298,108 @@ type DomainList struct {
 	// TransferTransing：转入中
 	// TransferFailed：转入失败
 	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+}
+
+type DomainSimpleInfo struct {
+
+	// 域名资源ID。
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 域名实名认证状态。
+	// NotUpload：未实名认证
+	// InAudit：实名审核中
+	// Approved：实名审核通过
+	// Reject：实名审核失败
+	// NoAudit: 无需实名认证
+	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitempty" name:"RealNameAuditStatus"`
+
+	// 域名实名认证不通过原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealNameAuditUnpassReason *string `json:"RealNameAuditUnpassReason,omitempty" name:"RealNameAuditUnpassReason"`
+
+	// 域名命名审核状态。
+	// NotAudit：命名审核未上传
+	// Pending：命名审核待上传
+	// Auditing：域名命名审核中
+	// Approved：域名命名审核通过
+	// Rejected：域名命名审核拒绝
+	DomainNameAuditStatus *string `json:"DomainNameAuditStatus,omitempty" name:"DomainNameAuditStatus"`
+
+	// 域名命名审核不通过原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainNameAuditUnpassReason *string `json:"DomainNameAuditUnpassReason,omitempty" name:"DomainNameAuditUnpassReason"`
+
+	// 注册时间。
+	CreationDate *string `json:"CreationDate,omitempty" name:"CreationDate"`
+
+	// 到期时间
+	ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
+
+	// 域名状态。
+	// ok：正常
+	// serverHold：注册局暂停解析 
+	// clientHold：注册商暂停解析
+	// pendingTransfer：转移中
+	// renewingPeriod：续费期
+	// redemptionPeriod：偿还期
+	// pendingDelete：删除期
+	// serverTransferProhibited：注册局禁止转移
+	// serverUpdateProhibited：注册局禁止更新
+	// serverDeleteProhibited：注册局禁止删除
+	// clientTransferProhibited：注册商禁止转移
+	// clientUpdateProhibited：注册商禁止更新
+	// clientDeleteProhibited：注册商禁止删除
+	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus"`
+
+	// 域名购买状态。
+	// ok：正常
+	// RegisterPending：待注册
+	// RegisterDoing：注册中
+	// RegisterFailed：注册失败
+	// AboutToExpire: 即将过期
+	// RenewPending：已进入续费期，需要进行续费
+	// RenewDoing：续费中
+	// RedemptionPending：已进入赎回期，需要进行续费
+	// RedemptionDoing：赎回中
+	// TransferPending：待转入中
+	// TransferTransing：转入中
+	// TransferFailed：转入失败
+	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+
+	// 注册商类型
+	// epp: DNSPod, Inc.（烟台帝思普网络科技有限公司）
+	// qcloud: Tencent Cloud Computing (Beijing) Limited Liability Company（腾讯云计算（北京）有限责任公司）
+	// yunxun: Guangzhou Yunxun Information Technology Co., Ltd.（广州云讯信息科技有限公司）
+	// xinnet: Xin Net Technology Corporation（北京新网数码信息技术有限公司）
+	RegistrarType *string `json:"RegistrarType,omitempty" name:"RegistrarType"`
+
+	// 域名绑定的ns
+	NameServer []*string `json:"NameServer,omitempty" name:"NameServer"`
+
+	// true：开启锁定
+	// false：关闭锁定
+	LockTransfer *bool `json:"LockTransfer,omitempty" name:"LockTransfer"`
+
+	// 锁定结束时间
+	LockEndTime *string `json:"LockEndTime,omitempty" name:"LockEndTime"`
+
+	// 认证类型：I=个人，E=企业
+	RegistrantType *string `json:"RegistrantType,omitempty" name:"RegistrantType"`
+
+	// 域名所有者，中文
+	OrganizationNameCN *string `json:"OrganizationNameCN,omitempty" name:"OrganizationNameCN"`
+
+	// 域名所有者，英文
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 域名联系人，中文
+	RegistrantNameCN *string `json:"RegistrantNameCN,omitempty" name:"RegistrantNameCN"`
+
+	// 域名联系人，英文
+	RegistrantName *string `json:"RegistrantName,omitempty" name:"RegistrantName"`
 }
 
 type ModifyDomainDNSBatchRequest struct {

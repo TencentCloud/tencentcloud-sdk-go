@@ -52,6 +52,7 @@ import (
 	btoev20210514 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210514"
 	camv20190116 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cam/v20190116"
 	captchav20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/captcha/v20190722"
+	carv20220110 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/car/v20220110"
 	casbv20200507 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/casb/v20200507"
 	catv20180409 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cat/v20180409"
 	cbsv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs/v20170312"
@@ -653,6 +654,19 @@ func TestCaptchav20190722Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init captcha_v20190722 client: %v", err))
+    }
+}
+
+func TestCarv20220110Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := carv20220110.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init car_v20220110 client: %v", err))
     }
 }
 

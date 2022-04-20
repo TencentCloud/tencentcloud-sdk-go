@@ -3989,7 +3989,12 @@ type DescribeStatisticDataRequest struct {
 	// 维度条件，操作符支持=、in
 	Conditions []*MidQueryCondition `json:"Conditions,omitempty" name:"Conditions"`
 
-	// 统计粒度。默认取值为300，单位为s
+	// 统计粒度。默认取值为300，单位为s；可选的值为60、300、3600、86400
+	// 受存储时长限制，统计粒度与统计的时间范围有关：
+	// 60s：EndTime-StartTime<12小时，且StartTime距当前时间不能超过15天；
+	// 300s：EndTime-StartTime<3天，且StartTime距当前时间不能超过31天；
+	// 3600s：EndTime-StartTime<30天，且StartTime距当前时间不能超过93天；
+	// 86400s：EndTime-StartTime<186天，且StartTime距当前时间不能超过186天。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 起始时间，默认为当前时间，如2020-12-08T19:51:23+08:00
