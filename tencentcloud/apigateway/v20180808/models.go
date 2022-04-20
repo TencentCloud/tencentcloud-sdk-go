@@ -1524,6 +1524,9 @@ type CreateApiRequest struct {
 
 	// EIAM应用ID。
 	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+
+	// 资源的Owner
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
 }
 
 func (r *CreateApiRequest) ToJsonString() string {
@@ -1590,6 +1593,7 @@ func (r *CreateApiRequest) FromJsonString(s string) error {
 	delete(f, "EIAMAuthType")
 	delete(f, "TokenTimeout")
 	delete(f, "EIAMAppId")
+	delete(f, "Owner")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiRequest has unknown keys!", "")
 	}
@@ -4824,7 +4828,7 @@ type DescribeUpstreamBindApis struct {
 	// 总数
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 绑定的api信息
+	// 绑定的API信息
 	BindApiSet []*BindApiInfo `json:"BindApiSet,omitempty" name:"BindApiSet"`
 }
 
@@ -7212,6 +7216,10 @@ type ServiceConfig struct {
 
 	// API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
 	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 当绑定vpc通道才需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
 
 	// API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
 	// 注意：此字段可能返回 null，表示取不到有效值。

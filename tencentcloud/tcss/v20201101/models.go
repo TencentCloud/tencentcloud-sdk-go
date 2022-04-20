@@ -33,6 +33,10 @@ type AbnormalProcessChildRuleInfo struct {
 	// 子策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleLevel *string `json:"RuleLevel,omitempty" name:"RuleLevel"`
 }
 
 type AbnormalProcessEventDescription struct {
@@ -50,7 +54,7 @@ type AbnormalProcessEventDescription struct {
 	// 命中规则详细信息
 	MatchRule *AbnormalProcessChildRuleInfo `json:"MatchRule,omitempty" name:"MatchRule"`
 
-	// 命中规则名字
+	// 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 命中规则的id
@@ -59,6 +63,10 @@ type AbnormalProcessEventDescription struct {
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+
+	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
 type AbnormalProcessEventInfo struct {
@@ -69,7 +77,7 @@ type AbnormalProcessEventInfo struct {
 	// 事件类型，MALICE_PROCESS_START:恶意进程启动
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
-	// 命中规则
+	// 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
 	MatchRuleName *string `json:"MatchRuleName,omitempty" name:"MatchRuleName"`
 
 	// 生成时间
@@ -131,6 +139,12 @@ type AbnormalProcessEventInfo struct {
 
 	// 规则组Id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+	MatchGroupName *string `json:"MatchGroupName,omitempty" name:"MatchGroupName"`
+
+	// 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
+	MatchRuleLevel *string `json:"MatchRuleLevel,omitempty" name:"MatchRuleLevel"`
 }
 
 type AbnormalProcessRuleInfo struct {
@@ -180,6 +194,10 @@ type AbnormalProcessSystemChildRuleInfo struct {
 	// RISK_CMD：高危命令
 	// ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleLevel *string `json:"RuleLevel,omitempty" name:"RuleLevel"`
 }
 
 type AccessControlChildRuleInfo struct {
@@ -7722,7 +7740,7 @@ type DescribeEscapeEventInfoRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 升序降序,asc desc
@@ -10371,10 +10389,7 @@ type EscapeEventInfo struct {
 	// 镜像名
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
-	// 状态
-	//      EVENT_UNDEAL:事件未处理
-	//      EVENT_DEALED:事件已经处理
-	//      EVENT_INGNORE：事件忽略
+	// 状态，EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 事件记录的唯一id
@@ -10415,6 +10430,14 @@ type EscapeEventInfo struct {
 
 	// 最近生成时间
 	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 节点IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeIP *string `json:"NodeIP,omitempty" name:"NodeIP"`
+
+	// 主机IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
 }
 
 type EscapeRule struct {
@@ -10439,6 +10462,9 @@ type EscapeRule struct {
 
 	// 是否打开：false否 ，true是
 	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+
+	// 规则组别。RISK_CONTAINER：风险容器，PROCESS_PRIVILEGE：程序特权，CONTAINER_ESCAPE：容器逃逸
+	Group *string `json:"Group,omitempty" name:"Group"`
 }
 
 type EscapeRuleEnabled struct {
@@ -11756,10 +11782,7 @@ type ModifyEscapeEventStatusRequest struct {
 	// 处理事件ids
 	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
 
-	// 标记事件的状态
-	//    EVENT_DEALED:事件已经处理
-	//      EVENT_INGNORE：事件忽略
-	//      EVENT_DEL:事件删除
+	// 标记事件的状态：EVENT_UNDEAL:未处理（取消忽略），EVENT_DEALED:已处理，EVENT_IGNORE:忽略，EVENT_DELETE：已删除
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 备注
@@ -12801,6 +12824,31 @@ type RunTimeEventBaseInfo struct {
 	// 外网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type RunTimeFilters struct {

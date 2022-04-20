@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文字识别(ocr) 版本：2018-11-19
+## API网关(apigateway) 版本：2018-08-08
 
-### 第 65 次发布
+### 第 29 次发布
 
-发布时间：2022-04-19 19:47:18
+发布时间：2022-04-20 06:02:43
 
 本次发布包含了以下内容：
 
@@ -12,11 +12,59 @@
 
 修改接口：
 
-* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
 
-	* 新增入参：Type
+	* 新增入参：Owner
 
-	* 新增出参：IDNumber, TestingInterval, TestingResult, TestingTime
+
+修改数据结构：
+
+* [ServiceConfig](https://cloud.tencent.com/document/api/628/45244#ServiceConfig)
+
+	* 新增成员：UpstreamId
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 15 次发布
+
+发布时间：2022-04-20 06:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AbnormalProcessChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessChildRuleInfo)
+
+	* 新增成员：RuleLevel
+
+* [AbnormalProcessEventDescription](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventDescription)
+
+	* 新增成员：GroupName
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：MatchGroupName, MatchRuleLevel
+
+* [AbnormalProcessSystemChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessSystemChildRuleInfo)
+
+	* 新增成员：RuleLevel
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：NodeIP, HostID
+
+* [EscapeRule](https://cloud.tencent.com/document/api/1285/65614#EscapeRule)
+
+	* 新增成员：Group
+
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
 
 
 
@@ -2093,6 +2141,28 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 29 次发布
+
+发布时间：2022-04-20 06:02:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* 新增入参：Owner
+
+
+修改数据结构：
+
+* [ServiceConfig](https://cloud.tencent.com/document/api/628/45244#ServiceConfig)
+
+	* 新增成员：UpstreamId
+
 
 ### 第 28 次发布
 
@@ -60223,6 +60293,45 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 15 次发布
+
+发布时间：2022-04-20 06:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AbnormalProcessChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessChildRuleInfo)
+
+	* 新增成员：RuleLevel
+
+* [AbnormalProcessEventDescription](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventDescription)
+
+	* 新增成员：GroupName
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：MatchGroupName, MatchRuleLevel
+
+* [AbnormalProcessSystemChildRuleInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessSystemChildRuleInfo)
+
+	* 新增成员：RuleLevel
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：NodeIP, HostID
+
+* [EscapeRule](https://cloud.tencent.com/document/api/1285/65614#EscapeRule)
+
+	* 新增成员：Group
+
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
 
 ### 第 14 次发布
 
