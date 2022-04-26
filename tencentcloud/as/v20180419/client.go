@@ -2819,6 +2819,65 @@ func (c *Client) ModifyLaunchConfigurationAttributesWithContext(ctx context.Cont
     return
 }
 
+func NewModifyLifecycleHookRequest() (request *ModifyLifecycleHookRequest) {
+    request = &ModifyLifecycleHookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("as", APIVersion, "ModifyLifecycleHook")
+    
+    
+    return
+}
+
+func NewModifyLifecycleHookResponse() (response *ModifyLifecycleHookResponse) {
+    response = &ModifyLifecycleHookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLifecycleHook
+// 此接口用于修改生命周期挂钩。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"
+//  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
+//  RESOURCENOTFOUND_TDMQCMQQUEUENOTFOUND = "ResourceNotFound.TDMQCMQQueueNotFound"
+//  RESOURCENOTFOUND_TDMQCMQTOPICNOTFOUND = "ResourceNotFound.TDMQCMQTopicNotFound"
+//  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
+func (c *Client) ModifyLifecycleHook(request *ModifyLifecycleHookRequest) (response *ModifyLifecycleHookResponse, err error) {
+    return c.ModifyLifecycleHookWithContext(context.Background(), request)
+}
+
+// ModifyLifecycleHook
+// 此接口用于修改生命周期挂钩。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"
+//  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
+//  RESOURCENOTFOUND_TDMQCMQQUEUENOTFOUND = "ResourceNotFound.TDMQCMQQueueNotFound"
+//  RESOURCENOTFOUND_TDMQCMQTOPICNOTFOUND = "ResourceNotFound.TDMQCMQTopicNotFound"
+//  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
+func (c *Client) ModifyLifecycleHookWithContext(ctx context.Context, request *ModifyLifecycleHookRequest) (response *ModifyLifecycleHookResponse, err error) {
+    if request == nil {
+        request = NewModifyLifecycleHookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLifecycleHook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLifecycleHookResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLoadBalancerTargetAttributesRequest() (request *ModifyLoadBalancerTargetAttributesRequest) {
     request = &ModifyLoadBalancerTargetAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},

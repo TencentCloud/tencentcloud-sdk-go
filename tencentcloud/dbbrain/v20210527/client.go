@@ -2331,7 +2331,7 @@ func NewDescribeSqlTemplateResponse() (response *DescribeSqlTemplateResponse) {
 }
 
 // DescribeSqlTemplate
-// 查询SQL模版。
+// 查询SQL模板。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2352,7 +2352,7 @@ func (c *Client) DescribeSqlTemplate(request *DescribeSqlTemplateRequest) (respo
 }
 
 // DescribeSqlTemplate
-// 查询SQL模版。
+// 查询SQL模板。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

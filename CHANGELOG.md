@@ -1,3 +1,368 @@
+# Release v1.0.390
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 51 次发布
+
+发布时间：2022-04-25 06:01:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyLifecycleHook](https://cloud.tencent.com/document/api/377/73060)
+
+修改数据结构：
+
+* [AutoScalingAdvice](https://cloud.tencent.com/document/api/377/20453#AutoScalingAdvice)
+
+	* 新增成员：Level
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 102 次发布
+
+发布时间：2022-04-25 06:02:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
+
+	* 新增出参：FileVerifyUrl
+
+* [VerifyDomainRecord](https://cloud.tencent.com/document/api/228/48117)
+
+	* 新增入参：VerifyType
+
+
+### 第 101 次发布
+
+发布时间：2022-04-22 06:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [StatisticItem](https://cloud.tencent.com/document/api/228/30987#StatisticItem)
+
+修改数据结构：
+
+* [BandwidthAlert](https://cloud.tencent.com/document/api/228/30987#BandwidthAlert)
+
+	* 新增成员：StatisticItems
+
+
+
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 48 次发布
+
+发布时间：2022-04-22 06:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [VideoExportCompletedEvent](https://cloud.tencent.com/document/api/1156/40360#VideoExportCompletedEvent)
+
+修改数据结构：
+
+* [EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)
+
+	* 新增成员：VideoExportCompletedEvent
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 64 次发布
+
+发布时间：2022-04-25 06:04:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyOpenBankOrderDetailReceipt](https://cloud.tencent.com/document/api/1122/73065)
+* [CreateOpenBankExternalSubMerchantAccountBook](https://cloud.tencent.com/document/api/1122/73064)
+* [CreateOpenBankRechargeOrder](https://cloud.tencent.com/document/api/1122/73063)
+* [QueryOpenBankExternalSubAccountBookBalance](https://cloud.tencent.com/document/api/1122/73062)
+* [QueryOpenBankOrderDetailReceiptInfo](https://cloud.tencent.com/document/api/1122/73061)
+
+修改接口：
+
+* [QueryOpenBankDownLoadUrl](https://cloud.tencent.com/document/api/1122/70180)
+
+	* 新增入参：ChannelName, PaymentMethod
+
+
+新增数据结构：
+
+* [ApplyOpenBankOrderDetailReceiptResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankOrderDetailReceiptResult)
+* [CreateExternalAccountBookResult](https://cloud.tencent.com/document/api/1122/40683#CreateExternalAccountBookResult)
+* [CreateOpenBankOrderRechargeResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankOrderRechargeResult)
+* [OpenBankRechargePayeeInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankRechargePayeeInfo)
+* [OpenBankRechargeRedirectInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankRechargeRedirectInfo)
+* [QueryExternalAccountBookResult](https://cloud.tencent.com/document/api/1122/40683#QueryExternalAccountBookResult)
+* [QueryOpenBankOrderDetailReceiptInfoResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankOrderDetailReceiptInfoResult)
+
+### 第 63 次发布
+
+发布时间：2022-04-22 06:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OpenBankPayeeInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayeeInfo)
+
+	* 新增成员：AccountType
+
+* [OpenBankPayerInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayerInfo)
+
+	* 新增成员：AccountType
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 17 次发布
+
+发布时间：2022-04-22 06:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMigrateJob](https://cloud.tencent.com/document/api/571/18141)
+
+	* 新增入参：SrcNodeType, SrcInfoMulti
+
+* [ModifyMigrateJob](https://cloud.tencent.com/document/api/571/18138)
+
+	* 新增入参：SrcNodeType, SrcInfoMulti
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 4 次发布
+
+发布时间：2022-04-25 06:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UploadFiles](https://cloud.tencent.com/document/api/1323/73066)
+
+新增数据结构：
+
+* [Caller](https://cloud.tencent.com/document/api/1323/70369#Caller)
+* [UploadFile](https://cloud.tencent.com/document/api/1323/70369#UploadFile)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 15 次发布
+
+发布时间：2022-04-25 06:07:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
+* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸识别(iai) 版本：2020-03-03
+
+### 第 9 次发布
+
+发布时间：2022-04-25 06:07:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckSimilarPerson
+* EstimateCheckSimilarPersonCostTime
+* GetCheckSimilarPersonJobIdList
+* GetSimilarPersonResult
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* JobIdInfo
+
+
+
+## 人脸识别(iai) 版本：2018-03-01
+
+### 第 20 次发布
+
+发布时间：2022-04-22 18:43:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckSimilarPerson
+* EstimateCheckSimilarPersonCostTime
+* GetCheckSimilarPersonJobIdList
+* GetSimilarPersonResult
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* JobIdInfo
+
+
+
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 6 次发布
+
+发布时间：2022-04-24 15:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
+
+	* 新增成员：CallbackURL
+
+* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
+
+	* 新增成员：CallbackURL
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 27 次发布
+
+发布时间：2022-04-25 06:10:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEncryptionKeys](https://cloud.tencent.com/document/api/409/73069)
+
+新增数据结构：
+
+* [EncryptionKey](https://cloud.tencent.com/document/api/409/16778#EncryptionKey)
+
+
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 3 次发布
+
+发布时间：2022-04-25 06:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)
+
+	* 新增入参：CountryCode
+
+* [VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)
+
+	* 新增入参：CountryCode
+
+
+
+
+## 安全凭证服务(sts) 版本：2018-08-13
+
+### 第 8 次发布
+
+发布时间：2022-04-25 06:12:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AssumeRoleWithWebIdentity](https://cloud.tencent.com/document/api/1312/73070)
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 18 次发布
+
+发布时间：2022-04-22 06:17:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：InternetBandWidth, ConsoleInternetBandWidth
+
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：TradeType, AutoRenewFlag, CurDeadline, IsolateTime
+
+
+
+
 # Release v1.0.389
 
 ## API网关(apigateway) 版本：2018-08-08

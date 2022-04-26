@@ -731,3 +731,66 @@ func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowReq
     err = c.Send(request, response)
     return
 }
+
+func NewUploadFilesRequest() (request *UploadFilesRequest) {
+    request = &UploadFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "UploadFiles")
+    
+    
+    return
+}
+
+func NewUploadFilesResponse() (response *UploadFilesResponse) {
+    response = &UploadFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadFiles
+// 此接口（UploadFiles）用于文件上传。
+//
+// 调用时需要设置Domain 为 file.ess.tencent.cn，设置Version为2020-12-22
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
+    return c.UploadFilesWithContext(context.Background(), request)
+}
+
+// UploadFiles
+// 此接口（UploadFiles）用于文件上传。
+//
+// 调用时需要设置Domain 为 file.ess.tencent.cn，设置Version为2020-12-22
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
+    if request == nil {
+        request = NewUploadFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadFilesResponse()
+    err = c.Send(request, response)
+    return
+}

@@ -1570,7 +1570,7 @@ type DescribeNoPrimaryKeyTablesRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 查询日期，最早为30天前的日期。
+	// 查询日期，如2021-05-27，最早为30天前的日期。
 	Date *string `json:"Date,omitempty" name:"Date"`
 
 	// 查询数目，默认为20，最大为100。
@@ -1707,13 +1707,13 @@ type DescribeRedisTopBigKeysRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 查询日期，最早可为前30天的日期。
+	// 查询日期，如2021-05-27，最早可为前30天的日期。
 	Date *string `json:"Date,omitempty" name:"Date"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量。
+	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
 	// key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。

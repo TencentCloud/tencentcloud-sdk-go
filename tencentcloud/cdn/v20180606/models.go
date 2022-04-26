@@ -1046,6 +1046,10 @@ type BandwidthAlert struct {
 	// 流量：flux
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 累计用量配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticItems []*StatisticItem `json:"StatisticItems,omitempty" name:"StatisticItems"`
 }
 
 type BotCookie struct {
@@ -2148,6 +2152,10 @@ type CreateVerifyRecordResponse struct {
 
 		// 解析类型
 		RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+		// 文件验证 URL 指引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FileVerifyUrl *string `json:"FileVerifyUrl,omitempty" name:"FileVerifyUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9318,6 +9326,45 @@ func (r *StartScdnDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type StatisticItem struct {
+
+	// 封顶类型，累计用量total，瞬时用量moment
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 自动解封时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnBlockTime *uint64 `json:"UnBlockTime,omitempty" name:"UnBlockTime"`
+
+	// 带宽、流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BpsThreshold *uint64 `json:"BpsThreshold,omitempty" name:"BpsThreshold"`
+
+	// 关闭方式 返回404:RETURN_404, dns回源：RESOLVE_DNS_TO_ORIGIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CounterMeasure *string `json:"CounterMeasure,omitempty" name:"CounterMeasure"`
+
+	// 触发提醒阈值百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertPercentage *uint64 `json:"AlertPercentage,omitempty" name:"AlertPercentage"`
+
+	// 提醒开关 on/off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertSwitch *string `json:"AlertSwitch,omitempty" name:"AlertSwitch"`
+
+	// 指标类型，流量flux或带宽bandwidth
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 检测周期，单位分钟，60或1440
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
+
+	// 是否开启该选项，on/off
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type StatusCodeCache struct {
 
 	// 状态码缓存过期配置开关
@@ -10122,6 +10169,11 @@ type VerifyDomainRecordRequest struct {
 
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 验证方式
+	// dns: DNS 解析验证（默认值）
+	// file: 文件验证
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 }
 
 func (r *VerifyDomainRecordRequest) ToJsonString() string {
@@ -10137,6 +10189,7 @@ func (r *VerifyDomainRecordRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
+	delete(f, "VerifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDomainRecordRequest has unknown keys!", "")
 	}

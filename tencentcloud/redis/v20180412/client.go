@@ -902,7 +902,7 @@ func NewDeleteReplicationInstanceResponse() (response *DeleteReplicationInstance
 }
 
 // DeleteReplicationInstance
-// 移除复制组成员
+// 移除复制组成员 注：接口下线中，请使用 RemoveReplicationInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -919,7 +919,7 @@ func (c *Client) DeleteReplicationInstance(request *DeleteReplicationInstanceReq
 }
 
 // DeleteReplicationInstance
-// 移除复制组成员
+// 移除复制组成员 注：接口下线中，请使用 RemoveReplicationInstance
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

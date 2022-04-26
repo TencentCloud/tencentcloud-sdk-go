@@ -11651,7 +11651,6 @@ type DescribeVulListRequest struct {
 	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
 	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 	// <li>VulName- string -</li>
-	// <li>HostIp- string - 是否必填：否 - 主机ip</li>
 	// <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
@@ -14945,10 +14944,10 @@ func (r *OpenProVersionPrepaidResponse) FromJsonString(s string) error {
 type OpenProVersionRequest struct {
 	*tchttp.BaseRequest
 
-	// 云服务器类型。(当前参数已作废,可以留空值 )
+	// 云服务器类型（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
-	// 机器所属地域。(当前参数已作废,可以留空值 )
+	// 机器所属地域（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
 	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
 
 	// 主机唯一标识Uuid数组。

@@ -659,8 +659,11 @@ type SendSmsCodeRequest struct {
 	// 官方云盘实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 将作为超级管理员账号的手机号码，仅限中国境内手机号，无需国家代码“+86”。
+	// 将作为超级管理员账号的手机号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
 }
 
 func (r *SendSmsCodeRequest) ToJsonString() string {
@@ -678,6 +681,7 @@ func (r *SendSmsCodeRequest) FromJsonString(s string) error {
 	delete(f, "Purpose")
 	delete(f, "InstanceId")
 	delete(f, "PhoneNumber")
+	delete(f, "CountryCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendSmsCodeRequest has unknown keys!", "")
 	}
@@ -748,11 +752,14 @@ type VerifySmsCodeRequest struct {
 	// 官方云盘实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 将作为超级管理员账号的手机号码，仅限中国境内手机号，无需国家代码“+86”。
+	// 将作为超级管理员账号的手机号码
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
 	// 短信验证码
 	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
 }
 
 func (r *VerifySmsCodeRequest) ToJsonString() string {
@@ -771,6 +778,7 @@ func (r *VerifySmsCodeRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "PhoneNumber")
 	delete(f, "Code")
+	delete(f, "CountryCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifySmsCodeRequest has unknown keys!", "")
 	}

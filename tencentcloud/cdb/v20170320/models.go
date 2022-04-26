@@ -10002,10 +10002,10 @@ type UpgradeCDBProxyRequest struct {
 	// 数据库代理ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
-	// 代理节点个数，实际规格支持数
+	// 代理节点个数
 	ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
 
-	// 代理节点核数，实际规格支持数
+	// 代理节点核数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 代理节点内存大小

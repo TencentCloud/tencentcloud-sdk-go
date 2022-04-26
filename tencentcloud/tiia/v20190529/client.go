@@ -816,7 +816,7 @@ func NewDetectLabelResponse() (response *DetectLabelResponse) {
 }
 
 // DetectLabel
-// 图像标签利用深度学习技术、海量训练数据，可以对图片进行智能分类、物体识别等。
+// 图像标签利用深度学习技术，可以对图片进行智能分类、物体识别等。
 //
 // 
 //
@@ -880,7 +880,7 @@ func (c *Client) DetectLabel(request *DetectLabelRequest) (response *DetectLabel
 }
 
 // DetectLabel
-// 图像标签利用深度学习技术、海量训练数据，可以对图片进行智能分类、物体识别等。
+// 图像标签利用深度学习技术，可以对图片进行智能分类、物体识别等。
 //
 // 
 //

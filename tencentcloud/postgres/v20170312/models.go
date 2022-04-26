@@ -2276,6 +2276,56 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEncryptionKeysRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeEncryptionKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptionKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEncryptionKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEncryptionKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 实例密钥信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EncryptionKeys []*EncryptionKey `json:"EncryptionKeys,omitempty" name:"EncryptionKeys"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeEncryptionKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptionKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOrdersRequest struct {
 	*tchttp.BaseRequest
 
@@ -2948,6 +2998,33 @@ type DurationAnalysis struct {
 
 	// 对应时段区间慢SQL 条数
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type EncryptionKey struct {
+
+	// KMS实例加密的KeyId。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// KMS实例加密Key的别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyAlias *string `json:"KeyAlias,omitempty" name:"KeyAlias"`
+
+	// 实例加密密钥DEK的密文。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DEKCipherTextBlob *string `json:"DEKCipherTextBlob,omitempty" name:"DEKCipherTextBlob"`
+
+	// 密钥是否启用，1-启用， 0-未启用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+
+	// KMS密钥所在地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyRegion *string `json:"KeyRegion,omitempty" name:"KeyRegion"`
+
+	// DEK密钥创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ErrLogDetail struct {

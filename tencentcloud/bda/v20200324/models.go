@@ -153,7 +153,7 @@ type Candidate struct {
 	// 人员ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人体轨迹ID。
+	// 人体动作轨迹ID。
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 	// 候选者的匹配得分。 
@@ -238,7 +238,7 @@ type CreatePersonRequest struct {
 	// 支持英文、数字、-%@#&_，，长度限制64B。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人体轨迹信息。
+	// 人体动作轨迹信息。
 	Trace *Trace `json:"Trace,omitempty" name:"Trace"`
 }
 
@@ -268,19 +268,19 @@ type CreatePersonResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 人员轨迹唯一标识。
+		// 人员动作轨迹唯一标识。
 		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 		// 人体识别所用的算法模型版本。
 		BodyModelVersion *string `json:"BodyModelVersion,omitempty" name:"BodyModelVersion"`
 
-		// 输入的人体轨迹图片中的合法性校验结果。
+		// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
-	// -1001: 输入图片不合法。-1002: 输入图片不能构成轨迹。
+	// -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
 		InputRetCode *int64 `json:"InputRetCode,omitempty" name:"InputRetCode"`
 
-		// 输入的人体轨迹图片中的合法性校验结果详情。 
-	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
+		// 输入的人体动作轨迹图片中的合法性校验结果详情。 
+	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
 	// RetCode 的顺序和入参中Images 或 Urls 的顺序一致。
 		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
@@ -368,7 +368,7 @@ type CreateTraceRequest struct {
 	// 人员ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人体轨迹信息。
+	// 人体动作轨迹信息。
 	Trace *Trace `json:"Trace,omitempty" name:"Trace"`
 }
 
@@ -396,19 +396,19 @@ type CreateTraceResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 人员轨迹唯一标识。
+		// 人员动作轨迹唯一标识。
 		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 		// 人体识别所用的算法模型版本。
 		BodyModelVersion *string `json:"BodyModelVersion,omitempty" name:"BodyModelVersion"`
 
-		// 输入的人体轨迹图片中的合法性校验结果。
+		// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
 	// -1001: 输入图片不合法。-1002: 输入图片不能构成轨迹。
 		InputRetCode *int64 `json:"InputRetCode,omitempty" name:"InputRetCode"`
 
-		// 输入的人体轨迹图片中的合法性校验结果详情。 
-	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
+		// 输入的人体动作轨迹图片中的合法性校验结果详情。 
+	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
 		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1111,7 +1111,7 @@ type PersonInfo struct {
 	// 人员ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 包含的人体轨迹图片信息列表。
+	// 包含的人体动作轨迹图片信息列表。
 	TraceInfos []*TraceInfo `json:"TraceInfos,omitempty" name:"TraceInfos"`
 }
 
@@ -1121,10 +1121,10 @@ type SearchTraceRequest struct {
 	// 希望搜索的人体库ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 人体轨迹信息。
+	// 人体动作轨迹信息。
 	Trace *Trace `json:"Trace,omitempty" name:"Trace"`
 
-	// 单张被识别的人体轨迹返回的最相似人员数量。
+	// 单张被识别的人体动作轨迹返回的最相似人员数量。
 	// 默认值为5，最大值为100。
 	//  例，设MaxPersonNum为8，则返回Top8相似的人员信息。 值越大，需要处理的时间越长。建议不要超过10。
 	MaxPersonNum *uint64 `json:"MaxPersonNum,omitempty" name:"MaxPersonNum"`
@@ -1163,13 +1163,13 @@ type SearchTraceResponse struct {
 		// 识别出的最相似候选人。
 		Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 
-		// 输入的人体轨迹图片中的合法性校验结果。
+		// 输入的人体动作轨迹图片中的合法性校验结果。
 	// 只有为0时结果才有意义。
-	// -1001: 输入图片不合法。-1002: 输入图片不能构成轨迹。
+	// -1001: 输入图片不合法。-1002: 输入图片不能构成动作轨迹。
 		InputRetCode *int64 `json:"InputRetCode,omitempty" name:"InputRetCode"`
 
-		// 输入的人体轨迹图片中的合法性校验结果详情。 
-	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:轨迹中有非同人图片。-2024: 轨迹提取失败。-2025: 人体检测失败。
+		// 输入的人体动作轨迹图片中的合法性校验结果详情。 
+	// -1101:图片无效，-1102:url不合法。-1103:图片过大。-1104:图片下载失败。-1105:图片解码失败。-1109:图片分辨率过高。-2023:动作轨迹中有非同人图片。-2024: 动作轨迹提取失败。-2025: 人体检测失败。
 		InputRetCodeDetails []*int64 `json:"InputRetCodeDetails,omitempty" name:"InputRetCodeDetails"`
 
 		// 人体识别所用的算法模型版本。
@@ -1439,13 +1439,13 @@ func (r *TerminateSegmentationTaskResponse) FromJsonString(s string) error {
 
 type Trace struct {
 
-	// 人体轨迹图片 Base64 数组。 
+	// 人体动作轨迹图片 Base64 数组。 
 	// 数组长度最小为1最大为5。 
 	// 单个图片 base64 编码后大小不可超过2M。 
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Images []*string `json:"Images,omitempty" name:"Images"`
 
-	// 人体轨迹图片 Url 数组。 
+	// 人体动作轨迹图片 Url 数组。 
 	// 数组长度最小为1最大为5。 
 	// 单个图片 base64 编码后大小不可超过2M。 
 	// Urls、Images必须提供一个，如果都提供，只使用 Urls。 
@@ -1463,10 +1463,10 @@ type Trace struct {
 
 type TraceInfo struct {
 
-	// 人体轨迹ID。
+	// 人体动作轨迹ID。
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
-	// 包含的人体轨迹图片Id列表。
+	// 包含的人体动作轨迹图片Id列表。
 	BodyIds []*string `json:"BodyIds,omitempty" name:"BodyIds"`
 }
 

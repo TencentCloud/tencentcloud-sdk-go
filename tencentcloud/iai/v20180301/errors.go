@@ -26,12 +26,6 @@ const (
 	// 该操作不支持跨算法模型版本。
 	FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 
-	// 有相同的人员查重任务未结束。
-	FAILEDOPERATION_CHECKDUPLICATEPERSONTASKNOTFINISHED = "FailedOperation.CheckDuplicatePersonTaskNotFinished"
-
-	// 查重人员所需等待时间过长， 无法开启查重任务，请等待一段时间后开始。
-	FAILEDOPERATION_CHECKSIMILARPERSONTIMEEXCEED = "FailedOperation.CheckSimilarPersonTimeExceed"
-
 	// 操作冲突，请勿同时操作相同的Person。
 	FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
 
@@ -80,12 +74,6 @@ const (
 	// 任务无法回滚。
 	FAILEDOPERATION_JOBCANNNOTROLLBACK = "FailedOperation.JobCannnotRollback"
 
-	// 人员查重记录不存在。
-	FAILEDOPERATION_JOBIDNOTEXIST = "FailedOperation.JobIdNotExist"
-
-	// 没有人员查重记录。
-	FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-
 	// 请求频率超过限制。
 	FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 
@@ -98,14 +86,14 @@ const (
 	// 算法服务异常，请重试。
 	FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 
+	// 内部错误。
+	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+
 	// 人员库升级任务不存在。
 	FAILEDOPERATION_UPGRADEJOBIDNOTEXIST = "FailedOperation.UpgradeJobIdNotExist"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
-
-	// 参数错误。
-	INVALIDPARAMETER = "InvalidParameter"
 
 	// 参数不合法。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

@@ -232,7 +232,7 @@ func NewCloseProVersionResponse() (response *CloseProVersionResponse) {
 }
 
 // CloseProVersion
-// 本接口 (CloseProVersion) 用于关闭专业版。
+// 本接口 (CloseProVersion) 已全面改为授权模式,该接口只能解绑授权.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOSEPROVERSION = "FailedOperation.CloseProVersion"
@@ -252,7 +252,7 @@ func (c *Client) CloseProVersion(request *CloseProVersionRequest) (response *Clo
 }
 
 // CloseProVersion
-// 本接口 (CloseProVersion) 用于关闭专业版。
+// 本接口 (CloseProVersion) 已全面改为授权模式,该接口只能解绑授权.
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOSEPROVERSION = "FailedOperation.CloseProVersion"

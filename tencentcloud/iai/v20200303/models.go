@@ -231,63 +231,6 @@ type Candidate struct {
 	PersonGroupInfos []*PersonGroupInfo `json:"PersonGroupInfos,omitempty" name:"PersonGroupInfos"`
 }
 
-type CheckSimilarPersonRequest struct {
-	*tchttp.BaseRequest
-
-	// 待整理的人员库列表。 
-	// 人员库总人数不可超过200万，人员库个数不可超过10个。
-	// 数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
-
-	// 人员查重整理力度的控制。
-	// 1：力度较高的人员整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
-	// 2：力度较低的人员整理，非重复身份的误清除率较低，对应稍低的重复身份消除率。
-	UniquePersonControl *int64 `json:"UniquePersonControl,omitempty" name:"UniquePersonControl"`
-}
-
-func (r *CheckSimilarPersonRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CheckSimilarPersonRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "GroupIds")
-	delete(f, "UniquePersonControl")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckSimilarPersonRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type CheckSimilarPersonResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查重任务ID，用于查询、获取查重的进度和结果。
-		JobId *string `json:"JobId,omitempty" name:"JobId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CheckSimilarPersonResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CheckSimilarPersonResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CompareFaceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1473,57 +1416,6 @@ func (r *DetectLiveFaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type EstimateCheckSimilarPersonCostTimeRequest struct {
-	*tchttp.BaseRequest
-
-	// 待整理的人员库列表。 
-	// 人员库总人数不可超过200万，人员库个数不可超过10个。
-	// 数组元素取值为创建人员库接口中的GroupId
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
-}
-
-func (r *EstimateCheckSimilarPersonCostTimeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EstimateCheckSimilarPersonCostTimeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "GroupIds")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EstimateCheckSimilarPersonCostTimeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type EstimateCheckSimilarPersonCostTimeResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 人员查重任务预估需要耗费时间。 单位为分钟。
-		EstimatedTimeCost *uint64 `json:"EstimatedTimeCost,omitempty" name:"EstimatedTimeCost"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *EstimateCheckSimilarPersonCostTimeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EstimateCheckSimilarPersonCostTimeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type Eye struct {
 
 	// 识别是否佩戴眼镜。
@@ -1839,62 +1731,6 @@ type FaceShape struct {
 
 	// 右瞳孔轮廓的 1 个点。
 	RightPupil []*Point `json:"RightPupil,omitempty" name:"RightPupil"`
-}
-
-type GetCheckSimilarPersonJobIdListRequest struct {
-	*tchttp.BaseRequest
-
-	// 起始序号，默认值为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回数量，默认值为10，最大值为1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *GetCheckSimilarPersonJobIdListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCheckSimilarPersonJobIdListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCheckSimilarPersonJobIdListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type GetCheckSimilarPersonJobIdListResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 人员查重任务信息列表。
-		JobIdInfos []*JobIdInfo `json:"JobIdInfos,omitempty" name:"JobIdInfos"`
-
-		// 查重任务总数量。
-		JobIdNum *uint64 `json:"JobIdNum,omitempty" name:"JobIdNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetCheckSimilarPersonJobIdListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetCheckSimilarPersonJobIdListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetGroupInfoRequest struct {
@@ -2259,59 +2095,6 @@ func (r *GetPersonListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetSimilarPersonResultRequest struct {
-	*tchttp.BaseRequest
-
-	// 查重任务ID，用于查询、获取查重的进度和结果。取值为人员查重接口返回的JobId
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
-}
-
-func (r *GetSimilarPersonResultRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetSimilarPersonResultRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "JobId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSimilarPersonResultRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type GetSimilarPersonResultResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查重任务完成进度。取值[0.0，100.0]。当且仅当值为100时，SimilarPersons才有意义。
-		Progress *float64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 疑似同一人的人员信息文件临时下载链接， 有效时间为5分钟，结果文件实际保存90天。
-	// 文件内容由 SimilarPerson 的数组组成。
-		SimilarPersonsUrl *string `json:"SimilarPersonsUrl,omitempty" name:"SimilarPersonsUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *GetSimilarPersonResultResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetSimilarPersonResultResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetUpgradeGroupFaceModelVersionJobListRequest struct {
 	*tchttp.BaseRequest
 
@@ -2524,21 +2307,6 @@ type HeadPose struct {
 
 	// 平面旋转[-180,180]。
 	Roll *int64 `json:"Roll,omitempty" name:"Roll"`
-}
-
-type JobIdInfo struct {
-
-	// 查重任务ID，用于查询、获取查重的进度和结果。
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
-
-	// 查重起始时间。 
-	// StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-	// Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
-	// 有关更多信息，请参阅 Unix 时间。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查重任务是否已完成。0: 成功 1: 未完成 2: 失败
-	JobStatus *int64 `json:"JobStatus,omitempty" name:"JobStatus"`
 }
 
 type ModifyGroupRequest struct {

@@ -2042,7 +2042,7 @@ type IdCardOCRVerificationResponse struct {
 	// -3: 非法姓名（长度、格式等不正确）
 	// -4: 证件库服务异常
 	// -5: 证件库中无此身份证记录
-	// -6: 公安比对系统升级中，请稍后再试
+	// -6: 权威比对系统升级中，请稍后再试
 	// -7: 认证次数超过当日限制
 		Result *string `json:"Result,omitempty" name:"Result"`
 
@@ -2134,7 +2134,7 @@ type IdCardVerificationResponse struct {
 	// -3: 非法姓名（长度、格式等不正确）
 	// -4: 证件库服务异常
 	// -5: 证件库中无此身份证记录
-	// -6: 公安比对系统升级中，请稍后再试
+	// -6: 权威比对系统升级中，请稍后再试
 	// -7: 认证次数超过当日限制
 		Result *string `json:"Result,omitempty" name:"Result"`
 

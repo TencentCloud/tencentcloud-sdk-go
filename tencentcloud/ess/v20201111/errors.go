@@ -17,6 +17,9 @@ package v20201111
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"
 
@@ -32,7 +35,7 @@ const (
 	// 流程已关联文档。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 
-	// 模版无资源信息。
+	// 模板无资源信息。
 	FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 
 	// 内部错误。

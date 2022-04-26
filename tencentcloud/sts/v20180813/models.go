@@ -184,6 +184,77 @@ func (r *AssumeRoleWithSAMLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssumeRoleWithWebIdentityRequest struct {
+	*tchttp.BaseRequest
+
+	// 身份提供商名称
+	ProviderId *string `json:"ProviderId,omitempty" name:"ProviderId"`
+
+	// IdP签发的OIDC令牌
+	WebIdentityToken *string `json:"WebIdentityToken,omitempty" name:"WebIdentityToken"`
+
+	// 角色访问描述名
+	RoleArn *string `json:"RoleArn,omitempty" name:"RoleArn"`
+
+	// 会话名称
+	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
+
+	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	DurationSeconds *int64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
+}
+
+func (r *AssumeRoleWithWebIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssumeRoleWithWebIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProviderId")
+	delete(f, "WebIdentityToken")
+	delete(f, "RoleArn")
+	delete(f, "RoleSessionName")
+	delete(f, "DurationSeconds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleWithWebIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssumeRoleWithWebIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 临时秘钥过期时间(时间戳)
+		ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+		// 临时秘钥过期时间
+		Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
+
+		// 临时秘钥
+		Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssumeRoleWithWebIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssumeRoleWithWebIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Credentials struct {
 
 	// token。token长度和绑定的策略有关，最长不超过4096字节。

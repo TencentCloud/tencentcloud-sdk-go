@@ -2106,7 +2106,8 @@ type EventContent struct {
 	// <li>Material.Deleted：媒体删除事件；</li>
 	// <li>Class.Created：分类新增事件；</li>
 	// <li>Class.Moved：分类移动事件；</li>
-	// <li>Class.Deleted：分类删除事件。</li>
+	// <li>Class.Deleted：分类删除事件；</li>
+	// <li>Task.VideoExportCompleted：视频导出完成事件。 </li>
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
@@ -2153,6 +2154,10 @@ type EventContent struct {
 	// 分类删除事件。仅当 EventType 为 Class.Deleted 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassDeletedEvent *ClassDeletedEvent `json:"ClassDeletedEvent,omitempty" name:"ClassDeletedEvent"`
+
+	// 视频导出完成事件。仅当 EventType 为 Task.VideoExportCompleted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoExportCompletedEvent *VideoExportCompletedEvent `json:"VideoExportCompletedEvent,omitempty" name:"VideoExportCompletedEvent"`
 }
 
 type ExportVideoByEditorTrackDataRequest struct {
@@ -4795,6 +4800,29 @@ type VideoEncodingPresetVideoSettingForUpdate struct {
 	// 指定帧率。单位 Hz。
 	// 不填则不修改。
 	FrameRate *float64 `json:"FrameRate,omitempty" name:"FrameRate"`
+}
+
+type VideoExportCompletedEvent struct {
+
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值有：
+	// <li>SUCCESS：成功；</li>
+	// <li>FAIL：失败。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，取值有：
+	// <li>0：成功；</li>
+	// <li>其他值：失败。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *VideoEditProjectOutput `json:"Output,omitempty" name:"Output"`
 }
 
 type VideoExportExtensionArgs struct {

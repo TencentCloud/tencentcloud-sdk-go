@@ -53,6 +53,96 @@ type CcInfo struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
+type ChannelCreateFlowByFilesRequest struct {
+	*tchttp.BaseRequest
+
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署文件资源Id列表，目前仅支持单个文件
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 流程名称，长度不超过200个字符
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 流程的描述，长度不超过1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 流程的类型，长度不超过255个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+
+	// 流程回调地址，长度不超过255个字符
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 流程签约方列表，最多不超过5个参与方
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
+
+	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 签署文件中的控件，如：填写控件等
+	Components []*Component `json:"Components,omitempty" name:"Components"`
+}
+
+func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "FileIds")
+	delete(f, "FlowName")
+	delete(f, "Deadline")
+	delete(f, "FlowDescription")
+	delete(f, "FlowType")
+	delete(f, "CallbackUrl")
+	delete(f, "FlowApprovers")
+	delete(f, "Unordered")
+	delete(f, "Components")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChannelCreateFlowByFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 合同流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChannelCreateFlowByFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Component struct {
 
 	// 控件编号
@@ -279,6 +369,67 @@ func (r *CreateFlowsByTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSealByImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CreateSealByImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealByImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SealName")
+	delete(f, "SealImage")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealByImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSealByImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 印章id
+		SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSealByImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealByImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

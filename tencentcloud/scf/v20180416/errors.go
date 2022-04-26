@@ -32,6 +32,9 @@ const (
 	// 当前异步事件状态不支持此操作，请稍后重试。
 	FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
 
+	// 登录信息验证失败，token 验证失败。
+	FAILEDOPERATION_AUTHFAILURE = "FailedOperation.AuthFailure"
+
 	// 请求role信息失败。
 	FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 
@@ -287,6 +290,12 @@ const (
 	// 默认Namespace无法创建。
 	INVALIDPARAMETERVALUE_DEFAULTNAMESPACE = "InvalidParameterValue.DefaultNamespace"
 
+	// DemoID  对应的函数模板 ，code 参数值有误，请确认后重试。
+	INVALIDPARAMETERVALUE_DEMO = "InvalidParameterValue.Demo"
+
+	// DemoId 不存在。
+	INVALIDPARAMETERVALUE_DEMOID = "InvalidParameterValue.DemoId"
+
 	// Description传入错误。
 	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 
@@ -430,6 +439,9 @@ const (
 
 	// 不支持的函数版本。
 	INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
+
+	// 查询版本详情，版本参数传入错误。
+	INVALIDPARAMETERVALUE_QUERYVERSION = "InvalidParameterValue.QueryVersion"
 
 	// 企业版镜像实例ID[RegistryId]传值错误。
 	INVALIDPARAMETERVALUE_REGISTRYID = "InvalidParameterValue.RegistryId"

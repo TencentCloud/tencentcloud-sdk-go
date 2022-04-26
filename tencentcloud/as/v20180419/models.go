@@ -214,6 +214,12 @@ type AutoScalingAdvice struct {
 	// 伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 
+	// 伸缩组警告级别。取值范围：<br>
+	// <li>NORMAL：正常<br>
+	// <li>WARNING：警告级别<br>
+	// <li>CRITICAL：严重级别<br>
+	Level *string `json:"Level,omitempty" name:"Level"`
+
 	// 伸缩组配置建议集合。
 	Advices []*Advice `json:"Advices,omitempty" name:"Advices"`
 }
@@ -226,7 +232,17 @@ type AutoScalingGroup struct {
 	// 伸缩组名称
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitempty" name:"AutoScalingGroupName"`
 
-	// 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br><li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
+	// 伸缩组当前状态。取值范围：<br>
+	// <li>NORMAL：正常<br>
+	// <li>CVM_ABNORMAL：启动配置异常<br>
+	// <li>LB_ABNORMAL：负载均衡器异常<br>
+	// <li>LB_LISTENER_ABNORMAL：负载均衡器监听器异常<br>
+	// <li>LB_LOCATION_ABNORMAL：负载均衡器监听器转发配置异常<br>
+	// <li>VPC_ABNORMAL：VPC网络异常<br>
+	// <li>SUBNET_ABNORMAL：VPC子网异常<br>
+	// <li>INSUFFICIENT_BALANCE：余额不足<br>
+	// <li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
+	// <li>LB_BACKEND_VPC_NOT_MATCH：CLB实例VPC与伸缩组VPC不匹配
 	AutoScalingGroupStatus *string `json:"AutoScalingGroupStatus,omitempty" name:"AutoScalingGroupStatus"`
 
 	// 创建时间，采用UTC标准计时
@@ -3157,6 +3173,84 @@ func (r *ModifyLaunchConfigurationAttributesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLaunchConfigurationAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLifecycleHookRequest struct {
+	*tchttp.BaseRequest
+
+	// 生命周期挂钩ID。
+	LifecycleHookId *string `json:"LifecycleHookId,omitempty" name:"LifecycleHookId"`
+
+	// 生命周期挂钩名称。
+	LifecycleHookName *string `json:"LifecycleHookName,omitempty" name:"LifecycleHookName"`
+
+	// 进入生命周期挂钩场景，取值包括：
+	// <li> INSTANCE_LAUNCHING：实例启动后
+	// <li> INSTANCE_TERMINATING：实例销毁前
+	LifecycleTransition *string `json:"LifecycleTransition,omitempty" name:"LifecycleTransition"`
+
+	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值包括：
+	// <li> CONTINUE： 超时后继续伸缩活动
+	// <li> ABANDON：超时后终止伸缩活动
+	DefaultResult *string `json:"DefaultResult,omitempty" name:"DefaultResult"`
+
+	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从 30 到 7200 秒。
+	HeartbeatTimeout *uint64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
+
+	// 弹性伸缩向通知目标发送的附加信息。
+	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
+
+	// 进行生命周期挂钩的场景类型，取值范围包括`NORMAL`和 `EXTENSION`。说明：设置为`EXTENSION`值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为`NORMAL`则不会在这些接口中触发生命周期挂钩。
+	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
+
+	// 通知目标信息。
+	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+}
+
+func (r *ModifyLifecycleHookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLifecycleHookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LifecycleHookId")
+	delete(f, "LifecycleHookName")
+	delete(f, "LifecycleTransition")
+	delete(f, "DefaultResult")
+	delete(f, "HeartbeatTimeout")
+	delete(f, "NotificationMetadata")
+	delete(f, "LifecycleTransitionType")
+	delete(f, "NotificationTarget")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLifecycleHookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyLifecycleHookResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyLifecycleHookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLifecycleHookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2522,6 +2522,53 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeEncryptionKeysRequest() (request *DescribeEncryptionKeysRequest) {
+    request = &DescribeEncryptionKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeEncryptionKeys")
+    
+    
+    return
+}
+
+func NewDescribeEncryptionKeysResponse() (response *DescribeEncryptionKeysResponse) {
+    response = &DescribeEncryptionKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEncryptionKeys
+// 获取实例的密钥信息列表。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) DescribeEncryptionKeys(request *DescribeEncryptionKeysRequest) (response *DescribeEncryptionKeysResponse, err error) {
+    return c.DescribeEncryptionKeysWithContext(context.Background(), request)
+}
+
+// DescribeEncryptionKeys
+// 获取实例的密钥信息列表。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+func (c *Client) DescribeEncryptionKeysWithContext(ctx context.Context, request *DescribeEncryptionKeysRequest) (response *DescribeEncryptionKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeEncryptionKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEncryptionKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEncryptionKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},

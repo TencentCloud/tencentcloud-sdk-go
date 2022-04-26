@@ -2905,7 +2905,7 @@ func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
 }
 
 // DescribeCDBProxy
-// 查询数据库代理
+// 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -2914,7 +2914,7 @@ func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *D
 }
 
 // DescribeCDBProxy
-// 查询数据库代理
+// 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"

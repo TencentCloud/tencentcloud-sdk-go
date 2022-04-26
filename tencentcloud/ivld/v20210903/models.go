@@ -1068,6 +1068,7 @@ type DescribeTaskDetailResponse struct {
 	Response *struct {
 
 		// 任务信息，不包含任务结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
 
 		// 任务结果数据，只在任务结束时返回
@@ -1216,7 +1217,8 @@ type ImportMediaRequest struct {
 	// 待分析视频的名称，指定后可支持筛选，最多100个中文字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)
+	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+	// 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
 	WriteBackCosPath *string `json:"WriteBackCosPath,omitempty" name:"WriteBackCosPath"`
 
 	// 自定义标签，可用于查询
@@ -1374,6 +1376,10 @@ type MediaInfo struct {
 	// 媒资自定义标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 媒资导入完成后的回调地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
 type MediaMetadata struct {
@@ -1708,6 +1714,10 @@ type TaskInfo struct {
 	// 媒资自定义标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 任务分析完成后的后调地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
 }
 
 type TextAppearInfo struct {

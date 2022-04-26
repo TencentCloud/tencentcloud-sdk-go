@@ -233,6 +233,12 @@ type CreateMigrateJobRequest struct {
 
 	// 迁移实例的tag
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+	SrcNodeType *string `json:"SrcNodeType,omitempty" name:"SrcNodeType"`
+
+	// 源实例信息，具体内容跟迁移任务类型相关
+	SrcInfoMulti []*SrcInfo `json:"SrcInfoMulti,omitempty" name:"SrcInfoMulti"`
 }
 
 func (r *CreateMigrateJobRequest) ToJsonString() string {
@@ -257,6 +263,8 @@ func (r *CreateMigrateJobRequest) FromJsonString(s string) error {
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
 	delete(f, "Tags")
+	delete(f, "SrcNodeType")
+	delete(f, "SrcInfoMulti")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrateJobRequest has unknown keys!", "")
 	}
@@ -1117,6 +1125,12 @@ type ModifyMigrateJobRequest struct {
 	// 
 	// 如果是'整个实例'的迁移模式,不需设置该字段
 	DatabaseInfo *string `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
+
+	// 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+	SrcNodeType *string `json:"SrcNodeType,omitempty" name:"SrcNodeType"`
+
+	// 源实例信息，具体内容跟迁移任务类型相关
+	SrcInfoMulti []*SrcInfo `json:"SrcInfoMulti,omitempty" name:"SrcInfoMulti"`
 }
 
 func (r *ModifyMigrateJobRequest) ToJsonString() string {
@@ -1139,6 +1153,8 @@ func (r *ModifyMigrateJobRequest) FromJsonString(s string) error {
 	delete(f, "DstAccessType")
 	delete(f, "DstInfo")
 	delete(f, "DatabaseInfo")
+	delete(f, "SrcNodeType")
+	delete(f, "SrcInfoMulti")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrateJobRequest has unknown keys!", "")
 	}

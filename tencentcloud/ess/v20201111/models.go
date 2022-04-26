@@ -66,6 +66,21 @@ type ApproverInfo struct {
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 }
 
+type Caller struct {
+
+	// 应用号
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 主机构ID
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+
+	// 下属机构ID
+	SubOrganizationId *string `json:"SubOrganizationId,omitempty" name:"SubOrganizationId"`
+
+	// 经办人的用户ID
+	OperatorId *string `json:"OperatorId,omitempty" name:"OperatorId"`
+}
+
 type CancelFlowRequest struct {
 	*tchttp.BaseRequest
 
@@ -899,6 +914,100 @@ func (r *StartFlowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFile struct {
+
+	// Base64编码后的文件内容
+	FileBody *string `json:"FileBody,omitempty" name:"FileBody"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+type UploadFilesRequest struct {
+	*tchttp.BaseRequest
+
+	// 调用方信息
+	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
+
+	// 文件对应业务类型，用于区分文件存储路径：
+	// 1. TEMPLATE - 模版； 文件类型：.pdf/.html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
+	// 3. FLOW - 签署过程 文件类型：.pdf/.html
+	// 4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+	// 5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
+	// 6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 上传文件内容数组，最多支持20个文件
+	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
+
+	// 上传文件链接数组，最多支持20个URL
+	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
+
+	// 是否将pdf灰色矩阵置白
+	// true--是，处理置白
+	// false--否，不处理
+	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
+
+	// 特殊文件类型需要指定文件类型：
+	// HTML-- .html文件
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 用户自定义ID数组，与上传文件一一对应
+	CustomIds []*string `json:"CustomIds,omitempty" name:"CustomIds"`
+}
+
+func (r *UploadFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Caller")
+	delete(f, "BusinessType")
+	delete(f, "FileInfos")
+	delete(f, "FileUrls")
+	delete(f, "CoverRect")
+	delete(f, "FileType")
+	delete(f, "CustomIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 文件id数组
+		FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+		// 上传成功文件数量
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UploadFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

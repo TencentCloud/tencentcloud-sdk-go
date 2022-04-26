@@ -217,6 +217,55 @@ func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, request *Ass
     return
 }
 
+func NewAssumeRoleWithWebIdentityRequest() (request *AssumeRoleWithWebIdentityRequest) {
+    request = &AssumeRoleWithWebIdentityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithWebIdentity")
+    
+    
+    return
+}
+
+func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentityResponse) {
+    response = &AssumeRoleWithWebIdentityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssumeRoleWithWebIdentity
+// 申请OIDC角色临时密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityRequest) (response *AssumeRoleWithWebIdentityResponse, err error) {
+    return c.AssumeRoleWithWebIdentityWithContext(context.Background(), request)
+}
+
+// AssumeRoleWithWebIdentity
+// 申请OIDC角色临时密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssumeRoleWithWebIdentityWithContext(ctx context.Context, request *AssumeRoleWithWebIdentityRequest) (response *AssumeRoleWithWebIdentityResponse, err error) {
+    if request == nil {
+        request = NewAssumeRoleWithWebIdentityRequest()
+    }
+    
+    request.SetContext(ctx)
+    
+    response = NewAssumeRoleWithWebIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCallerIdentityRequest() (request *GetCallerIdentityRequest) {
     request = &GetCallerIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},

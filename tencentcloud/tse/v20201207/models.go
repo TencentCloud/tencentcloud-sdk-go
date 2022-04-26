@@ -89,6 +89,14 @@ type DescribeSREInstanceAccessAddressResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ConsoleIntranetAddress *string `json:"ConsoleIntranetAddress,omitempty" name:"ConsoleIntranetAddress"`
 
+		// 客户端公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		InternetBandWidth *int64 `json:"InternetBandWidth,omitempty" name:"InternetBandWidth"`
+
+		// 控制台公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ConsoleInternetBandWidth *int64 `json:"ConsoleInternetBandWidth,omitempty" name:"ConsoleInternetBandWidth"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -332,6 +340,22 @@ type SREInstance struct {
 	// 引擎实例控制台默认密码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsoleDefaultPwd *string `json:"ConsoleDefaultPwd,omitempty" name:"ConsoleDefaultPwd"`
+
+	// 交易付费类型，0后付费/1预付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeType *int64 `json:"TradeType,omitempty" name:"TradeType"`
+
+	// 自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 预付费到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurDeadline *string `json:"CurDeadline,omitempty" name:"CurDeadline"`
+
+	// 隔离开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
 }
 
 type ServiceGovernanceInfo struct {

@@ -533,6 +533,7 @@ func NewCreateDataTransformResponse() (response *CreateDataTransformResponse) {
 // 本接口用于创建数据加工任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
@@ -553,6 +554,7 @@ func (c *Client) CreateDataTransform(request *CreateDataTransformRequest) (respo
 // 本接口用于创建数据加工任务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
@@ -1418,6 +1420,7 @@ func NewDeleteDataTransformResponse() (response *DeleteDataTransformResponse) {
 // 本接口用于删除数据加工任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
@@ -1437,6 +1440,7 @@ func (c *Client) DeleteDataTransform(request *DeleteDataTransformRequest) (respo
 // 本接口用于删除数据加工任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKNOTEXIST = "InvalidParameter.DataFromTaskNotExist"
@@ -2265,6 +2269,7 @@ func NewDescribeDataTransformInfoResponse() (response *DescribeDataTransformInfo
 // 本接口用于获取数据加工任务列表基本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2283,6 +2288,7 @@ func (c *Client) DescribeDataTransformInfo(request *DescribeDataTransformInfoReq
 // 本接口用于获取数据加工任务列表基本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3641,6 +3647,7 @@ func NewModifyDataTransformResponse() (response *ModifyDataTransformResponse) {
 // 本接口用于修改数据加工任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
@@ -3662,6 +3669,7 @@ func (c *Client) ModifyDataTransform(request *ModifyDataTransformRequest) (respo
 // 本接口用于修改数据加工任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"

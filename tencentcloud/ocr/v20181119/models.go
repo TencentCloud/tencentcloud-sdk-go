@@ -3990,13 +3990,16 @@ type RecognizeHealthCodeOCRRequest struct {
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 需要识别的健康码类型列表，为空或不填表示默认为粤康码。
+	// 需要识别的健康码类型列表，为空或不填表示默认为自动识别。
+	// 0:自动识别
 	// 
 	// 1:粤康码
 	// 
 	// 2:随申码
 	// 
 	// 3:健康宝
+	// 
+	// 4.穗康码
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -4031,7 +4034,7 @@ type RecognizeHealthCodeOCRResponse struct {
 		// 持码人身份证号，如：11**************01
 		IDNumber *string `json:"IDNumber,omitempty" name:"IDNumber"`
 
-		// 健康码更新时间，格式为：XXXX-XX-XX XX:XX:XX
+		// 健康码更新时间
 		Time *string `json:"Time,omitempty" name:"Time"`
 
 		// 健康码颜色：绿色、黄色、红色
@@ -4043,7 +4046,7 @@ type RecognizeHealthCodeOCRResponse struct {
 		// 核酸检测结果：阴性、阳性、暂无核酸检测记录
 		TestingResult *string `json:"TestingResult,omitempty" name:"TestingResult"`
 
-		// 核酸检测时间，格式为：XXXX-XX-XX XX:XX
+		// 核酸检测时间
 		TestingTime *string `json:"TestingTime,omitempty" name:"TestingTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
