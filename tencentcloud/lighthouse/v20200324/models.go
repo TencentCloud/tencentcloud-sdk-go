@@ -3493,6 +3493,59 @@ type InternetAccessible struct {
 	PublicIpAssigned *bool `json:"PublicIpAssigned,omitempty" name:"PublicIpAssigned"`
 }
 
+type IsolateInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求退还实例和数据盘数量总计上限为20。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 是否退还挂载的数据盘。取值范围：
+	// TRUE：表示退还实例同时退还其挂载的数据盘。
+	// FALSE：表示退还实例同时不再退还其挂载的数据盘。
+	// 默认取值：TRUE。
+	IsolateDataDisk *bool `json:"IsolateDataDisk,omitempty" name:"IsolateDataDisk"`
+}
+
+func (r *IsolateInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "IsolateDataDisk")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type IsolateInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *IsolateInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type KeyPair struct {
 
 	// 密钥对 ID ，是密钥对的唯一标识。
@@ -4116,7 +4169,7 @@ type RenewDiskChargePrepaid struct {
 type RenewInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID列表。一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。

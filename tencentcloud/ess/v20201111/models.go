@@ -499,6 +499,15 @@ type CreateSchemeUrlRequest struct {
 
 	// 合同详情 id (PathType=1时必传)
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 企业名称
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 链接类型 HTTP：跳转电子签小程序的http_url，APP：第三方APP或小程序跳转电子签小程序，默认为HTTP类型
+	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
+
+	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
+	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -519,6 +528,9 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "PathType")
 	delete(f, "FlowId")
+	delete(f, "OrganizationName")
+	delete(f, "EndPoint")
+	delete(f, "AutoJumpBack")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}

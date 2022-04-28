@@ -180,9 +180,9 @@ type AdaptiveDynamicStreamingTemplate struct {
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// DRM 类型，取值范围：
-	// <li>FairPlay；</li>
-	// <li>SimpleAES；</li>
-	// <li>Widevine。</li>
+	// <li>SimpleAES</li>
+	// <li>Widevine</li>
+	// <li>FairPlay</li>
 	// 如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
@@ -2869,8 +2869,10 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// 模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// DRM方案类型，取值范围：
-	// <li>SimpleAES。</li>
+	// DRM 方案类型，取值范围：
+	// <li>SimpleAES</li>
+	// <li>Widevine</li>
+	// <li>FairPlay</li>
 	// 如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
@@ -6452,6 +6454,63 @@ func (r *DescribeImageProcessingTemplatesResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeImageReviewUsageDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeImageReviewUsageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageReviewUsageDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageReviewUsageDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImageReviewUsageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片智能识别次数统计数据，展示查询时间范围内的图片智能识别次数的概览数据。
+		ImageReviewUsageDataSet []*ImageReviewUsageDataItem `json:"ImageReviewUsageDataSet,omitempty" name:"ImageReviewUsageDataSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeImageReviewUsageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageReviewUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeImageSpriteTemplatesRequest struct {
 	*tchttp.BaseRequest
 
@@ -8739,6 +8798,15 @@ type ImageProcessingTemplate struct {
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type ImageReviewUsageDataItem struct {
+
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 次数。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type ImageScale struct {
@@ -13450,6 +13518,63 @@ type RestoreMediaTask struct {
 
 	// 该字段已废弃。
 	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type ReviewImageRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 图片智能识别模板 ID，当前固定填 10。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *ReviewImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReviewImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReviewImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReviewImageResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 图片智能识别任务结果。
+		ReviewResultSet []*ContentReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReviewImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReviewImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SampleSnapshotTaskInput struct {

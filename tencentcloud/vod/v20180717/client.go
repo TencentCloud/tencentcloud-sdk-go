@@ -3932,6 +3932,71 @@ func (c *Client) DescribeImageProcessingTemplatesWithContext(ctx context.Context
     return
 }
 
+func NewDescribeImageReviewUsageDataRequest() (request *DescribeImageReviewUsageDataRequest) {
+    request = &DescribeImageReviewUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeImageReviewUsageData")
+    
+    
+    return
+}
+
+func NewDescribeImageReviewUsageDataResponse() (response *DescribeImageReviewUsageDataResponse) {
+    response = &DescribeImageReviewUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeImageReviewUsageData
+// 该接口返回查询时间范围内每天使用的图片智能识别用量信息。
+//
+//    1. 可以查询最近365天内的图片智能识别统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeImageReviewUsageData(request *DescribeImageReviewUsageDataRequest) (response *DescribeImageReviewUsageDataResponse, err error) {
+    return c.DescribeImageReviewUsageDataWithContext(context.Background(), request)
+}
+
+// DescribeImageReviewUsageData
+// 该接口返回查询时间范围内每天使用的图片智能识别用量信息。
+//
+//    1. 可以查询最近365天内的图片智能识别统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeImageReviewUsageDataWithContext(ctx context.Context, request *DescribeImageReviewUsageDataRequest) (response *DescribeImageReviewUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageReviewUsageDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageReviewUsageData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageReviewUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageSpriteTemplatesRequest() (request *DescribeImageSpriteTemplatesRequest) {
     request = &DescribeImageSpriteTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8016,6 +8081,79 @@ func (c *Client) ResetProcedureTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewResetProcedureTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReviewImageRequest() (request *ReviewImageRequest) {
+    request = &ReviewImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "ReviewImage")
+    
+    
+    return
+}
+
+func NewReviewImageResponse() (response *ReviewImageResponse) {
+    response = &ReviewImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReviewImage
+// 对点播中的图片文件发起智能识别（令人反感的信息、不安全的信息、不适宜的信息）任务。
+//
+// 
+//
+// ><li>图片文件大小支持：文件 < 5M；</li>
+//
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响智能识别效果；</li>
+//
+// ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReviewImage(request *ReviewImageRequest) (response *ReviewImageResponse, err error) {
+    return c.ReviewImageWithContext(context.Background(), request)
+}
+
+// ReviewImage
+// 对点播中的图片文件发起智能识别（令人反感的信息、不安全的信息、不适宜的信息）任务。
+//
+// 
+//
+// ><li>图片文件大小支持：文件 < 5M；</li>
+//
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响智能识别效果；</li>
+//
+// ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReviewImageWithContext(ctx context.Context, request *ReviewImageRequest) (response *ReviewImageResponse, err error) {
+    if request == nil {
+        request = NewReviewImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReviewImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReviewImageResponse()
     err = c.Send(request, response)
     return
 }

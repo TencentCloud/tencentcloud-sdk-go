@@ -519,6 +519,10 @@ type ContentInfo struct {
 	// json格式内容描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Json *JsonInfo `json:"Json,omitempty" name:"Json"`
+
+	// parquet格式内容描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parquet *ParquetInfo `json:"Parquet,omitempty" name:"Parquet"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -4803,6 +4807,25 @@ func (r *OpenKafkaConsumerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenKafkaConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ParquetInfo struct {
+
+	// ParquetKeyInfo数组
+	ParquetKeyInfo []*ParquetKeyInfo `json:"ParquetKeyInfo,omitempty" name:"ParquetKeyInfo"`
+}
+
+type ParquetKeyInfo struct {
+
+	// 键值名称
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+
+	// 数据类型，目前支持6种类型：string、boolean、int32、int64、float、double
+	KeyType *string `json:"KeyType,omitempty" name:"KeyType"`
+
+	// 解析失败赋值信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyNonExistingField *string `json:"KeyNonExistingField,omitempty" name:"KeyNonExistingField"`
 }
 
 type PartitionInfo struct {

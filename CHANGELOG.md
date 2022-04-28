@@ -1,3 +1,101 @@
+# Release v1.0.392
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 40 次发布
+
+发布时间：2022-04-29 06:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRoute](https://cloud.tencent.com/document/api/597/73213)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 21 次发布
+
+发布时间：2022-04-29 06:05:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ParquetInfo](https://cloud.tencent.com/document/api/614/56471#ParquetInfo)
+* [ParquetKeyInfo](https://cloud.tencent.com/document/api/614/56471#ParquetKeyInfo)
+
+修改数据结构：
+
+* [ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo)
+
+	* 新增成员：Parquet
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 5 次发布
+
+发布时间：2022-04-29 06:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+
+	* 新增入参：OrganizationName, EndPoint, AutoJumpBack
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 30 次发布
+
+发布时间：2022-04-29 06:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [IsolateInstances](https://cloud.tencent.com/document/api/1207/73214)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 102 次发布
+
+发布时间：2022-04-29 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeImageReviewUsageData](https://cloud.tencent.com/document/api/266/73215)
+* [ReviewImage](https://cloud.tencent.com/document/api/266/73217)
+
+新增数据结构：
+
+* [ImageReviewUsageDataItem](https://cloud.tencent.com/document/api/266/31773#ImageReviewUsageDataItem)
+
+
+
 # Release v1.0.391
 
 ## 弹性伸缩(as) 版本：2018-04-19

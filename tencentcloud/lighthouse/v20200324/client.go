@@ -3344,6 +3344,87 @@ func (c *Client) InquirePriceRenewInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewIsolateInstancesRequest() (request *IsolateInstancesRequest) {
+    request = &IsolateInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("lighthouse", APIVersion, "IsolateInstances")
+    
+    
+    return
+}
+
+func NewIsolateInstancesResponse() (response *IsolateInstancesResponse) {
+    response = &IsolateInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateInstances
+// 本接口(IsolateInstances)用于退还一个或多个轻量应用服务器实例。
+//
+// * 只有状态为 RUNNING 或 STOPPED 的实例才可以进行此操作。
+//
+// * 接口调用成功后，实例会进入SHUTDOWN 状态。
+//
+// * 支持批量操作。每次请求批量资源（包括实例与数据盘）的上限为 20。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
+//  INTERNALERROR_DESCRIBERESOURCESRETURNABLEERROR = "InternalError.DescribeResourcesReturnableError"
+//  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
+//  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = "UnsupportedOperation.ResourceNotReturnable"
+func (c *Client) IsolateInstances(request *IsolateInstancesRequest) (response *IsolateInstancesResponse, err error) {
+    return c.IsolateInstancesWithContext(context.Background(), request)
+}
+
+// IsolateInstances
+// 本接口(IsolateInstances)用于退还一个或多个轻量应用服务器实例。
+//
+// * 只有状态为 RUNNING 或 STOPPED 的实例才可以进行此操作。
+//
+// * 接口调用成功后，实例会进入SHUTDOWN 状态。
+//
+// * 支持批量操作。每次请求批量资源（包括实例与数据盘）的上限为 20。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
+//  INTERNALERROR_DESCRIBERESOURCESRETURNABLEERROR = "InternalError.DescribeResourcesReturnableError"
+//  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
+//  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = "UnsupportedOperation.ResourceNotReturnable"
+func (c *Client) IsolateInstancesWithContext(ctx context.Context, request *IsolateInstancesRequest) (response *IsolateInstancesResponse, err error) {
+    if request == nil {
+        request = NewIsolateInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBlueprintAttributeRequest() (request *ModifyBlueprintAttributeRequest) {
     request = &ModifyBlueprintAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4116,6 +4197,12 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
 // RenewInstances
 // 本接口(RenewInstances)用于续费一个或多个轻量应用服务器实例。
 //
+// * 只有状态为 RUNNING，STOPPED 或 SHUTDOWN 的实例才可以进行此操作。
+//
+// * 支持批量操作。每次请求批量实例的上限为 100。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
@@ -4138,6 +4225,12 @@ func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *Renew
 
 // RenewInstances
 // 本接口(RenewInstances)用于续费一个或多个轻量应用服务器实例。
+//
+// * 只有状态为 RUNNING，STOPPED 或 SHUTDOWN 的实例才可以进行此操作。
+//
+// * 支持批量操作。每次请求批量实例的上限为 100。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

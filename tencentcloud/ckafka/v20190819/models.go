@@ -1583,6 +1583,67 @@ func (r *DeleteInstancePreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRouteRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例唯一id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 路由id
+	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
+
+	// 调用方appId
+	CallerAppid *int64 `json:"CallerAppid,omitempty" name:"CallerAppid"`
+
+	// 删除路由时间
+	DeleteRouteTime *string `json:"DeleteRouteTime,omitempty" name:"DeleteRouteTime"`
+}
+
+func (r *DeleteRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RouteId")
+	delete(f, "CallerAppid")
+	delete(f, "DeleteRouteTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteRouteTriggerTimeRequest struct {
 	*tchttp.BaseRequest
 
