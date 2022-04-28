@@ -119,6 +119,9 @@ const (
 	// 发送消息失败。
 	FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
 
+	// 设置消息保留策略失败。
+	FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
+
 	// 设置消息TTL失败。
 	FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 

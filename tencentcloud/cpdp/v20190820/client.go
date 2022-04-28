@@ -240,9 +240,7 @@ func NewApplyOpenBankOrderDetailReceiptResponse() (response *ApplyOpenBankOrderD
 // 云企付-申请单笔交易回单
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyOpenBankOrderDetailReceipt(request *ApplyOpenBankOrderDetailReceiptRequest) (response *ApplyOpenBankOrderDetailReceiptResponse, err error) {
     return c.ApplyOpenBankOrderDetailReceiptWithContext(context.Background(), request)
 }
@@ -251,9 +249,7 @@ func (c *Client) ApplyOpenBankOrderDetailReceipt(request *ApplyOpenBankOrderDeta
 // 云企付-申请单笔交易回单
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyOpenBankOrderDetailReceiptWithContext(ctx context.Context, request *ApplyOpenBankOrderDetailReceiptRequest) (response *ApplyOpenBankOrderDetailReceiptResponse, err error) {
     if request == nil {
         request = NewApplyOpenBankOrderDetailReceiptRequest()

@@ -29,6 +29,9 @@ const (
 	// 广播任务正在执行。
 	FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
 
+	// 设备已经被禁用。
+	FAILEDOPERATION_DEVICEALREADYDISABLED = "FailedOperation.DeviceAlreadyDisabled"
+
 	// 设备已为目标升级版本。
 	FAILEDOPERATION_DEVICEFIRMWAREISUPDATED = "FailedOperation.DeviceFirmwareIsUpdated"
 

@@ -320,6 +320,7 @@ func NewControlPresetResponse() (response *ControlPresetResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlPreset(request *ControlPresetRequest) (response *ControlPresetResponse, err error) {
     return c.ControlPresetWithContext(context.Background(), request)
 }
@@ -329,6 +330,7 @@ func (c *Client) ControlPreset(request *ControlPresetRequest) (response *Control
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlPresetWithContext(ctx context.Context, request *ControlPresetRequest) (response *ControlPresetResponse, err error) {
     if request == nil {
         request = NewControlPresetRequest()
@@ -369,6 +371,7 @@ func NewControlRecordStreamResponse() (response *ControlRecordStreamResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (response *ControlRecordStreamResponse, err error) {
     return c.ControlRecordStreamWithContext(context.Background(), request)
 }
@@ -380,6 +383,7 @@ func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlRecordStreamWithContext(ctx context.Context, request *ControlRecordStreamRequest) (response *ControlRecordStreamResponse, err error) {
     if request == nil {
         request = NewControlRecordStreamRequest()
@@ -1297,7 +1301,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 // 本接口(DeleteDevice)用于删除设备。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     return c.DeleteDeviceWithContext(context.Background(), request)
 }
@@ -1306,7 +1310,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
 // 本接口(DeleteDevice)用于删除设备。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceRequest()
@@ -3355,6 +3359,7 @@ func NewDescribeChannelStreamURLResponse() (response *DescribeChannelStreamURLRe
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLRequest) (response *DescribeChannelStreamURLResponse, err error) {
     return c.DescribeChannelStreamURLWithContext(context.Background(), request)
@@ -3368,6 +3373,7 @@ func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLReque
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
 func (c *Client) DescribeChannelStreamURLWithContext(ctx context.Context, request *DescribeChannelStreamURLRequest) (response *DescribeChannelStreamURLResponse, err error) {
     if request == nil {

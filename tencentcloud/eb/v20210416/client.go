@@ -70,6 +70,8 @@ func NewCheckRuleResponse() (response *CheckRuleResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
+//  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
 func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleResponse, err error) {
     return c.CheckRuleWithContext(context.Background(), request)
 }
@@ -82,6 +84,8 @@ func (c *Client) CheckRule(request *CheckRuleRequest) (response *CheckRuleRespon
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
+//  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
 func (c *Client) CheckRuleWithContext(ctx context.Context, request *CheckRuleRequest) (response *CheckRuleResponse, err error) {
     if request == nil {
         request = NewCheckRuleRequest()
@@ -123,6 +127,8 @@ func NewCheckTransformationResponse() (response *CheckTransformationResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
+//  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
 func (c *Client) CheckTransformation(request *CheckTransformationRequest) (response *CheckTransformationResponse, err error) {
     return c.CheckTransformationWithContext(context.Background(), request)
 }
@@ -135,6 +141,8 @@ func (c *Client) CheckTransformation(request *CheckTransformationRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
+//  INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
 func (c *Client) CheckTransformationWithContext(ctx context.Context, request *CheckTransformationRequest) (response *CheckTransformationResponse, err error) {
     if request == nil {
         request = NewCheckTransformationRequest()
@@ -264,8 +272,10 @@ func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
+//  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_EVENTBUS = "LimitExceeded.EventBus"
+//  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
 //  RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
 func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *CreateEventBusResponse, err error) {
@@ -279,8 +289,10 @@ func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *Creat
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
+//  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_EVENTBUS = "LimitExceeded.EventBus"
+//  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
 //  RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
 func (c *Client) CreateEventBusWithContext(ctx context.Context, request *CreateEventBusRequest) (response *CreateEventBusResponse, err error) {
@@ -320,6 +332,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 // 创建事件规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEADLETTERCONFIG = "InvalidParameterValue.DeadLetterConfig"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTPATTERN = "InvalidParameterValue.EventPattern"
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
@@ -334,6 +347,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 // 创建事件规则
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEADLETTERCONFIG = "InvalidParameterValue.DeadLetterConfig"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTPATTERN = "InvalidParameterValue.EventPattern"
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
@@ -382,6 +396,7 @@ func NewCreateTargetResponse() (response *CreateTargetResponse) {
 //  INVALIDPARAMETERVALUE_AMPPARAMS = "InvalidParameterValue.AMPParams"
 //  INVALIDPARAMETERVALUE_BATCHEVENTCOUNT = "InvalidParameterValue.BatchEventCount"
 //  INVALIDPARAMETERVALUE_BATCHTIMEOUT = "InvalidParameterValue.BatchTimeout"
+//  INVALIDPARAMETERVALUE_CKAFKATARGETPARAMS = "InvalidParameterValue.CKafkaTargetParams"
 //  INVALIDPARAMETERVALUE_CALLBACKTYPE = "InvalidParameterValue.CallbackType"
 //  INVALIDPARAMETERVALUE_CALLBACKWECOMURL = "InvalidParameterValue.CallbackWeComURL"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
@@ -398,6 +413,7 @@ func NewCreateTargetResponse() (response *CreateTargetResponse) {
 //  LIMITEXCEEDED_TRIGGER = "LimitExceeded.Trigger"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = "OperationDenied.DefaultCLSResourceUnsupported"
+//  OPERATIONDENIED_UNSUPPORTEDOPERATION = "OperationDenied.UnsupportedOperation"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
@@ -419,6 +435,7 @@ func (c *Client) CreateTarget(request *CreateTargetRequest) (response *CreateTar
 //  INVALIDPARAMETERVALUE_AMPPARAMS = "InvalidParameterValue.AMPParams"
 //  INVALIDPARAMETERVALUE_BATCHEVENTCOUNT = "InvalidParameterValue.BatchEventCount"
 //  INVALIDPARAMETERVALUE_BATCHTIMEOUT = "InvalidParameterValue.BatchTimeout"
+//  INVALIDPARAMETERVALUE_CKAFKATARGETPARAMS = "InvalidParameterValue.CKafkaTargetParams"
 //  INVALIDPARAMETERVALUE_CALLBACKTYPE = "InvalidParameterValue.CallbackType"
 //  INVALIDPARAMETERVALUE_CALLBACKWECOMURL = "InvalidParameterValue.CallbackWeComURL"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
@@ -435,6 +452,7 @@ func (c *Client) CreateTarget(request *CreateTargetRequest) (response *CreateTar
 //  LIMITEXCEEDED_TRIGGER = "LimitExceeded.Trigger"
 //  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = "OperationDenied.DefaultCLSResourceUnsupported"
+//  OPERATIONDENIED_UNSUPPORTEDOPERATION = "OperationDenied.UnsupportedOperation"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
@@ -480,6 +498,7 @@ func NewCreateTransformationResponse() (response *CreateTransformationResponse) 
 // 用于创建转换器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONS = "InvalidParameterValue.Transformations"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) CreateTransformation(request *CreateTransformationRequest) (response *CreateTransformationResponse, err error) {
@@ -490,6 +509,7 @@ func (c *Client) CreateTransformation(request *CreateTransformationRequest) (res
 // 用于创建转换器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONS = "InvalidParameterValue.Transformations"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) CreateTransformationWithContext(ctx context.Context, request *CreateTransformationRequest) (response *CreateTransformationResponse, err error) {
@@ -647,6 +667,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 // 删除事件规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETERULE = "FailedOperation.DeleteRule"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  RESOURCEINUSE_RULE = "ResourceInUse.Rule"
@@ -660,6 +681,7 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
 // 删除事件规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DELETERULE = "FailedOperation.DeleteRule"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  RESOURCEINUSE_RULE = "ResourceInUse.Rule"
@@ -766,6 +788,7 @@ func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
 func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     return c.DeleteTransformationWithContext(context.Background(), request)
 }
@@ -775,6 +798,7 @@ func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
 func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     if request == nil {
         request = NewDeleteTransformationRequest()
@@ -918,6 +942,8 @@ func NewGetTransformationResponse() (response *GetTransformationResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) GetTransformation(request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     return c.GetTransformationWithContext(context.Background(), request)
 }
@@ -928,6 +954,8 @@ func (c *Client) GetTransformation(request *GetTransformationRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) GetTransformationWithContext(ctx context.Context, request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     if request == nil {
         request = NewGetTransformationRequest()
@@ -1200,6 +1228,7 @@ func NewPublishEventResponse() (response *PublishEventResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTBUS = "InvalidParameterValue.InvalidEventBus"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
@@ -1216,6 +1245,7 @@ func (c *Client) PublishEvent(request *PublishEventRequest) (response *PublishEv
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTBUS = "InvalidParameterValue.InvalidEventBus"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
@@ -1261,6 +1291,8 @@ func NewPutEventsResponse() (response *PutEventsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTBUS = "InvalidParameterValue.InvalidEventBus"
+//  LIMITEXCEEDED_BANNEDACCOUNT = "LimitExceeded.BannedAccount"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
@@ -1277,6 +1309,8 @@ func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
+//  INVALIDPARAMETERVALUE_INVALIDEVENTBUS = "InvalidParameterValue.InvalidEventBus"
+//  LIMITEXCEEDED_BANNEDACCOUNT = "LimitExceeded.BannedAccount"
 //  LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_EVENTBUSNOTFOUND = "ResourceNotFound.EventBusNotFound"
@@ -1317,6 +1351,7 @@ func NewUpdateConnectionResponse() (response *UpdateConnectionResponse) {
 // 更新事件连接器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATECONNECTION = "FailedOperation.UpdateConnection"
 //  INVALIDPARAMETERVALUE_CONNECTIONID = "InvalidParameterValue.ConnectionId"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
@@ -1329,6 +1364,7 @@ func (c *Client) UpdateConnection(request *UpdateConnectionRequest) (response *U
 // 更新事件连接器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATECONNECTION = "FailedOperation.UpdateConnection"
 //  INVALIDPARAMETERVALUE_CONNECTIONID = "InvalidParameterValue.ConnectionId"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
@@ -1372,6 +1408,7 @@ func NewUpdateEventBusResponse() (response *UpdateEventBusResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
+//  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = "OperationDenied.DefaultCLSResourceUnsupported"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
@@ -1385,6 +1422,7 @@ func (c *Client) UpdateEventBus(request *UpdateEventBusRequest) (response *Updat
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
+//  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = "OperationDenied.DefaultCLSResourceUnsupported"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
@@ -1425,6 +1463,7 @@ func NewUpdateRuleResponse() (response *UpdateRuleResponse) {
 // 更新事件规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATERULE = "FailedOperation.UpdateRule"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
@@ -1442,6 +1481,7 @@ func (c *Client) UpdateRule(request *UpdateRuleRequest) (response *UpdateRuleRes
 // 更新事件规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATERULE = "FailedOperation.UpdateRule"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
@@ -1557,6 +1597,7 @@ func NewUpdateTransformationResponse() (response *UpdateTransformationResponse) 
 // 用于更新转换器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) UpdateTransformation(request *UpdateTransformationRequest) (response *UpdateTransformationResponse, err error) {
     return c.UpdateTransformationWithContext(context.Background(), request)
@@ -1566,6 +1607,7 @@ func (c *Client) UpdateTransformation(request *UpdateTransformationRequest) (res
 // 用于更新转换器
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) UpdateTransformationWithContext(ctx context.Context, request *UpdateTransformationRequest) (response *UpdateTransformationResponse, err error) {
     if request == nil {

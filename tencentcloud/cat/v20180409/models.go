@@ -450,6 +450,12 @@ type CreateProbeTasksRequest struct {
 
 	// 资源标签值
 	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// 测试类型，包含定时测试与即时测试
+	ProbeType *uint64 `json:"ProbeType,omitempty" name:"ProbeType"`
+
+	// 插件类型
+	PluginSource *string `json:"PluginSource,omitempty" name:"PluginSource"`
 }
 
 func (r *CreateProbeTasksRequest) ToJsonString() string {
@@ -472,6 +478,8 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskCategory")
 	delete(f, "Cron")
 	delete(f, "Tag")
+	delete(f, "ProbeType")
+	delete(f, "PluginSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
 	}

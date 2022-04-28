@@ -93,6 +93,9 @@ type CreateApplicationRequest struct {
 
 	// 是否开启 Java 应用的 APM 自动上报功能，1 表示启用；0 表示关闭
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
+
+	// 使用默认镜像服务额外参数
+	UseDefaultImageServiceParameters *UseDefaultRepoParameters `json:"UseDefaultImageServiceParameters,omitempty" name:"UseDefaultImageServiceParameters"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -119,6 +122,7 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 	delete(f, "CodingLanguage")
 	delete(f, "DeployMode")
 	delete(f, "EnableTracing")
+	delete(f, "UseDefaultImageServiceParameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
 	}
@@ -2361,4 +2365,19 @@ type TemNamespaceInfo struct {
 
 	// 环境锁，1为上锁，0则为上锁
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+}
+
+type UseDefaultRepoParameters struct {
+
+	// 企业版实例名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterpriseInstanceName *string `json:"EnterpriseInstanceName,omitempty" name:"EnterpriseInstanceName"`
+
+	// 企业版收费类型  0 按量收费   1 包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterpriseInstanceChargeType *int64 `json:"EnterpriseInstanceChargeType,omitempty" name:"EnterpriseInstanceChargeType"`
+
+	// 企业版规格：basic-基础班 ，standard-标准版，premium-高级版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterpriseInstanceType *string `json:"EnterpriseInstanceType,omitempty" name:"EnterpriseInstanceType"`
 }

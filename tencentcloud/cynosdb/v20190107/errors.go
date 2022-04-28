@@ -29,7 +29,7 @@ const (
 	// 数据库访问失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 
-	// 创建流程{{1}}失败，请稍后重试。如果持续不成功，请联系客服进行处理。
+	// 创建流程失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 
 	// Flow不存在。
@@ -41,10 +41,10 @@ const (
 	// 账号余额不足。
 	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 
-	// 操作失败{{1}}，请稍后重试。如果持续不成功，请联系客服进行处理。
+	// 操作失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 
-	// 规格信息{{1}}查询失败。
+	// 规格信息查询失败。
 	FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = "FailedOperation.QuerySpecBySpecCodeError"
 
 	// 创建并支付订单失败，请稍后重试。如果持续不成功，请联系客服进行处理。
@@ -101,7 +101,7 @@ const (
 	// 账号已存在。
 	INVALIDPARAMETERVALUE_ACCOUNTEXIST = "InvalidParameterValue.AccountExist"
 
-	// 实例{{1}}不存在账号{{2}}。
+	// 实例不存在账号。
 	INVALIDPARAMETERVALUE_ACCOUNTNOTEXISTERROR = "InvalidParameterValue.AccountNotExistError"
 
 	// 未查询到集群。
@@ -140,16 +140,16 @@ const (
 	// 参数值无效。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 
-	// 无效的地域{{1}}。
+	// 无效的地域。
 	INVALIDPARAMETERVALUE_INVALIDREGIONIDERROR = "InvalidParameterValue.InvalidRegionIdError"
 
 	// 实例规格非法。
 	INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
 
-	// 无效的可用区{{1}}。
+	// 无效的可用区。
 	INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
 
-	// 参数{{1}}与{{2}}不可以同时设定。
+	// 该两个参数不可以同时设定。
 	INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
 
 	// 参数错误。
@@ -173,22 +173,22 @@ const (
 	// 用户实例个数超出限制。
 	LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
 
-	// 由于{{1}}，当前集群不允许该操作。
+	// 由于操作禁止，当前集群不允许该操作。
 	OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
 
-	// 集群{{1}}当前状态不允许该操作。
+	// 集群当前状态不允许该操作。
 	OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
 
-	// 实例{{1}}当前状态不允许该操作。
+	// 实例当前状态不允许该操作。
 	OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
 
 	// 账号余额不足。
 	OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 
-	// serverless集群当前状态{{1}}不允许该操作。
+	// serverless集群当前状态不允许该操作。
 	OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
 
-	// serverless实例当前状态{{1}}不允许该操作。
+	// serverless实例当前状态不允许该操作。
 	OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
 
 	// 任务冲突检查不通过。
@@ -197,16 +197,16 @@ const (
 	// 用户未进行实名认证，请先进行实名认证才可购买。
 	OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = "OperationDenied.UserNotAuthenticatedError"
 
-	// Serverless不支持该版本{{1}}。
+	// Serverless不支持该版本。
 	OPERATIONDENIED_VERSIONNOTSUPPORTERROR = "OperationDenied.VersionNotSupportError"
 
-	// 集群{{1}}不存在。
+	// 集群不存在。
 	RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
 
-	// 实例{{1}}不存在。
+	// 实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 
-	// 参数{{1}}对应资源不存在。
+	// 参数对应资源不存在。
 	RESOURCENOTFOUND_RESOURCEERROR = "ResourceNotFound.ResourceError"
 
 	// 锁定实例失败，暂时不可操作。

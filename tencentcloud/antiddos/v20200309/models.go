@@ -377,6 +377,14 @@ type BGPInstanceSpecification struct {
 	// 业务带宽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceBandWidth *uint64 `json:"ServiceBandWidth,omitempty" name:"ServiceBandWidth"`
+
+	// 战斗服版本标记，0表示普通高防包，1表示战斗服高防包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BattleEditionFlag *uint64 `json:"BattleEditionFlag,omitempty" name:"BattleEditionFlag"`
+
+	// 渠道版标记，0表示普通高防包，1表示渠道版高防包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelEditionFlag *uint64 `json:"ChannelEditionFlag,omitempty" name:"ChannelEditionFlag"`
 }
 
 type BGPInstanceUsages struct {

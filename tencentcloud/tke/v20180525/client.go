@@ -208,6 +208,9 @@ func NewAddExistedInstancesResponse() (response *AddExistedInstancesResponse) {
 // 添加已经存在的实例到集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
 //  INTERNALERROR = "InternalError"
@@ -230,6 +233,9 @@ func (c *Client) AddExistedInstances(request *AddExistedInstancesRequest) (respo
 // 添加已经存在的实例到集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
+//  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
 //  INTERNALERROR = "InternalError"
@@ -328,6 +334,7 @@ func NewAddVpcCniSubnetsResponse() (response *AddVpcCniSubnetsResponse) {
 // 针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -346,6 +353,7 @@ func (c *Client) AddVpcCniSubnets(request *AddVpcCniSubnetsRequest) (response *A
 // 针对VPC-CNI模式的集群，增加集群容器网络可使用的子网
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -458,15 +466,19 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 // 创建集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
+//  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_CVMVPCIDNOTMATCH = "FailedOperation.CvmVpcidNotMatch"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
 //  FAILEDOPERATION_OSNOTSUPPORT = "FailedOperation.OsNotSupport"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXCLSLIMIT = "FailedOperation.QuotaMaxClsLimit"
 //  FAILEDOPERATION_QUOTAUSGLIMIT = "FailedOperation.QuotaUSGLimit"
 //  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCOMMON = "InternalError.AccountCommon"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
@@ -518,15 +530,19 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 // 创建集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
+//  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_CVMVPCIDNOTMATCH = "FailedOperation.CvmVpcidNotMatch"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
+//  FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
 //  FAILEDOPERATION_OSNOTSUPPORT = "FailedOperation.OsNotSupport"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXCLSLIMIT = "FailedOperation.QuotaMaxClsLimit"
 //  FAILEDOPERATION_QUOTAUSGLIMIT = "FailedOperation.QuotaUSGLimit"
 //  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCOMMON = "InternalError.AccountCommon"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
@@ -857,8 +873,10 @@ func NewCreateClusterInstancesResponse() (response *CreateClusterInstancesRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
 //  INTERNALERROR = "InternalError"
@@ -900,8 +918,10 @@ func (c *Client) CreateClusterInstances(request *CreateClusterInstancesRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  FAILEDOPERATION_QUOTAMAXNODLIMIT = "FailedOperation.QuotaMaxNodLimit"
 //  INTERNALERROR = "InternalError"
@@ -971,6 +991,7 @@ func NewCreateClusterNodePoolResponse() (response *CreateClusterNodePoolResponse
 // 创建节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -987,6 +1008,7 @@ func (c *Client) CreateClusterNodePool(request *CreateClusterNodePoolRequest) (r
 // 创建节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -1896,6 +1918,7 @@ func NewDeleteClusterInstancesResponse() (response *DeleteClusterInstancesRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -1917,6 +1940,7 @@ func (c *Client) DeleteClusterInstances(request *DeleteClusterInstancesRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -1969,6 +1993,7 @@ func NewDeleteClusterNodePoolResponse() (response *DeleteClusterNodePoolResponse
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (response *DeleteClusterNodePoolResponse, err error) {
     return c.DeleteClusterNodePoolWithContext(context.Background(), request)
 }
@@ -1980,6 +2005,7 @@ func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (r
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteClusterNodePoolWithContext(ctx context.Context, request *DeleteClusterNodePoolRequest) (response *DeleteClusterNodePoolResponse, err error) {
     if request == nil {
         request = NewDeleteClusterNodePoolRequest()
@@ -2614,6 +2640,7 @@ func NewDescribeClusterAsGroupsResponse() (response *DescribeClusterAsGroupsResp
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -2637,6 +2664,7 @@ func (c *Client) DescribeClusterAsGroups(request *DescribeClusterAsGroupsRequest
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -2861,6 +2889,7 @@ func NewDescribeClusterEndpointStatusResponse() (response *DescribeClusterEndpoi
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -2892,6 +2921,7 @@ func (c *Client) DescribeClusterEndpointStatus(request *DescribeClusterEndpointS
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
+//  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -3503,6 +3533,7 @@ func NewDescribeClusterSecurityResponse() (response *DescribeClusterSecurityResp
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
@@ -3539,6 +3570,7 @@ func (c *Client) DescribeClusterSecurity(request *DescribeClusterSecurityRequest
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
@@ -4722,6 +4754,7 @@ func NewDescribePrometheusInstanceResponse() (response *DescribePrometheusInstan
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusInstance(request *DescribePrometheusInstanceRequest) (response *DescribePrometheusInstanceResponse, err error) {
     return c.DescribePrometheusInstanceWithContext(context.Background(), request)
@@ -4738,6 +4771,7 @@ func (c *Client) DescribePrometheusInstance(request *DescribePrometheusInstanceR
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusInstanceWithContext(ctx context.Context, request *DescribePrometheusInstanceRequest) (response *DescribePrometheusInstanceResponse, err error) {
     if request == nil {
@@ -5256,6 +5290,7 @@ func NewDescribeVersionsResponse() (response *DescribeVersionsResponse) {
 // 获取集群版本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
@@ -5282,6 +5317,7 @@ func (c *Client) DescribeVersions(request *DescribeVersionsRequest) (response *D
 // 获取集群版本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_COMPONENTCLINETHTTP = "InternalError.ComponentClinetHttp"
@@ -6051,6 +6087,7 @@ func NewModifyClusterAttributeResponse() (response *ModifyClusterAttributeRespon
 // 修改集群属性
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -6074,6 +6111,7 @@ func (c *Client) ModifyClusterAttribute(request *ModifyClusterAttributeRequest) 
 // 修改集群属性
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -6182,6 +6220,7 @@ func NewModifyClusterEndpointSPResponse() (response *ModifyClusterEndpointSPResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -6209,6 +6248,7 @@ func (c *Client) ModifyClusterEndpointSP(request *ModifyClusterEndpointSPRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -6894,6 +6934,7 @@ func NewUpdateClusterVersionResponse() (response *UpdateClusterVersionResponse) 
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) UpdateClusterVersion(request *UpdateClusterVersionRequest) (response *UpdateClusterVersionResponse, err error) {
     return c.UpdateClusterVersionWithContext(context.Background(), request)
@@ -6910,6 +6951,7 @@ func (c *Client) UpdateClusterVersion(request *UpdateClusterVersionRequest) (res
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) UpdateClusterVersionWithContext(ctx context.Context, request *UpdateClusterVersionRequest) (response *UpdateClusterVersionResponse, err error) {
     if request == nil {

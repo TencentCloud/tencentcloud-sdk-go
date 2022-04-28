@@ -29,11 +29,20 @@ const (
 	// 删除连接器失败，请检查资源状态。
 	FAILEDOPERATION_DELETECONNECTION = "FailedOperation.DeleteConnection"
 
+	// 规则删除失败，请检查资源信息，确认是资源否存在或状态正常。
+	FAILEDOPERATION_DELETERULE = "FailedOperation.DeleteRule"
+
 	// 规则与事件不匹配，请修正后再试。
 	FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
 
 	// ServiceError操作失败，请检查资源信息。
 	FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+
+	// 连接器更新失败，请检查资源信息，确认是资源否存在或状态正常。
+	FAILEDOPERATION_UPDATECONNECTION = "FailedOperation.UpdateConnection"
+
+	// 规则更新失败，请检查资源信息，确认是资源否存在或状态正常。
+	FAILEDOPERATION_UPDATERULE = "FailedOperation.UpdateRule"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -59,6 +68,9 @@ const (
 	// BatchTimeout取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_BATCHTIMEOUT = "InvalidParameterValue.BatchTimeout"
 
+	// Ckafka 目标配置参数取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_CKAFKATARGETPARAMS = "InvalidParameterValue.CKafkaTargetParams"
+
 	// CallbackType取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_CALLBACKTYPE = "InvalidParameterValue.CallbackType"
 
@@ -77,6 +89,9 @@ const (
 	// DTSParams取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_DTSPARAMS = "InvalidParameterValue.DTSParams"
 
+	// 死信队列配置参数取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_DEADLETTERCONFIG = "InvalidParameterValue.DeadLetterConfig"
+
 	// Description取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 
@@ -89,6 +104,9 @@ const (
 	// EventPattern取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_EVENTPATTERN = "InvalidParameterValue.EventPattern"
 
+	// 链路追踪配置参数取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
+
 	// Filters取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 
@@ -97,6 +115,15 @@ const (
 
 	// 事件格式非法，请修正后再试。
 	INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
+
+	// 非法的事件集，请检查后重试。
+	INVALIDPARAMETERVALUE_INVALIDEVENTBUS = "InvalidParameterValue.InvalidEventBus"
+
+	// 事件模式格式错误，请修正后再试。
+	INVALIDPARAMETERVALUE_INVALIDFILTERRULE = "InvalidParameterValue.InvalidFilterRule"
+
+	// 非法的匹配规则，请检查后重试。
+	INVALIDPARAMETERVALUE_INVALIDPATTERN = "InvalidParameterValue.InvalidPattern"
 
 	// Limit取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
@@ -137,14 +164,26 @@ const (
 	// TargetId取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
 
+	// 数据转换配置参数取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+
+	// 数据转换任务创建失败，配置参数取值与规范不符，请修正后再试。
+	INVALIDPARAMETERVALUE_TRANSFORMATIONS = "InvalidParameterValue.Transformations"
+
 	// Type取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+
+	// 事件投递失败，因欠费或违规等原因，账号已被禁用，请联系官网账户端客服处理。
+	LIMITEXCEEDED_BANNEDACCOUNT = "LimitExceeded.BannedAccount"
 
 	// Connection数量达到限制，可提交工单申请提升限制。
 	LIMITEXCEEDED_CONNECTION = "LimitExceeded.Connection"
 
 	// EventBus数量达到限制，可提交工单申请提升限制。
 	LIMITEXCEEDED_EVENTBUS = "LimitExceeded.EventBus"
+
+	// 资源创建失败，可冻结余额不足，请充值后重新创建。
+	LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
 
 	// Logset数量达到限制，可提交工单申请提升限制。
 	LIMITEXCEEDED_LOGSET = "LimitExceeded.Logset"
@@ -172,6 +211,9 @@ const (
 
 	// 操作失败，该资源不可修改或删除。
 	OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
+
+	// 当前用户账号类型暂不支持操作，请提交工单处理。
+	OPERATIONDENIED_UNSUPPORTEDOPERATION = "OperationDenied.UnsupportedOperation"
 
 	// 同一个地域下，云服务默认事件集不允许重复创建。
 	RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
@@ -214,6 +256,9 @@ const (
 
 	// 未找到指定的Target，请创建后再试。
 	RESOURCENOTFOUND_TARGET = "ResourceNotFound.Target"
+
+	// 未找到指定的转换任务，请创建后再试。
+	RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 
 	// 投递目标创建失败，未找到指定的服务版本，请创建后再试。
 	RESOURCENOTFOUND_VERSION = "ResourceNotFound.Version"

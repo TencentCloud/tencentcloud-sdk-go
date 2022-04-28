@@ -2333,6 +2333,7 @@ func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplat
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesRequest) (response *DescribeTranscodeTemplatesResponse, err error) {
     return c.DescribeTranscodeTemplatesWithContext(context.Background(), request)
@@ -2349,6 +2350,7 @@ func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesR
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 //  INVALIDPARAMETERVALUE_TEHDTYPE = "InvalidParameterValue.TEHDType"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DescribeTranscodeTemplatesWithContext(ctx context.Context, request *DescribeTranscodeTemplatesRequest) (response *DescribeTranscodeTemplatesResponse, err error) {
     if request == nil {

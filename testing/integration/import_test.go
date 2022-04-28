@@ -204,6 +204,7 @@ import (
 	tdmqv20200217 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq/v20200217"
 	temv20201221 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20201221"
 	temv20210701 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem/v20210701"
+	teov20220106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220106"
 	thpcv20211109 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20211109"
 	thpcv20220401 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20220401"
 	tiav20180226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tia/v20180226"
@@ -2630,6 +2631,19 @@ func TestTemv20210701Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf(fmt.Sprintf("fail to init tem_v20210701 client: %v", err))
+    }
+}
+
+func TestTeov20220106Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := teov20220106.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf(fmt.Sprintf("fail to init teo_v20220106 client: %v", err))
     }
 }
 

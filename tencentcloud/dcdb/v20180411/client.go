@@ -2753,6 +2753,59 @@ func (c *Client) ModifyAccountDescriptionWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
+    request = &ModifyDBInstanceNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstanceName")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) {
+    response = &ModifyDBInstanceNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceName
+// 本接口（ModifyDBInstanceName）用于修改实例名字
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
+    return c.ModifyDBInstanceNameWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceName
+// 本接口（ModifyDBInstanceName）用于修改实例名字
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyDBInstanceNameWithContext(ctx context.Context, request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

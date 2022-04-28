@@ -241,6 +241,7 @@ func NewCreateClsLogTopicResponse() (response *CreateClsLogTopicResponse) {
 //  RESOURCENOTFOUND_CLSTOPICNOTEXIST = "ResourceNotFound.ClsTopicNotExist"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCLSNOTREGISTERED = "UnauthorizedOperation.CdnClsNotRegistered"
+//  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
 //  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
 //  UNAUTHORIZEDOPERATION_CLSSERVICENOTACTIVATED = "UnauthorizedOperation.ClsServiceNotActivated"
 //  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
@@ -283,6 +284,7 @@ func (c *Client) CreateClsLogTopic(request *CreateClsLogTopicRequest) (response 
 //  RESOURCENOTFOUND_CLSTOPICNOTEXIST = "ResourceNotFound.ClsTopicNotExist"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNCLSNOTREGISTERED = "UnauthorizedOperation.CdnClsNotRegistered"
+//  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
 //  UNAUTHORIZEDOPERATION_CLSINVALIDAUTHORIZATION = "UnauthorizedOperation.ClsInvalidAuthorization"
 //  UNAUTHORIZEDOPERATION_CLSSERVICENOTACTIVATED = "UnauthorizedOperation.ClsServiceNotActivated"
 //  UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = "UnauthorizedOperation.ClsUnauthorized"
@@ -4180,6 +4182,7 @@ func NewListClsLogTopicsResponse() (response *ListClsLogTopicsResponse) {
 // ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
@@ -4221,6 +4224,7 @@ func (c *Client) ListClsLogTopics(request *ListClsLogTopicsRequest) (response *L
 // ListClsLogTopics 用于显示日志主题列表。注意：一个日志集下至多含10个日志主题。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
@@ -4744,6 +4748,7 @@ func NewListTopClsLogDataResponse() (response *ListTopClsLogDataResponse) {
 // 通过CLS日志计算Top信息。支持近7天的日志数据。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
@@ -4783,6 +4788,7 @@ func (c *Client) ListTopClsLogData(request *ListTopClsLogDataRequest) (response 
 // 通过CLS日志计算Top信息。支持近7天的日志数据。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"

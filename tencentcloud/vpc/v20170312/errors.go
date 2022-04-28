@@ -503,6 +503,9 @@ const (
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 
+	// 跨账号场景下不支持自驾云账号实例 关联普通账号云联网。
+	UNSUPPORTEDOPERATION_CCNORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.CcnOrdinaryAccountRefuseAttach"
+
 	// 指定的路由表不存在。
 	UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
 
@@ -553,6 +556,9 @@ const (
 
 	// 用户配置的实例和路由表不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
+
+	// 跨账号场景下不支持普通账号实例关联自驾云账号云联网。
+	UNSUPPORTEDOPERATION_INSTANCEORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.InstanceOrdinaryAccountRefuseAttach"
 
 	// 该地址绑定的实例状态不支持此操作。
 	UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"

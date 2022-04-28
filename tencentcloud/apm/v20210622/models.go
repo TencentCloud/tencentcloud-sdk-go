@@ -463,6 +463,88 @@ func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeServiceOverviewRequest struct {
+	*tchttp.BaseRequest
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 每页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页起始点
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeServiceOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Metrics")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "Offset")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeServiceOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeServiceOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 
 	// 过滤方式（=, !=, in）

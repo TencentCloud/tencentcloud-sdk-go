@@ -961,6 +961,7 @@ func NewCreateGatewayApiResponse() (response *CreateGatewayApiResponse) {
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 //  UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
 func (c *Client) CreateGatewayApi(request *CreateGatewayApiRequest) (response *CreateGatewayApiResponse, err error) {
     return c.CreateGatewayApiWithContext(context.Background(), request)
@@ -973,6 +974,7 @@ func (c *Client) CreateGatewayApi(request *CreateGatewayApiRequest) (response *C
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
 //  UNSUPPORTEDOPERATION_GATEWAYTOOMANYREQUESTPARAMETER = "UnsupportedOperation.GatewayTooManyRequestParameter"
 func (c *Client) CreateGatewayApiWithContext(ctx context.Context, request *CreateGatewayApiRequest) (response *CreateGatewayApiResponse, err error) {
     if request == nil {
@@ -1616,65 +1618,6 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateRepositoryResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateServerlessGroupRequest() (request *CreateServerlessGroupRequest) {
-    request = &CreateServerlessGroupRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tsf", APIVersion, "CreateServerlessGroup")
-    
-    
-    return
-}
-
-func NewCreateServerlessGroupResponse() (response *CreateServerlessGroupResponse) {
-    response = &CreateServerlessGroupResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateServerlessGroup
-// 创建Serverless部署组
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
-//  INVALIDPARAMETERVALUE_GROUPNAMELENGTH = "InvalidParameterValue.GroupNameLength"
-//  INVALIDPARAMETERVALUE_GROUPNAMENULL = "InvalidParameterValue.GroupNameNull"
-//  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
-//  INVALIDPARAMETERVALUE_GROUPPKGNULL = "InvalidParameterValue.GroupPkgNull"
-//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
-func (c *Client) CreateServerlessGroup(request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
-    return c.CreateServerlessGroupWithContext(context.Background(), request)
-}
-
-// CreateServerlessGroup
-// 创建Serverless部署组
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_GROUPNAMEEXIST = "InvalidParameterValue.GroupNameExist"
-//  INVALIDPARAMETERVALUE_GROUPNAMELENGTH = "InvalidParameterValue.GroupNameLength"
-//  INVALIDPARAMETERVALUE_GROUPNAMENULL = "InvalidParameterValue.GroupNameNull"
-//  INVALIDPARAMETERVALUE_GROUPNAMEREGXMISMATCH = "InvalidParameterValue.GroupNameRegxMismatch"
-//  INVALIDPARAMETERVALUE_GROUPPKGNULL = "InvalidParameterValue.GroupPkgNull"
-//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
-func (c *Client) CreateServerlessGroupWithContext(ctx context.Context, request *CreateServerlessGroupRequest) (response *CreateServerlessGroupResponse, err error) {
-    if request == nil {
-        request = NewCreateServerlessGroupRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateServerlessGroup require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateServerlessGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -3184,67 +3127,6 @@ func (c *Client) DeployGroupWithContext(ctx context.Context, request *DeployGrou
     return
 }
 
-func NewDeployServerlessGroupRequest() (request *DeployServerlessGroupRequest) {
-    request = &DeployServerlessGroupRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tsf", APIVersion, "DeployServerlessGroup")
-    
-    
-    return
-}
-
-func NewDeployServerlessGroupResponse() (response *DeployServerlessGroupResponse) {
-    response = &DeployServerlessGroupResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeployServerlessGroup
-// 部署Serverless应用
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
-//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
-//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTNOTFOUND = "InvalidParameterValue.CvmCaeMasterAgentNotFound"
-//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
-//  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
-//  RESOURCEINSUFFICIENT_INSTANCEEXCESSLIMIT = "ResourceInsufficient.InstanceExcessLimit"
-//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
-func (c *Client) DeployServerlessGroup(request *DeployServerlessGroupRequest) (response *DeployServerlessGroupResponse, err error) {
-    return c.DeployServerlessGroupWithContext(context.Background(), request)
-}
-
-// DeployServerlessGroup
-// 部署Serverless应用
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
-//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
-//  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTNOTFOUND = "InvalidParameterValue.CvmCaeMasterAgentNotFound"
-//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
-//  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
-//  RESOURCEINSUFFICIENT_INSTANCEEXCESSLIMIT = "ResourceInsufficient.InstanceExcessLimit"
-//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
-func (c *Client) DeployServerlessGroupWithContext(ctx context.Context, request *DeployServerlessGroupRequest) (response *DeployServerlessGroupResponse, err error) {
-    if request == nil {
-        request = NewDeployServerlessGroupRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeployServerlessGroup require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeployServerlessGroupResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
     request = &DescribeApiDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4743,6 +4625,7 @@ func NewDescribeGatewayApisResponse() (response *DescribeGatewayApisResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
@@ -4755,6 +4638,7 @@ func (c *Client) DescribeGatewayApis(request *DescribeGatewayApisRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
@@ -5035,6 +4919,7 @@ func NewDescribeGroupGatewaysResponse() (response *DescribeGroupGatewaysResponse
 // 查询某个网关绑定的API 分组信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -5046,6 +4931,7 @@ func (c *Client) DescribeGroupGateways(request *DescribeGroupGatewaysRequest) (r
 // 查询某个网关绑定的API 分组信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -7070,122 +6956,6 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
     return
 }
 
-func NewDescribeServerlessGroupRequest() (request *DescribeServerlessGroupRequest) {
-    request = &DescribeServerlessGroupRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tsf", APIVersion, "DescribeServerlessGroup")
-    
-    
-    return
-}
-
-func NewDescribeServerlessGroupResponse() (response *DescribeServerlessGroupResponse) {
-    response = &DescribeServerlessGroupResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeServerlessGroup
-// 查询Serverless部署组明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TSFASRESOURCESERVERERROR = "FailedOperation.TsfAsResourceServerError"
-//  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
-//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
-func (c *Client) DescribeServerlessGroup(request *DescribeServerlessGroupRequest) (response *DescribeServerlessGroupResponse, err error) {
-    return c.DescribeServerlessGroupWithContext(context.Background(), request)
-}
-
-// DescribeServerlessGroup
-// 查询Serverless部署组明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TSFASRESOURCESERVERERROR = "FailedOperation.TsfAsResourceServerError"
-//  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
-//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
-//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
-func (c *Client) DescribeServerlessGroupWithContext(ctx context.Context, request *DescribeServerlessGroupRequest) (response *DescribeServerlessGroupResponse, err error) {
-    if request == nil {
-        request = NewDescribeServerlessGroupRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeServerlessGroup require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeServerlessGroupResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeServerlessGroupsRequest() (request *DescribeServerlessGroupsRequest) {
-    request = &DescribeServerlessGroupsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("tsf", APIVersion, "DescribeServerlessGroups")
-    
-    
-    return
-}
-
-func NewDescribeServerlessGroupsResponse() (response *DescribeServerlessGroupsResponse) {
-    response = &DescribeServerlessGroupsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeServerlessGroups
-// 查询Serverless部署组列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
-//  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
-func (c *Client) DescribeServerlessGroups(request *DescribeServerlessGroupsRequest) (response *DescribeServerlessGroupsResponse, err error) {
-    return c.DescribeServerlessGroupsWithContext(context.Background(), request)
-}
-
-// DescribeServerlessGroups
-// 查询Serverless部署组列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_APPLICATIONIDNULL = "InvalidParameterValue.ApplicationIdNull"
-//  RESOURCENOTFOUND_GROUPNAMESPACENOTEXIST = "ResourceNotFound.GroupNamespaceNotExist"
-//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
-func (c *Client) DescribeServerlessGroupsWithContext(ctx context.Context, request *DescribeServerlessGroupsRequest) (response *DescribeServerlessGroupsResponse, err error) {
-    if request == nil {
-        request = NewDescribeServerlessGroupsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeServerlessGroups require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeServerlessGroupsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSimpleApplicationsRequest() (request *DescribeSimpleApplicationsRequest) {
     request = &DescribeSimpleApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7440,6 +7210,7 @@ func NewDescribeStatisticsResponse() (response *DescribeStatisticsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
 //  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -7454,6 +7225,7 @@ func (c *Client) DescribeStatistics(request *DescribeStatisticsRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
 //  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -9840,6 +9612,7 @@ func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
 // 从 TSF 集群中批量移除云主机节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEDELETEFAILED = "FailedOperation.InstanceDeleteFailed"
 //  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
@@ -9853,6 +9626,7 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
 // 从 TSF 集群中批量移除云主机节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEDELETEFAILED = "FailedOperation.InstanceDeleteFailed"
 //  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"

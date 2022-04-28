@@ -2840,6 +2840,7 @@ func NewModifyLifecycleHookResponse() (response *ModifyLifecycleHookResponse) {
 // 此接口用于修改生命周期挂钩。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"
@@ -2855,6 +2856,7 @@ func (c *Client) ModifyLifecycleHook(request *ModifyLifecycleHookRequest) (respo
 // 此接口用于修改生命周期挂钩。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"

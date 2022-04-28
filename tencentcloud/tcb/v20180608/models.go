@@ -1812,6 +1812,10 @@ type DatabasesInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type DeleteCloudBaseProjectLatestVersionRequest struct {
@@ -4905,6 +4909,9 @@ type DescribeWxCloudBaseRunEnvsRequest struct {
 
 	// wx应用Id
 	WxAppId *string `json:"WxAppId,omitempty" name:"WxAppId"`
+
+	// 是否查询全地域
+	AllRegions *bool `json:"AllRegions,omitempty" name:"AllRegions"`
 }
 
 func (r *DescribeWxCloudBaseRunEnvsRequest) ToJsonString() string {
@@ -4920,6 +4927,7 @@ func (r *DescribeWxCloudBaseRunEnvsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "WxAppId")
+	delete(f, "AllRegions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWxCloudBaseRunEnvsRequest has unknown keys!", "")
 	}
@@ -5345,6 +5353,10 @@ type EnvInfo struct {
 	// 环境类型：baas, run, hoting, weda
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 是否是dau新套餐
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDauPackage *bool `json:"IsDauPackage,omitempty" name:"IsDauPackage"`
 }
 
 type EstablishCloudBaseRunServerRequest struct {

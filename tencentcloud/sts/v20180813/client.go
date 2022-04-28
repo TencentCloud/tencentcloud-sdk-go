@@ -239,6 +239,7 @@ func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentity
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -251,6 +252,7 @@ func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityReq
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

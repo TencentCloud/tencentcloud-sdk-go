@@ -3518,6 +3518,18 @@ type KeyPair struct {
 }
 
 type LoginConfiguration struct {
+
+	// <li>"YES"代表选择自动生成密码，这时不指定Password字段。</li>
+	// <li>"NO"代表选择自定义密码，这时要指定Password字段。</li>
+	AutoGeneratePassword *string `json:"AutoGeneratePassword,omitempty" name:"AutoGeneratePassword"`
+
+	// 实例登录密码。具体按照操作系统的复杂度要求。
+	// WINDOWS 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符
+	// <li>小写字母：[a-z]</li>
+	// <li>大写字母：[A-Z]</li>
+	// <li>数字： 0-9</li>
+	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;' <>,.?/</li>
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 type LoginSettings struct {
@@ -4099,6 +4111,70 @@ type RenewDiskChargePrepaid struct {
 
 	// 当前实例到期时间。
 	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitempty" name:"CurInstanceDeadline"`
+}
+
+type RenewInstancesRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例ID列表。一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 是否续费弹性数据盘。取值范围：
+	// TRUE：表示续费实例同时续费其挂载的数据盘
+	// FALSE：表示续费实例同时不再续费其挂载的数据盘
+	// 默认取值：TRUE。
+	RenewDataDisk *bool `json:"RenewDataDisk,omitempty" name:"RenewDataDisk"`
+
+	// 是否自动抵扣代金券。取值范围：
+	// TRUE：表示自动抵扣代金券
+	// FALSE：表示不自动抵扣代金券
+	// 默认取值：FALSE。
+	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+}
+
+func (r *RenewInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "RenewDataDisk")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RenewInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RenewInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResetAttachCcnRequest struct {

@@ -1113,7 +1113,7 @@ type SentenceRecognitionRequest struct {
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 识别音频的音频格式。mp3、wav。
+	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 用户端对此任务的唯一标识，用户自助生成，用于用户查找识别结果。

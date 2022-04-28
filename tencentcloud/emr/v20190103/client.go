@@ -609,6 +609,57 @@ func (c *Client) DescribeJobFlowWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeResourceScheduleRequest() (request *DescribeResourceScheduleRequest) {
+    request = &DescribeResourceScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeResourceSchedule")
+    
+    
+    return
+}
+
+func NewDescribeResourceScheduleResponse() (response *DescribeResourceScheduleResponse) {
+    response = &DescribeResourceScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceSchedule
+// 获取yarn资源调度页面的数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeResourceSchedule(request *DescribeResourceScheduleRequest) (response *DescribeResourceScheduleResponse, err error) {
+    return c.DescribeResourceScheduleWithContext(context.Background(), request)
+}
+
+// DescribeResourceSchedule
+// 获取yarn资源调度页面的数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, request *DescribeResourceScheduleRequest) (response *DescribeResourceScheduleResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceRenewEmrRequest() (request *InquirePriceRenewEmrRequest) {
     request = &InquirePriceRenewEmrRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1136,6 +1187,157 @@ func (c *Client) InquiryPriceUpdateInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewInquiryPriceUpdateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourcePoolsRequest() (request *ModifyResourcePoolsRequest) {
+    request = &ModifyResourcePoolsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyResourcePools")
+    
+    
+    return
+}
+
+func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
+    response = &ModifyResourcePoolsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourcePools
+// 刷新动态资源池
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
+    return c.ModifyResourcePoolsWithContext(context.Background(), request)
+}
+
+// ModifyResourcePools
+// 刷新动态资源池
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourcePoolsWithContext(ctx context.Context, request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePoolsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePools require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourceScheduleConfigRequest() (request *ModifyResourceScheduleConfigRequest) {
+    request = &ModifyResourceScheduleConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyResourceScheduleConfig")
+    
+    
+    return
+}
+
+func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceScheduleConfigResponse) {
+    response = &ModifyResourceScheduleConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourceScheduleConfig
+// 修改yarn资源调度的资源配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleConfigRequest) (response *ModifyResourceScheduleConfigResponse, err error) {
+    return c.ModifyResourceScheduleConfigWithContext(context.Background(), request)
+}
+
+// ModifyResourceScheduleConfig
+// 修改yarn资源调度的资源配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourceScheduleConfigWithContext(ctx context.Context, request *ModifyResourceScheduleConfigRequest) (response *ModifyResourceScheduleConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceScheduleConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceScheduleConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourceScheduleConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourceSchedulerRequest() (request *ModifyResourceSchedulerRequest) {
+    request = &ModifyResourceSchedulerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyResourceScheduler")
+    
+    
+    return
+}
+
+func NewModifyResourceSchedulerResponse() (response *ModifyResourceSchedulerResponse) {
+    response = &ModifyResourceSchedulerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourceScheduler
+// 修改了yarn的资源调度器，点击部署生效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {
+    return c.ModifyResourceSchedulerWithContext(context.Background(), request)
+}
+
+// ModifyResourceScheduler
+// 修改了yarn的资源调度器，点击部署生效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyResourceSchedulerWithContext(ctx context.Context, request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {
+    if request == nil {
+        request = NewModifyResourceSchedulerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourceScheduler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourceSchedulerResponse()
     err = c.Send(request, response)
     return
 }

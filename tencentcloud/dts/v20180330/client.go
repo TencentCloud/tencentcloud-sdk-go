@@ -207,6 +207,10 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 //
 // 校验成功后,迁移任务若有修改, 则必须重新创建校验并通过后, 才能开始迁移.
 //
+// 
+//
+// 如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
@@ -223,6 +227,7 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (response *CreateMigrateCheckJobResponse, err error) {
     return c.CreateMigrateCheckJobWithContext(context.Background(), request)
 }
@@ -234,6 +239,10 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
 //
 // 校验成功后,迁移任务若有修改, 则必须重新创建校验并通过后, 才能开始迁移.
 //
+// 
+//
+// 如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
@@ -250,6 +259,7 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) CreateMigrateCheckJobWithContext(ctx context.Context, request *CreateMigrateCheckJobRequest) (response *CreateMigrateCheckJobResponse, err error) {
     if request == nil {
         request = NewCreateMigrateCheckJobRequest()
@@ -554,6 +564,7 @@ func NewDescribeMigrateCheckJobResponse() (response *DescribeMigrateCheckJobResp
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) DescribeMigrateCheckJob(request *DescribeMigrateCheckJobRequest) (response *DescribeMigrateCheckJobResponse, err error) {
     return c.DescribeMigrateCheckJobWithContext(context.Background(), request)
 }
@@ -571,6 +582,7 @@ func (c *Client) DescribeMigrateCheckJob(request *DescribeMigrateCheckJobRequest
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) DescribeMigrateCheckJobWithContext(ctx context.Context, request *DescribeMigrateCheckJobRequest) (response *DescribeMigrateCheckJobResponse, err error) {
     if request == nil {
         request = NewDescribeMigrateCheckJobRequest()
@@ -1339,11 +1351,13 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
 //  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *StartMigrateJobResponse, err error) {
     return c.StartMigrateJobWithContext(context.Background(), request)
 }
@@ -1362,11 +1376,13 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
 //  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) StartMigrateJobWithContext(ctx context.Context, request *StartMigrateJobRequest) (response *StartMigrateJobResponse, err error) {
     if request == nil {
         request = NewStartMigrateJobRequest()
@@ -1415,6 +1431,7 @@ func NewStopMigrateJobResponse() (response *StopMigrateJobResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopMigrateJobResponse, err error) {
     return c.StopMigrateJobWithContext(context.Background(), request)
 }
@@ -1434,6 +1451,7 @@ func (c *Client) StopMigrateJob(request *StopMigrateJobRequest) (response *StopM
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) StopMigrateJobWithContext(ctx context.Context, request *StopMigrateJobRequest) (response *StopMigrateJobResponse, err error) {
     if request == nil {
         request = NewStopMigrateJobRequest()

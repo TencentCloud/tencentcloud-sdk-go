@@ -918,6 +918,7 @@ func NewDeleteEndUserResponse() (response *DeleteEndUserResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
     return c.DeleteEndUserWithContext(context.Background(), request)
 }
@@ -929,6 +930,7 @@ func (c *Client) DeleteEndUser(request *DeleteEndUserRequest) (response *DeleteE
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 func (c *Client) DeleteEndUserWithContext(ctx context.Context, request *DeleteEndUserRequest) (response *DeleteEndUserResponse, err error) {
     if request == nil {
         request = NewDeleteEndUserRequest()

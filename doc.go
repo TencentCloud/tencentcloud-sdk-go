@@ -192,6 +192,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tia"

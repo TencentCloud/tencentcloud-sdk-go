@@ -2532,6 +2532,9 @@ type TasksInfo struct {
 
 	// 任务的配置信息，当前仅支持SparkSQLTask任务。
 	Config []*KVPair `json:"Config,omitempty" name:"Config"`
+
+	// 任务的用户自定义参数信息
+	Params []*KVPair `json:"Params,omitempty" name:"Params"`
 }
 
 type TextFile struct {

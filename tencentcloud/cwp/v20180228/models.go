@@ -1986,20 +1986,6 @@ func (r *ChangeRuleEventsIgnoreStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ChargePrepaid struct {
-
-	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
-
-	// 自动续费标识。取值范围：
-	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
-	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
-	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-	// 
-	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
-	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
-}
-
 type CheckBashRuleParamsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2065,53 +2051,6 @@ func (r *CheckBashRuleParamsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CheckBashRuleParamsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type CloseProVersionRequest struct {
-	*tchttp.BaseRequest
-
-	// 主机唯一标识Uuid数组。
-	// 黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
-}
-
-func (r *CloseProVersionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CloseProVersionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Quuid")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseProVersionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type CloseProVersionResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *CloseProVersionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CloseProVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13911,62 +13850,6 @@ type IgnoreRuleEffectHostInfo struct {
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
-type InquiryPriceOpenProVersionPrepaidRequest struct {
-	*tchttp.BaseRequest
-
-	// 预付费模式(包年包月)参数设置。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitempty" name:"ChargePrepaid"`
-
-	// 需要开通专业版机器列表数组。
-	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines"`
-}
-
-func (r *InquiryPriceOpenProVersionPrepaidRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquiryPriceOpenProVersionPrepaidRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ChargePrepaid")
-	delete(f, "Machines")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceOpenProVersionPrepaidRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type InquiryPriceOpenProVersionPrepaidResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 预支费用的原价，单位：元。
-		OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
-
-		// 预支费用的折扣价，单位：元。
-		DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *InquiryPriceOpenProVersionPrepaidResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *InquiryPriceOpenProVersionPrepaidResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type LoginWhiteCombinedInfo struct {
 
 	// 白名单地域
@@ -14602,59 +14485,6 @@ func (r *ModifyMalwareTimingScanSettingsResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyProVersionRenewFlagRequest struct {
-	*tchttp.BaseRequest
-
-	// 自动续费标识。取值范围：
-	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
-	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
-	// <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
-
-	// 主机唯一ID，对应CVM的uuid、BM的instanceId。
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
-}
-
-func (r *ModifyProVersionRenewFlagRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyProVersionRenewFlagRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "RenewFlag")
-	delete(f, "Quuid")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProVersionRenewFlagRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyProVersionRenewFlagResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *ModifyProVersionRenewFlagResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyProVersionRenewFlagResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyWarningSettingRequest struct {
 	*tchttp.BaseRequest
 
@@ -14888,118 +14718,6 @@ type OpenPortStatistics struct {
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
 }
 
-type OpenProVersionPrepaidRequest struct {
-	*tchttp.BaseRequest
-
-	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitempty" name:"ChargePrepaid"`
-
-	// 需要开通专业版主机信息数组。
-	Machines []*ProVersionMachine `json:"Machines,omitempty" name:"Machines"`
-}
-
-func (r *OpenProVersionPrepaidRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenProVersionPrepaidRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ChargePrepaid")
-	delete(f, "Machines")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenProVersionPrepaidRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type OpenProVersionPrepaidResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单ID列表。
-		DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *OpenProVersionPrepaidResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenProVersionPrepaidResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type OpenProVersionRequest struct {
-	*tchttp.BaseRequest
-
-	// 云服务器类型（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
-
-	// 机器所属地域（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
-	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
-
-	// 主机唯一标识Uuid数组。
-	// 黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-	Quuids []*string `json:"Quuids,omitempty" name:"Quuids"`
-
-	// 活动ID。
-	ActivityId *uint64 `json:"ActivityId,omitempty" name:"ActivityId"`
-}
-
-func (r *OpenProVersionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenProVersionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "MachineType")
-	delete(f, "MachineRegion")
-	delete(f, "Quuids")
-	delete(f, "ActivityId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenProVersionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type OpenProVersionResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *OpenProVersionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenProVersionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type OsName struct {
 
 	// 系统名称
@@ -15112,25 +14830,6 @@ type PrivilegeRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
-}
-
-type ProVersionMachine struct {
-
-	// 主机类型。
-	// <li>CVM: 云服务器</li>
-	// <li>BM: 黑石物理机</li>
-	// <li>ECM: 边缘计算服务器</li>
-	// <li>LH: 轻量应用服务器</li>
-	// <li>Other: 混合云机器</li>
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
-
-	// 主机所在地域。
-	// 如：ap-guangzhou、ap-beijing
-	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
-
-	// 主机唯一标识Uuid数组。
-	// 黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type ProcessStatistics struct {
@@ -15390,56 +15089,6 @@ type RegionSet struct {
 
 	// 可用区信息
 	ZoneSet []*ZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet"`
-}
-
-type RenewProVersionRequest struct {
-	*tchttp.BaseRequest
-
-	// 购买相关参数。
-	ChargePrepaid *ChargePrepaid `json:"ChargePrepaid,omitempty" name:"ChargePrepaid"`
-
-	// 主机唯一ID，对应CVM的uuid、BM的InstanceId。
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
-}
-
-func (r *RenewProVersionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RenewProVersionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ChargePrepaid")
-	delete(f, "Quuid")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewProVersionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type RenewProVersionResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
-}
-
-func (r *RenewProVersionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RenewProVersionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReverseShell struct {

@@ -1738,6 +1738,7 @@ func NewDetachWorkGroupPolicyResponse() (response *DetachWorkGroupPolicyResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
     return c.DetachWorkGroupPolicyWithContext(context.Background(), request)
@@ -1748,6 +1749,7 @@ func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *DetachWorkGroupPolicyRequest) (response *DetachWorkGroupPolicyResponse, err error) {
     if request == nil {

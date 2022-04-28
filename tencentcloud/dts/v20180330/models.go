@@ -314,6 +314,9 @@ type CreateSubscribeRequest struct {
 
 	// 实例资源标签
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 用户自定义实例名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *CreateSubscribeRequest) ToJsonString() string {
@@ -334,6 +337,7 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "AutoRenew")
 	delete(f, "Tags")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubscribeRequest has unknown keys!", "")
 	}
@@ -757,6 +761,13 @@ type DescribeSubscribeConfResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
+		// 数据订阅版本。老版订阅填txdts，kafka版填kafka
+		SubscribeVersion *string `json:"SubscribeVersion,omitempty" name:"SubscribeVersion"`
+
+		// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Errors []*SubsErr `json:"Errors,omitempty" name:"Errors"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1029,6 +1040,10 @@ type MigrateJobInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 源实例为集群时且接入为非cdb时源实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcInfoMulti []*SrcInfo `json:"SrcInfoMulti,omitempty" name:"SrcInfoMulti"`
 }
 
 type MigrateOption struct {
@@ -1680,6 +1695,13 @@ func (r *StopMigrateJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopMigrateJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubsErr struct {
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type SubscribeInfo struct {

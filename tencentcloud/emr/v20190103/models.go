@@ -951,6 +951,64 @@ func (r *DescribeJobFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceScheduleRequest struct {
+	*tchttp.BaseRequest
+
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeResourceScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源调度功能是否开启
+		OpenSwitch *bool `json:"OpenSwitch,omitempty" name:"OpenSwitch"`
+
+		// 正在使用的资源调度器
+		Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
+
+		// 公平调度器的信息
+		FSInfo *string `json:"FSInfo,omitempty" name:"FSInfo"`
+
+		// 容量调度器的信息
+		CSInfo *string `json:"CSInfo,omitempty" name:"CSInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DiskGroup struct {
 
 	// 磁盘规格。
@@ -1712,6 +1770,178 @@ type MetaDbInfo struct {
 
 	// 自建元数据库信息。
 	MetaDBInfo *CustomMetaInfo `json:"MetaDBInfo,omitempty" name:"MetaDBInfo"`
+}
+
+type ModifyResourcePoolsRequest struct {
+	*tchttp.BaseRequest
+
+	// emr集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 标识是fair还是capacity
+	Key *string `json:"Key,omitempty" name:"Key"`
+}
+
+func (r *ModifyResourcePoolsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePoolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Key")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcePoolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourcePoolsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// false表示不是草稿，提交刷新请求成功
+		IsDraft *bool `json:"IsDraft,omitempty" name:"IsDraft"`
+
+		// 扩展字段，暂时没用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourcePoolsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceScheduleConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 业务标识，fair表示编辑公平的配置项，fairPlan表示编辑执行计划，capacity表示编辑容量的配置项
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 修改后的模块消息
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+func (r *ModifyResourceScheduleConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceScheduleConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Key")
+	delete(f, "Value")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceScheduleConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceScheduleConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// true为草稿，表示还没有刷新资源池
+		IsDraft *bool `json:"IsDraft,omitempty" name:"IsDraft"`
+
+		// 校验错误信息，如果不为空，则说明校验失败，配置没有成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourceScheduleConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceScheduleConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceSchedulerRequest struct {
+	*tchttp.BaseRequest
+
+	// emr集群的英文id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 老的调度器:fair
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+
+	// 新的调度器:capacity
+	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
+}
+
+func (r *ModifyResourceSchedulerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceSchedulerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OldValue")
+	delete(f, "NewValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceSchedulerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourceSchedulerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyResourceSchedulerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceSchedulerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type MultiDisk struct {

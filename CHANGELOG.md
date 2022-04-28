@@ -1,3 +1,268 @@
+# Release v1.0.391
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 52 次发布
+
+发布时间：2022-04-28 06:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/377/20453#DataDisk)
+
+	* 新增成员：ThroughputPerformance
+
+
+
+
+## 云拨测(cat) 版本：2018-04-09
+
+### 第 8 次发布
+
+发布时间：2022-04-28 06:07:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProbeTasks](https://cloud.tencent.com/document/api/280/66213)
+
+	* 新增入参：ProbeType, PluginSource
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 40 次发布
+
+发布时间：2022-04-27 06:08:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CloseProVersion
+* InquiryPriceOpenProVersionPrepaid
+* ModifyProVersionRenewFlag
+* OpenProVersion
+* OpenProVersionPrepaid
+* RenewProVersion
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ChargePrepaid
+* ProVersionMachine
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 14 次发布
+
+发布时间：2022-04-27 06:09:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TasksInfo](https://cloud.tencent.com/document/api/1342/53778#TasksInfo)
+
+	* 新增成员：Params
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 19 次发布
+
+发布时间：2022-04-28 06:11:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSubscribeConf](https://cloud.tencent.com/document/api/571/42716)
+
+	* 新增出参：SubscribeVersion, Errors
+
+
+新增数据结构：
+
+* [SubsErr](https://cloud.tencent.com/document/api/571/18131#SubsErr)
+
+修改数据结构：
+
+* [MigrateJobInfo](https://cloud.tencent.com/document/api/571/18131#MigrateJobInfo)
+
+	* 新增成员：SrcInfoMulti
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 29 次发布
+
+发布时间：2022-04-28 06:12:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyResourceScheduler](https://cloud.tencent.com/document/api/589/73140)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 15 次发布
+
+发布时间：2022-04-28 06:18:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplication](https://cloud.tencent.com/document/api/1371/60162)
+
+	* 新增入参：UseDefaultImageServiceParameters
+
+
+新增数据结构：
+
+* [UseDefaultRepoParameters](https://cloud.tencent.com/document/api/1371/60171#UseDefaultRepoParameters)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 1 次发布
+
+发布时间：2022-04-28 14:45:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/73154)
+* [DescribePurgeTasks](https://cloud.tencent.com/document/api/1552/73153)
+
+新增数据结构：
+
+* [FailReason](https://cloud.tencent.com/document/api/1552/73155#FailReason)
+* [Task](https://cloud.tencent.com/document/api/1552/73155#Task)
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 2 次发布
+
+发布时间：2022-04-27 10:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindAutoScalingGroup](https://cloud.tencent.com/document/api/1527/72107)
+
+	* 新增入参：QueueName
+
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+### 第 9 次发布
+
+发布时间：2022-04-27 06:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindAutoScalingGroup](https://cloud.tencent.com/document/api/1527/66099)
+
+	* 新增入参：QueueName
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 73 次发布
+
+发布时间：2022-04-28 06:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateServerlessGroup
+* DeployServerlessGroup
+* DescribeServerlessGroup
+* DescribeServerlessGroups
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ServerlessGroup
+* ServerlessGroupPage
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 111 次发布
+
+发布时间：2022-04-28 06:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)
+
+	* 新增出参：SslVpnClientId
+
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
+
+	* 新增出参：SslVpnServerId
+
+
+
+
 # Release v1.0.390
 
 ## 弹性伸缩(as) 版本：2018-04-19

@@ -4399,6 +4399,9 @@ type CreateVpnGatewaySslClientResponse struct {
 		// 异步任务ID。
 		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
+		// SSL-VPN client 唯一ID
+		SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -4479,6 +4482,9 @@ type CreateVpnGatewaySslServerResponse struct {
 
 		// 创建SSL-VPN server 异步任务ID
 		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// SSL-VPN server 唯一ID
+		SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

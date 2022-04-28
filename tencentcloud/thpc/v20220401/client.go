@@ -134,6 +134,7 @@ func NewBindAutoScalingGroupResponse() (response *BindAutoScalingGroupResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
@@ -145,6 +146,7 @@ func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 func (c *Client) BindAutoScalingGroupWithContext(ctx context.Context, request *BindAutoScalingGroupRequest) (response *BindAutoScalingGroupResponse, err error) {
@@ -292,6 +294,7 @@ func NewDeleteNodesResponse() (response *DeleteNodesResponse) {
 // 本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {
@@ -302,6 +305,7 @@ func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodes
 // 本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {

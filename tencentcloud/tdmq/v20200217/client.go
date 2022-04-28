@@ -695,7 +695,9 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
+//  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
@@ -709,7 +711,9 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATECLUSTER = "FailedOperation.CreateCluster"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
+//  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
@@ -4557,6 +4561,7 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  FAILEDOPERATION_UPDATEENVIRONMENT = "FailedOperation.UpdateEnvironment"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
@@ -4578,6 +4583,7 @@ func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttribute
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  FAILEDOPERATION_UPDATEENVIRONMENT = "FailedOperation.UpdateEnvironment"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"

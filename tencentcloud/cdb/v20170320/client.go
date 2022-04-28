@@ -1477,6 +1477,7 @@ func NewDeleteAuditLogFileResponse() (response *DeleteAuditLogFileResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_AUDITDELETELOGFILEERROR = "InternalError.AuditDeleteLogFileError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAuditLogFile(request *DeleteAuditLogFileRequest) (response *DeleteAuditLogFileResponse, err error) {
     return c.DeleteAuditLogFileWithContext(context.Background(), request)
@@ -1488,6 +1489,7 @@ func (c *Client) DeleteAuditLogFile(request *DeleteAuditLogFileRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR_AUDITDELETELOGFILEERROR = "InternalError.AuditDeleteLogFileError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAuditLogFileWithContext(ctx context.Context, request *DeleteAuditLogFileRequest) (response *DeleteAuditLogFileResponse, err error) {
     if request == nil {
@@ -2856,6 +2858,7 @@ func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
     return c.DescribeBinlogsWithContext(context.Background(), request)
@@ -2870,6 +2873,7 @@ func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *Des
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
     if request == nil {
@@ -7237,6 +7241,7 @@ func NewQueryCDBProxyResponse() (response *QueryCDBProxyResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) QueryCDBProxy(request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
     return c.QueryCDBProxyWithContext(context.Background(), request)
 }
@@ -7247,6 +7252,7 @@ func (c *Client) QueryCDBProxy(request *QueryCDBProxyRequest) (response *QueryCD
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) QueryCDBProxyWithContext(ctx context.Context, request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
     if request == nil {
         request = NewQueryCDBProxyRequest()

@@ -1956,6 +1956,7 @@ func NewUpsertIpAccessControlResponse() (response *UpsertIpAccessControlResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertIpAccessControl(request *UpsertIpAccessControlRequest) (response *UpsertIpAccessControlResponse, err error) {
     return c.UpsertIpAccessControlWithContext(context.Background(), request)
 }
@@ -1966,6 +1967,7 @@ func (c *Client) UpsertIpAccessControl(request *UpsertIpAccessControlRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpsertIpAccessControlWithContext(ctx context.Context, request *UpsertIpAccessControlRequest) (response *UpsertIpAccessControlResponse, err error) {
     if request == nil {
         request = NewUpsertIpAccessControlRequest()

@@ -1391,6 +1391,7 @@ func NewTextSimilarityProResponse() (response *TextSimilarityProResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"
@@ -1416,6 +1417,7 @@ func (c *Client) TextSimilarityPro(request *TextSimilarityProRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"

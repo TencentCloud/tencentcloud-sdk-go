@@ -32,6 +32,9 @@ type BindAutoScalingGroupRequest struct {
 	// 弹性伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
 
+	// 队列名称。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
 	// 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
 	ExpansionBusyTime *int64 `json:"ExpansionBusyTime,omitempty" name:"ExpansionBusyTime"`
 
@@ -67,6 +70,7 @@ func (r *BindAutoScalingGroupRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "LaunchConfigurationId")
 	delete(f, "AutoScalingGroupId")
+	delete(f, "QueueName")
 	delete(f, "ExpansionBusyTime")
 	delete(f, "ShrinkIdleTime")
 	delete(f, "EnableAutoExpansion")
