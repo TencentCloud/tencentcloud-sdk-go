@@ -1850,6 +1850,7 @@ func NewDescribeAnimatedGraphicsTemplatesResponse() (response *DescribeAnimatedG
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGraphicsTemplatesRequest) (response *DescribeAnimatedGraphicsTemplatesResponse, err error) {
     return c.DescribeAnimatedGraphicsTemplatesWithContext(context.Background(), request)
 }
@@ -1861,6 +1862,7 @@ func (c *Client) DescribeAnimatedGraphicsTemplates(request *DescribeAnimatedGrap
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeAnimatedGraphicsTemplatesWithContext(ctx context.Context, request *DescribeAnimatedGraphicsTemplatesRequest) (response *DescribeAnimatedGraphicsTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeAnimatedGraphicsTemplatesRequest()
@@ -1958,6 +1960,7 @@ func NewDescribeImageSpriteTemplatesResponse() (response *DescribeImageSpriteTem
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTemplatesRequest) (response *DescribeImageSpriteTemplatesResponse, err error) {
     return c.DescribeImageSpriteTemplatesWithContext(context.Background(), request)
 }
@@ -1969,6 +1972,7 @@ func (c *Client) DescribeImageSpriteTemplates(request *DescribeImageSpriteTempla
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, request *DescribeImageSpriteTemplatesRequest) (response *DescribeImageSpriteTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeImageSpriteTemplatesRequest()
@@ -2113,6 +2117,7 @@ func NewDescribeSampleSnapshotTemplatesResponse() (response *DescribeSampleSnaps
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeSampleSnapshotTemplates(request *DescribeSampleSnapshotTemplatesRequest) (response *DescribeSampleSnapshotTemplatesResponse, err error) {
     return c.DescribeSampleSnapshotTemplatesWithContext(context.Background(), request)
 }
@@ -2124,6 +2129,7 @@ func (c *Client) DescribeSampleSnapshotTemplates(request *DescribeSampleSnapshot
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeSampleSnapshotTemplatesWithContext(ctx context.Context, request *DescribeSampleSnapshotTemplatesRequest) (response *DescribeSampleSnapshotTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeSampleSnapshotTemplatesRequest()
@@ -2164,6 +2170,7 @@ func NewDescribeSnapshotByTimeOffsetTemplatesResponse() (response *DescribeSnaps
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeSnapshotByTimeOffsetTemplates(request *DescribeSnapshotByTimeOffsetTemplatesRequest) (response *DescribeSnapshotByTimeOffsetTemplatesResponse, err error) {
     return c.DescribeSnapshotByTimeOffsetTemplatesWithContext(context.Background(), request)
 }
@@ -2175,6 +2182,7 @@ func (c *Client) DescribeSnapshotByTimeOffsetTemplates(request *DescribeSnapshot
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 func (c *Client) DescribeSnapshotByTimeOffsetTemplatesWithContext(ctx context.Context, request *DescribeSnapshotByTimeOffsetTemplatesRequest) (response *DescribeSnapshotByTimeOffsetTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeSnapshotByTimeOffsetTemplatesRequest()
@@ -3225,6 +3233,7 @@ func NewModifyImageSpriteTemplateResponse() (response *ModifyImageSpriteTemplate
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
 //  INVALIDPARAMETERVALUE_ROWCOUNT = "InvalidParameterValue.RowCount"
 //  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
 //  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
@@ -3243,6 +3252,7 @@ func (c *Client) ModifyImageSpriteTemplate(request *ModifyImageSpriteTemplateReq
 //  INVALIDPARAMETERVALUE_COLUMNCOUNT = "InvalidParameterValue.ColumnCount"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
 //  INVALIDPARAMETERVALUE_ROWCOUNT = "InvalidParameterValue.RowCount"
 //  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
 //  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
@@ -3345,9 +3355,11 @@ func NewModifySampleSnapshotTemplateResponse() (response *ModifySampleSnapshotTe
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
 //  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
 //  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
 //  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
 //  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
@@ -3363,9 +3375,11 @@ func (c *Client) ModifySampleSnapshotTemplate(request *ModifySampleSnapshotTempl
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
 //  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
 //  INVALIDPARAMETERVALUE_SAMPLEINTERVAL = "InvalidParameterValue.SampleInterval"
 //  INVALIDPARAMETERVALUE_SAMPLETYPE = "InvalidParameterValue.SampleType"
 //  INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"
@@ -3410,6 +3424,7 @@ func NewModifySnapshotByTimeOffsetTemplateResponse() (response *ModifySnapshotBy
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
 //  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
@@ -3426,6 +3441,7 @@ func (c *Client) ModifySnapshotByTimeOffsetTemplate(request *ModifySnapshotByTim
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_FILLTYPE = "InvalidParameterValue.FillType"
 //  INVALIDPARAMETERVALUE_FORMAT = "InvalidParameterValue.Format"
 //  INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"

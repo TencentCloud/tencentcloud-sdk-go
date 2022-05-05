@@ -132,6 +132,7 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     return c.ClearCmqQueueWithContext(context.Background(), request)
 }
@@ -141,6 +142,7 @@ func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCm
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ClearCmqQueueWithContext(ctx context.Context, request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     if request == nil {
         request = NewClearCmqQueueRequest()
@@ -1082,6 +1084,7 @@ func NewCreateRocketMQTopicResponse() (response *CreateRocketMQTopicResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (response *CreateRocketMQTopicResponse, err error) {
     return c.CreateRocketMQTopicWithContext(context.Background(), request)
@@ -1098,6 +1101,7 @@ func (c *Client) CreateRocketMQTopic(request *CreateRocketMQTopicRequest) (respo
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 func (c *Client) CreateRocketMQTopicWithContext(ctx context.Context, request *CreateRocketMQTopicRequest) (response *CreateRocketMQTopicResponse, err error) {
     if request == nil {
@@ -4414,6 +4418,7 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
@@ -4426,6 +4431,7 @@ func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"

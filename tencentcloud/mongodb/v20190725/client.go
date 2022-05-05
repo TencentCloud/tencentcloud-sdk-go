@@ -1160,6 +1160,7 @@ func NewInquirePriceCreateDBInstancesResponse() (response *InquirePriceCreateDBI
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
 //  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) InquirePriceCreateDBInstances(request *InquirePriceCreateDBInstancesRequest) (response *InquirePriceCreateDBInstancesResponse, err error) {
     return c.InquirePriceCreateDBInstancesWithContext(context.Background(), request)
@@ -1174,6 +1175,7 @@ func (c *Client) InquirePriceCreateDBInstances(request *InquirePriceCreateDBInst
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
 //  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
 //  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
 func (c *Client) InquirePriceCreateDBInstancesWithContext(ctx context.Context, request *InquirePriceCreateDBInstancesRequest) (response *InquirePriceCreateDBInstancesResponse, err error) {
     if request == nil {

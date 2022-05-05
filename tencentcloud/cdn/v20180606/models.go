@@ -7620,7 +7620,7 @@ type Origin struct {
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
 	// OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket
-	// 注意：需要先授权 CDN 访问该私有 Bucket 的权限后，才可开启此配置。
+	// 注意：需要先授权 CDN 访问该私有 Bucket 的权限后，才可开启此配置。取值范围: on/off
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPrivateAccess *string `json:"CosPrivateAccess,omitempty" name:"CosPrivateAccess"`
 

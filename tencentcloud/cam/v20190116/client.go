@@ -990,6 +990,7 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
 // 删除用户组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
     return c.DeleteGroupWithContext(context.Background(), request)
@@ -999,6 +1000,7 @@ func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroup
 // 删除用户组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
     if request == nil {

@@ -116,6 +116,9 @@ const (
 	// 安全策略已经存在，请勿重复创建。
 	FAILEDOPERATION_PROXYSECURITYPOLICYEXISTED = "FailedOperation.ProxySecurityPolicyExisted"
 
+	// 通道安全策略操作中。
+	FAILEDOPERATION_PROXYSECURITYPOLICYOPERATING = "FailedOperation.ProxySecurityPolicyOperating"
+
 	// 线路售罄或资源不足，请提工单申请。
 	FAILEDOPERATION_PROXYSELLOUT = "FailedOperation.ProxySellOut"
 

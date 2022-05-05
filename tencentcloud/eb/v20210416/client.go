@@ -278,6 +278,7 @@ func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
 //  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
 //  RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *CreateEventBusResponse, err error) {
     return c.CreateEventBusWithContext(context.Background(), request)
 }
@@ -295,6 +296,7 @@ func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *Creat
 //  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
 //  RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 //  RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) CreateEventBusWithContext(ctx context.Context, request *CreateEventBusRequest) (response *CreateEventBusResponse, err error) {
     if request == nil {
         request = NewCreateEventBusRequest()

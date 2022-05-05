@@ -138,6 +138,7 @@ func NewChatBotResponse() (response *ChatBotResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) ChatBot(request *ChatBotRequest) (response *ChatBotResponse, err error) {
     return c.ChatBotWithContext(context.Background(), request)
 }
@@ -155,6 +156,7 @@ func (c *Client) ChatBot(request *ChatBotRequest) (response *ChatBotResponse, er
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) ChatBotWithContext(ctx context.Context, request *ChatBotRequest) (response *ChatBotResponse, err error) {
     if request == nil {
         request = NewChatBotRequest()

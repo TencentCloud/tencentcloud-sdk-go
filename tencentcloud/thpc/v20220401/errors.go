@@ -53,9 +53,15 @@ const (
 	// 无法找到ID对应的弹性伸缩启动配置。
 	RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 
+	// 无法找到ID对应节点。
+	RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
+
 	// 该伸缩组已绑定集群，请更换伸缩组。
 	UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 
 	// 该集群当前状态不支持该操作。
 	UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+
+	// 类型节点不支持当前操作。
+	UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
 )

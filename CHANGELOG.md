@@ -1,3 +1,61 @@
+# Release v1.0.393
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 29 次发布
+
+发布时间：2022-05-06 06:04:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOverviewAttackTrend](https://cloud.tencent.com/document/api/1021/73421)
+* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/1021/73420)
+* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/1021/73419)
+* [DescribeOverviewIndex](https://cloud.tencent.com/document/api/1021/73418)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 65 次发布
+
+发布时间：2022-05-05 11:48:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetDistributeBillDownloadUrl](https://cloud.tencent.com/document/api/1122/73392)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 2 次发布
+
+发布时间：2022-05-06 06:16:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1552/73423)
+
+新增数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+* [ZoneFilter](https://cloud.tencent.com/document/api/1552/73155#ZoneFilter)
+
+
+
 # Release v1.0.392
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19

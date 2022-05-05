@@ -4727,6 +4727,318 @@ func (r *DescribeListWaterPrintConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOverviewAttackTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 攻击类型，取值ddos， cc
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 纬度，当前仅支持attackcount
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+
+	// 周期，当前仅支持86400
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeOverviewAttackTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewAttackTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Dimension")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewAttackTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewAttackTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 攻击类型
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 起始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+		// 结束时间
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 周期
+		Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+		// 每个周期点的攻击次数
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
+
+		// 包含的周期点数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewAttackTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewAttackTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewCCTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源的IP
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeOverviewCCTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewCCTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "IpList")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewCCTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewCCTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 值数组
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewCCTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewCCTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewDDoSTrendRequest struct {
+	*tchttp.BaseRequest
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源实例的IP列表
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeOverviewDDoSTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewDDoSTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "IpList")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewDDoSTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewDDoSTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 值个数
+		Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+		// 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
+		Data []*uint64 `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewDDoSTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewDDoSTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// 拉取指标起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 拉取指标结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeOverviewIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// IP总数
+		AllIpCount *uint64 `json:"AllIpCount,omitempty" name:"AllIpCount"`
+
+		// 高防IP总数（包含高防包+高防IP）
+		AntiddosIpCount *uint64 `json:"AntiddosIpCount,omitempty" name:"AntiddosIpCount"`
+
+		// 攻击IP总数
+		AttackIpCount *uint64 `json:"AttackIpCount,omitempty" name:"AttackIpCount"`
+
+		// 封堵IP总数
+		BlockIpCount *uint64 `json:"BlockIpCount,omitempty" name:"BlockIpCount"`
+
+		// 高防域名总数
+		AntiddosDomainCount *uint64 `json:"AntiddosDomainCount,omitempty" name:"AntiddosDomainCount"`
+
+		// 攻击域名总数
+		AttackDomainCount *uint64 `json:"AttackDomainCount,omitempty" name:"AttackDomainCount"`
+
+		// 攻击流量峰值
+		MaxAttackFlow *uint64 `json:"MaxAttackFlow,omitempty" name:"MaxAttackFlow"`
+
+		// 当前最近一条攻击中的起始时间
+		NewAttackTime *string `json:"NewAttackTime,omitempty" name:"NewAttackTime"`
+
+		// 当前最近一条攻击中的IP
+		NewAttackIp *string `json:"NewAttackIp,omitempty" name:"NewAttackIp"`
+
+		// 当前最近一条攻击中的攻击类型
+		NewAttackType *string `json:"NewAttackType,omitempty" name:"NewAttackType"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DisassociateDDoSEipAddressRequest struct {
 	*tchttp.BaseRequest
 

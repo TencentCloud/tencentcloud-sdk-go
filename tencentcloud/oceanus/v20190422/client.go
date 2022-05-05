@@ -823,6 +823,7 @@ func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
     return c.DescribeResourcesWithContext(context.Background(), request)
 }
@@ -839,6 +840,7 @@ func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_RESOURCECONFIG = "ResourceNotFound.ResourceConfig"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeResourcesWithContext(ctx context.Context, request *DescribeResourcesRequest) (response *DescribeResourcesResponse, err error) {
     if request == nil {
         request = NewDescribeResourcesRequest()

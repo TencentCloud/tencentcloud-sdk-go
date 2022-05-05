@@ -340,6 +340,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
     return c.CreateProjectWithContext(context.Background(), request)
@@ -379,6 +380,7 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
     if request == nil {
@@ -1465,6 +1467,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     return c.DescribeTaskDetailWithContext(context.Background(), request)
@@ -1482,6 +1485,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TASKID = "InvalidParameterValue.TaskId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
@@ -2279,6 +2283,7 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 //  INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
     return c.HandleStreamConnectProjectWithContext(context.Background(), request)
 }
@@ -2331,6 +2336,7 @@ func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectR
 //  INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) HandleStreamConnectProjectWithContext(ctx context.Context, request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
     if request == nil {
         request = NewHandleStreamConnectProjectRequest()

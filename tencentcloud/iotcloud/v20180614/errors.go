@@ -134,6 +134,9 @@ const (
 	// State JSON对象超过大小限制，最大为 8k。
 	INVALIDPARAMETERVALUE_JSONSIZEEXCEEDLIMIT = "InvalidParameterValue.JSONSizeExceedLimit"
 
+	// 修改规则的操作被禁止。
+	INVALIDPARAMETERVALUE_OPERATIONDENIED = "InvalidParameterValue.OperationDenied"
+
 	// 请求中缺少关键字段信息。
 	INVALIDPARAMETERVALUE_PARAMINCOMPLETE = "InvalidParameterValue.ParamIncomplete"
 

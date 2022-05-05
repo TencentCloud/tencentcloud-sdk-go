@@ -6965,7 +6965,7 @@ func NewDescribeProtectNetListResponse() (response *DescribeProtectNetListRespon
 }
 
 // DescribeProtectNetList
-// 专家服务-旗舰护网列表
+// 专家服务-旗舰重保列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6977,7 +6977,7 @@ func (c *Client) DescribeProtectNetList(request *DescribeProtectNetListRequest) 
 }
 
 // DescribeProtectNetList
-// 专家服务-旗舰护网列表
+// 专家服务-旗舰重保列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

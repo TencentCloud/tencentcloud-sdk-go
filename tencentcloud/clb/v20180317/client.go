@@ -1722,6 +1722,7 @@ func NewDescribeBlockIPTaskResponse() (response *DescribeBlockIPTaskResponse) {
 // 根据 ModifyBlockIPList 接口返回的异步任务的ID，查询封禁IP（黑名单）异步任务的执行状态。（接口灰度中，如需使用请提工单）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBlockIPTask(request *DescribeBlockIPTaskRequest) (response *DescribeBlockIPTaskResponse, err error) {
@@ -1732,6 +1733,7 @@ func (c *Client) DescribeBlockIPTask(request *DescribeBlockIPTaskRequest) (respo
 // 根据 ModifyBlockIPList 接口返回的异步任务的ID，查询封禁IP（黑名单）异步任务的执行状态。（接口灰度中，如需使用请提工单）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBlockIPTaskWithContext(ctx context.Context, request *DescribeBlockIPTaskRequest) (response *DescribeBlockIPTaskResponse, err error) {
@@ -2480,6 +2482,7 @@ func NewDescribeListenersResponse() (response *DescribeListenersResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {
@@ -2496,6 +2499,7 @@ func (c *Client) DescribeListeners(request *DescribeListenersRequest) (response 
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeListenersWithContext(ctx context.Context, request *DescribeListenersRequest) (response *DescribeListenersResponse, err error) {

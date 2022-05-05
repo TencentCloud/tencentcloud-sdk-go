@@ -4314,6 +4314,7 @@ func NewModifyDBInstanceSpecResponse() (response *ModifyDBInstanceSpecResponse) 
 //  FAILEDOPERATION_PAYORDERFAILED = "FailedOperation.PayOrderFailed"
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 func (c *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest) (response *ModifyDBInstanceSpecResponse, err error) {
@@ -4332,6 +4333,7 @@ func (c *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest) (res
 //  FAILEDOPERATION_PAYORDERFAILED = "FailedOperation.PayOrderFailed"
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  FAILEDOPERATION_QUERYSPECERROR = "FailedOperation.QuerySpecError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *ModifyDBInstanceSpecRequest) (response *ModifyDBInstanceSpecResponse, err error) {

@@ -4374,6 +4374,330 @@ func (c *Client) DescribeListWaterPrintConfigWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeOverviewAttackTrendRequest() (request *DescribeOverviewAttackTrendRequest) {
+    request = &DescribeOverviewAttackTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeOverviewAttackTrend")
+    
+    
+    return
+}
+
+func NewDescribeOverviewAttackTrendResponse() (response *DescribeOverviewAttackTrendResponse) {
+    response = &DescribeOverviewAttackTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewAttackTrend
+// 拉取防护概览攻击趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewAttackTrend(request *DescribeOverviewAttackTrendRequest) (response *DescribeOverviewAttackTrendResponse, err error) {
+    return c.DescribeOverviewAttackTrendWithContext(context.Background(), request)
+}
+
+// DescribeOverviewAttackTrend
+// 拉取防护概览攻击趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewAttackTrendWithContext(ctx context.Context, request *DescribeOverviewAttackTrendRequest) (response *DescribeOverviewAttackTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewAttackTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewAttackTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewAttackTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOverviewCCTrendRequest() (request *DescribeOverviewCCTrendRequest) {
+    request = &DescribeOverviewCCTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeOverviewCCTrend")
+    
+    
+    return
+}
+
+func NewDescribeOverviewCCTrendResponse() (response *DescribeOverviewCCTrendResponse) {
+    response = &DescribeOverviewCCTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewCCTrend
+// 获取防护概览总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewCCTrend(request *DescribeOverviewCCTrendRequest) (response *DescribeOverviewCCTrendResponse, err error) {
+    return c.DescribeOverviewCCTrendWithContext(context.Background(), request)
+}
+
+// DescribeOverviewCCTrend
+// 获取防护概览总请求峰值(QPS)和攻击请求(QPS)以及总请求次数和攻击请求次数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewCCTrendWithContext(ctx context.Context, request *DescribeOverviewCCTrendRequest) (response *DescribeOverviewCCTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewCCTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewCCTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewCCTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOverviewDDoSTrendRequest() (request *DescribeOverviewDDoSTrendRequest) {
+    request = &DescribeOverviewDDoSTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeOverviewDDoSTrend")
+    
+    
+    return
+}
+
+func NewDescribeOverviewDDoSTrendResponse() (response *DescribeOverviewDDoSTrendResponse) {
+    response = &DescribeOverviewDDoSTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewDDoSTrend
+// 获取防护概览DDoS攻击流量带宽和攻击包速率数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewDDoSTrend(request *DescribeOverviewDDoSTrendRequest) (response *DescribeOverviewDDoSTrendResponse, err error) {
+    return c.DescribeOverviewDDoSTrendWithContext(context.Background(), request)
+}
+
+// DescribeOverviewDDoSTrend
+// 获取防护概览DDoS攻击流量带宽和攻击包速率数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewDDoSTrendWithContext(ctx context.Context, request *DescribeOverviewDDoSTrendRequest) (response *DescribeOverviewDDoSTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewDDoSTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewDDoSTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewDDoSTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOverviewIndexRequest() (request *DescribeOverviewIndexRequest) {
+    request = &DescribeOverviewIndexRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeOverviewIndex")
+    
+    
+    return
+}
+
+func NewDescribeOverviewIndexResponse() (response *DescribeOverviewIndexResponse) {
+    response = &DescribeOverviewIndexResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewIndex
+// 拉取防护概览指标
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewIndex(request *DescribeOverviewIndexRequest) (response *DescribeOverviewIndexResponse, err error) {
+    return c.DescribeOverviewIndexWithContext(context.Background(), request)
+}
+
+// DescribeOverviewIndex
+// 拉取防护概览指标
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewIndexWithContext(ctx context.Context, request *DescribeOverviewIndexRequest) (response *DescribeOverviewIndexResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewIndexRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewIndex require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateDDoSEipAddressRequest() (request *DisassociateDDoSEipAddressRequest) {
     request = &DisassociateDDoSEipAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

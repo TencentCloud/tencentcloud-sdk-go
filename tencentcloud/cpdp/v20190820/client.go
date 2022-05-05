@@ -3779,6 +3779,61 @@ func (c *Client) GetBillDownloadUrlWithContext(ctx context.Context, request *Get
     return
 }
 
+func NewGetDistributeBillDownloadUrlRequest() (request *GetDistributeBillDownloadUrlRequest) {
+    request = &GetDistributeBillDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "GetDistributeBillDownloadUrl")
+    
+    
+    return
+}
+
+func NewGetDistributeBillDownloadUrlResponse() (response *GetDistributeBillDownloadUrlResponse) {
+    response = &GetDistributeBillDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDistributeBillDownloadUrl
+// 调用该接口返回对账单下载地址，对账单下载URL通过GET方式访问，返回zip包，解压后为csv格式文件。文件首行如下：
+//
+// 商户号,订单号,支付订单号,分账订单总金额,分账详情（通过|分割每笔明细：商户号1#分账金额1|商户号2#分账金额2）,交易手续费承担方商户号,交易手续费,发起时间,分账状态,结算日期,非交易主体分账金额,商户退款订单号,商户分账单号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) GetDistributeBillDownloadUrl(request *GetDistributeBillDownloadUrlRequest) (response *GetDistributeBillDownloadUrlResponse, err error) {
+    return c.GetDistributeBillDownloadUrlWithContext(context.Background(), request)
+}
+
+// GetDistributeBillDownloadUrl
+// 调用该接口返回对账单下载地址，对账单下载URL通过GET方式访问，返回zip包，解压后为csv格式文件。文件首行如下：
+//
+// 商户号,订单号,支付订单号,分账订单总金额,分账详情（通过|分割每笔明细：商户号1#分账金额1|商户号2#分账金额2）,交易手续费承担方商户号,交易手续费,发起时间,分账状态,结算日期,非交易主体分账金额,商户退款订单号,商户分账单号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) GetDistributeBillDownloadUrlWithContext(ctx context.Context, request *GetDistributeBillDownloadUrlRequest) (response *GetDistributeBillDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewGetDistributeBillDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDistributeBillDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDistributeBillDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewMigrateOrderRefundRequest() (request *MigrateOrderRefundRequest) {
     request = &MigrateOrderRefundRequest{
         BaseRequest: &tchttp.BaseRequest{},

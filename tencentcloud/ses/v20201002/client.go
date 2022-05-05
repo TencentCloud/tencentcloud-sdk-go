@@ -741,6 +741,7 @@ func NewDeleteReceiverResponse() (response *DeleteReceiverResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
 func (c *Client) DeleteReceiver(request *DeleteReceiverRequest) (response *DeleteReceiverResponse, err error) {
     return c.DeleteReceiverWithContext(context.Background(), request)
 }
@@ -751,6 +752,7 @@ func (c *Client) DeleteReceiver(request *DeleteReceiverRequest) (response *Delet
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER_RECEIVERIDNECESSARY = "MissingParameter.ReceiverIdNecessary"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
 func (c *Client) DeleteReceiverWithContext(ctx context.Context, request *DeleteReceiverRequest) (response *DeleteReceiverResponse, err error) {
     if request == nil {
         request = NewDeleteReceiverRequest()

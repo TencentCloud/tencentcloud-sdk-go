@@ -284,6 +284,7 @@ func NewCloseCDBProxyResponse() (response *CloseCDBProxyResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) CloseCDBProxy(request *CloseCDBProxyRequest) (response *CloseCDBProxyResponse, err error) {
     return c.CloseCDBProxyWithContext(context.Background(), request)
 }
@@ -294,6 +295,7 @@ func (c *Client) CloseCDBProxy(request *CloseCDBProxyRequest) (response *CloseCD
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) CloseCDBProxyWithContext(ctx context.Context, request *CloseCDBProxyRequest) (response *CloseCDBProxyResponse, err error) {
     if request == nil {
         request = NewCloseCDBProxyRequest()
@@ -4307,6 +4309,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     return c.DescribeProjectSecurityGroupsWithContext(context.Background(), request)
@@ -4321,6 +4324,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_RESOURCENOTUNIQUE = "InternalError.ResourceNotUnique"
 //  INTERNALERROR_SECURITYGROUPERROR = "InternalError.SecurityGroupError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
@@ -6262,8 +6266,7 @@ func NewModifyCDBProxyConnectionPoolResponse() (response *ModifyCDBProxyConnecti
 // 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) ModifyCDBProxyConnectionPool(request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
     return c.ModifyCDBProxyConnectionPoolWithContext(context.Background(), request)
 }
@@ -6272,8 +6275,7 @@ func (c *Client) ModifyCDBProxyConnectionPool(request *ModifyCDBProxyConnectionP
 // 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) ModifyCDBProxyConnectionPoolWithContext(ctx context.Context, request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
     if request == nil {
         request = NewModifyCDBProxyConnectionPoolRequest()
@@ -6311,8 +6313,7 @@ func NewModifyCDBProxyDescResponse() (response *ModifyCDBProxyDescResponse) {
 // 修改数据库代理描述
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) ModifyCDBProxyDesc(request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
     return c.ModifyCDBProxyDescWithContext(context.Background(), request)
 }
@@ -6321,8 +6322,7 @@ func (c *Client) ModifyCDBProxyDesc(request *ModifyCDBProxyDescRequest) (respons
 // 修改数据库代理描述
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) ModifyCDBProxyDescWithContext(ctx context.Context, request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
     if request == nil {
         request = NewModifyCDBProxyDescRequest()
@@ -7517,6 +7517,7 @@ func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
@@ -7540,6 +7541,7 @@ func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (respons
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) RestartDBInstancesWithContext(ctx context.Context, request *RestartDBInstancesRequest) (response *RestartDBInstancesResponse, err error) {
@@ -7865,6 +7867,7 @@ func NewSwitchCDBProxyResponse() (response *SwitchCDBProxyResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) SwitchCDBProxy(request *SwitchCDBProxyRequest) (response *SwitchCDBProxyResponse, err error) {
     return c.SwitchCDBProxyWithContext(context.Background(), request)
 }
@@ -7874,6 +7877,7 @@ func (c *Client) SwitchCDBProxy(request *SwitchCDBProxyRequest) (response *Switc
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) SwitchCDBProxyWithContext(ctx context.Context, request *SwitchCDBProxyRequest) (response *SwitchCDBProxyResponse, err error) {
     if request == nil {
         request = NewSwitchCDBProxyRequest()
@@ -8078,10 +8082,7 @@ func NewUpgradeCDBProxyResponse() (response *UpgradeCDBProxyResponse) {
 // 调整数据库代理配置
 //
 // 可能返回的错误码:
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) UpgradeCDBProxy(request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
     return c.UpgradeCDBProxyWithContext(context.Background(), request)
 }
@@ -8090,10 +8091,7 @@ func (c *Client) UpgradeCDBProxy(request *UpgradeCDBProxyRequest) (response *Upg
 // 调整数据库代理配置
 //
 // 可能返回的错误码:
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) UpgradeCDBProxyWithContext(ctx context.Context, request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
     if request == nil {
         request = NewUpgradeCDBProxyRequest()

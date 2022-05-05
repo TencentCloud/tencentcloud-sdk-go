@@ -50,6 +50,9 @@ const (
 	// 更新 ingress 失败。
 	INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 
+	// 只支持绑定一种弹性伸缩。
+	INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
+
 	// 版本号格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 
@@ -80,6 +83,9 @@ const (
 	// 应用名已存在。
 	INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
 
+	// 应用创建失败，达到上限。
+	INVALIDPARAMETERVALUE_SERVICEREACHMAXIMUM = "InvalidParameterValue.ServiceReachMaximum"
+
 	// 非 JAVA 应用不支持链路追踪特性。
 	INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 
@@ -94,6 +100,9 @@ const (
 
 	// 环境ID不能为空。
 	MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+
+	// 包名不能为空。
+	MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 
 	// 服务ID不能为空。
 	MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"

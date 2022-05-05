@@ -8015,6 +8015,71 @@ func (r *GetBillDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetDistributeBillDownloadUrlRequest struct {
+	*tchttp.BaseRequest
+
+	// 收单系统分配的开放ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 收单系统分配的密钥
+	OpenKey *string `json:"OpenKey,omitempty" name:"OpenKey"`
+
+	// 分账日期（YYYYMMDD，今天传昨天的日期）
+	Day *string `json:"Day,omitempty" name:"Day"`
+}
+
+func (r *GetDistributeBillDownloadUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDistributeBillDownloadUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "OpenKey")
+	delete(f, "Day")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDistributeBillDownloadUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetDistributeBillDownloadUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务系统返回码
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 业务系统返回消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 账单文件下载地址响应对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *BillDownloadUrlResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetDistributeBillDownloadUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDistributeBillDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MemberTransactionItem struct {
 
 	// 交易类型。

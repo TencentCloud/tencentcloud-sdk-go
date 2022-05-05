@@ -63,7 +63,7 @@ func NewAddCdnDomainResponse() (response *AddCdnDomainResponse) {
 }
 
 // AddCdnDomain
-// AddCdnDomain 用于新增内容分发网络加速域名。
+// AddCdnDomain 用于新增内容分发网络加速域名。1分钟内最多可新增100个域名。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
@@ -121,7 +121,7 @@ func (c *Client) AddCdnDomain(request *AddCdnDomainRequest) (response *AddCdnDom
 }
 
 // AddCdnDomain
-// AddCdnDomain 用于新增内容分发网络加速域名。
+// AddCdnDomain 用于新增内容分发网络加速域名。1分钟内最多可新增100个域名。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
@@ -3830,6 +3830,7 @@ func NewDuplicateDomainConfigResponse() (response *DuplicateDomainConfigResponse
 //  UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.CdnHostIsOwnedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISTOAPPLYHOST = "UnauthorizedOperation.CdnHostIsToApplyHost"
+//  UNAUTHORIZEDOPERATION_CDNHOSTISUSEDBYOTHER = "UnauthorizedOperation.CdnHostIsUsedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNINVALIDUSERSTATUS = "UnauthorizedOperation.CdnInvalidUserStatus"
 //  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
@@ -3876,6 +3877,7 @@ func (c *Client) DuplicateDomainConfig(request *DuplicateDomainConfigRequest) (r
 //  UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = "UnauthorizedOperation.CdnHostIsOwnedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTISTOAPPLYHOST = "UnauthorizedOperation.CdnHostIsToApplyHost"
+//  UNAUTHORIZEDOPERATION_CDNHOSTISUSEDBYOTHER = "UnauthorizedOperation.CdnHostIsUsedByOther"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNINVALIDUSERSTATUS = "UnauthorizedOperation.CdnInvalidUserStatus"
 //  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
@@ -5917,6 +5919,7 @@ func NewStopCdnDomainResponse() (response *StopCdnDomainResponse) {
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
 //  INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
+//  INVALIDPARAMETER_CDNKEYRULESEXCLUDECUSTOMREQUIRESFULLLEGO = "InvalidParameter.CdnKeyRulesExcludeCustomRequiresFullLego"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
 //  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"
@@ -5948,6 +5951,7 @@ func (c *Client) StopCdnDomain(request *StopCdnDomainRequest) (response *StopCdn
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
 //  INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
+//  INVALIDPARAMETER_CDNKEYRULESEXCLUDECUSTOMREQUIRESFULLLEGO = "InvalidParameter.CdnKeyRulesExcludeCustomRequiresFullLego"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
 //  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"

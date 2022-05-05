@@ -716,6 +716,7 @@ func NewCreateMultipleSecurityPolicyResponse() (response *CreateMultipleSecurity
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -731,6 +732,7 @@ func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPol
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3005,6 +3007,7 @@ func NewDescribeImmutableTagRulesResponse() (response *DescribeImmutableTagRules
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeImmutableTagRules(request *DescribeImmutableTagRulesRequest) (response *DescribeImmutableTagRulesResponse, err error) {
     return c.DescribeImmutableTagRulesWithContext(context.Background(), request)
@@ -3020,6 +3023,7 @@ func (c *Client) DescribeImmutableTagRules(request *DescribeImmutableTagRulesReq
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
 func (c *Client) DescribeImmutableTagRulesWithContext(ctx context.Context, request *DescribeImmutableTagRulesRequest) (response *DescribeImmutableTagRulesResponse, err error) {
     if request == nil {

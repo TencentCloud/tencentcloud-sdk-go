@@ -296,7 +296,9 @@ func NewDeleteNodesResponse() (response *DeleteNodesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
 func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {
     return c.DeleteNodesWithContext(context.Background(), request)
 }
@@ -307,7 +309,9 @@ func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodes
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
 func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {
     if request == nil {
         request = NewDeleteNodesRequest()

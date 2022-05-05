@@ -218,6 +218,7 @@ func NewBindEnvironmentResponse() (response *BindEnvironmentResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDAPIIDS = "InvalidParameterValue.InvalidApiIds"
 //  LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
@@ -239,6 +240,7 @@ func (c *Client) BindEnvironment(request *BindEnvironmentRequest) (response *Bin
 //  INVALIDPARAMETERVALUE_INVALIDAPIIDS = "InvalidParameterValue.InvalidApiIds"
 //  LIMITEXCEEDED_REQUESTLIMITEXCEEDED = "LimitExceeded.RequestLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDENVIRONMENT = "UnsupportedOperation.UnsupportedBindEnvironment"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDUNBINDENVIRONMENT = "UnsupportedOperation.UnsupportedUnBindEnvironment"
@@ -714,6 +716,7 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_INVALIDOAUTHAPI = "ResourceNotFound.InvalidOauthApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = "UnsupportedOperation.BasicServiceNoMoreApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
@@ -768,6 +771,7 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
 //  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_INVALIDOAUTHAPI = "ResourceNotFound.InvalidOauthApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = "UnsupportedOperation.BasicServiceNoMoreApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
@@ -923,6 +927,7 @@ func NewCreateIPStrategyResponse() (response *CreateIPStrategyResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = "LimitExceeded.IpStrategyLimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *CreateIPStrategyResponse, err error) {
     return c.CreateIPStrategyWithContext(context.Background(), request)
@@ -934,6 +939,7 @@ func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *C
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = "LimitExceeded.IpStrategyLimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) CreateIPStrategyWithContext(ctx context.Context, request *CreateIPStrategyRequest) (response *CreateIPStrategyResponse, err error) {
     if request == nil {
@@ -2344,6 +2350,7 @@ func NewDescribeApiAppsStatusResponse() (response *DescribeApiAppsStatusResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {
     return c.DescribeApiAppsStatusWithContext(context.Background(), request)
@@ -2354,6 +2361,7 @@ func (c *Client) DescribeApiAppsStatus(request *DescribeApiAppsStatusRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeApiAppsStatusWithContext(ctx context.Context, request *DescribeApiAppsStatusRequest) (response *DescribeApiAppsStatusResponse, err error) {
     if request == nil {
@@ -2604,6 +2612,7 @@ func NewDescribeApiKeysStatusResponse() (response *DescribeApiKeysStatusResponse
 // 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (response *DescribeApiKeysStatusResponse, err error) {
     return c.DescribeApiKeysStatusWithContext(context.Background(), request)
@@ -2615,6 +2624,7 @@ func (c *Client) DescribeApiKeysStatus(request *DescribeApiKeysStatusRequest) (r
 // 当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 func (c *Client) DescribeApiKeysStatusWithContext(ctx context.Context, request *DescribeApiKeysStatusRequest) (response *DescribeApiKeysStatusResponse, err error) {
     if request == nil {
@@ -2950,6 +2960,7 @@ func NewDescribeIPStrategyApisStatusResponse() (response *DescribeIPStrategyApis
 // 本接口（DescribeIPStrategyApisStatus）用于查询IP策略可以绑定的API列表。即服务下所有API和该策略已绑定API的差集。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 func (c *Client) DescribeIPStrategyApisStatus(request *DescribeIPStrategyApisStatusRequest) (response *DescribeIPStrategyApisStatusResponse, err error) {
     return c.DescribeIPStrategyApisStatusWithContext(context.Background(), request)
@@ -2959,6 +2970,7 @@ func (c *Client) DescribeIPStrategyApisStatus(request *DescribeIPStrategyApisSta
 // 本接口（DescribeIPStrategyApisStatus）用于查询IP策略可以绑定的API列表。即服务下所有API和该策略已绑定API的差集。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDIPSTRATEGY = "ResourceNotFound.InvalidIPStrategy"
 func (c *Client) DescribeIPStrategyApisStatusWithContext(ctx context.Context, request *DescribeIPStrategyApisStatusRequest) (response *DescribeIPStrategyApisStatusResponse, err error) {
     if request == nil {
@@ -4165,6 +4177,7 @@ func NewDetachPluginResponse() (response *DetachPluginResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDAPIIDS = "InvalidParameterValue.InvalidApiIds"
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPluginResponse, err error) {
@@ -4180,6 +4193,7 @@ func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPlu
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDAPIIDS = "InvalidParameterValue.InvalidApiIds"
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DetachPluginWithContext(ctx context.Context, request *DetachPluginRequest) (response *DetachPluginResponse, err error) {

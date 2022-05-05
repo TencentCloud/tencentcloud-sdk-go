@@ -12254,7 +12254,7 @@ type ExpertServiceOrderInfo struct {
 	// 订单id
 	OrderId *uint64 `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 订单类型 1应急 2 旗舰护网 3 安全管家
+	// 订单类型 1应急 2 旗舰重保 3 安全管家
 	InquireType *uint64 `json:"InquireType,omitempty" name:"InquireType"`
 
 	// 服务数量

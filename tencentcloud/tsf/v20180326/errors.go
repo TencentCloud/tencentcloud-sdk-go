@@ -587,6 +587,9 @@ const (
 	// 部署组的集群未绑定该命名空间。
 	INVALIDPARAMETERVALUE_GROUPCLUSTERNAMESPACENOTBOUND = "InvalidParameterValue.GroupClusterNamespaceNotBound"
 
+	// 创建分组， 集群类型不匹配。
+	INVALIDPARAMETERVALUE_GROUPCLUSTERTYPEMISMATCH = "InvalidParameterValue.GroupClusterTypeMismatch"
+
 	// 删除分组，集群类型不匹配。
 	INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = "InvalidParameterValue.GroupDeleteClusterTypeMismatch"
 

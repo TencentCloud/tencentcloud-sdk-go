@@ -158,3 +158,52 @@ func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *Des
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
+    request = &DescribeZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeZones")
+    
+    
+    return
+}
+
+func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
+    response = &DescribeZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZones
+// 用户查询用户站点信息列表，支持分页
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    return c.DescribeZonesWithContext(context.Background(), request)
+}
+
+// DescribeZones
+// 用户查询用户站点信息列表，支持分页
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZonesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}

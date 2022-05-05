@@ -1740,6 +1740,7 @@ func NewListUserGroupsResponse() (response *ListUserGroupsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
     return c.ListUserGroupsWithContext(context.Background(), request)
 }
@@ -1750,6 +1751,7 @@ func (c *Client) ListUserGroups(request *ListUserGroupsRequest) (response *ListU
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
+//  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, request *ListUserGroupsRequest) (response *ListUserGroupsResponse, err error) {
     if request == nil {
         request = NewListUserGroupsRequest()

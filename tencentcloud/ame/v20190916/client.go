@@ -1004,6 +1004,7 @@ func NewDescribeKTVTopListResponse() (response *DescribeKTVTopListResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeKTVTopList(request *DescribeKTVTopListRequest) (response *DescribeKTVTopListResponse, err error) {
     return c.DescribeKTVTopListWithContext(context.Background(), request)
@@ -1015,6 +1016,7 @@ func (c *Client) DescribeKTVTopList(request *DescribeKTVTopListRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeKTVTopListWithContext(ctx context.Context, request *DescribeKTVTopListRequest) (response *DescribeKTVTopListResponse, err error) {
     if request == nil {

@@ -284,6 +284,7 @@ func NewCancelAuthorizationTokenResponse() (response *CancelAuthorizationTokenRe
 // 取消授权token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -296,6 +297,7 @@ func (c *Client) CancelAuthorizationToken(request *CancelAuthorizationTokenReque
 // 取消授权token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

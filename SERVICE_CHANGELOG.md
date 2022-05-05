@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 40 次发布
+### 第 29 次发布
 
-发布时间：2022-04-29 06:04:35
+发布时间：2022-05-06 06:04:11
 
 本次发布包含了以下内容：
 
@@ -12,87 +12,47 @@
 
 新增接口：
 
-* [DeleteRoute](https://cloud.tencent.com/document/api/597/73213)
+* [DescribeOverviewAttackTrend](https://cloud.tencent.com/document/api/1021/73421)
+* [DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/1021/73420)
+* [DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/1021/73419)
+* [DescribeOverviewIndex](https://cloud.tencent.com/document/api/1021/73418)
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 21 次发布
+### 第 65 次发布
 
-发布时间：2022-04-29 06:05:02
+发布时间：2022-05-05 11:48:14
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [GetDistributeBillDownloadUrl](https://cloud.tencent.com/document/api/1122/73392)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 2 次发布
+
+发布时间：2022-05-06 06:16:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1552/73423)
 
 新增数据结构：
 
-* [ParquetInfo](https://cloud.tencent.com/document/api/614/56471#ParquetInfo)
-* [ParquetKeyInfo](https://cloud.tencent.com/document/api/614/56471#ParquetKeyInfo)
-
-修改数据结构：
-
-* [ContentInfo](https://cloud.tencent.com/document/api/614/56471#ContentInfo)
-
-	* 新增成员：Parquet
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
-
-### 第 5 次发布
-
-发布时间：2022-04-29 06:07:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
-
-	* 新增入参：OrganizationName, EndPoint, AutoJumpBack
-
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 30 次发布
-
-发布时间：2022-04-29 06:09:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [IsolateInstances](https://cloud.tencent.com/document/api/1207/73214)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 102 次发布
-
-发布时间：2022-04-29 06:15:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeImageReviewUsageData](https://cloud.tencent.com/document/api/266/73215)
-* [ReviewImage](https://cloud.tencent.com/document/api/266/73217)
-
-新增数据结构：
-
-* [ImageReviewUsageDataItem](https://cloud.tencent.com/document/api/266/31773#ImageReviewUsageDataItem)
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+* [ZoneFilter](https://cloud.tencent.com/document/api/1552/73155#ZoneFilter)
 
 
 
@@ -1393,6 +1353,21 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 29 次发布
+
+发布时间：2022-05-06 06:04:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeOverviewAttackTrend](https://cloud.tencent.com/document/api/1021/73421)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOverviewCCTrend](https://cloud.tencent.com/document/api/1021/73420)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOverviewDDoSTrend](https://cloud.tencent.com/document/api/1021/73419)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOverviewIndex](https://cloud.tencent.com/document/api/1021/73418)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 28 次发布
 
@@ -15617,7 +15592,7 @@
 
 新增接口：
 
-* [[DeleteRoute](https://cloud.tencent.com/document/api/597/73213)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRoute](https://cloud.tencent.com/document/api/597/73213)
 
 ### 第 39 次发布
 
@@ -18213,8 +18188,8 @@
 
 新增数据结构：
 
-* [[ParquetInfo](https://cloud.tencent.com/document/api/614/56471#ParquetInfo)](https://cloud.tencent.com/document/api/614/56471#[ParquetInfo](https://cloud.tencent.com/document/api/614/56471#ParquetInfo))
-* [[ParquetKeyInfo](https://cloud.tencent.com/document/api/614/56471#ParquetKeyInfo)](https://cloud.tencent.com/document/api/614/56471#[ParquetKeyInfo](https://cloud.tencent.com/document/api/614/56471#ParquetKeyInfo))
+* [ParquetInfo](https://cloud.tencent.com/document/api/614/56471#ParquetInfo)
+* [ParquetKeyInfo](https://cloud.tencent.com/document/api/614/56471#ParquetKeyInfo)
 
 修改数据结构：
 
@@ -20220,6 +20195,18 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 65 次发布
+
+发布时间：2022-05-05 11:48:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetDistributeBillDownloadUrl](https://cloud.tencent.com/document/api/1122/73392)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 64 次发布
 
@@ -30926,7 +30913,7 @@
 
 修改接口：
 
-* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/73337)
 
 	* 新增出参：AdminFlag
 
@@ -30941,11 +30928,11 @@
 
 修改接口：
 
-* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
+* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73341)
 
 	* <font color="#dd0000">**修改出参**：</font>AuthorizationOrgResourceList
 
-* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60258)
+* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73338)
 
 	* <font color="#dd0000">**修改出参**：</font>AuthorizationUserGroupResourceList
 
@@ -30968,27 +30955,27 @@
 
 修改接口：
 
-* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)
+* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/73351)
 
 	* 新增出参：FailedItems
 
-* [CreateUser](https://cloud.tencent.com/document/api/1442/57929)
+* [CreateUser](https://cloud.tencent.com/document/api/1442/73348)
 
 	* 新增入参：SecondaryOrgNodeIdList
 
-* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/73337)
 
 	* 新增出参：SecondaryOrgNodeIdList
 
-* [ListApplications](https://cloud.tencent.com/document/api/1442/58480)
+* [ListApplications](https://cloud.tencent.com/document/api/1442/73333)
 
 	* 新增入参：ApplicationIdList
 
-* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)
+* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/73325)
 
 	* 新增入参：SearchCondition, Sort, Offset, Limit
 
-* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/73233)
 
 	* 新增入参：SecondaryOrgNodeIdList
 
@@ -31003,43 +30990,43 @@
 
 新增接口：
 
-* [AddAccountToAccountGroup](https://cloud.tencent.com/document/api/1442/65959)
-* [CreateAccountGroup](https://cloud.tencent.com/document/api/1442/65958)
-* [CreateAppAccount](https://cloud.tencent.com/document/api/1442/65957)
-* [DeleteAccountGroup](https://cloud.tencent.com/document/api/1442/65956)
-* [DeleteAppAccount](https://cloud.tencent.com/document/api/1442/65955)
-* [DeleteUsers](https://cloud.tencent.com/document/api/1442/65954)
-* [DescribeAccountGroup](https://cloud.tencent.com/document/api/1442/65953)
-* [DescribeAppAccount](https://cloud.tencent.com/document/api/1442/65952)
-* [DescribeUserThirdPartyAccountInfo](https://cloud.tencent.com/document/api/1442/65951)
-* [ListAccountInAccountGroup](https://cloud.tencent.com/document/api/1442/65960)
-* [ModifyAccountGroup](https://cloud.tencent.com/document/api/1442/65950)
-* [ModifyAppAccount](https://cloud.tencent.com/document/api/1442/65949)
-* [RemoveAccountFromAccountGroup](https://cloud.tencent.com/document/api/1442/65948)
+* [AddAccountToAccountGroup](https://cloud.tencent.com/document/api/1442/73362)
+* [CreateAccountGroup](https://cloud.tencent.com/document/api/1442/73361)
+* [CreateAppAccount](https://cloud.tencent.com/document/api/1442/73350)
+* [DeleteAccountGroup](https://cloud.tencent.com/document/api/1442/73360)
+* [DeleteAppAccount](https://cloud.tencent.com/document/api/1442/73359)
+* [DeleteUsers](https://cloud.tencent.com/document/api/1442/73358)
+* [DescribeAccountGroup](https://cloud.tencent.com/document/api/1442/73357)
+* [DescribeAppAccount](https://cloud.tencent.com/document/api/1442/73356)
+* [DescribeUserThirdPartyAccountInfo](https://cloud.tencent.com/document/api/1442/73355)
+* [ListAccountInAccountGroup](https://cloud.tencent.com/document/api/1442/73335)
+* [ModifyAccountGroup](https://cloud.tencent.com/document/api/1442/73354)
+* [ModifyAppAccount](https://cloud.tencent.com/document/api/1442/73353)
+* [RemoveAccountFromAccountGroup](https://cloud.tencent.com/document/api/1442/73352)
 
 修改接口：
 
-* [DescribeOrgNode](https://cloud.tencent.com/document/api/1442/57927)
+* [DescribeOrgNode](https://cloud.tencent.com/document/api/1442/73342)
 
 	* 新增出参：Description
 
-* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/73337)
 
 	* 新增出参：PwdNeedReset
 
-* [ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/57926)
+* [ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/73328)
 
 	* 新增入参：SearchCondition, Sort, Offset, Limit
 
 	* 新增出参：UserGroupInfoList, TotalCount
 
-* [ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/57925)
+* [ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/73326)
 
 	* 新增入参：SearchCondition, Sort, Offset, Limit
 
 	* 新增出参：OrgNodeIdPath, OrgNodeNamePath
 
-* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/73233)
 
 	* 新增入参：OrgNodeId
 
@@ -31096,7 +31083,7 @@
 
 修改接口：
 
-* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
+* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73341)
 
 	* 新增出参：TotalCount
 
@@ -31122,7 +31109,7 @@
 
 修改接口：
 
-* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60257)
+* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73336)
 
 	* <font color="#dd0000">**修改入参**：</font>UserId
 
@@ -31137,9 +31124,9 @@
 
 新增接口：
 
-* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60259)
-* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60258)
-* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/60257)
+* [DescribeOrgResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73341)
+* [DescribeUserGroupResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73338)
+* [DescribeUserResourcesAuthorization](https://cloud.tencent.com/document/api/1442/73336)
 
 新增数据结构：
 
@@ -31156,11 +31143,11 @@
 
 新增接口：
 
-* [ModifyApplication](https://cloud.tencent.com/document/api/1442/60184)
+* [ModifyApplication](https://cloud.tencent.com/document/api/1442/73324)
 
 修改接口：
 
-* [DescribeApplication](https://cloud.tencent.com/document/api/1442/57986)
+* [DescribeApplication](https://cloud.tencent.com/document/api/1442/73343)
 
 	* 新增出参：IconUrl, SecureLevel, AppStatus, Description
 
@@ -31175,11 +31162,11 @@
 
 新增接口：
 
-* [DescribePublicKey](https://cloud.tencent.com/document/api/1442/58482)
-* [ListApplicationAuthorizations](https://cloud.tencent.com/document/api/1442/58481)
-* [ListApplications](https://cloud.tencent.com/document/api/1442/58480)
-* [ListUserGroups](https://cloud.tencent.com/document/api/1442/58479)
-* [ListUsers](https://cloud.tencent.com/document/api/1442/58478)
+* [DescribePublicKey](https://cloud.tencent.com/document/api/1442/73340)
+* [ListApplicationAuthorizations](https://cloud.tencent.com/document/api/1442/73334)
+* [ListApplications](https://cloud.tencent.com/document/api/1442/73333)
+* [ListUserGroups](https://cloud.tencent.com/document/api/1442/73329)
+* [ListUsers](https://cloud.tencent.com/document/api/1442/73327)
 
 新增数据结构：
 
@@ -31215,7 +31202,7 @@
 
 新增接口：
 
-* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/58033)
+* [ModifyUserInfo](https://cloud.tencent.com/document/api/1442/73233)
 
 ### 第 2 次发布
 
@@ -31227,19 +31214,19 @@
 
 新增接口：
 
-* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/57991)
-* [CreateUserGroup](https://cloud.tencent.com/document/api/1442/57990)
+* [AddUserToUserGroup](https://cloud.tencent.com/document/api/1442/73351)
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1442/73347)
 * [DecribePublicKey](https://cloud.tencent.com/document/api/1442/57989)
-* [DeleteUser](https://cloud.tencent.com/document/api/1442/57988)
-* [DeleteUserGroup](https://cloud.tencent.com/document/api/1442/57987)
-* [DescribeApplication](https://cloud.tencent.com/document/api/1442/57986)
-* [DescribeUserGroup](https://cloud.tencent.com/document/api/1442/57985)
-* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/57984)
-* [ListAuthorizedApplicationsToOrgNode](https://cloud.tencent.com/document/api/1442/57983)
-* [ListAuthorizedApplicationsToUser](https://cloud.tencent.com/document/api/1442/57982)
-* [ListAuthorizedApplicationsToUserGroup](https://cloud.tencent.com/document/api/1442/57981)
-* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/57980)
-* [RemoveUserFromUserGroup](https://cloud.tencent.com/document/api/1442/57979)
+* [DeleteUser](https://cloud.tencent.com/document/api/1442/73345)
+* [DeleteUserGroup](https://cloud.tencent.com/document/api/1442/73344)
+* [DescribeApplication](https://cloud.tencent.com/document/api/1442/73343)
+* [DescribeUserGroup](https://cloud.tencent.com/document/api/1442/73339)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1442/73337)
+* [ListAuthorizedApplicationsToOrgNode](https://cloud.tencent.com/document/api/1442/73332)
+* [ListAuthorizedApplicationsToUser](https://cloud.tencent.com/document/api/1442/73331)
+* [ListAuthorizedApplicationsToUserGroup](https://cloud.tencent.com/document/api/1442/73330)
+* [ListUsersInUserGroup](https://cloud.tencent.com/document/api/1442/73325)
+* [RemoveUserFromUserGroup](https://cloud.tencent.com/document/api/1442/73231)
 
 新增数据结构：
 
@@ -31256,13 +31243,13 @@
 
 新增接口：
 
-* [CreateOrgNode](https://cloud.tencent.com/document/api/1442/57930)
-* [CreateUser](https://cloud.tencent.com/document/api/1442/57929)
-* [DeleteOrgNode](https://cloud.tencent.com/document/api/1442/57928)
-* [DescribeOrgNode](https://cloud.tencent.com/document/api/1442/57927)
-* [ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/57926)
-* [ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/57925)
-* [UpdateOrgNode](https://cloud.tencent.com/document/api/1442/57924)
+* [CreateOrgNode](https://cloud.tencent.com/document/api/1442/73349)
+* [CreateUser](https://cloud.tencent.com/document/api/1442/73348)
+* [DeleteOrgNode](https://cloud.tencent.com/document/api/1442/73346)
+* [DescribeOrgNode](https://cloud.tencent.com/document/api/1442/73342)
+* [ListUserGroupsOfUser](https://cloud.tencent.com/document/api/1442/73328)
+* [ListUsersInOrgNode](https://cloud.tencent.com/document/api/1442/73326)
+* [UpdateOrgNode](https://cloud.tencent.com/document/api/1442/71353)
 
 新增数据结构：
 
@@ -38496,8 +38483,8 @@
 
 新增接口：
 
-* [DescribeProduct](https://cloud.tencent.com/document/api/634/71942)
-* [UpdateProductDynamicRegister](https://cloud.tencent.com/document/api/634/71941)
+* [DescribeProduct](https://cloud.tencent.com/document/api/634/73313)
+* [UpdateProductDynamicRegister](https://cloud.tencent.com/document/api/634/73310)
 
 ### 第 26 次发布
 
@@ -38509,8 +38496,8 @@
 
 新增接口：
 
-* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/70215)
-* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/70214)
+* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/73298)
+* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/73296)
 
 ### 第 25 次发布
 
@@ -38522,9 +38509,9 @@
 
 新增接口：
 
-* [ListLog](https://cloud.tencent.com/document/api/634/68114)
-* [ListLogPayload](https://cloud.tencent.com/document/api/634/68113)
-* [ListSDKLog](https://cloud.tencent.com/document/api/634/68112)
+* [ListLog](https://cloud.tencent.com/document/api/634/73294)
+* [ListLogPayload](https://cloud.tencent.com/document/api/634/73293)
+* [ListSDKLog](https://cloud.tencent.com/document/api/634/73292)
 
 新增数据结构：
 
@@ -38542,8 +38529,8 @@
 
 新增接口：
 
-* [SetProductsForbiddenStatus](https://cloud.tencent.com/document/api/634/61950)
-* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/634/61949)
+* [SetProductsForbiddenStatus](https://cloud.tencent.com/document/api/634/73311)
+* [UpdateDevicesEnableState](https://cloud.tencent.com/document/api/634/72186)
 
 ### 第 23 次发布
 
@@ -38555,7 +38542,7 @@
 
 修改接口：
 
-* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/73275)
 
 	* 新增入参：PayloadEncoding
 
@@ -38570,15 +38557,15 @@
 
 修改接口：
 
-* [DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)
+* [DescribeFirmware](https://cloud.tencent.com/document/api/634/73288)
 
 	* 新增出参：FwType
 
-* [EditFirmware](https://cloud.tencent.com/document/api/634/48338)
+* [EditFirmware](https://cloud.tencent.com/document/api/634/73281)
 
 	* 新增入参：FwType
 
-* [UploadFirmware](https://cloud.tencent.com/document/api/634/48336)
+* [UploadFirmware](https://cloud.tencent.com/document/api/634/73278)
 
 	* 新增入参：FwType
 
@@ -38593,8 +38580,8 @@
 
 新增接口：
 
-* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/55898)
-* [GetCOSURL](https://cloud.tencent.com/document/api/634/55897)
+* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/73290)
+* [GetCOSURL](https://cloud.tencent.com/document/api/634/73280)
 
 ### 第 20 次发布
 
@@ -38606,13 +38593,13 @@
 
 新增接口：
 
-* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/54322)
-* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/54321)
-* [DescribeProductResource](https://cloud.tencent.com/document/api/634/54320)
-* [DescribeProductResources](https://cloud.tencent.com/document/api/634/54319)
-* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/54326)
-* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/54323)
-* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/54325)
+* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/73252)
+* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/73251)
+* [DescribeProductResource](https://cloud.tencent.com/document/api/634/73246)
+* [DescribeProductResources](https://cloud.tencent.com/document/api/634/73245)
+* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/73297)
+* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/73282)
+* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/73295)
 
 新增数据结构：
 
@@ -38629,7 +38616,7 @@
 
 修改接口：
 
-* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
+* [DescribeDevices](https://cloud.tencent.com/document/api/634/73250)
 
 	* 新增入参：EnableState
 
@@ -38644,7 +38631,7 @@
 
 修改接口：
 
-* [PublishMessage](https://cloud.tencent.com/document/api/634/19486)
+* [PublishMessage](https://cloud.tencent.com/document/api/634/73274)
 
 	* 新增入参：PayloadEncoding
 
@@ -38659,16 +38646,16 @@
 
 新增接口：
 
-* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48344)
-* [DescribeFirmware](https://cloud.tencent.com/document/api/634/48343)
-* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/48339)
-* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/48342)
-* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/48341)
-* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/48340)
-* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/50552)
-* [EditFirmware](https://cloud.tencent.com/document/api/634/48338)
-* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/48337)
-* [UploadFirmware](https://cloud.tencent.com/document/api/634/48336)
+* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/73289)
+* [DescribeFirmware](https://cloud.tencent.com/document/api/634/73288)
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/73287)
+* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/73286)
+* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/73285)
+* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/73284)
+* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/73283)
+* [EditFirmware](https://cloud.tencent.com/document/api/634/73281)
+* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/73279)
+* [UploadFirmware](https://cloud.tencent.com/document/api/634/73278)
 
 新增数据结构：
 
@@ -38687,7 +38674,7 @@
 
 新增接口：
 
-* [DescribeAllDevices](https://cloud.tencent.com/document/api/634/47583)
+* [DescribeAllDevices](https://cloud.tencent.com/document/api/634/73255)
 
 新增数据结构：
 
@@ -38703,8 +38690,8 @@
 
 新增接口：
 
-* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/47079)
-* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/47078)
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/634/73275)
+* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/73273)
 
 ### 第 14 次发布
 
@@ -38716,11 +38703,11 @@
 
 修改接口：
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
 
 	* 新增出参：FirmwareUpdateTime
 
-* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
+* [DescribeDevices](https://cloud.tencent.com/document/api/634/73250)
 
 	* 新增入参：DeviceName
 
@@ -38742,18 +38729,18 @@
 
 新增接口：
 
-* [CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/45351)
-* [CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/45350)
-* [DescribeProductTask](https://cloud.tencent.com/document/api/634/45349)
-* [DescribeProductTasks](https://cloud.tencent.com/document/api/634/45348)
+* [CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/73306)
+* [CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/73304)
+* [DescribeProductTask](https://cloud.tencent.com/document/api/634/73303)
+* [DescribeProductTasks](https://cloud.tencent.com/document/api/634/73302)
 
 修改接口：
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
 
 	* 新增出参：ClientIP
 
-* [ResetDeviceState](https://cloud.tencent.com/document/api/634/35197)
+* [ResetDeviceState](https://cloud.tencent.com/document/api/634/73244)
 
 	* 新增出参：SuccessCount, ResetDeviceResults
 
@@ -38780,15 +38767,15 @@
 
 修改接口：
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
 
 	* 新增出参：Labels
 
-* [DescribeProducts](https://cloud.tencent.com/document/api/634/19477)
+* [DescribeProducts](https://cloud.tencent.com/document/api/634/73312)
 
 	* <font color="#dd0000">**删除入参**：</font>Filters
 
-* [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/19488)
+* [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/73263)
 
 	* 新增入参：Prefix
 
@@ -38818,9 +38805,9 @@
 
 新增接口：
 
-* [BindDevices](https://cloud.tencent.com/document/api/634/37820)
-* [UnbindDevices](https://cloud.tencent.com/document/api/634/37819)
-* [UpdateDeviceAvailableState](https://cloud.tencent.com/document/api/634/37818)
+* [BindDevices](https://cloud.tencent.com/document/api/634/73261)
+* [UnbindDevices](https://cloud.tencent.com/document/api/634/73243)
+* [UpdateDeviceAvailableState](https://cloud.tencent.com/document/api/634/73232)
 
 修改数据结构：
 
@@ -38839,7 +38826,7 @@
 
 修改接口：
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
 
 	* 新增出参：FirstOnlineTime, LastOfflineTime, CreateTime, CertState, EnableState
 
@@ -38861,8 +38848,8 @@
 
 新增接口：
 
-* [DescribeDeviceClientKey](https://cloud.tencent.com/document/api/634/35198)
-* [ResetDeviceState](https://cloud.tencent.com/document/api/634/35197)
+* [DescribeDeviceClientKey](https://cloud.tencent.com/document/api/634/73253)
+* [ResetDeviceState](https://cloud.tencent.com/document/api/634/73244)
 
 修改数据结构：
 
@@ -38881,19 +38868,19 @@
 
 新增接口：
 
-* [CreateLoraDevice](https://cloud.tencent.com/document/api/634/34805)
-* [DeleteLoraDevice](https://cloud.tencent.com/document/api/634/34804)
-* [DescribeLoraDevice](https://cloud.tencent.com/document/api/634/34803)
-* [PublishAsDevice](https://cloud.tencent.com/document/api/634/34807)
-* [PublishToDevice](https://cloud.tencent.com/document/api/634/34806)
+* [CreateLoraDevice](https://cloud.tencent.com/document/api/634/73259)
+* [DeleteLoraDevice](https://cloud.tencent.com/document/api/634/73256)
+* [DescribeLoraDevice](https://cloud.tencent.com/document/api/634/73249)
+* [PublishAsDevice](https://cloud.tencent.com/document/api/634/73276)
+* [PublishToDevice](https://cloud.tencent.com/document/api/634/73272)
 
 修改接口：
 
-* [CreateDevice](https://cloud.tencent.com/document/api/634/19496)
+* [CreateDevice](https://cloud.tencent.com/document/api/634/73260)
 
 	* 新增入参：LoraAppKey
 
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
 
 	* 新增出参：LogLevel
 
@@ -38945,8 +38932,8 @@
 
 新增接口：
 
-* [CreateTopicPolicy](https://cloud.tencent.com/document/api/634/31787)
-* [UpdateTopicPolicy](https://cloud.tencent.com/document/api/634/31786)
+* [CreateTopicPolicy](https://cloud.tencent.com/document/api/634/73315)
+* [UpdateTopicPolicy](https://cloud.tencent.com/document/api/634/73309)
 
 新增数据结构：
 
@@ -38962,30 +38949,30 @@
 
 新增接口：
 
-* [CreateTopicRule](https://cloud.tencent.com/document/api/634/31582)
-* [DeleteTopicRule](https://cloud.tencent.com/document/api/634/31581)
-* [DescribeDevice](https://cloud.tencent.com/document/api/634/31583)
-* [DisableTopicRule](https://cloud.tencent.com/document/api/634/31580)
-* [EnableTopicRule](https://cloud.tencent.com/document/api/634/31579)
-* [ReplaceTopicRule](https://cloud.tencent.com/document/api/634/31578)
+* [CreateTopicRule](https://cloud.tencent.com/document/api/634/73270)
+* [DeleteTopicRule](https://cloud.tencent.com/document/api/634/73269)
+* [DescribeDevice](https://cloud.tencent.com/document/api/634/73254)
+* [DisableTopicRule](https://cloud.tencent.com/document/api/634/73268)
+* [EnableTopicRule](https://cloud.tencent.com/document/api/634/73267)
+* [ReplaceTopicRule](https://cloud.tencent.com/document/api/634/73266)
 
 修改接口：
 
-* [CreateDevice](https://cloud.tencent.com/document/api/634/19496)
+* [CreateDevice](https://cloud.tencent.com/document/api/634/73260)
 
 	* 新增入参：LoraMoteType, Skey
 
 	* 新增出参：LoraMoteType, LoraAppKey, LoraNwkKey
 
-* [CreateProduct](https://cloud.tencent.com/document/api/634/19479)
+* [CreateProduct](https://cloud.tencent.com/document/api/634/73316)
 
 	* 新增入参：Skey
 
-* [DeleteDevice](https://cloud.tencent.com/document/api/634/19494)
+* [DeleteDevice](https://cloud.tencent.com/document/api/634/73257)
 
 	* 新增入参：Skey
 
-* [DeleteProduct](https://cloud.tencent.com/document/api/634/19478)
+* [DeleteProduct](https://cloud.tencent.com/document/api/634/73314)
 
 	* 新增入参：Skey
 
@@ -39030,17 +39017,17 @@
 
 修改接口：
 
-* [CreateDevice](https://cloud.tencent.com/document/api/634/19496)
+* [CreateDevice](https://cloud.tencent.com/document/api/634/73260)
 
 	* 新增入参：LoraDevEui
 
 	* 新增出参：LoraDevEui
 
-* [CreateProduct](https://cloud.tencent.com/document/api/634/19479)
+* [CreateProduct](https://cloud.tencent.com/document/api/634/73316)
 
 	* 新增出参：ProductProperties
 
-* [DescribeProducts](https://cloud.tencent.com/document/api/634/19477)
+* [DescribeProducts](https://cloud.tencent.com/document/api/634/73312)
 
 	* 新增入参：Filters
 
@@ -39070,23 +39057,23 @@
 
 新增接口：
 
-* [CancelTask](https://cloud.tencent.com/document/api/634/19484)
-* [CreateDevice](https://cloud.tencent.com/document/api/634/19496)
-* [CreateMultiDevice](https://cloud.tencent.com/document/api/634/19495)
-* [CreateProduct](https://cloud.tencent.com/document/api/634/19479)
-* [CreateTask](https://cloud.tencent.com/document/api/634/19483)
-* [DeleteDevice](https://cloud.tencent.com/document/api/634/19494)
-* [DeleteProduct](https://cloud.tencent.com/document/api/634/19478)
-* [DescribeDeviceShadow](https://cloud.tencent.com/document/api/634/19489)
-* [DescribeDevices](https://cloud.tencent.com/document/api/634/19493)
-* [DescribeMultiDevTask](https://cloud.tencent.com/document/api/634/19492)
-* [DescribeMultiDevices](https://cloud.tencent.com/document/api/634/19491)
-* [DescribeProducts](https://cloud.tencent.com/document/api/634/19477)
-* [DescribeTask](https://cloud.tencent.com/document/api/634/19482)
-* [DescribeTasks](https://cloud.tencent.com/document/api/634/19481)
+* [CancelTask](https://cloud.tencent.com/document/api/634/73307)
+* [CreateDevice](https://cloud.tencent.com/document/api/634/73260)
+* [CreateMultiDevice](https://cloud.tencent.com/document/api/634/73258)
+* [CreateProduct](https://cloud.tencent.com/document/api/634/73316)
+* [CreateTask](https://cloud.tencent.com/document/api/634/73305)
+* [DeleteDevice](https://cloud.tencent.com/document/api/634/73257)
+* [DeleteProduct](https://cloud.tencent.com/document/api/634/73314)
+* [DescribeDeviceShadow](https://cloud.tencent.com/document/api/634/73264)
+* [DescribeDevices](https://cloud.tencent.com/document/api/634/73250)
+* [DescribeMultiDevTask](https://cloud.tencent.com/document/api/634/73248)
+* [DescribeMultiDevices](https://cloud.tencent.com/document/api/634/73247)
+* [DescribeProducts](https://cloud.tencent.com/document/api/634/73312)
+* [DescribeTask](https://cloud.tencent.com/document/api/634/73301)
+* [DescribeTasks](https://cloud.tencent.com/document/api/634/73300)
 * [GetDeviceShadow](https://cloud.tencent.com/document/api/634/19489)
-* [PublishMessage](https://cloud.tencent.com/document/api/634/19486)
-* [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/19488)
+* [PublishMessage](https://cloud.tencent.com/document/api/634/73274)
+* [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/73263)
 
 新增数据结构：
 
@@ -41981,7 +41968,7 @@
 
 新增接口：
 
-* [[IsolateInstances](https://cloud.tencent.com/document/api/1207/73214)](https://cloud.tencent.com/document/api/#/#)
+* [IsolateInstances](https://cloud.tencent.com/document/api/1207/73214)
 
 ### 第 29 次发布
 
@@ -63320,6 +63307,23 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
 
+### 第 2 次发布
+
+发布时间：2022-05-06 06:16:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeZones](https://cloud.tencent.com/document/api/1552/73423)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)](https://cloud.tencent.com/document/api/1552/73155#[Zone](https://cloud.tencent.com/document/api/1552/73155#Zone))
+* [[ZoneFilter](https://cloud.tencent.com/document/api/1552/73155#ZoneFilter)](https://cloud.tencent.com/document/api/1552/73155#[ZoneFilter](https://cloud.tencent.com/document/api/1552/73155#ZoneFilter))
+
 ### 第 1 次发布
 
 发布时间：2022-04-28 14:45:34
@@ -70620,12 +70624,12 @@
 
 新增接口：
 
-* [[DescribeImageReviewUsageData](https://cloud.tencent.com/document/api/266/73215)](https://cloud.tencent.com/document/api/#/#)
-* [[ReviewImage](https://cloud.tencent.com/document/api/266/73217)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeImageReviewUsageData](https://cloud.tencent.com/document/api/266/73215)
+* [ReviewImage](https://cloud.tencent.com/document/api/266/73217)
 
 新增数据结构：
 
-* [[ImageReviewUsageDataItem](https://cloud.tencent.com/document/api/266/31773#ImageReviewUsageDataItem)](https://cloud.tencent.com/document/api/266/31773#[ImageReviewUsageDataItem](https://cloud.tencent.com/document/api/266/31773#ImageReviewUsageDataItem))
+* [ImageReviewUsageDataItem](https://cloud.tencent.com/document/api/266/31773#ImageReviewUsageDataItem)
 
 ### 第 101 次发布
 

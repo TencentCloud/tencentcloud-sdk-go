@@ -377,6 +377,7 @@ func NewDescribeStackEventResponse() (response *DescribeStackEventResponse) {
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeStackEvent(request *DescribeStackEventRequest) (response *DescribeStackEventResponse, err error) {
     return c.DescribeStackEventWithContext(context.Background(), request)
 }
@@ -391,6 +392,7 @@ func (c *Client) DescribeStackEvent(request *DescribeStackEventRequest) (respons
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeStackEventWithContext(ctx context.Context, request *DescribeStackEventRequest) (response *DescribeStackEventResponse, err error) {
     if request == nil {
         request = NewDescribeStackEventRequest()

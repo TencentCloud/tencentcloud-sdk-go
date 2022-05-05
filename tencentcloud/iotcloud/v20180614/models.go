@@ -3433,10 +3433,10 @@ func (r *GetUserResourceInfoResponse) FromJsonString(s string) error {
 type ListLogPayloadRequest struct {
 	*tchttp.BaseRequest
 
-	// 日志开始时间
+	// 日志开始时间，毫秒级时间戳
 	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
 
-	// 日志结束时间
+	// 日志结束时间，毫秒级时间戳
 	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
 
 	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key比如：RequestID、ProductID、DeviceName等。
@@ -3505,10 +3505,10 @@ func (r *ListLogPayloadResponse) FromJsonString(s string) error {
 type ListLogRequest struct {
 	*tchttp.BaseRequest
 
-	// 日志开始时间
+	// 日志开始时间，毫秒级时间戳
 	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
 
-	// 日志结束时间
+	// 日志结束时间，毫秒级时间戳
 	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
 
 	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。

@@ -1595,6 +1595,7 @@ func NewCreateVodDomainResponse() (response *CreateVodDomainResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDACCOUNT = "FailedOperation.InvalidAccount"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1610,6 +1611,7 @@ func (c *Client) CreateVodDomain(request *CreateVodDomainRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDACCOUNT = "FailedOperation.InvalidAccount"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -7459,6 +7461,10 @@ func NewProcessImageResponse() (response *ProcessImageResponse) {
 }
 
 // ProcessImage
+// 该 API 已经<font color='red'>不再维护</font>，智能识别任务请使用图片智能识别 [ReviewImage](https://cloud.tencent.com/document/api/266/73217) 接口。
+//
+// 
+//
 // 对点播中的图片文件发起处理任务，功能包括：
 //
 // 
@@ -7485,6 +7491,10 @@ func (c *Client) ProcessImage(request *ProcessImageRequest) (response *ProcessIm
 }
 
 // ProcessImage
+// 该 API 已经<font color='red'>不再维护</font>，智能识别任务请使用图片智能识别 [ReviewImage](https://cloud.tencent.com/document/api/266/73217) 接口。
+//
+// 
+//
 // 对点播中的图片文件发起处理任务，功能包括：
 //
 // 

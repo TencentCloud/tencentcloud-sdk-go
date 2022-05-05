@@ -179,6 +179,67 @@ func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeZonesRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页参数，页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数，每页返回的站点个数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询条件过滤器，复杂类型
+	Filters []*ZoneFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的站点数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 站点详细信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Zones []*Zone `json:"Zones,omitempty" name:"Zones"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FailReason struct {
 
 	// 失败原因
@@ -207,4 +268,54 @@ type Task struct {
 
 	// 任务完成时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type Zone struct {
+
+	// 站点ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 站点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 站点当前使用的 NS 列表
+	OriginalNameServers []*string `json:"OriginalNameServers,omitempty" name:"OriginalNameServers"`
+
+	// 腾讯云分配的 NS 列表
+	NameServers []*string `json:"NameServers,omitempty" name:"NameServers"`
+
+	// 站点状态
+	// - active：NS 已切换
+	// - pending：NS 未切换
+	// - moved：NS 已切走
+	// - deactivated：被封禁
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 站点接入方式
+	// - full：NS 接入
+	// - partial：CNAME 接入
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 站点是否关闭
+	Paused *bool `json:"Paused,omitempty" name:"Paused"`
+
+	// 站点创建时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 站点修改时间
+	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
+}
+
+type ZoneFilter struct {
+
+	// 过滤字段名，支持的列表如下：
+	// - name: 站点名。
+	// - status: 站点状态
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤字段值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1
+	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
 }

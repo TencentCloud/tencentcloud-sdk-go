@@ -104,6 +104,9 @@ const (
 	// 非法参数错误。
 	INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
 
+	// 实例安全组超过限制。
+	INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = "InvalidParameter.InstanceSGOverLimitError"
+
 	// 业务参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 

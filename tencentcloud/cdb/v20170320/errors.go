@@ -440,6 +440,9 @@ const (
 	// 资源配额超限。
 	OPERATIONDENIED_OVERQUOTA = "OperationDenied.OverQuota"
 
+	// 数据库代理升级任务中，不允许该操作。
+	OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+
 	// 结果集超过限制，请缩小检索范围。
 	OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"
 

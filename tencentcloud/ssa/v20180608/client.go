@@ -273,6 +273,7 @@ func NewDescribeCheckConfigDetailResponse() (response *DescribeCheckConfigDetail
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -285,6 +286,7 @@ func (c *Client) DescribeCheckConfigDetail(request *DescribeCheckConfigDetailReq
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -377,6 +379,7 @@ func NewDescribeComplianceDetailResponse() (response *DescribeComplianceDetailRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -389,6 +392,7 @@ func (c *Client) DescribeComplianceDetail(request *DescribeComplianceDetailReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"

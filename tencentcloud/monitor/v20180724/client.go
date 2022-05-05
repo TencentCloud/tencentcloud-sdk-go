@@ -2442,6 +2442,7 @@ func NewDescribeServiceDiscoveryResponse() (response *DescribeServiceDiscoveryRe
 // <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
@@ -2462,6 +2463,7 @@ func (c *Client) DescribeServiceDiscovery(request *DescribeServiceDiscoveryReque
 // <a href="https://cloud.tencent.com/document/product/248/48859" target="_blank">Agent 安装</a>。</p>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
 //  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
