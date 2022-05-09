@@ -15103,10 +15103,13 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 type VideoTemplateInfo struct {
 
 	// 视频流的编码格式，可选值：
-	// <li>libx264：H.264 编码</li>
-	// <li>libx265：H.265 编码</li>
-	// <li>av1：AOMedia Video 1 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
+	// <li>libx264：H.264 编码；</li>
+	// <li>libx265：H.265 编码；</li>
+	// <li>av1：AOMedia Video 1 编码；</li>
+	// <li>H.266：H.266 编码。</li>
+	// <font color=red>注意：</font>
+	// <li> av1，H.266 编码容器目前只支持 mp4 ；</li>
+	// <li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 100]，单位：Hz。
@@ -15148,8 +15151,11 @@ type VideoTemplateInfo struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
 	// 视频恒定码率控制因子，取值范围为[1, 51]。
-	// 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
-	// 如果没有特殊需求，不建议指定该参数。
+	// 
+	// <font color=red>注意：</font>
+	// <li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li>
+	// <li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li>
+	// <li>如果没有特殊需求，不建议指定该参数。</li>
 	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
 
 	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。

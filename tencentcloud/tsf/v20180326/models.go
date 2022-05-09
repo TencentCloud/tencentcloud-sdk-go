@@ -8011,6 +8011,63 @@ func (r *DescribePodInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeProgramsRequest struct {
+	*tchttp.BaseRequest
+
+	// 模糊查询数据集ID，数据集名称，不传入时查询全量
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeProgramsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProgramsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchWord")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProgramsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProgramsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据集列表
+		Result *PagedProgram `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeProgramsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProgramsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePublicConfigReleaseLogsRequest struct {
 	*tchttp.BaseRequest
 
@@ -12358,6 +12415,15 @@ type OverviewBasicResourceUsage struct {
 	ConsulInstanceCount *int64 `json:"ConsulInstanceCount,omitempty" name:"ConsulInstanceCount"`
 }
 
+type PagedProgram struct {
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 数据集列表
+	Content []*Program `json:"Content,omitempty" name:"Content"`
+}
+
 type PathRewrite struct {
 
 	// 路径重写规则ID
@@ -12485,6 +12551,72 @@ type Ports struct {
 
 	// 端口协议
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+type Program struct {
+
+	// 数据集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
+
+	// 数据集名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramName *string `json:"ProgramName,omitempty" name:"ProgramName"`
+
+	// 数据集描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramDesc *string `json:"ProgramDesc,omitempty" name:"ProgramDesc"`
+
+	// 删除标识，true: 可以删除; false: 不可删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *int64 `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 数据项列表，无值时返回空数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramItemList []*ProgramItem `json:"ProgramItemList,omitempty" name:"ProgramItemList"`
+}
+
+type ProgramItem struct {
+
+	// 数据项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramItemId *string `json:"ProgramItemId,omitempty" name:"ProgramItemId"`
+
+	// 资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
+
+	// 数据值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValueList []*string `json:"ValueList,omitempty" name:"ValueList"`
+
+	// 全选标识，true: 全选；false: 非全选
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *int64 `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 删除标识，true: 可删除；false: 不可删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 数据集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramId *string `json:"ProgramId,omitempty" name:"ProgramId"`
 }
 
 type PropertyField struct {
@@ -13065,6 +13197,69 @@ type RepositoryList struct {
 	// 仓库信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*RepositoryInfo `json:"Content,omitempty" name:"Content"`
+}
+
+type Resource struct {
+
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceCode *string `json:"ResourceCode,omitempty" name:"ResourceCode"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源所属产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCode *string `json:"ServiceCode,omitempty" name:"ServiceCode"`
+
+	// 选取资源使用的Action
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceAction *string `json:"ResourceAction,omitempty" name:"ResourceAction"`
+
+	// 资源数据查询的ID字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdField *string `json:"IdField,omitempty" name:"IdField"`
+
+	// 资源数据查询的名称字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameField *string `json:"NameField,omitempty" name:"NameField"`
+
+	// 资源数据查询的ID过滤字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectIdsField *string `json:"SelectIdsField,omitempty" name:"SelectIdsField"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *int64 `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+
+	// 删除标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 资源描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceDesc *string `json:"ResourceDesc,omitempty" name:"ResourceDesc"`
+
+	// 是否可以选择全部
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanSelectAll *bool `json:"CanSelectAll,omitempty" name:"CanSelectAll"`
+
+	// 资源数据查询的模糊查询字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchWordField *string `json:"SearchWordField,omitempty" name:"SearchWordField"`
+
+	// 排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitempty" name:"Index"`
 }
 
 type ResourceFieldRef struct {

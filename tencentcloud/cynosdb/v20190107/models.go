@@ -2583,7 +2583,7 @@ type ModifyClusterParamRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 修改参数列表
+	// 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值
 	ParamList []*ParamItem `json:"ParamList,omitempty" name:"ParamList"`
 
 	// 维护期间执行-yes,立即执行-no

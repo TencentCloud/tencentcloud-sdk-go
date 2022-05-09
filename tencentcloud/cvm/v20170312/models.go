@@ -2803,6 +2803,79 @@ type EnhancedService struct {
 	AutomationService *RunAutomationServiceEnabled `json:"AutomationService,omitempty" name:"AutomationService"`
 }
 
+type ExportImagesRequest struct {
+	*tchttp.BaseRequest
+
+	// COS存储桶名称
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 镜像ID列表
+	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+
+	// 镜像文件导出格式。取值范围：RAW，QCOW2，VHD，VMDK。默认为RAW
+	ExportFormat *string `json:"ExportFormat,omitempty" name:"ExportFormat"`
+
+	// 导出文件的名称前缀列表
+	FileNamePrefixList []*string `json:"FileNamePrefixList,omitempty" name:"FileNamePrefixList"`
+
+	// 是否只导出系统盘
+	OnlyExportRootDisk *bool `json:"OnlyExportRootDisk,omitempty" name:"OnlyExportRootDisk"`
+
+	// 检测镜像是否支持导出
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 角色名称。默认为CVM_QcsRole，发起请求前请确认是否存在该角色，以及是否已正确配置COS写入权限。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *ExportImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BucketName")
+	delete(f, "ImageIds")
+	delete(f, "ExportFormat")
+	delete(f, "FileNamePrefixList")
+	delete(f, "OnlyExportRootDisk")
+	delete(f, "DryRun")
+	delete(f, "RoleName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 导出镜像任务ID
+		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ExportImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Externals struct {
 
 	// 释放地址

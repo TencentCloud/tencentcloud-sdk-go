@@ -444,6 +444,63 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     return
 }
 
+func NewCreateOIDCConfigRequest() (request *CreateOIDCConfigRequest) {
+    request = &CreateOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "CreateOIDCConfig")
+    
+    
+    return
+}
+
+func NewCreateOIDCConfigResponse() (response *CreateOIDCConfigResponse) {
+    response = &CreateOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOIDCConfig
+// 创建角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+func (c *Client) CreateOIDCConfig(request *CreateOIDCConfigRequest) (response *CreateOIDCConfigResponse, err error) {
+    return c.CreateOIDCConfigWithContext(context.Background(), request)
+}
+
+// CreateOIDCConfig
+// 创建角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+func (c *Client) CreateOIDCConfigWithContext(ctx context.Context, request *CreateOIDCConfigRequest) (response *CreateOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOIDCConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePolicyRequest() (request *CreatePolicyRequest) {
     request = &CreatePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1018,6 +1075,55 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
     return
 }
 
+func NewDeleteOIDCConfigRequest() (request *DeleteOIDCConfigRequest) {
+    request = &DeleteOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteOIDCConfig")
+    
+    
+    return
+}
+
+func NewDeleteOIDCConfigResponse() (response *DeleteOIDCConfigResponse) {
+    response = &DeleteOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteOIDCConfig
+// 删除OIDC身份提供商
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteOIDCConfig(request *DeleteOIDCConfigRequest) (response *DeleteOIDCConfigResponse, err error) {
+    return c.DeleteOIDCConfigWithContext(context.Background(), request)
+}
+
+// DeleteOIDCConfig
+// 删除OIDC身份提供商
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteOIDCConfigWithContext(ctx context.Context, request *DeleteOIDCConfigRequest) (response *DeleteOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOIDCConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePolicyRequest() (request *DeletePolicyRequest) {
     request = &DeletePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1492,6 +1598,57 @@ func (c *Client) DeleteUserPermissionsBoundaryWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDeleteUserPermissionsBoundaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOIDCConfigRequest() (request *DescribeOIDCConfigRequest) {
+    request = &DescribeOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "DescribeOIDCConfig")
+    
+    
+    return
+}
+
+func NewDescribeOIDCConfigResponse() (response *DescribeOIDCConfigResponse) {
+    response = &DescribeOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOIDCConfig
+// 查询角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) DescribeOIDCConfig(request *DescribeOIDCConfigRequest) (response *DescribeOIDCConfigResponse, err error) {
+    return c.DescribeOIDCConfigWithContext(context.Background(), request)
+}
+
+// DescribeOIDCConfig
+// 查询角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) DescribeOIDCConfigWithContext(ctx context.Context, request *DescribeOIDCConfigRequest) (response *DescribeOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOIDCConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -4021,6 +4178,65 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGrou
     request.SetContext(ctx)
     
     response = NewUpdateGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateOIDCConfigRequest() (request *UpdateOIDCConfigRequest) {
+    request = &UpdateOIDCConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateOIDCConfig")
+    
+    
+    return
+}
+
+func NewUpdateOIDCConfigResponse() (response *UpdateOIDCConfigResponse) {
+    response = &UpdateOIDCConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateOIDCConfig
+// 修改角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) UpdateOIDCConfig(request *UpdateOIDCConfigRequest) (response *UpdateOIDCConfigResponse, err error) {
+    return c.UpdateOIDCConfigWithContext(context.Background(), request)
+}
+
+// UpdateOIDCConfig
+// 修改角色OIDC配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
+//  INVALIDPARAMETERVALUE_IDENTITYURLERROR = "InvalidParameterValue.IdentityUrlError"
+//  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
+//  INVALIDPARAMETERVALUE_NAMEERROR = "InvalidParameterValue.NameError"
+//  LIMITEXCEEDED_IDENTITYFULL = "LimitExceeded.IdentityFull"
+//  RESOURCENOTFOUND_IDENTITYNOTEXIST = "ResourceNotFound.IdentityNotExist"
+func (c *Client) UpdateOIDCConfigWithContext(ctx context.Context, request *UpdateOIDCConfigRequest) (response *UpdateOIDCConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateOIDCConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOIDCConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOIDCConfigResponse()
     err = c.Send(request, response)
     return
 }

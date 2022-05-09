@@ -1471,6 +1471,9 @@ type CreateDBInstanceHourRequest struct {
 	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
+	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
 	// 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 }
@@ -1522,6 +1525,7 @@ func (r *CreateDBInstanceHourRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
+	delete(f, "EngineType")
 	delete(f, "Vips")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceHourRequest has unknown keys!", "")
@@ -1666,6 +1670,9 @@ type CreateDBInstanceRequest struct {
 	// 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
+	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
 	// 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 }
@@ -1718,6 +1725,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateType")
 	delete(f, "AlarmPolicyIdList")
 	delete(f, "DryRun")
+	delete(f, "EngineType")
 	delete(f, "Vips")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")

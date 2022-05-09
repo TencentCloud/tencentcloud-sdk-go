@@ -8703,6 +8703,12 @@ type VideoTemplateInfoForUpdate struct {
 	// 视频恒定码率控制因子。取值范围为[0, 51]，填0表示禁用该参数。
 	// 如果没有特殊需求，不建议指定该参数。
 	Vcrf *uint64 `json:"Vcrf,omitempty" name:"Vcrf"`
+
+	// 内容自适应编码。可选值：
+	// <li>0：不开启</li>
+	// <li>1：开启</li>
+	// 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
+	ContentAdaptStream *uint64 `json:"ContentAdaptStream,omitempty" name:"ContentAdaptStream"`
 }
 
 type WatermarkInput struct {

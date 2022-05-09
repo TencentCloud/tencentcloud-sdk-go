@@ -4938,7 +4938,7 @@ type ModifyNetworkConfigRequest struct {
 	// 子网ID，changeVpc、changeBaseToVpc的时候需要提供
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// vip保留时间，单位：天，注：需要最新版SDK支持
+	// 原VIP保留时间，单位：天，注：需要最新版SDK，否则原VIP立即释放，查看SDK版本，详见 [SDK中心](https://cloud.tencent.com/document/sdk)
 	Recycle *int64 `json:"Recycle,omitempty" name:"Recycle"`
 }
 

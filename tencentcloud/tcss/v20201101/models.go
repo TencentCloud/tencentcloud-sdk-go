@@ -6807,6 +6807,30 @@ type DescribeClusterDetailResponse struct {
 		// 扫描任务创建时间
 		TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
 
+		// 网络类型.PublicNetwork为公网类型,VPCNetwork为VPC网络
+		NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+
+		// API Server地址
+		ApiServerAddress *string `json:"ApiServerAddress,omitempty" name:"ApiServerAddress"`
+
+		// 节点数
+		NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+		// 命名空间数
+		NamespaceCount *uint64 `json:"NamespaceCount,omitempty" name:"NamespaceCount"`
+
+		// 工作负载数
+		WorkloadCount *uint64 `json:"WorkloadCount,omitempty" name:"WorkloadCount"`
+
+		// Pod数量
+		PodCount *uint64 `json:"PodCount,omitempty" name:"PodCount"`
+
+		// Service数量
+		ServiceCount *uint64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
+
+		// Ingress数量
+		IngressCount *uint64 `json:"IngressCount,omitempty" name:"IngressCount"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

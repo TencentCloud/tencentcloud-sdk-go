@@ -813,7 +813,7 @@ type InstanceInfo struct {
 	// 包年包月购买时长,单位:月
 	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
 
-	// 自动续费标识。取值范围：  NOTIFY_AND_AUTO_RENEW：通知过期且自动续费  NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	// 自动续费标识。取值范围：RENEW_FLAG_AUTO：自动续费  RENEW_FLAG_MANUAL：不自动续费  默认取值：RENEW_FLAG_DEFAULT：不自动续费。若该参数指定为RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
@@ -1544,10 +1544,10 @@ type UpdateDictionariesRequest struct {
 	// QQ分词词典COS地址
 	QQDict []*string `json:"QQDict,omitempty" name:"QQDict"`
 
-	// 0：安装；1：删除
+	// 0：安装；1：删除。默认值0
 	UpdateType *int64 `json:"UpdateType,omitempty" name:"UpdateType"`
 
-	// 是否强制重启集群
+	// 是否强制重启集群。默认值false
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 }
 
@@ -1834,10 +1834,10 @@ type UpdatePluginsRequest struct {
 	// 需要卸载的插件名列表
 	RemovePluginList []*string `json:"RemovePluginList,omitempty" name:"RemovePluginList"`
 
-	// 是否强制重启
+	// 是否强制重启，默认值false
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
 
-	// 是否重新安装
+	// 是否重新安装，默认值false
 	ForceUpdate *bool `json:"ForceUpdate,omitempty" name:"ForceUpdate"`
 
 	// 0：系统插件

@@ -194,6 +194,9 @@ type Backup struct {
 
 	// 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 备份文件形式（pkg-打包备份文件，single-单库备份文件）
+	BackupFormat *string `json:"BackupFormat,omitempty" name:"BackupFormat"`
 }
 
 type BackupFile struct {
@@ -1339,6 +1342,22 @@ type DBInstance struct {
 	// 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupModel *string `json:"BackupModel,omitempty" name:"BackupModel"`
+
+	// 实例备份信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNote *string `json:"InstanceNote,omitempty" name:"InstanceNote"`
+
+	// 备份周期
+	BackupCycle []*int64 `json:"BackupCycle,omitempty" name:"BackupCycle"`
+
+	// 备份周期类型，[daily、weekly、monthly]
+	BackupCycleType *string `json:"BackupCycleType,omitempty" name:"BackupCycleType"`
+
+	// 数据(日志)备份保留时间
+	BackupSaveDays *int64 `json:"BackupSaveDays,omitempty" name:"BackupSaveDays"`
+
+	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type DBPrivilege struct {
@@ -2064,6 +2083,9 @@ type DescribeBackupFilesRequest struct {
 
 	// 按照备份的库名称筛选，不填则不筛选此项
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeBackupFilesRequest) ToJsonString() string {
@@ -2083,6 +2105,7 @@ func (r *DescribeBackupFilesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "DatabaseName")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupFilesRequest has unknown keys!", "")
 	}
@@ -2299,6 +2322,12 @@ type DescribeBackupsRequest struct {
 
 	// 是否分组查询，默认是0，单库备份情况下 0-兼容老方式不分组，1-单库备份分组后展示
 	Group *int64 `json:"Group,omitempty" name:"Group"`
+
+	// 备份类型，1-数据备份，2-日志备份，默认值为1
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 按照备份文件形式筛选，pkg-打包备份文件，single-单库备份文件
+	BackupFormat *string `json:"BackupFormat,omitempty" name:"BackupFormat"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -2324,6 +2353,8 @@ func (r *DescribeBackupsRequest) FromJsonString(s string) error {
 	delete(f, "BackupId")
 	delete(f, "DatabaseName")
 	delete(f, "Group")
+	delete(f, "Type")
+	delete(f, "BackupFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupsRequest has unknown keys!", "")
 	}
@@ -2516,6 +2547,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 实例唯一Uid列表
 	UidSet []*string `json:"UidSet,omitempty" name:"UidSet"`
+
+	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -2545,6 +2579,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagKeys")
 	delete(f, "SearchKey")
 	delete(f, "UidSet")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -4803,7 +4838,7 @@ type ModifyBackupStrategyRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份类型，当前只支持按天备份，取值为daily
+	// 备份类型，当length(BackupDay) <=7 && length(BackupDay) >=2时，取值为weekly，当length(BackupDay)=1时，取值daily，默认daily
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 
 	// 备份时间点，取值为0-23的整数
@@ -4814,6 +4849,12 @@ type ModifyBackupStrategyRequest struct {
 
 	// 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
 	BackupModel *string `json:"BackupModel,omitempty" name:"BackupModel"`
+
+	// BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
+	BackupCycle []*uint64 `json:"BackupCycle,omitempty" name:"BackupCycle"`
+
+	// 数据(日志)备份保留时间，取值[3-1830]天，默认7天
+	BackupSaveDays *uint64 `json:"BackupSaveDays,omitempty" name:"BackupSaveDays"`
 }
 
 func (r *ModifyBackupStrategyRequest) ToJsonString() string {
@@ -4833,6 +4874,8 @@ func (r *ModifyBackupStrategyRequest) FromJsonString(s string) error {
 	delete(f, "BackupTime")
 	delete(f, "BackupDay")
 	delete(f, "BackupModel")
+	delete(f, "BackupCycle")
+	delete(f, "BackupSaveDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupStrategyRequest has unknown keys!", "")
 	}

@@ -26,6 +26,9 @@ const (
 	// 获取配置失败。
 	INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
 
+	// 上传链接生成失败。
+	INTERNALERROR_FAILEDTOGENERATEURL = "InternalError.FailedToGenerateUrl"
+
 	// 配额系统处理失败。
 	INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
 

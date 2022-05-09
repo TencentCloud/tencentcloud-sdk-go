@@ -6546,6 +6546,53 @@ func (c *Client) DescribePodInstancesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeProgramsRequest() (request *DescribeProgramsRequest) {
+    request = &DescribeProgramsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribePrograms")
+    
+    
+    return
+}
+
+func NewDescribeProgramsResponse() (response *DescribeProgramsResponse) {
+    response = &DescribeProgramsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrograms
+// 查询数据集列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribePrograms(request *DescribeProgramsRequest) (response *DescribeProgramsResponse, err error) {
+    return c.DescribeProgramsWithContext(context.Background(), request)
+}
+
+// DescribePrograms
+// 查询数据集列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeProgramsWithContext(ctx context.Context, request *DescribeProgramsRequest) (response *DescribeProgramsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProgramsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrograms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProgramsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePublicConfigRequest() (request *DescribePublicConfigRequest) {
     request = &DescribePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

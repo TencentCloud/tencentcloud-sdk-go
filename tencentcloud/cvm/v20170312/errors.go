@@ -221,6 +221,9 @@ const (
 	// 指定的hostName不符合规范。
 	INVALIDPARAMETER_HOSTNAMEILLEGAL = "InvalidParameter.HostNameIllegal"
 
+	// 参数ImageIds和SnapshotIds必须有且仅有一个。
+	INVALIDPARAMETER_IMAGEIDSSNAPSHOTIDSMUSTONE = "InvalidParameter.ImageIdsSnapshotIdsMustOne"
+
 	// 当前接口不支持实例镜像。
 	INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = "InvalidParameter.InstanceImageNotSupport"
 
@@ -284,6 +287,9 @@ const (
 	// 请确认指定的带宽包是否存在。
 	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = "InvalidParameterValue.BandwidthPackageIdNotFound"
 
+	// 请确认存储桶是否存在。
+	INVALIDPARAMETERVALUE_BUCKETNOTFOUND = "InvalidParameterValue.BucketNotFound"
+
 	// CamRoleName不合要求，只允许包含英文字母、数字或者 +=,.@_- 字符。
 	INVALIDPARAMETERVALUE_CAMROLENAMEMALFORMED = "InvalidParameterValue.CamRoleNameMalformed"
 
@@ -337,6 +343,12 @@ const (
 
 	// 无效的appid。
 	INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+
+	// 请检查存储桶的写入权限是否已放通。
+	INVALIDPARAMETERVALUE_INVALIDBUCKETPERMISSIONFOREXPORT = "InvalidParameterValue.InvalidBucketPermissionForExport"
+
+	// 参数 FileNamePrefixList 的长度与 ImageIds 或 SnapshotIds 不匹配。
+	INVALIDPARAMETERVALUE_INVALIDFILENAMEPREFIXLIST = "InvalidParameterValue.InvalidFileNamePrefixList"
 
 	// 不支持转为非GPU或其他类型GPU实例。
 	INVALIDPARAMETERVALUE_INVALIDGPUFAMILYCHANGE = "InvalidParameterValue.InvalidGPUFamilyChange"
@@ -521,6 +533,9 @@ const (
 	// 特定实例当前ENI数量已超过目标实例类型的ENI允许的最大值，需删除部分ENI后重试。
 	LIMITEXCEEDED_ENINUMLIMIT = "LimitExceeded.EniNumLimit"
 
+	// 正在运行中的镜像导出任务已达上限，请等待已有任务完成后，再次发起重试。
+	LIMITEXCEEDED_EXPORTIMAGETASKLIMITEXCEEDED = "LimitExceeded.ExportImageTaskLimitExceeded"
+
 	// IP数量超过网卡上限。
 	LIMITEXCEEDED_IPV6ADDRESSNUM = "LimitExceeded.IPv6AddressNum"
 
@@ -668,6 +683,9 @@ const (
 	// IPv6实例不支持VPC迁移
 	UNSUPPORTEDOPERATION_IPV6NOTSUPPORTVPCMIGRATE = "UnsupportedOperation.IPv6NotSupportVpcMigrate"
 
+	// 镜像大小超出限制，不支持导出。
+	UNSUPPORTEDOPERATION_IMAGETOOLARGEEXPORTUNSUPPORTED = "UnsupportedOperation.ImageTooLargeExportUnsupported"
+
 	// 请求不支持该实例计费模式
 	UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = "UnsupportedOperation.InstanceChargeType"
 
@@ -761,6 +779,9 @@ const (
 	// 不支持正在本地盘转云盘的磁盘，请稍后发起请求。
 	UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = "UnsupportedOperation.LocalDiskMigratingToCloudDisk"
 
+	// 从市场镜像创建的自定义镜像不支持导出。
+	UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.MarketImageExportUnsupported"
+
 	// 绑定负载均衡的实例，不支持修改vpc属性。
 	UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = "UnsupportedOperation.ModifyVPCWithCLB"
 
@@ -782,6 +803,9 @@ const (
 	// 无效的原机型。
 	UNSUPPORTEDOPERATION_ORIGINALINSTANCETYPEINVALID = "UnsupportedOperation.OriginalInstanceTypeInvalid"
 
+	// 公共镜像或市场镜像不支持导出。
+	UNSUPPORTEDOPERATION_PUBLICIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.PublicImageExportUnsupported"
+
 	// 当前镜像不支持对该实例的重装操作。
 	UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
 
@@ -793,6 +817,9 @@ const (
 
 	// 用户预留实例计费配额已达上限。
 	UNSUPPORTEDOPERATION_RESERVEDINSTANCEOUTOFQUATA = "UnsupportedOperation.ReservedInstanceOutofQuata"
+
+	// 共享镜像不支持导出。
+	UNSUPPORTEDOPERATION_SHAREDIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.SharedImageExportUnsupported"
 
 	// 请求不支持特殊机型的实例
 	UNSUPPORTEDOPERATION_SPECIALINSTANCETYPE = "UnsupportedOperation.SpecialInstanceType"
@@ -820,6 +847,9 @@ const (
 
 	// 用户限额操作的配额不足。
 	UNSUPPORTEDOPERATION_USERLIMITOPERATIONEXCEEDQUOTA = "UnsupportedOperation.UserLimitOperationExceedQuota"
+
+	// Windows镜像不支持导出。
+	UNSUPPORTEDOPERATION_WINDOWSIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.WindowsImageExportUnsupported"
 
 	// 私有网络ip不在子网内。
 	VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"

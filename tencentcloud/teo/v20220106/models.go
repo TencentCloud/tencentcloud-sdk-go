@@ -20,6 +20,71 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreatePrefetchTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// Zone ID
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 预热的资源列表
+	Targets []*string `json:"Targets,omitempty" name:"Targets"`
+
+	// 是否对url进行encode
+	EncodeUrl *bool `json:"EncodeUrl,omitempty" name:"EncodeUrl"`
+
+	// 附带的http头部信息
+	Headers []*Header `json:"Headers,omitempty" name:"Headers"`
+}
+
+func (r *CreatePrefetchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrefetchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Targets")
+	delete(f, "EncodeUrl")
+	delete(f, "Headers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrefetchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrefetchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务ID
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+		// 失败的任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedList []*FailReason `json:"FailedList,omitempty" name:"FailedList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePrefetchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrefetchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreatePurgeTaskRequest struct {
 	*tchttp.BaseRequest
 
@@ -87,6 +152,91 @@ func (r *CreatePurgeTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePurgeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrefetchTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询起始偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询最大返回的结果条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的状态
+	// 允许的值为：processing、success、failed、timeout、invalid
+	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+
+	// zone id
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 查询的域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 查询的资源
+	Target *string `json:"Target,omitempty" name:"Target"`
+}
+
+func (r *DescribePrefetchTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrefetchTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Statuses")
+	delete(f, "ZoneId")
+	delete(f, "Domains")
+	delete(f, "Target")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrefetchTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePrefetchTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 该查询条件总共条目数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务结果列表
+		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribePrefetchTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrefetchTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -247,6 +397,15 @@ type FailReason struct {
 
 	// 失败列表
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
+}
+
+type Header struct {
+
+	// HTTP头部
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// HTTP头部值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type Task struct {

@@ -4814,7 +4814,7 @@ type SmartStructuralOCRRequest struct {
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 需返回的字段名称，例：
+	// 自定义结构化功能需返回的字段名称，例：
 	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
 	// ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`

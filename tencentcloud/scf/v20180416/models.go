@@ -2898,9 +2898,13 @@ type NamespaceUsage struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalConcurrencyMem *int64 `json:"TotalConcurrencyMem,omitempty" name:"TotalConcurrencyMem"`
 
-	// 命名空间配额使用量
+	// 命名空间并发使用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalAllocatedConcurrencyMem *int64 `json:"TotalAllocatedConcurrencyMem,omitempty" name:"TotalAllocatedConcurrencyMem"`
+
+	// 命名空间预置使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAllocatedProvisionedMem *int64 `json:"TotalAllocatedProvisionedMem,omitempty" name:"TotalAllocatedProvisionedMem"`
 }
 
 type ProtocolParams struct {

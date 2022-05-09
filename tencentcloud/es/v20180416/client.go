@@ -496,6 +496,7 @@ func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
 // 重启ES集群实例(用于系统版本更新等操作) 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -507,6 +508,7 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
 // 重启ES集群实例(用于系统版本更新等操作) 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"

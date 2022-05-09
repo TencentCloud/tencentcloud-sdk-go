@@ -45,6 +45,73 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreatePrefetchTaskRequest() (request *CreatePrefetchTaskRequest) {
+    request = &CreatePrefetchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "CreatePrefetchTask")
+    
+    
+    return
+}
+
+func NewCreatePrefetchTaskResponse() (response *CreatePrefetchTaskResponse) {
+    response = &CreatePrefetchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrefetchTask
+// 创建预热任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
+//  INTERNALERROR_FAILEDTOGENERATEURL = "InternalError.FailedToGenerateUrl"
+//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
+//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
+//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
+//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
+//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+func (c *Client) CreatePrefetchTask(request *CreatePrefetchTaskRequest) (response *CreatePrefetchTaskResponse, err error) {
+    return c.CreatePrefetchTaskWithContext(context.Background(), request)
+}
+
+// CreatePrefetchTask
+// 创建预热任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
+//  INTERNALERROR_FAILEDTOGENERATEURL = "InternalError.FailedToGenerateUrl"
+//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
+//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
+//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
+//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
+//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+func (c *Client) CreatePrefetchTaskWithContext(ctx context.Context, request *CreatePrefetchTaskRequest) (response *CreatePrefetchTaskResponse, err error) {
+    if request == nil {
+        request = NewCreatePrefetchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrefetchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrefetchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePurgeTaskRequest() (request *CreatePurgeTaskRequest) {
     request = &CreatePurgeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -106,6 +173,55 @@ func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreatePurgeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
+    request = &DescribePrefetchTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribePrefetchTasks")
+    
+    
+    return
+}
+
+func NewDescribePrefetchTasksResponse() (response *DescribePrefetchTasksResponse) {
+    response = &DescribePrefetchTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrefetchTasks
+// 查询预热任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) DescribePrefetchTasks(request *DescribePrefetchTasksRequest) (response *DescribePrefetchTasksResponse, err error) {
+    return c.DescribePrefetchTasksWithContext(context.Background(), request)
+}
+
+// DescribePrefetchTasks
+// 查询预热任务状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) DescribePrefetchTasksWithContext(ctx context.Context, request *DescribePrefetchTasksRequest) (response *DescribePrefetchTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribePrefetchTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrefetchTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrefetchTasksResponse()
     err = c.Send(request, response)
     return
 }
