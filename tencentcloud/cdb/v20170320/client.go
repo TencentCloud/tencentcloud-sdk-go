@@ -403,6 +403,7 @@ func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
 //  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -442,6 +443,7 @@ func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *Creat
 //  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -583,6 +585,7 @@ func NewCreateAuditPolicyResponse() (response *CreateAuditPolicyResponse) {
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
@@ -624,6 +627,7 @@ func (c *Client) CreateAuditPolicy(request *CreateAuditPolicyRequest) (response 
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
@@ -1536,6 +1540,7 @@ func NewDeleteAuditPolicyResponse() (response *DeleteAuditPolicyResponse) {
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ATLEASTALLRULEAUDITPOLICYERROR = "OperationDenied.AtLeastAllRuleAuditPolicyError"
 //  OPERATIONDENIED_ATLEASTAUDITPOLICYERROR = "OperationDenied.AtLeastAuditPolicyError"
 //  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
@@ -1556,6 +1561,7 @@ func (c *Client) DeleteAuditPolicy(request *DeleteAuditPolicyRequest) (response 
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_ATLEASTALLRULEAUDITPOLICYERROR = "OperationDenied.AtLeastAllRuleAuditPolicyError"
 //  OPERATIONDENIED_ATLEASTAUDITPOLICYERROR = "OperationDenied.AtLeastAuditPolicyError"
 //  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 //  OPERATIONDENIED_AUDITTASKCONFLICTERROR = "OperationDenied.AuditTaskConflictError"
@@ -1599,6 +1605,7 @@ func NewDeleteAuditRuleResponse() (response *DeleteAuditRuleResponse) {
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
 //  FAILEDOPERATION_DELETEAUDITFAILERROR = "FailedOperation.DeleteAuditFailError"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
@@ -1617,6 +1624,7 @@ func (c *Client) DeleteAuditRule(request *DeleteAuditRuleRequest) (response *Del
 // 本接口(DeleteAuditRule)用于删除用户的审计规则。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
 //  FAILEDOPERATION_DELETEAUDITFAILERROR = "FailedOperation.DeleteAuditFailError"
 //  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
@@ -2963,6 +2971,7 @@ func NewDescribeCloneListResponse() (response *DescribeCloneListResponse) {
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeCloneList(request *DescribeCloneListRequest) (response *DescribeCloneListResponse, err error) {
     return c.DescribeCloneListWithContext(context.Background(), request)
 }
@@ -2973,6 +2982,7 @@ func (c *Client) DescribeCloneList(request *DescribeCloneListRequest) (response 
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeCloneListWithContext(ctx context.Context, request *DescribeCloneListRequest) (response *DescribeCloneListResponse, err error) {
     if request == nil {
         request = NewDescribeCloneListRequest()
@@ -3013,6 +3023,7 @@ func NewDescribeDBImportRecordsResponse() (response *DescribeDBImportRecordsResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDASYNCREQUESTID = "InvalidParameter.InvalidAsyncRequestId"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeDBImportRecords(request *DescribeDBImportRecordsRequest) (response *DescribeDBImportRecordsResponse, err error) {
     return c.DescribeDBImportRecordsWithContext(context.Background(), request)
 }
@@ -3024,6 +3035,7 @@ func (c *Client) DescribeDBImportRecords(request *DescribeDBImportRecordsRequest
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDASYNCREQUESTID = "InvalidParameter.InvalidAsyncRequestId"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeDBImportRecordsWithContext(ctx context.Context, request *DescribeDBImportRecordsRequest) (response *DescribeDBImportRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeDBImportRecordsRequest()
@@ -3553,6 +3565,7 @@ func NewDescribeDBSwitchRecordsResponse() (response *DescribeDBSwitchRecordsResp
 // 本接口(DescribeDBSwitchRecords)用于查询云数据库实例切换记录。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -3565,6 +3578,7 @@ func (c *Client) DescribeDBSwitchRecords(request *DescribeDBSwitchRecordsRequest
 // 本接口(DescribeDBSwitchRecords)用于查询云数据库实例切换记录。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -4832,6 +4846,7 @@ func NewDescribeSupportedPrivilegesResponse() (response *DescribeSupportedPrivil
 //  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
 //  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
 //  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -4866,6 +4881,7 @@ func (c *Client) DescribeSupportedPrivileges(request *DescribeSupportedPrivilege
 //  INTERNALERROR_INTERNALASSERTERROR = "InternalError.InternalAssertError"
 //  INTERNALERROR_INTERNALREQUESTERROR = "InternalError.InternalRequestError"
 //  INTERNALERROR_REGEXPCOMPILEERROR = "InternalError.RegexpCompileError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONCHARACTERERROR = "InvalidParameterValue.AccountDescriptionCharacterError"
 //  INVALIDPARAMETERVALUE_ACCOUNTDESCRIPTIONLENGTHERROR = "InvalidParameterValue.AccountDescriptionLengthError"
@@ -4983,6 +4999,7 @@ func NewDescribeTagsOfInstanceIdsResponse() (response *DescribeTagsOfInstanceIds
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
 //  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_TASKERROR = "InternalError.TaskError"
 //  INTERNALERROR_TIMEWINDOWERROR = "InternalError.TimeWindowError"
@@ -5001,6 +5018,7 @@ func (c *Client) DescribeTagsOfInstanceIds(request *DescribeTagsOfInstanceIdsReq
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_AUTHERROR = "InternalError.AuthError"
 //  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_TASKERROR = "InternalError.TaskError"
 //  INTERNALERROR_TIMEWINDOWERROR = "InternalError.TimeWindowError"

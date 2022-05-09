@@ -3858,6 +3858,10 @@ type HealthCheck struct {
 	// 自定义探测相关参数。健康检查源IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIpType *int64 `json:"SourceIpType,omitempty" name:"SourceIpType"`
+
+	// GRPC健康检查状态码（仅适用于后端转发协议为GRPC的规则）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendedCode *string `json:"ExtendedCode,omitempty" name:"ExtendedCode"`
 }
 
 type InternetAccessible struct {

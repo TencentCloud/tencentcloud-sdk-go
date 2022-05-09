@@ -425,6 +425,7 @@ func NewCreateTeamResponse() (response *CreateTeamResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMID = "InvalidParameterValue.TeamId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateTeam(request *CreateTeamRequest) (response *CreateTeamResponse, err error) {
     return c.CreateTeamWithContext(context.Background(), request)
@@ -440,6 +441,7 @@ func (c *Client) CreateTeam(request *CreateTeamRequest) (response *CreateTeamRes
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMID = "InvalidParameterValue.TeamId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateTeamWithContext(ctx context.Context, request *CreateTeamRequest) (response *CreateTeamResponse, err error) {
     if request == nil {
@@ -1977,6 +1979,7 @@ func NewExportVideoEditProjectResponse() (response *ExportVideoEditProjectRespon
 // 导出视频编辑项目，支持指定输出的模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2003,6 +2006,7 @@ func (c *Client) ExportVideoEditProject(request *ExportVideoEditProjectRequest) 
 // 导出视频编辑项目，支持指定输出的模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CREATETASK = "InternalError.CreateTask"
 //  INVALIDPARAMETER = "InvalidParameter"

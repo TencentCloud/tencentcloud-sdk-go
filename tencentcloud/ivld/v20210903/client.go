@@ -1220,6 +1220,7 @@ func NewDescribeMediaResponse() (response *DescribeMediaResponse) {
 //  FAILEDOPERATION_TRANSCODEFAILED = "FailedOperation.TranscodeFailed"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *DescribeMediaResponse, err error) {
     return c.DescribeMediaWithContext(context.Background(), request)
 }
@@ -1241,6 +1242,7 @@ func (c *Client) DescribeMedia(request *DescribeMediaRequest) (response *Describ
 //  FAILEDOPERATION_TRANSCODEFAILED = "FailedOperation.TranscodeFailed"
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) DescribeMediaWithContext(ctx context.Context, request *DescribeMediaRequest) (response *DescribeMediaResponse, err error) {
     if request == nil {
         request = NewDescribeMediaRequest()

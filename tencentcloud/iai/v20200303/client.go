@@ -778,6 +778,7 @@ func NewCopyPersonResponse() (response *CopyPersonResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
+//  FAILEDOPERATION_CREATEFACECONCURRENT = "FailedOperation.CreateFaceConcurrent"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
 //  FAILEDOPERATION_GROUPPERSONMAPEXIST = "FailedOperation.GroupPersonMapExist"
@@ -857,6 +858,7 @@ func (c *Client) CopyPerson(request *CopyPersonRequest) (response *CopyPersonRes
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
 //  FAILEDOPERATION_CONFLICTOPERATION = "FailedOperation.ConflictOperation"
+//  FAILEDOPERATION_CREATEFACECONCURRENT = "FailedOperation.CreateFaceConcurrent"
 //  FAILEDOPERATION_DUPLICATEDGROUPDESCRIPTION = "FailedOperation.DuplicatedGroupDescription"
 //  FAILEDOPERATION_GROUPINDELETEDSTATE = "FailedOperation.GroupInDeletedState"
 //  FAILEDOPERATION_GROUPPERSONMAPEXIST = "FailedOperation.GroupPersonMapExist"

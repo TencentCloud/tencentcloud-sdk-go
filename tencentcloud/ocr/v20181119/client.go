@@ -5627,7 +5627,7 @@ func NewWaybillOCRResponse() (response *WaybillOCRResponse) {
 }
 
 // WaybillOCR
-// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
+// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段，精度均处于业界领先水平，识别准确率达到99%以上。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5646,7 +5646,7 @@ func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRRes
 }
 
 // WaybillOCR
-// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
+// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段，精度均处于业界领先水平，识别准确率达到99%以上。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

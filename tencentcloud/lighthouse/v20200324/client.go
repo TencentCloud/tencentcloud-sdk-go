@@ -72,6 +72,7 @@ func NewApplyInstanceSnapshotResponse() (response *ApplyInstanceSnapshotResponse
 // <li>回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 DescribeInstances 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。</li>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = "InvalidParameterValue.DiskSizeNotMatch"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -102,6 +103,7 @@ func (c *Client) ApplyInstanceSnapshot(request *ApplyInstanceSnapshotRequest) (r
 // <li>回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 DescribeInstances 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。</li>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INVALIDPARAMETERVALUE_DISKSIZENOTMATCH = "InvalidParameterValue.DiskSizeNotMatch"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -3254,6 +3256,7 @@ func NewInquirePriceRenewDisksResponse() (response *InquirePriceRenewDisksRespon
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
 //  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
@@ -3266,6 +3269,7 @@ func (c *Client) InquirePriceRenewDisks(request *InquirePriceRenewDisksRequest) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
 //  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
@@ -3378,6 +3382,7 @@ func NewIsolateInstancesResponse() (response *IsolateInstancesResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
 //  INTERNALERROR_DESCRIBERESOURCESRETURNABLEERROR = "InternalError.DescribeResourcesReturnableError"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
 //  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
@@ -3404,6 +3409,7 @@ func (c *Client) IsolateInstances(request *IsolateInstancesRequest) (response *I
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
 //  INTERNALERROR_DESCRIBERESOURCESRETURNABLEERROR = "InternalError.DescribeResourcesReturnableError"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
 //  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"

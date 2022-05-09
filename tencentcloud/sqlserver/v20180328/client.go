@@ -1410,6 +1410,7 @@ func NewDeletePublishSubscribeResponse() (response *DeletePublishSubscribeRespon
 // 本接口（DeletePublishSubscribe）用于删除两个数据库间的发布订阅关系。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -1423,6 +1424,7 @@ func (c *Client) DeletePublishSubscribe(request *DeletePublishSubscribeRequest) 
 // 本接口（DeletePublishSubscribe）用于删除两个数据库间的发布订阅关系。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2483,6 +2485,7 @@ func NewDescribeMaintenanceSpanResponse() (response *DescribeMaintenanceSpanResp
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeMaintenanceSpan(request *DescribeMaintenanceSpanRequest) (response *DescribeMaintenanceSpanResponse, err error) {
     return c.DescribeMaintenanceSpanWithContext(context.Background(), request)
 }
@@ -2496,6 +2499,7 @@ func (c *Client) DescribeMaintenanceSpan(request *DescribeMaintenanceSpanRequest
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeMaintenanceSpanWithContext(ctx context.Context, request *DescribeMaintenanceSpanRequest) (response *DescribeMaintenanceSpanResponse, err error) {
     if request == nil {
         request = NewDescribeMaintenanceSpanRequest()
@@ -2899,6 +2903,7 @@ func NewDescribePublishSubscribeResponse() (response *DescribePublishSubscribeRe
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  INVALIDPARAMETERVALUE_PUBSUBNAMEISILLEGAL = "InvalidParameterValue.PubSubNameIsIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribePublishSubscribe(request *DescribePublishSubscribeRequest) (response *DescribePublishSubscribeResponse, err error) {
     return c.DescribePublishSubscribeWithContext(context.Background(), request)
 }
@@ -2913,6 +2918,7 @@ func (c *Client) DescribePublishSubscribe(request *DescribePublishSubscribeReque
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  INVALIDPARAMETERVALUE_PUBSUBNAMEISILLEGAL = "InvalidParameterValue.PubSubNameIsIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribePublishSubscribeWithContext(ctx context.Context, request *DescribePublishSubscribeRequest) (response *DescribePublishSubscribeResponse, err error) {
     if request == nil {
         request = NewDescribePublishSubscribeRequest()
@@ -4525,6 +4531,7 @@ func NewModifyDatabaseCDCResponse() (response *ModifyDatabaseCDCResponse) {
 //  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
 //  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
 //  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"
@@ -4541,6 +4548,7 @@ func (c *Client) ModifyDatabaseCDC(request *ModifyDatabaseCDCRequest) (response 
 //  INVALIDPARAMETERVALUE_DBNAMENOTNULL = "InvalidParameterValue.DBNameNotNull"
 //  INVALIDPARAMETERVALUE_MODIFYTYPEVALUEINVALID = "InvalidParameterValue.ModifyTypeValueInvalid"
 //  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTROINSTANCE = "ResourceUnavailable.NotSupportRoInstance"

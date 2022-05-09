@@ -134,6 +134,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     return c.CreateSessionWithContext(context.Background(), request)
@@ -152,6 +153,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     if request == nil {

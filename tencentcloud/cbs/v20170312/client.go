@@ -1033,6 +1033,7 @@ func NewDescribeDiskStoragePoolResponse() (response *DescribeDiskStoragePoolResp
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘独享集群列表。
 //
 // 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDiskStoragePool(request *DescribeDiskStoragePoolRequest) (response *DescribeDiskStoragePoolResponse, err error) {
@@ -1049,6 +1050,7 @@ func (c *Client) DescribeDiskStoragePool(request *DescribeDiskStoragePoolRequest
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的云硬盘独享集群列表。
 //
 // 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDiskStoragePoolWithContext(ctx context.Context, request *DescribeDiskStoragePoolRequest) (response *DescribeDiskStoragePoolResponse, err error) {

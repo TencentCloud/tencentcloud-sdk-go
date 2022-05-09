@@ -1,3 +1,43 @@
+# Release v1.0.395
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 68 次发布
+
+发布时间：2022-05-10 06:03:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HealthCheck](https://cloud.tencent.com/document/api/214/30694#HealthCheck)
+
+	* 新增成员：ExtendedCode
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 44 次发布
+
+发布时间：2022-05-10 06:09:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：IsOneClick, OneClickStatus
+
+
+
+
 # Release v1.0.394
 
 ## 访问管理(cam) 版本：2019-01-16

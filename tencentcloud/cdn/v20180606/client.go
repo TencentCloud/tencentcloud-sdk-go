@@ -949,6 +949,7 @@ func NewDeleteScdnDomainResponse() (response *DeleteScdnDomainResponse) {
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 func (c *Client) DeleteScdnDomain(request *DeleteScdnDomainRequest) (response *DeleteScdnDomainResponse, err error) {
     return c.DeleteScdnDomainWithContext(context.Background(), request)
 }
@@ -972,6 +973,7 @@ func (c *Client) DeleteScdnDomain(request *DeleteScdnDomainRequest) (response *D
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 func (c *Client) DeleteScdnDomainWithContext(ctx context.Context, request *DeleteScdnDomainRequest) (response *DeleteScdnDomainResponse, err error) {
     if request == nil {
         request = NewDeleteScdnDomainRequest()
@@ -2790,8 +2792,6 @@ func NewDescribePushTasksResponse() (response *DescribePushTasksResponse) {
 // DescribePushTasks
 // DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
 //
-// 接口灰度中，暂未全量开放，敬请期待。
-//
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -2821,8 +2821,6 @@ func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response 
 
 // DescribePushTasks
 // DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
-//
-// 接口灰度中，暂未全量开放，敬请期待。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
@@ -3836,6 +3834,7 @@ func NewDuplicateDomainConfigResponse() (response *DuplicateDomainConfigResponse
 //  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DuplicateDomainConfig(request *DuplicateDomainConfigRequest) (response *DuplicateDomainConfigResponse, err error) {
     return c.DuplicateDomainConfigWithContext(context.Background(), request)
@@ -3883,6 +3882,7 @@ func (c *Client) DuplicateDomainConfig(request *DuplicateDomainConfigRequest) (r
 //  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DuplicateDomainConfigWithContext(ctx context.Context, request *DuplicateDomainConfigRequest) (response *DuplicateDomainConfigResponse, err error) {
     if request == nil {

@@ -32,6 +32,9 @@ const (
 	// CLB 未知错误。
 	FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
 
+	// CVM未知错误。
+	FAILEDOPERATION_CVMUNEXPECTEDERROR = "FailedOperation.CVMUnexpectedError"
+
 	// 无该接口CAM权限。
 	FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
 
@@ -55,6 +58,9 @@ const (
 
 	// cvm创建节点报错。
 	FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+
+	// 存在云服务器在CVM侧查询不到。
+	FAILEDOPERATION_CVMNUMBERNOTMATCH = "FailedOperation.CvmNumberNotMatch"
 
 	// CVM 和 VPC ID 不匹配。
 	FAILEDOPERATION_CVMVPCIDNOTMATCH = "FailedOperation.CvmVpcidNotMatch"
@@ -109,6 +115,9 @@ const (
 
 	// 询价错误。
 	FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+
+	// VPC未知错误。
+	FAILEDOPERATION_VPCUNEXPECTEDERROR = "FailedOperation.VPCUnexpectedError"
 
 	// 未发现vpc记录。
 	FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
@@ -334,6 +343,9 @@ const (
 
 	// 创建的路由与VPC下已存在的全局路由产生冲突。
 	INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+
+	// CIDR无效。
+	INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
 
 	// 参数错误，CIDR不符合规范。
 	INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"

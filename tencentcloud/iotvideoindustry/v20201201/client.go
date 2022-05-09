@@ -478,6 +478,7 @@ func NewCreateDeviceGroupResponse() (response *CreateDeviceGroupResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GROUPPARMSERROR = "InvalidParameterValue.GroupParmsError"
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
+//  UNSUPPORTEDOPERATION_GROUPLAYERISMAX = "UnsupportedOperation.GroupLayerIsMax"
 //  UNSUPPORTEDOPERATION_GROUPPARENTIDNOTEXIST = "UnsupportedOperation.GroupParentidNotExist"
 func (c *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (response *CreateDeviceGroupResponse, err error) {
     return c.CreateDeviceGroupWithContext(context.Background(), request)
@@ -489,6 +490,7 @@ func (c *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GROUPPARMSERROR = "InvalidParameterValue.GroupParmsError"
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
+//  UNSUPPORTEDOPERATION_GROUPLAYERISMAX = "UnsupportedOperation.GroupLayerIsMax"
 //  UNSUPPORTEDOPERATION_GROUPPARENTIDNOTEXIST = "UnsupportedOperation.GroupParentidNotExist"
 func (c *Client) CreateDeviceGroupWithContext(ctx context.Context, request *CreateDeviceGroupRequest) (response *CreateDeviceGroupResponse, err error) {
     if request == nil {

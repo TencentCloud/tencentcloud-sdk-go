@@ -140,6 +140,7 @@ func NewAddInstancesResponse() (response *AddInstancesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
     return c.AddInstancesWithContext(context.Background(), request)
@@ -150,6 +151,7 @@ func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstan
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
     if request == nil {

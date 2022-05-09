@@ -7614,6 +7614,7 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
+	// 当源站类型为cos或者第三方存储加速时,ServerName字段必填
 	// 回主源站时 Host 头部，不填充则默认为加速域名
 	// 若接入的是泛域名，则回源 Host 默认为访问时的子域名
 	// 注意：此字段可能返回 null，表示取不到有效值。

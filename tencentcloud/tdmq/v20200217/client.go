@@ -2426,6 +2426,7 @@ func NewDescribeAMQPClustersResponse() (response *DescribeAMQPClustersResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (response *DescribeAMQPClustersResponse, err error) {
     return c.DescribeAMQPClustersWithContext(context.Background(), request)
 }
@@ -2438,6 +2439,7 @@ func (c *Client) DescribeAMQPClusters(request *DescribeAMQPClustersRequest) (res
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAMQPClustersWithContext(ctx context.Context, request *DescribeAMQPClustersRequest) (response *DescribeAMQPClustersResponse, err error) {
     if request == nil {
         request = NewDescribeAMQPClustersRequest()
@@ -3533,11 +3535,7 @@ func NewDescribeNodeHealthOptResponse() (response *DescribeNodeHealthOptResponse
 // 运营端获节点健康状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (response *DescribeNodeHealthOptResponse, err error) {
     return c.DescribeNodeHealthOptWithContext(context.Background(), request)
 }
@@ -3546,11 +3544,7 @@ func (c *Client) DescribeNodeHealthOpt(request *DescribeNodeHealthOptRequest) (r
 // 运营端获节点健康状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNodeHealthOptWithContext(ctx context.Context, request *DescribeNodeHealthOptRequest) (response *DescribeNodeHealthOptResponse, err error) {
     if request == nil {
         request = NewDescribeNodeHealthOptRequest()

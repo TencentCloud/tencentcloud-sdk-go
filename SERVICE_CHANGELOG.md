@@ -1,68 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 46 次发布
+### 第 68 次发布
 
-发布时间：2022-05-09 06:03:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateOIDCConfig](https://cloud.tencent.com/document/api/598/73473)
-* [DeleteOIDCConfig](https://cloud.tencent.com/document/api/598/73472)
-* [DescribeOIDCConfig](https://cloud.tencent.com/document/api/598/73471)
-* [UpdateOIDCConfig](https://cloud.tencent.com/document/api/598/73470)
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 92 次发布
-
-发布时间：2022-05-09 06:03:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDBInstance](https://cloud.tencent.com/document/api/236/15871)
-
-	* 新增入参：EngineType
-
-* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/236/15865)
-
-	* 新增入参：EngineType
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 81 次发布
-
-发布时间：2022-05-09 06:05:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ExportImages](https://cloud.tencent.com/document/api/213/73474)
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 37 次发布
-
-发布时间：2022-05-09 06:11:15
+发布时间：2022-05-10 06:03:18
 
 本次发布包含了以下内容：
 
@@ -70,18 +12,18 @@
 
 修改数据结构：
 
-* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#VideoTemplateInfoForUpdate)
+* [HealthCheck](https://cloud.tencent.com/document/api/214/30694#HealthCheck)
 
-	* 新增成员：ContentAdaptStream
-
-
+	* 新增成员：ExtendedCode
 
 
-## 云函数(scf) 版本：2018-04-16
 
-### 第 46 次发布
 
-发布时间：2022-05-09 06:12:32
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 44 次发布
+
+发布时间：2022-05-10 06:09:42
 
 本次发布包含了以下内容：
 
@@ -89,131 +31,10 @@
 
 修改数据结构：
 
-* [NamespaceUsage](https://cloud.tencent.com/document/api/583/17244#NamespaceUsage)
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
 
-	* 新增成员：TotalAllocatedProvisionedMem
+	* 新增成员：IsOneClick, OneClickStatus
 
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 29 次发布
-
-发布时间：2022-05-09 06:12:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBackupFiles](https://cloud.tencent.com/document/api/238/61561)
-
-	* 新增入参：OrderBy
-
-* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
-
-	* 新增入参：Type, BackupFormat
-
-* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
-
-	* 新增入参：InstanceType
-
-* [ModifyBackupStrategy](https://cloud.tencent.com/document/api/238/46288)
-
-	* 新增入参：BackupCycle, BackupSaveDays
-
-
-修改数据结构：
-
-* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
-
-	* 新增成员：BackupFormat
-
-* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
-
-	* 新增成员：InstanceNote, BackupCycle, BackupCycleType, BackupSaveDays, InstanceType
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 16 次发布
-
-发布时间：2022-05-09 06:14:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeClusterDetail](https://cloud.tencent.com/document/api/1285/65448)
-
-	* 新增出参：NetworkType, ApiServerAddress, NodeCount, NamespaceCount, WorkloadCount, PodCount, ServiceCount, IngressCount
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-### 第 3 次发布
-
-发布时间：2022-05-09 06:14:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/73476)
-* [DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/73475)
-
-新增数据结构：
-
-* [Header](https://cloud.tencent.com/document/api/1552/73155#Header)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 97 次发布
-
-发布时间：2022-05-09 06:15:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateClusterAsGroup
-
-
-
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 74 次发布
-
-发布时间：2022-05-09 06:15:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePrograms](https://cloud.tencent.com/document/api/649/73477)
-
-新增数据结构：
-
-* [PagedProgram](https://cloud.tencent.com/document/api/649/36099#PagedProgram)
-* [Program](https://cloud.tencent.com/document/api/649/36099#Program)
-* [ProgramItem](https://cloud.tencent.com/document/api/649/36099#ProgramItem)
-* [Resource](https://cloud.tencent.com/document/api/649/36099#Resource)
 
 
 
@@ -7754,10 +7575,10 @@
 
 新增接口：
 
-* [[CreateOIDCConfig](https://cloud.tencent.com/document/api/598/73473)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteOIDCConfig](https://cloud.tencent.com/document/api/598/73472)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOIDCConfig](https://cloud.tencent.com/document/api/598/73471)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateOIDCConfig](https://cloud.tencent.com/document/api/598/73470)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOIDCConfig](https://cloud.tencent.com/document/api/598/73473)
+* [DeleteOIDCConfig](https://cloud.tencent.com/document/api/598/73472)
+* [DescribeOIDCConfig](https://cloud.tencent.com/document/api/598/73471)
+* [UpdateOIDCConfig](https://cloud.tencent.com/document/api/598/73470)
 
 ### 第 45 次发布
 
@@ -16623,6 +16444,21 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 68 次发布
+
+发布时间：2022-05-10 06:03:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HealthCheck](https://cloud.tencent.com/document/api/214/30694#HealthCheck)
+
+	* 新增成员：ExtendedCode
+
+
 ### 第 67 次发布
 
 发布时间：2022-03-03 08:03:01
@@ -22267,7 +22103,7 @@
 
 新增接口：
 
-* [[ExportImages](https://cloud.tencent.com/document/api/213/73474)](https://cloud.tencent.com/document/api/#/#)
+* [ExportImages](https://cloud.tencent.com/document/api/213/73474)
 
 ### 第 80 次发布
 
@@ -45946,6 +45782,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 44 次发布
+
+发布时间：2022-05-10 06:09:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：IsOneClick, OneClickStatus
+
+
 ### 第 43 次发布
 
 发布时间：2022-04-19 06:13:47
@@ -63607,12 +63458,12 @@
 
 新增接口：
 
-* [[CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/73476)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/73475)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/73476)
+* [DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/73475)
 
 新增数据结构：
 
-* [[Header](https://cloud.tencent.com/document/api/1552/73155#Header)](https://cloud.tencent.com/document/api/1552/73155#[Header](https://cloud.tencent.com/document/api/1552/73155#Header))
+* [Header](https://cloud.tencent.com/document/api/1552/73155#Header)
 
 ### 第 2 次发布
 
@@ -68534,14 +68385,14 @@
 
 新增接口：
 
-* [[DescribePrograms](https://cloud.tencent.com/document/api/649/73477)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrograms](https://cloud.tencent.com/document/api/649/73477)
 
 新增数据结构：
 
-* [[PagedProgram](https://cloud.tencent.com/document/api/649/36099#PagedProgram)](https://cloud.tencent.com/document/api/649/36099#[PagedProgram](https://cloud.tencent.com/document/api/649/36099#PagedProgram))
-* [[Program](https://cloud.tencent.com/document/api/649/36099#Program)](https://cloud.tencent.com/document/api/649/36099#[Program](https://cloud.tencent.com/document/api/649/36099#Program))
-* [[ProgramItem](https://cloud.tencent.com/document/api/649/36099#ProgramItem)](https://cloud.tencent.com/document/api/649/36099#[ProgramItem](https://cloud.tencent.com/document/api/649/36099#ProgramItem))
-* [[Resource](https://cloud.tencent.com/document/api/649/36099#Resource)](https://cloud.tencent.com/document/api/649/36099#[Resource](https://cloud.tencent.com/document/api/649/36099#Resource))
+* [PagedProgram](https://cloud.tencent.com/document/api/649/36099#PagedProgram)
+* [Program](https://cloud.tencent.com/document/api/649/36099#Program)
+* [ProgramItem](https://cloud.tencent.com/document/api/649/36099#ProgramItem)
+* [Resource](https://cloud.tencent.com/document/api/649/36099#Resource)
 
 ### 第 73 次发布
 

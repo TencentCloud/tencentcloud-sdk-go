@@ -298,6 +298,14 @@ type AlarmPolicy struct {
 	// 策略关联的过滤维度信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterDimensionsParam *string `json:"FilterDimensionsParam,omitempty" name:"FilterDimensionsParam"`
+
+	// 是否为一键告警策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOneClick *int64 `json:"IsOneClick,omitempty" name:"IsOneClick"`
+
+	// 一键告警策略是否开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OneClickStatus *int64 `json:"OneClickStatus,omitempty" name:"OneClickStatus"`
 }
 
 type AlarmPolicyCondition struct {

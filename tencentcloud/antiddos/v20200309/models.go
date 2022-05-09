@@ -5448,7 +5448,7 @@ type ModifyCCPrecisionPolicyRequest struct {
 	// 策略Id
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 策略方式，可取值alg表示验证码，drop表示丢弃
+	// 策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
 	PolicyAction *string `json:"PolicyAction,omitempty" name:"PolicyAction"`
 
 	// 策略记录

@@ -872,6 +872,7 @@ func NewDescribeAppAccountResponse() (response *DescribeAppAccountResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {
@@ -884,6 +885,7 @@ func (c *Client) DescribeAppAccount(request *DescribeAppAccountRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPNOTEXIST = "FailedOperation.AppNotExist"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
+//  FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 //  INVALIDPARAMETER_PARAMETERILLEGAL = "InvalidParameter.ParameterIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) DescribeAppAccountWithContext(ctx context.Context, request *DescribeAppAccountRequest) (response *DescribeAppAccountResponse, err error) {

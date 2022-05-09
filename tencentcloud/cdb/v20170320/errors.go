@@ -359,6 +359,9 @@ const (
 	// 不支持的操作。
 	OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 
+	// 已开启安全审计，至少保留一个全审计。
+	OPERATIONDENIED_ATLEASTALLRULEAUDITPOLICYERROR = "OperationDenied.AtLeastAllRuleAuditPolicyError"
+
 	// 至少保留一个审计策略。
 	OPERATIONDENIED_ATLEASTAUDITPOLICYERROR = "OperationDenied.AtLeastAuditPolicyError"
 

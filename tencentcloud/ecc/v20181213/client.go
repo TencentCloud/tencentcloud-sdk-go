@@ -172,6 +172,7 @@ func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
 //  INTERNALERROR_DATAFORMATABNORMALERROR = "InternalError.DataFormatAbnormalError"
+//  INTERNALERROR_DATABASESERVERINTERNALERROR = "InternalError.DatabaseServerInternalError"
 //  INTERNALERROR_OCRERROR = "InternalError.OcrError"
 //  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
@@ -205,6 +206,7 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeT
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
 //  INTERNALERROR_DATAFORMATABNORMALERROR = "InternalError.DataFormatAbnormalError"
+//  INTERNALERROR_DATABASESERVERINTERNALERROR = "InternalError.DatabaseServerInternalError"
 //  INTERNALERROR_OCRERROR = "InternalError.OcrError"
 //  INTERNALERROR_OCRSERVERINTERNERROR = "InternalError.OcrServerInternError"
 //  INTERNALERROR_OTHERERROR = "InternalError.OtherError"
@@ -267,6 +269,7 @@ func NewECCResponse() (response *ECCResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_DATABASESERVERINTERNALERROR = "InternalError.DatabaseServerInternalError"
 //  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
 //  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
 //  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"
@@ -281,6 +284,7 @@ func (c *Client) ECC(request *ECCRequest) (response *ECCResponse, err error) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CORRECTERROR = "InternalError.CorrectError"
+//  INTERNALERROR_DATABASESERVERINTERNALERROR = "InternalError.DatabaseServerInternalError"
 //  INVALIDPARAMETER_INPUTERROR = "InvalidParameter.InputError"
 //  INVALIDPARAMETERVALUE_SESSIONERROR = "InvalidParameterValue.SessionError"
 //  RESOURCENOTFOUND_CANNOTFINDUSER = "ResourceNotFound.CannotFindUser"

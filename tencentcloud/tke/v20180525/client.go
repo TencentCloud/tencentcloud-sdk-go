@@ -474,6 +474,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_CVMNUMBERNOTMATCH = "FailedOperation.CvmNumberNotMatch"
 //  FAILEDOPERATION_CVMVPCIDNOTMATCH = "FailedOperation.CvmVpcidNotMatch"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
@@ -524,6 +525,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+//  INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -539,6 +541,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
+//  FAILEDOPERATION_CVMNUMBERNOTMATCH = "FailedOperation.CvmNumberNotMatch"
 //  FAILEDOPERATION_CVMVPCIDNOTMATCH = "FailedOperation.CvmVpcidNotMatch"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
@@ -589,6 +592,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+//  INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -794,6 +798,7 @@ func NewCreateClusterInstancesResponse() (response *CreateClusterInstancesRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
@@ -839,6 +844,7 @@ func (c *Client) CreateClusterInstances(request *CreateClusterInstancesRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_DB = "FailedOperation.Db"
@@ -3561,6 +3567,7 @@ func NewDescribeClusterStatusResponse() (response *DescribeClusterStatusResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -3583,6 +3590,7 @@ func (c *Client) DescribeClusterStatus(request *DescribeClusterStatusRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -5217,6 +5225,7 @@ func NewDescribeVersionsResponse() (response *DescribeVersionsResponse) {
 // 获取集群版本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -5244,6 +5253,7 @@ func (c *Client) DescribeVersions(request *DescribeVersionsRequest) (response *D
 // 获取集群版本信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
@@ -6152,6 +6162,7 @@ func NewModifyClusterEndpointSPResponse() (response *ModifyClusterEndpointSPResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
+//  FAILEDOPERATION_VPCUNEXPECTEDERROR = "FailedOperation.VPCUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -6180,6 +6191,7 @@ func (c *Client) ModifyClusterEndpointSP(request *ModifyClusterEndpointSPRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
+//  FAILEDOPERATION_VPCUNEXPECTEDERROR = "FailedOperation.VPCUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -6687,6 +6699,7 @@ func NewScaleOutClusterMasterResponse() (response *ScaleOutClusterMasterResponse
 // 扩容独立集群master节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CVMUNEXPECTEDERROR = "FailedOperation.CVMUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ScaleOutClusterMaster(request *ScaleOutClusterMasterRequest) (response *ScaleOutClusterMasterResponse, err error) {
@@ -6697,6 +6710,7 @@ func (c *Client) ScaleOutClusterMaster(request *ScaleOutClusterMasterRequest) (r
 // 扩容独立集群master节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CVMUNEXPECTEDERROR = "FailedOperation.CVMUnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ScaleOutClusterMasterWithContext(ctx context.Context, request *ScaleOutClusterMasterRequest) (response *ScaleOutClusterMasterResponse, err error) {
