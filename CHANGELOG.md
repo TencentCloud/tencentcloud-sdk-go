@@ -1,3 +1,93 @@
+# Release v1.0.396
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 30 次发布
+
+发布时间：2022-05-11 06:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RuleInstanceRelation](https://cloud.tencent.com/document/api/1021/57582#RuleInstanceRelation)
+
+修改数据结构：
+
+* [Layer4Rule](https://cloud.tencent.com/document/api/1021/57582#Layer4Rule)
+
+	* 新增成员：InstanceDetailRule
+
+* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
+
+	* 新增成员：InstanceDetailRule
+
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 38 次发布
+
+发布时间：2022-05-11 06:13:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAIAnalysisTemplates](https://cloud.tencent.com/document/api/862/40247)
+
+	* 新增入参：Type
+
+* [DescribeAIRecognitionTemplates](https://cloud.tencent.com/document/api/862/39432)
+
+	* 新增入参：Type
+
+* [DescribeContentReviewTemplates](https://cloud.tencent.com/document/api/862/39431)
+
+	* 新增入参：Type
+
+
+修改数据结构：
+
+* [AIAnalysisTemplateItem](https://cloud.tencent.com/document/api/862/37615#AIAnalysisTemplateItem)
+
+	* 新增成员：Type
+
+* [AIRecognitionTemplateItem](https://cloud.tencent.com/document/api/862/37615#AIRecognitionTemplateItem)
+
+	* 新增成员：Type
+
+* [ContentReviewTemplateItem](https://cloud.tencent.com/document/api/862/37615#ContentReviewTemplateItem)
+
+	* 新增成员：Type
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 7 次发布
+
+发布时间：2022-05-11 06:15:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusStatus](https://cloud.tencent.com/document/api/1261/63843#PrometheusStatus)
+
+	* 新增成员：Type
+
+
+
+
 # Release v1.0.395
 
 ## 负载均衡(clb) 版本：2018-03-17

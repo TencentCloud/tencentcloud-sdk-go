@@ -5343,8 +5343,11 @@ type Layer4Rule struct {
 	// 源站列表
 	RealServers []*SourceServer `json:"RealServers,omitempty" name:"RealServers"`
 
-	// 规则所属的资源实例
+	// 资源实例
 	InstanceDetails []*InstanceRelation `json:"InstanceDetails,omitempty" name:"InstanceDetails"`
+
+	// 规则所属的资源实例
+	InstanceDetailRule []*RuleInstanceRelation `json:"InstanceDetailRule,omitempty" name:"InstanceDetailRule"`
 }
 
 type Layer7Rule struct {
@@ -5358,8 +5361,11 @@ type Layer7Rule struct {
 	// 源站列表
 	RealServers []*SourceServer `json:"RealServers,omitempty" name:"RealServers"`
 
-	// 规则所属的资源实例
+	// 资源实例
 	InstanceDetails []*InstanceRelation `json:"InstanceDetails,omitempty" name:"InstanceDetails"`
+
+	// 规则所属的资源实例
+	InstanceDetailRule []*RuleInstanceRelation `json:"InstanceDetailRule,omitempty" name:"InstanceDetailRule"`
 }
 
 type ListenerCcThreholdConfig struct {
@@ -6526,6 +6532,18 @@ type RegionInfo struct {
 
 	// 地域名称，例如，ap-guangzhou
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type RuleInstanceRelation struct {
+
+	// 资源实例的IP
+	EipList []*string `json:"EipList,omitempty" name:"EipList"`
+
+	// 资源实例的ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资源实例的Cname
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
 }
 
 type SchedulingDomainInfo struct {

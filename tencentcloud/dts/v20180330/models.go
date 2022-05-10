@@ -309,7 +309,7 @@ type CreateSubscribeRequest struct {
 	// 购买数量,默认为1，最大为10
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
-	// 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
+	// 是否自动续费，0表示不自动续费，1表示自动续费，默认为0。小时计费实例设置该标识无效。
 	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 实例资源标签
@@ -811,10 +811,10 @@ type DescribeSubscribesRequest struct {
 	// 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
 	SubsStatus []*string `json:"SubsStatus,omitempty" name:"SubsStatus"`
 
-	// 返回记录的起始偏移量
+	// 返回记录的起始偏移量，默认为0。请输入非负整数
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 单次返回的记录数量
+	// 单次返回的记录数量，默认20。请输入1到100的整数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序

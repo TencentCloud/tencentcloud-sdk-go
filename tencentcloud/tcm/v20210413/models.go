@@ -599,6 +599,10 @@ type PrometheusStatus struct {
 	// Grafana信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grafana *GrafanaInfo `json:"Grafana,omitempty" name:"Grafana"`
+
+	// Prometheus 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type Resource struct {

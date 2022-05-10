@@ -52,6 +52,12 @@ type AIAnalysisTemplateItem struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模板类型，取值范围：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type AIRecognitionTemplateItem struct {
@@ -85,6 +91,12 @@ type AIRecognitionTemplateItem struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模板类型，取值范围：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ActionConfigInfo struct {
@@ -1577,6 +1589,12 @@ type ContentReviewTemplateItem struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模板类型，取值范围：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type CosFileUploadTrigger struct {
@@ -3323,6 +3341,11 @@ type DescribeAIAnalysisTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *DescribeAIAnalysisTemplatesRequest) ToJsonString() string {
@@ -3340,6 +3363,7 @@ func (r *DescribeAIAnalysisTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Definitions")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIAnalysisTemplatesRequest has unknown keys!", "")
 	}
@@ -3383,6 +3407,11 @@ type DescribeAIRecognitionTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：50。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *DescribeAIRecognitionTemplatesRequest) ToJsonString() string {
@@ -3400,6 +3429,7 @@ func (r *DescribeAIRecognitionTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Definitions")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAIRecognitionTemplatesRequest has unknown keys!", "")
 	}
@@ -3575,6 +3605,11 @@ type DescribeContentReviewTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：50。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型过滤条件，不填则返回所有，可选值：
+	// * Preset：系统预置模板；
+	// * Custom：用户自定义模板。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *DescribeContentReviewTemplatesRequest) ToJsonString() string {
@@ -3592,6 +3627,7 @@ func (r *DescribeContentReviewTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Definitions")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContentReviewTemplatesRequest has unknown keys!", "")
 	}
