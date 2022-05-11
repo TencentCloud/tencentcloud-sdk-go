@@ -5067,6 +5067,81 @@ func (c *Client) VatInvoiceVerifyWithContext(ctx context.Context, request *VatIn
     return
 }
 
+func NewVatInvoiceVerifyNewRequest() (request *VatInvoiceVerifyNewRequest) {
+    request = &VatInvoiceVerifyNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerifyNew")
+    
+    
+    return
+}
+
+func NewVatInvoiceVerifyNewResponse() (response *VatInvoiceVerifyNewResponse) {
+    response = &VatInvoiceVerifyNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VatInvoiceVerifyNew
+// 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
+//  FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
+//  FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETCODEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketCodeParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETSNPARAMETERVALUELIMIT = "InvalidParameterValue.TicketSnParameterValueLimit"
+//  RESOURCENOTFOUND_NOAREACODE = "ResourceNotFound.NoAreaCode"
+//  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
+//  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) VatInvoiceVerifyNew(request *VatInvoiceVerifyNewRequest) (response *VatInvoiceVerifyNewResponse, err error) {
+    return c.VatInvoiceVerifyNewWithContext(context.Background(), request)
+}
+
+// VatInvoiceVerifyNew
+// 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
+//  FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
+//  FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETCODEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketCodeParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETSNPARAMETERVALUELIMIT = "InvalidParameterValue.TicketSnParameterValueLimit"
+//  RESOURCENOTFOUND_NOAREACODE = "ResourceNotFound.NoAreaCode"
+//  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
+//  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) VatInvoiceVerifyNewWithContext(ctx context.Context, request *VatInvoiceVerifyNewRequest) (response *VatInvoiceVerifyNewResponse, err error) {
+    if request == nil {
+        request = NewVatInvoiceVerifyNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VatInvoiceVerifyNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVatInvoiceVerifyNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
     request = &VatRollInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

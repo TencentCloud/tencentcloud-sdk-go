@@ -252,6 +252,10 @@ type BGPIPInstance struct {
 	// 是否Ipv6版本的IP, 是为1，否为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	V6Flag *uint64 `json:"V6Flag,omitempty" name:"V6Flag"`
+
+	// 是否渠道版高防IP，是为1，否为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BGPIPChannelFlag *uint64 `json:"BGPIPChannelFlag,omitempty" name:"BGPIPChannelFlag"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -385,6 +389,14 @@ type BGPInstanceSpecification struct {
 	// 渠道版标记，0表示普通高防包，1表示渠道版高防包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelEditionFlag *uint64 `json:"ChannelEditionFlag,omitempty" name:"ChannelEditionFlag"`
+
+	// 高防包企业版标记，0表示普通高防包；1表示企业版高防包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterpriseFlag *uint64 `json:"EnterpriseFlag,omitempty" name:"EnterpriseFlag"`
+
+	// 高防包企业版弹性阈值，0表示未开启；大于0为弹性防护阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticLimit *uint64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
 }
 
 type BGPInstanceUsages struct {
@@ -3819,6 +3831,12 @@ type DescribeListBGPIPInstancesRequest struct {
 
 	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
 	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
+
+	// 获取特定的实例Cname
+	FilterCname *string `json:"FilterCname,omitempty" name:"FilterCname"`
+
+	// 批量查询实例ID对应的高防IP实例资源
+	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitempty" name:"FilterInstanceIdList"`
 }
 
 func (r *DescribeListBGPIPInstancesRequest) ToJsonString() string {
@@ -3844,6 +3862,8 @@ func (r *DescribeListBGPIPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterEipEipAddressStatus")
 	delete(f, "FilterDamDDoSStatus")
 	delete(f, "FilterStatus")
+	delete(f, "FilterCname")
+	delete(f, "FilterInstanceIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPIPInstancesRequest has unknown keys!", "")
 	}
@@ -4240,6 +4260,9 @@ type DescribeListIPAlarmConfigRequest struct {
 
 	// IP搜索
 	FilterIp *string `json:"FilterIp,omitempty" name:"FilterIp"`
+
+	// 高防IP实例资源的cname
+	FilterCname *string `json:"FilterCname,omitempty" name:"FilterCname"`
 }
 
 func (r *DescribeListIPAlarmConfigRequest) ToJsonString() string {
@@ -4259,6 +4282,7 @@ func (r *DescribeListIPAlarmConfigRequest) FromJsonString(s string) error {
 	delete(f, "FilterInstanceId")
 	delete(f, "FilterAlarmType")
 	delete(f, "FilterIp")
+	delete(f, "FilterCname")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListIPAlarmConfigRequest has unknown keys!", "")
 	}
@@ -4883,6 +4907,74 @@ func (r *DescribeOverviewCCTrendResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOverviewDDoSEventListRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 可选按攻击状态过滤，start：攻击中；end：攻击结束
+	AttackStatus *string `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 记录条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeOverviewDDoSEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewDDoSEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AttackStatus")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewDDoSEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewDDoSEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 记录总数
+		Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+		// 事件列表
+		EventList []*OverviewDDoSEvent `json:"EventList,omitempty" name:"EventList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewDDoSEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewDDoSEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeOverviewDDoSTrendRequest struct {
 	*tchttp.BaseRequest
 
@@ -5192,6 +5284,12 @@ type IPLineInfo struct {
 
 	// 线路IP
 	Eip *string `json:"Eip,omitempty" name:"Eip"`
+
+	// 实例对应的cname
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+
+	// 资源flag，0：高防包资源，1：高防IP资源，2：非高防资源IP
+	ResourceFlag *int64 `json:"ResourceFlag,omitempty" name:"ResourceFlag"`
 }
 
 type InsL7Rules struct {
@@ -6309,6 +6407,42 @@ type NewL7RuleEntry struct {
 
 	// 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
 	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+}
+
+type OverviewDDoSEvent struct {
+
+	// 事件Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// ip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 攻击类型
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 攻击状态，0：攻击中；1：攻击结束
+	AttackStatus *uint64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 攻击流量，单位Mbps
+	Mbps *uint64 `json:"Mbps,omitempty" name:"Mbps"`
+
+	// 攻击包量，单位pps
+	Pps *uint64 `json:"Pps,omitempty" name:"Pps"`
+
+	// 业务类型，bgp-multip：高防包；bgpip：高防ip；basic：基础防护
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 高防实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 高防实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 type PackInfo struct {

@@ -3009,7 +3009,7 @@ type FetchMessageByOffsetRequest struct {
 	// 分区id
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 
-	// 位点信息
+	// 位点信息，必填
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 

@@ -1094,10 +1094,11 @@ type EncryptedPhoneVerificationRequest struct {
 	// 手机号，加密方式以EncryptionMode为准
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 敏感信息的加密方式，目前只支持MD5加密传输，参数取值：
+	// 敏感信息的加密方式，目前支持明文、MD5和SHA256加密传输，参数取值：
 	// 
 	// 0：明文，不加密
-	// 1：使用MD5加密
+	// 1:   使用MD5加密
+	// 2:   使用SHA256
 	EncryptionMode *string `json:"EncryptionMode,omitempty" name:"EncryptionMode"`
 }
 
@@ -1129,8 +1130,8 @@ type EncryptedPhoneVerificationResponse struct {
 
 		// 认证结果码:
 	// 【收费结果码】
-	// 0: 认证通过
-	// -4: 信息不一致
+	// 0:   三要素信息一致
+	// -4:  三要素信息不一致
 	// 
 	// 【不收费结果码】
 	// -7: 身份证号码有误

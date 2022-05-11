@@ -1070,6 +1070,15 @@ type CreateClusterEndpointRequest struct {
 
 	// 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
 	IsExtranet *bool `json:"IsExtranet,omitempty" name:"IsExtranet"`
+
+	// 设置域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 使用的安全组，只有外网访问需要传递
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
+
+	// 创建lb参数，只有外网访问需要设置
+	ExtensiveParameters *string `json:"ExtensiveParameters,omitempty" name:"ExtensiveParameters"`
 }
 
 func (r *CreateClusterEndpointRequest) ToJsonString() string {
@@ -1087,6 +1096,9 @@ func (r *CreateClusterEndpointRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "SubnetId")
 	delete(f, "IsExtranet")
+	delete(f, "Domain")
+	delete(f, "SecurityGroup")
+	delete(f, "ExtensiveParameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterEndpointRequest has unknown keys!", "")
 	}

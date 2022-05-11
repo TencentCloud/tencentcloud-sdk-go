@@ -3279,6 +3279,24 @@ func (r *OrgCodeCertOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PassInvoiceInfo struct {
+
+	// 通行费车牌号
+	NumberPlate *string `json:"NumberPlate,omitempty" name:"NumberPlate"`
+
+	// 通行费类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 通行日期起
+	PassDateBegin *string `json:"PassDateBegin,omitempty" name:"PassDateBegin"`
+
+	// 通行日期止
+	PassDateEnd *string `json:"PassDateEnd,omitempty" name:"PassDateEnd"`
+
+	// 税收分类编码
+	TaxClassifyCode *string `json:"TaxClassifyCode,omitempty" name:"TaxClassifyCode"`
+}
+
 type PassportOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -5951,6 +5969,85 @@ type VatInvoiceUserInfo struct {
 
 	// 开户行及账号
 	FinancialAccount *string `json:"FinancialAccount,omitempty" name:"FinancialAccount"`
+}
+
+type VatInvoiceVerifyNewRequest struct {
+	*tchttp.BaseRequest
+
+	// 发票号码，8位、20位（全电票）
+	InvoiceNo *string `json:"InvoiceNo,omitempty" name:"InvoiceNo"`
+
+	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
+	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
+
+	// 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
+
+	// 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+	InvoiceKind *string `json:"InvoiceKind,omitempty" name:"InvoiceKind"`
+
+	// 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)时必填;
+	// 区块链为 5 位
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
+	Amount *string `json:"Amount,omitempty" name:"Amount"`
+}
+
+func (r *VatInvoiceVerifyNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VatInvoiceVerifyNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InvoiceNo")
+	delete(f, "InvoiceDate")
+	delete(f, "InvoiceCode")
+	delete(f, "InvoiceKind")
+	delete(f, "CheckCode")
+	delete(f, "Amount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceVerifyNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceVerifyNewResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 增值税发票信息，详情请点击左侧链接。
+		Invoice *VatInvoice `json:"Invoice,omitempty" name:"Invoice"`
+
+		// 机动车销售统一发票信息
+		VehicleInvoiceInfo *VehicleInvoiceInfo `json:"VehicleInvoiceInfo,omitempty" name:"VehicleInvoiceInfo"`
+
+		// 二手车销售统一发票信息
+		UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitempty" name:"UsedVehicleInvoiceInfo"`
+
+		// 通行费发票信息
+		PassInvoiceInfoList []*PassInvoiceInfo `json:"PassInvoiceInfoList,omitempty" name:"PassInvoiceInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *VatInvoiceVerifyNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VatInvoiceVerifyNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VatInvoiceVerifyRequest struct {

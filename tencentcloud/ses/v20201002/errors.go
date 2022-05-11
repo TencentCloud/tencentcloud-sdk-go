@@ -101,7 +101,7 @@ const (
 	// 不支持的邮箱类型。
 	FAILEDOPERATION_UNSUPPORTMAILTYPE = "FailedOperation.UnsupportMailType"
 
-	// 未开通自定义发送权限，必须使用模板发送。
+	// 仅支持使用模板发送邮件。
 	FAILEDOPERATION_WITHOUTPERMISSION = "FailedOperation.WithOutPermission"
 
 	// TemplateData字段格式不正确，请保持为json格式。

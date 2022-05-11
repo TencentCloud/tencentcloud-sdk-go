@@ -1500,6 +1500,9 @@ type DescribeTablesRequest struct {
 
 	// table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
 	TableType *string `json:"TableType,omitempty" name:"TableType"`
+
+	// 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+	TableFormat *string `json:"TableFormat,omitempty" name:"TableFormat"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -1524,6 +1527,7 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "Asc")
 	delete(f, "TableType")
+	delete(f, "TableFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}
@@ -2171,6 +2175,18 @@ type Partition struct {
 
 	// 对分区的描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 隐式分区转换策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Transform *string `json:"Transform,omitempty" name:"Transform"`
+
+	// 转换策略参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransformArgs []*string `json:"TransformArgs,omitempty" name:"TransformArgs"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type Policy struct {
@@ -2225,6 +2241,14 @@ type Policy struct {
 	// 权限创建的时间，入参不填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceId *int64 `json:"SourceId,omitempty" name:"SourceId"`
+
+	// 权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceName *string `json:"SourceName,omitempty" name:"SourceName"`
 }
 
 type Property struct {

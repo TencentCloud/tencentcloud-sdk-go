@@ -220,6 +220,9 @@ type AddEnterpriseSecurityGroupRulesRequest struct {
 
 	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 是否延迟下发，1则延迟下发，否则立即下发
+	IsDelay *uint64 `json:"IsDelay,omitempty" name:"IsDelay"`
 }
 
 func (r *AddEnterpriseSecurityGroupRulesRequest) ToJsonString() string {
@@ -237,6 +240,7 @@ func (r *AddEnterpriseSecurityGroupRulesRequest) FromJsonString(s string) error 
 	delete(f, "Data")
 	delete(f, "Type")
 	delete(f, "ClientToken")
+	delete(f, "IsDelay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddEnterpriseSecurityGroupRulesRequest has unknown keys!", "")
 	}

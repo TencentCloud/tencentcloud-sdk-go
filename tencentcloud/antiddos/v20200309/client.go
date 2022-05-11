@@ -4536,6 +4536,87 @@ func (c *Client) DescribeOverviewCCTrendWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeOverviewDDoSEventListRequest() (request *DescribeOverviewDDoSEventListRequest) {
+    request = &DescribeOverviewDDoSEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeOverviewDDoSEventList")
+    
+    
+    return
+}
+
+func NewDescribeOverviewDDoSEventListResponse() (response *DescribeOverviewDDoSEventListResponse) {
+    response = &DescribeOverviewDDoSEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewDDoSEventList
+// 获取防护概览的ddos攻击事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewDDoSEventList(request *DescribeOverviewDDoSEventListRequest) (response *DescribeOverviewDDoSEventListResponse, err error) {
+    return c.DescribeOverviewDDoSEventListWithContext(context.Background(), request)
+}
+
+// DescribeOverviewDDoSEventList
+// 获取防护概览的ddos攻击事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOverviewDDoSEventListWithContext(ctx context.Context, request *DescribeOverviewDDoSEventListRequest) (response *DescribeOverviewDDoSEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewDDoSEventListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewDDoSEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewDDoSEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOverviewDDoSTrendRequest() (request *DescribeOverviewDDoSTrendRequest) {
     request = &DescribeOverviewDDoSTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},

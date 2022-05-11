@@ -1,3 +1,217 @@
+# Release v1.0.397
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 31 次发布
+
+发布时间：2022-05-12 06:05:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOverviewDDoSEventList](https://cloud.tencent.com/document/api/1021/73673)
+
+修改接口：
+
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+
+	* 新增入参：FilterCname, FilterInstanceIdList
+
+* [DescribeListIPAlarmConfig](https://cloud.tencent.com/document/api/1021/57559)
+
+	* 新增入参：FilterCname
+
+
+新增数据结构：
+
+* [OverviewDDoSEvent](https://cloud.tencent.com/document/api/1021/57582#OverviewDDoSEvent)
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：BGPIPChannelFlag
+
+* [BGPInstanceSpecification](https://cloud.tencent.com/document/api/1021/57582#BGPInstanceSpecification)
+
+	* 新增成员：EnterpriseFlag, ElasticLimit
+
+* [IPLineInfo](https://cloud.tencent.com/document/api/1021/57582#IPLineInfo)
+
+	* 新增成员：Cname, ResourceFlag
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 19 次发布
+
+发布时间：2022-05-12 06:07:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddEnterpriseSecurityGroupRules](https://cloud.tencent.com/document/api/1132/64234)
+
+	* 新增入参：IsDelay
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 15 次发布
+
+发布时间：2022-05-12 06:10:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTables](https://cloud.tencent.com/document/api/1342/53767)
+
+	* 新增入参：TableFormat
+
+
+修改数据结构：
+
+* [Partition](https://cloud.tencent.com/document/api/1342/53778#Partition)
+
+	* 新增成员：Transform, TransformArgs, CreateTime
+
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+
+	* 新增成员：SourceId, SourceName
+
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 3 次发布
+
+发布时间：2022-05-11 10:24:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/634/73637)
+* [BindDevices](https://cloud.tencent.com/document/api/634/73608)
+* [CancelDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/73631)
+* [CreateMultiDevicesTask](https://cloud.tencent.com/document/api/634/73642)
+* [CreateProduct](https://cloud.tencent.com/document/api/634/73646)
+* [CreateTaskFileUrl](https://cloud.tencent.com/document/api/634/73641)
+* [CreateTopicPolicy](https://cloud.tencent.com/document/api/634/73645)
+* [CreateTopicRule](https://cloud.tencent.com/document/api/634/73617)
+* [DeleteDeviceResource](https://cloud.tencent.com/document/api/634/73636)
+* [DeleteTopicRule](https://cloud.tencent.com/document/api/634/73616)
+* [DescribeDeviceClientKey](https://cloud.tencent.com/document/api/634/73607)
+* [DescribeDeviceResource](https://cloud.tencent.com/document/api/634/73606)
+* [DescribeDeviceResources](https://cloud.tencent.com/document/api/634/73605)
+* [DescribeDeviceShadow](https://cloud.tencent.com/document/api/634/73611)
+* [DescribeFirmware](https://cloud.tencent.com/document/api/634/73630)
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/634/73629)
+* [DescribeFirmwareTaskDevices](https://cloud.tencent.com/document/api/634/73628)
+* [DescribeFirmwareTaskDistribution](https://cloud.tencent.com/document/api/634/73627)
+* [DescribeFirmwareTaskStatistics](https://cloud.tencent.com/document/api/634/73626)
+* [DescribeFirmwareTasks](https://cloud.tencent.com/document/api/634/73625)
+* [DescribeGatewayBindDevices](https://cloud.tencent.com/document/api/634/73604)
+* [DescribeProductResource](https://cloud.tencent.com/document/api/634/73603)
+* [DescribeProductResources](https://cloud.tencent.com/document/api/634/73602)
+* [DescribeProductTask](https://cloud.tencent.com/document/api/634/73640)
+* [DescribeProductTasks](https://cloud.tencent.com/document/api/634/73639)
+* [DescribeProducts](https://cloud.tencent.com/document/api/634/73644)
+* [DescribePushResourceTaskStatistics](https://cloud.tencent.com/document/api/634/73635)
+* [DescribeResourceTasks](https://cloud.tencent.com/document/api/634/73624)
+* [DisableTopicRule](https://cloud.tencent.com/document/api/634/73615)
+* [DownloadDeviceResource](https://cloud.tencent.com/document/api/634/73634)
+* [EditFirmware](https://cloud.tencent.com/document/api/634/73623)
+* [EnableTopicRule](https://cloud.tencent.com/document/api/634/73614)
+* [GetCOSURL](https://cloud.tencent.com/document/api/634/73633)
+* [GetUserResourceInfo](https://cloud.tencent.com/document/api/634/73632)
+* [PublishMessage](https://cloud.tencent.com/document/api/634/73619)
+* [PublishRRPCMessage](https://cloud.tencent.com/document/api/634/73618)
+* [ReplaceTopicRule](https://cloud.tencent.com/document/api/634/73613)
+* [ResetDeviceState](https://cloud.tencent.com/document/api/634/73601)
+* [RetryDeviceFirmwareTask](https://cloud.tencent.com/document/api/634/73622)
+* [UnbindDevices](https://cloud.tencent.com/document/api/634/73600)
+* [UpdateDeviceAvailableState](https://cloud.tencent.com/document/api/634/73599)
+* [UpdateDeviceShadow](https://cloud.tencent.com/document/api/634/73610)
+* [UpdateTopicPolicy](https://cloud.tencent.com/document/api/634/73643)
+* [UploadFirmware](https://cloud.tencent.com/document/api/634/73621)
+
+新增数据结构：
+
+* [BindDeviceInfo](https://cloud.tencent.com/document/api/634/71973#BindDeviceInfo)
+* [BrokerSubscribe](https://cloud.tencent.com/document/api/634/71973#BrokerSubscribe)
+* [DeviceResourceInfo](https://cloud.tencent.com/document/api/634/71973#DeviceResourceInfo)
+* [DeviceUpdateStatus](https://cloud.tencent.com/document/api/634/71973#DeviceUpdateStatus)
+* [FirmwareTaskInfo](https://cloud.tencent.com/document/api/634/71973#FirmwareTaskInfo)
+* [ProductInfo](https://cloud.tencent.com/document/api/634/71973#ProductInfo)
+* [ProductResourceInfo](https://cloud.tencent.com/document/api/634/71973#ProductResourceInfo)
+* [ProductTaskInfo](https://cloud.tencent.com/document/api/634/71973#ProductTaskInfo)
+* [ResetDeviceResult](https://cloud.tencent.com/document/api/634/71973#ResetDeviceResult)
+* [SearchKeyword](https://cloud.tencent.com/document/api/634/71973#SearchKeyword)
+* [StatusStatistic](https://cloud.tencent.com/document/api/634/71973#StatusStatistic)
+* [TopicRulePayload](https://cloud.tencent.com/document/api/634/71973#TopicRulePayload)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 66 次发布
+
+发布时间：2022-05-12 06:14:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [VatInvoiceVerifyNew](https://cloud.tencent.com/document/api/866/73674)
+
+新增数据结构：
+
+* [PassInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#PassInvoiceInfo)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 98 次发布
+
+发布时间：2022-05-12 06:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterEndpoint](https://cloud.tencent.com/document/api/457/39414)
+
+	* 新增入参：Domain, SecurityGroup, ExtensiveParameters
+
+
+
+
 # Release v1.0.396
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
