@@ -8561,10 +8561,23 @@ type FaceConfigureInfoForUpdate struct {
 	FaceLibrary *string `json:"FaceLibrary,omitempty" name:"FaceLibrary"`
 }
 
+type FileDeleteResultItem struct {
+
+	// 删除的文件 ID 。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 本次删除的文件部分。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteParts []*MediaDeleteItem `json:"DeleteParts,omitempty" name:"DeleteParts"`
+}
+
 type FileDeleteTask struct {
 
 	// 删除文件 ID 列表。
 	FileIdSet []*string `json:"FileIdSet,omitempty" name:"FileIdSet"`
+
+	// 删除文件结果信息列表。
+	FileDeleteResultInfo []*FileDeleteResultItem `json:"FileDeleteResultInfo,omitempty" name:"FileDeleteResultInfo"`
 }
 
 type FileUploadTask struct {
@@ -8999,7 +9012,7 @@ type LiveRealTimeClipMediaSegmentInfo struct {
 type LiveRealTimeClipRequest struct {
 	*tchttp.BaseRequest
 
-	// 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
+	// 推流直播码。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
 	// 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。

@@ -1,3 +1,100 @@
+# Release v1.0.398
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 30 次发布
+
+发布时间：2022-05-13 06:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
+
+	* 新增入参：VersionID, MultiZone, MultiZoneSettings
+
+	* <font color="#dd0000">**修改入参**：</font>VPCSettings, ResourceSpec, Placement
+
+* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
+
+	* 新增入参：VersionID, MultiZoneSettings
+
+	* <font color="#dd0000">**修改入参**：</font>ResourceSpec, Placement, VPCSettings
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：ZoneId, SubnetId
+
+
+新增数据结构：
+
+* [MultiZoneSetting](https://cloud.tencent.com/document/api/589/33981#MultiZoneSetting)
+* [ShortNodeInfo](https://cloud.tencent.com/document/api/589/33981#ShortNodeInfo)
+* [SubnetInfo](https://cloud.tencent.com/document/api/589/33981#SubnetInfo)
+* [TopologyInfo](https://cloud.tencent.com/document/api/589/33981#TopologyInfo)
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：UniqVpcId, UniqSubnetId, TopologyInfoList, IsMultiZoneCluster
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：RootStorageType, Zone, SubnetInfo, Clients
+
+* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
+
+	* 新增成员：PodName
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 45 次发布
+
+发布时间：2022-05-13 06:15:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：OneClickPolicyType
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 103 次发布
+
+发布时间：2022-05-13 06:19:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [FileDeleteResultItem](https://cloud.tencent.com/document/api/266/31773#FileDeleteResultItem)
+
+修改数据结构：
+
+* [FileDeleteTask](https://cloud.tencent.com/document/api/266/31773#FileDeleteTask)
+
+	* 新增成员：FileDeleteResultInfo
+
+
+
+
 # Release v1.0.397
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

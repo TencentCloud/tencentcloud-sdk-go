@@ -52,7 +52,7 @@ type BatchSendEmailRequest struct {
 	// 使用模板发送时，填写的模板相关参数
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
-	// 使用API直接发送内容时，填写的邮件内容（暂未支持）
+	// 已废弃
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数（暂未支持）
@@ -1364,7 +1364,7 @@ type SendEmailRequest struct {
 	// 使用模板发送时，填写的模板相关参数
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
-	// 使用API直接发送内容时，填写的邮件内容
+	// 已废弃
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数。

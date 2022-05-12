@@ -2027,6 +2027,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 按照触发任务（例如弹性伸缩）过滤策略。最多10个
 	TriggerTasks []*AlarmPolicyTriggerTask `json:"TriggerTasks,omitempty" name:"TriggerTasks"`
+
+	// 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
+	OneClickPolicyType []*string `json:"OneClickPolicyType,omitempty" name:"OneClickPolicyType"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -2061,6 +2064,7 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceGroupId")
 	delete(f, "NeedCorrespondence")
 	delete(f, "TriggerTasks")
+	delete(f, "OneClickPolicyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}

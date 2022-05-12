@@ -2815,6 +2815,7 @@ func NewDescribePushTasksResponse() (response *DescribePushTasksResponse) {
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 //  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response *DescribePushTasksResponse, err error) {
     return c.DescribePushTasksWithContext(context.Background(), request)
 }
@@ -2845,6 +2846,7 @@ func (c *Client) DescribePushTasks(request *DescribePushTasksRequest) (response 
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 //  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribePushTasksWithContext(ctx context.Context, request *DescribePushTasksRequest) (response *DescribePushTasksResponse, err error) {
     if request == nil {
         request = NewDescribePushTasksRequest()
@@ -5545,6 +5547,7 @@ func NewPushUrlsCacheResponse() (response *PushUrlsCacheResponse) {
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 //  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrlsCacheResponse, err error) {
     return c.PushUrlsCacheWithContext(context.Background(), request)
 }
@@ -5586,6 +5589,7 @@ func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrl
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 //  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 //  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) PushUrlsCacheWithContext(ctx context.Context, request *PushUrlsCacheRequest) (response *PushUrlsCacheResponse, err error) {
     if request == nil {
         request = NewPushUrlsCacheRequest()

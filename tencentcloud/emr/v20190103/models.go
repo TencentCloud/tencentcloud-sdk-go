@@ -305,6 +305,22 @@ type ClusterInstancesInfo struct {
 	// 集群依赖关系
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterExternalServiceInfo []*ClusterExternalServiceInfo `json:"ClusterExternalServiceInfo,omitempty" name:"ClusterExternalServiceInfo"`
+
+	// 集群vpcid 字符串类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 子网id 字符串类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopologyInfoList []*TopologyInfo `json:"TopologyInfoList,omitempty" name:"TopologyInfoList"`
+
+	// 是否是跨AZ集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitempty" name:"IsMultiZoneCluster"`
 }
 
 type ClusterSetting struct {
@@ -389,15 +405,9 @@ type CreateInstanceRequest struct {
 	// <li>30：表示EMR-V2.6.0。</li>
 	ProductId *uint64 `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
-	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
-
 	// 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
 	// 填写实例值：hive、flink。
 	Software []*string `json:"Software,omitempty" name:"Software"`
-
-	// 节点资源的规格。
-	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
 
 	// 是否开启节点高可用。取值范围：
 	// <li>0：表示不开启节点高可用。</li>
@@ -414,9 +424,6 @@ type CreateInstanceRequest struct {
 	// <li>1：表示包年包月。</li>
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
-
 	// 购买实例的时长。结合TimeUnit一起使用。
 	// <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
 	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
@@ -432,8 +439,17 @@ type CreateInstanceRequest struct {
 	// <li>未设置密钥时，密码用于登录所购节点以及组件原生WebUI快捷入口登录。</li>
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
+	// 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
+
+	// 节点资源的规格。
+	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
+
 	// 开启COS访问需要设置的参数。
 	COSSettings *COSSettings `json:"COSSettings,omitempty" name:"COSSettings"`
+
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
 	// 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。
 	SgId *string `json:"SgId,omitempty" name:"SgId"`
@@ -497,6 +513,15 @@ type CreateInstanceRequest struct {
 
 	// 共享组件信息
 	ExternalService []*ExternalService `json:"ExternalService,omitempty" name:"ExternalService"`
+
+	// 如果为0，则MultiZone、MultiDeployStrategy、MultiZoneSettings是disable的状态，如果为1，则废弃ResourceSpec，使用MultiZoneSettings。
+	VersionID *int64 `json:"VersionID,omitempty" name:"VersionID"`
+
+	// true表示开启跨AZ部署；仅为新建集群时的用户参数，后续不支持调整。
+	MultiZone *bool `json:"MultiZone,omitempty" name:"MultiZone"`
+
+	// 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
+	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitempty" name:"MultiZoneSettings"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -512,17 +537,17 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProductId")
-	delete(f, "VPCSettings")
 	delete(f, "Software")
-	delete(f, "ResourceSpec")
 	delete(f, "SupportHA")
 	delete(f, "InstanceName")
 	delete(f, "PayMode")
-	delete(f, "Placement")
 	delete(f, "TimeSpan")
 	delete(f, "TimeUnit")
 	delete(f, "LoginSettings")
+	delete(f, "VPCSettings")
+	delete(f, "ResourceSpec")
 	delete(f, "COSSettings")
+	delete(f, "Placement")
 	delete(f, "SgId")
 	delete(f, "PreExecutedFileSettings")
 	delete(f, "AutoRenew")
@@ -540,6 +565,9 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationRole")
 	delete(f, "SceneName")
 	delete(f, "ExternalService")
+	delete(f, "VersionID")
+	delete(f, "MultiZone")
+	delete(f, "MultiZoneSettings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -1259,9 +1287,6 @@ type InquiryPriceCreateInstanceRequest struct {
 	// <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 询价的节点规格。
-	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
-
 	// 货币种类。取值范围：
 	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
@@ -1282,6 +1307,9 @@ type InquiryPriceCreateInstanceRequest struct {
 	// <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
 	// <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
 	Software []*string `json:"Software,omitempty" name:"Software"`
+
+	// 询价的节点规格。
+	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
@@ -1317,6 +1345,12 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 共用组件信息
 	ExternalService []*ExternalService `json:"ExternalService,omitempty" name:"ExternalService"`
+
+	// 当前默认值为0，跨AZ特性支持后为1
+	VersionID *uint64 `json:"VersionID,omitempty" name:"VersionID"`
+
+	// 可用区的规格信息
+	MultiZoneSettings []*MultiZoneSetting `json:"MultiZoneSettings,omitempty" name:"MultiZoneSettings"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -1333,11 +1367,11 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TimeUnit")
 	delete(f, "TimeSpan")
-	delete(f, "ResourceSpec")
 	delete(f, "Currency")
 	delete(f, "PayMode")
 	delete(f, "SupportHA")
 	delete(f, "Software")
+	delete(f, "ResourceSpec")
 	delete(f, "Placement")
 	delete(f, "VPCSettings")
 	delete(f, "MetaType")
@@ -1346,6 +1380,8 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "SceneName")
 	delete(f, "ExternalService")
+	delete(f, "VersionID")
+	delete(f, "MultiZoneSettings")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}
@@ -1974,6 +2010,22 @@ type MultiDiskMC struct {
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 }
 
+type MultiZoneSetting struct {
+
+	// "master"、"standby"、"third-party"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneTag *string `json:"ZoneTag,omitempty" name:"ZoneTag"`
+
+	// 无
+	VPCSettings *VPCSettings `json:"VPCSettings,omitempty" name:"VPCSettings"`
+
+	// 无
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 无
+	ResourceSpec *NewResourceSpec `json:"ResourceSpec,omitempty" name:"ResourceSpec"`
+}
+
 type NewResourceSpec struct {
 
 	// 描述Master节点资源
@@ -2163,6 +2215,22 @@ type NodeHardwareInfo struct {
 	// 是否支持变更计费类型 1是，0否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportModifyPayMode *int64 `json:"SupportModifyPayMode,omitempty" name:"SupportModifyPayMode"`
+
+	// 系统盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootStorageType *int64 `json:"RootStorageType,omitempty" name:"RootStorageType"`
+
+	// 可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+
+	// 客户端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clients *string `json:"Clients,omitempty" name:"Clients"`
 }
 
 type OutterResource struct {
@@ -2403,6 +2471,10 @@ type PodSpec struct {
 	// 代表vpc子网唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// pod name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 }
 
 type PodState struct {
@@ -2832,6 +2904,12 @@ type ScaleOutInstanceRequest struct {
 
 	// 扩容后是否启动服务，true：启动，false：不启动
 	StartServiceAfterScaleOut *string `json:"StartServiceAfterScaleOut,omitempty" name:"StartServiceAfterScaleOut"`
+
+	// 可用区，默认是集群的主可用区
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 子网，默认是集群创建时的子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -2868,6 +2946,8 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PodParameter")
 	delete(f, "MasterCount")
 	delete(f, "StartServiceAfterScaleOut")
+	delete(f, "ZoneId")
+	delete(f, "SubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
@@ -2922,6 +3002,17 @@ type SearchItem struct {
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 }
 
+type ShortNodeInfo struct {
+
+	// 节点类型，Master/Core/Task/Router/Common
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeSize *uint64 `json:"NodeSize,omitempty" name:"NodeSize"`
+}
+
 type Step struct {
 
 	// 执行步骤名称。
@@ -2938,6 +3029,17 @@ type Step struct {
 
 	// 指定执行Step时的用户名，非必须，默认为hadoop。
 	User *string `json:"User,omitempty" name:"User"`
+}
+
+type SubnetInfo struct {
+
+	// 子网信息（名字）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 子网信息（ID）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type SyncPodStateRequest struct {
@@ -3093,6 +3195,25 @@ func (r *TerminateTasksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TopologyInfo struct {
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetInfoList []*SubnetInfo `json:"SubnetInfoList,omitempty" name:"SubnetInfoList"`
+
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfoList []*ShortNodeInfo `json:"NodeInfoList,omitempty" name:"NodeInfoList"`
 }
 
 type UpdateInstanceSettings struct {
