@@ -1223,7 +1223,7 @@ type PresetLayoutConfig struct {
 	// 该当前位置用户混入的流类型：0为混入音视频，1为只混入视频，2为只混入音频。默认为0，建议配合指定用户ID使用。
 	MixInputType *uint64 `json:"MixInputType,omitempty" name:"MixInputType"`
 
-	// 占位图ID。启用占位图功能时，在当前位置的用户没有上行视频时显示占位图。占位图在实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
+	// 占位图ID。启用占位图功能时，在当前位置的用户没有上行视频时显示占位图。占位图大小不能超过2M，在实时音视频控制台上传并生成，https://cloud.tencent.com/document/product/647/50769
 	PlaceImageId *uint64 `json:"PlaceImageId,omitempty" name:"PlaceImageId"`
 }
 

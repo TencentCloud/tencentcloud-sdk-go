@@ -28,6 +28,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ba"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/batch"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bda"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bi"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bm"

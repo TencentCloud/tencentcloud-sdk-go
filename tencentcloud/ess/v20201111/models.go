@@ -157,34 +157,42 @@ type Component struct {
 	// SIGN_SIGNATURE - 手写签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 参数控件宽度，单位px
+	// 参数控件宽度，单位pt
 	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
 
-	// 参数控件高度，单位px
+	// 参数控件高度，单位pt
 	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
 
 	// 参数控件所在页码，取值为：1-N
 	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
 
-	// 参数控件X位置，单位px
+	// 参数控件X位置，单位pt
 	ComponentPosX *float64 `json:"ComponentPosX,omitempty" name:"ComponentPosX"`
 
-	// 参数控件Y位置，单位px
+	// 参数控件Y位置，单位pt
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
 	// 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
 	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
 
-	// 控件编号
+	// GenerateMode==KEYWORD 指定关键字
 	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
 
-	// 控件名称
+	// GenerateMode==FIELD 指定表单域名称
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
 	// 是否必选，默认为false
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
 
-	// 参数控件样式
+	// 扩展参数：
+	// ComponentType为SIGN_SIGNATURE类型可以控制签署方式
+	// {“ComponentTypeLimit”: [“xxx”]}
+	// xxx可以为：
+	// HANDWRITE – 手写签名
+	// BORDERLESS_ESIGN – 自动生成无边框腾讯体
+	// OCR_ESIGN -- AI智能识别手写签名
+	// ESIGN -- 个人印章类型
+	// 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
 	// 控件关联的签署人ID
@@ -203,6 +211,12 @@ type Component struct {
 
 	// 日期控件类型字号
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
+
+	// 指定关键字时横坐标偏移量
+	OffsetX *float64 `json:"OffsetX,omitempty" name:"OffsetX"`
+
+	// 指定关键字时纵坐标偏移量
+	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 }
 
 type CreateDocumentRequest struct {

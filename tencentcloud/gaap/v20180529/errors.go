@@ -26,6 +26,9 @@ const (
 	// 子账户未授权操作。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
+	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
+	DRYRUNOPERATION = "DryRunOperation"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
@@ -41,8 +44,14 @@ const (
 	// 该批通道归属于不同的通道组，无法批量操作。
 	FAILEDOPERATION_BELONGDIFFERENTGROUP = "FailedOperation.BelongDifferentGroup"
 
+	// 中国电信加速token过期。
+	FAILEDOPERATION_CTCCTOKENEXPIRED = "FailedOperation.CTCCTokenExpired"
+
 	// 证书正在使用中，无法操作。
 	FAILEDOPERATION_CERTIFICATEISUSING = "FailedOperation.CertificateIsUsing"
+
+	// 相同加速间隔时间过短。
+	FAILEDOPERATION_CREATEQOSEXCEEDLIMIT = "FailedOperation.CreateQosExceedLimit"
 
 	// 通道组中存在通道，无法删除。
 	FAILEDOPERATION_DELETEPROXYGROUPPROXYREMAINED = "FailedOperation.DeleteProxyGroupProxyRemained"
@@ -58,6 +67,9 @@ const (
 
 	// 通道组状态为非运行状态，无法操作。
 	FAILEDOPERATION_GROUPSTATUSNOTINRUNING = "FailedOperation.GroupStatusNotInRuning"
+
+	// 加速目标IP与绑定的通道IP不匹配。
+	FAILEDOPERATION_IPUNMATCHED = "FailedOperation.IPUnmatched"
 
 	// 通道状态为非运行状态，无法操作。
 	FAILEDOPERATION_INSTANCESTATUSNOTINRUNING = "FailedOperation.InstanceStatusNotInRuning"
@@ -85,6 +97,9 @@ const (
 
 	// 加速通道在升级中，暂不支持配置变更，请提工单申请。
 	FAILEDOPERATION_MIGRATION = "FailedOperation.Migration"
+
+	// 该应用模版没有绑定通道。
+	FAILEDOPERATION_NORESOURCEBOUND = "FailedOperation.NoResourceBound"
 
 	// 该通道为非标通道，限制所有写操作。
 	FAILEDOPERATION_NONSTANDARDPROXY = "FailedOperation.NonStandardProxy"
@@ -134,8 +149,14 @@ const (
 	// 源站不归属于该项目。
 	FAILEDOPERATION_REALSERVERNOTINPROJECT = "FailedOperation.RealServerNotInProject"
 
+	// 请求运营商超时。
+	FAILEDOPERATION_REQUESTVENDORTIMEOUT = "FailedOperation.RequestVendorTimeout"
+
 	// 该资源不可访问。
 	FAILEDOPERATION_RESOURCECANNOTACCESS = "FailedOperation.ResourceCanNotAccess"
+
+	// 应用ID填写有误，请检查应用ID是否存在。
+	FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 
 	// 资源升级中。
 	FAILEDOPERATION_RESOURCEUPGRADING = "FailedOperation.ResourceUpgrading"
@@ -143,8 +164,20 @@ const (
 	// 规则已经存在。
 	FAILEDOPERATION_RULEALREADYEXISTED = "FailedOperation.RuleAlreadyExisted"
 
+	// Session不存在或已经被取消。
+	FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
+
 	// 用户未认证。
 	FAILEDOPERATION_USERNOTAUTHENTICATED = "FailedOperation.UserNotAuthenticated"
+
+	// 该用户不在运营商网络可加速范围内。
+	FAILEDOPERATION_USEROUTOFCOVERAGE = "FailedOperation.UserOutOfCoverage"
+
+	// 运营商返回结果错误。
+	FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+
+	// 运营商服务器临时错误。
+	FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

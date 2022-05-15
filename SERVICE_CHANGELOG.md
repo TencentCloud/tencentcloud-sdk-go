@@ -1,96 +1,102 @@
 # 本版本更新包含以下内容：
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 商业智能分析 BI(bi) 版本：2022-01-05
 
-### 第 30 次发布
+### 第 1 次发布
 
-发布时间：2022-05-13 06:12:03
+发布时间：2022-05-13 18:34:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/589/34261)
-
-	* 新增入参：VersionID, MultiZone, MultiZoneSettings
-
-	* <font color="#dd0000">**修改入参**：</font>VPCSettings, ResourceSpec, Placement
-
-* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
-
-	* 新增入参：VersionID, MultiZoneSettings
-
-	* <font color="#dd0000">**修改入参**：</font>ResourceSpec, Placement, VPCSettings
-
-* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
-
-	* 新增入参：ZoneId, SubnetId
-
+* [ApplyEmbedInterval](https://cloud.tencent.com/document/api/#/#)
+* [CreateEmbedToken](https://cloud.tencent.com/document/api/#/#)
 
 新增数据结构：
 
-* [MultiZoneSetting](https://cloud.tencent.com/document/api/589/33981#MultiZoneSetting)
-* [ShortNodeInfo](https://cloud.tencent.com/document/api/589/33981#ShortNodeInfo)
-* [SubnetInfo](https://cloud.tencent.com/document/api/589/33981#SubnetInfo)
-* [TopologyInfo](https://cloud.tencent.com/document/api/589/33981#TopologyInfo)
+* [ApplyEmbedTokenInfo](https://cloud.tencent.com/document/api/#/##ApplyEmbedTokenInfo)
+* [EmbedTokenInfo](https://cloud.tencent.com/document/api/#/##EmbedTokenInfo)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 41 次发布
+
+发布时间：2022-05-16 06:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInstancePre](https://cloud.tencent.com/document/api/597/73693)
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 6 次发布
+
+发布时间：2022-05-16 06:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
 
-	* 新增成员：UniqVpcId, UniqSubnetId, TopologyInfoList, IsMultiZoneCluster
-
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
-
-	* 新增成员：RootStorageType, Zone, SubnetInfo, Clients
-
-* [PodSpec](https://cloud.tencent.com/document/api/589/33981#PodSpec)
-
-	* 新增成员：PodName
+	* 新增成员：OffsetX, OffsetY
 
 
 
 
-## 云监控(monitor) 版本：2018-07-24
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 45 次发布
+### 第 29 次发布
 
-发布时间：2022-05-13 06:15:04
+发布时间：2022-05-16 06:09:28
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
-
-	* 新增入参：OneClickPolicyType
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 103 次发布
-
-发布时间：2022-05-13 06:19:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CreateFirstLinkSession](https://cloud.tencent.com/document/api/608/73697)
+* [DeleteFirstLinkSession](https://cloud.tencent.com/document/api/608/73696)
+* [DescribeFirstLinkSession](https://cloud.tencent.com/document/api/608/73695)
 
 新增数据结构：
 
-* [FileDeleteResultItem](https://cloud.tencent.com/document/api/266/31773#FileDeleteResultItem)
+* [Capacity](https://cloud.tencent.com/document/api/608/37023#Capacity)
+* [DestAddressInfo](https://cloud.tencent.com/document/api/608/37023#DestAddressInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/608/37023#DeviceInfo)
+* [SrcAddressInfo](https://cloud.tencent.com/document/api/608/37023#SrcAddressInfo)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 75 次发布
+
+发布时间：2022-05-16 06:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [FileDeleteTask](https://cloud.tencent.com/document/api/266/31773#FileDeleteTask)
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
 
-	* 新增成员：FileDeleteResultInfo
+	* 新增成员：RepoType
 
 
 
@@ -5829,6 +5835,29 @@
 * [PersonInfo](https://cloud.tencent.com/document/api/1208/42985#PersonInfo)
 * [Trace](https://cloud.tencent.com/document/api/1208/42985#Trace)
 * [TraceInfo](https://cloud.tencent.com/document/api/1208/42985#TraceInfo)
+
+
+
+
+## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 1 次发布
+
+发布时间：2022-05-13 18:34:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyEmbedInterval](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateEmbedToken](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplyEmbedTokenInfo](https://cloud.tencent.com/document/api/#/##ApplyEmbedTokenInfo)](https://cloud.tencent.com/document/api/#/##[ApplyEmbedTokenInfo](https://cloud.tencent.com/document/api/#/##ApplyEmbedTokenInfo))
+* [[EmbedTokenInfo](https://cloud.tencent.com/document/api/#/##EmbedTokenInfo)](https://cloud.tencent.com/document/api/#/##[EmbedTokenInfo](https://cloud.tencent.com/document/api/#/##EmbedTokenInfo))
 
 
 
@@ -15734,6 +15763,18 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 41 次发布
+
+发布时间：2022-05-16 06:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyInstancePre](https://cloud.tencent.com/document/api/597/73693)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 40 次发布
 
@@ -31567,10 +31608,10 @@
 
 新增数据结构：
 
-* [[MultiZoneSetting](https://cloud.tencent.com/document/api/589/33981#MultiZoneSetting)](https://cloud.tencent.com/document/api/589/33981#[MultiZoneSetting](https://cloud.tencent.com/document/api/589/33981#MultiZoneSetting))
-* [[ShortNodeInfo](https://cloud.tencent.com/document/api/589/33981#ShortNodeInfo)](https://cloud.tencent.com/document/api/589/33981#[ShortNodeInfo](https://cloud.tencent.com/document/api/589/33981#ShortNodeInfo))
-* [[SubnetInfo](https://cloud.tencent.com/document/api/589/33981#SubnetInfo)](https://cloud.tencent.com/document/api/589/33981#[SubnetInfo](https://cloud.tencent.com/document/api/589/33981#SubnetInfo))
-* [[TopologyInfo](https://cloud.tencent.com/document/api/589/33981#TopologyInfo)](https://cloud.tencent.com/document/api/589/33981#[TopologyInfo](https://cloud.tencent.com/document/api/589/33981#TopologyInfo))
+* [MultiZoneSetting](https://cloud.tencent.com/document/api/589/33981#MultiZoneSetting)
+* [ShortNodeInfo](https://cloud.tencent.com/document/api/589/33981#ShortNodeInfo)
+* [SubnetInfo](https://cloud.tencent.com/document/api/589/33981#SubnetInfo)
+* [TopologyInfo](https://cloud.tencent.com/document/api/589/33981#TopologyInfo)
 
 修改数据结构：
 
@@ -32939,6 +32980,21 @@
 
 
 ## 电子签服务(ess) 版本：2020-11-11
+
+### 第 6 次发布
+
+发布时间：2022-05-16 06:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：OffsetX, OffsetY
+
 
 ### 第 5 次发布
 
@@ -34454,6 +34510,27 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 29 次发布
+
+发布时间：2022-05-16 06:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFirstLinkSession](https://cloud.tencent.com/document/api/608/73697)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteFirstLinkSession](https://cloud.tencent.com/document/api/608/73696)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFirstLinkSession](https://cloud.tencent.com/document/api/608/73695)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Capacity](https://cloud.tencent.com/document/api/608/37023#Capacity)](https://cloud.tencent.com/document/api/608/37023#[Capacity](https://cloud.tencent.com/document/api/608/37023#Capacity))
+* [[DestAddressInfo](https://cloud.tencent.com/document/api/608/37023#DestAddressInfo)](https://cloud.tencent.com/document/api/608/37023#[DestAddressInfo](https://cloud.tencent.com/document/api/608/37023#DestAddressInfo))
+* [[DeviceInfo](https://cloud.tencent.com/document/api/608/37023#DeviceInfo)](https://cloud.tencent.com/document/api/608/37023#[DeviceInfo](https://cloud.tencent.com/document/api/608/37023#DeviceInfo))
+* [[SrcAddressInfo](https://cloud.tencent.com/document/api/608/37023#SrcAddressInfo)](https://cloud.tencent.com/document/api/608/37023#[SrcAddressInfo](https://cloud.tencent.com/document/api/608/37023#SrcAddressInfo))
 
 ### 第 28 次发布
 
@@ -68756,6 +68833,21 @@
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 75 次发布
+
+发布时间：2022-05-16 06:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：RepoType
+
+
 ### 第 74 次发布
 
 发布时间：2022-05-09 06:15:37
@@ -71194,7 +71286,7 @@
 
 新增数据结构：
 
-* [[FileDeleteResultItem](https://cloud.tencent.com/document/api/266/31773#FileDeleteResultItem)](https://cloud.tencent.com/document/api/266/31773#[FileDeleteResultItem](https://cloud.tencent.com/document/api/266/31773#FileDeleteResultItem))
+* [FileDeleteResultItem](https://cloud.tencent.com/document/api/266/31773#FileDeleteResultItem)
 
 修改数据结构：
 

@@ -1,3 +1,106 @@
+# Release v1.0.399
+
+## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 1 次发布
+
+发布时间：2022-05-13 18:34:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyEmbedInterval](https://cloud.tencent.com/document/api/#/#)
+* [CreateEmbedToken](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [ApplyEmbedTokenInfo](https://cloud.tencent.com/document/api/#/##ApplyEmbedTokenInfo)
+* [EmbedTokenInfo](https://cloud.tencent.com/document/api/#/##EmbedTokenInfo)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 41 次发布
+
+发布时间：2022-05-16 06:05:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInstancePre](https://cloud.tencent.com/document/api/597/73693)
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 6 次发布
+
+发布时间：2022-05-16 06:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：OffsetX, OffsetY
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 29 次发布
+
+发布时间：2022-05-16 06:09:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFirstLinkSession](https://cloud.tencent.com/document/api/608/73697)
+* [DeleteFirstLinkSession](https://cloud.tencent.com/document/api/608/73696)
+* [DescribeFirstLinkSession](https://cloud.tencent.com/document/api/608/73695)
+
+新增数据结构：
+
+* [Capacity](https://cloud.tencent.com/document/api/608/37023#Capacity)
+* [DestAddressInfo](https://cloud.tencent.com/document/api/608/37023#DestAddressInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/608/37023#DeviceInfo)
+* [SrcAddressInfo](https://cloud.tencent.com/document/api/608/37023#SrcAddressInfo)
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 75 次发布
+
+发布时间：2022-05-16 06:16:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ContainerGroupDeploy](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDeploy)
+
+	* 新增成员：RepoType
+
+
+
+
 # Release v1.0.398
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03

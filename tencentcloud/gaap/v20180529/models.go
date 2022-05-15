@@ -303,6 +303,15 @@ func (r *BindRuleRealServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Capacity struct {
+
+	// 电信鉴权的Token
+	CTCCToken *string `json:"CTCCToken,omitempty" name:"CTCCToken"`
+
+	// 终端所处在的省份，建议不填写由服务端自动获取，若需填写请填写带有省、市、自治区、特别行政区等后缀的省份中文全称
+	Province *string `json:"Province,omitempty" name:"Province"`
+}
+
 type Certificate struct {
 
 	// 证书ID
@@ -914,6 +923,76 @@ func (r *CreateDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFirstLinkSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 终端网络信息
+	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitempty" name:"SrcAddressInfo"`
+
+	// 加速目标网络信息
+	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitempty" name:"DestAddressInfo"`
+
+	// 终端设备信息
+	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitempty" name:"DeviceInfo"`
+
+	// 接口扩展参数，如果是电信用户，需要填充CTCC Token字段
+	Capacity *Capacity `json:"Capacity,omitempty" name:"Capacity"`
+}
+
+func (r *CreateFirstLinkSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFirstLinkSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "SrcAddressInfo")
+	delete(f, "DestAddressInfo")
+	delete(f, "DeviceInfo")
+	delete(f, "Capacity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFirstLinkSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFirstLinkSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 加速成功时返回，单次加速唯一会话Id。。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+		// 剩余的加速时间，单位秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFirstLinkSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFirstLinkSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1828,6 +1907,52 @@ func (r *DeleteDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteFirstLinkSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 单次加速唯一会话Id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DeleteFirstLinkSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFirstLinkSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFirstLinkSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteFirstLinkSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteFirstLinkSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFirstLinkSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteListenersRequest struct {
 	*tchttp.BaseRequest
 
@@ -2612,6 +2737,78 @@ func (r *DescribeDomainErrorPageInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainErrorPageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirstLinkSessionRequest struct {
+	*tchttp.BaseRequest
+
+	// 单次加速唯一会话Id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeFirstLinkSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirstLinkSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFirstLinkSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFirstLinkSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 会话状态，具体如下：
+	// 1： 加速中；
+	// 0： 非加速中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 剩余加速时间，单位秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+		// 加速套餐类型。
+	// 套餐说明如下：
+	// T100K：上/下行保障100kbps；
+	// BD4M：下行带宽保障4Mbps；
+	// BU4M：上行带宽保障4Mbps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuiteType *string `json:"SuiteType,omitempty" name:"SuiteType"`
+
+		// 加速终端的公网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitempty" name:"SrcPublicIpv4"`
+
+		// 加速目标ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		DestIpv4 []*string `json:"DestIpv4,omitempty" name:"DestIpv4"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFirstLinkSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFirstLinkSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4324,6 +4521,12 @@ func (r *DescribeUDPListenersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DestAddressInfo struct {
+
+	// 加速的目标IP，可多ip一起加速
+	DestIp []*string `json:"DestIp,omitempty" name:"DestIp"`
+}
+
 type DestroyProxiesRequest struct {
 	*tchttp.BaseRequest
 
@@ -4390,6 +4593,38 @@ func (r *DestroyProxiesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DestroyProxiesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceInfo struct {
+
+	// 设备数据卡所属的运营商
+	// 1：移动
+	// 2：电信
+	// 3：联通
+	// 4：广电
+	// 99：其他
+	Vendor *int64 `json:"Vendor,omitempty" name:"Vendor"`
+
+	// 设备操作系统
+	// 1：Android
+	// 2： IOS
+	// 99：其他
+	OS *int64 `json:"OS,omitempty" name:"OS"`
+
+	// 设备唯一标识
+	// IOS 填写 IDFV
+	// Android 填写 IMEI
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 用户手机号码
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 无线信息
+	// 1：4G
+	// 2：5G
+	// 3：WIFI
+	// 99：其他
+	Wireless *int64 `json:"Wireless,omitempty" name:"Wireless"`
 }
 
 type DomainAccessRegionDict struct {
@@ -6613,6 +6848,15 @@ func (r *SetAuthenticationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetAuthenticationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SrcAddressInfo struct {
+
+	// 内网Ip4地址
+	SrcIpv4 *string `json:"SrcIpv4,omitempty" name:"SrcIpv4"`
+
+	// 公网Ip4地址
+	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitempty" name:"SrcPublicIpv4"`
 }
 
 type StatisticsDataInfo struct {

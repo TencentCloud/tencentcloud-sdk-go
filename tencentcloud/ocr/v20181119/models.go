@@ -4010,14 +4010,6 @@ type RecognizeHealthCodeOCRRequest struct {
 
 	// 需要识别的健康码类型列表，为空或不填表示默认为自动识别。
 	// 0:自动识别
-	// 
-	// 1:粤康码
-	// 
-	// 2:随申码
-	// 
-	// 3:健康宝
-	// 
-	// 4.穗康码
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
@@ -4046,25 +4038,25 @@ type RecognizeHealthCodeOCRResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 持码人姓名，如：王*
+		// 持码人姓名，如：王*（允许返回空值）
 		Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 持码人身份证号，如：11**************01
+		// 持码人身份证号，如：11**************01（允许返回空值）
 		IDNumber *string `json:"IDNumber,omitempty" name:"IDNumber"`
 
-		// 健康码更新时间
+		// 健康码更新时间（允许返回空值）
 		Time *string `json:"Time,omitempty" name:"Time"`
 
-		// 健康码颜色：绿色、黄色、红色
+		// 健康码颜色：绿色、黄色、红色（允许返回空值）
 		Color *string `json:"Color,omitempty" name:"Color"`
 
-		// 核酸检测间隔时长：24小时、48小时、72小时、暂无核酸检测记录
+		// 核酸检测间隔时长（允许返回空值）
 		TestingInterval *string `json:"TestingInterval,omitempty" name:"TestingInterval"`
 
-		// 核酸检测结果：阴性、阳性、暂无核酸检测记录
+		// 核酸检测结果：阴性、阳性、暂无核酸检测记录（允许返回空值）
 		TestingResult *string `json:"TestingResult,omitempty" name:"TestingResult"`
 
-		// 核酸检测时间
+		// 核酸检测时间（允许返回空值）
 		TestingTime *string `json:"TestingTime,omitempty" name:"TestingTime"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

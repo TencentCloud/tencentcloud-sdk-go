@@ -1322,6 +1322,10 @@ type ContainerGroupDeploy struct {
 	// KubeInjectEnable值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KubeInjectEnable *bool `json:"KubeInjectEnable,omitempty" name:"KubeInjectEnable"`
+
+	// 仓库类型 (person, tcr)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
 }
 
 type ContainerGroupDetail struct {

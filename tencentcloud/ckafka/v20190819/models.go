@@ -3642,6 +3642,67 @@ func (r *ModifyInstanceAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyInstancePreRequest struct {
+	*tchttp.BaseRequest
+
+	// 实例名称
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 预计磁盘，根据磁盘步长，规格向上调整。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 预计带宽，根据带宽步长，规格向上调整。
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// 预计分区，根据带宽步长，规格向上调整。
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+func (r *ModifyInstancePreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancePreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DiskSize")
+	delete(f, "BandWidth")
+	delete(f, "Partition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstancePreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstancePreResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 变更预付费实例配置返回结构
+		Result *CreateInstancePreResp `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyInstancePreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancePreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyPasswordRequest struct {
 	*tchttp.BaseRequest
 

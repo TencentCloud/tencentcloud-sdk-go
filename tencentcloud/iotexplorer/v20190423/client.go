@@ -3426,7 +3426,7 @@ func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
 }
 
 // GetCOSURL
-// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+// 本接口（GetCOSURL）用于获取固件COS存储的上传请求URL地址
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3438,7 +3438,7 @@ func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLRespon
 }
 
 // GetCOSURL
-// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+// 本接口（GetCOSURL）用于获取固件COS存储的上传请求URL地址
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5617,7 +5617,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件至平台
+// 本接口（UploadFirmware）用于创建设备固件版本信息，在平台用于固件版本升级、固件资源下发等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5632,7 +5632,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件至平台
+// 本接口（UploadFirmware）用于创建设备固件版本信息，在平台用于固件版本升级、固件资源下发等。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

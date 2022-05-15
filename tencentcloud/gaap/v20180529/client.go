@@ -896,6 +896,95 @@ func (c *Client) CreateDomainErrorPageInfoWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateFirstLinkSessionRequest() (request *CreateFirstLinkSessionRequest) {
+    request = &CreateFirstLinkSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "CreateFirstLinkSession")
+    
+    
+    return
+}
+
+func NewCreateFirstLinkSessionResponse() (response *CreateFirstLinkSessionResponse) {
+    response = &CreateFirstLinkSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFirstLinkSession
+// 本接口（CreateFirstLinkSession）用于创建接入段加速会话，创建有可能成功，也可能失败，需要通过返回码来进行判断。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTCCTOKENEXPIRED = "FailedOperation.CTCCTokenExpired"
+//  FAILEDOPERATION_CREATEQOSEXCEEDLIMIT = "FailedOperation.CreateQosExceedLimit"
+//  FAILEDOPERATION_IPUNMATCHED = "FailedOperation.IPUnmatched"
+//  FAILEDOPERATION_NORESOURCEBOUND = "FailedOperation.NoResourceBound"
+//  FAILEDOPERATION_REQUESTVENDORTIMEOUT = "FailedOperation.RequestVendorTimeout"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
+//  FAILEDOPERATION_USEROUTOFCOVERAGE = "FailedOperation.UserOutOfCoverage"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFirstLinkSession(request *CreateFirstLinkSessionRequest) (response *CreateFirstLinkSessionResponse, err error) {
+    return c.CreateFirstLinkSessionWithContext(context.Background(), request)
+}
+
+// CreateFirstLinkSession
+// 本接口（CreateFirstLinkSession）用于创建接入段加速会话，创建有可能成功，也可能失败，需要通过返回码来进行判断。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CTCCTOKENEXPIRED = "FailedOperation.CTCCTokenExpired"
+//  FAILEDOPERATION_CREATEQOSEXCEEDLIMIT = "FailedOperation.CreateQosExceedLimit"
+//  FAILEDOPERATION_IPUNMATCHED = "FailedOperation.IPUnmatched"
+//  FAILEDOPERATION_NORESOURCEBOUND = "FailedOperation.NoResourceBound"
+//  FAILEDOPERATION_REQUESTVENDORTIMEOUT = "FailedOperation.RequestVendorTimeout"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
+//  FAILEDOPERATION_USEROUTOFCOVERAGE = "FailedOperation.UserOutOfCoverage"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateFirstLinkSessionWithContext(ctx context.Context, request *CreateFirstLinkSessionRequest) (response *CreateFirstLinkSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateFirstLinkSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFirstLinkSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFirstLinkSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
     request = &CreateHTTPListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1947,6 +2036,81 @@ func (c *Client) DeleteDomainErrorPageInfoWithContext(ctx context.Context, reque
     return
 }
 
+func NewDeleteFirstLinkSessionRequest() (request *DeleteFirstLinkSessionRequest) {
+    request = &DeleteFirstLinkSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DeleteFirstLinkSession")
+    
+    
+    return
+}
+
+func NewDeleteFirstLinkSessionResponse() (response *DeleteFirstLinkSessionResponse) {
+    response = &DeleteFirstLinkSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFirstLinkSession
+// 本接口（DeleteFirstLinkSession）用于删除接入段加速会话，删除加速会话后会停止加速。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTVENDORTIMEOUT = "FailedOperation.RequestVendorTimeout"
+//  FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteFirstLinkSession(request *DeleteFirstLinkSessionRequest) (response *DeleteFirstLinkSessionResponse, err error) {
+    return c.DeleteFirstLinkSessionWithContext(context.Background(), request)
+}
+
+// DeleteFirstLinkSession
+// 本接口（DeleteFirstLinkSession）用于删除接入段加速会话，删除加速会话后会停止加速。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTVENDORTIMEOUT = "FailedOperation.RequestVendorTimeout"
+//  FAILEDOPERATION_SESSIONNOTEXIST = "FailedOperation.SessionNotExist"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteFirstLinkSessionWithContext(ctx context.Context, request *DeleteFirstLinkSessionRequest) (response *DeleteFirstLinkSessionResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirstLinkSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFirstLinkSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFirstLinkSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
     request = &DeleteListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2994,6 +3158,79 @@ func (c *Client) DescribeDomainErrorPageInfoByIdsWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeDomainErrorPageInfoByIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirstLinkSessionRequest() (request *DescribeFirstLinkSessionRequest) {
+    request = &DescribeFirstLinkSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeFirstLinkSession")
+    
+    
+    return
+}
+
+func NewDescribeFirstLinkSessionResponse() (response *DescribeFirstLinkSessionResponse) {
+    response = &DescribeFirstLinkSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirstLinkSession
+// 本接口（DescribeFirstLinkSession）用于查询接入段加速会话状态，包括会话状态，生效时长，加速套餐等信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFirstLinkSession(request *DescribeFirstLinkSessionRequest) (response *DescribeFirstLinkSessionResponse, err error) {
+    return c.DescribeFirstLinkSessionWithContext(context.Background(), request)
+}
+
+// DescribeFirstLinkSession
+// 本接口（DescribeFirstLinkSession）用于查询接入段加速会话状态，包括会话状态，生效时长，加速套餐等信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_VENDORRETURNERROR = "FailedOperation.VendorReturnError"
+//  FAILEDOPERATION_VENDORSERVERERROR = "FailedOperation.VendorServerError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFirstLinkSessionWithContext(ctx context.Context, request *DescribeFirstLinkSessionRequest) (response *DescribeFirstLinkSessionResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirstLinkSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirstLinkSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirstLinkSessionResponse()
     err = c.Send(request, response)
     return
 }
