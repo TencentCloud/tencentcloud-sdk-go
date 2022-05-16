@@ -446,6 +446,9 @@ const (
 	// 产品下还存在未删除的设备。
 	UNSUPPORTEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnsupportedOperation.DevicesExistUnderProduct"
 
+	// 该项目下存在物联使能SaaS服务。
+	UNSUPPORTEDOPERATION_ENABLESAASSERVICEEXISTUNDERPROJECT = "UnsupportedOperation.EnableSaasServiceExistUnderProject"
+
 	// 网关产品下存在设备绑定了子设备。
 	UNSUPPORTEDOPERATION_EXISTBINDEDDEVICESUNDERGATEWAYPRODUCT = "UnsupportedOperation.ExistBindedDevicesUnderGatewayProduct"
 

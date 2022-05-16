@@ -7645,6 +7645,9 @@ type DescribeHistoryServiceResponse struct {
 		// 0 没开通 1 正常 2隔离 3销毁
 		Status *uint64 `json:"Status,omitempty" name:"Status"`
 
+		// 开始时间
+		StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

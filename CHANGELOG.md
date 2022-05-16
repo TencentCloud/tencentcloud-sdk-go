@@ -1,3 +1,202 @@
+# Release v1.0.400
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 32 次发布
+
+发布时间：2022-05-17 06:03:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+
+	* 新增入参：FilterEnterpriseFlag
+
+
+
+
+## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 2 次发布
+
+发布时间：2022-05-16 17:18:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDedicatedClusterOrder](https://cloud.tencent.com/document/api/1346/73769)
+* [CreateSite](https://cloud.tencent.com/document/api/1346/73768)
+* [DeleteDedicatedClusters](https://cloud.tencent.com/document/api/1346/73767)
+* [DeleteSites](https://cloud.tencent.com/document/api/1346/73766)
+* [DescribeDedicatedClusterCosCapacity](https://cloud.tencent.com/document/api/1346/73765)
+* [DescribeDedicatedClusterHostStatistics](https://cloud.tencent.com/document/api/1346/73764)
+* [DescribeDedicatedClusterHosts](https://cloud.tencent.com/document/api/1346/73763)
+* [DescribeDedicatedClusterInstanceTypes](https://cloud.tencent.com/document/api/1346/73762)
+* [DescribeDedicatedClusterOrders](https://cloud.tencent.com/document/api/1346/73761)
+* [DescribeDedicatedClusterOverview](https://cloud.tencent.com/document/api/1346/73760)
+* [DescribeDedicatedClusterTypes](https://cloud.tencent.com/document/api/1346/73759)
+* [DescribeDedicatedClusters](https://cloud.tencent.com/document/api/1346/73758)
+* [DescribeDedicatedSupportedZones](https://cloud.tencent.com/document/api/1346/73757)
+* [DescribeSites](https://cloud.tencent.com/document/api/1346/73756)
+* [DescribeSitesDetail](https://cloud.tencent.com/document/api/1346/73755)
+* [ModifyDedicatedClusterInfo](https://cloud.tencent.com/document/api/1346/73754)
+* [ModifyOrderStatus](https://cloud.tencent.com/document/api/1346/73753)
+* [ModifySiteDeviceInfo](https://cloud.tencent.com/document/api/1346/73752)
+* [ModifySiteInfo](https://cloud.tencent.com/document/api/1346/73751)
+
+新增数据结构：
+
+* [CbsInfo](https://cloud.tencent.com/document/api/1346/73770#CbsInfo)
+* [CosCapacity](https://cloud.tencent.com/document/api/1346/73770#CosCapacity)
+* [CosInfo](https://cloud.tencent.com/document/api/1346/73770#CosInfo)
+* [DedicatedCluster](https://cloud.tencent.com/document/api/1346/73770#DedicatedCluster)
+* [DedicatedClusterInstanceType](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterInstanceType)
+* [DedicatedClusterOrder](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterOrder)
+* [DedicatedClusterOrderItem](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterOrderItem)
+* [DedicatedClusterType](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterType)
+* [DedicatedClusterTypeInfo](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterTypeInfo)
+* [HostInfo](https://cloud.tencent.com/document/api/1346/73770#HostInfo)
+* [HostStatistic](https://cloud.tencent.com/document/api/1346/73770#HostStatistic)
+* [RegionZoneInfo](https://cloud.tencent.com/document/api/1346/73770#RegionZoneInfo)
+* [Site](https://cloud.tencent.com/document/api/1346/73770#Site)
+* [SiteDetail](https://cloud.tencent.com/document/api/1346/73770#SiteDetail)
+* [ZoneInfo](https://cloud.tencent.com/document/api/1346/73770#ZoneInfo)
+
+### 第 1 次发布
+
+发布时间：2022-05-16 14:37:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDedicatedCluster](https://cloud.tencent.com/document/api/1346/73710)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 41 次发布
+
+发布时间：2022-05-17 06:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeHistoryService](https://cloud.tencent.com/document/api/296/55727)
+
+	* 新增出参：StartTime
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 44 次发布
+
+发布时间：2022-05-17 06:14:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInstanceReadOnly](https://cloud.tencent.com/document/api/239/73781)
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 25 次发布
+
+发布时间：2022-05-17 06:17:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+
+	* 新增入参：IMAuthParam, TRTCAuthParam
+
+
+新增数据结构：
+
+* [AuthParam](https://cloud.tencent.com/document/api/1137/40068#AuthParam)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 29 次发布
+
+发布时间：2022-05-17 06:17:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudRecording](https://cloud.tencent.com/document/api/647/73786)
+* [DeleteCloudRecording](https://cloud.tencent.com/document/api/647/73785)
+* [DescribeCloudRecording](https://cloud.tencent.com/document/api/647/73784)
+* [ModifyCloudRecording](https://cloud.tencent.com/document/api/647/73783)
+
+新增数据结构：
+
+* [AudioParams](https://cloud.tencent.com/document/api/647/44055#AudioParams)
+* [CloudStorage](https://cloud.tencent.com/document/api/647/44055#CloudStorage)
+* [CloudVod](https://cloud.tencent.com/document/api/647/44055#CloudVod)
+* [MixLayout](https://cloud.tencent.com/document/api/647/44055#MixLayout)
+* [MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)
+* [MixTranscodeParams](https://cloud.tencent.com/document/api/647/44055#MixTranscodeParams)
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+* [StorageFile](https://cloud.tencent.com/document/api/647/44055#StorageFile)
+* [StorageParams](https://cloud.tencent.com/document/api/647/44055#StorageParams)
+* [SubscribeStreamUserIds](https://cloud.tencent.com/document/api/647/44055#SubscribeStreamUserIds)
+* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
+* [VideoParams](https://cloud.tencent.com/document/api/647/44055#VideoParams)
+* [WaterMark](https://cloud.tencent.com/document/api/647/44055#WaterMark)
+* [WaterMarkImage](https://cloud.tencent.com/document/api/647/44055#WaterMarkImage)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 104 次发布
+
+发布时间：2022-05-17 06:18:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLicenseUsageData](https://cloud.tencent.com/document/api/266/73787)
+
+新增数据结构：
+
+* [LicenseUsageDataItem](https://cloud.tencent.com/document/api/266/31773#LicenseUsageDataItem)
+
+
+
 # Release v1.0.399
 
 ## 商业智能分析 BI(bi) 版本：2022-01-05

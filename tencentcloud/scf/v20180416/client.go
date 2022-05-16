@@ -78,6 +78,7 @@ func NewCopyFunctionResponse() (response *CopyFunctionResponse) {
 // 如有需要，您可以在复制后手动配置新函数。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COPYASYNCRUN = "FailedOperation.CopyAsyncRun"
 //  FAILEDOPERATION_COPYFAILED = "FailedOperation.CopyFailed"
 //  FAILEDOPERATION_COPYFUNCTION = "FailedOperation.CopyFunction"
 //  INTERNALERROR = "InternalError"
@@ -119,6 +120,7 @@ func (c *Client) CopyFunction(request *CopyFunctionRequest) (response *CopyFunct
 // 如有需要，您可以在复制后手动配置新函数。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COPYASYNCRUN = "FailedOperation.CopyAsyncRun"
 //  FAILEDOPERATION_COPYFAILED = "FailedOperation.CopyFailed"
 //  FAILEDOPERATION_COPYFUNCTION = "FailedOperation.CopyFunction"
 //  INTERNALERROR = "InternalError"
@@ -260,6 +262,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CREATEFUNCTION = "FailedOperation.CreateFunction"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
 //  FAILEDOPERATION_OPENSERVICE = "FailedOperation.OpenService"
 //  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
@@ -301,7 +304,9 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_FUNCTIONTYPE = "InvalidParameterValue.FunctionType"
 //  INVALIDPARAMETERVALUE_GITCOMMITID = "InvalidParameterValue.GitCommitId"
+//  INVALIDPARAMETERVALUE_GITPASSWORDSECRET = "InvalidParameterValue.GitPasswordSecret"
 //  INVALIDPARAMETERVALUE_GITURL = "InvalidParameterValue.GitUrl"
+//  INVALIDPARAMETERVALUE_GITUSERNAMESECRET = "InvalidParameterValue.GitUserNameSecret"
 //  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
 //  INVALIDPARAMETERVALUE_IDLETIMEOUT = "InvalidParameterValue.IdleTimeOut"
 //  INVALIDPARAMETERVALUE_IMAGETYPE = "InvalidParameterValue.ImageType"
@@ -340,6 +345,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = "ResourceNotFound.CfsMountInsNotMatch"
+//  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
 //  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
@@ -372,6 +378,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CREATEFUNCTION = "FailedOperation.CreateFunction"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_NAMESPACE = "FailedOperation.Namespace"
 //  FAILEDOPERATION_OPENSERVICE = "FailedOperation.OpenService"
 //  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
@@ -413,7 +420,9 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_FUNCTIONTYPE = "InvalidParameterValue.FunctionType"
 //  INVALIDPARAMETERVALUE_GITCOMMITID = "InvalidParameterValue.GitCommitId"
+//  INVALIDPARAMETERVALUE_GITPASSWORDSECRET = "InvalidParameterValue.GitPasswordSecret"
 //  INVALIDPARAMETERVALUE_GITURL = "InvalidParameterValue.GitUrl"
+//  INVALIDPARAMETERVALUE_GITUSERNAMESECRET = "InvalidParameterValue.GitUserNameSecret"
 //  INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
 //  INVALIDPARAMETERVALUE_IDLETIMEOUT = "InvalidParameterValue.IdleTimeOut"
 //  INVALIDPARAMETERVALUE_IMAGETYPE = "InvalidParameterValue.ImageType"
@@ -452,6 +461,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  RESOURCEINUSE_FUNCTIONNAME = "ResourceInUse.FunctionName"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CFSMOUNTINSNOTMATCH = "ResourceNotFound.CfsMountInsNotMatch"
+//  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
 //  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
@@ -1625,6 +1635,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETER_ROLECHECK = "InvalidParameter.RoleCheck"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATETIME = "InvalidParameterValue.DateTime"
 //  INVALIDPARAMETERVALUE_FUNCTIONTYPE = "InvalidParameterValue.FunctionType"
@@ -1656,6 +1667,7 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
+//  INVALIDPARAMETER_ROLECHECK = "InvalidParameter.RoleCheck"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATETIME = "InvalidParameterValue.DateTime"
 //  INVALIDPARAMETERVALUE_FUNCTIONTYPE = "InvalidParameterValue.FunctionType"
@@ -2742,6 +2754,8 @@ func NewPutProvisionedConcurrencyConfigResponse() (response *PutProvisionedConcu
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_PROVISIONCREATETIMER = "FailedOperation.ProvisionCreateTimer"
 //  FAILEDOPERATION_PROVISIONDELETETIMER = "FailedOperation.ProvisionDeleteTimer"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDAVAILABLE = "FailedOperation.ProvisionedExceedAvailable"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDRESERVED = "FailedOperation.ProvisionedExceedReserved"
 //  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
 //  FAILEDOPERATION_UNOPENEDSERVICE = "FailedOperation.UnOpenedService"
 //  INTERNALERROR = "InternalError"
@@ -2783,6 +2797,8 @@ func (c *Client) PutProvisionedConcurrencyConfig(request *PutProvisionedConcurre
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_PROVISIONCREATETIMER = "FailedOperation.ProvisionCreateTimer"
 //  FAILEDOPERATION_PROVISIONDELETETIMER = "FailedOperation.ProvisionDeleteTimer"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDAVAILABLE = "FailedOperation.ProvisionedExceedAvailable"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDRESERVED = "FailedOperation.ProvisionedExceedReserved"
 //  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
 //  FAILEDOPERATION_UNOPENEDSERVICE = "FailedOperation.UnOpenedService"
 //  INTERNALERROR = "InternalError"
@@ -2851,6 +2867,7 @@ func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrency
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
 //  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDRESERVED = "FailedOperation.ProvisionedExceedReserved"
 //  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2871,6 +2888,7 @@ func (c *Client) PutReservedConcurrencyConfig(request *PutReservedConcurrencyCon
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
 //  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_PROVISIONEDEXCEEDRESERVED = "FailedOperation.ProvisionedExceedReserved"
 //  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2918,6 +2936,7 @@ func NewPutTotalConcurrencyConfigResponse() (response *PutTotalConcurrencyConfig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_RESERVEDEXCEEDTOTAL = "FailedOperation.ReservedExceedTotal"
 //  FAILEDOPERATION_TOTALCONCURRENCYMEMORYINPROGRESS = "FailedOperation.TotalConcurrencyMemoryInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2927,6 +2946,7 @@ func NewPutTotalConcurrencyConfigResponse() (response *PutTotalConcurrencyConfig
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  RESOURCENOTFOUND_TOTALCONCURRENCYMEMORY = "ResourceNotFound.TotalConcurrencyMemory"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigRequest) (response *PutTotalConcurrencyConfigResponse, err error) {
     return c.PutTotalConcurrencyConfigWithContext(context.Background(), request)
 }
@@ -2936,6 +2956,7 @@ func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+//  FAILEDOPERATION_RESERVEDEXCEEDTOTAL = "FailedOperation.ReservedExceedTotal"
 //  FAILEDOPERATION_TOTALCONCURRENCYMEMORYINPROGRESS = "FailedOperation.TotalConcurrencyMemoryInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2945,6 +2966,7 @@ func (c *Client) PutTotalConcurrencyConfig(request *PutTotalConcurrencyConfigReq
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  RESOURCENOTFOUND_TOTALCONCURRENCYMEMORY = "ResourceNotFound.TotalConcurrencyMemory"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PutTotalConcurrencyConfigWithContext(ctx context.Context, request *PutTotalConcurrencyConfigRequest) (response *PutTotalConcurrencyConfigResponse, err error) {
     if request == nil {
         request = NewPutTotalConcurrencyConfigRequest()
@@ -3242,6 +3264,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
 //  FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = "FailedOperation.DebugModeUpdateTimeOutFail"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
 //  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
@@ -3286,6 +3309,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
 //  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -3311,6 +3335,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
 //  FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = "FailedOperation.DebugModeUpdateTimeOutFail"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
 //  FAILEDOPERATION_RESERVEDINPROGRESS = "FailedOperation.ReservedInProgress"
@@ -3355,6 +3380,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
 //  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
+//  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"

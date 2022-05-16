@@ -121,6 +121,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -135,6 +136,7 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

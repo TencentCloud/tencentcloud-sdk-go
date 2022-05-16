@@ -20,6 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AuthParam struct {
+
+	// 应用SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户ID对应的签名
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+}
+
 type Canvas struct {
 
 	// 混流画布宽高配置
@@ -1861,7 +1873,8 @@ type StartWhiteboardPushRequest struct {
 	// 在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
 	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用于白板推流服务进房进行推流的用户ID，最大长度不能大于60个字节，该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
+	// 用于白板推流服务进入白板房间的用户ID。在没有进行额外指定的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
+	// 用户ID最大长度不能大于60个字节，该ID必须是一个单独的未在SDK中使用的ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该ID和SDK中使用的ID重复，会导致SDK和白板推流服务互踢，影响正常推流。
 	PushUserId *string `json:"PushUserId,omitempty" name:"PushUserId"`
 
 	// 与PushUserId对应的签名
@@ -1950,6 +1963,22 @@ type StartWhiteboardPushRequest struct {
 	// 
 	// 在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
 	TRTCRoomIdStr *string `json:"TRTCRoomIdStr,omitempty" name:"TRTCRoomIdStr"`
+
+	// 内测参数，需开通白名单进行体验。
+	// 
+	// IM鉴权信息参数，用于IM鉴权。
+	// 当白板信令所使用的IM应用与白板应用的SdkAppId不一致时，可以通过此参数提供对应IM应用鉴权信息。
+	// 
+	// 如果提供了此参数，白板推流服务会优先使用此参数指定的SdkAppId作为白板信令的传输通道，否则使用公共参数中的SdkAppId作为白板信令的传输通道。
+	IMAuthParam *AuthParam `json:"IMAuthParam,omitempty" name:"IMAuthParam"`
+
+	// 内测参数，需开通白名单进行体验。
+	// 
+	// TRTC鉴权信息参数，用于TRTC进房推流鉴权。
+	// 当需要推流到的TRTC房间所对应的TRTC应用与白板应用的SdkAppId不一致时，可以通过此参数提供对应的TRTC应用鉴权信息。
+	// 
+	// 如果提供了此参数，白板推流服务会优先使用此参数指定的SdkAppId作为白板推流的目标TRTC应用，否则使用公共参数中的SdkAppId作为白板推流的目标TRTC应用。
+	TRTCAuthParam *AuthParam `json:"TRTCAuthParam,omitempty" name:"TRTCAuthParam"`
 }
 
 func (r *StartWhiteboardPushRequest) ToJsonString() string {
@@ -1982,6 +2011,8 @@ func (r *StartWhiteboardPushRequest) FromJsonString(s string) error {
 	delete(f, "ExtraData")
 	delete(f, "TRTCRoomId")
 	delete(f, "TRTCRoomIdStr")
+	delete(f, "IMAuthParam")
+	delete(f, "TRTCAuthParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartWhiteboardPushRequest has unknown keys!", "")
 	}

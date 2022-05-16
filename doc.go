@@ -47,6 +47,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ccc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdb"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cds"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfg"

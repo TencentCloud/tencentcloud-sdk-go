@@ -110,6 +110,9 @@ const (
 	// 无效的引导脚本。
 	INVALIDPARAMETER_INVALIDBOOTSTRAPACTION = "InvalidParameter.InvalidBootstrapAction"
 
+	// 无效的ClickHouse集群。
+	INVALIDPARAMETER_INVALIDCLICKHOUSECLUSTER = "InvalidParameter.InvalidClickHouseCluster"
+
 	// 无效的ClientToken。
 	INVALIDPARAMETER_INVALIDCLIENTTOKEN = "InvalidParameter.InvalidClientToken"
 

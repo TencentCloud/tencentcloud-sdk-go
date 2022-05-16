@@ -1163,6 +1163,7 @@ func NewDescribeMaterialsResponse() (response *DescribeMaterialsResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response *DescribeMaterialsResponse, err error) {
     return c.DescribeMaterialsWithContext(context.Background(), request)
@@ -1177,6 +1178,7 @@ func (c *Client) DescribeMaterials(request *DescribeMaterialsRequest) (response 
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeMaterialsWithContext(ctx context.Context, request *DescribeMaterialsRequest) (response *DescribeMaterialsResponse, err error) {
     if request == nil {
@@ -1295,6 +1297,7 @@ func NewDescribeProjectsResponse() (response *DescribeProjectsResponse) {
 //  INVALIDPARAMETERVALUE_SORTORDER = "InvalidParameterValue.SortOrder"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
     return c.DescribeProjectsWithContext(context.Background(), request)
@@ -1315,6 +1318,7 @@ func (c *Client) DescribeProjects(request *DescribeProjectsRequest) (response *D
 //  INVALIDPARAMETERVALUE_SORTORDER = "InvalidParameterValue.SortOrder"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeProjectsWithContext(ctx context.Context, request *DescribeProjectsRequest) (response *DescribeProjectsResponse, err error) {
     if request == nil {
@@ -2069,6 +2073,7 @@ func NewFlattenListMediaResponse() (response *FlattenListMediaResponse) {
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) FlattenListMedia(request *FlattenListMediaRequest) (response *FlattenListMediaResponse, err error) {
     return c.FlattenListMediaWithContext(context.Background(), request)
@@ -2085,6 +2090,7 @@ func (c *Client) FlattenListMedia(request *FlattenListMediaRequest) (response *F
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) FlattenListMediaWithContext(ctx context.Context, request *FlattenListMediaRequest) (response *FlattenListMediaResponse, err error) {
     if request == nil {
@@ -2474,6 +2480,7 @@ func NewImportMediaToProjectResponse() (response *ImportMediaToProjectResponse) 
 //  INVALIDPARAMETERVALUE_VODFILENOTEXIST = "InvalidParameterValue.VodFileNotExist"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (response *ImportMediaToProjectResponse, err error) {
     return c.ImportMediaToProjectWithContext(context.Background(), request)
@@ -2498,6 +2505,7 @@ func (c *Client) ImportMediaToProject(request *ImportMediaToProjectRequest) (res
 //  INVALIDPARAMETERVALUE_VODFILENOTEXIST = "InvalidParameterValue.VodFileNotExist"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMediaToProjectWithContext(ctx context.Context, request *ImportMediaToProjectRequest) (response *ImportMediaToProjectResponse, err error) {
     if request == nil {
@@ -2545,6 +2553,7 @@ func NewListMediaResponse() (response *ListMediaResponse) {
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaResponse, err error) {
     return c.ListMediaWithContext(context.Background(), request)
@@ -2563,6 +2572,7 @@ func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaRespon
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ListMediaWithContext(ctx context.Context, request *ListMediaRequest) (response *ListMediaResponse, err error) {
     if request == nil {

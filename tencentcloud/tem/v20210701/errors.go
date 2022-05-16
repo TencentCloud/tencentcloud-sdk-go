@@ -20,6 +20,9 @@ const (
 	// 请求响应超时。
 	INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 
+	// 添加子网/虚拟节点异常。
+	INTERNALERROR_ADDNEWNODEERROR = "InternalError.AddNewNodeError"
+
 	// 创建apm资源失败。
 	INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
 
@@ -32,6 +35,9 @@ const (
 	// 服务器繁忙,请稍后再试。
 	INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 
+	// 删除 ingress 失败。
+	INTERNALERROR_DELETEINGRESSERROR = "InternalError.DeleteIngressError"
+
 	// 删除应用失败。
 	INTERNALERROR_DELETESERVICEERROR = "InternalError.DeleteServiceError"
 
@@ -43,6 +49,9 @@ const (
 
 	// 查询服务关联的 ingress 失败。
 	INTERNALERROR_DESCRIBESERVICEINGRESSERROR = "InternalError.DescribeServiceIngressError"
+
+	// 查询service列表失败。
+	INTERNALERROR_DESCRIBESERVICELISTERROR = "InternalError.DescribeServiceListError"
 
 	// 重启失败。
 	INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
@@ -82,6 +91,9 @@ const (
 
 	// 应用名已存在。
 	INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+
+	// 实例创建失败，达到上限。
+	INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = "InvalidParameterValue.ServicePodReachMaximum"
 
 	// 应用创建失败，达到上限。
 	INVALIDPARAMETERVALUE_SERVICEREACHMAXIMUM = "InvalidParameterValue.ServiceReachMaximum"

@@ -3445,6 +3445,7 @@ func NewUpdatePrivateCAResponse() (response *UpdatePrivateCAResponse) {
 // 更新私有CA证书
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     return c.UpdatePrivateCAWithContext(context.Background(), request)
@@ -3454,6 +3455,7 @@ func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *Upd
 // 更新私有CA证书
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     if request == nil {

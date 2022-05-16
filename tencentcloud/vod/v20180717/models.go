@@ -6581,6 +6581,68 @@ func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLicenseUsageDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// License 类型，默认为 DRM 。目前支持的 License 类型包括：
+	// <li> DRM: DRM 加密播放 License</li>
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DescribeLicenseUsageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseUsageDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "LicenseType")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseUsageDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLicenseUsageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// License 查询次数统计数据，展示所查询 License 次数的明细数据。
+		LicenseUsageDataSet []*LicenseUsageDataItem `json:"LicenseUsageDataSet,omitempty" name:"LicenseUsageDataSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLicenseUsageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMediaInfosRequest struct {
 	*tchttp.BaseRequest
 
@@ -8998,6 +9060,15 @@ type ImageWatermarkTemplate struct {
 	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
 	// <li>repeat：水印循环播放，直到视频结束。</li>
 	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
+}
+
+type LicenseUsageDataItem struct {
+
+	// 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// License 请求次数。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type LiveRealTimeClipMediaSegmentInfo struct {

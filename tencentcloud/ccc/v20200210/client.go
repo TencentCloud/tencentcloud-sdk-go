@@ -169,7 +169,7 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 }
 
 // CreateCallOutSession
-// 创建外呼会话
+// 创建外呼会话，当前仅支持双呼，即先使用平台号码呼出到坐席手机上，坐席接听后，然后再外呼用户，而且由于运营商频率限制，坐席手机号必须先加白名单，避免频控导致外呼失败。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
@@ -183,7 +183,7 @@ func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (res
 }
 
 // CreateCallOutSession
-// 创建外呼会话
+// 创建外呼会话，当前仅支持双呼，即先使用平台号码呼出到坐席手机上，坐席接听后，然后再外呼用户，而且由于运营商频率限制，坐席手机号必须先加白名单，避免频控导致外呼失败。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
@@ -1089,6 +1089,7 @@ func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
 // 按实例获取电话消耗统计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
@@ -1101,6 +1102,7 @@ func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (respo
 // 按实例获取电话消耗统计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"

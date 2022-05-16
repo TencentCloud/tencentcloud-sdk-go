@@ -57,7 +57,7 @@ type AutoCalloutTaskInfo struct {
 type BindStaffSkillGroupListRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 坐席邮箱
@@ -171,7 +171,7 @@ type CallInSkillGroupMetrics struct {
 type CreateAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 呼叫中心实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 任务起始时间戳，Unix 秒级时间戳
@@ -321,7 +321,7 @@ func (r *CreateCallOutSessionResponse) FromJsonString(s string) error {
 type CreateSDKLoginTokenRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID。
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 坐席账号。
@@ -380,7 +380,7 @@ func (r *CreateSDKLoginTokenResponse) FromJsonString(s string) error {
 type CreateStaffRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 客服信息，个数不超过 10
@@ -434,7 +434,7 @@ func (r *CreateStaffResponse) FromJsonString(s string) error {
 type CreateUserSigRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 用户 ID
@@ -495,7 +495,7 @@ func (r *CreateUserSigResponse) FromJsonString(s string) error {
 type DeleteStaffRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 待删除客服邮箱列表
@@ -549,7 +549,7 @@ func (r *DeleteStaffResponse) FromJsonString(s string) error {
 type DescribeAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
 
-	// 呼叫中心实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 任务Id
@@ -624,7 +624,7 @@ func (r *DescribeAutoCalloutTaskResponse) FromJsonString(s string) error {
 type DescribeAutoCalloutTasksRequest struct {
 	*tchttp.BaseRequest
 
-	// 呼叫中心实例Id
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 分页大小
@@ -739,7 +739,7 @@ func (r *DescribeCCCBuyInfoListResponse) FromJsonString(s string) error {
 type DescribeCallInMetricsRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 是否返回技能组维度信息，默认“是”
@@ -807,10 +807,10 @@ func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
 type DescribeChatMessagesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 实例 ID（废弃）
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 服务记录ID
@@ -862,6 +862,7 @@ type DescribeChatMessagesResponse struct {
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 		// 消息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Messages []*MessageBody `json:"Messages,omitempty" name:"Messages"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -889,10 +890,10 @@ type DescribeIMCdrsRequest struct {
 	// 结束时间
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
 
-	// 实例ID
+	// 实例 ID（废弃）
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 返回记录条数 最大为100默认20
@@ -959,7 +960,7 @@ func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
 type DescribePSTNActiveSessionListRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用 ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 数据偏移
@@ -1147,7 +1148,7 @@ func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
 type DescribeSkillGroupInfoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 分页尺寸，上限 100
@@ -1215,7 +1216,7 @@ func (r *DescribeSkillGroupInfoListResponse) FromJsonString(s string) error {
 type DescribeStaffInfoListRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 分页尺寸，上限 100
@@ -1283,7 +1284,7 @@ func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
 type DescribeStaffStatusMetricsRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 筛选坐席列表，默认不传返回全部坐席信息
@@ -1487,10 +1488,10 @@ func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
 type DescribeTelSessionRequest struct {
 	*tchttp.BaseRequest
 
-	// 应用ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 会话ID
+	// 会话 ID
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
@@ -2218,7 +2219,7 @@ type TelCdrInfo struct {
 type UnbindStaffSkillGroupListRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 客服邮箱

@@ -5633,7 +5633,6 @@ func NewModifyPacketFilterConfigResponse() (response *ModifyPacketFilterConfigRe
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     return c.ModifyPacketFilterConfigWithContext(context.Background(), request)
 }
@@ -5643,7 +5642,6 @@ func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigReque
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyPacketFilterConfigWithContext(ctx context.Context, request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     if request == nil {
         request = NewModifyPacketFilterConfigRequest()

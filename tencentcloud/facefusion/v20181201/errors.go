@@ -122,6 +122,9 @@ const (
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
+	// RPC请求失败，一般为算法微服务故障。
+	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+
 	// 系统内部错误。
 	FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 
@@ -145,6 +148,9 @@ const (
 
 	// 人脸检测-图片没有人脸。
 	INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
+
+	// 参数字段或者值有误。
+	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 
 	// 资源正在发货中。
 	RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"

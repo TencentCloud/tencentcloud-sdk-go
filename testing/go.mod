@@ -41,6 +41,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ccc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdb v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cds v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfg v0.0.0
@@ -58,7 +59,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.399
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.400
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -245,6 +246,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cbs => ../tencentcloud/cbs
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ccc => ../tencentcloud/ccc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdb => ../tencentcloud/cdb
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdc => ../tencentcloud/cdc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn => ../tencentcloud/cdn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cds => ../tencentcloud/cds
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cfg => ../tencentcloud/cfg

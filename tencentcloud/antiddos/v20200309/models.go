@@ -3928,6 +3928,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 实例id数组
 	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitempty" name:"FilterInstanceIdList"`
+
+	// 企业版搜索
+	FilterEnterpriseFlag *uint64 `json:"FilterEnterpriseFlag,omitempty" name:"FilterEnterpriseFlag"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -3952,6 +3955,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterStatus")
 	delete(f, "FilterBoundStatus")
 	delete(f, "FilterInstanceIdList")
+	delete(f, "FilterEnterpriseFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}

@@ -71,6 +71,9 @@ const (
 	// 更新安全组失败。
 	FAILEDOPERATION_UPDATESECURITYGROUPSFAILED = "FailedOperation.UpdateSecurityGroupsFailed"
 
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
 	// cam鉴权错误。
 	INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
 
@@ -214,6 +217,9 @@ const (
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// uin 值为空。
 	RESOURCENOTFOUND_ACCOUNTDOESNOTEXISTS = "ResourceNotFound.AccountDoesNotExists"

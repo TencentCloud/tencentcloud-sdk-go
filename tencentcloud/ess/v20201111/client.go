@@ -139,6 +139,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -162,6 +163,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -202,6 +204,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 // 创建签署流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
@@ -226,6 +229,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // 创建签署流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
@@ -684,6 +688,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 // 此接口用于发起流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -705,6 +710,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 // 此接口用于发起流程
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

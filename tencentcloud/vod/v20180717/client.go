@@ -4058,6 +4058,71 @@ func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeLicenseUsageDataRequest() (request *DescribeLicenseUsageDataRequest) {
+    request = &DescribeLicenseUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeLicenseUsageData")
+    
+    
+    return
+}
+
+func NewDescribeLicenseUsageDataResponse() (response *DescribeLicenseUsageDataResponse) {
+    response = &DescribeLicenseUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLicenseUsageData
+// 该接口返回查询时间范围内每天 License 请求次数信息。
+//
+//    1. 可以查询最近365天内的 License 请求次数统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLicenseUsageData(request *DescribeLicenseUsageDataRequest) (response *DescribeLicenseUsageDataResponse, err error) {
+    return c.DescribeLicenseUsageDataWithContext(context.Background(), request)
+}
+
+// DescribeLicenseUsageData
+// 该接口返回查询时间范围内每天 License 请求次数信息。
+//
+//    1. 可以查询最近365天内的 License 请求次数统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLicenseUsageDataWithContext(ctx context.Context, request *DescribeLicenseUsageDataRequest) (response *DescribeLicenseUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseUsageDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseUsageData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMediaInfosRequest() (request *DescribeMediaInfosRequest) {
     request = &DescribeMediaInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
