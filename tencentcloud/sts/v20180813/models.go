@@ -59,6 +59,9 @@ type AssumeRoleRequest struct {
 	// 角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
 	// 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:\/-]*
 	ExternalId *string `json:"ExternalId,omitempty" name:"ExternalId"`
+
+	// 会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *AssumeRoleRequest) ToJsonString() string {
@@ -78,6 +81,7 @@ func (r *AssumeRoleRequest) FromJsonString(s string) error {
 	delete(f, "DurationSeconds")
 	delete(f, "Policy")
 	delete(f, "ExternalId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleRequest has unknown keys!", "")
 	}
@@ -444,4 +448,13 @@ func (r *QueryApiKeyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryApiKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Tag struct {
+
+	// 标签键，最长128个字符，区分大小写。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值，最长256个字符，区分大小写。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

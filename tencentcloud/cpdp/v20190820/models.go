@@ -5407,12 +5407,14 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
+	// __WECHAT__: 微信支付
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 付款方式。如
 	// __EBANK_PAYMENT__:B2B EBank付款
 	// __OPENBANK_PAYMENT__:B2C  openbank付款
 	// __SAFT_ISV__:支付宝安心发
+	// __TRANS_TO_CHANGE__: 微信支付转账到零钱v2
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
 
 	// 付款模式。默认直接支付，如
@@ -8728,18 +8730,24 @@ type OpenBankGoodsInfo struct {
 
 type OpenBankPayeeInfo struct {
 
-	// 收款方唯一标识。当渠道为TENPAY，付款方式为EBANK_PAYMENT，必填，上送收款方入驻云企付商户ID；付款方式为OPENBANK_PAYMENT时，非必填，输入外部收款方的标识ID
+	// 收款方唯一标识。
+	// 当渠道为TENPAY，付款方式为EBANK_PAYMENT，必填，上送收款方入驻云企付商户ID；
+	// 付款方式为OPENBANK_PAYMENT时，非必填，输入外部收款方的标识ID
+	// 渠道为WECHAT，付款方式为TRANS_TO_CHANGE时，上送微信OPEN_ID；
 	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 
-	// 收款方名称。当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付的商户名称；
-	// 渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选，上送收款方账户名称；渠道为ALIPAY，付款方式为SAFT_ISV时，收款账户标识类型为ALIPAY_LOGON_ID时必传，上送收款方真实姓名。
-	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+	// 支行名称。
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
 
 	// 银行账号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
 	BankAccountNumber *string `json:"BankAccountNumber,omitempty" name:"BankAccountNumber"`
 
-	// 支行名称。
-	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+	// 收款方名称。
+	// 当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付的商户名称；
+	// 渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选，上送收款方账户名称；
+	// 渠道为ALIPAY，付款方式为SAFT_ISV时，收款账户标识类型为ALIPAY_LOGON_ID时必传，上送收款方真实姓名。
+	// 渠道为WECHAT，付款方式为TRANS_TO_CHANGE时，上送收款人姓名。
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
 
 	// 联行号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
 	BankBranchId *string `json:"BankBranchId,omitempty" name:"BankBranchId"`

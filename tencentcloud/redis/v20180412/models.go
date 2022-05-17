@@ -621,6 +621,9 @@ type CreateInstancesRequest struct {
 
 	// 创建实例需要应用的参数模板ID，不传则应用默认的参数模板
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// false ：默认值,发送正常请求，通过检查后直接创建实例 true：发送检查请求，不会创建实例。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -657,6 +660,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "ZoneName")
 	delete(f, "TemplateId")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}

@@ -83,7 +83,7 @@ type CloudStorage struct {
 	// 第三方存储的secret_key账号信息。
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 
-	// 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+	// 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
 	FileNamePrefix []*string `json:"FileNamePrefix,omitempty" name:"FileNamePrefix"`
 }
 
@@ -2162,16 +2162,16 @@ type StorageParams struct {
 
 type SubscribeStreamUserIds struct {
 
-	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流，默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
 	SubscribeAudioUserIds []*string `json:"SubscribeAudioUserIds,omitempty" name:"SubscribeAudioUserIds"`
 
-	// 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流，默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+	// 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
 	UnSubscribeAudioUserIds []*string `json:"UnSubscribeAudioUserIds,omitempty" name:"UnSubscribeAudioUserIds"`
 
-	// 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流，默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	// 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
 	SubscribeVideoUserIds []*string `json:"SubscribeVideoUserIds,omitempty" name:"SubscribeVideoUserIds"`
 
-	// 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流，默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	// 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
 	UnSubscribeVideoUserIds []*string `json:"UnSubscribeVideoUserIds,omitempty" name:"UnSubscribeVideoUserIds"`
 }
 

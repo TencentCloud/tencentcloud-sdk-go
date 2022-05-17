@@ -26,10 +26,12 @@ type CreatePrefetchTaskRequest struct {
 	// Zone ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 预热的资源列表
+	// 要预热的资源列表，每个元素格式类似如下:
+	// http://www.example.com/example.txt
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 
 	// 是否对url进行encode
+	// 若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
 	EncodeUrl *bool `json:"EncodeUrl,omitempty" name:"EncodeUrl"`
 
 	// 附带的http头部信息
@@ -98,11 +100,19 @@ type CreatePurgeTaskRequest struct {
 	// - purge_all：全部缓存
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 内容，一行一个
+	// 要刷新的资源列表，每个元素格式依据Type而定
+	// 1) Type = purge_host 时
+	// 形如：www.example.com 或 foo.bar.example.com
+	// 2) Type = purge_prefix 时
+	// 形如：http://www.example.com/example
+	// 3) Type = purge_url 时
+	// 形如：https://www.example.com/example.jpg
+	// 4）Type = purge_all 时
+	// Targets可为空，不需要填写
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 
 	// 若有编码转换，仅清除编码转换后匹配的资源
-	// 若内容含有非 ASCII 字符集的字符，请打开 URL Encode 开关，编码转换（编码规则遵循 RFC3986）
+	// 若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
 	EncodeUrl *bool `json:"EncodeUrl,omitempty" name:"EncodeUrl"`
 }
 
@@ -390,12 +400,99 @@ func (r *DescribeZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DownloadL7LogsRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间(需严格按照RFC3339标准传参)
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间(需严格按照RFC3339标准传参)
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每页展示条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 站点集合
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 域名集合
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *DownloadL7LogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadL7LogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "Zones")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadL7LogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadL7LogsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 七层离线日志data
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*L7OfflineLog `json:"Data,omitempty" name:"Data"`
+
+		// 页面大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+		// 页号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+		// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+		// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DownloadL7LogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadL7LogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FailReason struct {
 
 	// 失败原因
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 
-	// 失败列表
+	// 处理失败的资源列表。
+	// 该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 }
 
@@ -406,6 +503,29 @@ type Header struct {
 
 	// HTTP头部值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type L7OfflineLog struct {
+
+	// 日志打包开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
+
+	// 站点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 原始大小 单位byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 日志数据包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
 }
 
 type Task struct {

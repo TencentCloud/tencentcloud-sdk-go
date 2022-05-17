@@ -1332,6 +1332,63 @@ func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreatePrometheusAlertPolicyRequest() (request *CreatePrometheusAlertPolicyRequest) {
+    request = &CreatePrometheusAlertPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusAlertPolicy")
+    
+    
+    return
+}
+
+func NewCreatePrometheusAlertPolicyResponse() (response *CreatePrometheusAlertPolicyResponse) {
+    response = &CreatePrometheusAlertPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusAlertPolicy
+// 创建告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusAlertPolicy(request *CreatePrometheusAlertPolicyRequest) (response *CreatePrometheusAlertPolicyResponse, err error) {
+    return c.CreatePrometheusAlertPolicyWithContext(context.Background(), request)
+}
+
+// CreatePrometheusAlertPolicy
+// 创建告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusAlertPolicyWithContext(ctx context.Context, request *CreatePrometheusAlertPolicyRequest) (response *CreatePrometheusAlertPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusAlertPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheusAlertPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusAlertPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusAlertRuleRequest() (request *CreatePrometheusAlertRuleRequest) {
     request = &CreatePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1442,6 +1499,57 @@ func (c *Client) CreatePrometheusDashboardWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewCreatePrometheusDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrometheusTempRequest() (request *CreatePrometheusTempRequest) {
+    request = &CreatePrometheusTempRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusTemp")
+    
+    
+    return
+}
+
+func NewCreatePrometheusTempResponse() (response *CreatePrometheusTempResponse) {
+    response = &CreatePrometheusTempResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusTemp
+// 创建一个云原生Prometheus模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) CreatePrometheusTemp(request *CreatePrometheusTempRequest) (response *CreatePrometheusTempResponse, err error) {
+    return c.CreatePrometheusTempWithContext(context.Background(), request)
+}
+
+// CreatePrometheusTemp
+// 创建一个云原生Prometheus模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) CreatePrometheusTempWithContext(ctx context.Context, request *CreatePrometheusTempRequest) (response *CreatePrometheusTempResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusTempRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheusTemp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusTempResponse()
     err = c.Send(request, response)
     return
 }
@@ -2252,6 +2360,59 @@ func (c *Client) DeleteImageCachesWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeletePrometheusAlertPolicyRequest() (request *DeletePrometheusAlertPolicyRequest) {
+    request = &DeletePrometheusAlertPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusAlertPolicy")
+    
+    
+    return
+}
+
+func NewDeletePrometheusAlertPolicyResponse() (response *DeletePrometheusAlertPolicyResponse) {
+    response = &DeletePrometheusAlertPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrometheusAlertPolicy
+// 删除2.0实例告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DeletePrometheusAlertPolicy(request *DeletePrometheusAlertPolicyRequest) (response *DeletePrometheusAlertPolicyResponse, err error) {
+    return c.DeletePrometheusAlertPolicyWithContext(context.Background(), request)
+}
+
+// DeletePrometheusAlertPolicy
+// 删除2.0实例告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DeletePrometheusAlertPolicyWithContext(ctx context.Context, request *DeletePrometheusAlertPolicyRequest) (response *DeletePrometheusAlertPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusAlertPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrometheusAlertPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrometheusAlertPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePrometheusAlertRuleRequest() (request *DeletePrometheusAlertRuleRequest) {
     request = &DeletePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2301,6 +2462,120 @@ func (c *Client) DeletePrometheusAlertRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeletePrometheusAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusTempRequest() (request *DeletePrometheusTempRequest) {
+    request = &DeletePrometheusTempRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTemp")
+    
+    
+    return
+}
+
+func NewDeletePrometheusTempResponse() (response *DeletePrometheusTempResponse) {
+    response = &DeletePrometheusTempResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrometheusTemp
+// 删除一个云原生Prometheus配置模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DeletePrometheusTemp(request *DeletePrometheusTempRequest) (response *DeletePrometheusTempResponse, err error) {
+    return c.DeletePrometheusTempWithContext(context.Background(), request)
+}
+
+// DeletePrometheusTemp
+// 删除一个云原生Prometheus配置模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DeletePrometheusTempWithContext(ctx context.Context, request *DeletePrometheusTempRequest) (response *DeletePrometheusTempResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusTempRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrometheusTemp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrometheusTempResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusTempSyncRequest() (request *DeletePrometheusTempSyncRequest) {
+    request = &DeletePrometheusTempSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DeletePrometheusTempSync")
+    
+    
+    return
+}
+
+func NewDeletePrometheusTempSyncResponse() (response *DeletePrometheusTempSyncResponse) {
+    response = &DeletePrometheusTempSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrometheusTempSync
+// 解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DeletePrometheusTempSync(request *DeletePrometheusTempSyncRequest) (response *DeletePrometheusTempSyncResponse, err error) {
+    return c.DeletePrometheusTempSyncWithContext(context.Background(), request)
+}
+
+// DeletePrometheusTempSync
+// 解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DeletePrometheusTempSyncWithContext(ctx context.Context, request *DeletePrometheusTempSyncRequest) (response *DeletePrometheusTempSyncResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusTempSyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrometheusTempSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrometheusTempSyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -4606,6 +4881,65 @@ func (c *Client) DescribePrometheusAlertHistoryWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribePrometheusAlertPolicyRequest() (request *DescribePrometheusAlertPolicyRequest) {
+    request = &DescribePrometheusAlertPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusAlertPolicy")
+    
+    
+    return
+}
+
+func NewDescribePrometheusAlertPolicyResponse() (response *DescribePrometheusAlertPolicyResponse) {
+    response = &DescribePrometheusAlertPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusAlertPolicy
+// 获取2.0实例告警策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusAlertPolicy(request *DescribePrometheusAlertPolicyRequest) (response *DescribePrometheusAlertPolicyResponse, err error) {
+    return c.DescribePrometheusAlertPolicyWithContext(context.Background(), request)
+}
+
+// DescribePrometheusAlertPolicy
+// 获取2.0实例告警策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusAlertPolicyWithContext(ctx context.Context, request *DescribePrometheusAlertPolicyRequest) (response *DescribePrometheusAlertPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAlertPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusAlertPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusAlertPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusAlertRuleRequest() (request *DescribePrometheusAlertRuleRequest) {
     request = &DescribePrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4663,6 +4997,59 @@ func (c *Client) DescribePrometheusAlertRuleWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribePrometheusAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusClusterAgentsRequest() (request *DescribePrometheusClusterAgentsRequest) {
+    request = &DescribePrometheusClusterAgentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusClusterAgents")
+    
+    
+    return
+}
+
+func NewDescribePrometheusClusterAgentsResponse() (response *DescribePrometheusClusterAgentsResponse) {
+    response = &DescribePrometheusClusterAgentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusClusterAgents
+// 获取2.0实例关联集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusClusterAgents(request *DescribePrometheusClusterAgentsRequest) (response *DescribePrometheusClusterAgentsResponse, err error) {
+    return c.DescribePrometheusClusterAgentsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusClusterAgents
+// 获取2.0实例关联集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusClusterAgentsWithContext(ctx context.Context, request *DescribePrometheusClusterAgentsRequest) (response *DescribePrometheusClusterAgentsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusClusterAgentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusClusterAgents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusClusterAgentsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4730,6 +5117,59 @@ func (c *Client) DescribePrometheusInstanceWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribePrometheusInstancesOverviewRequest() (request *DescribePrometheusInstancesOverviewRequest) {
+    request = &DescribePrometheusInstancesOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusInstancesOverview")
+    
+    
+    return
+}
+
+func NewDescribePrometheusInstancesOverviewResponse() (response *DescribePrometheusInstancesOverviewResponse) {
+    response = &DescribePrometheusInstancesOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusInstancesOverview
+// 获取与云监控融合实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusInstancesOverview(request *DescribePrometheusInstancesOverviewRequest) (response *DescribePrometheusInstancesOverviewResponse, err error) {
+    return c.DescribePrometheusInstancesOverviewWithContext(context.Background(), request)
+}
+
+// DescribePrometheusInstancesOverview
+// 获取与云监控融合实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusInstancesOverviewWithContext(ctx context.Context, request *DescribePrometheusInstancesOverviewRequest) (response *DescribePrometheusInstancesOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusInstancesOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusInstancesOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusInstancesOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusOverviewsRequest() (request *DescribePrometheusOverviewsRequest) {
     request = &DescribePrometheusOverviewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4779,6 +5219,63 @@ func (c *Client) DescribePrometheusOverviewsWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribePrometheusOverviewsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusRecordRulesRequest() (request *DescribePrometheusRecordRulesRequest) {
+    request = &DescribePrometheusRecordRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusRecordRules")
+    
+    
+    return
+}
+
+func NewDescribePrometheusRecordRulesResponse() (response *DescribePrometheusRecordRulesResponse) {
+    response = &DescribePrometheusRecordRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusRecordRules
+// 获取聚合规则列表，包含关联集群内crd资源创建的record rule
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusRecordRules(request *DescribePrometheusRecordRulesRequest) (response *DescribePrometheusRecordRulesResponse, err error) {
+    return c.DescribePrometheusRecordRulesWithContext(context.Background(), request)
+}
+
+// DescribePrometheusRecordRules
+// 获取聚合规则列表，包含关联集群内crd资源创建的record rule
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) DescribePrometheusRecordRulesWithContext(ctx context.Context, request *DescribePrometheusRecordRulesRequest) (response *DescribePrometheusRecordRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusRecordRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusRecordRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusRecordRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4840,6 +5337,114 @@ func (c *Client) DescribePrometheusTargetsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribePrometheusTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusTempRequest() (request *DescribePrometheusTempRequest) {
+    request = &DescribePrometheusTempRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTemp")
+    
+    
+    return
+}
+
+func NewDescribePrometheusTempResponse() (response *DescribePrometheusTempResponse) {
+    response = &DescribePrometheusTempResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusTemp
+// 拉取模板列表，默认模板将总是在最前面
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusTemp(request *DescribePrometheusTempRequest) (response *DescribePrometheusTempResponse, err error) {
+    return c.DescribePrometheusTempWithContext(context.Background(), request)
+}
+
+// DescribePrometheusTemp
+// 拉取模板列表，默认模板将总是在最前面
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusTempWithContext(ctx context.Context, request *DescribePrometheusTempRequest) (response *DescribePrometheusTempResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusTempRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusTemp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusTempResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusTempSyncRequest() (request *DescribePrometheusTempSyncRequest) {
+    request = &DescribePrometheusTempSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusTempSync")
+    
+    
+    return
+}
+
+func NewDescribePrometheusTempSyncResponse() (response *DescribePrometheusTempSyncResponse) {
+    response = &DescribePrometheusTempSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusTempSync
+// 获取模板关联实例信息，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DescribePrometheusTempSync(request *DescribePrometheusTempSyncRequest) (response *DescribePrometheusTempSyncResponse, err error) {
+    return c.DescribePrometheusTempSyncWithContext(context.Background(), request)
+}
+
+// DescribePrometheusTempSync
+// 获取模板关联实例信息，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) DescribePrometheusTempSyncWithContext(ctx context.Context, request *DescribePrometheusTempSyncRequest) (response *DescribePrometheusTempSyncResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusTempSyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusTempSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusTempSyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -5368,6 +5973,53 @@ func (c *Client) DescribeVpcCniPodLimitsWithContext(ctx context.Context, request
     return
 }
 
+func NewDisableClusterAuditRequest() (request *DisableClusterAuditRequest) {
+    request = &DisableClusterAuditRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DisableClusterAudit")
+    
+    
+    return
+}
+
+func NewDisableClusterAuditResponse() (response *DisableClusterAuditResponse) {
+    response = &DisableClusterAuditResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableClusterAudit
+// 关闭集群审计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DisableClusterAudit(request *DisableClusterAuditRequest) (response *DisableClusterAuditResponse, err error) {
+    return c.DisableClusterAuditWithContext(context.Background(), request)
+}
+
+// DisableClusterAudit
+// 关闭集群审计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DisableClusterAuditWithContext(ctx context.Context, request *DisableClusterAuditRequest) (response *DisableClusterAuditResponse, err error) {
+    if request == nil {
+        request = NewDisableClusterAuditRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableClusterAudit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableClusterAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableClusterDeletionProtectionRequest() (request *DisableClusterDeletionProtectionRequest) {
     request = &DisableClusterDeletionProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5413,6 +6065,65 @@ func (c *Client) DisableClusterDeletionProtectionWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDisableClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableEventPersistenceRequest() (request *DisableEventPersistenceRequest) {
+    request = &DisableEventPersistenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DisableEventPersistence")
+    
+    
+    return
+}
+
+func NewDisableEventPersistenceResponse() (response *DisableEventPersistenceResponse) {
+    response = &DisableEventPersistenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableEventPersistence
+// 关闭事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+func (c *Client) DisableEventPersistence(request *DisableEventPersistenceRequest) (response *DisableEventPersistenceResponse, err error) {
+    return c.DisableEventPersistenceWithContext(context.Background(), request)
+}
+
+// DisableEventPersistence
+// 关闭事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+func (c *Client) DisableEventPersistenceWithContext(ctx context.Context, request *DisableEventPersistenceRequest) (response *DisableEventPersistenceResponse, err error) {
+    if request == nil {
+        request = NewDisableEventPersistenceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableEventPersistence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableEventPersistenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -5472,6 +6183,57 @@ func (c *Client) DisableVpcCniNetworkTypeWithContext(ctx context.Context, reques
     return
 }
 
+func NewEnableClusterAuditRequest() (request *EnableClusterAuditRequest) {
+    request = &EnableClusterAuditRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "EnableClusterAudit")
+    
+    
+    return
+}
+
+func NewEnableClusterAuditResponse() (response *EnableClusterAuditResponse) {
+    response = &EnableClusterAuditResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableClusterAudit
+// 开启集群审计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) EnableClusterAudit(request *EnableClusterAuditRequest) (response *EnableClusterAuditResponse, err error) {
+    return c.EnableClusterAuditWithContext(context.Background(), request)
+}
+
+// EnableClusterAudit
+// 开启集群审计
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) EnableClusterAuditWithContext(ctx context.Context, request *EnableClusterAuditRequest) (response *EnableClusterAuditResponse, err error) {
+    if request == nil {
+        request = NewEnableClusterAuditRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableClusterAudit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableClusterAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableClusterDeletionProtectionRequest() (request *EnableClusterDeletionProtectionRequest) {
     request = &EnableClusterDeletionProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5519,6 +6281,77 @@ func (c *Client) EnableClusterDeletionProtectionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewEnableClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableEventPersistenceRequest() (request *EnableEventPersistenceRequest) {
+    request = &EnableEventPersistenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "EnableEventPersistence")
+    
+    
+    return
+}
+
+func NewEnableEventPersistenceResponse() (response *EnableEventPersistenceResponse) {
+    response = &EnableEventPersistenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableEventPersistence
+// 开启事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
+//  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = "InternalError.KubernetesPatchOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) EnableEventPersistence(request *EnableEventPersistenceRequest) (response *EnableEventPersistenceResponse, err error) {
+    return c.EnableEventPersistenceWithContext(context.Background(), request)
+}
+
+// EnableEventPersistence
+// 开启事件持久化功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
+//  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = "InternalError.KubernetesPatchOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) EnableEventPersistenceWithContext(ctx context.Context, request *EnableEventPersistenceRequest) (response *EnableEventPersistenceResponse, err error) {
+    if request == nil {
+        request = NewEnableEventPersistenceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableEventPersistence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableEventPersistenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -5843,6 +6676,59 @@ func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewGetUpgradeInstanceProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInstallLogAgentRequest() (request *InstallLogAgentRequest) {
+    request = &InstallLogAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "InstallLogAgent")
+    
+    
+    return
+}
+
+func NewInstallLogAgentResponse() (response *InstallLogAgentResponse) {
+    response = &InstallLogAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InstallLogAgent
+// 在TKE集群中安装CLS日志采集组件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) InstallLogAgent(request *InstallLogAgentRequest) (response *InstallLogAgentResponse, err error) {
+    return c.InstallLogAgentWithContext(context.Background(), request)
+}
+
+// InstallLogAgent
+// 在TKE集群中安装CLS日志采集组件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) InstallLogAgentWithContext(ctx context.Context, request *InstallLogAgentRequest) (response *InstallLogAgentResponse, err error) {
+    if request == nil {
+        request = NewInstallLogAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallLogAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallLogAgentResponse()
     err = c.Send(request, response)
     return
 }
@@ -6423,6 +7309,61 @@ func (c *Client) ModifyNodePoolInstanceTypesWithContext(ctx context.Context, req
     return
 }
 
+func NewModifyPrometheusAlertPolicyRequest() (request *ModifyPrometheusAlertPolicyRequest) {
+    request = &ModifyPrometheusAlertPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusAlertPolicy")
+    
+    
+    return
+}
+
+func NewModifyPrometheusAlertPolicyResponse() (response *ModifyPrometheusAlertPolicyResponse) {
+    response = &ModifyPrometheusAlertPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPrometheusAlertPolicy
+// 修改2.0实例告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyPrometheusAlertPolicy(request *ModifyPrometheusAlertPolicyRequest) (response *ModifyPrometheusAlertPolicyResponse, err error) {
+    return c.ModifyPrometheusAlertPolicyWithContext(context.Background(), request)
+}
+
+// ModifyPrometheusAlertPolicy
+// 修改2.0实例告警策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyPrometheusAlertPolicyWithContext(ctx context.Context, request *ModifyPrometheusAlertPolicyRequest) (response *ModifyPrometheusAlertPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusAlertPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrometheusAlertPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrometheusAlertPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPrometheusAlertRuleRequest() (request *ModifyPrometheusAlertRuleRequest) {
     request = &ModifyPrometheusAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6802,6 +7743,65 @@ func (c *Client) SetNodePoolNodeProtectionWithContext(ctx context.Context, reque
     return
 }
 
+func NewSyncPrometheusTempRequest() (request *SyncPrometheusTempRequest) {
+    request = &SyncPrometheusTempRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "SyncPrometheusTemp")
+    
+    
+    return
+}
+
+func NewSyncPrometheusTempResponse() (response *SyncPrometheusTempResponse) {
+    response = &SyncPrometheusTempResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncPrometheusTemp
+// 同步模板到实例或者集群，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) SyncPrometheusTemp(request *SyncPrometheusTempRequest) (response *SyncPrometheusTempResponse, err error) {
+    return c.SyncPrometheusTempWithContext(context.Background(), request)
+}
+
+// SyncPrometheusTemp
+// 同步模板到实例或者集群，针对V2版本实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) SyncPrometheusTempWithContext(ctx context.Context, request *SyncPrometheusTempRequest) (response *SyncPrometheusTempResponse, err error) {
+    if request == nil {
+        request = NewSyncPrometheusTempRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncPrometheusTemp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncPrometheusTempResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncPrometheusTemplateRequest() (request *SyncPrometheusTemplateRequest) {
     request = &SyncPrometheusTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6857,6 +7857,55 @@ func (c *Client) SyncPrometheusTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewSyncPrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallLogAgentRequest() (request *UninstallLogAgentRequest) {
+    request = &UninstallLogAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UninstallLogAgent")
+    
+    
+    return
+}
+
+func NewUninstallLogAgentResponse() (response *UninstallLogAgentResponse) {
+    response = &UninstallLogAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UninstallLogAgent
+// 从TKE集群中卸载CLS日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) UninstallLogAgent(request *UninstallLogAgentRequest) (response *UninstallLogAgentResponse, err error) {
+    return c.UninstallLogAgentWithContext(context.Background(), request)
+}
+
+// UninstallLogAgent
+// 从TKE集群中卸载CLS日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) UninstallLogAgentWithContext(ctx context.Context, request *UninstallLogAgentRequest) (response *UninstallLogAgentResponse, err error) {
+    if request == nil {
+        request = NewUninstallLogAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallLogAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallLogAgentResponse()
     err = c.Send(request, response)
     return
 }

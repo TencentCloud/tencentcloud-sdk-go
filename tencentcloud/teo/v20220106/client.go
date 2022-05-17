@@ -323,3 +323,52 @@ func (c *Client) DescribeZonesWithContext(ctx context.Context, request *Describe
     err = c.Send(request, response)
     return
 }
+
+func NewDownloadL7LogsRequest() (request *DownloadL7LogsRequest) {
+    request = &DownloadL7LogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DownloadL7Logs")
+    
+    
+    return
+}
+
+func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
+    response = &DownloadL7LogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadL7Logs
+// 查询七层离线日志
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
+    return c.DownloadL7LogsWithContext(context.Background(), request)
+}
+
+// DownloadL7Logs
+// 查询七层离线日志
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
+    if request == nil {
+        request = NewDownloadL7LogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadL7Logs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadL7LogsResponse()
+    err = c.Send(request, response)
+    return
+}

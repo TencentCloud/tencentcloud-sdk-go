@@ -10943,6 +10943,55 @@ func (c *Client) DisableCcnRoutesWithContext(ctx context.Context, request *Disab
     return
 }
 
+func NewDisableFlowLogsRequest() (request *DisableFlowLogsRequest) {
+    request = &DisableFlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisableFlowLogs")
+    
+    
+    return
+}
+
+func NewDisableFlowLogsResponse() (response *DisableFlowLogsResponse) {
+    response = &DisableFlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableFlowLogs
+// 本接口（DisableFlowLogs）用于停止流日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisableFlowLogs(request *DisableFlowLogsRequest) (response *DisableFlowLogsResponse, err error) {
+    return c.DisableFlowLogsWithContext(context.Background(), request)
+}
+
+// DisableFlowLogs
+// 本接口（DisableFlowLogs）用于停止流日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisableFlowLogsWithContext(ctx context.Context, request *DisableFlowLogsRequest) (response *DisableFlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDisableFlowLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableFlowLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableFlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableGatewayFlowMonitorRequest() (request *DisableGatewayFlowMonitorRequest) {
     request = &DisableGatewayFlowMonitorRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11674,6 +11723,55 @@ func (c *Client) EnableCcnRoutesWithContext(ctx context.Context, request *Enable
     request.SetContext(ctx)
     
     response = NewEnableCcnRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableFlowLogsRequest() (request *EnableFlowLogsRequest) {
+    request = &EnableFlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "EnableFlowLogs")
+    
+    
+    return
+}
+
+func NewEnableFlowLogsResponse() (response *EnableFlowLogsResponse) {
+    response = &EnableFlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableFlowLogs
+// 本接口（EnableFlowLogs）用于启动流日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableFlowLogs(request *EnableFlowLogsRequest) (response *EnableFlowLogsResponse, err error) {
+    return c.EnableFlowLogsWithContext(context.Background(), request)
+}
+
+// EnableFlowLogs
+// 本接口（EnableFlowLogs）用于启动流日志。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) EnableFlowLogsWithContext(ctx context.Context, request *EnableFlowLogsRequest) (response *EnableFlowLogsResponse, err error) {
+    if request == nil {
+        request = NewEnableFlowLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableFlowLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableFlowLogsResponse()
     err = c.Send(request, response)
     return
 }

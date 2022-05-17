@@ -6978,7 +6978,7 @@ func NewQueryOpenBankBankAccountBalanceResponse() (response *QueryOpenBankBankAc
 }
 
 // QueryOpenBankBankAccountBalance
-// 云企付-查询账户余额
+// 云企付-子商户银行卡余额查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -6987,7 +6987,7 @@ func (c *Client) QueryOpenBankBankAccountBalance(request *QueryOpenBankBankAccou
 }
 
 // QueryOpenBankBankAccountBalance
-// 云企付-查询账户余额
+// 云企付-子商户银行卡余额查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"

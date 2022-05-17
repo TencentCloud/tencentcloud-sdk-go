@@ -202,6 +202,75 @@ func (c *Client) DescribeApmInstancesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeGeneralMetricDataRequest() (request *DescribeGeneralMetricDataRequest) {
+    request = &DescribeGeneralMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeGeneralMetricData")
+    
+    
+    return
+}
+
+func NewDescribeGeneralMetricDataResponse() (response *DescribeGeneralMetricDataResponse) {
+    response = &DescribeGeneralMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGeneralMetricData
+// 获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
+//
+// 接口调用频率限制为：20次/秒，1200次/分钟。单请求的数据点数限制为1440个。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  INVALIDPARAMETER_FILTERSFIELDSNOTEXISTORILLEGAL = "InvalidParameter.FiltersFieldsNotExistOrIllegal"
+//  INVALIDPARAMETER_GROUPBYFIELDSNOTEXISTORILLEGAL = "InvalidParameter.GroupByFieldsNotExistOrIllegal"
+//  INVALIDPARAMETER_METRICFILTERSLACKPARAMS = "InvalidParameter.MetricFiltersLackParams"
+//  INVALIDPARAMETER_METRICSFIELDNOTEXISTORILLEGAL = "InvalidParameter.MetricsFieldNotExistOrIllegal"
+//  INVALIDPARAMETER_METRICSFIELDSNOTALLOWEMPTY = "InvalidParameter.MetricsFieldsNotAllowEmpty"
+//  INVALIDPARAMETER_PERIODISILLEGAL = "InvalidParameter.PeriodIsIllegal"
+//  INVALIDPARAMETER_QUERYTIMEINTERVALISNOTSUPPORTED = "InvalidParameter.QueryTimeIntervalIsNotSupported"
+//  INVALIDPARAMETER_VIEWNAMENOTEXISTORILLEGAL = "InvalidParameter.ViewNameNotExistOrIllegal"
+func (c *Client) DescribeGeneralMetricData(request *DescribeGeneralMetricDataRequest) (response *DescribeGeneralMetricDataResponse, err error) {
+    return c.DescribeGeneralMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeGeneralMetricData
+// 获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
+//
+// 接口调用频率限制为：20次/秒，1200次/分钟。单请求的数据点数限制为1440个。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  INVALIDPARAMETER_FILTERSFIELDSNOTEXISTORILLEGAL = "InvalidParameter.FiltersFieldsNotExistOrIllegal"
+//  INVALIDPARAMETER_GROUPBYFIELDSNOTEXISTORILLEGAL = "InvalidParameter.GroupByFieldsNotExistOrIllegal"
+//  INVALIDPARAMETER_METRICFILTERSLACKPARAMS = "InvalidParameter.MetricFiltersLackParams"
+//  INVALIDPARAMETER_METRICSFIELDNOTEXISTORILLEGAL = "InvalidParameter.MetricsFieldNotExistOrIllegal"
+//  INVALIDPARAMETER_METRICSFIELDSNOTALLOWEMPTY = "InvalidParameter.MetricsFieldsNotAllowEmpty"
+//  INVALIDPARAMETER_PERIODISILLEGAL = "InvalidParameter.PeriodIsIllegal"
+//  INVALIDPARAMETER_QUERYTIMEINTERVALISNOTSUPPORTED = "InvalidParameter.QueryTimeIntervalIsNotSupported"
+//  INVALIDPARAMETER_VIEWNAMENOTEXISTORILLEGAL = "InvalidParameter.ViewNameNotExistOrIllegal"
+func (c *Client) DescribeGeneralMetricDataWithContext(ctx context.Context, request *DescribeGeneralMetricDataRequest) (response *DescribeGeneralMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeGeneralMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGeneralMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGeneralMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMetricRecordsRequest() (request *DescribeMetricRecordsRequest) {
     request = &DescribeMetricRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

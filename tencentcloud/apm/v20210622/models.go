@@ -377,6 +377,91 @@ func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGeneralMetricDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 要过滤的维度信息，支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤。
+	// 
+	// span.kind:
+	// 
+	//        server:服务端视角
+	//        client:客户端视角
+	// 
+	// 默认为服务端视角进行查询。
+	Filters []*GeneralFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要查询的指标，不可自定义输入。支持：service_request_count（总请求）、service_duration（平均响应时间）的指标数据。
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 视图名称
+	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+	// 聚合维度，支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合。
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeGeneralMetricDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralMetricDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Metrics")
+	delete(f, "InstanceId")
+	delete(f, "ViewName")
+	delete(f, "GroupBy")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGeneralMetricDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGeneralMetricDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Records []*Line `json:"Records,omitempty" name:"Records"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGeneralMetricDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeMetricRecordsRequest struct {
 	*tchttp.BaseRequest
 
@@ -555,6 +640,35 @@ type Filter struct {
 
 	// 过滤值，in过滤方式用逗号分割多个值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type GeneralFilter struct {
+
+	// 过滤维度名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 过滤值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type Line struct {
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 指标中文名
+	MetricNameCN *string `json:"MetricNameCN,omitempty" name:"MetricNameCN"`
+
+	// 时间序列
+	TimeSerial []*int64 `json:"TimeSerial,omitempty" name:"TimeSerial"`
+
+	// 数据序列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSerial []*float64 `json:"DataSerial,omitempty" name:"DataSerial"`
+
+	// 维度列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type OrderBy struct {

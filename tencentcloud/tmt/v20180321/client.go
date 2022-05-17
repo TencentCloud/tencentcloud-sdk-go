@@ -45,6 +45,108 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewFileTranslateRequest() (request *FileTranslateRequest) {
+    request = &FileTranslateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tmt", APIVersion, "FileTranslate")
+    
+    
+    return
+}
+
+func NewFileTranslateResponse() (response *FileTranslateResponse) {
+    response = &FileTranslateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FileTranslate
+// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
+    return c.FileTranslateWithContext(context.Background(), request)
+}
+
+// FileTranslate
+// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
+    if request == nil {
+        request = NewFileTranslateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FileTranslate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFileTranslateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetFileTranslateRequest() (request *GetFileTranslateRequest) {
+    request = &GetFileTranslateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tmt", APIVersion, "GetFileTranslate")
+    
+    
+    return
+}
+
+func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
+    response = &GetFileTranslateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetFileTranslate
+// 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
+//
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调 。
+//
+// • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
+    return c.GetFileTranslateWithContext(context.Background(), request)
+}
+
+// GetFileTranslate
+// 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
+//
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调 。
+//
+// • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+func (c *Client) GetFileTranslateWithContext(ctx context.Context, request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
+    if request == nil {
+        request = NewGetFileTranslateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFileTranslate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFileTranslateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageTranslateRequest() (request *ImageTranslateRequest) {
     request = &ImageTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
