@@ -93,6 +93,9 @@ type AccountPrivilegeModifyInfo struct {
 
 	// 账号权限变更信息
 	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitempty" name:"DBPrivileges"`
+
+	// 是否为管理员账户
+	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
 }
 
 type AccountRemark struct {

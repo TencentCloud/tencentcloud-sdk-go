@@ -2135,6 +2135,9 @@ type ModifyDynamicDNSRequest struct {
 
 	// 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
 	RecordLineId *string `json:"RecordLineId,omitempty" name:"RecordLineId"`
+
+	// TTL值，如果不传，默认为域名的TTL值。
+	Ttl *uint64 `json:"Ttl,omitempty" name:"Ttl"`
 }
 
 func (r *ModifyDynamicDNSRequest) ToJsonString() string {
@@ -2156,6 +2159,7 @@ func (r *ModifyDynamicDNSRequest) FromJsonString(s string) error {
 	delete(f, "DomainId")
 	delete(f, "SubDomain")
 	delete(f, "RecordLineId")
+	delete(f, "Ttl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDynamicDNSRequest has unknown keys!", "")
 	}

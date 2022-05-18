@@ -765,6 +765,9 @@ type CreateRoleRequest struct {
 
 	// 申请角色临时密钥的最长有效期限制(范围：0~43200)
 	SessionDuration *uint64 `json:"SessionDuration,omitempty" name:"SessionDuration"`
+
+	// 角色绑定标签
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateRoleRequest) ToJsonString() string {
@@ -784,6 +787,7 @@ func (r *CreateRoleRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "ConsoleLogin")
 	delete(f, "SessionDuration")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleRequest has unknown keys!", "")
 	}
@@ -882,6 +886,9 @@ type CreateServiceLinkedRoleRequest struct {
 
 	// 角色说明。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色绑定标签。
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateServiceLinkedRoleRequest) ToJsonString() string {
@@ -899,6 +906,7 @@ func (r *CreateServiceLinkedRoleRequest) FromJsonString(s string) error {
 	delete(f, "QCSServiceName")
 	delete(f, "CustomSuffix")
 	delete(f, "Description")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateServiceLinkedRoleRequest has unknown keys!", "")
 	}
@@ -1607,6 +1615,9 @@ type DescribeRoleListRequest struct {
 
 	// 每页行数，不能大于200
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 标签筛选
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeRoleListRequest) ToJsonString() string {
@@ -1623,6 +1634,7 @@ func (r *DescribeRoleListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Page")
 	delete(f, "Rp")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoleListRequest has unknown keys!", "")
 	}
@@ -4326,6 +4338,19 @@ type RoleInfo struct {
 	// 服务相关角色删除TaskId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+}
+
+type RoleTags struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type SAMLProviderInfo struct {

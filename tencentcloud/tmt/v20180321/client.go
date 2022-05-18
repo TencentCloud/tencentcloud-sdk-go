@@ -63,7 +63,7 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 }
 
 // FileTranslate
-// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。
+// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。任务翻译数据可保存7天，7天后不再返回任务数据。请注意保存。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
@@ -72,7 +72,7 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 }
 
 // FileTranslate
-// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。
+// 提交文档原文内容，输出任务ID， 支持原文为单一语种文档（如出现多语言文档，仅支持以选定的源语言相关内容翻译）,文件格式有pdf、docx、pptx、xlsx，支持的文本格式有txt、xml、html、markdown、properties。任务翻译数据可保存7天，7天后不再返回任务数据。请注意保存。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"

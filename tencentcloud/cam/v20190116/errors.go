@@ -38,6 +38,9 @@ const (
 	// 策略版本数已经达到上限。
 	FAILEDOPERATION_POLICYVERSIONFULL = "FailedOperation.PolicyVersionFull"
 
+	// 绑定标签失败。
+	FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+
 	// 用户未绑定手机。
 	FAILEDOPERATION_USERNOTBINDPHONE = "FailedOperation.UserNotBindPhone"
 
@@ -214,6 +217,12 @@ const (
 
 	// 子用户名称重复。
 	INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
+
+	// 超出标签限制。
+	INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+
+	// 标签参数错误。
+	INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 
 	// Uin字段不合法。
 	INVALIDPARAMETER_UINERROR = "InvalidParameter.UinError"

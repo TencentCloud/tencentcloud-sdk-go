@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 Redis(redis) 版本：2018-04-12
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 45 次发布
+### 第 47 次发布
 
-发布时间：2022-05-18 06:15:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/239/20026)
-
-	* 新增入参：DryRun
-
-
-
-
-## 安全凭证服务(sts) 版本：2018-08-13
-
-### 第 9 次发布
-
-发布时间：2022-05-18 06:16:35
+发布时间：2022-05-19 06:07:36
 
 本次发布包含了以下内容：
 
@@ -31,76 +12,75 @@
 
 修改接口：
 
-* [AssumeRole](https://cloud.tencent.com/document/api/1312/48197)
+* [CreateRole](https://cloud.tencent.com/document/api/598/36225)
+
+	* 新增入参：Tags
+
+* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
+
+	* 新增入参：Tags
+
+* [DescribeRoleList](https://cloud.tencent.com/document/api/598/36223)
 
 	* 新增入参：Tags
 
 
 新增数据结构：
 
-* [Tag](https://cloud.tencent.com/document/api/1312/48198#Tag)
+* [RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)
+
+修改数据结构：
+
+* [RoleInfo](https://cloud.tencent.com/document/api/598/33167#RoleInfo)
+
+	* 新增成员：Tags
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+
+## DNSPod(dnspod) 版本：2021-03-23
 
 ### 第 4 次发布
 
-发布时间：2022-05-18 06:18:03
+发布时间：2022-05-19 06:11:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DownloadL7Logs](https://cloud.tencent.com/document/api/1552/73899)
+* [ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)
 
-新增数据结构：
+	* 新增入参：Ttl
 
-* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/73155#L7OfflineLog)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 30 次发布
+
+发布时间：2022-05-19 06:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountPrivilegeModifyInfo](https://cloud.tencent.com/document/api/238/19976#AccountPrivilegeModifyInfo)
+
+	* 新增成员：IsAdmin
+
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 99 次发布
+### 第 100 次发布
 
-发布时间：2022-05-18 06:18:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73918)
-* [CreatePrometheusTemp](https://cloud.tencent.com/document/api/457/73917)
-* [DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73916)
-* [DeletePrometheusTemp](https://cloud.tencent.com/document/api/457/73915)
-* [DeletePrometheusTempSync](https://cloud.tencent.com/document/api/457/73914)
-* [DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73913)
-* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/457/73912)
-* [DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/73911)
-* [DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/457/73910)
-* [DescribePrometheusTemp](https://cloud.tencent.com/document/api/457/73909)
-* [DescribePrometheusTempSync](https://cloud.tencent.com/document/api/457/73908)
-* [DisableClusterAudit](https://cloud.tencent.com/document/api/457/73901)
-* [DisableEventPersistence](https://cloud.tencent.com/document/api/457/73905)
-* [EnableClusterAudit](https://cloud.tencent.com/document/api/457/73900)
-* [EnableEventPersistence](https://cloud.tencent.com/document/api/457/73904)
-* [InstallLogAgent](https://cloud.tencent.com/document/api/457/73903)
-* [ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73907)
-* [SyncPrometheusTemp](https://cloud.tencent.com/document/api/457/73906)
-* [UninstallLogAgent](https://cloud.tencent.com/document/api/457/73902)
-
-
-
-## 机器翻译(tmt) 版本：2018-03-21
-
-### 第 7 次发布
-
-发布时间：2022-05-18 06:19:05
+发布时间：2022-05-19 06:19:17
 
 本次发布包含了以下内容：
 
@@ -108,30 +88,7 @@
 
 新增接口：
 
-* [FileTranslate](https://cloud.tencent.com/document/api/551/73920)
-* [GetFileTranslate](https://cloud.tencent.com/document/api/551/73919)
-
-新增数据结构：
-
-* [GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData)
-* [Task](https://cloud.tencent.com/document/api/551/17233#Task)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 112 次发布
-
-发布时间：2022-05-18 06:20:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DisableFlowLogs](https://cloud.tencent.com/document/api/215/73922)
-* [EnableFlowLogs](https://cloud.tencent.com/document/api/215/73921)
+* [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)
 
 
 
@@ -7781,6 +7738,40 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 47 次发布
+
+发布时间：2022-05-19 06:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRole](https://cloud.tencent.com/document/api/598/36225)
+
+	* 新增入参：Tags
+
+* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
+
+	* 新增入参：Tags
+
+* [DescribeRoleList](https://cloud.tencent.com/document/api/598/36223)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [[RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)](https://cloud.tencent.com/document/api/598/33167#[RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags))
+
+修改数据结构：
+
+* [RoleInfo](https://cloud.tencent.com/document/api/598/33167#RoleInfo)
+
+	* 新增成员：Tags
+
 
 ### 第 46 次发布
 
@@ -28461,6 +28452,21 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 4 次发布
+
+发布时间：2022-05-19 06:11:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)
+
+	* 新增入参：Ttl
+
 
 ### 第 3 次发布
 
@@ -55762,6 +55768,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 30 次发布
+
+发布时间：2022-05-19 06:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountPrivilegeModifyInfo](https://cloud.tencent.com/document/api/238/19976#AccountPrivilegeModifyInfo)
+
+	* 新增成员：IsAdmin
+
+
 ### 第 29 次发布
 
 发布时间：2022-05-09 06:12:52
@@ -57247,7 +57268,7 @@
 
 新增数据结构：
 
-* [[Tag](https://cloud.tencent.com/document/api/1312/48198#Tag)](https://cloud.tencent.com/document/api/1312/48198#[Tag](https://cloud.tencent.com/document/api/1312/48198#Tag))
+* [Tag](https://cloud.tencent.com/document/api/1312/48198#Tag)
 
 ### 第 8 次发布
 
@@ -64093,11 +64114,11 @@
 
 新增接口：
 
-* [[DownloadL7Logs](https://cloud.tencent.com/document/api/1552/73899)](https://cloud.tencent.com/document/api/#/#)
+* [DownloadL7Logs](https://cloud.tencent.com/document/api/1552/73899)
 
 新增数据结构：
 
-* [[L7OfflineLog](https://cloud.tencent.com/document/api/1552/73155#L7OfflineLog)](https://cloud.tencent.com/document/api/1552/73155#[L7OfflineLog](https://cloud.tencent.com/document/api/1552/73155#L7OfflineLog))
+* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/73155#L7OfflineLog)
 
 ### 第 3 次发布
 
@@ -66042,6 +66063,18 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 100 次发布
+
+发布时间：2022-05-19 06:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 99 次发布
 
 发布时间：2022-05-18 06:18:26
@@ -66052,25 +66085,25 @@
 
 新增接口：
 
-* [[CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73918)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePrometheusTemp](https://cloud.tencent.com/document/api/457/73917)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73916)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePrometheusTemp](https://cloud.tencent.com/document/api/457/73915)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePrometheusTempSync](https://cloud.tencent.com/document/api/457/73914)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73913)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/457/73912)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/73911)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/457/73910)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusTemp](https://cloud.tencent.com/document/api/457/73909)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusTempSync](https://cloud.tencent.com/document/api/457/73908)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableClusterAudit](https://cloud.tencent.com/document/api/457/73901)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableEventPersistence](https://cloud.tencent.com/document/api/457/73905)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableClusterAudit](https://cloud.tencent.com/document/api/457/73900)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableEventPersistence](https://cloud.tencent.com/document/api/457/73904)](https://cloud.tencent.com/document/api/#/#)
-* [[InstallLogAgent](https://cloud.tencent.com/document/api/457/73903)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73907)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncPrometheusTemp](https://cloud.tencent.com/document/api/457/73906)](https://cloud.tencent.com/document/api/#/#)
-* [[UninstallLogAgent](https://cloud.tencent.com/document/api/457/73902)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73918)
+* [CreatePrometheusTemp](https://cloud.tencent.com/document/api/457/73917)
+* [DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73916)
+* [DeletePrometheusTemp](https://cloud.tencent.com/document/api/457/73915)
+* [DeletePrometheusTempSync](https://cloud.tencent.com/document/api/457/73914)
+* [DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73913)
+* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/457/73912)
+* [DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/73911)
+* [DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/457/73910)
+* [DescribePrometheusTemp](https://cloud.tencent.com/document/api/457/73909)
+* [DescribePrometheusTempSync](https://cloud.tencent.com/document/api/457/73908)
+* [DisableClusterAudit](https://cloud.tencent.com/document/api/457/73901)
+* [DisableEventPersistence](https://cloud.tencent.com/document/api/457/73905)
+* [EnableClusterAudit](https://cloud.tencent.com/document/api/457/73900)
+* [EnableEventPersistence](https://cloud.tencent.com/document/api/457/73904)
+* [InstallLogAgent](https://cloud.tencent.com/document/api/457/73903)
+* [ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73907)
+* [SyncPrometheusTemp](https://cloud.tencent.com/document/api/457/73906)
+* [UninstallLogAgent](https://cloud.tencent.com/document/api/457/73902)
 
 ### 第 98 次发布
 
@@ -68171,13 +68204,13 @@
 
 新增接口：
 
-* [[FileTranslate](https://cloud.tencent.com/document/api/551/73920)](https://cloud.tencent.com/document/api/#/#)
-* [[GetFileTranslate](https://cloud.tencent.com/document/api/551/73919)](https://cloud.tencent.com/document/api/#/#)
+* [FileTranslate](https://cloud.tencent.com/document/api/551/73920)
+* [GetFileTranslate](https://cloud.tencent.com/document/api/551/73919)
 
 新增数据结构：
 
-* [[GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData)](https://cloud.tencent.com/document/api/551/17233#[GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData))
-* [[Task](https://cloud.tencent.com/document/api/551/17233#Task)](https://cloud.tencent.com/document/api/551/17233#[Task](https://cloud.tencent.com/document/api/551/17233#Task))
+* [GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData)
+* [Task](https://cloud.tencent.com/document/api/551/17233#Task)
 
 ### 第 6 次发布
 
@@ -74480,8 +74513,8 @@
 
 新增接口：
 
-* [[DisableFlowLogs](https://cloud.tencent.com/document/api/215/73922)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableFlowLogs](https://cloud.tencent.com/document/api/215/73921)](https://cloud.tencent.com/document/api/#/#)
+* [DisableFlowLogs](https://cloud.tencent.com/document/api/215/73922)
+* [EnableFlowLogs](https://cloud.tencent.com/document/api/215/73921)
 
 ### 第 111 次发布
 

@@ -1,3 +1,97 @@
+# Release v1.0.402
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 47 次发布
+
+发布时间：2022-05-19 06:07:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRole](https://cloud.tencent.com/document/api/598/36225)
+
+	* 新增入参：Tags
+
+* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
+
+	* 新增入参：Tags
+
+* [DescribeRoleList](https://cloud.tencent.com/document/api/598/36223)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)
+
+修改数据结构：
+
+* [RoleInfo](https://cloud.tencent.com/document/api/598/33167#RoleInfo)
+
+	* 新增成员：Tags
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 4 次发布
+
+发布时间：2022-05-19 06:11:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)
+
+	* 新增入参：Ttl
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 30 次发布
+
+发布时间：2022-05-19 06:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccountPrivilegeModifyInfo](https://cloud.tencent.com/document/api/238/19976#AccountPrivilegeModifyInfo)
+
+	* 新增成员：IsAdmin
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 100 次发布
+
+发布时间：2022-05-19 06:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)
+
+
+
 # Release v1.0.401
 
 ## 云数据库 Redis(redis) 版本：2018-04-12

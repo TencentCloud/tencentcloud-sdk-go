@@ -7419,6 +7419,61 @@ func (c *Client) ModifyPrometheusAlertRuleWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyPrometheusTempRequest() (request *ModifyPrometheusTempRequest) {
+    request = &ModifyPrometheusTempRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusTemp")
+    
+    
+    return
+}
+
+func NewModifyPrometheusTempResponse() (response *ModifyPrometheusTempResponse) {
+    response = &ModifyPrometheusTempResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPrometheusTemp
+// 修改模板内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) ModifyPrometheusTemp(request *ModifyPrometheusTempRequest) (response *ModifyPrometheusTempResponse, err error) {
+    return c.ModifyPrometheusTempWithContext(context.Background(), request)
+}
+
+// ModifyPrometheusTemp
+// 修改模板内容
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+func (c *Client) ModifyPrometheusTempWithContext(ctx context.Context, request *ModifyPrometheusTempRequest) (response *ModifyPrometheusTempResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusTempRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrometheusTemp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrometheusTempResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPrometheusTemplateRequest() (request *ModifyPrometheusTemplateRequest) {
     request = &ModifyPrometheusTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -744,6 +744,7 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 // 本接口（CreateRole）用于创建角色。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
 //  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
@@ -763,6 +764,8 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 //  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
 //  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
 //  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 //  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
 //  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
@@ -773,6 +776,7 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
 // 本接口（CreateRole）用于创建角色。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
 //  INVALIDPARAMETER_ACTIONMISS = "InvalidParameter.ActionMiss"
@@ -792,6 +796,8 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
 //  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
 //  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
 //  INVALIDPARAMETER_STATEMENTERROR = "InvalidParameter.StatementError"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 //  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
 //  INVALIDPARAMETER_VERSIONERROR = "InvalidParameter.VersionError"
 func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
@@ -886,11 +892,21 @@ func NewCreateServiceLinkedRoleResponse() (response *CreateServiceLinkedRoleResp
 // 创建服务相关角色
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
 //  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
 //  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
 //  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (response *CreateServiceLinkedRoleResponse, err error) {
     return c.CreateServiceLinkedRoleWithContext(context.Background(), request)
 }
@@ -899,11 +915,21 @@ func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest
 // 创建服务相关角色
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
+//  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
+//  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
 //  INVALIDPARAMETER_DESCRIPTIONLENGTHOVERLIMIT = "InvalidParameter.DescriptionLengthOverlimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
+//  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
 //  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
 //  INVALIDPARAMETER_ROLENAMEINUSE = "InvalidParameter.RoleNameInUse"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 func (c *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, request *CreateServiceLinkedRoleRequest) (response *CreateServiceLinkedRoleResponse, err error) {
     if request == nil {
         request = NewCreateServiceLinkedRoleRequest()

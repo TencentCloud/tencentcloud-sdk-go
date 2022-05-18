@@ -6435,7 +6435,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网
+	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全eip
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 

@@ -1994,10 +1994,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //
 //           <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2009,10 +2005,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //           <td>96%</td>
 //
 //           <td>99%</td>
-//
-//           
-//
-//           
 //
 //         </tr>
 //
@@ -2026,10 +2018,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //
 //           <td>高</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2041,10 +2029,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //           <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>  
 //
 //           <td>中文、英文、中英文</td>
-//
-//           
-//
-//           
 //
 //         </tr>
 //
@@ -2058,10 +2042,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //
 //           <td>支持</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2074,10 +2054,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //
 //           <td>支持</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2089,10 +2065,6 @@ func NewGeneralEfficientOCRResponse() (response *GeneralEfficientOCRResponse) {
 //           <td>支持旋转识别，返回角度信息</td>
 //
 //           <td>支持旋转识别，返回角度信息</td>
-//
-//           
-//
-//          
 //
 //         </tr>
 //
@@ -2160,10 +2132,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //
 //           <td>适用于文字较多、长串数字、小字、模糊字、倾斜文本等困难场景</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2175,10 +2143,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //           <td>96%</td>
 //
 //           <td>99%</td>
-//
-//           
-//
-//           
 //
 //         </tr>
 //
@@ -2192,10 +2156,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //
 //           <td>高</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2207,10 +2167,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //           <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>  
 //
 //           <td>中文、英文、中英文</td>
-//
-//           
-//
-//           
 //
 //         </tr>
 //
@@ -2224,10 +2180,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //
 //           <td>支持</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2240,10 +2192,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //
 //           <td>支持</td>
 //
-//           
-//
-//           
-//
 //         </tr>
 //
 //         <tr>
@@ -2255,10 +2203,6 @@ func (c *Client) GeneralEfficientOCR(request *GeneralEfficientOCRRequest) (respo
 //           <td>支持旋转识别，返回角度信息</td>
 //
 //           <td>支持旋转识别，返回角度信息</td>
-//
-//           
-//
-//          
 //
 //         </tr>
 //
