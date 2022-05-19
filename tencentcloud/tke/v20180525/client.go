@@ -1503,6 +1503,65 @@ func (c *Client) CreatePrometheusDashboardWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreatePrometheusGlobalNotificationRequest() (request *CreatePrometheusGlobalNotificationRequest) {
+    request = &CreatePrometheusGlobalNotificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreatePrometheusGlobalNotification")
+    
+    
+    return
+}
+
+func NewCreatePrometheusGlobalNotificationResponse() (response *CreatePrometheusGlobalNotificationResponse) {
+    response = &CreatePrometheusGlobalNotificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusGlobalNotification
+// 创建全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) CreatePrometheusGlobalNotification(request *CreatePrometheusGlobalNotificationRequest) (response *CreatePrometheusGlobalNotificationResponse, err error) {
+    return c.CreatePrometheusGlobalNotificationWithContext(context.Background(), request)
+}
+
+// CreatePrometheusGlobalNotification
+// 创建全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
+func (c *Client) CreatePrometheusGlobalNotificationWithContext(ctx context.Context, request *CreatePrometheusGlobalNotificationRequest) (response *CreatePrometheusGlobalNotificationResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusGlobalNotificationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheusGlobalNotification require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusGlobalNotificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrometheusTempRequest() (request *CreatePrometheusTempRequest) {
     request = &CreatePrometheusTempRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5054,6 +5113,59 @@ func (c *Client) DescribePrometheusClusterAgentsWithContext(ctx context.Context,
     return
 }
 
+func NewDescribePrometheusGlobalNotificationRequest() (request *DescribePrometheusGlobalNotificationRequest) {
+    request = &DescribePrometheusGlobalNotificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePrometheusGlobalNotification")
+    
+    
+    return
+}
+
+func NewDescribePrometheusGlobalNotificationResponse() (response *DescribePrometheusGlobalNotificationResponse) {
+    response = &DescribePrometheusGlobalNotificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusGlobalNotification
+// 查询全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusGlobalNotification(request *DescribePrometheusGlobalNotificationRequest) (response *DescribePrometheusGlobalNotificationResponse, err error) {
+    return c.DescribePrometheusGlobalNotificationWithContext(context.Background(), request)
+}
+
+// DescribePrometheusGlobalNotification
+// 查询全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribePrometheusGlobalNotificationWithContext(ctx context.Context, request *DescribePrometheusGlobalNotificationRequest) (response *DescribePrometheusGlobalNotificationResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusGlobalNotificationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusGlobalNotification require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusGlobalNotificationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusInstanceRequest() (request *DescribePrometheusInstanceRequest) {
     request = &DescribePrometheusInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7415,6 +7527,61 @@ func (c *Client) ModifyPrometheusAlertRuleWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyPrometheusAlertRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPrometheusGlobalNotificationRequest() (request *ModifyPrometheusGlobalNotificationRequest) {
+    request = &ModifyPrometheusGlobalNotificationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyPrometheusGlobalNotification")
+    
+    
+    return
+}
+
+func NewModifyPrometheusGlobalNotificationResponse() (response *ModifyPrometheusGlobalNotificationResponse) {
+    response = &ModifyPrometheusGlobalNotificationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPrometheusGlobalNotification
+// 修改全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyPrometheusGlobalNotification(request *ModifyPrometheusGlobalNotificationRequest) (response *ModifyPrometheusGlobalNotificationResponse, err error) {
+    return c.ModifyPrometheusGlobalNotificationWithContext(context.Background(), request)
+}
+
+// ModifyPrometheusGlobalNotification
+// 修改全局告警通知渠道
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ModifyPrometheusGlobalNotificationWithContext(ctx context.Context, request *ModifyPrometheusGlobalNotificationRequest) (response *ModifyPrometheusGlobalNotificationResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusGlobalNotificationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrometheusGlobalNotification require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrometheusGlobalNotificationResponse()
     err = c.Send(request, response)
     return
 }

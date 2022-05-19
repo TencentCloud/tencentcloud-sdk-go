@@ -6044,6 +6044,9 @@ type RunInstancesRequest struct {
 	// 实例启动模板。
 	LaunchTemplate *LaunchTemplate `json:"LaunchTemplate,omitempty" name:"LaunchTemplate"`
 
+	// 指定专用集群创建。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
 	// 指定CHC物理服务器来创建CHC云主机。
 	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
 
@@ -6088,6 +6091,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "CamRoleName")
 	delete(f, "HpcClusterId")
 	delete(f, "LaunchTemplate")
+	delete(f, "DedicatedClusterId")
 	delete(f, "ChcIds")
 	delete(f, "DisableApiTermination")
 	if len(f) > 0 {

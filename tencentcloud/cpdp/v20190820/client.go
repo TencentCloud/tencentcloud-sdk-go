@@ -2482,6 +2482,183 @@ func (c *Client) CreatePayMerchantWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePayRollPreOrderRequest() (request *CreatePayRollPreOrderRequest) {
+    request = &CreatePayRollPreOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollPreOrder")
+    
+    
+    return
+}
+
+func NewCreatePayRollPreOrderResponse() (response *CreatePayRollPreOrderResponse) {
+    response = &CreatePayRollPreOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePayRollPreOrder
+// 务工卡-核身预下单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollPreOrder(request *CreatePayRollPreOrderRequest) (response *CreatePayRollPreOrderResponse, err error) {
+    return c.CreatePayRollPreOrderWithContext(context.Background(), request)
+}
+
+// CreatePayRollPreOrder
+// 务工卡-核身预下单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollPreOrderWithContext(ctx context.Context, request *CreatePayRollPreOrderRequest) (response *CreatePayRollPreOrderResponse, err error) {
+    if request == nil {
+        request = NewCreatePayRollPreOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePayRollPreOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePayRollPreOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePayRollPreOrderWithAuthRequest() (request *CreatePayRollPreOrderWithAuthRequest) {
+    request = &CreatePayRollPreOrderWithAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollPreOrderWithAuth")
+    
+    
+    return
+}
+
+func NewCreatePayRollPreOrderWithAuthResponse() (response *CreatePayRollPreOrderWithAuthResponse) {
+    response = &CreatePayRollPreOrderWithAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePayRollPreOrderWithAuth
+// 务工卡-核身预下单带授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollPreOrderWithAuth(request *CreatePayRollPreOrderWithAuthRequest) (response *CreatePayRollPreOrderWithAuthResponse, err error) {
+    return c.CreatePayRollPreOrderWithAuthWithContext(context.Background(), request)
+}
+
+// CreatePayRollPreOrderWithAuth
+// 务工卡-核身预下单带授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollPreOrderWithAuthWithContext(ctx context.Context, request *CreatePayRollPreOrderWithAuthRequest) (response *CreatePayRollPreOrderWithAuthResponse, err error) {
+    if request == nil {
+        request = NewCreatePayRollPreOrderWithAuthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePayRollPreOrderWithAuth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePayRollPreOrderWithAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePayRollTokenRequest() (request *CreatePayRollTokenRequest) {
+    request = &CreatePayRollTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollToken")
+    
+    
+    return
+}
+
+func NewCreatePayRollTokenResponse() (response *CreatePayRollTokenResponse) {
+    response = &CreatePayRollTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePayRollToken
+// 务工卡-生成授权令牌
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollToken(request *CreatePayRollTokenRequest) (response *CreatePayRollTokenResponse, err error) {
+    return c.CreatePayRollTokenWithContext(context.Background(), request)
+}
+
+// CreatePayRollToken
+// 务工卡-生成授权令牌
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) CreatePayRollTokenWithContext(ctx context.Context, request *CreatePayRollTokenRequest) (response *CreatePayRollTokenResponse, err error) {
+    if request == nil {
+        request = NewCreatePayRollTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePayRollToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePayRollTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRedInvoiceRequest() (request *CreateRedInvoiceRequest) {
     request = &CreateRedInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3830,6 +4007,183 @@ func (c *Client) GetDistributeBillDownloadUrlWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewGetDistributeBillDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPayRollAuthRequest() (request *GetPayRollAuthRequest) {
+    request = &GetPayRollAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuth")
+    
+    
+    return
+}
+
+func NewGetPayRollAuthResponse() (response *GetPayRollAuthResponse) {
+    response = &GetPayRollAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPayRollAuth
+// 务工卡-查询授权关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuth(request *GetPayRollAuthRequest) (response *GetPayRollAuthResponse, err error) {
+    return c.GetPayRollAuthWithContext(context.Background(), request)
+}
+
+// GetPayRollAuth
+// 务工卡-查询授权关系
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuthWithContext(ctx context.Context, request *GetPayRollAuthRequest) (response *GetPayRollAuthResponse, err error) {
+    if request == nil {
+        request = NewGetPayRollAuthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPayRollAuth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPayRollAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPayRollAuthListRequest() (request *GetPayRollAuthListRequest) {
+    request = &GetPayRollAuthListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuthList")
+    
+    
+    return
+}
+
+func NewGetPayRollAuthListResponse() (response *GetPayRollAuthListResponse) {
+    response = &GetPayRollAuthListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPayRollAuthList
+// 务工卡-查询核身记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuthList(request *GetPayRollAuthListRequest) (response *GetPayRollAuthListResponse, err error) {
+    return c.GetPayRollAuthListWithContext(context.Background(), request)
+}
+
+// GetPayRollAuthList
+// 务工卡-查询核身记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuthListWithContext(ctx context.Context, request *GetPayRollAuthListRequest) (response *GetPayRollAuthListResponse, err error) {
+    if request == nil {
+        request = NewGetPayRollAuthListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPayRollAuthList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPayRollAuthListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPayRollAuthResultRequest() (request *GetPayRollAuthResultRequest) {
+    request = &GetPayRollAuthResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuthResult")
+    
+    
+    return
+}
+
+func NewGetPayRollAuthResultResponse() (response *GetPayRollAuthResultResponse) {
+    response = &GetPayRollAuthResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPayRollAuthResult
+// 务工卡-获取核身结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuthResult(request *GetPayRollAuthResultRequest) (response *GetPayRollAuthResultResponse, err error) {
+    return c.GetPayRollAuthResultWithContext(context.Background(), request)
+}
+
+// GetPayRollAuthResult
+// 务工卡-获取核身结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGN = "AuthFailure.Sign"
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+//  RESOURCENOTFOUND_KEY = "ResourceNotFound.Key"
+func (c *Client) GetPayRollAuthResultWithContext(ctx context.Context, request *GetPayRollAuthResultRequest) (response *GetPayRollAuthResultResponse, err error) {
+    if request == nil {
+        request = NewGetPayRollAuthResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPayRollAuthResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPayRollAuthResultResponse()
     err = c.Send(request, response)
     return
 }

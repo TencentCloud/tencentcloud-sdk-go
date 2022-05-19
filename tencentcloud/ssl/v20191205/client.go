@@ -1077,6 +1077,65 @@ func (c *Client) DownloadCertificateWithContext(ctx context.Context, request *Do
     return
 }
 
+func NewHostCertificateRequest() (request *HostCertificateRequest) {
+    request = &HostCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ssl", APIVersion, "HostCertificate")
+    
+    
+    return
+}
+
+func NewHostCertificateResponse() (response *HostCertificateResponse) {
+    response = &HostCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// HostCertificate
+// 云资源托管
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATEHASRENEWED = "FailedOperation.CertificateHasRenewed"
+//  FAILEDOPERATION_CERTIFICATEHOSTINGTYPENUMBERLIMIT = "FailedOperation.CertificateHostingTypeNumberLimit"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) HostCertificate(request *HostCertificateRequest) (response *HostCertificateResponse, err error) {
+    return c.HostCertificateWithContext(context.Background(), request)
+}
+
+// HostCertificate
+// 云资源托管
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATEHASRENEWED = "FailedOperation.CertificateHasRenewed"
+//  FAILEDOPERATION_CERTIFICATEHOSTINGTYPENUMBERLIMIT = "FailedOperation.CertificateHostingTypeNumberLimit"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) HostCertificateWithContext(ctx context.Context, request *HostCertificateRequest) (response *HostCertificateResponse, err error) {
+    if request == nil {
+        request = NewHostCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HostCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewHostCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCertificateAliasRequest() (request *ModifyCertificateAliasRequest) {
     request = &ModifyCertificateAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},

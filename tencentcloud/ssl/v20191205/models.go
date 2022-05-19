@@ -162,6 +162,24 @@ func (r *CancelCertificateOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CertHostingInfo struct {
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 已替换的新证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewCertId *string `json:"RenewCertId,omitempty" name:"RenewCertId"`
+
+	// 云资源托管 ，CDN或CLB：部分开启，CDN,CLB：已开启，null：未开启托管
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type CertificateExtra struct {
 
 	// 证书可配置域名数量。
@@ -1532,6 +1550,59 @@ type DvAuths struct {
 	// DV 认证类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
+}
+
+type HostCertificateRequest struct {
+	*tchttp.BaseRequest
+
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 资源类型：目前仅限于CLB,CDN
+	ResourceType []*string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *HostCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HostCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HostCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type HostCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 云资源配置详情
+		CertHostingInfo *CertHostingInfo `json:"CertHostingInfo,omitempty" name:"CertHostingInfo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *HostCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HostCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ManagerInfo struct {

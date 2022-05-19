@@ -2530,6 +2530,18 @@ func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
 
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
+
+	// 可用区列表排序的依据字段。取值范围：
+	// <li>ZONE：依据可用区排序。
+	// <li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序, 可用区展示标签按可选择程度, 升序排列为: ['HIDDEN', 'NORMAL', 'SELECTED']。
+	// 默认按可用区排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 输出可用区列表的排列顺序。取值范围：
+	// <li>ASC：升序排列。 
+	// <li>DESC：降序排列。
+	// 默认按升序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeZonesRequest) ToJsonString() string {
@@ -2544,6 +2556,8 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "OrderField")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
 	}

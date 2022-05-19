@@ -2480,6 +2480,22 @@ type TaskResponseInfo struct {
 	// 用户别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// spark应用作业名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobName *string `json:"SparkJobName,omitempty" name:"SparkJobName"`
+
+	// spark应用作业Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobId *string `json:"SparkJobId,omitempty" name:"SparkJobId"`
+
+	// spark应用入口jar文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkJobFile *string `json:"SparkJobFile,omitempty" name:"SparkJobFile"`
+
+	// spark ui url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UiUrl *string `json:"UiUrl,omitempty" name:"UiUrl"`
 }
 
 type TaskResultInfo struct {

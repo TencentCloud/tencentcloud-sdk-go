@@ -7934,6 +7934,10 @@ type NetworkInterface struct {
 
 	// EcmRegion ecm区域
 	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 网卡绑定的子机类型：cvm，eks。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Business *string `json:"Business,omitempty" name:"Business"`
 }
 
 type NetworkInterfaceAttachment struct {

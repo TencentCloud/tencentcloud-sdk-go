@@ -242,7 +242,7 @@ const (
 	// 创建kubernetes命名空间失败。
 	INTERNALERROR_KUBERNETESAPICREATENAMESPACESERROR = "InternalError.KubernetesApiCreateNamespacesError"
 
-	// 创建kubernetes秘钥失败。
+	// 创建kubernetes密钥失败。
 	INTERNALERROR_KUBERNETESAPICREATESECRETERROR = "InternalError.KubernetesApiCreateSecretError"
 
 	// kubernetes api 调用失败。

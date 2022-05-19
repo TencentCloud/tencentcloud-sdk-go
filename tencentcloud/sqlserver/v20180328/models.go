@@ -36,6 +36,9 @@ type AccountCreateInfo struct {
 
 	// 是否为管理员账户，默认为否
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
+
+	// win-windows鉴权,sql-sqlserver鉴权，不填模式兼容接口sqlserver鉴权
+	Authentication *string `json:"Authentication,omitempty" name:"Authentication"`
 }
 
 type AccountDetail struct {
@@ -66,6 +69,12 @@ type AccountDetail struct {
 
 	// 是否为管理员账户
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
+
+	// win-windows鉴权,sql-sqlserver鉴权
+	Authentication *string `json:"Authentication,omitempty" name:"Authentication"`
+
+	// win-windows鉴权账户需要host
+	Host *string `json:"Host,omitempty" name:"Host"`
 }
 
 type AccountPassword struct {
@@ -3118,6 +3127,7 @@ type DescribeMigrationDatabasesResponse struct {
 		Amount *int64 `json:"Amount,omitempty" name:"Amount"`
 
 		// 数据库名称数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		MigrateDBSet []*string `json:"MigrateDBSet,omitempty" name:"MigrateDBSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7118,6 +7128,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为夸可用区
 	MultiZones *string `json:"MultiZones,omitempty" name:"MultiZones"`
+
+	// 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
+	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -7141,6 +7154,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DBVersion")
 	delete(f, "HAType")
 	delete(f, "MultiZones")
+	delete(f, "WaitSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

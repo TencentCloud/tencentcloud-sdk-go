@@ -428,6 +428,9 @@ const (
 	// 域名未备案。
 	RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
 
+	// 该域名已在云点播内接入，请先在云点播内删除域名后再接入。
+	RESOURCEUNAVAILABLE_HOSTEXISTINVOD = "ResourceUnavailable.HostExistInVod"
+
 	// SCDN服务未生效，请购买或续费SCDN套餐后重试。
 	RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
 

@@ -20,6 +20,52 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AddUsersForUserManagerRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户信息列表
+	UserManagerUserList []*UserInfoForUserManager `json:"UserManagerUserList,omitempty" name:"UserManagerUserList"`
+}
+
+func (r *AddUsersForUserManagerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUsersForUserManagerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserManagerUserList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUsersForUserManagerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUsersForUserManagerResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddUsersForUserManagerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUsersForUserManagerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BootstrapAction struct {
 
 	// 脚本位置，支持cos上的文件，且只支持https协议。
@@ -829,6 +875,78 @@ func (r *DescribeInstanceRenewNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInstancesListRequest struct {
+	*tchttp.BaseRequest
+
+	// 集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+	DisplayStrategy *string `json:"DisplayStrategy,omitempty" name:"DisplayStrategy"`
+
+	// 页编号，默认值为0，表示第一页。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页返回数量，默认值为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
+
+	// 自定义查询
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeInstancesListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DisplayStrategy")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "Asc")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstancesListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 符合条件的实例总数。
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 集群实例列表
+		InstancesList []*EmrListInstance `json:"InstancesList,omitempty" name:"InstancesList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeInstancesListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 
@@ -1076,6 +1194,107 @@ type DynamicPodSpec struct {
 	LimitMemory *float64 `json:"LimitMemory,omitempty" name:"LimitMemory"`
 }
 
+type EmrListInstance struct {
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 集群名字
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群地域
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 用户APPID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 创建时间
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 运行时间
+	RunTime *string `json:"RunTime,omitempty" name:"RunTime"`
+
+	// 集群IP
+	MasterIp *string `json:"MasterIp,omitempty" name:"MasterIp"`
+
+	// 集群版本
+	EmrVersion *string `json:"EmrVersion,omitempty" name:"EmrVersion"`
+
+	// 集群计费类型
+	ChargeType *uint64 `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// emr ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *uint64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *uint64 `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *uint64 `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 告警信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmInfo *string `json:"AlarmInfo,omitempty" name:"AlarmInfo"`
+
+	// 是否是woodpecker集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWoodpeckerCluster *uint64 `json:"IsWoodpeckerCluster,omitempty" name:"IsWoodpeckerCluster"`
+
+	// Vpc中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 子网中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 字符串VpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 字符串子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterClass *string `json:"ClusterClass,omitempty" name:"ClusterClass"`
+
+	// 是否为跨AZ集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitempty" name:"IsMultiZoneCluster"`
+}
+
 type EmrProductConfigOutter struct {
 
 	// 软件信息
@@ -1180,6 +1399,15 @@ type ExternalService struct {
 
 	// 共用组件集群
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type Filters struct {
+
+	// 字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤字段值
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type HostVolumeContext struct {
@@ -3229,6 +3457,21 @@ type UpdateInstanceSettings struct {
 
 	// 变配机器规格
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+type UserInfoForUserManager struct {
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户所属的组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 密码
+	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
+
+	// 备注
+	ReMark *string `json:"ReMark,omitempty" name:"ReMark"`
 }
 
 type VPCSettings struct {

@@ -2436,6 +2436,55 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, request *Enable
     return
 }
 
+func NewGetAllVersionRequest() (request *GetAllVersionRequest) {
+    request = &GetAllVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "GetAllVersion")
+    
+    
+    return
+}
+
+func NewGetAllVersionResponse() (response *GetAllVersionResponse) {
+    response = &GetAllVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAllVersion
+// 本接口（GetAllVersion）用于获取所有的版本列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetAllVersion(request *GetAllVersionRequest) (response *GetAllVersionResponse, err error) {
+    return c.GetAllVersionWithContext(context.Background(), request)
+}
+
+// GetAllVersion
+// 本接口（GetAllVersion）用于获取所有的版本列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetAllVersionWithContext(ctx context.Context, request *GetAllVersionRequest) (response *GetAllVersionResponse, err error) {
+    if request == nil {
+        request = NewGetAllVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAllVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAllVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
     request = &GetCOSURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2532,6 +2581,55 @@ func (c *Client) GetUserResourceInfoWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetUserResourceInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
+    request = &ListFirmwaresRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListFirmwares")
+    
+    
+    return
+}
+
+func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
+    response = &ListFirmwaresResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListFirmwares
+// 本接口（ListFirmwares）用于获取固件列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
+    return c.ListFirmwaresWithContext(context.Background(), request)
+}
+
+// ListFirmwares
+// 本接口（ListFirmwares）用于获取固件列表 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
+    if request == nil {
+        request = NewListFirmwaresRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListFirmwares require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListFirmwaresResponse()
     err = c.Send(request, response)
     return
 }

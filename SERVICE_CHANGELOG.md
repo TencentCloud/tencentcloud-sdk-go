@@ -1,86 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 47 次发布
+### 第 66 次发布
 
-发布时间：2022-05-19 06:07:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRole](https://cloud.tencent.com/document/api/598/36225)
-
-	* 新增入参：Tags
-
-* [CreateServiceLinkedRole](https://cloud.tencent.com/document/api/598/43711)
-
-	* 新增入参：Tags
-
-* [DescribeRoleList](https://cloud.tencent.com/document/api/598/36223)
-
-	* 新增入参：Tags
-
-
-新增数据结构：
-
-* [RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)
-
-修改数据结构：
-
-* [RoleInfo](https://cloud.tencent.com/document/api/598/33167#RoleInfo)
-
-	* 新增成员：Tags
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 4 次发布
-
-发布时间：2022-05-19 06:11:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDynamicDNS](https://cloud.tencent.com/document/api/1427/56158)
-
-	* 新增入参：Ttl
-
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 30 次发布
-
-发布时间：2022-05-19 06:17:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AccountPrivilegeModifyInfo](https://cloud.tencent.com/document/api/238/19976#AccountPrivilegeModifyInfo)
-
-	* 新增成员：IsAdmin
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 100 次发布
-
-发布时间：2022-05-19 06:19:17
+发布时间：2022-05-20 06:04:11
 
 本次发布包含了以下内容：
 
@@ -88,7 +12,293 @@
 
 新增接口：
 
+* [CreatePayRollPreOrder](https://cloud.tencent.com/document/api/1122/74068)
+* [CreatePayRollPreOrderWithAuth](https://cloud.tencent.com/document/api/1122/74067)
+* [CreatePayRollToken](https://cloud.tencent.com/document/api/1122/74066)
+* [GetPayRollAuth](https://cloud.tencent.com/document/api/1122/74065)
+* [GetPayRollAuthList](https://cloud.tencent.com/document/api/1122/74064)
+* [GetPayRollAuthResult](https://cloud.tencent.com/document/api/1122/74063)
+
+新增数据结构：
+
+* [PayRollAuthResult](https://cloud.tencent.com/document/api/1122/40683#PayRollAuthResult)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 82 次发布
+
+发布时间：2022-05-20 06:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：DedicatedClusterId
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 16 次发布
+
+发布时间：2022-05-20 06:10:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：SparkJobName, SparkJobId, SparkJobFile, UiUrl
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 60 次发布
+
+发布时间：2022-05-20 06:11:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/1108/42574#NetworkInterface)
+
+	* 新增成员：Business
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 31 次发布
+
+发布时间：2022-05-20 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddUsersForUserManager](https://cloud.tencent.com/document/api/589/74069)
+* [DescribeInstancesList](https://cloud.tencent.com/document/api/589/74070)
+
+新增数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+* [Filters](https://cloud.tencent.com/document/api/589/33981#Filters)
+* [UserInfoForUserManager](https://cloud.tencent.com/document/api/589/33981#UserInfoForUserManager)
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 4 次发布
+
+发布时间：2022-05-20 06:13:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetAllVersion](https://cloud.tencent.com/document/api/634/74072)
+* [ListFirmwares](https://cloud.tencent.com/document/api/634/74071)
+
+新增数据结构：
+
+* [FirmwareInfo](https://cloud.tencent.com/document/api/634/71973#FirmwareInfo)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 31 次发布
+
+发布时间：2022-05-20 06:14:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1207/57513)
+
+	* 新增入参：OrderField, Order
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 31 次发布
+
+发布时间：2022-05-20 06:16:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
+
+	* 新增入参：WaitSwitch
+
+
+修改数据结构：
+
+* [AccountCreateInfo](https://cloud.tencent.com/document/api/238/19976#AccountCreateInfo)
+
+	* 新增成员：Authentication
+
+* [AccountDetail](https://cloud.tencent.com/document/api/238/19976#AccountDetail)
+
+	* 新增成员：Authentication, Host
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 12 次发布
+
+发布时间：2022-05-20 06:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [HostCertificate](https://cloud.tencent.com/document/api/400/74073)
+
+新增数据结构：
+
+* [CertHostingInfo](https://cloud.tencent.com/document/api/400/41679#CertHostingInfo)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 101 次发布
+
+发布时间：2022-05-20 06:19:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74076)
+* [DescribePrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74075)
+* [ModifyPrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74074)
+
+修改接口：
+
+* [CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73918)
+
+	* 新增入参：InstanceId, AlertRule
+
+	* 新增出参：Id
+
+* [CreatePrometheusTemp](https://cloud.tencent.com/document/api/457/73917)
+
+	* 新增入参：Template
+
+	* 新增出参：TemplateId
+
+* [DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73916)
+
+	* 新增入参：InstanceId, AlertIds, Names
+
+* [DeletePrometheusTemp](https://cloud.tencent.com/document/api/457/73915)
+
+	* 新增入参：TemplateId
+
+* [DeletePrometheusTempSync](https://cloud.tencent.com/document/api/457/73914)
+
+	* 新增入参：TemplateId, Targets
+
+* [DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73913)
+
+	* 新增入参：InstanceId, Offset, Limit, Filters
+
+	* 新增出参：AlertRules, Total
+
+* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/457/73912)
+
+	* 新增入参：InstanceId, Offset, Limit
+
+	* 新增出参：Agents, Total
+
+* [DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/73911)
+
+	* 新增入参：Offset, Limit, Filters
+
+	* 新增出参：Instances, Total
+
+* [DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/457/73910)
+
+	* 新增入参：InstanceId, Offset, Limit, Filters
+
+	* 新增出参：Records, Total
+
+* [DescribePrometheusTemp](https://cloud.tencent.com/document/api/457/73909)
+
+	* 新增入参：Filters, Offset, Limit
+
+	* 新增出参：Templates, Total
+
+* [DescribePrometheusTempSync](https://cloud.tencent.com/document/api/457/73908)
+
+	* 新增入参：TemplateId
+
+	* 新增出参：Targets
+
+* [ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73907)
+
+	* 新增入参：InstanceId, AlertRule
+
 * [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)
+
+	* 新增入参：TemplateId, Template
+
+* [SyncPrometheusTemp](https://cloud.tencent.com/document/api/457/73906)
+
+	* 新增入参：TemplateId, Targets
+
+
+新增数据结构：
+
+* [PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertManagerConfig)
+* [PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertPolicyItem)
+* [PrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusInstancesOverview)
+* [PrometheusNotificationItem](https://cloud.tencent.com/document/api/457/31866#PrometheusNotificationItem)
+* [PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/457/31866#PrometheusRecordRuleYamlItem)
+* [PrometheusTemp](https://cloud.tencent.com/document/api/457/31866#PrometheusTemp)
+* [PrometheusTempModify](https://cloud.tencent.com/document/api/457/31866#PrometheusTempModify)
 
 
 
@@ -7764,7 +7974,7 @@
 
 新增数据结构：
 
-* [[RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)](https://cloud.tencent.com/document/api/598/33167#[RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags))
+* [RoleTags](https://cloud.tencent.com/document/api/598/33167#RoleTags)
 
 修改数据结构：
 
@@ -20527,6 +20737,27 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 66 次发布
+
+发布时间：2022-05-20 06:04:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePayRollPreOrder](https://cloud.tencent.com/document/api/1122/74068)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePayRollPreOrderWithAuth](https://cloud.tencent.com/document/api/1122/74067)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePayRollToken](https://cloud.tencent.com/document/api/1122/74066)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPayRollAuth](https://cloud.tencent.com/document/api/1122/74065)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPayRollAuthList](https://cloud.tencent.com/document/api/1122/74064)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPayRollAuthResult](https://cloud.tencent.com/document/api/1122/74063)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PayRollAuthResult](https://cloud.tencent.com/document/api/1122/40683#PayRollAuthResult)](https://cloud.tencent.com/document/api/1122/40683#[PayRollAuthResult](https://cloud.tencent.com/document/api/1122/40683#PayRollAuthResult))
+
 ### 第 65 次发布
 
 发布时间：2022-05-05 11:48:14
@@ -22392,6 +22623,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 82 次发布
+
+发布时间：2022-05-20 06:04:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
+
+	* 新增入参：DedicatedClusterId
+
 
 ### 第 81 次发布
 
@@ -28034,6 +28280,21 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 16 次发布
+
+发布时间：2022-05-20 06:10:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：SparkJobName, SparkJobId, SparkJobFile, UiUrl
+
+
 ### 第 15 次发布
 
 发布时间：2022-05-12 06:10:06
@@ -29956,6 +30217,21 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 60 次发布
+
+发布时间：2022-05-20 06:11:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/1108/42574#NetworkInterface)
+
+	* 新增成员：Business
+
+
 ### 第 59 次发布
 
 发布时间：2021-11-18 20:07:06
@@ -31730,6 +32006,25 @@
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 31 次发布
+
+发布时间：2022-05-20 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddUsersForUserManager](https://cloud.tencent.com/document/api/589/74069)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstancesList](https://cloud.tencent.com/document/api/589/74070)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)](https://cloud.tencent.com/document/api/589/33981#[EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance))
+* [[Filters](https://cloud.tencent.com/document/api/589/33981#Filters)](https://cloud.tencent.com/document/api/589/33981#[Filters](https://cloud.tencent.com/document/api/589/33981#Filters))
+* [[UserInfoForUserManager](https://cloud.tencent.com/document/api/589/33981#UserInfoForUserManager)](https://cloud.tencent.com/document/api/589/33981#[UserInfoForUserManager](https://cloud.tencent.com/document/api/589/33981#UserInfoForUserManager))
 
 ### 第 30 次发布
 
@@ -39577,6 +39872,23 @@
 
 ## 物联网通信(iotcloud) 版本：2021-04-08
 
+### 第 4 次发布
+
+发布时间：2022-05-20 06:13:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetAllVersion](https://cloud.tencent.com/document/api/634/74072)](https://cloud.tencent.com/document/api/#/#)
+* [[ListFirmwares](https://cloud.tencent.com/document/api/634/74071)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FirmwareInfo](https://cloud.tencent.com/document/api/634/71973#FirmwareInfo)](https://cloud.tencent.com/document/api/634/71973#[FirmwareInfo](https://cloud.tencent.com/document/api/634/71973#FirmwareInfo))
+
 ### 第 3 次发布
 
 发布时间：2022-05-11 10:24:44
@@ -42511,6 +42823,21 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 31 次发布
+
+发布时间：2022-05-20 06:14:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1207/57513)
+
+	* 新增入参：OrderField, Order
+
 
 ### 第 30 次发布
 
@@ -55768,6 +56095,32 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 31 次发布
+
+发布时间：2022-05-20 06:16:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/238/19948)
+
+	* 新增入参：WaitSwitch
+
+
+修改数据结构：
+
+* [AccountCreateInfo](https://cloud.tencent.com/document/api/238/19976#AccountCreateInfo)
+
+	* 新增成员：Authentication
+
+* [AccountDetail](https://cloud.tencent.com/document/api/238/19976#AccountDetail)
+
+	* 新增成员：Authentication, Host
+
+
 ### 第 30 次发布
 
 发布时间：2022-05-19 06:17:03
@@ -56779,6 +57132,22 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 12 次发布
+
+发布时间：2022-05-20 06:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[HostCertificate](https://cloud.tencent.com/document/api/400/74073)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CertHostingInfo](https://cloud.tencent.com/document/api/400/41679#CertHostingInfo)](https://cloud.tencent.com/document/api/400/41679#[CertHostingInfo](https://cloud.tencent.com/document/api/400/41679#CertHostingInfo))
 
 ### 第 11 次发布
 
@@ -66063,6 +66432,105 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 101 次发布
+
+发布时间：2022-05-20 06:19:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74076)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74075)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusGlobalNotification](https://cloud.tencent.com/document/api/457/74074)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73918)
+
+	* 新增入参：InstanceId, AlertRule
+
+	* 新增出参：Id
+
+* [CreatePrometheusTemp](https://cloud.tencent.com/document/api/457/73917)
+
+	* 新增入参：Template
+
+	* 新增出参：TemplateId
+
+* [DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73916)
+
+	* 新增入参：InstanceId, AlertIds, Names
+
+* [DeletePrometheusTemp](https://cloud.tencent.com/document/api/457/73915)
+
+	* 新增入参：TemplateId
+
+* [DeletePrometheusTempSync](https://cloud.tencent.com/document/api/457/73914)
+
+	* 新增入参：TemplateId, Targets
+
+* [DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73913)
+
+	* 新增入参：InstanceId, Offset, Limit, Filters
+
+	* 新增出参：AlertRules, Total
+
+* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/457/73912)
+
+	* 新增入参：InstanceId, Offset, Limit
+
+	* 新增出参：Agents, Total
+
+* [DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/73911)
+
+	* 新增入参：Offset, Limit, Filters
+
+	* 新增出参：Instances, Total
+
+* [DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/457/73910)
+
+	* 新增入参：InstanceId, Offset, Limit, Filters
+
+	* 新增出参：Records, Total
+
+* [DescribePrometheusTemp](https://cloud.tencent.com/document/api/457/73909)
+
+	* 新增入参：Filters, Offset, Limit
+
+	* 新增出参：Templates, Total
+
+* [DescribePrometheusTempSync](https://cloud.tencent.com/document/api/457/73908)
+
+	* 新增入参：TemplateId
+
+	* 新增出参：Targets
+
+* [ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/457/73907)
+
+	* 新增入参：InstanceId, AlertRule
+
+* [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)
+
+	* 新增入参：TemplateId, Template
+
+* [SyncPrometheusTemp](https://cloud.tencent.com/document/api/457/73906)
+
+	* 新增入参：TemplateId, Targets
+
+
+新增数据结构：
+
+* [[PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertManagerConfig)](https://cloud.tencent.com/document/api/457/31866#[PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertManagerConfig))
+* [[PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertPolicyItem)](https://cloud.tencent.com/document/api/457/31866#[PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/457/31866#PrometheusAlertPolicyItem))
+* [[PrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusInstancesOverview)](https://cloud.tencent.com/document/api/457/31866#[PrometheusInstancesOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusInstancesOverview))
+* [[PrometheusNotificationItem](https://cloud.tencent.com/document/api/457/31866#PrometheusNotificationItem)](https://cloud.tencent.com/document/api/457/31866#[PrometheusNotificationItem](https://cloud.tencent.com/document/api/457/31866#PrometheusNotificationItem))
+* [[PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/457/31866#PrometheusRecordRuleYamlItem)](https://cloud.tencent.com/document/api/457/31866#[PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/457/31866#PrometheusRecordRuleYamlItem))
+* [[PrometheusTemp](https://cloud.tencent.com/document/api/457/31866#PrometheusTemp)](https://cloud.tencent.com/document/api/457/31866#[PrometheusTemp](https://cloud.tencent.com/document/api/457/31866#PrometheusTemp))
+* [[PrometheusTempModify](https://cloud.tencent.com/document/api/457/31866#PrometheusTempModify)](https://cloud.tencent.com/document/api/457/31866#[PrometheusTempModify](https://cloud.tencent.com/document/api/457/31866#PrometheusTempModify))
+
 ### 第 100 次发布
 
 发布时间：2022-05-19 06:19:17
@@ -66073,7 +66541,7 @@
 
 新增接口：
 
-* [[ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/457/74013)
 
 ### 第 99 次发布
 

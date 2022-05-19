@@ -5795,6 +5795,291 @@ func (r *CreatePayMerchantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreatePayRollPreOrderRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+	// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+	AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+	// 该劳务活动的项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 该工人所属的用工企业
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+	// 当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+	// 当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatSubAppId *string `json:"WechatSubAppId,omitempty" name:"WechatSubAppId"`
+}
+
+func (r *CreatePayRollPreOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollPreOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "SubMerchantId")
+	delete(f, "AuthNumber")
+	delete(f, "ProjectName")
+	delete(f, "CompanyName")
+	delete(f, "WechatAppId")
+	delete(f, "WechatSubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePayRollPreOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRollPreOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+		AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+		// Token有效时间，单位秒
+		ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 微信服务商商户的商户号，由微信支付生成并下发
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 用户在商户对应appid下的唯一标识
+		OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+		// 微信服务商下特约商户的商户号，由微信支付生成并下发
+		SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+		// Token值
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePayRollPreOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollPreOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRollPreOrderWithAuthRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+	// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+	AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+	// 该劳务活动的项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 该工人所属的用工企业
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 用户实名信息，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户证件号，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 微工卡服务仅支持用于与商户有用工关系的用户，需明确用工类型；参考值：
+	// LONG_TERM_EMPLOYMENT：长期用工，
+	// SHORT_TERM_EMPLOYMENT： 短期用工，
+	// COOPERATION_EMPLOYMENT：合作关系
+	EmploymentType *string `json:"EmploymentType,omitempty" name:"EmploymentType"`
+
+	// 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+	// 当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+	// 当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatSubAppId *string `json:"WechatSubAppId,omitempty" name:"WechatSubAppId"`
+}
+
+func (r *CreatePayRollPreOrderWithAuthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollPreOrderWithAuthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "SubMerchantId")
+	delete(f, "AuthNumber")
+	delete(f, "ProjectName")
+	delete(f, "CompanyName")
+	delete(f, "UserName")
+	delete(f, "IdNo")
+	delete(f, "EmploymentType")
+	delete(f, "WechatAppId")
+	delete(f, "WechatSubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePayRollPreOrderWithAuthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRollPreOrderWithAuthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+		AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+		// Token有效时间，单位秒
+		ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 微信服务商商户的商户号，由微信支付生成并下发
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 用户在商户对应appid下的唯一标识
+		OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+		// 微信服务商下特约商户的商户号，由微信支付生成并下发
+		SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+		// Token值
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePayRollPreOrderWithAuthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollPreOrderWithAuthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRollTokenRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+	// 用户实名信息，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户证件号，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 微工卡服务仅支持用于与商户有用工关系的用户，需明确用工类型；参考值：
+	// LONG_TERM_EMPLOYMENT：长期用工，
+	// SHORT_TERM_EMPLOYMENT： 短期用工，
+	// COOPERATION_EMPLOYMENT：合作关系
+	EmploymentType *string `json:"EmploymentType,omitempty" name:"EmploymentType"`
+
+	// 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+	// 当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+	// 当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatSubAppId *string `json:"WechatSubAppId,omitempty" name:"WechatSubAppId"`
+}
+
+func (r *CreatePayRollTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "SubMerchantId")
+	delete(f, "UserName")
+	delete(f, "IdNo")
+	delete(f, "EmploymentType")
+	delete(f, "WechatAppId")
+	delete(f, "WechatSubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePayRollTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePayRollTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Token有效时间，单位秒
+		ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+		// 微信服务商商户的商户号，由微信支付生成并下发
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 用户在商户对应appid下的唯一标识
+		OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+		// 微信服务商下特约商户的商户号，由微信支付生成并下发
+		SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+		// Token值
+		Token *string `json:"Token,omitempty" name:"Token"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreatePayRollTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePayRollTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRedInvoiceItem struct {
 
 	// 订单号
@@ -8082,6 +8367,231 @@ func (r *GetDistributeBillDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetPayRollAuthListRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+	// 核身日期，一次只能查询一天，最久可查询90天内的记录，格式为YYYY-MM-DD
+	AuthDate *string `json:"AuthDate,omitempty" name:"AuthDate"`
+
+	// 非负整数，表示该次请求资源的起始位置，从0开始计数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 非0非负的整数，该次请求可返回的最大资源条数，默认值为10，最大支持10条
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+	// 当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+	// 当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatSubAppId *string `json:"WechatSubAppId,omitempty" name:"WechatSubAppId"`
+
+	// 核身状态，列表查询仅提供成功状态的核身记录查询，故此字段固定AUTHENTICATE_SUCCESS即可
+	AuthStatus *string `json:"AuthStatus,omitempty" name:"AuthStatus"`
+}
+
+func (r *GetPayRollAuthListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "SubMerchantId")
+	delete(f, "AuthDate")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "WechatAppId")
+	delete(f, "WechatSubAppId")
+	delete(f, "AuthStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPayRollAuthListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPayRollAuthListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 核身结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*PayRollAuthResult `json:"Results,omitempty" name:"Results"`
+
+		// 总记录条数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 记录起始位置，该次请求资源的起始位置，请求中包含偏移量时应答消息返回相同偏移量，否则返回默认值0
+		Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+		// 本次返回条数
+		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPayRollAuthListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPayRollAuthRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+	// 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+	// 当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatAppId *string `json:"WechatAppId,omitempty" name:"WechatAppId"`
+
+	// 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+	// 当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+	WechatSubAppId *string `json:"WechatSubAppId,omitempty" name:"WechatSubAppId"`
+}
+
+func (r *GetPayRollAuthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OpenId")
+	delete(f, "SubMerchantId")
+	delete(f, "WechatAppId")
+	delete(f, "WechatSubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPayRollAuthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPayRollAuthResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 授权状态：
+	// UNAUTHORIZED：未授权
+	// AUTHORIZED：已授权
+	// DEAUTHORIZED：已取消授权
+		AuthStatus *string `json:"AuthStatus,omitempty" name:"AuthStatus"`
+
+		// 授权时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，空字符串等同null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		AuthTime *string `json:"AuthTime,omitempty" name:"AuthTime"`
+
+		// 授权时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，空字符串等同null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CancelAuthTime *string `json:"CancelAuthTime,omitempty" name:"CancelAuthTime"`
+
+		// 微信服务商商户的商户号，由微信支付生成并下发
+		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+		// 用户在商户对应appid下的唯一标识
+		OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+		// 微信服务商下特约商户的商户号，由微信支付生成并下发
+		SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPayRollAuthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPayRollAuthResultRequest struct {
+	*tchttp.BaseRequest
+
+	// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+	AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+}
+
+func (r *GetPayRollAuthResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuthNumber")
+	delete(f, "SubMerchantId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPayRollAuthResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPayRollAuthResultResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 核身结果
+		Result *PayRollAuthResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *GetPayRollAuthResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPayRollAuthResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MemberTransactionItem struct {
 
 	// 交易类型。
@@ -9131,6 +9641,48 @@ type PayOrderResult struct {
 	// 微信返回调起小程序/原生JS支付的paySign参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatPaySign *string `json:"WechatPaySign,omitempty" name:"WechatPaySign"`
+}
+
+type PayRollAuthResult struct {
+
+	// 结果为核身失败时的原因描述，仅在失败记录返回，空字符串等同null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthFailedReason *string `json:"AuthFailedReason,omitempty" name:"AuthFailedReason"`
+
+	// 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+	AuthNumber *string `json:"AuthNumber,omitempty" name:"AuthNumber"`
+
+	// 核身渠道，发起核身时的来源渠道，如通过小程序，硬件设备等
+	// FROM_MINI_APP：来自小程序方式核身
+	// FROM_HARDWARE：来自硬件设备方式核身
+	AuthScene *string `json:"AuthScene,omitempty" name:"AuthScene"`
+
+	// 核身渠道标识，用于定位渠道具体来源，如果是扫码打卡渠道标识就是具体的小程序appid，若是硬件设备，则是设备的序列号等
+	AuthSource *string `json:"AuthSource,omitempty" name:"AuthSource"`
+
+	// 核身状态
+	// AUTHENTICATE_PROCESSING：核身中
+	// AUTHENTICATE_SUCCESS：核身成功
+	// AUTHENTICATE_FAILED：核身失败
+	AuthStatus *string `json:"AuthStatus,omitempty" name:"AuthStatus"`
+
+	// 核身时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE
+	AuthTime *string `json:"AuthTime,omitempty" name:"AuthTime"`
+
+	// 该用户所属的单位名称
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 微信服务商商户的商户号，由微信支付生成并下发
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 用户在商户对应appid下的唯一标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 该项目的名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 微信服务商下特约商户的商户号，由微信支付生成并下发
+	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
 }
 
 type QueryAcctBindingRequest struct {

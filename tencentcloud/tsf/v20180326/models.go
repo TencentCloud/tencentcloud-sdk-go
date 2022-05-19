@@ -4496,7 +4496,7 @@ type DescribeApiGroupsRequest struct {
 	// 分组类型。 ms： 微服务分组； external:外部Api分组
 	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
 
-	// 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+	// 鉴权类型。 secret： 密钥鉴权； none:无鉴权
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 发布状态, drafted: 未发布。 released: 发布
@@ -4544,6 +4544,7 @@ type DescribeApiGroupsResponse struct {
 	Response *struct {
 
 		// 翻页结构体
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		Result *TsfPageApiGroupInfo `json:"Result,omitempty" name:"Result"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
