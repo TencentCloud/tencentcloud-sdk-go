@@ -802,6 +802,55 @@ func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeUsersForUserManagerRequest() (request *DescribeUsersForUserManagerRequest) {
+    request = &DescribeUsersForUserManagerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeUsersForUserManager")
+    
+    
+    return
+}
+
+func NewDescribeUsersForUserManagerResponse() (response *DescribeUsersForUserManagerResponse) {
+    response = &DescribeUsersForUserManagerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUsersForUserManager
+// 批量导出用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeUsersForUserManager(request *DescribeUsersForUserManagerRequest) (response *DescribeUsersForUserManagerResponse, err error) {
+    return c.DescribeUsersForUserManagerWithContext(context.Background(), request)
+}
+
+// DescribeUsersForUserManager
+// 批量导出用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeUsersForUserManagerWithContext(ctx context.Context, request *DescribeUsersForUserManagerRequest) (response *DescribeUsersForUserManagerResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsersForUserManagerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsersForUserManager require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsersForUserManagerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceRenewEmrRequest() (request *InquirePriceRenewEmrRequest) {
     request = &InquirePriceRenewEmrRequest{
         BaseRequest: &tchttp.BaseRequest{},

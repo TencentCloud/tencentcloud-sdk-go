@@ -3613,6 +3613,9 @@ type DescribeReadOnlyGroupByReadOnlyInstanceResponse struct {
 		// 主实例ID，形如mssql-sgeshe3th
 		MasterInstanceId *string `json:"MasterInstanceId,omitempty" name:"MasterInstanceId"`
 
+		// 主实例的地域ID
+		MasterRegionId *string `json:"MasterRegionId,omitempty" name:"MasterRegionId"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -6118,6 +6121,12 @@ type ReadOnlyInstance struct {
 
 	// 只读副本隔离时间
 	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 只读副本所在地域
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 只读副本所在可用区
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type ReadOnlyInstanceWeightPair struct {

@@ -2962,26 +2962,32 @@ type HostItem struct {
 
 type HostResource struct {
 
-	// cdh实例总cpu核数
+	// 专用宿主机实例总cpu核数
 	CpuTotal *uint64 `json:"CpuTotal,omitempty" name:"CpuTotal"`
 
-	// cdh实例可用cpu核数
+	// 专用宿主机实例可用cpu核数
 	CpuAvailable *uint64 `json:"CpuAvailable,omitempty" name:"CpuAvailable"`
 
-	// cdh实例总内存大小（单位为:GiB）
+	// 专用宿主机实例总内存大小（单位为:GiB）
 	MemTotal *float64 `json:"MemTotal,omitempty" name:"MemTotal"`
 
-	// cdh实例可用内存大小（单位为:GiB）
+	// 专用宿主机实例可用内存大小（单位为:GiB）
 	MemAvailable *float64 `json:"MemAvailable,omitempty" name:"MemAvailable"`
 
-	// cdh实例总磁盘大小（单位为:GiB）
+	// 专用宿主机实例总磁盘大小（单位为:GiB）
 	DiskTotal *uint64 `json:"DiskTotal,omitempty" name:"DiskTotal"`
 
-	// cdh实例可用磁盘大小（单位为:GiB）
+	// 专用宿主机实例可用磁盘大小（单位为:GiB）
 	DiskAvailable *uint64 `json:"DiskAvailable,omitempty" name:"DiskAvailable"`
 
-	// cdh实例磁盘类型
+	// 专用宿主机实例磁盘类型
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 专用宿主机实例总GPU卡数
+	GpuTotal *uint64 `json:"GpuTotal,omitempty" name:"GpuTotal"`
+
+	// 专用宿主机实例可用GPU卡数
+	GpuAvailable *uint64 `json:"GpuAvailable,omitempty" name:"GpuAvailable"`
 }
 
 type Image struct {
@@ -3821,7 +3827,7 @@ type Instance struct {
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+	// 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 实例系统盘信息。
@@ -4015,7 +4021,7 @@ type InstanceTypeQuotaItem struct {
 	// 实例机型。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 网卡类型，例如：25代表25G网卡
@@ -4277,7 +4283,7 @@ type LaunchTemplateVersionData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+	// 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 

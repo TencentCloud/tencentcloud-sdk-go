@@ -20,6 +20,74 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CheckSavepointRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业 id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 快照资源 id
+	SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
+
+	// 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+	RecordType *int64 `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 快照路径，目前只支持 cos 路径
+	SavepointPath *string `json:"SavepointPath,omitempty" name:"SavepointPath"`
+
+	// 工作空间 id
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *CheckSavepointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckSavepointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "SerialId")
+	delete(f, "RecordType")
+	delete(f, "SavepointPath")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckSavepointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckSavepointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资源 id
+		SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
+
+		// 1=可用，2=不可用
+		SavepointStatus *int64 `json:"SavepointStatus,omitempty" name:"SavepointStatus"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CheckSavepointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckSavepointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateJobConfigRequest struct {
 	*tchttp.BaseRequest
 
@@ -590,6 +658,80 @@ func (r *DescribeJobConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeJobConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJobSavepointRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业 SerialId
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 分页参数，单页总数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数，偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *DescribeJobSavepointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSavepointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobSavepointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeJobSavepointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 快照列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalNumber *int64 `json:"TotalNumber,omitempty" name:"TotalNumber"`
+
+		// 快照列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Savepoint []*Savepoint `json:"Savepoint,omitempty" name:"Savepoint"`
+
+		// 进行中的快照列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RunningSavepoint []*Savepoint `json:"RunningSavepoint,omitempty" name:"RunningSavepoint"`
+
+		// 进行中的快照列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RunningTotalNumber *int64 `json:"RunningTotalNumber,omitempty" name:"RunningTotalNumber"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeJobSavepointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1393,6 +1535,57 @@ func (r *RunJobsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Savepoint struct {
+
+	// 主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *int64 `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordType *int64 `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 运行作业实例的顺序 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobRuntimeId *int64 `json:"JobRuntimeId,omitempty" name:"JobRuntimeId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 固定超时时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 快照 serialId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
 }
 
 type StopJobDescription struct {

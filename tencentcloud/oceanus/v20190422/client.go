@@ -45,6 +45,47 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckSavepointRequest() (request *CheckSavepointRequest) {
+    request = &CheckSavepointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "CheckSavepoint")
+    
+    
+    return
+}
+
+func NewCheckSavepointResponse() (response *CheckSavepointResponse) {
+    response = &CheckSavepointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckSavepoint
+// 检查快照是否可用
+func (c *Client) CheckSavepoint(request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
+    return c.CheckSavepointWithContext(context.Background(), request)
+}
+
+// CheckSavepoint
+// 检查快照是否可用
+func (c *Client) CheckSavepointWithContext(ctx context.Context, request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
+    if request == nil {
+        request = NewCheckSavepointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckSavepoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckSavepointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJobRequest() (request *CreateJobRequest) {
     request = &CreateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -599,6 +640,59 @@ func (c *Client) DescribeJobConfigsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeJobConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobSavepointRequest() (request *DescribeJobSavepointRequest) {
+    request = &DescribeJobSavepointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobSavepoint")
+    
+    
+    return
+}
+
+func NewDescribeJobSavepointResponse() (response *DescribeJobSavepointResponse) {
+    response = &DescribeJobSavepointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeJobSavepoint
+// 查找Savepoint列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobSavepoint(request *DescribeJobSavepointRequest) (response *DescribeJobSavepointResponse, err error) {
+    return c.DescribeJobSavepointWithContext(context.Background(), request)
+}
+
+// DescribeJobSavepoint
+// 查找Savepoint列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeJobSavepointWithContext(ctx context.Context, request *DescribeJobSavepointRequest) (response *DescribeJobSavepointResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobSavepointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobSavepoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobSavepointResponse()
     err = c.Send(request, response)
     return
 }

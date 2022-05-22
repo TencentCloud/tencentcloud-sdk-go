@@ -1,3 +1,115 @@
+# Release v1.0.404
+
+## 云拨测(cat) 版本：2018-04-09
+
+### 第 9 次发布
+
+发布时间：2022-05-23 06:03:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProbeTasks](https://cloud.tencent.com/document/api/280/66213)
+
+	* 新增入参：ClientNum
+
+	* 新增出参：TaskIDs
+
+
+修改数据结构：
+
+* [NodeDefine](https://cloud.tencent.com/document/api/280/40931#NodeDefine)
+
+	* 新增成员：CodeType, NodeDefineStatus
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 83 次发布
+
+发布时间：2022-05-23 06:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
+
+	* 新增成员：GpuTotal, GpuAvailable
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 32 次发布
+
+发布时间：2022-05-23 06:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUsersForUserManager](https://cloud.tencent.com/document/api/589/74225)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 17 次发布
+
+发布时间：2022-05-23 06:11:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckSavepoint](https://cloud.tencent.com/document/api/849/74227)
+* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
+
+新增数据结构：
+
+* [Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 32 次发布
+
+发布时间：2022-05-23 06:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)
+
+	* 新增出参：MasterRegionId
+
+
+修改数据结构：
+
+* [ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)
+
+	* 新增成员：RegionId, ZoneId
+
+
+
+
 # Release v1.0.403
 
 ## 企业收付平台(cpdp) 版本：2019-08-20

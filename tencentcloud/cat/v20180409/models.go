@@ -456,6 +456,9 @@ type CreateProbeTasksRequest struct {
 
 	// 插件类型
 	PluginSource *string `json:"PluginSource,omitempty" name:"PluginSource"`
+
+	// 客户度ID
+	ClientNum *string `json:"ClientNum,omitempty" name:"ClientNum"`
 }
 
 func (r *CreateProbeTasksRequest) ToJsonString() string {
@@ -480,6 +483,7 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Tag")
 	delete(f, "ProbeType")
 	delete(f, "PluginSource")
+	delete(f, "ClientNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
 	}
@@ -489,6 +493,9 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 type CreateProbeTasksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 任务ID列表
+		TaskIDs []*string `json:"TaskIDs,omitempty" name:"TaskIDs"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2595,6 +2602,14 @@ type NodeDefine struct {
 	// <li> 3 = 国外 </li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *int64 `json:"Location,omitempty" name:"Location"`
+
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 节点状态：1-运行,2-下线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeDefineStatus *uint64 `json:"NodeDefineStatus,omitempty" name:"NodeDefineStatus"`
 }
 
 type PauseTaskRequest struct {
