@@ -196,6 +196,7 @@ func NewCreateJobConfigResponse() (response *CreateJobConfigResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
 //  FAILEDOPERATION_PARSESQL = "FailedOperation.ParseSql"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
@@ -228,6 +229,7 @@ func (c *Client) CreateJobConfig(request *CreateJobConfigRequest) (response *Cre
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GRAMMARCHECKFAILURE = "FailedOperation.GrammarCheckFailure"
 //  FAILEDOPERATION_PARSESQL = "FailedOperation.ParseSql"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
@@ -486,6 +488,7 @@ func NewDeleteResourcesResponse() (response *DeleteResourcesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
@@ -503,6 +506,7 @@ func (c *Client) DeleteResources(request *DeleteResourcesRequest) (response *Del
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
@@ -1035,6 +1039,7 @@ func NewRunJobsResponse() (response *RunJobsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_FAILEDTOUPDATEJOB = "InternalError.FailedToUpdateJob"
@@ -1069,6 +1074,7 @@ func (c *Client) RunJobs(request *RunJobsRequest) (response *RunJobsResponse, er
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_FAILEDTOUPDATEJOB = "InternalError.FailedToUpdateJob"
@@ -1132,6 +1138,7 @@ func NewStopJobsResponse() (response *StopJobsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
@@ -1154,6 +1161,7 @@ func (c *Client) StopJobs(request *StopJobsRequest) (response *StopJobsResponse,
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"

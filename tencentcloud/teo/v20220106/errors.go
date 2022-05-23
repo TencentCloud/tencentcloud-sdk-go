@@ -53,8 +53,14 @@ const (
 	// 当天提交的资源数超过上限。
 	LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
 	// Cam 未授权。
 	UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+
+	// 鉴权错误。
+	UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 
 	// 子账户没有操作权限，请添加权限后继续操作。
 	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"

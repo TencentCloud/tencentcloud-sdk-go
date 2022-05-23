@@ -1237,6 +1237,7 @@ func NewCreateProtocolBlockConfigResponse() (response *CreateProtocolBlockConfig
 // 设置DDoS防护的协议封禁配置
 //
 // 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProtocolBlockConfig(request *CreateProtocolBlockConfigRequest) (response *CreateProtocolBlockConfigResponse, err error) {
@@ -1247,6 +1248,7 @@ func (c *Client) CreateProtocolBlockConfig(request *CreateProtocolBlockConfigReq
 // 设置DDoS防护的协议封禁配置
 //
 // 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateProtocolBlockConfigWithContext(ctx context.Context, request *CreateProtocolBlockConfigRequest) (response *CreateProtocolBlockConfigResponse, err error) {

@@ -1847,6 +1847,7 @@ func NewModifyDomainOwnerResponse() (response *ModifyDomainOwnerResponse) {
 // 域名过户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"
@@ -1871,6 +1872,7 @@ func (c *Client) ModifyDomainOwner(request *ModifyDomainOwnerRequest) (response 
 // 域名过户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"
@@ -2304,6 +2306,7 @@ func NewModifyRecordResponse() (response *ModifyRecordResponse) {
 // 修改记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
@@ -2362,6 +2365,7 @@ func (c *Client) ModifyRecord(request *ModifyRecordRequest) (response *ModifyRec
 // 修改记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"

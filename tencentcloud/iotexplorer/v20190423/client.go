@@ -2559,6 +2559,7 @@ func NewDescribeGatewaySubProductsResponse() (response *DescribeGatewaySubProduc
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = "UnsupportedOperation.StaffPoolDupNameExist"
 func (c *Client) DescribeGatewaySubProducts(request *DescribeGatewaySubProductsRequest) (response *DescribeGatewaySubProductsResponse, err error) {
     return c.DescribeGatewaySubProductsWithContext(context.Background(), request)
@@ -2574,6 +2575,7 @@ func (c *Client) DescribeGatewaySubProducts(request *DescribeGatewaySubProductsR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = "UnsupportedOperation.StaffPoolDupNameExist"
 func (c *Client) DescribeGatewaySubProductsWithContext(ctx context.Context, request *DescribeGatewaySubProductsRequest) (response *DescribeGatewaySubProductsResponse, err error) {
     if request == nil {
@@ -2767,6 +2769,7 @@ func NewDescribePositionFenceListResponse() (response *DescribePositionFenceList
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2781,6 +2784,7 @@ func (c *Client) DescribePositionFenceList(request *DescribePositionFenceListReq
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

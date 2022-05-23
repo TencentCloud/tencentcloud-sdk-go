@@ -1099,6 +1099,7 @@ func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *DescribeDisksResponse, err error) {
     return c.DescribeDisksWithContext(context.Background(), request)
 }
@@ -1116,6 +1117,7 @@ func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *Describ
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDisksWithContext(ctx context.Context, request *DescribeDisksRequest) (response *DescribeDisksResponse, err error) {
     if request == nil {
         request = NewDescribeDisksRequest()
@@ -1416,6 +1418,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_DETACHPOD = "UnsupportedOperation.DetachPod"
 func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
     return c.DetachDisksWithContext(context.Background(), request)
@@ -1448,6 +1451,7 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_TYPEERROR = "ResourceUnavailable.TypeError"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_DETACHPOD = "UnsupportedOperation.DetachPod"
 func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
     if request == nil {
@@ -2543,6 +2547,7 @@ func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *TerminateDisksResponse, err error) {
     return c.TerminateDisksWithContext(context.Background(), request)
 }
@@ -2571,6 +2576,7 @@ func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *Termi
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  RESOURCEUNAVAILABLE_REPEATREFUND = "ResourceUnavailable.RepeatRefund"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) TerminateDisksWithContext(ctx context.Context, request *TerminateDisksRequest) (response *TerminateDisksResponse, err error) {
     if request == nil {
         request = NewTerminateDisksRequest()

@@ -8978,12 +8978,14 @@ func NewRefundResponse() (response *RefundResponse) {
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BANLANCENOTENOUGHERROR = "FailedOperation.BanlanceNotEnoughError"
 //  FAILEDOPERATION_CHANNELREFUNDFAILED = "FailedOperation.ChannelRefundFailed"
+//  FAILEDOPERATION_CHANNELREFUNDFREQUENCYLIMITED = "FailedOperation.ChannelRefundFrequencyLimited"
 //  FAILEDOPERATION_INTERNALSERVICETIMEOUT = "FailedOperation.InternalServiceTimeout"
 //  FAILEDOPERATION_INVALIDREFUNDAMT = "FailedOperation.InvalidRefundAmt"
 //  FAILEDOPERATION_MERCHANTBALANCENOTENOUGH = "FailedOperation.MerchantBalanceNotEnough"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 //  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
 //  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
@@ -9003,12 +9005,14 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_BANLANCENOTENOUGHERROR = "FailedOperation.BanlanceNotEnoughError"
 //  FAILEDOPERATION_CHANNELREFUNDFAILED = "FailedOperation.ChannelRefundFailed"
+//  FAILEDOPERATION_CHANNELREFUNDFREQUENCYLIMITED = "FailedOperation.ChannelRefundFrequencyLimited"
 //  FAILEDOPERATION_INTERNALSERVICETIMEOUT = "FailedOperation.InternalServiceTimeout"
 //  FAILEDOPERATION_INVALIDREFUNDAMT = "FailedOperation.InvalidRefundAmt"
 //  FAILEDOPERATION_MERCHANTBALANCENOTENOUGH = "FailedOperation.MerchantBalanceNotEnough"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 //  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
 //  FAILEDOPERATION_WXCRTNOTSET = "FailedOperation.WxCrtNotSet"
@@ -9332,6 +9336,7 @@ func NewRegisterBehaviorResponse() (response *RegisterBehaviorResponse) {
 // 商户查询是否签约和签约行为上报
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -9345,6 +9350,7 @@ func (c *Client) RegisterBehavior(request *RegisterBehaviorRequest) (response *R
 // 商户查询是否签约和签约行为上报
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"

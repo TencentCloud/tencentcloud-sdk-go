@@ -902,7 +902,7 @@ type TaskListItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTag *string `json:"TaskTag,omitempty" name:"TaskTag"`
 
-	// 任务状态
+	// 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 任务创建时间

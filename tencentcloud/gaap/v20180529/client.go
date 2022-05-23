@@ -3065,6 +3065,7 @@ func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPage
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
     return c.DescribeDomainErrorPageInfoWithContext(context.Background(), request)
@@ -3082,6 +3083,7 @@ func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInf
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
 func (c *Client) DescribeDomainErrorPageInfoWithContext(ctx context.Context, request *DescribeDomainErrorPageInfoRequest) (response *DescribeDomainErrorPageInfoResponse, err error) {
     if request == nil {

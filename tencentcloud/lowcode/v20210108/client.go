@@ -70,6 +70,7 @@ func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) (response *DescribeDataSourceListResponse, err error) {
     return c.DescribeDataSourceListWithContext(context.Background(), request)
 }
@@ -82,6 +83,7 @@ func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDataSourceListWithContext(ctx context.Context, request *DescribeDataSourceListRequest) (response *DescribeDataSourceListResponse, err error) {
     if request == nil {
         request = NewDescribeDataSourceListRequest()

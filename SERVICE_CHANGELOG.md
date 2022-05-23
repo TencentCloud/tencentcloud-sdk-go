@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云拨测(cat) 版本：2018-04-09
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 9 次发布
+### 第 25 次发布
 
-发布时间：2022-05-23 06:03:34
+发布时间：2022-05-24 06:07:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
+
+	* 新增成员：TaskId
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 20 次发布
+
+发布时间：2022-05-24 06:11:36
 
 本次发布包含了以下内容：
 
@@ -12,27 +31,18 @@
 
 修改接口：
 
-* [CreateProbeTasks](https://cloud.tencent.com/document/api/280/66213)
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
 
-	* 新增入参：ClientNum
-
-	* 新增出参：TaskIDs
-
-
-修改数据结构：
-
-* [NodeDefine](https://cloud.tencent.com/document/api/280/40931#NodeDefine)
-
-	* 新增成员：CodeType, NodeDefineStatus
+	* 新增入参：NewOwnerAppId
 
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
+## 视频处理(mps) 版本：2019-06-12
 
-### 第 83 次发布
+### 第 39 次发布
 
-发布时间：2022-05-23 06:05:51
+发布时间：2022-05-24 06:15:50
 
 本次发布包含了以下内容：
 
@@ -40,72 +50,32 @@
 
 修改数据结构：
 
-* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
+* [AiRecognitionTaskFaceResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskFaceResultItem)
 
-	* 新增成员：GpuTotal, GpuAvailable
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 32 次发布
-
-发布时间：2022-05-23 06:08:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeUsersForUserManager](https://cloud.tencent.com/document/api/589/74225)
+	* 新增成员：Gender, Birthday, Profession, SchoolOfGraduation, Abstract, PlaceOfBirth, PersonType, Remark, Url
 
 
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 17 次发布
+## 服务网格(tcm) 版本：2021-04-13
 
-发布时间：2022-05-23 06:11:33
+### 第 8 次发布
+
+发布时间：2022-05-24 06:18:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CheckSavepoint](https://cloud.tencent.com/document/api/849/74227)
-* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
 
 新增数据结构：
 
-* [Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 32 次发布
-
-发布时间：2022-05-23 06:12:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeReadOnlyGroupByReadOnlyInstance](https://cloud.tencent.com/document/api/238/46773)
-
-	* 新增出参：MasterRegionId
-
+* [TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)
 
 修改数据结构：
 
-* [ReadOnlyInstance](https://cloud.tencent.com/document/api/238/19976#ReadOnlyInstance)
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
 
-	* 新增成员：RegionId, ZoneId
+	* 新增成员：Zipkin
 
 
 
@@ -9894,6 +9864,21 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 25 次发布
+
+发布时间：2022-05-24 06:07:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
+
+	* 新增成员：TaskId
+
 
 ### 第 24 次发布
 
@@ -28675,6 +28660,21 @@
 
 ## 域名注册(domain) 版本：2018-08-08
 
+### 第 20 次发布
+
+发布时间：2022-05-24 06:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+
+	* 新增入参：NewOwnerAppId
+
+
 ### 第 19 次发布
 
 发布时间：2022-04-21 06:11:32
@@ -31864,7 +31864,7 @@
 
 新增接口：
 
-* [[DescribeUsersForUserManager](https://cloud.tencent.com/document/api/589/74225)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUsersForUserManager](https://cloud.tencent.com/document/api/589/74225)
 
 ### 第 31 次发布
 
@@ -47403,6 +47403,21 @@
 
 ## 视频处理(mps) 版本：2019-06-12
 
+### 第 39 次发布
+
+发布时间：2022-05-24 06:15:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskFaceResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskFaceResultItem)
+
+	* 新增成员：Gender, Birthday, Profession, SchoolOfGraduation, Abstract, PlaceOfBirth, PersonType, Remark, Url
+
+
 ### 第 38 次发布
 
 发布时间：2022-05-11 06:13:00
@@ -49567,12 +49582,12 @@
 
 新增接口：
 
-* [[CheckSavepoint](https://cloud.tencent.com/document/api/849/74227)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)](https://cloud.tencent.com/document/api/#/#)
+* [CheckSavepoint](https://cloud.tencent.com/document/api/849/74227)
+* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
 
 新增数据结构：
 
-* [[Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)](https://cloud.tencent.com/document/api/849/52010#[Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint))
+* [Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)
 
 ### 第 16 次发布
 
@@ -61261,6 +61276,25 @@
 
 
 ## 服务网格(tcm) 版本：2021-04-13
+
+### 第 8 次发布
+
+发布时间：2022-05-24 06:18:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)](https://cloud.tencent.com/document/api/1261/63843#[TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin))
+
+修改数据结构：
+
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+
+	* 新增成员：Zipkin
+
 
 ### 第 7 次发布
 

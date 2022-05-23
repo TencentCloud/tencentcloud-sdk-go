@@ -95,6 +95,9 @@ const (
 	// 渠道方退款失败。
 	FAILEDOPERATION_CHANNELREFUNDFAILED = "FailedOperation.ChannelRefundFailed"
 
+	// 渠道退款频率受限。
+	FAILEDOPERATION_CHANNELREFUNDFREQUENCYLIMITED = "FailedOperation.ChannelRefundFrequencyLimited"
+
 	// 终止合约失败。
 	FAILEDOPERATION_CLOSECONTRACTDBFAILED = "FailedOperation.CloseContractDbFailed"
 
@@ -292,6 +295,9 @@ const (
 
 	// 超出商户单日转账额度。
 	FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
+
+	// 退款处理中。
+	FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 
 	// 退款交易已结束。
 	FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"

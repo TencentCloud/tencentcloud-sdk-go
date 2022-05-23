@@ -472,6 +472,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_CVMNUMBERNOTMATCH = "FailedOperation.CvmNumberNotMatch"
@@ -539,6 +540,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTCOMMON = "FailedOperation.AccountCommon"
 //  FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = "FailedOperation.AccountUserNotAuthenticated"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_CVMNUMBERNOTMATCH = "FailedOperation.CvmNumberNotMatch"
@@ -2145,6 +2147,7 @@ func NewDeleteClusterRouteResponse() (response *DeleteClusterRouteResponse) {
 // 删除集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
@@ -2159,6 +2162,7 @@ func (c *Client) DeleteClusterRoute(request *DeleteClusterRouteRequest) (respons
 // 删除集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
@@ -6107,6 +6111,7 @@ func NewDisableClusterAuditResponse() (response *DisableClusterAuditResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DisableClusterAudit(request *DisableClusterAuditRequest) (response *DisableClusterAuditResponse, err error) {
     return c.DisableClusterAuditWithContext(context.Background(), request)
 }
@@ -6116,6 +6121,7 @@ func (c *Client) DisableClusterAudit(request *DisableClusterAuditRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DisableClusterAuditWithContext(ctx context.Context, request *DisableClusterAuditRequest) (response *DisableClusterAuditResponse, err error) {
     if request == nil {
         request = NewDisableClusterAuditRequest()
@@ -6209,6 +6215,7 @@ func NewDisableEventPersistenceResponse() (response *DisableEventPersistenceResp
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
 //  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DisableEventPersistence(request *DisableEventPersistenceRequest) (response *DisableEventPersistenceResponse, err error) {
     return c.DisableEventPersistenceWithContext(context.Background(), request)
 }
@@ -6224,6 +6231,7 @@ func (c *Client) DisableEventPersistence(request *DisableEventPersistenceRequest
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
 //  INTERNALERROR_KUBERNETESDELETEOPERATIONERROR = "InternalError.KubernetesDeleteOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DisableEventPersistenceWithContext(ctx context.Context, request *DisableEventPersistenceRequest) (response *DisableEventPersistenceResponse, err error) {
     if request == nil {
         request = NewDisableEventPersistenceRequest()
@@ -7377,6 +7385,7 @@ func NewModifyNodePoolInstanceTypesResponse() (response *ModifyNodePoolInstanceT
 // 修改节点池的机型配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -7395,6 +7404,7 @@ func (c *Client) ModifyNodePoolInstanceTypes(request *ModifyNodePoolInstanceType
 // 修改节点池的机型配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"

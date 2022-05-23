@@ -200,6 +200,7 @@ func NewDescribePrefetchTasksResponse() (response *DescribePrefetchTasksResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) DescribePrefetchTasks(request *DescribePrefetchTasksRequest) (response *DescribePrefetchTasksResponse, err error) {
     return c.DescribePrefetchTasksWithContext(context.Background(), request)
 }
@@ -210,6 +211,7 @@ func (c *Client) DescribePrefetchTasks(request *DescribePrefetchTasksRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  UNAUTHORIZEDOPERATION_DOMAINEMPTY = "UnauthorizedOperation.DomainEmpty"
 func (c *Client) DescribePrefetchTasksWithContext(ctx context.Context, request *DescribePrefetchTasksRequest) (response *DescribePrefetchTasksResponse, err error) {
     if request == nil {
         request = NewDescribePrefetchTasksRequest()
@@ -345,8 +347,7 @@ func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
 // 查询七层离线日志
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     return c.DownloadL7LogsWithContext(context.Background(), request)
 }
@@ -355,8 +356,7 @@ func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *Downl
 // 查询七层离线日志
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     if request == nil {
         request = NewDownloadL7LogsRequest()

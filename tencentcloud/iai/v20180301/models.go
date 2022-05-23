@@ -973,7 +973,7 @@ type DetectFaceAttributesRequest struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 是否返回年龄、性别、情绪等属性。 
-	// 合法值为（大小写不敏感）：None、Age、Beauty、Emotion、Eye、Eyebrow 
+	// 合法值为（大小写不敏感）：None、Age、Beauty、Emotion、Eye、Eyebrow、 
 	// Gender、Hair、Hat、Headpose、Mask、Mouth、Moustache、Nose、Shape、Skin、Smile。 
 	// None为不需要返回。默认为 None。 
 	// 需要将属性组成一个用逗号分隔的字符串，属性之间的顺序没有要求。 

@@ -2803,6 +2803,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 // 查询地域下可用区
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
@@ -2813,6 +2814,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 // 查询地域下可用区
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {

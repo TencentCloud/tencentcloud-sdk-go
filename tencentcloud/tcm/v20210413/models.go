@@ -681,6 +681,15 @@ type TracingConfig struct {
 
 	// 腾讯云 APM 服务相关参数
 	APM *APM `json:"APM,omitempty" name:"APM"`
+
+	// 启动第三方服务器的地址
+	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+}
+
+type TracingZipkin struct {
+
+	// Zipkin调用地址
+	Address *string `json:"Address,omitempty" name:"Address"`
 }
 
 type WorkloadConfig struct {

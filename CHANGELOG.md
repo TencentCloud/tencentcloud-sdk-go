@@ -1,3 +1,85 @@
+# Release v1.0.405
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 25 次发布
+
+发布时间：2022-05-24 06:07:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
+
+	* 新增成员：TaskId
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 20 次发布
+
+发布时间：2022-05-24 06:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+
+	* 新增入参：NewOwnerAppId
+
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 39 次发布
+
+发布时间：2022-05-24 06:15:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskFaceResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskFaceResultItem)
+
+	* 新增成员：Gender, Birthday, Profession, SchoolOfGraduation, Abstract, PlaceOfBirth, PersonType, Remark, Url
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 8 次发布
+
+发布时间：2022-05-24 06:18:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)
+
+修改数据结构：
+
+* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+
+	* 新增成员：Zipkin
+
+
+
+
 # Release v1.0.404
 
 ## 云拨测(cat) 版本：2018-04-09

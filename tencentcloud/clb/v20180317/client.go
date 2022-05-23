@@ -3247,6 +3247,7 @@ func NewDescribeTargetsResponse() (response *DescribeTargetsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTargets(request *DescribeTargetsRequest) (response *DescribeTargetsResponse, err error) {
     return c.DescribeTargetsWithContext(context.Background(), request)
 }
@@ -3263,6 +3264,7 @@ func (c *Client) DescribeTargets(request *DescribeTargetsRequest) (response *Des
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTargetsWithContext(ctx context.Context, request *DescribeTargetsRequest) (response *DescribeTargetsResponse, err error) {
     if request == nil {
         request = NewDescribeTargetsRequest()

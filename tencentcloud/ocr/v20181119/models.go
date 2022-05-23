@@ -2818,7 +2818,7 @@ type MLIDCardOCRResponse struct {
 	// MyKid 儿童卡
 		Type *string `json:"Type,omitempty" name:"Type"`
 
-		// 出生日期（目前该字段仅支持IKAD劳工证）
+		// 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
 		Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

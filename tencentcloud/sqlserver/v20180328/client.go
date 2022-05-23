@@ -698,6 +698,7 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
@@ -719,6 +720,7 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
@@ -2189,6 +2191,7 @@ func NewDescribeDBsNormalResponse() (response *DescribeDBsNormalResponse) {
 // 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2204,6 +2207,7 @@ func (c *Client) DescribeDBsNormal(request *DescribeDBsNormalRequest) (response 
 // 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2424,6 +2428,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -2440,6 +2445,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -4137,6 +4143,7 @@ func NewModifyDBInstanceNetworkResponse() (response *ModifyDBInstanceNetworkResp
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  FAILEDOPERATION_VPCERROR = "FailedOperation.VPCError"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
@@ -4166,6 +4173,7 @@ func (c *Client) ModifyDBInstanceNetwork(request *ModifyDBInstanceNetworkRequest
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  FAILEDOPERATION_VPCERROR = "FailedOperation.VPCError"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"

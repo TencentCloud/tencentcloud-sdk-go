@@ -77,6 +77,9 @@ const (
 	// 无效的taskid。
 	INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 
+	// 无效的任务类型。
+	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+
 	// 无效用户名称。
 	INVALIDPARAMETER_INVALIDUSERALIAS = "InvalidParameter.InvalidUserAlias"
 

@@ -214,6 +214,7 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
+//  INTERNALERROR_CELERYERROR = "InternalError.CeleryError"
 //  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
@@ -246,6 +247,7 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
+//  INTERNALERROR_CELERYERROR = "InternalError.CeleryError"
 //  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
@@ -1240,6 +1242,7 @@ func NewOfflineIsolatedSubscribeResponse() (response *OfflineIsolatedSubscribeRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1252,6 +1255,7 @@ func (c *Client) OfflineIsolatedSubscribe(request *OfflineIsolatedSubscribeReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
+//  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1355,6 +1359,7 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -1380,6 +1385,7 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

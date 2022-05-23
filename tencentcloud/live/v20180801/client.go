@@ -7213,6 +7213,7 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAINGSLBFAIL = "InternalError.DomainGslbFail"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -7229,6 +7230,7 @@ func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DOMAINGSLBFAIL = "InternalError.DomainGslbFail"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  MISSINGPARAMETER = "MissingParameter"

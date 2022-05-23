@@ -1089,6 +1089,7 @@ func NewDescribeTelCallInfoResponse() (response *DescribeTelCallInfoResponse) {
 // 按实例获取电话消耗统计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1102,6 +1103,7 @@ func (c *Client) DescribeTelCallInfo(request *DescribeTelCallInfoRequest) (respo
 // 按实例获取电话消耗统计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"

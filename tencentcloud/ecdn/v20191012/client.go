@@ -182,6 +182,7 @@ func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
 //  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (response *CreateVerifyRecordResponse, err error) {
     return c.CreateVerifyRecordWithContext(context.Background(), request)
 }
@@ -203,6 +204,7 @@ func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (respons
 //  INVALIDPARAMETER_ECDNPARAMERROR = "InvalidParameter.EcdnParamError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_ECDNUSERNOTEXISTS = "ResourceNotFound.EcdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_ECDNMIGRATEDCDN = "UnauthorizedOperation.EcdnMigratedCdn"
 func (c *Client) CreateVerifyRecordWithContext(ctx context.Context, request *CreateVerifyRecordRequest) (response *CreateVerifyRecordResponse, err error) {
     if request == nil {
         request = NewCreateVerifyRecordRequest()

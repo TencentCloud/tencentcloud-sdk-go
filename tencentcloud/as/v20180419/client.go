@@ -68,6 +68,7 @@ func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
@@ -91,6 +92,7 @@ func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *Att
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"

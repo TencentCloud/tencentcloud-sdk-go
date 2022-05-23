@@ -1255,6 +1255,7 @@ func NewDeleteChannelResponse() (response *DeleteChannelResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
     return c.DeleteChannelWithContext(context.Background(), request)
 }
@@ -1266,6 +1267,7 @@ func (c *Client) DeleteChannel(request *DeleteChannelRequest) (response *DeleteC
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEONLINE = "InvalidParameterValue.DeviceOnline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteChannelRequest) (response *DeleteChannelResponse, err error) {
     if request == nil {
         request = NewDeleteChannelRequest()
