@@ -1,29 +1,27 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 25 次发布
+### 第 48 次发布
 
-发布时间：2022-05-24 06:07:44
+发布时间：2022-05-25 06:03:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [AutoCalloutTaskInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskInfo)
-
-	* 新增成员：TaskId
-
+* [TagRole](https://cloud.tencent.com/document/api/598/74379)
+* [UntagRole](https://cloud.tencent.com/document/api/598/74378)
 
 
 
-## 域名注册(domain) 版本：2018-08-08
+## 云 HDFS(chdfs) 版本：2020-11-12
 
-### 第 20 次发布
+### 第 4 次发布
 
-发布时间：2022-05-24 06:11:36
+发布时间：2022-05-25 06:05:18
 
 本次发布包含了以下内容：
 
@@ -31,51 +29,232 @@
 
 修改接口：
 
-* [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/api/242/49196)
+* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
 
-	* 新增入参：NewOwnerAppId
-
-
+	* 新增入参：Tags
 
 
-## 视频处理(mps) 版本：2019-06-12
 
-### 第 39 次发布
 
-发布时间：2022-05-24 06:15:50
+## 云 HDFS(chdfs) 版本：2019-07-18
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 84 次发布
+
+发布时间：2022-05-25 06:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchTemplateVersion](https://cloud.tencent.com/document/api/213/66326)
+
+	* 新增入参：DisableApiTermination
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 40 次发布
+
+发布时间：2022-05-25 06:07:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [AiRecognitionTaskFaceResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskFaceResultItem)
-
-	* 新增成员：Gender, Birthday, Profession, SchoolOfGraduation, Abstract, PlaceOfBirth, PersonType, Remark, Url
-
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 8 次发布
-
-发布时间：2022-05-24 06:18:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
+* [DescribeOrders](https://cloud.tencent.com/document/api/557/16139)
 
 新增数据结构：
 
-* [TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)
+* [Deal](https://cloud.tencent.com/document/api/557/16142#Deal)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 27 次发布
+
+发布时间：2022-05-25 06:08:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateIndex](https://cloud.tencent.com/document/api/845/74384)
+* [DeleteIndex](https://cloud.tencent.com/document/api/845/74383)
+* [DescribeIndexList](https://cloud.tencent.com/document/api/845/74382)
+* [DescribeIndexMeta](https://cloud.tencent.com/document/api/845/74381)
+* [UpdateIndex](https://cloud.tencent.com/document/api/845/74380)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：EsConfigSet
+
+
+新增数据结构：
+
+* [BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField)
+* [EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo)
+* [IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)
+* [IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField)
+* [IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)
+* [IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 45 次发布
+
+发布时间：2022-05-25 06:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [TracingConfig](https://cloud.tencent.com/document/api/1261/63843#TracingConfig)
+* [PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem)
 
-	* 新增成员：Zipkin
+	* 新增成员：LocationType, Accuracy
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 36 次发布
+
+发布时间：2022-05-25 06:11:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
+* [DescribeOrders](https://cloud.tencent.com/document/api/237/16186)
+
+新增数据结构：
+
+* [Deal](https://cloud.tencent.com/document/api/237/16191#Deal)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 46 次发布
+
+发布时间：2022-05-25 06:12:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：AdvancedMetricNumber
+
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+
+	* 新增成员：IsAdvanced, IsOpen, ProductId
+
+* [Metric](https://cloud.tencent.com/document/api/248/30354#Metric)
+
+	* 新增成员：IsAdvanced, IsOpen, ProductId
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 17 次发布
+
+发布时间：2022-05-25 06:15:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccessControlEventsExport](https://cloud.tencent.com/document/api/1285/65544)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeAssetContainerDetail](https://cloud.tencent.com/document/api/1285/65511)
+
+	* 新增出参：NetStatus, NetSubStatus, IsolateSource, IsolateTime
+
+* [DescribeReverseShellEventsExport](https://cloud.tencent.com/document/api/1285/65531)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeRiskSyscallEventsExport](https://cloud.tencent.com/document/api/1285/65566)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ModifyVirusFileStatus](https://cloud.tencent.com/document/api/1285/65574)
+
+	* 新增入参：AutoIsolate
+
+
+修改数据结构：
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ContainerInfo](https://cloud.tencent.com/document/api/1285/65614#ContainerInfo)
+
+	* 新增成员：NetStatus, NetSubStatus, IsolateSource, IsolateTime
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ReverseShellEventInfo](https://cloud.tencent.com/document/api/1285/65614#ReverseShellEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [VirusInfo](https://cloud.tencent.com/document/api/1285/65614#VirusInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, MD5
 
 
 
@@ -7726,6 +7905,19 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 48 次发布
+
+发布时间：2022-05-25 06:03:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TagRole](https://cloud.tencent.com/document/api/598/74379)](https://cloud.tencent.com/document/api/#/#)
+* [[UntagRole](https://cloud.tencent.com/document/api/598/74378)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 47 次发布
 
@@ -15517,6 +15709,21 @@
 
 ## 云 HDFS(chdfs) 版本：2020-11-12
 
+### 第 4 次发布
+
+发布时间：2022-05-25 06:05:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
+
+	* 新增入参：Tags
+
+
 ### 第 3 次发布
 
 发布时间：2021-12-21 08:02:31
@@ -22441,6 +22648,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 84 次发布
+
+发布时间：2022-05-25 06:06:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchTemplateVersion](https://cloud.tencent.com/document/api/213/66326)
+
+	* 新增入参：DisableApiTermination
+
+
 ### 第 83 次发布
 
 发布时间：2022-05-23 06:05:51
@@ -27339,6 +27561,23 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 40 次发布
+
+发布时间：2022-05-25 06:07:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOrders](https://cloud.tencent.com/document/api/557/16139)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Deal](https://cloud.tencent.com/document/api/557/16142#Deal)](https://cloud.tencent.com/document/api/557/16142#[Deal](https://cloud.tencent.com/document/api/557/16142#Deal))
 
 ### 第 39 次发布
 
@@ -32679,6 +32918,38 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 27 次发布
+
+发布时间：2022-05-25 06:08:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateIndex](https://cloud.tencent.com/document/api/845/74384)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteIndex](https://cloud.tencent.com/document/api/845/74383)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIndexList](https://cloud.tencent.com/document/api/845/74382)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIndexMeta](https://cloud.tencent.com/document/api/845/74381)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateIndex](https://cloud.tencent.com/document/api/845/74380)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：EsConfigSet
+
+
+新增数据结构：
+
+* [[BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField)](https://cloud.tencent.com/document/api/845/30634#[BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField))
+* [[EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo)](https://cloud.tencent.com/document/api/845/30634#[EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo))
+* [[IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)](https://cloud.tencent.com/document/api/845/30634#[IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField))
+* [[IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField)](https://cloud.tencent.com/document/api/845/30634#[IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField))
+* [[IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)](https://cloud.tencent.com/document/api/845/30634#[IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField))
+* [[IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField)](https://cloud.tencent.com/document/api/845/30634#[IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField))
 
 ### 第 26 次发布
 
@@ -39893,6 +40164,21 @@
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
+### 第 45 次发布
+
+发布时间：2022-05-25 06:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem)
+
+	* 新增成员：LocationType, Accuracy
+
+
 ### 第 44 次发布
 
 发布时间：2022-04-18 06:13:51
@@ -44922,6 +45208,23 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 36 次发布
+
+发布时间：2022-05-25 06:11:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOrders](https://cloud.tencent.com/document/api/237/16186)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Deal](https://cloud.tencent.com/document/api/237/16191#Deal)](https://cloud.tencent.com/document/api/237/16191#[Deal](https://cloud.tencent.com/document/api/237/16191#Deal))
+
 ### 第 35 次发布
 
 发布时间：2022-04-13 06:56:52
@@ -46478,6 +46781,29 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 46 次发布
+
+发布时间：2022-05-25 06:12:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：AdvancedMetricNumber
+
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+
+	* 新增成员：IsAdvanced, IsOpen, ProductId
+
+* [Metric](https://cloud.tencent.com/document/api/248/30354#Metric)
+
+	* 新增成员：IsAdvanced, IsOpen, ProductId
+
 
 ### 第 45 次发布
 
@@ -61287,7 +61613,7 @@
 
 新增数据结构：
 
-* [[TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)](https://cloud.tencent.com/document/api/1261/63843#[TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin))
+* [TracingZipkin](https://cloud.tencent.com/document/api/1261/63843#TracingZipkin)
 
 修改数据结构：
 
@@ -62201,6 +62527,78 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 17 次发布
+
+发布时间：2022-05-25 06:15:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccessControlEventsExport](https://cloud.tencent.com/document/api/1285/65544)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeAssetContainerDetail](https://cloud.tencent.com/document/api/1285/65511)
+
+	* 新增出参：NetStatus, NetSubStatus, IsolateSource, IsolateTime
+
+* [DescribeReverseShellEventsExport](https://cloud.tencent.com/document/api/1285/65531)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeRiskSyscallEventsExport](https://cloud.tencent.com/document/api/1285/65566)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+	* 新增出参：JobId
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ModifyVirusFileStatus](https://cloud.tencent.com/document/api/1285/65574)
+
+	* 新增入参：AutoIsolate
+
+
+修改数据结构：
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ContainerInfo](https://cloud.tencent.com/document/api/1285/65614#ContainerInfo)
+
+	* 新增成员：NetStatus, NetSubStatus, IsolateSource, IsolateTime
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [ReverseShellEventInfo](https://cloud.tencent.com/document/api/1285/65614#ReverseShellEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
+
+* [VirusInfo](https://cloud.tencent.com/document/api/1285/65614#VirusInfo)
+
+	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, MD5
+
 
 ### 第 16 次发布
 

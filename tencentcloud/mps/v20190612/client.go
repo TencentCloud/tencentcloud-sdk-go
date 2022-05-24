@@ -353,7 +353,7 @@ func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemp
 }
 
 // CreateContentReviewTemplate
-// 创建用户自定义内容智能识别模板，数量上限：50。
+// 创建用户自定义内容审核模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -371,7 +371,7 @@ func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplat
 }
 
 // CreateContentReviewTemplate
-// 创建用户自定义内容智能识别模板，数量上限：50。
+// 创建用户自定义内容审核模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

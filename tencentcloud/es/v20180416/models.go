@@ -20,6 +20,29 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BackingIndexMetaField struct {
+
+	// 后备索引名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 后备索引状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStatus *string `json:"IndexStatus,omitempty" name:"IndexStatus"`
+
+	// 后备索引存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStorage *int64 `json:"IndexStorage,omitempty" name:"IndexStorage"`
+
+	// 后备索引当前生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexPhrase *string `json:"IndexPhrase,omitempty" name:"IndexPhrase"`
+
+	// 后备索引创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexCreateTime *string `json:"IndexCreateTime,omitempty" name:"IndexCreateTime"`
+}
+
 type ClusterView struct {
 
 	// 集群健康状态
@@ -98,6 +121,72 @@ type CosBackup struct {
 
 	// 自动备份执行时间（精确到小时）, e.g. "22:00"
 	BackupTime *string `json:"BackupTime,omitempty" name:"BackupTime"`
+}
+
+type CreateIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 创建的索引类型。auto：自治索引；normal：普通索引
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// 创建的索引名
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 创建的索引元数据JSON，如mappings、settings
+	IndexMetaJson *string `json:"IndexMetaJson,omitempty" name:"IndexMetaJson"`
+
+	// 集群访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 集群访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *CreateIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IndexType")
+	delete(f, "IndexName")
+	delete(f, "IndexMetaJson")
+	delete(f, "Username")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateInstanceRequest struct {
@@ -277,6 +366,72 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 删除的索引类型。auto：自治索引；normal：普通索引
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// 删除的索引名
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 集群访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 集群访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 后备索引名
+	BackingIndexName *string `json:"BackingIndexName,omitempty" name:"BackingIndexName"`
+}
+
+func (r *DeleteIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IndexType")
+	delete(f, "IndexName")
+	delete(f, "Username")
+	delete(f, "Password")
+	delete(f, "BackingIndexName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -320,6 +475,162 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexListRequest struct {
+	*tchttp.BaseRequest
+
+	// 索引类型。auto：自治索引；normal：普通索引
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 索引名，若填空则获取所有索引
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 集群访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 集群访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 分页起始位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页展示数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 过滤索引状态
+	IndexStatusList []*string `json:"IndexStatusList,omitempty" name:"IndexStatusList"`
+
+	// 排序顺序，支持asc、desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *DescribeIndexListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IndexType")
+	delete(f, "InstanceId")
+	delete(f, "IndexName")
+	delete(f, "Username")
+	delete(f, "Password")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "IndexStatusList")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndexListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 索引元数据字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IndexMetaFields []*IndexMetaField `json:"IndexMetaFields,omitempty" name:"IndexMetaFields"`
+
+		// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIndexListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexMetaRequest struct {
+	*tchttp.BaseRequest
+
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 索引类型。auto：自治索引；normal：普通索引
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// 索引名，若填空则获取所有索引
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 集群访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 集群访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *DescribeIndexMetaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexMetaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IndexType")
+	delete(f, "IndexName")
+	delete(f, "Username")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndexMetaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIndexMetaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 索引元数据字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IndexMetaField *IndexMetaField `json:"IndexMetaField,omitempty" name:"IndexMetaField"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeIndexMetaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexMetaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -702,6 +1013,15 @@ type EsAcl struct {
 	WhiteIpList []*string `json:"WhiteIpList,omitempty" name:"WhiteIpList"`
 }
 
+type EsConfigSetInfo struct {
+
+	// 配置组类型，如ldap,ad等
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// "{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
+	EsConfig *string `json:"EsConfig,omitempty" name:"EsConfig"`
+}
+
 type EsDictionaryInfo struct {
 
 	// 启用词词典列表
@@ -776,6 +1096,134 @@ func (r *GetRequestTargetNodeTypesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetRequestTargetNodeTypesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IndexMetaField struct {
+
+	// 索引类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// 索引名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 索引状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStatus *string `json:"IndexStatus,omitempty" name:"IndexStatus"`
+
+	// 索引存储大小，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStorage *int64 `json:"IndexStorage,omitempty" name:"IndexStorage"`
+
+	// 索引创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexCreateTime *string `json:"IndexCreateTime,omitempty" name:"IndexCreateTime"`
+
+	// 后备索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackingIndices []*BackingIndexMetaField `json:"BackingIndices,omitempty" name:"BackingIndices"`
+
+	// 索引所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 索引所属集群名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 索引所属集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+
+	// 索引生命周期字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexPolicyField *IndexPolicyField `json:"IndexPolicyField,omitempty" name:"IndexPolicyField"`
+
+	// 索引自治字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexOptionsField *IndexOptionsField `json:"IndexOptionsField,omitempty" name:"IndexOptionsField"`
+
+	// 索引配置字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexSettingsField *IndexSettingsField `json:"IndexSettingsField,omitempty" name:"IndexSettingsField"`
+
+	// 索引所属集群APP ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+}
+
+type IndexOptionsField struct {
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireMaxAge *string `json:"ExpireMaxAge,omitempty" name:"ExpireMaxAge"`
+
+	// 过期大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireMaxSize *string `json:"ExpireMaxSize,omitempty" name:"ExpireMaxSize"`
+
+	// 滚动周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RolloverMaxAge *string `json:"RolloverMaxAge,omitempty" name:"RolloverMaxAge"`
+
+	// 是否开启动态滚动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RolloverDynamic *string `json:"RolloverDynamic,omitempty" name:"RolloverDynamic"`
+
+	// 是否开启动态分片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardNumDynamic *string `json:"ShardNumDynamic,omitempty" name:"ShardNumDynamic"`
+
+	// 时间分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimestampField *string `json:"TimestampField,omitempty" name:"TimestampField"`
+
+	// 写入模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteMode *string `json:"WriteMode,omitempty" name:"WriteMode"`
+}
+
+type IndexPolicyField struct {
+
+	// 是否开启warm阶段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmEnable *string `json:"WarmEnable,omitempty" name:"WarmEnable"`
+
+	// warm阶段转入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmMinAge *string `json:"WarmMinAge,omitempty" name:"WarmMinAge"`
+
+	// 是否开启cold阶段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdEnable *string `json:"ColdEnable,omitempty" name:"ColdEnable"`
+
+	// cold阶段转入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdMinAge *string `json:"ColdMinAge,omitempty" name:"ColdMinAge"`
+
+	// 是否开启frozen阶段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenEnable *string `json:"FrozenEnable,omitempty" name:"FrozenEnable"`
+
+	// frozen阶段转入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrozenMinAge *string `json:"FrozenMinAge,omitempty" name:"FrozenMinAge"`
+}
+
+type IndexSettingsField struct {
+
+	// 索引主分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberOfShards *string `json:"NumberOfShards,omitempty" name:"NumberOfShards"`
+
+	// 索引副本分片数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberOfReplicas *string `json:"NumberOfReplicas,omitempty" name:"NumberOfReplicas"`
+
+	// 索引刷新频率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefreshInterval *string `json:"RefreshInterval,omitempty" name:"RefreshInterval"`
 }
 
 type InstanceInfo struct {
@@ -1601,6 +2049,72 @@ func (r *UpdateDictionariesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UpdateIndexRequest struct {
+	*tchttp.BaseRequest
+
+	// ES集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 更新的索引类型。auto：自治索引；normal：普通索引
+	IndexType *string `json:"IndexType,omitempty" name:"IndexType"`
+
+	// 更新的索引名
+	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+
+	// 更新的索引元数据JSON，如mappings、settings
+	UpdateMetaJson *string `json:"UpdateMetaJson,omitempty" name:"UpdateMetaJson"`
+
+	// 集群访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 集群访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *UpdateIndexRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIndexRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "IndexType")
+	delete(f, "IndexName")
+	delete(f, "UpdateMetaJson")
+	delete(f, "Username")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIndexRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateIndexResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UpdateIndexResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateInstanceRequest struct {
 	*tchttp.BaseRequest
 
@@ -1696,6 +2210,9 @@ type UpdateInstanceRequest struct {
 
 	// Cerebro内网访问状态
 	CerebroPrivateAccess *string `json:"CerebroPrivateAccess,omitempty" name:"CerebroPrivateAccess"`
+
+	// 新增或修改的配置组信息
+	EsConfigSet *EsConfigSetInfo `json:"EsConfigSet,omitempty" name:"EsConfigSet"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -1739,6 +2256,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableCerebro")
 	delete(f, "CerebroPublicAccess")
 	delete(f, "CerebroPrivateAccess")
+	delete(f, "EsConfigSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

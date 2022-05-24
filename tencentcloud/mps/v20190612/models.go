@@ -2004,10 +2004,10 @@ func (r *CreateAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 type CreateContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 
-	// 内容智能识别模板名称，长度限制：64 个字符。
+	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容智能识别模板描述信息，长度限制：256 个字符。
+	// 内容审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 令人反感的信息的控制参数。
@@ -2025,7 +2025,7 @@ type CreateContentReviewTemplateRequest struct {
 	// 注意：此参数尚未支持。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容智能识别控制参数。
+	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 }
 
@@ -2058,7 +2058,7 @@ type CreateContentReviewTemplateResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 内容智能识别模板唯一标识。
+		// 内容审核模板唯一标识。
 		Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

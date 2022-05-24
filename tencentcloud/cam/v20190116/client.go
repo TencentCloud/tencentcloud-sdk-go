@@ -4072,6 +4072,130 @@ func (c *Client) SetMfaFlagWithContext(ctx context.Context, request *SetMfaFlagR
     return
 }
 
+func NewTagRoleRequest() (request *TagRoleRequest) {
+    request = &TagRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "TagRole")
+    
+    
+    return
+}
+
+func NewTagRoleResponse() (response *TagRoleResponse) {
+    response = &TagRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TagRole
+// 角色绑定标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
+func (c *Client) TagRole(request *TagRoleRequest) (response *TagRoleResponse, err error) {
+    return c.TagRoleWithContext(context.Background(), request)
+}
+
+// TagRole
+// 角色绑定标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGLIMITEXCEEDED = "InvalidParameter.TagLimitExceeded"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
+func (c *Client) TagRoleWithContext(ctx context.Context, request *TagRoleRequest) (response *TagRoleResponse, err error) {
+    if request == nil {
+        request = NewTagRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TagRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTagRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUntagRoleRequest() (request *UntagRoleRequest) {
+    request = &UntagRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cam", APIVersion, "UntagRole")
+    
+    
+    return
+}
+
+func NewUntagRoleResponse() (response *UntagRoleResponse) {
+    response = &UntagRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UntagRole
+// 角色解绑标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UnTagResourceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
+func (c *Client) UntagRole(request *UntagRoleRequest) (response *UntagRoleResponse, err error) {
+    return c.UntagRoleWithContext(context.Background(), request)
+}
+
+// UntagRole
+// 角色解绑标签。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UnTagResourceFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLENAMEERROR = "InvalidParameter.RoleNameError"
+//  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
+func (c *Client) UntagRoleWithContext(ctx context.Context, request *UntagRoleRequest) (response *UntagRoleResponse, err error) {
+    if request == nil {
+        request = NewUntagRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UntagRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUntagRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAssumeRolePolicyRequest() (request *UpdateAssumeRolePolicyRequest) {
     request = &UpdateAssumeRolePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

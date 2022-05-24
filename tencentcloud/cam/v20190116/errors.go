@@ -41,6 +41,9 @@ const (
 	// 绑定标签失败。
 	FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
 
+	// 解绑标签失败。
+	FAILEDOPERATION_UNTAGRESOURCEFAILED = "FailedOperation.UnTagResourceFailed"
+
 	// 用户未绑定手机。
 	FAILEDOPERATION_USERNOTBINDPHONE = "FailedOperation.UserNotBindPhone"
 

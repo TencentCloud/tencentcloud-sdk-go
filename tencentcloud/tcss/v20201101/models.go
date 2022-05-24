@@ -145,6 +145,31 @@ type AbnormalProcessEventInfo struct {
 
 	// 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
 	MatchRuleLevel *string `json:"MatchRuleLevel,omitempty" name:"MatchRuleLevel"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type AbnormalProcessRuleInfo struct {
@@ -323,6 +348,28 @@ type AccessControlEventInfo struct {
 
 	// 规则组id
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type AccessControlRuleInfo struct {
@@ -663,10 +710,10 @@ func (r *AddEditReverseShellWhiteListResponse) FromJsonString(s string) error {
 type AddEditRiskSyscallWhiteListRequest struct {
 	*tchttp.BaseRequest
 
-	// 仅在添加白名单时候使用
+	// 仅在添加事件白名单时候使用
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
-	// 增加白名单信息，白名单id为空，编辑白名单id不能为空
+	// 增加或编辑白名单信。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空.
 	WhiteListInfo *RiskSyscallWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
 }
 
@@ -1648,6 +1695,26 @@ type ContainerInfo struct {
 
 	// 外网ip
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
+
+	// 网络子状态
+	NetSubStatus *string `json:"NetSubStatus,omitempty" name:"NetSubStatus"`
+
+	// 隔离来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateSource *string `json:"IsolateSource,omitempty" name:"IsolateSource"`
+
+	// 隔离时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
 }
 
 type ContainerMount struct {
@@ -3126,9 +3193,6 @@ func (r *DescribeAccessControlDetailResponse) FromJsonString(s string) error {
 type DescribeAccessControlEventsExportRequest struct {
 	*tchttp.BaseRequest
 
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -3143,6 +3207,9 @@ type DescribeAccessControlEventsExportRequest struct {
 
 	// 排序字段
 	By *string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 func (r *DescribeAccessControlEventsExportRequest) ToJsonString() string {
@@ -3157,12 +3224,12 @@ func (r *DescribeAccessControlEventsExportRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ExportField")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessControlEventsExportRequest has unknown keys!", "")
 	}
@@ -3176,6 +3243,10 @@ type DescribeAccessControlEventsExportResponse struct {
 		// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3884,6 +3955,26 @@ type DescribeAssetContainerDetailResponse struct {
 		// 主机状态 offline,online,pause
 		HostStatus *string `json:"HostStatus,omitempty" name:"HostStatus"`
 
+		// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+		NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
+
+		// 网络子状态
+		NetSubStatus *string `json:"NetSubStatus,omitempty" name:"NetSubStatus"`
+
+		// 隔离来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsolateSource *string `json:"IsolateSource,omitempty" name:"IsolateSource"`
+
+		// 隔离时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3916,6 +4007,7 @@ type DescribeAssetContainerListRequest struct {
 	// <li>ImageName- String - 是否必填：否 - 镜像名称搜索</li>
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>OrderBy - String 是否必填：否 -排序字段，支持：cpu_usage, mem_usage的动态排序 ["cpu_usage","+"]  '+'升序、'-'降序</li>
+	// <li>NetStatus - String -是否必填: 否 -  容器网络状态筛选 normal isolated isolating isolate_failed restoring restore_failed</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -8654,9 +8746,6 @@ func (r *DescribeReverseShellDetailResponse) FromJsonString(s string) error {
 type DescribeReverseShellEventsExportRequest struct {
 	*tchttp.BaseRequest
 
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -8671,6 +8760,9 @@ type DescribeReverseShellEventsExportRequest struct {
 
 	// 排序字段
 	By *string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 func (r *DescribeReverseShellEventsExportRequest) ToJsonString() string {
@@ -8685,12 +8777,12 @@ func (r *DescribeReverseShellEventsExportRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ExportField")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReverseShellEventsExportRequest has unknown keys!", "")
 	}
@@ -8704,6 +8796,10 @@ type DescribeReverseShellEventsExportResponse struct {
 		// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9044,9 +9140,6 @@ func (r *DescribeRiskSyscallDetailResponse) FromJsonString(s string) error {
 type DescribeRiskSyscallEventsExportRequest struct {
 	*tchttp.BaseRequest
 
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -9061,6 +9154,9 @@ type DescribeRiskSyscallEventsExportRequest struct {
 
 	// 排序字段
 	By *string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 func (r *DescribeRiskSyscallEventsExportRequest) ToJsonString() string {
@@ -9075,12 +9171,12 @@ func (r *DescribeRiskSyscallEventsExportRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ExportField")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskSyscallEventsExportRequest has unknown keys!", "")
 	}
@@ -9094,6 +9190,10 @@ type DescribeRiskSyscallEventsExportResponse struct {
 		// Excel下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+		// 任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9835,6 +9935,18 @@ type DescribeVirusDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
 
+		// 容器隔离状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+		// 容器隔离子状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+		// 容器隔离操作来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -9870,6 +9982,8 @@ type DescribeVirusListRequest struct {
 	// <li>ImageId- string - 是否必填：否 - 镜像id</li>
 	// <li>IsRealTime- int - 是否必填：否 - 过滤是否实时监控数据</li>
 	// <li>TaskId- string - 是否必填：否 - 任务ID</li>
+	// <li>ContainerNetStatus - String -是否必填: 否 -  容器网络状态筛选 NORMAL ISOLATED ISOLATING RESTORING RESTORE_FAILED</li>
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式
@@ -10462,6 +10576,31 @@ type EscapeEventInfo struct {
 	// 主机IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type EscapeRule struct {
@@ -10517,6 +10656,10 @@ type ExportVirusListRequest struct {
 	// <li>ContainerId- string - 是否必填：否 - 容器id</li>
 	// <li>ImageName- string - 是否必填：否 - 镜像名称</li>
 	// <li>ImageId- string - 是否必填：否 - 镜像id</li>
+	// <li>IsRealTime- int - 是否必填：否 - 过滤是否实时监控数据</li>
+	// <li>TaskId- string - 是否必填：否 - 任务ID</li>
+	// <li>NetStatus - String -是否必填: 否 -  容器网络状态筛选 NORMAL ISOLATED ISOLATING RESTORING RESTORE_FAILED</li>
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式
@@ -12025,13 +12168,18 @@ type ModifyVirusFileStatusRequest struct {
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
-	//      EVENT_DEL:事件删除
-	//      EVENT_ADD_WHITE:事件加白
-	//      EVENT_PENDING: 事件待处理
+	//     EVENT_DEL:事件删除
+	//     EVENT_ADD_WHITE:事件加白
+	//     EVENT_PENDING: 事件待处理
+	// 	EVENT_ISOLATE_CONTAINER: 隔离容器
+	// 	EVENT_RESOTRE_CONTAINER: 恢复容器
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 事件备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否后续自动隔离相同MD5文件
+	AutoIsolate *bool `json:"AutoIsolate,omitempty" name:"AutoIsolate"`
 }
 
 func (r *ModifyVirusFileStatusRequest) ToJsonString() string {
@@ -12049,6 +12197,7 @@ func (r *ModifyVirusFileStatusRequest) FromJsonString(s string) error {
 	delete(f, "EventIdSet")
 	delete(f, "Status")
 	delete(f, "Remark")
+	delete(f, "AutoIsolate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVirusFileStatusRequest has unknown keys!", "")
 	}
@@ -12587,6 +12736,28 @@ type ReverseShellEventInfo struct {
 
 	// 目标地址
 	DstAddress *string `json:"DstAddress,omitempty" name:"DstAddress"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// 	"NODE_DESTROYED"      //节点已销毁
+	// 	"CONTAINER_EXITED"    //容器已退出
+	// 	"CONTAINER_DESTROYED" //容器已销毁
+	// 	"SHARED_HOST"         // 容器与主机共享网络
+	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
+	// 	"UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type ReverseShellWhiteListBaseInfo struct {
@@ -12715,6 +12886,28 @@ type RiskSyscallEventInfo struct {
 
 	// 最近生成时间
 	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 }
 
 type RiskSyscallWhiteListBaseInfo struct {
@@ -13577,6 +13770,32 @@ type VirusInfo struct {
 	// INTERNAL: 服务内部错误
 	// VALIDATION: 参数非法
 	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+
+	// 网络状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// 	"NODE_DESTROYED"      //节点已销毁
+	// 	"CONTAINER_EXITED"    //容器已退出
+	// 	"CONTAINER_DESTROYED" //容器已销毁
+	// 	"SHARED_HOST"         // 容器与主机共享网络
+	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
+	// 	"UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// md5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
 }
 
 type VirusTaskInfo struct {

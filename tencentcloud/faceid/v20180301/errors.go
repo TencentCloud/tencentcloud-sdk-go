@@ -32,7 +32,7 @@ const (
 	// 脸离屏幕太右。
 	FAILEDOPERATION_ACTIONFACERIGHT = "FailedOperation.ActionFaceRight"
 
-	// 未检测到第一个动作。
+	// 未检测到动作配合。
 	FAILEDOPERATION_ACTIONFIRSTACTION = "FailedOperation.ActionFirstAction"
 
 	// 光线太暗。

@@ -4604,6 +4604,114 @@ type SubAccountUser struct {
 	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
 }
 
+type TagRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+
+	// 角色名，与角色ID至少输入一个
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色ID，与角色名至少输入一个
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
+func (r *TagRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TagRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Tags")
+	delete(f, "RoleName")
+	delete(f, "RoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TagRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TagRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TagRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UntagRoleRequest struct {
+	*tchttp.BaseRequest
+
+	// 标签键
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+	// 角色名，与角色ID至少输入一个
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色ID，与角色名至少输入一个
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
+func (r *UntagRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UntagRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagKeys")
+	delete(f, "RoleName")
+	delete(f, "RoleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UntagRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UntagRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *UntagRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UntagRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UpdateAssumeRolePolicyRequest struct {
 	*tchttp.BaseRequest
 

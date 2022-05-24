@@ -1246,6 +1246,28 @@ type DcnDetailItem struct {
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
+type Deal struct {
+
+	// 订单号
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 所属账号
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 商品数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 关联的流程 Id，可用于查询流程执行状态
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 付费模式，0后付费/1预付费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
 type DeleteAccountRequest struct {
 	*tchttp.BaseRequest
 
@@ -2072,6 +2094,67 @@ func (r *DescribeDBResourceUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 数据库引擎名称，本接口取值：mariadb。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 安全组详情。
+		Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
+
+		// 实例VIP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VIP *string `json:"VIP,omitempty" name:"VIP"`
+
+		// 实例端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		VPort *string `json:"VPort,omitempty" name:"VPort"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDBSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDBSlowLogsRequest struct {
 	*tchttp.BaseRequest
 
@@ -2611,6 +2694,58 @@ func (r *DescribeLogFileRetentionPeriodResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogFileRetentionPeriodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrdersRequest struct {
+	*tchttp.BaseRequest
+
+	// 待查询的长订单号列表，创建实例、续费实例、扩容实例接口返回。
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
+func (r *DescribeOrdersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrdersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrdersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOrdersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回的订单数量。
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 订单信息列表。
+		Deals []*Deal `json:"Deals,omitempty" name:"Deals"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOrdersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrdersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

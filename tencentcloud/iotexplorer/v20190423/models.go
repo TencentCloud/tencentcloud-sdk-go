@@ -5212,6 +5212,14 @@ type PositionItem struct {
 
 	// 位置点的纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 位置点的定位类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocationType *string `json:"LocationType,omitempty" name:"LocationType"`
+
+	// 位置点的精度预估，单位为米
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Accuracy *float64 `json:"Accuracy,omitempty" name:"Accuracy"`
 }
 
 type PositionSpaceInfo struct {

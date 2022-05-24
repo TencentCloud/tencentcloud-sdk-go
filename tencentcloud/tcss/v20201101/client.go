@@ -7229,7 +7229,7 @@ func NewDescribeVirusListResponse() (response *DescribeVirusListResponse) {
 }
 
 // DescribeVirusList
-// 运行时文件查杀事件列表
+// 查询运行时文件查杀事件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7242,7 +7242,7 @@ func (c *Client) DescribeVirusList(request *DescribeVirusListRequest) (response 
 }
 
 // DescribeVirusList
-// 运行时文件查杀事件列表
+// 查询运行时文件查杀事件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

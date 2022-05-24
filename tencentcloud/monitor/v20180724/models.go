@@ -306,6 +306,10 @@ type AlarmPolicy struct {
 	// 一键告警策略是否开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OneClickStatus *int64 `json:"OneClickStatus,omitempty" name:"OneClickStatus"`
+
+	// 高级指标数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedMetricNumber *int64 `json:"AdvancedMetricNumber,omitempty" name:"AdvancedMetricNumber"`
 }
 
 type AlarmPolicyCondition struct {
@@ -400,6 +404,18 @@ type AlarmPolicyRule struct {
 	// 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 是否为高级指标，0否，1是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAdvanced *int64 `json:"IsAdvanced,omitempty" name:"IsAdvanced"`
+
+	// 高级指标是否开通，0否，1是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOpen *int64 `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 集成中心产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
 type AlarmPolicyTriggerTask struct {
@@ -4245,6 +4261,18 @@ type Metric struct {
 	// 指标配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricConfig *MetricConfig `json:"MetricConfig,omitempty" name:"MetricConfig"`
+
+	// 是否为高级指标。1是 0否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAdvanced *int64 `json:"IsAdvanced,omitempty" name:"IsAdvanced"`
+
+	// 高级指标是否开通。1是 0否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOpen *int64 `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 集成中心产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
 }
 
 type MetricConfig struct {

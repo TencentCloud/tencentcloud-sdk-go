@@ -3983,7 +3983,7 @@ type DescribeCmqQueuesRequest struct {
 	// 标签过滤查找时，需要设置为 true
 	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
 
-	// 过滤器。目前支持按标签过滤。
+	// 过滤器。目前支持按标签过滤，标签的Name需要加前缀“tag:”，例如：tag:负责人、tag:环境、tag:业务
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -4170,7 +4170,7 @@ type DescribeCmqTopicsRequest struct {
 	// 标签过滤查找时，需要设置为 true
 	IsTagFilter *bool `json:"IsTagFilter,omitempty" name:"IsTagFilter"`
 
-	// 过滤器。目前支持按标签过滤。
+	// 过滤器。目前支持按标签过滤，标签的Name需要加前缀“tag:”，例如：tag:负责人、tag:环境、tag:业务
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
