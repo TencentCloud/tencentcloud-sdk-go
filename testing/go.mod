@@ -59,13 +59,14 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.406
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.407
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc v0.0.0
@@ -271,6 +272,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp => ../tencentcloud/cwp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws => ../tencentcloud/cws
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb => ../tencentcloud/cynosdb
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb => ../tencentcloud/dasb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu => ../tencentcloud/dayu
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain => ../tencentcloud/dbbrain
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc => ../tencentcloud/dc

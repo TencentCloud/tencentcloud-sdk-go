@@ -4424,8 +4424,6 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //
 // 
 //
-// 此外日志服务还为用户提供以下两种不同的日志上传模式：
-//
 //                  
 //
 // 
@@ -4761,8 +4759,6 @@ func (c *Client) UploadLog(request *UploadLogRequest, data []byte) (response *Up
 // 系统根据携带的哈希值（X-CLS-HashKey）将数据写入到符合范围要求的目标分区。例如，可以将某个日志源端通过 hashkey 与某个主题分区强绑定，这样可以保证数据在该分区上写入和消费是严格保序的。
 //
 // 
-//
-// 此外日志服务还为用户提供以下两种不同的日志上传模式：
 //
 //                  
 //

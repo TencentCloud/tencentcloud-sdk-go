@@ -2688,6 +2688,9 @@ type CoverConfigureInfoForUpdate struct {
 type CreateAIAnalysisTemplateRequest struct {
 	*tchttp.BaseRequest
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 视频内容分析模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -2708,9 +2711,6 @@ type CreateAIAnalysisTemplateRequest struct {
 
 	// 智能精彩集锦任务控制参数。
 	HighlightConfigure *HighlightsConfigureInfo `json:"HighlightConfigure,omitempty" name:"HighlightConfigure"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateAIAnalysisTemplateRequest) ToJsonString() string {
@@ -2725,6 +2725,7 @@ func (r *CreateAIAnalysisTemplateRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "ClassificationConfigure")
@@ -2732,7 +2733,6 @@ func (r *CreateAIAnalysisTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CoverConfigure")
 	delete(f, "FrameTagConfigure")
 	delete(f, "HighlightConfigure")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIAnalysisTemplateRequest has unknown keys!", "")
 	}
@@ -2764,6 +2764,9 @@ func (r *CreateAIAnalysisTemplateResponse) FromJsonString(s string) error {
 
 type CreateAIRecognitionTemplateRequest struct {
 	*tchttp.BaseRequest
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 视频内容识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2797,9 +2800,6 @@ type CreateAIRecognitionTemplateRequest struct {
 
 	// 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
@@ -2814,6 +2814,7 @@ func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "HeadTailConfigure")
@@ -2825,7 +2826,6 @@ func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AsrWordsConfigure")
 	delete(f, "ObjectConfigure")
 	delete(f, "ScreenshotInterval")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIRecognitionTemplateRequest has unknown keys!", "")
 	}
@@ -2866,6 +2866,9 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
 	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -2890,9 +2893,6 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -2909,12 +2909,12 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	}
 	delete(f, "Format")
 	delete(f, "StreamInfos")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "DrmType")
 	delete(f, "DisableHigherVideoBitrate")
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -2950,6 +2950,9 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 	// 帧率，取值范围：[1, 30]，单位：Hz。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -2983,9 +2986,6 @@ type CreateAnimatedGraphicsTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateAnimatedGraphicsTemplateRequest) ToJsonString() string {
@@ -3001,6 +3001,7 @@ func (r *CreateAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Fps")
+	delete(f, "SubAppId")
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "ResolutionAdaptive")
@@ -3008,7 +3009,6 @@ func (r *CreateAnimatedGraphicsTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Quality")
 	delete(f, "Name")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAnimatedGraphicsTemplateRequest has unknown keys!", "")
 	}
@@ -3103,6 +3103,9 @@ type CreateContentReviewTemplateRequest struct {
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 内容智能识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -3128,9 +3131,6 @@ type CreateContentReviewTemplateRequest struct {
 
 	// 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateContentReviewTemplateRequest) ToJsonString() string {
@@ -3146,6 +3146,7 @@ func (r *CreateContentReviewTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ReviewWallSwitch")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "PornConfigure")
@@ -3154,7 +3155,6 @@ func (r *CreateContentReviewTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ProhibitedConfigure")
 	delete(f, "UserDefineConfigure")
 	delete(f, "ScreenshotInterval")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContentReviewTemplateRequest has unknown keys!", "")
 	}
@@ -3368,6 +3368,9 @@ type CreateImageSpriteTemplateRequest struct {
 	// 雪碧图中小图的列数。
 	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 雪碧图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -3401,9 +3404,6 @@ type CreateImageSpriteTemplateRequest struct {
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -3422,13 +3422,13 @@ func (r *CreateImageSpriteTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SampleInterval")
 	delete(f, "RowCount")
 	delete(f, "ColumnCount")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "FillType")
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "ResolutionAdaptive")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageSpriteTemplateRequest has unknown keys!", "")
 	}
@@ -3470,6 +3470,9 @@ type CreatePersonSampleRequest struct {
 	// 3. All：包含以上全部，等价于 1+2。
 	Usages []*string `json:"Usages,omitempty" name:"Usages"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 素材描述，长度限制：1024 个字符。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
@@ -3481,9 +3484,6 @@ type CreatePersonSampleRequest struct {
 	// <li>数组长度限制：20 个标签；</li>
 	// <li>单个标签长度限制：128 个字符。</li>
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreatePersonSampleRequest) ToJsonString() string {
@@ -3500,10 +3500,10 @@ func (r *CreatePersonSampleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "Usages")
+	delete(f, "SubAppId")
 	delete(f, "Description")
 	delete(f, "FaceContents")
 	delete(f, "Tags")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonSampleRequest has unknown keys!", "")
 	}
@@ -3619,6 +3619,9 @@ type CreateSampleSnapshotTemplateRequest struct {
 	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
 	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 采样截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -3650,9 +3653,6 @@ type CreateSampleSnapshotTemplateRequest struct {
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -3676,13 +3676,13 @@ func (r *CreateSampleSnapshotTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SampleType")
 	delete(f, "SampleInterval")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "ResolutionAdaptive")
 	delete(f, "Format")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	delete(f, "FillType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSampleSnapshotTemplateRequest has unknown keys!", "")
@@ -3716,6 +3716,9 @@ func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
 type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	*tchttp.BaseRequest
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -3747,9 +3750,6 @@ type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
 	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -3771,13 +3771,13 @@ func (r *CreateSnapshotByTimeOffsetTemplateRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "ResolutionAdaptive")
 	delete(f, "Format")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	delete(f, "FillType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotByTimeOffsetTemplateRequest has unknown keys!", "")
@@ -4030,6 +4030,9 @@ type CreateTranscodeTemplateRequest struct {
 	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 转码模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -4056,9 +4059,6 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -4074,6 +4074,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Container")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "RemoveVideo")
@@ -4081,7 +4082,6 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -4178,6 +4178,9 @@ type CreateWatermarkTemplateRequest struct {
 	// <li>svg：SVG 水印。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 水印模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -4212,9 +4215,6 @@ type CreateWatermarkTemplateRequest struct {
 
 	// SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
 	SvgTemplate *SvgWatermarkInput `json:"SvgTemplate,omitempty" name:"SvgTemplate"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateWatermarkTemplateRequest) ToJsonString() string {
@@ -4230,6 +4230,7 @@ func (r *CreateWatermarkTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Type")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "CoordinateOrigin")
@@ -4238,7 +4239,6 @@ func (r *CreateWatermarkTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ImageTemplate")
 	delete(f, "TextTemplate")
 	delete(f, "SvgTemplate")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWatermarkTemplateRequest has unknown keys!", "")
 	}
@@ -4288,7 +4288,7 @@ type CreateWordSamplesRequest struct {
 	// 关键词，数组长度限制：100。
 	Words []*AiSampleWordInfo `json:"Words,omitempty" name:"Words"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -4858,7 +4858,7 @@ type DeletePersonSampleRequest struct {
 	// 素材 ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -5258,7 +5258,7 @@ type DeleteWordSamplesRequest struct {
 	// 关键词，数组长度限制：100 个词。
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -6853,6 +6853,9 @@ func (r *DescribeMediaProcessUsageDataResponse) FromJsonString(s string) error {
 type DescribePersonSamplesRequest struct {
 	*tchttp.BaseRequest
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 拉取的素材类型，可选值：
 	// <li>UserDefine：用户自定义素材库；</li>
 	// <li>Default：系统默认素材库。</li>
@@ -6875,9 +6878,6 @@ type DescribePersonSamplesRequest struct {
 
 	// 返回记录条数，默认值：100，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribePersonSamplesRequest) ToJsonString() string {
@@ -6892,13 +6892,13 @@ func (r *DescribePersonSamplesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Type")
 	delete(f, "PersonIds")
 	delete(f, "Names")
 	delete(f, "Tags")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePersonSamplesRequest has unknown keys!", "")
 	}
@@ -8021,6 +8021,9 @@ func (r *DescribeWatermarkTemplatesResponse) FromJsonString(s string) error {
 type DescribeWordSamplesRequest struct {
 	*tchttp.BaseRequest
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// <b>关键词应用场景过滤条件，可选值：</b>
 	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
 	// 2. Recognition.Asr：通过音频识别技术，进行内容识别；
@@ -8043,9 +8046,6 @@ type DescribeWordSamplesRequest struct {
 
 	// 返回记录条数，默认值：100，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeWordSamplesRequest) ToJsonString() string {
@@ -8060,12 +8060,12 @@ func (r *DescribeWordSamplesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Usages")
 	delete(f, "Keywords")
 	delete(f, "Tags")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWordSamplesRequest has unknown keys!", "")
 	}
@@ -11235,6 +11235,9 @@ type ModifyPersonSampleRequest struct {
 	// 素材 ID。
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 名称，长度限制：128 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -11252,9 +11255,6 @@ type ModifyPersonSampleRequest struct {
 
 	// 标签操作信息。
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyPersonSampleRequest) ToJsonString() string {
@@ -11270,12 +11270,12 @@ func (r *ModifyPersonSampleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PersonId")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Description")
 	delete(f, "Usages")
 	delete(f, "FaceOperationInfo")
 	delete(f, "TagOperationInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPersonSampleRequest has unknown keys!", "")
 	}
@@ -12026,6 +12026,9 @@ type ModifyWordSampleRequest struct {
 	// 关键词，长度限制：128 个字符。
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// <b>关键词应用场景，可选值：</b>
 	// 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
 	// 2. Recognition.Asr：通过音频识别技术，进行内容识别；
@@ -12039,9 +12042,6 @@ type ModifyWordSampleRequest struct {
 
 	// 标签操作信息。
 	TagOperationInfo *AiSampleTagOperation `json:"TagOperationInfo,omitempty" name:"TagOperationInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyWordSampleRequest) ToJsonString() string {
@@ -12057,9 +12057,9 @@ func (r *ModifyWordSampleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Keyword")
+	delete(f, "SubAppId")
 	delete(f, "Usages")
 	delete(f, "TagOperationInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWordSampleRequest has unknown keys!", "")
 	}

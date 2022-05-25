@@ -73,6 +73,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain"

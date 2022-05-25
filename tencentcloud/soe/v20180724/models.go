@@ -595,7 +595,7 @@ type TransmitOralProcessWithInitResponse struct {
 		// 评估 session 状态，“Evaluating"：评估中、"Failed"：评估失败、"Finished"：评估完成
 		Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）× 完整度（PronCompletionfloat）×（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
+		// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 		SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

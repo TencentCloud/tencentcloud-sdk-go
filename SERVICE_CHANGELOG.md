@@ -1,69 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 堡垒机(dasb) 版本：2019-10-18
 
-### 第 48 次发布
+### 第 1 次发布
 
-发布时间：2022-05-25 06:03:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [TagRole](https://cloud.tencent.com/document/api/598/74379)
-* [UntagRole](https://cloud.tencent.com/document/api/598/74378)
-
-
-
-## 云 HDFS(chdfs) 版本：2020-11-12
-
-### 第 4 次发布
-
-发布时间：2022-05-25 06:05:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFileSystem](https://cloud.tencent.com/document/api/1105/51148)
-
-	* 新增入参：Tags
-
-
-
-
-## 云 HDFS(chdfs) 版本：2019-07-18
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 84 次发布
-
-发布时间：2022-05-25 06:06:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLaunchTemplateVersion](https://cloud.tencent.com/document/api/213/66326)
-
-	* 新增入参：DisableApiTermination
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 40 次发布
-
-发布时间：2022-05-25 06:07:44
+发布时间：2022-05-25 11:33:45
 
 本次发布包含了以下内容：
 
@@ -71,56 +12,33 @@
 
 新增接口：
 
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
-* [DescribeOrders](https://cloud.tencent.com/document/api/557/16139)
+* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+* [CreateUser](https://cloud.tencent.com/document/api/1025/74406)
+* [DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)
+* [DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)
+* [DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)
+* [DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)
+* [DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)
+* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
+* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
+* [ModifyUser](https://cloud.tencent.com/document/api/1025/74403)
 
 新增数据结构：
 
-* [Deal](https://cloud.tencent.com/document/api/557/16142#Deal)
+* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
+* [CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)
+* [Device](https://cloud.tencent.com/document/api/1025/74416#Device)
+* [Group](https://cloud.tencent.com/document/api/1025/74416#Group)
+* [Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)
+* [User](https://cloud.tencent.com/document/api/1025/74416#User)
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 事件总线(eb) 版本：2021-04-16
 
-### 第 27 次发布
+### 第 3 次发布
 
-发布时间：2022-05-25 06:08:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateIndex](https://cloud.tencent.com/document/api/845/74384)
-* [DeleteIndex](https://cloud.tencent.com/document/api/845/74383)
-* [DescribeIndexList](https://cloud.tencent.com/document/api/845/74382)
-* [DescribeIndexMeta](https://cloud.tencent.com/document/api/845/74381)
-* [UpdateIndex](https://cloud.tencent.com/document/api/845/74380)
-
-修改接口：
-
-* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
-
-	* 新增入参：EsConfigSet
-
-
-新增数据结构：
-
-* [BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField)
-* [EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo)
-* [IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)
-* [IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField)
-* [IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)
-* [IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField)
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 45 次发布
-
-发布时间：2022-05-25 06:10:34
+发布时间：2022-05-26 06:11:01
 
 本次发布包含了以下内容：
 
@@ -128,133 +46,9 @@
 
 修改数据结构：
 
-* [PositionItem](https://cloud.tencent.com/document/api/1081/34988#PositionItem)
+* [Event](https://cloud.tencent.com/document/api/1359/67704#Event)
 
-	* 新增成员：LocationType, Accuracy
-
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 36 次发布
-
-发布时间：2022-05-25 06:11:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
-* [DescribeOrders](https://cloud.tencent.com/document/api/237/16186)
-
-新增数据结构：
-
-* [Deal](https://cloud.tencent.com/document/api/237/16191#Deal)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 46 次发布
-
-发布时间：2022-05-25 06:12:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
-
-	* 新增成员：AdvancedMetricNumber
-
-* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
-
-	* 新增成员：IsAdvanced, IsOpen, ProductId
-
-* [Metric](https://cloud.tencent.com/document/api/248/30354#Metric)
-
-	* 新增成员：IsAdvanced, IsOpen, ProductId
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 17 次发布
-
-发布时间：2022-05-25 06:15:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAccessControlEventsExport](https://cloud.tencent.com/document/api/1285/65544)
-
-	* <font color="#dd0000">**修改入参**：</font>ExportField
-
-	* 新增出参：JobId
-
-* [DescribeAssetContainerDetail](https://cloud.tencent.com/document/api/1285/65511)
-
-	* 新增出参：NetStatus, NetSubStatus, IsolateSource, IsolateTime
-
-* [DescribeReverseShellEventsExport](https://cloud.tencent.com/document/api/1285/65531)
-
-	* <font color="#dd0000">**修改入参**：</font>ExportField
-
-	* 新增出参：JobId
-
-* [DescribeRiskSyscallEventsExport](https://cloud.tencent.com/document/api/1285/65566)
-
-	* <font color="#dd0000">**修改入参**：</font>ExportField
-
-	* 新增出参：JobId
-
-* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
-
-	* 新增出参：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [ModifyVirusFileStatus](https://cloud.tencent.com/document/api/1285/65574)
-
-	* 新增入参：AutoIsolate
-
-
-修改数据结构：
-
-* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [ContainerInfo](https://cloud.tencent.com/document/api/1285/65614#ContainerInfo)
-
-	* 新增成员：NetStatus, NetSubStatus, IsolateSource, IsolateTime
-
-* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [ReverseShellEventInfo](https://cloud.tencent.com/document/api/1285/65614#ReverseShellEventInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc
-
-* [VirusInfo](https://cloud.tencent.com/document/api/1285/65614#VirusInfo)
-
-	* 新增成员：ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, MD5
+	* 新增成员：Time
 
 
 
@@ -7916,8 +7710,8 @@
 
 新增接口：
 
-* [[TagRole](https://cloud.tencent.com/document/api/598/74379)](https://cloud.tencent.com/document/api/#/#)
-* [[UntagRole](https://cloud.tencent.com/document/api/598/74378)](https://cloud.tencent.com/document/api/#/#)
+* [TagRole](https://cloud.tencent.com/document/api/598/74379)
+* [UntagRole](https://cloud.tencent.com/document/api/598/74378)
 
 ### 第 47 次发布
 
@@ -26123,6 +25917,41 @@
 
 
 
+## 堡垒机(dasb) 版本：2019-10-18
+
+### 第 1 次发布
+
+发布时间：2022-05-25 11:33:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAcl](https://cloud.tencent.com/document/api/1025/74411)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUser](https://cloud.tencent.com/document/api/1025/74406)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyUser](https://cloud.tencent.com/document/api/1025/74403)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)](https://cloud.tencent.com/document/api/1025/74416#[Acl](https://cloud.tencent.com/document/api/1025/74416#Acl))
+* [[CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)](https://cloud.tencent.com/document/api/1025/74416#[CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate))
+* [[Device](https://cloud.tencent.com/document/api/1025/74416#Device)](https://cloud.tencent.com/document/api/1025/74416#[Device](https://cloud.tencent.com/document/api/1025/74416#Device))
+* [[Group](https://cloud.tencent.com/document/api/1025/74416#Group)](https://cloud.tencent.com/document/api/1025/74416#[Group](https://cloud.tencent.com/document/api/1025/74416#Group))
+* [[Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)](https://cloud.tencent.com/document/api/1025/74416#[Resource](https://cloud.tencent.com/document/api/1025/74416#Resource))
+* [[User](https://cloud.tencent.com/document/api/1025/74416#User)](https://cloud.tencent.com/document/api/1025/74416#[User](https://cloud.tencent.com/document/api/1025/74416#User))
+
+
+
+
 ## DDoS 高防包(dayu) 版本：2018-07-09
 
 ### 第 21 次发布
@@ -27572,12 +27401,12 @@
 
 新增接口：
 
-* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOrders](https://cloud.tencent.com/document/api/557/16139)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/557/51781)
+* [DescribeOrders](https://cloud.tencent.com/document/api/557/16139)
 
 新增数据结构：
 
-* [[Deal](https://cloud.tencent.com/document/api/557/16142#Deal)](https://cloud.tencent.com/document/api/557/16142#[Deal](https://cloud.tencent.com/document/api/557/16142#Deal))
+* [Deal](https://cloud.tencent.com/document/api/557/16142#Deal)
 
 ### 第 39 次发布
 
@@ -29891,6 +29720,21 @@
 
 
 ## 事件总线(eb) 版本：2021-04-16
+
+### 第 3 次发布
+
+发布时间：2022-05-26 06:11:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Event](https://cloud.tencent.com/document/api/1359/67704#Event)
+
+	* 新增成员：Time
+
 
 ### 第 2 次发布
 
@@ -32929,11 +32773,11 @@
 
 新增接口：
 
-* [[CreateIndex](https://cloud.tencent.com/document/api/845/74384)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteIndex](https://cloud.tencent.com/document/api/845/74383)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIndexList](https://cloud.tencent.com/document/api/845/74382)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIndexMeta](https://cloud.tencent.com/document/api/845/74381)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateIndex](https://cloud.tencent.com/document/api/845/74380)](https://cloud.tencent.com/document/api/#/#)
+* [CreateIndex](https://cloud.tencent.com/document/api/845/74384)
+* [DeleteIndex](https://cloud.tencent.com/document/api/845/74383)
+* [DescribeIndexList](https://cloud.tencent.com/document/api/845/74382)
+* [DescribeIndexMeta](https://cloud.tencent.com/document/api/845/74381)
+* [UpdateIndex](https://cloud.tencent.com/document/api/845/74380)
 
 修改接口：
 
@@ -32944,12 +32788,12 @@
 
 新增数据结构：
 
-* [[BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField)](https://cloud.tencent.com/document/api/845/30634#[BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField))
-* [[EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo)](https://cloud.tencent.com/document/api/845/30634#[EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo))
-* [[IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)](https://cloud.tencent.com/document/api/845/30634#[IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField))
-* [[IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField)](https://cloud.tencent.com/document/api/845/30634#[IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField))
-* [[IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)](https://cloud.tencent.com/document/api/845/30634#[IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField))
-* [[IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField)](https://cloud.tencent.com/document/api/845/30634#[IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField))
+* [BackingIndexMetaField](https://cloud.tencent.com/document/api/845/30634#BackingIndexMetaField)
+* [EsConfigSetInfo](https://cloud.tencent.com/document/api/845/30634#EsConfigSetInfo)
+* [IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)
+* [IndexOptionsField](https://cloud.tencent.com/document/api/845/30634#IndexOptionsField)
+* [IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)
+* [IndexSettingsField](https://cloud.tencent.com/document/api/845/30634#IndexSettingsField)
 
 ### 第 26 次发布
 
@@ -45218,12 +45062,12 @@
 
 新增接口：
 
-* [[DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOrders](https://cloud.tencent.com/document/api/237/16186)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/237/51787)
+* [DescribeOrders](https://cloud.tencent.com/document/api/237/16186)
 
 新增数据结构：
 
-* [[Deal](https://cloud.tencent.com/document/api/237/16191#Deal)](https://cloud.tencent.com/document/api/237/16191#[Deal](https://cloud.tencent.com/document/api/237/16191#Deal))
+* [Deal](https://cloud.tencent.com/document/api/237/16191#Deal)
 
 ### 第 35 次发布
 

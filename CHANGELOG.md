@@ -1,3 +1,58 @@
+# Release v1.0.407
+
+## 堡垒机(dasb) 版本：2019-10-18
+
+### 第 1 次发布
+
+发布时间：2022-05-25 11:33:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+* [CreateUser](https://cloud.tencent.com/document/api/1025/74406)
+* [DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)
+* [DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)
+* [DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)
+* [DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)
+* [DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)
+* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
+* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
+* [ModifyUser](https://cloud.tencent.com/document/api/1025/74403)
+
+新增数据结构：
+
+* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
+* [CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)
+* [Device](https://cloud.tencent.com/document/api/1025/74416#Device)
+* [Group](https://cloud.tencent.com/document/api/1025/74416#Group)
+* [Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)
+* [User](https://cloud.tencent.com/document/api/1025/74416#User)
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 3 次发布
+
+发布时间：2022-05-26 06:11:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Event](https://cloud.tencent.com/document/api/1359/67704#Event)
+
+	* 新增成员：Time
+
+
+
+
 # Release v1.0.406
 
 ## 访问管理(cam) 版本：2019-01-16
