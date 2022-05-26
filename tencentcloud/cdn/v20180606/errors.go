@@ -140,7 +140,7 @@ const (
 	// 缓存配置不合法，请确认后重试。
 	INVALIDPARAMETER_CDNCONFIGINVALIDCACHE = "InvalidParameter.CdnConfigInvalidCache"
 
-	// 域名不合法。
+	// 域名不符合规范，请确认域名是否符合规范。
 	INVALIDPARAMETER_CDNCONFIGINVALIDHOST = "InvalidParameter.CdnConfigInvalidHost"
 
 	// 标签配置不合法。
@@ -152,7 +152,7 @@ const (
 	// 域名拥有特殊配置，需人工处理。
 	INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
 
-	// 该域名为内部域名，不可接入。
+	// 该域名属于指定账号域名，不允许接入。
 	INVALIDPARAMETER_CDNHOSTINTERNALHOST = "InvalidParameter.CdnHostInternalHost"
 
 	// 错误的中间源配置。
@@ -332,7 +332,7 @@ const (
 	// 批量查询IP归属个数超过限制。
 	LIMITEXCEEDED_CDNQUERYIPBATCHTOOMANY = "LimitExceeded.CdnQueryIpBatchTooMany"
 
-	// 接入域名数超出限制。
+	// 用户域名数量已达上限，请联系腾讯云工程师处理。
 	LIMITEXCEEDED_CDNUSERTOOMANYHOSTS = "LimitExceeded.CdnUserTooManyHosts"
 
 	// 日志大小超限。
@@ -374,7 +374,7 @@ const (
 	// 标签键不存在。
 	RESOURCENOTFOUND_CAMTAGKEYNOTEXIST = "ResourceNotFound.CamTagKeyNotExist"
 
-	// 账号下无此域名，请确认后重试。
+	// 未查询到该域名，请确认域名是否正确。
 	RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
 
 	// 项目不存在，请确认后重试。
@@ -383,7 +383,7 @@ const (
 	// 未开通CDN服务，请开通后使用此接口。
 	RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 
-	// 接入域名数超出限制。
+	// 用户域名数量已达上限，请联系腾讯云工程师处理。
 	RESOURCENOTFOUND_CDNUSERTOOMANYHOSTS = "ResourceNotFound.CdnUserTooManyHosts"
 
 	// 索引不存在。
@@ -416,7 +416,7 @@ const (
 	// 域名被锁定。
 	RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
 
-	// 域名不安全或为恶意域名，不可接入。
+	// 该域名有违法违规风险，不可接入。
 	RESOURCEUNAVAILABLE_CDNHOSTISMALICIOUS = "ResourceUnavailable.CdnHostIsMalicious"
 
 	// 域名未下线。
@@ -425,7 +425,7 @@ const (
 	// 域名已下线，无法提交预热。
 	RESOURCEUNAVAILABLE_CDNHOSTISNOTONLINE = "ResourceUnavailable.CdnHostIsNotOnline"
 
-	// 域名未备案。
+	// 域名未备案，请将域名备案。备案同步周期为2小时，若域名已备案，可稍后重新接入。
 	RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
 
 	// 该域名已在云点播内接入，请先在云点播内删除域名后再接入。
@@ -455,7 +455,7 @@ const (
 	// 域名在内部系统已存在，请提工单处理。
 	UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = "UnauthorizedOperation.CdnHostExistsInInternal"
 
-	// 域名现存在风险，不可接入。
+	// 该域名涉及违法违规风险，不可接入。
 	UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = "UnauthorizedOperation.CdnHostInIcpBlacklist"
 
 	// 该域名属于其他账号，您没有权限接入。

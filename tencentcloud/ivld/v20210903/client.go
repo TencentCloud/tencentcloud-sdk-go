@@ -1862,7 +1862,7 @@ func NewModifyCallbackResponse() (response *ModifyCallbackResponse) {
 //
 // 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
 //
-// - 长时间（20 秒）未回包应答。
+// - 长时间（5 秒）未回包应答。
 //
 // - 应答 HTTP STATUS 不为200。
 //
@@ -1952,7 +1952,7 @@ func (c *Client) ModifyCallback(request *ModifyCallbackRequest) (response *Modif
 //
 // 为了避免重试对您的服务器以及网络带宽造成冲击，请保持正常回包。触发重试条件如下：
 //
-// - 长时间（20 秒）未回包应答。
+// - 长时间（5 秒）未回包应答。
 //
 // - 应答 HTTP STATUS 不为200。
 //

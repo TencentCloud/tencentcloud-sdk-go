@@ -518,6 +518,104 @@ func (c *Client) CreateScriptWithContext(ctx context.Context, request *CreateScr
     return
 }
 
+func NewCreateSparkAppRequest() (request *CreateSparkAppRequest) {
+    request = &CreateSparkAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkApp")
+    
+    
+    return
+}
+
+func NewCreateSparkAppResponse() (response *CreateSparkAppResponse) {
+    response = &CreateSparkAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSparkApp
+// 创建spark应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
+    return c.CreateSparkAppWithContext(context.Background(), request)
+}
+
+// CreateSparkApp
+// 创建spark应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateSparkAppWithContext(ctx context.Context, request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
+    if request == nil {
+        request = NewCreateSparkAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSparkApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSparkAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSparkAppTaskRequest() (request *CreateSparkAppTaskRequest) {
+    request = &CreateSparkAppTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkAppTask")
+    
+    
+    return
+}
+
+func NewCreateSparkAppTaskResponse() (response *CreateSparkAppTaskResponse) {
+    response = &CreateSparkAppTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSparkAppTask
+// 创建spark任务
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
+    return c.CreateSparkAppTaskWithContext(context.Background(), request)
+}
+
+// CreateSparkAppTask
+// 创建spark任务
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateSparkAppTaskWithContext(ctx context.Context, request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateSparkAppTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSparkAppTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSparkAppTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
     request = &CreateStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -992,6 +1090,55 @@ func (c *Client) DeleteScriptWithContext(ctx context.Context, request *DeleteScr
     return
 }
 
+func NewDeleteSparkAppRequest() (request *DeleteSparkAppRequest) {
+    request = &DeleteSparkAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteSparkApp")
+    
+    
+    return
+}
+
+func NewDeleteSparkAppResponse() (response *DeleteSparkAppResponse) {
+    response = &DeleteSparkAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSparkApp
+// 删除spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteSparkApp(request *DeleteSparkAppRequest) (response *DeleteSparkAppResponse, err error) {
+    return c.DeleteSparkAppWithContext(context.Background(), request)
+}
+
+// DeleteSparkApp
+// 删除spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteSparkAppWithContext(ctx context.Context, request *DeleteSparkAppRequest) (response *DeleteSparkAppResponse, err error) {
+    if request == nil {
+        request = NewDeleteSparkAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSparkApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSparkAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1251,6 +1398,149 @@ func (c *Client) DescribeScriptsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSparkAppJobRequest() (request *DescribeSparkAppJobRequest) {
+    request = &DescribeSparkAppJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppJob")
+    
+    
+    return
+}
+
+func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
+    response = &DescribeSparkAppJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSparkAppJob
+// 查询具体的spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
+    return c.DescribeSparkAppJobWithContext(context.Background(), request)
+}
+
+// DescribeSparkAppJob
+// 查询具体的spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSparkAppJobWithContext(ctx context.Context, request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkAppJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkAppJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkAppJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSparkAppJobsRequest() (request *DescribeSparkAppJobsRequest) {
+    request = &DescribeSparkAppJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppJobs")
+    
+    
+    return
+}
+
+func NewDescribeSparkAppJobsResponse() (response *DescribeSparkAppJobsResponse) {
+    response = &DescribeSparkAppJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSparkAppJobs
+// 获取spark应用列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkAppJobs(request *DescribeSparkAppJobsRequest) (response *DescribeSparkAppJobsResponse, err error) {
+    return c.DescribeSparkAppJobsWithContext(context.Background(), request)
+}
+
+// DescribeSparkAppJobs
+// 获取spark应用列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkAppJobsWithContext(ctx context.Context, request *DescribeSparkAppJobsRequest) (response *DescribeSparkAppJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkAppJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkAppJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkAppJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSparkAppTasksRequest() (request *DescribeSparkAppTasksRequest) {
+    request = &DescribeSparkAppTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppTasks")
+    
+    
+    return
+}
+
+func NewDescribeSparkAppTasksResponse() (response *DescribeSparkAppTasksResponse) {
+    response = &DescribeSparkAppTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSparkAppTasks
+// 查询spark应用的运行任务实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkAppTasks(request *DescribeSparkAppTasksRequest) (response *DescribeSparkAppTasksResponse, err error) {
+    return c.DescribeSparkAppTasksWithContext(context.Background(), request)
+}
+
+// DescribeSparkAppTasks
+// 查询spark应用的运行任务实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkAppTasksWithContext(ctx context.Context, request *DescribeSparkAppTasksRequest) (response *DescribeSparkAppTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkAppTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkAppTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkAppTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1771,6 +2061,57 @@ func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDetachWorkGroupPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySparkAppRequest() (request *ModifySparkAppRequest) {
+    request = &ModifySparkAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifySparkApp")
+    
+    
+    return
+}
+
+func NewModifySparkAppResponse() (response *ModifySparkAppResponse) {
+    response = &ModifySparkAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySparkApp
+// 更新spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
+func (c *Client) ModifySparkApp(request *ModifySparkAppRequest) (response *ModifySparkAppResponse, err error) {
+    return c.ModifySparkAppWithContext(context.Background(), request)
+}
+
+// ModifySparkApp
+// 更新spark应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
+func (c *Client) ModifySparkAppWithContext(ctx context.Context, request *ModifySparkAppRequest) (response *ModifySparkAppResponse, err error) {
+    if request == nil {
+        request = NewModifySparkAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySparkApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySparkAppResponse()
     err = c.Send(request, response)
     return
 }

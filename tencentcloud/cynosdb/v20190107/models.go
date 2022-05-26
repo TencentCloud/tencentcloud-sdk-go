@@ -53,7 +53,7 @@ type ActivateInstanceRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例ID数组
+	// 实例 ID 列表，单个实例 ID 格式如：cynosdbmysql-ins-n7ocdslw，与TDSQL-C MySQL数据库控制台页面中显示的实例 ID 相同，可使用 查询实例列表 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
@@ -109,10 +109,10 @@ type AddInstancesRequest struct {
 	// Cpu核数
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 内存
+	// 内存，单位为GB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 新增只读实例数
+	// 新增只读实例数，取值范围为(0,16]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitempty" name:"ReadOnlyCount"`
 
 	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组
@@ -121,13 +121,13 @@ type AddInstancesRequest struct {
 	// 所属VPC网络ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 所属子网ID
+	// 所属子网ID，如果设置了VpcId，则SubnetId必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 新增RO组时使用的Port
+	// 新增RO组时使用的Port，取值范围为[0,65535)
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
-	// 实例名称
+	// 实例名称，字符串长度范围为[0,64)
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -137,7 +137,7 @@ type AddInstancesRequest struct {
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
 
-	// 订单来源
+	// 订单来源，字符串长度范围为[0,64)
 	OrderSource *string `json:"OrderSource,omitempty" name:"OrderSource"`
 
 	// 交易模式 0-下单并支付 1-下单
@@ -428,7 +428,7 @@ type CreateClustersRequest struct {
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
 
 	// 数据库版本，取值范围: 
-	// <li> MYSQL可选值：5.7 </li>
+	// <li> MYSQL可选值：5.7，8.0 </li>
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
 
 	// 所属项目ID
@@ -446,7 +446,7 @@ type CreateClustersRequest struct {
 	// 存储大小，单位G。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 集群名称
+	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
 	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
@@ -490,7 +490,7 @@ type CreateClustersRequest struct {
 	// 包年包月购买时长
 	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 包年包月购买时长单位
+	// 包年包月购买时长单位，['s','d','m','y']
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 包年包月购买是否自动续费
@@ -1509,10 +1509,10 @@ type DescribeClusterParamLogsRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 返回数量，默认为 20，最大值为 100
+	// 返回数量，默认为 20，取值范围为(0,100]
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 记录偏移量，默认值为0
+	// 记录偏移量，默认值为0，取值范围为[0,INF)
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -2156,7 +2156,7 @@ type DisassociateSecurityGroupsRequest struct {
 	// 实例组ID数组
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 可用区
@@ -2410,7 +2410,7 @@ func (r *IsolateInstanceResponse) FromJsonString(s string) error {
 type ModifyAccountParamsRequest struct {
 	*tchttp.BaseRequest
 
-	// 集群id
+	// 集群id，不超过32个字符
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 账号信息
@@ -2640,7 +2640,7 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	// 实例组ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+	// 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 可用区
@@ -2974,7 +2974,7 @@ type ParamItem struct {
 type PauseServerlessRequest struct {
 	*tchttp.BaseRequest
 
-	// 集群id
+	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 是否强制暂停，忽略当前的用户链接  0:不强制  1:强制， 默认为1
@@ -3005,7 +3005,7 @@ type PauseServerlessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步流程Id
+		// 异步流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3069,7 +3069,7 @@ type QueryFilter struct {
 type ResumeServerlessRequest struct {
 	*tchttp.BaseRequest
 
-	// 集群id
+	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
@@ -3096,7 +3096,7 @@ type ResumeServerlessResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 异步流程Id
+		// 异步流程ID
 		FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3303,7 +3303,7 @@ type SetRenewFlagRequest struct {
 	// 需操作的实例ID
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
-	// 自动续费标志位
+	// 自动续费标志位，续费标记 0:正常续费  1:自动续费 2:到期不续
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -3380,7 +3380,7 @@ type UpgradeInstanceRequest struct {
 	// 数据库CPU
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 数据库内存
+	// 数据库内存，单位GB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 升级类型：upgradeImmediate，upgradeInMaintain

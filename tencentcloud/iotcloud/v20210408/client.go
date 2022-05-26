@@ -2783,6 +2783,63 @@ func (c *Client) ListSDKLogWithContext(ctx context.Context, request *ListSDKLogR
     return
 }
 
+func NewListTopicRulesRequest() (request *ListTopicRulesRequest) {
+    request = &ListTopicRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "ListTopicRules")
+    
+    
+    return
+}
+
+func NewListTopicRulesResponse() (response *ListTopicRulesResponse) {
+    response = &ListTopicRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTopicRules
+// 本接口（ListTopicRules）用于分页获取规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+func (c *Client) ListTopicRules(request *ListTopicRulesRequest) (response *ListTopicRulesResponse, err error) {
+    return c.ListTopicRulesWithContext(context.Background(), request)
+}
+
+// ListTopicRules
+// 本接口（ListTopicRules）用于分页获取规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+func (c *Client) ListTopicRulesWithContext(ctx context.Context, request *ListTopicRulesRequest) (response *ListTopicRulesResponse, err error) {
+    if request == nil {
+        request = NewListTopicRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTopicRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTopicRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageRequest) {
     request = &PublishBroadcastMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},

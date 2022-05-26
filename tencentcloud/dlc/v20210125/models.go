@@ -558,6 +558,180 @@ func (r *CreateScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateSparkAppRequest struct {
+	*tchttp.BaseRequest
+
+	// spark应用名
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 1代表spark jar应用，2代表spark streaming应用
+	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
+
+	// 执行spark作业的数据引擎
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// spark应用的执行入口
+	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
+
+	// 执行spark作业的角色ID
+	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
+
+	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
+
+	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
+
+	// spark作业executor个数
+	AppExecutorNums *int64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
+
+	// 该字段已下线，请使用字段Datasource
+	Eni *string `json:"Eni,omitempty" name:"Eni"`
+
+	// 是否本地上传，可去cos,lakefs
+	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
+
+	// spark jar作业时的主类
+	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
+
+	// spark配置，以换行符分隔
+	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
+
+	// 是否本地上传，包含cos,lakefs
+	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
+
+	// spark jar作业依赖jars，以逗号分隔
+	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
+
+	// 是否本地上传，包含cos,lakefs
+	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
+
+	// spark作业依赖资源，以逗号分隔
+	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
+
+	// spark作业命令行参数
+	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
+
+	// 只对spark流任务生效
+	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
+
+	// 数据源名
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+}
+
+func (r *CreateSparkAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "AppType")
+	delete(f, "DataEngine")
+	delete(f, "AppFile")
+	delete(f, "RoleArn")
+	delete(f, "AppDriverSize")
+	delete(f, "AppExecutorSize")
+	delete(f, "AppExecutorNums")
+	delete(f, "Eni")
+	delete(f, "IsLocal")
+	delete(f, "MainClass")
+	delete(f, "AppConf")
+	delete(f, "IsLocalJars")
+	delete(f, "AppJars")
+	delete(f, "IsLocalFiles")
+	delete(f, "AppFiles")
+	delete(f, "CmdArgs")
+	delete(f, "MaxRetries")
+	delete(f, "DataSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSparkAppResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSparkAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSparkAppTaskRequest struct {
+	*tchttp.BaseRequest
+
+	// spark作业名
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+	// spark作业的命令行参数，以空格分隔；一般用于周期性调用使用
+	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
+}
+
+func (r *CreateSparkAppTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkAppTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobName")
+	delete(f, "CmdArgs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSparkAppTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 批Id
+		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+		// 任务Id
+		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateSparkAppTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkAppTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStoreLocationRequest struct {
 	*tchttp.BaseRequest
 
@@ -1082,6 +1256,52 @@ func (r *DeleteScriptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteSparkAppRequest struct {
+	*tchttp.BaseRequest
+
+	// spark应用名
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+}
+
+func (r *DeleteSparkAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSparkAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSparkAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSparkAppResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteSparkAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSparkAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -1360,6 +1580,200 @@ func (r *DescribeScriptsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppJobRequest struct {
+	*tchttp.BaseRequest
+
+	// spark作业Id，与JobName同时存在时，JobName无效
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// spark作业名
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+}
+
+func (r *DescribeSparkAppJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "JobName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkAppJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// spark作业详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Job *SparkJobInfo `json:"Job,omitempty" name:"Job"`
+
+		// 查询的spark作业是否存在
+		IsExists *bool `json:"IsExists,omitempty" name:"IsExists"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSparkAppJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppJobsRequest struct {
+	*tchttp.BaseRequest
+
+	// 返回结果按照该字段排序
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 正序或者倒序，例如：desc
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+
+	// 按照该参数过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 更新时间起始点
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 更新时间截止点
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询列表偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询列表限制数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSparkAppJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkAppJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// spark作业列表详情
+		SparkAppJobs []*SparkJobInfo `json:"SparkAppJobs,omitempty" name:"SparkAppJobs"`
+
+		// spark作业总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSparkAppJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppTasksRequest struct {
+	*tchttp.BaseRequest
+
+	// spark作业Id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 分页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询Limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSparkAppTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkAppTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSparkAppTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Tasks *TaskResponseInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+		// 任务总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSparkAppTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkAppTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2059,6 +2473,128 @@ type KVPair struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type ModifySparkAppRequest struct {
+	*tchttp.BaseRequest
+
+	// spark应用名
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 1代表spark jar应用，2代表spark streaming应用
+	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
+
+	// 执行spark作业的数据引擎
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// spark应用的执行入口
+	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
+
+	// 执行spark作业的角色ID
+	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
+
+	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
+
+	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
+
+	// spark作业executor个数
+	AppExecutorNums *int64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
+
+	// spark应用Id
+	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// 该字段已下线，请使用字段Datasource
+	Eni *string `json:"Eni,omitempty" name:"Eni"`
+
+	// 是否本地上传，可取cos,lakefs
+	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
+
+	// spark jar作业时的主类
+	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
+
+	// spark配置，以换行符分隔
+	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
+
+	// 是否本地上传，可去cos,lakefs
+	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
+
+	// spark jar作业依赖jars，以逗号分隔
+	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
+
+	// 是否本地上传，可去cos,lakefs
+	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
+
+	// spark作业依赖资源，以逗号分隔
+	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
+
+	// spark作业命令行参数
+	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
+
+	// 只对spark流任务生效
+	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
+
+	// 数据源名
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+}
+
+func (r *ModifySparkAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySparkAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "AppType")
+	delete(f, "DataEngine")
+	delete(f, "AppFile")
+	delete(f, "RoleArn")
+	delete(f, "AppDriverSize")
+	delete(f, "AppExecutorSize")
+	delete(f, "AppExecutorNums")
+	delete(f, "SparkAppId")
+	delete(f, "Eni")
+	delete(f, "IsLocal")
+	delete(f, "MainClass")
+	delete(f, "AppConf")
+	delete(f, "IsLocalJars")
+	delete(f, "AppJars")
+	delete(f, "IsLocalFiles")
+	delete(f, "AppFiles")
+	delete(f, "CmdArgs")
+	delete(f, "MaxRetries")
+	delete(f, "DataSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySparkAppResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifySparkAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySparkAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -2294,6 +2830,125 @@ type Script struct {
 	// 更新时间戳， 单位：ms。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type SparkJobInfo struct {
+
+	// spark作业ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// spark作业名
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+	// spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
+	JobType *int64 `json:"JobType,omitempty" name:"JobType"`
+
+	// 引擎名
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// 该字段已下线，请使用字段Datasource
+	Eni *string `json:"Eni,omitempty" name:"Eni"`
+
+	// 程序包是否本地上传，cos或者lakefs
+	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
+
+	// 程序包路径
+	JobFile *string `json:"JobFile,omitempty" name:"JobFile"`
+
+	// 角色ID
+	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
+
+	// spark作业运行主类
+	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
+
+	// 命令行参数，spark作业命令行参数，空格分隔
+	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
+
+	// spark原生配置，换行符分隔
+	JobConf *string `json:"JobConf,omitempty" name:"JobConf"`
+
+	// 依赖jars是否本地上传，cos或者lakefs
+	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
+
+	// spark作业依赖jars，逗号分隔
+	JobJars *string `json:"JobJars,omitempty" name:"JobJars"`
+
+	// 依赖文件是否本地上传，cos或者lakefs
+	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
+
+	// spark作业依赖文件，逗号分隔
+	JobFiles *string `json:"JobFiles,omitempty" name:"JobFiles"`
+
+	// spark作业driver资源大小
+	JobDriverSize *string `json:"JobDriverSize,omitempty" name:"JobDriverSize"`
+
+	// spark作业executor资源大小
+	JobExecutorSize *string `json:"JobExecutorSize,omitempty" name:"JobExecutorSize"`
+
+	// spark作业executor个数
+	JobExecutorNums *int64 `json:"JobExecutorNums,omitempty" name:"JobExecutorNums"`
+
+	// spark流任务最大重试次数
+	JobMaxAttempts *int64 `json:"JobMaxAttempts,omitempty" name:"JobMaxAttempts"`
+
+	// spark作业创建者
+	JobCreator *string `json:"JobCreator,omitempty" name:"JobCreator"`
+
+	// spark作业创建时间
+	JobCreateTime *int64 `json:"JobCreateTime,omitempty" name:"JobCreateTime"`
+
+	// spark作业更新时间
+	JobUpdateTime *uint64 `json:"JobUpdateTime,omitempty" name:"JobUpdateTime"`
+
+	// spark作业最近任务ID
+	CurrentTaskId *string `json:"CurrentTaskId,omitempty" name:"CurrentTaskId"`
+
+	// spark作业最近运行状态
+	JobStatus *int64 `json:"JobStatus,omitempty" name:"JobStatus"`
+
+	// spark流作业统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamingStat *StreamingStatistics `json:"StreamingStat,omitempty" name:"StreamingStat"`
+
+	// 数据源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+}
+
+type StreamingStatistics struct {
+
+	// 任务开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 数据接收器数
+	Receivers *int64 `json:"Receivers,omitempty" name:"Receivers"`
+
+	// 运行中的接收器数
+	NumActiveReceivers *int64 `json:"NumActiveReceivers,omitempty" name:"NumActiveReceivers"`
+
+	// 不活跃的接收器数
+	NumInactiveReceivers *int64 `json:"NumInactiveReceivers,omitempty" name:"NumInactiveReceivers"`
+
+	// 运行中的批数
+	NumActiveBatches *int64 `json:"NumActiveBatches,omitempty" name:"NumActiveBatches"`
+
+	// 待处理的批数
+	NumRetainedCompletedBatches *int64 `json:"NumRetainedCompletedBatches,omitempty" name:"NumRetainedCompletedBatches"`
+
+	// 已完成的批数
+	NumTotalCompletedBatches *int64 `json:"NumTotalCompletedBatches,omitempty" name:"NumTotalCompletedBatches"`
+
+	// 平均输入速率
+	AverageInputRate *float64 `json:"AverageInputRate,omitempty" name:"AverageInputRate"`
+
+	// 平均等待时长
+	AverageSchedulingDelay *float64 `json:"AverageSchedulingDelay,omitempty" name:"AverageSchedulingDelay"`
+
+	// 平均处理时长
+	AverageProcessingTime *float64 `json:"AverageProcessingTime,omitempty" name:"AverageProcessingTime"`
+
+	// 平均延时
+	AverageTotalDelay *float64 `json:"AverageTotalDelay,omitempty" name:"AverageTotalDelay"`
 }
 
 type TableBaseInfo struct {

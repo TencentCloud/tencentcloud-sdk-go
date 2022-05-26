@@ -975,6 +975,7 @@ func NewDeleteMachineResponse() (response *DeleteMachineResponse) {
 // 本接口（DeleteMachine）用于卸载云镜客户端。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  FAILEDOPERATION_MACHINEDELETE = "FailedOperation.MachineDelete"
 //  INTERNALERROR = "InternalError"
@@ -994,6 +995,7 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
 // 本接口（DeleteMachine）用于卸载云镜客户端。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  FAILEDOPERATION_MACHINEDELETE = "FailedOperation.MachineDelete"
 //  INTERNALERROR = "InternalError"

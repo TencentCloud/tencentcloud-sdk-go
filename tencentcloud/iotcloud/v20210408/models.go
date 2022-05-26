@@ -3548,6 +3548,62 @@ func (r *ListSDKLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListTopicRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 请求的页数
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListTopicRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopicRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTopicRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopicRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 规则总数量
+		TotalCnt *uint64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 规则列表
+		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTopicRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTopicRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PayloadLogItem struct {
 
 	// 账号id
@@ -4173,6 +4229,24 @@ type StatusStatistic struct {
 	// 统计总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+type TopicRuleInfo struct {
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	CreatedAt *uint64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 不生效
+	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
+
+	// 规则模式
+	TopicPattern *string `json:"TopicPattern,omitempty" name:"TopicPattern"`
 }
 
 type TopicRulePayload struct {

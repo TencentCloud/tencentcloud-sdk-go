@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 堡垒机(dasb) 版本：2019-10-18
+## 数据湖计算(dlc) 版本：2021-01-25
 
-### 第 1 次发布
+### 第 17 次发布
 
-发布时间：2022-05-25 11:33:45
+发布时间：2022-05-26 18:17:40
 
 本次发布包含了以下内容：
 
@@ -12,44 +12,42 @@
 
 新增接口：
 
-* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
-* [CreateUser](https://cloud.tencent.com/document/api/1025/74406)
-* [DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)
-* [DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)
-* [DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)
-* [DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)
-* [DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)
-* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
-* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
-* [ModifyUser](https://cloud.tencent.com/document/api/1025/74403)
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+* [CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)
+* [DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)
+* [DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)
+* [DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
 
 新增数据结构：
 
-* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
-* [CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)
-* [Device](https://cloud.tencent.com/document/api/1025/74416#Device)
-* [Group](https://cloud.tencent.com/document/api/1025/74416#Group)
-* [Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)
-* [User](https://cloud.tencent.com/document/api/1025/74416#User)
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+* [StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)
 
 
 
-## 事件总线(eb) 版本：2021-04-16
+## 物联网通信(iotcloud) 版本：2021-04-08
 
-### 第 3 次发布
+### 第 5 次发布
 
-发布时间：2022-05-26 06:11:01
+发布时间：2022-05-27 06:10:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Event](https://cloud.tencent.com/document/api/1359/67704#Event)
+* [ListTopicRules](https://cloud.tencent.com/document/api/634/74542)
 
-	* 新增成员：Time
+新增数据结构：
 
+* [TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
 
 
 
@@ -25929,25 +25927,25 @@
 
 新增接口：
 
-* [[CreateAcl](https://cloud.tencent.com/document/api/1025/74411)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateUser](https://cloud.tencent.com/document/api/1025/74406)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyUser](https://cloud.tencent.com/document/api/1025/74403)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+* [CreateUser](https://cloud.tencent.com/document/api/1025/74406)
+* [DeleteAcls](https://cloud.tencent.com/document/api/1025/74410)
+* [DeleteUsers](https://cloud.tencent.com/document/api/1025/74405)
+* [DescribeAcls](https://cloud.tencent.com/document/api/1025/74409)
+* [DescribeDasbImageIds](https://cloud.tencent.com/document/api/1025/74413)
+* [DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)
+* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
+* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
+* [ModifyUser](https://cloud.tencent.com/document/api/1025/74403)
 
 新增数据结构：
 
-* [[Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)](https://cloud.tencent.com/document/api/1025/74416#[Acl](https://cloud.tencent.com/document/api/1025/74416#Acl))
-* [[CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)](https://cloud.tencent.com/document/api/1025/74416#[CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate))
-* [[Device](https://cloud.tencent.com/document/api/1025/74416#Device)](https://cloud.tencent.com/document/api/1025/74416#[Device](https://cloud.tencent.com/document/api/1025/74416#Device))
-* [[Group](https://cloud.tencent.com/document/api/1025/74416#Group)](https://cloud.tencent.com/document/api/1025/74416#[Group](https://cloud.tencent.com/document/api/1025/74416#Group))
-* [[Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)](https://cloud.tencent.com/document/api/1025/74416#[Resource](https://cloud.tencent.com/document/api/1025/74416#Resource))
-* [[User](https://cloud.tencent.com/document/api/1025/74416#User)](https://cloud.tencent.com/document/api/1025/74416#[User](https://cloud.tencent.com/document/api/1025/74416#User))
+* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
+* [CmdTemplate](https://cloud.tencent.com/document/api/1025/74416#CmdTemplate)
+* [Device](https://cloud.tencent.com/document/api/1025/74416#Device)
+* [Group](https://cloud.tencent.com/document/api/1025/74416#Group)
+* [Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)
+* [User](https://cloud.tencent.com/document/api/1025/74416#User)
 
 
 
@@ -28179,6 +28177,29 @@
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 17 次发布
+
+发布时间：2022-05-26 18:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)](https://cloud.tencent.com/document/api/1342/53778#[SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo))
+* [[StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)](https://cloud.tencent.com/document/api/1342/53778#[StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics))
 
 ### 第 16 次发布
 
@@ -39845,6 +39866,22 @@
 
 
 ## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 5 次发布
+
+发布时间：2022-05-27 06:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ListTopicRules](https://cloud.tencent.com/document/api/634/74542)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)](https://cloud.tencent.com/document/api/634/71973#[TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo))
 
 ### 第 4 次发布
 

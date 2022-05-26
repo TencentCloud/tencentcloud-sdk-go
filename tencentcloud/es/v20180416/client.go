@@ -1004,7 +1004,12 @@ func NewUpdateDictionariesResponse() (response *UpdateDictionariesResponse) {
 // 更新ES集群词典
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateDictionaries(request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
     return c.UpdateDictionariesWithContext(context.Background(), request)
 }
@@ -1013,7 +1018,12 @@ func (c *Client) UpdateDictionaries(request *UpdateDictionariesRequest) (respons
 // 更新ES集群词典
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) UpdateDictionariesWithContext(ctx context.Context, request *UpdateDictionariesRequest) (response *UpdateDictionariesResponse, err error) {
     if request == nil {
         request = NewUpdateDictionariesRequest()

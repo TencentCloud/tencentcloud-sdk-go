@@ -1,3 +1,56 @@
+# Release v1.0.408
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 17 次发布
+
+发布时间：2022-05-26 18:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+* [CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)
+* [DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)
+* [DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)
+* [DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+新增数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+* [StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 5 次发布
+
+发布时间：2022-05-27 06:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListTopicRules](https://cloud.tencent.com/document/api/634/74542)
+
+新增数据结构：
+
+* [TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+
+
 # Release v1.0.407
 
 ## 堡垒机(dasb) 版本：2019-10-18
