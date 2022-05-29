@@ -179,6 +179,9 @@ const (
 	// 不存在该模板，请先创建模板。
 	INVALIDPARAMETERVALUE_TEMPLATENOTEXIST = "InvalidParameterValue.TemplateNotExist"
 
+	// 模板变量与收件人列表参数不一一对应。
+	INVALIDPARAMETERVALUE_TEMPLATENOTMATCHDATA = "InvalidParameterValue.TemplateNotMatchData"
+
 	// 搜索日期错误，请检查日期及格式是否有效。
 	INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
 

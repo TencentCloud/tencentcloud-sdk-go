@@ -110,7 +110,7 @@
 | ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2022-05-26 17:59:01 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2022-04-04 06:53:19 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2022-05-20 06:14:11 |
-| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-05-20 06:14:21 |
+| live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-05-30 06:10:06 |
 | lowcode | [云开发低码](https://cloud.tencent.com/document/product/1301) | 2022-04-04 06:56:51 |
 | lp | [登录保护](https://cloud.tencent.com/document/product/1190) | 2022-04-04 06:56:52 |
 | mariadb | [云数据库 MariaDB](https://cloud.tencent.com/document/product/237) | 2022-05-25 06:11:46 |
@@ -129,13 +129,13 @@
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-05-23 06:11:33 |
 | ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-05-24 06:16:42 |
-| organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-04-04 07:01:46 |
+| organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-05-30 06:11:27 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-04-04 07:01:49 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-04-04 07:02:02 |
 | postgres | [云数据库 PostgreSQL](https://cloud.tencent.com/document/product/409) | 2022-05-09 06:11:56 |
 | privatedns | [私有域解析 Private DNS](https://cloud.tencent.com/document/product/1338) | 2022-04-04 07:02:49 |
 | rce | [全栈式风控引擎](https://cloud.tencent.com/document/product/1343) | 2022-04-21 06:16:10 |
-| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-05-18 06:15:32 |
+| redis | [云数据库 Redis](https://cloud.tencent.com/document/product/239) | 2022-05-30 06:11:47 |
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2022-04-04 07:04:04 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2022-04-04 07:04:06 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2022-04-04 07:04:08 |

@@ -74,6 +74,68 @@ func (r *BindOrganizationMemberAuthAccountResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateOrganizationMemberPolicyRequest struct {
+	*tchttp.BaseRequest
+
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略名。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 身份ID。
+	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateOrganizationMemberPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationMemberPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "PolicyName")
+	delete(f, "IdentityId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationMemberPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOrganizationMemberPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 策略ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateOrganizationMemberPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationMemberPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateOrganizationMemberRequest struct {
 	*tchttp.BaseRequest
 

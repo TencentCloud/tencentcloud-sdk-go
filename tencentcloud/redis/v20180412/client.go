@@ -4633,6 +4633,112 @@ func (c *Client) UpgradeInstanceVersionWithContext(ctx context.Context, request 
     return
 }
 
+func NewUpgradeProxyVersionRequest() (request *UpgradeProxyVersionRequest) {
+    request = &UpgradeProxyVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "UpgradeProxyVersion")
+    
+    
+    return
+}
+
+func NewUpgradeProxyVersionResponse() (response *UpgradeProxyVersionResponse) {
+    response = &UpgradeProxyVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeProxyVersion
+// 实例proxy版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeProxyVersion(request *UpgradeProxyVersionRequest) (response *UpgradeProxyVersionResponse, err error) {
+    return c.UpgradeProxyVersionWithContext(context.Background(), request)
+}
+
+// UpgradeProxyVersion
+// 实例proxy版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeProxyVersionWithContext(ctx context.Context, request *UpgradeProxyVersionRequest) (response *UpgradeProxyVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeProxyVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeProxyVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeProxyVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeSmallVersionRequest() (request *UpgradeSmallVersionRequest) {
+    request = &UpgradeSmallVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("redis", APIVersion, "UpgradeSmallVersion")
+    
+    
+    return
+}
+
+func NewUpgradeSmallVersionResponse() (response *UpgradeSmallVersionResponse) {
+    response = &UpgradeSmallVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeSmallVersion
+// 实例小版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeSmallVersion(request *UpgradeSmallVersionRequest) (response *UpgradeSmallVersionResponse, err error) {
+    return c.UpgradeSmallVersionWithContext(context.Background(), request)
+}
+
+// UpgradeSmallVersion
+// 实例小版本升级
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+//  UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = "UnauthorizedOperation.UserNotInWhiteList"
+func (c *Client) UpgradeSmallVersionWithContext(ctx context.Context, request *UpgradeSmallVersionRequest) (response *UpgradeSmallVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeSmallVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeSmallVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeSmallVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpgradeVersionToMultiAvailabilityZonesRequest() (request *UpgradeVersionToMultiAvailabilityZonesRequest) {
     request = &UpgradeVersionToMultiAvailabilityZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},

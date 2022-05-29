@@ -1,3 +1,42 @@
+# Release v1.0.409
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 8 次发布
+
+发布时间：2022-05-30 06:11:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOrganizationMemberPolicy](https://cloud.tencent.com/document/api/850/74595)
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 46 次发布
+
+发布时间：2022-05-30 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeProxyVersion](https://cloud.tencent.com/document/api/239/74597)
+* [UpgradeSmallVersion](https://cloud.tencent.com/document/api/239/74596)
+
+
+
 # Release v1.0.408
 
 ## 数据湖计算(dlc) 版本：2021-01-25

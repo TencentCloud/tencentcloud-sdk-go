@@ -1,37 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 数据湖计算(dlc) 版本：2021-01-25
+## 企业组织(organization) 版本：2021-03-31
 
-### 第 17 次发布
+### 第 8 次发布
 
-发布时间：2022-05-26 18:17:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
-* [CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)
-* [DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)
-* [DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)
-* [DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)
-* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
-* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
-
-新增数据结构：
-
-* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
-* [StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)
-
-
-
-## 物联网通信(iotcloud) 版本：2021-04-08
-
-### 第 5 次发布
-
-发布时间：2022-05-27 06:10:42
+发布时间：2022-05-30 06:11:27
 
 本次发布包含了以下内容：
 
@@ -39,15 +12,28 @@
 
 新增接口：
 
-* [ListTopicRules](https://cloud.tencent.com/document/api/634/74542)
-
-新增数据结构：
-
-* [TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)
+* [CreateOrganizationMemberPolicy](https://cloud.tencent.com/document/api/850/74595)
 
 
 
-## 物联网通信(iotcloud) 版本：2018-06-14
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 46 次发布
+
+发布时间：2022-05-30 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeProxyVersion](https://cloud.tencent.com/document/api/239/74597)
+* [UpgradeSmallVersion](https://cloud.tencent.com/document/api/239/74596)
 
 
 
@@ -28188,18 +28174,18 @@
 
 新增接口：
 
-* [[CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)](https://cloud.tencent.com/document/api/#/#)
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+* [CreateSparkAppTask](https://cloud.tencent.com/document/api/1342/74537)
+* [DeleteSparkApp](https://cloud.tencent.com/document/api/1342/74536)
+* [DescribeSparkAppJob](https://cloud.tencent.com/document/api/1342/74535)
+* [DescribeSparkAppJobs](https://cloud.tencent.com/document/api/1342/74534)
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
 
 新增数据结构：
 
-* [[SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)](https://cloud.tencent.com/document/api/1342/53778#[SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo))
-* [[StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)](https://cloud.tencent.com/document/api/1342/53778#[StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics))
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+* [StreamingStatistics](https://cloud.tencent.com/document/api/1342/53778#StreamingStatistics)
 
 ### 第 16 次发布
 
@@ -39877,11 +39863,11 @@
 
 新增接口：
 
-* [[ListTopicRules](https://cloud.tencent.com/document/api/634/74542)](https://cloud.tencent.com/document/api/#/#)
+* [ListTopicRules](https://cloud.tencent.com/document/api/634/74542)
 
 新增数据结构：
 
-* [[TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)](https://cloud.tencent.com/document/api/634/71973#[TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo))
+* [TopicRuleInfo](https://cloud.tencent.com/document/api/634/71973#TopicRuleInfo)
 
 ### 第 4 次发布
 
@@ -51506,6 +51492,18 @@
 
 ## 企业组织(organization) 版本：2021-03-31
 
+### 第 8 次发布
+
+发布时间：2022-05-30 06:11:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateOrganizationMemberPolicy](https://cloud.tencent.com/document/api/850/74595)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 7 次发布
 
 发布时间：2022-03-08 08:16:27
@@ -53031,6 +53029,19 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 46 次发布
+
+发布时间：2022-05-30 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpgradeProxyVersion](https://cloud.tencent.com/document/api/239/74597)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeSmallVersion](https://cloud.tencent.com/document/api/239/74596)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 45 次发布
 

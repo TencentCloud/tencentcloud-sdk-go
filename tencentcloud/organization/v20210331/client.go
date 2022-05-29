@@ -213,6 +213,65 @@ func (c *Client) CreateOrganizationMemberWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateOrganizationMemberPolicyRequest() (request *CreateOrganizationMemberPolicyRequest) {
+    request = &CreateOrganizationMemberPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMemberPolicy")
+    
+    
+    return
+}
+
+func NewCreateOrganizationMemberPolicyResponse() (response *CreateOrganizationMemberPolicyResponse) {
+    response = &CreateOrganizationMemberPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrganizationMemberPolicy
+// 创建组织成员的授权策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPOLICY = "FailedOperation.CreatePolicy"
+//  FAILEDOPERATION_MEMBERPOLICYNAMEEXIST = "FailedOperation.MemberPolicyNameExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CreateOrganizationMemberPolicy(request *CreateOrganizationMemberPolicyRequest) (response *CreateOrganizationMemberPolicyResponse, err error) {
+    return c.CreateOrganizationMemberPolicyWithContext(context.Background(), request)
+}
+
+// CreateOrganizationMemberPolicy
+// 创建组织成员的授权策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEPOLICY = "FailedOperation.CreatePolicy"
+//  FAILEDOPERATION_MEMBERPOLICYNAMEEXIST = "FailedOperation.MemberPolicyNameExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CreateOrganizationMemberPolicyWithContext(ctx context.Context, request *CreateOrganizationMemberPolicyRequest) (response *CreateOrganizationMemberPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationMemberPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationMemberPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationMemberPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationRequest() (request *DescribeOrganizationRequest) {
     request = &DescribeOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
