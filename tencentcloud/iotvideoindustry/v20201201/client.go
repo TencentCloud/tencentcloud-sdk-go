@@ -272,6 +272,7 @@ func NewControlHomePositionResponse() (response *ControlHomePositionResponse) {
 // 看守位控制
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlHomePosition(request *ControlHomePositionRequest) (response *ControlHomePositionResponse, err error) {
     return c.ControlHomePositionWithContext(context.Background(), request)
@@ -281,6 +282,7 @@ func (c *Client) ControlHomePosition(request *ControlHomePositionRequest) (respo
 // 看守位控制
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlHomePositionWithContext(ctx context.Context, request *ControlHomePositionRequest) (response *ControlHomePositionResponse, err error) {
     if request == nil {

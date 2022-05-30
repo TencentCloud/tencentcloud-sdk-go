@@ -365,6 +365,9 @@ const (
 	// MFA 不存在。
 	UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
 
+	// 无权限。
+	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
 

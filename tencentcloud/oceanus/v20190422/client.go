@@ -730,6 +730,7 @@ func NewDescribeJobsResponse() (response *DescribeJobsResponse) {
 //  INTERNALERROR_DB = "InternalError.DB"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
     return c.DescribeJobsWithContext(context.Background(), request)
@@ -747,6 +748,7 @@ func (c *Client) DescribeJobs(request *DescribeJobsRequest) (response *DescribeJ
 //  INTERNALERROR_DB = "InternalError.DB"
 //  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 //  RESOURCEUNAVAILABLE_GETJOBPUBLISHEDJOBCONFIG = "ResourceUnavailable.GetJobPublishedJobConfig"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeJobsWithContext(ctx context.Context, request *DescribeJobsRequest) (response *DescribeJobsResponse, err error) {
     if request == nil {

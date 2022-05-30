@@ -133,6 +133,7 @@ func NewFaceFusionResponse() (response *FaceFusionResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
 //  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
@@ -186,6 +187,7 @@ func (c *Client) FaceFusion(request *FaceFusionRequest) (response *FaceFusionRes
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
 //  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
@@ -392,6 +394,7 @@ func NewFuseFaceResponse() (response *FuseFaceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
 //  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"
@@ -447,6 +450,7 @@ func (c *Client) FuseFace(request *FuseFaceRequest) (response *FuseFaceResponse,
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FACEBORDERCHECKFAILED = "FailedOperation.FaceBorderCheckFailed"
+//  FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
 //  FAILEDOPERATION_FACEFUSIONERROR = "FailedOperation.FaceFusionError"
 //  FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
 //  FAILEDOPERATION_FUSEFREQCTRL = "FailedOperation.FuseFreqCtrl"

@@ -4014,7 +4014,7 @@ type SendMessageRequest struct {
 	// DataHub接入ID
 	DataHubId *string `json:"DataHubId,omitempty" name:"DataHubId"`
 
-	// 发送消息内容
+	// 发送消息内容(单次请求最多500条)
 	Message []*BatchContent `json:"Message,omitempty" name:"Message"`
 }
 

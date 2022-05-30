@@ -1375,10 +1375,10 @@ type DescribeTelCallInfoResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 电话呼出统计分钟数
+		// 呼出套餐包消耗分钟数
 		TelCallOutCount *int64 `json:"TelCallOutCount,omitempty" name:"TelCallOutCount"`
 
-		// 电话呼入统计分钟数
+		// 呼入套餐包消耗分钟数
 		TelCallInCount *int64 `json:"TelCallInCount,omitempty" name:"TelCallInCount"`
 
 		// 坐席使用统计个数

@@ -17,6 +17,9 @@ package v20180321
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 本月免费额度已用完，如需继续使用您可以在机器翻译控制台升级为付费使用。
 	FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 

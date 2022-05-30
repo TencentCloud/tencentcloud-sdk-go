@@ -179,6 +179,9 @@ const (
 	// CA证书已经绑定了产品，无法操作。
 	LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
 
+	// CA证书名称重复。
+	LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
+
 	// 不支持私有证书操作。
 	LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
 

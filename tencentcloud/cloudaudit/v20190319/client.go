@@ -430,6 +430,7 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
     return c.DescribeEventsWithContext(context.Background(), request)
 }
@@ -440,6 +441,7 @@ func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *Descr
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 func (c *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
     if request == nil {
         request = NewDescribeEventsRequest()

@@ -3277,6 +3277,9 @@ type CreateNetworkInterfaceRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+	TrunkingFlag *string `json:"TrunkingFlag,omitempty" name:"TrunkingFlag"`
 }
 
 func (r *CreateNetworkInterfaceRequest) ToJsonString() string {
@@ -3299,6 +3302,7 @@ func (r *CreateNetworkInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "SecurityGroupIds")
 	delete(f, "PrivateIpAddresses")
 	delete(f, "Tags")
+	delete(f, "TrunkingFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkInterfaceRequest has unknown keys!", "")
 	}
@@ -9024,6 +9028,14 @@ type DescribeNetworkInterfaceLimitResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ExtendEniPrivateIpAddressQuantity *int64 `json:"ExtendEniPrivateIpAddressQuantity,omitempty" name:"ExtendEniPrivateIpAddressQuantity"`
 
+		// 中继网卡配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubEniQuantity *int64 `json:"SubEniQuantity,omitempty" name:"SubEniQuantity"`
+
+		// 每个中继网卡可以分配的IP配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SubEniPrivateIpAddressQuantity *int64 `json:"SubEniPrivateIpAddressQuantity,omitempty" name:"SubEniPrivateIpAddressQuantity"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -9059,6 +9071,7 @@ type DescribeNetworkInterfacesRequest struct {
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
+	// <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -14866,6 +14879,9 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 
 	// 指定绑定的安全组，例如:['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+	TrunkingFlag *string `json:"TrunkingFlag,omitempty" name:"TrunkingFlag"`
 }
 
 func (r *ModifyNetworkInterfaceAttributeRequest) ToJsonString() string {
@@ -14884,6 +14900,7 @@ func (r *ModifyNetworkInterfaceAttributeRequest) FromJsonString(s string) error 
 	delete(f, "NetworkInterfaceName")
 	delete(f, "NetworkInterfaceDescription")
 	delete(f, "SecurityGroupIds")
+	delete(f, "TrunkingFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkInterfaceAttributeRequest has unknown keys!", "")
 	}

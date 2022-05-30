@@ -321,6 +321,7 @@ func NewDescribeDedicatedClusterCosCapacityResponse() (response *DescribeDedicat
 // 查询专用集群内cos的容量信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterCosCapacity(request *DescribeDedicatedClusterCosCapacityRequest) (response *DescribeDedicatedClusterCosCapacityResponse, err error) {
     return c.DescribeDedicatedClusterCosCapacityWithContext(context.Background(), request)
@@ -330,6 +331,7 @@ func (c *Client) DescribeDedicatedClusterCosCapacity(request *DescribeDedicatedC
 // 查询专用集群内cos的容量信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterCosCapacityWithContext(ctx context.Context, request *DescribeDedicatedClusterCosCapacityRequest) (response *DescribeDedicatedClusterCosCapacityResponse, err error) {
     if request == nil {
@@ -369,6 +371,7 @@ func NewDescribeDedicatedClusterHostStatisticsResponse() (response *DescribeDedi
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterHostStatistics(request *DescribeDedicatedClusterHostStatisticsRequest) (response *DescribeDedicatedClusterHostStatisticsResponse, err error) {
     return c.DescribeDedicatedClusterHostStatisticsWithContext(context.Background(), request)
@@ -379,6 +382,7 @@ func (c *Client) DescribeDedicatedClusterHostStatistics(request *DescribeDedicat
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterHostStatisticsWithContext(ctx context.Context, request *DescribeDedicatedClusterHostStatisticsRequest) (response *DescribeDedicatedClusterHostStatisticsResponse, err error) {
     if request == nil {
@@ -418,6 +422,7 @@ func NewDescribeDedicatedClusterHostsResponse() (response *DescribeDedicatedClus
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterHosts(request *DescribeDedicatedClusterHostsRequest) (response *DescribeDedicatedClusterHostsResponse, err error) {
     return c.DescribeDedicatedClusterHostsWithContext(context.Background(), request)
@@ -428,6 +433,7 @@ func (c *Client) DescribeDedicatedClusterHosts(request *DescribeDedicatedCluster
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DescribeDedicatedClusterHostsWithContext(ctx context.Context, request *DescribeDedicatedClusterHostsRequest) (response *DescribeDedicatedClusterHostsResponse, err error) {
     if request == nil {

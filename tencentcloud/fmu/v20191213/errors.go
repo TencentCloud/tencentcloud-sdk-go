@@ -92,6 +92,9 @@ const (
 	// 后端服务超时，请重试。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
+	// RPC请求失败，一般为算法微服务故障。
+	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+
 	// 系统内部错误。
 	FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 

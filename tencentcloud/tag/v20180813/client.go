@@ -594,6 +594,7 @@ func NewDescribeResourceTagsByResourceIdsResponse() (response *DescribeResourceT
 //  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTagsByResourceIdsRequest) (response *DescribeResourceTagsByResourceIdsResponse, err error) {
     return c.DescribeResourceTagsByResourceIdsWithContext(context.Background(), request)
 }
@@ -608,6 +609,7 @@ func (c *Client) DescribeResourceTagsByResourceIds(request *DescribeResourceTags
 //  INVALIDPARAMETERVALUE_RESOURCEPREFIXINVALID = "InvalidParameterValue.ResourcePrefixInvalid"
 //  INVALIDPARAMETERVALUE_SERVICETYPEINVALID = "InvalidParameterValue.ServiceTypeInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceTagsByResourceIdsWithContext(ctx context.Context, request *DescribeResourceTagsByResourceIdsRequest) (response *DescribeResourceTagsByResourceIdsResponse, err error) {
     if request == nil {
         request = NewDescribeResourceTagsByResourceIdsRequest()
@@ -767,6 +769,7 @@ func NewDescribeResourcesByTagsResponse() (response *DescribeResourcesByTagsResp
 //  INVALIDPARAMETERVALUE_TAGFILTERS = "InvalidParameterValue.TagFilters"
 //  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest) (response *DescribeResourcesByTagsResponse, err error) {
     return c.DescribeResourcesByTagsWithContext(context.Background(), request)
 }
@@ -779,6 +782,7 @@ func (c *Client) DescribeResourcesByTags(request *DescribeResourcesByTagsRequest
 //  INVALIDPARAMETERVALUE_TAGFILTERS = "InvalidParameterValue.TagFilters"
 //  INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = "InvalidParameterValue.TagFiltersLengthExceeded"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourcesByTagsWithContext(ctx context.Context, request *DescribeResourcesByTagsRequest) (response *DescribeResourcesByTagsResponse, err error) {
     if request == nil {
         request = NewDescribeResourcesByTagsRequest()

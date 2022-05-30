@@ -1242,7 +1242,7 @@ type DescribeAcListsRequest struct {
 	// 偏移值
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 出站还是入站，0：入站，1：出站
+	// 出站还是入站，1：入站，0：出站
 	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
 
 	// EdgeId值

@@ -162,35 +162,47 @@ type AutoMountConfiguration struct {
 
 type AutoSnapshotPolicy struct {
 
-	// 定期快照策略ID。
-	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
-
-	// 定期快照策略名称。
-	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
-
-	// 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
-	AutoSnapshotPolicyState *string `json:"AutoSnapshotPolicyState,omitempty" name:"AutoSnapshotPolicyState"`
+	// 已绑定当前定期快照策略的云盘ID列表。
+	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
 
 	// 定期快照策略是否激活。
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
+	// 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
+	AutoSnapshotPolicyState *string `json:"AutoSnapshotPolicyState,omitempty" name:"AutoSnapshotPolicyState"`
+
+	// 是否是跨账号复制快照快照, 1：是, 0: 不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCopyToRemote *uint64 `json:"IsCopyToRemote,omitempty" name:"IsCopyToRemote"`
+
 	// 使用该定期快照策略创建出来的快照是否永久保留。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
-
-	// 使用该定期快照策略创建出来的快照保留天数。
-	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
-
-	// 定期快照策略的创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 定期快照下次触发的时间。
 	NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
 
+	// 定期快照策略名称。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
 	// 定期快照的执行策略。
 	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
-	// 已绑定当前定期快照策略的云盘ID列表。
-	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
+	// 定期快照策略的创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 使用该定期快照策略创建出来的快照保留天数。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 复制的目标账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CopyToAccountUin *string `json:"CopyToAccountUin,omitempty" name:"CopyToAccountUin"`
+
+	// 已绑定当前定期快照策略的实例ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
 type BindAutoSnapshotPolicyRequest struct {
@@ -534,6 +546,9 @@ type CreateSnapshotRequest struct {
 
 	// 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
 	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 快照绑定的标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateSnapshotRequest) ToJsonString() string {
@@ -552,6 +567,7 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotName")
 	delete(f, "Deadline")
 	delete(f, "DiskBackupId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotRequest has unknown keys!", "")
 	}
@@ -2605,6 +2621,9 @@ type Snapshot struct {
 
 	// 快照开始共享的时间。
 	TimeStartShare *string `json:"TimeStartShare,omitempty" name:"TimeStartShare"`
+
+	// 快照绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type SnapshotCopyResult struct {
@@ -2716,11 +2735,11 @@ func (r *TerminateDisksResponse) FromJsonString(s string) error {
 type UnbindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 
-	// 要解绑定期快照策略的云盘ID列表。
-	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
-
 	// 要解绑的定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 要解绑定期快照策略的云盘ID列表。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
 
 func (r *UnbindAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -2735,8 +2754,8 @@ func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskIds")
 	delete(f, "AutoSnapshotPolicyId")
+	delete(f, "DiskIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindAutoSnapshotPolicyRequest has unknown keys!", "")
 	}

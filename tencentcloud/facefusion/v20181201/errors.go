@@ -32,6 +32,9 @@ const (
 	// 人脸检测失败。
 	FAILEDOPERATION_FACEDETECTFAILED = "FailedOperation.FaceDetectFailed"
 
+	// 人脸出框，无法使用。
+	FAILEDOPERATION_FACEEXCEEDBORDER = "FailedOperation.FaceExceedBorder"
+
 	// 人脸提特征失败。
 	FAILEDOPERATION_FACEFEATUREFAILED = "FailedOperation.FaceFeatureFailed"
 

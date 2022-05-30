@@ -361,6 +361,7 @@ func NewCreatePrivateCAResponse() (response *CreatePrivateCAResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
     return c.CreatePrivateCAWithContext(context.Background(), request)
@@ -372,6 +373,7 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
     if request == nil {
@@ -864,13 +866,7 @@ func NewDeleteProductPrivateCAResponse() (response *DeleteProductPrivateCARespon
 // 删除产品的私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
-//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
-//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
-//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 func (c *Client) DeleteProductPrivateCA(request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
     return c.DeleteProductPrivateCAWithContext(context.Background(), request)
 }
@@ -879,13 +875,7 @@ func (c *Client) DeleteProductPrivateCA(request *DeleteProductPrivateCARequest) 
 // 删除产品的私有CA证书
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
-//  UNAUTHORIZEDOPERATION_DEVICESEXISTUNDERPRODUCT = "UnauthorizedOperation.DevicesExistUnderProduct"
-//  UNSUPPORTEDOPERATION_GATEWAYPRODUCTHASBINDEDPRODUCT = "UnsupportedOperation.GatewayProductHasBindedProduct"
-//  UNSUPPORTEDOPERATION_PRODUCTHASBINDGATEWAY = "UnsupportedOperation.ProductHasBindGateway"
-//  UNSUPPORTEDOPERATION_PRODUCTHASBINDEDGATEWAYPRODUCT = "UnsupportedOperation.ProductHasBindedGatewayProduct"
+//  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 func (c *Client) DeleteProductPrivateCAWithContext(ctx context.Context, request *DeleteProductPrivateCARequest) (response *DeleteProductPrivateCAResponse, err error) {
     if request == nil {
         request = NewDeleteProductPrivateCARequest()
@@ -3605,7 +3595,9 @@ func NewUpdatePrivateCAResponse() (response *UpdatePrivateCAResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     return c.UpdatePrivateCAWithContext(context.Background(), request)
 }
@@ -3615,7 +3607,9 @@ func (c *Client) UpdatePrivateCA(request *UpdatePrivateCARequest) (response *Upd
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
+//  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
+//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) UpdatePrivateCAWithContext(ctx context.Context, request *UpdatePrivateCARequest) (response *UpdatePrivateCAResponse, err error) {
     if request == nil {
         request = NewUpdatePrivateCARequest()
@@ -3707,6 +3701,7 @@ func NewUpdateProductPrivateCAResponse() (response *UpdateProductPrivateCARespon
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) UpdateProductPrivateCA(request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
     return c.UpdateProductPrivateCAWithContext(context.Background(), request)
 }
@@ -3716,6 +3711,7 @@ func (c *Client) UpdateProductPrivateCA(request *UpdateProductPrivateCARequest) 
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED_CACERTNOTSUPPORT = "LimitExceeded.CACertNotSupport"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) UpdateProductPrivateCAWithContext(ctx context.Context, request *UpdateProductPrivateCARequest) (response *UpdateProductPrivateCAResponse, err error) {
     if request == nil {
         request = NewUpdateProductPrivateCARequest()

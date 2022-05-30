@@ -8557,7 +8557,7 @@ type DescribeMalWareListRequest struct {
 	// <li>VirusName - String - 是否必填：否 - 描述筛选</li>
 	// <li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选-开始时间</li>
 	// <li>CreateEndTime - String - 是否必填：否 - 创建时间筛选-结束时间</li>
-	// <li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任沃尔玛可哦啊吗,6已隔离,10隔离中,11恢复隔离中</li>
+	// <li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任,6已隔离,10隔离中,11恢复隔离中</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 检测排序 CreateTime
@@ -14060,7 +14060,7 @@ type MalWareList struct {
 	// 主机别名
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 
-	// 特性标签
+	// 特性标签，已废弃字段，不会再返回标签，详情中才会返回标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
@@ -14080,6 +14080,15 @@ type MalWareList struct {
 
 	// 风险等级 0未知、1低、2中、3高、4严重
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// '木马检测平台用,分割 1云查杀引擎、2TAV、3binaryAi、4异常行为、5威胁情报
+	CheckPlatform *string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+
+	// 木马进程是否存在 0:不存在，1:存在
+	ProcessExists *uint64 `json:"ProcessExists,omitempty" name:"ProcessExists"`
+
+	// 木马文件是否存在 0:不存在，1:存在
+	FileExists *uint64 `json:"FileExists,omitempty" name:"FileExists"`
 }
 
 type MaliciousRequestWhiteListInfo struct {

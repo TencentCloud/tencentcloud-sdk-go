@@ -1,3 +1,145 @@
+# Release v1.0.410
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2022-05-31 06:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/33559)
+
+	* <font color="#dd0000">**修改入参**：</font>DiskIds
+
+* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
+
+	* 新增入参：Tags
+
+* [UnbindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/33554)
+
+	* <font color="#dd0000">**修改入参**：</font>DiskIds
+
+
+修改数据结构：
+
+* [AutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/15669#AutoSnapshotPolicy)
+
+	* 新增成员：IsCopyToRemote, CopyToAccountUin, InstanceIdSet
+
+* [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
+
+	* 新增成员：Tags
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 42 次发布
+
+发布时间：2022-05-31 06:08:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MalWareList](https://cloud.tencent.com/document/api/296/19867#MalWareList)
+
+	* 新增成员：CheckPlatform, ProcessExists, FileExists
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 41 次发布
+
+发布时间：2022-05-31 06:09:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TerminateDedicatedDBInstance](https://cloud.tencent.com/document/api/557/74711)
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 17 次发布
+
+发布时间：2022-05-31 06:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKey](https://cloud.tencent.com/document/api/573/34430)
+
+	* 新增入参：HsmClusterId
+
+	* 新增出参：HsmClusterId
+
+* [GetServiceStatus](https://cloud.tencent.com/document/api/573/34417)
+
+	* 新增出参：ExclusiveVSMEnabled, ExclusiveHSMEnabled
+
+* [ListKeyDetail](https://cloud.tencent.com/document/api/573/34416)
+
+	* 新增入参：HsmClusterId
+
+* [ListKeys](https://cloud.tencent.com/document/api/573/34415)
+
+	* 新增入参：HsmClusterId
+
+
+修改数据结构：
+
+* [KeyMetadata](https://cloud.tencent.com/document/api/573/34431#KeyMetadata)
+
+	* 新增成员：HsmClusterId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 113 次发布
+
+发布时间：2022-05-31 06:20:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNetworkInterface](https://cloud.tencent.com/document/api/215/15818)
+
+	* 新增入参：TrunkingFlag
+
+* [DescribeNetworkInterfaceLimit](https://cloud.tencent.com/document/api/215/38533)
+
+	* 新增出参：SubEniQuantity, SubEniPrivateIpAddressQuantity
+
+* [ModifyNetworkInterfaceAttribute](https://cloud.tencent.com/document/api/215/15815)
+
+	* 新增入参：TrunkingFlag
+
+
+
+
 # Release v1.0.409
 
 ## 企业组织(organization) 版本：2021-03-31

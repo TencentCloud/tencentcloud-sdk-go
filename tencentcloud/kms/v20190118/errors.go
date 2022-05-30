@@ -59,6 +59,9 @@ const (
 	// 密文格式错误。
 	INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
 
+	// 无效的 HSM 集群 ID。
+	INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
+
 	// KeyId不合法。
 	INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
 

@@ -3787,6 +3787,7 @@ func NewDescribeRepositoryOwnerPersonalResponse() (response *DescribeRepositoryO
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRepositoryOwnerPersonal(request *DescribeRepositoryOwnerPersonalRequest) (response *DescribeRepositoryOwnerPersonalResponse, err error) {
     return c.DescribeRepositoryOwnerPersonalWithContext(context.Background(), request)
 }
@@ -3798,6 +3799,7 @@ func (c *Client) DescribeRepositoryOwnerPersonal(request *DescribeRepositoryOwne
 //  INTERNALERROR = "InternalError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRepositoryOwnerPersonalWithContext(ctx context.Context, request *DescribeRepositoryOwnerPersonalRequest) (response *DescribeRepositoryOwnerPersonalResponse, err error) {
     if request == nil {
         request = NewDescribeRepositoryOwnerPersonalRequest()

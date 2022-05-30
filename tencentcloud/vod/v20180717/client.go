@@ -8692,6 +8692,8 @@ func NewWeChatMiniProgramPublishResponse() (response *WeChatMiniProgramPublishRe
 // WeChatMiniProgramPublish
 // 将点播视频发布到微信小程序，供微信小程序播放器播放。
 //
+// 本接口支持发布原始视频和转码后视频，暂不支持发布自适应码流。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
@@ -8711,6 +8713,8 @@ func (c *Client) WeChatMiniProgramPublish(request *WeChatMiniProgramPublishReque
 
 // WeChatMiniProgramPublish
 // 将点播视频发布到微信小程序，供微信小程序播放器播放。
+//
+// 本接口支持发布原始视频和转码后视频，暂不支持发布自适应码流。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

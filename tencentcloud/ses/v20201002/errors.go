@@ -80,6 +80,9 @@ const (
 	// 收件人已退订。
 	FAILEDOPERATION_RECEIVERHASUNSUBSCRIBED = "FailedOperation.ReceiverHasUnsubscribed"
 
+	// 邮件被收信人拒绝。
+	FAILEDOPERATION_REJECTEDBYRECIPIENTS = "FailedOperation.RejectedByRecipients"
+
 	// 您的发送遇到问题，请联系腾讯云提交工单沟通原因并解决。
 	FAILEDOPERATION_SENDEMAILERR = "FailedOperation.SendEmailErr"
 

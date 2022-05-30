@@ -176,6 +176,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
 	// 当前版本不支持该操作。
 	UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 )

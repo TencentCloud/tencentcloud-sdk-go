@@ -152,6 +152,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -176,6 +177,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -311,26 +313,7 @@ func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
 // 渠道通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
-//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
 func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response *CreateSealByImageResponse, err error) {
     return c.CreateSealByImageWithContext(context.Background(), request)
 }
@@ -339,26 +322,7 @@ func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response 
 // 渠道通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
-//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
 func (c *Client) CreateSealByImageWithContext(ctx context.Context, request *CreateSealByImageRequest) (response *CreateSealByImageResponse, err error) {
     if request == nil {
         request = NewCreateSealByImageRequest()

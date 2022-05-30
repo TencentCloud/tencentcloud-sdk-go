@@ -357,6 +357,9 @@ type CreateKeyRequest struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -376,6 +379,7 @@ func (r *CreateKeyRequest) FromJsonString(s string) error {
 	delete(f, "KeyUsage")
 	delete(f, "Type")
 	delete(f, "Tags")
+	delete(f, "HsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeyRequest has unknown keys!", "")
 	}
@@ -412,6 +416,10 @@ type CreateKeyResponse struct {
 		// 标签操作的返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+
+		// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1997,6 +2005,14 @@ type GetServiceStatusResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ProResourceId *string `json:"ProResourceId,omitempty" name:"ProResourceId"`
 
+		// 是否开通 KMS 托管版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExclusiveVSMEnabled *bool `json:"ExclusiveVSMEnabled,omitempty" name:"ExclusiveVSMEnabled"`
+
+		// 是否开通 KMS 独享版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ExclusiveHSMEnabled *bool `json:"ExclusiveHSMEnabled,omitempty" name:"ExclusiveHSMEnabled"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -2126,6 +2142,10 @@ type KeyMetadata struct {
 
 	// 资源ID，格式：creatorUin/$creatorUin/$keyId
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
 }
 
 type ListAlgorithmsRequest struct {
@@ -2208,6 +2228,9 @@ type ListKeyDetailRequest struct {
 
 	// 标签过滤条件
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {
@@ -2231,6 +2254,7 @@ func (r *ListKeyDetailRequest) FromJsonString(s string) error {
 	delete(f, "Origin")
 	delete(f, "KeyUsage")
 	delete(f, "TagFilters")
+	delete(f, "HsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListKeyDetailRequest has unknown keys!", "")
 	}
@@ -2275,6 +2299,9 @@ type ListKeysRequest struct {
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
 	Role *uint64 `json:"Role,omitempty" name:"Role"`
+
+	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
 }
 
 func (r *ListKeysRequest) ToJsonString() string {
@@ -2292,6 +2319,7 @@ func (r *ListKeysRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Role")
+	delete(f, "HsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListKeysRequest has unknown keys!", "")
 	}

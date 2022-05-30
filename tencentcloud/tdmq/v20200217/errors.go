@@ -203,6 +203,9 @@ const (
 	// 实例下命名空间数量超过限额。
 	LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 
+	// 超过剩余额度，请重新调整。
+	LIMITEXCEEDED_RETENTIONSIZE = "LimitExceeded.RetentionSize"
+
 	// 实例下订阅者数量超过限制。
 	LIMITEXCEEDED_SUBSCRIPTIONS = "LimitExceeded.Subscriptions"
 

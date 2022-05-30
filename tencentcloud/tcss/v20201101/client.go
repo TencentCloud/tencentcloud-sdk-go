@@ -5301,6 +5301,7 @@ func NewDescribeContainerAssetSummaryResponse() (response *DescribeContainerAsse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeContainerAssetSummary(request *DescribeContainerAssetSummaryRequest) (response *DescribeContainerAssetSummaryResponse, err error) {
     return c.DescribeContainerAssetSummaryWithContext(context.Background(), request)
 }
@@ -5311,6 +5312,7 @@ func (c *Client) DescribeContainerAssetSummary(request *DescribeContainerAssetSu
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeContainerAssetSummaryWithContext(ctx context.Context, request *DescribeContainerAssetSummaryRequest) (response *DescribeContainerAssetSummaryResponse, err error) {
     if request == nil {
         request = NewDescribeContainerAssetSummaryRequest()
