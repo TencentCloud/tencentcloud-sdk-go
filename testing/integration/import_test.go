@@ -89,6 +89,7 @@ import (
 	dayuv20180709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu/v20180709"
 	dbbrainv20191016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20191016"
 	dbbrainv20210527 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20210527"
+	dbdcv20201029 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc/v20201029"
 	dcv20180410 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc/v20180410"
 	dcdbv20180411 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dcdb/v20180411"
 	dlcv20210125 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dlc/v20210125"
@@ -1139,6 +1140,19 @@ func TestDbbrainv20210527Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init dbbrain_v20210527 client: %v", err)
+    }
+}
+
+func TestDbdcv20201029Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := dbdcv20201029.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init dbdc_v20201029 client: %v", err)
     }
 }
 

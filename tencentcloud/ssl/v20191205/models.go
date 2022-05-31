@@ -846,6 +846,18 @@ type DescribeCertificateDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
 
+		// 根证书。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		RootCert *RootCertificates `json:"RootCert,omitempty" name:"RootCert"`
+
+		// 国密加密证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EncryptCert *string `json:"EncryptCert,omitempty" name:"EncryptCert"`
+
+		// 国密加密私钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" name:"EncryptPrivateKey"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1948,6 +1960,9 @@ type RevokeDomainValidateAuths struct {
 	// DV 认证域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitempty" name:"DomainValidateAuthDomain"`
+}
+
+type RootCertificates struct {
 }
 
 type SubmitAuditManagerRequest struct {

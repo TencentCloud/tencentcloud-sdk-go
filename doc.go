@@ -77,6 +77,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dcdb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dlc"

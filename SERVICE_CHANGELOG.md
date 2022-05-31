@@ -1,67 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 云数据库独享集群(dbdc) 版本：2020-10-29
 
-### 第 41 次发布
+### 第 1 次发布
 
-发布时间：2022-05-31 06:05:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/33559)
-
-	* <font color="#dd0000">**修改入参**：</font>DiskIds
-
-* [CreateSnapshot](https://cloud.tencent.com/document/api/362/15648)
-
-	* 新增入参：Tags
-
-* [UnbindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/33554)
-
-	* <font color="#dd0000">**修改入参**：</font>DiskIds
-
-
-修改数据结构：
-
-* [AutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/15669#AutoSnapshotPolicy)
-
-	* 新增成员：IsCopyToRemote, CopyToAccountUin, InstanceIdSet
-
-* [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
-
-	* 新增成员：Tags
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 42 次发布
-
-发布时间：2022-05-31 06:08:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MalWareList](https://cloud.tencent.com/document/api/296/19867#MalWareList)
-
-	* 新增成员：CheckPlatform, ProcessExists, FileExists
-
-
-
-
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 41 次发布
-
-发布时间：2022-05-31 06:09:47
+发布时间：2022-05-31 17:05:07
 
 本次发布包含了以下内容：
 
@@ -69,15 +12,28 @@
 
 新增接口：
 
-* [TerminateDedicatedDBInstance](https://cloud.tencent.com/document/api/557/74711)
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/1322/74753)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1322/74750)
+* [ModifyInstanceName](https://cloud.tencent.com/document/api/1322/74749)
+
+新增数据结构：
+
+* [DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1322/74754#DeviceInfo)
+* [InstanceDetail](https://cloud.tencent.com/document/api/1322/74754#InstanceDetail)
+* [InstanceDeviceInfo](https://cloud.tencent.com/document/api/1322/74754#InstanceDeviceInfo)
+* [InstanceExpand](https://cloud.tencent.com/document/api/1322/74754#InstanceExpand)
 
 
 
-## 密钥管理系统(kms) 版本：2019-01-18
+## 数据湖计算(dlc) 版本：2021-01-25
 
-### 第 17 次发布
+### 第 18 次发布
 
-发布时间：2022-05-31 06:13:25
+发布时间：2022-06-01 06:09:45
 
 本次发布包含了以下内容：
 
@@ -85,39 +41,29 @@
 
 修改接口：
 
-* [CreateKey](https://cloud.tencent.com/document/api/573/34430)
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
 
-	* 新增入参：HsmClusterId
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
 
-	* 新增出参：HsmClusterId
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
 
-* [GetServiceStatus](https://cloud.tencent.com/document/api/573/34417)
-
-	* 新增出参：ExclusiveVSMEnabled, ExclusiveHSMEnabled
-
-* [ListKeyDetail](https://cloud.tencent.com/document/api/573/34416)
-
-	* 新增入参：HsmClusterId
-
-* [ListKeys](https://cloud.tencent.com/document/api/573/34415)
-
-	* 新增入参：HsmClusterId
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
 
 
 修改数据结构：
 
-* [KeyMetadata](https://cloud.tencent.com/document/api/573/34431#KeyMetadata)
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
 
-	* 新增成员：HsmClusterId
-
-
+	* 新增成员：IsLocalPythonFiles, AppPythonFiles
 
 
-## 私有网络(vpc) 版本：2017-03-12
 
-### 第 113 次发布
 
-发布时间：2022-05-31 06:20:06
+## 证书(ssl) 版本：2019-12-05
+
+### 第 13 次发布
+
+发布时间：2022-06-01 06:15:43
 
 本次发布包含了以下内容：
 
@@ -125,18 +71,14 @@
 
 修改接口：
 
-* [CreateNetworkInterface](https://cloud.tencent.com/document/api/215/15818)
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
 
-	* 新增入参：TrunkingFlag
+	* 新增出参：RootCert, EncryptCert, EncryptPrivateKey
 
-* [DescribeNetworkInterfaceLimit](https://cloud.tencent.com/document/api/215/38533)
 
-	* 新增出参：SubEniQuantity, SubEniPrivateIpAddressQuantity
+新增数据结构：
 
-* [ModifyNetworkInterfaceAttribute](https://cloud.tencent.com/document/api/215/15815)
-
-	* 新增入参：TrunkingFlag
-
+* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
 
 
 
@@ -27097,6 +27039,36 @@
 
 
 
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 1 次发布
+
+发布时间：2022-05-31 17:05:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstances](https://cloud.tencent.com/document/api/1322/74753)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstances](https://cloud.tencent.com/document/api/1322/74750)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyInstanceName](https://cloud.tencent.com/document/api/1322/74749)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)](https://cloud.tencent.com/document/api/1322/74754#[DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail))
+* [[DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)](https://cloud.tencent.com/document/api/1322/74754#[DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail))
+* [[DeviceInfo](https://cloud.tencent.com/document/api/1322/74754#DeviceInfo)](https://cloud.tencent.com/document/api/1322/74754#[DeviceInfo](https://cloud.tencent.com/document/api/1322/74754#DeviceInfo))
+* [[InstanceDetail](https://cloud.tencent.com/document/api/1322/74754#InstanceDetail)](https://cloud.tencent.com/document/api/1322/74754#[InstanceDetail](https://cloud.tencent.com/document/api/1322/74754#InstanceDetail))
+* [[InstanceDeviceInfo](https://cloud.tencent.com/document/api/1322/74754#InstanceDeviceInfo)](https://cloud.tencent.com/document/api/1322/74754#[InstanceDeviceInfo](https://cloud.tencent.com/document/api/1322/74754#InstanceDeviceInfo))
+* [[InstanceExpand](https://cloud.tencent.com/document/api/1322/74754#InstanceExpand)](https://cloud.tencent.com/document/api/1322/74754#[InstanceExpand](https://cloud.tencent.com/document/api/1322/74754#InstanceExpand))
+
+
+
+
 ## 专线接入(dc) 版本：2018-04-10
 
 ### 第 23 次发布
@@ -27537,7 +27509,7 @@
 
 新增接口：
 
-* [[TerminateDedicatedDBInstance](https://cloud.tencent.com/document/api/557/74711)](https://cloud.tencent.com/document/api/#/#)
+* [TerminateDedicatedDBInstance](https://cloud.tencent.com/document/api/557/74711)
 
 ### 第 40 次发布
 
@@ -28327,6 +28299,32 @@
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 18 次发布
+
+发布时间：2022-06-01 06:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
+
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsLocalPythonFiles, AppPythonFiles
+
 
 ### 第 17 次发布
 
@@ -57463,6 +57461,25 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 13 次发布
+
+发布时间：2022-06-01 06:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：RootCert, EncryptCert, EncryptPrivateKey
+
+
+新增数据结构：
+
+* [[RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)](https://cloud.tencent.com/document/api/400/41679#[RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates))
 
 ### 第 12 次发布
 

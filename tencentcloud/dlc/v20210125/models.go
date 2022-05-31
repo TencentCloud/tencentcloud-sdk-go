@@ -617,6 +617,12 @@ type CreateSparkAppRequest struct {
 
 	// 数据源名
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
+
+	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -650,6 +656,8 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "CmdArgs")
 	delete(f, "MaxRetries")
 	delete(f, "DataSource")
+	delete(f, "IsLocalPythonFiles")
+	delete(f, "AppPythonFiles")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -2527,6 +2535,12 @@ type ModifySparkAppRequest struct {
 	// spark作业依赖资源，以逗号分隔
 	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
 
+	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
+
+	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
+
 	// spark作业命令行参数
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 
@@ -2566,6 +2580,8 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "AppJars")
 	delete(f, "IsLocalFiles")
 	delete(f, "AppFiles")
+	delete(f, "IsLocalPythonFiles")
+	delete(f, "AppPythonFiles")
 	delete(f, "CmdArgs")
 	delete(f, "MaxRetries")
 	delete(f, "DataSource")
@@ -2913,6 +2929,14 @@ type SparkJobInfo struct {
 	// 数据源名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
+
+	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 }
 
 type StreamingStatistics struct {

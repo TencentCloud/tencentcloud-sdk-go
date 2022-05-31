@@ -2533,7 +2533,7 @@ type DescribeZonesRequest struct {
 
 	// 可用区列表排序的依据字段。取值范围：
 	// <li>ZONE：依据可用区排序。
-	// <li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序, 可用区展示标签按可选择程度, 升序排列为: ['HIDDEN', 'NORMAL', 'SELECTED']。
+	// <li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序，可用区展示标签包括：HIDDEN（隐藏）、NORMAL（普通）、SELECTED（默认选中），默认采用的升序排列为：['HIDDEN', 'NORMAL', 'SELECTED']。
 	// 默认按可用区排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 

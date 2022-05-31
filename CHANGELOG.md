@@ -1,3 +1,87 @@
+# Release v1.0.411
+
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 1 次发布
+
+发布时间：2022-05-31 17:05:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/1322/74753)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1322/74750)
+* [ModifyInstanceName](https://cloud.tencent.com/document/api/1322/74749)
+
+新增数据结构：
+
+* [DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1322/74754#DeviceInfo)
+* [InstanceDetail](https://cloud.tencent.com/document/api/1322/74754#InstanceDetail)
+* [InstanceDeviceInfo](https://cloud.tencent.com/document/api/1322/74754#InstanceDeviceInfo)
+* [InstanceExpand](https://cloud.tencent.com/document/api/1322/74754#InstanceExpand)
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 18 次发布
+
+发布时间：2022-06-01 06:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：IsLocalPythonFiles, AppPythonFiles
+
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsLocalPythonFiles, AppPythonFiles
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 13 次发布
+
+发布时间：2022-06-01 06:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：RootCert, EncryptCert, EncryptPrivateKey
+
+
+新增数据结构：
+
+* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
+
+
+
 # Release v1.0.410
 
 ## 云硬盘(cbs) 版本：2017-03-12

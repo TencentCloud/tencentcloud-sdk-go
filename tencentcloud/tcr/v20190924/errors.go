@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 依赖服务异常。
+	FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+
 	// 获取数据库数据错误。
 	FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 
@@ -31,6 +34,9 @@ const (
 
 	// 获取TcrClient错误。
 	FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
+
+	// 操作取消。
+	FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 
 	// 交易失败。
 	FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"

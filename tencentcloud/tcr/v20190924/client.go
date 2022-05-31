@@ -712,6 +712,9 @@ func NewCreateMultipleSecurityPolicyResponse() (response *CreateMultipleSecurity
 // 用于在TCR实例中，创建多个白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -728,6 +731,9 @@ func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPol
 // 用于在TCR实例中，创建多个白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -773,6 +779,7 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 // 用于在企业版中创建命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -792,6 +799,7 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
 // 用于在企业版中创建命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -966,6 +974,7 @@ func NewCreateRepositoryResponse() (response *CreateRepositoryResponse) {
 // 用于企业版创建镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -984,6 +993,7 @@ func (c *Client) CreateRepository(request *CreateRepositoryRequest) (response *C
 // 用于企业版创建镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -2555,10 +2565,14 @@ func NewDescribeExternalEndpointStatusResponse() (response *DescribeExternalEndp
 // 查询实例公网访问入口状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2570,10 +2584,14 @@ func (c *Client) DescribeExternalEndpointStatus(request *DescribeExternalEndpoin
 // 查询实例公网访问入口状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3418,6 +3436,7 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 // 查询命名空间列表或指定命名空间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -3437,6 +3456,7 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
 // 查询命名空间列表或指定命名空间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
