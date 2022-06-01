@@ -3054,6 +3054,9 @@ type Image struct {
 	// 镜像关联的标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 镜像许可类型
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
 }
 
 type ImageOsList struct {
@@ -3927,6 +3930,9 @@ type Instance struct {
 	// GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GPUInfo *GPUInfo `json:"GPUInfo,omitempty" name:"GPUInfo"`
+
+	// 实例的操作系统许可类型，默认为TencentCloud
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
 }
 
 type InstanceChargePrepaid struct {

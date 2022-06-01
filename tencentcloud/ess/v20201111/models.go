@@ -517,7 +517,10 @@ type CreateSchemeUrlRequest struct {
 	// 企业名称
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
-	// 链接类型 HTTP：跳转电子签小程序的http_url，APP：第三方APP或小程序跳转电子签小程序，默认为HTTP类型
+	// 链接类型
+	// HTTP：跳转电子签小程序的http_url，
+	// APP：第三方APP或小程序跳转电子签小程序的path。
+	// 默认为HTTP类型
 	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
 	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
@@ -727,6 +730,82 @@ func (r *DescribeFlowBriefsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFlowTemplatesRequest struct {
+	*tchttp.BaseRequest
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询个数，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 暂未开放
+	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
+
+	// 查询内容：0-模版列表及详情（默认），1-仅模版列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+}
+
+func (r *DescribeFlowTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Agent")
+	delete(f, "GenerateSource")
+	delete(f, "ContentType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFlowTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 模板详情列表
+		Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
+
+		// 查询到的总个数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeFlowTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeThirdPartyAuthCodeRequest struct {
 	*tchttp.BaseRequest
 
@@ -776,6 +855,21 @@ func (r *DescribeThirdPartyAuthCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FileInfo struct {
+
+	// 文件Id
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件大小，单位为Byte
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 文件上传时间，10位时间戳（精确到秒）
+	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+}
+
 type FileUrl struct {
 
 	// 下载文件的URL
@@ -784,6 +878,15 @@ type FileUrl struct {
 	// 下载文件的附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Option *string `json:"Option,omitempty" name:"Option"`
+}
+
+type Filter struct {
+
+	// 查询过滤条件的Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 查询过滤条件的Value列表
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FlowBrief struct {
@@ -882,6 +985,48 @@ type FormField struct {
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 }
 
+type Recipient struct {
+
+	// 签署参与者ID
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 参与者类型（ENTERPRISE/INDIVIDUAL）
+	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
+
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 是否需要验证，默认为false
+	RequireValidation *bool `json:"RequireValidation,omitempty" name:"RequireValidation"`
+
+	// 是否需要签署，默认为true
+	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
+
+	// 添加序列
+	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
+
+	// 是否需要发送，默认为true
+	RequireDelivery *bool `json:"RequireDelivery,omitempty" name:"RequireDelivery"`
+
+	// 邮箱地址
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 电话号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 关联的用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 发送方式（EMAIL/MOBILE）
+	DeliveryMethod *string `json:"DeliveryMethod,omitempty" name:"DeliveryMethod"`
+
+	// 附属信息
+	RecipientExtra *string `json:"RecipientExtra,omitempty" name:"RecipientExtra"`
+}
+
 type StartFlowRequest struct {
 	*tchttp.BaseRequest
 
@@ -941,6 +1086,51 @@ func (r *StartFlowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TemplateInfo struct {
+
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名字
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 模板描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 模板关联的资源IDs
+	DocumentResourceIds []*string `json:"DocumentResourceIds,omitempty" name:"DocumentResourceIds"`
+
+	// 返回的文件信息结构
+	FileInfos []*FileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
+
+	// 附件关联的资源ID是
+	AttachmentResourceIds []*string `json:"AttachmentResourceIds,omitempty" name:"AttachmentResourceIds"`
+
+	// 签署顺序
+	SignOrder []*int64 `json:"SignOrder,omitempty" name:"SignOrder"`
+
+	// 签署参与者的信息
+	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
+
+	// 模板信息结构
+	Components []*Component `json:"Components,omitempty" name:"Components"`
+
+	// 签署区模板信息结构
+	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
+
+	// 模板状态(-1:不可用；0:草稿态；1:正式态)
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 模板的创建人
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 模板创建的时间戳（精确到秒）
+	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 发起人角色信息
+	Promoter *Recipient `json:"Promoter,omitempty" name:"Promoter"`
 }
 
 type UploadFile struct {

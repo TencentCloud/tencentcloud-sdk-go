@@ -4044,6 +4044,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 私有网络字符型subnetId
 	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds"`
+
+	// 标签键值
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -4089,6 +4092,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagValues")
 	delete(f, "UniqueVpcIds")
 	delete(f, "UniqSubnetIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -9906,6 +9910,15 @@ type TablePrivilege struct {
 
 	// 权限信息
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
+}
+
+type Tag struct {
+
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TagInfo struct {

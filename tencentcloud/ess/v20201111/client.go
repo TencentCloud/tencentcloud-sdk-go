@@ -375,6 +375,16 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 // CreateSchemeUrl
 // 获取小程序跳转链接
 //
+// 
+//
+// 跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+//
+// 
+//
+// 
+//
+// 如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -392,6 +402,16 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 
 // CreateSchemeUrl
 // 获取小程序跳转链接
+//
+// 
+//
+// 跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+//
+// 
+//
+// 
+//
+// 如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -608,6 +628,69 @@ func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeFlowBriefsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlowTemplatesRequest() (request *DescribeFlowTemplatesRequest) {
+    request = &DescribeFlowTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeFlowTemplates")
+    
+    
+    return
+}
+
+func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse) {
+    response = &DescribeFlowTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFlowTemplates
+// 二期接口-查询模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {
+    return c.DescribeFlowTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeFlowTemplates
+// 二期接口-查询模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowTemplatesResponse()
     err = c.Send(request, response)
     return
 }

@@ -29,7 +29,7 @@ type AddNodesRequest struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和自定义镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。

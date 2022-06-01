@@ -2777,6 +2777,134 @@ func (r *MobileStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ParseNfcDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 前端SDK返回
+	ReqId *string `json:"ReqId,omitempty" name:"ReqId"`
+}
+
+func (r *ParseNfcDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseNfcDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReqId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseNfcDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ParseNfcDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 0为首次查询成功，-1为查询失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+		// 身份证号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IdNum *string `json:"IdNum,omitempty" name:"IdNum"`
+
+		// 姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Name *string `json:"Name,omitempty" name:"Name"`
+
+		// 照片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Picture *string `json:"Picture,omitempty" name:"Picture"`
+
+		// 出生日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BirthDate *string `json:"BirthDate,omitempty" name:"BirthDate"`
+
+		// 有效期起始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+		// 有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+		// 住址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Address *string `json:"Address,omitempty" name:"Address"`
+
+		// 民族
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Nation *string `json:"Nation,omitempty" name:"Nation"`
+
+		// 性别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Sex *string `json:"Sex,omitempty" name:"Sex"`
+
+		// 身份证 01 中国护照 03 军官证 04 武警证 05 港澳通行证 06 台胞证 07 外国护照 08 士兵证 09 临时身份证 10 户口本 11 警官证 12 外国人永久居留证 13 港澳台居民居住证 14 回乡证 15 大陆居民来往台湾通行证 16 其他证件 99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IdType *string `json:"IdType,omitempty" name:"IdType"`
+
+		// 英文姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		EnName *string `json:"EnName,omitempty" name:"EnName"`
+
+		// 签发机关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SigningOrganization *string `json:"SigningOrganization,omitempty" name:"SigningOrganization"`
+
+		// 港澳台居民居住证，通行证号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		OtherIdNum *string `json:"OtherIdNum,omitempty" name:"OtherIdNum"`
+
+		// 旅行证件国籍
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+		// 旅行证件机读区第二行 29~42 位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		PersonalNumber *string `json:"PersonalNumber,omitempty" name:"PersonalNumber"`
+
+		// 旅行证件类的核验结果。JSON格式如下：
+	// {"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 
+	//  0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		CheckMRTD *string `json:"CheckMRTD,omitempty" name:"CheckMRTD"`
+
+		// 身份证照片面合成图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageA *string `json:"ImageA,omitempty" name:"ImageA"`
+
+		// 身份证国徽面合成图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ImageB *string `json:"ImageB,omitempty" name:"ImageB"`
+
+		// 对result code的结果描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResultDescription *string `json:"ResultDescription,omitempty" name:"ResultDescription"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ParseNfcDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseNfcDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PhoneVerificationCMCCRequest struct {
 	*tchttp.BaseRequest
 

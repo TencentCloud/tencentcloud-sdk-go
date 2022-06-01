@@ -2358,6 +2358,57 @@ func (c *Client) MobileStatusWithContext(ctx context.Context, request *MobileSta
     return
 }
 
+func NewParseNfcDataRequest() (request *ParseNfcDataRequest) {
+    request = &ParseNfcDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("faceid", APIVersion, "ParseNfcData")
+    
+    
+    return
+}
+
+func NewParseNfcDataResponse() (response *ParseNfcDataResponse) {
+    response = &ParseNfcDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ParseNfcData
+// 解析SDK获取到的证件NFC数据，接口传入SDK返回的ReqId，返回证件信息（个别字段为特定证件类型特有）。SDK生成的ReqId五分钟内有效，重复查询仅收一次费。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) ParseNfcData(request *ParseNfcDataRequest) (response *ParseNfcDataResponse, err error) {
+    return c.ParseNfcDataWithContext(context.Background(), request)
+}
+
+// ParseNfcData
+// 解析SDK获取到的证件NFC数据，接口传入SDK返回的ReqId，返回证件信息（个别字段为特定证件类型特有）。SDK生成的ReqId五分钟内有效，重复查询仅收一次费。支持身份证类证件（二代身份证、港澳居住证、台湾居住证、外国人永居证）以及旅行类证件（港澳通行证、台湾通行证、台胞证、回乡证）的NFC识别及核验。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
+func (c *Client) ParseNfcDataWithContext(ctx context.Context, request *ParseNfcDataRequest) (response *ParseNfcDataResponse, err error) {
+    if request == nil {
+        request = NewParseNfcDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ParseNfcData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewParseNfcDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
     request = &PhoneVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

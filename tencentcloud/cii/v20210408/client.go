@@ -178,6 +178,7 @@ func NewCreateStructureTaskResponse() (response *CreateStructureTaskResponse) {
 // 本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -193,6 +194,7 @@ func (c *Client) CreateStructureTask(request *CreateStructureTaskRequest) (respo
 // 本接口(CreateStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -356,6 +358,10 @@ func NewDescribeQualityScoreResponse() (response *DescribeQualityScoreResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeQualityScore(request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
     return c.DescribeQualityScoreWithContext(context.Background(), request)
 }
@@ -369,6 +375,10 @@ func (c *Client) DescribeQualityScore(request *DescribeQualityScoreRequest) (res
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeQualityScoreWithContext(ctx context.Context, request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
     if request == nil {
         request = NewDescribeQualityScoreRequest()
@@ -406,8 +416,13 @@ func NewDescribeReportClassifyResponse() (response *DescribeReportClassifyRespon
 // 辅助用户对批量报告自动分类
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeReportClassify(request *DescribeReportClassifyRequest) (response *DescribeReportClassifyResponse, err error) {
     return c.DescribeReportClassifyWithContext(context.Background(), request)
 }
@@ -416,8 +431,13 @@ func (c *Client) DescribeReportClassify(request *DescribeReportClassifyRequest) 
 // 辅助用户对批量报告自动分类
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeReportClassifyWithContext(ctx context.Context, request *DescribeReportClassifyRequest) (response *DescribeReportClassifyResponse, err error) {
     if request == nil {
         request = NewDescribeReportClassifyRequest()
@@ -564,6 +584,8 @@ func NewDescribeStructureResultResponse() (response *DescribeStructureResultResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest) (response *DescribeStructureResultResponse, err error) {
     return c.DescribeStructureResultWithContext(context.Background(), request)
 }
@@ -579,6 +601,8 @@ func (c *Client) DescribeStructureResult(request *DescribeStructureResultRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeStructureResultWithContext(ctx context.Context, request *DescribeStructureResultRequest) (response *DescribeStructureResultResponse, err error) {
     if request == nil {
         request = NewDescribeStructureResultRequest()
@@ -621,7 +645,9 @@ func NewDescribeStructureTaskResultResponse() (response *DescribeStructureTaskRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
     return c.DescribeStructureTaskResultWithContext(context.Background(), request)
 }
@@ -635,7 +661,9 @@ func (c *Client) DescribeStructureTaskResult(request *DescribeStructureTaskResul
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeStructureTaskResultWithContext(ctx context.Context, request *DescribeStructureTaskResultRequest) (response *DescribeStructureTaskResultResponse, err error) {
     if request == nil {
         request = NewDescribeStructureTaskResultRequest()

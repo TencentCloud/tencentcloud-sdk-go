@@ -65,6 +65,10 @@ func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
 // AttachInstances
 // 本接口（AttachInstances）用于将 CVM 实例添加到伸缩组。
 //
+// * 仅支持添加处于`RUNNING`（运行中）或`STOPPED`（已关机）状态的 CVM 实例
+//
+// * 添加的 CVM 实例需要和伸缩组 VPC 网络一致
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
@@ -88,6 +92,10 @@ func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *Att
 
 // AttachInstances
 // 本接口（AttachInstances）用于将 CVM 实例添加到伸缩组。
+//
+// * 仅支持添加处于`RUNNING`（运行中）或`STOPPED`（已关机）状态的 CVM 实例
+//
+// * 添加的 CVM 实例需要和伸缩组 VPC 网络一致
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"

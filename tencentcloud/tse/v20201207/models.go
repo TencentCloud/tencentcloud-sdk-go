@@ -227,6 +227,9 @@ type EnvInfo struct {
 
 	// 环境运行的节点数
 	RunningCount *int64 `json:"RunningCount,omitempty" name:"RunningCount"`
+
+	// 环境别名
+	AliasEnvName *string `json:"AliasEnvName,omitempty" name:"AliasEnvName"`
 }
 
 type Filter struct {

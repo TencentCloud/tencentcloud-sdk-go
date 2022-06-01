@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 重复数据。
 	FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 

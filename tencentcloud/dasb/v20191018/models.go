@@ -25,7 +25,7 @@ type Acl struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 规则名
+	// 访问权限名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 是否开启磁盘映射
@@ -37,25 +37,25 @@ type Acl struct {
 	// 是否开启剪贴板文件下行
 	AllowClipFileDown *bool `json:"AllowClipFileDown,omitempty" name:"AllowClipFileDown"`
 
-	// 是否开启剪贴板text（目前含图片）上行
+	// 是否开启剪贴板文本（目前含图片）上行
 	AllowClipTextUp *bool `json:"AllowClipTextUp,omitempty" name:"AllowClipTextUp"`
 
-	// 是否开启剪贴板text（目前含图片）下行
+	// 是否开启剪贴板文本（目前含图片）下行
 	AllowClipTextDown *bool `json:"AllowClipTextDown,omitempty" name:"AllowClipTextDown"`
 
 	// 是否开启文件传输上传
 	AllowFileUp *bool `json:"AllowFileUp,omitempty" name:"AllowFileUp"`
 
-	// 文件传输上传大小限制
+	// 文件传输上传大小限制（预留参数，暂未启用）
 	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitempty" name:"MaxFileUpSize"`
 
 	// 是否开启文件传输下载
 	AllowFileDown *bool `json:"AllowFileDown,omitempty" name:"AllowFileDown"`
 
-	// 文件传输下载大小限制
+	// 文件传输下载大小限制（预留参数，暂未启用）
 	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitempty" name:"MaxFileDownSize"`
 
-	// 是否允许任意账号登陆
+	// 是否允许任意账号登录
 	AllowAnyAccount *bool `json:"AllowAnyAccount,omitempty" name:"AllowAnyAccount"`
 
 	// 关联的用户列表
@@ -64,10 +64,10 @@ type Acl struct {
 	// 关联的用户组列表
 	UserGroupSet []*Group `json:"UserGroupSet,omitempty" name:"UserGroupSet"`
 
-	// 关联的主机列表
+	// 关联的资产列表
 	DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
 
-	// 关联的主机组列表
+	// 关联的资产组列表
 	DeviceGroupSet []*Group `json:"DeviceGroupSet,omitempty" name:"DeviceGroupSet"`
 
 	// 关联的账号列表
@@ -76,53 +76,205 @@ type Acl struct {
 	// 关联的高危命令模板列表
 	CmdTemplateSet []*CmdTemplate `json:"CmdTemplateSet,omitempty" name:"CmdTemplateSet"`
 
-	// 是否开启rdp磁盘映射文件上传
+	// 是否开启 RDP 磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
-	// 是否开启rdp磁盘映射文件下载
+	// 是否开启 RDP 磁盘映射文件下载
 	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitempty" name:"AllowDiskFileDown"`
 
-	// 是否开启rz sz文件上传
+	// 是否开启 rz sz 文件上传
 	AllowShellFileUp *bool `json:"AllowShellFileUp,omitempty" name:"AllowShellFileUp"`
 
-	// 是否开启rz sz文件下载
+	// 是否开启 rz sz 文件下载
 	AllowShellFileDown *bool `json:"AllowShellFileDown,omitempty" name:"AllowShellFileDown"`
 
-	// 是否开启SFTP文件删除
+	// 是否开启 SFTP 文件删除
 	AllowFileDel *bool `json:"AllowFileDel,omitempty" name:"AllowFileDel"`
 
-	// 生效日期
+	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 失效日期
+	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 
-	// 策略状态，1-已生效，2-未生效，3-已过期
+	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type AddDeviceGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需要添加到资产组的资产ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
+func (r *AddDeviceGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddDeviceGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeviceGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddDeviceGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddDeviceGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddDeviceGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUserGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 成员用户ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
+func (r *AddUserGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUserGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUserGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddUserGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AddUserGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddUserGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindDeviceResourceRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产ID集合
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
+
+	// 堡垒机服务ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *BindDeviceResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIdSet")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindDeviceResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *BindDeviceResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CmdTemplate struct {
 
-	// 模板ID
+	// 高危命令模板ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 模板名称
+	// 高危命令模板名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 命令列表，\n分隔
+	// 命令列表，命令之间用换行符（"\n"）分隔
 	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
 }
 
 type CreateAclRequest struct {
 	*tchttp.BaseRequest
 
-	// 权限名称，最大32字符，不能为空，不能包含空白字符
+	// 权限名称，最大32字符，不能包含空白字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 是否开启磁盘映射
 	AllowDiskRedirect *bool `json:"AllowDiskRedirect,omitempty" name:"AllowDiskRedirect"`
 
-	// 是否允许任意账号登陆
+	// 是否允许任意账号登录
 	AllowAnyAccount *bool `json:"AllowAnyAccount,omitempty" name:"AllowAnyAccount"`
 
 	// 是否开启剪贴板文件上行
@@ -131,37 +283,37 @@ type CreateAclRequest struct {
 	// 是否开启剪贴板文件下行
 	AllowClipFileDown *bool `json:"AllowClipFileDown,omitempty" name:"AllowClipFileDown"`
 
-	// 是否开启剪贴板text（含图片）上行
+	// 是否开启剪贴板文本（含图片）上行
 	AllowClipTextUp *bool `json:"AllowClipTextUp,omitempty" name:"AllowClipTextUp"`
 
-	// 是否开启剪贴板text（含图片）下行
+	// 是否开启剪贴板文本（含图片）下行
 	AllowClipTextDown *bool `json:"AllowClipTextDown,omitempty" name:"AllowClipTextDown"`
 
-	// 是否开启SFTP文件上传
+	// 是否开启 SFTP 文件上传
 	AllowFileUp *bool `json:"AllowFileUp,omitempty" name:"AllowFileUp"`
 
-	// 文件传输上传大小限制
+	// 文件传输上传大小限制（预留参数，目前暂未使用）
 	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitempty" name:"MaxFileUpSize"`
 
-	// 是否开启SFTP文件下载
+	// 是否开启 SFTP 文件下载
 	AllowFileDown *bool `json:"AllowFileDown,omitempty" name:"AllowFileDown"`
 
-	// 文件传输下载大小限制
+	// 文件传输下载大小限制（预留参数，目前暂未使用）
 	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitempty" name:"MaxFileDownSize"`
 
-	// 关联的用户ID
+	// 关联的用户ID集合
 	UserIdSet []*uint64 `json:"UserIdSet,omitempty" name:"UserIdSet"`
 
 	// 关联的用户组ID
 	UserGroupIdSet []*uint64 `json:"UserGroupIdSet,omitempty" name:"UserGroupIdSet"`
 
-	// 关联的主机ID
+	// 关联的资产ID集合
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
 
-	// 关联的主机组ID
+	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitempty" name:"DeviceGroupIdSet"`
 
-	// 关联的账号，账号name
+	// 关联的账号
 	AccountSet []*string `json:"AccountSet,omitempty" name:"AccountSet"`
 
 	// 关联的高危命令模板ID
@@ -179,13 +331,15 @@ type CreateAclRequest struct {
 	// 是否开启rz sz文件下载
 	AllowShellFileDown *bool `json:"AllowShellFileDown,omitempty" name:"AllowShellFileDown"`
 
-	// 是否开启SFTP文件删除
+	// 是否开启 SFTP 文件删除
 	AllowFileDel *bool `json:"AllowFileDel,omitempty" name:"AllowFileDel"`
 
-	// 生效日期，如果为空，默认1970-01-01T08:00:01+08:00
+	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 失效日期，如果为空，默认1970-01-01T08:00:01+08:00
+	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 }
 
@@ -235,7 +389,7 @@ type CreateAclResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 访问权限ID
+		// 新建成功的访问权限ID
 		Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -254,34 +408,134 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateDeviceGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产组名，最大长度32字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateDeviceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDeviceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新建成功的资产组ID
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateDeviceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户组名，最大长度32字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 新建成功的用户组ID
+		Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 
-	// 用户名，最大长度32字符，不能为空
+	// 用户名, 3-20个字符, 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 用户姓名，最大长度32字符，不能为空
+	// 用户姓名，最大长度20个字符，不能包含空白字符
 	RealName *string `json:"RealName,omitempty" name:"RealName"`
 
-	// 手机号
+	// 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 电子邮件
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 生效起始时间,不设置则为1970-01-01T08:00:01+08:00
+	// 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 生效结束时间,不设置则为1970-01-01T08:00:01+08:00
+	// 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 
 	// 所属用户组ID集合
 	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
 
-	// 认证方式，0-本地 1-ldap 2-oauth,不传则默认为0
+	// 认证方式，0 - 本地， 1 - LDAP， 2 - OAuth 不传则默认为0
 	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
 
-	// 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
 }
 
@@ -316,7 +570,7 @@ type CreateUserResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 新建成功后返回的记录ID
+		// 新建用户的ID
 		Id *uint64 `json:"Id,omitempty" name:"Id"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -381,6 +635,198 @@ func (r *DeleteAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDeviceGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需要删除的资产ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
+func (r *DeleteDeviceGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDeviceGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDeviceGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDeviceGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的资产组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteDeviceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDeviceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteDeviceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需删除的成员用户ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
+func (r *DeleteUserGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "MemberIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUserGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 待删除的用户组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteUsersRequest struct {
 	*tchttp.BaseRequest
 
@@ -430,28 +876,28 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 type DescribeAclsRequest struct {
 	*tchttp.BaseRequest
 
-	// 访问权限ID集合，非必需
+	// 访问权限ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
 	// 访问权限名称，模糊查询，最长64字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 分页，偏移位置
+	// 分页偏移位置
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页条目数量，默认20
+	// 每页条目数量，默认20，最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 是否根据Name进行精确查询,默认值false
+	// 是否根据Name进行精确查询，默认值false
 	Exact *bool `json:"Exact,omitempty" name:"Exact"`
 
-	// 有权限的用户ID集合
+	// 有访问权限的用户ID集合
 	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitempty" name:"AuthorizedUserIdSet"`
 
-	// 有权限的主机ID集合
+	// 有访问权限的资产ID集合
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
 
-	// 策略状态，0-不限，1-已生效，2-未生效，3-已过期
+	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -485,10 +931,10 @@ type DescribeAclsResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 记录总数
+		// 访问权限总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 访问权限记录集合，当前分页
+		// 访问权限列表
 		AclSet []*Acl `json:"AclSet,omitempty" name:"AclSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -555,13 +1001,149 @@ func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 资产名或资产IP，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数，默认20, 最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+}
+
+func (r *DescribeDeviceGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Bound")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Kind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资产组成员总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 资产组成员列表
+		DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 资产组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 资产组名，最长64个字符，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，缺省20，最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 资产组总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 资产组列表
+		GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeviceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
 
-	// 主机ID集合，非必需
+	// 资产ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
-	// 主机名或主机IP，模糊查询
+	// 资产名或资产IP，模糊查询
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 暂未使用
@@ -570,7 +1152,7 @@ type DescribeDevicesRequest struct {
 	// 地域码集合
 	ApCodeSet []*string `json:"ApCodeSet,omitempty" name:"ApCodeSet"`
 
-	// 操作系统类型
+	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
 
 	// 分页，偏移位置
@@ -579,13 +1161,13 @@ type DescribeDevicesRequest struct {
 	// 每页条目数量，默认20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 有该主机访问权限的用户ID集合
+	// 有该资产访问权限的用户ID集合
 	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitempty" name:"AuthorizedUserIdSet"`
 
-	// 过滤条件，主机绑定的堡垒机服务ID集合
+	// 过滤条件，资产绑定的堡垒机服务ID集合
 	ResourceIdSet []*string `json:"ResourceIdSet,omitempty" name:"ResourceIdSet"`
 
-	// 可提供按照多种类型过滤, 1-Linux, 2-Windows, 3-MySQL
+	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
 }
 
@@ -621,10 +1203,10 @@ type DescribeDevicesResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 记录总数
+		// 资产总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 主机信息列表
+		// 资产信息列表
 		DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -643,6 +1225,195 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcesRequest struct {
+	*tchttp.BaseRequest
+
+	// 地域码, 如: ap-guangzhou
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+
+	// 按照堡垒机开通的 VPC 实例ID查询
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+}
+
+func (r *DescribeResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApCode")
+	delete(f, "VpcId")
+	delete(f, "ResourceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 堡垒机资源列表
+		ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupMembersRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// true - 查询已添加到该用户组的用户，false - 查询未添加到该用户组的用户
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 用户名或用户姓名，最长64个字符，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20, 最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUserGroupMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Bound")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户组成员总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 用户组成员列表
+		UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserGroupMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupsRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 用户组名，模糊查询,长度：0-64字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，缺省20，最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 用户组总数
+		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 用户组列表
+		GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUsersRequest struct {
 	*tchttp.BaseRequest
 
@@ -655,19 +1426,20 @@ type DescribeUsersRequest struct {
 	// 分页，偏移位置
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页条目数量，默认20
+	// 每页条目数量，默认20, 最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 精确查询，IdSet为空时才生效
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 精确查询，IdSet、UserName为空时才生效
+	// 精确查询，IdSet、UserName为空时才生效。
+	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 有访问权限的主机ID集合
+	// 查询具有指定资产ID访问权限的用户
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
 
-	// 认证方式，0-本地，1-ldap, 2-oauth 不传为全部
+	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitempty" name:"AuthTypeSet"`
 }
 
@@ -701,10 +1473,10 @@ type DescribeUsersResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 记录总数
+		// 用户总数
 		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-		// 用户信息列表
+		// 用户列表
 		UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -725,13 +1497,13 @@ func (r *DescribeUsersResponse) FromJsonString(s string) error {
 
 type Device struct {
 
-	// 主机记录ID
+	// 资产ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 主机ID，对应cvm实例id
+	// 实例ID，对应CVM、CDB等实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 主机名
+	// 资产名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 公网IP
@@ -746,16 +1518,16 @@ type Device struct {
 	// 操作系统名称
 	OsName *string `json:"OsName,omitempty" name:"OsName"`
 
-	// 主机类型，1-Linux, 2-Windows
+	// 资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
 
 	// 管理端口
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
 
-	// 所属主机组信息列表
+	// 所属资产组列表
 	GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
 
-	// 主机绑定的账号数
+	// 资产绑定的账号数
 	AccountCount *uint64 `json:"AccountCount,omitempty" name:"AccountCount"`
 
 	// VPC ID
@@ -781,13 +1553,13 @@ type Group struct {
 type ModifyAclRequest struct {
 	*tchttp.BaseRequest
 
-	// 权限名称，最大32字符，不能包含空白字符
+	// 访问权限名称，最大32字符，不能包含空白字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 是否开启磁盘映射
 	AllowDiskRedirect *bool `json:"AllowDiskRedirect,omitempty" name:"AllowDiskRedirect"`
 
-	// 是否允许任意账号登陆
+	// 是否允许任意账号登录
 	AllowAnyAccount *bool `json:"AllowAnyAccount,omitempty" name:"AllowAnyAccount"`
 
 	// 访问权限ID
@@ -799,22 +1571,22 @@ type ModifyAclRequest struct {
 	// 是否开启剪贴板文件下行
 	AllowClipFileDown *bool `json:"AllowClipFileDown,omitempty" name:"AllowClipFileDown"`
 
-	// 是否开启剪贴板text（含图片）上行
+	// 是否开启剪贴板文本（含图片）上行
 	AllowClipTextUp *bool `json:"AllowClipTextUp,omitempty" name:"AllowClipTextUp"`
 
-	// 是否开启剪贴板text（含图片）下行
+	// 是否开启剪贴板文本（含图片）下行
 	AllowClipTextDown *bool `json:"AllowClipTextDown,omitempty" name:"AllowClipTextDown"`
 
 	// 是否开启文件传输上传
 	AllowFileUp *bool `json:"AllowFileUp,omitempty" name:"AllowFileUp"`
 
-	// 文件传输上传大小限制
+	// 文件传输上传大小限制（预留参数，目前暂未使用）
 	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitempty" name:"MaxFileUpSize"`
 
 	// 是否开启文件传输下载
 	AllowFileDown *bool `json:"AllowFileDown,omitempty" name:"AllowFileDown"`
 
-	// 文件传输下载大小限制
+	// 文件传输下载大小限制（预留参数，目前暂未使用）
 	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitempty" name:"MaxFileDownSize"`
 
 	// 关联的用户ID
@@ -823,22 +1595,22 @@ type ModifyAclRequest struct {
 	// 关联的用户组ID
 	UserGroupIdSet []*uint64 `json:"UserGroupIdSet,omitempty" name:"UserGroupIdSet"`
 
-	// 关联的主机ID
+	// 关联的资产ID
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
 
-	// 关联的主机组ID
+	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitempty" name:"DeviceGroupIdSet"`
 
-	// 关联的账号，账号name
+	// 关联的账号
 	AccountSet []*string `json:"AccountSet,omitempty" name:"AccountSet"`
 
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
-	// 是否开启rdp磁盘映射文件上传
+	// 是否开启 RDP 磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
-	// 是否开启rdp磁盘映射文件下载
+	// 是否开启 RDP 磁盘映射文件下载
 	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitempty" name:"AllowDiskFileDown"`
 
 	// 是否开启rz sz文件上传
@@ -847,13 +1619,15 @@ type ModifyAclRequest struct {
 	// 是否开启rz sz文件下载
 	AllowShellFileDown *bool `json:"AllowShellFileDown,omitempty" name:"AllowShellFileDown"`
 
-	// 是否开启SFTP文件删除
+	// 是否开启 SFTP 文件删除
 	AllowFileDel *bool `json:"AllowFileDel,omitempty" name:"AllowFileDel"`
 
-	// 生效日期，如果为空，默认1970-01-01T08:00:01+08:00
+	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 失效日期，如果为空，默认1970-01-01T08:00:01+08:00
+	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 }
 
@@ -926,28 +1700,30 @@ type ModifyUserRequest struct {
 	// 用户ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 用户姓名，最大长度32字符，不能为空
+	// 用户姓名，最大长度20个字符，不能包含空格
 	RealName *string `json:"RealName,omitempty" name:"RealName"`
 
-	// 手机号
+	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 电子邮件
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 生效起始时间,不设置则为1970-01-01 08:00:01
+	// 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 生效结束时间,不设置则为1970-01-01 08:00:01
+	// 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 
 	// 所属用户组ID集合
 	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
 
-	// 认证方式，0-本地 1-ldap, 2-oauth不传则默认为0
+	// 认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0
 	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
 
-	// 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
 }
 
@@ -1000,31 +1776,31 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 
 type Resource struct {
 
-	// 资源实例id，如bh-saas-s3ed4r5e
+	// 服务实例ID，如bh-saas-s3ed4r5e
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 地域编码
 	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
 
-	// 实例规格信息（询价参数）
+	// 服务实例规格信息
 	SvArgs *string `json:"SvArgs,omitempty" name:"SvArgs"`
 
-	// vpc id
+	// VPC ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 堡垒机规格对应的资产数
+	// 服务规格对应的资产数
 	Nodes *uint64 `json:"Nodes,omitempty" name:"Nodes"`
 
-	// 自动续费标记，0表示默认状态，1表示自动续费，2表示明确不自动续费
+	// 自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费
 	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 过期时间
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 资源状态，0未初始化，1正常，2隔离，3销毁，4初始化失败，5初始化中
+	// 资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 实例名，如T-Sec-堡垒机（SaaS型）
+	// 服务实例名，如T-Sec-堡垒机（SaaS型）
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
 	// 定价模型ID
@@ -1048,10 +1824,10 @@ type Resource struct {
 	// 是否开通，true-开通，false-未开通
 	Deployed *bool `json:"Deployed,omitempty" name:"Deployed"`
 
-	// 开通服务的VPC名称
+	// 开通服务的 VPC 名称
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
 
-	// 开通服务的VPC对应的网段
+	// 开通服务的 VPC 对应的网段
 	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
 
 	// 开通服务的子网ID
@@ -1069,7 +1845,7 @@ type Resource struct {
 	// 内部IP
 	PrivateIpSet []*string `json:"PrivateIpSet,omitempty" name:"PrivateIpSet"`
 
-	// 资源开通的高级功能列表，如:[DB]
+	// 服务开通的高级功能列表，如:[DB]
 	ModuleSet []*string `json:"ModuleSet,omitempty" name:"ModuleSet"`
 
 	// 已使用的授权点数
@@ -1087,13 +1863,13 @@ type Resource struct {
 
 type User struct {
 
-	// 用户名
+	// 用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 用户姓名
+	// 用户姓名， 最大20个字符，不能包含空白字符
 	RealName *string `json:"RealName,omitempty" name:"RealName"`
 
-	// 手机号码
+	// 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 用户ID
@@ -1102,18 +1878,20 @@ type User struct {
 	// 电子邮件
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 生效起始时间
+	// 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
 
-	// 生效结束时间
+	// 用户失效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
 
 	// 所属用户组列表
 	GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
 
-	// 认证方式，0-本地 1-ldap
+	// 认证方式，0 - 本地，1 - LDAP，2 - OAuth
 	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
 
-	// 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
 }

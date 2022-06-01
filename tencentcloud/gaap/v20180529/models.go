@@ -6211,6 +6211,7 @@ type ProxyGroupDetail struct {
 	// 1表示创建中；
 	// 4表示销毁中；
 	// 11表示迁移中；
+	// 12表示部分部署中。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 归属Uin
@@ -6293,7 +6294,8 @@ type ProxyGroupInfo struct {
 	// RUNNING表示运行中；
 	// CREATING表示创建中；
 	// DESTROYING表示销毁中；
-	// MOVING表示通道迁移中。
+	// MOVING表示通道迁移中；
+	// CHANGING表示部分部署中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 标签列表。
@@ -6312,8 +6314,8 @@ type ProxyGroupInfo struct {
 	ProxyType *uint64 `json:"ProxyType,omitempty" name:"ProxyType"`
 
 	// 支持Http3特性的标识，其中：
-	// 0，表示不支持Http3；
-	// 1，表示支持Http3。
+	// 0表示关闭；
+	// 1表示启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
@@ -6362,7 +6364,8 @@ type ProxyInfo struct {
 	// ISOLATING表示隔离中；
 	// ISOLATED表示已隔离；
 	// CLONING表示复制中；
-	// RECOVERING表示通道维护中。
+	// RECOVERING表示通道维护中；
+	// MOVING表示迁移中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 接入域名。
@@ -6435,7 +6438,7 @@ type ProxyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitempty" name:"IPAddressVersion"`
 
-	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全eip
+	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全EIP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
@@ -6490,7 +6493,8 @@ type ProxyStatus struct {
 	// CLOSED表示已关闭；
 	// ADJUSTING表示配置变更中；
 	// ISOLATING表示隔离中；
-	// ISOLATED表示已隔离。
+	// ISOLATED表示已隔离；
+	// MOVING表示迁移中。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 

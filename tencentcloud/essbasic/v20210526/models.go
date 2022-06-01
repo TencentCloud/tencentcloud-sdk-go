@@ -641,6 +641,15 @@ type DescribeTemplatesRequest struct {
 
 	// 模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 查询内容：0-模版列表及详情（默认），1-仅模版列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 查询个数，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -658,6 +667,9 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "Operator")
 	delete(f, "TemplateId")
+	delete(f, "ContentType")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -670,6 +682,15 @@ type DescribeTemplatesResponse struct {
 
 		// 模板详情
 		Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
+
+		// 查询总数
+		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 查询数量
+		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+		// 查询起始偏移
+		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
