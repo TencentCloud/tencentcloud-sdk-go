@@ -401,6 +401,9 @@ const (
 	// 实例和伸缩组Vpc不一致。
 	RESOURCEUNAVAILABLE_CVMVPCINCONSISTENT = "ResourceUnavailable.CvmVpcInconsistent"
 
+	// 实例无法添加至伸缩组。
+	RESOURCEUNAVAILABLE_INSTANCECANNOTATTACH = "ResourceUnavailable.InstanceCannotAttach"
+
 	// 指定的实例正在活动中。
 	RESOURCEUNAVAILABLE_INSTANCEINOPERATION = "ResourceUnavailable.InstanceInOperation"
 

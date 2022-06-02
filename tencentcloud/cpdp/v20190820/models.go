@@ -5443,12 +5443,10 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// 订单过期时间，yyyy-MM-dd HH:mm:ss格式。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 前端成功回调URL。条件可选
-	// 当付款方式PaymentMethod为EBANK_PAYMENT时必填
+	// 前端成功回调URL。条件可选。
 	FrontUrl *string `json:"FrontUrl,omitempty" name:"FrontUrl"`
 
-	// 前端刷新 URL。条件可选
-	// 当付款方式PaymentMethod为EBANK_PAYMENT时必填
+	// 前端刷新 URL。条件可选。
 	RefreshUrl *string `json:"RefreshUrl,omitempty" name:"RefreshUrl"`
 
 	// 设备信息，条件可选。
@@ -9228,13 +9226,13 @@ type OpenBankApprovalGuideInfo struct {
 
 type OpenBankGoodsInfo struct {
 
-	// 商品名称，默认值“商品支付”
+	// 商品标题，默认值“商品支付”
 	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
 
 	// 商品详细描述（商品列表）
 	GoodsDetail *string `json:"GoodsDetail,omitempty" name:"GoodsDetail"`
 
-	// 商品简单描述。需传入应用市场上的 APP 名字-实际商品名称，例如：天天爱消除-游戏充值
+	// 银行附言，不可以有以下字符：<>+{}()%*&';"[]等特殊符号
 	GoodsDescription *string `json:"GoodsDescription,omitempty" name:"GoodsDescription"`
 }
 

@@ -1236,6 +1236,7 @@ func NewTextCorrectionProResponse() (response *TextCorrectionProResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"
@@ -1258,6 +1259,7 @@ func (c *Client) TextCorrectionPro(request *TextCorrectionProRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"

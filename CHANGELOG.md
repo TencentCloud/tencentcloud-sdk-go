@@ -1,3 +1,82 @@
+# Release v1.0.413
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 86 次发布
+
+发布时间：2022-06-03 06:05:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstancesAttribute](https://cloud.tencent.com/document/api/213/15739)
+
+	* 新增入参：CamRoleName, CamRoleType
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 21 次发布
+
+发布时间：2022-06-03 06:14:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImage](https://cloud.tencent.com/document/api/865/63487)
+
+	* 新增入参：EnableDetect, CategoryId, ImageRect
+
+	* 新增出参：Object
+
+* [SearchImage](https://cloud.tencent.com/document/api/865/63483)
+
+	* 新增入参：EnableDetect, CategoryId
+
+	* 新增出参：Object
+
+
+新增数据结构：
+
+* [Attribute](https://cloud.tencent.com/document/api/865/35474#Attribute)
+* [Box](https://cloud.tencent.com/document/api/865/35474#Box)
+* [ColorInfo](https://cloud.tencent.com/document/api/865/35474#ColorInfo)
+* [ObjectInfo](https://cloud.tencent.com/document/api/865/35474#ObjectInfo)
+* [Rect](https://cloud.tencent.com/document/api/865/35474#Rect)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 103 次发布
+
+发布时间：2022-06-03 06:14:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterCIDRSettings](https://cloud.tencent.com/document/api/457/31866#ClusterCIDRSettings)
+
+	* 新增成员：IgnoreServiceCIDRConflict
+
+* [ClusterNetworkSettings](https://cloud.tencent.com/document/api/457/31866#ClusterNetworkSettings)
+
+	* 新增成员：IgnoreServiceCIDRConflict
+
+
+
+
 # Release v1.0.412
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

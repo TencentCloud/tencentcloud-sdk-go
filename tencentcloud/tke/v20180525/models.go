@@ -824,6 +824,9 @@ type ClusterCIDRSettings struct {
 
 	// VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)
 	ClaimExpiredSeconds *int64 `json:"ClaimExpiredSeconds,omitempty" name:"ClaimExpiredSeconds"`
+
+	// 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
+	IgnoreServiceCIDRConflict *bool `json:"IgnoreServiceCIDRConflict,omitempty" name:"IgnoreServiceCIDRConflict"`
 }
 
 type ClusterCondition struct {
@@ -980,6 +983,10 @@ type ClusterNetworkSettings struct {
 	// 集群关联的容器子网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnets []*string `json:"Subnets,omitempty" name:"Subnets"`
+
+	// 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreServiceCIDRConflict *bool `json:"IgnoreServiceCIDRConflict,omitempty" name:"IgnoreServiceCIDRConflict"`
 }
 
 type ClusterPublicLB struct {

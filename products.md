@@ -55,9 +55,9 @@
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2022-04-22 06:07:06 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2022-04-04 06:23:04 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-05-20 06:04:11 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-06-03 06:04:52 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-06-02 06:05:44 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-06-03 06:05:18 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-05-31 06:08:47 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2022-05-27 06:07:33 |
@@ -129,7 +129,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-04-13 07:00:13 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-05-23 06:11:33 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-05-24 06:16:42 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-06-03 06:11:11 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-05-30 06:11:27 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-04-04 07:01:49 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-04-04 07:02:02 |
@@ -178,10 +178,10 @@
 | ticm | [智能鉴黄](https://cloud.tencent.com/document/product/864) | 2021-01-07 08:08:15 |
 | tics | [威胁情报云查服务](https://cloud.tencent.com/document/product/1013) | 2022-04-04 07:16:59 |
 | tiems | [腾讯云 TI 平台 TI-EMS ](https://cloud.tencent.com/document/product/1120) | 2022-04-04 07:17:01 |
-| tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2022-06-02 06:15:12 |
+| tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2022-06-03 06:14:26 |
 | tione | [腾讯云 TI 平台 TI-ONE](https://cloud.tencent.com/document/product/851) | 2022-04-04 07:17:26 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2022-05-17 06:17:19 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-06-02 06:15:27 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-06-03 06:14:39 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-04-04 07:18:11 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-05-19 06:19:37 |
