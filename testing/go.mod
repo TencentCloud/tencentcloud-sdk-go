@@ -59,7 +59,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.413
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.414
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -160,6 +160,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/taf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tan v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tat v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tav v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tbaas v0.0.0
@@ -367,6 +368,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts => ../tencentcloud/sts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/taf => ../tencentcloud/taf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag => ../tencentcloud/tag
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tan => ../tencentcloud/tan
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tat => ../tencentcloud/tat
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tav => ../tencentcloud/tav
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tbaas => ../tencentcloud/tbaas

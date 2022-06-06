@@ -751,7 +751,7 @@ type DescribeFlowTemplatesRequest struct {
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 
-	// 查询内容：0-模版列表及详情（默认），1-仅模版列表
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 }
 

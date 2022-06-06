@@ -1762,12 +1762,16 @@ type DescribeSparkAppTasksResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 任务列表
+		// 任务结果（该字段已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Tasks *TaskResponseInfo `json:"Tasks,omitempty" name:"Tasks"`
 
 		// 任务总数
 		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+		// 任务结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SparkAppTasks []*TaskResponseInfo `json:"SparkAppTasks,omitempty" name:"SparkAppTasks"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

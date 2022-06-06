@@ -190,6 +190,7 @@ import (
 	stsv20180813 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts/v20180813"
 	tafv20200210 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/taf/v20200210"
 	tagv20180813 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag/v20180813"
+	tanv20220420 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tan/v20220420"
 	tatv20201028 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tat/v20201028"
 	tavv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tav/v20190118"
 	tbaasv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tbaas/v20180416"
@@ -2453,6 +2454,19 @@ func TestTagv20180813Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tag_v20180813 client: %v", err)
+    }
+}
+
+func TestTanv20220420Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tanv20220420.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tan_v20220420 client: %v", err)
     }
 }
 

@@ -6263,6 +6263,12 @@ type RemoveBackupsRequest struct {
 
 	// 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
 	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
+
+	// 批量删除手动备份起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 批量删除手动备份截止时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *RemoveBackupsRequest) ToJsonString() string {
@@ -6279,6 +6285,8 @@ func (r *RemoveBackupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "BackupNames")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveBackupsRequest has unknown keys!", "")
 	}

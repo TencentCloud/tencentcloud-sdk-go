@@ -67,6 +67,7 @@ func NewCheckCertificateResponse() (response *CheckCertificateResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CheckCertificate(request *CheckCertificateRequest) (response *CheckCertificateResponse, err error) {
     return c.CheckCertificateWithContext(context.Background(), request)
 }
@@ -76,6 +77,7 @@ func (c *Client) CheckCertificate(request *CheckCertificateRequest) (response *C
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CheckCertificateWithContext(ctx context.Context, request *CheckCertificateRequest) (response *CheckCertificateResponse, err error) {
     if request == nil {
         request = NewCheckCertificateRequest()
@@ -521,6 +523,7 @@ func NewCreateZoneResponse() (response *CreateZoneResponse) {
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) CreateZone(request *CreateZoneRequest) (response *CreateZoneResponse, err error) {
@@ -532,6 +535,7 @@ func (c *Client) CreateZone(request *CreateZoneRequest) (response *CreateZoneRes
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneRequest) (response *CreateZoneResponse, err error) {
@@ -572,6 +576,7 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
@@ -583,6 +588,7 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
@@ -623,6 +629,7 @@ func NewDeleteApplicationProxyRuleResponse() (response *DeleteApplicationProxyRu
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) DeleteApplicationProxyRule(request *DeleteApplicationProxyRuleRequest) (response *DeleteApplicationProxyRuleResponse, err error) {
@@ -634,6 +641,7 @@ func (c *Client) DeleteApplicationProxyRule(request *DeleteApplicationProxyRuleR
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
 func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, request *DeleteApplicationProxyRuleRequest) (response *DeleteApplicationProxyRuleResponse, err error) {
@@ -967,6 +975,7 @@ func NewDescribeDefaultCertificatesResponse() (response *DescribeDefaultCertific
 // 查询默认证书列表
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
 func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificatesRequest) (response *DescribeDefaultCertificatesResponse, err error) {
     return c.DescribeDefaultCertificatesWithContext(context.Background(), request)
@@ -976,6 +985,7 @@ func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificate
 // 查询默认证书列表
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
 func (c *Client) DescribeDefaultCertificatesWithContext(ctx context.Context, request *DescribeDefaultCertificatesRequest) (response *DescribeDefaultCertificatesResponse, err error) {
     if request == nil {
@@ -1014,7 +1024,7 @@ func NewDescribeDnsDataResponse() (response *DescribeDnsDataResponse) {
 // 获取DNS请求数统计曲线
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
     return c.DescribeDnsDataWithContext(context.Background(), request)
 }
@@ -1023,7 +1033,7 @@ func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *Des
 // 获取DNS请求数统计曲线
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnsDataWithContext(ctx context.Context, request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
     if request == nil {
         request = NewDescribeDnsDataRequest()
@@ -1061,7 +1071,7 @@ func NewDescribeDnsRecordsResponse() (response *DescribeDnsRecordsResponse) {
 // 查询 DNS 记录列表，支持搜索、分页、排序、过滤。
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnsRecords(request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
     return c.DescribeDnsRecordsWithContext(context.Background(), request)
 }
@@ -1070,7 +1080,7 @@ func (c *Client) DescribeDnsRecords(request *DescribeDnsRecordsRequest) (respons
 // 查询 DNS 记录列表，支持搜索、分页、排序、过滤。
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnsRecordsWithContext(ctx context.Context, request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeDnsRecordsRequest()
@@ -1108,7 +1118,7 @@ func NewDescribeDnssecResponse() (response *DescribeDnssecResponse) {
 // 用于查询 DNSSEC 相关信息
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnssec(request *DescribeDnssecRequest) (response *DescribeDnssecResponse, err error) {
     return c.DescribeDnssecWithContext(context.Background(), request)
 }
@@ -1117,7 +1127,7 @@ func (c *Client) DescribeDnssec(request *DescribeDnssecRequest) (response *Descr
 // 用于查询 DNSSEC 相关信息
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeDnssecWithContext(ctx context.Context, request *DescribeDnssecRequest) (response *DescribeDnssecResponse, err error) {
     if request == nil {
         request = NewDescribeDnssecRequest()
@@ -1157,6 +1167,7 @@ func NewDescribeHostsCertificateResponse() (response *DescribeHostsCertificateRe
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeHostsCertificate(request *DescribeHostsCertificateRequest) (response *DescribeHostsCertificateResponse, err error) {
     return c.DescribeHostsCertificateWithContext(context.Background(), request)
 }
@@ -1167,6 +1178,7 @@ func (c *Client) DescribeHostsCertificate(request *DescribeHostsCertificateReque
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeHostsCertificateWithContext(ctx context.Context, request *DescribeHostsCertificateRequest) (response *DescribeHostsCertificateResponse, err error) {
     if request == nil {
         request = NewDescribeHostsCertificateRequest()
@@ -1205,6 +1217,7 @@ func NewDescribeHostsSettingResponse() (response *DescribeHostsSettingResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeHostsSetting(request *DescribeHostsSettingRequest) (response *DescribeHostsSettingResponse, err error) {
     return c.DescribeHostsSettingWithContext(context.Background(), request)
@@ -1215,6 +1228,7 @@ func (c *Client) DescribeHostsSetting(request *DescribeHostsSettingRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeHostsSettingWithContext(ctx context.Context, request *DescribeHostsSettingRequest) (response *DescribeHostsSettingResponse, err error) {
     if request == nil {
@@ -1494,6 +1508,7 @@ func NewDescribeZoneDetailsResponse() (response *DescribeZoneDetailsResponse) {
 // 根据站点 ID 查询站点的详细信息
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeZoneDetails(request *DescribeZoneDetailsRequest) (response *DescribeZoneDetailsResponse, err error) {
@@ -1504,6 +1519,7 @@ func (c *Client) DescribeZoneDetails(request *DescribeZoneDetailsRequest) (respo
 // 根据站点 ID 查询站点的详细信息
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeZoneDetailsWithContext(ctx context.Context, request *DescribeZoneDetailsRequest) (response *DescribeZoneDetailsResponse, err error) {
@@ -1544,6 +1560,7 @@ func NewDescribeZoneSettingResponse() (response *DescribeZoneSettingResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZoneSetting(request *DescribeZoneSettingRequest) (response *DescribeZoneSettingResponse, err error) {
     return c.DescribeZoneSettingWithContext(context.Background(), request)
@@ -1554,6 +1571,7 @@ func (c *Client) DescribeZoneSetting(request *DescribeZoneSettingRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZoneSettingWithContext(ctx context.Context, request *DescribeZoneSettingRequest) (response *DescribeZoneSettingResponse, err error) {
     if request == nil {
@@ -1735,7 +1753,7 @@ func NewImportDnsRecordsResponse() (response *ImportDnsRecordsResponse) {
 // 导入 DNS 记录
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ImportDnsRecords(request *ImportDnsRecordsRequest) (response *ImportDnsRecordsResponse, err error) {
     return c.ImportDnsRecordsWithContext(context.Background(), request)
 }
@@ -1744,7 +1762,7 @@ func (c *Client) ImportDnsRecords(request *ImportDnsRecordsRequest) (response *I
 // 导入 DNS 记录
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ImportDnsRecordsWithContext(ctx context.Context, request *ImportDnsRecordsRequest) (response *ImportDnsRecordsResponse, err error) {
     if request == nil {
         request = NewImportDnsRecordsRequest()
@@ -1782,7 +1800,7 @@ func NewModifyApplicationProxyResponse() (response *ModifyApplicationProxyRespon
 // 修改应用代理
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyApplicationProxy(request *ModifyApplicationProxyRequest) (response *ModifyApplicationProxyResponse, err error) {
     return c.ModifyApplicationProxyWithContext(context.Background(), request)
 }
@@ -1791,7 +1809,7 @@ func (c *Client) ModifyApplicationProxy(request *ModifyApplicationProxyRequest) 
 // 修改应用代理
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyApplicationProxyWithContext(ctx context.Context, request *ModifyApplicationProxyRequest) (response *ModifyApplicationProxyResponse, err error) {
     if request == nil {
         request = NewModifyApplicationProxyRequest()
@@ -1971,6 +1989,7 @@ func NewModifyDefaultCertificateResponse() (response *ModifyDefaultCertificateRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_CERTNOTFOUND = "ResourceUnavailable.CertNotFound"
 func (c *Client) ModifyDefaultCertificate(request *ModifyDefaultCertificateRequest) (response *ModifyDefaultCertificateResponse, err error) {
     return c.ModifyDefaultCertificateWithContext(context.Background(), request)
@@ -1981,6 +2000,7 @@ func (c *Client) ModifyDefaultCertificate(request *ModifyDefaultCertificateReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_CERTNOTFOUND = "ResourceUnavailable.CertNotFound"
 func (c *Client) ModifyDefaultCertificateWithContext(ctx context.Context, request *ModifyDefaultCertificateRequest) (response *ModifyDefaultCertificateResponse, err error) {
     if request == nil {
@@ -2123,6 +2143,7 @@ func NewModifyHostsCertificateResponse() (response *ModifyHostsCertificateRespon
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyHostsCertificate(request *ModifyHostsCertificateRequest) (response *ModifyHostsCertificateResponse, err error) {
     return c.ModifyHostsCertificateWithContext(context.Background(), request)
@@ -2136,6 +2157,7 @@ func (c *Client) ModifyHostsCertificate(request *ModifyHostsCertificateRequest) 
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request *ModifyHostsCertificateRequest) (response *ModifyHostsCertificateResponse, err error) {
     if request == nil {
@@ -2178,6 +2200,7 @@ func NewModifyLoadBalancingResponse() (response *ModifyLoadBalancingResponse) {
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyLoadBalancing(request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
     return c.ModifyLoadBalancingWithContext(context.Background(), request)
@@ -2191,6 +2214,7 @@ func (c *Client) ModifyLoadBalancing(request *ModifyLoadBalancingRequest) (respo
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyLoadBalancingWithContext(ctx context.Context, request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
     if request == nil {
@@ -2370,7 +2394,9 @@ func NewModifyZoneSettingResponse() (response *ModifyZoneSettingResponse) {
 // 用于修改站点配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {
     return c.ModifyZoneSettingWithContext(context.Background(), request)
@@ -2380,7 +2406,9 @@ func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response 
 // 用于修改站点配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSettingWithContext(ctx context.Context, request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {
     if request == nil {

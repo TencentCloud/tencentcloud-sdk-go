@@ -740,6 +740,13 @@ type AgentTaxPaymentBatch struct {
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 }
 
+type AmountBeforeTaxResult struct {
+
+	// 税前金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+}
+
 type AnchorContractInfo struct {
 
 	// 主播ID
@@ -887,6 +894,188 @@ type ApplyDeclareResult struct {
 
 	// 提交申报材料数据
 	Data *ApplyDeclareData `json:"Data,omitempty" name:"Data"`
+}
+
+type ApplyFlexPaymentRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 资金账户信息
+	FundingAccountInfo *FlexFundingAccountInfo `json:"FundingAccountInfo,omitempty" name:"FundingAccountInfo"`
+
+	// 提现备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ApplyFlexPaymentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexPaymentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "IncomeType")
+	delete(f, "AmountBeforeTax")
+	delete(f, "OutOrderId")
+	delete(f, "FundingAccountInfo")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexPaymentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyFlexPaymentResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ApplyFlexPaymentResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyFlexPaymentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexPaymentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyFlexPaymentResult struct {
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 税后金额
+	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 税金
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+}
+
+type ApplyFlexSettlementRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ApplyFlexSettlementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexSettlementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "IncomeType")
+	delete(f, "AmountBeforeTax")
+	delete(f, "OutOrderId")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexSettlementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyFlexSettlementResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *ApplyFlexSettlementResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ApplyFlexSettlementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexSettlementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyFlexSettlementResult struct {
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 税后金额
+	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 税金
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
 }
 
 type ApplyOpenBankOrderDetailReceiptRequest struct {
@@ -4412,6 +4601,98 @@ func (r *CreateExternalAnchorResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateExternalAnchorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFlexPayeeRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户外部业务ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 证件号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 账户名称
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 服务商ID
+	ServiceProviderId *string `json:"ServiceProviderId,omitempty" name:"ServiceProviderId"`
+
+	// 计税信息
+	TaxInfo *PayeeTaxInfo `json:"TaxInfo,omitempty" name:"TaxInfo"`
+
+	// 证件类型
+	// 0:身份证
+	// 1:社会信用代码
+	IdType *int64 `json:"IdType,omitempty" name:"IdType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateFlexPayeeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlexPayeeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutUserId")
+	delete(f, "Name")
+	delete(f, "IdNo")
+	delete(f, "AccountName")
+	delete(f, "ServiceProviderId")
+	delete(f, "TaxInfo")
+	delete(f, "IdType")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlexPayeeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFlexPayeeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *CreateFlexPayeeResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFlexPayeeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlexPayeeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFlexPayeeResult struct {
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 }
 
 type CreateInvoiceItem struct {
@@ -8182,6 +8463,158 @@ type FileItem struct {
 	DrawCode *string `json:"DrawCode,omitempty" name:"DrawCode"`
 }
 
+type FlexFundingAccountInfo struct {
+
+	// 资金账户号
+	FundingAccountNo *string `json:"FundingAccountNo,omitempty" name:"FundingAccountNo"`
+
+	// 资金账户类型
+	FundingAccountType *string `json:"FundingAccountType,omitempty" name:"FundingAccountType"`
+
+	// 资金账户绑定序列号
+	FundingAccountBindSerialNo *string `json:"FundingAccountBindSerialNo,omitempty" name:"FundingAccountBindSerialNo"`
+}
+
+type FreezeFlexBalanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 操作类型
+	// FREEZE:冻结
+	// UNFREEZE:解冻
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 冻结备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *FreezeFlexBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreezeFlexBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "AmountBeforeTax")
+	delete(f, "IncomeType")
+	delete(f, "OutOrderId")
+	delete(f, "OperationType")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeFlexBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FreezeFlexBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *FreezeFlexBalanceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *FreezeFlexBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreezeFlexBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FreezeFlexBalanceResult struct {
+
+	// 冻结订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+type FreezeOrderResult struct {
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 操作类型
+	// FREEZE:冻结
+	// UNFREEZE:解冻
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 发起时间
+	InitiateTime *string `json:"InitiateTime,omitempty" name:"InitiateTime"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 状态
+	// ACCEPTED:已受理
+	// ACCOUNTED:已记账
+	// SUCCEED:已成功
+	// FAILED:已失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 冻结备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type FreezeOrders struct {
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*FreezeOrderResult `json:"List,omitempty" name:"List"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type FundsTransactionItem struct {
 
 	// 资金交易类型。
@@ -9030,6 +9463,74 @@ func (r *ModifyBindedAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyFlexPayeeAccountRightStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 账户权益类型
+	// SETTLEMENT:结算权益
+	// PAYMENT:付款权益
+	AccountRightType *string `json:"AccountRightType,omitempty" name:"AccountRightType"`
+
+	// 账户权益状态
+	// ENABLE:启用
+	// DISABLE:停用
+	AccountRightStatus *string `json:"AccountRightStatus,omitempty" name:"AccountRightStatus"`
+}
+
+func (r *ModifyFlexPayeeAccountRightStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlexPayeeAccountRightStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "AccountRightType")
+	delete(f, "AccountRightStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlexPayeeAccountRightStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyFlexPayeeAccountRightStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果。默认为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *string `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyFlexPayeeAccountRightStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlexPayeeAccountRightStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyMerchantRequest struct {
 	*tchttp.BaseRequest
 
@@ -9681,6 +10182,249 @@ type PayRollAuthResult struct {
 
 	// 微信服务商下特约商户的商户号，由微信支付生成并下发
 	SubMerchantId *string `json:"SubMerchantId,omitempty" name:"SubMerchantId"`
+}
+
+type PayeeAccountBalanceResult struct {
+
+	// 账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncomeType *int64 `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 总余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Balance *string `json:"Balance,omitempty" name:"Balance"`
+
+	// 系统冻结余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemFreezeBalance *string `json:"SystemFreezeBalance,omitempty" name:"SystemFreezeBalance"`
+
+	// 人工冻结余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManualFreezeBalance *string `json:"ManualFreezeBalance,omitempty" name:"ManualFreezeBalance"`
+
+	// 可提现余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayableBalance *string `json:"PayableBalance,omitempty" name:"PayableBalance"`
+
+	// 已提现余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaidBalance *string `json:"PaidBalance,omitempty" name:"PaidBalance"`
+
+	// 提现中余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InPayBalance *string `json:"InPayBalance,omitempty" name:"InPayBalance"`
+}
+
+type PayeeAccountInfoResult struct {
+
+	// 账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+
+	// 账户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserInfo *PayeeAccountUserInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 属性信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PropertyInfo *PayeeAccountPropertyInfo `json:"PropertyInfo,omitempty" name:"PropertyInfo"`
+}
+
+type PayeeAccountInfos struct {
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*PayeeAccountInfoResult `json:"List,omitempty" name:"List"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type PayeeAccountPropertyInfo struct {
+
+	// 结算权益状态
+	// ENABLE:启用
+	// DISABLE:停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleRightStatus *string `json:"SettleRightStatus,omitempty" name:"SettleRightStatus"`
+
+	// 付款权益状态
+	// ENABLE:启用
+	// DISABLE:停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentRightStatus *string `json:"PaymentRightStatus,omitempty" name:"PaymentRightStatus"`
+}
+
+type PayeeAccountUserInfo struct {
+
+	// 外部用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 用户类型
+	// 0:B端用户
+	// 1:C端用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserType *int64 `json:"UserType,omitempty" name:"UserType"`
+
+	// 证件类型
+	// 0:身份证
+	// 1:社会信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdType *int64 `json:"IdType,omitempty" name:"IdType"`
+
+	// 证件号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type PayeeInfoResult struct {
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 用户外部业务ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 证件类型
+	// 0:身份证
+	// 1:社会信用代码
+	IdType *int64 `json:"IdType,omitempty" name:"IdType"`
+
+	// 证件号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 服务商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceProviderId *string `json:"ServiceProviderId,omitempty" name:"ServiceProviderId"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type PayeeTaxInfo struct {
+
+	// 计税模板列表
+	TaxTemplateInfoList []*PayeeTaxTemplateInfo `json:"TaxTemplateInfoList,omitempty" name:"TaxTemplateInfoList"`
+
+	// 纳税人识别号
+	TaxpayerIdNo *string `json:"TaxpayerIdNo,omitempty" name:"TaxpayerIdNo"`
+
+	// 纳税主体类型
+	// NATURAL:自然人
+	// NON_NATURAL:非自然人
+	TaxEntityType *string `json:"TaxEntityType,omitempty" name:"TaxEntityType"`
+
+	// 财税服务商ID
+	TaxServiceProviderId *string `json:"TaxServiceProviderId,omitempty" name:"TaxServiceProviderId"`
+}
+
+type PayeeTaxTemplateInfo struct {
+
+	// 收入类型
+	// LABOR: 劳务所得
+	// OCCASION: 偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 计税模板ID
+	TaxTemplateId *string `json:"TaxTemplateId,omitempty" name:"TaxTemplateId"`
+}
+
+type PaymentOrderResult struct {
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 税后金额
+	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 税金
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发起时间
+	InitiateTime *string `json:"InitiateTime,omitempty" name:"InitiateTime"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 状态
+	// ACCEPTED:已受理
+	// ACCOUNTED:已记账
+	// PAYING:付款中
+	// PAYED:完成付款渠道调用
+	// SUCCEED:已成功
+	// FAILED:已失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 提现备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type PaymentOrderStatusResult struct {
+
+	// 状态
+	// ACCEPTED:已受理
+	// ACCOUNTED:已记账
+	// PAYING:付款中
+	// PAYED:完成付款渠道调用
+	// SUCCEED:已成功
+	// FAILED:已失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+}
+
+type PaymentOrders struct {
+
+	// 列表
+	List []*PaymentOrderResult `json:"List,omitempty" name:"List"`
+
+	// 总数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type QueryAcctBindingRequest struct {
@@ -12140,6 +12884,592 @@ type QueryExternalAccountBookResult struct {
 	// 电子记账本对外收款的账户信息。为JSON格式字符串（成功状态下返回）。详情见附录-复杂类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollectMoneyAccountInfo *string `json:"CollectMoneyAccountInfo,omitempty" name:"CollectMoneyAccountInfo"`
+}
+
+type QueryFlexAmountBeforeTaxRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 税后金额
+	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+}
+
+func (r *QueryFlexAmountBeforeTaxRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexAmountBeforeTaxRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "IncomeType")
+	delete(f, "AmountAfterTax")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexAmountBeforeTaxRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexAmountBeforeTaxResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *AmountBeforeTaxResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexAmountBeforeTaxResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexAmountBeforeTaxResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexFreezeOrderListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 操作类型
+	// FREEZE:冻结
+	// UNFREEZE:解冻
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页
+	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryFlexFreezeOrderListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexFreezeOrderListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "OperationType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexFreezeOrderListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexFreezeOrderListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *FreezeOrders `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexFreezeOrderListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexFreezeOrderListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+}
+
+func (r *QueryFlexPayeeAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "IncomeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayeeAccountBalanceResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPayeeAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+}
+
+func (r *QueryFlexPayeeAccountInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "OutUserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayeeAccountInfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPayeeAccountInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountListRequest struct {
+	*tchttp.BaseRequest
+
+	// 账户属性信息
+	PropertyInfo *PayeeAccountPropertyInfo `json:"PropertyInfo,omitempty" name:"PropertyInfo"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页
+	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryFlexPayeeAccountListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PropertyInfo")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeAccountListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayeeAccountInfos `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPayeeAccountListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeAccountListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+}
+
+func (r *QueryFlexPayeeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "OutUserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPayeeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PayeeInfoResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPayeeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPayeeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPaymentOrderListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页
+	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryFlexPaymentOrderListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPaymentOrderListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPaymentOrderListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPaymentOrderListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PaymentOrders `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPaymentOrderListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPaymentOrderListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPaymentOrderStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *QueryFlexPaymentOrderStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPaymentOrderStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutOrderId")
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPaymentOrderStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexPaymentOrderStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *PaymentOrderStatusResult `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexPaymentOrderStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPaymentOrderStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexSettlementOrderListRequest struct {
+	*tchttp.BaseRequest
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页
+	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *QueryFlexSettlementOrderListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexSettlementOrderListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexSettlementOrderListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryFlexSettlementOrderListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 错误码。SUCCESS为成功，其他为失败
+		ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+		// 错误消息
+		ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+		// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *SettlementOrders `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *QueryFlexSettlementOrderListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexSettlementOrderListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFundsTransactionDetailsRequest struct {
@@ -18248,6 +19578,63 @@ type SceneInfo struct {
 	// 用户IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+}
+
+type SettlementOrderResult struct {
+
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 税前金额
+	AmountBeforeTax *string `json:"AmountBeforeTax,omitempty" name:"AmountBeforeTax"`
+
+	// 税后金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 税金
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 外部订单ID
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 发起时间
+	InitiateTime *string `json:"InitiateTime,omitempty" name:"InitiateTime"`
+
+	// 完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 状态
+	// ACCEPTED:已受理
+	// ACCOUNTED:已记账
+	// SUCCEED:已成功
+	// FAILED:已失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type SettlementOrders struct {
+
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*SettlementOrderResult `json:"List,omitempty" name:"List"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type SupportBankInfo struct {

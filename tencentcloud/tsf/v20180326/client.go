@@ -3157,6 +3157,7 @@ func NewDescribeApiDetailResponse() (response *DescribeApiDetailResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIMETAPARSEFAILED = "FailedOperation.ApiMetaParseFailed"
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
 //  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 //  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
@@ -3169,6 +3170,7 @@ func (c *Client) DescribeApiDetail(request *DescribeApiDetailRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIMETAPARSEFAILED = "FailedOperation.ApiMetaParseFailed"
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
 //  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 //  RESOURCENOTFOUND_SERVICENOTEXIST = "ResourceNotFound.ServiceNotExist"
@@ -10726,6 +10728,7 @@ func NewUpdateApiTimeoutsResponse() (response *UpdateApiTimeoutsResponse) {
 // 批量更新API超时
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) UpdateApiTimeouts(request *UpdateApiTimeoutsRequest) (response *UpdateApiTimeoutsResponse, err error) {
@@ -10736,6 +10739,7 @@ func (c *Client) UpdateApiTimeouts(request *UpdateApiTimeoutsRequest) (response 
 // 批量更新API超时
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
 func (c *Client) UpdateApiTimeoutsWithContext(ctx context.Context, request *UpdateApiTimeoutsRequest) (response *UpdateApiTimeoutsResponse, err error) {

@@ -2765,6 +2765,9 @@ type SpecificationInfo struct {
 
 	// 售卖规格信息
 	SpecItems []*SpecItem `json:"SpecItems,omitempty" name:"SpecItems"`
+
+	// 是否支持跨可用区部署 1-支持，0-不支持
+	SupportMultiAZ *int64 `json:"SupportMultiAZ,omitempty" name:"SupportMultiAZ"`
 }
 
 type TagInfo struct {

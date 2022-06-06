@@ -1,3 +1,175 @@
+# Release v1.0.414
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 103 次发布
+
+发布时间：2022-06-07 06:02:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddCLSTopicDomains](https://cloud.tencent.com/document/api/228/74961)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 67 次发布
+
+发布时间：2022-06-07 06:04:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyFlexPayment](https://cloud.tencent.com/document/api/1122/74976)
+* [ApplyFlexSettlement](https://cloud.tencent.com/document/api/1122/74975)
+* [CreateFlexPayee](https://cloud.tencent.com/document/api/1122/74974)
+* [FreezeFlexBalance](https://cloud.tencent.com/document/api/1122/74973)
+* [ModifyFlexPayeeAccountRightStatus](https://cloud.tencent.com/document/api/1122/74972)
+* [QueryFlexAmountBeforeTax](https://cloud.tencent.com/document/api/1122/74971)
+* [QueryFlexFreezeOrderList](https://cloud.tencent.com/document/api/1122/74970)
+* [QueryFlexPayeeAccountBalance](https://cloud.tencent.com/document/api/1122/74969)
+* [QueryFlexPayeeAccountInfo](https://cloud.tencent.com/document/api/1122/74968)
+* [QueryFlexPayeeAccountList](https://cloud.tencent.com/document/api/1122/74967)
+* [QueryFlexPayeeInfo](https://cloud.tencent.com/document/api/1122/74966)
+* [QueryFlexPaymentOrderList](https://cloud.tencent.com/document/api/1122/74965)
+* [QueryFlexPaymentOrderStatus](https://cloud.tencent.com/document/api/1122/74964)
+* [QueryFlexSettlementOrderList](https://cloud.tencent.com/document/api/1122/74963)
+
+新增数据结构：
+
+* [AmountBeforeTaxResult](https://cloud.tencent.com/document/api/1122/40683#AmountBeforeTaxResult)
+* [ApplyFlexPaymentResult](https://cloud.tencent.com/document/api/1122/40683#ApplyFlexPaymentResult)
+* [ApplyFlexSettlementResult](https://cloud.tencent.com/document/api/1122/40683#ApplyFlexSettlementResult)
+* [CreateFlexPayeeResult](https://cloud.tencent.com/document/api/1122/40683#CreateFlexPayeeResult)
+* [FlexFundingAccountInfo](https://cloud.tencent.com/document/api/1122/40683#FlexFundingAccountInfo)
+* [FreezeFlexBalanceResult](https://cloud.tencent.com/document/api/1122/40683#FreezeFlexBalanceResult)
+* [FreezeOrderResult](https://cloud.tencent.com/document/api/1122/40683#FreezeOrderResult)
+* [FreezeOrders](https://cloud.tencent.com/document/api/1122/40683#FreezeOrders)
+* [PayeeAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountBalanceResult)
+* [PayeeAccountInfoResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountInfoResult)
+* [PayeeAccountInfos](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountInfos)
+* [PayeeAccountPropertyInfo](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountPropertyInfo)
+* [PayeeAccountUserInfo](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountUserInfo)
+* [PayeeInfoResult](https://cloud.tencent.com/document/api/1122/40683#PayeeInfoResult)
+* [PayeeTaxInfo](https://cloud.tencent.com/document/api/1122/40683#PayeeTaxInfo)
+* [PayeeTaxTemplateInfo](https://cloud.tencent.com/document/api/1122/40683#PayeeTaxTemplateInfo)
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+* [PaymentOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderStatusResult)
+* [PaymentOrders](https://cloud.tencent.com/document/api/1122/40683#PaymentOrders)
+* [SettlementOrderResult](https://cloud.tencent.com/document/api/1122/40683#SettlementOrderResult)
+* [SettlementOrders](https://cloud.tencent.com/document/api/1122/40683#SettlementOrders)
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 19 次发布
+
+发布时间：2022-06-07 06:06:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+
+	* 新增出参：SparkAppTasks
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 21 次发布
+
+发布时间：2022-06-07 06:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SpecificationInfo](https://cloud.tencent.com/document/api/240/38576#SpecificationInfo)
+
+	* 新增成员：SupportMultiAZ
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 33 次发布
+
+发布时间：2022-06-07 06:12:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RemoveBackups](https://cloud.tencent.com/document/api/238/46287)
+
+	* 新增入参：StartTime, EndTime
+
+	* <font color="#dd0000">**修改入参**：</font>BackupNames
+
+
+
+
+## 碳引擎(tan) 版本：2022-04-20
+
+### 第 1 次发布
+
+发布时间：2022-06-06 16:47:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBlockNodeRecords](https://cloud.tencent.com/document/api/1498/74949)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 30 次发布
+
+发布时间：2022-06-07 06:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExternalTrtcMeasure](https://cloud.tencent.com/document/api/647/74978)
+* [MeasureTrtcMcuExternal](https://cloud.tencent.com/document/api/647/74977)
+
+新增数据结构：
+
+* [SdkAppIdNewTrtcTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdNewTrtcTimeUsage)
+* [TrtcTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#TrtcTimeNewUsage)
+
+
+
 # Release v1.0.413
 
 ## 云服务器(cvm) 版本：2017-03-12

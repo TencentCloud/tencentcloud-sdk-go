@@ -79,6 +79,26 @@ func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
 //
 // <li>长文本语音合成任务完成后，合成音频结果在服务端可保存24小时</li>
 //
+// 
+//
+// <p></p>
+//
+// 
+//
+// 长文本合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)，使用时需满足如下使用规范：
+//
+// <li>使用 SSML 标签，需置于 speak 闭合标签内部；</li>
+//
+// <li>合成文本可包含多组 speak 闭合标签，且无数量限制；</li>
+//
+// <li>每个 speak 闭合标签内部，字符数不超过 150 字（标签字符本身不计算在内）；</li>
+//
+// <li>每个 speak 闭合标签内部，使用 break 标签数目最大为 10 个。如需要使用更多，可拆解到多个 speak 标签中；</li>
+//
+// 
+//
+// <p></p>
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
@@ -138,6 +158,26 @@ func (c *Client) CreateTtsTask(request *CreateTtsTaskRequest) (response *CreateT
 // <li>支持回调或轮询的方式获取结果，结果获取请参考 长文本语音合成结果查询。</li>
 //
 // <li>长文本语音合成任务完成后，合成音频结果在服务端可保存24小时</li>
+//
+// 
+//
+// <p></p>
+//
+// 
+//
+// 长文本合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)，使用时需满足如下使用规范：
+//
+// <li>使用 SSML 标签，需置于 speak 闭合标签内部；</li>
+//
+// <li>合成文本可包含多组 speak 闭合标签，且无数量限制；</li>
+//
+// <li>每个 speak 闭合标签内部，字符数不超过 150 字（标签字符本身不计算在内）；</li>
+//
+// <li>每个 speak 闭合标签内部，使用 break 标签数目最大为 10 个。如需要使用更多，可拆解到多个 speak 标签中；</li>
+//
+// 
+//
+// <p></p>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -353,6 +393,8 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 内测期间免费使用。
 //
+// 基础合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
@@ -397,6 +439,8 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 // 腾讯TTS技术可以应用到很多场景，比如，移动APP语音播报新闻；智能设备语音提醒；依靠网上现有节目或少量录音，快速合成明星语音，降低邀约成本；支持车载导航语音合成的个性化语音播报。
 //
 // 内测期间免费使用。
+//
+// 基础合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

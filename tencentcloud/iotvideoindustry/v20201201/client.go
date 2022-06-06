@@ -219,6 +219,7 @@ func NewControlDevicePTZResponse() (response *ControlDevicePTZResponse) {
 // 请使用ControlChannelPTZ接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
@@ -232,6 +233,7 @@ func (c *Client) ControlDevicePTZ(request *ControlDevicePTZRequest) (response *C
 // 请使用ControlChannelPTZ接口
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"

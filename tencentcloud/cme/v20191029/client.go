@@ -2403,6 +2403,7 @@ func NewImportMaterialResponse() (response *ImportMaterialResponse) {
 //  INVALIDPARAMETERVALUE_VODFILENOTEXIST = "InvalidParameterValue.VodFileNotExist"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMaterial(request *ImportMaterialRequest) (response *ImportMaterialResponse, err error) {
     return c.ImportMaterialWithContext(context.Background(), request)
@@ -2429,6 +2430,7 @@ func (c *Client) ImportMaterial(request *ImportMaterialRequest) (response *Impor
 //  INVALIDPARAMETERVALUE_VODFILENOTEXIST = "InvalidParameterValue.VodFileNotExist"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ImportMaterialWithContext(ctx context.Context, request *ImportMaterialRequest) (response *ImportMaterialResponse, err error) {
     if request == nil {

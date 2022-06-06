@@ -185,6 +185,7 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
     return c.BeautifyVideoWithContext(context.Background(), request)
 }
@@ -201,6 +202,7 @@ func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *Beautif
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) BeautifyVideoWithContext(ctx context.Context, request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
     if request == nil {
         request = NewBeautifyVideoRequest()
@@ -243,6 +245,7 @@ func NewCancelBeautifyVideoJobResponse() (response *CancelBeautifyVideoJobRespon
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
     return c.CancelBeautifyVideoJobWithContext(context.Background(), request)
@@ -257,6 +260,7 @@ func (c *Client) CancelBeautifyVideoJob(request *CancelBeautifyVideoJobRequest) 
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) CancelBeautifyVideoJobWithContext(ctx context.Context, request *CancelBeautifyVideoJobRequest) (response *CancelBeautifyVideoJobResponse, err error) {
     if request == nil {
@@ -640,6 +644,7 @@ func NewStyleImageProResponse() (response *StyleImageProResponse) {
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
     return c.StyleImageProWithContext(context.Background(), request)
@@ -665,6 +670,7 @@ func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleIm
 //  INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) StyleImageProWithContext(ctx context.Context, request *StyleImageProRequest) (response *StyleImageProResponse, err error) {
     if request == nil {

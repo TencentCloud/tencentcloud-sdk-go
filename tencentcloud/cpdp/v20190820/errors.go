@@ -296,6 +296,9 @@ const (
 	// 超出商户单日转账额度。
 	FAILEDOPERATION_QUOTAEXCEED = "FailedOperation.QuotaExceed"
 
+	// 不可重试退款。
+	FAILEDOPERATION_REFUNDNOTRETRIEABLE = "FailedOperation.RefundNotRetrieable"
+
 	// 退款处理中。
 	FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 

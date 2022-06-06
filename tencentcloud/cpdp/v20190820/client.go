@@ -219,6 +219,108 @@ func (c *Client) ApplyApplicationMaterialWithContext(ctx context.Context, reques
     return
 }
 
+func NewApplyFlexPaymentRequest() (request *ApplyFlexPaymentRequest) {
+    request = &ApplyFlexPaymentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyFlexPayment")
+    
+    
+    return
+}
+
+func NewApplyFlexPaymentResponse() (response *ApplyFlexPaymentResponse) {
+    response = &ApplyFlexPaymentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyFlexPayment
+// 灵云V2-付款
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) ApplyFlexPayment(request *ApplyFlexPaymentRequest) (response *ApplyFlexPaymentResponse, err error) {
+    return c.ApplyFlexPaymentWithContext(context.Background(), request)
+}
+
+// ApplyFlexPayment
+// 灵云V2-付款
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) ApplyFlexPaymentWithContext(ctx context.Context, request *ApplyFlexPaymentRequest) (response *ApplyFlexPaymentResponse, err error) {
+    if request == nil {
+        request = NewApplyFlexPaymentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyFlexPayment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyFlexPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewApplyFlexSettlementRequest() (request *ApplyFlexSettlementRequest) {
+    request = &ApplyFlexSettlementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyFlexSettlement")
+    
+    
+    return
+}
+
+func NewApplyFlexSettlementResponse() (response *ApplyFlexSettlementResponse) {
+    response = &ApplyFlexSettlementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyFlexSettlement
+// 灵云V2-结算
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) ApplyFlexSettlement(request *ApplyFlexSettlementRequest) (response *ApplyFlexSettlementResponse, err error) {
+    return c.ApplyFlexSettlementWithContext(context.Background(), request)
+}
+
+// ApplyFlexSettlement
+// 灵云V2-结算
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) ApplyFlexSettlementWithContext(ctx context.Context, request *ApplyFlexSettlementRequest) (response *ApplyFlexSettlementResponse, err error) {
+    if request == nil {
+        request = NewApplyFlexSettlementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyFlexSettlement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyFlexSettlementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyOpenBankOrderDetailReceiptRequest() (request *ApplyOpenBankOrderDetailReceiptRequest) {
     request = &ApplyOpenBankOrderDetailReceiptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1930,6 +2032,71 @@ func (c *Client) CreateExternalAnchorWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateExternalAnchorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFlexPayeeRequest() (request *CreateFlexPayeeRequest) {
+    request = &CreateFlexPayeeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateFlexPayee")
+    
+    
+    return
+}
+
+func NewCreateFlexPayeeResponse() (response *CreateFlexPayeeResponse) {
+    response = &CreateFlexPayeeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlexPayee
+// 灵云V2-收款用户开立
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) CreateFlexPayee(request *CreateFlexPayeeRequest) (response *CreateFlexPayeeResponse, err error) {
+    return c.CreateFlexPayeeWithContext(context.Background(), request)
+}
+
+// CreateFlexPayee
+// 灵云V2-收款用户开立
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) CreateFlexPayeeWithContext(ctx context.Context, request *CreateFlexPayeeRequest) (response *CreateFlexPayeeResponse, err error) {
+    if request == nil {
+        request = NewCreateFlexPayeeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlexPayee require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlexPayeeResponse()
     err = c.Send(request, response)
     return
 }
@@ -3901,6 +4068,57 @@ func (c *Client) ExecuteMemberTransactionWithContext(ctx context.Context, reques
     return
 }
 
+func NewFreezeFlexBalanceRequest() (request *FreezeFlexBalanceRequest) {
+    request = &FreezeFlexBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "FreezeFlexBalance")
+    
+    
+    return
+}
+
+func NewFreezeFlexBalanceResponse() (response *FreezeFlexBalanceResponse) {
+    response = &FreezeFlexBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FreezeFlexBalance
+// 灵云V2-冻结余额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) FreezeFlexBalance(request *FreezeFlexBalanceRequest) (response *FreezeFlexBalanceResponse, err error) {
+    return c.FreezeFlexBalanceWithContext(context.Background(), request)
+}
+
+// FreezeFlexBalance
+// 灵云V2-冻结余额
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) FreezeFlexBalanceWithContext(ctx context.Context, request *FreezeFlexBalanceRequest) (response *FreezeFlexBalanceResponse, err error) {
+    if request == nil {
+        request = NewFreezeFlexBalanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FreezeFlexBalance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFreezeFlexBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetBillDownloadUrlRequest() (request *GetBillDownloadUrlRequest) {
     request = &GetBillDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4456,6 +4674,63 @@ func (c *Client) ModifyBindedAccountWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyBindedAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyFlexPayeeAccountRightStatusRequest() (request *ModifyFlexPayeeAccountRightStatusRequest) {
+    request = &ModifyFlexPayeeAccountRightStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "ModifyFlexPayeeAccountRightStatus")
+    
+    
+    return
+}
+
+func NewModifyFlexPayeeAccountRightStatusResponse() (response *ModifyFlexPayeeAccountRightStatusResponse) {
+    response = &ModifyFlexPayeeAccountRightStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFlexPayeeAccountRightStatus
+// 灵云V2-收款用户账户权益状态修改
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) ModifyFlexPayeeAccountRightStatus(request *ModifyFlexPayeeAccountRightStatusRequest) (response *ModifyFlexPayeeAccountRightStatusResponse, err error) {
+    return c.ModifyFlexPayeeAccountRightStatusWithContext(context.Background(), request)
+}
+
+// ModifyFlexPayeeAccountRightStatus
+// 灵云V2-收款用户账户权益状态修改
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) ModifyFlexPayeeAccountRightStatusWithContext(ctx context.Context, request *ModifyFlexPayeeAccountRightStatusRequest) (response *ModifyFlexPayeeAccountRightStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyFlexPayeeAccountRightStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFlexPayeeAccountRightStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFlexPayeeAccountRightStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -6571,6 +6846,465 @@ func (c *Client) QueryExchangeRateWithContext(ctx context.Context, request *Quer
     request.SetContext(ctx)
     
     response = NewQueryExchangeRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexAmountBeforeTaxRequest() (request *QueryFlexAmountBeforeTaxRequest) {
+    request = &QueryFlexAmountBeforeTaxRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexAmountBeforeTax")
+    
+    
+    return
+}
+
+func NewQueryFlexAmountBeforeTaxResponse() (response *QueryFlexAmountBeforeTaxResponse) {
+    response = &QueryFlexAmountBeforeTaxResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexAmountBeforeTax
+// 灵云V2-查询税前金额
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexAmountBeforeTax(request *QueryFlexAmountBeforeTaxRequest) (response *QueryFlexAmountBeforeTaxResponse, err error) {
+    return c.QueryFlexAmountBeforeTaxWithContext(context.Background(), request)
+}
+
+// QueryFlexAmountBeforeTax
+// 灵云V2-查询税前金额
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexAmountBeforeTaxWithContext(ctx context.Context, request *QueryFlexAmountBeforeTaxRequest) (response *QueryFlexAmountBeforeTaxResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexAmountBeforeTaxRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexAmountBeforeTax require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexAmountBeforeTaxResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexFreezeOrderListRequest() (request *QueryFlexFreezeOrderListRequest) {
+    request = &QueryFlexFreezeOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexFreezeOrderList")
+    
+    
+    return
+}
+
+func NewQueryFlexFreezeOrderListResponse() (response *QueryFlexFreezeOrderListResponse) {
+    response = &QueryFlexFreezeOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexFreezeOrderList
+// 灵云V2-查询冻结订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexFreezeOrderList(request *QueryFlexFreezeOrderListRequest) (response *QueryFlexFreezeOrderListResponse, err error) {
+    return c.QueryFlexFreezeOrderListWithContext(context.Background(), request)
+}
+
+// QueryFlexFreezeOrderList
+// 灵云V2-查询冻结订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexFreezeOrderListWithContext(ctx context.Context, request *QueryFlexFreezeOrderListRequest) (response *QueryFlexFreezeOrderListResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexFreezeOrderListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexFreezeOrderList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexFreezeOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPayeeAccountBalanceRequest() (request *QueryFlexPayeeAccountBalanceRequest) {
+    request = &QueryFlexPayeeAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountBalance")
+    
+    
+    return
+}
+
+func NewQueryFlexPayeeAccountBalanceResponse() (response *QueryFlexPayeeAccountBalanceResponse) {
+    response = &QueryFlexPayeeAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPayeeAccountBalance
+// 灵云V2-收款用户账户余额查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountBalance(request *QueryFlexPayeeAccountBalanceRequest) (response *QueryFlexPayeeAccountBalanceResponse, err error) {
+    return c.QueryFlexPayeeAccountBalanceWithContext(context.Background(), request)
+}
+
+// QueryFlexPayeeAccountBalance
+// 灵云V2-收款用户账户余额查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountBalanceWithContext(ctx context.Context, request *QueryFlexPayeeAccountBalanceRequest) (response *QueryFlexPayeeAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPayeeAccountBalanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPayeeAccountBalance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPayeeAccountBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPayeeAccountInfoRequest() (request *QueryFlexPayeeAccountInfoRequest) {
+    request = &QueryFlexPayeeAccountInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountInfo")
+    
+    
+    return
+}
+
+func NewQueryFlexPayeeAccountInfoResponse() (response *QueryFlexPayeeAccountInfoResponse) {
+    response = &QueryFlexPayeeAccountInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPayeeAccountInfo
+// 灵云V2-收款用户账户信息查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountInfo(request *QueryFlexPayeeAccountInfoRequest) (response *QueryFlexPayeeAccountInfoResponse, err error) {
+    return c.QueryFlexPayeeAccountInfoWithContext(context.Background(), request)
+}
+
+// QueryFlexPayeeAccountInfo
+// 灵云V2-收款用户账户信息查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountInfoWithContext(ctx context.Context, request *QueryFlexPayeeAccountInfoRequest) (response *QueryFlexPayeeAccountInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPayeeAccountInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPayeeAccountInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPayeeAccountInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPayeeAccountListRequest() (request *QueryFlexPayeeAccountListRequest) {
+    request = &QueryFlexPayeeAccountListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountList")
+    
+    
+    return
+}
+
+func NewQueryFlexPayeeAccountListResponse() (response *QueryFlexPayeeAccountListResponse) {
+    response = &QueryFlexPayeeAccountListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPayeeAccountList
+// 灵云V2-收款用户账户列表查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountList(request *QueryFlexPayeeAccountListRequest) (response *QueryFlexPayeeAccountListResponse, err error) {
+    return c.QueryFlexPayeeAccountListWithContext(context.Background(), request)
+}
+
+// QueryFlexPayeeAccountList
+// 灵云V2-收款用户账户列表查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeAccountListWithContext(ctx context.Context, request *QueryFlexPayeeAccountListRequest) (response *QueryFlexPayeeAccountListResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPayeeAccountListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPayeeAccountList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPayeeAccountListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPayeeInfoRequest() (request *QueryFlexPayeeInfoRequest) {
+    request = &QueryFlexPayeeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeInfo")
+    
+    
+    return
+}
+
+func NewQueryFlexPayeeInfoResponse() (response *QueryFlexPayeeInfoResponse) {
+    response = &QueryFlexPayeeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPayeeInfo
+// 灵云V2-收款用户信息查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeInfo(request *QueryFlexPayeeInfoRequest) (response *QueryFlexPayeeInfoResponse, err error) {
+    return c.QueryFlexPayeeInfoWithContext(context.Background(), request)
+}
+
+// QueryFlexPayeeInfo
+// 灵云V2-收款用户信息查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPayeeInfoWithContext(ctx context.Context, request *QueryFlexPayeeInfoRequest) (response *QueryFlexPayeeInfoResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPayeeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPayeeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPayeeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPaymentOrderListRequest() (request *QueryFlexPaymentOrderListRequest) {
+    request = &QueryFlexPaymentOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPaymentOrderList")
+    
+    
+    return
+}
+
+func NewQueryFlexPaymentOrderListResponse() (response *QueryFlexPaymentOrderListResponse) {
+    response = &QueryFlexPaymentOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPaymentOrderList
+// 灵云V2-查询付款订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPaymentOrderList(request *QueryFlexPaymentOrderListRequest) (response *QueryFlexPaymentOrderListResponse, err error) {
+    return c.QueryFlexPaymentOrderListWithContext(context.Background(), request)
+}
+
+// QueryFlexPaymentOrderList
+// 灵云V2-查询付款订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPaymentOrderListWithContext(ctx context.Context, request *QueryFlexPaymentOrderListRequest) (response *QueryFlexPaymentOrderListResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPaymentOrderListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPaymentOrderList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPaymentOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPaymentOrderStatusRequest() (request *QueryFlexPaymentOrderStatusRequest) {
+    request = &QueryFlexPaymentOrderStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPaymentOrderStatus")
+    
+    
+    return
+}
+
+func NewQueryFlexPaymentOrderStatusResponse() (response *QueryFlexPaymentOrderStatusResponse) {
+    response = &QueryFlexPaymentOrderStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPaymentOrderStatus
+// 灵云V2-查询付款订单状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPaymentOrderStatus(request *QueryFlexPaymentOrderStatusRequest) (response *QueryFlexPaymentOrderStatusResponse, err error) {
+    return c.QueryFlexPaymentOrderStatusWithContext(context.Background(), request)
+}
+
+// QueryFlexPaymentOrderStatus
+// 灵云V2-查询付款订单状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexPaymentOrderStatusWithContext(ctx context.Context, request *QueryFlexPaymentOrderStatusRequest) (response *QueryFlexPaymentOrderStatusResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPaymentOrderStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPaymentOrderStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPaymentOrderStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexSettlementOrderListRequest() (request *QueryFlexSettlementOrderListRequest) {
+    request = &QueryFlexSettlementOrderListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexSettlementOrderList")
+    
+    
+    return
+}
+
+func NewQueryFlexSettlementOrderListResponse() (response *QueryFlexSettlementOrderListResponse) {
+    response = &QueryFlexSettlementOrderListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexSettlementOrderList
+// 灵云V2-查询结算订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexSettlementOrderList(request *QueryFlexSettlementOrderListRequest) (response *QueryFlexSettlementOrderListResponse, err error) {
+    return c.QueryFlexSettlementOrderListWithContext(context.Background(), request)
+}
+
+// QueryFlexSettlementOrderList
+// 灵云V2-查询结算订单列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexSettlementOrderListWithContext(ctx context.Context, request *QueryFlexSettlementOrderListRequest) (response *QueryFlexSettlementOrderListResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexSettlementOrderListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexSettlementOrderList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexSettlementOrderListResponse()
     err = c.Send(request, response)
     return
 }
@@ -8985,6 +9719,7 @@ func NewRefundResponse() (response *RefundResponse) {
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDNOTRETRIEABLE = "FailedOperation.RefundNotRetrieable"
 //  FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 //  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"
@@ -9012,6 +9747,7 @@ func (c *Client) Refund(request *RefundRequest) (response *RefundResponse, err e
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
 //  FAILEDOPERATION_ORDERLOCKED = "FailedOperation.OrderLocked"
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
+//  FAILEDOPERATION_REFUNDNOTRETRIEABLE = "FailedOperation.RefundNotRetrieable"
 //  FAILEDOPERATION_REFUNDPROCESSING = "FailedOperation.RefundProcessIng"
 //  FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = "FailedOperation.RefundTransactionClosed"
 //  FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = "FailedOperation.RefundTransactionFinished"

@@ -178,6 +178,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/taf"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tag"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tan"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tat"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tav"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tbaas"

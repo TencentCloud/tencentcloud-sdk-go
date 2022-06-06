@@ -332,6 +332,7 @@ func NewDeleteCloudRecordingResponse() (response *DeleteCloudRecordingResponse) 
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCloudRecording(request *DeleteCloudRecordingRequest) (response *DeleteCloudRecordingResponse, err error) {
     return c.DeleteCloudRecordingWithContext(context.Background(), request)
 }
@@ -351,6 +352,7 @@ func (c *Client) DeleteCloudRecording(request *DeleteCloudRecordingRequest) (res
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCloudRecordingWithContext(ctx context.Context, request *DeleteCloudRecordingRequest) (response *DeleteCloudRecordingResponse, err error) {
     if request == nil {
         request = NewDeleteCloudRecordingRequest()
@@ -754,6 +756,91 @@ func (c *Client) DescribeDetailEventWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeDetailEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalTrtcMeasureRequest() (request *DescribeExternalTrtcMeasureRequest) {
+    request = &DescribeExternalTrtcMeasureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeExternalTrtcMeasure")
+    
+    
+    return
+}
+
+func NewDescribeExternalTrtcMeasureResponse() (response *DescribeExternalTrtcMeasureResponse) {
+    response = &DescribeExternalTrtcMeasureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExternalTrtcMeasure
+// 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
+//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
+//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+func (c *Client) DescribeExternalTrtcMeasure(request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
+    return c.DescribeExternalTrtcMeasureWithContext(context.Background(), request)
+}
+
+// DescribeExternalTrtcMeasure
+// 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
+//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
+//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+func (c *Client) DescribeExternalTrtcMeasureWithContext(ctx context.Context, request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalTrtcMeasureRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalTrtcMeasure require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalTrtcMeasureResponse()
     err = c.Send(request, response)
     return
 }
@@ -1342,6 +1429,85 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDismissRoomByStrRoomIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewMeasureTrtcMcuExternalRequest() (request *MeasureTrtcMcuExternalRequest) {
+    request = &MeasureTrtcMcuExternalRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("trtc", APIVersion, "MeasureTrtcMcuExternal")
+    
+    
+    return
+}
+
+func NewMeasureTrtcMcuExternalResponse() (response *MeasureTrtcMcuExternalResponse) {
+    response = &MeasureTrtcMcuExternalResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// MeasureTrtcMcuExternal
+// 查询旁路转码计费时长。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过2天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETROOMCACHEIPERROR = "InternalError.GetRoomCacheIpError"
+//  INVALIDPARAMETER_ROOMID = "InvalidParameter.RoomId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) MeasureTrtcMcuExternal(request *MeasureTrtcMcuExternalRequest) (response *MeasureTrtcMcuExternalResponse, err error) {
+    return c.MeasureTrtcMcuExternalWithContext(context.Background(), request)
+}
+
+// MeasureTrtcMcuExternal
+// 查询旁路转码计费时长。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过2天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETROOMCACHEIPERROR = "InternalError.GetRoomCacheIpError"
+//  INVALIDPARAMETER_ROOMID = "InvalidParameter.RoomId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) MeasureTrtcMcuExternalWithContext(ctx context.Context, request *MeasureTrtcMcuExternalRequest) (response *MeasureTrtcMcuExternalResponse, err error) {
+    if request == nil {
+        request = NewMeasureTrtcMcuExternalRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MeasureTrtcMcuExternal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMeasureTrtcMcuExternalResponse()
     err = c.Send(request, response)
     return
 }

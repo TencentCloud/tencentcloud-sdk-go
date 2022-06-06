@@ -8191,6 +8191,7 @@ func NewReviewImageResponse() (response *ReviewImageResponse) {
 // ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
 //  INTERNALERROR = "InternalError"
@@ -8213,6 +8214,7 @@ func (c *Client) ReviewImage(request *ReviewImageRequest) (response *ReviewImage
 // ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
 //  INTERNALERROR = "InternalError"
