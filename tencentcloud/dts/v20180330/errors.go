@@ -119,6 +119,6 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
-	// 自研上云用户创建同步任务时未指定标签，需要补齐“运营部门”、“运营产品”、“负责人”这三类标签。
+	// 自研上云用户创建迁移任务时未指定标签，需要补齐“运营部门”、“运营产品”、“负责人”这三类标签。
 	UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDERROR = "UnsupportedOperation.IntraNetUserNotTaggedError"
 )

@@ -1191,3 +1191,54 @@ func (c *Client) StopJobsWithContext(ctx context.Context, request *StopJobsReque
     err = c.Send(request, response)
     return
 }
+
+func NewTriggerJobSavepointRequest() (request *TriggerJobSavepointRequest) {
+    request = &TriggerJobSavepointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "TriggerJobSavepoint")
+    
+    
+    return
+}
+
+func NewTriggerJobSavepointResponse() (response *TriggerJobSavepointResponse) {
+    response = &TriggerJobSavepointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TriggerJobSavepoint
+// 触发Savepoint
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) TriggerJobSavepoint(request *TriggerJobSavepointRequest) (response *TriggerJobSavepointResponse, err error) {
+    return c.TriggerJobSavepointWithContext(context.Background(), request)
+}
+
+// TriggerJobSavepoint
+// 触发Savepoint
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) TriggerJobSavepointWithContext(ctx context.Context, request *TriggerJobSavepointRequest) (response *TriggerJobSavepointResponse, err error) {
+    if request == nil {
+        request = NewTriggerJobSavepointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerJobSavepoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerJobSavepointResponse()
+    err = c.Send(request, response)
+    return
+}

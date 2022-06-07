@@ -770,17 +770,15 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //
 // 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
-// 2. 目前仅支持推流到腾讯云直播，暂不支持推到第三方。
+// 2. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
 //
-// 3. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
+// 3. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
 //
-// 4. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+// 4. 可在控制台开启过期自动清理，避免过期任务占用任务数额度。
 //
-// 5. 过期不用的任务需自行清理，未清理的过期任务也会占用上限额度，如需要自动清理过期任务，可提单给售后进行配置。
+// 5. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
 //
-// 6. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
-//
-// 7. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+// 6. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -806,17 +804,15 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
 //
 // 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
-// 2. 目前仅支持推流到腾讯云直播，暂不支持推到第三方。
+// 2. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
 //
-// 3. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
+// 3. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
 //
-// 4. 源流音频编码目前只支持: AAC。其他编码格式建议先进行转码处理。
+// 4. 可在控制台开启过期自动清理，避免过期任务占用任务数额度。
 //
-// 5. 过期不用的任务需自行清理，未清理的过期任务也会占用上限额度，如需要自动清理过期任务，可提单给售后进行配置。
+// 5. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
 //
-// 6. 拉流转推功能为计费增值服务，计费规则详情可参见[计费文档](https://cloud.tencent.com/document/product/267/53308)。
-//
-// 7. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
+// 6. 拉流转推功能仅提供内容拉取与推送服务，请确保内容已获得授权并符合内容传播相关的法律法规。若内容有侵权或违规相关问题，云直播会停止相关的功能服务并保留追究法律责任的权利。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2986,7 +2982,7 @@ func NewDescribeAreaBillBandwidthAndFluxListResponse() (response *DescribeAreaBi
 }
 
 // DescribeAreaBillBandwidthAndFluxList
-// 海外分区直播计费带宽和流量数据查询。
+// 海外分区直播播放带宽和流量数据查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2997,7 +2993,7 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxList(request *DescribeAreaBillB
 }
 
 // DescribeAreaBillBandwidthAndFluxList
-// 海外分区直播计费带宽和流量数据查询。
+// 海外分区直播播放带宽和流量数据查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

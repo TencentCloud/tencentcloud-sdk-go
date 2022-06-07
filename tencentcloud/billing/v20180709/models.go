@@ -200,6 +200,34 @@ type BillDetailComponent struct {
 	// 合同价
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContractPrice *string `json:"ContractPrice,omitempty" name:"ContractPrice"`
+
+	// 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 预留实例抵扣的使用时长，时长单位与被抵扣的时长单位保持一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiTimeSpan *string `json:"RiTimeSpan,omitempty" name:"RiTimeSpan"`
+
+	// 按组件原价的口径换算的预留实例抵扣金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
+
+	// 节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeductionRate *string `json:"SPDeductionRate,omitempty" name:"SPDeductionRate"`
+
+	// 节省计划抵扣的SP包面值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
+
+	// 按组件原价的口径换算的节省计划抵扣金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
+
+	// 综合了官网折扣、预留实例抵扣、节省计划抵扣的混合折扣率。若没有预留实例抵扣、节省计划抵扣,混合折扣率等于折扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlendedDiscount *string `json:"BlendedDiscount,omitempty" name:"BlendedDiscount"`
 }
 
 type BillResourceSummary struct {
@@ -304,6 +332,26 @@ type BillResourceSummary struct {
 
 	// 区域ID
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
+	// 
+	// ri=Standard RI
+	// 
+	// svp=Savings Plan
+	// 
+	// si=Spot Instances
+	// 
+	// rp=Resource Pack
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 按组件原价的口径换算的预留实例抵扣金额
+	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
+
+	// 节省计划抵扣的SP包面值
+	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
+
+	// 按组件原价的口径换算的节省计划抵扣金额
+	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
 }
 
 type BillTagInfo struct {
@@ -976,10 +1024,6 @@ type DescribeBillDetailRequest struct {
 	// 小时费用
 	// 预留实例退款
 	// 按量计费冲正
-	// 按量计费冲正
-	// 按量计费冲正
-	// 按量计费冲正
-	// 按量计费冲正
 	// 包年包月转按量
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
@@ -1222,10 +1266,6 @@ type DescribeBillResourceSummaryRequest struct {
 	// 预付费用
 	// 小时费用
 	// 预留实例退款
-	// 按量计费冲正
-	// 按量计费冲正
-	// 按量计费冲正
-	// 按量计费冲正
 	// 按量计费冲正
 	// 包年包月转按量
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`

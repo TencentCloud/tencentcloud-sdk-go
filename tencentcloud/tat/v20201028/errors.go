@@ -164,6 +164,9 @@ const (
 	// 实例未处于运行中。
 	RESOURCEUNAVAILABLE_INSTANCESTATENOTRUNNING = "ResourceUnavailable.InstanceStateNotRunning"
 
+	// Lighthouse 尚不支持指定的地域。
+	RESOURCEUNAVAILABLE_LIGHTHOUSEUNSUPPORTEDREGION = "ResourceUnavailable.LighthouseUnsupportedRegion"
+
 	// CAM鉴权失败。
 	UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
 

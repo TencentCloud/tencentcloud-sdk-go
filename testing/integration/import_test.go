@@ -219,12 +219,14 @@ import (
 	tiemsv20190416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tiems/v20190416"
 	tiiav20190529 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tiia/v20190529"
 	tionev20191022 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tione/v20191022"
+	tionev20211111 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tione/v20211111"
 	tiwv20190919 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tiw/v20190919"
 	tkev20180525 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tke/v20180525"
 	tkgdqv20190411 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tkgdq/v20190411"
 	tmsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20200713"
 	tmsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20201229"
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
+	trpv20210515 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp/v20210515"
 	trtcv20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc/v20190722"
 	tsev20201207 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse/v20201207"
 	tsfv20180326 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf/v20180326"
@@ -2834,6 +2836,19 @@ func TestTionev20191022Import(t *testing.T) {
     }
 }
 
+func TestTionev20211111Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tionev20211111.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tione_v20211111 client: %v", err)
+    }
+}
+
 func TestTiwv20190919Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -2909,6 +2924,19 @@ func TestTmtv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tmt_v20180321 client: %v", err)
+    }
+}
+
+func TestTrpv20210515Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := trpv20210515.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init trp_v20210515 client: %v", err)
     }
 }
 

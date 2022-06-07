@@ -1057,6 +1057,12 @@ type CreateLivePullStreamTaskRequest struct {
 	// 任务描述，限制 512 字节。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
+	// 完整目标 URL 地址。
+	// 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空值，任务将会使用该 ToUrl 参数指定的目标地址。
+	// 
+	// 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
+	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
+
 	// 备源的类型：
 	// PullLivePushLive -直播，
 	// PullVodPushLive -点播。
@@ -1098,6 +1104,7 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "ExtraCmd")
 	delete(f, "Comment")
+	delete(f, "ToUrl")
 	delete(f, "BackupSourceType")
 	delete(f, "BackupSourceUrl")
 	if len(f) > 0 {
@@ -1324,6 +1331,9 @@ type CreateLiveRecordTemplateRequest struct {
 
 	// 是否去除水印，类型为慢直播时此参数无效。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// FLV 录制特殊参数。
+	FlvSpecialParam *FlvSpecialParam `json:"FlvSpecialParam,omitempty" name:"FlvSpecialParam"`
 }
 
 func (r *CreateLiveRecordTemplateRequest) ToJsonString() string {
@@ -1348,6 +1358,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
 	delete(f, "RemoveWatermark")
+	delete(f, "FlvSpecialParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveRecordTemplateRequest has unknown keys!", "")
 	}
@@ -7111,6 +7122,12 @@ func (r *EnableLiveDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FlvSpecialParam struct {
+
+	// 是否开启边录边传，仅flv格式有效。
+	UploadInRecording *bool `json:"UploadInRecording,omitempty" name:"UploadInRecording"`
+}
+
 type ForbidLiveDomainRequest struct {
 	*tchttp.BaseRequest
 
@@ -7968,6 +7985,9 @@ type ModifyLiveRecordTemplateRequest struct {
 
 	// 是否去除水印，类型为慢直播时此参数无效。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// FLV 录制定制参数。
+	FlvSpecialParam *FlvSpecialParam `json:"FlvSpecialParam,omitempty" name:"FlvSpecialParam"`
 }
 
 func (r *ModifyLiveRecordTemplateRequest) ToJsonString() string {
@@ -7992,6 +8012,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 	delete(f, "HlsSpecialParam")
 	delete(f, "Mp3Param")
 	delete(f, "RemoveWatermark")
+	delete(f, "FlvSpecialParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveRecordTemplateRequest has unknown keys!", "")
 	}
@@ -8963,7 +8984,7 @@ type RecordTemplateInfo struct {
 	// 1：慢直播。
 	IsDelayLive *int64 `json:"IsDelayLive,omitempty" name:"IsDelayLive"`
 
-	// HLS 录制定制参数
+	// HLS 录制定制参数。
 	HlsSpecialParam *HlsSpecialParam `json:"HlsSpecialParam,omitempty" name:"HlsSpecialParam"`
 
 	// MP3 录制参数。
@@ -8972,6 +8993,10 @@ type RecordTemplateInfo struct {
 	// 是否去除水印。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// FLV 录制定制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlvSpecialParam *FlvSpecialParam `json:"FlvSpecialParam,omitempty" name:"FlvSpecialParam"`
 }
 
 type RefererAuthConfig struct {

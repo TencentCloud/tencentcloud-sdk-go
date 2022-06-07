@@ -1667,3 +1667,72 @@ type SystemResourceItem struct {
 	// 资源的最新版本
 	LatestResourceConfigVersion *int64 `json:"LatestResourceConfigVersion,omitempty" name:"LatestResourceConfigVersion"`
 }
+
+type TriggerJobSavepointRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业 SerialId
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *TriggerJobSavepointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerJobSavepointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Description")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerJobSavepointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TriggerJobSavepointResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 是否成功
+		SavepointTrigger *bool `json:"SavepointTrigger,omitempty" name:"SavepointTrigger"`
+
+		// 错误消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+		// 快照路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FinalSavepointPath *string `json:"FinalSavepointPath,omitempty" name:"FinalSavepointPath"`
+
+		// 快照 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SavepointId *string `json:"SavepointId,omitempty" name:"SavepointId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *TriggerJobSavepointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

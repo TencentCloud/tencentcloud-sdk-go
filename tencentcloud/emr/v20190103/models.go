@@ -23,6 +23,9 @@ import (
 type AddUsersForUserManagerRequest struct {
 	*tchttp.BaseRequest
 
+	// 集群字符串ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
 	// 用户信息列表
 	UserManagerUserList []*UserInfoForUserManager `json:"UserManagerUserList,omitempty" name:"UserManagerUserList"`
 }
@@ -39,6 +42,7 @@ func (r *AddUsersForUserManagerRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
 	delete(f, "UserManagerUserList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddUsersForUserManagerRequest has unknown keys!", "")
@@ -49,6 +53,14 @@ func (r *AddUsersForUserManagerRequest) FromJsonString(s string) error {
 type AddUsersForUserManagerResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 添加成功的用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SuccessUserList []*string `json:"SuccessUserList,omitempty" name:"SuccessUserList"`
+
+		// 添加失败的用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FailedUserList []*string `json:"FailedUserList,omitempty" name:"FailedUserList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1158,6 +1170,18 @@ func (r *DescribeResourceScheduleResponse) FromJsonString(s string) error {
 type DescribeUsersForUserManagerRequest struct {
 	*tchttp.BaseRequest
 
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 分页的大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询用户列表过滤器
+	UserManagerFilter *UserManagerFilter `json:"UserManagerFilter,omitempty" name:"UserManagerFilter"`
+
 	// 是否需要keytab文件的信息，仅对开启kerberos的集群有效，默认为false
 	NeedKeytabInfo *bool `json:"NeedKeytabInfo,omitempty" name:"NeedKeytabInfo"`
 }
@@ -1174,6 +1198,10 @@ func (r *DescribeUsersForUserManagerRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "UserManagerFilter")
 	delete(f, "NeedKeytabInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersForUserManagerRequest has unknown keys!", "")
@@ -1184,6 +1212,13 @@ func (r *DescribeUsersForUserManagerRequest) FromJsonString(s string) error {
 type DescribeUsersForUserManagerResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
+
+		// 总数
+		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+		// 用户信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		UserManagerUserList []*UserManagerUserBriefInfo `json:"UserManagerUserList,omitempty" name:"UserManagerUserList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3518,6 +3553,32 @@ type UserInfoForUserManager struct {
 
 	// 备注
 	ReMark *string `json:"ReMark,omitempty" name:"ReMark"`
+}
+
+type UserManagerFilter struct {
+}
+
+type UserManagerUserBriefInfo struct {
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户所属的组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// Manager表示管理员、NormalUser表示普通用户
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// 用户创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义
+	SupportDownLoadKeyTab *bool `json:"SupportDownLoadKeyTab,omitempty" name:"SupportDownLoadKeyTab"`
+
+	// keytab文件的下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownLoadKeyTabUrl *string `json:"DownLoadKeyTabUrl,omitempty" name:"DownLoadKeyTabUrl"`
 }
 
 type VPCSettings struct {

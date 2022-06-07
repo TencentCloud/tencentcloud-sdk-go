@@ -239,6 +239,53 @@ func (c *Client) CreateApplicationProxyRulesWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateCustomErrorPageRequest() (request *CreateCustomErrorPageRequest) {
+    request = &CreateCustomErrorPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "CreateCustomErrorPage")
+    
+    
+    return
+}
+
+func NewCreateCustomErrorPageResponse() (response *CreateCustomErrorPageResponse) {
+    response = &CreateCustomErrorPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomErrorPage
+// 创建自定义规则的自定义页
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) CreateCustomErrorPage(request *CreateCustomErrorPageRequest) (response *CreateCustomErrorPageResponse, err error) {
+    return c.CreateCustomErrorPageWithContext(context.Background(), request)
+}
+
+// CreateCustomErrorPage
+// 创建自定义规则的自定义页
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) CreateCustomErrorPageWithContext(ctx context.Context, request *CreateCustomErrorPageRequest) (response *CreateCustomErrorPageResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomErrorPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomErrorPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomErrorPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDnsRecordRequest() (request *CreateDnsRecordRequest) {
     request = &CreateDnsRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -365,6 +412,55 @@ func (c *Client) CreateLoadBalancingWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateLoadBalancingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOriginGroupRequest() (request *CreateOriginGroupRequest) {
+    request = &CreateOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "CreateOriginGroup")
+    
+    
+    return
+}
+
+func NewCreateOriginGroupResponse() (response *CreateOriginGroupResponse) {
+    response = &CreateOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOriginGroup
+// 源站组创建
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
+    return c.CreateOriginGroupWithContext(context.Background(), request)
+}
+
+// CreateOriginGroup
+// 源站组创建
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOriginGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -762,6 +858,57 @@ func (c *Client) DeleteLoadBalancingWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteOriginGroupRequest() (request *DeleteOriginGroupRequest) {
+    request = &DeleteOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteOriginGroup")
+    
+    
+    return
+}
+
+func NewDeleteOriginGroupResponse() (response *DeleteOriginGroupResponse) {
+    response = &DeleteOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteOriginGroup
+// 源站组删除
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
+    return c.DeleteOriginGroupWithContext(context.Background(), request)
+}
+
+// DeleteOriginGroup
+// 源站组删除
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOriginGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteZoneRequest() (request *DeleteZoneRequest) {
     request = &DeleteZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -907,6 +1054,53 @@ func (c *Client) DescribeApplicationProxyDetailWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBotManagedRulesRequest() (request *DescribeBotManagedRulesRequest) {
+    request = &DescribeBotManagedRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeBotManagedRules")
+    
+    
+    return
+}
+
+func NewDescribeBotManagedRulesResponse() (response *DescribeBotManagedRulesResponse) {
+    response = &DescribeBotManagedRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBotManagedRules
+// 分页查询Bot托管规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeBotManagedRules(request *DescribeBotManagedRulesRequest) (response *DescribeBotManagedRulesResponse, err error) {
+    return c.DescribeBotManagedRulesWithContext(context.Background(), request)
+}
+
+// DescribeBotManagedRules
+// 分页查询Bot托管规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeBotManagedRulesWithContext(ctx context.Context, request *DescribeBotManagedRulesRequest) (response *DescribeBotManagedRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotManagedRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotManagedRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotManagedRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCnameStatusRequest() (request *DescribeCnameStatusRequest) {
     request = &DescribeCnameStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -928,7 +1122,7 @@ func NewDescribeCnameStatusResponse() (response *DescribeCnameStatusResponse) {
 // 查询域名 CNAME 状态
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 func (c *Client) DescribeCnameStatus(request *DescribeCnameStatusRequest) (response *DescribeCnameStatusResponse, err error) {
     return c.DescribeCnameStatusWithContext(context.Background(), request)
 }
@@ -937,7 +1131,7 @@ func (c *Client) DescribeCnameStatus(request *DescribeCnameStatusRequest) (respo
 // 查询域名 CNAME 状态
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 func (c *Client) DescribeCnameStatusWithContext(ctx context.Context, request *DescribeCnameStatusRequest) (response *DescribeCnameStatusResponse, err error) {
     if request == nil {
         request = NewDescribeCnameStatusRequest()
@@ -950,6 +1144,53 @@ func (c *Client) DescribeCnameStatusWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeCnameStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDoSPolicyRequest() (request *DescribeDDoSPolicyRequest) {
+    request = &DescribeDDoSPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDoSPolicy")
+    
+    
+    return
+}
+
+func NewDescribeDDoSPolicyResponse() (response *DescribeDDoSPolicyResponse) {
+    response = &DescribeDDoSPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDoSPolicy
+// 查询DDoS防护配置详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDoSPolicy(request *DescribeDDoSPolicyRequest) (response *DescribeDDoSPolicyResponse, err error) {
+    return c.DescribeDDoSPolicyWithContext(context.Background(), request)
+}
+
+// DescribeDDoSPolicy
+// 查询DDoS防护配置详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDoSPolicyWithContext(ctx context.Context, request *DescribeDDoSPolicyRequest) (response *DescribeDDoSPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDoSPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDoSPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1387,6 +1628,100 @@ func (c *Client) DescribeLoadBalancingDetailWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeOriginGroupRequest() (request *DescribeOriginGroupRequest) {
+    request = &DescribeOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginGroup")
+    
+    
+    return
+}
+
+func NewDescribeOriginGroupResponse() (response *DescribeOriginGroupResponse) {
+    response = &DescribeOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOriginGroup
+// 获取源站组信息列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOriginGroup(request *DescribeOriginGroupRequest) (response *DescribeOriginGroupResponse, err error) {
+    return c.DescribeOriginGroupWithContext(context.Background(), request)
+}
+
+// DescribeOriginGroup
+// 获取源站组信息列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOriginGroupWithContext(ctx context.Context, request *DescribeOriginGroupRequest) (response *DescribeOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOriginGroupDetailRequest() (request *DescribeOriginGroupDetailRequest) {
+    request = &DescribeOriginGroupDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginGroupDetail")
+    
+    
+    return
+}
+
+func NewDescribeOriginGroupDetailResponse() (response *DescribeOriginGroupDetailResponse) {
+    response = &DescribeOriginGroupDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOriginGroupDetail
+// 获取源站组详细信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOriginGroupDetail(request *DescribeOriginGroupDetailRequest) (response *DescribeOriginGroupDetailResponse, err error) {
+    return c.DescribeOriginGroupDetailWithContext(context.Background(), request)
+}
+
+// DescribeOriginGroupDetail
+// 获取源站组详细信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeOriginGroupDetailWithContext(ctx context.Context, request *DescribeOriginGroupDetailRequest) (response *DescribeOriginGroupDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginGroupDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginGroupDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginGroupDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
     request = &DescribePrefetchTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1483,6 +1818,292 @@ func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribePurgeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityPolicyRequest() (request *DescribeSecurityPolicyRequest) {
+    request = &DescribeSecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicy")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPolicyResponse() (response *DescribeSecurityPolicyResponse) {
+    response = &DescribeSecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPolicy
+// 查询安全防护配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) DescribeSecurityPolicy(request *DescribeSecurityPolicyRequest) (response *DescribeSecurityPolicyResponse, err error) {
+    return c.DescribeSecurityPolicyWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPolicy
+// 查询安全防护配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+func (c *Client) DescribeSecurityPolicyWithContext(ctx context.Context, request *DescribeSecurityPolicyRequest) (response *DescribeSecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityPolicyListRequest() (request *DescribeSecurityPolicyListRequest) {
+    request = &DescribeSecurityPolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyList")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPolicyListResponse() (response *DescribeSecurityPolicyListResponse) {
+    response = &DescribeSecurityPolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPolicyList
+// 查询全部安全实例
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeSecurityPolicyList(request *DescribeSecurityPolicyListRequest) (response *DescribeSecurityPolicyListResponse, err error) {
+    return c.DescribeSecurityPolicyListWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPolicyList
+// 查询全部安全实例
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeSecurityPolicyListWithContext(ctx context.Context, request *DescribeSecurityPolicyListRequest) (response *DescribeSecurityPolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityPolicyManagedRulesRequest() (request *DescribeSecurityPolicyManagedRulesRequest) {
+    request = &DescribeSecurityPolicyManagedRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyManagedRules")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPolicyManagedRulesResponse() (response *DescribeSecurityPolicyManagedRulesResponse) {
+    response = &DescribeSecurityPolicyManagedRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPolicyManagedRules
+// 分页查询门神规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyManagedRules(request *DescribeSecurityPolicyManagedRulesRequest) (response *DescribeSecurityPolicyManagedRulesResponse, err error) {
+    return c.DescribeSecurityPolicyManagedRulesWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPolicyManagedRules
+// 分页查询门神规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyManagedRulesWithContext(ctx context.Context, request *DescribeSecurityPolicyManagedRulesRequest) (response *DescribeSecurityPolicyManagedRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyManagedRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicyManagedRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyManagedRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityPolicyManagedRulesIdRequest() (request *DescribeSecurityPolicyManagedRulesIdRequest) {
+    request = &DescribeSecurityPolicyManagedRulesIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyManagedRulesId")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPolicyManagedRulesIdResponse() (response *DescribeSecurityPolicyManagedRulesIdResponse) {
+    response = &DescribeSecurityPolicyManagedRulesIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPolicyManagedRulesId
+// 规则id查询门神规则详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyManagedRulesId(request *DescribeSecurityPolicyManagedRulesIdRequest) (response *DescribeSecurityPolicyManagedRulesIdResponse, err error) {
+    return c.DescribeSecurityPolicyManagedRulesIdWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPolicyManagedRulesId
+// 规则id查询门神规则详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyManagedRulesIdWithContext(ctx context.Context, request *DescribeSecurityPolicyManagedRulesIdRequest) (response *DescribeSecurityPolicyManagedRulesIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyManagedRulesIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicyManagedRulesId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyManagedRulesIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityPolicyRegionsRequest() (request *DescribeSecurityPolicyRegionsRequest) {
+    request = &DescribeSecurityPolicyRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyRegions")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPolicyRegionsResponse() (response *DescribeSecurityPolicyRegionsResponse) {
+    response = &DescribeSecurityPolicyRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPolicyRegions
+// 查询所有地域信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyRegions(request *DescribeSecurityPolicyRegionsRequest) (response *DescribeSecurityPolicyRegionsResponse, err error) {
+    return c.DescribeSecurityPolicyRegionsWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPolicyRegions
+// 查询所有地域信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPolicyRegionsWithContext(ctx context.Context, request *DescribeSecurityPolicyRegionsRequest) (response *DescribeSecurityPolicyRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPolicyRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPolicyRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPolicyRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZoneDDoSPolicyRequest() (request *DescribeZoneDDoSPolicyRequest) {
+    request = &DescribeZoneDDoSPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeZoneDDoSPolicy")
+    
+    
+    return
+}
+
+func NewDescribeZoneDDoSPolicyResponse() (response *DescribeZoneDDoSPolicyResponse) {
+    response = &DescribeZoneDDoSPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZoneDDoSPolicy
+// 查询所有DDoS防护分区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeZoneDDoSPolicy(request *DescribeZoneDDoSPolicyRequest) (response *DescribeZoneDDoSPolicyResponse, err error) {
+    return c.DescribeZoneDDoSPolicyWithContext(context.Background(), request)
+}
+
+// DescribeZoneDDoSPolicy
+// 查询所有DDoS防护分区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeZoneDDoSPolicyWithContext(ctx context.Context, request *DescribeZoneDDoSPolicyRequest) (response *DescribeZoneDDoSPolicyResponse, err error) {
+    if request == nil {
+        request = NewDescribeZoneDDoSPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZoneDDoSPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZoneDDoSPolicyResponse()
     err = c.Send(request, response)
     return
 }
@@ -1967,6 +2588,100 @@ func (c *Client) ModifyApplicationProxyStatusWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyDDoSPolicyRequest() (request *ModifyDDoSPolicyRequest) {
+    request = &ModifyDDoSPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyDDoSPolicy")
+    
+    
+    return
+}
+
+func NewModifyDDoSPolicyResponse() (response *ModifyDDoSPolicyResponse) {
+    response = &ModifyDDoSPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDDoSPolicy
+// 修改DDoS防护分区配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifyDDoSPolicy(request *ModifyDDoSPolicyRequest) (response *ModifyDDoSPolicyResponse, err error) {
+    return c.ModifyDDoSPolicyWithContext(context.Background(), request)
+}
+
+// ModifyDDoSPolicy
+// 修改DDoS防护分区配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifyDDoSPolicyWithContext(ctx context.Context, request *ModifyDDoSPolicyRequest) (response *ModifyDDoSPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDDoSPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDDoSPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDDoSPolicyHostRequest() (request *ModifyDDoSPolicyHostRequest) {
+    request = &ModifyDDoSPolicyHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyDDoSPolicyHost")
+    
+    
+    return
+}
+
+func NewModifyDDoSPolicyHostResponse() (response *ModifyDDoSPolicyHostResponse) {
+    response = &ModifyDDoSPolicyHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDDoSPolicyHost
+// 域名DDoS高可用开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDDoSPolicyHost(request *ModifyDDoSPolicyHostRequest) (response *ModifyDDoSPolicyHostResponse, err error) {
+    return c.ModifyDDoSPolicyHostWithContext(context.Background(), request)
+}
+
+// ModifyDDoSPolicyHost
+// 域名DDoS高可用开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDDoSPolicyHostWithContext(ctx context.Context, request *ModifyDDoSPolicyHostRequest) (response *ModifyDDoSPolicyHostResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSPolicyHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDDoSPolicyHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDDoSPolicyHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDefaultCertificateRequest() (request *ModifyDefaultCertificateRequest) {
     request = &ModifyDefaultCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2275,6 +2990,100 @@ func (c *Client) ModifyLoadBalancingStatusWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancingStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOriginGroupRequest() (request *ModifyOriginGroupRequest) {
+    request = &ModifyOriginGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyOriginGroup")
+    
+    
+    return
+}
+
+func NewModifyOriginGroupResponse() (response *ModifyOriginGroupResponse) {
+    response = &ModifyOriginGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyOriginGroup
+// 源站组修改
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyOriginGroup(request *ModifyOriginGroupRequest) (response *ModifyOriginGroupResponse, err error) {
+    return c.ModifyOriginGroupWithContext(context.Background(), request)
+}
+
+// ModifyOriginGroup
+// 源站组修改
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyOriginGroupWithContext(ctx context.Context, request *ModifyOriginGroupRequest) (response *ModifyOriginGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyOriginGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOriginGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOriginGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySecurityPolicyRequest() (request *ModifySecurityPolicyRequest) {
+    request = &ModifySecurityPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "ModifySecurityPolicy")
+    
+    
+    return
+}
+
+func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) {
+    response = &ModifySecurityPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySecurityPolicy
+// 修改Web&Bot安全配置
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
+    return c.ModifySecurityPolicyWithContext(context.Background(), request)
+}
+
+// ModifySecurityPolicy
+// 修改Web&Bot安全配置
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySecurityPolicyResponse()
     err = c.Send(request, response)
     return
 }

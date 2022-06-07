@@ -134,6 +134,12 @@ type DescribeTaskStrategyRisksRequest struct {
 
 	// 偏移量,默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 环境
+	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 func (r *DescribeTaskStrategyRisksRequest) ToJsonString() string {
@@ -151,6 +157,8 @@ func (r *DescribeTaskStrategyRisksRequest) FromJsonString(s string) error {
 	delete(f, "StrategyId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Env")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStrategyRisksRequest has unknown keys!", "")
 	}
@@ -177,6 +185,10 @@ type DescribeTaskStrategyRisksResponse struct {
 		// 风险实例详情列表，需要json decode
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Risks *string `json:"Risks,omitempty" name:"Risks"`
+
+		// 巡检资源数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ResourceCount *uint64 `json:"ResourceCount,omitempty" name:"ResourceCount"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

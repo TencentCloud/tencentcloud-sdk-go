@@ -1379,10 +1379,10 @@ type HealthCheckConfig struct {
 
 type HorizontalAutoscaler struct {
 
-	// 最小实例数
+	// 最小实例数（可以不传）
 	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
 
-	// 最大实例数
+	// 最大实例数（可以不传）
 	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
 
 	// 指标度量（CPU or MEMORY）
@@ -1390,6 +1390,9 @@ type HorizontalAutoscaler struct {
 
 	// 阈值（百分比）
 	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
+
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 type IngressInfo struct {

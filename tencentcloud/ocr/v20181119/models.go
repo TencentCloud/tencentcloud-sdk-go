@@ -3153,7 +3153,14 @@ type MixedInvoiceOCRRequest struct {
 	// 11：增值税发票（卷票 ）
 	// 12：购车发票
 	// 13：过路过桥费发票
+	// 15：非税发票
+	// 16：全电发票
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
+
+	// 是否识别其他类型发票，默认为Yes
+	// Yes：识别其他类型发票
+	// No：不识别其他类型发票
+	ReturnOther *string `json:"ReturnOther,omitempty" name:"ReturnOther"`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -3171,6 +3178,7 @@ func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "Types")
+	delete(f, "ReturnOther")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -5781,6 +5789,7 @@ type VatInvoice struct {
 	// 11：卷式发票 
 	// 14：通行费发票 
 	// 15：二手车发票
+	// 32：深圳区块链发票（仅支持新版接口）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 检验码

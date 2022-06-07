@@ -643,6 +643,10 @@ type ImageToObjectResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Template *Template `json:"Template,omitempty" name:"Template"`
 
+		// 多级分类结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

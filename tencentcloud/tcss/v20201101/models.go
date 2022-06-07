@@ -10356,6 +10356,14 @@ type DescribeVirusSummaryResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		RiskIncrease *int64 `json:"RiskIncrease,omitempty" name:"RiskIncrease"`
 
+		// 隔离事件个数较昨日新增
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsolateIncrease *int64 `json:"IsolateIncrease,omitempty" name:"IsolateIncrease"`
+
+		// 隔离事件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsolateCnt *int64 `json:"IsolateCnt,omitempty" name:"IsolateCnt"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -10388,7 +10396,10 @@ type DescribeVirusTaskListRequest struct {
 	// <li>ContainerName - String - 是否必填：否 - 容器名称</li>
 	// <li>ContainerId - String - 是否必填：否 - 容器id</li>
 	// <li>Hostname - String - 是否必填：否 - 主机名称</li>
-	// <li>HostIp- String - 是否必填：是 - 容器名称</li>
+	// <li>HostIp- String - 是否必填：否 - 主机IP</li>
+	// <li>ImageId- String - 是否必填：否 - 镜像ID</li>
+	// <li>ImageName- String - 是否必填：否 - 镜像名称</li>
+	// <li>Status- String - 是否必填：否 - 状态</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段

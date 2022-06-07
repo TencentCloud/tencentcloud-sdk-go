@@ -53,6 +53,15 @@ type AccessLogConfig struct {
 
 	// 日志格式
 	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// GRPC第三方服务器地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 是否启用GRPC第三方服务器
+	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+
+	// 是否启用标准输出
+	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
 }
 
 type ActiveOperation struct {
@@ -165,6 +174,27 @@ type ClusterStatus struct {
 	// 关联错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinkErrorDetail *string `json:"LinkErrorDetail,omitempty" name:"LinkErrorDetail"`
+}
+
+type CustomPromConfig struct {
+
+	// Prometheus 访问地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 认证方式
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 是否公网地址，缺省为 false
+	IsPublicAddr *bool `json:"IsPublicAddr,omitempty" name:"IsPublicAddr"`
+
+	// 虚拟网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// Prometheus 用户名（用于 basic 认证方式）
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// Prometheus 密码（用于 basic 认证方式）
+	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 type DeployConfig struct {
@@ -574,6 +604,10 @@ type PrometheusConfig struct {
 
 	// 关联已存在实例Id，不填则默认创建
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 第三方 Prometheus
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomProm *CustomPromConfig `json:"CustomProm,omitempty" name:"CustomProm"`
 }
 
 type PrometheusStatus struct {
