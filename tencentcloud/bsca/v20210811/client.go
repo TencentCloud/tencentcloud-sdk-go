@@ -256,3 +256,54 @@ func (c *Client) DescribeKBVulnerabilityWithContext(ctx context.Context, request
     err = c.Send(request, response)
     return
 }
+
+func NewMatchKBPURLListRequest() (request *MatchKBPURLListRequest) {
+    request = &MatchKBPURLListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bsca", APIVersion, "MatchKBPURLList")
+    
+    
+    return
+}
+
+func NewMatchKBPURLListResponse() (response *MatchKBPURLListResponse) {
+    response = &MatchKBPURLListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// MatchKBPURLList
+// 本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) MatchKBPURLList(request *MatchKBPURLListRequest) (response *MatchKBPURLListResponse, err error) {
+    return c.MatchKBPURLListWithContext(context.Background(), request)
+}
+
+// MatchKBPURLList
+// 本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) MatchKBPURLListWithContext(ctx context.Context, request *MatchKBPURLListRequest) (response *MatchKBPURLListResponse, err error) {
+    if request == nil {
+        request = NewMatchKBPURLListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MatchKBPURLList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMatchKBPURLListResponse()
+    err = c.Send(request, response)
+    return
+}

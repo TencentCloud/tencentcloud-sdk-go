@@ -1808,6 +1808,9 @@ type CreateEKSClusterRequest struct {
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 子网信息列表
+	SubnetInfos []*SubnetInfos `json:"SubnetInfos,omitempty" name:"SubnetInfos"`
 }
 
 func (r *CreateEKSClusterRequest) ToJsonString() string {
@@ -1832,6 +1835,7 @@ func (r *CreateEKSClusterRequest) FromJsonString(s string) error {
 	delete(f, "ExtraParam")
 	delete(f, "EnableVpcCoreDNS")
 	delete(f, "TagSpecification")
+	delete(f, "SubnetInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEKSClusterRequest has unknown keys!", "")
 	}
@@ -10986,6 +10990,15 @@ func (r *SetNodePoolNodeProtectionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetNodePoolNodeProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubnetInfos struct {
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 子网节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type SyncPrometheusTempRequest struct {

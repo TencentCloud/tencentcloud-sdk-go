@@ -450,6 +450,55 @@ type LicenseUnion struct {
 	LicenseDetail *LicenseDetail `json:"LicenseDetail,omitempty" name:"LicenseDetail"`
 }
 
+type MatchKBPURLListRequest struct {
+	*tchttp.BaseRequest
+
+	// SHA1。
+	SHA1 *string `json:"SHA1,omitempty" name:"SHA1"`
+}
+
+func (r *MatchKBPURLListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MatchKBPURLListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SHA1")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MatchKBPURLListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type MatchKBPURLListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 组件列表。
+		PURLList []*PURL `json:"PURLList,omitempty" name:"PURLList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *MatchKBPURLListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MatchKBPURLListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PURL struct {
 
 	// 组件名称

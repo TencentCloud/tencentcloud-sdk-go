@@ -4083,6 +4083,122 @@ func (r *RecognizeHealthCodeOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RecognizeIndonesiaIDCardOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 场景参数，默认值为V1
+	// 可选值：
+	// V1
+	// V2
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+}
+
+func (r *RecognizeIndonesiaIDCardOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeIndonesiaIDCardOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ReturnHeadImage")
+	delete(f, "Scene")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeIndonesiaIDCardOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizeIndonesiaIDCardOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 证件号码
+		NIK *string `json:"NIK,omitempty" name:"NIK"`
+
+		// 姓名
+		Nama *string `json:"Nama,omitempty" name:"Nama"`
+
+		// 出生地/出生时间
+		TempatTglLahir *string `json:"TempatTglLahir,omitempty" name:"TempatTglLahir"`
+
+		// 性别
+		JenisKelamin *string `json:"JenisKelamin,omitempty" name:"JenisKelamin"`
+
+		// 血型
+		GolDarah *string `json:"GolDarah,omitempty" name:"GolDarah"`
+
+		// 地址
+		Alamat *string `json:"Alamat,omitempty" name:"Alamat"`
+
+		// 街道
+		RTRW *string `json:"RTRW,omitempty" name:"RTRW"`
+
+		// 村
+		KelDesa *string `json:"KelDesa,omitempty" name:"KelDesa"`
+
+		// 地区
+		Kecamatan *string `json:"Kecamatan,omitempty" name:"Kecamatan"`
+
+		// 宗教信仰
+		Agama *string `json:"Agama,omitempty" name:"Agama"`
+
+		// 婚姻状况
+		StatusPerkawinan *string `json:"StatusPerkawinan,omitempty" name:"StatusPerkawinan"`
+
+		// 职业
+		Perkerjaan *string `json:"Perkerjaan,omitempty" name:"Perkerjaan"`
+
+		// 国籍
+		KewargaNegaraan *string `json:"KewargaNegaraan,omitempty" name:"KewargaNegaraan"`
+
+		// 身份证有效期限
+		BerlakuHingga *string `json:"BerlakuHingga,omitempty" name:"BerlakuHingga"`
+
+		// 发证日期
+		IssuedDate *string `json:"IssuedDate,omitempty" name:"IssuedDate"`
+
+		// 人像截图
+		Photo *string `json:"Photo,omitempty" name:"Photo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizeIndonesiaIDCardOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeIndonesiaIDCardOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RecognizeOnlineTaxiItineraryOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -4148,6 +4264,191 @@ func (r *RecognizeOnlineTaxiItineraryOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeOnlineTaxiItineraryOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizePhilippinesDrivingLicenseOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizePhilippinesDrivingLicenseOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesDrivingLicenseOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePhilippinesDrivingLicenseOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizePhilippinesDrivingLicenseOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人像照片Base64后的结果
+		HeadPortrait *TextDetectionResult `json:"HeadPortrait,omitempty" name:"HeadPortrait"`
+
+		// 姓名
+		Name *TextDetectionResult `json:"Name,omitempty" name:"Name"`
+
+		// 姓氏
+		LastName *TextDetectionResult `json:"LastName,omitempty" name:"LastName"`
+
+		// 首姓名
+		FirstName *TextDetectionResult `json:"FirstName,omitempty" name:"FirstName"`
+
+		// 中间姓名
+		MiddleName *TextDetectionResult `json:"MiddleName,omitempty" name:"MiddleName"`
+
+		// 国籍
+		Nationality *TextDetectionResult `json:"Nationality,omitempty" name:"Nationality"`
+
+		// 性别
+		Sex *TextDetectionResult `json:"Sex,omitempty" name:"Sex"`
+
+		// 地址
+		Address *TextDetectionResult `json:"Address,omitempty" name:"Address"`
+
+		// 证号
+		LicenseNo *TextDetectionResult `json:"LicenseNo,omitempty" name:"LicenseNo"`
+
+		// 有效期
+		ExpiresDate *TextDetectionResult `json:"ExpiresDate,omitempty" name:"ExpiresDate"`
+
+		// 机构代码
+		AgencyCode *TextDetectionResult `json:"AgencyCode,omitempty" name:"AgencyCode"`
+
+		// 出生日期
+		Birthday *TextDetectionResult `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizePhilippinesDrivingLicenseOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesDrivingLicenseOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizePhilippinesVoteIDOCRRequest struct {
+	*tchttp.BaseRequest
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizePhilippinesVoteIDOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesVoteIDOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePhilippinesVoteIDOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecognizePhilippinesVoteIDOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 人像照片Base64后的结果
+		HeadPortrait *TextDetectionResult `json:"HeadPortrait,omitempty" name:"HeadPortrait"`
+
+		// 菲律宾VoteID的VIN
+		VIN *TextDetectionResult `json:"VIN,omitempty" name:"VIN"`
+
+		// 姓名
+		FirstName *TextDetectionResult `json:"FirstName,omitempty" name:"FirstName"`
+
+		// 姓氏
+		LastName *TextDetectionResult `json:"LastName,omitempty" name:"LastName"`
+
+		// 出生日期
+		Birthday *TextDetectionResult `json:"Birthday,omitempty" name:"Birthday"`
+
+		// 婚姻状况
+		CivilStatus *TextDetectionResult `json:"CivilStatus,omitempty" name:"CivilStatus"`
+
+		// 国籍
+		Citizenship *TextDetectionResult `json:"Citizenship,omitempty" name:"Citizenship"`
+
+		// 地址
+		Address *TextDetectionResult `json:"Address,omitempty" name:"Address"`
+
+		// 地区
+		PrecinctNo *TextDetectionResult `json:"PrecinctNo,omitempty" name:"PrecinctNo"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RecognizePhilippinesVoteIDOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesVoteIDOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5271,6 +5572,15 @@ type TextDetectionEn struct {
 
 	// 识别出来的单词信息（包括单词Character和单词置信度confidence）
 	Words []*Words `json:"Words,omitempty" name:"Words"`
+}
+
+type TextDetectionResult struct {
+
+	// 识别出的文本行内容
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 坐标，以四个顶点坐标表示
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
 }
 
 type TextEduPaper struct {

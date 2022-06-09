@@ -22,6 +22,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
 	aav20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa/v20200224"
 	aaiv20180522 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai/v20180522"
+	acpv20220105 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp/v20220105"
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	afv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af/v20200226"
 	afcv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc/v20200226"
@@ -150,6 +151,7 @@ import (
 	memcachedv20190318 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/memcached/v20190318"
 	mgobev20190929 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mgobe/v20190929"
 	mgobev20201014 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mgobe/v20201014"
+	mmpsv20200710 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mmps/v20200710"
 	mnav20210119 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mna/v20210119"
 	mongodbv20180408 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb/v20180408"
 	mongodbv20190725 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb/v20190725"
@@ -272,6 +274,19 @@ func TestAaiv20180522Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init aai_v20180522 client: %v", err)
+    }
+}
+
+func TestAcpv20220105Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := acpv20220105.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init acp_v20220105 client: %v", err)
     }
 }
 
@@ -1936,6 +1951,19 @@ func TestMgobev20201014Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init mgobe_v20201014 client: %v", err)
+    }
+}
+
+func TestMmpsv20200710Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := mmpsv20200710.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init mmps_v20200710 client: %v", err)
     }
 }
 

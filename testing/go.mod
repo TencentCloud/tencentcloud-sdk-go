@@ -6,6 +6,7 @@ go 1.14
 require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc v0.0.0
@@ -59,7 +60,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.415
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.416
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -123,6 +124,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/memcached v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mgobe v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mmps v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mna v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v0.0.0
@@ -215,6 +217,7 @@ require (
 replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa => ../tencentcloud/aa
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai => ../tencentcloud/aai
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp => ../tencentcloud/acp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor => ../tencentcloud/advisor
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af => ../tencentcloud/af
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc => ../tencentcloud/afc
@@ -332,6 +335,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market => ../tencentcloud/market
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/memcached => ../tencentcloud/memcached
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mgobe => ../tencentcloud/mgobe
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mmps => ../tencentcloud/mmps
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mna => ../tencentcloud/mna
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mongodb => ../tencentcloud/mongodb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor => ../tencentcloud/monitor

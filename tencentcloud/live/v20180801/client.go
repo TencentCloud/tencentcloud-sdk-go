@@ -764,7 +764,7 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 }
 
 // CreateLivePullStreamTask
-// 创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到直播系统。
+// 创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到指定的目标地址。
 //
 // 注意：
 //
@@ -798,7 +798,7 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
 }
 
 // CreateLivePullStreamTask
-// 创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到直播系统。
+// 创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到指定的目标地址。
 //
 // 注意：
 //

@@ -626,10 +626,10 @@ type DeployApplicationRequest struct {
 	// 分批发布策略配置
 	DeployStrategyConf *DeployStrategyConf `json:"DeployStrategyConf,omitempty" name:"DeployStrategyConf"`
 
-	// 弹性策略
+	// 弹性策略（已弃用，请使用弹性伸缩策略组合相关接口）
 	HorizontalAutoscaler []*HorizontalAutoscaler `json:"HorizontalAutoscaler,omitempty" name:"HorizontalAutoscaler"`
 
-	// 定时弹性策略
+	// 定时弹性策略（已弃用，请使用弹性伸缩策略组合相关接口）
 	CronHorizontalAutoscaler []*CronHorizontalAutoscaler `json:"CronHorizontalAutoscaler,omitempty" name:"CronHorizontalAutoscaler"`
 
 	// 是否启用log，1为启用，0为不启用
@@ -655,6 +655,9 @@ type DeployApplicationRequest struct {
 
 	// 是否开启prometheus 业务指标监控
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
+
+	// 1：开始apm采集；0：关闭apm采集
+	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -709,6 +712,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "StartupProbe")
 	delete(f, "OsFlavour")
 	delete(f, "EnablePrometheusConf")
+	delete(f, "EnableTracing")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}

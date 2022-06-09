@@ -70,6 +70,10 @@ type AudioResult struct {
 	// 该字段用于返回当前标签（Lable）下的二级标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 识别类标签结果信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitempty" name:"RecognitionResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -658,6 +662,17 @@ type MediaInfo struct {
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
 
+type RecognitionResult struct {
+
+	// 可能的取值有：Teenager 、Gender
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 识别标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type StorageInfo struct {
 
 	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
@@ -668,6 +683,27 @@ type StorageInfo struct {
 
 	// 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空，该参数与Url参数须传入其中之一。
 	BucketInfo *BucketInfo `json:"BucketInfo,omitempty" name:"BucketInfo"`
+}
+
+type Tag struct {
+
+	// 根据Label字段确定具体名称：
+	// 当Label 为Teenager 时 Name可能取值有：Teenager 
+	// 当Label 为Gender 时 Name可能取值有：Male 、Female
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 置信分：0～100，数值越大表示置信度越高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 识别开始偏移时间，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 识别结束偏移时间，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type TaskData struct {

@@ -1,3 +1,273 @@
+# Release v1.0.416
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 1 次发布
+
+发布时间：2022-06-08 15:18:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
+* [DescribeFileTicket](https://cloud.tencent.com/document/api/1553/75164)
+* [DescribeScanTaskList](https://cloud.tencent.com/document/api/1553/75163)
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1553/75162)
+* [DescribeScanTaskStatus](https://cloud.tencent.com/document/api/1553/75161)
+
+新增数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1553/75167#AppInfoItem)
+* [AppTaskData](https://cloud.tencent.com/document/api/1553/75167#AppTaskData)
+* [TaskFlowStepsInfo](https://cloud.tencent.com/document/api/1553/75167#TaskFlowStepsInfo)
+
+
+
+## 音频内容检测(ams) 版本：2020-12-29
+
+### 第 5 次发布
+
+发布时间：2022-06-09 06:05:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RecognitionResult](https://cloud.tencent.com/document/api/1219/53259#RecognitionResult)
+* [Tag](https://cloud.tencent.com/document/api/1219/53259#Tag)
+
+修改数据结构：
+
+* [AudioResult](https://cloud.tencent.com/document/api/1219/53259#AudioResult)
+
+	* 新增成员：RecognitionResults
+
+
+
+
+## 音频内容检测(ams) 版本：2020-06-08
+
+
+
+## 二进制软件成分分析(bsca) 版本：2021-08-11
+
+### 第 2 次发布
+
+发布时间：2022-06-09 06:06:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [MatchKBPURLList](https://cloud.tencent.com/document/api/1483/75192)
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 61 次发布
+
+发布时间：2022-06-09 06:11:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
+
+	* 新增入参：Ipv6ISP
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 34 次发布
+
+发布时间：2022-06-09 06:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UserManagerFilter](https://cloud.tencent.com/document/api/589/33981#UserManagerFilter)
+
+	* 新增成员：UserName
+
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 2 次发布
+
+发布时间：2022-06-08 15:18:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1223/75159)
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1223/75158)
+* [DescribeScanTaskList](https://cloud.tencent.com/document/api/1223/75157)
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1223/75156)
+* [DescribeScanTaskStatus](https://cloud.tencent.com/document/api/1223/75155)
+
+新增数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+* [AppTaskData](https://cloud.tencent.com/document/api/1223/75143#AppTaskData)
+* [TaskFlowStepsInfo](https://cloud.tencent.com/document/api/1223/75143#TaskFlowStepsInfo)
+
+### 第 1 次发布
+
+发布时间：2022-06-08 15:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlySecMiniAppScanTask](https://cloud.tencent.com/document/api/1223/75142)
+* [CreateFlySecMiniAppScanTaskRepeat](https://cloud.tencent.com/document/api/1223/75141)
+* [DescribeFlySecMiniAppReportUrl](https://cloud.tencent.com/document/api/1223/75140)
+* [DescribeFlySecMiniAppScanTaskList](https://cloud.tencent.com/document/api/1223/75139)
+* [DescribeFlySecMiniAppScanTaskParam](https://cloud.tencent.com/document/api/1223/75138)
+* [DescribeFlySecMiniAppScanTaskStatus](https://cloud.tencent.com/document/api/1223/75137)
+
+新增数据结构：
+
+* [FlySecMiniAppTaskData](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppTaskData)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 68 次发布
+
+发布时间：2022-06-09 06:15:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecognizeIndonesiaIDCardOCR](https://cloud.tencent.com/document/api/866/75195)
+* [RecognizePhilippinesDrivingLicenseOCR](https://cloud.tencent.com/document/api/866/75194)
+* [RecognizePhilippinesVoteIDOCR](https://cloud.tencent.com/document/api/866/75193)
+
+新增数据结构：
+
+* [TextDetectionResult](https://cloud.tencent.com/document/api/866/33527#TextDetectionResult)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 17 次发布
+
+发布时间：2022-06-09 06:18:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：EnableTracing
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 22 次发布
+
+发布时间：2022-06-09 06:18:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetectLabelPro](https://cloud.tencent.com/document/api/865/75196)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 104 次发布
+
+发布时间：2022-06-09 06:18:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEKSCluster](https://cloud.tencent.com/document/api/457/52353)
+
+	* 新增入参：SubnetInfos
+
+
+新增数据结构：
+
+* [SubnetInfos](https://cloud.tencent.com/document/api/457/31866#SubnetInfos)
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+### 第 4 次发布
+
+发布时间：2022-06-09 06:19:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RecognitionResult](https://cloud.tencent.com/document/api/1265/51881#RecognitionResult)
+* [Tag](https://cloud.tencent.com/document/api/1265/51881#Tag)
+
+修改数据结构：
+
+* [AudioResult](https://cloud.tencent.com/document/api/1265/51881#AudioResult)
+
+	* 新增成员：RecognitionResults
+
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
+
+
+
 # Release v1.0.415
 
 ## 云顾问(advisor) 版本：2020-07-21

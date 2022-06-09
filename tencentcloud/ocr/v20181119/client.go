@@ -3908,6 +3908,67 @@ func (c *Client) RecognizeHealthCodeOCRWithContext(ctx context.Context, request 
     return
 }
 
+func NewRecognizeIndonesiaIDCardOCRRequest() (request *RecognizeIndonesiaIDCardOCRRequest) {
+    request = &RecognizeIndonesiaIDCardOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeIndonesiaIDCardOCR")
+    
+    
+    return
+}
+
+func NewRecognizeIndonesiaIDCardOCRResponse() (response *RecognizeIndonesiaIDCardOCRResponse) {
+    response = &RecognizeIndonesiaIDCardOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeIndonesiaIDCardOCR
+// 印尼身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeIndonesiaIDCardOCR(request *RecognizeIndonesiaIDCardOCRRequest) (response *RecognizeIndonesiaIDCardOCRResponse, err error) {
+    return c.RecognizeIndonesiaIDCardOCRWithContext(context.Background(), request)
+}
+
+// RecognizeIndonesiaIDCardOCR
+// 印尼身份证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeIndonesiaIDCardOCRWithContext(ctx context.Context, request *RecognizeIndonesiaIDCardOCRRequest) (response *RecognizeIndonesiaIDCardOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeIndonesiaIDCardOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeIndonesiaIDCardOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeIndonesiaIDCardOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiItineraryOCRRequest) {
     request = &RecognizeOnlineTaxiItineraryOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3965,6 +4026,132 @@ func (c *Client) RecognizeOnlineTaxiItineraryOCRWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewRecognizeOnlineTaxiItineraryOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizePhilippinesDrivingLicenseOCRRequest() (request *RecognizePhilippinesDrivingLicenseOCRRequest) {
+    request = &RecognizePhilippinesDrivingLicenseOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesDrivingLicenseOCR")
+    
+    
+    return
+}
+
+func NewRecognizePhilippinesDrivingLicenseOCRResponse() (response *RecognizePhilippinesDrivingLicenseOCRResponse) {
+    response = &RecognizePhilippinesDrivingLicenseOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizePhilippinesDrivingLicenseOCR
+// 菲律宾驾驶证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesDrivingLicenseOCR(request *RecognizePhilippinesDrivingLicenseOCRRequest) (response *RecognizePhilippinesDrivingLicenseOCRResponse, err error) {
+    return c.RecognizePhilippinesDrivingLicenseOCRWithContext(context.Background(), request)
+}
+
+// RecognizePhilippinesDrivingLicenseOCR
+// 菲律宾驾驶证识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesDrivingLicenseOCRWithContext(ctx context.Context, request *RecognizePhilippinesDrivingLicenseOCRRequest) (response *RecognizePhilippinesDrivingLicenseOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizePhilippinesDrivingLicenseOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizePhilippinesDrivingLicenseOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizePhilippinesDrivingLicenseOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizePhilippinesVoteIDOCRRequest() (request *RecognizePhilippinesVoteIDOCRRequest) {
+    request = &RecognizePhilippinesVoteIDOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesVoteIDOCR")
+    
+    
+    return
+}
+
+func NewRecognizePhilippinesVoteIDOCRResponse() (response *RecognizePhilippinesVoteIDOCRResponse) {
+    response = &RecognizePhilippinesVoteIDOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizePhilippinesVoteIDOCR
+// 菲律宾VoteID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesVoteIDOCR(request *RecognizePhilippinesVoteIDOCRRequest) (response *RecognizePhilippinesVoteIDOCRResponse, err error) {
+    return c.RecognizePhilippinesVoteIDOCRWithContext(context.Background(), request)
+}
+
+// RecognizePhilippinesVoteIDOCR
+// 菲律宾VoteID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesVoteIDOCRWithContext(ctx context.Context, request *RecognizePhilippinesVoteIDOCRRequest) (response *RecognizePhilippinesVoteIDOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizePhilippinesVoteIDOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizePhilippinesVoteIDOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizePhilippinesVoteIDOCRResponse()
     err = c.Send(request, response)
     return
 }

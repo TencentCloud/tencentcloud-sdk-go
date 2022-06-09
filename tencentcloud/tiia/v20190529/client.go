@@ -1042,6 +1042,93 @@ func (c *Client) DetectLabelBetaWithContext(ctx context.Context, request *Detect
     return
 }
 
+func NewDetectLabelProRequest() (request *DetectLabelProRequest) {
+    request = &DetectLabelProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectLabelPro")
+    
+    
+    return
+}
+
+func NewDetectLabelProResponse() (response *DetectLabelProResponse) {
+    response = &DetectLabelProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetectLabelPro
+// 通用图像标签可识别数千种常见物体或场景，覆盖日常物品、场景、动物、植物、食物、饮品、交通工具等多个大类，返回主体的标签名称和所属细分类目等，广泛应用于拍照识物、场景分析、图像内容审核与推荐、智能相册分类等场景。
+//
+// 
+//
+// >     
+//
+// - 通用图像标签在原图像标签接口的基础上进行了升级，识别精度和标签覆盖范围相比原图像标签接口更优，推荐使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DetectLabelPro(request *DetectLabelProRequest) (response *DetectLabelProResponse, err error) {
+    return c.DetectLabelProWithContext(context.Background(), request)
+}
+
+// DetectLabelPro
+// 通用图像标签可识别数千种常见物体或场景，覆盖日常物品、场景、动物、植物、食物、饮品、交通工具等多个大类，返回主体的标签名称和所属细分类目等，广泛应用于拍照识物、场景分析、图像内容审核与推荐、智能相册分类等场景。
+//
+// 
+//
+// >     
+//
+// - 通用图像标签在原图像标签接口的基础上进行了升级，识别精度和标签覆盖范围相比原图像标签接口更优，推荐使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGEUNQUALIFIED = "FailedOperation.ImageUnQualified"
+//  FAILEDOPERATION_INVOKECHARGEERROR = "FailedOperation.InvokeChargeError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) DetectLabelProWithContext(ctx context.Context, request *DetectLabelProRequest) (response *DetectLabelProResponse, err error) {
+    if request == nil {
+        request = NewDetectLabelProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectLabelPro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectLabelProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectMisbehaviorRequest() (request *DetectMisbehaviorRequest) {
     request = &DetectMisbehaviorRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1796,6 +1796,9 @@ type ApplyUploadRequest struct {
 	// 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
 	MediaType *string `json:"MediaType,omitempty" name:"MediaType"`
 
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 媒体名称。
 	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
 
@@ -1823,9 +1826,6 @@ type ApplyUploadRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
-
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ApplyUploadRequest) ToJsonString() string {
@@ -1841,6 +1841,7 @@ func (r *ApplyUploadRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "MediaType")
+	delete(f, "SubAppId")
 	delete(f, "MediaName")
 	delete(f, "CoverType")
 	delete(f, "Procedure")
@@ -1850,7 +1851,6 @@ func (r *ApplyUploadRequest) FromJsonString(s string) error {
 	delete(f, "SourceContext")
 	delete(f, "SessionContext")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyUploadRequest has unknown keys!", "")
 	}

@@ -3556,6 +3556,10 @@ type UserInfoForUserManager struct {
 }
 
 type UserManagerFilter struct {
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 }
 
 type UserManagerUserBriefInfo struct {

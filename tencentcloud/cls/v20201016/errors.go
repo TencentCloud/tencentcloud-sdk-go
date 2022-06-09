@@ -159,7 +159,7 @@ const (
 	LIMITEXCEEDED_MACHINEGROUPIP = "LimitExceeded.MachineGroupIp"
 
 	// 机器组Label超过限制。
-	LIMITEXCEEDED_MACHINEGROUPLABELS = "LimitExceeded.MachineGroupLabels"
+	LIMITEXCEEDED_MACHINEGROUPIPLABELS = "LimitExceeded.MachineGroupIpLabels"
 
 	// 分区超过限制。
 	LIMITEXCEEDED_PARTITION = "LimitExceeded.Partition"

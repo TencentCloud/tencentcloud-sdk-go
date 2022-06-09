@@ -316,7 +316,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_zh_medical  医疗；
 	// • 16k_th 泰语；
 	// • 16k_wuu-SH：16k 上海话方言；
-	// • 16k_zh_dialect：多方言。
+	// • 16k_zh_dialect：多方言，支持23种方言。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
@@ -1107,7 +1107,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
 	// • 16k_zh_medical：16k 医疗；
-	// • 16k_zh_dialect：多方言。
+	// • 16k_zh_dialect：多方言，支持23种方言。
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。

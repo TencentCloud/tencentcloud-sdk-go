@@ -139,6 +139,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 创建指定规格的ES集群实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
@@ -158,6 +159,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 创建指定规格的ES集群实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"

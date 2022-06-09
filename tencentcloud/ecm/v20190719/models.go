@@ -207,6 +207,12 @@ type AssignIpv6AddressesRequest struct {
 
 	// 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
+
+	// ipv6运营商如下：
+	// CTCC：中国电信
+	// CUCC：中国联通
+	// CMCC：中国移动
+	Ipv6ISP *string `json:"Ipv6ISP,omitempty" name:"Ipv6ISP"`
 }
 
 func (r *AssignIpv6AddressesRequest) ToJsonString() string {
@@ -225,6 +231,7 @@ func (r *AssignIpv6AddressesRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInterfaceId")
 	delete(f, "Ipv6Addresses")
 	delete(f, "Ipv6AddressCount")
+	delete(f, "Ipv6ISP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignIpv6AddressesRequest has unknown keys!", "")
 	}
