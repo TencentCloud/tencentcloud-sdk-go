@@ -20,6 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApolloEnvParam struct {
+
+	// 环境名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境内引擎的节点规格 ID
+	EngineResourceSpec *string `json:"EngineResourceSpec,omitempty" name:"EngineResourceSpec"`
+
+	// 环境内引擎的节点数量
+	EngineNodeNum *int64 `json:"EngineNodeNum,omitempty" name:"EngineNodeNum"`
+
+	// 配置存储空间大小，以GB为单位
+	StorageCapacity *int64 `json:"StorageCapacity,omitempty" name:"StorageCapacity"`
+
+	// VPC ID。在 VPC 的子网内分配一个 IP 作为 ConfigServer 的访问地址
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID。在 VPC 的子网内分配一个 IP 作为 ConfigServer 的访问地址
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type BoundK8SInfo struct {
 
 	// 绑定的kubernetes集群ID
@@ -32,6 +53,208 @@ type BoundK8SInfo struct {
 	// 服务同步模式，all为全量同步，demand为按需同步
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
+}
+
+type CreateEngineRequest struct {
+	*tchttp.BaseRequest
+
+	// 引擎类型。参考值：
+	// - zookeeper
+	// - nacos
+	// - consul
+	// - apollo
+	// - eureka
+	// - polaris
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 引擎的开源版本。每种引擎支持的开源版本不同，请参考产品文档或者控制台购买页
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 引擎的产品版本。参考值：
+	// - STANDARD： 标准版
+	// 
+	// 引擎各版本及可选择的规格、节点数说明：
+	// apollo - STANDARD版本
+	// 规格列表：spec-qcr53kf1t（1C2G）,spec-qdr53kf2w（2C4G）
+	// 节点数：1，2，3，4，5
+	// 
+	// eureka - STANDARD版本
+	// 规格列表：spec-qvj6k7t4q（1C2G）,spec-qcr53kfjt（2C4G）,spec-qvj6k7t4m（4G8G）,spec-qcr54kfjt（8C16G）,spec-qcr55kfjt（16C32G）
+	// 节点数：3，4，5
+	EngineProductVersion *string `json:"EngineProductVersion,omitempty" name:"EngineProductVersion"`
+
+	// 引擎所在地域。参考值说明：
+	// 中国区 参考值：
+	// - ap-guangzhou：广州
+	// - ap-beijing：北京
+	// - ap-chengdu：成都
+	// - ap-chongqing：重庆
+	// - ap-nanjing：南京
+	// - ap-shanghai：上海
+	// - ap-hongkong：香港
+	// - ap-taipei：台北
+	// 亚太区 参考值：
+	// - ap-jakarta：雅加达
+	// - ap-singapore：新加坡
+	// 北美区 参考值
+	// - na-toronto：多伦多
+	// 金融专区 参考值
+	// - ap-beijing-fsi：北京金融
+	// - ap-shanghai-fsi：上海金融
+	// - ap-shenzhen-fsi：深圳金融
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 引擎名称。参考值：
+	// - eurek-test
+	EngineName *string `json:"EngineName,omitempty" name:"EngineName"`
+
+	// 付费类型。参考值：
+	// - 0：后付费
+	// - 1：预付费
+	TradeType *int64 `json:"TradeType,omitempty" name:"TradeType"`
+
+	// 引擎的节点规格 ID。参见EngineProductVersion字段说明
+	EngineResourceSpec *string `json:"EngineResourceSpec,omitempty" name:"EngineResourceSpec"`
+
+	// 引擎的节点数量。参见EngineProductVersion字段说明
+	EngineNodeNum *int64 `json:"EngineNodeNum,omitempty" name:"EngineNodeNum"`
+
+	// VPC ID。在 VPC 的子网内分配一个 IP 作为引擎的访问地址。参考值：
+	// - vpc-conz6aix
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID。在 VPC 的子网内分配一个 IP 作为引擎的访问地址。参考值：
+	// - subnet-ahde9me9
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// Apollo 环境配置参数列表。参数说明：
+	// 如果创建Apollo类型，此参数为必填的环境信息列表，最多可选4个环境。环境信息参数说明：
+	// - Name：环境名。参考值：prod, dev, fat, uat
+	// - EngineResourceSpec：环境内引擎的节点规格ID。参见EngineProductVersion参数说明
+	// - EngineNodeNum：环境内引擎的节点数量。参见EngineProductVersion参数说明，其中prod环境支持的节点数为2，3，4，5
+	// - StorageCapacity：配置存储空间大小，以GB为单位，步长为5.参考值：35
+	// - VpcId：VPC ID。参考值：vpc-conz6aix
+	// - SubnetId：子网 ID。参考值：subnet-ahde9me9
+	ApolloEnvParams []*ApolloEnvParam `json:"ApolloEnvParams,omitempty" name:"ApolloEnvParams"`
+
+	// 引擎的标签列表。用户自定义的key/value形式，无参考值
+	EngineTags []*InstanceTagInfo `json:"EngineTags,omitempty" name:"EngineTags"`
+
+	// 引擎的初始帐号信息。可设置参数：
+	// - Name：控制台初始用户名
+	// - Password：控制台初始密码
+	// - Token：引擎接口的管理员 Token
+	EngineAdmin *EngineAdmin `json:"EngineAdmin,omitempty" name:"EngineAdmin"`
+
+	// 预付费时长，以月为单位
+	PrepaidPeriod *int64 `json:"PrepaidPeriod,omitempty" name:"PrepaidPeriod"`
+
+	// 自动续费标记，仅预付费使用。参考值：
+	// - 0：不自动续费
+	// - 1：自动续费
+	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitempty" name:"PrepaidRenewFlag"`
+}
+
+func (r *CreateEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineType")
+	delete(f, "EngineVersion")
+	delete(f, "EngineProductVersion")
+	delete(f, "EngineRegion")
+	delete(f, "EngineName")
+	delete(f, "TradeType")
+	delete(f, "EngineResourceSpec")
+	delete(f, "EngineNodeNum")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ApolloEnvParams")
+	delete(f, "EngineTags")
+	delete(f, "EngineAdmin")
+	delete(f, "PrepaidPeriod")
+	delete(f, "PrepaidRenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 引擎实例 ID
+		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEngineRequest struct {
+	*tchttp.BaseRequest
+
+	// 引擎实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DeleteEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeSREInstanceAccessAddressRequest struct {
@@ -181,6 +404,18 @@ func (r *DescribeSREInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EngineAdmin struct {
+
+	// 控制台初始用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 控制台初始密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 引擎接口的管理员 Token
+	Token *string `json:"Token,omitempty" name:"Token"`
+}
+
 type EnvAddressInfo struct {
 
 	// 环境名
@@ -239,6 +474,15 @@ type Filter struct {
 
 	// 过滤参数值
 	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type InstanceTagInfo struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type KVPair struct {

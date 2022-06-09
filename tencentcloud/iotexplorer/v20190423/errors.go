@@ -66,6 +66,9 @@ const (
 	INTERNALERROR = "InternalError"
 
 	// DB操作错误。
+	INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+
+	// DB操作错误。
 	INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 
 	// 内部LoRaServer错误。

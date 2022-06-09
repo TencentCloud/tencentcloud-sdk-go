@@ -8068,9 +8068,12 @@ func NewPushUrlCacheResponse() (response *PushUrlCacheResponse) {
 //
 // 3. 单次请求最多指定20个 URL。
 //
+// 4. 默认预热配额为每天10000个 URL。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PushUrlCache(request *PushUrlCacheRequest) (response *PushUrlCacheResponse, err error) {
     return c.PushUrlCacheWithContext(context.Background(), request)
@@ -8083,9 +8086,12 @@ func (c *Client) PushUrlCache(request *PushUrlCacheRequest) (response *PushUrlCa
 //
 // 3. 单次请求最多指定20个 URL。
 //
+// 4. 默认预热配额为每天10000个 URL。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) PushUrlCacheWithContext(ctx context.Context, request *PushUrlCacheRequest) (response *PushUrlCacheResponse, err error) {
     if request == nil {

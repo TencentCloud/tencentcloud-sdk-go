@@ -675,10 +675,10 @@ type DescribeScanTaskListRequest struct {
 	// 应用平台, 0:android, 1:ios, 2:小程序
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 
-	// 任务状态,可多值查询,比如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+	// 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
 	TaskStatuses *string `json:"TaskStatuses,omitempty" name:"TaskStatuses"`
 
-	// 任务类型,可多值查询,采用逗号分隔,比如:"0,1" 0:基础版, 1:专家版, 2:本地化
+	// 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
 	TaskTypes *string `json:"TaskTypes,omitempty" name:"TaskTypes"`
 
 	// 页码

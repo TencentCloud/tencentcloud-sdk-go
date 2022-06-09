@@ -45,6 +45,138 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateEngineRequest() (request *CreateEngineRequest) {
+    request = &CreateEngineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "CreateEngine")
+    
+    
+    return
+}
+
+func NewCreateEngineResponse() (response *CreateEngineResponse) {
+    response = &CreateEngineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEngine
+// 创建引擎实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+func (c *Client) CreateEngine(request *CreateEngineRequest) (response *CreateEngineResponse, err error) {
+    return c.CreateEngineWithContext(context.Background(), request)
+}
+
+// CreateEngine
+// 创建引擎实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_CREATEERROR = "InternalError.CreateError"
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_TKEFAILURE = "InternalError.TKEFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+func (c *Client) CreateEngineWithContext(ctx context.Context, request *CreateEngineRequest) (response *CreateEngineResponse, err error) {
+    if request == nil {
+        request = NewCreateEngineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEngine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEngineRequest() (request *DeleteEngineRequest) {
+    request = &DeleteEngineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DeleteEngine")
+    
+    
+    return
+}
+
+func NewDeleteEngineResponse() (response *DeleteEngineResponse) {
+    response = &DeleteEngineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEngine
+// 删除引擎实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEngine(request *DeleteEngineRequest) (response *DeleteEngineResponse, err error) {
+    return c.DeleteEngineWithContext(context.Background(), request)
+}
+
+// DeleteEngine
+// 删除引擎实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteEngineWithContext(ctx context.Context, request *DeleteEngineRequest) (response *DeleteEngineResponse, err error) {
+    if request == nil {
+        request = NewDeleteEngineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEngine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceAccessAddressRequest) {
     request = &DescribeSREInstanceAccessAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

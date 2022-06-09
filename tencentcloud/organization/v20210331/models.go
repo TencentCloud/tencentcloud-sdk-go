@@ -232,6 +232,12 @@ type DescribeOrganizationMembersRequest struct {
 
 	// 成员名或者成员ID搜索
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 主体名称
+	AuthName *string `json:"AuthName,omitempty" name:"AuthName"`
+
+	// 集团服务（服务管理员查询时，必须指定）
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeOrganizationMembersRequest) ToJsonString() string {
@@ -250,6 +256,8 @@ func (r *DescribeOrganizationMembersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Lang")
 	delete(f, "SearchKey")
+	delete(f, "AuthName")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMembersRequest has unknown keys!", "")
 	}
@@ -287,6 +295,9 @@ type DescribeOrganizationRequest struct {
 
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
+
+	// 产品简称（查询是否集团服务委派管理员必须）
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeOrganizationRequest) ToJsonString() string {
@@ -302,6 +313,7 @@ func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Lang")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationRequest has unknown keys!", "")
 	}
@@ -367,6 +379,10 @@ type DescribeOrganizationResponse struct {
 		// 代付者名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+		// 是否集团服务委派管理员 true-是、false-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		IsAssignManager *bool `json:"IsAssignManager,omitempty" name:"IsAssignManager"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

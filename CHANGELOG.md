@@ -1,3 +1,146 @@
+# Release v1.0.417
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 49 次发布
+
+发布时间：2022-06-10 06:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [StreamConnectInputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectInputInterruptInfo)
+* [StreamConnectOutputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInterruptInfo)
+
+修改数据结构：
+
+* [ProjectStreamConnectStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectStreamConnectStatusChangedEvent)
+
+	* 新增成员：InputInterruptInfo, OutputInterruptInfo
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 43 次发布
+
+发布时间：2022-06-10 06:05:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBashEvents](https://cloud.tencent.com/document/api/296/39594)
+
+	* 新增入参：Order, By
+
+* [DescribeBruteAttackList](https://cloud.tencent.com/document/api/296/56373)
+
+	* 新增入参：Order, By
+
+* [DescribeHostLoginList](https://cloud.tencent.com/document/api/296/60938)
+
+	* 新增入参：Order, By
+
+* [DescribePrivilegeEvents](https://cloud.tencent.com/document/api/296/39591)
+
+	* 新增入参：Order, By
+
+* [DescribeReverseShellEvents](https://cloud.tencent.com/document/api/296/39589)
+
+	* 新增入参：Order, By
+
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 9 次发布
+
+发布时间：2022-06-10 06:11:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增入参：Product
+
+	* 新增出参：IsAssignManager
+
+* [DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)
+
+	* 新增入参：AuthName, Product
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 20 次发布
+
+发布时间：2022-06-10 06:15:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEngine](https://cloud.tencent.com/document/api/1364/75218)
+* [DeleteEngine](https://cloud.tencent.com/document/api/1364/75217)
+
+新增数据结构：
+
+* [ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam)
+* [EngineAdmin](https://cloud.tencent.com/document/api/1364/54942#EngineAdmin)
+* [InstanceTagInfo](https://cloud.tencent.com/document/api/1364/54942#InstanceTagInfo)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 114 次发布
+
+发布时间：2022-06-10 06:16:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
+
+	* 新增入参：CloudLogRegion
+
+* [DescribeFlowLogs](https://cloud.tencent.com/document/api/215/35012)
+
+	* 新增入参：CloudLogRegion
+
+
+修改数据结构：
+
+* [FlowLog](https://cloud.tencent.com/document/api/215/15824#FlowLog)
+
+	* 新增成员：CloudLogRegion
+
+
+
+
 # Release v1.0.416
 
 ## 应用合规平台(acp) 版本：2022-01-05

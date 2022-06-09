@@ -2689,6 +2689,9 @@ type CreateFlowLogRequest struct {
 
 	// 流日志消费端信息，当消费端类型为ckafka时，必填。
 	FlowLogStorage *FlowLogStorage `json:"FlowLogStorage,omitempty" name:"FlowLogStorage"`
+
+	// 流日志存储ID对应的地域，不传递默认为本地域。
+	CloudLogRegion *string `json:"CloudLogRegion,omitempty" name:"CloudLogRegion"`
 }
 
 func (r *CreateFlowLogRequest) ToJsonString() string {
@@ -2713,6 +2716,7 @@ func (r *CreateFlowLogRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "StorageType")
 	delete(f, "FlowLogStorage")
+	delete(f, "CloudLogRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowLogRequest has unknown keys!", "")
 	}
@@ -7875,6 +7879,9 @@ type DescribeFlowLogsRequest struct {
 	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
 	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 流日志存储ID对应的地域信息
+	CloudLogRegion *string `json:"CloudLogRegion,omitempty" name:"CloudLogRegion"`
 }
 
 func (r *DescribeFlowLogsRequest) ToJsonString() string {
@@ -7902,6 +7909,7 @@ func (r *DescribeFlowLogsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "CloudLogRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowLogsRequest has unknown keys!", "")
 	}
@@ -12402,6 +12410,10 @@ type FlowLog struct {
 	// 消费端信息，当消费端类型为ckafka时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowLogStorage *FlowLogStorage `json:"FlowLogStorage,omitempty" name:"FlowLogStorage"`
+
+	// 流日志存储ID对应的地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudLogRegion *string `json:"CloudLogRegion,omitempty" name:"CloudLogRegion"`
 }
 
 type FlowLogStorage struct {

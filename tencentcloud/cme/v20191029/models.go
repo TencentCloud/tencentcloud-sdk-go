@@ -4075,8 +4075,18 @@ type ProjectStreamConnectStatusChangedEvent struct {
 
 	// 项目状态，取值有：
 	// <li>Working：云转推推流开始；</li>
-	// <li>Stopped：云转推推流结束。</li>
+	// <li>Stopped：云转推推流结束；</li>
+	// <li>InputInterrupted：云转推输入断流；</li>
+	// <li>OutputInterrupted：云转推输出断流。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 云转推输入断流信息，仅当 Status 取值 InputInterrupted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputInterruptInfo *StreamConnectInputInterruptInfo `json:"InputInterruptInfo,omitempty" name:"InputInterruptInfo"`
+
+	// 云转推输出断流信息，仅当 Status 取值 OutputInterrupted 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputInterruptInfo *StreamConnectOutputInterruptInfo `json:"OutputInterruptInfo,omitempty" name:"OutputInterruptInfo"`
 }
 
 type ProjectSwitcherStatusChangedEvent struct {
@@ -4402,6 +4412,14 @@ type StorageNewFileCreatedEvent struct {
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
 
+type StreamConnectInputInterruptInfo struct {
+
+	// 云转推输入源标识，取值有：
+	// <li>Main：主源；</li>
+	// <li>Backup：备源。</li>
+	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
+}
+
 type StreamConnectOutput struct {
 
 	// 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
@@ -4429,6 +4447,18 @@ type StreamConnectOutputInfo struct {
 	// <li>On ：开；</li>
 	// <li>Off ：关 。</li>
 	PushSwitch *string `json:"PushSwitch,omitempty" name:"PushSwitch"`
+}
+
+type StreamConnectOutputInterruptInfo struct {
+
+	// 云转推输出标识。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 云转推输出名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 云转推输出地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type StreamConnectProjectInfo struct {
