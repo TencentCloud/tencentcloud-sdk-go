@@ -1293,7 +1293,7 @@ type CreateCmqQueueRequest struct {
 	// 标签数组
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+	// 队列可回溯存储空间：若开启消息回溯，取值范围：10240MB - 512000MB，若不开启消息回溯，取值：0
 	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitempty" name:"RetentionSizeInMB"`
 }
 
@@ -5796,7 +5796,7 @@ type ModifyCmqQueueAttributeRequest struct {
 	// 是否开启事务，1开启，0不开启
 	Transaction *uint64 `json:"Transaction,omitempty" name:"Transaction"`
 
-	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+	// 队列可回溯存储空间：若开启消息回溯，取值范围：10240MB - 512000MB，若不开启消息回溯，取值：0
 	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitempty" name:"RetentionSizeInMB"`
 }
 
@@ -6547,10 +6547,10 @@ type PublishCmqMsgRequest struct {
 	// 主题名
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 消息内容
+	// 消息内容，消息总大小需不大于1024K
 	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
 
-	// 消息标签
+	// 消息标签，支持传递多标签或单路由，单个标签、路由长度不能超过64个字符。
 	MsgTag []*string `json:"MsgTag,omitempty" name:"MsgTag"`
 }
 

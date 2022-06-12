@@ -1415,7 +1415,7 @@ func NewSendEmailResponse() (response *SendEmailResponse) {
 }
 
 // SendEmail
-// 您可以通过此API发送TEXT或者HTML邮件，适用于触发类邮件（验证码、交易类）。默认仅支持使用模板发送邮件。
+// 您可以通过此API发送HTML或者TEXT邮件，适用于触发类邮件（验证码、交易类）。默认仅支持使用模板发送邮件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ATTACHCONTENTTOOLARGE = "FailedOperation.AttachContentToolarge"
@@ -1463,7 +1463,7 @@ func (c *Client) SendEmail(request *SendEmailRequest) (response *SendEmailRespon
 }
 
 // SendEmail
-// 您可以通过此API发送TEXT或者HTML邮件，适用于触发类邮件（验证码、交易类）。默认仅支持使用模板发送邮件。
+// 您可以通过此API发送HTML或者TEXT邮件，适用于触发类邮件（验证码、交易类）。默认仅支持使用模板发送邮件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ATTACHCONTENTTOOLARGE = "FailedOperation.AttachContentToolarge"

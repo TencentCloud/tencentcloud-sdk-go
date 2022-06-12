@@ -106,6 +106,57 @@ func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowR
     return
 }
 
+func NewCancelMultiFlowSignQRCodeRequest() (request *CancelMultiFlowSignQRCodeRequest) {
+    request = &CancelMultiFlowSignQRCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "CancelMultiFlowSignQRCode")
+    
+    
+    return
+}
+
+func NewCancelMultiFlowSignQRCodeResponse() (response *CancelMultiFlowSignQRCodeResponse) {
+    response = &CancelMultiFlowSignQRCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelMultiFlowSignQRCode
+// 此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CancelMultiFlowSignQRCode(request *CancelMultiFlowSignQRCodeRequest) (response *CancelMultiFlowSignQRCodeResponse, err error) {
+    return c.CancelMultiFlowSignQRCodeWithContext(context.Background(), request)
+}
+
+// CancelMultiFlowSignQRCode
+// 此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, request *CancelMultiFlowSignQRCodeRequest) (response *CancelMultiFlowSignQRCodeResponse, err error) {
+    if request == nil {
+        request = NewCancelMultiFlowSignQRCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelMultiFlowSignQRCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
     request = &CreateDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -351,6 +402,71 @@ func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateFlowByFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMultiFlowSignQRCodeRequest() (request *CreateMultiFlowSignQRCodeRequest) {
+    request = &CreateMultiFlowSignQRCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "CreateMultiFlowSignQRCode")
+    
+    
+    return
+}
+
+func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCodeResponse) {
+    response = &CreateMultiFlowSignQRCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMultiFlowSignQRCode
+// 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
+//
+// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
+//  FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
+//  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
+    return c.CreateMultiFlowSignQRCodeWithContext(context.Background(), request)
+}
+
+// CreateMultiFlowSignQRCode
+// 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
+//
+// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
+//  FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
+//  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiFlowSignQRCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiFlowSignQRCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMultiFlowSignQRCodeResponse()
     err = c.Send(request, response)
     return
 }

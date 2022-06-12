@@ -1963,6 +1963,18 @@ type RevokeDomainValidateAuths struct {
 }
 
 type RootCertificates struct {
+
+	// 国密签名证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sign *string `json:"Sign,omitempty" name:"Sign"`
+
+	// 国密加密证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *string `json:"Encrypt,omitempty" name:"Encrypt"`
+
+	// 标准证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Standard *string `json:"Standard,omitempty" name:"Standard"`
 }
 
 type SubmitAuditManagerRequest struct {

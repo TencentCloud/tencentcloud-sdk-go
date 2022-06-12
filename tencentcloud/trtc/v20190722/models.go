@@ -57,7 +57,7 @@ type AudioParams struct {
 	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
 	// 声道数:
-	// 1：单身道;
+	// 1：单声道;
 	// 2：双声道（默认）。
 	Channel *uint64 `json:"Channel,omitempty" name:"Channel"`
 
@@ -1434,6 +1434,14 @@ type MeasureTrtcMcuExternalResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
+		// 应用的用量信息数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Usages []*OneSdkAppIdTranscodeTimeUsagesNewInfo `json:"Usages,omitempty" name:"Usages"`
+
+		// 用户计费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Type *string `json:"Type,omitempty" name:"Type"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -1679,6 +1687,18 @@ type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 
 	// 旁路转码时长查询结果数组
 	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages"`
+
+	// 查询记录数量
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 所查询的应用ID，可能值为:1-应用的应用ID，2-total，显示为total则表示查询的是所有应用的用量合计值。
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type OneSdkAppIdTranscodeTimeUsagesNewInfo struct {
+
+	// 旁路转码时长查询结果数组
+	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeNewUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages"`
 
 	// 查询记录数量
 	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
@@ -1988,6 +2008,48 @@ type SdkAppIdRecordUsage struct {
 
 	// 统计的时间点数据。
 	Usages []*RecordUsage `json:"Usages,omitempty" name:"Usages"`
+}
+
+type SdkAppIdTrtcMcuTranscodeTimeNewUsage struct {
+
+	// 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 语音时长，单位：秒。
+	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
+
+	// 视频时长-标清SD，单位：秒。
+	VideoTimeH264SD *uint64 `json:"VideoTimeH264SD,omitempty" name:"VideoTimeH264SD"`
+
+	// 视频时长-高清HD，单位：秒。
+	VideoTimeH264HD *uint64 `json:"VideoTimeH264HD,omitempty" name:"VideoTimeH264HD"`
+
+	// 视频时长-全高清FHD，单位：秒。
+	VideoTimeH264FHD *uint64 `json:"VideoTimeH264FHD,omitempty" name:"VideoTimeH264FHD"`
+
+	// 视频时长-带宽，单位：mbps。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 视频时长-标清2K，单位：秒。
+	VideoTimeH2642K *uint64 `json:"VideoTimeH2642K,omitempty" name:"VideoTimeH2642K"`
+
+	// 视频时长-标清4K，单位：秒。
+	VideoTimeH2644K *uint64 `json:"VideoTimeH2644K,omitempty" name:"VideoTimeH2644K"`
+
+	// 视频时长-标清265SD，单位：秒。
+	VideoTimeH265SD *uint64 `json:"VideoTimeH265SD,omitempty" name:"VideoTimeH265SD"`
+
+	// 视频时长-高清265HD，单位：秒。
+	VideoTimeH265HD *uint64 `json:"VideoTimeH265HD,omitempty" name:"VideoTimeH265HD"`
+
+	// 视频时长-全高清265FHD，单位：秒。
+	VideoTimeH265FHD *uint64 `json:"VideoTimeH265FHD,omitempty" name:"VideoTimeH265FHD"`
+
+	// 视频时长-标清2652K，单位：秒。
+	VideoTimeH2652K *uint64 `json:"VideoTimeH2652K,omitempty" name:"VideoTimeH2652K"`
+
+	// 视频时长-标清265 4K，单位：秒。
+	VideoTimeH2654K *uint64 `json:"VideoTimeH2654K,omitempty" name:"VideoTimeH2654K"`
 }
 
 type SdkAppIdTrtcMcuTranscodeTimeUsage struct {

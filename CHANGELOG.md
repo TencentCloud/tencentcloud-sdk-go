@@ -1,3 +1,140 @@
+# Release v1.0.418
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 104 次发布
+
+发布时间：2022-06-13 06:07:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：TrueEnableTime, TrueExpireTime
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 8 次发布
+
+发布时间：2022-06-13 06:11:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+新增数据结构：
+
+* [SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 17 次发布
+
+发布时间：2022-06-13 06:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+
+新增数据结构：
+
+* [SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 14 次发布
+
+发布时间：2022-06-13 06:16:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
+
+	* 新增成员：Sign, Encrypt, Standard
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 40 次发布
+
+发布时间：2022-06-13 06:17:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：SyncTag
+
+* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
+
+	* 新增入参：SyncTag
+
+* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
+
+	* 新增入参：DryRun
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 31 次发布
+
+发布时间：2022-06-13 06:19:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MeasureTrtcMcuExternal](https://cloud.tencent.com/document/api/647/74977)
+
+	* 新增出参：Usages, Type
+
+
+新增数据结构：
+
+* [OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)
+* [SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)
+
+
+
 # Release v1.0.417
 
 ## 多媒体创作引擎(cme) 版本：2019-10-29

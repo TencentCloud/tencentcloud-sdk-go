@@ -53,6 +53,61 @@ type CcInfo struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
+type ChannelCancelMultiFlowSignQRCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 二维码id
+	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCancelMultiFlowSignQRCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "QrCodeId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCancelMultiFlowSignQRCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChannelCancelMultiFlowSignQRCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChannelCancelMultiFlowSignQRCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChannelCreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 
@@ -140,6 +195,84 @@ func (r *ChannelCreateFlowByFilesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChannelCreateMultiFlowSignQRCodeRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 合同名称
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同有效天数 默认7天 最高设置不超过30天
+	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitempty" name:"FlowEffectiveDay"`
+
+	// 二维码有效天数 默认7天 最高设置不超过90天
+	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
+
+	// 最大合同份数，默认5份 超过此上限 二维码自动失效
+	MaxFlowNum *int64 `json:"MaxFlowNum,omitempty" name:"MaxFlowNum"`
+
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+}
+
+func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "TemplateId")
+	delete(f, "FlowName")
+	delete(f, "Operator")
+	delete(f, "FlowEffectiveDay")
+	delete(f, "QrEffectiveDay")
+	delete(f, "MaxFlowNum")
+	delete(f, "CallbackUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChannelCreateMultiFlowSignQRCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 签署二维码对象
+		QrCode *SignQrCode `json:"QrCode,omitempty" name:"QrCode"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ChannelCreateMultiFlowSignQRCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -642,7 +775,7 @@ type DescribeTemplatesRequest struct {
 	// 模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 查询内容：0-模版列表及详情（默认），1-仅模版列表
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 查询个数，默认20，最大100
@@ -1255,6 +1388,18 @@ type ResourceUrlInfo struct {
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type SignQrCode struct {
+
+	// 二维码id
+	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
+
+	// 二维码url
+	QrCodeUrl *string `json:"QrCodeUrl,omitempty" name:"QrCodeUrl"`
+
+	// 二维码过期时间
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
 type SignUrlInfo struct {

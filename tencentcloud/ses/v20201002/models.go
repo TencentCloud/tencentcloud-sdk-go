@@ -46,7 +46,7 @@ type BatchSendEmailRequest struct {
 	// 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
 	// 使用模板发送时，填写的模板相关参数
@@ -1358,7 +1358,7 @@ type SendEmailRequest struct {
 	// 邮件主题
 	Subject *string `json:"Subject,omitempty" name:"Subject"`
 
-	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
 	// 使用模板发送时，填写的模板相关参数

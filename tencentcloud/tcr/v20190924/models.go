@@ -467,6 +467,9 @@ type CreateInstanceRequest struct {
 
 	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
+
+	// 是否同步TCR云标签至生成的COS Bucket
+	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -485,6 +488,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryType")
 	delete(f, "TagSpecification")
 	delete(f, "RegistryChargeType")
+	delete(f, "SyncTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -810,6 +814,9 @@ type CreateReplicationInstanceRequest struct {
 
 	// 复制实例地域名称
 	ReplicationRegionName *string `json:"ReplicationRegionName,omitempty" name:"ReplicationRegionName"`
+
+	// 是否同步TCR云标签至生成的COS Bucket
+	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
 }
 
 func (r *CreateReplicationInstanceRequest) ToJsonString() string {
@@ -827,6 +834,7 @@ func (r *CreateReplicationInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "ReplicationRegionId")
 	delete(f, "ReplicationRegionName")
+	delete(f, "SyncTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReplicationInstanceRequest has unknown keys!", "")
 	}
@@ -1552,6 +1560,9 @@ type DeleteInstanceRequest struct {
 
 	// 是否删除存储桶，默认为false
 	DeleteBucket *bool `json:"DeleteBucket,omitempty" name:"DeleteBucket"`
+
+	// 是否dryRun模式，缺省值：false
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *DeleteInstanceRequest) ToJsonString() string {
@@ -1568,6 +1579,7 @@ func (r *DeleteInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RegistryId")
 	delete(f, "DeleteBucket")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstanceRequest has unknown keys!", "")
 	}

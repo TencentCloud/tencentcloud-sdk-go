@@ -45,6 +45,63 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewChannelCancelMultiFlowSignQRCodeRequest() (request *ChannelCancelMultiFlowSignQRCodeRequest) {
+    request = &ChannelCancelMultiFlowSignQRCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCancelMultiFlowSignQRCode")
+    
+    
+    return
+}
+
+func NewChannelCancelMultiFlowSignQRCodeResponse() (response *ChannelCancelMultiFlowSignQRCodeResponse) {
+    response = &ChannelCancelMultiFlowSignQRCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCancelMultiFlowSignQRCode
+// 此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+func (c *Client) ChannelCancelMultiFlowSignQRCode(request *ChannelCancelMultiFlowSignQRCodeRequest) (response *ChannelCancelMultiFlowSignQRCodeResponse, err error) {
+    return c.ChannelCancelMultiFlowSignQRCodeWithContext(context.Background(), request)
+}
+
+// ChannelCancelMultiFlowSignQRCode
+// 此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+func (c *Client) ChannelCancelMultiFlowSignQRCodeWithContext(ctx context.Context, request *ChannelCancelMultiFlowSignQRCodeRequest) (response *ChannelCancelMultiFlowSignQRCodeResponse, err error) {
+    if request == nil {
+        request = NewChannelCancelMultiFlowSignQRCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCancelMultiFlowSignQRCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCancelMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequest) {
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -124,6 +181,73 @@ func (c *Client) ChannelCreateFlowByFilesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewChannelCreateFlowByFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateMultiFlowSignQRCodeRequest() (request *ChannelCreateMultiFlowSignQRCodeRequest) {
+    request = &ChannelCreateMultiFlowSignQRCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateMultiFlowSignQRCode")
+    
+    
+    return
+}
+
+func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMultiFlowSignQRCodeResponse) {
+    response = &ChannelCreateMultiFlowSignQRCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateMultiFlowSignQRCode
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
+//
+// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
+//  FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
+//  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlowSignQRCodeRequest) (response *ChannelCreateMultiFlowSignQRCodeResponse, err error) {
+    return c.ChannelCreateMultiFlowSignQRCodeWithContext(context.Background(), request)
+}
+
+// ChannelCreateMultiFlowSignQRCode
+// 此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
+//
+// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
+//  FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
+//  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context, request *ChannelCreateMultiFlowSignQRCodeRequest) (response *ChannelCreateMultiFlowSignQRCodeResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateMultiFlowSignQRCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateMultiFlowSignQRCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateMultiFlowSignQRCodeResponse()
     err = c.Send(request, response)
     return
 }

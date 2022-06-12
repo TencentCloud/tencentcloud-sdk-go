@@ -35,6 +35,15 @@ const (
 	// 流程已关联文档。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 
+	// 发起签署存在填写控件。
+	FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
+
+	// 模版签署人不存在。
+	FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
+
+	// 一码多人二维码模版有误。
+	FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
+
 	// 模板无资源信息。
 	FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 

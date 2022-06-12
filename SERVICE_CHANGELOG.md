@@ -1,98 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 多媒体创作引擎(cme) 版本：2019-10-29
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 49 次发布
+### 第 104 次发布
 
-发布时间：2022-06-10 06:04:57
+发布时间：2022-06-13 06:07:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [StreamConnectInputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectInputInterruptInfo)
-* [StreamConnectOutputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInterruptInfo)
 
 修改数据结构：
 
-* [ProjectStreamConnectStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectStreamConnectStatusChangedEvent)
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
 
-	* 新增成员：InputInterruptInfo, OutputInterruptInfo
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 43 次发布
-
-发布时间：2022-06-10 06:05:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBashEvents](https://cloud.tencent.com/document/api/296/39594)
-
-	* 新增入参：Order, By
-
-* [DescribeBruteAttackList](https://cloud.tencent.com/document/api/296/56373)
-
-	* 新增入参：Order, By
-
-* [DescribeHostLoginList](https://cloud.tencent.com/document/api/296/60938)
-
-	* 新增入参：Order, By
-
-* [DescribePrivilegeEvents](https://cloud.tencent.com/document/api/296/39591)
-
-	* 新增入参：Order, By
-
-* [DescribeReverseShellEvents](https://cloud.tencent.com/document/api/296/39589)
-
-	* 新增入参：Order, By
+	* 新增成员：TrueEnableTime, TrueExpireTime
 
 
 
 
-## 企业组织(organization) 版本：2021-03-31
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 9 次发布
+### 第 8 次发布
 
-发布时间：2022-06-10 06:11:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
-
-	* 新增入参：Product
-
-	* 新增出参：IsAssignManager
-
-* [DescribeOrganizationMembers](https://cloud.tencent.com/document/api/850/67220)
-
-	* 新增入参：AuthName, Product
-
-
-
-
-## 企业组织(organization) 版本：2018-12-25
-
-
-
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
-
-### 第 20 次发布
-
-发布时间：2022-06-10 06:15:33
+发布时间：2022-06-13 06:11:55
 
 本次发布包含了以下内容：
 
@@ -100,22 +31,64 @@
 
 新增接口：
 
-* [CreateEngine](https://cloud.tencent.com/document/api/1364/75218)
-* [DeleteEngine](https://cloud.tencent.com/document/api/1364/75217)
+* [CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
 
 新增数据结构：
 
-* [ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam)
-* [EngineAdmin](https://cloud.tencent.com/document/api/1364/54942#EngineAdmin)
-* [InstanceTagInfo](https://cloud.tencent.com/document/api/1364/54942#InstanceTagInfo)
+* [SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 114 次发布
+### 第 17 次发布
 
-发布时间：2022-06-10 06:16:31
+发布时间：2022-06-13 06:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+
+新增数据结构：
+
+* [SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 14 次发布
+
+发布时间：2022-06-13 06:16:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
+
+	* 新增成员：Sign, Encrypt, Standard
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 40 次发布
+
+发布时间：2022-06-13 06:17:36
 
 本次发布包含了以下内容：
 
@@ -123,21 +96,42 @@
 
 修改接口：
 
-* [CreateFlowLog](https://cloud.tencent.com/document/api/215/35015)
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
 
-	* 新增入参：CloudLogRegion
+	* 新增入参：SyncTag
 
-* [DescribeFlowLogs](https://cloud.tencent.com/document/api/215/35012)
+* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
 
-	* 新增入参：CloudLogRegion
+	* 新增入参：SyncTag
+
+* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
+
+	* 新增入参：DryRun
 
 
-修改数据结构：
 
-* [FlowLog](https://cloud.tencent.com/document/api/215/15824#FlowLog)
 
-	* 新增成员：CloudLogRegion
+## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 31 次发布
+
+发布时间：2022-06-13 06:19:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MeasureTrtcMcuExternal](https://cloud.tencent.com/document/api/647/74977)
+
+	* 新增出参：Usages, Type
+
+
+新增数据结构：
+
+* [OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)
+* [SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)
 
 
 
@@ -12570,6 +12564,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 104 次发布
+
+发布时间：2022-06-13 06:07:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
+
+	* 新增成员：TrueEnableTime, TrueExpireTime
+
+
 ### 第 103 次发布
 
 发布时间：2022-06-07 06:02:40
@@ -19335,8 +19344,8 @@
 
 新增数据结构：
 
-* [[StreamConnectInputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectInputInterruptInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectInputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectInputInterruptInfo))
-* [[StreamConnectOutputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInterruptInfo)](https://cloud.tencent.com/document/api/1156/40360#[StreamConnectOutputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInterruptInfo))
+* [StreamConnectInputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectInputInterruptInfo)
+* [StreamConnectOutputInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#StreamConnectOutputInterruptInfo)
 
 修改数据结构：
 
@@ -34019,6 +34028,23 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 8 次发布
+
+发布时间：2022-06-13 06:11:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)](https://cloud.tencent.com/document/api/1323/70369#[SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode))
+
 ### 第 7 次发布
 
 发布时间：2022-06-02 06:08:09
@@ -34257,6 +34283,23 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 17 次发布
+
+发布时间：2022-06-13 06:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)](https://cloud.tencent.com/document/api/#/#)
+* [[ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)](https://cloud.tencent.com/document/api/1420/61525#[SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode))
 
 ### 第 16 次发布
 
@@ -58153,6 +58196,21 @@
 
 ## 证书(ssl) 版本：2019-12-05
 
+### 第 14 次发布
+
+发布时间：2022-06-13 06:16:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
+
+	* 新增成员：Sign, Encrypt, Standard
+
+
 ### 第 13 次发布
 
 发布时间：2022-06-01 06:15:43
@@ -62621,6 +62679,29 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 40 次发布
+
+发布时间：2022-06-13 06:17:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：SyncTag
+
+* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
+
+	* 新增入参：SyncTag
+
+* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
+
+	* 新增入参：DryRun
+
 
 ### 第 39 次发布
 
@@ -70476,6 +70557,26 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 31 次发布
+
+发布时间：2022-06-13 06:19:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MeasureTrtcMcuExternal](https://cloud.tencent.com/document/api/647/74977)
+
+	* 新增出参：Usages, Type
+
+
+新增数据结构：
+
+* [[OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)](https://cloud.tencent.com/document/api/647/44055#[OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo))
+* [[SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)](https://cloud.tencent.com/document/api/647/44055#[SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage))
+
 ### 第 30 次发布
 
 发布时间：2022-06-07 06:15:13
@@ -71015,14 +71116,14 @@
 
 新增接口：
 
-* [[CreateEngine](https://cloud.tencent.com/document/api/1364/75218)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteEngine](https://cloud.tencent.com/document/api/1364/75217)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEngine](https://cloud.tencent.com/document/api/1364/75218)
+* [DeleteEngine](https://cloud.tencent.com/document/api/1364/75217)
 
 新增数据结构：
 
-* [[ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam)](https://cloud.tencent.com/document/api/1364/54942#[ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam))
-* [[EngineAdmin](https://cloud.tencent.com/document/api/1364/54942#EngineAdmin)](https://cloud.tencent.com/document/api/1364/54942#[EngineAdmin](https://cloud.tencent.com/document/api/1364/54942#EngineAdmin))
-* [[InstanceTagInfo](https://cloud.tencent.com/document/api/1364/54942#InstanceTagInfo)](https://cloud.tencent.com/document/api/1364/54942#[InstanceTagInfo](https://cloud.tencent.com/document/api/1364/54942#InstanceTagInfo))
+* [ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam)
+* [EngineAdmin](https://cloud.tencent.com/document/api/1364/54942#EngineAdmin)
+* [InstanceTagInfo](https://cloud.tencent.com/document/api/1364/54942#InstanceTagInfo)
 
 ### 第 19 次发布
 

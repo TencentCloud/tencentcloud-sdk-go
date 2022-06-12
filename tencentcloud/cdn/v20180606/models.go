@@ -9721,6 +9721,14 @@ type TrafficPackage struct {
 	// 流量包当前续订模式，0 未续订、1到期续订、2用完续订、3到期或用完续订
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtensionMode *uint64 `json:"ExtensionMode,omitempty" name:"ExtensionMode"`
+
+	// 流量包实际生效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrueEnableTime *string `json:"TrueEnableTime,omitempty" name:"TrueEnableTime"`
+
+	// 流量包实际过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrueExpireTime *string `json:"TrueExpireTime,omitempty" name:"TrueExpireTime"`
 }
 
 type UpdateDomainConfigRequest struct {
@@ -10328,7 +10336,7 @@ type WebSocket struct {
 	// * WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 设置超时时间，单位为秒，最大超时时间65秒。
+	// 设置超时时间，单位为秒，最大超时时间300秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }
