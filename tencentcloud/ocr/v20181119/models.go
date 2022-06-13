@@ -4971,6 +4971,18 @@ func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SealInfo struct {
+
+	// 印章主体内容
+	SealBody *string `json:"SealBody,omitempty" name:"SealBody"`
+
+	// 印章坐标
+	Location *Rect `json:"Location,omitempty" name:"Location"`
+
+	// 印章其它文本内容
+	OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts"`
+}
+
 type SealOCRRequest struct {
 	*tchttp.BaseRequest
 
@@ -5015,6 +5027,9 @@ type SealOCRResponse struct {
 
 		// 其它文本内容
 		OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts"`
+
+		// 全部印章信息
+		SealInfos []*SealInfo `json:"SealInfos,omitempty" name:"SealInfos"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

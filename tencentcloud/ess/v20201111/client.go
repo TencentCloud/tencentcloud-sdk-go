@@ -266,6 +266,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -291,6 +292,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -579,6 +581,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -602,6 +605,7 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_SYSTEM = "InternalError.System"

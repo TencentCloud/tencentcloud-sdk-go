@@ -403,6 +403,7 @@ func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
@@ -428,6 +429,7 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ECDNCONFIGERROR = "FailedOperation.EcdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"

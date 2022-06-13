@@ -32,6 +32,9 @@ const (
 	// 账号为当前用户
 	FAILEDOPERATION_ACCOUNTISYOURSELF = "FailedOperation.AccountIsYourSelf"
 
+	// 自带许可镜像暂时不支持共享。
+	FAILEDOPERATION_BYOLIMAGESHAREFAILED = "FailedOperation.BYOLImageShareFailed"
+
 	// 未找到指定的容灾组
 	FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
 
@@ -766,6 +769,9 @@ const (
 
 	// 不支持指定的磁盘
 	UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
+
+	// 镜像许可类型与实例不符，请选择其他镜像。
+	UNSUPPORTEDOPERATION_INVALIDIMAGELICENSETYPEFORRESET = "UnsupportedOperation.InvalidImageLicenseTypeForReset"
 
 	// 不支持已经设置了释放时间的实例，请在实例详情页撤销实例定时销毁后再试。
 	UNSUPPORTEDOPERATION_INVALIDINSTANCENOTSUPPORTEDPROTECTEDINSTANCE = "UnsupportedOperation.InvalidInstanceNotSupportedProtectedInstance"

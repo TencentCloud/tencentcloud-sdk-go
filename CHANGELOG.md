@@ -1,3 +1,114 @@
+# Release v1.0.419
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 31 次发布
+
+发布时间：2022-06-14 06:05:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExclusiveInstancesStatus](https://cloud.tencent.com/document/api/628/75503)
+
+新增数据结构：
+
+* [InstanceSummary](https://cloud.tencent.com/document/api/628/45244#InstanceSummary)
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 20 次发布
+
+发布时间：2022-06-14 06:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Column](https://cloud.tencent.com/document/api/1342/53778#Column)
+
+	* 新增成员：IsPartition
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 78 次发布
+
+发布时间：2022-06-14 06:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLiveTimeShiftBillInfoList](https://cloud.tencent.com/document/api/267/75504)
+
+新增数据结构：
+
+* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 69 次发布
+
+发布时间：2022-06-14 06:15:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
+
+	* 新增出参：SealInfos
+
+
+新增数据结构：
+
+* [SealInfo](https://cloud.tencent.com/document/api/866/33527#SealInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 7 次发布
+
+发布时间：2022-06-14 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/75505)
+
+新增数据结构：
+
+* [PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/73155#PortraitManagedRuleDetail)
+
+修改数据结构：
+
+* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/73155#BotPortraitRule)
+
+	* 新增成员：Switch
+
+
+
+
 # Release v1.0.418
 
 ## 内容分发网络(cdn) 版本：2018-06-06

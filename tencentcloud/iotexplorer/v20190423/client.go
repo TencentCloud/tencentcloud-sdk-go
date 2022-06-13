@@ -2022,6 +2022,7 @@ func NewDescribeDeviceBindGatewayResponse() (response *DescribeDeviceBindGateway
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2040,6 +2041,7 @@ func (c *Client) DescribeDeviceBindGateway(request *DescribeDeviceBindGatewayReq
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INTERNALERROR_TIMEOUT = "InternalError.Timeout"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5115,6 +5117,7 @@ func NewPublishRRPCMessageResponse() (response *PublishRRPCMessageResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICENOSUBSCRIPTION = "FailedOperation.DeviceNoSubscription"
 //  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  FAILEDOPERATION_RRPCTIMEOUT = "FailedOperation.RRPCTimeout"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5132,6 +5135,7 @@ func (c *Client) PublishRRPCMessage(request *PublishRRPCMessageRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICENOSUBSCRIPTION = "FailedOperation.DeviceNoSubscription"
 //  FAILEDOPERATION_DEVICEOFFLINE = "FailedOperation.DeviceOffline"
+//  FAILEDOPERATION_RRPCTIMEOUT = "FailedOperation.RRPCTimeout"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5583,6 +5587,7 @@ func NewUpdateFirmwareResponse() (response *UpdateFirmwareResponse) {
 //  FAILEDOPERATION_DEVICEINFOOUTDATED = "FailedOperation.DeviceInfoOutdated"
 //  FAILEDOPERATION_OTHERUPDATETASKEXIST = "FailedOperation.OtherUpdateTaskExist"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
@@ -5603,6 +5608,7 @@ func (c *Client) UpdateFirmware(request *UpdateFirmwareRequest) (response *Updat
 //  FAILEDOPERATION_DEVICEINFOOUTDATED = "FailedOperation.DeviceInfoOutdated"
 //  FAILEDOPERATION_OTHERUPDATETASKEXIST = "FailedOperation.OtherUpdateTaskExist"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"

@@ -5146,6 +5146,59 @@ func (c *Client) DescribeLiveStreamStateWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeLiveTimeShiftBillInfoListRequest() (request *DescribeLiveTimeShiftBillInfoListRequest) {
+    request = &DescribeLiveTimeShiftBillInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveTimeShiftBillInfoList")
+    
+    
+    return
+}
+
+func NewDescribeLiveTimeShiftBillInfoListResponse() (response *DescribeLiveTimeShiftBillInfoListResponse) {
+    response = &DescribeLiveTimeShiftBillInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveTimeShiftBillInfoList
+// 提供给客户对账，按天统计，维度：推流域名、时移文件时长（累加）、配置天数（不累加）、时移总时长（累加）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLiveTimeShiftBillInfoList(request *DescribeLiveTimeShiftBillInfoListRequest) (response *DescribeLiveTimeShiftBillInfoListResponse, err error) {
+    return c.DescribeLiveTimeShiftBillInfoListWithContext(context.Background(), request)
+}
+
+// DescribeLiveTimeShiftBillInfoList
+// 提供给客户对账，按天统计，维度：推流域名、时移文件时长（累加）、配置天数（不累加）、时移总时长（累加）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLiveTimeShiftBillInfoListWithContext(ctx context.Context, request *DescribeLiveTimeShiftBillInfoListRequest) (response *DescribeLiveTimeShiftBillInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveTimeShiftBillInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveTimeShiftBillInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveTimeShiftBillInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveTranscodeDetailInfoRequest() (request *DescribeLiveTranscodeDetailInfoRequest) {
     request = &DescribeLiveTranscodeDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7221,6 +7274,7 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
     return c.ModifyLivePlayDomainWithContext(context.Background(), request)
 }
@@ -7238,6 +7292,7 @@ func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (res
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 func (c *Client) ModifyLivePlayDomainWithContext(ctx context.Context, request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
     if request == nil {
         request = NewModifyLivePlayDomainRequest()
@@ -7498,6 +7553,7 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
     return c.ModifyLiveSnapshotTemplateWithContext(context.Background(), request)
 }
@@ -7520,6 +7576,7 @@ func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateR
 //  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveSnapshotTemplateWithContext(ctx context.Context, request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveSnapshotTemplateRequest()

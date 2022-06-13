@@ -47,6 +47,9 @@ const (
 	// 集群节点版本过低。
 	FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = "FailedOperation.ClusterUpgradeNodeVersion"
 
+	// 内部Client错误。
+	FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+
 	// 内部HTTP客户端错误。
 	FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 
@@ -73,6 +76,9 @@ const (
 
 	// 获得安全组配额失败。
 	FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
+
+	// 查询主题集失败。
+	FAILEDOPERATION_GETCLSLOGSET = "FailedOperation.GetClsLogSet"
 
 	// 连接用户Kubernetes集群失败。
 	FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
@@ -370,6 +376,9 @@ const (
 
 	// 无效的私有CIDR网段。
 	INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
+
+	// 镜像OS不支持。
+	INVALIDPARAMETER_OSNOTSUPPORT = "InvalidParameter.OsNotSupport"
 
 	// 参数错误。
 	INVALIDPARAMETER_PARAM = "InvalidParameter.Param"

@@ -2059,6 +2059,53 @@ func (c *Client) DescribeSecurityPolicyRegionsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeSecurityPortraitRulesRequest() (request *DescribeSecurityPortraitRulesRequest) {
+    request = &DescribeSecurityPortraitRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPortraitRules")
+    
+    
+    return
+}
+
+func NewDescribeSecurityPortraitRulesResponse() (response *DescribeSecurityPortraitRulesResponse) {
+    response = &DescribeSecurityPortraitRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityPortraitRules
+// 查询Bot用户画像规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPortraitRules(request *DescribeSecurityPortraitRulesRequest) (response *DescribeSecurityPortraitRulesResponse, err error) {
+    return c.DescribeSecurityPortraitRulesWithContext(context.Background(), request)
+}
+
+// DescribeSecurityPortraitRules
+// 查询Bot用户画像规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeSecurityPortraitRulesWithContext(ctx context.Context, request *DescribeSecurityPortraitRulesRequest) (response *DescribeSecurityPortraitRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityPortraitRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityPortraitRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityPortraitRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneDDoSPolicyRequest() (request *DescribeZoneDDoSPolicyRequest) {
     request = &DescribeZoneDDoSPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2280,6 +2327,7 @@ func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
 // 查询七层离线日志
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     return c.DownloadL7LogsWithContext(context.Background(), request)
@@ -2289,6 +2337,7 @@ func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *Downl
 // 查询七层离线日志
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     if request == nil {
@@ -2327,7 +2376,7 @@ func NewIdentifyZoneResponse() (response *IdentifyZoneResponse) {
 // 用于验证站点所有权
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) IdentifyZone(request *IdentifyZoneRequest) (response *IdentifyZoneResponse, err error) {
     return c.IdentifyZoneWithContext(context.Background(), request)
 }
@@ -2336,7 +2385,7 @@ func (c *Client) IdentifyZone(request *IdentifyZoneRequest) (response *IdentifyZ
 // 用于验证站点所有权
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) IdentifyZoneWithContext(ctx context.Context, request *IdentifyZoneRequest) (response *IdentifyZoneResponse, err error) {
     if request == nil {
         request = NewIdentifyZoneRequest()
@@ -2755,6 +2804,7 @@ func NewModifyDnsRecordResponse() (response *ModifyDnsRecordResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2767,6 +2817,7 @@ func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"

@@ -142,6 +142,7 @@ func NewDeleteEngineResponse() (response *DeleteEngineResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
@@ -156,6 +157,7 @@ func (c *Client) DeleteEngine(request *DeleteEngineRequest) (response *DeleteEng
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_UPDATEERROR = "InternalError.UpdateError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"

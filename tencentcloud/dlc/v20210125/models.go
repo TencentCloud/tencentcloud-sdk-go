@@ -323,6 +323,10 @@ type Column struct {
 	// 字段修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 是否为分区字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartition *bool `json:"IsPartition,omitempty" name:"IsPartition"`
 }
 
 type CreateDatabaseRequest struct {

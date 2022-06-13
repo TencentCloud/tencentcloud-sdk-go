@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 操作失败，账号已欠费隔离。
+	FAILEDOPERATION_ACCOUNTISOLATED = "FailedOperation.AccountIsolated"
+
 	// 已分发设备，不能再次创建。
 	FAILEDOPERATION_ALREADYDISTRIBUTIONDEVICE = "FailedOperation.AlreadyDistributionDevice"
 
@@ -82,6 +85,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 数据库内部错误。
+	INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"

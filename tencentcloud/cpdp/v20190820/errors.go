@@ -203,6 +203,9 @@ const (
 	// 查无此商户。
 	FAILEDOPERATION_MERCHANTNOTEXIST = "FailedOperation.MerchantNotExist"
 
+	// 商户不存在。
+	FAILEDOPERATION_MERCHANTNOTEXISTS = "FailedOperation.MerchantNotExists"
+
 	// 商户权限错误。
 	FAILEDOPERATION_MERCHANTPERMISSIONERROR = "FailedOperation.MerchantPermissionError"
 

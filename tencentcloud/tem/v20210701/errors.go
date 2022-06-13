@@ -122,6 +122,9 @@ const (
 	// 镜像仓库还未就绪。
 	MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 
+	// 你操作的资源已被其他操作占用，请稍后重试。
+	RESOURCEINUSE_RESOURCEALREADYLOCKED = "ResourceInUse.ResourceAlreadyLocked"
+
 	// 资源已绑定。
 	RESOURCEINUSE_RESOURCEALREADYUSED = "ResourceInUse.ResourceAlreadyUsed"
 

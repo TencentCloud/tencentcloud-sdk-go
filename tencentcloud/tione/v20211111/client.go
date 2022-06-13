@@ -178,6 +178,7 @@ func NewCreateTrainingModelResponse() (response *CreateTrainingModelResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingModel(request *CreateTrainingModelRequest) (response *CreateTrainingModelResponse, err error) {
     return c.CreateTrainingModelWithContext(context.Background(), request)
@@ -200,6 +201,7 @@ func (c *Client) CreateTrainingModel(request *CreateTrainingModelRequest) (respo
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingModelWithContext(ctx context.Context, request *CreateTrainingModelRequest) (response *CreateTrainingModelResponse, err error) {
     if request == nil {

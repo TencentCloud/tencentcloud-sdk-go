@@ -1109,6 +1109,7 @@ func NewDescribeLoginStatusResponse() (response *DescribeLoginStatusResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLoginStatus(request *DescribeLoginStatusRequest) (response *DescribeLoginStatusResponse, err error) {
     return c.DescribeLoginStatusWithContext(context.Background(), request)
@@ -1120,6 +1121,7 @@ func (c *Client) DescribeLoginStatus(request *DescribeLoginStatusRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeLoginStatusWithContext(ctx context.Context, request *DescribeLoginStatusRequest) (response *DescribeLoginStatusResponse, err error) {
     if request == nil {

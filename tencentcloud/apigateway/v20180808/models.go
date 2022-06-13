@@ -3613,6 +3613,63 @@ func (r *DescribeExclusiveInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeExclusiveInstancesStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 分页查询，limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询，offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeExclusiveInstancesStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstancesStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExclusiveInstancesStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeExclusiveInstancesStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 独享实例列表查询结果
+		Result *InstanceSummary `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeExclusiveInstancesStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExclusiveInstancesStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeIPStrategyApisStatusRequest struct {
 	*tchttp.BaseRequest
 
@@ -5722,6 +5779,17 @@ type InstanceParameterInput struct {
 
 	// 参数值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type InstanceSummary struct {
+
+	// 专享实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 专享实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceSet []*InstanceInfo `json:"InstanceSet,omitempty" name:"InstanceSet"`
 }
 
 type K8sLabel struct {

@@ -3028,26 +3028,7 @@ func NewDescribeOfflineLogConfigsResponse() (response *DescribeOfflineLogConfigs
 // 获取设置的离线日志监听配置 - 返回设置的用户唯一标识
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
-//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineLogConfigs(request *DescribeOfflineLogConfigsRequest) (response *DescribeOfflineLogConfigsResponse, err error) {
     return c.DescribeOfflineLogConfigsWithContext(context.Background(), request)
 }
@@ -3056,26 +3037,7 @@ func (c *Client) DescribeOfflineLogConfigs(request *DescribeOfflineLogConfigsReq
 // 获取设置的离线日志监听配置 - 返回设置的用户唯一标识
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
-//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineLogConfigsWithContext(ctx context.Context, request *DescribeOfflineLogConfigsRequest) (response *DescribeOfflineLogConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeOfflineLogConfigsRequest()

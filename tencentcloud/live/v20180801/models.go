@@ -5163,6 +5163,71 @@ func (r *DescribeLiveStreamStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeLiveTimeShiftBillInfoListRequest struct {
+	*tchttp.BaseRequest
+
+	// UTC开始时间，支持最近三个月的查询，查询时间最长跨度为一个月。
+	// 
+	// 使用 UTC 格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// UTC结束时间，支持最近三个月的查询，查询时间最长跨度为一个月。
+	// 
+	// 使用 UTC 格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名列表，若不传递此参数，则表示查询总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+}
+
+func (r *DescribeLiveTimeShiftBillInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftBillInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTimeShiftBillInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLiveTimeShiftBillInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 时移计费明细数据。
+		DataInfoList []*TimeShiftBillData `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeLiveTimeShiftBillInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftBillInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeLiveTranscodeDetailInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -9526,6 +9591,21 @@ type TemplateInfo struct {
 	// 是否以短边作为高度，0：否，1：是。默认0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShortEdgeAsHeight *int64 `json:"ShortEdgeAsHeight,omitempty" name:"ShortEdgeAsHeight"`
+}
+
+type TimeShiftBillData struct {
+
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 时移时长,单位分钟。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 时移配置天数，单位天。
+	StoragePeriod *float64 `json:"StoragePeriod,omitempty" name:"StoragePeriod"`
+
+	// 时间点，格式: yyyy-mm-ddTHH:MM:SSZ。
+	Time *string `json:"Time,omitempty" name:"Time"`
 }
 
 type TimeValue struct {

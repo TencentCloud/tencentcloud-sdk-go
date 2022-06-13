@@ -1,121 +1,69 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 104 次发布
-
-发布时间：2022-06-13 06:07:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TrafficPackage](https://cloud.tencent.com/document/api/228/30987#TrafficPackage)
-
-	* 新增成员：TrueEnableTime, TrueExpireTime
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
-
-### 第 8 次发布
-
-发布时间：2022-06-13 06:11:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)
-* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
-
-新增数据结构：
-
-* [SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 17 次发布
-
-发布时间：2022-06-13 06:12:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)
-* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
-
-新增数据结构：
-
-* [SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 证书(ssl) 版本：2019-12-05
-
-### 第 14 次发布
-
-发布时间：2022-06-13 06:16:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RootCertificates](https://cloud.tencent.com/document/api/400/41679#RootCertificates)
-
-	* 新增成员：Sign, Encrypt, Standard
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 40 次发布
-
-发布时间：2022-06-13 06:17:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
-
-	* 新增入参：SyncTag
-
-* [CreateReplicationInstance](https://cloud.tencent.com/document/api/1141/54178)
-
-	* 新增入参：SyncTag
-
-* [DeleteInstance](https://cloud.tencent.com/document/api/1141/49983)
-
-	* 新增入参：DryRun
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
+## API网关(apigateway) 版本：2018-08-08
 
 ### 第 31 次发布
 
-发布时间：2022-06-13 06:19:26
+发布时间：2022-06-14 06:05:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExclusiveInstancesStatus](https://cloud.tencent.com/document/api/628/75503)
+
+新增数据结构：
+
+* [InstanceSummary](https://cloud.tencent.com/document/api/628/45244#InstanceSummary)
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 20 次发布
+
+发布时间：2022-06-14 06:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Column](https://cloud.tencent.com/document/api/1342/53778#Column)
+
+	* 新增成员：IsPartition
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 78 次发布
+
+发布时间：2022-06-14 06:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLiveTimeShiftBillInfoList](https://cloud.tencent.com/document/api/267/75504)
+
+新增数据结构：
+
+* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 69 次发布
+
+发布时间：2022-06-14 06:15:05
 
 本次发布包含了以下内容：
 
@@ -123,15 +71,41 @@
 
 修改接口：
 
-* [MeasureTrtcMcuExternal](https://cloud.tencent.com/document/api/647/74977)
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
 
-	* 新增出参：Usages, Type
+	* 新增出参：SealInfos
 
 
 新增数据结构：
 
-* [OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)
-* [SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)
+* [SealInfo](https://cloud.tencent.com/document/api/866/33527#SealInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 7 次发布
+
+发布时间：2022-06-14 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/75505)
+
+新增数据结构：
+
+* [PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/73155#PortraitManagedRuleDetail)
+
+修改数据结构：
+
+* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/73155#BotPortraitRule)
+
+	* 新增成员：Switch
+
 
 
 
@@ -2382,6 +2356,22 @@
 
 
 ## API网关(apigateway) 版本：2018-08-08
+
+### 第 31 次发布
+
+发布时间：2022-06-14 06:05:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeExclusiveInstancesStatus](https://cloud.tencent.com/document/api/628/75503)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InstanceSummary](https://cloud.tencent.com/document/api/628/45244#InstanceSummary)](https://cloud.tencent.com/document/api/628/45244#[InstanceSummary](https://cloud.tencent.com/document/api/628/45244#InstanceSummary))
 
 ### 第 30 次发布
 
@@ -28684,6 +28674,21 @@
 
 ## 数据湖计算(dlc) 版本：2021-01-25
 
+### 第 20 次发布
+
+发布时间：2022-06-14 06:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Column](https://cloud.tencent.com/document/api/1342/53778#Column)
+
+	* 新增成员：IsPartition
+
+
 ### 第 19 次发布
 
 发布时间：2022-06-07 06:06:14
@@ -34038,12 +34043,12 @@
 
 新增接口：
 
-* [[CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)](https://cloud.tencent.com/document/api/#/#)
+* [CancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75451)
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
 
 新增数据结构：
 
-* [[SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)](https://cloud.tencent.com/document/api/1323/70369#[SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode))
+* [SignQrCode](https://cloud.tencent.com/document/api/1323/70369#SignQrCode)
 
 ### 第 7 次发布
 
@@ -34294,12 +34299,12 @@
 
 新增接口：
 
-* [[ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)](https://cloud.tencent.com/document/api/#/#)
-* [[ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCancelMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75453)
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
 
 新增数据结构：
 
-* [[SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)](https://cloud.tencent.com/document/api/1420/61525#[SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode))
+* [SignQrCode](https://cloud.tencent.com/document/api/1420/61525#SignQrCode)
 
 ### 第 16 次发布
 
@@ -44192,6 +44197,22 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 78 次发布
+
+发布时间：2022-06-14 06:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLiveTimeShiftBillInfoList](https://cloud.tencent.com/document/api/267/75504)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)](https://cloud.tencent.com/document/api/267/20474#[TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData))
+
 ### 第 77 次发布
 
 发布时间：2022-06-08 06:11:54
@@ -51007,6 +51028,25 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 69 次发布
+
+发布时间：2022-06-14 06:15:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
+
+	* 新增出参：SealInfos
+
+
+新增数据结构：
+
+* [[SealInfo](https://cloud.tencent.com/document/api/866/33527#SealInfo)](https://cloud.tencent.com/document/api/866/33527#[SealInfo](https://cloud.tencent.com/document/api/866/33527#SealInfo))
 
 ### 第 68 次发布
 
@@ -65775,6 +65815,29 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
 
+### 第 7 次发布
+
+发布时间：2022-06-14 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/75505)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/73155#PortraitManagedRuleDetail)](https://cloud.tencent.com/document/api/1552/73155#[PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/73155#PortraitManagedRuleDetail))
+
+修改数据结构：
+
+* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/73155#BotPortraitRule)
+
+	* 新增成员：Switch
+
+
 ### 第 6 次发布
 
 发布时间：2022-06-08 06:16:20
@@ -70574,8 +70637,8 @@
 
 新增数据结构：
 
-* [[OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)](https://cloud.tencent.com/document/api/647/44055#[OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo))
-* [[SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)](https://cloud.tencent.com/document/api/647/44055#[SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage))
+* [OneSdkAppIdTranscodeTimeUsagesNewInfo](https://cloud.tencent.com/document/api/647/44055#OneSdkAppIdTranscodeTimeUsagesNewInfo)
+* [SdkAppIdTrtcMcuTranscodeTimeNewUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeNewUsage)
 
 ### 第 30 次发布
 

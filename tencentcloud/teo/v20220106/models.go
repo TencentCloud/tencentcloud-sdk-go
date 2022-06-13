@@ -332,6 +332,10 @@ type BotPortraitRule struct {
 	// 拦截的规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropManagedIds []*int64 `json:"DropManagedIds,omitempty" name:"DropManagedIds"`
+
+	// 本功能的开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type CacheConfig struct {
@@ -3508,6 +3512,65 @@ func (r *DescribeSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSecurityPortraitRulesRequest struct {
+	*tchttp.BaseRequest
+
+	// 一级域名
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 子域名/应用名
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
+}
+
+func (r *DescribeSecurityPortraitRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityPortraitRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Entity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityPortraitRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityPortraitRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 本次返回的规则数
+		Count *int64 `json:"Count,omitempty" name:"Count"`
+
+		// Bot用户画像规则
+		Rules []*PortraitManagedRuleDetail `json:"Rules,omitempty" name:"Rules"`
+
+		// 总规则数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSecurityPortraitRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityPortraitRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeZoneDDoSPolicyRequest struct {
 	*tchttp.BaseRequest
 
@@ -5794,6 +5857,29 @@ type OriginRecordPrivateParameter struct {
 
 	// 私有鉴权参数数值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type PortraitManagedRuleDetail struct {
+
+	// 规则唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则所属类型的名字, botdb(用户画像)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTypeName *string `json:"RuleTypeName,omitempty" name:"RuleTypeName"`
+
+	// 规则内的功能分类Id(扫描器，Bot行为等)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassificationId *int64 `json:"ClassificationId,omitempty" name:"ClassificationId"`
+
+	// 规则当前所属动作状态(block, alg, ...)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type PostMaxSize struct {

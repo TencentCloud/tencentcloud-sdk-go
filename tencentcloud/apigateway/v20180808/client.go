@@ -2888,6 +2888,71 @@ func (c *Client) DescribeExclusiveInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeExclusiveInstancesStatusRequest() (request *DescribeExclusiveInstancesStatusRequest) {
+    request = &DescribeExclusiveInstancesStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribeExclusiveInstancesStatus")
+    
+    
+    return
+}
+
+func NewDescribeExclusiveInstancesStatusResponse() (response *DescribeExclusiveInstancesStatusResponse) {
+    response = &DescribeExclusiveInstancesStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExclusiveInstancesStatus
+// 查询专享实例列表（新）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeExclusiveInstancesStatus(request *DescribeExclusiveInstancesStatusRequest) (response *DescribeExclusiveInstancesStatusResponse, err error) {
+    return c.DescribeExclusiveInstancesStatusWithContext(context.Background(), request)
+}
+
+// DescribeExclusiveInstancesStatus
+// 查询专享实例列表（新）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSERROR = "FailedOperation.ClsError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribeExclusiveInstancesStatusWithContext(ctx context.Context, request *DescribeExclusiveInstancesStatusRequest) (response *DescribeExclusiveInstancesStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeExclusiveInstancesStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExclusiveInstancesStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExclusiveInstancesStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIPStrategyRequest() (request *DescribeIPStrategyRequest) {
     request = &DescribeIPStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},

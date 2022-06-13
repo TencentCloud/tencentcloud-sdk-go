@@ -1616,6 +1616,7 @@ func NewInquirePriceModifyDiskExtraPerformanceResponse() (response *InquirePrice
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 func (c *Client) InquirePriceModifyDiskExtraPerformance(request *InquirePriceModifyDiskExtraPerformanceRequest) (response *InquirePriceModifyDiskExtraPerformanceResponse, err error) {
     return c.InquirePriceModifyDiskExtraPerformanceWithContext(context.Background(), request)
 }
@@ -1628,6 +1629,7 @@ func (c *Client) InquirePriceModifyDiskExtraPerformance(request *InquirePriceMod
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 func (c *Client) InquirePriceModifyDiskExtraPerformanceWithContext(ctx context.Context, request *InquirePriceModifyDiskExtraPerformanceRequest) (response *InquirePriceModifyDiskExtraPerformanceResponse, err error) {
     if request == nil {
         request = NewInquirePriceModifyDiskExtraPerformanceRequest()
@@ -2101,6 +2103,7 @@ func NewModifyDisksChargeTypeResponse() (response *ModifyDisksChargeTypeResponse
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 func (c *Client) ModifyDisksChargeType(request *ModifyDisksChargeTypeRequest) (response *ModifyDisksChargeTypeResponse, err error) {
     return c.ModifyDisksChargeTypeWithContext(context.Background(), request)
 }
@@ -2133,6 +2136,7 @@ func (c *Client) ModifyDisksChargeType(request *ModifyDisksChargeTypeRequest) (r
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 func (c *Client) ModifyDisksChargeTypeWithContext(ctx context.Context, request *ModifyDisksChargeTypeRequest) (response *ModifyDisksChargeTypeResponse, err error) {
     if request == nil {
         request = NewModifyDisksChargeTypeRequest()

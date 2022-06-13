@@ -1111,6 +1111,7 @@ func NewDeleteAdaptiveDynamicStreamingTemplateResponse() (response *DeleteAdapti
 // 删除转自适应码流模板
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
@@ -1122,6 +1123,7 @@ func (c *Client) DeleteAdaptiveDynamicStreamingTemplate(request *DeleteAdaptiveD
 // 删除转自适应码流模板
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
