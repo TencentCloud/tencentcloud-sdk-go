@@ -773,6 +773,68 @@ func (r *DetectDisgustResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectEnvelopeRequest struct {
+	*tchttp.BaseRequest
+
+	// 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	// **注意：图片需要base64编码，并且要去掉编码头部。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *DetectEnvelopeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectEnvelopeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectEnvelopeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetectEnvelopeResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 一级标签结果数组。识别是否文件封。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		FirstTags []*ImageTag `json:"FirstTags,omitempty" name:"FirstTags"`
+
+		// 二级标签结果数组。识别文件封正反面。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		SecondTags []*ImageTag `json:"SecondTags,omitempty" name:"SecondTags"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DetectEnvelopeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectEnvelopeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DetectLabelBetaRequest struct {
 	*tchttp.BaseRequest
 
@@ -1383,6 +1445,15 @@ type ImageRect struct {
 
 	// 高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
+type ImageTag struct {
+
+	// 标签内容。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type Labels struct {

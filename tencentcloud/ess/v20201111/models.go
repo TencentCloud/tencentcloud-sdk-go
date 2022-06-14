@@ -550,7 +550,7 @@ func (r *CreateFlowResponse) FromJsonString(s string) error {
 type CreateMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 
-	// 模版ID
+	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 用户信息

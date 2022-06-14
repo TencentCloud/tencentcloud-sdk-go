@@ -1,3 +1,185 @@
+# Release v1.0.420
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 2 次发布
+
+发布时间：2022-06-14 11:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeResourceUsageInfo](https://cloud.tencent.com/document/api/1553/75518)
+
+新增数据结构：
+
+* [ResourceUsageInfoData](https://cloud.tencent.com/document/api/1553/75167#ResourceUsageInfoData)
+
+
+
+## 云拨测(cat) 版本：2018-04-09
+
+### 第 10 次发布
+
+发布时间：2022-06-15 06:04:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* BindAlarmPolicy
+* CreateAgentGroup
+* CreateTaskEx
+* DeleteAgentGroup
+* DeleteTasks
+* DescribeAgentGroups
+* DescribeAgents
+* DescribeAlarmTopic
+* DescribeAlarms
+* DescribeAlarmsByTask
+* DescribeCatLogs
+* DescribeTaskDetail
+* DescribeTasksByType
+* DescribeUserLimit
+* GetAvailRatioHistory
+* GetDailyAvailRatio
+* GetRealAvailRatio
+* GetRespTimeTrendEx
+* GetResultSummary
+* GetReturnCodeHistory
+* GetReturnCodeInfo
+* GetTaskTotalNumber
+* ModifyAgentGroup
+* ModifyTaskEx
+* PauseTask
+* RunTask
+* VerifyResult
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AgentGroup
+* AlarmInfo
+* AlarmTopic
+* CatAgent
+* CatLog
+* CatReturnDetail
+* CatReturnSummary
+* CatTaskDetail
+* DataPoint
+* DataPointMetric
+* DimensionsDetail
+* IspDetail
+* ProvinceDetail
+* ResultSummary
+* TaskAlarm
+
+
+
+## 数字身份管控平台（公众版）(ciam) 版本：2022-03-31
+
+### 第 1 次发布
+
+发布时间：2022-06-14 12:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ResetPassword](https://cloud.tencent.com/document/api/1441/75525)
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 3 次发布
+
+发布时间：2022-06-14 11:16:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBasicDiagnosisResourceUsageInfo](https://cloud.tencent.com/document/api/1223/75520)
+* [DescribeResourceUsageInfo](https://cloud.tencent.com/document/api/1223/75519)
+
+新增数据结构：
+
+* [ResourceUsageInfoData](https://cloud.tencent.com/document/api/1223/75143#ResourceUsageInfoData)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 19 次发布
+
+发布时间：2022-06-15 06:12:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyJob](https://cloud.tencent.com/document/api/849/75553)
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 28 次发布
+
+发布时间：2022-06-15 06:12:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/409/16777)
+
+	* 新增出参：Currency
+
+* [InquiryPriceRenewDBInstance](https://cloud.tencent.com/document/api/409/18103)
+
+	* 新增出参：Currency
+
+* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/409/18102)
+
+	* 新增出参：Currency
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 23 次发布
+
+发布时间：2022-06-15 06:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetectEnvelope](https://cloud.tencent.com/document/api/865/75554)
+
+新增数据结构：
+
+* [ImageTag](https://cloud.tencent.com/document/api/865/35474#ImageTag)
+
+
+
 # Release v1.0.419
 
 ## API网关(apigateway) 版本：2018-08-08

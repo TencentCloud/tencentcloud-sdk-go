@@ -1429,7 +1429,7 @@ type CreateDBInstanceHourRequest struct {
 	// 购买按量计费实例该字段无意义。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 实例名称。
+	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 实例标签信息。
@@ -1628,7 +1628,7 @@ type CreateDBInstanceRequest struct {
 	// 只读实例参数。购买只读实例时，该参数必传。
 	RoGroup *RoGroup `json:"RoGroup,omitempty" name:"RoGroup"`
 
-	// 实例名称。
+	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 实例标签信息。

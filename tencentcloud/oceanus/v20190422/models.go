@@ -1304,6 +1304,68 @@ type JobV1 struct {
 	WorkSpaceName *string `json:"WorkSpaceName,omitempty" name:"WorkSpaceName"`
 }
 
+type ModifyJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 作业Id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 作业名称，支持长度小于50的中文/英文/数字/”-”/”_”/”.”，不能重名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 拖拽文件需传入此参数
+	TargetFolderId *string `json:"TargetFolderId,omitempty" name:"TargetFolderId"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *ModifyJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "Name")
+	delete(f, "Remark")
+	delete(f, "TargetFolderId")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ModifyJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Property struct {
 
 	// 系统配置的Key

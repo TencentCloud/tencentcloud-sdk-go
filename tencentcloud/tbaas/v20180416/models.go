@@ -2454,7 +2454,7 @@ type QueryChainMakerBlockTransactionRequest struct {
 	// 业务链编号，可在业务链列表中获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
-	// 区块高度，-1表示最新区块
+	// 区块高度
 	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
 }
 

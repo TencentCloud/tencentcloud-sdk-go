@@ -806,6 +806,87 @@ func (c *Client) DetectDisgustWithContext(ctx context.Context, request *DetectDi
     return
 }
 
+func NewDetectEnvelopeRequest() (request *DetectEnvelopeRequest) {
+    request = &DetectEnvelopeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tiia", APIVersion, "DetectEnvelope")
+    
+    
+    return
+}
+
+func NewDetectEnvelopeResponse() (response *DetectEnvelopeResponse) {
+    response = &DetectEnvelopeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetectEnvelope
+// 文件封识别可检测图片中是否包含符合文件封（即文件、单据、资料等的袋状包装）特征的物品，覆盖顺丰快递文件封、文件袋、档案袋等多种文件封类型，可应用于物流行业对文件快递的包装审核等场景。
+//
+// 
+//
+// >?   
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_TOOLARGEFILEERROR = "FailedOperation.TooLargeFileError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) DetectEnvelope(request *DetectEnvelopeRequest) (response *DetectEnvelopeResponse, err error) {
+    return c.DetectEnvelopeWithContext(context.Background(), request)
+}
+
+// DetectEnvelope
+// 文件封识别可检测图片中是否包含符合文件封（即文件、单据、资料等的袋状包装）特征的物品，覆盖顺丰快递文件封、文件袋、档案袋等多种文件封类型，可应用于物流行业对文件快递的包装审核等场景。
+//
+// 
+//
+// >?   
+//
+// - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
+//  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_TOOLARGEFILEERROR = "FailedOperation.TooLargeFileError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+func (c *Client) DetectEnvelopeWithContext(ctx context.Context, request *DetectEnvelopeRequest) (response *DetectEnvelopeResponse, err error) {
+    if request == nil {
+        request = NewDetectEnvelopeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectEnvelope require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectEnvelopeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetectLabelRequest() (request *DetectLabelRequest) {
     request = &DetectLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},

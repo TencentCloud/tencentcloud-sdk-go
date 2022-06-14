@@ -233,6 +233,53 @@ func (c *Client) CreateFlySecMiniAppScanTaskRepeatWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeBasicDiagnosisResourceUsageInfoRequest() (request *DescribeBasicDiagnosisResourceUsageInfoRequest) {
+    request = &DescribeBasicDiagnosisResourceUsageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mmps", APIVersion, "DescribeBasicDiagnosisResourceUsageInfo")
+    
+    
+    return
+}
+
+func NewDescribeBasicDiagnosisResourceUsageInfoResponse() (response *DescribeBasicDiagnosisResourceUsageInfoResponse) {
+    response = &DescribeBasicDiagnosisResourceUsageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBasicDiagnosisResourceUsageInfo
+// 查询翼扬安全基础诊断资源使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeBasicDiagnosisResourceUsageInfo(request *DescribeBasicDiagnosisResourceUsageInfoRequest) (response *DescribeBasicDiagnosisResourceUsageInfoResponse, err error) {
+    return c.DescribeBasicDiagnosisResourceUsageInfoWithContext(context.Background(), request)
+}
+
+// DescribeBasicDiagnosisResourceUsageInfo
+// 查询翼扬安全基础诊断资源使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeBasicDiagnosisResourceUsageInfoWithContext(ctx context.Context, request *DescribeBasicDiagnosisResourceUsageInfoRequest) (response *DescribeBasicDiagnosisResourceUsageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBasicDiagnosisResourceUsageInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBasicDiagnosisResourceUsageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBasicDiagnosisResourceUsageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlySecMiniAppReportUrlRequest() (request *DescribeFlySecMiniAppReportUrlRequest) {
     request = &DescribeFlySecMiniAppReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -417,6 +464,53 @@ func (c *Client) DescribeFlySecMiniAppScanTaskStatusWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewDescribeFlySecMiniAppScanTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRequest) {
+    request = &DescribeResourceUsageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mmps", APIVersion, "DescribeResourceUsageInfo")
+    
+    
+    return
+}
+
+func NewDescribeResourceUsageInfoResponse() (response *DescribeResourceUsageInfoResponse) {
+    response = &DescribeResourceUsageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceUsageInfo
+// 查询翼扬安全资源使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceUsageInfo(request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
+    return c.DescribeResourceUsageInfoWithContext(context.Background(), request)
+}
+
+// DescribeResourceUsageInfo
+// 查询翼扬安全资源使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceUsageInfoWithContext(ctx context.Context, request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceUsageInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceUsageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceUsageInfoResponse()
     err = c.Send(request, response)
     return
 }

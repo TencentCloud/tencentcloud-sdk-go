@@ -3106,6 +3106,8 @@ func NewQueryChainMakerBlockTransactionResponse() (response *QueryChainMakerBloc
 //  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
 //  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
 //  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
@@ -3127,6 +3129,7 @@ func NewQueryChainMakerBlockTransactionResponse() (response *QueryChainMakerBloc
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTransactionRequest) (response *QueryChainMakerBlockTransactionResponse, err error) {
@@ -3155,6 +3158,8 @@ func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTr
 //  INTERNALERROR_METHODTYPENOTSUPPORT = "InternalError.MethodTypeNotSupport"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_ACCOUNTPARAMERROR = "InvalidParameter.AccountParamError"
 //  INVALIDPARAMETER_AGENCYINVALID = "InvalidParameter.AgencyInvalid"
 //  INVALIDPARAMETER_AGENCYNETPARAMINVALID = "InvalidParameter.AgencyNetParamInvalid"
@@ -3176,6 +3181,7 @@ func (c *Client) QueryChainMakerBlockTransaction(request *QueryChainMakerBlockTr
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerBlockTransactionWithContext(ctx context.Context, request *QueryChainMakerBlockTransactionRequest) (response *QueryChainMakerBlockTransactionResponse, err error) {

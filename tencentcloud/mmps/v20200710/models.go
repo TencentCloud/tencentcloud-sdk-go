@@ -401,6 +401,64 @@ func (r *CreateFlySecMiniAppScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBasicDiagnosisResourceUsageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+}
+
+func (r *DescribeBasicDiagnosisResourceUsageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBasicDiagnosisResourceUsageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBasicDiagnosisResourceUsageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBasicDiagnosisResourceUsageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回值, 0:成功, 其他值请查看“返回值”定义
+		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+		// 资源类型
+		ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+		// 资源总数
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 资源未使用次数
+		UnusedCount *int64 `json:"UnusedCount,omitempty" name:"UnusedCount"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBasicDiagnosisResourceUsageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBasicDiagnosisResourceUsageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeFlySecMiniAppReportUrlRequest struct {
 	*tchttp.BaseRequest
 
@@ -666,6 +724,57 @@ func (r *DescribeFlySecMiniAppScanTaskStatusResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceUsageInfoRequest struct {
+	*tchttp.BaseRequest
+}
+
+func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceUsageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回值, 0:成功, 其他值请查看“返回值”定义
+		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+		// 安全资源数据列表
+		Data []*ResourceUsageInfoData `json:"Data,omitempty" name:"Data"`
+
+		// 安全资源数量
+		Total *int64 `json:"Total,omitempty" name:"Total"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceUsageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 
@@ -924,6 +1033,18 @@ type FlySecMiniAppTaskData struct {
 
 	// 诊断失败错误码
 	Error *int64 `json:"Error,omitempty" name:"Error"`
+}
+
+type ResourceUsageInfoData struct {
+
+	// 资源名称, 具体名称请查看产品配置
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 资源未使用次数
+	UnusedCount *int64 `json:"UnusedCount,omitempty" name:"UnusedCount"`
 }
 
 type TaskFlowStepsInfo struct {

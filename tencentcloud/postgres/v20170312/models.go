@@ -651,10 +651,10 @@ type CreateInstancesRequest struct {
 	// 是否需要支持数据透明加密，1：是，0：否（默认）。
 	NeedSupportTDE *uint64 `json:"NeedSupportTDE,omitempty" name:"NeedSupportTDE"`
 
-	// 自定义密钥的keyId，若选择自定义密匙加密，则需要传入自定义密匙的keyId，keyId是CMK的唯一标识。
+	// 自定义密钥的KeyId，若选择自定义密匙加密，则需要传入自定义密匙的KeyId，KeyId是CMK的唯一标识。
 	KMSKeyId *string `json:"KMSKeyId,omitempty" name:"KMSKeyId"`
 
-	// 使用KMS服务的地域，KMSRegion为空默认使用本地域的kms，本地域不支持的情况下需自选其他KMS支持的地域。
+	// 使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
 	KMSRegion *string `json:"KMSRegion,omitempty" name:"KMSRegion"`
 }
 
@@ -1530,10 +1530,10 @@ type DescribeAccountsRequest struct {
 	// 实例ID，形如postgres-6fego161
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 分页返回，每页最大返回数目，默认20，取值范围为1-100
+	// 分页返回，每页最大返回数目，默认10，取值范围为1-100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页返回，返回第几页的用户数据。页码从0开始计数
+	// 数据偏移量，从0开始。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序
@@ -2020,11 +2020,11 @@ type DescribeDBInstancesRequest struct {
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 数据偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
-
-	// 页码偏移量，从0开始。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，包括升序：asc、降序：desc。
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
@@ -2044,8 +2044,8 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "Limit")
-	delete(f, "OrderBy")
 	delete(f, "Offset")
+	delete(f, "OrderBy")
 	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
@@ -2936,7 +2936,7 @@ type Detail struct {
 type DisIsolateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 资源ID列表
+	// 资源ID列表。注意：当前已不支持同时解隔离多个实例，这里只能传入单个实例ID。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
 
 	// 包年包月实例解隔离时购买时常 以月为单位
@@ -3222,6 +3222,9 @@ type InquiryPriceCreateDBInstancesResponse struct {
 		// 折后价格，单位：分
 		Price *uint64 `json:"Price,omitempty" name:"Price"`
 
+		// 币种。例如，CNY：人民币。
+		Currency *string `json:"Currency,omitempty" name:"Currency"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3277,6 +3280,9 @@ type InquiryPriceRenewDBInstanceResponse struct {
 
 		// 实际需要付款金额。比如24650表示246.5元
 		Price *int64 `json:"Price,omitempty" name:"Price"`
+
+		// 币种。例如，CNY：人民币。
+		Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3342,6 +3348,9 @@ type InquiryPriceUpgradeDBInstanceResponse struct {
 		// 实际需要付款金额
 		Price *int64 `json:"Price,omitempty" name:"Price"`
 
+		// 币种。例如，CNY：人民币。
+		Currency *string `json:"Currency,omitempty" name:"Currency"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3361,7 +3370,7 @@ func (r *InquiryPriceUpgradeDBInstanceResponse) FromJsonString(s string) error {
 type IsolateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID集合
+	// 实例ID集合。注意：当前已不支持同时隔离多个实例，这里只能传入单个实例ID。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
 }
 
@@ -3826,10 +3835,10 @@ func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
 type ModifyDBInstancesProjectRequest struct {
 	*tchttp.BaseRequest
 
-	// postgresql实例ID数组
+	// 实例ID集合。注意：当前已不支持同时操作多个实例，这里只能传入单个实例ID。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
 
-	// postgresql实例所属新项目的ID
+	// 所属新项目的ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
@@ -4769,7 +4778,7 @@ type ServerlessDBInstanceNetInfo struct {
 type SetAutoRenewFlagRequest struct {
 	*tchttp.BaseRequest
 
-	// 实例ID数组
+	// 实例ID集合。注意：当前已不支持同时操作多个实例，这里只能传入单个实例ID。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
 
 	// 续费标记。0-正常续费；1-自动续费；2-到期不续费

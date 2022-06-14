@@ -1018,6 +1018,103 @@ func (c *Client) DescribeSystemResourcesWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyJobRequest() (request *ModifyJobRequest) {
+    request = &ModifyJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "ModifyJob")
+    
+    
+    return
+}
+
+func NewModifyJobResponse() (response *ModifyJobResponse) {
+    response = &ModifyJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyJob
+// 更新作业属性，仅允许以下3种操作，不支持组合操作：
+//
+// (1)	更新作业名称
+//
+// (2)	更新作业备注 
+//
+// (3)	更新作业最大并行度
+//
+// 变更前提：WorkerCuNum<=MaxParallelism
+//
+// 如果MaxParallelism变小，不重启作业，待下一次重启生效
+//
+// 如果MaxParallelism变大，则要求入参RestartAllowed必须为True
+//
+// 假设作业运行状态，则先停止作业，再启动作业，中间状态丢失
+//
+// 假设作业暂停状态，则将作业更改为停止状态，中间状态丢失
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
+//  INTERNALERROR_JOBINSTANCENOTFOUND = "InternalError.JobInstanceNotFound"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) ModifyJob(request *ModifyJobRequest) (response *ModifyJobResponse, err error) {
+    return c.ModifyJobWithContext(context.Background(), request)
+}
+
+// ModifyJob
+// 更新作业属性，仅允许以下3种操作，不支持组合操作：
+//
+// (1)	更新作业名称
+//
+// (2)	更新作业备注 
+//
+// (3)	更新作业最大并行度
+//
+// 变更前提：WorkerCuNum<=MaxParallelism
+//
+// 如果MaxParallelism变小，不重启作业，待下一次重启生效
+//
+// 如果MaxParallelism变大，则要求入参RestartAllowed必须为True
+//
+// 假设作业运行状态，则先停止作业，再启动作业，中间状态丢失
+//
+// 假设作业暂停状态，则将作业更改为停止状态，中间状态丢失
+//
+// 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
+//  INTERNALERROR_JOBINSTANCENOTFOUND = "InternalError.JobInstanceNotFound"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_JOBNAME = "InvalidParameterValue.JobName"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) ModifyJobWithContext(ctx context.Context, request *ModifyJobRequest) (response *ModifyJobResponse, err error) {
+    if request == nil {
+        request = NewModifyJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunJobsRequest() (request *RunJobsRequest) {
     request = &RunJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},

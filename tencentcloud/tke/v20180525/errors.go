@@ -359,9 +359,6 @@ const (
 	// 创建的路由与VPC下已存在的全局路由产生冲突。
 	INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
 
-	// CIDR无效。
-	INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
-
 	// 参数错误，CIDR不符合规范。
 	INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 

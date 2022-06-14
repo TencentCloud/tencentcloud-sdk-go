@@ -370,6 +370,58 @@ func (r *DescribeFileTicketResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourceUsageInfoRequest struct {
+	*tchttp.BaseRequest
+
+	// 资源计费项名称
+	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
+}
+
+func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PriceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourceUsageInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
+		Result *int64 `json:"Result,omitempty" name:"Result"`
+
+		// 资源使用信息
+		Data *ResourceUsageInfoData `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeResourceUsageInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 
@@ -601,6 +653,18 @@ func (r *DescribeScanTaskStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeScanTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceUsageInfoData struct {
+
+	// 资源计费项名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 未使用资源数
+	UnusedCount *int64 `json:"UnusedCount,omitempty" name:"UnusedCount"`
 }
 
 type TaskFlowStepsInfo struct {

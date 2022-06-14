@@ -428,7 +428,7 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+// 适用的模板仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模板，且模板中发起方没有填写控件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -446,7 +446,7 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。
+// 适用的模板仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模板，且模板中发起方没有填写控件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -624,6 +624,7 @@ func NewCreateDedicatedClusterDBInstanceResponse() (response *CreateDedicatedClu
 // 创建独享集群Mariadb实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
 //  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
@@ -635,6 +636,7 @@ func NewCreateDedicatedClusterDBInstanceResponse() (response *CreateDedicatedClu
 //  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
 //  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
 func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedClusterDBInstanceRequest) (response *CreateDedicatedClusterDBInstanceResponse, err error) {
     return c.CreateDedicatedClusterDBInstanceWithContext(context.Background(), request)
@@ -644,6 +646,7 @@ func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedCluste
 // 创建独享集群Mariadb实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
 //  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
@@ -655,6 +658,7 @@ func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedCluste
 //  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
 //  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
 func (c *Client) CreateDedicatedClusterDBInstanceWithContext(ctx context.Context, request *CreateDedicatedClusterDBInstanceRequest) (response *CreateDedicatedClusterDBInstanceResponse, err error) {
     if request == nil {

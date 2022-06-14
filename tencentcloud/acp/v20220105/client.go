@@ -174,6 +174,53 @@ func (c *Client) DescribeFileTicketWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRequest) {
+    request = &DescribeResourceUsageInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("acp", APIVersion, "DescribeResourceUsageInfo")
+    
+    
+    return
+}
+
+func NewDescribeResourceUsageInfoResponse() (response *DescribeResourceUsageInfoResponse) {
+    response = &DescribeResourceUsageInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceUsageInfo
+// 查询应用合规平台用户资源的使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceUsageInfo(request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
+    return c.DescribeResourceUsageInfoWithContext(context.Background(), request)
+}
+
+// DescribeResourceUsageInfo
+// 查询应用合规平台用户资源的使用情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceUsageInfoWithContext(ctx context.Context, request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceUsageInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceUsageInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceUsageInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
     request = &DescribeScanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
