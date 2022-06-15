@@ -1925,7 +1925,7 @@ type DescribeTablesRequest struct {
 	// 排序字段，支持：ModifiedTime（默认）；CreateTime
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// 排序字段，false：降序（默认）；true
+	// 排序字段，false：降序（默认）；true：升序
 	Asc *bool `json:"Asc,omitempty" name:"Asc"`
 
 	// table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
@@ -2228,13 +2228,13 @@ type DescribeViewsRequest struct {
 	// 排序字段
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// 排序规则
+	// 排序规则，true:升序；false:降序
 	Asc *bool `json:"Asc,omitempty" name:"Asc"`
 
-	// 开始时间
+	// 按视图更新时间筛选，开始时间，如2021-11-11 00:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -2478,6 +2478,25 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type JobLogResult struct {
+
+	// 日志时间戳，毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志topic id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志topic name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 日志内容，json字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogJson *string `json:"LogJson,omitempty" name:"LogJson"`
+}
+
 type KVPair struct {
 
 	// 配置的key值
@@ -2487,6 +2506,80 @@ type KVPair struct {
 	// 配置的value值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ListTaskJobLogDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 列表返回的Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 开始运行时间，unix时间戳（毫秒）
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束运行时间，unix时间戳（毫秒）
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页大小，最大100，配合Context一起使用
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下一次分页参数，第一次传空
+	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
+func (r *ListTaskJobLogDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskJobLogDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Context")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTaskJobLogDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTaskJobLogDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 下一次分页参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Context *string `json:"Context,omitempty" name:"Context"`
+
+		// 是否获取完结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+		// 日志详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Results []*JobLogResult `json:"Results,omitempty" name:"Results"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListTaskJobLogDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTaskJobLogDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySparkAppRequest struct {
@@ -2531,13 +2624,13 @@ type ModifySparkAppRequest struct {
 	// spark配置，以换行符分隔
 	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
 
-	// 是否本地上传，可去cos,lakefs
+	// jar资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
 	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
 
 	// spark jar作业依赖jars，以逗号分隔
 	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
 
-	// 是否本地上传，可去cos,lakefs
+	// file资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
 	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
 
 	// spark作业依赖资源，以逗号分隔

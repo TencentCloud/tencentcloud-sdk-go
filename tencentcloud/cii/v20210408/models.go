@@ -892,6 +892,12 @@ type InsuranceResult struct {
 	Result []*MachinePredict `json:"Result,omitempty" name:"Result"`
 }
 
+type Location struct {
+
+	// 位置信息
+	Points []*Point `json:"Points,omitempty" name:"Points"`
+}
+
 type MachinePredict struct {
 
 	// 核保引擎名称
@@ -922,6 +928,21 @@ type MachineUnderwriteOutput struct {
 	Results []*InsuranceResult `json:"Results,omitempty" name:"Results"`
 }
 
+type OcrRecognise struct {
+
+	// 原文字段
+	OriginalField *string `json:"OriginalField,omitempty" name:"OriginalField"`
+
+	// 识别结果
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 置信度
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 位置信息
+	Location *Location `json:"Location,omitempty" name:"Location"`
+}
+
 type PerStructDifference struct {
 
 	// 子任务ID
@@ -938,6 +959,18 @@ type PerStructDifference struct {
 
 	// 删除的项
 	RemoveItems []*StructureOneItem `json:"RemoveItems,omitempty" name:"RemoveItems"`
+}
+
+type Point struct {
+
+	// x坐标
+	XCoordinate *int64 `json:"XCoordinate,omitempty" name:"XCoordinate"`
+
+	// y坐标
+	YCoordinate *int64 `json:"YCoordinate,omitempty" name:"YCoordinate"`
+
+	// 页码
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 type ResultObject struct {
@@ -1010,6 +1043,10 @@ type StructureResultObject struct {
 
 	// 任务文件列表
 	TaskFiles []*string `json:"TaskFiles,omitempty" name:"TaskFiles"`
+
+	// 结构化字段结果数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultFields []*OcrRecognise `json:"ResultFields,omitempty" name:"ResultFields"`
 }
 
 type UnderwriteConclusion struct {

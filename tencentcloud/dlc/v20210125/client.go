@@ -2067,6 +2067,57 @@ func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *
     return
 }
 
+func NewListTaskJobLogDetailRequest() (request *ListTaskJobLogDetailRequest) {
+    request = &ListTaskJobLogDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ListTaskJobLogDetail")
+    
+    
+    return
+}
+
+func NewListTaskJobLogDetailResponse() (response *ListTaskJobLogDetailResponse) {
+    response = &ListTaskJobLogDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTaskJobLogDetail
+// 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+func (c *Client) ListTaskJobLogDetail(request *ListTaskJobLogDetailRequest) (response *ListTaskJobLogDetailResponse, err error) {
+    return c.ListTaskJobLogDetailWithContext(context.Background(), request)
+}
+
+// ListTaskJobLogDetail
+// 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+func (c *Client) ListTaskJobLogDetailWithContext(ctx context.Context, request *ListTaskJobLogDetailRequest) (response *ListTaskJobLogDetailResponse, err error) {
+    if request == nil {
+        request = NewListTaskJobLogDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTaskJobLogDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTaskJobLogDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySparkAppRequest() (request *ModifySparkAppRequest) {
     request = &ModifySparkAppRequest{
         BaseRequest: &tchttp.BaseRequest{},

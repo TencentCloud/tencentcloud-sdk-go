@@ -26,41 +26,65 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 认证源名称已存在。
-	FAILEDOPERATION_AUTHSOURCENAMEALREADYEXISTS = "FailedOperation.AuthSourceNameAlreadyExists"
+	// 从账号已经被融合过，不允许再次融合。
+	FAILEDOPERATION_ACCOUNTALREADYBELINKED = "FailedOperation.AccountAlreadyBeLinked"
 
-	// 认证源不存在。
-	FAILEDOPERATION_AUTHSOURCENOTFOUND = "FailedOperation.AuthSourceNotFound"
+	// 用户属性格式异常。
+	FAILEDOPERATION_ATTRIBUTEFORMATERROR = "FailedOperation.AttributeFormatError"
+
+	// 该邮箱已被用户绑定。
+	FAILEDOPERATION_EMAILALREADYEXISTS = "FailedOperation.EmailAlreadyExists"
+
+	// 邮箱地址不能为空。
+	FAILEDOPERATION_EMAILISNULL = "FailedOperation.EmailIsNull"
 
 	// 无效租户。
 	FAILEDOPERATION_INVALIDTENANT = "FailedOperation.InvalidTenant"
 
+	// 状态枚举值错误，请参考接口文档。
+	FAILEDOPERATION_INVALIDUSERSTATUSENUM = "FailedOperation.InvalidUserStatusEnum"
+
 	// 无效用户池。
 	FAILEDOPERATION_INVALIDUSERSTORE = "FailedOperation.InvalidUserStore"
+
+	// 密码不能为空。
+	FAILEDOPERATION_PASSWORDISNULL = "FailedOperation.PasswordIsNull"
+
+	// 该手机号已被用户绑定。
+	FAILEDOPERATION_PHONENUMBERALREADYEXISTS = "FailedOperation.PhoneNumberAlreadyExists"
+
+	// 电话号码不能为空。
+	FAILEDOPERATION_PHONENUMBERISNULL = "FailedOperation.PhoneNumberIsNull"
+
+	// 主用户不存在。
+	FAILEDOPERATION_PRIMARYUSERNOTFOUND = "FailedOperation.PrimaryUserNotFound"
 
 	// 配额超限，如有需求请联系客服人员。
 	FAILEDOPERATION_QUOTALIMITEXCEEDED = "FailedOperation.QuotaLimitExceeded"
 
+	// 从用户不存在。
+	FAILEDOPERATION_SECONDARYUSERNOTFOUND = "FailedOperation.SecondaryUserNotFound"
+
+	// 用户组不存在。
+	FAILEDOPERATION_USERGROUPNOTFOUND = "FailedOperation.UserGroupNotFound"
+
 	// 用户已被冻结。
 	FAILEDOPERATION_USERISFREEZE = "FailedOperation.UserIsFreeze"
+
+	// 用户名称已存在。
+	FAILEDOPERATION_USERNAMEALREADYEXISTS = "FailedOperation.UserNameAlreadyExists"
+
+	// 用户名不能为空。
+	FAILEDOPERATION_USERNAMEISNULL = "FailedOperation.UserNameIsNull"
 
 	// 用户不存在。
 	FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 
-	// 属性标识已存在。
-	FAILEDOPERATION_USERPROPERTYCODEALREADYEXISTS = "FailedOperation.UserPropertyCodeAlreadyExists"
-
-	// 用户属性不存在。
-	FAILEDOPERATION_USERPROPERTYNOTFOUND = "FailedOperation.UserPropertyNotFound"
-
-	// 已存在相同域名。
-	FAILEDOPERATION_USERSTOREDOMAINALREADYEXISTS = "FailedOperation.UserStoreDomainAlreadyExists"
+	// 更新状态必传。
+	FAILEDOPERATION_USERSTATUSREQUIRED = "FailedOperation.UserStatusRequired"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
-
-	// 判断存在用户内部请求错误，请稍后重试。
-	INTERNALERROR_JUDGEUSEREXISTEXCEPTION = "InternalError.JudgeUserExistException"
 
 	// 未知错误。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -118,34 +142,4 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
-
-	// 认证源已启用，不允许删除。
-	UNSUPPORTEDOPERATION_ENABLEDAUTHSOURCECANNOTBEDELETED = "UnsupportedOperation.EnabledAuthSourceCanNotBeDeleted"
-
-	// 认证源已启用，不允许更新。
-	UNSUPPORTEDOPERATION_ENABLEDAUTHSOURCECANNOTBEUPDATED = "UnsupportedOperation.EnabledAuthSourceCanNotBeUpdated"
-
-	// 内置属性不支持该操作。
-	UNSUPPORTEDOPERATION_INTERNALUSERPROPERTY = "UnsupportedOperation.InternalUserProperty"
-
-	// 属性被应用关联，不允许删除。
-	UNSUPPORTEDOPERATION_LINKEDAPPUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedAppUserPropertyCanNotBeDeleted"
-
-	// 认证源被应用关联，不允许关闭。
-	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCECANNOTBECLOSED = "UnsupportedOperation.LinkedAuthSourceCanNotBeClosed"
-
-	// 认证源被应用关联，不允许删除。
-	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCECANNOTBEDELETED = "UnsupportedOperation.LinkedAuthSourceCanNotBeDeleted"
-
-	// 属性被认证源关联，不允许删除。
-	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCEUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedAuthSourceUserPropertyCanNotBeDeleted"
-
-	// 属性被其它模块关联，不允许删除。
-	UNSUPPORTEDOPERATION_LINKEDUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedUserPropertyCanNotBeDeleted"
-
-	// 不允许使用平台域名后缀作为自有域名后缀。
-	UNSUPPORTEDOPERATION_PLATFORMDOMAINSUFFIXCANNOTBEUSED = "UnsupportedOperation.PlatformDomainSuffixCanNotBeUsed"
-
-	// 用户池下已存在用户，用户属性不允许被删除。
-	UNSUPPORTEDOPERATION_WHENUSEREXISTUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.WhenUserExistUserPropertyCanNotBeDeleted"
 )

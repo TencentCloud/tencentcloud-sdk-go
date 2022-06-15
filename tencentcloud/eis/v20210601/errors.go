@@ -20,6 +20,9 @@ const (
 	// 鉴权失败。
 	FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 
+	// 接口处理超时。
+	FAILEDOPERATION_INNERLOGICTIMEOUT = "FailedOperation.InnerLogicTimeOut"
+
 	// 依赖服务错误。
 	FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
 

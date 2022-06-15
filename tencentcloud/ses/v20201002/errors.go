@@ -137,6 +137,9 @@ const (
 	// 邮件地址不合法，请检查邮件地址格式。
 	INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = "InvalidParameterValue.IllegalEmailAddress"
 
+	// 收件人地址附带的模板参数不能包含html标签。
+	INVALIDPARAMETERVALUE_INVALIDTEMPLATEDATA = "InvalidParameterValue.InValidTemplateData"
+
 	// 域名取值错误。
 	INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = "InvalidParameterValue.InvalidEmailIdentity"
 
@@ -170,8 +173,11 @@ const (
 	// 模板内容错误，请检查base64内容是否正确。
 	INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = "InvalidParameterValue.TemplateContentIsWrong"
 
-	// 变量设置必须为json格式。
+	// 模板参数必须为json格式。
 	INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = "InvalidParameterValue.TemplateDataError"
+
+	// 收件人地址附带的模板参数长度超过限制
+	INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = "InvalidParameterValue.TemplateDataLenLimit"
 
 	// 模板名字不合法，请检查字符内容及大小。
 	INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = "InvalidParameterValue.TemplateNameIllegal"

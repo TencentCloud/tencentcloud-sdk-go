@@ -239,6 +239,100 @@ type BotConfig struct {
 	PortraitRule *BotPortraitRule `json:"PortraitRule,omitempty" name:"PortraitRule"`
 }
 
+type BotLog struct {
+
+	// 攻击时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackTime *uint64 `json:"AttackTime,omitempty" name:"AttackTime"`
+
+	// 攻击ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackIp *string `json:"AttackIp,omitempty" name:"AttackIp"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 请求uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestUri *string `json:"RequestUri,omitempty" name:"RequestUri"`
+
+	// 攻击类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 请求方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *string `json:"RequestMethod,omitempty" name:"RequestMethod"`
+
+	// 攻击内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 规则编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// IP所在国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 处置方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalMethod *string `json:"DisposalMethod,omitempty" name:"DisposalMethod"`
+
+	// http_log
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
+
+	// user agent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ua *string `json:"Ua,omitempty" name:"Ua"`
+
+	// 检出方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectionMethod *string `json:"DetectionMethod,omitempty" name:"DetectionMethod"`
+
+	// 置信度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *string `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 恶意度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Maliciousness *string `json:"Maliciousness,omitempty" name:"Maliciousness"`
+}
+
+type BotLogData struct {
+
+	// Bot攻击日志数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*BotLog `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
 type BotManagedRule struct {
 
 	// 想开启的规则id
@@ -336,6 +430,113 @@ type BotPortraitRule struct {
 	// 本功能的开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CCInterceptEvent struct {
+
+	// 客户端ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 拦截次数/min
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterceptNum *int64 `json:"InterceptNum,omitempty" name:"InterceptNum"`
+
+	// 速拦截时间，分钟时间/min,单位为s
+	InterceptTime *int64 `json:"InterceptTime,omitempty" name:"InterceptTime"`
+}
+
+type CCInterceptEventData struct {
+
+	// 攻击事件数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*CCInterceptEvent `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type CCLog struct {
+
+	// 攻击时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackTime *uint64 `json:"AttackTime,omitempty" name:"AttackTime"`
+
+	// 攻击源ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackSip *string `json:"AttackSip,omitempty" name:"AttackSip"`
+
+	// 攻击域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackDomain *string `json:"AttackDomain,omitempty" name:"AttackDomain"`
+
+	// 请求uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestUri *string `json:"RequestUri,omitempty" name:"RequestUri"`
+
+	// 命中次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HitCount *uint64 `json:"HitCount,omitempty" name:"HitCount"`
+
+	// IP所在国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 处置方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalMethod *string `json:"DisposalMethod,omitempty" name:"DisposalMethod"`
+
+	// http_log
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
+
+	// 规则编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+}
+
+type CCLogData struct {
+
+	// CC拦截日志数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*CCLog `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
 }
 
 type CacheConfig struct {
@@ -1518,6 +1719,172 @@ type DDoSUserAllowBlockIP struct {
 	Mask2 *int64 `json:"Mask2,omitempty" name:"Mask2"`
 }
 
+type DDosAttackEvent struct {
+
+	// ddos 策略组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 攻击类型(对应交互事件名称)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 攻击状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackStatus *int64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 攻击最大带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitempty" name:"AttackMaxBandWidth"`
+
+	// 攻击包速率峰值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackPacketMaxRate *int64 `json:"AttackPacketMaxRate,omitempty" name:"AttackPacketMaxRate"`
+
+	// 攻击开始时间 单位为s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackStartTime *int64 `json:"AttackStartTime,omitempty" name:"AttackStartTime"`
+
+	// 攻击结束时间 单位为s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackEndTime *int64 `json:"AttackEndTime,omitempty" name:"AttackEndTime"`
+
+	// 事件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 站点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+type DDosAttackEventData struct {
+
+	// 攻击事件数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DDosAttackEvent `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type DDosAttackEventDetailData struct {
+
+	// 攻击状态
+	AttackStatus *int64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 攻击类型
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 最大带宽
+	MaxBandWidth *int64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 最大包速率
+	PacketMaxRate *int64 `json:"PacketMaxRate,omitempty" name:"PacketMaxRate"`
+
+	// 事件Id
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// ddos 策略组id
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+type DDosAttackSourceEvent struct {
+
+	// 攻击源ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackSourceIp *string `json:"AttackSourceIp,omitempty" name:"AttackSourceIp"`
+
+	// 地区(国家)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackRegion *string `json:"AttackRegion,omitempty" name:"AttackRegion"`
+
+	// 累计攻击流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackFlow *uint64 `json:"AttackFlow,omitempty" name:"AttackFlow"`
+
+	// 累计攻击包量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackPacketNum *uint64 `json:"AttackPacketNum,omitempty" name:"AttackPacketNum"`
+}
+
+type DDosAttackSourceEventData struct {
+
+	// DDos攻击源数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DDosAttackSourceEvent `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type DDosMajorAttackEvent struct {
+
+	// ddos 策略组id
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 攻击最大带宽
+	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitempty" name:"AttackMaxBandWidth"`
+
+	// 攻击时间 单位为s
+	AttackTime *int64 `json:"AttackTime,omitempty" name:"AttackTime"`
+}
+
+type DDosMajorAttackEventData struct {
+
+	// DDosMajorAttackEvent ddos 攻击事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DDosMajorAttackEvent `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
 type DataItem struct {
 
 	// 时间
@@ -2122,6 +2489,85 @@ func (r *DescribeApplicationProxyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBotLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 域名集合
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 查询条件
+	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+}
+
+func (r *DescribeBotLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "QueryCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBotLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Bot攻击Data
+		Data *BotLogData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1：失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBotLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBotManagedRulesRequest struct {
 	*tchttp.BaseRequest
 
@@ -2293,6 +2739,480 @@ func (r *DescribeDDoSPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDDoSPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点id列表
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// ddos策略组id列表
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 端口号
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 协议类型,tcp,udp,all
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 攻击类型,flood,icmpFlood......,all
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 查询时间粒度，可选{min,5min,hour,day}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeDDosAttackDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "PolicyIds")
+	delete(f, "Port")
+	delete(f, "ProtocolType")
+	delete(f, "AttackType")
+	delete(f, "Interval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos攻击数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*SecEntry `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回数据
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 查询时间粒度，可选{min,5min,hour,day}
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosAttackDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackEventDetailRequest struct {
+	*tchttp.BaseRequest
+
+	// 时间id
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+func (r *DescribeDDosAttackEventDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackEventDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackEventDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackEventDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos攻击事件详情
+		Data *DDosAttackEventDetailData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosAttackEventDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackEventDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// ddos策略组id 集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 协议类型,{tcp,udp,all}
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 选填{Y、N},默认为Y；Y：展示，N：不展示
+	IsShowDetail *string `json:"IsShowDetail,omitempty" name:"IsShowDetail"`
+}
+
+func (r *DescribeDDosAttackEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "PolicyIds")
+	delete(f, "ZoneIds")
+	delete(f, "ProtocolType")
+	delete(f, "IsShowDetail")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos攻击事件数据
+		Data *DDosAttackEventData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosAttackEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackSourceEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// ddos策略组id 集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 协议类型,{tcp,udp,all}
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+}
+
+func (r *DescribeDDosAttackSourceEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackSourceEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "PolicyIds")
+	delete(f, "ZoneIds")
+	delete(f, "ProtocolType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackSourceEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackSourceEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos攻击源数据
+		Data *DDosAttackSourceEventData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosAttackSourceEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackSourceEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackTopDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤指标
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 查询前多少名,传值为0 全量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// ddos策略组id 集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 端口号
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 协议类型,tcp,udp,all
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 攻击类型,flood,icmpFlood......,all
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+}
+
+func (r *DescribeDDosAttackTopDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackTopDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	delete(f, "ZoneIds")
+	delete(f, "PolicyIds")
+	delete(f, "Port")
+	delete(f, "ProtocolType")
+	delete(f, "AttackType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackTopDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosAttackTopDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// topn数据
+		Data []*TopNEntry `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosAttackTopDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosAttackTopDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosMajorAttackEventRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// ddos 策略组id集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 协议类型，{tcp,udp,all}
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+}
+
+func (r *DescribeDDosMajorAttackEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosMajorAttackEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "PolicyIds")
+	delete(f, "ProtocolType")
+	delete(f, "ZoneIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosMajorAttackEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDDosMajorAttackEventResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos查询主攻击事件
+		Data *DDosMajorAttackEventData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDDosMajorAttackEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDosMajorAttackEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3059,6 +3979,85 @@ func (r *DescribeOriginGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeOverviewL7DataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339格式，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339格式，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 时间间隔，选填{min, 5min, hour, day, week}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// ZoneId列表，仅在zone/domain维度下查询时该参数有效
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// Domain列表，仅在domain维度下查询时该参数有效
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 协议类型， 选填{http,http2,https,all}
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *DescribeOverviewL7DataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewL7DataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "Interval")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewL7DataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewL7DataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 时间间隔
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 详细数据
+		Data []*TimingDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeOverviewL7DataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOverviewL7DataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribePrefetchTasksRequest struct {
 	*tchttp.BaseRequest
 
@@ -3318,6 +4317,9 @@ type DescribeSecurityPolicyManagedRulesIdResponse struct {
 		// 门神规则
 		Rules []*ManagedRule `json:"Rules,omitempty" name:"Rules"`
 
+		// 返回总数
+		Count *int64 `json:"Count,omitempty" name:"Count"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`
@@ -3568,6 +4570,855 @@ func (r *DescribeSecurityPortraitRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSecurityPortraitRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimingL4DataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339格式，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339格式，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// ZoneId列表，仅在zone/instance维度下查询时该参数有效
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// InstanceId列表，仅在Instance维度下查询时该参数有效
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 协议类型， 该字段当前无效
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 时间间隔，选填{min, 5min, hour, day}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 规则ID，仅在instance维度有效
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+func (r *DescribeTimingL4DataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL4DataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "InstanceIds")
+	delete(f, "Protocol")
+	delete(f, "Interval")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL4DataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimingL4DataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 时间间隔
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*TimingDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimingL4DataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL4DataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimingL7AnalysisDataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339标准，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339标准，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时序类访问流量指标
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 时间间隔，选填{min, 5min, hour, day, week}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// ZoneId数组
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTimingL7AnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7AnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "Interval")
+	delete(f, "ZoneIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL7AnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimingL7AnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*TimingDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 时间间隔
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimingL7AnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7AnalysisDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopL7AnalysisDataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339标准，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339标准，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时序类访问流量指标
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// topN,填0时返回全量数据
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 时间间隔，选填{min, 5min, hour, day, week}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// ZoneId数组
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTopL7AnalysisDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopL7AnalysisDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	delete(f, "Interval")
+	delete(f, "ZoneIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopL7AnalysisDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopL7AnalysisDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// top详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*TopDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 查询指标
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopL7AnalysisDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopL7AnalysisDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesAttackEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// ddos策略组id 集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 协议类型,{tcp,udp,all}
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 选填{Y、N},默认为Y；Y：展示，N：不展示
+	IsShowDetail *string `json:"IsShowDetail,omitempty" name:"IsShowDetail"`
+}
+
+func (r *DescribeWebManagedRulesAttackEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesAttackEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "PolicyIds")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "IsShowDetail")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesAttackEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesAttackEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Web攻击事件数据
+		Data *WebEventData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回数据
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebManagedRulesAttackEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesAttackEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点id列表
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 子域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 协议类型
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// "webshell" : Webshell检测防护
+	// "oa" : 常见OA漏洞防护
+	// "xss" : XSS跨站脚本攻击防护
+	// "xxe" : XXE攻击防护
+	// "webscan" : 扫描器攻击漏洞防护
+	// "cms" : 常见CMS漏洞防护
+	// "upload" : 恶意文件上传攻击防护
+	// "sql" : SQL注入攻击防护
+	// "cmd_inject": 命令/代码注入攻击防护
+	// "osc" : 开源组件漏洞防护
+	// "file_read" : 任意文件读取
+	// "ldap" : LDAP注入攻击防护
+	// "other" : 其它漏洞防护
+	// 
+	// "all":"所有"
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 查询时间粒度，可选{min,5min,hour,day}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeWebManagedRulesDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "ProtocolType")
+	delete(f, "AttackType")
+	delete(f, "Interval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// Web攻击日志实体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*SecEntry `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 查询时间粒度，可选{min,5min,hour,day}
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebManagedRulesDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 域名集合
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 查询条件
+	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+}
+
+func (r *DescribeWebManagedRulesLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "QueryCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// web攻击日志data
+		Data *WebLogData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:失败
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebManagedRulesLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesTopDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤指标
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 查询前多少名,传值为0 全量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// ddos策略组id 集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 端口号
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 协议类型,tcp,udp,all
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 攻击类型,flood,icmpFlood......,all
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 域名集合
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+func (r *DescribeWebManagedRulesTopDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesTopDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	delete(f, "ZoneIds")
+	delete(f, "PolicyIds")
+	delete(f, "Port")
+	delete(f, "ProtocolType")
+	delete(f, "AttackType")
+	delete(f, "Domains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesTopDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebManagedRulesTopDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// topn数据
+		Data []*TopNEntry `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebManagedRulesTopDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebManagedRulesTopDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionAttackEventsRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 域名
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+}
+
+func (r *DescribeWebProtectionAttackEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionAttackEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "Domains")
+	delete(f, "ZoneIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebProtectionAttackEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionAttackEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// DDos攻击事件数据
+		Data *CCInterceptEventData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebProtectionAttackEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionAttackEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionDataRequest struct {
+	*tchttp.BaseRequest
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点id列表
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 子域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 协议类型
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// "webshell" : Webshell检测防护
+	// "oa" : 常见OA漏洞防护
+	// "xss" : XSS跨站脚本攻击防护
+	// "xxe" : XXE攻击防护
+	// "webscan" : 扫描器攻击漏洞防护
+	// "cms" : 常见CMS漏洞防护
+	// "upload" : 恶意文件上传攻击防护
+	// "sql" : SQL注入攻击防护
+	// "cmd_inject": 命令/代码注入攻击防护
+	// "osc" : 开源组件漏洞防护
+	// "file_read" : 任意文件读取
+	// "ldap" : LDAP注入攻击防护
+	// "other" : 其它漏洞防护
+	// 
+	// "all":"所有"
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 查询时间粒度，可选{min,5min,hour,day}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeWebProtectionDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "ProtocolType")
+	delete(f, "AttackType")
+	delete(f, "Interval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebProtectionDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*SecEntry `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1:失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 消息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 查询时间粒度，可选{min,5min,hour,day}
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebProtectionDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionLogRequest struct {
+	*tchttp.BaseRequest
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前页
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 站点集合
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 域名集合
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 查询条件
+	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+}
+
+func (r *DescribeWebProtectionLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "PageNo")
+	delete(f, "ZoneIds")
+	delete(f, "Domains")
+	delete(f, "QueryCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebProtectionLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeWebProtectionLogResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 限速拦截Data
+		Data *CCLogData `json:"Data,omitempty" name:"Data"`
+
+		// 状态，1：失败，0:成功
+		Status *int64 `json:"Status,omitempty" name:"Status"`
+
+		// 返回信息
+		Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeWebProtectionLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebProtectionLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4149,6 +6000,18 @@ type FailReason struct {
 	// 处理失败的资源列表。
 	// 该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
+}
+
+type Filter struct {
+
+	// 筛选维度
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 筛选维度值
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type ForceRedirect struct {
@@ -5894,6 +7757,18 @@ type PostMaxSize struct {
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
+type QueryCondition struct {
+
+	// 维度
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 维度值
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 type QueryString struct {
 
 	// on | off CacheKey是否由QueryString组成
@@ -6112,6 +7987,40 @@ func (r *ScanDnsRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SecEntry struct {
+
+	// Entry的Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// Entry的Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value []*SecEntryValue `json:"Value,omitempty" name:"Value"`
+}
+
+type SecEntryValue struct {
+
+	// 指标名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metric *string `json:"Metric,omitempty" name:"Metric"`
+
+	// 指标数据明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*TimingDataItem `json:"Detail,omitempty" name:"Detail"`
+
+	// 最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *int64 `json:"Max,omitempty" name:"Max"`
+
+	// 平均值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Avg *float64 `json:"Avg,omitempty" name:"Avg"`
+
+	// 数据总和
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sum *float64 `json:"Sum,omitempty" name:"Sum"`
+}
+
 type SecurityConfig struct {
 
 	// 门神配置
@@ -6257,6 +8166,90 @@ type Task struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type TimingDataItem struct {
+
+	// 秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
+type TimingDataRecord struct {
+
+	// 查询维度值
+	TypeKey *string `json:"TypeKey,omitempty" name:"TypeKey"`
+
+	// 详细时序数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeValue []*TimingTypeValue `json:"TypeValue,omitempty" name:"TypeValue"`
+}
+
+type TimingTypeValue struct {
+
+	// 数据和
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sum *int64 `json:"Sum,omitempty" name:"Sum"`
+
+	// 最大
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *int64 `json:"Max,omitempty" name:"Max"`
+
+	// 平均
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Avg *int64 `json:"Avg,omitempty" name:"Avg"`
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 废弃字段，即将下线，请使用Detail字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailData []*int64 `json:"DetailData,omitempty" name:"DetailData"`
+
+	// 详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*TimingDataItem `json:"Detail,omitempty" name:"Detail"`
+}
+
+type TopDataRecord struct {
+
+	// 查询维度值
+	TypeKey *string `json:"TypeKey,omitempty" name:"TypeKey"`
+
+	// top数据排行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailData []*TopDetailData `json:"DetailData,omitempty" name:"DetailData"`
+}
+
+type TopDetailData struct {
+
+	// 字段名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 字段值
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
+type TopNEntry struct {
+
+	// Entry key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// TopN数据
+	Value []*TopNEntryValue `json:"Value,omitempty" name:"Value"`
+}
+
+type TopNEntryValue struct {
+
+	// Entry的name
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type UpstreamHttp2 struct {
 
 	// http2回源配置开关
@@ -6315,6 +8308,130 @@ type WafRule struct {
 	// 观察模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObserveRuleIDs []*int64 `json:"ObserveRuleIDs,omitempty" name:"ObserveRuleIDs"`
+}
+
+type WebAttackEvent struct {
+
+	// 客户端ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 攻击URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackUrl *string `json:"AttackUrl,omitempty" name:"AttackUrl"`
+
+	// 攻击时间 单位为s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackTime *int64 `json:"AttackTime,omitempty" name:"AttackTime"`
+}
+
+type WebEventData struct {
+
+	// 攻击事件数据集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*WebAttackEvent `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type WebLogData struct {
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*WebLogs `json:"List,omitempty" name:"List"`
+
+	// 当前页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+}
+
+type WebLogs struct {
+
+	// 攻击内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
+
+	// 攻击IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackIp *string `json:"AttackIp,omitempty" name:"AttackIp"`
+
+	// 攻击类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msuuid *string `json:"Msuuid,omitempty" name:"Msuuid"`
+
+	// 请求方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestMethod *string `json:"RequestMethod,omitempty" name:"RequestMethod"`
+
+	// 请求URI
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestUri *string `json:"RequestUri,omitempty" name:"RequestUri"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// IP所在国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 处置方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalMethod *string `json:"DisposalMethod,omitempty" name:"DisposalMethod"`
+
+	// http_log
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
+
+	// user agent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ua *string `json:"Ua,omitempty" name:"Ua"`
+
+	// 攻击时间，为保持统一，原参数time更名为AttackTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackTime *uint64 `json:"AttackTime,omitempty" name:"AttackTime"`
 }
 
 type WebSocket struct {

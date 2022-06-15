@@ -1,3 +1,290 @@
+# Release v1.0.421
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 33 次发布
+
+发布时间：2022-06-16 06:00:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCCReqLimitPolicy](https://cloud.tencent.com/document/api/1021/69187)
+
+	* 新增入参：IsGlobal
+
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+
+	* 新增入参：FilterTag
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+
+	* 新增入参：FilterTag
+
+
+新增数据结构：
+
+* [TagFilter](https://cloud.tencent.com/document/api/1021/57582#TagFilter)
+* [TagInfo](https://cloud.tencent.com/document/api/1021/57582#TagInfo)
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：TagInfoList
+
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+
+	* 新增成员：TagInfoList
+
+* [BlackWhiteIpRelation](https://cloud.tencent.com/document/api/1021/57582#BlackWhiteIpRelation)
+
+	* 新增成员：ModifyTime
+
+* [PacketFilterRelation](https://cloud.tencent.com/document/api/1021/57582#PacketFilterRelation)
+
+	* 新增成员：ModifyTime
+
+
+
+
+## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 2 次发布
+
+发布时间：2022-06-15 19:44:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1441/75642)
+* [DeleteUsers](https://cloud.tencent.com/document/api/1441/75641)
+* [DescribeUserById](https://cloud.tencent.com/document/api/1441/75640)
+* [LinkAccount](https://cloud.tencent.com/document/api/1441/75639)
+* [ListUser](https://cloud.tencent.com/document/api/1441/75638)
+* [ListUserByProperty](https://cloud.tencent.com/document/api/1441/75637)
+* [SetPassword](https://cloud.tencent.com/document/api/1441/75636)
+* [UpdateUser](https://cloud.tencent.com/document/api/1441/75635)
+* [UpdateUserStatus](https://cloud.tencent.com/document/api/1441/75634)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1441/75643#Filter)
+* [MemberMap](https://cloud.tencent.com/document/api/1441/75643#MemberMap)
+* [Pageable](https://cloud.tencent.com/document/api/1441/75643#Pageable)
+* [User](https://cloud.tencent.com/document/api/1441/75643#User)
+
+
+
+## 智能保险助手(cii) 版本：2021-04-08
+
+### 第 13 次发布
+
+发布时间：2022-06-16 06:03:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Location](https://cloud.tencent.com/document/api/1368/56853#Location)
+* [OcrRecognise](https://cloud.tencent.com/document/api/1368/56853#OcrRecognise)
+* [Point](https://cloud.tencent.com/document/api/1368/56853#Point)
+
+修改数据结构：
+
+* [StructureResultObject](https://cloud.tencent.com/document/api/1368/56853#StructureResultObject)
+
+	* 新增成员：ResultFields
+
+
+
+
+## 智能保险助手(cii) 版本：2020-12-10
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 87 次发布
+
+发布时间：2022-06-16 06:04:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKeyPair](https://cloud.tencent.com/document/api/213/15702)
+
+	* <font color="#dd0000">**修改出参**：</font>KeyPair
+
+* [ImportKeyPair](https://cloud.tencent.com/document/api/213/15703)
+
+	* <font color="#dd0000">**修改出参**：</font>KeyId
+
+
+修改数据结构：
+
+* [KeyPair](https://cloud.tencent.com/document/api/213/15753#KeyPair)
+
+	* 新增成员：Tags
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 21 次发布
+
+发布时间：2022-06-16 06:06:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListTaskJobLogDetail](https://cloud.tencent.com/document/api/1342/75645)
+
+新增数据结构：
+
+* [JobLogResult](https://cloud.tencent.com/document/api/1342/53778#JobLogResult)
+
+
+
+## 企业集成服务(eis) 版本：2021-06-01
+
+### 第 3 次发布
+
+发布时间：2022-06-16 06:06:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListRuntimeDeployedInstancesMC](https://cloud.tencent.com/document/api/1270/57964)
+
+	* 新增入参：ApiVersion
+
+
+修改数据结构：
+
+* [AbstractRuntimeMC](https://cloud.tencent.com/document/api/1270/57968#AbstractRuntimeMC)
+
+	* 新增成员：Status, ExpiredAt
+
+* [RuntimeMC](https://cloud.tencent.com/document/api/1270/57968#RuntimeMC)
+
+	* 新增成员：ExpiredAt, ChargeType, ResourceLimitType, AutoRenewal
+
+
+
+
+## 企业集成服务(eis) 版本：2020-07-15
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 47 次发布
+
+发布时间：2022-06-16 06:10:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskList](https://cloud.tencent.com/document/api/239/39374)
+
+	* 新增入参：Result, OperatorUin
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 8 次发布
+
+发布时间：2022-06-16 06:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBotLog](https://cloud.tencent.com/document/api/1552/75663)
+* [DescribeDDosAttackData](https://cloud.tencent.com/document/api/1552/75662)
+* [DescribeDDosAttackEvent](https://cloud.tencent.com/document/api/1552/75661)
+* [DescribeDDosAttackEventDetail](https://cloud.tencent.com/document/api/1552/75660)
+* [DescribeDDosAttackSourceEvent](https://cloud.tencent.com/document/api/1552/75659)
+* [DescribeDDosAttackTopData](https://cloud.tencent.com/document/api/1552/75658)
+* [DescribeDDosMajorAttackEvent](https://cloud.tencent.com/document/api/1552/75657)
+* [DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/75656)
+* [DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/75655)
+* [DescribeTimingL7AnalysisData](https://cloud.tencent.com/document/api/1552/75654)
+* [DescribeTopL7AnalysisData](https://cloud.tencent.com/document/api/1552/75653)
+* [DescribeWebManagedRulesAttackEvents](https://cloud.tencent.com/document/api/1552/75652)
+* [DescribeWebManagedRulesData](https://cloud.tencent.com/document/api/1552/75651)
+* [DescribeWebManagedRulesLog](https://cloud.tencent.com/document/api/1552/75650)
+* [DescribeWebManagedRulesTopData](https://cloud.tencent.com/document/api/1552/75649)
+* [DescribeWebProtectionAttackEvents](https://cloud.tencent.com/document/api/1552/75648)
+* [DescribeWebProtectionData](https://cloud.tencent.com/document/api/1552/75647)
+* [DescribeWebProtectionLog](https://cloud.tencent.com/document/api/1552/75646)
+
+修改接口：
+
+* [DescribeSecurityPolicyManagedRulesId](https://cloud.tencent.com/document/api/1552/75106)
+
+	* 新增出参：Count
+
+
+新增数据结构：
+
+* [BotLog](https://cloud.tencent.com/document/api/1552/73155#BotLog)
+* [BotLogData](https://cloud.tencent.com/document/api/1552/73155#BotLogData)
+* [CCInterceptEvent](https://cloud.tencent.com/document/api/1552/73155#CCInterceptEvent)
+* [CCInterceptEventData](https://cloud.tencent.com/document/api/1552/73155#CCInterceptEventData)
+* [CCLog](https://cloud.tencent.com/document/api/1552/73155#CCLog)
+* [CCLogData](https://cloud.tencent.com/document/api/1552/73155#CCLogData)
+* [DDosAttackEvent](https://cloud.tencent.com/document/api/1552/73155#DDosAttackEvent)
+* [DDosAttackEventData](https://cloud.tencent.com/document/api/1552/73155#DDosAttackEventData)
+* [DDosAttackEventDetailData](https://cloud.tencent.com/document/api/1552/73155#DDosAttackEventDetailData)
+* [DDosAttackSourceEvent](https://cloud.tencent.com/document/api/1552/73155#DDosAttackSourceEvent)
+* [DDosAttackSourceEventData](https://cloud.tencent.com/document/api/1552/73155#DDosAttackSourceEventData)
+* [DDosMajorAttackEvent](https://cloud.tencent.com/document/api/1552/73155#DDosMajorAttackEvent)
+* [DDosMajorAttackEventData](https://cloud.tencent.com/document/api/1552/73155#DDosMajorAttackEventData)
+* [Filter](https://cloud.tencent.com/document/api/1552/73155#Filter)
+* [QueryCondition](https://cloud.tencent.com/document/api/1552/73155#QueryCondition)
+* [SecEntry](https://cloud.tencent.com/document/api/1552/73155#SecEntry)
+* [SecEntryValue](https://cloud.tencent.com/document/api/1552/73155#SecEntryValue)
+* [TimingDataItem](https://cloud.tencent.com/document/api/1552/73155#TimingDataItem)
+* [TimingDataRecord](https://cloud.tencent.com/document/api/1552/73155#TimingDataRecord)
+* [TimingTypeValue](https://cloud.tencent.com/document/api/1552/73155#TimingTypeValue)
+* [TopDataRecord](https://cloud.tencent.com/document/api/1552/73155#TopDataRecord)
+* [TopDetailData](https://cloud.tencent.com/document/api/1552/73155#TopDetailData)
+* [TopNEntry](https://cloud.tencent.com/document/api/1552/73155#TopNEntry)
+* [TopNEntryValue](https://cloud.tencent.com/document/api/1552/73155#TopNEntryValue)
+* [WebAttackEvent](https://cloud.tencent.com/document/api/1552/73155#WebAttackEvent)
+* [WebEventData](https://cloud.tencent.com/document/api/1552/73155#WebEventData)
+* [WebLogData](https://cloud.tencent.com/document/api/1552/73155#WebLogData)
+* [WebLogs](https://cloud.tencent.com/document/api/1552/73155#WebLogs)
+
+
+
 # Release v1.0.420
 
 ## 应用合规平台(acp) 版本：2022-01-05

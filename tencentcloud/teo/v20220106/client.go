@@ -1054,6 +1054,53 @@ func (c *Client) DescribeApplicationProxyDetailWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBotLogRequest() (request *DescribeBotLogRequest) {
+    request = &DescribeBotLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeBotLog")
+    
+    
+    return
+}
+
+func NewDescribeBotLogResponse() (response *DescribeBotLogResponse) {
+    response = &DescribeBotLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBotLog
+// 查询Bot攻击日志
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBotLog(request *DescribeBotLogRequest) (response *DescribeBotLogResponse, err error) {
+    return c.DescribeBotLogWithContext(context.Background(), request)
+}
+
+// DescribeBotLog
+// 查询Bot攻击日志
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBotLogWithContext(ctx context.Context, request *DescribeBotLogRequest) (response *DescribeBotLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBotManagedRulesRequest() (request *DescribeBotManagedRulesRequest) {
     request = &DescribeBotManagedRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1191,6 +1238,288 @@ func (c *Client) DescribeDDoSPolicyWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeDDoSPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosAttackDataRequest() (request *DescribeDDosAttackDataRequest) {
+    request = &DescribeDDosAttackDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackData")
+    
+    
+    return
+}
+
+func NewDescribeDDosAttackDataResponse() (response *DescribeDDosAttackDataResponse) {
+    response = &DescribeDDosAttackDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosAttackData
+// 查询DDos攻击数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
+    return c.DescribeDDosAttackDataWithContext(context.Background(), request)
+}
+
+// DescribeDDosAttackData
+// 查询DDos攻击数据
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDosAttackDataWithContext(ctx context.Context, request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosAttackDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosAttackData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosAttackDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosAttackEventRequest() (request *DescribeDDosAttackEventRequest) {
+    request = &DescribeDDosAttackEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackEvent")
+    
+    
+    return
+}
+
+func NewDescribeDDosAttackEventResponse() (response *DescribeDDosAttackEventResponse) {
+    response = &DescribeDDosAttackEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosAttackEvent
+// 查询DDos攻击事件
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDosAttackEvent(request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
+    return c.DescribeDDosAttackEventWithContext(context.Background(), request)
+}
+
+// DescribeDDosAttackEvent
+// 查询DDos攻击事件
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) DescribeDDosAttackEventWithContext(ctx context.Context, request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosAttackEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosAttackEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosAttackEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosAttackEventDetailRequest() (request *DescribeDDosAttackEventDetailRequest) {
+    request = &DescribeDDosAttackEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeDDosAttackEventDetailResponse() (response *DescribeDDosAttackEventDetailResponse) {
+    response = &DescribeDDosAttackEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosAttackEventDetail
+// 查询DDos攻击事件详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackEventDetail(request *DescribeDDosAttackEventDetailRequest) (response *DescribeDDosAttackEventDetailResponse, err error) {
+    return c.DescribeDDosAttackEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeDDosAttackEventDetail
+// 查询DDos攻击事件详情
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackEventDetailWithContext(ctx context.Context, request *DescribeDDosAttackEventDetailRequest) (response *DescribeDDosAttackEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosAttackEventDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosAttackEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosAttackEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosAttackSourceEventRequest() (request *DescribeDDosAttackSourceEventRequest) {
+    request = &DescribeDDosAttackSourceEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackSourceEvent")
+    
+    
+    return
+}
+
+func NewDescribeDDosAttackSourceEventResponse() (response *DescribeDDosAttackSourceEventResponse) {
+    response = &DescribeDDosAttackSourceEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosAttackSourceEvent
+// 查询DDos攻击源
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackSourceEvent(request *DescribeDDosAttackSourceEventRequest) (response *DescribeDDosAttackSourceEventResponse, err error) {
+    return c.DescribeDDosAttackSourceEventWithContext(context.Background(), request)
+}
+
+// DescribeDDosAttackSourceEvent
+// 查询DDos攻击源
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackSourceEventWithContext(ctx context.Context, request *DescribeDDosAttackSourceEventRequest) (response *DescribeDDosAttackSourceEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosAttackSourceEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosAttackSourceEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosAttackSourceEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosAttackTopDataRequest() (request *DescribeDDosAttackTopDataRequest) {
+    request = &DescribeDDosAttackTopDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackTopData")
+    
+    
+    return
+}
+
+func NewDescribeDDosAttackTopDataResponse() (response *DescribeDDosAttackTopDataResponse) {
+    response = &DescribeDDosAttackTopDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosAttackTopData
+// 查询DDos攻击Top数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackTopData(request *DescribeDDosAttackTopDataRequest) (response *DescribeDDosAttackTopDataResponse, err error) {
+    return c.DescribeDDosAttackTopDataWithContext(context.Background(), request)
+}
+
+// DescribeDDosAttackTopData
+// 查询DDos攻击Top数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosAttackTopDataWithContext(ctx context.Context, request *DescribeDDosAttackTopDataRequest) (response *DescribeDDosAttackTopDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosAttackTopDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosAttackTopData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosAttackTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDDosMajorAttackEventRequest() (request *DescribeDDosMajorAttackEventRequest) {
+    request = &DescribeDDosMajorAttackEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosMajorAttackEvent")
+    
+    
+    return
+}
+
+func NewDescribeDDosMajorAttackEventResponse() (response *DescribeDDosMajorAttackEventResponse) {
+    response = &DescribeDDosMajorAttackEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDosMajorAttackEvent
+// 查询DDos主攻击事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosMajorAttackEvent(request *DescribeDDosMajorAttackEventRequest) (response *DescribeDDosMajorAttackEventResponse, err error) {
+    return c.DescribeDDosMajorAttackEventWithContext(context.Background(), request)
+}
+
+// DescribeDDosMajorAttackEvent
+// 查询DDos主攻击事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDosMajorAttackEventWithContext(ctx context.Context, request *DescribeDDosMajorAttackEventRequest) (response *DescribeDDosMajorAttackEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDosMajorAttackEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDosMajorAttackEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDosMajorAttackEventResponse()
     err = c.Send(request, response)
     return
 }
@@ -1722,6 +2051,55 @@ func (c *Client) DescribeOriginGroupDetailWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeOverviewL7DataRequest() (request *DescribeOverviewL7DataRequest) {
+    request = &DescribeOverviewL7DataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeOverviewL7Data")
+    
+    
+    return
+}
+
+func NewDescribeOverviewL7DataResponse() (response *DescribeOverviewL7DataResponse) {
+    response = &DescribeOverviewL7DataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOverviewL7Data
+// 查询七层监控类时序流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeOverviewL7Data(request *DescribeOverviewL7DataRequest) (response *DescribeOverviewL7DataResponse, err error) {
+    return c.DescribeOverviewL7DataWithContext(context.Background(), request)
+}
+
+// DescribeOverviewL7Data
+// 查询七层监控类时序流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeOverviewL7DataWithContext(ctx context.Context, request *DescribeOverviewL7DataRequest) (response *DescribeOverviewL7DataResponse, err error) {
+    if request == nil {
+        request = NewDescribeOverviewL7DataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOverviewL7Data require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOverviewL7DataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
     request = &DescribePrefetchTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2102,6 +2480,496 @@ func (c *Client) DescribeSecurityPortraitRulesWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeSecurityPortraitRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTimingL4DataRequest() (request *DescribeTimingL4DataRequest) {
+    request = &DescribeTimingL4DataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL4Data")
+    
+    
+    return
+}
+
+func NewDescribeTimingL4DataResponse() (response *DescribeTimingL4DataResponse) {
+    response = &DescribeTimingL4DataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimingL4Data
+// 四层时序流量数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL4Data(request *DescribeTimingL4DataRequest) (response *DescribeTimingL4DataResponse, err error) {
+    return c.DescribeTimingL4DataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL4Data
+// 四层时序流量数据查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL4DataWithContext(ctx context.Context, request *DescribeTimingL4DataRequest) (response *DescribeTimingL4DataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL4DataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL4Data require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL4DataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTimingL7AnalysisDataRequest() (request *DescribeTimingL7AnalysisDataRequest) {
+    request = &DescribeTimingL7AnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7AnalysisData")
+    
+    
+    return
+}
+
+func NewDescribeTimingL7AnalysisDataResponse() (response *DescribeTimingL7AnalysisDataResponse) {
+    response = &DescribeTimingL7AnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimingL7AnalysisData
+// 查询七层数据分析类时序流量数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL7AnalysisData(request *DescribeTimingL7AnalysisDataRequest) (response *DescribeTimingL7AnalysisDataResponse, err error) {
+    return c.DescribeTimingL7AnalysisDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL7AnalysisData
+// 查询七层数据分析类时序流量数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL7AnalysisDataWithContext(ctx context.Context, request *DescribeTimingL7AnalysisDataRequest) (response *DescribeTimingL7AnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL7AnalysisDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL7AnalysisData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL7AnalysisDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopL7AnalysisDataRequest() (request *DescribeTopL7AnalysisDataRequest) {
+    request = &DescribeTopL7AnalysisDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTopL7AnalysisData")
+    
+    
+    return
+}
+
+func NewDescribeTopL7AnalysisDataResponse() (response *DescribeTopL7AnalysisDataResponse) {
+    response = &DescribeTopL7AnalysisDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopL7AnalysisData
+// 查询top类流量数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTopL7AnalysisData(request *DescribeTopL7AnalysisDataRequest) (response *DescribeTopL7AnalysisDataResponse, err error) {
+    return c.DescribeTopL7AnalysisDataWithContext(context.Background(), request)
+}
+
+// DescribeTopL7AnalysisData
+// 查询top类流量数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTopL7AnalysisDataWithContext(ctx context.Context, request *DescribeTopL7AnalysisDataRequest) (response *DescribeTopL7AnalysisDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopL7AnalysisDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopL7AnalysisData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopL7AnalysisDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebManagedRulesAttackEventsRequest() (request *DescribeWebManagedRulesAttackEventsRequest) {
+    request = &DescribeWebManagedRulesAttackEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesAttackEvents")
+    
+    
+    return
+}
+
+func NewDescribeWebManagedRulesAttackEventsResponse() (response *DescribeWebManagedRulesAttackEventsResponse) {
+    response = &DescribeWebManagedRulesAttackEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebManagedRulesAttackEvents
+// 查询Web托管攻击事件
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesAttackEvents(request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
+    return c.DescribeWebManagedRulesAttackEventsWithContext(context.Background(), request)
+}
+
+// DescribeWebManagedRulesAttackEvents
+// 查询Web托管攻击事件
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesAttackEventsWithContext(ctx context.Context, request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebManagedRulesAttackEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebManagedRulesAttackEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebManagedRulesAttackEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebManagedRulesDataRequest() (request *DescribeWebManagedRulesDataRequest) {
+    request = &DescribeWebManagedRulesDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesData")
+    
+    
+    return
+}
+
+func NewDescribeWebManagedRulesDataResponse() (response *DescribeWebManagedRulesDataResponse) {
+    response = &DescribeWebManagedRulesDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebManagedRulesData
+// 查询Web托管规则数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
+    return c.DescribeWebManagedRulesDataWithContext(context.Background(), request)
+}
+
+// DescribeWebManagedRulesData
+// 查询Web托管规则数据
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesDataWithContext(ctx context.Context, request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebManagedRulesDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebManagedRulesData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebManagedRulesDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebManagedRulesLogRequest() (request *DescribeWebManagedRulesLogRequest) {
+    request = &DescribeWebManagedRulesLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesLog")
+    
+    
+    return
+}
+
+func NewDescribeWebManagedRulesLogResponse() (response *DescribeWebManagedRulesLogResponse) {
+    response = &DescribeWebManagedRulesLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebManagedRulesLog
+// 查询Web托管日志
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesLog(request *DescribeWebManagedRulesLogRequest) (response *DescribeWebManagedRulesLogResponse, err error) {
+    return c.DescribeWebManagedRulesLogWithContext(context.Background(), request)
+}
+
+// DescribeWebManagedRulesLog
+// 查询Web托管日志
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesLogWithContext(ctx context.Context, request *DescribeWebManagedRulesLogRequest) (response *DescribeWebManagedRulesLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebManagedRulesLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebManagedRulesLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebManagedRulesLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebManagedRulesTopDataRequest() (request *DescribeWebManagedRulesTopDataRequest) {
+    request = &DescribeWebManagedRulesTopDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesTopData")
+    
+    
+    return
+}
+
+func NewDescribeWebManagedRulesTopDataResponse() (response *DescribeWebManagedRulesTopDataResponse) {
+    response = &DescribeWebManagedRulesTopDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebManagedRulesTopData
+// 查询Web托管规则Top数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesTopData(request *DescribeWebManagedRulesTopDataRequest) (response *DescribeWebManagedRulesTopDataResponse, err error) {
+    return c.DescribeWebManagedRulesTopDataWithContext(context.Background(), request)
+}
+
+// DescribeWebManagedRulesTopData
+// 查询Web托管规则Top数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebManagedRulesTopDataWithContext(ctx context.Context, request *DescribeWebManagedRulesTopDataRequest) (response *DescribeWebManagedRulesTopDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebManagedRulesTopDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebManagedRulesTopData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebManagedRulesTopDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebProtectionAttackEventsRequest() (request *DescribeWebProtectionAttackEventsRequest) {
+    request = &DescribeWebProtectionAttackEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionAttackEvents")
+    
+    
+    return
+}
+
+func NewDescribeWebProtectionAttackEventsResponse() (response *DescribeWebProtectionAttackEventsResponse) {
+    response = &DescribeWebProtectionAttackEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebProtectionAttackEvents
+// 查询web防护攻击事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionAttackEvents(request *DescribeWebProtectionAttackEventsRequest) (response *DescribeWebProtectionAttackEventsResponse, err error) {
+    return c.DescribeWebProtectionAttackEventsWithContext(context.Background(), request)
+}
+
+// DescribeWebProtectionAttackEvents
+// 查询web防护攻击事件
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionAttackEventsWithContext(ctx context.Context, request *DescribeWebProtectionAttackEventsRequest) (response *DescribeWebProtectionAttackEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebProtectionAttackEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebProtectionAttackEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebProtectionAttackEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebProtectionDataRequest() (request *DescribeWebProtectionDataRequest) {
+    request = &DescribeWebProtectionDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionData")
+    
+    
+    return
+}
+
+func NewDescribeWebProtectionDataResponse() (response *DescribeWebProtectionDataResponse) {
+    response = &DescribeWebProtectionDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebProtectionData
+// 查询web防护数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionData(request *DescribeWebProtectionDataRequest) (response *DescribeWebProtectionDataResponse, err error) {
+    return c.DescribeWebProtectionDataWithContext(context.Background(), request)
+}
+
+// DescribeWebProtectionData
+// 查询web防护数据
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionDataWithContext(ctx context.Context, request *DescribeWebProtectionDataRequest) (response *DescribeWebProtectionDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebProtectionDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebProtectionData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebProtectionDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebProtectionLogRequest() (request *DescribeWebProtectionLogRequest) {
+    request = &DescribeWebProtectionLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionLog")
+    
+    
+    return
+}
+
+func NewDescribeWebProtectionLogResponse() (response *DescribeWebProtectionLogResponse) {
+    response = &DescribeWebProtectionLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWebProtectionLog
+// 查询web防护日志
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionLog(request *DescribeWebProtectionLogRequest) (response *DescribeWebProtectionLogResponse, err error) {
+    return c.DescribeWebProtectionLogWithContext(context.Background(), request)
+}
+
+// DescribeWebProtectionLog
+// 查询web防护日志
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebProtectionLogWithContext(ctx context.Context, request *DescribeWebProtectionLogRequest) (response *DescribeWebProtectionLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebProtectionLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebProtectionLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebProtectionLogResponse()
     err = c.Send(request, response)
     return
 }

@@ -503,6 +503,7 @@ func NewCreateKeyPairResponse() (response *CreateKeyPairResponse) {
 //  INVALIDKEYPAIRNAMETOOLONG = "InvalidKeyPairNameTooLong"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  LIMITEXCEEDED_TAGRESOURCEQUOTA = "LimitExceeded.TagResourceQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
     return c.CreateKeyPairWithContext(context.Background(), request)
@@ -530,6 +531,7 @@ func (c *Client) CreateKeyPair(request *CreateKeyPairRequest) (response *CreateK
 //  INVALIDKEYPAIRNAMETOOLONG = "InvalidKeyPairNameTooLong"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
+//  LIMITEXCEEDED_TAGRESOURCEQUOTA = "LimitExceeded.TagResourceQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateKeyPairWithContext(ctx context.Context, request *CreateKeyPairRequest) (response *CreateKeyPairResponse, err error) {
     if request == nil {
@@ -3363,6 +3365,7 @@ func NewImportKeyPairResponse() (response *ImportKeyPairResponse) {
 //  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
 //  INVALIDPUBLICKEY_DUPLICATE = "InvalidPublicKey.Duplicate"
 //  INVALIDPUBLICKEY_MALFORMED = "InvalidPublicKey.Malformed"
+//  LIMITEXCEEDED_TAGRESOURCEQUOTA = "LimitExceeded.TagResourceQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportKeyPairResponse, err error) {
     return c.ImportKeyPairWithContext(context.Background(), request)
@@ -3390,6 +3393,7 @@ func (c *Client) ImportKeyPair(request *ImportKeyPairRequest) (response *ImportK
 //  INVALIDPROJECTID_NOTFOUND = "InvalidProjectId.NotFound"
 //  INVALIDPUBLICKEY_DUPLICATE = "InvalidPublicKey.Duplicate"
 //  INVALIDPUBLICKEY_MALFORMED = "InvalidPublicKey.Malformed"
+//  LIMITEXCEEDED_TAGRESOURCEQUOTA = "LimitExceeded.TagResourceQuota"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ImportKeyPairWithContext(ctx context.Context, request *ImportKeyPairRequest) (response *ImportKeyPairResponse, err error) {
     if request == nil {

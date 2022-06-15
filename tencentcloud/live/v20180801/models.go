@@ -9598,7 +9598,7 @@ type TimeShiftBillData struct {
 	// 推流域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 时移时长,单位分钟。
+	// 时移文件时长,单位分钟。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 时移配置天数，单位天。

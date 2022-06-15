@@ -218,7 +218,7 @@ const (
 	// 同一个地域下，云服务默认事件集不允许重复创建。
 	RESOURCEINUSE_DEFAULTEVENTBUS = "ResourceInUse.DefaultEventBus"
 
-	// 事件集下有规则或者连接器，无法删除，请删除所有规则和连接器后重试。
+	// 无法删除，因事件集下存在规则、连接器或归档，请删除所有规则、连接器和归档后重试。
 	RESOURCEINUSE_EVENTBUS = "ResourceInUse.EventBus"
 
 	// 规则下有目标，无法删除，请删除所有目标后重试。

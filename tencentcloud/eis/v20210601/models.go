@@ -39,6 +39,12 @@ type AbstractRuntimeMC struct {
 
 	// 运行时应用listener地址后缀
 	Addr *string `json:"Addr,omitempty" name:"Addr"`
+
+	// 运行时状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 运行时过期时间
+	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
 }
 
 type GetRuntimeMCRequest struct {
@@ -231,6 +237,9 @@ type ListRuntimeDeployedInstancesMCRequest struct {
 
 	// 运行时地域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 1:3.0版本新控制台传1；否则传0
+	ApiVersion *int64 `json:"ApiVersion,omitempty" name:"ApiVersion"`
 }
 
 func (r *ListRuntimeDeployedInstancesMCRequest) ToJsonString() string {
@@ -251,6 +260,7 @@ func (r *ListRuntimeDeployedInstancesMCRequest) FromJsonString(s string) error {
 	delete(f, "SortType")
 	delete(f, "Sort")
 	delete(f, "Zone")
+	delete(f, "ApiVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimeDeployedInstancesMCRequest has unknown keys!", "")
 	}
@@ -421,4 +431,20 @@ type RuntimeMC struct {
 
 	// 内存上限 MB
 	MemoryLimit *float64 `json:"MemoryLimit,omitempty" name:"MemoryLimit"`
+
+	// 运行时过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
+
+	// 收费类型：0:缺省，1:通过订单页自助下单(支持续费/升配等操作)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源限制类型：0:无限制，1:有限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceLimitType *int64 `json:"ResourceLimitType,omitempty" name:"ResourceLimitType"`
+
+	// 是否开启自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" name:"AutoRenewal"`
 }

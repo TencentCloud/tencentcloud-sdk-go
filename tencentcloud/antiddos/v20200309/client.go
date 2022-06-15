@@ -2485,7 +2485,7 @@ func NewDescribeCCLevelListResponse() (response *DescribeCCLevelListResponse) {
 }
 
 // DescribeCCLevelList
-// 获取CC防护等级列表
+// 获取边界防护CC防护等级列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2510,7 +2510,7 @@ func (c *Client) DescribeCCLevelList(request *DescribeCCLevelListRequest) (respo
 }
 
 // DescribeCCLevelList
-// 获取CC防护等级列表
+// 获取边界防护CC防护等级列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

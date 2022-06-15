@@ -3134,6 +3134,12 @@ type DescribeTaskListRequest struct {
 
 	// 任务状态
 	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 任务状态
+	Result []*int64 `json:"Result,omitempty" name:"Result"`
+
+	// 操作者Uin
+	OperatorUin []*int64 `json:"OperatorUin,omitempty" name:"OperatorUin"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -3157,6 +3163,8 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "TaskStatus")
+	delete(f, "Result")
+	delete(f, "OperatorUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
 	}

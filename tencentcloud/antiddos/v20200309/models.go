@@ -256,6 +256,10 @@ type BGPIPInstance struct {
 	// 是否渠道版高防IP，是为1，否为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BGPIPChannelFlag *uint64 `json:"BGPIPChannelFlag,omitempty" name:"BGPIPChannelFlag"`
+
+	// 资源关联标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagInfoList []*TagInfo `json:"TagInfoList,omitempty" name:"TagInfoList"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -355,6 +359,9 @@ type BGPInstance struct {
 
 	// CC防护开关
 	CCEnable *int64 `json:"CCEnable,omitempty" name:"CCEnable"`
+
+	// 资源关联标签
+	TagInfoList []*TagInfo `json:"TagInfoList,omitempty" name:"TagInfoList"`
 }
 
 type BGPInstanceSpecification struct {
@@ -424,6 +431,9 @@ type BlackWhiteIpRelation struct {
 
 	// ip掩码，0表示32位完整ip
 	Mask *uint64 `json:"Mask,omitempty" name:"Mask"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type BoundIpInfo struct {
@@ -929,6 +939,9 @@ type CreateCCReqLimitPolicyRequest struct {
 
 	// 策略项
 	Policy *CCReqLimitPolicyRecord `json:"Policy,omitempty" name:"Policy"`
+
+	// 是否为兜底频控
+	IsGlobal *int64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
 }
 
 func (r *CreateCCReqLimitPolicyRequest) ToJsonString() string {
@@ -948,6 +961,7 @@ func (r *CreateCCReqLimitPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "Domain")
 	delete(f, "Policy")
+	delete(f, "IsGlobal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCCReqLimitPolicyRequest has unknown keys!", "")
 	}
@@ -2906,7 +2920,7 @@ type DescribeCCLevelListResponse struct {
 		// 分级策略列表总数
 		Total *uint64 `json:"Total,omitempty" name:"Total"`
 
-		// 分级策略列表详情
+		// 分级策略列表总数
 		LevelList []*CCLevelPolicy `json:"LevelList,omitempty" name:"LevelList"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3837,6 +3851,9 @@ type DescribeListBGPIPInstancesRequest struct {
 
 	// 批量查询实例ID对应的高防IP实例资源
 	FilterInstanceIdList []*string `json:"FilterInstanceIdList,omitempty" name:"FilterInstanceIdList"`
+
+	// 标签搜索
+	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
 }
 
 func (r *DescribeListBGPIPInstancesRequest) ToJsonString() string {
@@ -3864,6 +3881,7 @@ func (r *DescribeListBGPIPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterStatus")
 	delete(f, "FilterCname")
 	delete(f, "FilterInstanceIdList")
+	delete(f, "FilterTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPIPInstancesRequest has unknown keys!", "")
 	}
@@ -3931,6 +3949,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 企业版搜索
 	FilterEnterpriseFlag *uint64 `json:"FilterEnterpriseFlag,omitempty" name:"FilterEnterpriseFlag"`
+
+	// 标签搜索
+	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -3956,6 +3977,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterBoundStatus")
 	delete(f, "FilterInstanceIdList")
 	delete(f, "FilterEnterpriseFlag")
+	delete(f, "FilterTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}
@@ -5475,7 +5497,7 @@ type ListenerCcThreholdConfig struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 协议（可取值htttps）
+	// 协议（可取值https）
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 开关状态（0：关闭，1：开启）
@@ -6573,6 +6595,9 @@ type PacketFilterRelation struct {
 
 	// 特征过滤配置所属的实例
 	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitempty" name:"InstanceDetailList"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type PortSegment struct {
@@ -6823,6 +6848,24 @@ func (r *SwitchWaterPrintConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SwitchWaterPrintConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagFilter struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签键值列表
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagInfo struct {
+
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type WaterPrintConfig struct {
