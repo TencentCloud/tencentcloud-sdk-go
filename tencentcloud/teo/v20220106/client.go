@@ -2582,6 +2582,53 @@ func (c *Client) DescribeTimingL7AnalysisDataWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeTimingL7CacheDataRequest() (request *DescribeTimingL7CacheDataRequest) {
+    request = &DescribeTimingL7CacheDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7CacheData")
+    
+    
+    return
+}
+
+func NewDescribeTimingL7CacheDataResponse() (response *DescribeTimingL7CacheDataResponse) {
+    response = &DescribeTimingL7CacheDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimingL7CacheData
+// 七层查询缓存分析时序类流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeTimingL7CacheData(request *DescribeTimingL7CacheDataRequest) (response *DescribeTimingL7CacheDataResponse, err error) {
+    return c.DescribeTimingL7CacheDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL7CacheData
+// 七层查询缓存分析时序类流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeTimingL7CacheDataWithContext(ctx context.Context, request *DescribeTimingL7CacheDataRequest) (response *DescribeTimingL7CacheDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL7CacheDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL7CacheData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL7CacheDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopL7AnalysisDataRequest() (request *DescribeTopL7AnalysisDataRequest) {
     request = &DescribeTopL7AnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2633,6 +2680,53 @@ func (c *Client) DescribeTopL7AnalysisDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeTopL7CacheDataRequest() (request *DescribeTopL7CacheDataRequest) {
+    request = &DescribeTopL7CacheDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTopL7CacheData")
+    
+    
+    return
+}
+
+func NewDescribeTopL7CacheDataResponse() (response *DescribeTopL7CacheDataResponse) {
+    response = &DescribeTopL7CacheDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopL7CacheData
+// 七层查询缓存分析top类流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeTopL7CacheData(request *DescribeTopL7CacheDataRequest) (response *DescribeTopL7CacheDataResponse, err error) {
+    return c.DescribeTopL7CacheDataWithContext(context.Background(), request)
+}
+
+// DescribeTopL7CacheData
+// 七层查询缓存分析top类流量数据
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeTopL7CacheDataWithContext(ctx context.Context, request *DescribeTopL7CacheDataRequest) (response *DescribeTopL7CacheDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopL7CacheDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopL7CacheData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopL7CacheDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWebManagedRulesAttackEventsRequest() (request *DescribeWebManagedRulesAttackEventsRequest) {
     request = &DescribeWebManagedRulesAttackEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2654,9 +2748,7 @@ func NewDescribeWebManagedRulesAttackEventsResponse() (response *DescribeWebMana
 // 查询Web托管攻击事件
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesAttackEvents(request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
     return c.DescribeWebManagedRulesAttackEventsWithContext(context.Background(), request)
 }
@@ -2665,9 +2757,7 @@ func (c *Client) DescribeWebManagedRulesAttackEvents(request *DescribeWebManaged
 // 查询Web托管攻击事件
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesAttackEventsWithContext(ctx context.Context, request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
     if request == nil {
         request = NewDescribeWebManagedRulesAttackEventsRequest()
@@ -2705,9 +2795,7 @@ func NewDescribeWebManagedRulesDataResponse() (response *DescribeWebManagedRules
 // 查询Web托管规则数据
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
     return c.DescribeWebManagedRulesDataWithContext(context.Background(), request)
 }
@@ -2716,9 +2804,7 @@ func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDat
 // 查询Web托管规则数据
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesDataWithContext(ctx context.Context, request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
     if request == nil {
         request = NewDescribeWebManagedRulesDataRequest()
@@ -2756,9 +2842,7 @@ func NewDescribeWebManagedRulesLogResponse() (response *DescribeWebManagedRulesL
 // 查询Web托管日志
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesLog(request *DescribeWebManagedRulesLogRequest) (response *DescribeWebManagedRulesLogResponse, err error) {
     return c.DescribeWebManagedRulesLogWithContext(context.Background(), request)
 }
@@ -2767,9 +2851,7 @@ func (c *Client) DescribeWebManagedRulesLog(request *DescribeWebManagedRulesLogR
 // 查询Web托管日志
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesLogWithContext(ctx context.Context, request *DescribeWebManagedRulesLogRequest) (response *DescribeWebManagedRulesLogResponse, err error) {
     if request == nil {
         request = NewDescribeWebManagedRulesLogRequest()

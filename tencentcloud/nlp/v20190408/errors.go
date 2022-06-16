@@ -32,6 +32,9 @@ const (
 	// 文本向量化失败
 	FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
 
+	// 未知错误。
+	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+
 	// 查找不到词语
 	FAILEDOPERATION_WORDNOTFOUND = "FailedOperation.WordNotFound"
 

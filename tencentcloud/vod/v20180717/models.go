@@ -1960,7 +1960,7 @@ type AttachMediaSubtitlesRequest struct {
 	// 字幕的唯一标识。
 	SubtitleIds []*string `json:"SubtitleIds,omitempty" name:"SubtitleIds"`
 
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -2222,7 +2222,7 @@ type CommitUploadRequest struct {
 	// 点播会话，取申请上传接口的返回值 VodSessionKey。
 	VodSessionKey *string `json:"VodSessionKey,omitempty" name:"VodSessionKey"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -2254,11 +2254,9 @@ type CommitUploadResponse struct {
 		FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 		// 媒体播放地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
 		// 媒体封面地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 		CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2325,6 +2323,9 @@ type ComposeMediaRequest struct {
 	// 输出的媒体文件信息。
 	Output *ComposeMediaOutput `json:"Output,omitempty" name:"Output"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 制作视频文件时使用的画布。
 	Canvas *Canvas `json:"Canvas,omitempty" name:"Canvas"`
 
@@ -2333,9 +2334,6 @@ type ComposeMediaRequest struct {
 
 	// 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ComposeMediaRequest) ToJsonString() string {
@@ -2352,10 +2350,10 @@ func (r *ComposeMediaRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Tracks")
 	delete(f, "Output")
+	delete(f, "SubAppId")
 	delete(f, "Canvas")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ComposeMediaRequest has unknown keys!", "")
 	}
@@ -3050,7 +3048,7 @@ type CreateClassRequest struct {
 	// 分类名称，长度限制：1-64 个字符。
 	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -3817,7 +3815,7 @@ type CreateStorageRegionRequest struct {
 	// 待开通的存储地域，必须是系统支持的地域。
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -3920,6 +3918,9 @@ type CreateSuperPlayerConfigRequest struct {
 	// 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 播放的音视频类型，可选值：
 	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
 	// <li>Transcode：转码输出；</li>
@@ -3972,9 +3973,6 @@ type CreateSuperPlayerConfigRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateSuperPlayerConfigRequest) ToJsonString() string {
@@ -3990,6 +3988,7 @@ func (r *CreateSuperPlayerConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "SubAppId")
 	delete(f, "AudioVideoType")
 	delete(f, "DrmSwitch")
 	delete(f, "AdaptiveDynamicStreamingDefinition")
@@ -4000,7 +3999,6 @@ func (r *CreateSuperPlayerConfigRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Scheme")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSuperPlayerConfigRequest has unknown keys!", "")
 	}
@@ -4120,15 +4118,15 @@ type CreateVodDomainRequest struct {
 	// 需要接入点播的加速域名。注意：不支持填写泛域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 需要开启 CDN 加速的区域：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 	// <li>Outside Chinese Mainland: 中国境外。</li>
 	// <li>Global: 全球范围。</li>
 	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	AccelerateArea *string `json:"AccelerateArea,omitempty" name:"AccelerateArea"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateVodDomainRequest) ToJsonString() string {
@@ -4144,8 +4142,8 @@ func (r *CreateVodDomainRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
-	delete(f, "AccelerateArea")
 	delete(f, "SubAppId")
+	delete(f, "AccelerateArea")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVodDomainRequest has unknown keys!", "")
 	}
@@ -4557,7 +4555,7 @@ type DeleteClassRequest struct {
 	// 分类 ID
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -4807,11 +4805,11 @@ type DeleteMediaRequest struct {
 	// 媒体文件的唯一标识。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 指定本次需要删除的部分。默认值为 "[]", 表示删除媒体及其对应的全部视频处理文件。
 	DeleteParts []*MediaDeleteItem `json:"DeleteParts,omitempty" name:"DeleteParts"`
-
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DeleteMediaRequest) ToJsonString() string {
@@ -4827,8 +4825,8 @@ func (r *DeleteMediaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileId")
-	delete(f, "DeleteParts")
 	delete(f, "SubAppId")
+	delete(f, "DeleteParts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMediaRequest has unknown keys!", "")
 	}
@@ -4911,7 +4909,7 @@ type DeleteProcedureTemplateRequest struct {
 	// 任务流名字。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -5061,7 +5059,7 @@ type DeleteSuperPlayerConfigRequest struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -5161,7 +5159,7 @@ type DeleteVodDomainRequest struct {
 	// 要删除的点播加速域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -5506,7 +5504,7 @@ func (r *DescribeAdaptiveDynamicStreamingTemplatesResponse) FromJsonString(s str
 type DescribeAllClassRequest struct {
 	*tchttp.BaseRequest
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -5638,6 +5636,9 @@ type DescribeCDNStatDetailsRequest struct {
 	// 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。
 	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
 
@@ -5707,9 +5708,6 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>1440：天粒度，返回指定查询时间内1天粒度的数据。起始时间和结束时间跨度大于24小时，只支持天粒度的数据。</li>
 	// 当 StartTime 和 EndTime 时间跨度大于24小时时，DataInterval 默认为 1440。
 	DataInterval *uint64 `json:"DataInterval,omitempty" name:"DataInterval"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeCDNStatDetailsRequest) ToJsonString() string {
@@ -5727,12 +5725,12 @@ func (r *DescribeCDNStatDetailsRequest) FromJsonString(s string) error {
 	delete(f, "Metric")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "SubAppId")
 	delete(f, "DomainNames")
 	delete(f, "Area")
 	delete(f, "Districts")
 	delete(f, "Isps")
 	delete(f, "DataInterval")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCDNStatDetailsRequest has unknown keys!", "")
 	}
@@ -5779,6 +5777,10 @@ type DescribeCDNUsageDataRequest struct {
 	// <li>Bandwidth：带宽，单位为 bps。</li>
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
 
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 用量数据的时间粒度，单位：分钟，取值有：
 	// <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
 	// <li>60：小时粒度，返回指定查询时间内1小时粒度的数据。</li>
@@ -5788,10 +5790,6 @@ type DescribeCDNUsageDataRequest struct {
 
 	// 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
 	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
-
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeCDNUsageDataRequest) ToJsonString() string {
@@ -5809,9 +5807,9 @@ func (r *DescribeCDNUsageDataRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "DataType")
+	delete(f, "SubAppId")
 	delete(f, "DataInterval")
 	delete(f, "DomainNames")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCDNUsageDataRequest has unknown keys!", "")
 	}
@@ -5856,14 +5854,14 @@ type DescribeCdnLogsRequest struct {
 	// 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 分页拉取的最大返回结果数。默认值：100；最大值：1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 分页拉取的起始偏移量。默认值：0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeCdnLogsRequest) ToJsonString() string {
@@ -5881,9 +5879,9 @@ func (r *DescribeCdnLogsRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "SubAppId")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCdnLogsRequest has unknown keys!", "")
 	}
@@ -5998,7 +5996,7 @@ type DescribeDailyMediaPlayStatRequest struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -6119,7 +6117,7 @@ type DescribeDailyPlayStatFileListRequest struct {
 	// 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -6277,7 +6275,7 @@ func (r *DescribeEventConfigResponse) FromJsonString(s string) error {
 type DescribeEventsStateRequest struct {
 	*tchttp.BaseRequest
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -6466,7 +6464,7 @@ type DescribeImageReviewUsageDataRequest struct {
 	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -6728,14 +6726,14 @@ type DescribeMediaPlayStatDetailsRequest struct {
 	// 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 统计时间粒度，有效值：
 	// <li>Hour：以小时为粒度。</li>
 	// <li>Day：以天为粒度。</li>
 	// 默认按时间跨度决定，小于1天以小时为粒度，大于等于1天则以天为粒度。
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeMediaPlayStatDetailsRequest) ToJsonString() string {
@@ -6753,8 +6751,8 @@ func (r *DescribeMediaPlayStatDetailsRequest) FromJsonString(s string) error {
 	delete(f, "FileId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
-	delete(f, "Interval")
 	delete(f, "SubAppId")
+	delete(f, "Interval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaPlayStatDetailsRequest has unknown keys!", "")
 	}
@@ -7058,7 +7056,7 @@ type DescribeReviewDetailsRequest struct {
 	// 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -7255,7 +7253,7 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string)
 type DescribeStorageDataRequest struct {
 	*tchttp.BaseRequest
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -7288,11 +7286,17 @@ type DescribeStorageDataResponse struct {
 		// 当前总存储量，单位是字节。
 		TotalStorage *uint64 `json:"TotalStorage,omitempty" name:"TotalStorage"`
 
+		// 当前标准存储量，单位是字节。
+		StandardStorage *uint64 `json:"StandardStorage,omitempty" name:"StandardStorage"`
+
 		// 当前低频存储量，单位是字节。
 		InfrequentStorage *uint64 `json:"InfrequentStorage,omitempty" name:"InfrequentStorage"`
 
-		// 当前标准存储量，单位是字节。
-		StandardStorage *uint64 `json:"StandardStorage,omitempty" name:"StandardStorage"`
+		// 当前归档存储量，单位是字节。
+		ArchiveStorage *uint64 `json:"ArchiveStorage,omitempty" name:"ArchiveStorage"`
+
+		// 当前深度归档存储量，单位是字节。
+		DeepArchiveStorage *uint64 `json:"DeepArchiveStorage,omitempty" name:"DeepArchiveStorage"`
 
 		// 各计费区域的存储用量。
 		StorageStat []*StorageStatData `json:"StorageStat,omitempty" name:"StorageStat"`
@@ -7322,6 +7326,10 @@ type DescribeStorageDetailsRequest struct {
 	// 结束时间，需大于开始日期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 统计时间粒度，有效值：
 	// <li>Minute：以5分钟为粒度。</li>
 	// <li>Day：以天为粒度。</li>
@@ -7345,10 +7353,6 @@ type DescribeStorageDetailsRequest struct {
 	// 默认值为 TotalStorage。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	// 当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
 	// 查询的存储区域，有效值：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 	// <li>Outside Chinese Mainland：中国境外。</li>
@@ -7370,9 +7374,9 @@ func (r *DescribeStorageDetailsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "SubAppId")
 	delete(f, "Interval")
 	delete(f, "StorageType")
-	delete(f, "SubAppId")
 	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStorageDetailsRequest has unknown keys!", "")
@@ -7406,7 +7410,7 @@ func (r *DescribeStorageDetailsResponse) FromJsonString(s string) error {
 type DescribeStorageRegionsRequest struct {
 	*tchttp.BaseRequest
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -7720,6 +7724,9 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -7742,9 +7749,6 @@ type DescribeTasksRequest struct {
 
 	// 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
 	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeTasksRequest) ToJsonString() string {
@@ -7759,6 +7763,7 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Status")
 	delete(f, "FileId")
 	delete(f, "CreateTime")
@@ -7766,7 +7771,6 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "Limit")
 	delete(f, "ScrollToken")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
@@ -8204,6 +8208,9 @@ type EditMediaRequest struct {
 	// 输入视频的类型，可以取的值为  File，Stream 两种。
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 输入的视频文件信息，当 InputType 为 File 时必填。
 	FileInfos []*EditMediaFileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
 
@@ -8232,9 +8239,6 @@ type EditMediaRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *EditMediaRequest) ToJsonString() string {
@@ -8250,6 +8254,7 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InputType")
+	delete(f, "SubAppId")
 	delete(f, "FileInfos")
 	delete(f, "StreamInfos")
 	delete(f, "Definition")
@@ -8259,7 +8264,6 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditMediaRequest has unknown keys!", "")
 	}
@@ -8511,6 +8515,9 @@ type ExecuteFunctionRequest struct {
 	// 接口参数，具体参数格式调用时与后端协调。
 	FunctionArg *string `json:"FunctionArg,omitempty" name:"FunctionArg"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
@@ -8519,9 +8526,6 @@ type ExecuteFunctionRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ExecuteFunctionRequest) ToJsonString() string {
@@ -8538,10 +8542,10 @@ func (r *ExecuteFunctionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FunctionName")
 	delete(f, "FunctionArg")
+	delete(f, "SubAppId")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExecuteFunctionRequest has unknown keys!", "")
 	}
@@ -8670,7 +8674,7 @@ type ForbidMediaDistributionRequest struct {
 	// forbid：禁播，recover：解禁。
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -9095,6 +9099,9 @@ type LiveRealTimeClipRequest struct {
 	// 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 是否固化。0 不固化，1 固化。默认不固化。
 	IsPersistence *int64 `json:"IsPersistence,omitempty" name:"IsPersistence"`
 
@@ -9112,9 +9119,6 @@ type LiveRealTimeClipRequest struct {
 
 	// 系统保留字段，请勿填写。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *LiveRealTimeClipRequest) ToJsonString() string {
@@ -9132,13 +9136,13 @@ func (r *LiveRealTimeClipRequest) FromJsonString(s string) error {
 	delete(f, "StreamId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "SubAppId")
 	delete(f, "IsPersistence")
 	delete(f, "ExpireTime")
 	delete(f, "Procedure")
 	delete(f, "MetaDataRequired")
 	delete(f, "Host")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LiveRealTimeClipRequest has unknown keys!", "")
 	}
@@ -9191,7 +9195,7 @@ type ManageTaskRequest struct {
 	// <li>Abort：终止任务。只能终止已发起且状态为等待中（WAITING）的任务。</li>
 	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -10623,7 +10627,7 @@ type ModifyClassRequest struct {
 	// 分类名称。长度限制：1-64 个字符。
 	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -10761,10 +10765,10 @@ func (r *ModifyContentReviewTemplateResponse) FromJsonString(s string) error {
 type ModifyDefaultStorageRegionRequest struct {
 	*tchttp.BaseRequest
 
-	// 默认的存储地域，必须是已经开通的地域」，建议改成「默认的存储地域，必须是已经开通的地域（通过 DescribeStorageRegions 接口查询）。
+	// 默认的存储地域，必须是已经开通的地域（通过 DescribeStorageRegions 接口查询）。
 	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -11054,6 +11058,9 @@ type ModifyMediaInfoRequest struct {
 	// 媒体文件唯一标识。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 媒体文件名称，最长 64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -11098,9 +11105,6 @@ type ModifyMediaInfoRequest struct {
 	// 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
 	// 同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
 	ClearSubtitles *int64 `json:"ClearSubtitles,omitempty" name:"ClearSubtitles"`
-
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyMediaInfoRequest) ToJsonString() string {
@@ -11116,6 +11120,7 @@ func (r *ModifyMediaInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileId")
+	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Description")
 	delete(f, "ClassId")
@@ -11130,7 +11135,6 @@ func (r *ModifyMediaInfoRequest) FromJsonString(s string) error {
 	delete(f, "AddSubtitles")
 	delete(f, "DeleteSubtitleIds")
 	delete(f, "ClearSubtitles")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMediaInfoRequest has unknown keys!", "")
 	}
@@ -11177,7 +11181,7 @@ type ModifyMediaStorageClassRequest struct {
 	// <li> DEEP_ARCHIVE：深度归档存储。</li>
 	StorageClass *string `json:"StorageClass,omitempty" name:"StorageClass"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 取回模式。当文件的存储类型从归档或深度归档转换为标准存储时，需要指定取回（也称为解冻）操作的模式，具体说明请参考[数据取回及取回模式](https://cloud.tencent.com/document/product/266/56196#retake)。
@@ -11520,7 +11524,7 @@ func (r *ModifySnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
 type ModifySubAppIdInfoRequest struct {
 	*tchttp.BaseRequest
 
-	// 子应用 ID。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 子应用名称，长度限制：40个字符。
@@ -11574,7 +11578,7 @@ func (r *ModifySubAppIdInfoResponse) FromJsonString(s string) error {
 type ModifySubAppIdStatusRequest struct {
 	*tchttp.BaseRequest
 
-	// 子应用 ID。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 子应用状态，取值范围：
@@ -11827,7 +11831,7 @@ type ModifyVodDomainAccelerateConfigRequest struct {
 	// 开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -11879,14 +11883,14 @@ type ModifyVodDomainConfigRequest struct {
 	// 域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// [Referer 防盗链](/document/product/266/14046)规则。
 	RefererAuthPolicy *RefererAuthPolicy `json:"RefererAuthPolicy,omitempty" name:"RefererAuthPolicy"`
 
 	// [Key 防盗链](/document/product/266/14047)规则。
 	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitempty" name:"UrlSignatureAuthPolicy"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyVodDomainConfigRequest) ToJsonString() string {
@@ -11902,9 +11906,9 @@ func (r *ModifyVodDomainConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
+	delete(f, "SubAppId")
 	delete(f, "RefererAuthPolicy")
 	delete(f, "UrlSignatureAuthPolicy")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVodDomainConfigRequest has unknown keys!", "")
 	}
@@ -12844,6 +12848,9 @@ type ProcessMediaByProcedureRequest struct {
 	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
 	ProcedureName *string `json:"ProcedureName,omitempty" name:"ProcedureName"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
 
@@ -12858,9 +12865,6 @@ type ProcessMediaByProcedureRequest struct {
 
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ProcessMediaByProcedureRequest) ToJsonString() string {
@@ -12877,12 +12881,12 @@ func (r *ProcessMediaByProcedureRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileId")
 	delete(f, "ProcedureName")
+	delete(f, "SubAppId")
 	delete(f, "TasksPriority")
 	delete(f, "TasksNotifyMode")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaByProcedureRequest has unknown keys!", "")
 	}
@@ -13286,8 +13290,11 @@ type PullUploadRequest struct {
 	*tchttp.BaseRequest
 
 	// 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
+	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
 	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 媒体名称。
 	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
@@ -13318,9 +13325,6 @@ type PullUploadRequest struct {
 	// 保留字段，特殊用途时使用。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
-
 	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 }
@@ -13338,6 +13342,7 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "MediaUrl")
+	delete(f, "SubAppId")
 	delete(f, "MediaName")
 	delete(f, "CoverUrl")
 	delete(f, "Procedure")
@@ -13347,7 +13352,6 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")
-	delete(f, "SubAppId")
 	delete(f, "SourceContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PullUploadRequest has unknown keys!", "")
@@ -13493,6 +13497,56 @@ type RefererAuthPolicy struct {
 	BlankRefererAllowed *string `json:"BlankRefererAllowed,omitempty" name:"BlankRefererAllowed"`
 }
 
+type RefreshUrlCacheRequest struct {
+	*tchttp.BaseRequest
+
+	// 刷新的 URL 列表，单次最多指定20个 URL。
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *RefreshUrlCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshUrlCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Urls")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefreshUrlCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RefreshUrlCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RefreshUrlCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshUrlCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResetProcedureTemplateRequest struct {
 	*tchttp.BaseRequest
 
@@ -13579,6 +13633,70 @@ type ResourceTag struct {
 
 	// 标签值。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type RestoreMediaRequest struct {
+	*tchttp.BaseRequest
+
+	// 媒体文件唯一标识列表。
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 解冻出的临时媒体文件的可访问持续时长，单位为“天”。
+	RestoreDay *uint64 `json:"RestoreDay,omitempty" name:"RestoreDay"`
+
+	// 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
+	// <li>极速模式：Expedited，解冻任务在5分钟后完成。</li>
+	// <li>标准模式：Standard，解冻任务在5小时后完成 。</li>
+	// <li>批量模式：Bulk，，解冻任务在12小时后完成。</li>
+	// 当媒体文件的存储类型为深度归档存储时，有以下取值：
+	// <li>标准模式：Standard，解冻任务在24小时后完成。</li>
+	// <li>批量模式：Bulk，解冻任务在48小时后完成。</li>
+	RestoreTier *string `json:"RestoreTier,omitempty" name:"RestoreTier"`
+
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *RestoreMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreMediaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileIds")
+	delete(f, "RestoreDay")
+	delete(f, "RestoreTier")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestoreMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *RestoreMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreMediaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RestoreMediaTask struct {
@@ -13967,6 +14085,9 @@ type SimpleHlsClipRequest struct {
 	// 需要裁剪的腾讯云点播 HLS 视频 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
@@ -13975,9 +14096,6 @@ type SimpleHlsClipRequest struct {
 
 	// 是否固化。0 不固化，1 固化。默认不固化。
 	IsPersistence *int64 `json:"IsPersistence,omitempty" name:"IsPersistence"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *SimpleHlsClipRequest) ToJsonString() string {
@@ -13993,10 +14111,10 @@ func (r *SimpleHlsClipRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Url")
+	delete(f, "SubAppId")
 	delete(f, "StartTimeOffset")
 	delete(f, "EndTimeOffset")
 	delete(f, "IsPersistence")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimpleHlsClipRequest has unknown keys!", "")
 	}
@@ -14177,6 +14295,9 @@ type SplitMediaRequest struct {
 	// 视频拆条任务信息列表，最多同时支持100个拆条信息。
 	Segments []*SplitMediaTaskConfig `json:"Segments,omitempty" name:"Segments"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
@@ -14185,9 +14306,6 @@ type SplitMediaRequest struct {
 
 	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
 	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *SplitMediaRequest) ToJsonString() string {
@@ -14204,10 +14322,10 @@ func (r *SplitMediaRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileId")
 	delete(f, "Segments")
+	delete(f, "SubAppId")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "TasksPriority")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SplitMediaRequest has unknown keys!", "")
 	}
@@ -15457,11 +15575,11 @@ type WeChatMiniProgramPublishRequest struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 发布视频所对应的转码模板 ID，为0代表原始视频。
-	SourceDefinition *int64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
-
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 发布视频所对应的转码模板 ID，为0代表原始视频。
+	SourceDefinition *int64 `json:"SourceDefinition,omitempty" name:"SourceDefinition"`
 }
 
 func (r *WeChatMiniProgramPublishRequest) ToJsonString() string {
@@ -15477,8 +15595,8 @@ func (r *WeChatMiniProgramPublishRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileId")
-	delete(f, "SourceDefinition")
 	delete(f, "SubAppId")
+	delete(f, "SourceDefinition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WeChatMiniProgramPublishRequest has unknown keys!", "")
 	}

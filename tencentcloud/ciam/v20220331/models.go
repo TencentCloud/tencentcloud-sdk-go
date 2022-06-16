@@ -20,6 +20,127 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CreateApiImportUserJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 导入的用户数据
+	DataFlowUserCreateList []*ImportUser `json:"DataFlowUserCreateList,omitempty" name:"DataFlowUserCreateList"`
+}
+
+func (r *CreateApiImportUserJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApiImportUserJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "DataFlowUserCreateList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiImportUserJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateApiImportUserJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据流任务
+		Job *Job `json:"Job,omitempty" name:"Job"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateApiImportUserJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApiImportUserJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFileExportUserJobRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 导出的数据类型
+	// 
+	// <li> **JSON** </li>  JSON
+	// <li> **NDJSON** </li>  New-line Delimited JSON
+	// <li> **CSV** </li>  Comma-Separated Values
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// Key可选值为condition、userGroupId
+	// 
+	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
+	// <li> **userGroupId** </li>	Values = 用户组ID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 导出用户包含的属性和映射名称，为空时包含所有的属性
+	ExportPropertyMaps []*ExportPropertyMap `json:"ExportPropertyMaps,omitempty" name:"ExportPropertyMaps"`
+}
+
+func (r *CreateFileExportUserJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileExportUserJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "Format")
+	delete(f, "Filters")
+	delete(f, "ExportPropertyMaps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileExportUserJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFileExportUserJobResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 数据流任务
+		Job *Job `json:"Job,omitempty" name:"Job"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateFileExportUserJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileExportUserJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 
@@ -210,6 +331,36 @@ func (r *DescribeUserByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ErrorDetails struct {
+
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 失败原因
+	Error *string `json:"Error,omitempty" name:"Error"`
+}
+
+type ExportPropertyMap struct {
+
+	// 用户属性code
+	UserPropertyCode *string `json:"UserPropertyCode,omitempty" name:"UserPropertyCode"`
+
+	// 用户属性映射名称
+	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
+}
+
+type FailedUsers struct {
+
+	// 失败用户标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedUserIdentification *string `json:"FailedUserIdentification,omitempty" name:"FailedUserIdentification"`
+
+	// 导入的用户失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReason *string `json:"FailedReason,omitempty" name:"FailedReason"`
+}
+
 type Filter struct {
 
 	// key值
@@ -220,6 +371,130 @@ type Filter struct {
 
 	// 逻辑值
 	Logic *bool `json:"Logic,omitempty" name:"Logic"`
+}
+
+type ImportUser struct {
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 手机号
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 身份证号
+	ResidentIdentityCard *string `json:"ResidentIdentityCard,omitempty" name:"ResidentIdentityCard"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 用户组ID
+	UserGroup []*string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// QQ qqOpenId
+	QqOpenId *string `json:"QqOpenId,omitempty" name:"QqOpenId"`
+
+	// QQ qqUnionId
+	QqUnionId *string `json:"QqUnionId,omitempty" name:"QqUnionId"`
+
+	// 微信wechatOpenId
+	WechatOpenId *string `json:"WechatOpenId,omitempty" name:"WechatOpenId"`
+
+	// 微信wechatUnionId
+	WechatUnionId *string `json:"WechatUnionId,omitempty" name:"WechatUnionId"`
+
+	// 支付宝alipayUserId
+	AlipayUserId *string `json:"AlipayUserId,omitempty" name:"AlipayUserId"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 生日
+	Birthdate *string `json:"Birthdate,omitempty" name:"Birthdate"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 坐标
+	Locale *string `json:"Locale,omitempty" name:"Locale"`
+
+	// 性别（MALE;FEMALE;UNKNOWN）
+	Gender *string `json:"Gender,omitempty" name:"Gender"`
+
+	// 实名核验方式
+	IdentityVerificationMethod *string `json:"IdentityVerificationMethod,omitempty" name:"IdentityVerificationMethod"`
+
+	// 是否已实名核验
+	IdentityVerified *bool `json:"IdentityVerified,omitempty" name:"IdentityVerified"`
+
+	// 工作
+	Job *string `json:"Job,omitempty" name:"Job"`
+
+	// 国家
+	Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
+
+	// 时区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 密码密文
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 自定义属性
+	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+
+	// 密码盐
+	Salt *Salt `json:"Salt,omitempty" name:"Salt"`
+
+	// 密码加密方式（SHA1;BCRYPT）
+	PasswordEncryptTypeEnum *string `json:"PasswordEncryptTypeEnum,omitempty" name:"PasswordEncryptTypeEnum"`
+}
+
+type Job struct {
+
+	// 任务ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 任务状态
+	// 
+	// <li> **PENDING** </li>  待执行
+	// <li> **PROCESSING** </li>  执行中
+	// <li> **COMPLETED** </li>  完成
+	// <li> **FAILED** </li>  失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务类型
+	// 
+	// <li> **IMPORT_USER** </li>  用户导入
+	// <li> **EXPORT_USER** </li>  用户导出
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 任务创建时间
+	CreatedDate *int64 `json:"CreatedDate,omitempty" name:"CreatedDate"`
+
+	// 任务的数据类型
+	// 
+	// <li> **JSON** </li>  JSON
+	// <li> **NDJSON** </li>  New-line Delimited JSON
+	// <li> **CSV** </li>  Comma-Separated Values
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 任务结果下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 失败详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorDetails []*ErrorDetails `json:"ErrorDetails,omitempty" name:"ErrorDetails"`
+
+	// 失败的用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedUsers []*FailedUsers `json:"FailedUsers,omitempty" name:"FailedUsers"`
 }
 
 type LinkAccountRequest struct {
@@ -234,7 +509,10 @@ type LinkAccountRequest struct {
 	// 从用户ID
 	SecondaryUserId *string `json:"SecondaryUserId,omitempty" name:"SecondaryUserId"`
 
-	// 融合属性(PHONENUMBER,EMAIL)
+	// 融合属性
+	// 
+	// <li> **PHONENUMBER** </li>	  手机号码
+	// <li> **EMAIL** </li>  邮箱
 	UserLinkedOnAttribute *string `json:"UserLinkedOnAttribute,omitempty" name:"UserLinkedOnAttribute"`
 }
 
@@ -280,13 +558,70 @@ func (r *LinkAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListJobsRequest struct {
+	*tchttp.BaseRequest
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 任务ID列表，为空时返回全部任务
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
+}
+
+func (r *ListJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "JobIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		JobSet []*Job `json:"JobSet,omitempty" name:"JobSet"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ListJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListUserByPropertyRequest struct {
 	*tchttp.BaseRequest
 
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
-	// 查询的属性（支持phoneNumber，email）
+	// 查询的属性
+	// 
+	// <li> **phoneNumber** </li>	  手机号码
+	// <li> **email** </li>  邮箱
 	PropertyCode *string `json:"PropertyCode,omitempty" name:"PropertyCode"`
 
 	// 属性值
@@ -482,6 +817,18 @@ func (r *ResetPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Salt struct {
+
+	// 盐值
+	SaltValue *string `json:"SaltValue,omitempty" name:"SaltValue"`
+
+	// 盐值位置
+	SaltLocation *SaltLocation `json:"SaltLocation,omitempty" name:"SaltLocation"`
+}
+
+type SaltLocation struct {
+}
+
 type SetPasswordRequest struct {
 	*tchttp.BaseRequest
 
@@ -631,7 +978,11 @@ type UpdateUserStatusRequest struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// NORMAL（正常）,LOCK（锁定）,FREEZE（冻结）,请传英文大写字母
+	// 用户状态
+	// 
+	// <li> **NORMAL** </li>	  正常
+	// <li> **LOCK** </li>  锁定
+	// <li> **FREEZE** </li>	  冻结
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 

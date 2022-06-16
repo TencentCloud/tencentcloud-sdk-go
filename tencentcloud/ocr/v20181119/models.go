@@ -4067,6 +4067,9 @@ type RecognizeHealthCodeOCRResponse struct {
 		// 核酸检测时间（允许返回空值）
 		TestingTime *string `json:"TestingTime,omitempty" name:"TestingTime"`
 
+		// 疫苗接种信息，返回接种针数或接种情况（允许返回空值）
+		Vaccination *string `json:"Vaccination,omitempty" name:"Vaccination"`
+
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 	} `json:"Response"`

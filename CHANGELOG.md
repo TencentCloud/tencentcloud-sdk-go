@@ -1,3 +1,197 @@
+# Release v1.0.422
+
+## 音频内容检测(ams) 版本：2020-12-29
+
+### 第 6 次发布
+
+发布时间：2022-06-17 06:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1219/53256)
+
+	* 新增出参：Label
+
+
+
+
+## 音频内容检测(ams) 版本：2020-06-08
+
+
+
+## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 4 次发布
+
+发布时间：2022-06-16 19:58:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Salt](https://cloud.tencent.com/document/api/1441/75643#Salt)
+* [SaltLocation](https://cloud.tencent.com/document/api/1441/75643#SaltLocation)
+
+修改数据结构：
+
+* [ImportUser](https://cloud.tencent.com/document/api/1441/75643#ImportUser)
+
+	* 新增成员：UserName, PhoneNumber, Email, ResidentIdentityCard, Nickname, Address, UserGroup, QqOpenId, QqUnionId, WechatOpenId, WechatUnionId, AlipayUserId, Description, Birthdate, Name, Locale, Gender, IdentityVerificationMethod, IdentityVerified, Job, Nationality, Zone, Password, CustomizationAttributes, Salt, PasswordEncryptTypeEnum
+
+
+### 第 3 次发布
+
+发布时间：2022-06-16 19:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateApiImportUserJob](https://cloud.tencent.com/document/api/1441/75705)
+* [CreateFileExportUserJob](https://cloud.tencent.com/document/api/1441/75704)
+* [ListJobs](https://cloud.tencent.com/document/api/1441/75703)
+
+新增数据结构：
+
+* [ErrorDetails](https://cloud.tencent.com/document/api/1441/75643#ErrorDetails)
+* [ExportPropertyMap](https://cloud.tencent.com/document/api/1441/75643#ExportPropertyMap)
+* [FailedUsers](https://cloud.tencent.com/document/api/1441/75643#FailedUsers)
+* [ImportUser](https://cloud.tencent.com/document/api/1441/75643#ImportUser)
+* [Job](https://cloud.tencent.com/document/api/1441/75643#Job)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 70 次发布
+
+发布时间：2022-06-17 06:11:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+
+	* 新增出参：Vaccination
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 1 次发布
+
+发布时间：2022-06-16 14:56:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudRunEnv](https://cloud.tencent.com/document/api/1243/75707)
+* [CreateCloudRunServer](https://cloud.tencent.com/document/api/1243/75712)
+* [DescribeCloudRunEnvs](https://cloud.tencent.com/document/api/1243/75706)
+* [DescribeCloudRunServerDetail](https://cloud.tencent.com/document/api/1243/75711)
+* [DescribeCloudRunServers](https://cloud.tencent.com/document/api/1243/75710)
+* [DescribeEnvBaseInfo](https://cloud.tencent.com/document/api/1243/75701)
+* [UpdateCloudRunServer](https://cloud.tencent.com/document/api/1243/75709)
+
+新增数据结构：
+
+* [BuildPacksInfo](https://cloud.tencent.com/document/api/1243/75713#BuildPacksInfo)
+* [ClsInfo](https://cloud.tencent.com/document/api/1243/75713#ClsInfo)
+* [DatabasesInfo](https://cloud.tencent.com/document/api/1243/75713#DatabasesInfo)
+* [DeployParam](https://cloud.tencent.com/document/api/1243/75713#DeployParam)
+* [EnvBaseInfo](https://cloud.tencent.com/document/api/1243/75713#EnvBaseInfo)
+* [EnvInfo](https://cloud.tencent.com/document/api/1243/75713#EnvInfo)
+* [FunctionInfo](https://cloud.tencent.com/document/api/1243/75713#FunctionInfo)
+* [HpaPolicy](https://cloud.tencent.com/document/api/1243/75713#HpaPolicy)
+* [LogServiceInfo](https://cloud.tencent.com/document/api/1243/75713#LogServiceInfo)
+* [RepositoryInfo](https://cloud.tencent.com/document/api/1243/75713#RepositoryInfo)
+* [ServerBaseConfig](https://cloud.tencent.com/document/api/1243/75713#ServerBaseConfig)
+* [ServerBaseInfo](https://cloud.tencent.com/document/api/1243/75713#ServerBaseInfo)
+* [StaticStorageInfo](https://cloud.tencent.com/document/api/1243/75713#StaticStorageInfo)
+* [StorageInfo](https://cloud.tencent.com/document/api/1243/75713#StorageInfo)
+* [Tag](https://cloud.tencent.com/document/api/1243/75713#Tag)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 9 次发布
+
+发布时间：2022-06-17 06:14:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTimingL7CacheData](https://cloud.tencent.com/document/api/1552/75726)
+* [DescribeTopL7CacheData](https://cloud.tencent.com/document/api/1552/75725)
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+### 第 5 次发布
+
+发布时间：2022-06-17 06:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/51878)
+
+	* 新增出参：Label
+
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 105 次发布
+
+发布时间：2022-06-17 06:16:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RefreshUrlCache](https://cloud.tencent.com/document/api/266/75729)
+* [RestoreMedia](https://cloud.tencent.com/document/api/266/75728)
+
+修改接口：
+
+* [DescribeStorageData](https://cloud.tencent.com/document/api/266/41463)
+
+	* 新增出参：ArchiveStorage, DeepArchiveStorage
+
+
+
+
 # Release v1.0.421
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

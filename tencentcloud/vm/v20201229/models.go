@@ -361,7 +361,7 @@ type DescribeTaskDetailResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+		// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
@@ -398,6 +398,10 @@ type DescribeTaskDetailResponse struct {
 		// 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		ErrorDescription *string `json:"ErrorDescription,omitempty" name:"ErrorDescription"`
+
+		// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Label *string `json:"Label,omitempty" name:"Label"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -190,6 +190,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tbp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcaplusdb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcb"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcbr"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcex"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcm"

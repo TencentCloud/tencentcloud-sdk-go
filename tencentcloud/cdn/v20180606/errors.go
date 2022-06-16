@@ -296,6 +296,9 @@ const (
 	// 单个标签键对应标签值不能超过1000。
 	LIMITEXCEEDED_CAMTAGKEYTOOMANYTAGVALUE = "LimitExceeded.CamTagKeyTooManyTagValue"
 
+	// 域名绑定标签数量超出限制。
+	LIMITEXCEEDED_CAMTAGQUOTAEXCEEDLIMIT = "LimitExceeded.CamTagQuotaExceedLimit"
+
 	// 单个用户最多1000个不同的key。
 	LIMITEXCEEDED_CAMUSERTOOMANYTAGKEY = "LimitExceeded.CamUserTooManyTagKey"
 

@@ -8109,6 +8109,73 @@ func (c *Client) PushUrlCacheWithContext(ctx context.Context, request *PushUrlCa
     return
 }
 
+func NewRefreshUrlCacheRequest() (request *RefreshUrlCacheRequest) {
+    request = &RefreshUrlCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "RefreshUrlCache")
+    
+    
+    return
+}
+
+func NewRefreshUrlCacheResponse() (response *RefreshUrlCacheResponse) {
+    response = &RefreshUrlCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefreshUrlCache
+// 1. 刷新指定的 URL 列表。
+//
+// 2. URL 的域名必须已在云点播中注册。
+//
+// 3. 单次请求最多指定20个 URL。
+//
+// 4. 默认刷新配额为每天100000个 URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RefreshUrlCache(request *RefreshUrlCacheRequest) (response *RefreshUrlCacheResponse, err error) {
+    return c.RefreshUrlCacheWithContext(context.Background(), request)
+}
+
+// RefreshUrlCache
+// 1. 刷新指定的 URL 列表。
+//
+// 2. URL 的域名必须已在云点播中注册。
+//
+// 3. 单次请求最多指定20个 URL。
+//
+// 4. 默认刷新配额为每天100000个 URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RefreshUrlCacheWithContext(ctx context.Context, request *RefreshUrlCacheRequest) (response *RefreshUrlCacheResponse, err error) {
+    if request == nil {
+        request = NewRefreshUrlCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefreshUrlCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefreshUrlCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetProcedureTemplateRequest() (request *ResetProcedureTemplateRequest) {
     request = &ResetProcedureTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8164,6 +8231,83 @@ func (c *Client) ResetProcedureTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewResetProcedureTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreMediaRequest() (request *RestoreMediaRequest) {
+    request = &RestoreMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "RestoreMedia")
+    
+    
+    return
+}
+
+func NewRestoreMediaResponse() (response *RestoreMediaResponse) {
+    response = &RestoreMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestoreMedia
+// 当媒体文件的存储类型是归档存储或深度归档存储时，是不可访问的。如需访问，则需要调用本接口进行解冻，解冻后可访问的媒体文件是临时的，在有效期过后，则不可访问。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NOTRESTORABLE = "InvalidParameterValue.NotRestorable"
+//  INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
+//  INVALIDPARAMETERVALUE_RESTOREDAY = "InvalidParameterValue.RestoreDay"
+//  INVALIDPARAMETERVALUE_RESTORETIER = "InvalidParameterValue.RestoreTier"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = "InvalidParameterValue.UnsupportedRestoreTier"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILENOTEXIST = "ResourceNotFound.FileNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreMedia(request *RestoreMediaRequest) (response *RestoreMediaResponse, err error) {
+    return c.RestoreMediaWithContext(context.Background(), request)
+}
+
+// RestoreMedia
+// 当媒体文件的存储类型是归档存储或深度归档存储时，是不可访问的。如需访问，则需要调用本接口进行解冻，解冻后可访问的媒体文件是临时的，在有效期过后，则不可访问。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEIDS = "InvalidParameterValue.FileIds"
+//  INVALIDPARAMETERVALUE_NOTRESTORABLE = "InvalidParameterValue.NotRestorable"
+//  INVALIDPARAMETERVALUE_ORIGINALSTORAGECLASS = "InvalidParameterValue.OriginalStorageClass"
+//  INVALIDPARAMETERVALUE_RESTOREDAY = "InvalidParameterValue.RestoreDay"
+//  INVALIDPARAMETERVALUE_RESTORETIER = "InvalidParameterValue.RestoreTier"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDRESTORETIER = "InvalidParameterValue.UnsupportedRestoreTier"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILENOTEXIST = "ResourceNotFound.FileNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreMediaWithContext(ctx context.Context, request *RestoreMediaRequest) (response *RestoreMediaResponse, err error) {
+    if request == nil {
+        request = NewRestoreMediaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreMedia require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreMediaResponse()
     err = c.Send(request, response)
     return
 }

@@ -32,11 +32,17 @@ const (
 	// 用户属性格式异常。
 	FAILEDOPERATION_ATTRIBUTEFORMATERROR = "FailedOperation.AttributeFormatError"
 
+	// 已存在2个有效的任务，请等待其中一部分完成后重试。
+	FAILEDOPERATION_DATAFLOWTOOMANYREQUESTS = "FailedOperation.DataFlowTooManyRequests"
+
 	// 该邮箱已被用户绑定。
 	FAILEDOPERATION_EMAILALREADYEXISTS = "FailedOperation.EmailAlreadyExists"
 
 	// 邮箱地址不能为空。
 	FAILEDOPERATION_EMAILISNULL = "FailedOperation.EmailIsNull"
+
+	// 导入用户时，用户为空。
+	FAILEDOPERATION_IMPORTUSERISEMPTY = "FailedOperation.ImportUserIsEmpty"
 
 	// 无效租户。
 	FAILEDOPERATION_INVALIDTENANT = "FailedOperation.InvalidTenant"

@@ -7,7 +7,7 @@
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2022-05-23 06:01:54 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-05-23 06:01:56 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2022-04-15 06:01:25 |
-| ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2022-06-09 06:05:24 |
+| ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2022-06-17 06:02:19 |
 | antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2022-06-16 06:00:42 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2022-04-04 06:05:36 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2022-04-04 06:05:40 |
@@ -34,7 +34,7 @@
 | captcha | [验证码](https://cloud.tencent.com/document/product/1110) | 2022-04-12 06:07:13 |
 | car | [应用云渲染](https://cloud.tencent.com/document/product/1547) | 2022-04-27 06:05:49 |
 | casb | [云数据加密代理网关](https://cloud.tencent.com/document/product/1303) | 2022-04-04 06:11:55 |
-| cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2022-06-15 06:04:25 |
+| cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2022-06-17 06:03:48 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2022-05-31 06:05:45 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2022-05-31 06:05:55 |
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2022-06-15 06:04:37 |
@@ -45,7 +45,7 @@
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2022-04-04 06:17:16 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2022-05-31 06:06:47 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2022-05-26 06:08:04 |
-| ciam | [账号风控平台](https://cloud.tencent.com/document/product/1441) | 2022-06-15 19:44:55 |
+| ciam | [账号风控平台](https://cloud.tencent.com/document/product/1441) | 2022-06-16 19:58:34 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-06-16 06:03:27 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
@@ -69,7 +69,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2022-05-31 17:05:07 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2022-04-13 06:36:47 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2022-05-31 06:09:47 |
-| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2022-06-16 06:06:01 |
+| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2022-06-17 06:07:19 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2022-05-19 06:11:31 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2022-05-24 06:11:36 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2022-04-04 06:38:48 |
@@ -132,7 +132,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-04-13 07:00:13 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-06-15 06:12:20 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-06-14 06:15:05 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-06-17 06:11:40 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-06-10 06:11:43 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-06-13 06:15:36 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-04-04 07:02:02 |
@@ -166,6 +166,7 @@
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2022-04-04 07:09:07 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2022-04-08 06:12:54 |
 | tcb | [云开发 CloudBase](https://cloud.tencent.com/document/product/876) | 2022-04-26 06:16:06 |
+| tcbr | [云托管 CloudBase Run](https://cloud.tencent.com/document/product/1243) | 2022-06-16 14:56:04 |
 | tcex | [腾讯云释义](https://cloud.tencent.com/document/product/1266) | 2022-04-04 07:10:49 |
 | tci | [腾讯智学课堂分析](https://cloud.tencent.com/document/product) | 2020-08-24 08:06:03 |
 | tcm | [服务网格](https://cloud.tencent.com/document/product/1261) | 2022-06-08 06:15:21 |
@@ -175,7 +176,7 @@
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2022-04-04 07:15:50 |
 | tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2022-06-13 06:18:15 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-06-09 06:18:14 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-06-16 06:13:25 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-06-17 06:14:37 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2022-06-02 06:15:03 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2022-04-04 07:16:52 |
@@ -196,9 +197,9 @@
 | tsw | [腾讯微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2022-04-04 07:22:40 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2022-06-07 06:15:49 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2022-04-04 07:22:44 |
-| vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2022-06-09 06:19:53 |
+| vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2022-06-17 06:16:09 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2022-04-04 07:22:54 |
-| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-06-13 06:20:05 |
+| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-06-17 06:16:12 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-06-15 06:17:25 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2022-05-12 06:19:46 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2022-04-04 07:39:05 |

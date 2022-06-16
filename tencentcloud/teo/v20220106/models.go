@@ -2836,7 +2836,7 @@ func (r *DescribeDDosAttackDataResponse) FromJsonString(s string) error {
 type DescribeDDosAttackEventDetailRequest struct {
 	*tchttp.BaseRequest
 
-	// 时间id
+	// 事件id
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
@@ -4733,6 +4733,82 @@ func (r *DescribeTimingL7AnalysisDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTimingL7CacheDataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339标准，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339标准，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时序类访问流量指标列表
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 时间间隔，选填{min, 5min, hour, day, week}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 站点id列表
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTimingL7CacheDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7CacheDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "Interval")
+	delete(f, "ZoneIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL7CacheDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTimingL7CacheDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*TimingDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 时间间隔
+		Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTimingL7CacheDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7CacheDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTopL7AnalysisDataRequest struct {
 	*tchttp.BaseRequest
 
@@ -4813,6 +4889,86 @@ func (r *DescribeTopL7AnalysisDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeTopL7CacheDataRequest struct {
+	*tchttp.BaseRequest
+
+	// RFC3339标准，客户端时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// RFC3339标准，客户端时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时序类访问流量指标
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// topN,填0时返回全量数据
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 时间间隔，选填{min, 5min, hour, day, week}
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// ZoneId数组
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 筛选条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTopL7CacheDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopL7CacheDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	delete(f, "Interval")
+	delete(f, "ZoneIds")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopL7CacheDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTopL7CacheDataResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// top详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Data []*TopDataRecord `json:"Data,omitempty" name:"Data"`
+
+		// 查询维度
+		Type *string `json:"Type,omitempty" name:"Type"`
+
+		// 查询指标
+		MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeTopL7CacheDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopL7CacheDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeWebManagedRulesAttackEventsRequest struct {
 	*tchttp.BaseRequest
 
@@ -4828,13 +4984,13 @@ type DescribeWebManagedRulesAttackEventsRequest struct {
 	// 当前页
 	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
 
-	// ddos策略组id 集合
+	// ddos策略组id列表
 	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
 
 	// 站点集合
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 协议类型,{tcp,udp,all}
+	// 子域名列表
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
 	// 选填{Y、N},默认为Y；Y：展示，N：不展示

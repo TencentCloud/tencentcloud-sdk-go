@@ -1375,6 +1375,7 @@ func NewDescribeScriptsResponse() (response *DescribeScriptsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *DescribeScriptsResponse, err error) {
     return c.DescribeScriptsWithContext(context.Background(), request)
@@ -1385,6 +1386,7 @@ func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeScriptsWithContext(ctx context.Context, request *DescribeScriptsRequest) (response *DescribeScriptsResponse, err error) {
     if request == nil {
@@ -1424,6 +1426,7 @@ func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     return c.DescribeSparkAppJobWithContext(context.Background(), request)
@@ -1434,6 +1437,7 @@ func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSparkAppJobWithContext(ctx context.Context, request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     if request == nil {

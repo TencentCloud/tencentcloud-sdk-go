@@ -1536,7 +1536,7 @@ type DescribeScriptsRequest struct {
 	// 按字段排序，支持如下字段类型，update-time
 	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
 
-	// 排序方式，desc表示正序，asc表示反序
+	// 排序方式，desc表示正序，asc表示反序，默认asc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
 	// 过滤条件，如下支持的过滤类型，传参Name应为其一
