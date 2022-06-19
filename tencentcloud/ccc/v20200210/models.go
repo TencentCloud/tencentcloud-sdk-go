@@ -252,6 +252,68 @@ func (r *CreateAutoCalloutTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateCCCSkillGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 应用 ID（必填）
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 技能组类型0-电话，1-在线，3-音频，4-视频
+	SkillGroupType *int64 `json:"SkillGroupType,omitempty" name:"SkillGroupType"`
+
+	// 技能组接待人数上限（该技能组中1个座席可接待的人数上限）默认为1。1、若技能组类型为在线，则接待上限可设置为1及以上
+	// 2、若技能组类型为电话、音频、视频，则接待上线必须只能为1
+	MaxConcurrency *uint64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+}
+
+func (r *CreateCCCSkillGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCCSkillGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SkillGroupName")
+	delete(f, "SkillGroupType")
+	delete(f, "MaxConcurrency")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCCCSkillGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateCCCSkillGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 技能组ID
+		SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *CreateCCCSkillGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCCCSkillGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateCallOutSessionRequest struct {
 	*tchttp.BaseRequest
 

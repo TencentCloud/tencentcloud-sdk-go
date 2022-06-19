@@ -267,6 +267,9 @@ type DescribeApmAgentRequest struct {
 
 	// 语言
 	LanguageEnvironment *string `json:"LanguageEnvironment,omitempty" name:"LanguageEnvironment"`
+
+	// 上报方式
+	ReportMethod *string `json:"ReportMethod,omitempty" name:"ReportMethod"`
 }
 
 func (r *DescribeApmAgentRequest) ToJsonString() string {
@@ -285,6 +288,7 @@ func (r *DescribeApmAgentRequest) FromJsonString(s string) error {
 	delete(f, "AgentType")
 	delete(f, "NetworkMode")
 	delete(f, "LanguageEnvironment")
+	delete(f, "ReportMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmAgentRequest has unknown keys!", "")
 	}
@@ -396,7 +400,7 @@ type DescribeGeneralMetricDataRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 视图名称
+	// 视图名称，不可自定义输入。支持：service_metric
 	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
 
 	// 聚合维度，支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合。

@@ -315,7 +315,6 @@ type CreateRecTaskRequest struct {
 	// • 16k_en_edu 英文教育；
 	// • 16k_zh_medical  医疗；
 	// • 16k_th 泰语；
-	// • 16k_wuu-SH：16k 上海话方言；
 	// • 16k_zh_dialect：多方言，支持23种方言。
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 

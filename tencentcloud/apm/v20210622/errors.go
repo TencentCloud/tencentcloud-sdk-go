@@ -26,8 +26,14 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 访问标签失败。
+	FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+
 	// appid和实例信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+
+	// 未命中白名单且实例id为官方demo实例id时，不允许修改接口。
+	FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
 
 	// 实例ID为空。
 	FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
@@ -35,11 +41,26 @@ const (
 	// apm实例不存在。
 	FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 
+	// 非法实例id。
+	FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
+
+	// 查询指标类数据查询条件缺少过滤参数。
+	FAILEDOPERATION_METRICFILTERSLACKPARAMS = "FailedOperation.MetricFiltersLackParams"
+
 	// 非内网vpc。
 	FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
 
+	// 查询时间区间不支持。
+	FAILEDOPERATION_QUERYTIMEINTERVALISNOTSUPPORTED = "FailedOperation.QueryTimeIntervalIsNotSupported"
+
+	// 不支持该地域。
+	FAILEDOPERATION_REGIONNOTSUPPORT = "FailedOperation.RegionNotSupport"
+
 	// 发送查询请求失败。
 	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
+
+	// 视图名不存在或非法。
+	FAILEDOPERATION_VIEWNAMENOTEXISTORILLEGAL = "FailedOperation.ViewNameNotExistOrIllegal"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

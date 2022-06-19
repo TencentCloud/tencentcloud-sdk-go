@@ -38,6 +38,9 @@ const (
 	// VIP域名不能进行此操作。
 	FAILEDOPERATION_DOMAINISVIP = "FailedOperation.DomainIsVip"
 
+	// 当前域名还未使用 DNSPod 的解析服务，我们无法获取解析量数据。
+	FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+
 	// 该域名已被其他账号添加，可在域名列表中添加取回。
 	FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
 
@@ -55,6 +58,9 @@ const (
 
 	// 未实名认证用户，请先完成实名认证再操作。
 	FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+
+	// 请求量统计数据暂时不可用，请稍后再试。
+	FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 
 	// 不能转移到企业账号。
 	FAILEDOPERATION_TRANSFERTOENTERPRISEDENIED = "FailedOperation.TransferToEnterpriseDenied"

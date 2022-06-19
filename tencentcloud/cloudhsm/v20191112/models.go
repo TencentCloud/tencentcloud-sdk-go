@@ -191,6 +191,9 @@ func (r *DescribeSubnetResponse) FromJsonString(s string) error {
 
 type DescribeSupportedHsmRequest struct {
 	*tchttp.BaseRequest
+
+	// Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
 }
 
 func (r *DescribeSupportedHsmRequest) ToJsonString() string {
@@ -205,6 +208,7 @@ func (r *DescribeSupportedHsmRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "HsmType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSupportedHsmRequest has unknown keys!", "")
 	}
@@ -216,6 +220,7 @@ type DescribeSupportedHsmResponse struct {
 	Response *struct {
 
 		// 当前地域所支持的设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 		DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
 
 		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -554,6 +559,9 @@ type DescribeVsmsRequest struct {
 
 	// 设备所属的厂商名称，根据厂商来进行筛选
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
 }
 
 func (r *DescribeVsmsRequest) ToJsonString() string {
@@ -573,6 +581,7 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "TagFilters")
 	delete(f, "Manufacturer")
+	delete(f, "HsmType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVsmsRequest has unknown keys!", "")
 	}
@@ -633,7 +642,7 @@ type InquiryPriceBuyVsmRequest struct {
 	// 付费模式：0表示按需计费/后付费，1表示预付费
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 商品的时间大小
+	// 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
 	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 商品的时间单位，m表示月，y表示年
@@ -644,6 +653,9 @@ type InquiryPriceBuyVsmRequest struct {
 
 	// 默认为CREATE，可选RENEW
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
 }
 
 func (r *InquiryPriceBuyVsmRequest) ToJsonString() string {
@@ -664,6 +676,7 @@ func (r *InquiryPriceBuyVsmRequest) FromJsonString(s string) error {
 	delete(f, "TimeUnit")
 	delete(f, "Currency")
 	delete(f, "Type")
+	delete(f, "HsmType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceBuyVsmRequest has unknown keys!", "")
 	}
@@ -674,7 +687,7 @@ type InquiryPriceBuyVsmResponse struct {
 	*tchttp.BaseResponse
 	Response *struct {
 
-		// 原始总金额
+		// 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
 
@@ -690,7 +703,7 @@ type InquiryPriceBuyVsmResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-		// 应付总金额
+		// 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
 	// 注意：此字段可能返回 null，表示取不到有效值。
 		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
 

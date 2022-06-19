@@ -827,6 +827,18 @@ type Salt struct {
 }
 
 type SaltLocation struct {
+
+	// 密码加盐的类型（HEAD，TAIL，OTHER）
+	SaltLocationTypeEnum *string `json:"SaltLocationTypeEnum,omitempty" name:"SaltLocationTypeEnum"`
+
+	// 加盐规则
+	SaltLocationRule *SaltLocationRule `json:"SaltLocationRule,omitempty" name:"SaltLocationRule"`
+}
+
+type SaltLocationRule struct {
+
+	// 表达式
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
 }
 
 type SetPasswordRequest struct {

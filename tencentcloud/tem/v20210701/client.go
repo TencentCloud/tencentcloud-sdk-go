@@ -535,6 +535,55 @@ func (c *Client) DescribeApplicationPodsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeApplicationsStatusRequest() (request *DescribeApplicationsStatusRequest) {
+    request = &DescribeApplicationsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeApplicationsStatus")
+    
+    
+    return
+}
+
+func NewDescribeApplicationsStatusResponse() (response *DescribeApplicationsStatusResponse) {
+    response = &DescribeApplicationsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationsStatus
+// 单环境下所有应用状态查看
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
+    return c.DescribeApplicationsStatusWithContext(context.Background(), request)
+}
+
+// DescribeApplicationsStatus
+// 单环境下所有应用状态查看
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeApplicationsStatusWithContext(ctx context.Context, request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationsStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeployApplicationDetailRequest() (request *DescribeDeployApplicationDetailRequest) {
     request = &DescribeDeployApplicationDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

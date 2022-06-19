@@ -975,6 +975,77 @@ func (r *DescribeDomainAliasListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDomainAnalyticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询解析量的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询的开始时间，格式：YYYY-MM-DD
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询的结束时间，格式：YYYY-MM-DD
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// DATE:按天维度统计 HOUR:按小时维度统计
+	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeDomainAnalyticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAnalyticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "DnsFormat")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainAnalyticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainAnalyticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前统计维度解析量小计
+		Data []*DomainAnalyticsDetail `json:"Data,omitempty" name:"Data"`
+
+		// 域名解析量统计查询信息
+		Info *DomainAnalyticsInfo `json:"Info,omitempty" name:"Info"`
+
+		// 域名别名解析量统计信息
+		AliasData []*DomainAliasAnalyticsItem `json:"AliasData,omitempty" name:"AliasData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDomainAnalyticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAnalyticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDomainListRequest struct {
 	*tchttp.BaseRequest
 
@@ -1539,6 +1610,81 @@ func (r *DescribeRecordTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSubdomainAnalyticsRequest struct {
+	*tchttp.BaseRequest
+
+	// 要查询解析量的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询的开始时间，格式：YYYY-MM-DD
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询的结束时间，格式：YYYY-MM-DD
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 要查询解析量的子域名
+	Subdomain *string `json:"Subdomain,omitempty" name:"Subdomain"`
+
+	// DATE:按天维度统计 HOUR:按小时维度统计
+	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeSubdomainAnalyticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubdomainAnalyticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "Subdomain")
+	delete(f, "DnsFormat")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubdomainAnalyticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSubdomainAnalyticsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 当前统计维度解析量小计
+		Data []*DomainAnalyticsDetail `json:"Data,omitempty" name:"Data"`
+
+		// 子域名解析量统计查询信息
+		Info *SubdomainAnalyticsInfo `json:"Info,omitempty" name:"Info"`
+
+		// 子域名别名解析量统计信息
+		AliasData []*SubdomainAliasAnalyticsItem `json:"AliasData,omitempty" name:"AliasData"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeSubdomainAnalyticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubdomainAnalyticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeUserDetailRequest struct {
 	*tchttp.BaseRequest
 }
@@ -1584,6 +1730,15 @@ func (r *DescribeUserDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DomainAliasAnalyticsItem struct {
+
+	// 域名解析量统计查询信息
+	Info *DomainAnalyticsInfo `json:"Info,omitempty" name:"Info"`
+
+	// 当前统计维度解析量小计
+	Data []*DomainAnalyticsDetail `json:"Data,omitempty" name:"Data"`
+}
+
 type DomainAliasInfo struct {
 
 	// 域名别名ID
@@ -1591,6 +1746,37 @@ type DomainAliasInfo struct {
 
 	// 域名别名
 	DomainAlias *string `json:"DomainAlias,omitempty" name:"DomainAlias"`
+}
+
+type DomainAnalyticsDetail struct {
+
+	// 当前统计维度解析量小计
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
+
+	// 按天统计时，为统计日期
+	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+
+	// 按小时统计时，为统计的当前时间的小时数(0-23)，例：HourKey为23时，统计周期为22点-23点的解析量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HourKey *uint64 `json:"HourKey,omitempty" name:"HourKey"`
+}
+
+type DomainAnalyticsInfo struct {
+
+	// DATE:按天维度统计 HOUR:按小时维度统计
+	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
+
+	// 当前统计周期解析量总计
+	DnsTotal *uint64 `json:"DnsTotal,omitempty" name:"DnsTotal"`
+
+	// 当前查询的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 当前统计周期开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 当前统计周期结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 }
 
 type DomainCountInfo struct {
@@ -2679,6 +2865,36 @@ type RecordListItem struct {
 	// MX值，只有MX记录有
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitempty" name:"MX"`
+}
+
+type SubdomainAliasAnalyticsItem struct {
+
+	// 子域名解析量统计查询信息
+	Info *SubdomainAnalyticsInfo `json:"Info,omitempty" name:"Info"`
+
+	// 当前统计维度解析量小计
+	Data []*DomainAnalyticsDetail `json:"Data,omitempty" name:"Data"`
+}
+
+type SubdomainAnalyticsInfo struct {
+
+	// DATE:按天维度统计 HOUR:按小时维度统计
+	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
+
+	// 当前统计周期解析量总计
+	DnsTotal *uint64 `json:"DnsTotal,omitempty" name:"DnsTotal"`
+
+	// 当前查询的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 当前统计周期开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 当前统计周期结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 当前统计的子域名
+	Subdomain *string `json:"Subdomain,omitempty" name:"Subdomain"`
 }
 
 type UserInfo struct {

@@ -1098,6 +1098,12 @@ type ApplyOpenBankOrderDetailReceiptRequest struct {
 
 	// 云企付平台订单号
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *ApplyOpenBankOrderDetailReceiptRequest) ToJsonString() string {
@@ -1118,6 +1124,7 @@ func (r *ApplyOpenBankOrderDetailReceiptRequest) FromJsonString(s string) error 
 	delete(f, "ChannelName")
 	delete(f, "PaymentMethod")
 	delete(f, "ChannelOrderId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyOpenBankOrderDetailReceiptRequest has unknown keys!", "")
 	}
@@ -5354,6 +5361,12 @@ type CreateOpenBankExternalSubMerchantAccountBookRequest struct {
 	// __OPENBANK_PAYMENT__: openbank支付
 	// __SAFT_ISV__: 安心发支付
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *CreateOpenBankExternalSubMerchantAccountBookRequest) ToJsonString() string {
@@ -5373,6 +5386,7 @@ func (r *CreateOpenBankExternalSubMerchantAccountBookRequest) FromJsonString(s s
 	delete(f, "ChannelSubMerchantId")
 	delete(f, "ChannelName")
 	delete(f, "PaymentMethod")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankExternalSubMerchantAccountBookRequest has unknown keys!", "")
 	}
@@ -5868,6 +5882,12 @@ type CreateOpenBankRechargeOrderRequest struct {
 
 	// 备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *CreateOpenBankRechargeOrderRequest) ToJsonString() string {
@@ -5893,6 +5913,7 @@ func (r *CreateOpenBankRechargeOrderRequest) FromJsonString(s string) error {
 	delete(f, "ChannelSubMerchantId")
 	delete(f, "NotifyUrl")
 	delete(f, "Remark")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankRechargeOrderRequest has unknown keys!", "")
 	}
@@ -15192,6 +15213,12 @@ type QueryOpenBankExternalSubAccountBookBalanceRequest struct {
 
 	// 渠道账本号ID。与OutAccountBookId二者选填其一。
 	ChannelAccountBookId *string `json:"ChannelAccountBookId,omitempty" name:"ChannelAccountBookId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryOpenBankExternalSubAccountBookBalanceRequest) ToJsonString() string {
@@ -15212,6 +15239,7 @@ func (r *QueryOpenBankExternalSubAccountBookBalanceRequest) FromJsonString(s str
 	delete(f, "PaymentMethod")
 	delete(f, "OutAccountBookId")
 	delete(f, "ChannelAccountBookId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankExternalSubAccountBookBalanceRequest has unknown keys!", "")
 	}
@@ -15502,6 +15530,12 @@ type QueryOpenBankOrderDetailReceiptInfoRequest struct {
 
 	// 渠道回单申请ID，与外部回单申请ID二者选填其一
 	ChannelApplyId *string `json:"ChannelApplyId,omitempty" name:"ChannelApplyId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryOpenBankOrderDetailReceiptInfoRequest) ToJsonString() string {
@@ -15522,6 +15556,7 @@ func (r *QueryOpenBankOrderDetailReceiptInfoRequest) FromJsonString(s string) er
 	delete(f, "PaymentMethod")
 	delete(f, "OutApplyId")
 	delete(f, "ChannelApplyId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankOrderDetailReceiptInfoRequest has unknown keys!", "")
 	}

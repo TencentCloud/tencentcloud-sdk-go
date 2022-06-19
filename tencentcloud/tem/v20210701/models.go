@@ -901,6 +901,59 @@ func (r *DescribeApplicationPodsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeApplicationsStatusRequest struct {
+	*tchttp.BaseRequest
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+func (r *DescribeApplicationsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceChannel")
+	delete(f, "EnvironmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 返回结果
+		Result []*ServiceVersionBrief `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApplicationsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDeployApplicationDetailRequest struct {
 	*tchttp.BaseRequest
 
@@ -2179,6 +2232,60 @@ type RunVersionPod struct {
 	// 容器状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerState *string `json:"ContainerState,omitempty" name:"ContainerState"`
+}
+
+type ServiceVersionBrief struct {
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否启动弹性 -- 已废弃
+	EnableEs *int64 `json:"EnableEs,omitempty" name:"EnableEs"`
+
+	// 当前实例
+	CurrentInstances *int64 `json:"CurrentInstances,omitempty" name:"CurrentInstances"`
+
+	// version的id
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 日志输出配置 -- 已废弃
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogOutputConf *LogOutputConf `json:"LogOutputConf,omitempty" name:"LogOutputConf"`
+
+	// 期望实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpectedInstances *int64 `json:"ExpectedInstances,omitempty" name:"ExpectedInstances"`
+
+	// 部署方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// 建构任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildTaskId *string `json:"BuildTaskId,omitempty" name:"BuildTaskId"`
+
+	// 环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 环境name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 服务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 服务name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 是否正在发布中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnderDeploying *bool `json:"UnderDeploying,omitempty" name:"UnderDeploying"`
 }
 
 type StopApplicationRequest struct {

@@ -151,6 +151,59 @@ func (c *Client) CreateAutoCalloutTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCCCSkillGroupRequest() (request *CreateCCCSkillGroupRequest) {
+    request = &CreateCCCSkillGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateCCCSkillGroup")
+    
+    
+    return
+}
+
+func NewCreateCCCSkillGroupResponse() (response *CreateCCCSkillGroupResponse) {
+    response = &CreateCCCSkillGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCCCSkillGroup
+// 创建技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SKILLGROUPEXIST = "InvalidParameterValue.SkillGroupExist"
+func (c *Client) CreateCCCSkillGroup(request *CreateCCCSkillGroupRequest) (response *CreateCCCSkillGroupResponse, err error) {
+    return c.CreateCCCSkillGroupWithContext(context.Background(), request)
+}
+
+// CreateCCCSkillGroup
+// 创建技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SKILLGROUPEXIST = "InvalidParameterValue.SkillGroupExist"
+func (c *Client) CreateCCCSkillGroupWithContext(ctx context.Context, request *CreateCCCSkillGroupRequest) (response *CreateCCCSkillGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateCCCSkillGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCCCSkillGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCCCSkillGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCallOutSessionRequest() (request *CreateCallOutSessionRequest) {
     request = &CreateCallOutSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

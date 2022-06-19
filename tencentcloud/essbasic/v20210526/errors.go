@@ -125,7 +125,7 @@ const (
 	// 流程配额不足。
 	OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 
-	// 用户与企业不对应。
+	// 用户不在当前企业中。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 
 	// 资源不存在。

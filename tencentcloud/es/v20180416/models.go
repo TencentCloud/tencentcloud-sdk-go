@@ -1492,6 +1492,10 @@ type InstanceInfo struct {
 	// https集群内网域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsPrivateDomain *string `json:"EsPrivateDomain,omitempty" name:"EsPrivateDomain"`
+
+	// 集群的配置组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsConfigSets []*EsConfigSetInfo `json:"EsConfigSets,omitempty" name:"EsConfigSets"`
 }
 
 type InstanceLog struct {

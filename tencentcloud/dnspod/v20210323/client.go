@@ -1056,6 +1056,59 @@ func (c *Client) DescribeDomainAliasListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainAnalyticsRequest() (request *DescribeDomainAnalyticsRequest) {
+    request = &DescribeDomainAnalyticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainAnalytics")
+    
+    
+    return
+}
+
+func NewDescribeDomainAnalyticsResponse() (response *DescribeDomainAnalyticsResponse) {
+    response = &DescribeDomainAnalyticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainAnalytics
+// 统计各个域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeDomainAnalytics(request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
+    return c.DescribeDomainAnalyticsWithContext(context.Background(), request)
+}
+
+// DescribeDomainAnalytics
+// 统计各个域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainAnalyticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainAnalytics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainAnalyticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
     request = &DescribeDomainListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1672,6 +1725,61 @@ func (c *Client) DescribeRecordTypeWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRecordTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubdomainAnalyticsRequest() (request *DescribeSubdomainAnalyticsRequest) {
+    request = &DescribeSubdomainAnalyticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSubdomainAnalytics")
+    
+    
+    return
+}
+
+func NewDescribeSubdomainAnalyticsResponse() (response *DescribeSubdomainAnalyticsResponse) {
+    response = &DescribeSubdomainAnalyticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSubdomainAnalytics
+// 统计子域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况。仅付费套餐域名可用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {
+    return c.DescribeSubdomainAnalyticsWithContext(context.Background(), request)
+}
+
+// DescribeSubdomainAnalytics
+// 统计子域名的解析量，帮助您了解流量情况、时间段分布。支持查看近 3 个月内的统计情况。仅付费套餐域名可用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeSubdomainAnalyticsWithContext(ctx context.Context, request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubdomainAnalyticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubdomainAnalytics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubdomainAnalyticsResponse()
     err = c.Send(request, response)
     return
 }
