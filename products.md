@@ -161,7 +161,7 @@
 | tan | [碳引擎](https://cloud.tencent.com/document/product/1498) | 2022-06-06 16:47:40 |
 | tat | [腾讯云自动化助手](https://cloud.tencent.com/document/product/1340) | 2022-04-08 06:12:44 |
 | tav | [文件检测](https://cloud.tencent.com/document/product) | 2019-11-28 22:10:04 |
-| tbaas | [TBaaS](https://cloud.tencent.com/document/product/663) | 2022-06-15 06:14:16 |
+| tbaas | [TBaaS](https://cloud.tencent.com/document/product/663) | 2022-06-20 15:31:45 |
 | tbm | [](https://cloud.tencent.com/document/product) | 2019-03-29 14:49:11 |
 | tbp | [腾讯智能对话平台](https://cloud.tencent.com/document/product/1060) | 2022-04-04 07:09:07 |
 | tcaplusdb | [游戏数据库 TcaplusDB](https://cloud.tencent.com/document/product/596) | 2022-04-08 06:12:54 |

@@ -2974,6 +2974,71 @@ func (c *Client) InvokeChainMakerContractWithContext(ctx context.Context, reques
     return
 }
 
+func NewInvokeChainMakerDemoContractRequest() (request *InvokeChainMakerDemoContractRequest) {
+    request = &InvokeChainMakerDemoContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "InvokeChainMakerDemoContract")
+    
+    
+    return
+}
+
+func NewInvokeChainMakerDemoContractResponse() (response *InvokeChainMakerDemoContractResponse) {
+    response = &InvokeChainMakerDemoContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InvokeChainMakerDemoContract
+// 调用长安链体验网络合约执行交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTDATAVIOLATION = "InvalidParameter.InputDataViolation"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) InvokeChainMakerDemoContract(request *InvokeChainMakerDemoContractRequest) (response *InvokeChainMakerDemoContractResponse, err error) {
+    return c.InvokeChainMakerDemoContractWithContext(context.Background(), request)
+}
+
+// InvokeChainMakerDemoContract
+// 调用长安链体验网络合约执行交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTDATAVIOLATION = "InvalidParameter.InputDataViolation"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) InvokeChainMakerDemoContractWithContext(ctx context.Context, request *InvokeChainMakerDemoContractRequest) (response *InvokeChainMakerDemoContractResponse, err error) {
+    if request == nil {
+        request = NewInvokeChainMakerDemoContractRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeChainMakerDemoContract require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeChainMakerDemoContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryRequest() (request *QueryRequest) {
     request = &QueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3325,6 +3390,195 @@ func (c *Client) QueryChainMakerContractWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewQueryChainMakerContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerDemoBlockTransactionRequest() (request *QueryChainMakerDemoBlockTransactionRequest) {
+    request = &QueryChainMakerDemoBlockTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoBlockTransaction")
+    
+    
+    return
+}
+
+func NewQueryChainMakerDemoBlockTransactionResponse() (response *QueryChainMakerDemoBlockTransactionResponse) {
+    response = &QueryChainMakerDemoBlockTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerDemoBlockTransaction
+// 查询长安链体验网络指定高度区块的交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoBlockTransaction(request *QueryChainMakerDemoBlockTransactionRequest) (response *QueryChainMakerDemoBlockTransactionResponse, err error) {
+    return c.QueryChainMakerDemoBlockTransactionWithContext(context.Background(), request)
+}
+
+// QueryChainMakerDemoBlockTransaction
+// 查询长安链体验网络指定高度区块的交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoBlockTransactionWithContext(ctx context.Context, request *QueryChainMakerDemoBlockTransactionRequest) (response *QueryChainMakerDemoBlockTransactionResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerDemoBlockTransactionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerDemoBlockTransaction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryChainMakerDemoBlockTransactionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerDemoContractRequest() (request *QueryChainMakerDemoContractRequest) {
+    request = &QueryChainMakerDemoContractRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoContract")
+    
+    
+    return
+}
+
+func NewQueryChainMakerDemoContractResponse() (response *QueryChainMakerDemoContractResponse) {
+    response = &QueryChainMakerDemoContractResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerDemoContract
+// 调用长安链体验网络合约查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoContract(request *QueryChainMakerDemoContractRequest) (response *QueryChainMakerDemoContractResponse, err error) {
+    return c.QueryChainMakerDemoContractWithContext(context.Background(), request)
+}
+
+// QueryChainMakerDemoContract
+// 调用长安链体验网络合约查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoContractWithContext(ctx context.Context, request *QueryChainMakerDemoContractRequest) (response *QueryChainMakerDemoContractResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerDemoContractRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerDemoContract require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryChainMakerDemoContractResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryChainMakerDemoTransactionRequest() (request *QueryChainMakerDemoTransactionRequest) {
+    request = &QueryChainMakerDemoTransactionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoTransaction")
+    
+    
+    return
+}
+
+func NewQueryChainMakerDemoTransactionResponse() (response *QueryChainMakerDemoTransactionResponse) {
+    response = &QueryChainMakerDemoTransactionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryChainMakerDemoTransaction
+// 通过交易ID查询长安链体验网络交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoTransaction(request *QueryChainMakerDemoTransactionRequest) (response *QueryChainMakerDemoTransactionResponse, err error) {
+    return c.QueryChainMakerDemoTransactionWithContext(context.Background(), request)
+}
+
+// QueryChainMakerDemoTransaction
+// 通过交易ID查询长安链体验网络交易
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) QueryChainMakerDemoTransactionWithContext(ctx context.Context, request *QueryChainMakerDemoTransactionRequest) (response *QueryChainMakerDemoTransactionResponse, err error) {
+    if request == nil {
+        request = NewQueryChainMakerDemoTransactionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryChainMakerDemoTransaction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryChainMakerDemoTransactionResponse()
     err = c.Send(request, response)
     return
 }

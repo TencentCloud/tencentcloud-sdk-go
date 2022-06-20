@@ -1,3 +1,24 @@
+# Release v1.0.424
+
+## TBaaS(tbaas) 版本：2018-04-16
+
+### 第 12 次发布
+
+发布时间：2022-06-20 15:31:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)
+* [QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)
+* [QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)
+* [QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)
+
+
+
 # Release v1.0.423
 
 ## 应用性能观测(apm) 版本：2021-06-22

@@ -17,8 +17,14 @@ package v20180416
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 用户无权限访问。
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
+	// 为带来更好的服务与体验，长安链体验网络维护升级中，请稍后再试。
+	FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
 
 	// Bcos网络异常。
 	FAILEDOPERATION_BCOSSERVICE = "FailedOperation.BcosService"
@@ -161,6 +167,9 @@ const (
 	// Bcos无效的私钥用户信息。
 	FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
 
+	// 无效操作。
+	FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+
 	// 无效节点。
 	FAILEDOPERATION_INVALIDPEER = "FailedOperation.InvalidPeer"
 
@@ -214,6 +223,12 @@ const (
 
 	// 获取用户认证类型出错。
 	FAILEDOPERATION_USERAUTHTYPE = "FailedOperation.UserAuthType"
+
+	// 您因违反用户协议，目前无法使用长安链体验网络。
+	FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+
+	// 用户未加入体验网络。
+	FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
 
 	// Bcos数据库操作异常，请重试。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -289,6 +304,9 @@ const (
 
 	// Bcos前置服务调用失败。
 	INVALIDPARAMETER_FRONTREQUESTFAIL = "InvalidParameter.FrontRequestFail"
+
+	// 输入参数存在违规内容。
+	INVALIDPARAMETER_INPUTDATAVIOLATION = "InvalidParameter.InputDataViolation"
 
 	// Bcos无效的合约参数。
 	INVALIDPARAMETER_INVALIDCONTRACTARG = "InvalidParameter.InvalidContractArg"

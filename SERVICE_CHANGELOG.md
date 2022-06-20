@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 应用性能观测(apm) 版本：2021-06-22
+## TBaaS(tbaas) 版本：2018-04-16
 
-### 第 10 次发布
+### 第 12 次发布
 
-发布时间：2022-06-20 06:02:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeApmAgent](https://cloud.tencent.com/document/api/1463/64926)
-
-	* 新增入参：ReportMethod
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 26 次发布
-
-发布时间：2022-06-20 06:03:42
+发布时间：2022-06-20 15:31:45
 
 本次发布包含了以下内容：
 
@@ -31,198 +12,10 @@
 
 新增接口：
 
-* [CreateCCCSkillGroup](https://cloud.tencent.com/document/api/679/75751)
-
-
-
-## 账号风控平台(ciam) 版本：2022-03-31
-
-### 第 5 次发布
-
-发布时间：2022-06-17 10:12:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SaltLocationRule](https://cloud.tencent.com/document/api/1441/75643#SaltLocationRule)
-
-修改数据结构：
-
-* [SaltLocation](https://cloud.tencent.com/document/api/1441/75643#SaltLocation)
-
-	* 新增成员：SaltLocationTypeEnum, SaltLocationRule
-
-
-
-
-## 云加密机(cloudhsm) 版本：2019-11-12
-
-### 第 5 次发布
-
-发布时间：2022-06-20 06:05:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSupportedHsm](https://cloud.tencent.com/document/api/639/56372)
-
-	* 新增入参：HsmType
-
-* [DescribeVsms](https://cloud.tencent.com/document/api/639/41443)
-
-	* 新增入参：HsmType
-
-* [InquiryPriceBuyVsm](https://cloud.tencent.com/document/api/639/41442)
-
-	* 新增入参：HsmType
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 68 次发布
-
-发布时间：2022-06-20 06:05:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ApplyOpenBankOrderDetailReceipt](https://cloud.tencent.com/document/api/1122/73065)
-
-	* 新增入参：Environment
-
-* [CreateOpenBankExternalSubMerchantAccountBook](https://cloud.tencent.com/document/api/1122/73064)
-
-	* 新增入参：Environment
-
-* [CreateOpenBankRechargeOrder](https://cloud.tencent.com/document/api/1122/73063)
-
-	* 新增入参：Environment
-
-* [QueryOpenBankExternalSubAccountBookBalance](https://cloud.tencent.com/document/api/1122/73062)
-
-	* 新增入参：Environment
-
-* [QueryOpenBankOrderDetailReceiptInfo](https://cloud.tencent.com/document/api/1122/73061)
-
-	* 新增入参：Environment
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 44 次发布
-
-发布时间：2022-06-20 06:06:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
-
-	* 新增成员：FirstDiscoveryTime, InstanceState
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 5 次发布
-
-发布时间：2022-06-20 06:07:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDomainAnalytics](https://cloud.tencent.com/document/api/1427/75753)
-* [DescribeSubdomainAnalytics](https://cloud.tencent.com/document/api/1427/75752)
-
-新增数据结构：
-
-* [DomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#DomainAliasAnalyticsItem)
-* [DomainAnalyticsDetail](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsDetail)
-* [DomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsInfo)
-* [SubdomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#SubdomainAliasAnalyticsItem)
-* [SubdomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#SubdomainAnalyticsInfo)
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 28 次发布
-
-发布时间：2022-06-20 06:08:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：EsConfigSets
-
-
-
-
-## 证书(ssl) 版本：2019-12-05
-
-### 第 15 次发布
-
-发布时间：2022-06-20 06:13:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
-
-	* 新增成员：IsIgnore
-
-
-
-
-## 弹性微服务(tem) 版本：2021-07-01
-
-### 第 18 次发布
-
-发布时间：2022-06-20 06:14:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApplicationsStatus](https://cloud.tencent.com/document/api/1371/75754)
-
-新增数据结构：
-
-* [ServiceVersionBrief](https://cloud.tencent.com/document/api/1371/60171#ServiceVersionBrief)
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
+* [InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)
+* [QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)
+* [QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)
+* [QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)
 
 
 
@@ -10329,7 +10122,7 @@
 
 新增接口：
 
-* [[CreateCCCSkillGroup](https://cloud.tencent.com/document/api/679/75751)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCCCSkillGroup](https://cloud.tencent.com/document/api/679/75751)
 
 ### 第 25 次发布
 
@@ -16169,7 +15962,7 @@
 
 新增数据结构：
 
-* [[SaltLocationRule](https://cloud.tencent.com/document/api/1441/75643#SaltLocationRule)](https://cloud.tencent.com/document/api/1441/75643#[SaltLocationRule](https://cloud.tencent.com/document/api/1441/75643#SaltLocationRule))
+* [SaltLocationRule](https://cloud.tencent.com/document/api/1441/75643#SaltLocationRule)
 
 修改数据结构：
 
@@ -29712,16 +29505,16 @@
 
 新增接口：
 
-* [[DescribeDomainAnalytics](https://cloud.tencent.com/document/api/1427/75753)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSubdomainAnalytics](https://cloud.tencent.com/document/api/1427/75752)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDomainAnalytics](https://cloud.tencent.com/document/api/1427/75753)
+* [DescribeSubdomainAnalytics](https://cloud.tencent.com/document/api/1427/75752)
 
 新增数据结构：
 
-* [[DomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#DomainAliasAnalyticsItem)](https://cloud.tencent.com/document/api/1427/56185#[DomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#DomainAliasAnalyticsItem))
-* [[DomainAnalyticsDetail](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsDetail)](https://cloud.tencent.com/document/api/1427/56185#[DomainAnalyticsDetail](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsDetail))
-* [[DomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsInfo)](https://cloud.tencent.com/document/api/1427/56185#[DomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsInfo))
-* [[SubdomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#SubdomainAliasAnalyticsItem)](https://cloud.tencent.com/document/api/1427/56185#[SubdomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#SubdomainAliasAnalyticsItem))
-* [[SubdomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#SubdomainAnalyticsInfo)](https://cloud.tencent.com/document/api/1427/56185#[SubdomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#SubdomainAnalyticsInfo))
+* [DomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#DomainAliasAnalyticsItem)
+* [DomainAnalyticsDetail](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsDetail)
+* [DomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAnalyticsInfo)
+* [SubdomainAliasAnalyticsItem](https://cloud.tencent.com/document/api/1427/56185#SubdomainAliasAnalyticsItem)
+* [SubdomainAnalyticsInfo](https://cloud.tencent.com/document/api/1427/56185#SubdomainAnalyticsInfo)
 
 ### 第 4 次发布
 
@@ -60403,6 +60196,21 @@
 
 ## TBaaS(tbaas) 版本：2018-04-16
 
+### 第 12 次发布
+
+发布时间：2022-06-20 15:31:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 11 次发布
 
 发布时间：2021-08-24 08:09:26
@@ -66177,11 +65985,11 @@
 
 新增接口：
 
-* [[DescribeApplicationsStatus](https://cloud.tencent.com/document/api/1371/75754)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApplicationsStatus](https://cloud.tencent.com/document/api/1371/75754)
 
 新增数据结构：
 
-* [[ServiceVersionBrief](https://cloud.tencent.com/document/api/1371/60171#ServiceVersionBrief)](https://cloud.tencent.com/document/api/1371/60171#[ServiceVersionBrief](https://cloud.tencent.com/document/api/1371/60171#ServiceVersionBrief))
+* [ServiceVersionBrief](https://cloud.tencent.com/document/api/1371/60171#ServiceVersionBrief)
 
 ### 第 17 次发布
 
