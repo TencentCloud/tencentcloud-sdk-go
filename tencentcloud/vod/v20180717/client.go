@@ -7478,6 +7478,7 @@ func NewParseStreamingManifestResponse() (response *ParseStreamingManifestRespon
 // 上传 HLS 视频时，解析索引文件内容，返回待上传的分片文件列表。分片文件路径必须是当前目录或子目录的相对路径，不能是 URL，不能是绝对路径。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MEDIAMANIFESTCONTENT = "InvalidParameterValue.MediaManifestContent"
@@ -7490,6 +7491,7 @@ func (c *Client) ParseStreamingManifest(request *ParseStreamingManifestRequest) 
 // 上传 HLS 视频时，解析索引文件内容，返回待上传的分片文件列表。分片文件路径必须是当前目录或子目录的相对路径，不能是 URL，不能是绝对路径。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MEDIAMANIFESTCONTENT = "InvalidParameterValue.MediaManifestContent"
@@ -7643,6 +7645,18 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
 //
+// 
+//
+// 使用溯源水印存在以下限制条件：
+//
+// <li> 溯源水印仅支持图片水印； </li>
+//
+// <li> 溯源水印仅支持水印重复类型为水印循环播放； </li>
+//
+// <li> 溯源水印仅支持输出文件封装格式为 HLS； </li>
+//
+// <li> 溯源水印的位置仅支持位于视频的上半部分。 </li>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
@@ -7689,6 +7703,18 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 // 
 //
 // 如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
+//
+// 
+//
+// 使用溯源水印存在以下限制条件：
+//
+// <li> 溯源水印仅支持图片水印； </li>
+//
+// <li> 溯源水印仅支持水印重复类型为水印循环播放； </li>
+//
+// <li> 溯源水印仅支持输出文件封装格式为 HLS； </li>
+//
+// <li> 溯源水印的位置仅支持位于视频的上半部分。 </li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

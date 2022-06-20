@@ -66,6 +66,7 @@ func NewBindGroupDevicesResponse() (response *BindGroupDevicesResponse) {
 // 本接口(BindGroupDevices) 用于绑定设备到分组。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  UNSUPPORTEDOPERATION_DEVICENOTFOUND = "UnsupportedOperation.DeviceNotFound"
 func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *BindGroupDevicesResponse, err error) {
     return c.BindGroupDevicesWithContext(context.Background(), request)
@@ -75,6 +76,7 @@ func (c *Client) BindGroupDevices(request *BindGroupDevicesRequest) (response *B
 // 本接口(BindGroupDevices) 用于绑定设备到分组。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  UNSUPPORTEDOPERATION_DEVICENOTFOUND = "UnsupportedOperation.DeviceNotFound"
 func (c *Client) BindGroupDevicesWithContext(ctx context.Context, request *BindGroupDevicesRequest) (response *BindGroupDevicesResponse, err error) {
     if request == nil {
@@ -3312,6 +3314,7 @@ func NewDescribeChannelLocalRecordURLResponse() (response *DescribeChannelLocalR
 //  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeChannelLocalRecordURL(request *DescribeChannelLocalRecordURLRequest) (response *DescribeChannelLocalRecordURLResponse, err error) {
     return c.DescribeChannelLocalRecordURLWithContext(context.Background(), request)
 }
@@ -3326,6 +3329,7 @@ func (c *Client) DescribeChannelLocalRecordURL(request *DescribeChannelLocalReco
 //  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeChannelLocalRecordURLWithContext(ctx context.Context, request *DescribeChannelLocalRecordURLRequest) (response *DescribeChannelLocalRecordURLResponse, err error) {
     if request == nil {
         request = NewDescribeChannelLocalRecordURLRequest()

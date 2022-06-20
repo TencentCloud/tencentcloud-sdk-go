@@ -430,6 +430,7 @@ func NewCreateKeyResponse() (response *CreateKeyResponse) {
 // 创建用户管理数据密钥的主密钥CMK（Custom Master Key）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGGINGERROR = "FailedOperation.TaggingError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
@@ -451,6 +452,7 @@ func (c *Client) CreateKey(request *CreateKeyRequest) (response *CreateKeyRespon
 // 创建用户管理数据密钥的主密钥CMK（Custom Master Key）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TAGGINGERROR = "FailedOperation.TaggingError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"

@@ -120,7 +120,6 @@ func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     return c.GetFileTranslateWithContext(context.Background(), request)
 }
@@ -134,7 +133,6 @@ func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *G
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) GetFileTranslateWithContext(ctx context.Context, request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     if request == nil {
         request = NewGetFileTranslateRequest()

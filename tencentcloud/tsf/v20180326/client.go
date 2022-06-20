@@ -169,6 +169,112 @@ func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstan
     return
 }
 
+func NewAssociateBusinessLogConfigRequest() (request *AssociateBusinessLogConfigRequest) {
+    request = &AssociateBusinessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "AssociateBusinessLogConfig")
+    
+    
+    return
+}
+
+func NewAssociateBusinessLogConfigResponse() (response *AssociateBusinessLogConfigResponse) {
+    response = &AssociateBusinessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssociateBusinessLogConfig
+// 关联日志配置项到应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
+//  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) AssociateBusinessLogConfig(request *AssociateBusinessLogConfigRequest) (response *AssociateBusinessLogConfigResponse, err error) {
+    return c.AssociateBusinessLogConfigWithContext(context.Background(), request)
+}
+
+// AssociateBusinessLogConfig
+// 关联日志配置项到应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
+//  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) AssociateBusinessLogConfigWithContext(ctx context.Context, request *AssociateBusinessLogConfigRequest) (response *AssociateBusinessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewAssociateBusinessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateBusinessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateBusinessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssociateConfigWithGroupRequest() (request *AssociateConfigWithGroupRequest) {
+    request = &AssociateConfigWithGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "AssociateConfigWithGroup")
+    
+    
+    return
+}
+
+func NewAssociateConfigWithGroupResponse() (response *AssociateConfigWithGroupResponse) {
+    response = &AssociateConfigWithGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssociateConfigWithGroup
+// 关联投递配置到部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+func (c *Client) AssociateConfigWithGroup(request *AssociateConfigWithGroupRequest) (response *AssociateConfigWithGroupResponse, err error) {
+    return c.AssociateConfigWithGroupWithContext(context.Background(), request)
+}
+
+// AssociateConfigWithGroup
+// 关联投递配置到部署组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+func (c *Client) AssociateConfigWithGroupWithContext(ctx context.Context, request *AssociateConfigWithGroupRequest) (response *AssociateConfigWithGroupResponse, err error) {
+    if request == nil {
+        request = NewAssociateConfigWithGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateConfigWithGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateConfigWithGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindApiGroupRequest() (request *BindApiGroupRequest) {
     request = &BindApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3585,6 +3691,53 @@ func (c *Client) DescribeApplicationAttributeWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeApplicationBusinessLogConfigRequest() (request *DescribeApplicationBusinessLogConfigRequest) {
+    request = &DescribeApplicationBusinessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplicationBusinessLogConfig")
+    
+    
+    return
+}
+
+func NewDescribeApplicationBusinessLogConfigResponse() (response *DescribeApplicationBusinessLogConfigResponse) {
+    response = &DescribeApplicationBusinessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationBusinessLogConfig
+// 查询应用关联日志配置项信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeApplicationBusinessLogConfig(request *DescribeApplicationBusinessLogConfigRequest) (response *DescribeApplicationBusinessLogConfigResponse, err error) {
+    return c.DescribeApplicationBusinessLogConfigWithContext(context.Background(), request)
+}
+
+// DescribeApplicationBusinessLogConfig
+// 查询应用关联日志配置项信息
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeApplicationBusinessLogConfigWithContext(ctx context.Context, request *DescribeApplicationBusinessLogConfigRequest) (response *DescribeApplicationBusinessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationBusinessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationBusinessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationBusinessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3611,6 +3764,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_APPLICATIONPAGELIMITINVALID = "InvalidParameterValue.ApplicationPageLimitInvalid"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -3627,6 +3781,7 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_APPLICATIONPAGELIMITINVALID = "InvalidParameterValue.ApplicationPageLimitInvalid"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
@@ -3703,6 +3858,120 @@ func (c *Client) DescribeBasicResourceUsageWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeBasicResourceUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBusinessLogConfigRequest() (request *DescribeBusinessLogConfigRequest) {
+    request = &DescribeBusinessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeBusinessLogConfig")
+    
+    
+    return
+}
+
+func NewDescribeBusinessLogConfigResponse() (response *DescribeBusinessLogConfigResponse) {
+    response = &DescribeBusinessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBusinessLogConfig
+// 查询业务日志配置项信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeBusinessLogConfig(request *DescribeBusinessLogConfigRequest) (response *DescribeBusinessLogConfigResponse, err error) {
+    return c.DescribeBusinessLogConfigWithContext(context.Background(), request)
+}
+
+// DescribeBusinessLogConfig
+// 查询业务日志配置项信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeBusinessLogConfigWithContext(ctx context.Context, request *DescribeBusinessLogConfigRequest) (response *DescribeBusinessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeBusinessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBusinessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBusinessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBusinessLogConfigsRequest() (request *DescribeBusinessLogConfigsRequest) {
+    request = &DescribeBusinessLogConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeBusinessLogConfigs")
+    
+    
+    return
+}
+
+func NewDescribeBusinessLogConfigsResponse() (response *DescribeBusinessLogConfigsResponse) {
+    response = &DescribeBusinessLogConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBusinessLogConfigs
+// 查询日志配置项列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMBUSILOGCFGWRITEERROR = "FailedOperation.TsfApmBusiLogCfgWriteError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeBusinessLogConfigs(request *DescribeBusinessLogConfigsRequest) (response *DescribeBusinessLogConfigsResponse, err error) {
+    return c.DescribeBusinessLogConfigsWithContext(context.Background(), request)
+}
+
+// DescribeBusinessLogConfigs
+// 查询日志配置项列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMBUSILOGCFGWRITEERROR = "FailedOperation.TsfApmBusiLogCfgWriteError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeBusinessLogConfigsWithContext(ctx context.Context, request *DescribeBusinessLogConfigsRequest) (response *DescribeBusinessLogConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBusinessLogConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBusinessLogConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBusinessLogConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4352,6 +4621,155 @@ func (c *Client) DescribeCreateGatewayApiStatusWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeDeliveryConfigRequest() (request *DescribeDeliveryConfigRequest) {
+    request = &DescribeDeliveryConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfig")
+    
+    
+    return
+}
+
+func NewDescribeDeliveryConfigResponse() (response *DescribeDeliveryConfigResponse) {
+    response = &DescribeDeliveryConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeliveryConfig
+// 获取单个投递项配置信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGIDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgIdParamError"
+func (c *Client) DescribeDeliveryConfig(request *DescribeDeliveryConfigRequest) (response *DescribeDeliveryConfigResponse, err error) {
+    return c.DescribeDeliveryConfigWithContext(context.Background(), request)
+}
+
+// DescribeDeliveryConfig
+// 获取单个投递项配置信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGIDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgIdParamError"
+func (c *Client) DescribeDeliveryConfigWithContext(ctx context.Context, request *DescribeDeliveryConfigRequest) (response *DescribeDeliveryConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliveryConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliveryConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliveryConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeliveryConfigByGroupIdRequest() (request *DescribeDeliveryConfigByGroupIdRequest) {
+    request = &DescribeDeliveryConfigByGroupIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfigByGroupId")
+    
+    
+    return
+}
+
+func NewDescribeDeliveryConfigByGroupIdResponse() (response *DescribeDeliveryConfigByGroupIdResponse) {
+    response = &DescribeDeliveryConfigByGroupIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeliveryConfigByGroupId
+// 用部署组id获取绑定信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeDeliveryConfigByGroupId(request *DescribeDeliveryConfigByGroupIdRequest) (response *DescribeDeliveryConfigByGroupIdResponse, err error) {
+    return c.DescribeDeliveryConfigByGroupIdWithContext(context.Background(), request)
+}
+
+// DescribeDeliveryConfigByGroupId
+// 用部署组id获取绑定信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeDeliveryConfigByGroupIdWithContext(ctx context.Context, request *DescribeDeliveryConfigByGroupIdRequest) (response *DescribeDeliveryConfigByGroupIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliveryConfigByGroupIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliveryConfigByGroupId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliveryConfigByGroupIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeliveryConfigsRequest() (request *DescribeDeliveryConfigsRequest) {
+    request = &DescribeDeliveryConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfigs")
+    
+    
+    return
+}
+
+func NewDescribeDeliveryConfigsResponse() (response *DescribeDeliveryConfigsResponse) {
+    response = &DescribeDeliveryConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeliveryConfigs
+// 获取多个投递项配置 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMBUSILOGCFGSCHEMAQUERYERROR = "FailedOperation.TsfApmBusiLogCfgSchemaQueryError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeDeliveryConfigs(request *DescribeDeliveryConfigsRequest) (response *DescribeDeliveryConfigsResponse, err error) {
+    return c.DescribeDeliveryConfigsWithContext(context.Background(), request)
+}
+
+// DescribeDeliveryConfigs
+// 获取多个投递项配置 
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFAPMBUSILOGCFGSCHEMAQUERYERROR = "FailedOperation.TsfApmBusiLogCfgSchemaQueryError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeDeliveryConfigsWithContext(ctx context.Context, request *DescribeDeliveryConfigsRequest) (response *DescribeDeliveryConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliveryConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliveryConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliveryConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDownloadInfoRequest() (request *DescribeDownloadInfoRequest) {
     request = &DescribeDownloadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4908,6 +5326,57 @@ func (c *Client) DescribeGroupBindedGatewaysWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeGroupBindedGatewaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupBusinessLogConfigsRequest() (request *DescribeGroupBusinessLogConfigsRequest) {
+    request = &DescribeGroupBusinessLogConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupBusinessLogConfigs")
+    
+    
+    return
+}
+
+func NewDescribeGroupBusinessLogConfigsResponse() (response *DescribeGroupBusinessLogConfigsResponse) {
+    response = &DescribeGroupBusinessLogConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroupBusinessLogConfigs
+// 查询分组管理日志配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeGroupBusinessLogConfigs(request *DescribeGroupBusinessLogConfigsRequest) (response *DescribeGroupBusinessLogConfigsResponse, err error) {
+    return c.DescribeGroupBusinessLogConfigsWithContext(context.Background(), request)
+}
+
+// DescribeGroupBusinessLogConfigs
+// 查询分组管理日志配置列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeGroupBusinessLogConfigsWithContext(ctx context.Context, request *DescribeGroupBusinessLogConfigsRequest) (response *DescribeGroupBusinessLogConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupBusinessLogConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupBusinessLogConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupBusinessLogConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -8035,6 +8504,102 @@ func (c *Client) DisableUnitRuleWithContext(ctx context.Context, request *Disabl
     return
 }
 
+func NewDisassociateBusinessLogConfigRequest() (request *DisassociateBusinessLogConfigRequest) {
+    request = &DisassociateBusinessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisassociateBusinessLogConfig")
+    
+    
+    return
+}
+
+func NewDisassociateBusinessLogConfigResponse() (response *DisassociateBusinessLogConfigResponse) {
+    response = &DisassociateBusinessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisassociateBusinessLogConfig
+// 取消关联业务日志配置项和应用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+func (c *Client) DisassociateBusinessLogConfig(request *DisassociateBusinessLogConfigRequest) (response *DisassociateBusinessLogConfigResponse, err error) {
+    return c.DisassociateBusinessLogConfigWithContext(context.Background(), request)
+}
+
+// DisassociateBusinessLogConfig
+// 取消关联业务日志配置项和应用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+func (c *Client) DisassociateBusinessLogConfigWithContext(ctx context.Context, request *DisassociateBusinessLogConfigRequest) (response *DisassociateBusinessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDisassociateBusinessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateBusinessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateBusinessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateKafkaConfigRequest() (request *DisassociateKafkaConfigRequest) {
+    request = &DisassociateKafkaConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "DisassociateKafkaConfig")
+    
+    
+    return
+}
+
+func NewDisassociateKafkaConfigResponse() (response *DisassociateKafkaConfigResponse) {
+    response = &DisassociateKafkaConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisassociateKafkaConfig
+// 取消关联投递信息和部署组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DisassociateKafkaConfig(request *DisassociateKafkaConfigRequest) (response *DisassociateKafkaConfigResponse, err error) {
+    return c.DisassociateKafkaConfigWithContext(context.Background(), request)
+}
+
+// DisassociateKafkaConfig
+// 取消关联投递信息和部署组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DisassociateKafkaConfigWithContext(ctx context.Context, request *DisassociateKafkaConfigRequest) (response *DisassociateKafkaConfigResponse, err error) {
+    if request == nil {
+        request = NewDisassociateKafkaConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateKafkaConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateKafkaConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDraftApiGroupRequest() (request *DraftApiGroupRequest) {
     request = &DraftApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9152,6 +9717,57 @@ func (c *Client) OperateApplicationTcrBindingWithContext(ctx context.Context, re
     return
 }
 
+func NewReassociateBusinessLogConfigRequest() (request *ReassociateBusinessLogConfigRequest) {
+    request = &ReassociateBusinessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tsf", APIVersion, "ReassociateBusinessLogConfig")
+    
+    
+    return
+}
+
+func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLogConfigResponse) {
+    response = &ReassociateBusinessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReassociateBusinessLogConfig
+// 重关联业务日志配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
+//  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
+func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {
+    return c.ReassociateBusinessLogConfigWithContext(context.Background(), request)
+}
+
+// ReassociateBusinessLogConfig
+// 重关联业务日志配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
+//  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
+func (c *Client) ReassociateBusinessLogConfigWithContext(ctx context.Context, request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewReassociateBusinessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReassociateBusinessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReassociateBusinessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRedoTaskRequest() (request *RedoTaskRequest) {
     request = &RedoTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10052,6 +10668,7 @@ func NewShrinkInstancesResponse() (response *ShrinkInstancesResponse) {
 //  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
 //  INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
+//  MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ShrinkInstances(request *ShrinkInstancesRequest) (response *ShrinkInstancesResponse, err error) {
     return c.ShrinkInstancesWithContext(context.Background(), request)
@@ -10065,6 +10682,7 @@ func (c *Client) ShrinkInstances(request *ShrinkInstancesRequest) (response *Shr
 //  INTERNALERROR_CVMCAEMASTERNONALIVE = "InternalError.CvmCaeMasterNonAlive"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
 //  INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
+//  MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) ShrinkInstancesWithContext(ctx context.Context, request *ShrinkInstancesRequest) (response *ShrinkInstancesResponse, err error) {
     if request == nil {

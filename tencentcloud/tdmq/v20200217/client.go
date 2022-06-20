@@ -235,6 +235,7 @@ func NewCreateAMQPClusterResponse() (response *CreateAMQPClusterResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response *CreateAMQPClusterResponse, err error) {
     return c.CreateAMQPClusterWithContext(context.Background(), request)
 }
@@ -251,6 +252,7 @@ func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response 
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateAMQPClusterWithContext(ctx context.Context, request *CreateAMQPClusterRequest) (response *CreateAMQPClusterResponse, err error) {
     if request == nil {
         request = NewCreateAMQPClusterRequest()
@@ -774,6 +776,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"
 //  LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 //  LIMITEXCEEDED_RETENTIONSIZE = "LimitExceeded.RetentionSize"
+//  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
@@ -796,6 +799,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 //  LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"
 //  LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 //  LIMITEXCEEDED_RETENTIONSIZE = "LimitExceeded.RetentionSize"
+//  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
@@ -973,6 +977,7 @@ func NewCreateRocketMQGroupResponse() (response *CreateRocketMQGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (response *CreateRocketMQGroupResponse, err error) {
     return c.CreateRocketMQGroupWithContext(context.Background(), request)
 }
@@ -987,6 +992,7 @@ func (c *Client) CreateRocketMQGroup(request *CreateRocketMQGroupRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateRocketMQGroupWithContext(ctx context.Context, request *CreateRocketMQGroupRequest) (response *CreateRocketMQGroupResponse, err error) {
     if request == nil {
         request = NewCreateRocketMQGroupRequest()
@@ -4585,6 +4591,7 @@ func NewModifyEnvironmentAttributesResponse() (response *ModifyEnvironmentAttrib
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
+//  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
@@ -4608,6 +4615,7 @@ func (c *Client) ModifyEnvironmentAttributes(request *ModifyEnvironmentAttribute
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
+//  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
@@ -4827,6 +4835,7 @@ func NewModifyRocketMQNamespaceResponse() (response *ModifyRocketMQNamespaceResp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest) (response *ModifyRocketMQNamespaceResponse, err error) {
     return c.ModifyRocketMQNamespaceWithContext(context.Background(), request)
 }
@@ -4842,6 +4851,7 @@ func (c *Client) ModifyRocketMQNamespace(request *ModifyRocketMQNamespaceRequest
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) ModifyRocketMQNamespaceWithContext(ctx context.Context, request *ModifyRocketMQNamespaceRequest) (response *ModifyRocketMQNamespaceResponse, err error) {
     if request == nil {
         request = NewModifyRocketMQNamespaceRequest()

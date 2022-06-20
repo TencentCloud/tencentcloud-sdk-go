@@ -38,6 +38,9 @@ const (
 	// 私有域创建失败。
 	FAILEDOPERATION_CREATEZONEFAILED = "FailedOperation.CreateZoneFailed"
 
+	// 数据异常。
+	FAILEDOPERATION_DATAERROR = "FailedOperation.DataError"
+
 	// 当前私有域已关联 VPC，如需清空解析记录请先解除 VPC 关联。
 	FAILEDOPERATION_DELETELASTBINDVPCRECORDFAILED = "FailedOperation.DeleteLastBindVpcRecordFailed"
 

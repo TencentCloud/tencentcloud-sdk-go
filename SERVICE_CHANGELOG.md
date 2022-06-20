@@ -1,10 +1,88 @@
 # 本版本更新包含以下内容：
 
-## TBaaS(tbaas) 版本：2018-04-16
+## 应用性能观测(apm) 版本：2021-06-22
 
-### 第 12 次发布
+### 第 11 次发布
 
-发布时间：2022-06-20 15:31:45
+发布时间：2022-06-21 06:01:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：ClientCount, TotalCount
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 22 次发布
+
+发布时间：2022-06-21 06:06:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+
+	* 新增入参：TaskId
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 19 次发布
+
+发布时间：2022-06-21 06:13:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterCheckItem](https://cloud.tencent.com/document/api/1285/65614#ClusterCheckItem)
+
+	* 新增成员：IgnoredAssetNum, IsIgnored, RiskAssessment
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 32 次发布
+
+发布时间：2022-06-21 06:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* MeasureTrtcMcuExternal
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* OneSdkAppIdTranscodeTimeUsagesNewInfo
+* SdkAppIdTrtcMcuTranscodeTimeNewUsage
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 76 次发布
+
+发布时间：2022-06-21 06:15:54
 
 本次发布包含了以下内容：
 
@@ -12,10 +90,57 @@
 
 新增接口：
 
-* [InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)
-* [QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)
-* [QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)
-* [QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)
+* [AssociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75781)
+* [AssociateConfigWithGroup](https://cloud.tencent.com/document/api/649/75780)
+* [DescribeApplicationBusinessLogConfig](https://cloud.tencent.com/document/api/649/75779)
+* [DescribeBusinessLogConfig](https://cloud.tencent.com/document/api/649/75778)
+* [DescribeBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75777)
+* [DescribeDeliveryConfig](https://cloud.tencent.com/document/api/649/75776)
+* [DescribeDeliveryConfigByGroupId](https://cloud.tencent.com/document/api/649/75775)
+* [DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)
+* [DescribeGroupBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75773)
+* [DisassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75772)
+* [DisassociateKafkaConfig](https://cloud.tencent.com/document/api/649/75771)
+* [ReassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75770)
+
+新增数据结构：
+
+* [BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup)
+* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
+* [BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema)
+* [DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)
+* [DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups)
+* [GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo)
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+* [SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig)
+* [TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 106 次发布
+
+发布时间：2022-06-21 06:16:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：TraceWatermark
+
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
+
+	* 新增成员：TraceWatermark
+
 
 
 
@@ -3078,6 +3203,21 @@
 
 
 ## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 11 次发布
+
+发布时间：2022-06-21 06:01:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：ClientCount, TotalCount
+
 
 ### 第 10 次发布
 
@@ -28965,6 +29105,21 @@
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 22 次发布
+
+发布时间：2022-06-21 06:06:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+
+	* 新增入参：TaskId
+
 
 ### 第 21 次发布
 
@@ -60206,10 +60361,10 @@
 
 新增接口：
 
-* [[InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)](https://cloud.tencent.com/document/api/#/#)
+* [InvokeChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75766)
+* [QueryChainMakerDemoBlockTransaction](https://cloud.tencent.com/document/api/663/75765)
+* [QueryChainMakerDemoContract](https://cloud.tencent.com/document/api/663/75764)
+* [QueryChainMakerDemoTransaction](https://cloud.tencent.com/document/api/663/75763)
 
 ### 第 11 次发布
 
@@ -64011,6 +64166,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 19 次发布
+
+发布时间：2022-06-21 06:13:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterCheckItem](https://cloud.tencent.com/document/api/1285/65614#ClusterCheckItem)
+
+	* 新增成员：IgnoredAssetNum, IsIgnored, RiskAssessment
+
 
 ### 第 18 次发布
 
@@ -71255,6 +71425,23 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 32 次发布
+
+发布时间：2022-06-21 06:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* MeasureTrtcMcuExternal
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* OneSdkAppIdTranscodeTimeUsagesNewInfo
+* SdkAppIdTrtcMcuTranscodeTimeNewUsage
+
 ### 第 31 次发布
 
 发布时间：2022-06-13 06:19:26
@@ -72183,6 +72370,41 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 76 次发布
+
+发布时间：2022-06-21 06:15:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AssociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75781)](https://cloud.tencent.com/document/api/#/#)
+* [[AssociateConfigWithGroup](https://cloud.tencent.com/document/api/649/75780)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeApplicationBusinessLogConfig](https://cloud.tencent.com/document/api/649/75779)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBusinessLogConfig](https://cloud.tencent.com/document/api/649/75778)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75777)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeliveryConfig](https://cloud.tencent.com/document/api/649/75776)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeliveryConfigByGroupId](https://cloud.tencent.com/document/api/649/75775)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGroupBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75773)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75772)](https://cloud.tencent.com/document/api/#/#)
+* [[DisassociateKafkaConfig](https://cloud.tencent.com/document/api/649/75771)](https://cloud.tencent.com/document/api/#/#)
+* [[ReassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75770)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup)](https://cloud.tencent.com/document/api/649/36099#[BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup))
+* [[BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)](https://cloud.tencent.com/document/api/649/36099#[BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig))
+* [[BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema)](https://cloud.tencent.com/document/api/649/36099#[BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema))
+* [[DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)](https://cloud.tencent.com/document/api/649/36099#[DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup))
+* [[DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups)](https://cloud.tencent.com/document/api/649/36099#[DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups))
+* [[GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo)](https://cloud.tencent.com/document/api/649/36099#[GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo))
+* [[KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)](https://cloud.tencent.com/document/api/649/36099#[KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig))
+* [[SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig)](https://cloud.tencent.com/document/api/649/36099#[SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig))
+* [[TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig)](https://cloud.tencent.com/document/api/649/36099#[TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig))
 
 ### 第 75 次发布
 
@@ -74661,6 +74883,29 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 106 次发布
+
+发布时间：2022-06-21 06:16:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)](https://cloud.tencent.com/document/api/266/31773#[TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput))
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：TraceWatermark
+
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
+
+	* 新增成员：TraceWatermark
+
 
 ### 第 105 次发布
 

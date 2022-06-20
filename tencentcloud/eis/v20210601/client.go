@@ -66,6 +66,7 @@ func NewGetRuntimeMCResponse() (response *GetRuntimeMCResponse) {
 // 获取运行时详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INTERNALERROR_COUNTRUNTIMEINSTANCESFAILED = "InternalError.CountRuntimeInstancesFailed"
@@ -85,6 +86,7 @@ func (c *Client) GetRuntimeMC(request *GetRuntimeMCRequest) (response *GetRuntim
 // 获取运行时详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INTERNALERROR_COUNTRUNTIMEINSTANCESFAILED = "InternalError.CountRuntimeInstancesFailed"
@@ -133,6 +135,7 @@ func NewGetRuntimeResourceMonitorMetricMCResponse() (response *GetRuntimeResourc
 // 获取运行时资源监控详情，cpu，memory，bandwidth
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INNERLOGICTIMEOUT = "FailedOperation.InnerLogicTimeOut"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDRUNTIMEMETRICSEARCHCONDITION = "InvalidParameterValue.InvalidRuntimeMetricSearchCondition"
@@ -151,6 +154,7 @@ func (c *Client) GetRuntimeResourceMonitorMetricMC(request *GetRuntimeResourceMo
 // 获取运行时资源监控详情，cpu，memory，bandwidth
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INNERLOGICTIMEOUT = "FailedOperation.InnerLogicTimeOut"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDRUNTIMEMETRICSEARCHCONDITION = "InvalidParameterValue.InvalidRuntimeMetricSearchCondition"
@@ -310,6 +314,7 @@ func NewListRuntimesMCResponse() (response *ListRuntimesMCResponse) {
 // 返回用户的运行时列表，运行时管理主页使用，包含沙箱、共享运行时及独立运行时环境，不包含已经删除的运行时
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
@@ -324,6 +329,7 @@ func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListR
 // 返回用户的运行时列表，运行时管理主页使用，包含沙箱、共享运行时及独立运行时环境，不包含已经删除的运行时
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  FAILEDOPERATION_METACOMPILERERROR = "FailedOperation.MetaCompilerError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"

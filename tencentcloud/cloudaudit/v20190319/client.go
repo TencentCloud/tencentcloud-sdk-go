@@ -428,6 +428,7 @@ func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
 // 查询云审计日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
@@ -439,6 +440,7 @@ func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *Descr
 // 查询云审计日志
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"

@@ -107,6 +107,9 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 超过配额限制。
+	LIMITEXCEEDED_QUOTA = "LimitExceeded.Quota"
+
 	// 资源关联的标签数超过限制。
 	LIMITEXCEEDED_RESOURCEATTACHEDTAGS = "LimitExceeded.ResourceAttachedTags"
 

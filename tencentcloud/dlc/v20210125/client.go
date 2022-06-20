@@ -590,7 +590,9 @@ func NewCreateSparkAppTaskResponse() (response *CreateSparkAppTaskResponse) {
 // 创建spark任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
     return c.CreateSparkAppTaskWithContext(context.Background(), request)
 }
@@ -599,7 +601,9 @@ func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (respons
 // 创建spark任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateSparkAppTaskWithContext(ctx context.Context, request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
     if request == nil {
         request = NewCreateSparkAppTaskRequest()
@@ -1321,6 +1325,7 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
 // 本接口（DescribeDatabases）用于查询数据库列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1333,6 +1338,7 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
 // 本接口（DescribeDatabases）用于查询数据库列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1620,6 +1626,7 @@ func NewDescribeTableResponse() (response *DescribeTableResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1634,6 +1641,7 @@ func (c *Client) DescribeTable(request *DescribeTableRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"

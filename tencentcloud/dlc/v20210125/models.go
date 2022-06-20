@@ -1739,6 +1739,9 @@ type DescribeSparkAppTasksRequest struct {
 
 	// 分页查询Limit
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 执行实例id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeSparkAppTasksRequest) ToJsonString() string {
@@ -1756,6 +1759,7 @@ func (r *DescribeSparkAppTasksRequest) FromJsonString(s string) error {
 	delete(f, "JobId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkAppTasksRequest has unknown keys!", "")
 	}

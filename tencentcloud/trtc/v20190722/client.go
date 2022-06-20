@@ -1433,85 +1433,6 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     return
 }
 
-func NewMeasureTrtcMcuExternalRequest() (request *MeasureTrtcMcuExternalRequest) {
-    request = &MeasureTrtcMcuExternalRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "MeasureTrtcMcuExternal")
-    
-    
-    return
-}
-
-func NewMeasureTrtcMcuExternalResponse() (response *MeasureTrtcMcuExternalResponse) {
-    response = &MeasureTrtcMcuExternalResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// MeasureTrtcMcuExternal
-// 查询旁路转码计费时长。
-//
-// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
-//
-// - 单次查询统计区间最多不能超过2天。
-//
-// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
-//
-// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETROOMCACHEIPERROR = "InternalError.GetRoomCacheIpError"
-//  INVALIDPARAMETER_ROOMID = "InvalidParameter.RoomId"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
-func (c *Client) MeasureTrtcMcuExternal(request *MeasureTrtcMcuExternalRequest) (response *MeasureTrtcMcuExternalResponse, err error) {
-    return c.MeasureTrtcMcuExternalWithContext(context.Background(), request)
-}
-
-// MeasureTrtcMcuExternal
-// 查询旁路转码计费时长。
-//
-// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
-//
-// - 单次查询统计区间最多不能超过2天。
-//
-// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
-//
-// - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GETROOMCACHEIPERROR = "InternalError.GetRoomCacheIpError"
-//  INVALIDPARAMETER_ROOMID = "InvalidParameter.RoomId"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETERVALUE_ROOMID = "InvalidParameterValue.RoomId"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
-func (c *Client) MeasureTrtcMcuExternalWithContext(ctx context.Context, request *MeasureTrtcMcuExternalRequest) (response *MeasureTrtcMcuExternalResponse, err error) {
-    if request == nil {
-        request = NewMeasureTrtcMcuExternalRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("MeasureTrtcMcuExternal require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewMeasureTrtcMcuExternalResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyCloudRecordingRequest() (request *ModifyCloudRecordingRequest) {
     request = &ModifyCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2035,6 +1956,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
 //  INVALIDPARAMETER_MAINVIDEOSTREAMTYPE = "InvalidParameter.MainVideoStreamType"
@@ -2112,6 +2034,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 //  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
 //  INVALIDPARAMETER_MAINVIDEOSTREAMTYPE = "InvalidParameter.MainVideoStreamType"

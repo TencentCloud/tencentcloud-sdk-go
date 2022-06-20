@@ -606,6 +606,7 @@ func NewDescribeJobConfigsResponse() (response *DescribeJobConfigsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
@@ -624,6 +625,7 @@ func (c *Client) DescribeJobConfigs(request *DescribeJobConfigsRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
 //  INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
@@ -917,6 +919,7 @@ func NewDescribeResourcesResponse() (response *DescribeResourcesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
@@ -934,6 +937,7 @@ func (c *Client) DescribeResources(request *DescribeResourcesRequest) (response 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
@@ -1311,6 +1315,7 @@ func NewTriggerJobSavepointResponse() (response *TriggerJobSavepointResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) TriggerJobSavepoint(request *TriggerJobSavepointRequest) (response *TriggerJobSavepointResponse, err error) {
@@ -1322,6 +1327,7 @@ func (c *Client) TriggerJobSavepoint(request *TriggerJobSavepointRequest) (respo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) TriggerJobSavepointWithContext(ctx context.Context, request *TriggerJobSavepointRequest) (response *TriggerJobSavepointResponse, err error) {

@@ -2010,7 +2010,7 @@ type DescribeCloudStorageEventsRequest struct {
 	// 请求上下文, 用作查询游标
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 单次获取的历史数据项目的最大数量, 缺省10
+	// 查询数据项目的最大数量, 默认为10。假设传Size=10，返回的实际事件数量为N，则 5 <= N <= 10。
 	Size *uint64 `json:"Size,omitempty" name:"Size"`
 
 	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。

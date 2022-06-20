@@ -50,6 +50,9 @@ const (
 	// 迁移任务冲突。
 	INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 
+	// http请求访问出错。
+	INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+
 	// 内部组件访问错误。
 	INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 

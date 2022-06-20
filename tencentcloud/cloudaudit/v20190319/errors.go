@@ -17,6 +17,9 @@ package v20190319
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 创建COS存储桶失败
 	FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
 

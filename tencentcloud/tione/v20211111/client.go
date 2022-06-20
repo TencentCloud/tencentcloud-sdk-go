@@ -1784,6 +1784,7 @@ func NewStopTrainingTaskResponse() (response *StopTrainingTaskResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {
@@ -1795,6 +1796,7 @@ func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *S
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {

@@ -883,6 +883,7 @@ func NewDescribeMerchantsResponse() (response *DescribeMerchantsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMerchants(request *DescribeMerchantsRequest) (response *DescribeMerchantsResponse, err error) {
@@ -894,6 +895,7 @@ func (c *Client) DescribeMerchants(request *DescribeMerchantsRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMerchantsWithContext(ctx context.Context, request *DescribeMerchantsRequest) (response *DescribeMerchantsResponse, err error) {

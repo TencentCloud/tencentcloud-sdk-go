@@ -599,6 +599,130 @@ type ApplicationForPage struct {
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList"`
 }
 
+type AssociateBusinessLogConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// TSF分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 日志配置项ID列表
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
+}
+
+func (r *AssociateBusinessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateBusinessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "ConfigIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateBusinessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateBusinessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateBusinessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateBusinessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateConfigWithGroupRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项id
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 部署组信息
+	Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+	// 是否选择全部投递，1 表示全部，0或不填表示非全部
+	SelectAll *int64 `json:"SelectAll,omitempty" name:"SelectAll"`
+
+	// 命名空间id
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 模糊搜索关键词
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
+func (r *AssociateConfigWithGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateConfigWithGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "Groups")
+	delete(f, "SelectAll")
+	delete(f, "NamespaceId")
+	delete(f, "ClusterId")
+	delete(f, "SearchWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateConfigWithGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateConfigWithGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 绑定是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *AssociateConfigWithGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateConfigWithGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BindApiGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -695,6 +819,120 @@ func (r *BindPluginResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BindPluginResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type BusinesLogConfigAssociatedGroup struct {
+
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 部署组所属应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 部署组所属应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 部署组所属应用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 部署组所属命名空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 部署组所属命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 部署组所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 部署组所属集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 部署组所属集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 部署组关联日志配置时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedTime *string `json:"AssociatedTime,omitempty" name:"AssociatedTime"`
+}
+
+type BusinessLogConfig struct {
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项日志路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 配置项描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigDesc *string `json:"ConfigDesc,omitempty" name:"ConfigDesc"`
+
+	// 配置项标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigTags *string `json:"ConfigTags,omitempty" name:"ConfigTags"`
+
+	// 配置项对应的ES管道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigPipeline *string `json:"ConfigPipeline,omitempty" name:"ConfigPipeline"`
+
+	// 配置项创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigCreateTime *string `json:"ConfigCreateTime,omitempty" name:"ConfigCreateTime"`
+
+	// 配置项更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigUpdateTime *string `json:"ConfigUpdateTime,omitempty" name:"ConfigUpdateTime"`
+
+	// 配置项解析规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigSchema *BusinessLogConfigSchema `json:"ConfigSchema,omitempty" name:"ConfigSchema"`
+
+	// 配置项关联部署组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigAssociatedGroups []*BusinesLogConfigAssociatedGroup `json:"ConfigAssociatedGroups,omitempty" name:"ConfigAssociatedGroups"`
+}
+
+type BusinessLogConfigSchema struct {
+
+	// 解析规则类型
+	SchemaType *int64 `json:"SchemaType,omitempty" name:"SchemaType"`
+
+	// 解析规则内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaContent *string `json:"SchemaContent,omitempty" name:"SchemaContent"`
+
+	// 解析规则时间格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaDateFormat *string `json:"SchemaDateFormat,omitempty" name:"SchemaDateFormat"`
+
+	// 解析规则对应的多行匹配规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaMultilinePattern *string `json:"SchemaMultilinePattern,omitempty" name:"SchemaMultilinePattern"`
+
+	// 解析规则创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaCreateTime *string `json:"SchemaCreateTime,omitempty" name:"SchemaCreateTime"`
+
+	// 用户填写的解析规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaPatternLayout *string `json:"SchemaPatternLayout,omitempty" name:"SchemaPatternLayout"`
 }
 
 type BusinessLogV2 struct {
@@ -4062,6 +4300,38 @@ func (r *DeleteUnitRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeliveryConfigBindGroup struct {
+
+	// 配置id
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置名
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 采集路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectPath []*string `json:"CollectPath,omitempty" name:"CollectPath"`
+
+	// 关联部署组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type DeliveryConfigBindGroups struct {
+
+	// 公共条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*DeliveryConfigBindGroup `json:"Content,omitempty" name:"Content"`
+}
+
 type DeployContainerGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -4779,6 +5049,52 @@ func (r *DescribeApplicationAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeApplicationBusinessLogConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// TSF应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeApplicationBusinessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationBusinessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationBusinessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApplicationBusinessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeApplicationBusinessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationBusinessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeApplicationRequest struct {
 	*tchttp.BaseRequest
 
@@ -4954,6 +5270,122 @@ func (r *DescribeBasicResourceUsageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBasicResourceUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBusinessLogConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribeBusinessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBusinessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBusinessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 日志配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *BusinessLogConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBusinessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBusinessLogConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 偏移量，取值范围大于等于0，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页请求配置数量，取值范围[1, 50]，默认值为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模糊匹配关键词
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 无
+	DisableProgramAuthCheck *bool `json:"DisableProgramAuthCheck,omitempty" name:"DisableProgramAuthCheck"`
+
+	// 无
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
+}
+
+func (r *DescribeBusinessLogConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessLogConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchWord")
+	delete(f, "DisableProgramAuthCheck")
+	delete(f, "ConfigIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBusinessLogConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBusinessLogConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务日志配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageBusinessLogConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeBusinessLogConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessLogConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5674,6 +6106,162 @@ func (r *DescribeCreateGatewayApiStatusResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeliveryConfigByGroupIdRequest struct {
+	*tchttp.BaseRequest
+
+	// 部署组id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeDeliveryConfigByGroupIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigByGroupIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryConfigByGroupIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliveryConfigByGroupIdResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 投递kafak配置项
+		Result *SimpleKafkaDeliveryConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeliveryConfigByGroupIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigByGroupIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliveryConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 投递配置id
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DescribeDeliveryConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliveryConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 投递kafka配置
+		Result *KafkaDeliveryConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeliveryConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliveryConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 搜索条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeliveryConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchWord")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeliveryConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 投递项关联部署组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *DeliveryConfigBindGroups `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeDeliveryConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliveryConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDownloadInfoRequest struct {
 	*tchttp.BaseRequest
 
@@ -6183,6 +6771,56 @@ func (r *DescribeGroupBindedGatewaysResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeGroupBindedGatewaysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupBusinessLogConfigsRequest struct {
+	*tchttp.BaseRequest
+
+	// 分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeGroupBusinessLogConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupBusinessLogConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupBusinessLogConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGroupBusinessLogConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 业务日志配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *TsfPageBusinessLogConfig `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DescribeGroupBusinessLogConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupBusinessLogConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9746,6 +10384,114 @@ func (r *DisableUnitRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DisassociateBusinessLogConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 业务日志配置项ID列表
+	ConfigIdList []*string `json:"ConfigIdList,omitempty" name:"ConfigIdList"`
+
+	// TSF分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DisassociateBusinessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateBusinessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigIdList")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateBusinessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateBusinessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateBusinessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateBusinessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateKafkaConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 配置项id
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 部署组id
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+}
+
+func (r *DisassociateKafkaConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateKafkaConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateKafkaConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateKafkaConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 解除绑定是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+		Result *bool `json:"Result,omitempty" name:"Result"`
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *DisassociateKafkaConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateKafkaConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DraftApiGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -10466,6 +11212,34 @@ type GroupDailyUseStatistics struct {
 
 	// 平均响应耗时
 	TopAvgTimeCost []*GroupUseStatisticsEntity `json:"TopAvgTimeCost,omitempty" name:"TopAvgTimeCost"`
+}
+
+type GroupInfo struct {
+
+	// 部署组id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 部署组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 绑定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociateTime *string `json:"AssociateTime,omitempty" name:"AssociateTime"`
 }
 
 type GroupPod struct {
@@ -11200,6 +11974,37 @@ type JvmMonitorData struct {
 	// 加载类数,一条线
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassCount []*CurvePoint `json:"ClassCount,omitempty" name:"ClassCount"`
+}
+
+type KafkaDeliveryConfig struct {
+
+	// 配置项id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 采集路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectPath []*string `json:"CollectPath,omitempty" name:"CollectPath"`
+
+	// kafka vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVIp *string `json:"KafkaVIp,omitempty" name:"KafkaVIp"`
+
+	// kafka vport
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVPort *string `json:"KafkaVPort,omitempty" name:"KafkaVPort"`
+
+	// kafka topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 换行规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineRule *string `json:"LineRule,omitempty" name:"LineRule"`
 }
 
 type LaneGroup struct {
@@ -12672,6 +13477,64 @@ type QuantileEntity struct {
 	NinthPositionValue *string `json:"NinthPositionValue,omitempty" name:"NinthPositionValue"`
 }
 
+type ReassociateBusinessLogConfigRequest struct {
+	*tchttp.BaseRequest
+
+	// 原关联日志配置ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 新关联日志配置ID
+	NewConfigId *string `json:"NewConfigId,omitempty" name:"NewConfigId"`
+
+	// TSF应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// TSF部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *ReassociateBusinessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReassociateBusinessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	delete(f, "NewConfigId")
+	delete(f, "ApplicationId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReassociateBusinessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReassociateBusinessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *struct {
+
+		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	} `json:"Response"`
+}
+
+func (r *ReassociateBusinessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReassociateBusinessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RedoTaskBatchRequest struct {
 	*tchttp.BaseRequest
 
@@ -14051,6 +14914,17 @@ type SimpleGroup struct {
 	AppMicroServiceType *string `json:"AppMicroServiceType,omitempty" name:"AppMicroServiceType"`
 }
 
+type SimpleKafkaDeliveryConfig struct {
+
+	// 配置项id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// 配置项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+}
+
 type StartContainerGroupRequest struct {
 	*tchttp.BaseRequest
 
@@ -14687,6 +15561,17 @@ type TsfPageApplication struct {
 	// 应用信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*ApplicationForPage `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfPageBusinessLogConfig struct {
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 业务日志配置项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*BusinessLogConfig `json:"Content,omitempty" name:"Content"`
 }
 
 type TsfPageBusinessLogV2 struct {

@@ -263,6 +263,9 @@ const (
 	// 规则不存在。
 	RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 
+	// 该产品已存在TID申请，禁止删除。
+	UNAUTHORIZEDOPERATION_DELETETIDFAIL = "UnauthorizedOperation.DeleteTidFail"
+
 	// 该设备绑定了网关设备，无法删除。
 	UNAUTHORIZEDOPERATION_DEVICEHASALREADYBINDGATEWAY = "UnauthorizedOperation.DeviceHasAlreadyBindGateway"
 

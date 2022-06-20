@@ -317,6 +317,7 @@ func NewDescribeEnvBaseInfoResponse() (response *DescribeEnvBaseInfoResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeEnvBaseInfo(request *DescribeEnvBaseInfoRequest) (response *DescribeEnvBaseInfoResponse, err error) {
     return c.DescribeEnvBaseInfoWithContext(context.Background(), request)
 }
@@ -327,6 +328,7 @@ func (c *Client) DescribeEnvBaseInfo(request *DescribeEnvBaseInfoRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeEnvBaseInfoWithContext(ctx context.Context, request *DescribeEnvBaseInfoRequest) (response *DescribeEnvBaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeEnvBaseInfoRequest()

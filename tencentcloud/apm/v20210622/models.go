@@ -101,7 +101,7 @@ type ApmInstanceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUin *string `json:"CreateUin,omitempty" name:"CreateUin"`
 
-	// 该实例已上报的服务数
+	// 该实例已上报的服务端应用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceCount *int64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
 
@@ -167,6 +167,14 @@ type ApmInstanceDetail struct {
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicID *string `json:"LogTopicID,omitempty" name:"LogTopicID"`
+
+	// 该实例已上报的客户端应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientCount *int64 `json:"ClientCount,omitempty" name:"ClientCount"`
+
+	// 该实例已上报的总应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type ApmMetricRecord struct {

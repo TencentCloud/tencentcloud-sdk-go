@@ -638,6 +638,7 @@ func NewCreateDedicatedClusterDBInstanceResponse() (response *CreateDedicatedClu
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedClusterDBInstanceRequest) (response *CreateDedicatedClusterDBInstanceResponse, err error) {
     return c.CreateDedicatedClusterDBInstanceWithContext(context.Background(), request)
 }
@@ -660,6 +661,7 @@ func (c *Client) CreateDedicatedClusterDBInstance(request *CreateDedicatedCluste
 //  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateDedicatedClusterDBInstanceWithContext(ctx context.Context, request *CreateDedicatedClusterDBInstanceRequest) (response *CreateDedicatedClusterDBInstanceResponse, err error) {
     if request == nil {
         request = NewCreateDedicatedClusterDBInstanceRequest()

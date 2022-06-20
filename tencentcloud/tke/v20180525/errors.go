@@ -59,6 +59,9 @@ const (
 	// 请求(http请求)其他云服务失败。
 	FAILEDOPERATION_COMPONENTCLINETHTTP = "FailedOperation.ComponentClinetHttp"
 
+	// 创建CLS日志集失败。
+	FAILEDOPERATION_CREATECLSLOGSET = "FailedOperation.CreateClsLogSet"
+
 	// cvm创建节点报错。
 	FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 
@@ -85,6 +88,9 @@ const (
 
 	// KubernetesAPI错误。
 	FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+
+	// Kubernetes client建立失败。
+	FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
 
 	// 创建集群Client出错。
 	FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"

@@ -1384,6 +1384,7 @@ func NewStopApplicationResponse() (response *StopApplicationResponse) {
 // 服务停止
 //
 // 可能返回的错误码:
+//  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) StopApplication(request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
@@ -1394,6 +1395,7 @@ func (c *Client) StopApplication(request *StopApplicationRequest) (response *Sto
 // 服务停止
 //
 // 可能返回的错误码:
+//  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) StopApplicationWithContext(ctx context.Context, request *StopApplicationRequest) (response *StopApplicationResponse, err error) {

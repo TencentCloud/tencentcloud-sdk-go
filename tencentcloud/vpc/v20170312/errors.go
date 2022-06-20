@@ -401,6 +401,9 @@ const (
 	// 子网分配子网段数量达到上限。
 	LIMITEXCEEDED_SUBNETCIDRBLOCK = "LimitExceeded.SubnetCidrBlock"
 
+	// 标签配额已满，无法创建资源。
+	LIMITEXCEEDED_TAGQUOTA = "LimitExceeded.TagQuota"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 

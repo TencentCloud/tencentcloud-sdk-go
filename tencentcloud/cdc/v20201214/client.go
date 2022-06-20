@@ -862,6 +862,7 @@ func NewModifyDedicatedClusterInfoResponse() (response *ModifyDedicatedClusterIn
 // 修改本地专用集群信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -877,6 +878,7 @@ func (c *Client) ModifyDedicatedClusterInfo(request *ModifyDedicatedClusterInfoR
 // 修改本地专用集群信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 //  INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
 //  MISSINGPARAMETER = "MissingParameter"

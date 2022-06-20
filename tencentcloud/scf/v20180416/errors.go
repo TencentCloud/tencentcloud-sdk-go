@@ -206,6 +206,9 @@ const (
 	// 请求参数不合法。
 	INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 
+	// 请求大小超限。
+	INVALIDPARAMETER_REQUESTTOOLARGE = "InvalidParameter.RequestTooLarge"
+
 	// RoleCheck 传参有误。
 	INVALIDPARAMETER_ROLECHECK = "InvalidParameter.RoleCheck"
 

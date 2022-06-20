@@ -998,6 +998,18 @@ type ClusterCheckItem struct {
 	// 受影响的版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedVersion *string `json:"AffectedVersion,omitempty" name:"AffectedVersion"`
+
+	// 忽略的资产数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoredAssetNum *int64 `json:"IgnoredAssetNum,omitempty" name:"IgnoredAssetNum"`
+
+	// 是否忽略该检测项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsIgnored *bool `json:"IsIgnored,omitempty" name:"IsIgnored"`
+
+	// 受影响评估
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskAssessment *string `json:"RiskAssessment,omitempty" name:"RiskAssessment"`
 }
 
 type ClusterCheckTaskItem struct {
